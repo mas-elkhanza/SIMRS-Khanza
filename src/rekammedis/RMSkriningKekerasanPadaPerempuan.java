@@ -67,10 +67,10 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "BB(Kg)","TB/PB(Cm)","TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu","SpO2","Alergi",
-            "Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Skrining Gizi 3","Nilai 3",
-            "Skrining Gizi 4","Nilai 4","Total Skor","Hasil Skrining","Diketahui Dietisien/Dokter","Jam Lapor"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Umur","Kode Petugas","Nama Petugas","Tanggal",
+            "Pertanyaan Awal 1","N.P.A.1","Pertanyaan Awal 2","N.P.A.2","Pertanyaan Lanjutan 1","N.P.L.1",
+            "Pertanyaan Lanjutan 2","N.P.L.2","Pertanyaan Lanjutan 3","N.P.L.3","Pertanyaan Lanjutan 4","N.P.L.4",
+            "Pertanyaan Lanjutan 5","N.P.L.5","Pertanyaan Lanjutan 6","N.P.L.6","Total Skor","Hasil Skrining"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -80,7 +80,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 28; i++) {
+        for (i = 0; i < 26; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -91,53 +91,49 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(40);
             }else if(i==5){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(90);
             }else if(i==6){
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(118);
             }else if(i==9){
-                column.setPreferredWidth(58);
+                column.setPreferredWidth(45);
             }else if(i==10){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(118);
             }else if(i==11){
-                column.setPreferredWidth(68);
+                column.setPreferredWidth(45);
             }else if(i==12){
-                column.setPreferredWidth(68);
+                column.setPreferredWidth(118);
             }else if(i==13){
-                column.setPreferredWidth(37);
+                column.setPreferredWidth(45);
             }else if(i==14){
-                column.setPreferredWidth(37);
+                column.setPreferredWidth(118);
             }else if(i==15){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(45);
             }else if(i==16){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(118);
             }else if(i==17){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(45);
             }else if(i==18){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(118);
             }else if(i==19){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(45);
             }else if(i==20){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(118);
             }else if(i==21){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(45);
             }else if(i==22){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(118);
             }else if(i==23){
-                column.setPreferredWidth(39);
+                column.setPreferredWidth(45);
             }else if(i==24){
-                column.setPreferredWidth(61);
+                column.setPreferredWidth(60);
             }else if(i==25){
-                column.setPreferredWidth(77);
-            }else if(i==26){
-                column.setPreferredWidth(138);
-            }else if(i==27){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(230);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1187,35 +1183,22 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
-        }else if(BB.getText().trim().equals("")){
-            Valid.textKosong(BB,"Berat Badan");
-        }else if(TBPB.getText().trim().equals("")){
-            Valid.textKosong(TBPB,"TB/PB");
-        }else if(TD.getText().trim().equals("")){
-            Valid.textKosong(TD,"TD");
-        }else if(HR.getText().trim().equals("")){
-            Valid.textKosong(HR,"HR");
-        }else if(RR.getText().trim().equals("")){
-            Valid.textKosong(RR,"RR");
-        }else if(Suhu.getText().trim().equals("")){
-            Valid.textKosong(Suhu,"Suhu");
-        }else if(SpO2.getText().trim().equals("")){
-            Valid.textKosong(SpO2,"SpO2");
         }else{
-            if(Sequel.menyimpantf("skrining_nutrisi_anak","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",23,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
-                Nilai1.getText(),SG2.getSelectedItem().toString(),Nilai2.getText(),SG3.getSelectedItem().toString(),Nilai3.getText(),SG4.getSelectedItem().toString(),
-                Nilai4.getText(),TotalHasil.getText(),LabelSkrining.getText(),Lapor.getSelectedItem().toString(),KetLapor.getText(),KdPetugas.getText()
-            })==true){
-                tampil();
-                emptTeks();
-            } 
-        }*/
+            if(akses.getkode().equals("Admin Utama")){
+                simpan();
+            }else{
+                if(TanggalRegistrasi.getText().equals("")){
+                    TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                }
+                if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem())==true){
+                    simpan();
+                }
+            }
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -1326,30 +1309,30 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
             try{
                 if(TCari.getText().trim().equals("")){
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                        "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                        "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                        "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                        "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                        "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                        "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                        "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
-                        "where skrining_nutrisi_anak.tanggal between ? and ? order by skrining_nutrisi_anak.tanggal ");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_kekerasan_pada_perempuan.tanggal,"+
+                        "skrining_kekerasan_pada_perempuan.td,skrining_kekerasan_pada_perempuan.hr,skrining_kekerasan_pada_perempuan.rr,skrining_kekerasan_pada_perempuan.suhu,"+
+                        "skrining_kekerasan_pada_perempuan.bb,skrining_kekerasan_pada_perempuan.tbpb,skrining_kekerasan_pada_perempuan.spo2,skrining_kekerasan_pada_perempuan.alergi,"+
+                        "skrining_kekerasan_pada_perempuan.sg1,skrining_kekerasan_pada_perempuan.nilai1,skrining_kekerasan_pada_perempuan.sg2,skrining_kekerasan_pada_perempuan.nilai2,"+
+                        "skrining_kekerasan_pada_perempuan.sg3,skrining_kekerasan_pada_perempuan.nilai3,skrining_kekerasan_pada_perempuan.sg4,skrining_kekerasan_pada_perempuan.nilai4,"+
+                        "skrining_kekerasan_pada_perempuan.total_hasil,skrining_kekerasan_pada_perempuan.skor_nutrisi,skrining_kekerasan_pada_perempuan.nip,petugas.nama,"+
+                        "pasien.jk,skrining_kekerasan_pada_perempuan.diketahui_dietisien,skrining_kekerasan_pada_perempuan.keterangan_diketahui_dietisien "+
+                        "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
+                        "where skrining_kekerasan_pada_perempuan.tanggal between ? and ? order by skrining_kekerasan_pada_perempuan.tanggal ");
                 }else{
                     ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                        "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                        "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                        "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                        "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                        "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                        "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                        "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
-                        "where skrining_nutrisi_anak.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                        "pasien.nm_pasien like ? or skrining_nutrisi_anak.alergi like ? or skrining_nutrisi_anak.nip like ? or petugas.nama like ?) "+
-                        "order by skrining_nutrisi_anak.tanggal ");
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_kekerasan_pada_perempuan.tanggal,"+
+                        "skrining_kekerasan_pada_perempuan.td,skrining_kekerasan_pada_perempuan.hr,skrining_kekerasan_pada_perempuan.rr,skrining_kekerasan_pada_perempuan.suhu,"+
+                        "skrining_kekerasan_pada_perempuan.bb,skrining_kekerasan_pada_perempuan.tbpb,skrining_kekerasan_pada_perempuan.spo2,skrining_kekerasan_pada_perempuan.alergi,"+
+                        "skrining_kekerasan_pada_perempuan.sg1,skrining_kekerasan_pada_perempuan.nilai1,skrining_kekerasan_pada_perempuan.sg2,skrining_kekerasan_pada_perempuan.nilai2,"+
+                        "skrining_kekerasan_pada_perempuan.sg3,skrining_kekerasan_pada_perempuan.nilai3,skrining_kekerasan_pada_perempuan.sg4,skrining_kekerasan_pada_perempuan.nilai4,"+
+                        "skrining_kekerasan_pada_perempuan.total_hasil,skrining_kekerasan_pada_perempuan.skor_nutrisi,skrining_kekerasan_pada_perempuan.nip,petugas.nama,"+
+                        "pasien.jk,skrining_kekerasan_pada_perempuan.diketahui_dietisien,skrining_kekerasan_pada_perempuan.keterangan_diketahui_dietisien "+
+                        "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
+                        "where skrining_kekerasan_pada_perempuan.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                        "pasien.nm_pasien like ? or skrining_kekerasan_pada_perempuan.alergi like ? or skrining_kekerasan_pada_perempuan.nip like ? or petugas.nama like ?) "+
+                        "order by skrining_kekerasan_pada_perempuan.tanggal ");
                 }
 
                 try {
@@ -1612,15 +1595,15 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningNutrisiAnak.jasper","report","::[ Formulir Skrining Nutrisi Pasien Anak ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                    "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                    "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                    "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                    "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                    "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                    "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                    "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_kekerasan_pada_perempuan.tanggal,"+
+                    "skrining_kekerasan_pada_perempuan.td,skrining_kekerasan_pada_perempuan.hr,skrining_kekerasan_pada_perempuan.rr,skrining_kekerasan_pada_perempuan.suhu,"+
+                    "skrining_kekerasan_pada_perempuan.bb,skrining_kekerasan_pada_perempuan.tbpb,skrining_kekerasan_pada_perempuan.spo2,skrining_kekerasan_pada_perempuan.alergi,"+
+                    "skrining_kekerasan_pada_perempuan.sg1,skrining_kekerasan_pada_perempuan.nilai1,skrining_kekerasan_pada_perempuan.sg2,skrining_kekerasan_pada_perempuan.nilai2,"+
+                    "skrining_kekerasan_pada_perempuan.sg3,skrining_kekerasan_pada_perempuan.nilai3,skrining_kekerasan_pada_perempuan.sg4,skrining_kekerasan_pada_perempuan.nilai4,"+
+                    "skrining_kekerasan_pada_perempuan.total_hasil,skrining_kekerasan_pada_perempuan.skor_nutrisi,skrining_kekerasan_pada_perempuan.nip,petugas.nama,"+
+                    "pasien.jk,skrining_kekerasan_pada_perempuan.diketahui_dietisien,skrining_kekerasan_pada_perempuan.keterangan_diketahui_dietisien "+
+                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
@@ -1832,30 +1815,34 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                    "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                    "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                    "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                    "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                    "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                    "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                    "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
-                    "where skrining_nutrisi_anak.tanggal between ? and ? order by skrining_nutrisi_anak.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
+                    "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
+                    "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
+                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
+                    "where skrining_kekerasan_pada_perempuan.tanggal between ? and ? order by skrining_kekerasan_pada_perempuan.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_nutrisi_anak.tanggal,"+
-                    "skrining_nutrisi_anak.td,skrining_nutrisi_anak.hr,skrining_nutrisi_anak.rr,skrining_nutrisi_anak.suhu,"+
-                    "skrining_nutrisi_anak.bb,skrining_nutrisi_anak.tbpb,skrining_nutrisi_anak.spo2,skrining_nutrisi_anak.alergi,"+
-                    "skrining_nutrisi_anak.sg1,skrining_nutrisi_anak.nilai1,skrining_nutrisi_anak.sg2,skrining_nutrisi_anak.nilai2,"+
-                    "skrining_nutrisi_anak.sg3,skrining_nutrisi_anak.nilai3,skrining_nutrisi_anak.sg4,skrining_nutrisi_anak.nilai4,"+
-                    "skrining_nutrisi_anak.total_hasil,skrining_nutrisi_anak.skor_nutrisi,skrining_nutrisi_anak.nip,petugas.nama,"+
-                    "pasien.jk,skrining_nutrisi_anak.diketahui_dietisien,skrining_nutrisi_anak.keterangan_diketahui_dietisien "+
-                    "from skrining_nutrisi_anak inner join reg_periksa on skrining_nutrisi_anak.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_nutrisi_anak.nip=petugas.nip "+
-                    "where skrining_nutrisi_anak.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_nutrisi_anak.alergi like ? or skrining_nutrisi_anak.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_nutrisi_anak.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
+                    "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
+                    "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
+                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
+                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
+                    "where skrining_kekerasan_pada_perempuan.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_kekerasan_pada_perempuan.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_kekerasan_pada_perempuan.tanggal ");
             }
                 
             try {
@@ -1870,18 +1857,18 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
                     ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
-                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("bb"),rs.getString("tbpb"),rs.getString("td"),
-                        rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),rs.getString("spo2"),rs.getString("alergi"),rs.getString("sg1"),
-                        rs.getString("nilai1"),rs.getString("sg2"),rs.getString("nilai2"),rs.getString("sg3"),rs.getString("nilai3"),rs.getString("sg4"),
-                        rs.getString("nilai4"),rs.getString("total_hasil"),rs.getString("skor_nutrisi"),rs.getString("diketahui_dietisien"),
-                        rs.getString("keterangan_diketahui_dietisien")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("menggambarkan_hubungan"),rs.getString("skor_menggambarkan_hubungan"),rs.getString("berdebat_dengan_pasangan"),
+                        rs.getString("skor_berdebat_dengan_pasangan"),rs.getString("pertengkaran_membuat_sedih"),rs.getString("skor_pertengkaran_membuat_sedih"),rs.getString("pertengkaran_menghasilkan_pukulan"),
+                        rs.getString("skor_pertengkaran_menghasilkan_pukulan"),rs.getString("pernah_merasa_takut_dengan_pasangan"),rs.getString("skor_pernah_merasa_takut_dengan_pasangan"),
+                        rs.getString("pasangan_melecehkan_secara_fisik"),rs.getString("skor_pasangan_melecehkan_secara_fisik"),rs.getString("pasangan_melecehkan_secara_imosional"),
+                        rs.getString("skor_pasangan_melecehkan_secara_imosional"),rs.getString("pasangan_melecehkan_secara_seksual"),rs.getString("skor_pasangan_melecehkan_secara_seksual"),
+                        rs.getString("totalskor"),rs.getString("hasil_skrining")
                     });
                 }
             } catch (Exception e) {
@@ -2082,7 +2069,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        /*Sequel.mengedit("skrining_nutrisi_anak","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,"+
+        /*Sequel.mengedit("skrining_kekerasan_pada_perempuan","no_rawat=?","no_rawat=?,tanggal=?,td=?,hr=?,rr=?,suhu=?,bb=?,tbpb=?,spo2=?,alergi=?,sg1=?,nilai1=?,sg2=?,"+
                 "nilai2=?,sg3=?,nilai3=?,sg4=?,nilai4=?,total_hasil=?,skor_nutrisi=?,diketahui_dietisien=?,keterangan_diketahui_dietisien=?,nip=?",24,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),BB.getText(),TBPB.getText(),SpO2.getText(),Alergi.getText(),SG1.getSelectedItem().toString(),
@@ -2096,7 +2083,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_nutrisi_anak where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_kekerasan_pada_perempuan where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2118,6 +2105,26 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         } catch (Exception e) {
             HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
         }
+    }
+
+    private void simpan() {
+        if(Sequel.menyimpantf("skrining_kekerasan_pada_perempuan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+            PertanyaanAwal1.getSelectedItem().toString(),NilaiPertanyaanAwal1.getText(),PertanyaanAwal2.getSelectedItem().toString(),NilaiPertanyaanAwal2.getText(), 
+            PertanyaanLanjutan1.getSelectedItem().toString(),NilaiPertanyaanLanjutan1.getText(),PertanyaanLanjutan2.getSelectedItem().toString(),NilaiPertanyaanLanjutan2.getText(), 
+            PertanyaanLanjutan3.getSelectedItem().toString(),NilaiPertanyaanLanjutan3.getText(),PertanyaanLanjutan4.getSelectedItem().toString(),NilaiPertanyaanLanjutan4.getText(), 
+            PertanyaanLanjutan5.getSelectedItem().toString(),NilaiPertanyaanLanjutan5.getText(),PertanyaanLanjutan6.getSelectedItem().toString(),NilaiPertanyaanLanjutan6.getText(), 
+            TotalHasil.getText(),HasilSkrining.getText(),KdPetugas.getText()
+        })==true){
+            tabMode.addRow(new String[]{
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                PertanyaanAwal1.getSelectedItem().toString(),NilaiPertanyaanAwal1.getText(),PertanyaanAwal2.getSelectedItem().toString(),NilaiPertanyaanAwal2.getText(),PertanyaanLanjutan1.getSelectedItem().toString(),NilaiPertanyaanLanjutan1.getText(),
+                PertanyaanLanjutan2.getSelectedItem().toString(),NilaiPertanyaanLanjutan2.getText(),PertanyaanLanjutan3.getSelectedItem().toString(),NilaiPertanyaanLanjutan3.getText(),PertanyaanLanjutan4.getSelectedItem().toString(),NilaiPertanyaanLanjutan4.getText(), 
+                PertanyaanLanjutan5.getSelectedItem().toString(),NilaiPertanyaanLanjutan5.getText(),PertanyaanLanjutan6.getSelectedItem().toString(),NilaiPertanyaanLanjutan6.getText(),TotalHasil.getText(),HasilSkrining.getText()
+            });
+            LCount.setText(""+tabMode.getRowCount());
+            emptTeks();
+        } 
     }
     
 }

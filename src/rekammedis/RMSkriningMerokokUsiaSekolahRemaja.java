@@ -606,7 +606,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -620,7 +620,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -741,7 +741,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-07-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-07-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -860,11 +860,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         Umur.setEditable(false);
         Umur.setFocusTraversalPolicyProvider(true);
         Umur.setName("Umur"); // NOI18N
-        Umur.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                UmurKeyPressed(evt);
-            }
-        });
         FormInput.add(Umur);
         Umur.setBounds(79, 40, 50, 23);
 
@@ -1878,10 +1873,6 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
         }
     }//GEN-LAST:event_MnSkriningMerokokActionPerformed
 
-    private void UmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurKeyPressed
-        //Valid.pindah(evt,btnPetugas,TBPB);
-    }//GEN-LAST:event_UmurKeyPressed
-
     private void KelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelasKeyPressed
         Valid.pindah(evt,TCari,btnAsalSekolah);
     }//GEN-LAST:event_KelasKeyPressed
@@ -2058,6 +2049,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
     private void MerokokDiPendidikanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MerokokDiPendidikanItemStateChanged
         if(MerokokDiPendidikan.getSelectedIndex()==1){
             YangPalingSeringMerokokDiSekolah.setSelectedIndex(4);
+            KeteranganYangPalingSeringMerokokDiSekolah.setText("");
         }else{
             YangPalingSeringMerokokDiSekolah.setSelectedIndex(0);
         }
