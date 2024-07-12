@@ -954,6 +954,7 @@ import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
+import rekammedis.RMSkriningKekerasanPadaPerempuan;
 import rekammedis.RMSkriningMPP;
 import rekammedis.RMSkriningMPPFormA;
 import rekammedis.RMSkriningMPPFormB;
@@ -21595,6 +21596,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     } 
+    
+    private void btnSkriningKekerasanPadaPerempuanActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningKekerasanPadaPerempuan form=new RMSkriningKekerasanPadaPerempuan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22288,7 +22301,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPasienImunitasRendah,btnCatatanKeseimbanganCairan,btnCatatanObservasiCHBP,btnCatatanObservasiInduksiPersalinan,btnSKPKategoriPenilaian,btnSKPKriteriaPenilaian,
             btnReferensiPoliMobileJKNFKTP,btnReferensiDokterMobileJKNFKTP,btnSKPPenilaianPegawai,btnMandiriMetodePembayaran,btnMandiriBankTujuanTRansfer,btnPembayaranPihakKe3BankMandiri,
             btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik,btnDataSasaranUsiaProduktif,
-            btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah;
+            btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan;
     
     public void isWall(){
         try{            
@@ -26394,6 +26407,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_perilaku_merokok_sekolah_remaja()==true){
                 Panelmenu.add(btnSkriningMerokokUsiaSekolah);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_kekerasan_pada_perempuan()==true){
+                Panelmenu.add(btnSkriningKekerasanPadaPerempuan);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -31593,6 +31611,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_perilaku_merokok_sekolah_remaja()==true){
             Panelmenu.add(btnSkriningMerokokUsiaSekolah);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_kekerasan_pada_perempuan()==true){
+            Panelmenu.add(btnSkriningKekerasanPadaPerempuan);
             jmlmenu++;
         }
 
@@ -38375,9 +38398,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.getskrining_ralan_pernapasan_pertahun()==true){
+        if(akses.getskrining_perilaku_merokok_sekolah_remaja()==true){
             if(btnSkriningMerokokUsiaSekolah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSkriningMerokokUsiaSekolah);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getskrining_kekerasan_pada_perempuan()==true){
+            if(btnSkriningKekerasanPadaPerempuan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningKekerasanPadaPerempuan);
                 jmlmenu++;
             }                
         }
@@ -43962,7 +43992,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianRisikoDekubitus.addActionListener(this::btnPenilaianRisikoDekubitusActionPerformed);
         
         btnMasterMenolakAnjuranMedis = new widget.ButtonBig();
-        btnMasterMenolakAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9191520_nonviolence_violence_hit_thrash_conflict_icon.png"))); 
+        btnMasterMenolakAnjuranMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9191497_nonviolence_violence_cruelty_hit_thrash_icon.png"))); 
         btnMasterMenolakAnjuranMedis.setText("Master Menolak Anjuran Medis");
         btnMasterMenolakAnjuranMedis.setIconTextGap(0);
         btnMasterMenolakAnjuranMedis.setName("btnMasterMenolakAnjuranMedis"); 
@@ -44736,5 +44766,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningMerokokUsiaSekolah.setName("btnSkriningMerokokUsiaSekolah"); 
         btnSkriningMerokokUsiaSekolah.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningMerokokUsiaSekolah.addActionListener(this::btnSkriningMerokokUsiaSekolahActionPerformed);
+        
+        btnSkriningKekerasanPadaPerempuan = new widget.ButtonBig();
+        btnSkriningKekerasanPadaPerempuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9191520_nonviolence_violence_hit_thrash_conflict_icon.png"))); 
+        btnSkriningKekerasanPadaPerempuan.setText("Skrining Kekerasan Pada Perempuan");
+        btnSkriningKekerasanPadaPerempuan.setIconTextGap(0);
+        btnSkriningKekerasanPadaPerempuan.setName("btnSkriningKekerasanPadaPerempuan"); 
+        btnSkriningKekerasanPadaPerempuan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningKekerasanPadaPerempuan.addActionListener(this::btnSkriningKekerasanPadaPerempuanActionPerformed);
     }
 }
