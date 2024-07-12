@@ -375,6 +375,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkMonitoringGizi = new widget.CekBox();
         chkCatatanADIMEGizi = new widget.CekBox();
         chkSkriningMerokokUsiaRemaja = new widget.CekBox();
+        chkSkriningKekerasanPadaPerempuan = new widget.CekBox();
         chkRekonsiliasiObat = new widget.CekBox();
         chkKonselingFarmasi = new widget.CekBox();
         chkPelayananInformasiObat = new widget.CekBox();
@@ -653,7 +654,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3200));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3240));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1525,6 +1526,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningMerokokUsiaRemaja.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSkriningMerokokUsiaRemaja);
 
+        chkSkriningKekerasanPadaPerempuan.setSelected(true);
+        chkSkriningKekerasanPadaPerempuan.setText("Skrining Kekerasan Pada Perempuan");
+        chkSkriningKekerasanPadaPerempuan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkSkriningKekerasanPadaPerempuan.setName("chkSkriningKekerasanPadaPerempuan"); // NOI18N
+        chkSkriningKekerasanPadaPerempuan.setOpaque(false);
+        chkSkriningKekerasanPadaPerempuan.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkSkriningKekerasanPadaPerempuan);
+
         chkRekonsiliasiObat.setSelected(true);
         chkRekonsiliasiObat.setText("Rekonsiliasi Obat");
         chkRekonsiliasiObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2308,6 +2317,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanObservasiInduksiPersalinan.setSelected(true);
             chkKonsultasiMedik.setSelected(true);
             chkSkriningMerokokUsiaRemaja.setSelected(true);
+            chkSkriningKekerasanPadaPerempuan.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2448,6 +2458,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanObservasiInduksiPersalinan.setSelected(false);
             chkKonsultasiMedik.setSelected(false);
             chkSkriningMerokokUsiaRemaja.setSelected(false);
+            chkSkriningKekerasanPadaPerempuan.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2648,6 +2659,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkSkorBromagePascaAnestesi;
     private widget.CekBox chkSkorStewardPascaAnestesi;
     private widget.CekBox chkSkriningGiziLanjut;
+    private widget.CekBox chkSkriningKekerasanPadaPerempuan;
     private widget.CekBox chkSkriningMerokokUsiaRemaja;
     private widget.CekBox chkSkriningNutrisiAnak;
     private widget.CekBox chkSkriningNutrisiDewasa;
@@ -3247,6 +3259,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanGizi(rs.getString("no_rawat"));
                     //menampilkan skrining merokok usia sekolah
                     menampilkanSKriningMerokokUsiaSekolah(rs.getString("no_rawat"));
+                    //menampilkan skrining kekerasan Pada Perempuan
+                    menampilkanSKriningKekerasanPadaPerempuan(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
                     menampilkanRekonsiliasiObat(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
@@ -25126,7 +25140,153 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notif Gizi : "+e);
+            System.out.println("Notif Skrining Merokok Pada Usia Remaja : "+e);
+        }
+    }
+    
+    private void menampilkanSKriningKekerasanPadaPerempuan(String norawat) {
+        try {
+            if(chkSkriningKekerasanPadaPerempuan.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
+                            "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
+                            "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
+                            "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
+                            "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
+                            "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
+                            "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
+                            "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
+                            "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
+                            "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
+                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
+                            "where skrining_kekerasan_pada_perempuan.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Skrining Kekerasan Pada Perempuan</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='30%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='70%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. PERTANYAAN AWAL"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>"+
+                                              "<td valign='top' width='62%' bgcolor='#FFFAF8' align='center'>Pertanyaan</td>"+
+                                              "<td valign='top' width='30%' bgcolor='#FFFAF8' align='center'>Jawaban</td>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>1.</td>"+
+                                              "<td>Secara umum, bagaimana Anda menggambarkan hubungan Anda ?</td>"+
+                                              "<td align='center'>"+rs2.getString("menggambarkan_hubungan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skor_menggambarkan_hubungan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>2.</td>"+
+                                              "<td>Seperti apa saat Anda dan pasangan berdebat ?</td>"+
+                                              "<td align='center'>"+rs2.getString("berdebat_dengan_pasangan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skor_berdebat_dengan_pasangan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "II. PERTANYAAN LANJUTAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>"+
+                                              "<td valign='top' width='62%' bgcolor='#FFFAF8' align='center'>Pertanyaan</td>"+
+                                              "<td valign='top' width='30%' bgcolor='#FFFAF8' align='center'>Jawaban</td>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>1.</td>"+
+                                              "<td>Apakah pertengkaran pernah membuat Anda merasa sedih atau buruk tentang diri sendiri ?</td>"+
+                                              "<td align='center'>"+rs2.getString("pertengkaran_membuat_sedih")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skor_pertengkaran_membuat_sedih")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>2.</td>"+
+                                              "<td>Apakah pertengkaran pernah menghasilkan pukulan, tendangan, atau dorongan ?</td>"+
+                                              "<td align='center'>"+rs2.getString("pertengkaran_menghasilkan_pukulan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skor_pertengkaran_menghasilkan_pukulan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>3.</td>"+
+                                              "<td>Apakah Anda pernah merasa takut dengan apa yang pasangan Anda katakan atau lakukan ?</td>"+
+                                              "<td align='center'>"+rs2.getString("pernah_merasa_takut_dengan_pasangan")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skor_pernah_merasa_takut_dengan_pasangan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>4.</td>"+
+                                              "<td>Apakah pasangan Anda pernah melecehkan Anda secara fisik ?</td>"+
+                                              "<td align='center'>"+rs2.getString("pasangan_melecehkan_secara_fisik")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skor_pasangan_melecehkan_secara_fisik")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>5.</td>"+
+                                              "<td>Pernahkah pasangan Anda melecehkan Anda secara emosional ?</td>"+
+                                              "<td align='center'>"+rs2.getString("pasangan_melecehkan_secara_imosional")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skor_pasangan_melecehkan_secara_imosional")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>6.</td>"+
+                                              "<td>Apakah pasangan Anda pernah melecehkan Anda secara seksual ?</td>"+
+                                              "<td align='center'>"+rs2.getString("pasangan_melecehkan_secara_seksual")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("skor_pasangan_melecehkan_secara_seksual")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. INTERPRETASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='66%' bgcolor='#FFFAF8' align='center'>Hasil Skrining : "+rs2.getString("hasil_skrining")+"</td>"+
+                                              "<td valign='top' width='30%' align='right'>Total Skor :</td>"+
+                                              "<td valign='top' width='4%' align='center'>"+rs2.getString("totalskor")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Skrining Kekerasan Pada Perempuan : "+e);
         }
     }
 }
