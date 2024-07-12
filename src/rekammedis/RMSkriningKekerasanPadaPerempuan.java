@@ -280,14 +280,14 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         TotalHasil = new widget.TextBox();
         NilaiPertanyaanAwal1 = new widget.TextBox();
         NilaiPertanyaanAwal2 = new widget.TextBox();
-        SG3 = new widget.ComboBox();
+        PertanyaanLanjutan1 = new widget.ComboBox();
         jLabel70 = new widget.Label();
-        Nilai3 = new widget.TextBox();
+        NilaiPertanyaanLanjutan1 = new widget.TextBox();
         jLabel71 = new widget.Label();
-        Nilai4 = new widget.TextBox();
-        SG4 = new widget.ComboBox();
+        NilaiPertanyaanLanjutan2 = new widget.TextBox();
+        PertanyaanLanjutan2 = new widget.ComboBox();
         jLabel148 = new widget.Label();
-        KetLapor = new widget.TextBox();
+        HasilSkrining = new widget.TextBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
         jLabel75 = new widget.Label();
@@ -302,23 +302,23 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
         jLabel84 = new widget.Label();
-        SG5 = new widget.ComboBox();
+        PertanyaanLanjutan3 = new widget.ComboBox();
         jLabel72 = new widget.Label();
-        Nilai5 = new widget.TextBox();
+        NilaiPertanyaanLanjutan3 = new widget.TextBox();
         jLabel85 = new widget.Label();
         jLabel86 = new widget.Label();
-        SG6 = new widget.ComboBox();
+        PertanyaanLanjutan4 = new widget.ComboBox();
         jLabel74 = new widget.Label();
-        Nilai6 = new widget.TextBox();
+        NilaiPertanyaanLanjutan4 = new widget.TextBox();
         jLabel87 = new widget.Label();
         jLabel88 = new widget.Label();
-        SG7 = new widget.ComboBox();
+        PertanyaanLanjutan5 = new widget.ComboBox();
         jLabel89 = new widget.Label();
-        Nilai7 = new widget.TextBox();
+        NilaiPertanyaanLanjutan5 = new widget.TextBox();
         jLabel90 = new widget.Label();
-        SG8 = new widget.ComboBox();
+        PertanyaanLanjutan6 = new widget.ComboBox();
         jLabel91 = new widget.Label();
-        Nilai8 = new widget.TextBox();
+        NilaiPertanyaanLanjutan6 = new widget.TextBox();
         jLabel93 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel101 = new widget.Label();
@@ -830,59 +830,59 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         FormInput.add(NilaiPertanyaanAwal2);
         NilaiPertanyaanAwal2.setBounds(739, 120, 50, 23);
 
-        SG3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
-        SG3.setName("SG3"); // NOI18N
-        SG3.addItemListener(new java.awt.event.ItemListener() {
+        PertanyaanLanjutan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan1.setName("PertanyaanLanjutan1"); // NOI18N
+        PertanyaanLanjutan1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG3ItemStateChanged(evt);
+                PertanyaanLanjutan1ItemStateChanged(evt);
             }
         });
-        SG3.addKeyListener(new java.awt.event.KeyAdapter() {
+        PertanyaanLanjutan1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG3KeyPressed(evt);
+                PertanyaanLanjutan1KeyPressed(evt);
             }
         });
-        FormInput.add(SG3);
-        SG3.setBounds(560, 170, 130, 23);
+        FormInput.add(PertanyaanLanjutan1);
+        PertanyaanLanjutan1.setBounds(560, 170, 130, 23);
 
         jLabel70.setText("Nilai :");
         jLabel70.setName("jLabel70"); // NOI18N
         FormInput.add(jLabel70);
         jLabel70.setBounds(685, 170, 50, 23);
 
-        Nilai3.setEditable(false);
-        Nilai3.setText("0");
-        Nilai3.setFocusTraversalPolicyProvider(true);
-        Nilai3.setName("Nilai3"); // NOI18N
-        FormInput.add(Nilai3);
-        Nilai3.setBounds(739, 170, 50, 23);
+        NilaiPertanyaanLanjutan1.setEditable(false);
+        NilaiPertanyaanLanjutan1.setText("0");
+        NilaiPertanyaanLanjutan1.setFocusTraversalPolicyProvider(true);
+        NilaiPertanyaanLanjutan1.setName("NilaiPertanyaanLanjutan1"); // NOI18N
+        FormInput.add(NilaiPertanyaanLanjutan1);
+        NilaiPertanyaanLanjutan1.setBounds(739, 170, 50, 23);
 
         jLabel71.setText("Nilai :");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
         jLabel71.setBounds(685, 200, 50, 23);
 
-        Nilai4.setEditable(false);
-        Nilai4.setText("0");
-        Nilai4.setFocusTraversalPolicyProvider(true);
-        Nilai4.setName("Nilai4"); // NOI18N
-        FormInput.add(Nilai4);
-        Nilai4.setBounds(739, 200, 50, 23);
+        NilaiPertanyaanLanjutan2.setEditable(false);
+        NilaiPertanyaanLanjutan2.setText("0");
+        NilaiPertanyaanLanjutan2.setFocusTraversalPolicyProvider(true);
+        NilaiPertanyaanLanjutan2.setName("NilaiPertanyaanLanjutan2"); // NOI18N
+        FormInput.add(NilaiPertanyaanLanjutan2);
+        NilaiPertanyaanLanjutan2.setBounds(739, 200, 50, 23);
 
-        SG4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
-        SG4.setName("SG4"); // NOI18N
-        SG4.addItemListener(new java.awt.event.ItemListener() {
+        PertanyaanLanjutan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan2.setName("PertanyaanLanjutan2"); // NOI18N
+        PertanyaanLanjutan2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG4ItemStateChanged(evt);
+                PertanyaanLanjutan2ItemStateChanged(evt);
             }
         });
-        SG4.addKeyListener(new java.awt.event.KeyAdapter() {
+        PertanyaanLanjutan2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG4KeyPressed(evt);
+                PertanyaanLanjutan2KeyPressed(evt);
             }
         });
-        FormInput.add(SG4);
-        SG4.setBounds(560, 200, 130, 23);
+        FormInput.add(PertanyaanLanjutan2);
+        PertanyaanLanjutan2.setBounds(560, 200, 130, 23);
 
         jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel148.setText("Hasil Skrining");
@@ -890,15 +890,16 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         FormInput.add(jLabel148);
         jLabel148.setBounds(44, 370, 90, 23);
 
-        KetLapor.setFocusTraversalPolicyProvider(true);
-        KetLapor.setName("KetLapor"); // NOI18N
-        KetLapor.addKeyListener(new java.awt.event.KeyAdapter() {
+        HasilSkrining.setEditable(false);
+        HasilSkrining.setFocusTraversalPolicyProvider(true);
+        HasilSkrining.setName("HasilSkrining"); // NOI18N
+        HasilSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KetLaporKeyPressed(evt);
+                HasilSkriningKeyPressed(evt);
             }
         });
-        FormInput.add(KetLapor);
-        KetLapor.setBounds(121, 370, 420, 23);
+        FormInput.add(HasilSkrining);
+        HasilSkrining.setBounds(121, 370, 420, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -986,32 +987,32 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         FormInput.add(jLabel84);
         jLabel84.setBounds(57, 230, 470, 23);
 
-        SG5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
-        SG5.setName("SG5"); // NOI18N
-        SG5.addItemListener(new java.awt.event.ItemListener() {
+        PertanyaanLanjutan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan3.setName("PertanyaanLanjutan3"); // NOI18N
+        PertanyaanLanjutan3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG5ItemStateChanged(evt);
+                PertanyaanLanjutan3ItemStateChanged(evt);
             }
         });
-        SG5.addKeyListener(new java.awt.event.KeyAdapter() {
+        PertanyaanLanjutan3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG5KeyPressed(evt);
+                PertanyaanLanjutan3KeyPressed(evt);
             }
         });
-        FormInput.add(SG5);
-        SG5.setBounds(560, 230, 130, 23);
+        FormInput.add(PertanyaanLanjutan3);
+        PertanyaanLanjutan3.setBounds(560, 230, 130, 23);
 
         jLabel72.setText("Nilai :");
         jLabel72.setName("jLabel72"); // NOI18N
         FormInput.add(jLabel72);
         jLabel72.setBounds(685, 230, 50, 23);
 
-        Nilai5.setEditable(false);
-        Nilai5.setText("0");
-        Nilai5.setFocusTraversalPolicyProvider(true);
-        Nilai5.setName("Nilai5"); // NOI18N
-        FormInput.add(Nilai5);
-        Nilai5.setBounds(739, 230, 50, 23);
+        NilaiPertanyaanLanjutan3.setEditable(false);
+        NilaiPertanyaanLanjutan3.setText("0");
+        NilaiPertanyaanLanjutan3.setFocusTraversalPolicyProvider(true);
+        NilaiPertanyaanLanjutan3.setName("NilaiPertanyaanLanjutan3"); // NOI18N
+        FormInput.add(NilaiPertanyaanLanjutan3);
+        NilaiPertanyaanLanjutan3.setBounds(739, 230, 50, 23);
 
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel85.setText("4.");
@@ -1025,32 +1026,32 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         FormInput.add(jLabel86);
         jLabel86.setBounds(57, 260, 470, 23);
 
-        SG6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
-        SG6.setName("SG6"); // NOI18N
-        SG6.addItemListener(new java.awt.event.ItemListener() {
+        PertanyaanLanjutan4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan4.setName("PertanyaanLanjutan4"); // NOI18N
+        PertanyaanLanjutan4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG6ItemStateChanged(evt);
+                PertanyaanLanjutan4ItemStateChanged(evt);
             }
         });
-        SG6.addKeyListener(new java.awt.event.KeyAdapter() {
+        PertanyaanLanjutan4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG6KeyPressed(evt);
+                PertanyaanLanjutan4KeyPressed(evt);
             }
         });
-        FormInput.add(SG6);
-        SG6.setBounds(560, 260, 130, 23);
+        FormInput.add(PertanyaanLanjutan4);
+        PertanyaanLanjutan4.setBounds(560, 260, 130, 23);
 
         jLabel74.setText("Nilai :");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
         jLabel74.setBounds(685, 260, 50, 23);
 
-        Nilai6.setEditable(false);
-        Nilai6.setText("0");
-        Nilai6.setFocusTraversalPolicyProvider(true);
-        Nilai6.setName("Nilai6"); // NOI18N
-        FormInput.add(Nilai6);
-        Nilai6.setBounds(739, 260, 50, 23);
+        NilaiPertanyaanLanjutan4.setEditable(false);
+        NilaiPertanyaanLanjutan4.setText("0");
+        NilaiPertanyaanLanjutan4.setFocusTraversalPolicyProvider(true);
+        NilaiPertanyaanLanjutan4.setName("NilaiPertanyaanLanjutan4"); // NOI18N
+        FormInput.add(NilaiPertanyaanLanjutan4);
+        NilaiPertanyaanLanjutan4.setBounds(739, 260, 50, 23);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel87.setText("Pernahkah pasangan Anda melecehkan Anda secara emosional ?");
@@ -1064,32 +1065,32 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         FormInput.add(jLabel88);
         jLabel88.setBounds(44, 290, 20, 23);
 
-        SG7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
-        SG7.setName("SG7"); // NOI18N
-        SG7.addItemListener(new java.awt.event.ItemListener() {
+        PertanyaanLanjutan5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan5.setName("PertanyaanLanjutan5"); // NOI18N
+        PertanyaanLanjutan5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG7ItemStateChanged(evt);
+                PertanyaanLanjutan5ItemStateChanged(evt);
             }
         });
-        SG7.addKeyListener(new java.awt.event.KeyAdapter() {
+        PertanyaanLanjutan5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG7KeyPressed(evt);
+                PertanyaanLanjutan5KeyPressed(evt);
             }
         });
-        FormInput.add(SG7);
-        SG7.setBounds(560, 290, 130, 23);
+        FormInput.add(PertanyaanLanjutan5);
+        PertanyaanLanjutan5.setBounds(560, 290, 130, 23);
 
         jLabel89.setText("Nilai :");
         jLabel89.setName("jLabel89"); // NOI18N
         FormInput.add(jLabel89);
         jLabel89.setBounds(685, 290, 50, 23);
 
-        Nilai7.setEditable(false);
-        Nilai7.setText("0");
-        Nilai7.setFocusTraversalPolicyProvider(true);
-        Nilai7.setName("Nilai7"); // NOI18N
-        FormInput.add(Nilai7);
-        Nilai7.setBounds(739, 290, 50, 23);
+        NilaiPertanyaanLanjutan5.setEditable(false);
+        NilaiPertanyaanLanjutan5.setText("0");
+        NilaiPertanyaanLanjutan5.setFocusTraversalPolicyProvider(true);
+        NilaiPertanyaanLanjutan5.setName("NilaiPertanyaanLanjutan5"); // NOI18N
+        FormInput.add(NilaiPertanyaanLanjutan5);
+        NilaiPertanyaanLanjutan5.setBounds(739, 290, 50, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("Apakah pasangan Anda pernah melecehkan Anda secara seksual ?");
@@ -1097,32 +1098,32 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         FormInput.add(jLabel90);
         jLabel90.setBounds(57, 320, 470, 23);
 
-        SG8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
-        SG8.setName("SG8"); // NOI18N
-        SG8.addItemListener(new java.awt.event.ItemListener() {
+        PertanyaanLanjutan6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan6.setName("PertanyaanLanjutan6"); // NOI18N
+        PertanyaanLanjutan6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG8ItemStateChanged(evt);
+                PertanyaanLanjutan6ItemStateChanged(evt);
             }
         });
-        SG8.addKeyListener(new java.awt.event.KeyAdapter() {
+        PertanyaanLanjutan6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG8KeyPressed(evt);
+                PertanyaanLanjutan6KeyPressed(evt);
             }
         });
-        FormInput.add(SG8);
-        SG8.setBounds(560, 320, 130, 23);
+        FormInput.add(PertanyaanLanjutan6);
+        PertanyaanLanjutan6.setBounds(560, 320, 130, 23);
 
         jLabel91.setText("Nilai :");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
         jLabel91.setBounds(685, 320, 50, 23);
 
-        Nilai8.setEditable(false);
-        Nilai8.setText("0");
-        Nilai8.setFocusTraversalPolicyProvider(true);
-        Nilai8.setName("Nilai8"); // NOI18N
-        FormInput.add(Nilai8);
-        Nilai8.setBounds(739, 320, 50, 23);
+        NilaiPertanyaanLanjutan6.setEditable(false);
+        NilaiPertanyaanLanjutan6.setText("0");
+        NilaiPertanyaanLanjutan6.setFocusTraversalPolicyProvider(true);
+        NilaiPertanyaanLanjutan6.setName("NilaiPertanyaanLanjutan6"); // NOI18N
+        FormInput.add(NilaiPertanyaanLanjutan6);
+        NilaiPertanyaanLanjutan6.setBounds(739, 320, 50, 23);
 
         jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel93.setText("6.");
@@ -1626,66 +1627,66 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     }//GEN-LAST:event_PertanyaanAwal2ItemStateChanged
 
     private void PertanyaanAwal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal2KeyPressed
-        Valid.pindah(evt,PertanyaanAwal1,SG3);
+        Valid.pindah(evt,PertanyaanAwal1,PertanyaanLanjutan1);
     }//GEN-LAST:event_PertanyaanAwal2KeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void SG3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG3ItemStateChanged
-        Nilai3.setText(SG3.getSelectedIndex()+"");
+    private void PertanyaanLanjutan1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan1ItemStateChanged
+        NilaiPertanyaanLanjutan1.setText(PertanyaanLanjutan1.getSelectedIndex()+"");
         isTotal();
-    }//GEN-LAST:event_SG3ItemStateChanged
+    }//GEN-LAST:event_PertanyaanLanjutan1ItemStateChanged
 
-    private void SG3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG3KeyPressed
-        Valid.pindah(evt,PertanyaanAwal2,SG4);
-    }//GEN-LAST:event_SG3KeyPressed
+    private void PertanyaanLanjutan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan1KeyPressed
+        Valid.pindah(evt,PertanyaanAwal2,PertanyaanLanjutan2);
+    }//GEN-LAST:event_PertanyaanLanjutan1KeyPressed
 
-    private void SG4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG4ItemStateChanged
-        Nilai4.setText(SG4.getSelectedIndex()+"");
+    private void PertanyaanLanjutan2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan2ItemStateChanged
+        NilaiPertanyaanLanjutan2.setText(PertanyaanLanjutan2.getSelectedIndex()+"");
         isTotal();
-    }//GEN-LAST:event_SG4ItemStateChanged
+    }//GEN-LAST:event_PertanyaanLanjutan2ItemStateChanged
 
-    private void SG4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG4KeyPressed
+    private void PertanyaanLanjutan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan2KeyPressed
         //Valid.pindah(evt,SG3,SG5);
-    }//GEN-LAST:event_SG4KeyPressed
+    }//GEN-LAST:event_PertanyaanLanjutan2KeyPressed
 
-    private void KetLaporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetLaporKeyPressed
+    private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
         //Valid.pindah(evt,Lapor,SG1);
-    }//GEN-LAST:event_KetLaporKeyPressed
+    }//GEN-LAST:event_HasilSkriningKeyPressed
 
-    private void SG5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG5ItemStateChanged
+    private void PertanyaanLanjutan3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan3ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG5ItemStateChanged
+    }//GEN-LAST:event_PertanyaanLanjutan3ItemStateChanged
 
-    private void SG5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG5KeyPressed
+    private void PertanyaanLanjutan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG5KeyPressed
+    }//GEN-LAST:event_PertanyaanLanjutan3KeyPressed
 
-    private void SG6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG6ItemStateChanged
+    private void PertanyaanLanjutan4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan4ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG6ItemStateChanged
+    }//GEN-LAST:event_PertanyaanLanjutan4ItemStateChanged
 
-    private void SG6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG6KeyPressed
+    private void PertanyaanLanjutan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG6KeyPressed
+    }//GEN-LAST:event_PertanyaanLanjutan4KeyPressed
 
-    private void SG7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG7ItemStateChanged
+    private void PertanyaanLanjutan5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan5ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG7ItemStateChanged
+    }//GEN-LAST:event_PertanyaanLanjutan5ItemStateChanged
 
-    private void SG7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG7KeyPressed
+    private void PertanyaanLanjutan5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG7KeyPressed
+    }//GEN-LAST:event_PertanyaanLanjutan5KeyPressed
 
-    private void SG8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG8ItemStateChanged
+    private void PertanyaanLanjutan6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan6ItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG8ItemStateChanged
+    }//GEN-LAST:event_PertanyaanLanjutan6ItemStateChanged
 
-    private void SG8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG8KeyPressed
+    private void PertanyaanLanjutan6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan6KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SG8KeyPressed
+    }//GEN-LAST:event_PertanyaanLanjutan6KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1718,31 +1719,31 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox HasilSkrining;
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
-    private widget.TextBox KetLapor;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningNutrisi;
-    private widget.TextBox Nilai3;
-    private widget.TextBox Nilai4;
-    private widget.TextBox Nilai5;
-    private widget.TextBox Nilai6;
-    private widget.TextBox Nilai7;
-    private widget.TextBox Nilai8;
     private widget.TextBox NilaiPertanyaanAwal1;
     private widget.TextBox NilaiPertanyaanAwal2;
+    private widget.TextBox NilaiPertanyaanLanjutan1;
+    private widget.TextBox NilaiPertanyaanLanjutan2;
+    private widget.TextBox NilaiPertanyaanLanjutan3;
+    private widget.TextBox NilaiPertanyaanLanjutan4;
+    private widget.TextBox NilaiPertanyaanLanjutan5;
+    private widget.TextBox NilaiPertanyaanLanjutan6;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PertanyaanAwal1;
     private widget.ComboBox PertanyaanAwal2;
-    private widget.ComboBox SG3;
-    private widget.ComboBox SG4;
-    private widget.ComboBox SG5;
-    private widget.ComboBox SG6;
-    private widget.ComboBox SG7;
-    private widget.ComboBox SG8;
+    private widget.ComboBox PertanyaanLanjutan1;
+    private widget.ComboBox PertanyaanLanjutan2;
+    private widget.ComboBox PertanyaanLanjutan3;
+    private widget.ComboBox PertanyaanLanjutan4;
+    private widget.ComboBox PertanyaanLanjutan5;
+    private widget.ComboBox PertanyaanLanjutan6;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1882,10 +1883,10 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         NilaiPertanyaanAwal1.setText("0");
         PertanyaanAwal2.setSelectedIndex(0);
         NilaiPertanyaanAwal2.setText("0");
-        SG3.setSelectedIndex(0);
-        Nilai3.setText("0");
-        SG4.setSelectedIndex(0);
-        Nilai4.setText("0");
+        PertanyaanLanjutan1.setSelectedIndex(0);
+        NilaiPertanyaanLanjutan1.setText("0");
+        PertanyaanLanjutan2.setSelectedIndex(0);
+        NilaiPertanyaanLanjutan2.setText("0");
         TotalHasil.setText("0");
         //LabelSkrining.setText("Status Gizi Normal");
     } 
@@ -1903,14 +1904,14 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
             NilaiPertanyaanAwal1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             PertanyaanAwal2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             NilaiPertanyaanAwal2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            SG3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Nilai3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            SG4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Nilai4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            PertanyaanLanjutan1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            NilaiPertanyaanLanjutan1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            PertanyaanLanjutan2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            NilaiPertanyaanLanjutan2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
             //LabelSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
             //Lapor.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            KetLapor.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
