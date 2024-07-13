@@ -231,7 +231,7 @@ public final class akses {
             skp_penilaian=false,referensi_poli_mobilejknfktp=false,referensi_dokter_mobilejknfktp=false,skp_rekapitulasi_penilaian=false,pembayaran_pihak_ke3_bankmandiri=false,
             metode_pembayaran_bankmandiri=false,bank_tujuan_transfer_bankmandiri=false,kodetransaksi_tujuan_transfer_bankmandiri=false,konsultasi_medik=false,jawaban_konsultasi_medik=false,
             pcare_cek_alergi=false,pcare_cek_prognosa=false,data_sasaran_usiaproduktif=false,data_sasaran_usialansia=false,skrining_perilaku_merokok_sekolah_remaja=false,
-            skrining_kekerasan_pada_perempuan=false;
+            skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1307,6 +1307,7 @@ public final class akses {
                         akses.data_sasaran_usialansia=true;
                         akses.skrining_perilaku_merokok_sekolah_remaja=true;
                         akses.skrining_kekerasan_pada_perempuan=true;
+                        akses.skrining_obesitas=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2366,6 +2367,7 @@ public final class akses {
                         akses.data_sasaran_usialansia=rs2.getBoolean("data_sasaran_usialansia");
                         akses.skrining_perilaku_merokok_sekolah_remaja=rs2.getBoolean("skrining_perilaku_merokok_sekolah_remaja");
                         akses.skrining_kekerasan_pada_perempuan=rs2.getBoolean("skrining_kekerasan_pada_perempuan");
+                        akses.skrining_obesitas=rs2.getBoolean("skrining_obesitas");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3423,6 +3425,7 @@ public final class akses {
                         akses.data_sasaran_usialansia=false;
                         akses.skrining_perilaku_merokok_sekolah_remaja=false;
                         akses.skrining_kekerasan_pada_perempuan=false;
+                        akses.skrining_obesitas=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4503,6 +4506,7 @@ public final class akses {
         akses.data_sasaran_usialansia=false;
         akses.skrining_perilaku_merokok_sekolah_remaja=false;
         akses.skrining_kekerasan_pada_perempuan=false;
+        akses.skrining_obesitas=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5599,4 +5603,5 @@ public final class akses {
     public static boolean getdata_sasaran_usialansia(){return akses.data_sasaran_usialansia;}
     public static boolean getskrining_perilaku_merokok_sekolah_remaja(){return akses.skrining_perilaku_merokok_sekolah_remaja;}
     public static boolean getskrining_kekerasan_pada_perempuan(){return akses.skrining_kekerasan_pada_perempuan;}
+    public static boolean getskrining_obesitas(){return akses.skrining_obesitas;}
 }   
