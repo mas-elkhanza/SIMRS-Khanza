@@ -1228,7 +1228,7 @@ public final class RMSkriningNutrisiAnak extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,cmbSkor3,BtnBatal);
+            Valid.pindah(evt,KetLapor,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
