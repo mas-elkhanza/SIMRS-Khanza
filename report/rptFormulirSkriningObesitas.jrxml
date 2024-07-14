@@ -22,8 +22,7 @@
                     skrining_obesitas.riwayat_minum_alkohol_merokok_keluarga,skrining_obesitas.riwayat_penggunaan_obat_steroid,skrining_obesitas.berat_badan,skrining_obesitas.tinggi_badan,
                     skrining_obesitas.imt,skrining_obesitas.kasifikasi_imt,skrining_obesitas.lingkar_pinggang,skrining_obesitas.risiko_lingkar_pinggang,skrining_obesitas.status_obesitas,
                     skrining_obesitas.keterangan from skrining_obesitas inner join reg_periksa on skrining_obesitas.no_rawat=reg_periksa.no_rawat 
-                    inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_obesitas.nip=petugas.nip 
-                    ]]>
+                    inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_obesitas.nip=petugas.nip]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
@@ -154,7 +153,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="413" splitType="Stretch">
+		<band height="444" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement x="0" y="54" width="552" height="23" uuid="ac6b5ade-def5-4da3-a9ec-6b5ba71a59b8"/>
@@ -231,7 +230,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="83" width="1" height="329" uuid="9dc6fc44-0a20-46c2-a659-b10fd68cf311">
+				<reportElement positionType="FixRelativeToBottom" x="0" y="83" width="1" height="361" uuid="9dc6fc44-0a20-46c2-a659-b10fd68cf311">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -239,7 +238,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="552" y="83" width="1" height="329" uuid="bc504372-aece-4974-afd4-7fb7aeff76e1">
+				<reportElement positionType="FixRelativeToBottom" x="552" y="83" width="1" height="361" uuid="bc504372-aece-4974-afd4-7fb7aeff76e1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -437,7 +436,7 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="189" y="393" width="355" height="15" uuid="99573bf5-646b-4a0e-a649-53e2b09d084b">
+				<reportElement positionType="Float" x="15" y="409" width="530" height="31" uuid="99573bf5-646b-4a0e-a649-53e2b09d084b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
