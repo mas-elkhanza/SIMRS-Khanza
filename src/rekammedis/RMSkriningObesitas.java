@@ -144,8 +144,10 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
-        TBPB.setDocument(new batasInput((byte)5).getKata(TBPB));
-        BB.setDocument(new batasInput((byte)5).getKata(BB));
+        TB.setDocument(new batasInput((byte)8).getOnlyAngka(TB));
+        BB.setDocument(new batasInput((byte)6).getOnlyAngka(BB));
+        LP.setDocument(new batasInput((byte)6).getOnlyAngka(LP));
+        Keterangan.setDocument(new batasInput((byte)40).getKata(Keterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -194,6 +196,51 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         }); 
         
+        BB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isBMI();
+            }
+        });
+        
+        TB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isBMI();
+            }
+        });
+        
+        LP.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isLP();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isLP();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isLP();
+            }
+        });
+        
         ChkInput.setSelected(false);
         isForm();
         
@@ -232,6 +279,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
         MnSkriningNutrisi = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
+        Jk = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -274,18 +322,54 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
-        jLabel12 = new widget.Label();
         BB = new widget.TextBox();
+        jLabel12 = new widget.Label();
         jLabel13 = new widget.Label();
         jLabel15 = new widget.Label();
-        TBPB = new widget.TextBox();
+        TB = new widget.TextBox();
         jLabel25 = new widget.Label();
-        jLabel39 = new widget.Label();
-        SG1 = new widget.ComboBox();
-        jLabel75 = new widget.Label();
+        KebiasaanMakanManis = new widget.ComboBox();
+        RisikoLP = new widget.TextBox();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel99 = new widget.Label();
+        jLabel77 = new widget.Label();
+        jLabel78 = new widget.Label();
         jLabel92 = new widget.Label();
-        Nilai1 = new widget.TextBox();
-        jLabel76 = new widget.Label();
+        jLabel79 = new widget.Label();
+        jLabel80 = new widget.Label();
+        AktifitasFisik = new widget.ComboBox();
+        IstirahatCukup = new widget.ComboBox();
+        jLabel81 = new widget.Label();
+        jLabel82 = new widget.Label();
+        jLabel83 = new widget.Label();
+        jLabel84 = new widget.Label();
+        jLabel85 = new widget.Label();
+        RisikoMerokok = new widget.ComboBox();
+        jLabel86 = new widget.Label();
+        jLabel87 = new widget.Label();
+        jLabel88 = new widget.Label();
+        RiwayatSteroid = new widget.ComboBox();
+        RiwayatKeluarga = new widget.ComboBox();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel100 = new widget.Label();
+        jLabel17 = new widget.Label();
+        IMT = new widget.TextBox();
+        KlasifikasiIMT = new widget.TextBox();
+        jLabel20 = new widget.Label();
+        jLabel22 = new widget.Label();
+        LP = new widget.TextBox();
+        jLabel26 = new widget.Label();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel101 = new widget.Label();
+        StatusObesitas = new widget.TextBox();
+        jLabel93 = new widget.Label();
+        Keterangan = new widget.TextBox();
+        jLabel23 = new widget.Label();
+        jLabel5 = new widget.Label();
+        jLabel9 = new widget.Label();
+        jLabel24 = new widget.Label();
+        jLabel94 = new widget.Label();
+        jLabel27 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -305,6 +389,10 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
+
+        Jk.setEditable(false);
+        Jk.setFocusTraversalPolicyProvider(true);
+        Jk.setName("Jk"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -551,7 +639,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 386));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 336));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -581,7 +669,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 363));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 313));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -727,11 +815,6 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jLabel12.setText("BB :");
-        jLabel12.setName("jLabel12"); // NOI18N
-        FormInput.add(jLabel12);
-        jLabel12.setBounds(0, 70, 75, 23);
-
         BB.setFocusTraversalPolicyProvider(true);
         BB.setName("BB"); // NOI18N
         BB.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -740,79 +823,360 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
             }
         });
         FormInput.add(BB);
-        BB.setBounds(79, 70, 45, 23);
+        BB.setBounds(68, 200, 50, 23);
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("BB ");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(44, 200, 40, 23);
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Kg");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(126, 70, 30, 23);
+        jLabel13.setBounds(120, 200, 30, 23);
 
-        jLabel15.setText("TB/PB :");
+        jLabel15.setText(":");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(176, 70, 50, 23);
+        jLabel15.setBounds(150, 200, 50, 23);
 
-        TBPB.setFocusTraversalPolicyProvider(true);
-        TBPB.setName("TBPB"); // NOI18N
-        TBPB.addKeyListener(new java.awt.event.KeyAdapter() {
+        TB.setFocusTraversalPolicyProvider(true);
+        TB.setName("TB"); // NOI18N
+        TB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TBPBKeyPressed(evt);
+                TBKeyPressed(evt);
             }
         });
-        FormInput.add(TBPB);
-        TBPB.setBounds(230, 70, 45, 23);
+        FormInput.add(TB);
+        TB.setBounds(204, 200, 50, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("Cm");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(277, 70, 30, 23);
+        jLabel25.setBounds(256, 200, 30, 23);
 
-        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel39.setText("Skrining Gizi Awal Dengan Strong-kids :");
-        jLabel39.setName("jLabel39"); // NOI18N
-        FormInput.add(jLabel39);
-        jLabel39.setBounds(20, 130, 460, 23);
-
-        SG1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SG1.setName("SG1"); // NOI18N
-        SG1.addItemListener(new java.awt.event.ItemListener() {
+        KebiasaanMakanManis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KebiasaanMakanManis.setName("KebiasaanMakanManis"); // NOI18N
+        KebiasaanMakanManis.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                SG1ItemStateChanged(evt);
+                KebiasaanMakanManisItemStateChanged(evt);
             }
         });
-        SG1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KebiasaanMakanManis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SG1KeyPressed(evt);
+                KebiasaanMakanManisKeyPressed(evt);
             }
         });
-        FormInput.add(SG1);
-        SG1.setBounds(600, 150, 80, 23);
+        FormInput.add(KebiasaanMakanManis);
+        KebiasaanMakanManis.setBounds(240, 90, 80, 23);
 
-        jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel75.setText("1.");
-        jLabel75.setName("jLabel75"); // NOI18N
-        FormInput.add(jLabel75);
-        jLabel75.setBounds(34, 150, 20, 23);
+        RisikoLP.setEditable(false);
+        RisikoLP.setFocusTraversalPolicyProvider(true);
+        RisikoLP.setName("RisikoLP"); // NOI18N
+        FormInput.add(RisikoLP);
+        RisikoLP.setBounds(371, 230, 160, 23);
 
-        jLabel92.setText("Nilai :");
+        jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator1.setName("jSeparator1"); // NOI18N
+        FormInput.add(jSeparator1);
+        jSeparator1.setBounds(0, 70, 807, 1);
+
+        jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel99.setText("I. ANAMNESIS");
+        jLabel99.setName("jLabel99"); // NOI18N
+        FormInput.add(jLabel99);
+        jLabel99.setBounds(10, 70, 200, 23);
+
+        jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel77.setText("1.");
+        jLabel77.setName("jLabel77"); // NOI18N
+        FormInput.add(jLabel77);
+        jLabel77.setBounds(44, 90, 20, 23);
+
+        jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel78.setText("Kebiasaan Makan Manis");
+        jLabel78.setName("jLabel78"); // NOI18N
+        FormInput.add(jLabel78);
+        jLabel78.setBounds(57, 90, 180, 23);
+
+        jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel92.setText("Risiko Berdasarkan Lingkar Pinggang");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(675, 150, 50, 23);
+        jLabel92.setBounds(181, 230, 180, 23);
 
-        Nilai1.setEditable(false);
-        Nilai1.setText("0");
-        Nilai1.setFocusTraversalPolicyProvider(true);
-        Nilai1.setName("Nilai1"); // NOI18N
-        FormInput.add(Nilai1);
-        Nilai1.setBounds(729, 150, 60, 23);
+        jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel79.setText("2.");
+        jLabel79.setName("jLabel79"); // NOI18N
+        FormInput.add(jLabel79);
+        jLabel79.setBounds(44, 120, 20, 23);
 
-        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel76.setText("Apakah pasien tampak kurus?");
-        jLabel76.setName("jLabel76"); // NOI18N
-        FormInput.add(jLabel76);
-        jLabel76.setBounds(47, 150, 530, 23);
+        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel80.setText("Aktifitas Fisik Setiap Hari");
+        jLabel80.setName("jLabel80"); // NOI18N
+        FormInput.add(jLabel80);
+        jLabel80.setBounds(57, 120, 180, 23);
+
+        AktifitasFisik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        AktifitasFisik.setName("AktifitasFisik"); // NOI18N
+        AktifitasFisik.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                AktifitasFisikItemStateChanged(evt);
+            }
+        });
+        AktifitasFisik.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AktifitasFisikKeyPressed(evt);
+            }
+        });
+        FormInput.add(AktifitasFisik);
+        AktifitasFisik.setBounds(240, 120, 80, 23);
+
+        IstirahatCukup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        IstirahatCukup.setName("IstirahatCukup"); // NOI18N
+        IstirahatCukup.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                IstirahatCukupItemStateChanged(evt);
+            }
+        });
+        IstirahatCukup.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IstirahatCukupKeyPressed(evt);
+            }
+        });
+        FormInput.add(IstirahatCukup);
+        IstirahatCukup.setBounds(240, 150, 80, 23);
+
+        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel81.setText("Istirahat Cukup");
+        jLabel81.setName("jLabel81"); // NOI18N
+        FormInput.add(jLabel81);
+        jLabel81.setBounds(57, 150, 180, 23);
+
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel82.setText("3.");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(44, 150, 20, 23);
+
+        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel83.setText("Risiko Merokok");
+        jLabel83.setName("jLabel83"); // NOI18N
+        FormInput.add(jLabel83);
+        jLabel83.setBounds(443, 90, 240, 23);
+
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel84.setText("4.");
+        jLabel84.setName("jLabel84"); // NOI18N
+        FormInput.add(jLabel84);
+        jLabel84.setBounds(430, 90, 20, 23);
+
+        jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel85.setText("Riwayat Minum Alkohol / Merokok Di Keluarga");
+        jLabel85.setName("jLabel85"); // NOI18N
+        FormInput.add(jLabel85);
+        jLabel85.setBounds(443, 120, 240, 23);
+
+        RisikoMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RisikoMerokok.setName("RisikoMerokok"); // NOI18N
+        RisikoMerokok.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RisikoMerokokItemStateChanged(evt);
+            }
+        });
+        RisikoMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RisikoMerokokKeyPressed(evt);
+            }
+        });
+        FormInput.add(RisikoMerokok);
+        RisikoMerokok.setBounds(709, 90, 80, 23);
+
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel86.setText("5.");
+        jLabel86.setName("jLabel86"); // NOI18N
+        FormInput.add(jLabel86);
+        jLabel86.setBounds(430, 120, 20, 23);
+
+        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel87.setText("6.");
+        jLabel87.setName("jLabel87"); // NOI18N
+        FormInput.add(jLabel87);
+        jLabel87.setBounds(430, 150, 20, 23);
+
+        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel88.setText("Riwayat Penggunaan Obat-obatan Steroid");
+        jLabel88.setName("jLabel88"); // NOI18N
+        FormInput.add(jLabel88);
+        jLabel88.setBounds(443, 150, 240, 23);
+
+        RiwayatSteroid.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RiwayatSteroid.setName("RiwayatSteroid"); // NOI18N
+        RiwayatSteroid.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RiwayatSteroidItemStateChanged(evt);
+            }
+        });
+        RiwayatSteroid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RiwayatSteroidKeyPressed(evt);
+            }
+        });
+        FormInput.add(RiwayatSteroid);
+        RiwayatSteroid.setBounds(709, 150, 80, 23);
+
+        RiwayatKeluarga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RiwayatKeluarga.setName("RiwayatKeluarga"); // NOI18N
+        RiwayatKeluarga.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RiwayatKeluargaItemStateChanged(evt);
+            }
+        });
+        RiwayatKeluarga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RiwayatKeluargaKeyPressed(evt);
+            }
+        });
+        FormInput.add(RiwayatKeluarga);
+        RiwayatKeluarga.setBounds(709, 120, 80, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 180, 807, 1);
+
+        jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel100.setText("II. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK , 2020)");
+        jLabel100.setName("jLabel100"); // NOI18N
+        FormInput.add(jLabel100);
+        jLabel100.setBounds(10, 180, 490, 23);
+
+        jLabel17.setText("IMT(BB/TB²) :");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(310, 200, 80, 23);
+
+        IMT.setEditable(false);
+        IMT.setFocusTraversalPolicyProvider(true);
+        IMT.setName("IMT"); // NOI18N
+        IMT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IMTKeyPressed(evt);
+            }
+        });
+        FormInput.add(IMT);
+        IMT.setBounds(394, 200, 50, 23);
+
+        KlasifikasiIMT.setEditable(false);
+        KlasifikasiIMT.setFocusTraversalPolicyProvider(true);
+        KlasifikasiIMT.setName("KlasifikasiIMT"); // NOI18N
+        KlasifikasiIMT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KlasifikasiIMTKeyPressed(evt);
+            }
+        });
+        FormInput.add(KlasifikasiIMT);
+        KlasifikasiIMT.setBounds(569, 200, 220, 23);
+
+        jLabel20.setText("Klasifikasi IMT :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(475, 200, 90, 23);
+
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel22.setText("Status Obesitas");
+        jLabel22.setName("jLabel22"); // NOI18N
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(44, 280, 100, 23);
+
+        LP.setFocusTraversalPolicyProvider(true);
+        LP.setName("LP"); // NOI18N
+        LP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LPKeyPressed(evt);
+            }
+        });
+        FormInput.add(LP);
+        LP.setBounds(68, 230, 50, 23);
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("Cm");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(120, 230, 30, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 260, 807, 1);
+
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel101.setText("III. INTERPRETASI");
+        jLabel101.setName("jLabel101"); // NOI18N
+        FormInput.add(jLabel101);
+        jLabel101.setBounds(10, 260, 200, 23);
+
+        StatusObesitas.setEditable(false);
+        StatusObesitas.setFocusTraversalPolicyProvider(true);
+        StatusObesitas.setName("StatusObesitas"); // NOI18N
+        StatusObesitas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                StatusObesitasKeyPressed(evt);
+            }
+        });
+        FormInput.add(StatusObesitas);
+        StatusObesitas.setBounds(132, 280, 140, 23);
+
+        jLabel93.setText("Keterangan :");
+        jLabel93.setName("jLabel93"); // NOI18N
+        FormInput.add(jLabel93);
+        jLabel93.setBounds(275, 280, 100, 23);
+
+        Keterangan.setFocusTraversalPolicyProvider(true);
+        Keterangan.setName("Keterangan"); // NOI18N
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(379, 280, 410, 23);
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel23.setText("LP");
+        jLabel23.setName("jLabel23"); // NOI18N
+        FormInput.add(jLabel23);
+        jLabel23.setBounds(44, 230, 30, 23);
+
+        jLabel5.setText(":");
+        jLabel5.setName("jLabel5"); // NOI18N
+        FormInput.add(jLabel5);
+        jLabel5.setBounds(0, 200, 64, 23);
+
+        jLabel9.setText(":");
+        jLabel9.setName("jLabel9"); // NOI18N
+        FormInput.add(jLabel9);
+        jLabel9.setBounds(0, 230, 64, 23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText("TB");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(181, 200, 50, 23);
+
+        jLabel94.setText(":");
+        jLabel94.setName("jLabel94"); // NOI18N
+        FormInput.add(jLabel94);
+        jLabel94.setBounds(181, 230, 186, 23);
+
+        jLabel27.setText(":");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(0, 280, 128, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1278,25 +1642,81 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
     }//GEN-LAST:event_MnSkriningNutrisiActionPerformed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
-        Valid.pindah(evt,btnPetugas,TBPB);
+        Valid.pindah(evt,btnPetugas,TB);
     }//GEN-LAST:event_BBKeyPressed
 
-    private void TBPBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBPBKeyPressed
+    private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
         //Valid.pindah(evt,BB,TD);
-    }//GEN-LAST:event_TBPBKeyPressed
+    }//GEN-LAST:event_TBKeyPressed
 
-    private void SG1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG1ItemStateChanged
-        Nilai1.setText(SG1.getSelectedIndex()+"");
+    private void KebiasaanMakanManisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KebiasaanMakanManisItemStateChanged
+        RisikoLP.setText(KebiasaanMakanManis.getSelectedIndex()+"");
         isTotal();
-    }//GEN-LAST:event_SG1ItemStateChanged
+    }//GEN-LAST:event_KebiasaanMakanManisItemStateChanged
 
-    private void SG1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG1KeyPressed
+    private void KebiasaanMakanManisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KebiasaanMakanManisKeyPressed
         //Valid.pindah(evt,Alergi,SG2);
-    }//GEN-LAST:event_SG1KeyPressed
+    }//GEN-LAST:event_KebiasaanMakanManisKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
+
+    private void AktifitasFisikItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AktifitasFisikItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AktifitasFisikItemStateChanged
+
+    private void AktifitasFisikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AktifitasFisikKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AktifitasFisikKeyPressed
+
+    private void IstirahatCukupItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_IstirahatCukupItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IstirahatCukupItemStateChanged
+
+    private void IstirahatCukupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IstirahatCukupKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IstirahatCukupKeyPressed
+
+    private void RisikoMerokokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RisikoMerokokItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RisikoMerokokItemStateChanged
+
+    private void RisikoMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoMerokokKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RisikoMerokokKeyPressed
+
+    private void RiwayatSteroidItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RiwayatSteroidItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RiwayatSteroidItemStateChanged
+
+    private void RiwayatSteroidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatSteroidKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RiwayatSteroidKeyPressed
+
+    private void RiwayatKeluargaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RiwayatKeluargaItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RiwayatKeluargaItemStateChanged
+
+    private void RiwayatKeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatKeluargaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RiwayatKeluargaKeyPressed
+
+    private void IMTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IMTKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IMTKeyPressed
+
+    private void KlasifikasiIMTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KlasifikasiIMTKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KlasifikasiIMTKeyPressed
+
+    private void LPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LPKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LPKeyPressed
+
+    private void StatusObesitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusObesitasKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StatusObesitasKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1315,6 +1735,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox AktifitasFisik;
     private widget.TextBox BB;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
@@ -1330,18 +1751,28 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox IMT;
+    private widget.ComboBox IstirahatCukup;
     private widget.ComboBox Jam;
+    private widget.TextBox Jk;
     private widget.TextBox KdPetugas;
+    private widget.ComboBox KebiasaanMakanManis;
+    private widget.TextBox Keterangan;
+    private widget.TextBox KlasifikasiIMT;
     private widget.Label LCount;
+    private widget.TextBox LP;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningNutrisi;
-    private widget.TextBox Nilai1;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox SG1;
+    private widget.TextBox RisikoLP;
+    private widget.ComboBox RisikoMerokok;
+    private widget.ComboBox RiwayatKeluarga;
+    private widget.ComboBox RiwayatSteroid;
     private widget.ScrollPane Scroll;
-    private widget.TextBox TBPB;
+    private widget.TextBox StatusObesitas;
+    private widget.TextBox TB;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1351,24 +1782,50 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
     private widget.Button btnPetugas;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel100;
+    private widget.Label jLabel101;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
+    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
+    private widget.Label jLabel23;
+    private widget.Label jLabel24;
     private widget.Label jLabel25;
-    private widget.Label jLabel39;
+    private widget.Label jLabel26;
+    private widget.Label jLabel27;
     private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
-    private widget.Label jLabel75;
-    private widget.Label jLabel76;
+    private widget.Label jLabel77;
+    private widget.Label jLabel78;
+    private widget.Label jLabel79;
     private widget.Label jLabel8;
+    private widget.Label jLabel80;
+    private widget.Label jLabel81;
+    private widget.Label jLabel82;
+    private widget.Label jLabel83;
+    private widget.Label jLabel84;
+    private widget.Label jLabel85;
+    private widget.Label jLabel86;
+    private widget.Label jLabel87;
+    private widget.Label jLabel88;
+    private widget.Label jLabel9;
     private widget.Label jLabel92;
+    private widget.Label jLabel93;
+    private widget.Label jLabel94;
+    private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -1449,12 +1906,22 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
+        KebiasaanMakanManis.setSelectedIndex(0);
+        AktifitasFisik.setSelectedIndex(0);
+        IstirahatCukup.setSelectedIndex(0);
+        RisikoMerokok.setSelectedIndex(0);
+        RiwayatKeluarga.setSelectedIndex(0);
+        RiwayatSteroid.setSelectedIndex(0);
         BB.setText("");
-        TBPB.setText("");
+        TB.setText("");
+        IMT.setText("");
+        KlasifikasiIMT.setText("");
+        LP.setText("");
+        RisikoLP.setText("");
+        StatusObesitas.setText("");
+        Keterangan.setText("");
         Tanggal.setDate(new Date());
-        SG1.setSelectedIndex(0);
-        Nilai1.setText("0");
-        BB.requestFocus();
+        KebiasaanMakanManis.requestFocus();
     } 
 
     private void getData() {
@@ -1467,7 +1934,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
             BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            TBPB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -1493,9 +1960,9 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>558){
+            if(internalFrame1.getHeight()>508){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,386));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,336));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -1622,4 +2089,142 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
         }*/
     }
     
+    private void isBMI(){
+        try {
+            if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
+                try {
+                    IMT.setText(Valid.SetAngka8(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)),1)+"");
+                } catch (Exception e) {
+                    IMT.setText("0");
+                }
+                if(Valid.SetAngka(IMT.getText())<18.5){
+                    KlasifikasiIMT.setText("Berat Badan Kurang");
+                }else if((Valid.SetAngka(IMT.getText())>=18.5)&&(Valid.SetAngka(IMT.getText())<=22.9)){
+                    KlasifikasiIMT.setText("Berat Badan Normal");
+                }else if((Valid.SetAngka(IMT.getText())>=23)&&(Valid.SetAngka(IMT.getText())<=24.9)){
+                    KlasifikasiIMT.setText("Kelebihan Berat Badan");
+                }else if((Valid.SetAngka(IMT.getText())>=25)&&(Valid.SetAngka(IMT.getText())<=29.9)){
+                    KlasifikasiIMT.setText("Obesitas I");
+                }else if(Valid.SetAngka(IMT.getText())>=30){
+                    KlasifikasiIMT.setText("Obesitas II");
+                }else{
+                    KlasifikasiIMT.setText("");
+                }
+            }else{
+                KlasifikasiIMT.setText("");
+            }
+            isObesitas();
+        } catch (Exception e) {
+            KlasifikasiIMT.setText("");
+        }
+    }
+    
+    private void isLP(){
+        try {
+            if((!LP.getText().equals(""))&&(!Jk.getText().equals(""))&&(!KlasifikasiIMT.getText().equals(""))){
+                if(Jk.getText().equals("L")){
+                    if(KlasifikasiIMT.getText().equals("Berat Badan Kurang")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Rendah");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Cukup");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Berat Badan Normal")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Cukup");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Meningkat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Kelebihan Berat Badan")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Meningkat");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Moderat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Obesitas I")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Moderat");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Berat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Obesitas II")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Berat");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Sangat");
+                        }
+                    }else{
+                        RisikoLP.setText("");
+                    }
+                }else if(Jk.getText().equals("P")){
+                    if(KlasifikasiIMT.getText().equals("Berat Badan Kurang")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Rendah");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Cukup");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Berat Badan Normal")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Cukup");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Meningkat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Kelebihan Berat Badan")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Meningkat");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Moderat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Obesitas I")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Moderat");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Berat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Obesitas II")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Berat");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Sangat");
+                        }
+                    }else{
+                        RisikoLP.setText("");
+                    }
+                }else{
+                    RisikoLP.setText("");
+                }
+            }else{
+                RisikoLP.setText("");
+            }
+            isObesitas();
+        } catch (Exception e) {
+            RisikoLP.setText("");
+        }
+    }
+    
+    private void isObesitas(){
+        try {
+            if((!LP.getText().equals(""))&&(!Jk.getText().equals(""))&&(!IMT.getText().equals(""))){
+                if(Jk.getText().equals("L")){
+                    if((Valid.SetAngka(LP.getText())>=90)||(Valid.SetAngka(IMT.getText())>=25)){
+                        StatusObesitas.setText("Berisiko");
+                    }else{
+                        StatusObesitas.setText("Normal");
+                    }
+                }else if(Jk.getText().equals("P")){
+                    if((Valid.SetAngka(LP.getText())>=80)||(Valid.SetAngka(IMT.getText())>=25)){
+                        StatusObesitas.setText("Berisiko");
+                    }else{
+                        StatusObesitas.setText("Normal");
+                    }
+                }else{
+                    StatusObesitas.setText("");
+                }
+            }else{
+                StatusObesitas.setText("");
+            }
+        } catch (Exception e) {
+            StatusObesitas.setText("");
+        }
+    }
 }

@@ -147,8 +147,8 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        BB.setDocument(new batasInput((byte)5).getKata(BB));
-        TB.setDocument(new batasInput((byte)5).getKata(TB));
+        BB.setDocument(new batasInput((byte)5).getOnlyAngka(BB));
+        TB.setDocument(new batasInput((byte)5).getOnlyAngka(TB));
         IMT.setDocument(new batasInput((byte)5).getKata(IMT));
         LiLA.setDocument(new batasInput((byte)5).getKata(LiLA));
         TL.setDocument(new batasInput((byte)5).getKata(TL));
