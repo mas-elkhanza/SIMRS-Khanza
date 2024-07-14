@@ -1545,15 +1545,12 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningNutrisiAnak.jasper","report","::[ Formulir Skrining Nutrisi Pasien Anak ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,skrining_obesitas.tanggal,"+
-                    "skrining_obesitas.td,skrining_obesitas.hr,skrining_obesitas.rr,skrining_obesitas.suhu,"+
-                    "skrining_obesitas.bb,skrining_obesitas.tbpb,skrining_obesitas.spo2,skrining_obesitas.alergi,"+
-                    "skrining_obesitas.sg1,skrining_obesitas.nilai1,skrining_obesitas.sg2,skrining_obesitas.nilai2,"+
-                    "skrining_obesitas.sg3,skrining_obesitas.nilai3,skrining_obesitas.sg4,skrining_obesitas.nilai4,"+
-                    "skrining_obesitas.total_hasil,skrining_obesitas.skor_nutrisi,skrining_obesitas.nip,petugas.nama,"+
-                    "pasien.jk,skrining_obesitas.diketahui_dietisien,skrining_obesitas.keterangan_diketahui_dietisien "+
-                    "from skrining_obesitas inner join reg_periksa on skrining_obesitas.no_rawat=reg_periksa.no_rawat "+
+            Valid.MyReportqry("rptFormulirSkriningObesitas.jasper","report","::[ Formulir Skrining Obesitas ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_obesitas.nip,petugas.nama,skrining_obesitas.tanggal,"+
+                    "skrining_obesitas.kebiasaan_makan_manis,skrining_obesitas.aktifitas_fisik_setiap_hari,skrining_obesitas.istirahat_cukup,skrining_obesitas.risiko_merokok,"+
+                    "skrining_obesitas.riwayat_minum_alkohol_merokok_keluarga,skrining_obesitas.riwayat_penggunaan_obat_steroid,skrining_obesitas.berat_badan,skrining_obesitas.tinggi_badan,"+
+                    "skrining_obesitas.imt,skrining_obesitas.kasifikasi_imt,skrining_obesitas.lingkar_pinggang,skrining_obesitas.risiko_lingkar_pinggang,skrining_obesitas.status_obesitas,"+
+                    "skrining_obesitas.keterangan from skrining_obesitas inner join reg_periksa on skrining_obesitas.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_obesitas.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
