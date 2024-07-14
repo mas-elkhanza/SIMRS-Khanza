@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="MnSkriningNutrisi">
+        <MenuItem class="javax.swing.JMenuItem" name="MnSkriningObesitas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -25,14 +25,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Formulir Skrining Nutrisi Pasien Anak"/>
-            <Property name="name" type="java.lang.String" value="MnSkriningNutrisi" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Formulir Skrining Obesitas"/>
+            <Property name="name" type="java.lang.String" value="MnSkriningObesitas" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[260, 26]"/>
+              <Dimension value="[200, 26]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnSkriningNutrisiActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnSkriningObesitasActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -52,6 +52,14 @@
         <Property name="editable" type="boolean" value="false"/>
         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
         <Property name="name" type="java.lang.String" value="Jk" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="widget.TextBox" name="TanggalRegistrasi">
+      <Properties>
+        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="TanggalRegistrasi" noResource="true"/>
       </Properties>
     </Component>
   </NonVisualComponents>
@@ -1004,7 +1012,6 @@
                         <Property name="name" type="java.lang.String" value="KebiasaanMakanManis" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KebiasaanMakanManisItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KebiasaanMakanManisKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1131,7 +1138,6 @@
                         <Property name="name" type="java.lang.String" value="AktifitasFisik" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="AktifitasFisikItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AktifitasFisikKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1151,7 +1157,6 @@
                         <Property name="name" type="java.lang.String" value="IstirahatCukup" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="IstirahatCukupItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="IstirahatCukupKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1231,7 +1236,6 @@
                         <Property name="name" type="java.lang.String" value="RisikoMerokok" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RisikoMerokokItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RisikoMerokokKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1287,7 +1291,6 @@
                         <Property name="name" type="java.lang.String" value="RiwayatSteroid" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RiwayatSteroidItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RiwayatSteroidKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1307,7 +1310,6 @@
                         <Property name="name" type="java.lang.String" value="RiwayatKeluarga" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RiwayatKeluargaItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RiwayatKeluargaKeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1368,9 +1370,6 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="IMT" noResource="true"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="IMTKeyPressed"/>
-                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="394" y="200" width="50" height="23"/>
@@ -1383,9 +1382,6 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="KlasifikasiIMT" noResource="true"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KlasifikasiIMTKeyPressed"/>
-                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="569" y="200" width="220" height="23"/>
@@ -1482,9 +1478,6 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="StatusObesitas" noResource="true"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="StatusObesitasKeyPressed"/>
-                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="132" y="280" width="140" height="23"/>
@@ -1507,6 +1500,9 @@
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="Keterangan" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KeteranganKeyPressed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="379" y="280" width="410" height="23"/>

@@ -962,6 +962,7 @@ import rekammedis.RMSkriningMerokokUsiaSekolahRemaja;
 import rekammedis.RMSkriningNutrisiAnak;
 import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
+import rekammedis.RMSkriningObesitas;
 import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMUjiFungsiKFR;
@@ -21608,6 +21609,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     } 
+    
+    private void btnSkriningObesitasActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningObesitas form=new RMSkriningObesitas(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22301,7 +22314,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianPasienImunitasRendah,btnCatatanKeseimbanganCairan,btnCatatanObservasiCHBP,btnCatatanObservasiInduksiPersalinan,btnSKPKategoriPenilaian,btnSKPKriteriaPenilaian,
             btnReferensiPoliMobileJKNFKTP,btnReferensiDokterMobileJKNFKTP,btnSKPPenilaianPegawai,btnMandiriMetodePembayaran,btnMandiriBankTujuanTRansfer,btnPembayaranPihakKe3BankMandiri,
             btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik,btnDataSasaranUsiaProduktif,
-            btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan;
+            btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan,btnSkriningObesitas;
     
     public void isWall(){
         try{            
@@ -26412,6 +26425,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_kekerasan_pada_perempuan()==true){
                 Panelmenu.add(btnSkriningKekerasanPadaPerempuan);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_obesitas()==true){
+                Panelmenu.add(btnSkriningObesitas);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -31616,6 +31634,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_kekerasan_pada_perempuan()==true){
             Panelmenu.add(btnSkriningKekerasanPadaPerempuan);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_obesitas()==true){
+            Panelmenu.add(btnSkriningObesitas);
             jmlmenu++;
         }
 
@@ -38412,6 +38435,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_obesitas()==true){
+            if(btnSkriningObesitas.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningObesitas);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -44774,5 +44804,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningKekerasanPadaPerempuan.setName("btnSkriningKekerasanPadaPerempuan"); 
         btnSkriningKekerasanPadaPerempuan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningKekerasanPadaPerempuan.addActionListener(this::btnSkriningKekerasanPadaPerempuanActionPerformed);
+        
+        btnSkriningObesitas = new widget.ButtonBig();
+        btnSkriningObesitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5859965_body_fat_health_obesity_overweight_icon.png"))); 
+        btnSkriningObesitas.setText("Skrining Obesitas");
+        btnSkriningObesitas.setIconTextGap(0);
+        btnSkriningObesitas.setName("btnSkriningObesitas"); 
+        btnSkriningObesitas.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningObesitas.addActionListener(this::btnSkriningObesitasActionPerformed);
     }
 }

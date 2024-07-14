@@ -57,6 +57,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
     private StringBuilder htmlContent;
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -208,6 +209,12 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
         
         jam();
     }
@@ -1252,7 +1259,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
                             }
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
                     }
                 }
             }else{
@@ -1944,7 +1951,18 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
                 KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
-        }            
+        }  
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+                ChkKejadian.setEnabled(false);
+                Jam.setEnabled(false);
+                Menit.setEnabled(false);
+                Detik.setEnabled(false);
+            }
+        }
     }
 
     private void jam(){

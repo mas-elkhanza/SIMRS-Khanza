@@ -1577,7 +1577,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
                             }
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
                     }
                 }
             }else{
