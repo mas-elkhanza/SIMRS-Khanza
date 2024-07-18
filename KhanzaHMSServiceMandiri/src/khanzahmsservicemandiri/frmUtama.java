@@ -332,7 +332,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     fileWriter = new FileWriter(file);
                                                     fileWriter.write(
                                                         "P;"+rs.getString("tgl_pembayaran").substring(0,10).replaceAll("-","")+";"+rs.getString("no_rekening_sumber")+";1;"+rs.getString("nominal_pembayaran")+"\r\n"+
-                                                        rs.getString("no_rekening_tujuan")+";"+rs.getString("atas_nama_rekening_tujuan")+";"+rs.getString("kota_atas_nama_rekening_tujuan")+";;;IDR;"+rs.getString("nominal_pembayaran")+";"+rs.getString("nomor_tagihan")+";"+rs.getString("nomor_pembayaran")+";"+rs.getString("kode_metode")+";"+rs.getString("kode_transaksi")+";"+rs.getString("nama_bank")+";;;;;;;;;;;;;;;;;;;;;;;;;;;;;EPD1;;;"
+                                                        rs.getString("no_rekening_tujuan")+";"+rs.getString("atas_nama_rekening_tujuan")+";"+rs.getString("kota_atas_nama_rekening_tujuan")+";;;IDR;"+rs.getString("nominal_pembayaran")+";"+rs.getString("nomor_tagihan")+";"+rs.getString("nomor_pembayaran")+";"+rs.getString("kode_metode")+";"+rs.getString("kode_transaksi")+";"+rs.getString("nama_bank")+";;;;;;;;;;;;;;;;;;;;;;;;;;;;;EPD1;"
                                                     );
                                                     fileWriter.flush();
                                                     fileWriter.close();
