@@ -175,7 +175,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 "Kd.Poli","Nama Poli","Keluhan","Kd.Sadar","Kesadaran","Sis","Dias","B.B.",
                 "T.B.","Respiratory Rate","Heart Rate","L.P.","Terapi","Kd.Pulang","Stts.Pulang",
                 "Tgl.Pulang","Kode Dokter","Nama Dokter","ICDX 1","Nama Diagnosa 1", 
-                "ICDX 2","Nama Diagnosa 2","ICDX 3", "Nama Diagnosa 3","Status"
+                "ICDX 2","Nama Diagnosa 2","ICDX 3", "Nama Diagnosa 3","Status","Kode Alergi Makanan",
+                "Nama Alergi Makanan","Kode Alergi Udara","Nama Alergi Udara","Kode Alergi Obat","Nama Alergi Obat",
+                "Kode Prognosa","Nama Prognosa","Terapi Non Obat","BMHP"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -183,7 +185,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         tbKunjungan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKunjungan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 31; i++) {
+        for (i = 0; i < 41; i++) {
             TableColumn column = tbKunjungan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -251,6 +253,26 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==30){
                 column.setPreferredWidth(50);
+            }else if(i==31){
+                column.setPreferredWidth(90);
+            }else if(i==32){
+                column.setPreferredWidth(150);
+            }else if(i==33){
+                column.setPreferredWidth(90);
+            }else if(i==34){
+                column.setPreferredWidth(150);
+            }else if(i==35){
+                column.setPreferredWidth(90);
+            }else if(i==36){
+                column.setPreferredWidth(150);
+            }else if(i==37){
+                column.setPreferredWidth(90);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(150);
+            }else if(i==40){
+                column.setPreferredWidth(150);
             }
         }
         tbKunjungan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -262,7 +284,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 "Tgl.Pulang","Kode Dokter","Nama Dokter","ICDX 1","Nama Diagnosa 1", 
                 "ICDX 2","Nama Diagnosa 2","ICDX 3", "Nama Diagnosa 3","Tgl.Rujukan",
                 "Kode PPK","Nama PPK","Kode Spesialis","Nama Spesialis","Kode Sarana",
-                "Nama Sarana","Kode TACC","Nama TACC","Alasan TACC"
+                "Nama Sarana","Kode TACC","Nama TACC","Alasan TACC","Kode Alergi Makanan",
+                "Nama Alergi Makanan","Kode Alergi Udara","Nama Alergi Udara","Kode Alergi Obat","Nama Alergi Obat",
+                "Kode Prognosa","Nama Prognosa","Terapi Non Obat","BMHP"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -270,7 +294,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         tbSpesialis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSpesialis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 40; i++) {
+        for (i = 0; i < 50; i++) {
             TableColumn column = tbSpesialis.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -357,6 +381,26 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }else if(i==38){
                 column.setPreferredWidth(150);
             }else if(i==39){
+                column.setPreferredWidth(150);
+            }else if(i==40){
+                column.setPreferredWidth(90);
+            }else if(i==41){
+                column.setPreferredWidth(150);
+            }else if(i==42){
+                column.setPreferredWidth(90);
+            }else if(i==43){
+                column.setPreferredWidth(150);
+            }else if(i==44){
+                column.setPreferredWidth(90);
+            }else if(i==45){
+                column.setPreferredWidth(150);
+            }else if(i==46){
+                column.setPreferredWidth(90);
+            }else if(i==47){
+                column.setPreferredWidth(150);
+            }else if(i==48){
+                column.setPreferredWidth(150);
+            }else if(i==49){
                 column.setPreferredWidth(150);
             }
         }

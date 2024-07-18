@@ -1540,7 +1540,7 @@ public class frmUtama extends javax.swing.JFrame {
             }
             
             ps=koneksi.prepareStatement(
-                    "select databarang.nama_brng,sum(detail_pemberian_obat.jml),jenis.nama from detail_pemberian_obat "+
+                    "select databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,jenis.nama from detail_pemberian_obat "+
                     "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
                     "inner join jenis on jenis.kdjns=databarang.kdjns where detail_pemberian_obat.no_rawat=? "+
                     "group by databarang.nama_brng");
