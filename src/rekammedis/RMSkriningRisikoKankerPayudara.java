@@ -478,6 +478,9 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jLabel189 = new widget.Label();
         jLabel190 = new widget.Label();
         HasilSkrining1 = new widget.TextBox();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
+        jSeparator6 = new javax.swing.JSeparator();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -780,7 +783,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 1333));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 1343));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -959,14 +962,14 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(670, 1200, 70, 23);
+        jLabel73.setBounds(670, 1210, 70, 23);
 
         TotalHasil.setEditable(false);
         TotalHasil.setText("0");
         TotalHasil.setFocusTraversalPolicyProvider(true);
         TotalHasil.setName("TotalHasil"); // NOI18N
         FormInput.add(TotalHasil);
-        TotalHasil.setBounds(744, 1200, 45, 23);
+        TotalHasil.setBounds(744, 1210, 45, 23);
 
         NilaiPertanyaanAwal1.setEditable(false);
         NilaiPertanyaanAwal1.setText("0");
@@ -1040,7 +1043,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jLabel148.setText("Rekomendasi");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
-        jLabel148.setBounds(44, 1200, 90, 23);
+        jLabel148.setBounds(44, 1210, 90, 23);
 
         HasilSkrining.setEditable(false);
         HasilSkrining.setFocusTraversalPolicyProvider(true);
@@ -1051,7 +1054,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             }
         });
         FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(120, 1200, 520, 23);
+        HasilSkrining.setBounds(120, 1210, 520, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1275,18 +1278,18 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 1230, 807, 1);
+        jSeparator3.setBounds(0, 1240, 807, 1);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("II. PEMERIKSAAN SADANIS ");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(10, 1230, 200, 23);
+        jLabel101.setBounds(10, 1240, 200, 23);
 
         jLabel149.setText(":");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(0, 1200, 116, 23);
+        jLabel149.setBounds(0, 1210, 116, 23);
 
         jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel94.setText("A. Faktor Awal (Ya=1, Tidak=0)");
@@ -2375,7 +2378,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jLabel184.setText("Hasil Pemeriksaan SADANIS");
         jLabel184.setName("jLabel184"); // NOI18N
         FormInput.add(jLabel184);
-        jLabel184.setBounds(44, 1250, 150, 23);
+        jLabel184.setBounds(44, 1260, 150, 23);
 
         PertanyaanLanjutan22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Benjolan", "Tidak Ada Benjolan", "Curiga Kanker" }));
         PertanyaanLanjutan22.setName("PertanyaanLanjutan22"); // NOI18N
@@ -2390,17 +2393,17 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan22);
-        PertanyaanLanjutan22.setBounds(191, 1250, 150, 23);
+        PertanyaanLanjutan22.setBounds(191, 1260, 170, 23);
 
         jLabel185.setText(":");
         jLabel185.setName("jLabel185"); // NOI18N
         FormInput.add(jLabel185);
-        jLabel185.setBounds(0, 1250, 187, 23);
+        jLabel185.setBounds(0, 1260, 187, 23);
 
-        jLabel186.setText("Tindak Lanjut SADANIS :");
+        jLabel186.setText("Tindak Lanjut Hasil Pemeriksaan SADANIS :");
         jLabel186.setName("jLabel186"); // NOI18N
         FormInput.add(jLabel186);
-        jLabel186.setBounds(430, 1250, 160, 23);
+        jLabel186.setBounds(419, 1260, 240, 23);
 
         PertanyaanLanjutan23.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dirujuk", "Tidak Dirujuk" }));
         PertanyaanLanjutan23.setName("PertanyaanLanjutan23"); // NOI18N
@@ -2415,26 +2418,26 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan23);
-        PertanyaanLanjutan23.setBounds(600, 1250, 120, 23);
+        PertanyaanLanjutan23.setBounds(663, 1260, 126, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 1280, 807, 1);
+        jSeparator4.setBounds(0, 1290, 807, 1);
 
         jLabel187.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel187.setText("III. INTERPRETASI");
         jLabel187.setName("jLabel187"); // NOI18N
         FormInput.add(jLabel187);
-        jLabel187.setBounds(10, 1280, 200, 23);
+        jLabel187.setBounds(10, 1290, 200, 23);
 
         jLabel188.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel188.setText("Hasil Skrining");
         jLabel188.setName("jLabel188"); // NOI18N
         FormInput.add(jLabel188);
-        jLabel188.setBounds(44, 1300, 80, 23);
+        jLabel188.setBounds(44, 1310, 80, 23);
 
         PertanyaanLanjutan24.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Kemungkinan Kelainan Payudara Jinak", "Curiga Kelainan Payudara Ganas" }));
         PertanyaanLanjutan24.setName("PertanyaanLanjutan24"); // NOI18N
@@ -2449,17 +2452,17 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan24);
-        PertanyaanLanjutan24.setBounds(121, 1300, 240, 23);
+        PertanyaanLanjutan24.setBounds(121, 1310, 240, 23);
 
         jLabel189.setText(":");
         jLabel189.setName("jLabel189"); // NOI18N
         FormInput.add(jLabel189);
-        jLabel189.setBounds(0, 1300, 117, 23);
+        jLabel189.setBounds(0, 1310, 117, 23);
 
         jLabel190.setText("Keterangan :");
         jLabel190.setName("jLabel190"); // NOI18N
         FormInput.add(jLabel190);
-        jLabel190.setBounds(356, 1300, 90, 23);
+        jLabel190.setBounds(356, 1310, 90, 23);
 
         HasilSkrining1.setEditable(false);
         HasilSkrining1.setFocusTraversalPolicyProvider(true);
@@ -2470,7 +2473,28 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             }
         });
         FormInput.add(HasilSkrining1);
-        HasilSkrining1.setBounds(450, 1300, 339, 23);
+        HasilSkrining1.setBounds(450, 1310, 339, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(44, 530, 763, 1);
+
+        jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator5.setName("jSeparator5"); // NOI18N
+        FormInput.add(jSeparator5);
+        jSeparator5.setBounds(44, 940, 763, 1);
+
+        jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator6.setName("jSeparator6"); // NOI18N
+        FormInput.add(jSeparator6);
+        jSeparator6.setBounds(44, 1200, 763, 1);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3429,8 +3453,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
