@@ -146,25 +146,25 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             }else if(i==25){
                 column.setPreferredWidth(45);
             }else if(i==26){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(116);
             }else if(i==27){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(52);
             }else if(i==28){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(116);
             }else if(i==29){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(52);
             }else if(i==30){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(116);
             }else if(i==31){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(52);
             }else if(i==32){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(116);
             }else if(i==33){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(52);
             }else if(i==34){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(116);
             }else if(i==35){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(52);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
