@@ -91,7 +91,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 26; i++) {
+        for (i = 0; i < 50; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -110,41 +110,61 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(109);
             }else if(i==9){
                 column.setPreferredWidth(45);
             }else if(i==10){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(109);
             }else if(i==11){
                 column.setPreferredWidth(45);
             }else if(i==12){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(109);
             }else if(i==13){
                 column.setPreferredWidth(45);
             }else if(i==14){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(109);
             }else if(i==15){
                 column.setPreferredWidth(45);
             }else if(i==16){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(109);
             }else if(i==17){
                 column.setPreferredWidth(45);
             }else if(i==18){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(109);
             }else if(i==19){
                 column.setPreferredWidth(45);
             }else if(i==20){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(109);
             }else if(i==21){
                 column.setPreferredWidth(45);
             }else if(i==22){
-                column.setPreferredWidth(118);
+                column.setPreferredWidth(109);
             }else if(i==23){
                 column.setPreferredWidth(45);
             }else if(i==24){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(109);
             }else if(i==25){
-                column.setPreferredWidth(230);
+                column.setPreferredWidth(45);
+            }else if(i==26){
+                column.setPreferredWidth(109);
+            }else if(i==27){
+                column.setPreferredWidth(45);
+            }else if(i==28){
+                column.setPreferredWidth(109);
+            }else if(i==29){
+                column.setPreferredWidth(45);
+            }else if(i==30){
+                column.setPreferredWidth(109);
+            }else if(i==31){
+                column.setPreferredWidth(45);
+            }else if(i==32){
+                column.setPreferredWidth(109);
+            }else if(i==33){
+                column.setPreferredWidth(45);
+            }else if(i==34){
+                column.setPreferredWidth(109);
+            }else if(i==35){
+                column.setPreferredWidth(45);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -3620,29 +3640,63 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_payudara.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.menggambarkan_hubungan,skrining_risiko_kanker_payudara.skor_menggambarkan_hubungan,"+
-                    "skrining_risiko_kanker_payudara.berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.pertengkaran_membuat_sedih,"+
-                    "skrining_risiko_kanker_payudara.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_payudara.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_risiko_kanker_payudara.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_payudara.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_risiko_kanker_payudara.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_payudara.totalskor,skrining_risiko_kanker_payudara.hasil_skrining "+
-                    "from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
+                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.faktor_risiko_awal1,skrining_risiko_kanker_payudara.nilai_risiko_awal1,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal2,skrining_risiko_kanker_payudara.nilai_risiko_awal2,skrining_risiko_kanker_payudara.faktor_risiko_awal3,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal3,skrining_risiko_kanker_payudara.faktor_risiko_awal4,skrining_risiko_kanker_payudara.nilai_risiko_awal4,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal5,skrining_risiko_kanker_payudara.nilai_risiko_awal5,skrining_risiko_kanker_payudara.faktor_risiko_awal6,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal6,skrining_risiko_kanker_payudara.faktor_risiko_awal7,skrining_risiko_kanker_payudara.nilai_risiko_awal7,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal8,skrining_risiko_kanker_payudara.nilai_risiko_awal8,skrining_risiko_kanker_payudara.faktor_risiko_awal9,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal9,skrining_risiko_kanker_payudara.faktor_risiko_awal10,skrining_risiko_kanker_payudara.nilai_risiko_awal10,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal11,skrining_risiko_kanker_payudara.nilai_risiko_awal11,skrining_risiko_kanker_payudara.faktor_risiko_awal12,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal12,skrining_risiko_kanker_payudara.faktor_risiko_awal13,skrining_risiko_kanker_payudara.nilai_risiko_awal13,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal14,skrining_risiko_kanker_payudara.nilai_risiko_awal14,skrining_risiko_kanker_payudara.faktor_risiko_tinggi1,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi1,skrining_risiko_kanker_payudara.faktor_risiko_tinggi2,skrining_risiko_kanker_payudara.nilai_risiko_tinggi2,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi3,skrining_risiko_kanker_payudara.nilai_risiko_tinggi3,skrining_risiko_kanker_payudara.faktor_risiko_tinggi4,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi4,skrining_risiko_kanker_payudara.faktor_risiko_tinggi5,skrining_risiko_kanker_payudara.nilai_risiko_tinggi5,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi6,skrining_risiko_kanker_payudara.nilai_risiko_tinggi6,skrining_risiko_kanker_payudara.faktor_risiko_tinggi7,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi7,skrining_risiko_kanker_payudara.faktor_risiko_tinggi8,skrining_risiko_kanker_payudara.nilai_risiko_tinggi8,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi9,skrining_risiko_kanker_payudara.nilai_risiko_tinggi9,skrining_risiko_kanker_payudara.faktor_risiko_tinggi10,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi10,skrining_risiko_kanker_payudara.faktor_risiko_tinggi11,skrining_risiko_kanker_payudara.nilai_risiko_tinggi11,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi12,skrining_risiko_kanker_payudara.nilai_risiko_tinggi12,skrining_risiko_kanker_payudara.faktor_risiko_tinggi13,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi13,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas1,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas1,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas2,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas2,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas3,"+
+                    "skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas3,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas4,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas4,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas5,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas5,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas6,"+
+                    "skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas6,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas7,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas7,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas8,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas8,skrining_risiko_kanker_payudara.total_skor,"+
+                    "skrining_risiko_kanker_payudara.hasil_sadanis,skrining_risiko_kanker_payudara.tindak_lanjut_sadanis,skrining_risiko_kanker_payudara.hasil_skrining,"+
+                    "skrining_risiko_kanker_payudara.keterangan from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_payudara.nip=petugas.nip "+
                     "where skrining_risiko_kanker_payudara.tanggal between ? and ? order by skrining_risiko_kanker_payudara.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_payudara.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.menggambarkan_hubungan,skrining_risiko_kanker_payudara.skor_menggambarkan_hubungan,"+
-                    "skrining_risiko_kanker_payudara.berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.pertengkaran_membuat_sedih,"+
-                    "skrining_risiko_kanker_payudara.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_payudara.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_risiko_kanker_payudara.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_payudara.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_risiko_kanker_payudara.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_payudara.totalskor,skrining_risiko_kanker_payudara.hasil_skrining "+
-                    "from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
+                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.faktor_risiko_awal1,skrining_risiko_kanker_payudara.nilai_risiko_awal1,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal2,skrining_risiko_kanker_payudara.nilai_risiko_awal2,skrining_risiko_kanker_payudara.faktor_risiko_awal3,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal3,skrining_risiko_kanker_payudara.faktor_risiko_awal4,skrining_risiko_kanker_payudara.nilai_risiko_awal4,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal5,skrining_risiko_kanker_payudara.nilai_risiko_awal5,skrining_risiko_kanker_payudara.faktor_risiko_awal6,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal6,skrining_risiko_kanker_payudara.faktor_risiko_awal7,skrining_risiko_kanker_payudara.nilai_risiko_awal7,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal8,skrining_risiko_kanker_payudara.nilai_risiko_awal8,skrining_risiko_kanker_payudara.faktor_risiko_awal9,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal9,skrining_risiko_kanker_payudara.faktor_risiko_awal10,skrining_risiko_kanker_payudara.nilai_risiko_awal10,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal11,skrining_risiko_kanker_payudara.nilai_risiko_awal11,skrining_risiko_kanker_payudara.faktor_risiko_awal12,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal12,skrining_risiko_kanker_payudara.faktor_risiko_awal13,skrining_risiko_kanker_payudara.nilai_risiko_awal13,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal14,skrining_risiko_kanker_payudara.nilai_risiko_awal14,skrining_risiko_kanker_payudara.faktor_risiko_tinggi1,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi1,skrining_risiko_kanker_payudara.faktor_risiko_tinggi2,skrining_risiko_kanker_payudara.nilai_risiko_tinggi2,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi3,skrining_risiko_kanker_payudara.nilai_risiko_tinggi3,skrining_risiko_kanker_payudara.faktor_risiko_tinggi4,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi4,skrining_risiko_kanker_payudara.faktor_risiko_tinggi5,skrining_risiko_kanker_payudara.nilai_risiko_tinggi5,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi6,skrining_risiko_kanker_payudara.nilai_risiko_tinggi6,skrining_risiko_kanker_payudara.faktor_risiko_tinggi7,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi7,skrining_risiko_kanker_payudara.faktor_risiko_tinggi8,skrining_risiko_kanker_payudara.nilai_risiko_tinggi8,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi9,skrining_risiko_kanker_payudara.nilai_risiko_tinggi9,skrining_risiko_kanker_payudara.faktor_risiko_tinggi10,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi10,skrining_risiko_kanker_payudara.faktor_risiko_tinggi11,skrining_risiko_kanker_payudara.nilai_risiko_tinggi11,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi12,skrining_risiko_kanker_payudara.nilai_risiko_tinggi12,skrining_risiko_kanker_payudara.faktor_risiko_tinggi13,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi13,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas1,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas1,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas2,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas2,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas3,"+
+                    "skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas3,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas4,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas4,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas5,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas5,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas6,"+
+                    "skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas6,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas7,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas7,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas8,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas8,skrining_risiko_kanker_payudara.total_skor,"+
+                    "skrining_risiko_kanker_payudara.hasil_sadanis,skrining_risiko_kanker_payudara.tindak_lanjut_sadanis,skrining_risiko_kanker_payudara.hasil_skrining,"+
+                    "skrining_risiko_kanker_payudara.keterangan from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_payudara.nip=petugas.nip "+
                     "where skrining_risiko_kanker_payudara.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or skrining_risiko_kanker_payudara.nip like ? or petugas.nama like ?) "+
@@ -3667,12 +3721,22 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("menggambarkan_hubungan"),rs.getString("skor_menggambarkan_hubungan"),rs.getString("berdebat_dengan_pasangan"),
-                        rs.getString("skor_berdebat_dengan_pasangan"),rs.getString("pertengkaran_membuat_sedih"),rs.getString("skor_pertengkaran_membuat_sedih"),rs.getString("pertengkaran_menghasilkan_pukulan"),
-                        rs.getString("skor_pertengkaran_menghasilkan_pukulan"),rs.getString("pernah_merasa_takut_dengan_pasangan"),rs.getString("skor_pernah_merasa_takut_dengan_pasangan"),
-                        rs.getString("pasangan_melecehkan_secara_fisik"),rs.getString("skor_pasangan_melecehkan_secara_fisik"),rs.getString("pasangan_melecehkan_secara_imosional"),
-                        rs.getString("skor_pasangan_melecehkan_secara_imosional"),rs.getString("pasangan_melecehkan_secara_seksual"),rs.getString("skor_pasangan_melecehkan_secara_seksual"),
-                        rs.getString("totalskor"),rs.getString("hasil_skrining")
+                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("faktor_risiko_awal1"),rs.getString("nilai_risiko_awal1"),rs.getString("faktor_risiko_awal2"),
+                        rs.getString("nilai_risiko_awal2"),rs.getString("faktor_risiko_awal3"),rs.getString("nilai_risiko_awal3"),rs.getString("faktor_risiko_awal4"),rs.getString("nilai_risiko_awal4"),
+                        rs.getString("faktor_risiko_awal5"),rs.getString("nilai_risiko_awal5"),rs.getString("faktor_risiko_awal6"),rs.getString("nilai_risiko_awal6"),rs.getString("faktor_risiko_awal7"),
+                        rs.getString("nilai_risiko_awal7"),rs.getString("faktor_risiko_awal8"),rs.getString("nilai_risiko_awal8"),rs.getString("faktor_risiko_awal9"),rs.getString("nilai_risiko_awal9"),
+                        rs.getString("faktor_risiko_awal10"),rs.getString("nilai_risiko_awal10"),rs.getString("faktor_risiko_awal11"),rs.getString("nilai_risiko_awal11"),rs.getString("faktor_risiko_awal12"),
+                        rs.getString("nilai_risiko_awal12"),rs.getString("faktor_risiko_awal13"),rs.getString("nilai_risiko_awal13"),rs.getString("faktor_risiko_awal14"),rs.getString("nilai_risiko_awal14"),
+                        rs.getString("faktor_risiko_tinggi1"),rs.getString("nilai_risiko_tinggi1"),rs.getString("faktor_risiko_tinggi2"),rs.getString("nilai_risiko_tinggi2"),rs.getString("faktor_risiko_tinggi3"),
+                        rs.getString("nilai_risiko_tinggi3"),rs.getString("faktor_risiko_tinggi4"),rs.getString("nilai_risiko_tinggi4"),rs.getString("faktor_risiko_tinggi5"),rs.getString("nilai_risiko_tinggi5"),
+                        rs.getString("faktor_risiko_tinggi6"),rs.getString("nilai_risiko_tinggi6"),rs.getString("faktor_risiko_tinggi7"),rs.getString("nilai_risiko_tinggi7"),rs.getString("faktor_risiko_tinggi8"),
+                        rs.getString("nilai_risiko_tinggi8"),rs.getString("faktor_risiko_tinggi9"),rs.getString("nilai_risiko_tinggi9"),rs.getString("faktor_risiko_tinggi10"),rs.getString("nilai_risiko_tinggi10"),
+                        rs.getString("faktor_risiko_tinggi11"),rs.getString("nilai_risiko_tinggi11"),rs.getString("faktor_risiko_tinggi12"),rs.getString("nilai_risiko_tinggi12"),rs.getString("faktor_risiko_tinggi13"),
+                        rs.getString("nilai_risiko_tinggi13"),rs.getString("faktor_kecurigaan_ganas1"),rs.getString("nilai_kecurigaan_ganas1"),rs.getString("faktor_kecurigaan_ganas2"),rs.getString("nilai_kecurigaan_ganas2"),
+                        rs.getString("faktor_kecurigaan_ganas3"),rs.getString("nilai_kecurigaan_ganas3"),rs.getString("faktor_kecurigaan_ganas4"),rs.getString("nilai_kecurigaan_ganas4"),rs.getString("faktor_kecurigaan_ganas5"),
+                        rs.getString("nilai_kecurigaan_ganas5"),rs.getString("faktor_kecurigaan_ganas6"),rs.getString("nilai_kecurigaan_ganas6"),rs.getString("faktor_kecurigaan_ganas7"),rs.getString("nilai_kecurigaan_ganas7"),
+                        rs.getString("faktor_kecurigaan_ganas8"),rs.getString("nilai_kecurigaan_ganas8"),rs.getString("total_skor"),rs.getString("hasil_sadanis"),rs.getString("tindak_lanjut_sadanis"),
+                        rs.getString("hasil_skrining"),rs.getString("keterangan")
                     });
                 }
             } catch (Exception e) {
@@ -3763,7 +3827,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         NilaiKecurigaanKeganasan7.setText("0");
         KecurigaanKeganasan8.setSelectedIndex(0);
         NilaiKecurigaanKeganasan8.setText("0");
-        Rekomendasi.setText("Waspada dan upayakan melakukan penanggulangan sehingga skor semakin kecil");
+        Rekomendasi.setText("Waspada dan upayakan melakukan penanggulangan sehingga skor semakin kecil..!");
         TotalHasil.setText("0");
         HasilPemeriksaanSadanis.setSelectedIndex(0);
         TindakLanjutSadanis.setSelectedIndex(0);
