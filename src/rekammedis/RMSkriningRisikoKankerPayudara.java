@@ -355,7 +355,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningKekerasanPadaPerempuan = new javax.swing.JMenuItem();
+        MnSkriningRisikoKankerPayudara = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
@@ -609,19 +609,19 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningKekerasanPadaPerempuan.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningKekerasanPadaPerempuan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningKekerasanPadaPerempuan.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningKekerasanPadaPerempuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningKekerasanPadaPerempuan.setText("Formulir Skrining Kekerasan Pada Perempuan");
-        MnSkriningKekerasanPadaPerempuan.setName("MnSkriningKekerasanPadaPerempuan"); // NOI18N
-        MnSkriningKekerasanPadaPerempuan.setPreferredSize(new java.awt.Dimension(280, 26));
-        MnSkriningKekerasanPadaPerempuan.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningRisikoKankerPayudara.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningRisikoKankerPayudara.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningRisikoKankerPayudara.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningRisikoKankerPayudara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningRisikoKankerPayudara.setText("Formulir Skrining Risiko Kanker Payudara");
+        MnSkriningRisikoKankerPayudara.setName("MnSkriningRisikoKankerPayudara"); // NOI18N
+        MnSkriningRisikoKankerPayudara.setPreferredSize(new java.awt.Dimension(280, 26));
+        MnSkriningRisikoKankerPayudara.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningKekerasanPadaPerempuanActionPerformed(evt);
+                MnSkriningRisikoKankerPayudaraActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningKekerasanPadaPerempuan);
+        jPopupMenu1.add(MnSkriningRisikoKankerPayudara);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -3064,7 +3064,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         Valid.pindah(evt,TCari,FaktorAwal1);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningKekerasanPadaPerempuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
+    private void MnSkriningRisikoKankerPayudaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningRisikoKankerPayudaraActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -3076,21 +3076,38 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningKekerasanPadaPerempuan.jasper","report","::[ Formulir Skrining Kekerasan Pada Perempuan ]::",
+            Valid.MyReportqry("rptFormulirSkriningRisikoKankerPayudara.jasper","report","::[ Formulir Skrining Risiko Kanker Payudara ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_payudara.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.menggambarkan_hubungan,skrining_risiko_kanker_payudara.skor_menggambarkan_hubungan,"+
-                    "skrining_risiko_kanker_payudara.berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.pertengkaran_membuat_sedih,"+
-                    "skrining_risiko_kanker_payudara.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_payudara.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_risiko_kanker_payudara.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_payudara.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_risiko_kanker_payudara.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_payudara.totalskor,skrining_risiko_kanker_payudara.hasil_skrining "+
-                    "from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
+                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.faktor_risiko_awal1,skrining_risiko_kanker_payudara.nilai_risiko_awal1,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal2,skrining_risiko_kanker_payudara.nilai_risiko_awal2,skrining_risiko_kanker_payudara.faktor_risiko_awal3,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal3,skrining_risiko_kanker_payudara.faktor_risiko_awal4,skrining_risiko_kanker_payudara.nilai_risiko_awal4,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal5,skrining_risiko_kanker_payudara.nilai_risiko_awal5,skrining_risiko_kanker_payudara.faktor_risiko_awal6,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal6,skrining_risiko_kanker_payudara.faktor_risiko_awal7,skrining_risiko_kanker_payudara.nilai_risiko_awal7,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal8,skrining_risiko_kanker_payudara.nilai_risiko_awal8,skrining_risiko_kanker_payudara.faktor_risiko_awal9,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal9,skrining_risiko_kanker_payudara.faktor_risiko_awal10,skrining_risiko_kanker_payudara.nilai_risiko_awal10,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal11,skrining_risiko_kanker_payudara.nilai_risiko_awal11,skrining_risiko_kanker_payudara.faktor_risiko_awal12,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_awal12,skrining_risiko_kanker_payudara.faktor_risiko_awal13,skrining_risiko_kanker_payudara.nilai_risiko_awal13,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_awal14,skrining_risiko_kanker_payudara.nilai_risiko_awal14,skrining_risiko_kanker_payudara.faktor_risiko_tinggi1,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi1,skrining_risiko_kanker_payudara.faktor_risiko_tinggi2,skrining_risiko_kanker_payudara.nilai_risiko_tinggi2,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi3,skrining_risiko_kanker_payudara.nilai_risiko_tinggi3,skrining_risiko_kanker_payudara.faktor_risiko_tinggi4,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi4,skrining_risiko_kanker_payudara.faktor_risiko_tinggi5,skrining_risiko_kanker_payudara.nilai_risiko_tinggi5,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi6,skrining_risiko_kanker_payudara.nilai_risiko_tinggi6,skrining_risiko_kanker_payudara.faktor_risiko_tinggi7,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi7,skrining_risiko_kanker_payudara.faktor_risiko_tinggi8,skrining_risiko_kanker_payudara.nilai_risiko_tinggi8,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi9,skrining_risiko_kanker_payudara.nilai_risiko_tinggi9,skrining_risiko_kanker_payudara.faktor_risiko_tinggi10,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi10,skrining_risiko_kanker_payudara.faktor_risiko_tinggi11,skrining_risiko_kanker_payudara.nilai_risiko_tinggi11,"+
+                    "skrining_risiko_kanker_payudara.faktor_risiko_tinggi12,skrining_risiko_kanker_payudara.nilai_risiko_tinggi12,skrining_risiko_kanker_payudara.faktor_risiko_tinggi13,"+
+                    "skrining_risiko_kanker_payudara.nilai_risiko_tinggi13,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas1,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas1,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas2,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas2,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas3,"+
+                    "skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas3,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas4,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas4,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas5,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas5,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas6,"+
+                    "skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas6,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas7,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas7,"+
+                    "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas8,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas8,skrining_risiko_kanker_payudara.total_skor,"+
+                    "skrining_risiko_kanker_payudara.hasil_sadanis,skrining_risiko_kanker_payudara.tindak_lanjut_sadanis,skrining_risiko_kanker_payudara.hasil_skrining,"+
+                    "skrining_risiko_kanker_payudara.keterangan from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_payudara.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
+    }//GEN-LAST:event_MnSkriningRisikoKankerPayudaraActionPerformed
 
     private void FaktorAwal1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal1ItemStateChanged
         if(FaktorAwal1.getSelectedIndex()==1){
@@ -3645,7 +3662,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningKekerasanPadaPerempuan;
+    private javax.swing.JMenuItem MnSkriningRisikoKankerPayudara;
     private widget.TextBox NilaiFaktorAwal1;
     private widget.TextBox NilaiFaktorAwal10;
     private widget.TextBox NilaiFaktorAwal11;
@@ -4427,7 +4444,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
                     Integer.parseInt(NilaiKecurigaanKeganasan4.getText())+Integer.parseInt(NilaiKecurigaanKeganasan5.getText())+
                     Integer.parseInt(NilaiKecurigaanKeganasan6.getText())+Integer.parseInt(NilaiKecurigaanKeganasan7.getText())+
                     Integer.parseInt(NilaiKecurigaanKeganasan8.getText()))>0){
-                Rekomendasi.setText("Sangat curiga ada keganasan pada payudara. Segera ke dokter...!");    
+                Rekomendasi.setText(Rekomendasi.getText()+". Sangat curiga ada keganasan pada payudara. Segera ke dokter...!");    
             }
         } catch (Exception e) {
             Rekomendasi.setText("Waspada dan upayakan melakukan penanggulangan sehingga skor semakin kecil...!");
