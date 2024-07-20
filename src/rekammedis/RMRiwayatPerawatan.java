@@ -377,6 +377,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningMerokokUsiaRemaja = new widget.CekBox();
         chkSkriningKekerasanPadaPerempuan = new widget.CekBox();
         chkSkriningObesitas = new widget.CekBox();
+        chkSkriningRisikoKankerPayudara = new widget.CekBox();
         chkRekonsiliasiObat = new widget.CekBox();
         chkKonselingFarmasi = new widget.CekBox();
         chkPelayananInformasiObat = new widget.CekBox();
@@ -655,7 +656,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3270));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3295));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1543,6 +1544,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningObesitas.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSkriningObesitas);
 
+        chkSkriningRisikoKankerPayudara.setSelected(true);
+        chkSkriningRisikoKankerPayudara.setText("Skrining Risiko Kanker Payudara");
+        chkSkriningRisikoKankerPayudara.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkSkriningRisikoKankerPayudara.setName("chkSkriningRisikoKankerPayudara"); // NOI18N
+        chkSkriningRisikoKankerPayudara.setOpaque(false);
+        chkSkriningRisikoKankerPayudara.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkSkriningRisikoKankerPayudara);
+
         chkRekonsiliasiObat.setSelected(true);
         chkRekonsiliasiObat.setText("Rekonsiliasi Obat");
         chkRekonsiliasiObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2328,6 +2337,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningMerokokUsiaRemaja.setSelected(true);
             chkSkriningKekerasanPadaPerempuan.setSelected(true);
             chkSkriningObesitas.setSelected(true);
+            chkSkriningRisikoKankerPayudara.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2470,6 +2480,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningMerokokUsiaRemaja.setSelected(false);
             chkSkriningKekerasanPadaPerempuan.setSelected(false);
             chkSkriningObesitas.setSelected(false);
+            chkSkriningRisikoKankerPayudara.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2676,6 +2687,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkSkriningNutrisiDewasa;
     private widget.CekBox chkSkriningNutrisiLansia;
     private widget.CekBox chkSkriningObesitas;
+    private widget.CekBox chkSkriningRisikoKankerPayudara;
     private widget.CekBox chkTambahanBiaya;
     private widget.CekBox chkTimeOutSebelumInsisi;
     private widget.CekBox chkTindakanRalanDokter;
@@ -3275,6 +3287,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanSKriningKekerasanPadaPerempuan(rs.getString("no_rawat"));
                     //menampilkan skrining obesitas
                     menampilkanSkriningObesitas(rs.getString("no_rawat"));
+                    //menampilkan skrining risiko kanker payudara
+                    menampilkanSkriningRisikoKankerPayudara(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
                     menampilkanRekonsiliasiObat(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
@@ -25025,47 +25039,47 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "I. PERILAKU MEROKOK"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='4%'>a.</td>"+
+                                              "<td width='4%' align='center'>a.</td>"+
                                               "<td width='66%'>Apakah Anda merokok ? (Bila jawaban 3 dan 4, langsung ke bagian Bagian II)</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("apakah_anda_merokok")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>b.</td>"+
+                                              "<td width='4%' align='center'>b.</td>"+
                                               "<td width='66%'>Berapa jumlah batang rokok yang Anda hisap setiap hari atau minggu ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("jumlah_batang_rokok")+" "+rs2.getString("jumlah_batang_rokok_hariminggu")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>c.</td>"+
+                                              "<td width='4%' align='center'>c.</td>"+
                                               "<td width='66%'>Jika jawaban a adalah 1 dan 2, jenis rokok yang digunakan ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("jenis_rokok_yang_digunakan")+(rs2.getString("jenis_rokok_yang_digunakan_keterangan").equals("")?"":", "+rs2.getString("jenis_rokok_yang_digunakan_keterangan"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>d.</td>"+
+                                              "<td width='4%' align='center'>d.</td>"+
                                               "<td width='66%'>Berapa usia Anda mulai merokok ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("usia_mulai_merokok")+" Tahun</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>e.</td>"+
+                                              "<td width='4%' align='center'>e.</td>"+
                                               "<td width='66%'>Apa alasan utama Anda mulai merokok ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("alasan_mulai_merokok")+(rs2.getString("alasan_mulai_merokok_keterangan").equals("")?"":", "+rs2.getString("alasan_mulai_merokok_keterangan"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>f.</td>"+
+                                              "<td width='4%' align='center'>f.</td>"+
                                               "<td width='66%'>Sudah berapa lama Anda merokok ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("sudah_berapa_lama_merokok")+" Bulan</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>g.</td>"+
+                                              "<td width='4%' align='center'>g.</td>"+
                                               "<td width='66%'>Bagaimana biasanya (paling sering) kamu mendapatkan rokok ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("bagaimana_biasanya_mendapatkan_rokok")+(rs2.getString("bagaimana_biasanya_mendapatkan_rokok_keterangan").equals("")?"":", "+rs2.getString("bagaimana_biasanya_mendapatkan_rokok_keterangan"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>h.</td>"+
+                                              "<td width='4%' align='center'>h.</td>"+
                                               "<td width='66%'>Apakah ada keinginan Anda untuk berhenti merokok ? (Jika Tidak, langsung ke Bagian II)</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("keinginan_berhenti_merokok")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>i.</td>"+
+                                              "<td width='4%' align='center'>i.</td>"+
                                               "<td width='66%'>Jika Ya apa alasan utama Anda mau berhenti merokok ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("alasan_utama_berhenti_merokok")+(rs2.getString("alasan_utama_berhenti_merokok_keterangan").equals("")?"":", "+rs2.getString("alasan_utama_berhenti_merokok_keterangan"))+"</td>"+
                                           "</tr>"+
@@ -25077,17 +25091,17 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "II. PENGETAHUAN TENTANG ROKOK"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='4%'>a.</td>"+
+                                              "<td width='4%' align='center'>a.</td>"+
                                               "<td width='66%'>Apakah Anda tahu dampak kesehatan dari merokok ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("tahu_dampak_kesehatan_merokok")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>b.</td>"+
+                                              "<td width='4%' align='center'>b.</td>"+
                                               "<td width='66%'>Jika Ya, pilihlah menurut Anda dampak kesehatan dari merokok yang Anda ketahui ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("dampak_kesehatan_dari_merokok_yang_diketahui")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>c.</td>"+
+                                              "<td width='4%' align='center'>c.</td>"+
                                               "<td width='66%'>Apakah Anda tahu merokok menjadi pintu masuk penggunaan narkoba ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("tahu_merokok_pintu_masuk_narkoba")+"</td>"+
                                           "</tr>"+
@@ -25099,22 +25113,22 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "III. SUMBER PAPARAN PERILAKU MEROKOK"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='4%'>a.</td>"+
+                                              "<td width='4%' align='center'>a.</td>"+
                                               "<td width='66%'>Apakah Anda pernah melihat orang yang merokok di satuan pendidikan?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("melihat_orang_merokok_di_sekolah")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>b.</td>"+
+                                              "<td width='4%' align='center'>b.</td>"+
                                               "<td width='66%'>Jika Ya sebutkan orang yang paling sering Anda lihat merokok di satuan pendidikan !</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("orang_yang_paling_sering_merokok_disekolah")+(rs2.getString("orang_yang_paling_sering_merokok_disekolah_keterangan").equals("")?"":", "+rs2.getString("orang_yang_paling_sering_merokok_disekolah_keterangan"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>c.</td>"+
+                                              "<td width='4%' align='center'>c.</td>"+
                                               "<td width='66%'>Apakah ada anggota keluarga di rumah yang merokok ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("ada_anggota_keluarga_di_rumah_yang_merokok")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>d.</td>"+
+                                              "<td width='4%' align='center'>d.</td>"+
                                               "<td width='66%'>Apakah teman-teman dekatmu banyak yang merokok ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("teman_dekat_banyakyang_merokok")+" Tahun</td>"+
                                           "</tr>"+
@@ -25126,12 +25140,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "IV. PEMERIKSAAN KADAR CO PERNAPASAN"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='4%'>a.</td>"+
+                                              "<td width='4%' align='center'>a.</td>"+
                                               "<td width='66%'>Apakah dilakukan pemeriksaan kadar CO pernapasan ?</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("dilakukan_pemeriksaan_kadar_co_pernapasan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>b.</td>"+
+                                              "<td width='4%' align='center'>b.</td>"+
                                               "<td width='66%'>Hasil pemeriksaan kadar CO pernapasan</td>"+
                                               "<td width='30%' align='center'>"+rs2.getString("hasil_pemeriksaan_co_pernapasan")+" Ppm</td>"+
                                           "</tr>"+
@@ -25209,13 +25223,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>1.</td>"+
+                                              "<td align='center'>1.</td>"+
                                               "<td>Secara umum, bagaimana Anda menggambarkan hubungan Anda ?</td>"+
                                               "<td align='center'>"+rs2.getString("menggambarkan_hubungan")+"</td>"+
                                               "<td align='center'>"+rs2.getString("skor_menggambarkan_hubungan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>2.</td>"+
+                                              "<td align='center'>2.</td>"+
                                               "<td>Seperti apa saat Anda dan pasangan berdebat ?</td>"+
                                               "<td align='center'>"+rs2.getString("berdebat_dengan_pasangan")+"</td>"+
                                               "<td align='center'>"+rs2.getString("skor_berdebat_dengan_pasangan")+"</td>"+
@@ -25234,37 +25248,37 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>1.</td>"+
+                                              "<td align='center'>1.</td>"+
                                               "<td>Apakah pertengkaran pernah membuat Anda merasa sedih atau buruk tentang diri sendiri ?</td>"+
                                               "<td align='center'>"+rs2.getString("pertengkaran_membuat_sedih")+"</td>"+
                                               "<td align='center'>"+rs2.getString("skor_pertengkaran_membuat_sedih")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>2.</td>"+
+                                              "<td align='center'>2.</td>"+
                                               "<td>Apakah pertengkaran pernah menghasilkan pukulan, tendangan, atau dorongan ?</td>"+
                                               "<td align='center'>"+rs2.getString("pertengkaran_menghasilkan_pukulan")+"</td>"+
                                               "<td align='center'>"+rs2.getString("skor_pertengkaran_menghasilkan_pukulan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>3.</td>"+
+                                              "<td align='center'>3.</td>"+
                                               "<td>Apakah Anda pernah merasa takut dengan apa yang pasangan Anda katakan atau lakukan ?</td>"+
                                               "<td align='center'>"+rs2.getString("pernah_merasa_takut_dengan_pasangan")+"</td>"+
                                               "<td align='center'>"+rs2.getString("skor_pernah_merasa_takut_dengan_pasangan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>4.</td>"+
+                                              "<td align='center'>4.</td>"+
                                               "<td>Apakah pasangan Anda pernah melecehkan Anda secara fisik ?</td>"+
                                               "<td align='center'>"+rs2.getString("pasangan_melecehkan_secara_fisik")+"</td>"+
                                               "<td align='center'>"+rs2.getString("skor_pasangan_melecehkan_secara_fisik")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>5.</td>"+
+                                              "<td align='center'>5.</td>"+
                                               "<td>Pernahkah pasangan Anda melecehkan Anda secara emosional ?</td>"+
                                               "<td align='center'>"+rs2.getString("pasangan_melecehkan_secara_imosional")+"</td>"+
                                               "<td align='center'>"+rs2.getString("skor_pasangan_melecehkan_secara_imosional")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>6.</td>"+
+                                              "<td align='center'>6.</td>"+
                                               "<td>Apakah pasangan Anda pernah melecehkan Anda secara seksual ?</td>"+
                                               "<td align='center'>"+rs2.getString("pasangan_melecehkan_secara_seksual")+"</td>"+
                                               "<td align='center'>"+rs2.getString("skor_pasangan_melecehkan_secara_seksual")+"</td>"+
@@ -25341,32 +25355,32 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "I. ANAMNESIS"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='4%'>1.</td>"+
+                                              "<td width='4%' align='center'>1.</td>"+
                                               "<td width='70%'>Kebiasaan Makan Manis</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("kebiasaan_makan_manis")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>2.</td>"+
+                                              "<td width='4%' align='center'>2.</td>"+
                                               "<td width='70%'>Aktifitas Fisik Setiap Hari</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("aktifitas_fisik_setiap_hari")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>3.</td>"+
+                                              "<td width='4%' align='center'>3.</td>"+
                                               "<td width='70%'>Istirahat Cukup</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("istirahat_cukup")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>4.</td>"+
+                                              "<td width='4%' align='center'>4.</td>"+
                                               "<td width='70%'>Risiko Merokok</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("risiko_merokok")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>5.</td>"+
+                                              "<td width='4%' align='center'>5.</td>"+
                                               "<td width='70%'>Riwayat Minum Alkohol / Merokok Di Keluarga</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("riwayat_minum_alkohol_merokok_keluarga")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>6.</td>"+
+                                              "<td width='4%' align='center'>6.</td>"+
                                               "<td width='70%'>Riwayat Penggunaan Obat-obatan Steroid</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("riwayat_penggunaan_obat_steroid")+"</td>"+
                                           "</tr>"+
@@ -25378,32 +25392,32 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "II. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK , 2020)"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='4%'>1.</td>"+
+                                              "<td width='4%' align='center'>1.</td>"+
                                               "<td width='70%'>Berat Badan (Kg)</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("berat_badan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>2.</td>"+
+                                              "<td width='4%' align='center'>2.</td>"+
                                               "<td width='70%'>Tinggi Badan (Cm)</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("tinggi_badan")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>3.</td>"+
+                                              "<td width='4%' align='center'>3.</td>"+
                                               "<td width='70%'>Indeks Masa Tubuh (BB/TB²)</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("imt")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>4.</td>"+
+                                              "<td width='4%' align='center'>4.</td>"+
                                               "<td width='70%'>Klasifikasi IMT</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("kasifikasi_imt")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>5.</td>"+
+                                              "<td width='4%' align='center'>5.</td>"+
                                               "<td width='70%'>Lingkat Pinggang (Cm)</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("lingkar_pinggang")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='4%'>6.</td>"+
+                                              "<td width='4%' align='center'>6.</td>"+
                                               "<td width='70%'>Risiko Berdasarkan Lingkar Pinggang</td>"+
                                               "<td width='26%' align='center'>"+rs2.getString("risiko_lingkar_pinggang")+"</td>"+
                                           "</tr>"+
@@ -25415,12 +25429,362 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "III. INTERPRETASI"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='25%'>Status Obesitas</td>"+
-                                              "<td width='75%'>"+rs2.getString("status_obesitas")+"</td>"+
+                                              "<td width='100%'>Status Obesitas : "+rs2.getString("status_obesitas")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='25%'>Keterangan</td>"+
-                                              "<td width='75%'>"+rs2.getString("keterangan")+"</td>"+
+                                              "<td width='100%'>Keterangan : "+rs2.getString("keterangan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Skrining Obesitas : "+e);
+        }
+    }
+    
+    private void menampilkanSkriningRisikoKankerPayudara(String norawat) {
+        try {
+            if(chkSkriningRisikoKankerPayudara.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select skrining_risiko_kanker_payudara.nip,petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.faktor_risiko_awal1,skrining_risiko_kanker_payudara.nilai_risiko_awal1,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_awal2,skrining_risiko_kanker_payudara.nilai_risiko_awal2,skrining_risiko_kanker_payudara.faktor_risiko_awal3,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_awal3,skrining_risiko_kanker_payudara.faktor_risiko_awal4,skrining_risiko_kanker_payudara.nilai_risiko_awal4,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_awal5,skrining_risiko_kanker_payudara.nilai_risiko_awal5,skrining_risiko_kanker_payudara.faktor_risiko_awal6,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_awal6,skrining_risiko_kanker_payudara.faktor_risiko_awal7,skrining_risiko_kanker_payudara.nilai_risiko_awal7,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_awal8,skrining_risiko_kanker_payudara.nilai_risiko_awal8,skrining_risiko_kanker_payudara.faktor_risiko_awal9,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_awal9,skrining_risiko_kanker_payudara.faktor_risiko_awal10,skrining_risiko_kanker_payudara.nilai_risiko_awal10,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_awal11,skrining_risiko_kanker_payudara.nilai_risiko_awal11,skrining_risiko_kanker_payudara.faktor_risiko_awal12,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_awal12,skrining_risiko_kanker_payudara.faktor_risiko_awal13,skrining_risiko_kanker_payudara.nilai_risiko_awal13,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_awal14,skrining_risiko_kanker_payudara.nilai_risiko_awal14,skrining_risiko_kanker_payudara.faktor_risiko_tinggi1,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_tinggi1,skrining_risiko_kanker_payudara.faktor_risiko_tinggi2,skrining_risiko_kanker_payudara.nilai_risiko_tinggi2,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_tinggi3,skrining_risiko_kanker_payudara.nilai_risiko_tinggi3,skrining_risiko_kanker_payudara.faktor_risiko_tinggi4,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_tinggi4,skrining_risiko_kanker_payudara.faktor_risiko_tinggi5,skrining_risiko_kanker_payudara.nilai_risiko_tinggi5,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_tinggi6,skrining_risiko_kanker_payudara.nilai_risiko_tinggi6,skrining_risiko_kanker_payudara.faktor_risiko_tinggi7,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_tinggi7,skrining_risiko_kanker_payudara.faktor_risiko_tinggi8,skrining_risiko_kanker_payudara.nilai_risiko_tinggi8,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_tinggi9,skrining_risiko_kanker_payudara.nilai_risiko_tinggi9,skrining_risiko_kanker_payudara.faktor_risiko_tinggi10,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_tinggi10,skrining_risiko_kanker_payudara.faktor_risiko_tinggi11,skrining_risiko_kanker_payudara.nilai_risiko_tinggi11,"+
+                            "skrining_risiko_kanker_payudara.faktor_risiko_tinggi12,skrining_risiko_kanker_payudara.nilai_risiko_tinggi12,skrining_risiko_kanker_payudara.faktor_risiko_tinggi13,"+
+                            "skrining_risiko_kanker_payudara.nilai_risiko_tinggi13,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas1,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas1,"+
+                            "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas2,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas2,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas3,"+
+                            "skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas3,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas4,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas4,"+
+                            "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas5,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas5,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas6,"+
+                            "skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas6,skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas7,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas7,"+
+                            "skrining_risiko_kanker_payudara.faktor_kecurigaan_ganas8,skrining_risiko_kanker_payudara.nilai_kecurigaan_ganas8,skrining_risiko_kanker_payudara.total_skor,"+
+                            "skrining_risiko_kanker_payudara.hasil_sadanis,skrining_risiko_kanker_payudara.tindak_lanjut_sadanis,skrining_risiko_kanker_payudara.hasil_skrining,"+
+                            "skrining_risiko_kanker_payudara.keterangan from skrining_risiko_kanker_payudara inner join petugas on skrining_risiko_kanker_payudara.nip=petugas.nip "+
+                            "where skrining_risiko_kanker_payudara.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Skrining Risiko Kanker Payudara</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='30%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='70%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. SKOR ANANTO SIDOHUTOMO"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' bgcolor='#FFFAF8' colspan='4'>A. Faktor Awal (Ya=1, Tidak=0)</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>"+
+                                              "<td valign='top' width='82%' bgcolor='#FFFAF8' align='center'>Pertanyaan</td>"+
+                                              "<td valign='top' width='10%' bgcolor='#FFFAF8' align='center'>Jawaban</td>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>1.</td>"+
+                                              "<td>Apakah anda mengalami infeksi yang masuk melalui puting susu, areola, atau kulit payudara ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal1")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>2.</td>"+
+                                              "<td>Apakah anda tidak memperhatikan kebersihan puting susu, areola, atau kulit payudara ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal2")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>3.</td>"+
+                                              "<td>Apakah anda melahirkan anak pertama saat usia lebih dari 25 tahun ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal3")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>4.</td>"+
+                                              "<td>Apakah anda atau orang di sekitar anda merokok ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal4")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>5.</td>"+
+                                              "<td>Apakah anda mengkonsumsi alkohol ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal5")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>6.</td>"+
+                                              "<td>Apakah anda tinggal di daerah tinggi polusi (banyak asap kendaraan, asap pabrik, pemanasan global) ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal6")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>7.</td>"+
+                                              "<td>Apakah anda sering mengkonsumsi makanan yang prosesnya dibakar, digoreng, diasap, diasinkan, diacar, mengandung bahan pengawet, berlemak, dan cepat saji ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal7")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal7")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>8.</td>"+
+                                              "<td>Apakah anda mengalami menarche (saat haid pertama) di usia sangat muda ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal8")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal8")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>9.</td>"+
+                                              "<td>Apakah selisih kehamilan pertama anda dengan haid pertama lebih dari 15 tahun ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal9")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal9")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>10.</td>"+
+                                              "<td>Apakah anda mengalami menopause (henti haid) di usia lebih dari 50 tahun ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal10")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal10")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>11.</td>"+
+                                              "<td>Apakah anda termasuk golongan ras kulit putih (kaukasia) ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal11")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal11")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>12.</td>"+
+                                              "<td>Apakah anda terdiagnosa mengalami mutasi gen BRCA 1 & BRCA 2 ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal12")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal12")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>13.</td>"+
+                                              "<td>Apakah anda seorang perempuan (lebih tinggi resiko dibandingkan laki-laki) ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal13")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal13")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>14.</td>"+
+                                              "<td>Apakah anda termasuk golongan obesitas/kegemukan ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_awal14")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_awal14")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' bgcolor='#FFFAF8' colspan='4'>B. Faktor Risiko Tinggi (Ya=5, Tidak=0)</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>"+
+                                              "<td valign='top' width='82%' bgcolor='#FFFAF8' align='center'>Pertanyaan</td>"+
+                                              "<td valign='top' width='10%' bgcolor='#FFFAF8' align='center'>Jawaban</td>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>1.</td>"+
+                                              "<td>Apakah anda tidak mempunyai anak ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi1")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>2.</td>"+
+                                              "<td>Apakah anda menyusui anak kurang dari 6 bulan ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi2")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>3.</td>"+
+                                              "<td>Apakah anda memakai hormonal kontrasepsi atau terapi sulih hormon ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi3")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>4.</td>"+
+                                              "<td>Apakah anda dalam setahun terkena radiasi sinar-X (rontgen) lebih dari 1 kali ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi4")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>5.</td>"+
+                                              "<td>Apakah anda pernah menjalani tindakan pembedahan pada payudara ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi5")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>6.</td>"+
+                                              "<td>Apakah anda mendapat trauma payudara akibat aktifitas seksual berlebihan ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi6")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>7.</td>"+
+                                              "<td>Apakah anda bila sakit tidak kontrol atau tidak tuntas berobat ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi7")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi7")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>8.</td>"+
+                                              "<td>Apakah anda berusia di atas 25 tahun (semakin tua usia semakin tinggi resiko) ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi8")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi8")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>9.</td>"+
+                                              "<td>Apakah anda pernah memiliki tumor (benjolan) payudara ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi9")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi9")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>10.</td>"+
+                                              "<td>Apakah anda menderita kanker pada salah satu payudara (resiko bagi satu payudara yang lainnya) ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi10")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi10")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>11.</td>"+
+                                              "<td>Apakah anda memiliki riwayat sakit kanker endometrium ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi11")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi11")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>12.</td>"+
+                                              "<td>Apakah anda diperiksa secara radiologis dan ditemukan hasil densitas yang sangat tinggi ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi12")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi12")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>13.</td>"+
+                                              "<td>Apakah anda memiliki silsilah keluarga yang menderita kanker ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_risiko_tinggi13")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_risiko_tinggi13")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' bgcolor='#FFFAF8' colspan='4'>C. Kecurigaan Keganasan (Ya=10,Tidak=0)</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>"+
+                                              "<td valign='top' width='82%' bgcolor='#FFFAF8' align='center'>Pertanyaan</td>"+
+                                              "<td valign='top' width='10%' bgcolor='#FFFAF8' align='center'>Jawaban</td>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>Skor</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>1.</td>"+
+                                              "<td>Apakah ada benjolan/tumor di payudara anda ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_kecurigaan_ganas1")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_kecurigaan_ganas1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>2.</td>"+
+                                              "<td>Apakah kulit/puting susu anda tertarik ke dalam ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_kecurigaan_ganas2")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_kecurigaan_ganas2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>3.</td>"+
+                                              "<td>Apakah areola payudara anda berwarna merah muda atau kecoklat-coklatan sampai menjadi oedema hingga kulit kelihatan seperti kulit jeruk (peau dorange), mengkerut, atau timbul borok (ulkus) ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_kecurigaan_ganas3")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_kecurigaan_ganas3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>4.</td>"+
+                                              "<td>Apakah puting susu anda mengeluarkan cairan tidak normal, darah atau nanah ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_kecurigaan_ganas4")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_kecurigaan_ganas4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>5.</td>"+
+                                              "<td>Apakah ada benjolan di ketiak anda berdiameter lebih 2,5 cm, dapat melekat satu sama lain ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_kecurigaan_ganas5")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_kecurigaan_ganas5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>6.</td>"+
+                                              "<td>Apakah ada benjolan di sekitar tulang belikat ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_kecurigaan_ganas6")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_kecurigaan_ganas6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>7.</td>"+
+                                              "<td>Apakah lengan anda bengkak ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_kecurigaan_ganas7")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_kecurigaan_ganas7")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>8.</td>"+
+                                              "<td>Apakah ada erosi atau luka yang tidak sembuh-sembuh pada puting susu ?</td>"+
+                                              "<td align='center'>"+rs2.getString("faktor_kecurigaan_ganas8")+"</td>"+
+                                              "<td align='center'>"+rs2.getString("nilai_kecurigaan_ganas8")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td colspan='3' bgcolor='#FFFAF8'>Total Skor</td>"+
+                                              "<td align='center' bgcolor='#FFFAF8'>"+rs2.getString("total_skor")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td colspan='4'>"+
+                                                   "Skor ≤ 15 : Waspada dan upayakan melakukan penanggulangan sehingga skor semakin kecil. Skor ≥ 16 : Resiko Tinggi. Segera periksa payudara, ikuti nasehat dokter. Skor berapapun bila ada YA, 1 dari poin C. : Sangat curiga ada keganasan pada payudara. Segera ke dokter."+
+                                              "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "II. PEMERIKSAAN SADANIS "+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%'>Hasil Pemeriksaan SADANIS : "+rs2.getString("hasil_sadanis")+"</td>"+
+                                              "<td width='50%'>Tindak Lanjut Hasil Pemeriksaan SADANIS : "+rs2.getString("tindak_lanjut_sadanis")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. INTERPRETASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Hasil Skrining : "+rs2.getString("hasil_skrining")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Keterangan : "+rs2.getString("keterangan")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
