@@ -91,7 +91,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 50; i++) {
+        for (i = 0; i < 70; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -164,6 +164,46 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             }else if(i==34){
                 column.setPreferredWidth(116);
             }else if(i==35){
+                column.setPreferredWidth(52);
+            }else if(i==36){
+                column.setPreferredWidth(115);
+            }else if(i==37){
+                column.setPreferredWidth(45);
+            }else if(i==38){
+                column.setPreferredWidth(115);
+            }else if(i==39){
+                column.setPreferredWidth(45);
+            }else if(i==40){
+                column.setPreferredWidth(115);
+            }else if(i==41){
+                column.setPreferredWidth(45);
+            }else if(i==42){
+                column.setPreferredWidth(115);
+            }else if(i==43){
+                column.setPreferredWidth(45);
+            }else if(i==44){
+                column.setPreferredWidth(115);
+            }else if(i==45){
+                column.setPreferredWidth(45);
+            }else if(i==46){
+                column.setPreferredWidth(115);
+            }else if(i==47){
+                column.setPreferredWidth(45);
+            }else if(i==48){
+                column.setPreferredWidth(115);
+            }else if(i==49){
+                column.setPreferredWidth(45);
+            }else if(i==50){
+                column.setPreferredWidth(115);
+            }else if(i==51){
+                column.setPreferredWidth(45);
+            }else if(i==52){
+                column.setPreferredWidth(115);
+            }else if(i==53){
+                column.setPreferredWidth(45);
+            }else if(i==54){
+                column.setPreferredWidth(122);
+            }else if(i==55){
                 column.setPreferredWidth(52);
             }
         }
