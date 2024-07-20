@@ -69,9 +69,19 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Umur","Kode Petugas","Nama Petugas","Tanggal",
-            "Pertanyaan Awal 1","N.P.A.1","Pertanyaan Awal 2","N.P.A.2","Pertanyaan Lanjutan 1","N.P.L.1",
-            "Pertanyaan Lanjutan 2","N.P.L.2","Pertanyaan Lanjutan 3","N.P.L.3","Pertanyaan Lanjutan 4","N.P.L.4",
-            "Pertanyaan Lanjutan 5","N.P.L.5","Pertanyaan Lanjutan 6","N.P.L.6","Total Skor","Hasil Skrining"
+            "Faktor Risiko Awal 1","N.R.A.1","Faktor Risiko Awal 2","N.R.A.2","Faktor Risiko Awal 3","N.R.A.3",
+            "Faktor Risiko Awal 4","N.R.A.4","Faktor Risiko Awal 5","N.R.A.5","Faktor Risiko Awal 6","N.R.A.6",
+            "Faktor Risiko Awal 7","N.R.A.7","Faktor Risiko Awal 8","N.R.A.8","Faktor Risiko Awal 9","N.R.A.9", 
+            "Faktor Risiko Awal 10","N.R.A.10","Faktor Risiko Awal 11","N.R.A.11","Faktor Risiko Awal 12","N.R.A.12",
+            "Faktor Risiko Awal 13","N.R.A.13","Faktor Risiko Awal 14","N.R.A.14","Faktor Risiko Tinggi 1","N.R.T.1",
+            "Faktor Risiko Tinggi 2","N.R.T.2","Faktor Risiko Tinggi 3","N.R.T.3","Faktor Risiko Tinggi 4","N.R.T.4", 
+            "Faktor Risiko Tinggi 5","N.R.T.5","Faktor Risiko Tinggi 6","N.R.T.6","Faktor Risiko Tinggi 7","N.R.T.7", 
+            "Faktor Risiko Tinggi 8","N.R.T.8","Faktor Risiko Tinggi 9","N.R.T.9","Faktor Risiko Tinggi 10","N.R.T.10", 
+            "Faktor Risiko Tinggi 11","N.R.T 11","Faktor Risiko Tinggi 12","N.R.T 12","Faktor Risiko Tinggi 13","N.R.T 13", 
+            "Faktor Kecurigaan Kegananasan 1","N.K.G.1","Faktor Kecurigaan Kegananasan 2","N.K.G.2","Faktor Kecurigaan Kegananasan 3","N.K.G.3", 
+            "Faktor Kecurigaan Kegananasan 4","N.K.G.4","Faktor Kecurigaan Kegananasan 5","N.K.G.5","Faktor Kecurigaan Kegananasan 6","N.K.G.6", 
+            "Faktor Kecurigaan Kegananasan 7","N.K.G.7","Faktor Kecurigaan Kegananasan 8","N.K.G.8","Total Skor",
+            "Hasil Pemeriksaan SADANIS","Tindak Lanjut Sadanis","Hasil Skrining","Keterangan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -141,6 +151,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
+        Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -277,22 +288,22 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
-        PertanyaanAwal1 = new widget.ComboBox();
+        FaktorAwal1 = new widget.ComboBox();
         jLabel92 = new widget.Label();
-        PertanyaanAwal2 = new widget.ComboBox();
+        FaktorAwal2 = new widget.ComboBox();
         jLabel69 = new widget.Label();
         jLabel73 = new widget.Label();
         TotalHasil = new widget.TextBox();
-        NilaiPertanyaanAwal1 = new widget.TextBox();
-        NilaiPertanyaanAwal2 = new widget.TextBox();
-        PertanyaanLanjutan1 = new widget.ComboBox();
+        NilaiFaktorAwal1 = new widget.TextBox();
+        NilaiFaktorAwal2 = new widget.TextBox();
+        FaktorRisikoTinggi1 = new widget.ComboBox();
         jLabel70 = new widget.Label();
-        NilaiPertanyaanLanjutan1 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi1 = new widget.TextBox();
         jLabel71 = new widget.Label();
-        NilaiPertanyaanLanjutan2 = new widget.TextBox();
-        PertanyaanLanjutan2 = new widget.ComboBox();
+        NilaiFaktorRisikoTinggi2 = new widget.TextBox();
+        FaktorRisikoTinggi2 = new widget.ComboBox();
         jLabel148 = new widget.Label();
-        HasilSkrining = new widget.TextBox();
+        Rekomendasi = new widget.TextBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
         jLabel75 = new widget.Label();
@@ -305,23 +316,23 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
         jLabel84 = new widget.Label();
-        PertanyaanLanjutan3 = new widget.ComboBox();
+        FaktorRisikoTinggi3 = new widget.ComboBox();
         jLabel72 = new widget.Label();
-        NilaiPertanyaanLanjutan3 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi3 = new widget.TextBox();
         jLabel85 = new widget.Label();
         jLabel86 = new widget.Label();
-        PertanyaanLanjutan4 = new widget.ComboBox();
+        FaktorRisikoTinggi4 = new widget.ComboBox();
         jLabel74 = new widget.Label();
-        NilaiPertanyaanLanjutan4 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi4 = new widget.TextBox();
         jLabel87 = new widget.Label();
         jLabel88 = new widget.Label();
-        PertanyaanLanjutan5 = new widget.ComboBox();
+        FaktorRisikoTinggi5 = new widget.ComboBox();
         jLabel89 = new widget.Label();
-        NilaiPertanyaanLanjutan5 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi5 = new widget.TextBox();
         jLabel90 = new widget.Label();
-        PertanyaanLanjutan6 = new widget.ComboBox();
+        FaktorRisikoTinggi6 = new widget.ComboBox();
         jLabel91 = new widget.Label();
-        NilaiPertanyaanLanjutan6 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi6 = new widget.TextBox();
         jLabel93 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel101 = new widget.Label();
@@ -329,155 +340,155 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jLabel94 = new widget.Label();
         jLabel95 = new widget.Label();
         jLabel96 = new widget.Label();
-        PertanyaanAwal3 = new widget.ComboBox();
+        FaktorAwal3 = new widget.ComboBox();
         jLabel97 = new widget.Label();
-        NilaiPertanyaanAwal3 = new widget.TextBox();
+        NilaiFaktorAwal3 = new widget.TextBox();
         jLabel98 = new widget.Label();
         jLabel102 = new widget.Label();
-        PertanyaanAwal4 = new widget.ComboBox();
+        FaktorAwal4 = new widget.ComboBox();
         jLabel103 = new widget.Label();
-        NilaiPertanyaanAwal4 = new widget.TextBox();
+        NilaiFaktorAwal4 = new widget.TextBox();
         jLabel104 = new widget.Label();
         jLabel105 = new widget.Label();
-        PertanyaanAwal5 = new widget.ComboBox();
+        FaktorAwal5 = new widget.ComboBox();
         jLabel106 = new widget.Label();
-        NilaiPertanyaanAwal5 = new widget.TextBox();
+        NilaiFaktorAwal5 = new widget.TextBox();
         jLabel107 = new widget.Label();
         jLabel108 = new widget.Label();
-        PertanyaanAwal6 = new widget.ComboBox();
+        FaktorAwal6 = new widget.ComboBox();
         jLabel109 = new widget.Label();
-        NilaiPertanyaanAwal6 = new widget.TextBox();
+        NilaiFaktorAwal6 = new widget.TextBox();
         jLabel110 = new widget.Label();
         jLabel111 = new widget.Label();
-        PertanyaanAwal7 = new widget.ComboBox();
+        FaktorAwal7 = new widget.ComboBox();
         jLabel112 = new widget.Label();
-        NilaiPertanyaanAwal7 = new widget.TextBox();
+        NilaiFaktorAwal7 = new widget.TextBox();
         jLabel113 = new widget.Label();
         jLabel114 = new widget.Label();
         jLabel115 = new widget.Label();
-        PertanyaanAwal8 = new widget.ComboBox();
+        FaktorAwal8 = new widget.ComboBox();
         jLabel116 = new widget.Label();
-        NilaiPertanyaanAwal8 = new widget.TextBox();
+        NilaiFaktorAwal8 = new widget.TextBox();
         jLabel117 = new widget.Label();
         jLabel118 = new widget.Label();
-        PertanyaanAwal9 = new widget.ComboBox();
+        FaktorAwal9 = new widget.ComboBox();
         jLabel119 = new widget.Label();
-        NilaiPertanyaanAwal9 = new widget.TextBox();
-        NilaiPertanyaanAwal10 = new widget.TextBox();
+        NilaiFaktorAwal9 = new widget.TextBox();
+        NilaiFaktorAwal10 = new widget.TextBox();
         jLabel120 = new widget.Label();
-        PertanyaanAwal10 = new widget.ComboBox();
+        FaktorAwal10 = new widget.ComboBox();
         jLabel121 = new widget.Label();
         jLabel122 = new widget.Label();
         jLabel123 = new widget.Label();
         jLabel124 = new widget.Label();
-        PertanyaanAwal11 = new widget.ComboBox();
+        FaktorAwal11 = new widget.ComboBox();
         jLabel125 = new widget.Label();
-        NilaiPertanyaanAwal11 = new widget.TextBox();
+        NilaiFaktorAwal11 = new widget.TextBox();
         jLabel126 = new widget.Label();
         jLabel127 = new widget.Label();
-        PertanyaanAwal12 = new widget.ComboBox();
+        FaktorAwal12 = new widget.ComboBox();
         jLabel128 = new widget.Label();
-        NilaiPertanyaanAwal12 = new widget.TextBox();
+        NilaiFaktorAwal12 = new widget.TextBox();
         jLabel129 = new widget.Label();
         jLabel130 = new widget.Label();
-        PertanyaanAwal13 = new widget.ComboBox();
+        FaktorAwal13 = new widget.ComboBox();
         jLabel131 = new widget.Label();
-        NilaiPertanyaanAwal13 = new widget.TextBox();
+        NilaiFaktorAwal13 = new widget.TextBox();
         jLabel132 = new widget.Label();
         jLabel133 = new widget.Label();
-        PertanyaanAwal14 = new widget.ComboBox();
+        FaktorAwal14 = new widget.ComboBox();
         jLabel134 = new widget.Label();
-        NilaiPertanyaanAwal14 = new widget.TextBox();
+        NilaiFaktorAwal14 = new widget.TextBox();
         jLabel135 = new widget.Label();
         jLabel100 = new widget.Label();
         jLabel136 = new widget.Label();
-        PertanyaanLanjutan7 = new widget.ComboBox();
+        FaktorRisikoTinggi7 = new widget.ComboBox();
         jLabel137 = new widget.Label();
-        NilaiPertanyaanLanjutan7 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi7 = new widget.TextBox();
         jLabel138 = new widget.Label();
         jLabel139 = new widget.Label();
-        PertanyaanLanjutan8 = new widget.ComboBox();
+        FaktorRisikoTinggi8 = new widget.ComboBox();
         jLabel140 = new widget.Label();
-        NilaiPertanyaanLanjutan8 = new widget.TextBox();
-        NilaiPertanyaanLanjutan9 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi8 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi9 = new widget.TextBox();
         jLabel141 = new widget.Label();
-        PertanyaanLanjutan9 = new widget.ComboBox();
+        FaktorRisikoTinggi9 = new widget.ComboBox();
         jLabel142 = new widget.Label();
         jLabel143 = new widget.Label();
         jLabel144 = new widget.Label();
         jLabel145 = new widget.Label();
-        PertanyaanLanjutan10 = new widget.ComboBox();
+        FaktorRisikoTinggi10 = new widget.ComboBox();
         jLabel146 = new widget.Label();
-        NilaiPertanyaanLanjutan10 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi10 = new widget.TextBox();
         jLabel147 = new widget.Label();
         jLabel150 = new widget.Label();
-        PertanyaanLanjutan11 = new widget.ComboBox();
+        FaktorRisikoTinggi11 = new widget.ComboBox();
         jLabel151 = new widget.Label();
-        NilaiPertanyaanLanjutan11 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi11 = new widget.TextBox();
         jLabel152 = new widget.Label();
         jLabel153 = new widget.Label();
-        PertanyaanLanjutan12 = new widget.ComboBox();
+        FaktorRisikoTinggi12 = new widget.ComboBox();
         jLabel154 = new widget.Label();
-        NilaiPertanyaanLanjutan12 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi12 = new widget.TextBox();
         jLabel155 = new widget.Label();
         jLabel156 = new widget.Label();
-        PertanyaanLanjutan13 = new widget.ComboBox();
+        FaktorRisikoTinggi13 = new widget.ComboBox();
         jLabel157 = new widget.Label();
-        NilaiPertanyaanLanjutan13 = new widget.TextBox();
+        NilaiFaktorRisikoTinggi13 = new widget.TextBox();
         jLabel158 = new widget.Label();
         jLabel159 = new widget.Label();
         jLabel160 = new widget.Label();
-        PertanyaanLanjutan14 = new widget.ComboBox();
+        KecurigaanKeganasan1 = new widget.ComboBox();
         jLabel161 = new widget.Label();
-        NilaiPertanyaanLanjutan14 = new widget.TextBox();
+        NilaiKecurigaanKeganasan1 = new widget.TextBox();
         jLabel162 = new widget.Label();
         jLabel163 = new widget.Label();
-        PertanyaanLanjutan15 = new widget.ComboBox();
+        KecurigaanKeganasan2 = new widget.ComboBox();
         jLabel164 = new widget.Label();
-        NilaiPertanyaanLanjutan15 = new widget.TextBox();
+        NilaiKecurigaanKeganasan2 = new widget.TextBox();
         jLabel165 = new widget.Label();
         jLabel166 = new widget.Label();
-        PertanyaanLanjutan16 = new widget.ComboBox();
+        KecurigaanKeganasan3 = new widget.ComboBox();
         jLabel167 = new widget.Label();
-        NilaiPertanyaanLanjutan16 = new widget.TextBox();
+        NilaiKecurigaanKeganasan3 = new widget.TextBox();
         jLabel168 = new widget.Label();
         jLabel169 = new widget.Label();
         jLabel170 = new widget.Label();
-        PertanyaanLanjutan17 = new widget.ComboBox();
+        KecurigaanKeganasan4 = new widget.ComboBox();
         jLabel171 = new widget.Label();
-        NilaiPertanyaanLanjutan17 = new widget.TextBox();
+        NilaiKecurigaanKeganasan4 = new widget.TextBox();
         jLabel172 = new widget.Label();
         jLabel173 = new widget.Label();
-        PertanyaanLanjutan18 = new widget.ComboBox();
+        KecurigaanKeganasan5 = new widget.ComboBox();
         jLabel174 = new widget.Label();
-        NilaiPertanyaanLanjutan18 = new widget.TextBox();
+        NilaiKecurigaanKeganasan5 = new widget.TextBox();
         jLabel175 = new widget.Label();
         jLabel176 = new widget.Label();
-        PertanyaanLanjutan19 = new widget.ComboBox();
+        KecurigaanKeganasan6 = new widget.ComboBox();
         jLabel177 = new widget.Label();
-        NilaiPertanyaanLanjutan19 = new widget.TextBox();
+        NilaiKecurigaanKeganasan6 = new widget.TextBox();
         jLabel178 = new widget.Label();
         jLabel179 = new widget.Label();
-        PertanyaanLanjutan20 = new widget.ComboBox();
+        KecurigaanKeganasan7 = new widget.ComboBox();
         jLabel180 = new widget.Label();
-        NilaiPertanyaanLanjutan20 = new widget.TextBox();
+        NilaiKecurigaanKeganasan7 = new widget.TextBox();
         jLabel181 = new widget.Label();
         jLabel182 = new widget.Label();
-        PertanyaanLanjutan21 = new widget.ComboBox();
+        KecurigaanKeganasan8 = new widget.ComboBox();
         jLabel183 = new widget.Label();
-        NilaiPertanyaanLanjutan21 = new widget.TextBox();
+        NilaiKecurigaanKeganasan8 = new widget.TextBox();
         jLabel184 = new widget.Label();
-        PertanyaanLanjutan22 = new widget.ComboBox();
+        HasilPemeriksaanSadanis = new widget.ComboBox();
         jLabel185 = new widget.Label();
         jLabel186 = new widget.Label();
-        PertanyaanLanjutan23 = new widget.ComboBox();
+        TindakLanjutSadanis = new widget.ComboBox();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel187 = new widget.Label();
         jLabel188 = new widget.Label();
-        PertanyaanLanjutan24 = new widget.ComboBox();
+        HasilSkrining = new widget.ComboBox();
         jLabel189 = new widget.Label();
         jLabel190 = new widget.Label();
-        HasilSkrining1 = new widget.TextBox();
+        Keterangan = new widget.TextBox();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
@@ -919,40 +930,40 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        PertanyaanAwal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal1.setName("PertanyaanAwal1"); // NOI18N
-        PertanyaanAwal1.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal1.setName("FaktorAwal1"); // NOI18N
+        FaktorAwal1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal1ItemStateChanged(evt);
+                FaktorAwal1ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal1.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal1KeyPressed(evt);
+                FaktorAwal1KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal1);
-        PertanyaanAwal1.setBounds(620, 110, 80, 23);
+        FormInput.add(FaktorAwal1);
+        FaktorAwal1.setBounds(620, 110, 80, 23);
 
         jLabel92.setText("Nilai :");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
         jLabel92.setBounds(690, 110, 50, 23);
 
-        PertanyaanAwal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal2.setName("PertanyaanAwal2"); // NOI18N
-        PertanyaanAwal2.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal2.setName("FaktorAwal2"); // NOI18N
+        FaktorAwal2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal2ItemStateChanged(evt);
+                FaktorAwal2ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal2.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal2KeyPressed(evt);
+                FaktorAwal2KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal2);
-        PertanyaanAwal2.setBounds(620, 140, 80, 23);
+        FormInput.add(FaktorAwal2);
+        FaktorAwal2.setBounds(620, 140, 80, 23);
 
         jLabel69.setText("Nilai :");
         jLabel69.setName("jLabel69"); // NOI18N
@@ -971,73 +982,73 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(TotalHasil);
         TotalHasil.setBounds(744, 1210, 45, 23);
 
-        NilaiPertanyaanAwal1.setEditable(false);
-        NilaiPertanyaanAwal1.setText("0");
-        NilaiPertanyaanAwal1.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal1.setName("NilaiPertanyaanAwal1"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal1);
-        NilaiPertanyaanAwal1.setBounds(744, 110, 45, 23);
+        NilaiFaktorAwal1.setEditable(false);
+        NilaiFaktorAwal1.setText("0");
+        NilaiFaktorAwal1.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal1.setName("NilaiFaktorAwal1"); // NOI18N
+        FormInput.add(NilaiFaktorAwal1);
+        NilaiFaktorAwal1.setBounds(744, 110, 45, 23);
 
-        NilaiPertanyaanAwal2.setEditable(false);
-        NilaiPertanyaanAwal2.setText("0");
-        NilaiPertanyaanAwal2.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal2.setName("NilaiPertanyaanAwal2"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal2);
-        NilaiPertanyaanAwal2.setBounds(744, 140, 45, 23);
+        NilaiFaktorAwal2.setEditable(false);
+        NilaiFaktorAwal2.setText("0");
+        NilaiFaktorAwal2.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal2.setName("NilaiFaktorAwal2"); // NOI18N
+        FormInput.add(NilaiFaktorAwal2);
+        NilaiFaktorAwal2.setBounds(744, 140, 45, 23);
 
-        PertanyaanLanjutan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan1.setName("PertanyaanLanjutan1"); // NOI18N
-        PertanyaanLanjutan1.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi1.setName("FaktorRisikoTinggi1"); // NOI18N
+        FaktorRisikoTinggi1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan1ItemStateChanged(evt);
+                FaktorRisikoTinggi1ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan1.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan1KeyPressed(evt);
+                FaktorRisikoTinggi1KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan1);
-        PertanyaanLanjutan1.setBounds(620, 550, 80, 23);
+        FormInput.add(FaktorRisikoTinggi1);
+        FaktorRisikoTinggi1.setBounds(620, 550, 80, 23);
 
         jLabel70.setText("Nilai :");
         jLabel70.setName("jLabel70"); // NOI18N
         FormInput.add(jLabel70);
         jLabel70.setBounds(690, 550, 50, 23);
 
-        NilaiPertanyaanLanjutan1.setEditable(false);
-        NilaiPertanyaanLanjutan1.setText("0");
-        NilaiPertanyaanLanjutan1.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan1.setName("NilaiPertanyaanLanjutan1"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan1);
-        NilaiPertanyaanLanjutan1.setBounds(744, 550, 45, 23);
+        NilaiFaktorRisikoTinggi1.setEditable(false);
+        NilaiFaktorRisikoTinggi1.setText("0");
+        NilaiFaktorRisikoTinggi1.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi1.setName("NilaiFaktorRisikoTinggi1"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi1);
+        NilaiFaktorRisikoTinggi1.setBounds(744, 550, 45, 23);
 
         jLabel71.setText("Nilai :");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
         jLabel71.setBounds(690, 580, 50, 23);
 
-        NilaiPertanyaanLanjutan2.setEditable(false);
-        NilaiPertanyaanLanjutan2.setText("0");
-        NilaiPertanyaanLanjutan2.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan2.setName("NilaiPertanyaanLanjutan2"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan2);
-        NilaiPertanyaanLanjutan2.setBounds(744, 580, 45, 23);
+        NilaiFaktorRisikoTinggi2.setEditable(false);
+        NilaiFaktorRisikoTinggi2.setText("0");
+        NilaiFaktorRisikoTinggi2.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi2.setName("NilaiFaktorRisikoTinggi2"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi2);
+        NilaiFaktorRisikoTinggi2.setBounds(744, 580, 45, 23);
 
-        PertanyaanLanjutan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan2.setName("PertanyaanLanjutan2"); // NOI18N
-        PertanyaanLanjutan2.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi2.setName("FaktorRisikoTinggi2"); // NOI18N
+        FaktorRisikoTinggi2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan2ItemStateChanged(evt);
+                FaktorRisikoTinggi2ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan2.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan2KeyPressed(evt);
+                FaktorRisikoTinggi2KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan2);
-        PertanyaanLanjutan2.setBounds(620, 580, 80, 23);
+        FormInput.add(FaktorRisikoTinggi2);
+        FaktorRisikoTinggi2.setBounds(620, 580, 80, 23);
 
         jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel148.setText("Rekomendasi");
@@ -1045,16 +1056,16 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel148);
         jLabel148.setBounds(44, 1210, 90, 23);
 
-        HasilSkrining.setEditable(false);
-        HasilSkrining.setFocusTraversalPolicyProvider(true);
-        HasilSkrining.setName("HasilSkrining"); // NOI18N
-        HasilSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
+        Rekomendasi.setEditable(false);
+        Rekomendasi.setFocusTraversalPolicyProvider(true);
+        Rekomendasi.setName("Rekomendasi"); // NOI18N
+        Rekomendasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                HasilSkriningKeyPressed(evt);
+                RekomendasiKeyPressed(evt);
             }
         });
-        FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(120, 1210, 520, 23);
+        FormInput.add(Rekomendasi);
+        Rekomendasi.setBounds(120, 1210, 520, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1129,32 +1140,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel84);
         jLabel84.setBounds(72, 610, 470, 23);
 
-        PertanyaanLanjutan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan3.setName("PertanyaanLanjutan3"); // NOI18N
-        PertanyaanLanjutan3.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi3.setName("FaktorRisikoTinggi3"); // NOI18N
+        FaktorRisikoTinggi3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan3ItemStateChanged(evt);
+                FaktorRisikoTinggi3ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan3.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan3KeyPressed(evt);
+                FaktorRisikoTinggi3KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan3);
-        PertanyaanLanjutan3.setBounds(620, 610, 80, 23);
+        FormInput.add(FaktorRisikoTinggi3);
+        FaktorRisikoTinggi3.setBounds(620, 610, 80, 23);
 
         jLabel72.setText("Nilai :");
         jLabel72.setName("jLabel72"); // NOI18N
         FormInput.add(jLabel72);
         jLabel72.setBounds(690, 610, 50, 23);
 
-        NilaiPertanyaanLanjutan3.setEditable(false);
-        NilaiPertanyaanLanjutan3.setText("0");
-        NilaiPertanyaanLanjutan3.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan3.setName("NilaiPertanyaanLanjutan3"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan3);
-        NilaiPertanyaanLanjutan3.setBounds(744, 610, 45, 23);
+        NilaiFaktorRisikoTinggi3.setEditable(false);
+        NilaiFaktorRisikoTinggi3.setText("0");
+        NilaiFaktorRisikoTinggi3.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi3.setName("NilaiFaktorRisikoTinggi3"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi3);
+        NilaiFaktorRisikoTinggi3.setBounds(744, 610, 45, 23);
 
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel85.setText("4.");
@@ -1168,32 +1179,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel86);
         jLabel86.setBounds(72, 640, 470, 23);
 
-        PertanyaanLanjutan4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan4.setName("PertanyaanLanjutan4"); // NOI18N
-        PertanyaanLanjutan4.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi4.setName("FaktorRisikoTinggi4"); // NOI18N
+        FaktorRisikoTinggi4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan4ItemStateChanged(evt);
+                FaktorRisikoTinggi4ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan4.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan4KeyPressed(evt);
+                FaktorRisikoTinggi4KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan4);
-        PertanyaanLanjutan4.setBounds(620, 640, 80, 23);
+        FormInput.add(FaktorRisikoTinggi4);
+        FaktorRisikoTinggi4.setBounds(620, 640, 80, 23);
 
         jLabel74.setText("Nilai :");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
         jLabel74.setBounds(690, 640, 50, 23);
 
-        NilaiPertanyaanLanjutan4.setEditable(false);
-        NilaiPertanyaanLanjutan4.setText("0");
-        NilaiPertanyaanLanjutan4.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan4.setName("NilaiPertanyaanLanjutan4"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan4);
-        NilaiPertanyaanLanjutan4.setBounds(744, 640, 45, 23);
+        NilaiFaktorRisikoTinggi4.setEditable(false);
+        NilaiFaktorRisikoTinggi4.setText("0");
+        NilaiFaktorRisikoTinggi4.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi4.setName("NilaiFaktorRisikoTinggi4"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi4);
+        NilaiFaktorRisikoTinggi4.setBounds(744, 640, 45, 23);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel87.setText("Apakah anda pernah menjalani tindakan pembedahan pada payudara ?");
@@ -1207,32 +1218,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel88);
         jLabel88.setBounds(54, 670, 20, 23);
 
-        PertanyaanLanjutan5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan5.setName("PertanyaanLanjutan5"); // NOI18N
-        PertanyaanLanjutan5.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi5.setName("FaktorRisikoTinggi5"); // NOI18N
+        FaktorRisikoTinggi5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan5ItemStateChanged(evt);
+                FaktorRisikoTinggi5ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan5.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan5KeyPressed(evt);
+                FaktorRisikoTinggi5KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan5);
-        PertanyaanLanjutan5.setBounds(620, 670, 80, 23);
+        FormInput.add(FaktorRisikoTinggi5);
+        FaktorRisikoTinggi5.setBounds(620, 670, 80, 23);
 
         jLabel89.setText("Nilai :");
         jLabel89.setName("jLabel89"); // NOI18N
         FormInput.add(jLabel89);
         jLabel89.setBounds(690, 670, 50, 23);
 
-        NilaiPertanyaanLanjutan5.setEditable(false);
-        NilaiPertanyaanLanjutan5.setText("0");
-        NilaiPertanyaanLanjutan5.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan5.setName("NilaiPertanyaanLanjutan5"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan5);
-        NilaiPertanyaanLanjutan5.setBounds(744, 670, 45, 23);
+        NilaiFaktorRisikoTinggi5.setEditable(false);
+        NilaiFaktorRisikoTinggi5.setText("0");
+        NilaiFaktorRisikoTinggi5.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi5.setName("NilaiFaktorRisikoTinggi5"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi5);
+        NilaiFaktorRisikoTinggi5.setBounds(744, 670, 45, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("Apakah anda mendapat trauma payudara akibat aktifitas seksual berlebihan ?");
@@ -1240,32 +1251,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel90);
         jLabel90.setBounds(72, 700, 470, 23);
 
-        PertanyaanLanjutan6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan6.setName("PertanyaanLanjutan6"); // NOI18N
-        PertanyaanLanjutan6.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi6.setName("FaktorRisikoTinggi6"); // NOI18N
+        FaktorRisikoTinggi6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan6ItemStateChanged(evt);
+                FaktorRisikoTinggi6ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan6.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan6KeyPressed(evt);
+                FaktorRisikoTinggi6KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan6);
-        PertanyaanLanjutan6.setBounds(620, 700, 80, 23);
+        FormInput.add(FaktorRisikoTinggi6);
+        FaktorRisikoTinggi6.setBounds(620, 700, 80, 23);
 
         jLabel91.setText("Nilai :");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
         jLabel91.setBounds(690, 700, 50, 23);
 
-        NilaiPertanyaanLanjutan6.setEditable(false);
-        NilaiPertanyaanLanjutan6.setText("0");
-        NilaiPertanyaanLanjutan6.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan6.setName("NilaiPertanyaanLanjutan6"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan6);
-        NilaiPertanyaanLanjutan6.setBounds(744, 700, 45, 23);
+        NilaiFaktorRisikoTinggi6.setEditable(false);
+        NilaiFaktorRisikoTinggi6.setText("0");
+        NilaiFaktorRisikoTinggi6.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi6.setName("NilaiFaktorRisikoTinggi6"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi6);
+        NilaiFaktorRisikoTinggi6.setBounds(744, 700, 45, 23);
 
         jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel93.setText("6.");
@@ -1309,32 +1320,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel96);
         jLabel96.setBounds(54, 170, 20, 23);
 
-        PertanyaanAwal3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal3.setName("PertanyaanAwal3"); // NOI18N
-        PertanyaanAwal3.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal3.setName("FaktorAwal3"); // NOI18N
+        FaktorAwal3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal3ItemStateChanged(evt);
+                FaktorAwal3ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal3.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal3KeyPressed(evt);
+                FaktorAwal3KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal3);
-        PertanyaanAwal3.setBounds(620, 170, 80, 23);
+        FormInput.add(FaktorAwal3);
+        FaktorAwal3.setBounds(620, 170, 80, 23);
 
         jLabel97.setText("Nilai :");
         jLabel97.setName("jLabel97"); // NOI18N
         FormInput.add(jLabel97);
         jLabel97.setBounds(690, 170, 50, 23);
 
-        NilaiPertanyaanAwal3.setEditable(false);
-        NilaiPertanyaanAwal3.setText("0");
-        NilaiPertanyaanAwal3.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal3.setName("NilaiPertanyaanAwal3"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal3);
-        NilaiPertanyaanAwal3.setBounds(744, 170, 45, 23);
+        NilaiFaktorAwal3.setEditable(false);
+        NilaiFaktorAwal3.setText("0");
+        NilaiFaktorAwal3.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal3.setName("NilaiFaktorAwal3"); // NOI18N
+        FormInput.add(NilaiFaktorAwal3);
+        NilaiFaktorAwal3.setBounds(744, 170, 45, 23);
 
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel98.setText("Apakah anda atau orang di sekitar anda merokok ?");
@@ -1348,32 +1359,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel102);
         jLabel102.setBounds(54, 200, 20, 23);
 
-        PertanyaanAwal4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal4.setName("PertanyaanAwal4"); // NOI18N
-        PertanyaanAwal4.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal4.setName("FaktorAwal4"); // NOI18N
+        FaktorAwal4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal4ItemStateChanged(evt);
+                FaktorAwal4ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal4.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal4KeyPressed(evt);
+                FaktorAwal4KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal4);
-        PertanyaanAwal4.setBounds(620, 200, 80, 23);
+        FormInput.add(FaktorAwal4);
+        FaktorAwal4.setBounds(620, 200, 80, 23);
 
         jLabel103.setText("Nilai :");
         jLabel103.setName("jLabel103"); // NOI18N
         FormInput.add(jLabel103);
         jLabel103.setBounds(690, 200, 50, 23);
 
-        NilaiPertanyaanAwal4.setEditable(false);
-        NilaiPertanyaanAwal4.setText("0");
-        NilaiPertanyaanAwal4.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal4.setName("NilaiPertanyaanAwal4"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal4);
-        NilaiPertanyaanAwal4.setBounds(744, 200, 45, 23);
+        NilaiFaktorAwal4.setEditable(false);
+        NilaiFaktorAwal4.setText("0");
+        NilaiFaktorAwal4.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal4.setName("NilaiFaktorAwal4"); // NOI18N
+        FormInput.add(NilaiFaktorAwal4);
+        NilaiFaktorAwal4.setBounds(744, 200, 45, 23);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel104.setText("Apakah anda mengkonsumsi alkohol ?");
@@ -1387,32 +1398,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel105);
         jLabel105.setBounds(54, 230, 20, 23);
 
-        PertanyaanAwal5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal5.setName("PertanyaanAwal5"); // NOI18N
-        PertanyaanAwal5.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal5.setName("FaktorAwal5"); // NOI18N
+        FaktorAwal5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal5ItemStateChanged(evt);
+                FaktorAwal5ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal5.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal5KeyPressed(evt);
+                FaktorAwal5KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal5);
-        PertanyaanAwal5.setBounds(620, 230, 80, 23);
+        FormInput.add(FaktorAwal5);
+        FaktorAwal5.setBounds(620, 230, 80, 23);
 
         jLabel106.setText("Nilai :");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
         jLabel106.setBounds(690, 230, 50, 23);
 
-        NilaiPertanyaanAwal5.setEditable(false);
-        NilaiPertanyaanAwal5.setText("0");
-        NilaiPertanyaanAwal5.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal5.setName("NilaiPertanyaanAwal5"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal5);
-        NilaiPertanyaanAwal5.setBounds(744, 230, 45, 23);
+        NilaiFaktorAwal5.setEditable(false);
+        NilaiFaktorAwal5.setText("0");
+        NilaiFaktorAwal5.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal5.setName("NilaiFaktorAwal5"); // NOI18N
+        FormInput.add(NilaiFaktorAwal5);
+        NilaiFaktorAwal5.setBounds(744, 230, 45, 23);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("6.");
@@ -1426,32 +1437,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel108);
         jLabel108.setBounds(72, 260, 530, 23);
 
-        PertanyaanAwal6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal6.setName("PertanyaanAwal6"); // NOI18N
-        PertanyaanAwal6.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal6.setName("FaktorAwal6"); // NOI18N
+        FaktorAwal6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal6ItemStateChanged(evt);
+                FaktorAwal6ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal6.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal6KeyPressed(evt);
+                FaktorAwal6KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal6);
-        PertanyaanAwal6.setBounds(620, 260, 80, 23);
+        FormInput.add(FaktorAwal6);
+        FaktorAwal6.setBounds(620, 260, 80, 23);
 
         jLabel109.setText("Nilai :");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
         jLabel109.setBounds(690, 260, 50, 23);
 
-        NilaiPertanyaanAwal6.setEditable(false);
-        NilaiPertanyaanAwal6.setText("0");
-        NilaiPertanyaanAwal6.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal6.setName("NilaiPertanyaanAwal6"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal6);
-        NilaiPertanyaanAwal6.setBounds(744, 260, 45, 23);
+        NilaiFaktorAwal6.setEditable(false);
+        NilaiFaktorAwal6.setText("0");
+        NilaiFaktorAwal6.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal6.setName("NilaiFaktorAwal6"); // NOI18N
+        FormInput.add(NilaiFaktorAwal6);
+        NilaiFaktorAwal6.setBounds(744, 260, 45, 23);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel110.setText("Apakah anda sering mengkonsumsi makanan yang prosesnya dibakar, digoreng, diasap, diasinkan,");
@@ -1465,32 +1476,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel111);
         jLabel111.setBounds(54, 290, 20, 23);
 
-        PertanyaanAwal7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal7.setName("PertanyaanAwal7"); // NOI18N
-        PertanyaanAwal7.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal7.setName("FaktorAwal7"); // NOI18N
+        FaktorAwal7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal7ItemStateChanged(evt);
+                FaktorAwal7ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal7.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal7KeyPressed(evt);
+                FaktorAwal7KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal7);
-        PertanyaanAwal7.setBounds(620, 290, 80, 23);
+        FormInput.add(FaktorAwal7);
+        FaktorAwal7.setBounds(620, 290, 80, 23);
 
         jLabel112.setText("Nilai :");
         jLabel112.setName("jLabel112"); // NOI18N
         FormInput.add(jLabel112);
         jLabel112.setBounds(690, 290, 50, 23);
 
-        NilaiPertanyaanAwal7.setEditable(false);
-        NilaiPertanyaanAwal7.setText("0");
-        NilaiPertanyaanAwal7.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal7.setName("NilaiPertanyaanAwal7"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal7);
-        NilaiPertanyaanAwal7.setBounds(744, 290, 45, 23);
+        NilaiFaktorAwal7.setEditable(false);
+        NilaiFaktorAwal7.setText("0");
+        NilaiFaktorAwal7.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal7.setName("NilaiFaktorAwal7"); // NOI18N
+        FormInput.add(NilaiFaktorAwal7);
+        NilaiFaktorAwal7.setBounds(744, 290, 45, 23);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel113.setText("diacar, mengandung bahan pengawet, berlemak, dan cepat saji ?");
@@ -1510,32 +1521,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel115);
         jLabel115.setBounds(72, 320, 530, 23);
 
-        PertanyaanAwal8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal8.setName("PertanyaanAwal8"); // NOI18N
-        PertanyaanAwal8.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal8.setName("FaktorAwal8"); // NOI18N
+        FaktorAwal8.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal8ItemStateChanged(evt);
+                FaktorAwal8ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal8.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal8KeyPressed(evt);
+                FaktorAwal8KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal8);
-        PertanyaanAwal8.setBounds(620, 320, 80, 23);
+        FormInput.add(FaktorAwal8);
+        FaktorAwal8.setBounds(620, 320, 80, 23);
 
         jLabel116.setText("Nilai :");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
         jLabel116.setBounds(690, 320, 50, 23);
 
-        NilaiPertanyaanAwal8.setEditable(false);
-        NilaiPertanyaanAwal8.setText("0");
-        NilaiPertanyaanAwal8.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal8.setName("NilaiPertanyaanAwal8"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal8);
-        NilaiPertanyaanAwal8.setBounds(744, 320, 45, 23);
+        NilaiFaktorAwal8.setEditable(false);
+        NilaiFaktorAwal8.setText("0");
+        NilaiFaktorAwal8.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal8.setName("NilaiFaktorAwal8"); // NOI18N
+        FormInput.add(NilaiFaktorAwal8);
+        NilaiFaktorAwal8.setBounds(744, 320, 45, 23);
 
         jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel117.setText("9.");
@@ -1549,59 +1560,59 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel118);
         jLabel118.setBounds(72, 350, 530, 23);
 
-        PertanyaanAwal9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal9.setName("PertanyaanAwal9"); // NOI18N
-        PertanyaanAwal9.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal9.setName("FaktorAwal9"); // NOI18N
+        FaktorAwal9.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal9ItemStateChanged(evt);
+                FaktorAwal9ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal9.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal9KeyPressed(evt);
+                FaktorAwal9KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal9);
-        PertanyaanAwal9.setBounds(620, 350, 80, 23);
+        FormInput.add(FaktorAwal9);
+        FaktorAwal9.setBounds(620, 350, 80, 23);
 
         jLabel119.setText("Nilai :");
         jLabel119.setName("jLabel119"); // NOI18N
         FormInput.add(jLabel119);
         jLabel119.setBounds(690, 350, 50, 23);
 
-        NilaiPertanyaanAwal9.setEditable(false);
-        NilaiPertanyaanAwal9.setText("0");
-        NilaiPertanyaanAwal9.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal9.setName("NilaiPertanyaanAwal9"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal9);
-        NilaiPertanyaanAwal9.setBounds(744, 350, 45, 23);
+        NilaiFaktorAwal9.setEditable(false);
+        NilaiFaktorAwal9.setText("0");
+        NilaiFaktorAwal9.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal9.setName("NilaiFaktorAwal9"); // NOI18N
+        FormInput.add(NilaiFaktorAwal9);
+        NilaiFaktorAwal9.setBounds(744, 350, 45, 23);
 
-        NilaiPertanyaanAwal10.setEditable(false);
-        NilaiPertanyaanAwal10.setText("0");
-        NilaiPertanyaanAwal10.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal10.setName("NilaiPertanyaanAwal10"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal10);
-        NilaiPertanyaanAwal10.setBounds(744, 380, 45, 23);
+        NilaiFaktorAwal10.setEditable(false);
+        NilaiFaktorAwal10.setText("0");
+        NilaiFaktorAwal10.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal10.setName("NilaiFaktorAwal10"); // NOI18N
+        FormInput.add(NilaiFaktorAwal10);
+        NilaiFaktorAwal10.setBounds(744, 380, 45, 23);
 
         jLabel120.setText("Nilai :");
         jLabel120.setName("jLabel120"); // NOI18N
         FormInput.add(jLabel120);
         jLabel120.setBounds(690, 380, 50, 23);
 
-        PertanyaanAwal10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal10.setName("PertanyaanAwal10"); // NOI18N
-        PertanyaanAwal10.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal10.setName("FaktorAwal10"); // NOI18N
+        FaktorAwal10.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal10ItemStateChanged(evt);
+                FaktorAwal10ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal10.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal10KeyPressed(evt);
+                FaktorAwal10KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal10);
-        PertanyaanAwal10.setBounds(620, 380, 80, 23);
+        FormInput.add(FaktorAwal10);
+        FaktorAwal10.setBounds(620, 380, 80, 23);
 
         jLabel121.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel121.setText("Apakah anda mengalami menopause (henti haid) di usia lebih dari 50 tahun ?");
@@ -1627,32 +1638,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel124);
         jLabel124.setBounds(72, 410, 530, 23);
 
-        PertanyaanAwal11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal11.setName("PertanyaanAwal11"); // NOI18N
-        PertanyaanAwal11.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal11.setName("FaktorAwal11"); // NOI18N
+        FaktorAwal11.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal11ItemStateChanged(evt);
+                FaktorAwal11ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal11.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal11KeyPressed(evt);
+                FaktorAwal11KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal11);
-        PertanyaanAwal11.setBounds(620, 410, 80, 23);
+        FormInput.add(FaktorAwal11);
+        FaktorAwal11.setBounds(620, 410, 80, 23);
 
         jLabel125.setText("Nilai :");
         jLabel125.setName("jLabel125"); // NOI18N
         FormInput.add(jLabel125);
         jLabel125.setBounds(690, 410, 50, 23);
 
-        NilaiPertanyaanAwal11.setEditable(false);
-        NilaiPertanyaanAwal11.setText("0");
-        NilaiPertanyaanAwal11.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal11.setName("NilaiPertanyaanAwal11"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal11);
-        NilaiPertanyaanAwal11.setBounds(744, 410, 45, 23);
+        NilaiFaktorAwal11.setEditable(false);
+        NilaiFaktorAwal11.setText("0");
+        NilaiFaktorAwal11.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal11.setName("NilaiFaktorAwal11"); // NOI18N
+        FormInput.add(NilaiFaktorAwal11);
+        NilaiFaktorAwal11.setBounds(744, 410, 45, 23);
 
         jLabel126.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel126.setText("Apakah anda terdiagnosa mengalami mutasi gen BRCA 1 & BRCA 2 ?");
@@ -1666,32 +1677,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel127);
         jLabel127.setBounds(54, 440, 20, 23);
 
-        PertanyaanAwal12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal12.setName("PertanyaanAwal12"); // NOI18N
-        PertanyaanAwal12.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal12.setName("FaktorAwal12"); // NOI18N
+        FaktorAwal12.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal12ItemStateChanged(evt);
+                FaktorAwal12ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal12.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal12.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal12KeyPressed(evt);
+                FaktorAwal12KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal12);
-        PertanyaanAwal12.setBounds(620, 440, 80, 23);
+        FormInput.add(FaktorAwal12);
+        FaktorAwal12.setBounds(620, 440, 80, 23);
 
         jLabel128.setText("Nilai :");
         jLabel128.setName("jLabel128"); // NOI18N
         FormInput.add(jLabel128);
         jLabel128.setBounds(690, 440, 50, 23);
 
-        NilaiPertanyaanAwal12.setEditable(false);
-        NilaiPertanyaanAwal12.setText("0");
-        NilaiPertanyaanAwal12.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal12.setName("NilaiPertanyaanAwal12"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal12);
-        NilaiPertanyaanAwal12.setBounds(744, 440, 45, 23);
+        NilaiFaktorAwal12.setEditable(false);
+        NilaiFaktorAwal12.setText("0");
+        NilaiFaktorAwal12.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal12.setName("NilaiFaktorAwal12"); // NOI18N
+        FormInput.add(NilaiFaktorAwal12);
+        NilaiFaktorAwal12.setBounds(744, 440, 45, 23);
 
         jLabel129.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel129.setText("13.");
@@ -1705,32 +1716,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel130);
         jLabel130.setBounds(72, 470, 530, 23);
 
-        PertanyaanAwal13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal13.setName("PertanyaanAwal13"); // NOI18N
-        PertanyaanAwal13.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal13.setName("FaktorAwal13"); // NOI18N
+        FaktorAwal13.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal13ItemStateChanged(evt);
+                FaktorAwal13ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal13.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal13.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal13KeyPressed(evt);
+                FaktorAwal13KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal13);
-        PertanyaanAwal13.setBounds(620, 470, 80, 23);
+        FormInput.add(FaktorAwal13);
+        FaktorAwal13.setBounds(620, 470, 80, 23);
 
         jLabel131.setText("Nilai :");
         jLabel131.setName("jLabel131"); // NOI18N
         FormInput.add(jLabel131);
         jLabel131.setBounds(690, 470, 50, 23);
 
-        NilaiPertanyaanAwal13.setEditable(false);
-        NilaiPertanyaanAwal13.setText("0");
-        NilaiPertanyaanAwal13.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal13.setName("NilaiPertanyaanAwal13"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal13);
-        NilaiPertanyaanAwal13.setBounds(744, 470, 45, 23);
+        NilaiFaktorAwal13.setEditable(false);
+        NilaiFaktorAwal13.setText("0");
+        NilaiFaktorAwal13.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal13.setName("NilaiFaktorAwal13"); // NOI18N
+        FormInput.add(NilaiFaktorAwal13);
+        NilaiFaktorAwal13.setBounds(744, 470, 45, 23);
 
         jLabel132.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel132.setText("Apakah anda termasuk golongan obesitas/kegemukan ?");
@@ -1744,32 +1755,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel133);
         jLabel133.setBounds(54, 500, 20, 23);
 
-        PertanyaanAwal14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanAwal14.setName("PertanyaanAwal14"); // NOI18N
-        PertanyaanAwal14.addItemListener(new java.awt.event.ItemListener() {
+        FaktorAwal14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorAwal14.setName("FaktorAwal14"); // NOI18N
+        FaktorAwal14.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanAwal14ItemStateChanged(evt);
+                FaktorAwal14ItemStateChanged(evt);
             }
         });
-        PertanyaanAwal14.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorAwal14.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanAwal14KeyPressed(evt);
+                FaktorAwal14KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanAwal14);
-        PertanyaanAwal14.setBounds(620, 500, 80, 23);
+        FormInput.add(FaktorAwal14);
+        FaktorAwal14.setBounds(620, 500, 80, 23);
 
         jLabel134.setText("Nilai :");
         jLabel134.setName("jLabel134"); // NOI18N
         FormInput.add(jLabel134);
         jLabel134.setBounds(690, 500, 50, 23);
 
-        NilaiPertanyaanAwal14.setEditable(false);
-        NilaiPertanyaanAwal14.setText("0");
-        NilaiPertanyaanAwal14.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanAwal14.setName("NilaiPertanyaanAwal14"); // NOI18N
-        FormInput.add(NilaiPertanyaanAwal14);
-        NilaiPertanyaanAwal14.setBounds(744, 500, 45, 23);
+        NilaiFaktorAwal14.setEditable(false);
+        NilaiFaktorAwal14.setText("0");
+        NilaiFaktorAwal14.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorAwal14.setName("NilaiFaktorAwal14"); // NOI18N
+        FormInput.add(NilaiFaktorAwal14);
+        NilaiFaktorAwal14.setBounds(744, 500, 45, 23);
 
         jLabel135.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel135.setText("B. Faktor Risiko Tinggi (Ya=5, Tidak=0)");
@@ -1789,32 +1800,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel136);
         jLabel136.setBounds(54, 730, 20, 23);
 
-        PertanyaanLanjutan7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan7.setName("PertanyaanLanjutan7"); // NOI18N
-        PertanyaanLanjutan7.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi7.setName("FaktorRisikoTinggi7"); // NOI18N
+        FaktorRisikoTinggi7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan7ItemStateChanged(evt);
+                FaktorRisikoTinggi7ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan7.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan7KeyPressed(evt);
+                FaktorRisikoTinggi7KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan7);
-        PertanyaanLanjutan7.setBounds(620, 730, 80, 23);
+        FormInput.add(FaktorRisikoTinggi7);
+        FaktorRisikoTinggi7.setBounds(620, 730, 80, 23);
 
         jLabel137.setText("Nilai :");
         jLabel137.setName("jLabel137"); // NOI18N
         FormInput.add(jLabel137);
         jLabel137.setBounds(690, 730, 50, 23);
 
-        NilaiPertanyaanLanjutan7.setEditable(false);
-        NilaiPertanyaanLanjutan7.setText("0");
-        NilaiPertanyaanLanjutan7.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan7.setName("NilaiPertanyaanLanjutan7"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan7);
-        NilaiPertanyaanLanjutan7.setBounds(744, 730, 45, 23);
+        NilaiFaktorRisikoTinggi7.setEditable(false);
+        NilaiFaktorRisikoTinggi7.setText("0");
+        NilaiFaktorRisikoTinggi7.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi7.setName("NilaiFaktorRisikoTinggi7"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi7);
+        NilaiFaktorRisikoTinggi7.setBounds(744, 730, 45, 23);
 
         jLabel138.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel138.setText("Apakah anda berusia di atas 25 tahun (semakin tua usia semakin tinggi resiko) ?");
@@ -1828,59 +1839,59 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel139);
         jLabel139.setBounds(54, 760, 20, 23);
 
-        PertanyaanLanjutan8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan8.setName("PertanyaanLanjutan8"); // NOI18N
-        PertanyaanLanjutan8.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi8.setName("FaktorRisikoTinggi8"); // NOI18N
+        FaktorRisikoTinggi8.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan8ItemStateChanged(evt);
+                FaktorRisikoTinggi8ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan8.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan8KeyPressed(evt);
+                FaktorRisikoTinggi8KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan8);
-        PertanyaanLanjutan8.setBounds(620, 760, 80, 23);
+        FormInput.add(FaktorRisikoTinggi8);
+        FaktorRisikoTinggi8.setBounds(620, 760, 80, 23);
 
         jLabel140.setText("Nilai :");
         jLabel140.setName("jLabel140"); // NOI18N
         FormInput.add(jLabel140);
         jLabel140.setBounds(690, 760, 50, 23);
 
-        NilaiPertanyaanLanjutan8.setEditable(false);
-        NilaiPertanyaanLanjutan8.setText("0");
-        NilaiPertanyaanLanjutan8.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan8.setName("NilaiPertanyaanLanjutan8"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan8);
-        NilaiPertanyaanLanjutan8.setBounds(744, 760, 45, 23);
+        NilaiFaktorRisikoTinggi8.setEditable(false);
+        NilaiFaktorRisikoTinggi8.setText("0");
+        NilaiFaktorRisikoTinggi8.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi8.setName("NilaiFaktorRisikoTinggi8"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi8);
+        NilaiFaktorRisikoTinggi8.setBounds(744, 760, 45, 23);
 
-        NilaiPertanyaanLanjutan9.setEditable(false);
-        NilaiPertanyaanLanjutan9.setText("0");
-        NilaiPertanyaanLanjutan9.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan9.setName("NilaiPertanyaanLanjutan9"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan9);
-        NilaiPertanyaanLanjutan9.setBounds(744, 790, 45, 23);
+        NilaiFaktorRisikoTinggi9.setEditable(false);
+        NilaiFaktorRisikoTinggi9.setText("0");
+        NilaiFaktorRisikoTinggi9.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi9.setName("NilaiFaktorRisikoTinggi9"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi9);
+        NilaiFaktorRisikoTinggi9.setBounds(744, 790, 45, 23);
 
         jLabel141.setText("Nilai :");
         jLabel141.setName("jLabel141"); // NOI18N
         FormInput.add(jLabel141);
         jLabel141.setBounds(690, 790, 50, 23);
 
-        PertanyaanLanjutan9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan9.setName("PertanyaanLanjutan9"); // NOI18N
-        PertanyaanLanjutan9.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi9.setName("FaktorRisikoTinggi9"); // NOI18N
+        FaktorRisikoTinggi9.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan9ItemStateChanged(evt);
+                FaktorRisikoTinggi9ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan9.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan9KeyPressed(evt);
+                FaktorRisikoTinggi9KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan9);
-        PertanyaanLanjutan9.setBounds(620, 790, 80, 23);
+        FormInput.add(FaktorRisikoTinggi9);
+        FaktorRisikoTinggi9.setBounds(620, 790, 80, 23);
 
         jLabel142.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel142.setText("Apakah anda pernah memiliki tumor (benjolan) payudara ?");
@@ -1906,32 +1917,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel145);
         jLabel145.setBounds(72, 820, 530, 23);
 
-        PertanyaanLanjutan10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan10.setName("PertanyaanLanjutan10"); // NOI18N
-        PertanyaanLanjutan10.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi10.setName("FaktorRisikoTinggi10"); // NOI18N
+        FaktorRisikoTinggi10.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan10ItemStateChanged(evt);
+                FaktorRisikoTinggi10ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan10.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan10KeyPressed(evt);
+                FaktorRisikoTinggi10KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan10);
-        PertanyaanLanjutan10.setBounds(620, 820, 80, 23);
+        FormInput.add(FaktorRisikoTinggi10);
+        FaktorRisikoTinggi10.setBounds(620, 820, 80, 23);
 
         jLabel146.setText("Nilai :");
         jLabel146.setName("jLabel146"); // NOI18N
         FormInput.add(jLabel146);
         jLabel146.setBounds(690, 820, 50, 23);
 
-        NilaiPertanyaanLanjutan10.setEditable(false);
-        NilaiPertanyaanLanjutan10.setText("0");
-        NilaiPertanyaanLanjutan10.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan10.setName("NilaiPertanyaanLanjutan10"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan10);
-        NilaiPertanyaanLanjutan10.setBounds(744, 820, 45, 23);
+        NilaiFaktorRisikoTinggi10.setEditable(false);
+        NilaiFaktorRisikoTinggi10.setText("0");
+        NilaiFaktorRisikoTinggi10.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi10.setName("NilaiFaktorRisikoTinggi10"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi10);
+        NilaiFaktorRisikoTinggi10.setBounds(744, 820, 45, 23);
 
         jLabel147.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel147.setText("11.");
@@ -1945,32 +1956,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel150);
         jLabel150.setBounds(72, 850, 530, 23);
 
-        PertanyaanLanjutan11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan11.setName("PertanyaanLanjutan11"); // NOI18N
-        PertanyaanLanjutan11.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi11.setName("FaktorRisikoTinggi11"); // NOI18N
+        FaktorRisikoTinggi11.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan11ItemStateChanged(evt);
+                FaktorRisikoTinggi11ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan11.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan11KeyPressed(evt);
+                FaktorRisikoTinggi11KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan11);
-        PertanyaanLanjutan11.setBounds(620, 850, 80, 23);
+        FormInput.add(FaktorRisikoTinggi11);
+        FaktorRisikoTinggi11.setBounds(620, 850, 80, 23);
 
         jLabel151.setText("Nilai :");
         jLabel151.setName("jLabel151"); // NOI18N
         FormInput.add(jLabel151);
         jLabel151.setBounds(690, 850, 50, 23);
 
-        NilaiPertanyaanLanjutan11.setEditable(false);
-        NilaiPertanyaanLanjutan11.setText("0");
-        NilaiPertanyaanLanjutan11.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan11.setName("NilaiPertanyaanLanjutan11"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan11);
-        NilaiPertanyaanLanjutan11.setBounds(744, 850, 45, 23);
+        NilaiFaktorRisikoTinggi11.setEditable(false);
+        NilaiFaktorRisikoTinggi11.setText("0");
+        NilaiFaktorRisikoTinggi11.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi11.setName("NilaiFaktorRisikoTinggi11"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi11);
+        NilaiFaktorRisikoTinggi11.setBounds(744, 850, 45, 23);
 
         jLabel152.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel152.setText("Apakah anda diperiksa secara radiologis dan ditemukan hasil densitas yang sangat tinggi ?");
@@ -1984,32 +1995,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel153);
         jLabel153.setBounds(54, 880, 20, 23);
 
-        PertanyaanLanjutan12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan12.setName("PertanyaanLanjutan12"); // NOI18N
-        PertanyaanLanjutan12.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi12.setName("FaktorRisikoTinggi12"); // NOI18N
+        FaktorRisikoTinggi12.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan12ItemStateChanged(evt);
+                FaktorRisikoTinggi12ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan12.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi12.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan12KeyPressed(evt);
+                FaktorRisikoTinggi12KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan12);
-        PertanyaanLanjutan12.setBounds(620, 880, 80, 23);
+        FormInput.add(FaktorRisikoTinggi12);
+        FaktorRisikoTinggi12.setBounds(620, 880, 80, 23);
 
         jLabel154.setText("Nilai :");
         jLabel154.setName("jLabel154"); // NOI18N
         FormInput.add(jLabel154);
         jLabel154.setBounds(690, 880, 50, 23);
 
-        NilaiPertanyaanLanjutan12.setEditable(false);
-        NilaiPertanyaanLanjutan12.setText("0");
-        NilaiPertanyaanLanjutan12.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan12.setName("NilaiPertanyaanLanjutan12"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan12);
-        NilaiPertanyaanLanjutan12.setBounds(744, 880, 45, 23);
+        NilaiFaktorRisikoTinggi12.setEditable(false);
+        NilaiFaktorRisikoTinggi12.setText("0");
+        NilaiFaktorRisikoTinggi12.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi12.setName("NilaiFaktorRisikoTinggi12"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi12);
+        NilaiFaktorRisikoTinggi12.setBounds(744, 880, 45, 23);
 
         jLabel155.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel155.setText("Apakah anda memiliki silsilah keluarga yang menderita kanker ?");
@@ -2023,32 +2034,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel156);
         jLabel156.setBounds(54, 910, 20, 23);
 
-        PertanyaanLanjutan13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan13.setName("PertanyaanLanjutan13"); // NOI18N
-        PertanyaanLanjutan13.addItemListener(new java.awt.event.ItemListener() {
+        FaktorRisikoTinggi13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        FaktorRisikoTinggi13.setName("FaktorRisikoTinggi13"); // NOI18N
+        FaktorRisikoTinggi13.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan13ItemStateChanged(evt);
+                FaktorRisikoTinggi13ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan13.addKeyListener(new java.awt.event.KeyAdapter() {
+        FaktorRisikoTinggi13.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan13KeyPressed(evt);
+                FaktorRisikoTinggi13KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan13);
-        PertanyaanLanjutan13.setBounds(620, 910, 80, 23);
+        FormInput.add(FaktorRisikoTinggi13);
+        FaktorRisikoTinggi13.setBounds(620, 910, 80, 23);
 
         jLabel157.setText("Nilai :");
         jLabel157.setName("jLabel157"); // NOI18N
         FormInput.add(jLabel157);
         jLabel157.setBounds(690, 910, 50, 23);
 
-        NilaiPertanyaanLanjutan13.setEditable(false);
-        NilaiPertanyaanLanjutan13.setText("0");
-        NilaiPertanyaanLanjutan13.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan13.setName("NilaiPertanyaanLanjutan13"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan13);
-        NilaiPertanyaanLanjutan13.setBounds(744, 910, 45, 23);
+        NilaiFaktorRisikoTinggi13.setEditable(false);
+        NilaiFaktorRisikoTinggi13.setText("0");
+        NilaiFaktorRisikoTinggi13.setFocusTraversalPolicyProvider(true);
+        NilaiFaktorRisikoTinggi13.setName("NilaiFaktorRisikoTinggi13"); // NOI18N
+        FormInput.add(NilaiFaktorRisikoTinggi13);
+        NilaiFaktorRisikoTinggi13.setBounds(744, 910, 45, 23);
 
         jLabel158.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel158.setText("C. Kecurigaan Keganasan (Ya=10,Tidak=0)");
@@ -2068,32 +2079,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel160);
         jLabel160.setBounds(72, 960, 470, 23);
 
-        PertanyaanLanjutan14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan14.setName("PertanyaanLanjutan14"); // NOI18N
-        PertanyaanLanjutan14.addItemListener(new java.awt.event.ItemListener() {
+        KecurigaanKeganasan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KecurigaanKeganasan1.setName("KecurigaanKeganasan1"); // NOI18N
+        KecurigaanKeganasan1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan14ItemStateChanged(evt);
+                KecurigaanKeganasan1ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan14.addKeyListener(new java.awt.event.KeyAdapter() {
+        KecurigaanKeganasan1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan14KeyPressed(evt);
+                KecurigaanKeganasan1KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan14);
-        PertanyaanLanjutan14.setBounds(620, 960, 80, 23);
+        FormInput.add(KecurigaanKeganasan1);
+        KecurigaanKeganasan1.setBounds(620, 960, 80, 23);
 
         jLabel161.setText("Nilai :");
         jLabel161.setName("jLabel161"); // NOI18N
         FormInput.add(jLabel161);
         jLabel161.setBounds(690, 960, 50, 23);
 
-        NilaiPertanyaanLanjutan14.setEditable(false);
-        NilaiPertanyaanLanjutan14.setText("0");
-        NilaiPertanyaanLanjutan14.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan14.setName("NilaiPertanyaanLanjutan14"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan14);
-        NilaiPertanyaanLanjutan14.setBounds(744, 960, 45, 23);
+        NilaiKecurigaanKeganasan1.setEditable(false);
+        NilaiKecurigaanKeganasan1.setText("0");
+        NilaiKecurigaanKeganasan1.setFocusTraversalPolicyProvider(true);
+        NilaiKecurigaanKeganasan1.setName("NilaiKecurigaanKeganasan1"); // NOI18N
+        FormInput.add(NilaiKecurigaanKeganasan1);
+        NilaiKecurigaanKeganasan1.setBounds(744, 960, 45, 23);
 
         jLabel162.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel162.setText("2.");
@@ -2107,32 +2118,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel163);
         jLabel163.setBounds(72, 990, 470, 23);
 
-        PertanyaanLanjutan15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan15.setName("PertanyaanLanjutan15"); // NOI18N
-        PertanyaanLanjutan15.addItemListener(new java.awt.event.ItemListener() {
+        KecurigaanKeganasan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KecurigaanKeganasan2.setName("KecurigaanKeganasan2"); // NOI18N
+        KecurigaanKeganasan2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan15ItemStateChanged(evt);
+                KecurigaanKeganasan2ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan15.addKeyListener(new java.awt.event.KeyAdapter() {
+        KecurigaanKeganasan2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan15KeyPressed(evt);
+                KecurigaanKeganasan2KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan15);
-        PertanyaanLanjutan15.setBounds(620, 990, 80, 23);
+        FormInput.add(KecurigaanKeganasan2);
+        KecurigaanKeganasan2.setBounds(620, 990, 80, 23);
 
         jLabel164.setText("Nilai :");
         jLabel164.setName("jLabel164"); // NOI18N
         FormInput.add(jLabel164);
         jLabel164.setBounds(690, 990, 50, 23);
 
-        NilaiPertanyaanLanjutan15.setEditable(false);
-        NilaiPertanyaanLanjutan15.setText("0");
-        NilaiPertanyaanLanjutan15.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan15.setName("NilaiPertanyaanLanjutan15"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan15);
-        NilaiPertanyaanLanjutan15.setBounds(744, 990, 45, 23);
+        NilaiKecurigaanKeganasan2.setEditable(false);
+        NilaiKecurigaanKeganasan2.setText("0");
+        NilaiKecurigaanKeganasan2.setFocusTraversalPolicyProvider(true);
+        NilaiKecurigaanKeganasan2.setName("NilaiKecurigaanKeganasan2"); // NOI18N
+        FormInput.add(NilaiKecurigaanKeganasan2);
+        NilaiKecurigaanKeganasan2.setBounds(744, 990, 45, 23);
 
         jLabel165.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel165.setText("Apakah areola payudara anda berwarna merah muda atau kecoklat-coklatan sampai menjadi oedema");
@@ -2146,32 +2157,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel166);
         jLabel166.setBounds(54, 1020, 20, 23);
 
-        PertanyaanLanjutan16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan16.setName("PertanyaanLanjutan16"); // NOI18N
-        PertanyaanLanjutan16.addItemListener(new java.awt.event.ItemListener() {
+        KecurigaanKeganasan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KecurigaanKeganasan3.setName("KecurigaanKeganasan3"); // NOI18N
+        KecurigaanKeganasan3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan16ItemStateChanged(evt);
+                KecurigaanKeganasan3ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan16.addKeyListener(new java.awt.event.KeyAdapter() {
+        KecurigaanKeganasan3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan16KeyPressed(evt);
+                KecurigaanKeganasan3KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan16);
-        PertanyaanLanjutan16.setBounds(620, 1020, 80, 23);
+        FormInput.add(KecurigaanKeganasan3);
+        KecurigaanKeganasan3.setBounds(620, 1020, 80, 23);
 
         jLabel167.setText("Nilai :");
         jLabel167.setName("jLabel167"); // NOI18N
         FormInput.add(jLabel167);
         jLabel167.setBounds(690, 1020, 50, 23);
 
-        NilaiPertanyaanLanjutan16.setEditable(false);
-        NilaiPertanyaanLanjutan16.setText("0");
-        NilaiPertanyaanLanjutan16.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan16.setName("NilaiPertanyaanLanjutan16"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan16);
-        NilaiPertanyaanLanjutan16.setBounds(744, 1020, 45, 23);
+        NilaiKecurigaanKeganasan3.setEditable(false);
+        NilaiKecurigaanKeganasan3.setText("0");
+        NilaiKecurigaanKeganasan3.setFocusTraversalPolicyProvider(true);
+        NilaiKecurigaanKeganasan3.setName("NilaiKecurigaanKeganasan3"); // NOI18N
+        FormInput.add(NilaiKecurigaanKeganasan3);
+        NilaiKecurigaanKeganasan3.setBounds(744, 1020, 45, 23);
 
         jLabel168.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel168.setText("hingga kulit kelihatan seperti kulit jeruk (peau dorange), mengkerut, atau timbul borok (ulkus) ?");
@@ -2191,32 +2202,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel170);
         jLabel170.setBounds(72, 1050, 470, 23);
 
-        PertanyaanLanjutan17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan17.setName("PertanyaanLanjutan17"); // NOI18N
-        PertanyaanLanjutan17.addItemListener(new java.awt.event.ItemListener() {
+        KecurigaanKeganasan4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KecurigaanKeganasan4.setName("KecurigaanKeganasan4"); // NOI18N
+        KecurigaanKeganasan4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan17ItemStateChanged(evt);
+                KecurigaanKeganasan4ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan17.addKeyListener(new java.awt.event.KeyAdapter() {
+        KecurigaanKeganasan4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan17KeyPressed(evt);
+                KecurigaanKeganasan4KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan17);
-        PertanyaanLanjutan17.setBounds(620, 1050, 80, 23);
+        FormInput.add(KecurigaanKeganasan4);
+        KecurigaanKeganasan4.setBounds(620, 1050, 80, 23);
 
         jLabel171.setText("Nilai :");
         jLabel171.setName("jLabel171"); // NOI18N
         FormInput.add(jLabel171);
         jLabel171.setBounds(690, 1050, 50, 23);
 
-        NilaiPertanyaanLanjutan17.setEditable(false);
-        NilaiPertanyaanLanjutan17.setText("0");
-        NilaiPertanyaanLanjutan17.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan17.setName("NilaiPertanyaanLanjutan17"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan17);
-        NilaiPertanyaanLanjutan17.setBounds(744, 1050, 45, 23);
+        NilaiKecurigaanKeganasan4.setEditable(false);
+        NilaiKecurigaanKeganasan4.setText("0");
+        NilaiKecurigaanKeganasan4.setFocusTraversalPolicyProvider(true);
+        NilaiKecurigaanKeganasan4.setName("NilaiKecurigaanKeganasan4"); // NOI18N
+        FormInput.add(NilaiKecurigaanKeganasan4);
+        NilaiKecurigaanKeganasan4.setBounds(744, 1050, 45, 23);
 
         jLabel172.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel172.setText("5.");
@@ -2230,32 +2241,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel173);
         jLabel173.setBounds(72, 1080, 470, 23);
 
-        PertanyaanLanjutan18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan18.setName("PertanyaanLanjutan18"); // NOI18N
-        PertanyaanLanjutan18.addItemListener(new java.awt.event.ItemListener() {
+        KecurigaanKeganasan5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KecurigaanKeganasan5.setName("KecurigaanKeganasan5"); // NOI18N
+        KecurigaanKeganasan5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan18ItemStateChanged(evt);
+                KecurigaanKeganasan5ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan18.addKeyListener(new java.awt.event.KeyAdapter() {
+        KecurigaanKeganasan5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan18KeyPressed(evt);
+                KecurigaanKeganasan5KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan18);
-        PertanyaanLanjutan18.setBounds(620, 1080, 80, 23);
+        FormInput.add(KecurigaanKeganasan5);
+        KecurigaanKeganasan5.setBounds(620, 1080, 80, 23);
 
         jLabel174.setText("Nilai :");
         jLabel174.setName("jLabel174"); // NOI18N
         FormInput.add(jLabel174);
         jLabel174.setBounds(690, 1080, 50, 23);
 
-        NilaiPertanyaanLanjutan18.setEditable(false);
-        NilaiPertanyaanLanjutan18.setText("0");
-        NilaiPertanyaanLanjutan18.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan18.setName("NilaiPertanyaanLanjutan18"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan18);
-        NilaiPertanyaanLanjutan18.setBounds(744, 1080, 45, 23);
+        NilaiKecurigaanKeganasan5.setEditable(false);
+        NilaiKecurigaanKeganasan5.setText("0");
+        NilaiKecurigaanKeganasan5.setFocusTraversalPolicyProvider(true);
+        NilaiKecurigaanKeganasan5.setName("NilaiKecurigaanKeganasan5"); // NOI18N
+        FormInput.add(NilaiKecurigaanKeganasan5);
+        NilaiKecurigaanKeganasan5.setBounds(744, 1080, 45, 23);
 
         jLabel175.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel175.setText("Apakah ada benjolan di sekitar tulang belikat ?");
@@ -2269,32 +2280,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel176);
         jLabel176.setBounds(54, 1110, 20, 23);
 
-        PertanyaanLanjutan19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan19.setName("PertanyaanLanjutan19"); // NOI18N
-        PertanyaanLanjutan19.addItemListener(new java.awt.event.ItemListener() {
+        KecurigaanKeganasan6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KecurigaanKeganasan6.setName("KecurigaanKeganasan6"); // NOI18N
+        KecurigaanKeganasan6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan19ItemStateChanged(evt);
+                KecurigaanKeganasan6ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan19.addKeyListener(new java.awt.event.KeyAdapter() {
+        KecurigaanKeganasan6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan19KeyPressed(evt);
+                KecurigaanKeganasan6KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan19);
-        PertanyaanLanjutan19.setBounds(620, 1110, 80, 23);
+        FormInput.add(KecurigaanKeganasan6);
+        KecurigaanKeganasan6.setBounds(620, 1110, 80, 23);
 
         jLabel177.setText("Nilai :");
         jLabel177.setName("jLabel177"); // NOI18N
         FormInput.add(jLabel177);
         jLabel177.setBounds(690, 1110, 50, 23);
 
-        NilaiPertanyaanLanjutan19.setEditable(false);
-        NilaiPertanyaanLanjutan19.setText("0");
-        NilaiPertanyaanLanjutan19.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan19.setName("NilaiPertanyaanLanjutan19"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan19);
-        NilaiPertanyaanLanjutan19.setBounds(744, 1110, 45, 23);
+        NilaiKecurigaanKeganasan6.setEditable(false);
+        NilaiKecurigaanKeganasan6.setText("0");
+        NilaiKecurigaanKeganasan6.setFocusTraversalPolicyProvider(true);
+        NilaiKecurigaanKeganasan6.setName("NilaiKecurigaanKeganasan6"); // NOI18N
+        FormInput.add(NilaiKecurigaanKeganasan6);
+        NilaiKecurigaanKeganasan6.setBounds(744, 1110, 45, 23);
 
         jLabel178.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel178.setText("Apakah lengan anda bengkak ?");
@@ -2308,32 +2319,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel179);
         jLabel179.setBounds(54, 1140, 20, 23);
 
-        PertanyaanLanjutan20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan20.setName("PertanyaanLanjutan20"); // NOI18N
-        PertanyaanLanjutan20.addItemListener(new java.awt.event.ItemListener() {
+        KecurigaanKeganasan7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KecurigaanKeganasan7.setName("KecurigaanKeganasan7"); // NOI18N
+        KecurigaanKeganasan7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan20ItemStateChanged(evt);
+                KecurigaanKeganasan7ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan20.addKeyListener(new java.awt.event.KeyAdapter() {
+        KecurigaanKeganasan7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan20KeyPressed(evt);
+                KecurigaanKeganasan7KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan20);
-        PertanyaanLanjutan20.setBounds(620, 1140, 80, 23);
+        FormInput.add(KecurigaanKeganasan7);
+        KecurigaanKeganasan7.setBounds(620, 1140, 80, 23);
 
         jLabel180.setText("Nilai :");
         jLabel180.setName("jLabel180"); // NOI18N
         FormInput.add(jLabel180);
         jLabel180.setBounds(690, 1140, 50, 23);
 
-        NilaiPertanyaanLanjutan20.setEditable(false);
-        NilaiPertanyaanLanjutan20.setText("0");
-        NilaiPertanyaanLanjutan20.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan20.setName("NilaiPertanyaanLanjutan20"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan20);
-        NilaiPertanyaanLanjutan20.setBounds(744, 1140, 45, 23);
+        NilaiKecurigaanKeganasan7.setEditable(false);
+        NilaiKecurigaanKeganasan7.setText("0");
+        NilaiKecurigaanKeganasan7.setFocusTraversalPolicyProvider(true);
+        NilaiKecurigaanKeganasan7.setName("NilaiKecurigaanKeganasan7"); // NOI18N
+        FormInput.add(NilaiKecurigaanKeganasan7);
+        NilaiKecurigaanKeganasan7.setBounds(744, 1140, 45, 23);
 
         jLabel181.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel181.setText("Apakah ada erosi atau luka yang tidak sembuh-sembuh pada puting susu ?");
@@ -2347,32 +2358,32 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel182);
         jLabel182.setBounds(54, 1170, 20, 23);
 
-        PertanyaanLanjutan21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PertanyaanLanjutan21.setName("PertanyaanLanjutan21"); // NOI18N
-        PertanyaanLanjutan21.addItemListener(new java.awt.event.ItemListener() {
+        KecurigaanKeganasan8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KecurigaanKeganasan8.setName("KecurigaanKeganasan8"); // NOI18N
+        KecurigaanKeganasan8.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan21ItemStateChanged(evt);
+                KecurigaanKeganasan8ItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan21.addKeyListener(new java.awt.event.KeyAdapter() {
+        KecurigaanKeganasan8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan21KeyPressed(evt);
+                KecurigaanKeganasan8KeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan21);
-        PertanyaanLanjutan21.setBounds(620, 1170, 80, 23);
+        FormInput.add(KecurigaanKeganasan8);
+        KecurigaanKeganasan8.setBounds(620, 1170, 80, 23);
 
         jLabel183.setText("Nilai :");
         jLabel183.setName("jLabel183"); // NOI18N
         FormInput.add(jLabel183);
         jLabel183.setBounds(690, 1170, 50, 23);
 
-        NilaiPertanyaanLanjutan21.setEditable(false);
-        NilaiPertanyaanLanjutan21.setText("0");
-        NilaiPertanyaanLanjutan21.setFocusTraversalPolicyProvider(true);
-        NilaiPertanyaanLanjutan21.setName("NilaiPertanyaanLanjutan21"); // NOI18N
-        FormInput.add(NilaiPertanyaanLanjutan21);
-        NilaiPertanyaanLanjutan21.setBounds(744, 1170, 45, 23);
+        NilaiKecurigaanKeganasan8.setEditable(false);
+        NilaiKecurigaanKeganasan8.setText("0");
+        NilaiKecurigaanKeganasan8.setFocusTraversalPolicyProvider(true);
+        NilaiKecurigaanKeganasan8.setName("NilaiKecurigaanKeganasan8"); // NOI18N
+        FormInput.add(NilaiKecurigaanKeganasan8);
+        NilaiKecurigaanKeganasan8.setBounds(744, 1170, 45, 23);
 
         jLabel184.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel184.setText("Hasil Pemeriksaan SADANIS");
@@ -2380,20 +2391,20 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel184);
         jLabel184.setBounds(44, 1260, 150, 23);
 
-        PertanyaanLanjutan22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Benjolan", "Tidak Ada Benjolan", "Curiga Kanker" }));
-        PertanyaanLanjutan22.setName("PertanyaanLanjutan22"); // NOI18N
-        PertanyaanLanjutan22.addItemListener(new java.awt.event.ItemListener() {
+        HasilPemeriksaanSadanis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Benjolan", "Benjolan", "Curiga Kanker" }));
+        HasilPemeriksaanSadanis.setName("HasilPemeriksaanSadanis"); // NOI18N
+        HasilPemeriksaanSadanis.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan22ItemStateChanged(evt);
+                HasilPemeriksaanSadanisItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan22.addKeyListener(new java.awt.event.KeyAdapter() {
+        HasilPemeriksaanSadanis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan22KeyPressed(evt);
+                HasilPemeriksaanSadanisKeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan22);
-        PertanyaanLanjutan22.setBounds(191, 1260, 170, 23);
+        FormInput.add(HasilPemeriksaanSadanis);
+        HasilPemeriksaanSadanis.setBounds(191, 1260, 170, 23);
 
         jLabel185.setText(":");
         jLabel185.setName("jLabel185"); // NOI18N
@@ -2405,20 +2416,20 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel186);
         jLabel186.setBounds(419, 1260, 240, 23);
 
-        PertanyaanLanjutan23.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dirujuk", "Tidak Dirujuk" }));
-        PertanyaanLanjutan23.setName("PertanyaanLanjutan23"); // NOI18N
-        PertanyaanLanjutan23.addItemListener(new java.awt.event.ItemListener() {
+        TindakLanjutSadanis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Dirujuk", "Dirujuk" }));
+        TindakLanjutSadanis.setName("TindakLanjutSadanis"); // NOI18N
+        TindakLanjutSadanis.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan23ItemStateChanged(evt);
+                TindakLanjutSadanisItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan23.addKeyListener(new java.awt.event.KeyAdapter() {
+        TindakLanjutSadanis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan23KeyPressed(evt);
+                TindakLanjutSadanisKeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan23);
-        PertanyaanLanjutan23.setBounds(663, 1260, 126, 23);
+        FormInput.add(TindakLanjutSadanis);
+        TindakLanjutSadanis.setBounds(663, 1260, 126, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
@@ -2439,20 +2450,20 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel188);
         jLabel188.setBounds(44, 1310, 80, 23);
 
-        PertanyaanLanjutan24.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Kemungkinan Kelainan Payudara Jinak", "Curiga Kelainan Payudara Ganas" }));
-        PertanyaanLanjutan24.setName("PertanyaanLanjutan24"); // NOI18N
-        PertanyaanLanjutan24.addItemListener(new java.awt.event.ItemListener() {
+        HasilSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Kemungkinan Kelainan Payudara Jinak", "Curiga Kelainan Payudara Ganas" }));
+        HasilSkrining.setName("HasilSkrining"); // NOI18N
+        HasilSkrining.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PertanyaanLanjutan24ItemStateChanged(evt);
+                HasilSkriningItemStateChanged(evt);
             }
         });
-        PertanyaanLanjutan24.addKeyListener(new java.awt.event.KeyAdapter() {
+        HasilSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PertanyaanLanjutan24KeyPressed(evt);
+                HasilSkriningKeyPressed(evt);
             }
         });
-        FormInput.add(PertanyaanLanjutan24);
-        PertanyaanLanjutan24.setBounds(121, 1310, 240, 23);
+        FormInput.add(HasilSkrining);
+        HasilSkrining.setBounds(121, 1310, 240, 23);
 
         jLabel189.setText(":");
         jLabel189.setName("jLabel189"); // NOI18N
@@ -2464,16 +2475,15 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         FormInput.add(jLabel190);
         jLabel190.setBounds(356, 1310, 90, 23);
 
-        HasilSkrining1.setEditable(false);
-        HasilSkrining1.setFocusTraversalPolicyProvider(true);
-        HasilSkrining1.setName("HasilSkrining1"); // NOI18N
-        HasilSkrining1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Keterangan.setFocusTraversalPolicyProvider(true);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                HasilSkrining1KeyPressed(evt);
+                KeteranganKeyPressed(evt);
             }
         });
-        FormInput.add(HasilSkrining1);
-        HasilSkrining1.setBounds(450, 1310, 339, 23);
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(450, 1310, 339, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -2542,14 +2552,14 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,PertanyaanLanjutan6,BtnBatal);
+            Valid.pindah(evt,FaktorRisikoTinggi6,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        emptTeks();
         ChkInput.setSelected(true);
         isForm(); 
+        emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -2838,7 +2848,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,TCari,PertanyaanAwal1);
+        Valid.pindah(evt,TCari,FaktorAwal1);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnSkriningKekerasanPadaPerempuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
@@ -2869,329 +2879,329 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
 
-    private void PertanyaanAwal1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal1ItemStateChanged
-        NilaiPertanyaanAwal1.setText((PertanyaanAwal1.getSelectedIndex()+1)+"");
+    private void FaktorAwal1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal1ItemStateChanged
+        NilaiFaktorAwal1.setText((FaktorAwal1.getSelectedIndex()+1)+"");
         isTotal();
-    }//GEN-LAST:event_PertanyaanAwal1ItemStateChanged
+    }//GEN-LAST:event_FaktorAwal1ItemStateChanged
 
-    private void PertanyaanAwal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal1KeyPressed
-        Valid.pindah(evt,TCari,PertanyaanAwal2);
-    }//GEN-LAST:event_PertanyaanAwal1KeyPressed
+    private void FaktorAwal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal1KeyPressed
+        Valid.pindah(evt,TCari,FaktorAwal2);
+    }//GEN-LAST:event_FaktorAwal1KeyPressed
 
-    private void PertanyaanAwal2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal2ItemStateChanged
-        NilaiPertanyaanAwal2.setText((PertanyaanAwal2.getSelectedIndex()+1)+"");
+    private void FaktorAwal2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal2ItemStateChanged
+        NilaiFaktorAwal2.setText((FaktorAwal2.getSelectedIndex()+1)+"");
         isTotal();
-    }//GEN-LAST:event_PertanyaanAwal2ItemStateChanged
+    }//GEN-LAST:event_FaktorAwal2ItemStateChanged
 
-    private void PertanyaanAwal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal2KeyPressed
-        Valid.pindah(evt,PertanyaanAwal1,PertanyaanLanjutan1);
-    }//GEN-LAST:event_PertanyaanAwal2KeyPressed
+    private void FaktorAwal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal2KeyPressed
+        Valid.pindah(evt,FaktorAwal1,FaktorAwal3);
+    }//GEN-LAST:event_FaktorAwal2KeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void PertanyaanLanjutan1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan1ItemStateChanged
-        NilaiPertanyaanLanjutan1.setText((PertanyaanLanjutan1.getSelectedIndex()+1)+"");
+    private void FaktorRisikoTinggi1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi1ItemStateChanged
+        NilaiFaktorRisikoTinggi1.setText((FaktorRisikoTinggi1.getSelectedIndex()+1)+"");
         isTotal();
-    }//GEN-LAST:event_PertanyaanLanjutan1ItemStateChanged
+    }//GEN-LAST:event_FaktorRisikoTinggi1ItemStateChanged
 
-    private void PertanyaanLanjutan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan1KeyPressed
-        Valid.pindah(evt,PertanyaanAwal2,PertanyaanLanjutan2);
-    }//GEN-LAST:event_PertanyaanLanjutan1KeyPressed
+    private void FaktorRisikoTinggi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi1KeyPressed
+        Valid.pindah(evt,FaktorAwal14,FaktorRisikoTinggi2);
+    }//GEN-LAST:event_FaktorRisikoTinggi1KeyPressed
 
-    private void PertanyaanLanjutan2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan2ItemStateChanged
-        NilaiPertanyaanLanjutan2.setText((PertanyaanLanjutan2.getSelectedIndex()+1)+"");
+    private void FaktorRisikoTinggi2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi2ItemStateChanged
+        NilaiFaktorRisikoTinggi2.setText((FaktorRisikoTinggi2.getSelectedIndex()+1)+"");
         isTotal();
-    }//GEN-LAST:event_PertanyaanLanjutan2ItemStateChanged
+    }//GEN-LAST:event_FaktorRisikoTinggi2ItemStateChanged
 
-    private void PertanyaanLanjutan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan2KeyPressed
-        Valid.pindah(evt,PertanyaanLanjutan1,PertanyaanLanjutan3);
-    }//GEN-LAST:event_PertanyaanLanjutan2KeyPressed
+    private void FaktorRisikoTinggi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi2KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi1,FaktorRisikoTinggi3);
+    }//GEN-LAST:event_FaktorRisikoTinggi2KeyPressed
+
+    private void RekomendasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RekomendasiKeyPressed
+        //Valid.pindah(evt,Lapor,SG1);
+    }//GEN-LAST:event_RekomendasiKeyPressed
+
+    private void FaktorRisikoTinggi3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi3ItemStateChanged
+        NilaiFaktorRisikoTinggi3.setText((FaktorRisikoTinggi3.getSelectedIndex()+1)+"");
+        isTotal();
+    }//GEN-LAST:event_FaktorRisikoTinggi3ItemStateChanged
+
+    private void FaktorRisikoTinggi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi3KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi2,FaktorRisikoTinggi4);
+    }//GEN-LAST:event_FaktorRisikoTinggi3KeyPressed
+
+    private void FaktorRisikoTinggi4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi4ItemStateChanged
+        NilaiFaktorRisikoTinggi4.setText((FaktorRisikoTinggi4.getSelectedIndex()+1)+"");
+        isTotal();
+    }//GEN-LAST:event_FaktorRisikoTinggi4ItemStateChanged
+
+    private void FaktorRisikoTinggi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi4KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi3,FaktorRisikoTinggi5);
+    }//GEN-LAST:event_FaktorRisikoTinggi4KeyPressed
+
+    private void FaktorRisikoTinggi5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi5ItemStateChanged
+        NilaiFaktorRisikoTinggi5.setText((FaktorRisikoTinggi5.getSelectedIndex()+1)+"");
+        isTotal();
+    }//GEN-LAST:event_FaktorRisikoTinggi5ItemStateChanged
+
+    private void FaktorRisikoTinggi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi5KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi4,FaktorRisikoTinggi6);
+    }//GEN-LAST:event_FaktorRisikoTinggi5KeyPressed
+
+    private void FaktorRisikoTinggi6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi6ItemStateChanged
+        NilaiFaktorRisikoTinggi6.setText((FaktorRisikoTinggi6.getSelectedIndex()+1)+"");
+        isTotal();
+    }//GEN-LAST:event_FaktorRisikoTinggi6ItemStateChanged
+
+    private void FaktorRisikoTinggi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi6KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi5,FaktorRisikoTinggi7);
+    }//GEN-LAST:event_FaktorRisikoTinggi6KeyPressed
+
+    private void FaktorAwal3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal3ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal3ItemStateChanged
+
+    private void FaktorAwal3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal3KeyPressed
+        Valid.pindah(evt,FaktorAwal2,FaktorAwal4);
+    }//GEN-LAST:event_FaktorAwal3KeyPressed
+
+    private void FaktorAwal4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal4ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal4ItemStateChanged
+
+    private void FaktorAwal4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal4KeyPressed
+        Valid.pindah(evt,FaktorAwal3,FaktorAwal5);
+    }//GEN-LAST:event_FaktorAwal4KeyPressed
+
+    private void FaktorAwal5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal5ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal5ItemStateChanged
+
+    private void FaktorAwal5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal5KeyPressed
+        Valid.pindah(evt,FaktorAwal4,FaktorAwal6);
+    }//GEN-LAST:event_FaktorAwal5KeyPressed
+
+    private void FaktorAwal6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal6ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal6ItemStateChanged
+
+    private void FaktorAwal6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal6KeyPressed
+        Valid.pindah(evt,FaktorAwal5,FaktorAwal7);
+    }//GEN-LAST:event_FaktorAwal6KeyPressed
+
+    private void FaktorAwal7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal7ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal7ItemStateChanged
+
+    private void FaktorAwal7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal7KeyPressed
+        Valid.pindah(evt,FaktorAwal6,FaktorAwal8);
+    }//GEN-LAST:event_FaktorAwal7KeyPressed
+
+    private void FaktorAwal8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal8ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal8ItemStateChanged
+
+    private void FaktorAwal8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal8KeyPressed
+        Valid.pindah(evt,FaktorAwal7,FaktorAwal9);
+    }//GEN-LAST:event_FaktorAwal8KeyPressed
+
+    private void FaktorAwal9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal9ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal9ItemStateChanged
+
+    private void FaktorAwal9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal9KeyPressed
+        Valid.pindah(evt,FaktorAwal8,FaktorAwal10);
+    }//GEN-LAST:event_FaktorAwal9KeyPressed
+
+    private void FaktorAwal10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal10ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal10ItemStateChanged
+
+    private void FaktorAwal10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal10KeyPressed
+        Valid.pindah(evt,FaktorAwal9,FaktorAwal11);
+    }//GEN-LAST:event_FaktorAwal10KeyPressed
+
+    private void FaktorAwal11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal11ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal11ItemStateChanged
+
+    private void FaktorAwal11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal11KeyPressed
+        Valid.pindah(evt,FaktorAwal10,FaktorAwal12);
+    }//GEN-LAST:event_FaktorAwal11KeyPressed
+
+    private void FaktorAwal12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal12ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal12ItemStateChanged
+
+    private void FaktorAwal12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal12KeyPressed
+        Valid.pindah(evt,FaktorAwal11,FaktorAwal13);
+    }//GEN-LAST:event_FaktorAwal12KeyPressed
+
+    private void FaktorAwal13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal13ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorAwal13ItemStateChanged
+
+    private void FaktorAwal13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal13KeyPressed
+        Valid.pindah(evt,FaktorAwal12,FaktorAwal14);
+    }//GEN-LAST:event_FaktorAwal13KeyPressed
+
+    private void FaktorAwal14ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal14ItemStateChanged
+        
+    }//GEN-LAST:event_FaktorAwal14ItemStateChanged
+
+    private void FaktorAwal14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal14KeyPressed
+        Valid.pindah(evt,FaktorAwal13,FaktorRisikoTinggi1); 
+    }//GEN-LAST:event_FaktorAwal14KeyPressed
+
+    private void FaktorRisikoTinggi7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi7ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorRisikoTinggi7ItemStateChanged
+
+    private void FaktorRisikoTinggi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi7KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi6,FaktorRisikoTinggi8);
+    }//GEN-LAST:event_FaktorRisikoTinggi7KeyPressed
+
+    private void FaktorRisikoTinggi8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi8ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorRisikoTinggi8ItemStateChanged
+
+    private void FaktorRisikoTinggi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi8KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi7,FaktorRisikoTinggi9);
+    }//GEN-LAST:event_FaktorRisikoTinggi8KeyPressed
+
+    private void FaktorRisikoTinggi9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi9ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorRisikoTinggi9ItemStateChanged
+
+    private void FaktorRisikoTinggi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi9KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi8,FaktorRisikoTinggi10);
+    }//GEN-LAST:event_FaktorRisikoTinggi9KeyPressed
+
+    private void FaktorRisikoTinggi10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi10ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorRisikoTinggi10ItemStateChanged
+
+    private void FaktorRisikoTinggi10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi10KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi9,FaktorRisikoTinggi11);
+    }//GEN-LAST:event_FaktorRisikoTinggi10KeyPressed
+
+    private void FaktorRisikoTinggi11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi11ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorRisikoTinggi11ItemStateChanged
+
+    private void FaktorRisikoTinggi11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi11KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi10,FaktorRisikoTinggi12);
+    }//GEN-LAST:event_FaktorRisikoTinggi11KeyPressed
+
+    private void FaktorRisikoTinggi12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi12ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorRisikoTinggi12ItemStateChanged
+
+    private void FaktorRisikoTinggi12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi12KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi11,FaktorRisikoTinggi13);
+    }//GEN-LAST:event_FaktorRisikoTinggi12KeyPressed
+
+    private void FaktorRisikoTinggi13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi13ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FaktorRisikoTinggi13ItemStateChanged
+
+    private void FaktorRisikoTinggi13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi13KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi12,KecurigaanKeganasan1);
+    }//GEN-LAST:event_FaktorRisikoTinggi13KeyPressed
+
+    private void KecurigaanKeganasan1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan1ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KecurigaanKeganasan1ItemStateChanged
+
+    private void KecurigaanKeganasan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan1KeyPressed
+        Valid.pindah(evt,FaktorRisikoTinggi13,KecurigaanKeganasan2);
+    }//GEN-LAST:event_KecurigaanKeganasan1KeyPressed
+
+    private void KecurigaanKeganasan2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan2ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KecurigaanKeganasan2ItemStateChanged
+
+    private void KecurigaanKeganasan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan2KeyPressed
+        Valid.pindah(evt,KecurigaanKeganasan1,KecurigaanKeganasan3);
+    }//GEN-LAST:event_KecurigaanKeganasan2KeyPressed
+
+    private void KecurigaanKeganasan3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan3ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KecurigaanKeganasan3ItemStateChanged
+
+    private void KecurigaanKeganasan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan3KeyPressed
+        Valid.pindah(evt,KecurigaanKeganasan2,KecurigaanKeganasan4);
+    }//GEN-LAST:event_KecurigaanKeganasan3KeyPressed
+
+    private void KecurigaanKeganasan4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan4ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KecurigaanKeganasan4ItemStateChanged
+
+    private void KecurigaanKeganasan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan4KeyPressed
+        Valid.pindah(evt,KecurigaanKeganasan3,KecurigaanKeganasan5);
+    }//GEN-LAST:event_KecurigaanKeganasan4KeyPressed
+
+    private void KecurigaanKeganasan5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan5ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KecurigaanKeganasan5ItemStateChanged
+
+    private void KecurigaanKeganasan5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan5KeyPressed
+        Valid.pindah(evt,KecurigaanKeganasan4,KecurigaanKeganasan6);
+    }//GEN-LAST:event_KecurigaanKeganasan5KeyPressed
+
+    private void KecurigaanKeganasan6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan6ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KecurigaanKeganasan6ItemStateChanged
+
+    private void KecurigaanKeganasan6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan6KeyPressed
+        Valid.pindah(evt,KecurigaanKeganasan5,KecurigaanKeganasan7);
+    }//GEN-LAST:event_KecurigaanKeganasan6KeyPressed
+
+    private void KecurigaanKeganasan7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan7ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KecurigaanKeganasan7ItemStateChanged
+
+    private void KecurigaanKeganasan7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan7KeyPressed
+        Valid.pindah(evt,KecurigaanKeganasan6,KecurigaanKeganasan8);
+    }//GEN-LAST:event_KecurigaanKeganasan7KeyPressed
+
+    private void KecurigaanKeganasan8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan8ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KecurigaanKeganasan8ItemStateChanged
+
+    private void KecurigaanKeganasan8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan8KeyPressed
+        Valid.pindah(evt,KecurigaanKeganasan7,HasilPemeriksaanSadanis);
+    }//GEN-LAST:event_KecurigaanKeganasan8KeyPressed
+
+    private void HasilPemeriksaanSadanisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HasilPemeriksaanSadanisItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HasilPemeriksaanSadanisItemStateChanged
+
+    private void HasilPemeriksaanSadanisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilPemeriksaanSadanisKeyPressed
+        Valid.pindah(evt,KecurigaanKeganasan8,TindakLanjutSadanis);
+    }//GEN-LAST:event_HasilPemeriksaanSadanisKeyPressed
+
+    private void TindakLanjutSadanisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TindakLanjutSadanisItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjutSadanisItemStateChanged
+
+    private void TindakLanjutSadanisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutSadanisKeyPressed
+        Valid.pindah(evt,HasilPemeriksaanSadanis,HasilSkrining);
+    }//GEN-LAST:event_TindakLanjutSadanisKeyPressed
+
+    private void HasilSkriningItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HasilSkriningItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HasilSkriningItemStateChanged
 
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
-        //Valid.pindah(evt,Lapor,SG1);
+        Valid.pindah(evt,TindakLanjutSadanis,Keterangan);
     }//GEN-LAST:event_HasilSkriningKeyPressed
 
-    private void PertanyaanLanjutan3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan3ItemStateChanged
-        NilaiPertanyaanLanjutan3.setText((PertanyaanLanjutan3.getSelectedIndex()+1)+"");
-        isTotal();
-    }//GEN-LAST:event_PertanyaanLanjutan3ItemStateChanged
-
-    private void PertanyaanLanjutan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan3KeyPressed
-        Valid.pindah(evt,PertanyaanLanjutan2,PertanyaanLanjutan4);
-    }//GEN-LAST:event_PertanyaanLanjutan3KeyPressed
-
-    private void PertanyaanLanjutan4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan4ItemStateChanged
-        NilaiPertanyaanLanjutan4.setText((PertanyaanLanjutan4.getSelectedIndex()+1)+"");
-        isTotal();
-    }//GEN-LAST:event_PertanyaanLanjutan4ItemStateChanged
-
-    private void PertanyaanLanjutan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan4KeyPressed
-        Valid.pindah(evt,PertanyaanLanjutan3,PertanyaanLanjutan5);
-    }//GEN-LAST:event_PertanyaanLanjutan4KeyPressed
-
-    private void PertanyaanLanjutan5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan5ItemStateChanged
-        NilaiPertanyaanLanjutan5.setText((PertanyaanLanjutan5.getSelectedIndex()+1)+"");
-        isTotal();
-    }//GEN-LAST:event_PertanyaanLanjutan5ItemStateChanged
-
-    private void PertanyaanLanjutan5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan5KeyPressed
-        Valid.pindah(evt,PertanyaanLanjutan4,PertanyaanLanjutan6);
-    }//GEN-LAST:event_PertanyaanLanjutan5KeyPressed
-
-    private void PertanyaanLanjutan6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan6ItemStateChanged
-        NilaiPertanyaanLanjutan6.setText((PertanyaanLanjutan6.getSelectedIndex()+1)+"");
-        isTotal();
-    }//GEN-LAST:event_PertanyaanLanjutan6ItemStateChanged
-
-    private void PertanyaanLanjutan6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan6KeyPressed
-        Valid.pindah(evt,PertanyaanLanjutan5,BtnSimpan);
-    }//GEN-LAST:event_PertanyaanLanjutan6KeyPressed
-
-    private void PertanyaanAwal3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal3ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal3ItemStateChanged
-
-    private void PertanyaanAwal3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal3KeyPressed
-
-    private void PertanyaanAwal4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal4ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal4ItemStateChanged
-
-    private void PertanyaanAwal4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal4KeyPressed
-
-    private void PertanyaanAwal5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal5ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal5ItemStateChanged
-
-    private void PertanyaanAwal5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal5KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal5KeyPressed
-
-    private void PertanyaanAwal6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal6ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal6ItemStateChanged
-
-    private void PertanyaanAwal6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal6KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal6KeyPressed
-
-    private void PertanyaanAwal7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal7ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal7ItemStateChanged
-
-    private void PertanyaanAwal7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal7KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal7KeyPressed
-
-    private void PertanyaanAwal8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal8ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal8ItemStateChanged
-
-    private void PertanyaanAwal8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal8KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal8KeyPressed
-
-    private void PertanyaanAwal9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal9ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal9ItemStateChanged
-
-    private void PertanyaanAwal9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal9KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal9KeyPressed
-
-    private void PertanyaanAwal10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal10ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal10ItemStateChanged
-
-    private void PertanyaanAwal10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal10KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal10KeyPressed
-
-    private void PertanyaanAwal11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal11ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal11ItemStateChanged
-
-    private void PertanyaanAwal11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal11KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal11KeyPressed
-
-    private void PertanyaanAwal12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal12ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal12ItemStateChanged
-
-    private void PertanyaanAwal12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal12KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal12KeyPressed
-
-    private void PertanyaanAwal13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal13ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal13ItemStateChanged
-
-    private void PertanyaanAwal13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal13KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal13KeyPressed
-
-    private void PertanyaanAwal14ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanAwal14ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal14ItemStateChanged
-
-    private void PertanyaanAwal14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanAwal14KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanAwal14KeyPressed
-
-    private void PertanyaanLanjutan7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan7ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan7ItemStateChanged
-
-    private void PertanyaanLanjutan7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan7KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan7KeyPressed
-
-    private void PertanyaanLanjutan8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan8ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan8ItemStateChanged
-
-    private void PertanyaanLanjutan8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan8KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan8KeyPressed
-
-    private void PertanyaanLanjutan9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan9ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan9ItemStateChanged
-
-    private void PertanyaanLanjutan9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan9KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan9KeyPressed
-
-    private void PertanyaanLanjutan10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan10ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan10ItemStateChanged
-
-    private void PertanyaanLanjutan10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan10KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan10KeyPressed
-
-    private void PertanyaanLanjutan11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan11ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan11ItemStateChanged
-
-    private void PertanyaanLanjutan11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan11KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan11KeyPressed
-
-    private void PertanyaanLanjutan12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan12ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan12ItemStateChanged
-
-    private void PertanyaanLanjutan12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan12KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan12KeyPressed
-
-    private void PertanyaanLanjutan13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan13ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan13ItemStateChanged
-
-    private void PertanyaanLanjutan13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan13KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan13KeyPressed
-
-    private void PertanyaanLanjutan14ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan14ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan14ItemStateChanged
-
-    private void PertanyaanLanjutan14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan14KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan14KeyPressed
-
-    private void PertanyaanLanjutan15ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan15ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan15ItemStateChanged
-
-    private void PertanyaanLanjutan15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan15KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan15KeyPressed
-
-    private void PertanyaanLanjutan16ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan16ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan16ItemStateChanged
-
-    private void PertanyaanLanjutan16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan16KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan16KeyPressed
-
-    private void PertanyaanLanjutan17ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan17ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan17ItemStateChanged
-
-    private void PertanyaanLanjutan17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan17KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan17KeyPressed
-
-    private void PertanyaanLanjutan18ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan18ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan18ItemStateChanged
-
-    private void PertanyaanLanjutan18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan18KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan18KeyPressed
-
-    private void PertanyaanLanjutan19ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan19ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan19ItemStateChanged
-
-    private void PertanyaanLanjutan19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan19KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan19KeyPressed
-
-    private void PertanyaanLanjutan20ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan20ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan20ItemStateChanged
-
-    private void PertanyaanLanjutan20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan20KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan20KeyPressed
-
-    private void PertanyaanLanjutan21ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan21ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan21ItemStateChanged
-
-    private void PertanyaanLanjutan21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan21KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan21KeyPressed
-
-    private void PertanyaanLanjutan22ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan22ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan22ItemStateChanged
-
-    private void PertanyaanLanjutan22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan22KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan22KeyPressed
-
-    private void PertanyaanLanjutan23ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan23ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan23ItemStateChanged
-
-    private void PertanyaanLanjutan23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan23KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan23KeyPressed
-
-    private void PertanyaanLanjutan24ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan24ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan24ItemStateChanged
-
-    private void PertanyaanLanjutan24KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan24KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PertanyaanLanjutan24KeyPressed
-
-    private void HasilSkrining1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkrining1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HasilSkrining1KeyPressed
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        Valid.pindah(evt,HasilSkrining,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
@@ -3223,90 +3233,89 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
+    private widget.ComboBox FaktorAwal1;
+    private widget.ComboBox FaktorAwal10;
+    private widget.ComboBox FaktorAwal11;
+    private widget.ComboBox FaktorAwal12;
+    private widget.ComboBox FaktorAwal13;
+    private widget.ComboBox FaktorAwal14;
+    private widget.ComboBox FaktorAwal2;
+    private widget.ComboBox FaktorAwal3;
+    private widget.ComboBox FaktorAwal4;
+    private widget.ComboBox FaktorAwal5;
+    private widget.ComboBox FaktorAwal6;
+    private widget.ComboBox FaktorAwal7;
+    private widget.ComboBox FaktorAwal8;
+    private widget.ComboBox FaktorAwal9;
+    private widget.ComboBox FaktorRisikoTinggi1;
+    private widget.ComboBox FaktorRisikoTinggi10;
+    private widget.ComboBox FaktorRisikoTinggi11;
+    private widget.ComboBox FaktorRisikoTinggi12;
+    private widget.ComboBox FaktorRisikoTinggi13;
+    private widget.ComboBox FaktorRisikoTinggi2;
+    private widget.ComboBox FaktorRisikoTinggi3;
+    private widget.ComboBox FaktorRisikoTinggi4;
+    private widget.ComboBox FaktorRisikoTinggi5;
+    private widget.ComboBox FaktorRisikoTinggi6;
+    private widget.ComboBox FaktorRisikoTinggi7;
+    private widget.ComboBox FaktorRisikoTinggi8;
+    private widget.ComboBox FaktorRisikoTinggi9;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox HasilSkrining;
-    private widget.TextBox HasilSkrining1;
+    private widget.ComboBox HasilPemeriksaanSadanis;
+    private widget.ComboBox HasilSkrining;
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
+    private widget.ComboBox KecurigaanKeganasan1;
+    private widget.ComboBox KecurigaanKeganasan2;
+    private widget.ComboBox KecurigaanKeganasan3;
+    private widget.ComboBox KecurigaanKeganasan4;
+    private widget.ComboBox KecurigaanKeganasan5;
+    private widget.ComboBox KecurigaanKeganasan6;
+    private widget.ComboBox KecurigaanKeganasan7;
+    private widget.ComboBox KecurigaanKeganasan8;
+    private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningKekerasanPadaPerempuan;
-    private widget.TextBox NilaiPertanyaanAwal1;
-    private widget.TextBox NilaiPertanyaanAwal10;
-    private widget.TextBox NilaiPertanyaanAwal11;
-    private widget.TextBox NilaiPertanyaanAwal12;
-    private widget.TextBox NilaiPertanyaanAwal13;
-    private widget.TextBox NilaiPertanyaanAwal14;
-    private widget.TextBox NilaiPertanyaanAwal2;
-    private widget.TextBox NilaiPertanyaanAwal3;
-    private widget.TextBox NilaiPertanyaanAwal4;
-    private widget.TextBox NilaiPertanyaanAwal5;
-    private widget.TextBox NilaiPertanyaanAwal6;
-    private widget.TextBox NilaiPertanyaanAwal7;
-    private widget.TextBox NilaiPertanyaanAwal8;
-    private widget.TextBox NilaiPertanyaanAwal9;
-    private widget.TextBox NilaiPertanyaanLanjutan1;
-    private widget.TextBox NilaiPertanyaanLanjutan10;
-    private widget.TextBox NilaiPertanyaanLanjutan11;
-    private widget.TextBox NilaiPertanyaanLanjutan12;
-    private widget.TextBox NilaiPertanyaanLanjutan13;
-    private widget.TextBox NilaiPertanyaanLanjutan14;
-    private widget.TextBox NilaiPertanyaanLanjutan15;
-    private widget.TextBox NilaiPertanyaanLanjutan16;
-    private widget.TextBox NilaiPertanyaanLanjutan17;
-    private widget.TextBox NilaiPertanyaanLanjutan18;
-    private widget.TextBox NilaiPertanyaanLanjutan19;
-    private widget.TextBox NilaiPertanyaanLanjutan2;
-    private widget.TextBox NilaiPertanyaanLanjutan20;
-    private widget.TextBox NilaiPertanyaanLanjutan21;
-    private widget.TextBox NilaiPertanyaanLanjutan3;
-    private widget.TextBox NilaiPertanyaanLanjutan4;
-    private widget.TextBox NilaiPertanyaanLanjutan5;
-    private widget.TextBox NilaiPertanyaanLanjutan6;
-    private widget.TextBox NilaiPertanyaanLanjutan7;
-    private widget.TextBox NilaiPertanyaanLanjutan8;
-    private widget.TextBox NilaiPertanyaanLanjutan9;
+    private widget.TextBox NilaiFaktorAwal1;
+    private widget.TextBox NilaiFaktorAwal10;
+    private widget.TextBox NilaiFaktorAwal11;
+    private widget.TextBox NilaiFaktorAwal12;
+    private widget.TextBox NilaiFaktorAwal13;
+    private widget.TextBox NilaiFaktorAwal14;
+    private widget.TextBox NilaiFaktorAwal2;
+    private widget.TextBox NilaiFaktorAwal3;
+    private widget.TextBox NilaiFaktorAwal4;
+    private widget.TextBox NilaiFaktorAwal5;
+    private widget.TextBox NilaiFaktorAwal6;
+    private widget.TextBox NilaiFaktorAwal7;
+    private widget.TextBox NilaiFaktorAwal8;
+    private widget.TextBox NilaiFaktorAwal9;
+    private widget.TextBox NilaiFaktorRisikoTinggi1;
+    private widget.TextBox NilaiFaktorRisikoTinggi10;
+    private widget.TextBox NilaiFaktorRisikoTinggi11;
+    private widget.TextBox NilaiFaktorRisikoTinggi12;
+    private widget.TextBox NilaiFaktorRisikoTinggi13;
+    private widget.TextBox NilaiFaktorRisikoTinggi2;
+    private widget.TextBox NilaiFaktorRisikoTinggi3;
+    private widget.TextBox NilaiFaktorRisikoTinggi4;
+    private widget.TextBox NilaiFaktorRisikoTinggi5;
+    private widget.TextBox NilaiFaktorRisikoTinggi6;
+    private widget.TextBox NilaiFaktorRisikoTinggi7;
+    private widget.TextBox NilaiFaktorRisikoTinggi8;
+    private widget.TextBox NilaiFaktorRisikoTinggi9;
+    private widget.TextBox NilaiKecurigaanKeganasan1;
+    private widget.TextBox NilaiKecurigaanKeganasan2;
+    private widget.TextBox NilaiKecurigaanKeganasan3;
+    private widget.TextBox NilaiKecurigaanKeganasan4;
+    private widget.TextBox NilaiKecurigaanKeganasan5;
+    private widget.TextBox NilaiKecurigaanKeganasan6;
+    private widget.TextBox NilaiKecurigaanKeganasan7;
+    private widget.TextBox NilaiKecurigaanKeganasan8;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox PertanyaanAwal1;
-    private widget.ComboBox PertanyaanAwal10;
-    private widget.ComboBox PertanyaanAwal11;
-    private widget.ComboBox PertanyaanAwal12;
-    private widget.ComboBox PertanyaanAwal13;
-    private widget.ComboBox PertanyaanAwal14;
-    private widget.ComboBox PertanyaanAwal2;
-    private widget.ComboBox PertanyaanAwal3;
-    private widget.ComboBox PertanyaanAwal4;
-    private widget.ComboBox PertanyaanAwal5;
-    private widget.ComboBox PertanyaanAwal6;
-    private widget.ComboBox PertanyaanAwal7;
-    private widget.ComboBox PertanyaanAwal8;
-    private widget.ComboBox PertanyaanAwal9;
-    private widget.ComboBox PertanyaanLanjutan1;
-    private widget.ComboBox PertanyaanLanjutan10;
-    private widget.ComboBox PertanyaanLanjutan11;
-    private widget.ComboBox PertanyaanLanjutan12;
-    private widget.ComboBox PertanyaanLanjutan13;
-    private widget.ComboBox PertanyaanLanjutan14;
-    private widget.ComboBox PertanyaanLanjutan15;
-    private widget.ComboBox PertanyaanLanjutan16;
-    private widget.ComboBox PertanyaanLanjutan17;
-    private widget.ComboBox PertanyaanLanjutan18;
-    private widget.ComboBox PertanyaanLanjutan19;
-    private widget.ComboBox PertanyaanLanjutan2;
-    private widget.ComboBox PertanyaanLanjutan20;
-    private widget.ComboBox PertanyaanLanjutan21;
-    private widget.ComboBox PertanyaanLanjutan22;
-    private widget.ComboBox PertanyaanLanjutan23;
-    private widget.ComboBox PertanyaanLanjutan24;
-    private widget.ComboBox PertanyaanLanjutan3;
-    private widget.ComboBox PertanyaanLanjutan4;
-    private widget.ComboBox PertanyaanLanjutan5;
-    private widget.ComboBox PertanyaanLanjutan6;
-    private widget.ComboBox PertanyaanLanjutan7;
-    private widget.ComboBox PertanyaanLanjutan8;
-    private widget.ComboBox PertanyaanLanjutan9;
+    private widget.TextBox Rekomendasi;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -3315,6 +3324,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
+    private widget.ComboBox TindakLanjutSadanis;
     private widget.TextBox TotalHasil;
     private widget.TextBox Umur;
     private widget.Button btnPetugas;
@@ -3543,25 +3553,83 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        PertanyaanAwal1.setSelectedIndex(0);
-        NilaiPertanyaanAwal1.setText("1");
-        PertanyaanAwal2.setSelectedIndex(0);
-        NilaiPertanyaanAwal2.setText("1");
-        PertanyaanLanjutan1.setSelectedIndex(0);
-        NilaiPertanyaanLanjutan1.setText("1");
-        PertanyaanLanjutan2.setSelectedIndex(0);
-        NilaiPertanyaanLanjutan2.setText("1");
-        PertanyaanLanjutan3.setSelectedIndex(0);
-        NilaiPertanyaanLanjutan3.setText("1");
-        PertanyaanLanjutan4.setSelectedIndex(0);
-        NilaiPertanyaanLanjutan4.setText("1");
-        PertanyaanLanjutan5.setSelectedIndex(0);
-        NilaiPertanyaanLanjutan5.setText("1");
-        PertanyaanLanjutan6.setSelectedIndex(0);
-        NilaiPertanyaanLanjutan6.setText("1");
-        TotalHasil.setText("8");
-        HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
-        PertanyaanAwal1.requestFocus();
+        FaktorAwal1.setSelectedIndex(0);
+        NilaiFaktorAwal1.setText("0");
+        FaktorAwal2.setSelectedIndex(0);
+        NilaiFaktorAwal2.setText("0");
+        FaktorAwal3.setSelectedIndex(0);
+        NilaiFaktorAwal3.setText("0");
+        FaktorAwal4.setSelectedIndex(0);
+        NilaiFaktorAwal4.setText("0");
+        FaktorAwal5.setSelectedIndex(0);
+        NilaiFaktorAwal5.setText("0");
+        FaktorAwal6.setSelectedIndex(0);
+        NilaiFaktorAwal6.setText("0");
+        FaktorAwal7.setSelectedIndex(0);
+        NilaiFaktorAwal7.setText("0");
+        FaktorAwal8.setSelectedIndex(0);
+        NilaiFaktorAwal8.setText("0");
+        FaktorAwal9.setSelectedIndex(0);
+        NilaiFaktorAwal9.setText("0");
+        FaktorAwal10.setSelectedIndex(0);
+        NilaiFaktorAwal10.setText("0");
+        FaktorAwal11.setSelectedIndex(0);
+        NilaiFaktorAwal11.setText("0");
+        FaktorAwal12.setSelectedIndex(0);
+        NilaiFaktorAwal12.setText("0");
+        FaktorAwal13.setSelectedIndex(0);
+        NilaiFaktorAwal13.setText("0");
+        FaktorAwal14.setSelectedIndex(0);
+        NilaiFaktorAwal14.setText("0");
+        FaktorRisikoTinggi1.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi1.setText("0");
+        FaktorRisikoTinggi2.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi2.setText("0");
+        FaktorRisikoTinggi3.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi3.setText("0");
+        FaktorRisikoTinggi4.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi4.setText("0");
+        FaktorRisikoTinggi5.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi5.setText("0");
+        FaktorRisikoTinggi6.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi6.setText("0");
+        FaktorRisikoTinggi7.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi7.setText("0");
+        FaktorRisikoTinggi8.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi8.setText("0");
+        FaktorRisikoTinggi9.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi9.setText("0");
+        FaktorRisikoTinggi10.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi10.setText("0");
+        FaktorRisikoTinggi11.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi11.setText("0");
+        FaktorRisikoTinggi12.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi12.setText("0");
+        FaktorRisikoTinggi13.setSelectedIndex(0);
+        NilaiFaktorRisikoTinggi13.setText("0");
+        KecurigaanKeganasan1.setSelectedIndex(0);
+        NilaiKecurigaanKeganasan1.setText("0");
+        KecurigaanKeganasan2.setSelectedIndex(0);
+        NilaiKecurigaanKeganasan2.setText("0");
+        KecurigaanKeganasan3.setSelectedIndex(0);
+        NilaiKecurigaanKeganasan3.setText("0");
+        KecurigaanKeganasan4.setSelectedIndex(0);
+        NilaiKecurigaanKeganasan4.setText("0");
+        KecurigaanKeganasan5.setSelectedIndex(0);
+        NilaiKecurigaanKeganasan5.setText("0");
+        KecurigaanKeganasan6.setSelectedIndex(0);
+        NilaiKecurigaanKeganasan6.setText("0");
+        KecurigaanKeganasan7.setSelectedIndex(0);
+        NilaiKecurigaanKeganasan7.setText("0");
+        KecurigaanKeganasan8.setSelectedIndex(0);
+        NilaiKecurigaanKeganasan8.setText("0");
+        Rekomendasi.setText("Waspada dan upayakan melakukan penanggulangan sehingga skor semakin kecil");
+        TotalHasil.setText("0");
+        HasilPemeriksaanSadanis.setSelectedIndex(0);
+        TindakLanjutSadanis.setSelectedIndex(0);
+        HasilSkrining.setSelectedIndex(0);
+        Keterangan.setText("");
+        FaktorAwal1.requestFocus();
     } 
 
     private void getData() {
@@ -3594,24 +3662,24 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
-            PertanyaanAwal1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            NilaiPertanyaanAwal1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            PertanyaanAwal2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            NilaiPertanyaanAwal2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            PertanyaanLanjutan1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            NilaiPertanyaanLanjutan1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            PertanyaanLanjutan2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            NilaiPertanyaanLanjutan2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            PertanyaanLanjutan3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            NilaiPertanyaanLanjutan3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            PertanyaanLanjutan4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            NilaiPertanyaanLanjutan4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            PertanyaanLanjutan5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            NilaiPertanyaanLanjutan5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            PertanyaanLanjutan6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            NilaiPertanyaanLanjutan6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            FaktorAwal1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NilaiFaktorAwal1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            FaktorAwal2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            NilaiFaktorAwal2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            FaktorRisikoTinggi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NilaiFaktorRisikoTinggi1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            FaktorRisikoTinggi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            NilaiFaktorRisikoTinggi2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            FaktorRisikoTinggi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            NilaiFaktorRisikoTinggi3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            FaktorRisikoTinggi4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            NilaiFaktorRisikoTinggi4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            FaktorRisikoTinggi5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            NilaiFaktorRisikoTinggi5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            FaktorRisikoTinggi6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            NilaiFaktorRisikoTinggi6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            Rekomendasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -3759,11 +3827,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
                 "skor_pasangan_melecehkan_secara_fisik=?,pasangan_melecehkan_secara_imosional=?,skor_pasangan_melecehkan_secara_imosional=?,pasangan_melecehkan_secara_seksual=?,skor_pasangan_melecehkan_secara_seksual=?,totalskor=?,hasil_skrining=?,"+
                 "nip=?",22,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                PertanyaanAwal1.getSelectedItem().toString(),NilaiPertanyaanAwal1.getText(),PertanyaanAwal2.getSelectedItem().toString(),NilaiPertanyaanAwal2.getText(), 
-                PertanyaanLanjutan1.getSelectedItem().toString(),NilaiPertanyaanLanjutan1.getText(),PertanyaanLanjutan2.getSelectedItem().toString(),NilaiPertanyaanLanjutan2.getText(), 
-                PertanyaanLanjutan3.getSelectedItem().toString(),NilaiPertanyaanLanjutan3.getText(),PertanyaanLanjutan4.getSelectedItem().toString(),NilaiPertanyaanLanjutan4.getText(), 
-                PertanyaanLanjutan5.getSelectedItem().toString(),NilaiPertanyaanLanjutan5.getText(),PertanyaanLanjutan6.getSelectedItem().toString(),NilaiPertanyaanLanjutan6.getText(), 
-                TotalHasil.getText(),HasilSkrining.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                FaktorAwal1.getSelectedItem().toString(),NilaiFaktorAwal1.getText(),FaktorAwal2.getSelectedItem().toString(),NilaiFaktorAwal2.getText(), 
+                FaktorRisikoTinggi1.getSelectedItem().toString(),NilaiFaktorRisikoTinggi1.getText(),FaktorRisikoTinggi2.getSelectedItem().toString(),NilaiFaktorRisikoTinggi2.getText(), 
+                FaktorRisikoTinggi3.getSelectedItem().toString(),NilaiFaktorRisikoTinggi3.getText(),FaktorRisikoTinggi4.getSelectedItem().toString(),NilaiFaktorRisikoTinggi4.getText(), 
+                FaktorRisikoTinggi5.getSelectedItem().toString(),NilaiFaktorRisikoTinggi5.getText(),FaktorRisikoTinggi6.getSelectedItem().toString(),NilaiFaktorRisikoTinggi6.getText(), 
+                TotalHasil.getText(),Rekomendasi.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -3773,24 +3841,24 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(PertanyaanAwal1.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(NilaiPertanyaanAwal1.getText(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(PertanyaanAwal2.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(NilaiPertanyaanAwal2.getText(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(PertanyaanLanjutan1.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(NilaiPertanyaanLanjutan1.getText(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(PertanyaanLanjutan2.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(NilaiPertanyaanLanjutan2.getText(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(PertanyaanLanjutan3.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(NilaiPertanyaanLanjutan3.getText(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(PertanyaanLanjutan4.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(NilaiPertanyaanLanjutan4.getText(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(PertanyaanLanjutan5.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(NilaiPertanyaanLanjutan5.getText(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(PertanyaanLanjutan6.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(NilaiPertanyaanLanjutan6.getText(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(FaktorAwal1.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(NilaiFaktorAwal1.getText(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(FaktorAwal2.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(NilaiFaktorAwal2.getText(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(FaktorRisikoTinggi1.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(NilaiFaktorRisikoTinggi1.getText(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(FaktorRisikoTinggi2.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(NilaiFaktorRisikoTinggi2.getText(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(FaktorRisikoTinggi3.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(NilaiFaktorRisikoTinggi3.getText(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(FaktorRisikoTinggi4.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(NilaiFaktorRisikoTinggi4.getText(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(FaktorRisikoTinggi5.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(NilaiFaktorRisikoTinggi5.getText(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(FaktorRisikoTinggi6.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt(NilaiFaktorRisikoTinggi6.getText(),tbObat.getSelectedRow(),23);
                tbObat.setValueAt(TotalHasil.getText(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(Rekomendasi.getText(),tbObat.getSelectedRow(),25);
                emptTeks();
         }
     }
@@ -3809,31 +3877,31 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
 
     private void isTotal() {
         try {
-            TotalHasil.setText(""+(Integer.parseInt(NilaiPertanyaanAwal1.getText())+Integer.parseInt(NilaiPertanyaanAwal2.getText())+Integer.parseInt(NilaiPertanyaanLanjutan1.getText())+Integer.parseInt(NilaiPertanyaanLanjutan2.getText())+Integer.parseInt(NilaiPertanyaanLanjutan3.getText())+Integer.parseInt(NilaiPertanyaanLanjutan4.getText())+Integer.parseInt(NilaiPertanyaanLanjutan5.getText())+Integer.parseInt(NilaiPertanyaanLanjutan6.getText())));
+            TotalHasil.setText(""+(Integer.parseInt(NilaiFaktorAwal1.getText())+Integer.parseInt(NilaiFaktorAwal2.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi1.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi2.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi3.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi4.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi5.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi6.getText())));
             if(Integer.parseInt(TotalHasil.getText())>12){
-                HasilSkrining.setText("Pasien Terindikasi Mengalami Kekerasan");
+                Rekomendasi.setText("Pasien Terindikasi Mengalami Kekerasan");
             }else{
-                HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+                Rekomendasi.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
             }
         } catch (Exception e) {
-            HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+            Rekomendasi.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
         }
     }
 
     private void simpan() {
         if(Sequel.menyimpantf("skrining_kekerasan_pada_perempuan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            PertanyaanAwal1.getSelectedItem().toString(),NilaiPertanyaanAwal1.getText(),PertanyaanAwal2.getSelectedItem().toString(),NilaiPertanyaanAwal2.getText(), 
-            PertanyaanLanjutan1.getSelectedItem().toString(),NilaiPertanyaanLanjutan1.getText(),PertanyaanLanjutan2.getSelectedItem().toString(),NilaiPertanyaanLanjutan2.getText(), 
-            PertanyaanLanjutan3.getSelectedItem().toString(),NilaiPertanyaanLanjutan3.getText(),PertanyaanLanjutan4.getSelectedItem().toString(),NilaiPertanyaanLanjutan4.getText(), 
-            PertanyaanLanjutan5.getSelectedItem().toString(),NilaiPertanyaanLanjutan5.getText(),PertanyaanLanjutan6.getSelectedItem().toString(),NilaiPertanyaanLanjutan6.getText(), 
-            TotalHasil.getText(),HasilSkrining.getText(),KdPetugas.getText()
+            FaktorAwal1.getSelectedItem().toString(),NilaiFaktorAwal1.getText(),FaktorAwal2.getSelectedItem().toString(),NilaiFaktorAwal2.getText(), 
+            FaktorRisikoTinggi1.getSelectedItem().toString(),NilaiFaktorRisikoTinggi1.getText(),FaktorRisikoTinggi2.getSelectedItem().toString(),NilaiFaktorRisikoTinggi2.getText(), 
+            FaktorRisikoTinggi3.getSelectedItem().toString(),NilaiFaktorRisikoTinggi3.getText(),FaktorRisikoTinggi4.getSelectedItem().toString(),NilaiFaktorRisikoTinggi4.getText(), 
+            FaktorRisikoTinggi5.getSelectedItem().toString(),NilaiFaktorRisikoTinggi5.getText(),FaktorRisikoTinggi6.getSelectedItem().toString(),NilaiFaktorRisikoTinggi6.getText(), 
+            TotalHasil.getText(),Rekomendasi.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                PertanyaanAwal1.getSelectedItem().toString(),NilaiPertanyaanAwal1.getText(),PertanyaanAwal2.getSelectedItem().toString(),NilaiPertanyaanAwal2.getText(),PertanyaanLanjutan1.getSelectedItem().toString(),NilaiPertanyaanLanjutan1.getText(),
-                PertanyaanLanjutan2.getSelectedItem().toString(),NilaiPertanyaanLanjutan2.getText(),PertanyaanLanjutan3.getSelectedItem().toString(),NilaiPertanyaanLanjutan3.getText(),PertanyaanLanjutan4.getSelectedItem().toString(),NilaiPertanyaanLanjutan4.getText(), 
-                PertanyaanLanjutan5.getSelectedItem().toString(),NilaiPertanyaanLanjutan5.getText(),PertanyaanLanjutan6.getSelectedItem().toString(),NilaiPertanyaanLanjutan6.getText(),TotalHasil.getText(),HasilSkrining.getText()
+                FaktorAwal1.getSelectedItem().toString(),NilaiFaktorAwal1.getText(),FaktorAwal2.getSelectedItem().toString(),NilaiFaktorAwal2.getText(),FaktorRisikoTinggi1.getSelectedItem().toString(),NilaiFaktorRisikoTinggi1.getText(),
+                FaktorRisikoTinggi2.getSelectedItem().toString(),NilaiFaktorRisikoTinggi2.getText(),FaktorRisikoTinggi3.getSelectedItem().toString(),NilaiFaktorRisikoTinggi3.getText(),FaktorRisikoTinggi4.getSelectedItem().toString(),NilaiFaktorRisikoTinggi4.getText(), 
+                FaktorRisikoTinggi5.getSelectedItem().toString(),NilaiFaktorRisikoTinggi5.getText(),FaktorRisikoTinggi6.getSelectedItem().toString(),NilaiFaktorRisikoTinggi6.getText(),TotalHasil.getText(),Rekomendasi.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
