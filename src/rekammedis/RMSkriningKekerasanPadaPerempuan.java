@@ -1824,26 +1824,6 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            /*
-            "Pertanyaan Awal 1"8,
-            "N.P.A.1"9,
-            "Pertanyaan Awal 2"10,
-            "N.P.A.2"11,
-            "Pertanyaan Lanjutan 1"12,
-            "N.P.L.1"13,
-            "Pertanyaan Lanjutan 2"14,
-            "N.P.L.2"15,
-            "Pertanyaan Lanjutan 3"16,
-            "N.P.L.3"17,
-            "Pertanyaan Lanjutan 4"18,
-            "N.P.L.4"19,
-            "Pertanyaan Lanjutan 5"20,
-            "N.P.L.5"21,
-            "Pertanyaan Lanjutan 6"22,
-            "N.P.L.6"23,
-            "Total Skor"24,
-            "Hasil Skrining"25
-            */
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
