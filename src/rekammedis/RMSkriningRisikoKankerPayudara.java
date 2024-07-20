@@ -2393,11 +2393,6 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
 
         HasilPemeriksaanSadanis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Benjolan", "Benjolan", "Curiga Kanker" }));
         HasilPemeriksaanSadanis.setName("HasilPemeriksaanSadanis"); // NOI18N
-        HasilPemeriksaanSadanis.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                HasilPemeriksaanSadanisItemStateChanged(evt);
-            }
-        });
         HasilPemeriksaanSadanis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HasilPemeriksaanSadanisKeyPressed(evt);
@@ -2418,11 +2413,6 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
 
         TindakLanjutSadanis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Dirujuk", "Dirujuk" }));
         TindakLanjutSadanis.setName("TindakLanjutSadanis"); // NOI18N
-        TindakLanjutSadanis.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TindakLanjutSadanisItemStateChanged(evt);
-            }
-        });
         TindakLanjutSadanis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TindakLanjutSadanisKeyPressed(evt);
@@ -2452,11 +2442,6 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
 
         HasilSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Kemungkinan Kelainan Payudara Jinak", "Curiga Kelainan Payudara Ganas" }));
         HasilSkrining.setName("HasilSkrining"); // NOI18N
-        HasilSkrining.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                HasilSkriningItemStateChanged(evt);
-            }
-        });
         HasilSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HasilSkriningKeyPressed(evt);
@@ -2864,23 +2849,27 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningKekerasanPadaPerempuan.jasper","report","::[ Formulir Skrining Kekerasan Pada Perempuan ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
-                    "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
-                    "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
-                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_payudara.nip,"+
+                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.menggambarkan_hubungan,skrining_risiko_kanker_payudara.skor_menggambarkan_hubungan,"+
+                    "skrining_risiko_kanker_payudara.berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.pertengkaran_membuat_sedih,"+
+                    "skrining_risiko_kanker_payudara.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_payudara.pertengkaran_menghasilkan_pukulan,"+
+                    "skrining_risiko_kanker_payudara.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_payudara.pernah_merasa_takut_dengan_pasangan,"+
+                    "skrining_risiko_kanker_payudara.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_fisik,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_imosional,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_seksual,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_payudara.totalskor,skrining_risiko_kanker_payudara.hasil_skrining "+
+                    "from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_payudara.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
 
     private void FaktorAwal1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal1ItemStateChanged
-        NilaiFaktorAwal1.setText((FaktorAwal1.getSelectedIndex()+1)+"");
+        if(FaktorAwal1.getSelectedIndex()==1){
+            NilaiFaktorAwal1.setText("1");
+        }else{
+            NilaiFaktorAwal1.setText("0");
+        }
         isTotal();
     }//GEN-LAST:event_FaktorAwal1ItemStateChanged
 
@@ -2889,7 +2878,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal1KeyPressed
 
     private void FaktorAwal2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal2ItemStateChanged
-        NilaiFaktorAwal2.setText((FaktorAwal2.getSelectedIndex()+1)+"");
+        if(FaktorAwal2.getSelectedIndex()==1){
+            NilaiFaktorAwal2.setText("1");
+        }else{
+            NilaiFaktorAwal2.setText("0");
+        }
         isTotal();
     }//GEN-LAST:event_FaktorAwal2ItemStateChanged
 
@@ -2902,7 +2895,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void FaktorRisikoTinggi1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi1ItemStateChanged
-        NilaiFaktorRisikoTinggi1.setText((FaktorRisikoTinggi1.getSelectedIndex()+1)+"");
+        if(FaktorRisikoTinggi1.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi1.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi1.setText("0");
+        }
         isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi1ItemStateChanged
 
@@ -2911,7 +2908,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi1KeyPressed
 
     private void FaktorRisikoTinggi2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi2ItemStateChanged
-        NilaiFaktorRisikoTinggi2.setText((FaktorRisikoTinggi2.getSelectedIndex()+1)+"");
+        if(FaktorRisikoTinggi2.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi2.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi2.setText("0");
+        }
         isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi2ItemStateChanged
 
@@ -2924,7 +2925,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_RekomendasiKeyPressed
 
     private void FaktorRisikoTinggi3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi3ItemStateChanged
-        NilaiFaktorRisikoTinggi3.setText((FaktorRisikoTinggi3.getSelectedIndex()+1)+"");
+        if(FaktorRisikoTinggi3.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi3.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi3.setText("0");
+        }
         isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi3ItemStateChanged
 
@@ -2933,7 +2938,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi3KeyPressed
 
     private void FaktorRisikoTinggi4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi4ItemStateChanged
-        NilaiFaktorRisikoTinggi4.setText((FaktorRisikoTinggi4.getSelectedIndex()+1)+"");
+        if(FaktorRisikoTinggi4.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi4.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi4.setText("0");
+        }
         isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi4ItemStateChanged
 
@@ -2942,7 +2951,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi4KeyPressed
 
     private void FaktorRisikoTinggi5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi5ItemStateChanged
-        NilaiFaktorRisikoTinggi5.setText((FaktorRisikoTinggi5.getSelectedIndex()+1)+"");
+        if(FaktorRisikoTinggi5.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi5.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi5.setText("0");
+        }
         isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi5ItemStateChanged
 
@@ -2951,7 +2964,11 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi5KeyPressed
 
     private void FaktorRisikoTinggi6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi6ItemStateChanged
-        NilaiFaktorRisikoTinggi6.setText((FaktorRisikoTinggi6.getSelectedIndex()+1)+"");
+        if(FaktorRisikoTinggi6.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi6.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi6.setText("0");
+        }
         isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi6ItemStateChanged
 
@@ -2960,7 +2977,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi6KeyPressed
 
     private void FaktorAwal3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal3ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal3.getSelectedIndex()==1){
+            NilaiFaktorAwal3.setText("1");
+        }else{
+            NilaiFaktorAwal3.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal3ItemStateChanged
 
     private void FaktorAwal3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal3KeyPressed
@@ -2968,7 +2990,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal3KeyPressed
 
     private void FaktorAwal4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal4ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal4.getSelectedIndex()==1){
+            NilaiFaktorAwal4.setText("1");
+        }else{
+            NilaiFaktorAwal4.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal4ItemStateChanged
 
     private void FaktorAwal4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal4KeyPressed
@@ -2976,7 +3003,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal4KeyPressed
 
     private void FaktorAwal5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal5ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal5.getSelectedIndex()==1){
+            NilaiFaktorAwal5.setText("1");
+        }else{
+            NilaiFaktorAwal5.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal5ItemStateChanged
 
     private void FaktorAwal5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal5KeyPressed
@@ -2984,7 +3016,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal5KeyPressed
 
     private void FaktorAwal6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal6ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal6.getSelectedIndex()==1){
+            NilaiFaktorAwal6.setText("1");
+        }else{
+            NilaiFaktorAwal6.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal6ItemStateChanged
 
     private void FaktorAwal6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal6KeyPressed
@@ -2992,7 +3029,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal6KeyPressed
 
     private void FaktorAwal7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal7ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal7.getSelectedIndex()==1){
+            NilaiFaktorAwal7.setText("1");
+        }else{
+            NilaiFaktorAwal7.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal7ItemStateChanged
 
     private void FaktorAwal7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal7KeyPressed
@@ -3000,7 +3042,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal7KeyPressed
 
     private void FaktorAwal8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal8ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal8.getSelectedIndex()==1){
+            NilaiFaktorAwal8.setText("1");
+        }else{
+            NilaiFaktorAwal8.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal8ItemStateChanged
 
     private void FaktorAwal8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal8KeyPressed
@@ -3008,7 +3055,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal8KeyPressed
 
     private void FaktorAwal9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal9ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal9.getSelectedIndex()==1){
+            NilaiFaktorAwal9.setText("1");
+        }else{
+            NilaiFaktorAwal9.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal9ItemStateChanged
 
     private void FaktorAwal9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal9KeyPressed
@@ -3016,7 +3068,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal9KeyPressed
 
     private void FaktorAwal10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal10ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal10.getSelectedIndex()==1){
+            NilaiFaktorAwal10.setText("1");
+        }else{
+            NilaiFaktorAwal10.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal10ItemStateChanged
 
     private void FaktorAwal10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal10KeyPressed
@@ -3024,7 +3081,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal10KeyPressed
 
     private void FaktorAwal11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal11ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal11.getSelectedIndex()==1){
+            NilaiFaktorAwal11.setText("1");
+        }else{
+            NilaiFaktorAwal11.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal11ItemStateChanged
 
     private void FaktorAwal11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal11KeyPressed
@@ -3032,7 +3094,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal11KeyPressed
 
     private void FaktorAwal12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal12ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal12.getSelectedIndex()==1){
+            NilaiFaktorAwal12.setText("1");
+        }else{
+            NilaiFaktorAwal12.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal12ItemStateChanged
 
     private void FaktorAwal12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal12KeyPressed
@@ -3040,7 +3107,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal12KeyPressed
 
     private void FaktorAwal13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal13ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorAwal13.getSelectedIndex()==1){
+            NilaiFaktorAwal13.setText("1");
+        }else{
+            NilaiFaktorAwal13.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal13ItemStateChanged
 
     private void FaktorAwal13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal13KeyPressed
@@ -3048,7 +3120,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal13KeyPressed
 
     private void FaktorAwal14ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorAwal14ItemStateChanged
-        
+        if(FaktorAwal14.getSelectedIndex()==1){
+            NilaiFaktorAwal14.setText("1");
+        }else{
+            NilaiFaktorAwal14.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorAwal14ItemStateChanged
 
     private void FaktorAwal14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorAwal14KeyPressed
@@ -3056,7 +3133,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorAwal14KeyPressed
 
     private void FaktorRisikoTinggi7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi7ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorRisikoTinggi7.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi7.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi7.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi7ItemStateChanged
 
     private void FaktorRisikoTinggi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi7KeyPressed
@@ -3064,7 +3146,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi7KeyPressed
 
     private void FaktorRisikoTinggi8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi8ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorRisikoTinggi8.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi8.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi8.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi8ItemStateChanged
 
     private void FaktorRisikoTinggi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi8KeyPressed
@@ -3072,7 +3159,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi8KeyPressed
 
     private void FaktorRisikoTinggi9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi9ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorRisikoTinggi9.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi9.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi9.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi9ItemStateChanged
 
     private void FaktorRisikoTinggi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi9KeyPressed
@@ -3080,7 +3172,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi9KeyPressed
 
     private void FaktorRisikoTinggi10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi10ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorRisikoTinggi10.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi10.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi10.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi10ItemStateChanged
 
     private void FaktorRisikoTinggi10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi10KeyPressed
@@ -3088,7 +3185,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi10KeyPressed
 
     private void FaktorRisikoTinggi11ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi11ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorRisikoTinggi11.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi11.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi11.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi11ItemStateChanged
 
     private void FaktorRisikoTinggi11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi11KeyPressed
@@ -3096,7 +3198,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi11KeyPressed
 
     private void FaktorRisikoTinggi12ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi12ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorRisikoTinggi12.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi12.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi12.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi12ItemStateChanged
 
     private void FaktorRisikoTinggi12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi12KeyPressed
@@ -3104,7 +3211,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi12KeyPressed
 
     private void FaktorRisikoTinggi13ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi13ItemStateChanged
-        // TODO add your handling code here:
+        if(FaktorRisikoTinggi13.getSelectedIndex()==1){
+            NilaiFaktorRisikoTinggi13.setText("5");
+        }else{
+            NilaiFaktorRisikoTinggi13.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_FaktorRisikoTinggi13ItemStateChanged
 
     private void FaktorRisikoTinggi13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaktorRisikoTinggi13KeyPressed
@@ -3112,7 +3224,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_FaktorRisikoTinggi13KeyPressed
 
     private void KecurigaanKeganasan1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan1ItemStateChanged
-        // TODO add your handling code here:
+        if(KecurigaanKeganasan1.getSelectedIndex()==1){
+            NilaiKecurigaanKeganasan1.setText("10");
+        }else{
+            NilaiKecurigaanKeganasan1.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_KecurigaanKeganasan1ItemStateChanged
 
     private void KecurigaanKeganasan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan1KeyPressed
@@ -3120,7 +3237,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_KecurigaanKeganasan1KeyPressed
 
     private void KecurigaanKeganasan2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan2ItemStateChanged
-        // TODO add your handling code here:
+        if(KecurigaanKeganasan2.getSelectedIndex()==1){
+            NilaiKecurigaanKeganasan2.setText("10");
+        }else{
+            NilaiKecurigaanKeganasan2.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_KecurigaanKeganasan2ItemStateChanged
 
     private void KecurigaanKeganasan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan2KeyPressed
@@ -3128,7 +3250,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_KecurigaanKeganasan2KeyPressed
 
     private void KecurigaanKeganasan3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan3ItemStateChanged
-        // TODO add your handling code here:
+        if(KecurigaanKeganasan3.getSelectedIndex()==1){
+            NilaiKecurigaanKeganasan3.setText("10");
+        }else{
+            NilaiKecurigaanKeganasan3.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_KecurigaanKeganasan3ItemStateChanged
 
     private void KecurigaanKeganasan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan3KeyPressed
@@ -3136,7 +3263,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_KecurigaanKeganasan3KeyPressed
 
     private void KecurigaanKeganasan4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan4ItemStateChanged
-        // TODO add your handling code here:
+        if(KecurigaanKeganasan4.getSelectedIndex()==1){
+            NilaiKecurigaanKeganasan4.setText("10");
+        }else{
+            NilaiKecurigaanKeganasan4.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_KecurigaanKeganasan4ItemStateChanged
 
     private void KecurigaanKeganasan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan4KeyPressed
@@ -3144,7 +3276,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_KecurigaanKeganasan4KeyPressed
 
     private void KecurigaanKeganasan5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan5ItemStateChanged
-        // TODO add your handling code here:
+        if(KecurigaanKeganasan5.getSelectedIndex()==1){
+            NilaiKecurigaanKeganasan5.setText("10");
+        }else{
+            NilaiKecurigaanKeganasan5.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_KecurigaanKeganasan5ItemStateChanged
 
     private void KecurigaanKeganasan5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan5KeyPressed
@@ -3152,7 +3289,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_KecurigaanKeganasan5KeyPressed
 
     private void KecurigaanKeganasan6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan6ItemStateChanged
-        // TODO add your handling code here:
+        if(KecurigaanKeganasan6.getSelectedIndex()==1){
+            NilaiKecurigaanKeganasan6.setText("10");
+        }else{
+            NilaiKecurigaanKeganasan6.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_KecurigaanKeganasan6ItemStateChanged
 
     private void KecurigaanKeganasan6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan6KeyPressed
@@ -3160,7 +3302,12 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_KecurigaanKeganasan6KeyPressed
 
     private void KecurigaanKeganasan7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan7ItemStateChanged
-        // TODO add your handling code here:
+        if(KecurigaanKeganasan7.getSelectedIndex()==1){
+            NilaiKecurigaanKeganasan7.setText("10");
+        }else{
+            NilaiKecurigaanKeganasan7.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_KecurigaanKeganasan7ItemStateChanged
 
     private void KecurigaanKeganasan7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan7KeyPressed
@@ -3168,32 +3315,25 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }//GEN-LAST:event_KecurigaanKeganasan7KeyPressed
 
     private void KecurigaanKeganasan8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan8ItemStateChanged
-        // TODO add your handling code here:
+        if(KecurigaanKeganasan8.getSelectedIndex()==1){
+            NilaiKecurigaanKeganasan8.setText("10");
+        }else{
+            NilaiKecurigaanKeganasan8.setText("0");
+        }
+        isTotal();
     }//GEN-LAST:event_KecurigaanKeganasan8ItemStateChanged
 
     private void KecurigaanKeganasan8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KecurigaanKeganasan8KeyPressed
         Valid.pindah(evt,KecurigaanKeganasan7,HasilPemeriksaanSadanis);
     }//GEN-LAST:event_KecurigaanKeganasan8KeyPressed
 
-    private void HasilPemeriksaanSadanisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HasilPemeriksaanSadanisItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HasilPemeriksaanSadanisItemStateChanged
-
     private void HasilPemeriksaanSadanisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilPemeriksaanSadanisKeyPressed
         Valid.pindah(evt,KecurigaanKeganasan8,TindakLanjutSadanis);
     }//GEN-LAST:event_HasilPemeriksaanSadanisKeyPressed
 
-    private void TindakLanjutSadanisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TindakLanjutSadanisItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjutSadanisItemStateChanged
-
     private void TindakLanjutSadanisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutSadanisKeyPressed
         Valid.pindah(evt,HasilPemeriksaanSadanis,HasilSkrining);
     }//GEN-LAST:event_TindakLanjutSadanisKeyPressed
-
-    private void HasilSkriningItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HasilSkriningItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_HasilSkriningItemStateChanged
 
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
         Valid.pindah(evt,TindakLanjutSadanis,Keterangan);
@@ -3479,34 +3619,34 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
-                    "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
-                    "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
-                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
-                    "where skrining_kekerasan_pada_perempuan.tanggal between ? and ? order by skrining_kekerasan_pada_perempuan.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_payudara.nip,"+
+                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.menggambarkan_hubungan,skrining_risiko_kanker_payudara.skor_menggambarkan_hubungan,"+
+                    "skrining_risiko_kanker_payudara.berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.pertengkaran_membuat_sedih,"+
+                    "skrining_risiko_kanker_payudara.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_payudara.pertengkaran_menghasilkan_pukulan,"+
+                    "skrining_risiko_kanker_payudara.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_payudara.pernah_merasa_takut_dengan_pasangan,"+
+                    "skrining_risiko_kanker_payudara.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_fisik,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_imosional,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_seksual,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_payudara.totalskor,skrining_risiko_kanker_payudara.hasil_skrining "+
+                    "from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_payudara.nip=petugas.nip "+
+                    "where skrining_risiko_kanker_payudara.tanggal between ? and ? order by skrining_risiko_kanker_payudara.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
-                    "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
-                    "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
-                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
-                    "where skrining_kekerasan_pada_perempuan.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_kekerasan_pada_perempuan.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_kekerasan_pada_perempuan.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_payudara.nip,"+
+                    "petugas.nama,skrining_risiko_kanker_payudara.tanggal,skrining_risiko_kanker_payudara.menggambarkan_hubungan,skrining_risiko_kanker_payudara.skor_menggambarkan_hubungan,"+
+                    "skrining_risiko_kanker_payudara.berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_payudara.pertengkaran_membuat_sedih,"+
+                    "skrining_risiko_kanker_payudara.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_payudara.pertengkaran_menghasilkan_pukulan,"+
+                    "skrining_risiko_kanker_payudara.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_payudara.pernah_merasa_takut_dengan_pasangan,"+
+                    "skrining_risiko_kanker_payudara.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_fisik,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_imosional,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_payudara.pasangan_melecehkan_secara_seksual,"+
+                    "skrining_risiko_kanker_payudara.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_payudara.totalskor,skrining_risiko_kanker_payudara.hasil_skrining "+
+                    "from skrining_risiko_kanker_payudara inner join reg_periksa on skrining_risiko_kanker_payudara.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_payudara.nip=petugas.nip "+
+                    "where skrining_risiko_kanker_payudara.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_risiko_kanker_payudara.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_risiko_kanker_payudara.tanggal ");
             }
                 
             try {
@@ -3741,10 +3881,10 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
-        BtnHapus.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
-        BtnEdit.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
-        BtnPrint.setEnabled(akses.getskrining_kekerasan_pada_perempuan()); 
+        BtnSimpan.setEnabled(akses.getskrining_risiko_kanker_payudara());
+        BtnHapus.setEnabled(akses.getskrining_risiko_kanker_payudara());
+        BtnEdit.setEnabled(akses.getskrining_risiko_kanker_payudara());
+        BtnPrint.setEnabled(akses.getskrining_risiko_kanker_payudara()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -3822,7 +3962,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_kekerasan_pada_perempuan","no_rawat=?","no_rawat=?,tanggal=?,menggambarkan_hubungan=?,skor_menggambarkan_hubungan=?,berdebat_dengan_pasangan=?,skor_berdebat_dengan_pasangan=?,pertengkaran_membuat_sedih=?,"+
+        if(Sequel.mengedittf("skrining_risiko_kanker_payudara","no_rawat=?","no_rawat=?,tanggal=?,menggambarkan_hubungan=?,skor_menggambarkan_hubungan=?,berdebat_dengan_pasangan=?,skor_berdebat_dengan_pasangan=?,pertengkaran_membuat_sedih=?,"+
                 "skor_pertengkaran_membuat_sedih=?,pertengkaran_menghasilkan_pukulan=?,skor_pertengkaran_menghasilkan_pukulan=?,pernah_merasa_takut_dengan_pasangan=?,skor_pernah_merasa_takut_dengan_pasangan=?,pasangan_melecehkan_secara_fisik=?,"+
                 "skor_pasangan_melecehkan_secara_fisik=?,pasangan_melecehkan_secara_imosional=?,skor_pasangan_melecehkan_secara_imosional=?,pasangan_melecehkan_secara_seksual=?,skor_pasangan_melecehkan_secara_seksual=?,totalskor=?,hasil_skrining=?,"+
                 "nip=?",22,new String[]{
@@ -3864,7 +4004,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_kekerasan_pada_perempuan where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_risiko_kanker_payudara where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -3877,31 +4017,75 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
 
     private void isTotal() {
         try {
-            TotalHasil.setText(""+(Integer.parseInt(NilaiFaktorAwal1.getText())+Integer.parseInt(NilaiFaktorAwal2.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi1.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi2.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi3.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi4.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi5.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi6.getText())));
-            if(Integer.parseInt(TotalHasil.getText())>12){
-                Rekomendasi.setText("Pasien Terindikasi Mengalami Kekerasan");
+            TotalHasil.setText(""+(
+                    Integer.parseInt(NilaiFaktorAwal1.getText())+Integer.parseInt(NilaiFaktorAwal2.getText())+
+                    Integer.parseInt(NilaiFaktorAwal3.getText())+Integer.parseInt(NilaiFaktorAwal4.getText())+
+                    Integer.parseInt(NilaiFaktorAwal5.getText())+Integer.parseInt(NilaiFaktorAwal6.getText())+
+                    Integer.parseInt(NilaiFaktorAwal7.getText())+Integer.parseInt(NilaiFaktorAwal8.getText())+
+                    Integer.parseInt(NilaiFaktorAwal9.getText())+Integer.parseInt(NilaiFaktorAwal10.getText())+
+                    Integer.parseInt(NilaiFaktorAwal11.getText())+Integer.parseInt(NilaiFaktorAwal12.getText())+
+                    Integer.parseInt(NilaiFaktorAwal13.getText())+Integer.parseInt(NilaiFaktorAwal14.getText())+
+                    Integer.parseInt(NilaiFaktorRisikoTinggi1.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi2.getText())+
+                    Integer.parseInt(NilaiFaktorRisikoTinggi3.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi4.getText())+
+                    Integer.parseInt(NilaiFaktorRisikoTinggi5.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi6.getText())+
+                    Integer.parseInt(NilaiFaktorRisikoTinggi7.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi8.getText())+
+                    Integer.parseInt(NilaiFaktorRisikoTinggi9.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi10.getText())+
+                    Integer.parseInt(NilaiFaktorRisikoTinggi11.getText())+Integer.parseInt(NilaiFaktorRisikoTinggi12.getText())+
+                    Integer.parseInt(NilaiFaktorRisikoTinggi13.getText())+Integer.parseInt(NilaiKecurigaanKeganasan1.getText())+
+                    Integer.parseInt(NilaiKecurigaanKeganasan2.getText())+Integer.parseInt(NilaiKecurigaanKeganasan3.getText())+
+                    Integer.parseInt(NilaiKecurigaanKeganasan4.getText())+Integer.parseInt(NilaiKecurigaanKeganasan5.getText())+
+                    Integer.parseInt(NilaiKecurigaanKeganasan6.getText())+Integer.parseInt(NilaiKecurigaanKeganasan7.getText())+
+                    Integer.parseInt(NilaiKecurigaanKeganasan8.getText())
+            ));
+            if(Integer.parseInt(TotalHasil.getText())>=16){
+                Rekomendasi.setText("Resiko Tinggi. Segera periksa payudara, ikuti nasehat tenaga kesehatan/dokter...!");
             }else{
-                Rekomendasi.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+                Rekomendasi.setText("Waspada dan upayakan melakukan penanggulangan sehingga skor semakin kecil...!");
+            }
+            if((Integer.parseInt(NilaiKecurigaanKeganasan1.getText())+
+                    Integer.parseInt(NilaiKecurigaanKeganasan2.getText())+Integer.parseInt(NilaiKecurigaanKeganasan3.getText())+
+                    Integer.parseInt(NilaiKecurigaanKeganasan4.getText())+Integer.parseInt(NilaiKecurigaanKeganasan5.getText())+
+                    Integer.parseInt(NilaiKecurigaanKeganasan6.getText())+Integer.parseInt(NilaiKecurigaanKeganasan7.getText())+
+                    Integer.parseInt(NilaiKecurigaanKeganasan8.getText()))>0){
+                Rekomendasi.setText("Sangat curiga ada keganasan pada payudara. Segera ke dokter...!");    
             }
         } catch (Exception e) {
-            Rekomendasi.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+            Rekomendasi.setText("Waspada dan upayakan melakukan penanggulangan sehingga skor semakin kecil...!");
         }
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_kekerasan_pada_perempuan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
+        if(Sequel.menyimpantf("skrining_risiko_kanker_payudara","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",78,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            FaktorAwal1.getSelectedItem().toString(),NilaiFaktorAwal1.getText(),FaktorAwal2.getSelectedItem().toString(),NilaiFaktorAwal2.getText(), 
-            FaktorRisikoTinggi1.getSelectedItem().toString(),NilaiFaktorRisikoTinggi1.getText(),FaktorRisikoTinggi2.getSelectedItem().toString(),NilaiFaktorRisikoTinggi2.getText(), 
-            FaktorRisikoTinggi3.getSelectedItem().toString(),NilaiFaktorRisikoTinggi3.getText(),FaktorRisikoTinggi4.getSelectedItem().toString(),NilaiFaktorRisikoTinggi4.getText(), 
-            FaktorRisikoTinggi5.getSelectedItem().toString(),NilaiFaktorRisikoTinggi5.getText(),FaktorRisikoTinggi6.getSelectedItem().toString(),NilaiFaktorRisikoTinggi6.getText(), 
-            TotalHasil.getText(),Rekomendasi.getText(),KdPetugas.getText()
+            FaktorAwal1.getSelectedItem().toString(),NilaiFaktorAwal1.getText(),FaktorAwal2.getSelectedItem().toString(),NilaiFaktorAwal2.getText(),FaktorAwal3.getSelectedItem().toString(),NilaiFaktorAwal3.getText(),
+            FaktorAwal4.getSelectedItem().toString(),NilaiFaktorAwal4.getText(),FaktorAwal5.getSelectedItem().toString(),NilaiFaktorAwal5.getText(),FaktorAwal6.getSelectedItem().toString(),NilaiFaktorAwal6.getText(),
+            FaktorAwal7.getSelectedItem().toString(),NilaiFaktorAwal7.getText(),FaktorAwal8.getSelectedItem().toString(),NilaiFaktorAwal8.getText(),FaktorAwal9.getSelectedItem().toString(),NilaiFaktorAwal9.getText(), 
+            FaktorAwal10.getSelectedItem().toString(),NilaiFaktorAwal10.getText(),FaktorAwal11.getSelectedItem().toString(),NilaiFaktorAwal11.getText(),FaktorAwal12.getSelectedItem().toString(),NilaiFaktorAwal12.getText(), 
+            FaktorAwal13.getSelectedItem().toString(),NilaiFaktorAwal13.getText(),FaktorAwal14.getSelectedItem().toString(),NilaiFaktorAwal14.getText(),FaktorRisikoTinggi1.getSelectedItem().toString(),NilaiFaktorRisikoTinggi1.getText(), 
+            FaktorRisikoTinggi2.getSelectedItem().toString(),NilaiFaktorRisikoTinggi2.getText(),FaktorRisikoTinggi3.getSelectedItem().toString(),NilaiFaktorRisikoTinggi3.getText(),FaktorRisikoTinggi4.getSelectedItem().toString(),NilaiFaktorRisikoTinggi4.getText(), 
+            FaktorRisikoTinggi5.getSelectedItem().toString(),NilaiFaktorRisikoTinggi5.getText(),FaktorRisikoTinggi6.getSelectedItem().toString(),NilaiFaktorRisikoTinggi6.getText(),FaktorRisikoTinggi7.getSelectedItem().toString(),NilaiFaktorRisikoTinggi7.getText(), 
+            FaktorRisikoTinggi8.getSelectedItem().toString(),NilaiFaktorRisikoTinggi8.getText(),FaktorRisikoTinggi9.getSelectedItem().toString(),NilaiFaktorRisikoTinggi9.getText(),FaktorRisikoTinggi10.getSelectedItem().toString(),NilaiFaktorRisikoTinggi10.getText(), 
+            FaktorRisikoTinggi11.getSelectedItem().toString(),NilaiFaktorRisikoTinggi11.getText(),FaktorRisikoTinggi12.getSelectedItem().toString(),NilaiFaktorRisikoTinggi12.getText(),FaktorRisikoTinggi13.getSelectedItem().toString(),NilaiFaktorRisikoTinggi13.getText(), 
+            KecurigaanKeganasan1.getSelectedItem().toString(),NilaiKecurigaanKeganasan1.getText(),KecurigaanKeganasan2.getSelectedItem().toString(),NilaiKecurigaanKeganasan2.getText(),KecurigaanKeganasan3.getSelectedItem().toString(),NilaiKecurigaanKeganasan3.getText(), 
+            KecurigaanKeganasan4.getSelectedItem().toString(),NilaiKecurigaanKeganasan4.getText(),KecurigaanKeganasan5.getSelectedItem().toString(),NilaiKecurigaanKeganasan5.getText(),KecurigaanKeganasan6.getSelectedItem().toString(),NilaiKecurigaanKeganasan6.getText(),
+            KecurigaanKeganasan7.getSelectedItem().toString(),NilaiKecurigaanKeganasan7.getText(),KecurigaanKeganasan8.getSelectedItem().toString(),NilaiKecurigaanKeganasan8.getText(),TotalHasil.getText(),HasilPemeriksaanSadanis.getSelectedItem().toString(), 
+            TindakLanjutSadanis.getSelectedItem().toString(),HasilSkrining.getSelectedItem().toString(),Keterangan.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                FaktorAwal1.getSelectedItem().toString(),NilaiFaktorAwal1.getText(),FaktorAwal2.getSelectedItem().toString(),NilaiFaktorAwal2.getText(),FaktorRisikoTinggi1.getSelectedItem().toString(),NilaiFaktorRisikoTinggi1.getText(),
+                FaktorAwal1.getSelectedItem().toString(),NilaiFaktorAwal1.getText(),FaktorAwal2.getSelectedItem().toString(),NilaiFaktorAwal2.getText(),FaktorAwal3.getSelectedItem().toString(),NilaiFaktorAwal3.getText(),
+                FaktorAwal4.getSelectedItem().toString(),NilaiFaktorAwal4.getText(),FaktorAwal5.getSelectedItem().toString(),NilaiFaktorAwal5.getText(),FaktorAwal6.getSelectedItem().toString(),NilaiFaktorAwal6.getText(),
+                FaktorAwal7.getSelectedItem().toString(),NilaiFaktorAwal7.getText(),FaktorAwal8.getSelectedItem().toString(),NilaiFaktorAwal8.getText(),FaktorAwal9.getSelectedItem().toString(),NilaiFaktorAwal9.getText(), 
+                FaktorAwal10.getSelectedItem().toString(),NilaiFaktorAwal10.getText(),FaktorAwal11.getSelectedItem().toString(),NilaiFaktorAwal11.getText(),FaktorAwal12.getSelectedItem().toString(),NilaiFaktorAwal12.getText(), 
+                FaktorAwal13.getSelectedItem().toString(),NilaiFaktorAwal13.getText(),FaktorAwal14.getSelectedItem().toString(),NilaiFaktorAwal14.getText(),FaktorRisikoTinggi1.getSelectedItem().toString(),NilaiFaktorRisikoTinggi1.getText(), 
                 FaktorRisikoTinggi2.getSelectedItem().toString(),NilaiFaktorRisikoTinggi2.getText(),FaktorRisikoTinggi3.getSelectedItem().toString(),NilaiFaktorRisikoTinggi3.getText(),FaktorRisikoTinggi4.getSelectedItem().toString(),NilaiFaktorRisikoTinggi4.getText(), 
-                FaktorRisikoTinggi5.getSelectedItem().toString(),NilaiFaktorRisikoTinggi5.getText(),FaktorRisikoTinggi6.getSelectedItem().toString(),NilaiFaktorRisikoTinggi6.getText(),TotalHasil.getText(),Rekomendasi.getText()
+                FaktorRisikoTinggi5.getSelectedItem().toString(),NilaiFaktorRisikoTinggi5.getText(),FaktorRisikoTinggi6.getSelectedItem().toString(),NilaiFaktorRisikoTinggi6.getText(),FaktorRisikoTinggi7.getSelectedItem().toString(),NilaiFaktorRisikoTinggi7.getText(), 
+                FaktorRisikoTinggi8.getSelectedItem().toString(),NilaiFaktorRisikoTinggi8.getText(),FaktorRisikoTinggi9.getSelectedItem().toString(),NilaiFaktorRisikoTinggi9.getText(),FaktorRisikoTinggi10.getSelectedItem().toString(),NilaiFaktorRisikoTinggi10.getText(), 
+                FaktorRisikoTinggi11.getSelectedItem().toString(),NilaiFaktorRisikoTinggi11.getText(),FaktorRisikoTinggi12.getSelectedItem().toString(),NilaiFaktorRisikoTinggi12.getText(),FaktorRisikoTinggi13.getSelectedItem().toString(),NilaiFaktorRisikoTinggi13.getText(), 
+                KecurigaanKeganasan1.getSelectedItem().toString(),NilaiKecurigaanKeganasan1.getText(),KecurigaanKeganasan2.getSelectedItem().toString(),NilaiKecurigaanKeganasan2.getText(),KecurigaanKeganasan3.getSelectedItem().toString(),NilaiKecurigaanKeganasan3.getText(), 
+                KecurigaanKeganasan4.getSelectedItem().toString(),NilaiKecurigaanKeganasan4.getText(),KecurigaanKeganasan5.getSelectedItem().toString(),NilaiKecurigaanKeganasan5.getText(),KecurigaanKeganasan6.getSelectedItem().toString(),NilaiKecurigaanKeganasan6.getText(),
+                KecurigaanKeganasan7.getSelectedItem().toString(),NilaiKecurigaanKeganasan7.getText(),KecurigaanKeganasan8.getSelectedItem().toString(),NilaiKecurigaanKeganasan8.getText(),TotalHasil.getText(),HasilPemeriksaanSadanis.getSelectedItem().toString(), 
+                TindakLanjutSadanis.getSelectedItem().toString(),HasilSkrining.getSelectedItem().toString(),Keterangan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
