@@ -231,7 +231,7 @@ public final class akses {
             skp_penilaian=false,referensi_poli_mobilejknfktp=false,referensi_dokter_mobilejknfktp=false,skp_rekapitulasi_penilaian=false,pembayaran_pihak_ke3_bankmandiri=false,
             metode_pembayaran_bankmandiri=false,bank_tujuan_transfer_bankmandiri=false,kodetransaksi_tujuan_transfer_bankmandiri=false,konsultasi_medik=false,jawaban_konsultasi_medik=false,
             pcare_cek_alergi=false,pcare_cek_prognosa=false,data_sasaran_usiaproduktif=false,data_sasaran_usialansia=false,skrining_perilaku_merokok_sekolah_remaja=false,
-            skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false,skrining_risiko_kanker_payudara=false;
+            skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false,skrining_risiko_kanker_payudara=false,skrining_risiko_kanker_paru=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1309,6 +1309,7 @@ public final class akses {
                         akses.skrining_kekerasan_pada_perempuan=true;
                         akses.skrining_obesitas=true;
                         akses.skrining_risiko_kanker_payudara=true;
+                        akses.skrining_risiko_kanker_paru=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2370,6 +2371,7 @@ public final class akses {
                         akses.skrining_kekerasan_pada_perempuan=rs2.getBoolean("skrining_kekerasan_pada_perempuan");
                         akses.skrining_obesitas=rs2.getBoolean("skrining_obesitas");
                         akses.skrining_risiko_kanker_payudara=rs2.getBoolean("skrining_risiko_kanker_payudara");
+                        akses.skrining_risiko_kanker_paru=rs2.getBoolean("skrining_risiko_kanker_paru");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3429,6 +3431,7 @@ public final class akses {
                         akses.skrining_kekerasan_pada_perempuan=false;
                         akses.skrining_obesitas=false;
                         akses.skrining_risiko_kanker_payudara=false;
+                        akses.skrining_risiko_kanker_paru=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4511,6 +4514,7 @@ public final class akses {
         akses.skrining_kekerasan_pada_perempuan=false;
         akses.skrining_obesitas=false;
         akses.skrining_risiko_kanker_payudara=false;
+        akses.skrining_risiko_kanker_paru=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5609,4 +5613,5 @@ public final class akses {
     public static boolean getskrining_kekerasan_pada_perempuan(){return akses.skrining_kekerasan_pada_perempuan;}
     public static boolean getskrining_obesitas(){return akses.skrining_obesitas;}
     public static boolean getskrining_risiko_kanker_payudara(){return akses.skrining_risiko_kanker_payudara;}
+    public static boolean getskrining_risiko_kanker_paru(){return akses.skrining_risiko_kanker_paru;}
 }   
