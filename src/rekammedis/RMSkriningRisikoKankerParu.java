@@ -140,7 +140,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
+        Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -299,8 +299,6 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel76 = new widget.Label();
         jLabel77 = new widget.Label();
         jLabel78 = new widget.Label();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel100 = new widget.Label();
         jLabel79 = new widget.Label();
         jLabel80 = new widget.Label();
         jLabel81 = new widget.Label();
@@ -328,6 +326,17 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel101 = new widget.Label();
         jLabel149 = new widget.Label();
+        jLabel94 = new widget.Label();
+        jLabel95 = new widget.Label();
+        PertanyaanLanjutan7 = new widget.ComboBox();
+        jLabel96 = new widget.Label();
+        NilaiPertanyaanLanjutan7 = new widget.TextBox();
+        jLabel97 = new widget.Label();
+        jLabel98 = new widget.Label();
+        jLabel100 = new widget.Label();
+        jLabel102 = new widget.Label();
+        jLabel150 = new widget.Label();
+        Keterangan = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -600,7 +609,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 426));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 436));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -630,7 +639,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 403));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 413));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -766,7 +775,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        PertanyaanAwal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Ketegangan", "Beberapa Ketegangan", "Banyak Ketegangan" }));
+        PertanyaanAwal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
         PertanyaanAwal1.setName("PertanyaanAwal1"); // NOI18N
         PertanyaanAwal1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -779,14 +788,14 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanAwal1);
-        PertanyaanAwal1.setBounds(530, 90, 160, 23);
+        PertanyaanAwal1.setBounds(585, 90, 110, 23);
 
         jLabel92.setText("Nilai :");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(685, 90, 50, 23);
+        jLabel92.setBounds(690, 90, 50, 23);
 
-        PertanyaanAwal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Kesulitan", "Beberapa Kesulitan", "Kesulitan Besar" }));
+        PertanyaanAwal2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "> 65 Tahun", "45 - 65 Tahun", "< 45 Tahun" }));
         PertanyaanAwal2.setName("PertanyaanAwal2"); // NOI18N
         PertanyaanAwal2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -799,40 +808,40 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanAwal2);
-        PertanyaanAwal2.setBounds(530, 120, 160, 23);
+        PertanyaanAwal2.setBounds(575, 120, 120, 23);
 
         jLabel69.setText("Nilai :");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(685, 120, 50, 23);
+        jLabel69.setBounds(690, 120, 50, 23);
 
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(665, 370, 70, 23);
+        jLabel73.setBounds(665, 380, 70, 23);
 
         TotalHasil.setEditable(false);
         TotalHasil.setText("0");
         TotalHasil.setFocusTraversalPolicyProvider(true);
         TotalHasil.setName("TotalHasil"); // NOI18N
         FormInput.add(TotalHasil);
-        TotalHasil.setBounds(739, 370, 50, 23);
+        TotalHasil.setBounds(744, 380, 45, 23);
 
         NilaiPertanyaanAwal1.setEditable(false);
         NilaiPertanyaanAwal1.setText("0");
         NilaiPertanyaanAwal1.setFocusTraversalPolicyProvider(true);
         NilaiPertanyaanAwal1.setName("NilaiPertanyaanAwal1"); // NOI18N
         FormInput.add(NilaiPertanyaanAwal1);
-        NilaiPertanyaanAwal1.setBounds(739, 90, 50, 23);
+        NilaiPertanyaanAwal1.setBounds(744, 90, 45, 23);
 
         NilaiPertanyaanAwal2.setEditable(false);
         NilaiPertanyaanAwal2.setText("0");
         NilaiPertanyaanAwal2.setFocusTraversalPolicyProvider(true);
         NilaiPertanyaanAwal2.setName("NilaiPertanyaanAwal2"); // NOI18N
         FormInput.add(NilaiPertanyaanAwal2);
-        NilaiPertanyaanAwal2.setBounds(739, 120, 50, 23);
+        NilaiPertanyaanAwal2.setBounds(744, 120, 45, 23);
 
-        PertanyaanLanjutan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya, Pernah > 5 Tahun Yang Lalu", "Ya, Pernah < 5 Tahun Yang Lalu", "Tidak Pernah" }));
         PertanyaanLanjutan1.setName("PertanyaanLanjutan1"); // NOI18N
         PertanyaanLanjutan1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -845,33 +854,33 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan1);
-        PertanyaanLanjutan1.setBounds(560, 170, 130, 23);
+        PertanyaanLanjutan1.setBounds(487, 150, 208, 23);
 
         jLabel70.setText("Nilai :");
         jLabel70.setName("jLabel70"); // NOI18N
         FormInput.add(jLabel70);
-        jLabel70.setBounds(685, 170, 50, 23);
+        jLabel70.setBounds(690, 150, 50, 23);
 
         NilaiPertanyaanLanjutan1.setEditable(false);
         NilaiPertanyaanLanjutan1.setText("0");
         NilaiPertanyaanLanjutan1.setFocusTraversalPolicyProvider(true);
         NilaiPertanyaanLanjutan1.setName("NilaiPertanyaanLanjutan1"); // NOI18N
         FormInput.add(NilaiPertanyaanLanjutan1);
-        NilaiPertanyaanLanjutan1.setBounds(739, 170, 50, 23);
+        NilaiPertanyaanLanjutan1.setBounds(744, 150, 45, 23);
 
         jLabel71.setText("Nilai :");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
-        jLabel71.setBounds(685, 200, 50, 23);
+        jLabel71.setBounds(690, 180, 50, 23);
 
         NilaiPertanyaanLanjutan2.setEditable(false);
         NilaiPertanyaanLanjutan2.setText("0");
         NilaiPertanyaanLanjutan2.setFocusTraversalPolicyProvider(true);
         NilaiPertanyaanLanjutan2.setName("NilaiPertanyaanLanjutan2"); // NOI18N
         FormInput.add(NilaiPertanyaanLanjutan2);
-        NilaiPertanyaanLanjutan2.setBounds(739, 200, 50, 23);
+        NilaiPertanyaanLanjutan2.setBounds(744, 180, 45, 23);
 
-        PertanyaanLanjutan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya, Kanker Paru", "Ya, Kanker Jenis Lain", "Tidak Ada" }));
         PertanyaanLanjutan2.setName("PertanyaanLanjutan2"); // NOI18N
         PertanyaanLanjutan2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -884,13 +893,12 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan2);
-        PertanyaanLanjutan2.setBounds(560, 200, 130, 23);
+        PertanyaanLanjutan2.setBounds(541, 180, 154, 23);
 
-        jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel148.setText("Hasil Skrining");
+        jLabel148.setText("Hasil Skrining :");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
-        jLabel148.setBounds(44, 370, 90, 23);
+        jLabel148.setBounds(436, 380, 90, 23);
 
         HasilSkrining.setEditable(false);
         HasilSkrining.setFocusTraversalPolicyProvider(true);
@@ -901,7 +909,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(121, 370, 420, 23);
+        HasilSkrining.setBounds(530, 380, 120, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -911,7 +919,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("I. PERTANYAAN AWAL");
+        jLabel99.setText("I. ANAMNESIS");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
         jLabel99.setBounds(10, 70, 200, 23);
@@ -923,7 +931,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel75.setBounds(44, 90, 20, 23);
 
         jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel76.setText("Secara umum, bagaimana Anda menggambarkan hubungan Anda ?");
+        jLabel76.setText("Jenis Kelamin Anda ?");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
         jLabel76.setBounds(57, 90, 430, 23);
@@ -935,61 +943,48 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel77.setBounds(44, 120, 20, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("Seperti apa saat Anda dan pasangan berdebat ?");
+        jLabel78.setText("Usia / umur Anda sekarang ?");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
         jLabel78.setBounds(57, 120, 430, 23);
 
-        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator2.setName("jSeparator2"); // NOI18N
-        FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 150, 807, 1);
-
-        jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("II. PERTANYAAN LANJUTAN");
-        jLabel100.setName("jLabel100"); // NOI18N
-        FormInput.add(jLabel100);
-        jLabel100.setBounds(10, 150, 200, 23);
-
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel79.setText("Apakah pertengkaran pernah membuat Anda merasa sedih atau buruk tentang diri sendiri ?");
+        jLabel79.setText("Apakah pernah di diagnosis menderita kanker ?");
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
-        jLabel79.setBounds(57, 170, 470, 23);
+        jLabel79.setBounds(57, 150, 470, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel80.setText("1.");
+        jLabel80.setText("3.");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
-        jLabel80.setBounds(44, 170, 20, 23);
+        jLabel80.setBounds(44, 150, 20, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("2.");
+        jLabel81.setText("4.");
         jLabel81.setName("jLabel81"); // NOI18N
         FormInput.add(jLabel81);
-        jLabel81.setBounds(44, 200, 20, 23);
+        jLabel81.setBounds(44, 180, 20, 23);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel82.setText("Apakah pertengkaran pernah menghasilkan pukulan, tendangan, atau dorongan ?");
+        jLabel82.setText("Apakah ada keluarga (ayah/ibu/saudara kandung) menderita kanker ?");
         jLabel82.setName("jLabel82"); // NOI18N
         FormInput.add(jLabel82);
-        jLabel82.setBounds(57, 200, 470, 23);
+        jLabel82.setBounds(57, 180, 470, 23);
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel83.setText("3.");
+        jLabel83.setText("5.");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
-        jLabel83.setBounds(44, 230, 20, 23);
+        jLabel83.setBounds(44, 210, 20, 23);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel84.setText("Apakah Anda pernah merasa takut dengan apa yang pasangan Anda katakan atau lakukan ?");
+        jLabel84.setText("Riwayat merokok/paparan asap rokok (rokok kretek/rokok putih/vape/");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
-        jLabel84.setBounds(57, 230, 470, 23);
+        jLabel84.setBounds(57, 205, 380, 23);
 
-        PertanyaanLanjutan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perokok Aktif, Masih Merokok 1 Tahun Ini", "Bekas Perokok, Berhenti < 15 Tahun", "Perokok Pasif", "Tidak Merokok" }));
         PertanyaanLanjutan3.setName("PertanyaanLanjutan3"); // NOI18N
         PertanyaanLanjutan3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1002,33 +997,33 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan3);
-        PertanyaanLanjutan3.setBounds(560, 230, 130, 23);
+        PertanyaanLanjutan3.setBounds(445, 210, 250, 23);
 
         jLabel72.setText("Nilai :");
         jLabel72.setName("jLabel72"); // NOI18N
         FormInput.add(jLabel72);
-        jLabel72.setBounds(685, 230, 50, 23);
+        jLabel72.setBounds(690, 210, 50, 23);
 
         NilaiPertanyaanLanjutan3.setEditable(false);
         NilaiPertanyaanLanjutan3.setText("0");
         NilaiPertanyaanLanjutan3.setFocusTraversalPolicyProvider(true);
         NilaiPertanyaanLanjutan3.setName("NilaiPertanyaanLanjutan3"); // NOI18N
         FormInput.add(NilaiPertanyaanLanjutan3);
-        NilaiPertanyaanLanjutan3.setBounds(739, 230, 50, 23);
+        NilaiPertanyaanLanjutan3.setBounds(744, 210, 45, 23);
 
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel85.setText("4.");
+        jLabel85.setText("6.");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(44, 260, 20, 23);
+        jLabel85.setBounds(44, 240, 20, 23);
 
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel86.setText("Apakah pasangan Anda pernah melecehkan Anda secara fisik ?");
+        jLabel86.setText("Riwayat bekerja di lingkungan yang mengandung zat karsinogen (pertambangan/pabrik/");
         jLabel86.setName("jLabel86"); // NOI18N
         FormInput.add(jLabel86);
-        jLabel86.setBounds(57, 260, 470, 23);
+        jLabel86.setBounds(57, 235, 470, 23);
 
-        PertanyaanLanjutan4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak Yakin/Ragu-ragu", "Tidak" }));
         PertanyaanLanjutan4.setName("PertanyaanLanjutan4"); // NOI18N
         PertanyaanLanjutan4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1041,33 +1036,33 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan4);
-        PertanyaanLanjutan4.setBounds(560, 260, 130, 23);
+        PertanyaanLanjutan4.setBounds(532, 240, 163, 23);
 
         jLabel74.setText("Nilai :");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(685, 260, 50, 23);
+        jLabel74.setBounds(690, 240, 50, 23);
 
         NilaiPertanyaanLanjutan4.setEditable(false);
         NilaiPertanyaanLanjutan4.setText("0");
         NilaiPertanyaanLanjutan4.setFocusTraversalPolicyProvider(true);
         NilaiPertanyaanLanjutan4.setName("NilaiPertanyaanLanjutan4"); // NOI18N
         FormInput.add(NilaiPertanyaanLanjutan4);
-        NilaiPertanyaanLanjutan4.setBounds(739, 260, 50, 23);
+        NilaiPertanyaanLanjutan4.setBounds(744, 240, 45, 23);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel87.setText("Pernahkah pasangan Anda melecehkan Anda secara emosional ?");
+        jLabel87.setText("Lingkungan tempat tinggal berpolusi tinggi (lingkungan pabrik/pertambangan/tempat");
         jLabel87.setName("jLabel87"); // NOI18N
         FormInput.add(jLabel87);
-        jLabel87.setBounds(57, 290, 470, 23);
+        jLabel87.setBounds(57, 265, 470, 23);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel88.setText("5.");
+        jLabel88.setText("7.");
         jLabel88.setName("jLabel88"); // NOI18N
         FormInput.add(jLabel88);
-        jLabel88.setBounds(44, 290, 20, 23);
+        jLabel88.setBounds(44, 270, 20, 23);
 
-        PertanyaanLanjutan5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak Yakin/Ragu-ragu", "Tidak" }));
         PertanyaanLanjutan5.setName("PertanyaanLanjutan5"); // NOI18N
         PertanyaanLanjutan5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1080,27 +1075,27 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan5);
-        PertanyaanLanjutan5.setBounds(560, 290, 130, 23);
+        PertanyaanLanjutan5.setBounds(532, 270, 163, 23);
 
         jLabel89.setText("Nilai :");
         jLabel89.setName("jLabel89"); // NOI18N
         FormInput.add(jLabel89);
-        jLabel89.setBounds(685, 290, 50, 23);
+        jLabel89.setBounds(690, 270, 50, 23);
 
         NilaiPertanyaanLanjutan5.setEditable(false);
         NilaiPertanyaanLanjutan5.setText("0");
         NilaiPertanyaanLanjutan5.setFocusTraversalPolicyProvider(true);
         NilaiPertanyaanLanjutan5.setName("NilaiPertanyaanLanjutan5"); // NOI18N
         FormInput.add(NilaiPertanyaanLanjutan5);
-        NilaiPertanyaanLanjutan5.setBounds(739, 290, 50, 23);
+        NilaiPertanyaanLanjutan5.setBounds(744, 270, 45, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel90.setText("Apakah pasangan Anda pernah melecehkan Anda secara seksual ?");
+        jLabel90.setText("Lingkungan dalam rumah yang tidak sehat (ventilasi buruk/atap dari asbes/lantai tanah/");
         jLabel90.setName("jLabel90"); // NOI18N
         FormInput.add(jLabel90);
-        jLabel90.setBounds(57, 320, 470, 23);
+        jLabel90.setBounds(57, 295, 470, 23);
 
-        PertanyaanLanjutan6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering" }));
+        PertanyaanLanjutan6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak Yakin/Ragu-ragu", "Tidak" }));
         PertanyaanLanjutan6.setName("PertanyaanLanjutan6"); // NOI18N
         PertanyaanLanjutan6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1113,43 +1108,122 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }
         });
         FormInput.add(PertanyaanLanjutan6);
-        PertanyaanLanjutan6.setBounds(560, 320, 130, 23);
+        PertanyaanLanjutan6.setBounds(532, 300, 163, 23);
 
         jLabel91.setText("Nilai :");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
-        jLabel91.setBounds(685, 320, 50, 23);
+        jLabel91.setBounds(690, 300, 50, 23);
 
         NilaiPertanyaanLanjutan6.setEditable(false);
         NilaiPertanyaanLanjutan6.setText("0");
         NilaiPertanyaanLanjutan6.setFocusTraversalPolicyProvider(true);
         NilaiPertanyaanLanjutan6.setName("NilaiPertanyaanLanjutan6"); // NOI18N
         FormInput.add(NilaiPertanyaanLanjutan6);
-        NilaiPertanyaanLanjutan6.setBounds(739, 320, 50, 23);
+        NilaiPertanyaanLanjutan6.setBounds(744, 300, 45, 23);
 
         jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel93.setText("6.");
+        jLabel93.setText("8.");
         jLabel93.setName("jLabel93"); // NOI18N
         FormInput.add(jLabel93);
-        jLabel93.setBounds(44, 320, 20, 23);
+        jLabel93.setBounds(44, 300, 20, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 350, 807, 1);
+        jSeparator3.setBounds(0, 360, 807, 1);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel101.setText("III. INTERPRETASI");
+        jLabel101.setText("II. INTERPRETASI");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(10, 350, 200, 23);
+        jLabel101.setBounds(10, 360, 200, 23);
 
         jLabel149.setText(":");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(0, 370, 117, 23);
+        jLabel149.setBounds(0, 380, 107, 23);
+
+        jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel94.setText("9.");
+        jLabel94.setName("jLabel94"); // NOI18N
+        FormInput.add(jLabel94);
+        jLabel94.setBounds(44, 330, 20, 23);
+
+        jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel95.setText("Pernah didiagnosis/diobati penyakit paru kronik");
+        jLabel95.setName("jLabel95"); // NOI18N
+        FormInput.add(jLabel95);
+        jLabel95.setBounds(57, 330, 470, 23);
+
+        PertanyaanLanjutan7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya, Pernah Tuberkolosis (TBC)", "Ya, Pernah Penyakit Paru Kronik(PPOK)", "Tidak" }));
+        PertanyaanLanjutan7.setName("PertanyaanLanjutan7"); // NOI18N
+        PertanyaanLanjutan7.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PertanyaanLanjutan7ItemStateChanged(evt);
+            }
+        });
+        PertanyaanLanjutan7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PertanyaanLanjutan7KeyPressed(evt);
+            }
+        });
+        FormInput.add(PertanyaanLanjutan7);
+        PertanyaanLanjutan7.setBounds(455, 330, 240, 23);
+
+        jLabel96.setText("Nilai :");
+        jLabel96.setName("jLabel96"); // NOI18N
+        FormInput.add(jLabel96);
+        jLabel96.setBounds(690, 330, 50, 23);
+
+        NilaiPertanyaanLanjutan7.setEditable(false);
+        NilaiPertanyaanLanjutan7.setText("0");
+        NilaiPertanyaanLanjutan7.setFocusTraversalPolicyProvider(true);
+        NilaiPertanyaanLanjutan7.setName("NilaiPertanyaanLanjutan7"); // NOI18N
+        FormInput.add(NilaiPertanyaanLanjutan7);
+        NilaiPertanyaanLanjutan7.setBounds(744, 330, 45, 23);
+
+        jLabel97.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel97.setText("shisya/cerutu/rokok linting, dll)");
+        jLabel97.setName("jLabel97"); // NOI18N
+        FormInput.add(jLabel97);
+        jLabel97.setBounds(57, 218, 380, 23);
+
+        jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel98.setText("bengkel/garmen/laboratorium kimia/galangan kapal, dII)");
+        jLabel98.setName("jLabel98"); // NOI18N
+        FormInput.add(jLabel98);
+        jLabel98.setBounds(57, 248, 470, 23);
+
+        jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel100.setText("buangan sampah/tepi jalan besar)");
+        jLabel100.setName("jLabel100"); // NOI18N
+        FormInput.add(jLabel100);
+        jLabel100.setBounds(57, 278, 470, 23);
+
+        jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel102.setText("dapur kayu bakar/dapur breket/menggunakan rutin obat nyamuk bakar/semprot, dll)");
+        jLabel102.setName("jLabel102"); // NOI18N
+        FormInput.add(jLabel102);
+        jLabel102.setBounds(57, 308, 470, 23);
+
+        jLabel150.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel150.setText("Keterangan");
+        jLabel150.setName("jLabel150"); // NOI18N
+        FormInput.add(jLabel150);
+        jLabel150.setBounds(44, 380, 90, 23);
+
+        Keterangan.setFocusTraversalPolicyProvider(true);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(111, 380, 310, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1604,6 +1678,18 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         Valid.pindah(evt,PertanyaanLanjutan5,BtnSimpan);
     }//GEN-LAST:event_PertanyaanLanjutan6KeyPressed
 
+    private void PertanyaanLanjutan7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan7ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PertanyaanLanjutan7ItemStateChanged
+
+    private void PertanyaanLanjutan7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PertanyaanLanjutan7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PertanyaanLanjutan7KeyPressed
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1638,6 +1724,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.TextBox HasilSkrining;
     private widget.ComboBox Jam;
     private widget.TextBox KdPetugas;
+    private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
@@ -1650,6 +1737,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.TextBox NilaiPertanyaanLanjutan4;
     private widget.TextBox NilaiPertanyaanLanjutan5;
     private widget.TextBox NilaiPertanyaanLanjutan6;
+    private widget.TextBox NilaiPertanyaanLanjutan7;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PertanyaanAwal1;
@@ -1660,6 +1748,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.ComboBox PertanyaanLanjutan4;
     private widget.ComboBox PertanyaanLanjutan5;
     private widget.ComboBox PertanyaanLanjutan6;
+    private widget.ComboBox PertanyaanLanjutan7;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1675,8 +1764,10 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
     private widget.Label jLabel101;
+    private widget.Label jLabel102;
     private widget.Label jLabel148;
     private widget.Label jLabel149;
+    private widget.Label jLabel150;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
@@ -1710,11 +1801,15 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private widget.Label jLabel91;
     private widget.Label jLabel92;
     private widget.Label jLabel93;
+    private widget.Label jLabel94;
+    private widget.Label jLabel95;
+    private widget.Label jLabel96;
+    private widget.Label jLabel97;
+    private widget.Label jLabel98;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1898,9 +1993,9 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>598){
+            if(internalFrame1.getHeight()>608){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,426));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,436));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{

@@ -1621,7 +1621,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jLabel113.setText("diacar, mengandung bahan pengawet, berlemak, dan cepat saji ?");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
-        jLabel113.setBounds(72, 300, 530, 23);
+        jLabel113.setBounds(72, 298, 530, 23);
 
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel114.setText("8.");
@@ -2302,7 +2302,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
         jLabel168.setText("hingga kulit kelihatan seperti kulit jeruk (peau dorange), mengkerut, atau timbul borok (ulkus) ?");
         jLabel168.setName("jLabel168"); // NOI18N
         FormInput.add(jLabel168);
-        jLabel168.setBounds(72, 1030, 490, 23);
+        jLabel168.setBounds(72, 1028, 490, 23);
 
         jLabel169.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel169.setText("4.");
