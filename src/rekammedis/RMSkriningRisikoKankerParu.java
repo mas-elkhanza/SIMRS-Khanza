@@ -1279,7 +1279,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,DalamRumah,BtnBatal);
+            Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1591,17 +1591,17 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningKekerasanPadaPerempuan.jasper","report","::[ Formulir Skrining Kekerasan Pada Perempuan ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
-                    "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
-                    "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
-                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
+                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.menggambarkan_hubungan,skrining_risiko_kanker_paru.skor_menggambarkan_hubungan,"+
+                    "skrining_risiko_kanker_paru.berdebat_dengan_pasangan,skrining_risiko_kanker_paru.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_paru.pertengkaran_membuat_sedih,"+
+                    "skrining_risiko_kanker_paru.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_paru.pertengkaran_menghasilkan_pukulan,"+
+                    "skrining_risiko_kanker_paru.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_paru.pernah_merasa_takut_dengan_pasangan,"+
+                    "skrining_risiko_kanker_paru.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_fisik,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_imosional,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_seksual,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_paru.totalskor,skrining_risiko_kanker_paru.hasil_skrining "+
+                    "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
@@ -1687,7 +1687,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_DalamRumahItemStateChanged
 
     private void DalamRumahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DalamRumahKeyPressed
-        Valid.pindah(evt,LingkunganTinggal,BtnSimpan);
+        Valid.pindah(evt,LingkunganTinggal,PernahParu);
     }//GEN-LAST:event_DalamRumahKeyPressed
 
     private void PernahParuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PernahParuItemStateChanged
@@ -1696,11 +1696,11 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_PernahParuItemStateChanged
 
     private void PernahParuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernahParuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DalamRumah,Keterangan);
     }//GEN-LAST:event_PernahParuKeyPressed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PernahParu,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
@@ -1835,34 +1835,34 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
-                    "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
-                    "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
-                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
-                    "where skrining_kekerasan_pada_perempuan.tanggal between ? and ? order by skrining_kekerasan_pada_perempuan.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
+                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.menggambarkan_hubungan,skrining_risiko_kanker_paru.skor_menggambarkan_hubungan,"+
+                    "skrining_risiko_kanker_paru.berdebat_dengan_pasangan,skrining_risiko_kanker_paru.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_paru.pertengkaran_membuat_sedih,"+
+                    "skrining_risiko_kanker_paru.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_paru.pertengkaran_menghasilkan_pukulan,"+
+                    "skrining_risiko_kanker_paru.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_paru.pernah_merasa_takut_dengan_pasangan,"+
+                    "skrining_risiko_kanker_paru.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_fisik,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_imosional,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_seksual,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_paru.totalskor,skrining_risiko_kanker_paru.hasil_skrining "+
+                    "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
+                    "where skrining_risiko_kanker_paru.tanggal between ? and ? order by skrining_risiko_kanker_paru.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
-                    "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
-                    "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
-                    "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
-                    "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
-                    "where skrining_kekerasan_pada_perempuan.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_kekerasan_pada_perempuan.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_kekerasan_pada_perempuan.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
+                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.menggambarkan_hubungan,skrining_risiko_kanker_paru.skor_menggambarkan_hubungan,"+
+                    "skrining_risiko_kanker_paru.berdebat_dengan_pasangan,skrining_risiko_kanker_paru.skor_berdebat_dengan_pasangan,skrining_risiko_kanker_paru.pertengkaran_membuat_sedih,"+
+                    "skrining_risiko_kanker_paru.skor_pertengkaran_membuat_sedih,skrining_risiko_kanker_paru.pertengkaran_menghasilkan_pukulan,"+
+                    "skrining_risiko_kanker_paru.skor_pertengkaran_menghasilkan_pukulan,skrining_risiko_kanker_paru.pernah_merasa_takut_dengan_pasangan,"+
+                    "skrining_risiko_kanker_paru.skor_pernah_merasa_takut_dengan_pasangan,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_fisik,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_fisik,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_imosional,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_imosional,skrining_risiko_kanker_paru.pasangan_melecehkan_secara_seksual,"+
+                    "skrining_risiko_kanker_paru.skor_pasangan_melecehkan_secara_seksual,skrining_risiko_kanker_paru.totalskor,skrining_risiko_kanker_paru.hasil_skrining "+
+                    "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
+                    "where skrining_risiko_kanker_paru.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_risiko_kanker_paru.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_risiko_kanker_paru.tanggal ");
             }
                 
             try {
@@ -1927,8 +1927,8 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         NilaiDalamRumah.setText("1");
         PernahParu.setSelectedIndex(2);
         NilaiPernahParu.setText("1");
-        TotalHasil.setText("8");
-        HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+        TotalHasil.setText("9");
+        HasilSkrining.setText("Risiko Ringan");
         JenisKelamin.requestFocus();
     } 
 
@@ -2028,10 +2028,10 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
-        BtnHapus.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
-        BtnEdit.setEnabled(akses.getskrining_kekerasan_pada_perempuan());
-        BtnPrint.setEnabled(akses.getskrining_kekerasan_pada_perempuan()); 
+        BtnSimpan.setEnabled(akses.getskrining_risiko_kanker_paru());
+        BtnHapus.setEnabled(akses.getskrining_risiko_kanker_paru());
+        BtnEdit.setEnabled(akses.getskrining_risiko_kanker_paru());
+        BtnPrint.setEnabled(akses.getskrining_risiko_kanker_paru()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2109,7 +2109,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_kekerasan_pada_perempuan","no_rawat=?","no_rawat=?,tanggal=?,menggambarkan_hubungan=?,skor_menggambarkan_hubungan=?,berdebat_dengan_pasangan=?,skor_berdebat_dengan_pasangan=?,pertengkaran_membuat_sedih=?,"+
+        if(Sequel.mengedittf("skrining_risiko_kanker_paru","no_rawat=?","no_rawat=?,tanggal=?,menggambarkan_hubungan=?,skor_menggambarkan_hubungan=?,berdebat_dengan_pasangan=?,skor_berdebat_dengan_pasangan=?,pertengkaran_membuat_sedih=?,"+
                 "skor_pertengkaran_membuat_sedih=?,pertengkaran_menghasilkan_pukulan=?,skor_pertengkaran_menghasilkan_pukulan=?,pernah_merasa_takut_dengan_pasangan=?,skor_pernah_merasa_takut_dengan_pasangan=?,pasangan_melecehkan_secara_fisik=?,"+
                 "skor_pasangan_melecehkan_secara_fisik=?,pasangan_melecehkan_secara_imosional=?,skor_pasangan_melecehkan_secara_imosional=?,pasangan_melecehkan_secara_seksual=?,skor_pasangan_melecehkan_secara_seksual=?,totalskor=?,hasil_skrining=?,"+
                 "nip=?",22,new String[]{
@@ -2151,7 +2151,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_kekerasan_pada_perempuan where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_risiko_kanker_paru where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2165,30 +2165,32 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     private void isTotal() {
         try {
             TotalHasil.setText(""+(Integer.parseInt(NilaiJenisKelamin.getText())+Integer.parseInt(NilaiUsia.getText())+Integer.parseInt(NilaiPernahMenderitaKanker.getText())+Integer.parseInt(NilaiKeluargaKanker.getText())+Integer.parseInt(NilaiRiwayatMerokok.getText())+Integer.parseInt(NilaiRiwayatBekerja.getText())+Integer.parseInt(NilaiLingkunganTinggal.getText())+Integer.parseInt(NilaiDalamRumah.getText())+Integer.parseInt(NilaiPernahParu.getText())));
-            if(Integer.parseInt(TotalHasil.getText())>12){
-                HasilSkrining.setText("Pasien Terindikasi Mengalami Kekerasan");
+            if(Integer.parseInt(TotalHasil.getText())>11){
+                HasilSkrining.setText("Risiko Sedang");
+            }else if(Integer.parseInt(TotalHasil.getText())>16){
+                HasilSkrining.setText("Risiko Berat");
             }else{
-                HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+                HasilSkrining.setText("Risiko Ringan");
             }
         } catch (Exception e) {
-            HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
+            HasilSkrining.setText("Risiko Ringan");
         }
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_kekerasan_pada_perempuan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
+        if(Sequel.menyimpantf("skrining_risiko_kanker_paru","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",24,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             JenisKelamin.getSelectedItem().toString(),NilaiJenisKelamin.getText(),Usia.getSelectedItem().toString(),NilaiUsia.getText(), 
             PernahMenderitaKanker.getSelectedItem().toString(),NilaiPernahMenderitaKanker.getText(),KeluargaKanker.getSelectedItem().toString(),NilaiKeluargaKanker.getText(), 
             RiwayatMerokok.getSelectedItem().toString(),NilaiRiwayatMerokok.getText(),RiwayatBekerja.getSelectedItem().toString(),NilaiRiwayatBekerja.getText(), 
             LingkunganTinggal.getSelectedItem().toString(),NilaiLingkunganTinggal.getText(),DalamRumah.getSelectedItem().toString(),NilaiDalamRumah.getText(), 
-            TotalHasil.getText(),HasilSkrining.getText(),KdPetugas.getText()
+            PernahParu.getSelectedItem().toString(),NilaiPernahParu.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                JenisKelamin.getSelectedItem().toString(),NilaiJenisKelamin.getText(),Usia.getSelectedItem().toString(),NilaiUsia.getText(),PernahMenderitaKanker.getSelectedItem().toString(),NilaiPernahMenderitaKanker.getText(),
-                KeluargaKanker.getSelectedItem().toString(),NilaiKeluargaKanker.getText(),RiwayatMerokok.getSelectedItem().toString(),NilaiRiwayatMerokok.getText(),RiwayatBekerja.getSelectedItem().toString(),NilaiRiwayatBekerja.getText(), 
-                LingkunganTinggal.getSelectedItem().toString(),NilaiLingkunganTinggal.getText(),DalamRumah.getSelectedItem().toString(),NilaiDalamRumah.getText(),TotalHasil.getText(),HasilSkrining.getText()
+                JenisKelamin.getSelectedItem().toString(),NilaiJenisKelamin.getText(),Usia.getSelectedItem().toString(),NilaiUsia.getText(),PernahMenderitaKanker.getSelectedItem().toString(),NilaiPernahMenderitaKanker.getText(),KeluargaKanker.getSelectedItem().toString(),
+                NilaiKeluargaKanker.getText(),RiwayatMerokok.getSelectedItem().toString(),NilaiRiwayatMerokok.getText(),RiwayatBekerja.getSelectedItem().toString(),NilaiRiwayatBekerja.getText(),LingkunganTinggal.getSelectedItem().toString(),NilaiLingkunganTinggal.getText(),
+                DalamRumah.getSelectedItem().toString(),NilaiDalamRumah.getText(),PernahParu.getSelectedItem().toString(),NilaiPernahParu.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
