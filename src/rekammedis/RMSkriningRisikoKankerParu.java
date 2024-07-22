@@ -776,6 +776,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         JenisKelamin.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
+        JenisKelamin.setSelectedIndex(1);
         JenisKelamin.setName("JenisKelamin"); // NOI18N
         JenisKelamin.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -796,6 +797,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel92.setBounds(690, 90, 50, 23);
 
         Usia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "> 65 Tahun", "45 - 65 Tahun", "< 45 Tahun" }));
+        Usia.setSelectedIndex(2);
         Usia.setName("Usia"); // NOI18N
         Usia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -881,6 +883,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         NilaiKeluargaKanker.setBounds(744, 180, 45, 23);
 
         KeluargaKanker.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya, Kanker Paru", "Ya, Kanker Jenis Lain", "Tidak Ada" }));
+        KeluargaKanker.setSelectedIndex(2);
         KeluargaKanker.setName("KeluargaKanker"); // NOI18N
         KeluargaKanker.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -985,6 +988,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel84.setBounds(57, 205, 380, 23);
 
         RiwayatMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perokok Aktif, Masih Merokok 1 Tahun Ini", "Bekas Perokok, Berhenti < 15 Tahun", "Perokok Pasif", "Tidak Merokok" }));
+        RiwayatMerokok.setSelectedIndex(2);
         RiwayatMerokok.setName("RiwayatMerokok"); // NOI18N
         RiwayatMerokok.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1024,6 +1028,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel86.setBounds(57, 235, 470, 23);
 
         RiwayatBekerja.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak Yakin/Ragu-ragu", "Tidak" }));
+        RiwayatBekerja.setSelectedIndex(2);
         RiwayatBekerja.setName("RiwayatBekerja"); // NOI18N
         RiwayatBekerja.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1063,6 +1068,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel88.setBounds(44, 270, 20, 23);
 
         LingkunganTinggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak Yakin/Ragu-ragu", "Tidak" }));
+        LingkunganTinggal.setSelectedIndex(2);
         LingkunganTinggal.setName("LingkunganTinggal"); // NOI18N
         LingkunganTinggal.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1096,6 +1102,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel90.setBounds(57, 295, 470, 23);
 
         DalamRumah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak Yakin/Ragu-ragu", "Tidak" }));
+        DalamRumah.setSelectedIndex(2);
         DalamRumah.setName("DalamRumah"); // NOI18N
         DalamRumah.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1159,6 +1166,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel95.setBounds(57, 330, 390, 23);
 
         PernahParu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya, Pernah Tuberkolosis (TBC)", "Ya, Pernah Penyakit Paru Kronik(PPOK)", "Tidak" }));
+        PernahParu.setSelectedIndex(2);
         PernahParu.setName("PernahParu"); // NOI18N
         PernahParu.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1599,7 +1607,11 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_MnSkriningKekerasanPadaPerempuanActionPerformed
 
     private void JenisKelaminItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisKelaminItemStateChanged
-        NilaiJenisKelamin.setText((JenisKelamin.getSelectedIndex()+1)+"");
+        if(JenisKelamin.getSelectedIndex()==0){
+            NilaiJenisKelamin.setText("3");
+        }else{
+            NilaiJenisKelamin.setText("1");
+        }
         isTotal();
     }//GEN-LAST:event_JenisKelaminItemStateChanged
 
@@ -1608,7 +1620,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_JenisKelaminKeyPressed
 
     private void UsiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_UsiaItemStateChanged
-        NilaiUsia.setText((Usia.getSelectedIndex()+1)+"");
+        NilaiUsia.setText((3-Usia.getSelectedIndex())+"");
         isTotal();
     }//GEN-LAST:event_UsiaItemStateChanged
 
@@ -1621,7 +1633,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void PernahMenderitaKankerItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PernahMenderitaKankerItemStateChanged
-        NilaiPernahMenderitaKanker.setText((PernahMenderitaKanker.getSelectedIndex()+1)+"");
+        NilaiPernahMenderitaKanker.setText((3-PernahMenderitaKanker.getSelectedIndex())+"");
         isTotal();
     }//GEN-LAST:event_PernahMenderitaKankerItemStateChanged
 
@@ -1630,7 +1642,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_PernahMenderitaKankerKeyPressed
 
     private void KeluargaKankerItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KeluargaKankerItemStateChanged
-        NilaiKeluargaKanker.setText((KeluargaKanker.getSelectedIndex()+1)+"");
+        NilaiKeluargaKanker.setText((3-KeluargaKanker.getSelectedIndex())+"");
         isTotal();
     }//GEN-LAST:event_KeluargaKankerItemStateChanged
 
@@ -1643,7 +1655,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_HasilSkriningKeyPressed
 
     private void RiwayatMerokokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RiwayatMerokokItemStateChanged
-        NilaiRiwayatMerokok.setText((RiwayatMerokok.getSelectedIndex()+1)+"");
+        NilaiRiwayatMerokok.setText((3-RiwayatMerokok.getSelectedIndex())+"");
         isTotal();
     }//GEN-LAST:event_RiwayatMerokokItemStateChanged
 
@@ -1652,7 +1664,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_RiwayatMerokokKeyPressed
 
     private void RiwayatBekerjaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RiwayatBekerjaItemStateChanged
-        NilaiRiwayatBekerja.setText((RiwayatBekerja.getSelectedIndex()+1)+"");
+        NilaiRiwayatBekerja.setText((3-RiwayatBekerja.getSelectedIndex())+"");
         isTotal();
     }//GEN-LAST:event_RiwayatBekerjaItemStateChanged
 
@@ -1661,7 +1673,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_RiwayatBekerjaKeyPressed
 
     private void LingkunganTinggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LingkunganTinggalItemStateChanged
-        NilaiLingkunganTinggal.setText((LingkunganTinggal.getSelectedIndex()+1)+"");
+        NilaiLingkunganTinggal.setText((3-LingkunganTinggal.getSelectedIndex())+"");
         isTotal();
     }//GEN-LAST:event_LingkunganTinggalItemStateChanged
 
@@ -1670,7 +1682,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_LingkunganTinggalKeyPressed
 
     private void DalamRumahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DalamRumahItemStateChanged
-        NilaiDalamRumah.setText((DalamRumah.getSelectedIndex()+1)+"");
+        NilaiDalamRumah.setText((3-DalamRumah.getSelectedIndex())+"");
         isTotal();
     }//GEN-LAST:event_DalamRumahItemStateChanged
 
@@ -1679,7 +1691,8 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     }//GEN-LAST:event_DalamRumahKeyPressed
 
     private void PernahParuItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PernahParuItemStateChanged
-        // TODO add your handling code here:
+        NilaiPernahParu.setText((3-PernahParu.getSelectedIndex())+"");
+        isTotal();
     }//GEN-LAST:event_PernahParuItemStateChanged
 
     private void PernahParuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernahParuKeyPressed
@@ -1896,22 +1909,24 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        JenisKelamin.setSelectedIndex(0);
+        JenisKelamin.setSelectedIndex(1);
         NilaiJenisKelamin.setText("1");
-        Usia.setSelectedIndex(0);
+        Usia.setSelectedIndex(2);
         NilaiUsia.setText("1");
-        PernahMenderitaKanker.setSelectedIndex(0);
+        PernahMenderitaKanker.setSelectedIndex(2);
         NilaiPernahMenderitaKanker.setText("1");
-        KeluargaKanker.setSelectedIndex(0);
+        KeluargaKanker.setSelectedIndex(2);
         NilaiKeluargaKanker.setText("1");
-        RiwayatMerokok.setSelectedIndex(0);
+        RiwayatMerokok.setSelectedIndex(2);
         NilaiRiwayatMerokok.setText("1");
-        RiwayatBekerja.setSelectedIndex(0);
+        RiwayatBekerja.setSelectedIndex(2);
         NilaiRiwayatBekerja.setText("1");
-        LingkunganTinggal.setSelectedIndex(0);
+        LingkunganTinggal.setSelectedIndex(2);
         NilaiLingkunganTinggal.setText("1");
-        DalamRumah.setSelectedIndex(0);
+        DalamRumah.setSelectedIndex(2);
         NilaiDalamRumah.setText("1");
+        PernahParu.setSelectedIndex(2);
+        NilaiPernahParu.setText("1");
         TotalHasil.setText("8");
         HasilSkrining.setText("Pasien Tidak Terindikasi Mengalami Kekerasan");
         JenisKelamin.requestFocus();
@@ -2149,7 +2164,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
 
     private void isTotal() {
         try {
-            TotalHasil.setText(""+(Integer.parseInt(NilaiJenisKelamin.getText())+Integer.parseInt(NilaiUsia.getText())+Integer.parseInt(NilaiPernahMenderitaKanker.getText())+Integer.parseInt(NilaiKeluargaKanker.getText())+Integer.parseInt(NilaiRiwayatMerokok.getText())+Integer.parseInt(NilaiRiwayatBekerja.getText())+Integer.parseInt(NilaiLingkunganTinggal.getText())+Integer.parseInt(NilaiDalamRumah.getText())));
+            TotalHasil.setText(""+(Integer.parseInt(NilaiJenisKelamin.getText())+Integer.parseInt(NilaiUsia.getText())+Integer.parseInt(NilaiPernahMenderitaKanker.getText())+Integer.parseInt(NilaiKeluargaKanker.getText())+Integer.parseInt(NilaiRiwayatMerokok.getText())+Integer.parseInt(NilaiRiwayatBekerja.getText())+Integer.parseInt(NilaiLingkunganTinggal.getText())+Integer.parseInt(NilaiDalamRumah.getText())+Integer.parseInt(NilaiPernahParu.getText())));
             if(Integer.parseInt(TotalHasil.getText())>12){
                 HasilSkrining.setText("Pasien Terindikasi Mengalami Kekerasan");
             }else{

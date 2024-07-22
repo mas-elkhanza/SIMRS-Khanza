@@ -928,6 +928,7 @@
                             <StringItem index="1" value="Perempuan"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="1"/>
                         <Property name="name" type="java.lang.String" value="JenisKelamin" noResource="true"/>
                       </Properties>
                       <Events>
@@ -960,6 +961,7 @@
                             <StringItem index="2" value="&lt; 45 Tahun"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="2"/>
                         <Property name="name" type="java.lang.String" value="Usia" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1111,6 +1113,7 @@
                             <StringItem index="2" value="Tidak Ada"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="2"/>
                         <Property name="name" type="java.lang.String" value="KeluargaKanker" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1314,6 +1317,7 @@
                             <StringItem index="3" value="Tidak Merokok"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="2"/>
                         <Property name="name" type="java.lang.String" value="RiwayatMerokok" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1383,6 +1387,7 @@
                             <StringItem index="2" value="Tidak"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="2"/>
                         <Property name="name" type="java.lang.String" value="RiwayatBekerja" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1452,6 +1457,7 @@
                             <StringItem index="2" value="Tidak"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="2"/>
                         <Property name="name" type="java.lang.String" value="LingkunganTinggal" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1509,6 +1515,7 @@
                             <StringItem index="2" value="Tidak"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="2"/>
                         <Property name="name" type="java.lang.String" value="DalamRumah" noResource="true"/>
                       </Properties>
                       <Events>
@@ -1636,6 +1643,7 @@
                             <StringItem index="2" value="Tidak"/>
                           </StringArray>
                         </Property>
+                        <Property name="selectedIndex" type="int" value="2"/>
                         <Property name="name" type="java.lang.String" value="PernahParu" noResource="true"/>
                       </Properties>
                       <Events>
