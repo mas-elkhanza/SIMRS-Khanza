@@ -69,9 +69,10 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Umur","Kode Petugas","Nama Petugas","Tanggal",
-            "Pertanyaan Awal 1","N.P.A.1","Pertanyaan Awal 2","N.P.A.2","Pertanyaan Lanjutan 1","N.P.L.1",
-            "Pertanyaan Lanjutan 2","N.P.L.2","Pertanyaan Lanjutan 3","N.P.L.3","Pertanyaan Lanjutan 4","N.P.L.4",
-            "Pertanyaan Lanjutan 5","N.P.L.5","Pertanyaan Lanjutan 6","N.P.L.6","Total Skor","Hasil Skrining"
+            "Jenis Kelamin","N.A.1","Usia/Umur","N.A.2","Pernah Didiagnosis Kanker","N.A.3",
+            "Ada Keluarga Kanker","N.A.4","Riwayat Merokok","N.A.5","Riwayat Bekerja Karsinogenik","N.A.6",
+            "Lingkungan Tinggal Berpolusi","N.A.7","Rumah Tidak Sehat","N.A.8","Pernah Paru Kronis","N.A.9",
+            "Total Skor","Hasil Skrining","Keterangan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -81,7 +82,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 26; i++) {
+        for (i = 0; i < 29; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -132,9 +133,15 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
             }else if(i==23){
                 column.setPreferredWidth(45);
             }else if(i==24){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(118);
             }else if(i==25){
-                column.setPreferredWidth(230);
+                column.setPreferredWidth(45);
+            }else if(i==26){
+                column.setPreferredWidth(60);
+            }else if(i==27){
+                column.setPreferredWidth(110);
+            }else if(i==28){
+                column.setPreferredWidth(170);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
