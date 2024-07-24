@@ -591,7 +591,6 @@ public class frmUtama extends javax.swing.JFrame {
                                                                             "\"respRate\": "+Respiratory.getText()+"," +
                                                                             "\"heartRate\": "+Heartrate.getText()+"," +
                                                                             "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                                                            "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                                                             "\"kdStatusPulang\": \"3\"," +
                                                                             "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                                                             "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -737,7 +736,6 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"respRate\": "+Respiratory.getText()+"," +
                                                 "\"heartRate\": "+Heartrate.getText()+"," +
                                                 "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                                "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                                 "\"kdStatusPulang\": \"3\"," +
                                                 "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                                 "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +

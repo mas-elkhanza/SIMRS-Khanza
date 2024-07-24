@@ -3734,7 +3734,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         "\"respRate\": "+Respiratory.getText()+"," +
                                         "\"heartRate\": "+Heartrate.getText()+"," +
                                         "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                        "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                         "\"kdStatusPulang\": \"3\"," +
                                         "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                         "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -3862,7 +3861,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         "\"respRate\": "+Respiratory.getText()+"," +
                                         "\"heartRate\": "+Heartrate.getText()+"," +
                                         "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                        "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                         "\"kdStatusPulang\": \"4\"," +
                                         "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                         "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -7683,7 +7681,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         "\"respRate\": "+Respiratory.getText()+"," +
                                         "\"heartRate\": "+Heartrate.getText()+"," +
                                         "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                        "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                         "\"kdStatusPulang\": \"3\"," +
                                         "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                         "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -7769,7 +7766,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "\"respRate\": "+Respiratory.getText()+"," +
                                                         "\"heartRate\": "+Heartrate.getText()+"," +
                                                         "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                                        "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                                         "\"kdStatusPulang\": \"3\"," +
                                                         "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                                         "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -7841,7 +7837,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "\"respRate\": "+Respiratory.getText()+"," +
                                                         "\"heartRate\": "+Heartrate.getText()+"," +
                                                         "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                                        "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                                         "\"kdStatusPulang\": \"4\"," +
                                                         "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                                         "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -7921,7 +7916,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                     "\"respRate\": "+Respiratory.getText()+"," +
                                                     "\"heartRate\": "+Heartrate.getText()+"," +
                                                     "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                                    "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                                     "\"kdStatusPulang\": \"3\"," +
                                                     "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                                     "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -7993,7 +7987,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                     "\"respRate\": "+Respiratory.getText()+"," +
                                                     "\"heartRate\": "+Heartrate.getText()+"," +
                                                     "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                                    "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                                     "\"kdStatusPulang\": \"4\"," +
                                                     "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                                     "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -8115,7 +8108,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "\"respRate\": "+Respiratory.getText()+"," +
                                     "\"heartRate\": "+Heartrate.getText()+"," +
                                     "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                    "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                     "\"kdStatusPulang\": \"3\"," +
                                     "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                     "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
@@ -8701,7 +8693,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                                             "\"respRate\": "+Respiratory.getText()+"," +
                                                                             "\"heartRate\": "+Heartrate.getText()+"," +
                                                                             "\"lingkarPerut\": "+LingkarPerut.getText()+"," +
-                                                                            "\"terapi\": \""+TerapiObat.getText()+"\"," +
                                                                             "\"kdStatusPulang\": \"3\"," +
                                                                             "\"tglPulang\": \""+TanggalPulang.getSelectedItem()+"\"," +
                                                                             "\"kdDokter\": \""+KdTenagaMedis.getText()+"\"," +
