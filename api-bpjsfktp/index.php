@@ -1079,7 +1079,7 @@
                             );
                             http_response_code(201);
                         }else {
-                            $cek = fetch_array(bukaquery("select reg_periksa.no_rawat,reg_periksa.stts from reg_periksa inner join maping_poliklinik_pcare on reg_periksa.kd_poli=maping_poliklinik_pcare.kd_poli_rs inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where maping_poliklinik_pcare.kd_poli_pcare='".validTeks4($decode["kodepoli"],20)."' and reg_periksa.tgl_registrasi='".validTeks4($decode["tanggalperiksa"],20)."' and pasien.no_peserta='".validTeks4($decode["nomorkartu"],20)."'"));
+                            $cek = fetch_array(bukaquery("select reg_periksa.no_rawat,reg_periksa.stts from reg_periksa inner join maping_poliklinik_pcare on reg_periksa.kd_poli=maping_poliklinik_pcare.kd_poli_rs inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where maping_poliklinik_pcare.kd_poli_pcare='".validTeks4($decode["kodepoli"],20)."' and reg_periksa.tgl_registrasi='".validTeks4($decode["tanggalperiksa"],20)."' and pasien.no_peserta='".validTeks4($decode["nomorkartu"],20)."' order by reg_periksa.tgl_registrasi desc,reg_periksa.jam_reg desc limit 1"));
                             if (!empty($cek['no_rawat'])) {
                                 if($cek['stts']=="Batal"){
                                     $response = array(
