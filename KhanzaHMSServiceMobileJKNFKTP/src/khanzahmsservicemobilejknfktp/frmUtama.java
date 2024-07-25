@@ -218,7 +218,7 @@ public class frmUtama extends javax.swing.JFrame {
                     Tanggal1.setText(tanggalFormat.format(date)); 
                     Tanggal2.setText(tanggalFormat.format(date)); 
                 }
-                if(detik.equals("01")&&((nilai_menit%5)==0)){
+                if(detik.equals("01")){
                     day=cal.get(Calendar.DAY_OF_WEEK);
                     switch (day) {
                         case 1:
