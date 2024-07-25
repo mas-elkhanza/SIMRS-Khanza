@@ -74,7 +74,7 @@
                                     $data = fetch_array(
                                         bukaquery(
                                             "SELECT maping_poliklinik_pcare.nm_poli_pcare,COUNT(reg_periksa.kd_poli) as total_antrean,
-                                            CONCAT(00,COUNT(reg_periksa.kd_poli)) as antrean_panggil,SUM(CASE WHEN reg_periksa.stts!='Sudah' THEN 1 ELSE 0 END) as sisa_antrean,
+                                            CONCAT(00,COUNT(reg_periksa.kd_poli)) as antrean_panggil,SUM(CASE WHEN reg_periksa.stts='Belum' THEN 1 ELSE 0 END) as sisa_antrean,
                                             maping_dokter_pcare.kd_dokter_pcare,maping_dokter_pcare.nm_dokter_pcare,reg_periksa.kd_poli,reg_periksa.kd_dokter
                                             FROM reg_periksa INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=reg_periksa.kd_poli
                                             INNER JOIN maping_dokter_pcare ON maping_dokter_pcare.kd_dokter=reg_periksa.kd_dokter
@@ -196,7 +196,7 @@
                                         reg_periksa.no_reg,COUNT(reg_periksa.kd_poli) as total_antrean,
                                         CONCAT(00,COUNT(reg_periksa.kd_poli)) as antrean_panggil,
                                         SUM(CASE WHEN reg_periksa.stts ='Belum' THEN 1 ELSE 0 END) as sisa_antrean,
-                                        SUM(CASE WHEN reg_periksa.stts ='Sudah' THEN 1 ELSE 0 END) as sudah_selesai,
+                                        SUM(CASE WHEN reg_periksa.stts !='Belum' THEN 1 ELSE 0 END) as sudah_selesai,
                                         ('Datanglah Minimal 30 Menit, jika no antrian anda terlewat, silakan konfirmasi ke bagian Pendaftaran atau Perawat Poli, Terima Kasih ..') as keterangan
                                         FROM reg_periksa INNER JOIN poliklinik ON poliklinik.kd_poli=reg_periksa.kd_poli
                                         INNER JOIN maping_poliklinik_pcare ON maping_poliklinik_pcare.kd_poli_rs=reg_periksa.kd_poli
@@ -473,7 +473,7 @@
                                         );
                                         http_response_code(201);
                                     }else{
-                                        $sudahdaftar=getOne2("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter' and reg_periksa.tgl_registrasi='".validTeks4($decode['tanggalperiksa'],20)."' and pasien.no_peserta='".validTeks4($decode['nomorkartu'],20)."' ");
+                                        $sudahdaftar=getOne2("select count(reg_periksa.no_rawat) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter' and reg_periksa.tgl_registrasi='".validTeks4($decode['tanggalperiksa'],20)."' and pasien.no_peserta='".validTeks4($decode['nomorkartu'],20)."' and reg_periksa.stts<>'Batal'");
                                         if($sudahdaftar>0){
                                             $response = array(
                                                 'metadata' => array(
@@ -493,7 +493,7 @@
                                                 );  
                                                 http_response_code(201);
                                             }else{
-                                                $sisakuota=getOne2("select count(reg_periksa.no_rawat) from reg_periksa where reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter' and reg_periksa.tgl_registrasi='".validTeks4($decode['tanggalperiksa'],20)."' ");
+                                                $sisakuota=getOne2("select count(reg_periksa.no_rawat) from reg_periksa where reg_periksa.kd_poli='$kdpoli' and reg_periksa.kd_dokter='$kddokter' and reg_periksa.tgl_registrasi='".validTeks4($decode['tanggalperiksa'],20)."' and reg_periksa.stts<>'Batal'");
                                                 if ($sisakuota < $jadwal['kuota']) {
                                                     $datapeserta     = cekpasien(validTeks4($decode['nik'],20),validTeks4($decode['nomorkartu'],20));
                                                     $noReg           = noRegPoli($kdpoli,$kddokter,validTeks4($decode['tanggalperiksa'],20));
