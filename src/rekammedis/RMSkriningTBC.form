@@ -356,7 +356,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="24-07-2024"/>
+                        <StringItem index="0" value="25-07-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -384,7 +384,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="24-07-2024"/>
+                        <StringItem index="0" value="25-07-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -592,7 +592,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="24-07-2024"/>
+                            <StringItem index="0" value="25-07-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1608,10 +1608,9 @@
                     <Component class="widget.ComboBox" name="RiwayatKontakTBC">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="3">
-                            <StringItem index="0" value="--Pilih--"/>
-                            <StringItem index="1" value="Tidak"/>
-                            <StringItem index="2" value="Ya"/>
+                          <StringArray count="2">
+                            <StringItem index="0" value="Tidak"/>
+                            <StringItem index="1" value="Ya"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="RiwayatKontakTBC" noResource="true"/>

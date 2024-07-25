@@ -655,7 +655,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -669,7 +669,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -790,7 +790,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-07-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-07-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1236,7 +1236,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel90);
         jLabel90.setBounds(50, 195, 180, 23);
 
-        RiwayatKontakTBC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--Pilih--", "Tidak", "Ya" }));
+        RiwayatKontakTBC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RiwayatKontakTBC.setName("RiwayatKontakTBC"); // NOI18N
         RiwayatKontakTBC.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {

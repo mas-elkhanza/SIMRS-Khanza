@@ -251,7 +251,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[L]Referensi Poli Mobile JKN FKTP","[L]Referensi Dokter Mobile JKN FKTP","[C]Rekapitulasi Penilaian SKP","[K]Pembayaran Pihak Ke 3 Bank Mandiri","[L]Metode Pembayaran Bank Mandiri",
                 "[L]Bank Tujuan Transfer Bank Mandiri","[L]Kode Transaksi Tujuan Transfer Bank Mandiri","[M]Konsultasi Medik","[M]Jawaban Konsultasi Medik","[L]Referensi Alergi PCare",
                 "[L]Referensi Prognosa PCare","[J]Data Sasaran Usia Produktif","[J]Data Sasaran Usia Lansia","[M]Skrining Merokok Usia Sekolah & Remaja","[M]Skrining Kekerasan Pada Perempuan",
-                "[M]Skrining Obesitas","[M]Skrining Risiko Kanker Payudara","[M]Skrining Risiko Kanker Paru"
+                "[M]Skrining Obesitas","[M]Skrining Risiko Kanker Payudara","[M]Skrining Risiko Kanker Paru","[M]Skring TBC"
         };
         
         tabMode=new DefaultTableModel(null,row){
