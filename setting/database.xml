@@ -110,7 +110,7 @@
     <entry key="URLAPIINHEALTH">http://development.inhealth.co.id/pelkesws2</entry>
     <entry key="TOKENINHEALTH">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="PEMBULATANHARGAOBAT">no</entry>
-    <entry key="AKTIFKANBATCHOBAT">no</entry>
+    <entry key="AKTIFKANBATCHOBAT">yes</entry>
     <entry key="CETAKRINCIANOBAT">no</entry>
     <entry key="DEPOAKTIFOBAT"></entry>
     <entry key="VALIDASIULANGBERIOBAT">no</entry>
