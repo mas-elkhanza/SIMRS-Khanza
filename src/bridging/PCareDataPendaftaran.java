@@ -37,6 +37,9 @@ import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -104,6 +107,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private String kdptg,nmptg,status="",signa1="1",signa2="1",kdObatSK="",kodesarana="",terapiobat="",terapinonobat="",bmhp="";
     private String[] arrSplit;
     private int day;
+    private Calendar cal = Calendar.getInstance();
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private LocalDate date;
+    private DayOfWeek dow;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -9418,7 +9425,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    day=TanggalDaftar.getDate().getDay();
+                    date = LocalDate.parse(TanggalDaftar.getSelectedItem().toString(), formatter);
+                    dow = date.getDayOfWeek();
+                    day=cal.get(dow.getValue());
                     switch (day) {
                         case 1:
                             hari="AKHAD";

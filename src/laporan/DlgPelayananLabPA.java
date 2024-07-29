@@ -42,9 +42,9 @@ public final class DlgPelayananLabPA extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0,limabelas=0,tigapuluh=0,satujam=0,lebihsatujam=0,
-            limabelas2=0,tigapuluh2=0,satujam2=0,lebihsatujam2=0,
-            limabelas3=0,tigapuluh3=0,satujam3=0,lebihsatujam3=0;
+    private int i=0,limabelas=0,tigapuluh=0,satujam=0,lebihsatujam=0,lebihduajam=0,
+            limabelas2=0,tigapuluh2=0,satujam2=0,lebihsatujam2=0,lebihduajam2=0,
+            limabelas3=0,tigapuluh3=0,satujam3=0,lebihsatujam3=0,lebihduajam3=0;
     private double lamajam=0,lamajam2=0,lamajam3=0;
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -463,9 +463,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);   
-            limabelas=0;tigapuluh=0;satujam=0;lebihsatujam=0;
-            limabelas2=0;tigapuluh2=0;satujam2=0;lebihsatujam2=0;
-            limabelas3=0;tigapuluh3=0;satujam3=0;lebihsatujam3=0;
+            limabelas=0;tigapuluh=0;satujam=0;lebihsatujam=0;lebihduajam=0;
+            limabelas2=0;tigapuluh2=0;satujam2=0;lebihsatujam2=0;lebihduajam2=0;
+            limabelas3=0;tigapuluh3=0;satujam3=0;lebihsatujam3=0;lebihduajam3=0;
             ps=koneksi.prepareStatement(
                 "select reg_periksa.no_rkm_medis,pasien.nm_pasien,dokter.nm_dokter,permintaan_labpa.noorder," +
                 "permintaan_labpa.tgl_permintaan,permintaan_labpa.jam_permintaan,permintaan_labpa.tgl_sampel,"+
@@ -475,24 +475,16 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 "round((TIME_TO_SEC(concat(permintaan_labpa.tgl_hasil,' ',permintaan_labpa.jam_hasil))-TIME_TO_SEC(concat(permintaan_labpa.tgl_permintaan,' ',permintaan_labpa.jam_permintaan)))/60,2) as permintaanhasil " +
                 "from reg_periksa inner join dokter inner join pasien inner join permintaan_labpa on reg_periksa.kd_dokter=dokter.kd_dokter " +
                 "and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.no_rawat=permintaan_labpa.no_rawat where "+
-                "permintaan_labpa.tgl_sampel<>'0000-00-00' and permintaan_labpa.tgl_hasil<>'0000-00-00' and permintaan_labpa.tgl_permintaan between ? and ? and permintaan_labpa.noorder like ? or " +
-                "permintaan_labpa.tgl_sampel<>'0000-00-00' and permintaan_labpa.tgl_hasil<>'0000-00-00' and permintaan_labpa.tgl_permintaan between ? and ? and dokter.nm_dokter like ? or " +
-                "permintaan_labpa.tgl_sampel<>'0000-00-00' and permintaan_labpa.tgl_hasil<>'0000-00-00' and permintaan_labpa.tgl_permintaan between ? and ? and reg_periksa.no_rkm_medis like ? or " +
-                "permintaan_labpa.tgl_sampel<>'0000-00-00' and permintaan_labpa.tgl_hasil<>'0000-00-00' and permintaan_labpa.tgl_permintaan between ? and ? and pasien.nm_pasien like ?  "+
+                "permintaan_labpa.tgl_sampel<>'0000-00-00' and permintaan_labpa.tgl_hasil<>'0000-00-00' and permintaan_labpa.tgl_permintaan between ? and ? and "+
+                "(permintaan_labpa.noorder like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ?)  "+
                 "order by permintaan_labpa.tgl_permintaan,permintaan_labpa.jam_permintaan");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                 ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 i=1;lamajam=0;lamajam2=0;lamajam3=0;
                 while(rs.next()){
@@ -510,8 +502,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         tigapuluh++;
                     }else if((rs.getDouble("permintaansampel")>30)&&(rs.getDouble("permintaansampel")<=60)){
                         satujam++;
-                    }else if(rs.getDouble("permintaansampel")>60){
+                    }else if((rs.getDouble("permintaansampel")>60)&&(rs.getDouble("permintaansampel")<=120)){
                         lebihsatujam++;
+                    }else if(rs.getDouble("permintaansampel")>120){
+                        lebihduajam++;
                     }
                     
                     lamajam2=lamajam2+rs.getDouble("sampelhasil");
@@ -521,8 +515,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         tigapuluh2++;
                     }else if((rs.getDouble("sampelhasil")>30)&&(rs.getDouble("sampelhasil")<=60)){
                         satujam2++;
-                    }else if(rs.getDouble("sampelhasil")>60){
+                    }else if((rs.getDouble("sampelhasil")>60)&&(rs.getDouble("sampelhasil")<=120)){
                         lebihsatujam2++;
+                    }else if(rs.getDouble("sampelhasil")>120){
+                        lebihduajam2++;
                     }
                     
                     lamajam3=lamajam3+rs.getDouble("permintaanhasil");
@@ -532,8 +528,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         tigapuluh3++;
                     }else if((rs.getDouble("permintaanhasil")>30)&&(rs.getDouble("permintaanhasil")<=60)){
                         satujam3++;
-                    }else if(rs.getDouble("permintaanhasil")>60){
+                    }else if((rs.getDouble("permintaanhasil")>60)&&(rs.getDouble("permintaanhasil")<=120)){
                         lebihsatujam3++;
+                    }else if(rs.getDouble("permintaanhasil")>120){
+                        lebihduajam3++;
                     }
                     
                 }    
@@ -551,7 +549,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         "","",">30 - <=60 Menit",": ","","","","",""+satujam,""+satujam2,""+satujam3
                     });
                     tabMode.addRow(new Object[]{
-                        "","",">60 Menit",": ","","","","",""+lebihsatujam,""+lebihsatujam2,""+lebihsatujam3
+                        "","",">60 - <=120 Menit",": ","","","","",""+lebihsatujam,""+lebihsatujam2,""+lebihsatujam3
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","",">120 Menit",": ","","","","",""+lebihduajam,""+lebihduajam2,""+lebihduajam3
                     });
                 }                    
             } catch (Exception e) {
