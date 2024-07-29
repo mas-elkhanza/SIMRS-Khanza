@@ -9446,6 +9446,10 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     }
                     pscari=koneksi.prepareStatement("select jadwal.jam_mulai,jadwal.jam_selesai from jadwal where jadwal.hari_kerja=? and jadwal.kd_dokter=? and jadwal.kd_poli=?");
                     try {
+                        System.out.println("Hari Urut : "+day);
+                        System.out.println("Hari : "+hari);
+                        System.out.println("Kode Dokter : "+rs.getString("kd_dokter"));
+                        System.out.println("Kode Poli : "+rs.getString("kd_poli"));
                         pscari.setString(1,hari);
                         pscari.setString(2,rs.getString("kd_dokter"));
                         pscari.setString(3,rs.getString("kd_poli"));

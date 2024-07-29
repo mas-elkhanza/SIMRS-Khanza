@@ -1445,11 +1445,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps3.close();
                                     }
                                 }
-                                System.out.println("Tgl.Awal : "+tglopname);
-                                System.out.println("Lokasi : "+KdGudang.getText());
-                                System.out.println("KodeBarang : "+rs.getString("kode_brng"));
-                                System.out.println("NoBacth : "+rs2.getString("no_batch"));
-                                System.out.println("NoFaktur : "+rs2.getString("no_faktur"));
                                 
                                 
                                 harga=Sequel.cariIsiAngka("select data_batch."+hppfarmasi+" from data_batch where data_batch.kode_brng='"+rs.getString("kode_brng")+"' and data_batch.no_batch='"+rs2.getString("no_batch")+"' and data_batch.no_faktur='"+rs2.getString("no_faktur")+"' ");
