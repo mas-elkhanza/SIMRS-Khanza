@@ -9498,6 +9498,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             System.out.println("respon WS BPJS Kirim Pakai NoRujukan : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                             if(nameNode.path("code").asText().equals("201")){
                                 statusantrean=false;
+                                if(nameNode.path("message").asText().toLowerCase().contains("sudah terdaftar")){
+                                    statusantrean=true;
+                                }
                             }
                         }else{
                             statusantrean=false;
