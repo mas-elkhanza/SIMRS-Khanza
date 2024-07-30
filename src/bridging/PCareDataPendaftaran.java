@@ -96,7 +96,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private PCareCekReferensiPrognosa prognosa=new PCareCekReferensiPrognosa(null,false);
     private ApiPcare api=new ApiPcare();
     private ApiMobileJKNFKTP apimobilejkn=new ApiMobileJKNFKTP();
-    private String URL="",bangsal="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi,kamar="",divreg="",kacab="",userpcare="",kdtacc="",
+    private String bangsal="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi,kamar="",divreg="",kacab="",userpcare="",kdtacc="",
                    alasantacc="",utc="",ADDANTRIANAPIMOBILEJKNFKTP="",hari="";
     private HttpHeaders headers,headers2;
     private HttpEntity requestEntity;
@@ -934,7 +934,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
         
         try {
             otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
-            URL=koneksiDB.URLAPIPCARE(); 
             divreg=koneksiDB.DIVREGPCARE();
             kacab=koneksiDB.KACABPCARE();
             userpcare=koneksiDB.USERPCARE();
@@ -3465,7 +3464,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                      "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);
-                        requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
+                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
                         System.out.println(requestJson);
                         root = mapper.readTree(requestJson);
                         nameNode = root.path("metaData");
@@ -3604,7 +3603,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                       "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);
-                        requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.PUT, requestEntity, String.class).getBody();
+                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println(requestJson);
                         root = mapper.readTree(requestJson);
                         nameNode = root.path("metaData");
@@ -3739,7 +3738,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                       "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers);
-                        requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.PUT, requestEntity, String.class).getBody();
+                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println(requestJson);
                         root = mapper.readTree(requestJson);
                         nameNode = root.path("metaData");
@@ -3980,10 +3979,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                     headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                     requestEntity = new HttpEntity(headers);
-                    /*System.out.println("URL : "+URL);
-                    System.out.println(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
-                    System.out.println("No.Kartu : "+NoKartu.getText());*/
-                    root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                    root = mapper.readTree(api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
                     nameNode = root.path("metaData");
                     if(nameNode.path("message").asText().equals("OK")){
                         response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
@@ -4390,11 +4386,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
                         headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
                         requestEntity = new HttpEntity(headers);
-                        //System.out.println(rest.exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                        root = mapper.readTree(api.getRest().exchange(URL+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
+                        root = mapper.readTree(api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/peserta/"+NoKartu.getText(), HttpMethod.GET, requestEntity, String.class).getBody());
                         nameNode = root.path("metaData");
-                        //System.out.println("code : "+nameNode.path("code").asText());
-                        //System.out.println("message : "+nameNode.path("message").asText());
                         if(nameNode.path("message").asText().equals("OK")){
                             response = mapper.readTree(api.Decrypt(root.path("response").asText(),utc));
                             if(response.path("ketAktif").asText().equals("AKTIF")){
@@ -5020,7 +5013,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                  "}";
                     System.out.println(requestJson);
                     requestEntity = new HttpEntity(requestJson,headers);
-                    requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
+                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
                     root = mapper.readTree(requestJson);
                     nameNode = root.path("metaData");
                     System.out.println("code : "+nameNode.path("code").asText());
@@ -5136,7 +5129,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                      "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers);
-                                    requestJson=api.getRest().exchange(URL+"/obat/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/obat/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -5218,7 +5211,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers);
-                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -5295,7 +5288,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers);
-                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -5372,7 +5365,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers);
-                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -5449,7 +5442,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers);
-                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -5526,7 +5519,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers);
-                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -5603,7 +5596,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                     "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers);
-                                    requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -7552,7 +7545,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                       "}";
                         System.out.println(requestJson);
                         requestEntity = new HttpEntity(requestJson,headers2);
-                        requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                         System.out.println(requestJson);
                         root = mapper.readTree(requestJson);
                         nameNode = root.path("metaData");
@@ -7637,7 +7630,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                       "}";
                                         System.out.println(requestJson);
                                         requestEntity = new HttpEntity(requestJson,headers2);
-                                        requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                                         System.out.println(requestJson);
                                         root = mapper.readTree(requestJson);
                                         nameNode = root.path("metaData");
@@ -7716,7 +7709,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                       "}";
                                         System.out.println(requestJson);
                                         requestEntity = new HttpEntity(requestJson,headers2);
-                                        requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                                         System.out.println(requestJson);
                                         root = mapper.readTree(requestJson);
                                         nameNode = root.path("metaData");
@@ -7787,7 +7780,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                   "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers2);
-                                    requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -7866,7 +7859,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                   "}";
                                     System.out.println(requestJson);
                                     requestEntity = new HttpEntity(requestJson,headers2);
-                                    requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                                     System.out.println(requestJson);
                                     root = mapper.readTree(requestJson);
                                     nameNode = root.path("metaData");
@@ -7979,7 +7972,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                   "}";
                     System.out.println(requestJson);
                     requestEntity = new HttpEntity(requestJson,headers2);
-                    requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                    requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                     System.out.println(requestJson);
                     root = mapper.readTree(requestJson);
                     nameNode = root.path("metaData");
@@ -8144,7 +8137,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             headers.add("X-signature",api.getHmac());
             headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
-            root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),1).toString())+"/noUrut/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),18).toString()+"/kdPoli/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            root = mapper.readTree(restTemplate.exchange(koneksiDB.URLAPIPCARE()+"/pendaftaran/peserta/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),1).toString())+"/noUrut/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),18).toString()+"/kdPoli/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
@@ -8218,7 +8211,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
             mapper = new ObjectMapper();
-            root = mapper.readTree(restTemplate.exchange(URL+"/pendaftaran/peserta/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),1).toString())+"/noUrut/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),18).toString()+"/kdPoli/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            root = mapper.readTree(restTemplate.exchange(koneksiDB.URLAPIPCARE()+"/pendaftaran/peserta/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),5).toString()+"/tglDaftar/"+Valid.SetTgl3(tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),1).toString())+"/noUrut/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),18).toString()+"/kdPoli/"+tbPendaftaran.getValueAt(tbPendaftaran.getSelectedRow(),6).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
@@ -8285,7 +8278,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             headers.add("X-signature",api.getHmac());
             headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
-            root = mapper.readTree(restTemplate.exchange(URL+"/kunjungan/"+tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            root = mapper.readTree(restTemplate.exchange(koneksiDB.URLAPIPCARE()+"/kunjungan/"+tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),1).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
@@ -8353,7 +8346,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             headers.add("X-signature",api.getHmac());
             headers.add("X-authorization","Basic "+Base64.encodeBase64String(otorisasi.getBytes()));
             headers.add("user_key",koneksiDB.USERKEYAPIPCARE());
-            root = mapper.readTree(restTemplate.exchange(URL+"/kunjungan/"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),1).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
+            root = mapper.readTree(restTemplate.exchange(koneksiDB.URLAPIPCARE()+"/kunjungan/"+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),1).toString(), HttpMethod.DELETE,new HttpEntity<String>(requestJson,headers), String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : "+nameNode.path("code").asText());
             System.out.println("message : "+nameNode.path("message").asText());
@@ -8458,7 +8451,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                      "}";
                                         PesanKirim.append(requestJson+"\n");
                                         requestEntity = new HttpEntity(requestJson,headers);
-                                        requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
+                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
                                         root = mapper.readTree(requestJson);
                                         nameNode = root.path("metaData");
                                         PesanKirim.append("code : "+nameNode.path("code").asText()+"\n");
@@ -8564,7 +8557,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                                           "}";
                                                             PesanKirim.append(requestJson+"\n");
                                                             requestEntity = new HttpEntity(requestJson,headers2);
-                                                            requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                            requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                                                             PesanKirim.append(requestJson+"\n");
                                                             root = mapper.readTree(requestJson);
                                                             nameNode = root.path("metaData");
@@ -8699,7 +8692,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                          "}";
                                                         PesanKirim.append(requestJson+"\n");
                                                         requestEntity = new HttpEntity(requestJson,headers);
-                                                        requestJson=api.getRest().exchange(URL+"/obat/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/obat/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
                                                         PesanKirim.append(requestJson+"\n");
                                                         root = mapper.readTree(requestJson);
                                                         nameNode = root.path("metaData");
@@ -8781,7 +8774,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "}";
                                                         PesanKirim.append(requestJson+"\n");
                                                         requestEntity = new HttpEntity(requestJson,headers);
-                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                                         PesanKirim.append(requestJson+"\n");
                                                         root = mapper.readTree(requestJson);
                                                         nameNode = root.path("metaData");
@@ -8858,7 +8851,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "}";
                                                         PesanKirim.append(requestJson+"\n");
                                                         requestEntity = new HttpEntity(requestJson,headers);
-                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                                         PesanKirim.append(requestJson+"\n");
                                                         root = mapper.readTree(requestJson);
                                                         nameNode = root.path("metaData");
@@ -8935,7 +8928,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "}";
                                                         PesanKirim.append(requestJson+"\n");
                                                         requestEntity = new HttpEntity(requestJson,headers);
-                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                                         PesanKirim.append(requestJson+"\n");
                                                         root = mapper.readTree(requestJson);
                                                         nameNode = root.path("metaData");
@@ -9012,7 +9005,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "}";
                                                         PesanKirim.append(requestJson+"\n");
                                                         requestEntity = new HttpEntity(requestJson,headers);
-                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                                         PesanKirim.append(requestJson+"\n");
                                                         root = mapper.readTree(requestJson);
                                                         nameNode = root.path("metaData");
@@ -9089,7 +9082,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "}";
                                                         PesanKirim.append(requestJson+"\n");
                                                         requestEntity = new HttpEntity(requestJson,headers);
-                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                                         PesanKirim.append(requestJson+"\n");
                                                         root = mapper.readTree(requestJson);
                                                         nameNode = root.path("metaData");
@@ -9166,7 +9159,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                                         "}";
                                                         PesanKirim.append(requestJson+"\n");
                                                         requestEntity = new HttpEntity(requestJson,headers);
-                                                        requestJson=api.getRest().exchange(URL+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                        requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/tindakan", HttpMethod.POST, requestEntity, String.class).getBody();
                                                         PesanKirim.append(requestJson+"\n");
                                                         root = mapper.readTree(requestJson);
                                                         nameNode = root.path("metaData");
@@ -9265,7 +9258,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                          "}";
             System.out.println(requestJson);
             requestEntity = new HttpEntity(requestJson,headers);
-            requestJson=api.getRest().exchange(URL+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
+            requestJson=api.getRest().exchange(koneksiDB.URLAPIPCARE()+"/pendaftaran", HttpMethod.POST, requestEntity, String.class).getBody();
             System.out.println(requestJson);
             root = mapper.readTree(requestJson);
             nameNode = root.path("metaData");
@@ -9490,10 +9483,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                         "}";
                             System.out.println("JSON : "+requestJson+"\n");
                             requestEntity = new HttpEntity(requestJson,headers);
-                            URL = koneksiDB.URLMOBILEJKNFKTP()+"/antrean/add";	
-                            System.out.println("URL : "+URL);
-                            //System.out.println(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                            root = mapper.readTree(apimobilejkn.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                            System.out.println("URL : "+koneksiDB.URLMOBILEJKNFKTP()+"/antrean/add");
+                            root = mapper.readTree(apimobilejkn.getRest().exchange(koneksiDB.URLMOBILEJKNFKTP()+"/antrean/add", HttpMethod.POST, requestEntity, String.class).getBody());
                             nameNode = root.path("metadata"); 
                             System.out.println("respon WS BPJS Kirim Pakai NoRujukan : "+nameNode.path("code").asText()+" "+nameNode.path("message").asText()+"\n");
                             if(nameNode.path("code").asText().equals("201")){
