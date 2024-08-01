@@ -107,7 +107,6 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private String kdptg,nmptg,status="",signa1="1",signa2="1",kdObatSK="",kodesarana="",terapiobat="",terapinonobat="",bmhp="";
     private String[] arrSplit;
     private int day;
-    private Calendar cal = Calendar.getInstance();
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     private LocalDate date;
     private DayOfWeek dow;
