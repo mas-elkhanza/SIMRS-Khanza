@@ -365,8 +365,8 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         jLabel12 = new widget.Label();
         jLabel13 = new widget.Label();
-        jLabel15 = new widget.Label();
         TB = new widget.TextBox();
+        jLabel15 = new widget.Label();
         jLabel25 = new widget.Label();
         PernahTerdiagnosaTBC = new widget.ComboBox();
         RisikoLP = new widget.TextBox();
@@ -655,7 +655,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -669,7 +669,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -790,7 +790,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -908,11 +908,6 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(119, 90, 25, 23);
 
-        jLabel15.setText(":");
-        jLabel15.setName("jLabel15"); // NOI18N
-        FormInput.add(jLabel15);
-        jLabel15.setBounds(150, 90, 50, 23);
-
         TB.setFocusTraversalPolicyProvider(true);
         TB.setName("TB"); // NOI18N
         TB.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -921,13 +916,18 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
             }
         });
         FormInput.add(TB);
-        TB.setBounds(210, 90, 50, 23);
+        TB.setBounds(204, 90, 50, 23);
+
+        jLabel15.setText(":");
+        jLabel15.setName("jLabel15"); // NOI18N
+        FormInput.add(jLabel15);
+        jLabel15.setBounds(150, 90, 50, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("Cm");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(270, 90, 20, 23);
+        jLabel25.setBounds(256, 90, 20, 23);
 
         PernahTerdiagnosaTBC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         PernahTerdiagnosaTBC.setName("PernahTerdiagnosaTBC"); // NOI18N
@@ -943,7 +943,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         RisikoLP.setFocusTraversalPolicyProvider(true);
         RisikoLP.setName("RisikoLP"); // NOI18N
         FormInput.add(RisikoLP);
-        RisikoLP.setBounds(370, 120, 410, 23);
+        RisikoLP.setBounds(370, 120, 170, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -956,7 +956,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         jLabel99.setText("II. PEMERIKSAAN RIWAYAT KONTAK TBC");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
-        jLabel99.setBounds(10, 165, 200, 23);
+        jLabel99.setBounds(10, 150, 200, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel77.setText("1.");
@@ -974,7 +974,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         jLabel92.setText("Risiko Berdasarkan Lingkar Pinggang");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(180, 120, 180, 23);
+        jLabel92.setBounds(180, 120, 200, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel79.setText("2.");
@@ -1091,10 +1091,10 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator2.setName("jSeparator2"); // NOI18N
         FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 160, 807, 1);
+        jSeparator2.setBounds(0, 150, 807, 1);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("I. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK , 2020)");
+        jLabel100.setText("I. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK, 2020)");
         jLabel100.setName("jLabel100"); // NOI18N
         FormInput.add(jLabel100);
         jLabel100.setBounds(10, 70, 490, 23);
@@ -1108,18 +1108,18 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         IMT.setFocusTraversalPolicyProvider(true);
         IMT.setName("IMT"); // NOI18N
         FormInput.add(IMT);
-        IMT.setBounds(400, 90, 50, 23);
+        IMT.setBounds(394, 90, 50, 23);
 
         KlasifikasiIMT.setEditable(false);
         KlasifikasiIMT.setFocusTraversalPolicyProvider(true);
         KlasifikasiIMT.setName("KlasifikasiIMT"); // NOI18N
         FormInput.add(KlasifikasiIMT);
-        KlasifikasiIMT.setBounds(580, 90, 200, 23);
+        KlasifikasiIMT.setBounds(574, 90, 215, 23);
 
         jLabel20.setText("Klasifikasi IMT :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(480, 90, 90, 23);
+        jLabel20.setBounds(470, 90, 100, 23);
 
         jLabel22.setText("Kesimpulan Hasil Skrining");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -2260,12 +2260,6 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            /*
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Kebiasaan Makan Manis","Aktifitas Fisik","Istirahat Cukup","Risiko Merokok","Riwayat Alkohol/Merokok Keluarga",
-            "Riwayat Penggunaan Steroid","BB(Kg)","TB(Cm)","IMT","Kasifikasi IMT","LP","Risiko L.P.",
-            "Status Obesitas","Keterangan"
-            */
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_tbc.nip,petugas.nama,skrining_tbc.tanggal,"+

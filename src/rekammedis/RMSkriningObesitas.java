@@ -1037,7 +1037,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
         jSeparator2.setBounds(0, 180, 807, 1);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("II. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK , 2020)");
+        jLabel100.setText("II. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK, 2020)");
         jLabel100.setName("jLabel100"); // NOI18N
         FormInput.add(jLabel100);
         jLabel100.setBounds(10, 180, 490, 23);
