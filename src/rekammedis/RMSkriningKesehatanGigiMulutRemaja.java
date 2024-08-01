@@ -1603,27 +1603,23 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            /*
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Kebiasaan Makan Manis","Aktifitas Fisik","Istirahat Cukup","Risiko Merokok","Riwayat Alkohol/Merokok Keluarga",
-            "Riwayat Penggunaan Steroid","BB(Kg)","TB(Cm)","IMT","Kasifikasi IMT","LP","Risiko L.P.",
-            "Status Obesitas","Keterangan"
-            */
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_remaja.nip,petugas.nama,skrining_kesehatan_gigi_mulut_remaja.tanggal,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.kebiasaan_makan_manis,skrining_kesehatan_gigi_mulut_remaja.aktifitas_fisik_setiap_hari,skrining_kesehatan_gigi_mulut_remaja.istirahat_cukup,skrining_kesehatan_gigi_mulut_remaja.risiko_merokok,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.riwayat_minum_alkohol_merokok_keluarga,skrining_kesehatan_gigi_mulut_remaja.riwayat_penggunaan_obat_steroid,skrining_kesehatan_gigi_mulut_remaja.berat_badan,skrining_kesehatan_gigi_mulut_remaja.tinggi_badan,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.imt,skrining_kesehatan_gigi_mulut_remaja.kasifikasi_imt,skrining_kesehatan_gigi_mulut_remaja.lingkar_pinggang,skrining_kesehatan_gigi_mulut_remaja.risiko_lingkar_pinggang,skrining_kesehatan_gigi_mulut_remaja.status_obesitas,"+
+                    "skrining_kesehatan_gigi_mulut_remaja.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_remaja.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_remaja.kondisi_kebersihan_gigimulut,"+
+                    "skrining_kesehatan_gigi_mulut_remaja.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_remaja.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_remaja.punya_karang_gigi,"+
+                    "skrining_kesehatan_gigi_mulut_remaja.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_remaja.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_remaja.punya_sariawan,"+
+                    "skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_remaja.hasil_skrining,"+
                     "skrining_kesehatan_gigi_mulut_remaja.keterangan from skrining_kesehatan_gigi_mulut_remaja inner join reg_periksa on skrining_kesehatan_gigi_mulut_remaja.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_remaja.nip=petugas.nip "+
                     "where skrining_kesehatan_gigi_mulut_remaja.tanggal between ? and ? order by skrining_kesehatan_gigi_mulut_remaja.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_remaja.nip,petugas.nama,skrining_kesehatan_gigi_mulut_remaja.tanggal,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.kebiasaan_makan_manis,skrining_kesehatan_gigi_mulut_remaja.aktifitas_fisik_setiap_hari,skrining_kesehatan_gigi_mulut_remaja.istirahat_cukup,skrining_kesehatan_gigi_mulut_remaja.risiko_merokok,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.riwayat_minum_alkohol_merokok_keluarga,skrining_kesehatan_gigi_mulut_remaja.riwayat_penggunaan_obat_steroid,skrining_kesehatan_gigi_mulut_remaja.berat_badan,skrining_kesehatan_gigi_mulut_remaja.tinggi_badan,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.imt,skrining_kesehatan_gigi_mulut_remaja.kasifikasi_imt,skrining_kesehatan_gigi_mulut_remaja.lingkar_pinggang,skrining_kesehatan_gigi_mulut_remaja.risiko_lingkar_pinggang,skrining_kesehatan_gigi_mulut_remaja.status_obesitas,"+
+                    "skrining_kesehatan_gigi_mulut_remaja.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_remaja.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_remaja.kondisi_kebersihan_gigimulut,"+
+                    "skrining_kesehatan_gigi_mulut_remaja.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_remaja.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_remaja.punya_karang_gigi,"+
+                    "skrining_kesehatan_gigi_mulut_remaja.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_remaja.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_remaja.punya_sariawan,"+
+                    "skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_remaja.hasil_skrining,"+
                     "skrining_kesehatan_gigi_mulut_remaja.keterangan from skrining_kesehatan_gigi_mulut_remaja inner join reg_periksa on skrining_kesehatan_gigi_mulut_remaja.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_remaja.nip=petugas.nip "+
                     "where skrining_kesehatan_gigi_mulut_remaja.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
@@ -1649,9 +1645,9 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("kebiasaan_makan_manis"),rs.getString("aktifitas_fisik_setiap_hari"),rs.getString("istirahat_cukup"),rs.getString("risiko_merokok"),rs.getString("riwayat_minum_alkohol_merokok_keluarga"),
-                        rs.getString("riwayat_penggunaan_obat_steroid"),rs.getString("berat_badan"),rs.getString("tinggi_badan"),rs.getString("imt"),rs.getString("kasifikasi_imt"),rs.getString("lingkar_pinggang"),
-                        rs.getString("risiko_lingkar_pinggang"),rs.getString("status_obesitas"),rs.getString("keterangan")
+                        rs.getString("pernah_pemeriksaan_gigimulut"),rs.getString("jumlah_gigi_tumbuh"),rs.getString("kondisi_kebersihan_gigimulut"),rs.getString("punya_gigi_berlubang"),rs.getString("pernah_gusi_berdarah"),
+                        rs.getString("punya_karang_gigi"),rs.getString("gigi_depan_tidak_teratur"),rs.getString("menyikat_gigi_sebelum_tidur"),rs.getString("punya_sariawan"),rs.getString("pemeriksaan_fisik"),
+                        rs.getString("pemeriksaan_penunjang"),rs.getString("hasil_skrining"),rs.getString("keterangan")
                     });
                 }
             } catch (Exception e) {
@@ -1704,8 +1700,13 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
             GigiBerlubang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             GusiBerdarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             KarangGigi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            GigiTidakteratur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            KebiasaanMenyikatGigi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            PunyaSariawan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            PemeriksaanFisik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            PemeriksaanPenunjang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -1848,14 +1849,14 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_kesehatan_gigi_mulut_remaja","no_rawat=?","no_rawat=?,tanggal=?,kebiasaan_makan_manis=?,aktifitas_fisik_setiap_hari=?,istirahat_cukup=?,risiko_merokok=?,"+
-                "riwayat_minum_alkohol_merokok_keluarga=?,riwayat_penggunaan_obat_steroid=?,berat_badan=?,tinggi_badan=?,imt=?,kasifikasi_imt=?,lingkar_pinggang=?,"+
-                "risiko_lingkar_pinggang=?,status_obesitas=?,keterangan=?,nip=?",18,new String[]{
+        if(Sequel.mengedittf("skrining_kesehatan_gigi_mulut_remaja","no_rawat=?","no_rawat=?,tanggal=?,pernah_pemeriksaan_gigimulut=?,jumlah_gigi_tumbuh=?,kondisi_kebersihan_gigimulut=?,"+
+                "punya_gigi_berlubang=?,pernah_gusi_berdarah=?,punya_karang_gigi=?,gigi_depan_tidak_teratur=?,menyikat_gigi_sebelum_tidur=?,punya_sariawan=?,pemeriksaan_fisik=?,"+
+                "pemeriksaan_penunjang=?,hasil_skrining=?,keterangan=?,nip=?",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                KebiasaanMakanManis.getSelectedItem().toString(),AktifitasFisik.getSelectedItem().toString(),IstirahatCukup.getSelectedItem().toString(), 
-                RisikoMerokok.getSelectedItem().toString(),RiwayatKeluarga.getSelectedItem().toString(),RiwayatSteroid.getSelectedItem().toString(),BB.getText(), 
-                TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),StatusObesitas.getText(),Keterangan.getText(),KdPetugas.getText(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                PernahPemeriksaanGigi.getSelectedItem().toString(),JumlahGigiTumbuh.getSelectedItem().toString(),KebersihanGigiMulut.getSelectedItem().toString(), 
+                GigiBerlubang.getSelectedItem().toString(),GusiBerdarah.getSelectedItem().toString(),KarangGigi.getSelectedItem().toString(),GigiTidakteratur.getSelectedItem().toString(), 
+                KebiasaanMenyikatGigi.getSelectedItem().toString(),PunyaSariawan.getSelectedItem().toString(),PemeriksaanFisik.getText(),PemeriksaanPenunjang.getText(), 
+                HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1865,22 +1866,21 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(KebiasaanMakanManis.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(AktifitasFisik.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(IstirahatCukup.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(RisikoMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(RiwayatKeluarga.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(RiwayatSteroid.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(BB.getText(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(TB.getText(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(IMT.getText(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(KlasifikasiIMT.getText(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(LP.getText(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(RisikoLP.getText(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(StatusObesitas.getText(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(PernahPemeriksaanGigi.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(JumlahGigiTumbuh.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(KebersihanGigiMulut.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(GigiBerlubang.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(GusiBerdarah.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(KarangGigi.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(GigiTidakteratur.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(KebiasaanMenyikatGigi.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(PunyaSariawan.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(PemeriksaanFisik.getText(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(PemeriksaanPenunjang.getText(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),20);
                emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
