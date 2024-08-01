@@ -196,7 +196,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             skp_kategori_penilaian=false,skp_kriteria_penilaian=false,skp_penilaian=false,referensi_poli_mobilejknfktp=false,referensi_dokter_mobilejknfktp=false,skp_rekapitulasi_penilaian=false,pembayaran_pihak_ke3_bankmandiri=false,
             metode_pembayaran_bankmandiri=false,bank_tujuan_transfer_bankmandiri=false,kodetransaksi_tujuan_transfer_bankmandiri=false,konsultasi_medik=false,jawaban_konsultasi_medik=false,pcare_cek_alergi=false,
             pcare_cek_prognosa=false,data_sasaran_usiaproduktif=false,data_sasaran_usialansia=false,skrining_perilaku_merokok_sekolah_remaja=false,skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false,
-            skrining_risiko_kanker_payudara=false,skrining_risiko_kanker_paru=false;
+            skrining_risiko_kanker_payudara=false,skrining_risiko_kanker_paru=false,skrining_tbc=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -816,7 +816,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         skp_kategori_penilaian=false;skp_kriteria_penilaian=false;skp_penilaian=false;referensi_poli_mobilejknfktp=false;referensi_dokter_mobilejknfktp=false;skp_rekapitulasi_penilaian=false;pembayaran_pihak_ke3_bankmandiri=false;
         metode_pembayaran_bankmandiri=false;bank_tujuan_transfer_bankmandiri=false;kodetransaksi_tujuan_transfer_bankmandiri=false;konsultasi_medik=false;jawaban_konsultasi_medik=false;pcare_cek_alergi=false;
         pcare_cek_prognosa=false;data_sasaran_usiaproduktif=false;data_sasaran_usialansia=false;skrining_perilaku_merokok_sekolah_remaja=false;skrining_kekerasan_pada_perempuan=false;skrining_obesitas=false;
-        skrining_risiko_kanker_payudara=false;skrining_risiko_kanker_paru=false;
+        skrining_risiko_kanker_payudara=false;skrining_risiko_kanker_paru=false;skrining_tbc=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1052,7 +1052,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.skp_penilaian,user.referensi_poli_mobilejknfktp,user.referensi_dokter_mobilejknfktp,user.skp_rekapitulasi_penilaian,user.pembayaran_pihak_ke3_bankmandiri,"+
                 "user.metode_pembayaran_bankmandiri,user.bank_tujuan_transfer_bankmandiri,user.kodetransaksi_tujuan_transfer_bankmandiri,user.konsultasi_medik,user.jawaban_konsultasi_medik,"+
                 "user.pcare_cek_alergi,user.pcare_cek_prognosa,user.data_sasaran_usiaproduktif,user.data_sasaran_usialansia,user.skrining_perilaku_merokok_sekolah_remaja,"+
-                "user.skrining_kekerasan_pada_perempuan,user.skrining_obesitas,user.skrining_risiko_kanker_payudara,user.skrining_risiko_kanker_paru from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.skrining_kekerasan_pada_perempuan,user.skrining_obesitas,user.skrining_risiko_kanker_payudara,user.skrining_risiko_kanker_paru,user.skrining_tbc from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
