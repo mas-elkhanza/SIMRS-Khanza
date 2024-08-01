@@ -100,6 +100,8 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==8){
+                column.setPreferredWidth(163);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1211,19 +1213,18 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebiasaan Makan Manis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Aktifitas Fisik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Istirahat Cukup</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko Merokok</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Alkohol/Merokok Keluarga</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penggunaan Steroid</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB(Kg)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB(Cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IMT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kasifikasi IMT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>LP(Cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko L.P.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Obesitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Pemeriksaan Gigi Mulut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jumlah Gigi Tumbuh</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kondisi Kebersihan Gigi Mulut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Punya Gigi Berlubang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Gusi Berdarah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Punya Karang Gigi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gigi Depan Tidak Teratur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Menyikat Gigi Sebelum Tidur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Punya Sariawan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan Fisik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan Penunjang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
                     "</tr>"
                 );
@@ -1250,8 +1251,7 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
                             "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
-                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1277,7 +1277,7 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
                 );
                 bg.close();
 
-                File f = new File("DataSkriningObesitas.html");            
+                File f = new File("DataSkriningKesehatanGigiMulutRemaja.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1287,7 +1287,7 @@ public final class RMSkriningKesehatanGigiMulutRemaja extends javax.swing.JDialo
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING OBESITAS<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING KESEHATAN GIGI MULUT USIA REMAJA & SEKOLAH<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
