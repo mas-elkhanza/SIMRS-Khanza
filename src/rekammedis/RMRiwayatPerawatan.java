@@ -379,6 +379,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningObesitas = new widget.CekBox();
         chkSkriningRisikoKankerPayudara = new widget.CekBox();
         chkSkriningRisikoKankerParu = new widget.CekBox();
+        chkSkriningGigiMulutRemaja = new widget.CekBox();
         chkRekonsiliasiObat = new widget.CekBox();
         chkKonselingFarmasi = new widget.CekBox();
         chkPelayananInformasiObat = new widget.CekBox();
@@ -657,7 +658,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3320));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3340));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1561,6 +1562,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningRisikoKankerParu.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSkriningRisikoKankerParu);
 
+        chkSkriningGigiMulutRemaja.setSelected(true);
+        chkSkriningGigiMulutRemaja.setText("Skrining Kesehatan Gigi & Mulut Usia Remaja");
+        chkSkriningGigiMulutRemaja.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkSkriningGigiMulutRemaja.setName("chkSkriningGigiMulutRemaja"); // NOI18N
+        chkSkriningGigiMulutRemaja.setOpaque(false);
+        chkSkriningGigiMulutRemaja.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkSkriningGigiMulutRemaja);
+
         chkRekonsiliasiObat.setSelected(true);
         chkRekonsiliasiObat.setText("Rekonsiliasi Obat");
         chkRekonsiliasiObat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2348,6 +2357,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningObesitas.setSelected(true);
             chkSkriningRisikoKankerPayudara.setSelected(true);
             chkSkriningRisikoKankerParu.setSelected(true);
+            chkSkriningGigiMulutRemaja.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2492,6 +2502,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningObesitas.setSelected(false);
             chkSkriningRisikoKankerPayudara.setSelected(false);
             chkSkriningRisikoKankerParu.setSelected(false);
+            chkSkriningGigiMulutRemaja.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -2691,6 +2702,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkSkorAldrettePascaAnestesi;
     private widget.CekBox chkSkorBromagePascaAnestesi;
     private widget.CekBox chkSkorStewardPascaAnestesi;
+    private widget.CekBox chkSkriningGigiMulutRemaja;
     private widget.CekBox chkSkriningGiziLanjut;
     private widget.CekBox chkSkriningKekerasanPadaPerempuan;
     private widget.CekBox chkSkriningMerokokUsiaRemaja;
@@ -3303,6 +3315,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanSkriningRisikoKankerPayudara(rs.getString("no_rawat"));
                     //menampilkan skrining risiko kanker paru
                     menampilkanSkriningRisikoKankerParu(rs.getString("no_rawat"));
+                    //menampilkan skrining kesehatan gigi mulut
+                    menampilkanSkriningKesehatanGigiMulutRemaja(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
                     menampilkanRekonsiliasiObat(rs.getString("no_rawat"));
                     //menampilkan konseling farmasi
@@ -25825,7 +25839,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     
     private void menampilkanSkriningRisikoKankerParu(String norawat) {
         try {
-            if(chkSkriningRisikoKankerPayudara.isSelected()==true){
+            if(chkSkriningRisikoKankerParu.isSelected()==true){
                 try {
                     rs2=koneksi.prepareStatement(
                             "select skrining_risiko_kanker_paru.nip,petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.jenis_kelamin,skrining_risiko_kanker_paru.nilai_jenis_kelamin,skrining_risiko_kanker_paru.umur,"+
@@ -25960,6 +25974,145 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Skrining Risiko Kanker Paru: "+e);
+        }
+    }
+    
+    private void menampilkanSkriningKesehatanGigiMulutRemaja(String norawat) {
+        try {
+            if(chkSkriningGigiMulutRemaja.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select skrining_kesehatan_gigi_mulut_remaja.nip,petugas.nama,skrining_kesehatan_gigi_mulut_remaja.tanggal,skrining_kesehatan_gigi_mulut_remaja.pernah_pemeriksaan_gigimulut,"+
+                            "skrining_kesehatan_gigi_mulut_remaja.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_remaja.kondisi_kebersihan_gigimulut,skrining_kesehatan_gigi_mulut_remaja.punya_gigi_berlubang,"+
+                            "skrining_kesehatan_gigi_mulut_remaja.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_remaja.punya_karang_gigi,skrining_kesehatan_gigi_mulut_remaja.gigi_depan_tidak_teratur,"+
+                            "skrining_kesehatan_gigi_mulut_remaja.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_remaja.punya_sariawan,skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_fisik,"+
+                            "skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_remaja.hasil_skrining,skrining_kesehatan_gigi_mulut_remaja.keterangan "+
+                            "from skrining_kesehatan_gigi_mulut_remaja inner join petugas on skrining_kesehatan_gigi_mulut_remaja.nip=petugas.nip where skrining_kesehatan_gigi_mulut_remaja.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Skrining Kesehatan Gigi & Mulut Anak Usia Sekolah & Remaja</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='30%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='70%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. ANAMNESIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>1.</td>"+
+                                              "<td width='70%'>Apakah pernah melakukan pemeriksaan gigi & mulut ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("pernah_pemeriksaan_gigimulut")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>2.</td>"+
+                                              "<td width='70%'>Berapa jumlah gigi yang sudah tumbuh ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("jumlah_gigi_tumbuh")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>3.</td>"+
+                                              "<td width='70%'>Bagaimana kondisi kebersihan gigi dan mulut ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("kondisi_kebersihan_gigimulut")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>4.</td>"+
+                                              "<td width='70%'>Apakah anak mempunyai gigi berlubang ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("punya_gigi_berlubang")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>5.</td>"+
+                                              "<td width='70%'>Apakah anak pernah merasakan gusi mudah berdarah ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("pernah_gusi_berdarah")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>6.</td>"+
+                                              "<td width='70%'>Apakah anak mempunyai karang gigi ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("punya_karang_gigi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>7.</td>"+
+                                              "<td width='70%'>Apakah anak mempunyai susunan gigi depan tidak teratur ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("gigi_depan_tidak_teratur")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>8.</td>"+
+                                              "<td width='70%'>Apakah anak mempunyai kebiasaan menyikat gigi sebelum tidur ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("menyikat_gigi_sebelum_tidur")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='4%' align='center'>9.</td>"+
+                                              "<td width='70%'>Apakah anak mempunyai sariawan ?</td>"+
+                                              "<td width='26%' align='center'>"+rs2.getString("punya_sariawan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "II. PEMERIKSAAN FISIK"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' align='left'>"+rs2.getString("pemeriksaan_fisik")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. PEMERIKSAAN PENUNJANG"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' align='left'>"+rs2.getString("pemeriksaan_penunjang")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "IV. INTERPRETASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Hasil Skrining : "+rs2.getString("hasil_skrining")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%'>Keterangan : "+rs2.getString("keterangan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Skrining Kesehatan Gigi & Mulut Anak Usia Sekolah & Remaja : "+e);
         }
     }
 }
