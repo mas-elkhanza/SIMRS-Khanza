@@ -6,7 +6,7 @@
             <extension file="build-native.xml" id="j2sedeploy"/>
         </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
-            <name>SIMRSKhanza</name>
+            <name>SIMRSDipo</name>
             <explicit-platform explicit-source-supported="true"/>
             <source-roots>
                 <root id="src.dir"/>
