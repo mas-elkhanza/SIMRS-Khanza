@@ -868,11 +868,6 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         KdPetugas.setEditable(false);
         KdPetugas.setHighlighter(null);
         KdPetugas.setName("KdPetugas"); // NOI18N
-        KdPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPetugasKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPetugas);
         KdPetugas.setBounds(474, 40, 94, 23);
 
@@ -1949,18 +1944,6 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         Valid.pindah(evt,Menit,btnPetugas);
     }//GEN-LAST:event_DetikKeyPressed
 
-    private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Detik.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Alergi.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }*/
-    }//GEN-LAST:event_KdPetugasKeyPressed
-
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         petugas.emptTeks();
         petugas.isCek();
@@ -2323,11 +2306,11 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("berat_badan"),rs.getString("tinggi_badan"),rs.getString("imt"),rs.getString("kasifikasi_imt"),rs.getString("lingkar_pinggang"),rs.getString("risiko_lingkar_pinggang"),
-                        rs.getString("riwayat_kontak_tbc"),rs.getString("jenis_kontak_tbc"),
-                        rs.getString("faktor_resiko_pernah_terdiagnosa_tbc"),rs.getString("keterangan_pernah_terdiagnosa"),rs.getString("faktor_resiko_pernah_berobat_tbc"),rs.getString("faktor_resiko_malnutrisi"),rs.getString("faktor_resiko_merokok"),
-                        rs.getString("faktor_resiko_riwayat_dm"),rs.getString("faktor_resiko_odhiv"),rs.getString("faktor_resiko_lansia"),rs.getString("faktor_resiko_ibu_hamil"),rs.getString("faktor_resiko_wbp"),rs.getString("faktor_resiko_tinggal_diwilayah_padat_kumuh"),
-                        rs.getString("abnormalitas_tbc"),rs.getString("gejala_tbc_batuk"),rs.getString("gejala_tbc_bb_turun"),rs.getString("gejala_tbc_demam"),rs.getString("gejala_tbc_berkeringat_malam_hari"),rs.getString("keterangan_gejala_penyakit_lain"),
-                        rs.getString("kesimpulan_skrining"),rs.getString("keterangan_hasil_skrining"),
+                        rs.getString("riwayat_kontak_tbc"),rs.getString("jenis_kontak_tbc"),rs.getString("faktor_resiko_pernah_terdiagnosa_tbc"),rs.getString("keterangan_pernah_terdiagnosa"),rs.getString("faktor_resiko_pernah_berobat_tbc"),
+                        rs.getString("faktor_resiko_malnutrisi"),rs.getString("faktor_resiko_merokok"),rs.getString("faktor_resiko_riwayat_dm"),rs.getString("faktor_resiko_odhiv"),rs.getString("faktor_resiko_lansia"),
+                        rs.getString("faktor_resiko_ibu_hamil"),rs.getString("faktor_resiko_wbp"),rs.getString("faktor_resiko_tinggal_diwilayah_padat_kumuh"),rs.getString("abnormalitas_tbc"),rs.getString("gejala_tbc_batuk"),
+                        rs.getString("gejala_tbc_bb_turun"),rs.getString("gejala_tbc_demam"),rs.getString("gejala_tbc_berkeringat_malam_hari"),rs.getString("keterangan_gejala_penyakit_lain"),rs.getString("kesimpulan_skrining"),
+                        rs.getString("keterangan_hasil_skrining"),
                     });
                 }
             } catch (Exception e) {
@@ -2558,19 +2541,17 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
 
     private void ganti() {
         if(Sequel.mengedittf("skrining_tbc","no_rawat=?","no_rawat=?,tanggal=?,berat_badan=?,tinggi_badan=?,imt=?,kasifikasi_imt=?,lingkar_pinggang=?,risiko_lingkar_pinggang=?,"+
-                "riwayat_kontak_tbc=?,jenis_kontak_tbc=?,"+
-                "faktor_resiko_pernah_terdiagnosa_tbc=?,keterangan_pernah_terdiagnosa=?,faktor_resiko_pernah_berobat_tbc=?,faktor_resiko_malnutrisi=?,faktor_resiko_merokok=?,faktor_resiko_riwayat_dm=?,faktor_resiko_odhiv=?,"+
-                "faktor_resiko_lansia=?,faktor_resiko_ibu_hamil=?,faktor_resiko_wbp=?,faktor_resiko_tinggal_diwilayah_padat_kumuh=?,abnormalitas_tbc=?,"+
-                "gejala_tbc_batuk=?,gejala_tbc_bb_turun=?,gejala_tbc_demam=?,gejala_tbc_berkeringat_malam_hari=?,keterangan_gejala_penyakit_lain=?,"+
-                "kesimpulan_skrining=?,keterangan_hasil_skrining=?,nip=?",31,new String[]{
+                "riwayat_kontak_tbc=?,jenis_kontak_tbc=?,faktor_resiko_pernah_terdiagnosa_tbc=?,keterangan_pernah_terdiagnosa=?,faktor_resiko_pernah_berobat_tbc=?,"+
+                "faktor_resiko_malnutrisi=?,faktor_resiko_merokok=?,faktor_resiko_riwayat_dm=?,faktor_resiko_odhiv=?,faktor_resiko_lansia=?,faktor_resiko_ibu_hamil=?,"+
+                "faktor_resiko_wbp=?,faktor_resiko_tinggal_diwilayah_padat_kumuh=?,abnormalitas_tbc=?,gejala_tbc_batuk=?,gejala_tbc_bb_turun=?,gejala_tbc_demam=?,"+
+                "gejala_tbc_berkeringat_malam_hari=?,keterangan_gejala_penyakit_lain=?,kesimpulan_skrining=?,keterangan_hasil_skrining=?,nip=?",31,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),
-                RiwayatKontakTBC.getSelectedItem().toString(),JenisKontakTBC.getSelectedItem().toString(),
-                PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),Malnutrisi.getSelectedItem().toString(), 
-                Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
-                lansia.getSelectedItem().toString(),ibuhamil.getSelectedItem().toString(),wbp.getSelectedItem().toString(),tingaldiwilayahkumuh.getSelectedItem().toString(),abnormalitasTBC.getSelectedItem().toString(),
-                Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),berkeringatmalam.getSelectedItem().toString(),
-                KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText(),
+                BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),
+                JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),
+                Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
+                lansia.getSelectedItem().toString(),ibuhamil.getSelectedItem().toString(),wbp.getSelectedItem().toString(),tingaldiwilayahkumuh.getSelectedItem().toString(),
+                abnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),
+                berkeringatmalam.getSelectedItem().toString(),KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -2782,27 +2763,19 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     private void simpan() {
         if(Sequel.menyimpantf("skrining_tbc","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",30,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),
-            RiwayatKontakTBC.getSelectedItem().toString(),JenisKontakTBC.getSelectedItem().toString(),
-            PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),Malnutrisi.getSelectedItem().toString(), 
-            Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
+            BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),
+            JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),
+            Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
             lansia.getSelectedItem().toString(),ibuhamil.getSelectedItem().toString(),wbp.getSelectedItem().toString(),tingaldiwilayahkumuh.getSelectedItem().toString(),
-            abnormalitasTBC.getSelectedItem().toString(),
-            Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),berkeringatmalam.getSelectedItem().toString(),
-            KetGejalaPenyakit.getText(),
-            KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText()
+            abnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),
+            berkeringatmalam.getSelectedItem().toString(),KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new String[]{
-            TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),
-            RiwayatKontakTBC.getSelectedItem().toString(),JenisKontakTBC.getSelectedItem().toString(),
-            PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),Malnutrisi.getSelectedItem().toString(), 
-            Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
-            lansia.getSelectedItem().toString(),ibuhamil.getSelectedItem().toString(),wbp.getSelectedItem().toString(),tingaldiwilayahkumuh.getSelectedItem().toString(),
-            abnormalitasTBC.getSelectedItem().toString(),
-            Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),berkeringatmalam.getSelectedItem().toString(),
-            KetGejalaPenyakit.getText(),
-            KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText()
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),
+                PernahberobatTBC.getSelectedItem().toString(),Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),lansia.getSelectedItem().toString(),ibuhamil.getSelectedItem().toString(),
+                wbp.getSelectedItem().toString(),tingaldiwilayahkumuh.getSelectedItem().toString(),abnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),berkeringatmalam.getSelectedItem().toString(),
+                KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();

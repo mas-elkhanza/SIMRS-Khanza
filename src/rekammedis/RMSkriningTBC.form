@@ -870,9 +870,6 @@
                         </Property>
                         <Property name="name" type="java.lang.String" value="KdPetugas" noResource="true"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KdPetugasKeyPressed"/>
-                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="474" y="40" width="94" height="23"/>
