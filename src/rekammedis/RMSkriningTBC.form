@@ -1048,7 +1048,7 @@
                     <Component class="widget.Label" name="jLabel78">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Pernah terdiagnosa / berobat TBC ?"/>
+                        <Property name="text" type="java.lang.String" value="Pernah Terdiagnosa / Berobat TBC ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel78" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1084,7 +1084,7 @@
                     <Component class="widget.Label" name="jLabel80">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Pernah berobat TBC tapi pernah tidak tuntas"/>
+                        <Property name="text" type="java.lang.String" value="Pernah Berobat TBC Tapi Pernah Tidak Tuntas"/>
                         <Property name="name" type="java.lang.String" value="jLabel80" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1589,7 +1589,7 @@
                     <Component class="widget.Label" name="jLabel95">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Jika pertanyaan 1 Ya, Kapan ?"/>
+                        <Property name="text" type="java.lang.String" value="Jika Pertanyaan 1 Ya, Kapan ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel95" noResource="true"/>
                       </Properties>
                       <Constraints>

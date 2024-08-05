@@ -69,13 +69,11 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "BB(Kg)","TB(Cm)","IMT","Kasifikasi IMT","LP(Cm)","Risiko L.P.",
-            "Riwayat Kontak TBC","Jenis Kontak TBC",
+            "BB(Kg)","TB(Cm)","IMT","Kasifikasi IMT","LP(Cm)","Risiko L.P.","Riwayat Kontak TBC","Jenis Kontak TBC",
             "Pernah Terdiagnosa TBC","Jika Ya Kapan ?","Pernah Berobat TBC","Malnutrisi","Merokok","Riwayat DM","ODHIV",
-            "Lansia > 65 Tahun","Ibu Hamil","WBP (Warga Binaan Permasyarakatan )","Tinggal di wilayah padat kumuh miskin",
-            "Abnormalitas TBC",
-            "Gejala Batuk","Gejala BB Turun","Gejala Demam","Gejala Berkeringat Malam Hari","Gejala Penyakit Lain",
-            "Kesimpulan Skrining","Keterangan"
+            "Lansia > 65 Tahun","Ibu Hamil","Warga Binaan Permasyarakatan (WBP)","Tinggal Di Wilayah Padat Kumuh Miskin",
+            "Abnormalitas TBC","Gejala Batuk","Gejala BB Turun","Gejala Demam","Gejala Berkeringat Malam Hari",
+            "Gejala Penyakit Lain","Kesimpulan Skrining","Keterangan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -116,27 +114,27 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
             }else if(i==13){
                 column.setPreferredWidth(120);
             }else if(i==14){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(105);
             }else if(i==15){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(118);
             }else if(i==16){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(130);
             }else if(i==17){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(150);
             }else if(i==18){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(105);
             }else if(i==19){
-                column.setPreferredWidth(68);
+                column.setPreferredWidth(56);
             }else if(i==20){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(48);
             }else if(i==21){
-                column.setPreferredWidth(68);
+                column.setPreferredWidth(66);
             }else if(i==22){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(43);
             }else if(i==23){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(99);
             }else if(i==24){
-                column.setPreferredWidth(78);
+                column.setPreferredWidth(58);
             }else if(i==25){
                 column.setPreferredWidth(200);
             }else if(i==26){
@@ -962,7 +960,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         jLabel77.setBounds(44, 220, 20, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("Pernah terdiagnosa / berobat TBC ?");
+        jLabel78.setText("Pernah Terdiagnosa / Berobat TBC ?");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
         jLabel78.setBounds(60, 220, 200, 23);
@@ -980,7 +978,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         jLabel79.setBounds(44, 250, 20, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel80.setText("Pernah berobat TBC tapi pernah tidak tuntas");
+        jLabel80.setText("Pernah Berobat TBC Tapi Pernah Tidak Tuntas");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
         jLabel80.setBounds(60, 280, 240, 23);
@@ -1233,7 +1231,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         RiwayatKontakTBC.setBounds(153, 170, 80, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel95.setText("Jika pertanyaan 1 Ya, Kapan ?");
+        jLabel95.setText("Jika Pertanyaan 1 Ya, Kapan ?");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
         jLabel95.setBounds(60, 250, 180, 23);
@@ -1757,22 +1755,22 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Kontak TBC</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Terdiagnosa TBC</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jika Ya Kapan ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah berobat TBC</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Berobat TBC</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Malnutrisi</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merokok</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat DM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Odhiv</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>lansia</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ibuhamil</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>wbp</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tinggal Diwilayah Kumuh</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ODHIV</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lansia > 65 Tahun</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ibu Hamil</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>WBP (Warga Binaan Permasyarakatan )</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tinggal di wilayah padat kumuh miskin</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Abnormalitas TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Batuk</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bb Turun</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Demam</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berkeringat Malam</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Penyakit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Obesitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Batuk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala BB Turun</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Demam</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Berkeringat Malam Hari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Penyakit Lain</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan Skrining</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
                     "</tr>"
                 );
@@ -1818,7 +1816,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='1700px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1843,7 +1841,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='1700px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
