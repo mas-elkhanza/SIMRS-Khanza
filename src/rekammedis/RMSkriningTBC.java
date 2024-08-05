@@ -420,17 +420,17 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         jLabel96 = new widget.Label();
         jLabel97 = new widget.Label();
         jLabel98 = new widget.Label();
-        lansia = new widget.ComboBox();
+        Lansia = new widget.ComboBox();
         jLabel103 = new widget.Label();
         jLabel104 = new widget.Label();
-        wbp = new widget.ComboBox();
+        WargaBinaan = new widget.ComboBox();
         jLabel105 = new widget.Label();
         jLabel106 = new widget.Label();
-        tingaldiwilayahkumuh = new widget.ComboBox();
+        Tingaldiwilayahkumuh = new widget.ComboBox();
         jLabel107 = new widget.Label();
         jLabel108 = new widget.Label();
-        ibuhamil = new widget.ComboBox();
-        abnormalitasTBC = new widget.ComboBox();
+        Ibuhamil = new widget.ComboBox();
+        AbnormalitasTBC = new widget.ComboBox();
         jLabel109 = new widget.Label();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel110 = new widget.Label();
@@ -439,13 +439,13 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         Batuk = new widget.ComboBox();
         jLabel113 = new widget.Label();
         jLabel114 = new widget.Label();
-        bbturun = new widget.ComboBox();
+        BBTurun = new widget.ComboBox();
         jLabel115 = new widget.Label();
         jLabel116 = new widget.Label();
-        demam = new widget.ComboBox();
+        Demam = new widget.ComboBox();
         jLabel117 = new widget.Label();
         jLabel118 = new widget.Label();
-        berkeringatmalam = new widget.ComboBox();
+        BerkeringatMalam = new widget.ComboBox();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel119 = new widget.Label();
         KetGejalaPenyakit = new widget.TextBox();
@@ -1147,7 +1147,6 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel101);
         jLabel101.setBounds(10, 560, 380, 23);
 
-        KesimpulanHasilSkrining.setEditable(false);
         KesimpulanHasilSkrining.setFocusTraversalPolicyProvider(true);
         KesimpulanHasilSkrining.setName("KesimpulanHasilSkrining"); // NOI18N
         FormInput.add(KesimpulanHasilSkrining);
@@ -1283,15 +1282,15 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel98);
         jLabel98.setBounds(456, 250, 240, 23);
 
-        lansia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        lansia.setName("lansia"); // NOI18N
-        lansia.addKeyListener(new java.awt.event.KeyAdapter() {
+        Lansia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Lansia.setName("Lansia"); // NOI18N
+        Lansia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                lansiaKeyPressed(evt);
+                LansiaKeyPressed(evt);
             }
         });
-        FormInput.add(lansia);
-        lansia.setBounds(709, 250, 80, 23);
+        FormInput.add(Lansia);
+        Lansia.setBounds(709, 250, 80, 23);
 
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel103.setText("9.");
@@ -1305,15 +1304,15 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel104);
         jLabel104.setBounds(456, 310, 240, 23);
 
-        wbp.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        wbp.setName("wbp"); // NOI18N
-        wbp.addKeyListener(new java.awt.event.KeyAdapter() {
+        WargaBinaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        WargaBinaan.setName("WargaBinaan"); // NOI18N
+        WargaBinaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                wbpKeyPressed(evt);
+                WargaBinaanKeyPressed(evt);
             }
         });
-        FormInput.add(wbp);
-        wbp.setBounds(709, 310, 80, 23);
+        FormInput.add(WargaBinaan);
+        WargaBinaan.setBounds(709, 310, 80, 23);
 
         jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel105.setText("10.");
@@ -1327,15 +1326,15 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel106);
         jLabel106.setBounds(456, 340, 240, 23);
 
-        tingaldiwilayahkumuh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        tingaldiwilayahkumuh.setName("tingaldiwilayahkumuh"); // NOI18N
-        tingaldiwilayahkumuh.addKeyListener(new java.awt.event.KeyAdapter() {
+        Tingaldiwilayahkumuh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Tingaldiwilayahkumuh.setName("Tingaldiwilayahkumuh"); // NOI18N
+        Tingaldiwilayahkumuh.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tingaldiwilayahkumuhKeyPressed(evt);
+                TingaldiwilayahkumuhKeyPressed(evt);
             }
         });
-        FormInput.add(tingaldiwilayahkumuh);
-        tingaldiwilayahkumuh.setBounds(709, 340, 80, 23);
+        FormInput.add(Tingaldiwilayahkumuh);
+        Tingaldiwilayahkumuh.setBounds(709, 340, 80, 23);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("8.");
@@ -1349,25 +1348,25 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel108);
         jLabel108.setBounds(456, 280, 240, 23);
 
-        ibuhamil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        ibuhamil.setName("ibuhamil"); // NOI18N
-        ibuhamil.addKeyListener(new java.awt.event.KeyAdapter() {
+        Ibuhamil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Ibuhamil.setName("Ibuhamil"); // NOI18N
+        Ibuhamil.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ibuhamilKeyPressed(evt);
+                IbuhamilKeyPressed(evt);
             }
         });
-        FormInput.add(ibuhamil);
-        ibuhamil.setBounds(709, 280, 80, 23);
+        FormInput.add(Ibuhamil);
+        Ibuhamil.setBounds(709, 280, 80, 23);
 
-        abnormalitasTBC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormalitas TBC", "Abnormalitas Bukan TBC" }));
-        abnormalitasTBC.setName("abnormalitasTBC"); // NOI18N
-        abnormalitasTBC.addKeyListener(new java.awt.event.KeyAdapter() {
+        AbnormalitasTBC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormalitas TBC", "Abnormalitas Bukan TBC" }));
+        AbnormalitasTBC.setName("AbnormalitasTBC"); // NOI18N
+        AbnormalitasTBC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                abnormalitasTBCKeyPressed(evt);
+                AbnormalitasTBCKeyPressed(evt);
             }
         });
-        FormInput.add(abnormalitasTBC);
-        abnormalitasTBC.setBounds(142, 420, 190, 23);
+        FormInput.add(AbnormalitasTBC);
+        AbnormalitasTBC.setBounds(142, 420, 190, 23);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel109.setText("Abnormalitas TBC");
@@ -1427,20 +1426,20 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel114);
         jLabel114.setBounds(60, 500, 340, 23);
 
-        bbturun.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        bbturun.setName("bbturun"); // NOI18N
-        bbturun.addItemListener(new java.awt.event.ItemListener() {
+        BBTurun.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        BBTurun.setName("BBTurun"); // NOI18N
+        BBTurun.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                bbturunItemStateChanged(evt);
+                BBTurunItemStateChanged(evt);
             }
         });
-        bbturun.addKeyListener(new java.awt.event.KeyAdapter() {
+        BBTurun.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                bbturunKeyPressed(evt);
+                BBTurunKeyPressed(evt);
             }
         });
-        FormInput.add(bbturun);
-        bbturun.setBounds(388, 500, 80, 23);
+        FormInput.add(BBTurun);
+        BBTurun.setBounds(388, 500, 80, 23);
 
         jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel115.setText("3.");
@@ -1454,20 +1453,20 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel116);
         jLabel116.setBounds(497, 470, 210, 23);
 
-        demam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        demam.setName("demam"); // NOI18N
-        demam.addItemListener(new java.awt.event.ItemListener() {
+        Demam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Demam.setName("Demam"); // NOI18N
+        Demam.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                demamItemStateChanged(evt);
+                DemamItemStateChanged(evt);
             }
         });
-        demam.addKeyListener(new java.awt.event.KeyAdapter() {
+        Demam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                demamKeyPressed(evt);
+                DemamKeyPressed(evt);
             }
         });
-        FormInput.add(demam);
-        demam.setBounds(709, 470, 80, 23);
+        FormInput.add(Demam);
+        Demam.setBounds(709, 470, 80, 23);
 
         jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel117.setText("4.");
@@ -1481,20 +1480,20 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         FormInput.add(jLabel118);
         jLabel118.setBounds(497, 500, 210, 23);
 
-        berkeringatmalam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        berkeringatmalam.setName("berkeringatmalam"); // NOI18N
-        berkeringatmalam.addItemListener(new java.awt.event.ItemListener() {
+        BerkeringatMalam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        BerkeringatMalam.setName("BerkeringatMalam"); // NOI18N
+        BerkeringatMalam.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                berkeringatmalamItemStateChanged(evt);
+                BerkeringatMalamItemStateChanged(evt);
             }
         });
-        berkeringatmalam.addKeyListener(new java.awt.event.KeyAdapter() {
+        BerkeringatMalam.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                berkeringatmalamKeyPressed(evt);
+                BerkeringatMalamKeyPressed(evt);
             }
         });
-        FormInput.add(berkeringatmalam);
-        berkeringatmalam.setBounds(709, 500, 80, 23);
+        FormInput.add(BerkeringatMalam);
+        BerkeringatMalam.setBounds(709, 500, 80, 23);
 
         jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
@@ -1527,6 +1526,11 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
 
         KetPernahTerdiagnosa.setFocusTraversalPolicyProvider(true);
         KetPernahTerdiagnosa.setName("KetPernahTerdiagnosa"); // NOI18N
+        KetPernahTerdiagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KetPernahTerdiagnosaKeyPressed(evt);
+            }
+        });
         FormInput.add(KetPernahTerdiagnosa);
         KetPernahTerdiagnosa.setBounds(210, 250, 190, 23);
 
@@ -1621,7 +1625,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,LP,BtnBatal);
+            Valid.pindah(evt,KetHasilSkrining,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1987,7 +1991,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     }//GEN-LAST:event_TBKeyPressed
 
     private void PernahTerdiagnosaTBCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernahTerdiagnosaTBCKeyPressed
-        Valid.pindah(evt,btnPetugas,PernahberobatTBC);
+        Valid.pindah(evt,JenisKontakTBC,KetPernahTerdiagnosa);
     }//GEN-LAST:event_PernahTerdiagnosaTBCKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
@@ -1995,7 +1999,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void PernahberobatTBCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernahberobatTBCKeyPressed
-        Valid.pindah(evt,PernahTerdiagnosaTBC,Malnutrisi);
+        Valid.pindah(evt,KetPernahTerdiagnosa,Malnutrisi);
     }//GEN-LAST:event_PernahberobatTBCKeyPressed
 
     private void MalnutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MalnutrisiKeyPressed
@@ -2007,7 +2011,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     }//GEN-LAST:event_MerokokKeyPressed
 
     private void OdhivKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OdhivKeyPressed
-        Valid.pindah(evt,RiwayatDM,BB);
+        Valid.pindah(evt,RiwayatDM,Lansia);
     }//GEN-LAST:event_OdhivKeyPressed
 
     private void RiwayatDMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatDMKeyPressed
@@ -2019,59 +2023,59 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     }//GEN-LAST:event_LPKeyPressed
 
     private void KetHasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetHasilSkriningKeyPressed
-        Valid.pindah(evt,LP,BtnSimpan);
+        Valid.pindah(evt,KetGejalaPenyakit,BtnSimpan);
     }//GEN-LAST:event_KetHasilSkriningKeyPressed
 
     private void RiwayatKontakTBCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatKontakTBCKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LP,JenisKontakTBC);
     }//GEN-LAST:event_RiwayatKontakTBCKeyPressed
 
     private void JenisKontakTBCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisKontakTBCKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RiwayatKontakTBC,PernahTerdiagnosaTBC);
     }//GEN-LAST:event_JenisKontakTBCKeyPressed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
         Valid.pindah(evt,NmPetugas,TB);
     }//GEN-LAST:event_BBKeyPressed
 
-    private void lansiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lansiaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lansiaKeyPressed
+    private void LansiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LansiaKeyPressed
+        Valid.pindah(evt,Odhiv,Ibuhamil);
+    }//GEN-LAST:event_LansiaKeyPressed
 
-    private void wbpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_wbpKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_wbpKeyPressed
+    private void WargaBinaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WargaBinaanKeyPressed
+        Valid.pindah(evt,Ibuhamil,Tingaldiwilayahkumuh);
+    }//GEN-LAST:event_WargaBinaanKeyPressed
 
-    private void tingaldiwilayahkumuhKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tingaldiwilayahkumuhKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tingaldiwilayahkumuhKeyPressed
+    private void TingaldiwilayahkumuhKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TingaldiwilayahkumuhKeyPressed
+        Valid.pindah(evt,WargaBinaan,AbnormalitasTBC);
+    }//GEN-LAST:event_TingaldiwilayahkumuhKeyPressed
 
-    private void ibuhamilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ibuhamilKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ibuhamilKeyPressed
+    private void IbuhamilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IbuhamilKeyPressed
+        Valid.pindah(evt,Lansia,WargaBinaan);
+    }//GEN-LAST:event_IbuhamilKeyPressed
 
-    private void abnormalitasTBCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_abnormalitasTBCKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_abnormalitasTBCKeyPressed
+    private void AbnormalitasTBCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AbnormalitasTBCKeyPressed
+        Valid.pindah(evt,Tingaldiwilayahkumuh,Batuk);
+    }//GEN-LAST:event_AbnormalitasTBCKeyPressed
 
     private void BatukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BatukKeyPressed
-        
+        Valid.pindah(evt,AbnormalitasTBC,BBTurun);
     }//GEN-LAST:event_BatukKeyPressed
 
-    private void bbturunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bbturunKeyPressed
-        
-    }//GEN-LAST:event_bbturunKeyPressed
+    private void BBTurunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBTurunKeyPressed
+        Valid.pindah(evt,Batuk,Demam);
+    }//GEN-LAST:event_BBTurunKeyPressed
 
-    private void demamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_demamKeyPressed
-        
-    }//GEN-LAST:event_demamKeyPressed
+    private void DemamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DemamKeyPressed
+        Valid.pindah(evt,BBTurun,BerkeringatMalam);
+    }//GEN-LAST:event_DemamKeyPressed
 
-    private void berkeringatmalamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_berkeringatmalamKeyPressed
-      
-    }//GEN-LAST:event_berkeringatmalamKeyPressed
+    private void BerkeringatMalamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BerkeringatMalamKeyPressed
+        Valid.pindah(evt,Demam,KetGejalaPenyakit);
+    }//GEN-LAST:event_BerkeringatMalamKeyPressed
 
     private void KetGejalaPenyakitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetGejalaPenyakitKeyPressed
-        
+        Valid.pindah(evt,BerkeringatMalam,KetHasilSkrining);
     }//GEN-LAST:event_KetGejalaPenyakitKeyPressed
 
     private void RiwayatKontakTBCItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RiwayatKontakTBCItemStateChanged
@@ -2082,17 +2086,21 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         isTbc();
     }//GEN-LAST:event_BatukItemStateChanged
 
-    private void berkeringatmalamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_berkeringatmalamItemStateChanged
+    private void BerkeringatMalamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BerkeringatMalamItemStateChanged
         isTbc();
-    }//GEN-LAST:event_berkeringatmalamItemStateChanged
+    }//GEN-LAST:event_BerkeringatMalamItemStateChanged
 
-    private void bbturunItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_bbturunItemStateChanged
+    private void BBTurunItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BBTurunItemStateChanged
         isTbc();
-    }//GEN-LAST:event_bbturunItemStateChanged
+    }//GEN-LAST:event_BBTurunItemStateChanged
 
-    private void demamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_demamItemStateChanged
+    private void DemamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DemamItemStateChanged
         isTbc();
-    }//GEN-LAST:event_demamItemStateChanged
+    }//GEN-LAST:event_DemamItemStateChanged
+
+    private void KetPernahTerdiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetPernahTerdiagnosaKeyPressed
+        Valid.pindah(evt,PernahTerdiagnosaTBC,PernahberobatTBC);
+    }//GEN-LAST:event_KetPernahTerdiagnosaKeyPressed
 
     /**
     * @param args the command line arguments
@@ -2111,8 +2119,11 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox AbnormalitasTBC;
     private widget.TextBox BB;
+    private widget.ComboBox BBTurun;
     private widget.ComboBox Batuk;
+    private widget.ComboBox BerkeringatMalam;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -2125,9 +2136,11 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     private widget.CekBox ChkKejadian;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.ComboBox Demam;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
     private widget.TextBox IMT;
+    private widget.ComboBox Ibuhamil;
     private widget.ComboBox Jam;
     private widget.ComboBox JenisKontakTBC;
     private widget.TextBox Jk;
@@ -2139,6 +2152,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     private widget.TextBox KlasifikasiIMT;
     private widget.Label LCount;
     private widget.TextBox LP;
+    private widget.ComboBox Lansia;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Malnutrisi;
     private widget.ComboBox Menit;
@@ -2161,13 +2175,10 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
-    private widget.ComboBox abnormalitasTBC;
-    private widget.ComboBox bbturun;
-    private widget.ComboBox berkeringatmalam;
+    private widget.ComboBox Tingaldiwilayahkumuh;
+    private widget.ComboBox WargaBinaan;
     private widget.Button btnPetugas;
     private javax.swing.ButtonGroup buttonGroup1;
-    private widget.ComboBox demam;
-    private widget.ComboBox ibuhamil;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel100;
@@ -2244,13 +2255,10 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private widget.ComboBox lansia;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
     private widget.Table tbObat;
-    private widget.ComboBox tingaldiwilayahkumuh;
-    private widget.ComboBox wbp;
     // End of variables declaration//GEN-END:variables
     
     public void tampil() {
@@ -2345,20 +2353,20 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
         Merokok.setSelectedIndex(0);
         RiwayatDM.setSelectedIndex(0);
         Odhiv.setSelectedIndex(0);
-        lansia.setSelectedIndex(0);
-        ibuhamil.setSelectedIndex(0);
-        wbp.setSelectedIndex(0);
-        tingaldiwilayahkumuh.setSelectedIndex(0);
-        abnormalitasTBC.setSelectedIndex(0);
+        Lansia.setSelectedIndex(0);
+        Ibuhamil.setSelectedIndex(0);
+        WargaBinaan.setSelectedIndex(0);
+        Tingaldiwilayahkumuh.setSelectedIndex(0);
+        AbnormalitasTBC.setSelectedIndex(0);
         Batuk.setSelectedIndex(0);
-        bbturun.setSelectedIndex(0);
-        demam.setSelectedIndex(0);
-        berkeringatmalam.setSelectedIndex(0);
+        BBTurun.setSelectedIndex(0);
+        Demam.setSelectedIndex(0);
+        BerkeringatMalam.setSelectedIndex(0);
         KetGejalaPenyakit.setText("");
-        KesimpulanHasilSkrining.setText("");
+        KesimpulanHasilSkrining.setText("Bukan Terduga TBC");
         KetHasilSkrining.setText("");
         Tanggal.setDate(new Date());
-        PernahTerdiagnosaTBC.requestFocus();
+        BB.requestFocus();
     } 
 
     private void getData() {
@@ -2386,15 +2394,15 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
             Merokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             RiwayatDM.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             Odhiv.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            lansia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            ibuhamil.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            wbp.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            tingaldiwilayahkumuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            abnormalitasTBC.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            Lansia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            Ibuhamil.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            WargaBinaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            Tingaldiwilayahkumuh.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            AbnormalitasTBC.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
             Batuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            bbturun.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
-            demam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
-            berkeringatmalam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            BBTurun.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            Demam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            BerkeringatMalam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
             KetGejalaPenyakit.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
             KesimpulanHasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
             KetHasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
@@ -2549,9 +2557,9 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
                 BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),
                 JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),
                 Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
-                lansia.getSelectedItem().toString(),ibuhamil.getSelectedItem().toString(),wbp.getSelectedItem().toString(),tingaldiwilayahkumuh.getSelectedItem().toString(),
-                abnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),
-                berkeringatmalam.getSelectedItem().toString(),KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText(),
+                Lansia.getSelectedItem().toString(),Ibuhamil.getSelectedItem().toString(),WargaBinaan.getSelectedItem().toString(),Tingaldiwilayahkumuh.getSelectedItem().toString(),
+                AbnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),BBTurun.getSelectedItem().toString(),Demam.getSelectedItem().toString(),
+                BerkeringatMalam.getSelectedItem().toString(),KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -2577,15 +2585,15 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
                tbObat.setValueAt(Merokok.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
                tbObat.setValueAt(RiwayatDM.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
                tbObat.setValueAt(Odhiv.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(lansia.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
-               tbObat.setValueAt(ibuhamil.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(wbp.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
-               tbObat.setValueAt(tingaldiwilayahkumuh.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
-               tbObat.setValueAt(abnormalitasTBC.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+               tbObat.setValueAt(Lansia.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(Ibuhamil.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(WargaBinaan.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(Tingaldiwilayahkumuh.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(AbnormalitasTBC.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
                tbObat.setValueAt(Batuk.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
-               tbObat.setValueAt(bbturun.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
-               tbObat.setValueAt(demam.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
-               tbObat.setValueAt(berkeringatmalam.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
+               tbObat.setValueAt(BBTurun.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
+               tbObat.setValueAt(Demam.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
+               tbObat.setValueAt(BerkeringatMalam.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
                tbObat.setValueAt(KetGejalaPenyakit.getText(),tbObat.getSelectedRow(),32);
                tbObat.setValueAt(KesimpulanHasilSkrining.getText(),tbObat.getSelectedRow(),33);
                tbObat.setValueAt(KetHasilSkrining.getText(),tbObat.getSelectedRow(),34);
@@ -2720,17 +2728,17 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     
     private void isTbc(){
         try {
-            if((!RiwayatKontakTBC.getSelectedItem().toString().equals(""))&&(!Batuk.getSelectedItem().toString().equals(""))&&(!bbturun.getSelectedItem().toString().equals(""))&&(!demam.getSelectedItem().toString().equals(""))&&(!berkeringatmalam.getSelectedItem().toString().equals(""))){
+            if((!RiwayatKontakTBC.getSelectedItem().toString().equals(""))&&(!Batuk.getSelectedItem().toString().equals(""))&&(!BBTurun.getSelectedItem().toString().equals(""))&&(!Demam.getSelectedItem().toString().equals(""))&&(!BerkeringatMalam.getSelectedItem().toString().equals(""))){
                 if(RiwayatKontakTBC.getSelectedItem().toString().equals("Tidak")){
                     if((Batuk.getSelectedItem().toString().equals("Ya"))){
                         KesimpulanHasilSkrining.setText("Terduga TBC");
-                    }else if((bbturun.getSelectedItem().toString().equals("Ya"))){
+                    }else if((BBTurun.getSelectedItem().toString().equals("Ya"))){
                         KesimpulanHasilSkrining.setText("Terduga TBC");
-                    }else if((bbturun.getSelectedItem().toString().equals("Ya"))){
+                    }else if((BBTurun.getSelectedItem().toString().equals("Ya"))){
                         KesimpulanHasilSkrining.setText("Terduga TBC");
-                    }else if((demam.getSelectedItem().toString().equals("Ya"))){
+                    }else if((Demam.getSelectedItem().toString().equals("Ya"))){
                         KesimpulanHasilSkrining.setText("Terduga TBC");
-                    }else if((berkeringatmalam.getSelectedItem().toString().equals("Ya"))){
+                    }else if((BerkeringatMalam.getSelectedItem().toString().equals("Ya"))){
                         KesimpulanHasilSkrining.setText("Terduga TBC");
                     }else {
                         KesimpulanHasilSkrining.setText("Bukan Terduga TBC");
@@ -2738,25 +2746,25 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
                 }else if(RiwayatKontakTBC.getSelectedItem().toString().equals("Ya")){
                     if((Batuk.getSelectedItem().toString().equals("Tidak"))){
                         KesimpulanHasilSkrining.setText("Kontak Erat");
-                    }else if((bbturun.getSelectedItem().toString().equals("Tidak"))){
+                    }else if((BBTurun.getSelectedItem().toString().equals("Tidak"))){
                         KesimpulanHasilSkrining.setText("Kontak Erat");
-                    }else if((bbturun.getSelectedItem().toString().equals("Tidak"))){
+                    }else if((BBTurun.getSelectedItem().toString().equals("Tidak"))){
                         KesimpulanHasilSkrining.setText("Kontak Erat");
-                    }else if((demam.getSelectedItem().toString().equals("Tidak"))){
+                    }else if((Demam.getSelectedItem().toString().equals("Tidak"))){
                         KesimpulanHasilSkrining.setText("Kontak Erat");
-                    }else if((berkeringatmalam.getSelectedItem().toString().equals("Tidak"))){
+                    }else if((BerkeringatMalam.getSelectedItem().toString().equals("Tidak"))){
                         KesimpulanHasilSkrining.setText("Kontak Erat");
                     }else {
                         KesimpulanHasilSkrining.setText("Terduga TBC");
                     }
                 }else{
-                    KesimpulanHasilSkrining.setText("");
+                    KesimpulanHasilSkrining.setText("Bukan Terduga TBC");
                 }
             }else{
-                KesimpulanHasilSkrining.setText("");
+                KesimpulanHasilSkrining.setText("Bukan Terduga TBC");
             }
         } catch (Exception e) {
-            KesimpulanHasilSkrining.setText("");
+            KesimpulanHasilSkrining.setText("Bukan Terduga TBC");
         }
     }
 
@@ -2766,15 +2774,15 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
             BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),
             JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),
             Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
-            lansia.getSelectedItem().toString(),ibuhamil.getSelectedItem().toString(),wbp.getSelectedItem().toString(),tingaldiwilayahkumuh.getSelectedItem().toString(),
-            abnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),
-            berkeringatmalam.getSelectedItem().toString(),KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText()
+            Lansia.getSelectedItem().toString(),Ibuhamil.getSelectedItem().toString(),WargaBinaan.getSelectedItem().toString(),Tingaldiwilayahkumuh.getSelectedItem().toString(),
+            AbnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),BBTurun.getSelectedItem().toString(),Demam.getSelectedItem().toString(),
+            BerkeringatMalam.getSelectedItem().toString(),KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),
-                PernahberobatTBC.getSelectedItem().toString(),Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),lansia.getSelectedItem().toString(),ibuhamil.getSelectedItem().toString(),
-                wbp.getSelectedItem().toString(),tingaldiwilayahkumuh.getSelectedItem().toString(),abnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),bbturun.getSelectedItem().toString(),demam.getSelectedItem().toString(),berkeringatmalam.getSelectedItem().toString(),
+                PernahberobatTBC.getSelectedItem().toString(),Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),Lansia.getSelectedItem().toString(),Ibuhamil.getSelectedItem().toString(),
+                WargaBinaan.getSelectedItem().toString(),Tingaldiwilayahkumuh.getSelectedItem().toString(),AbnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),BBTurun.getSelectedItem().toString(),Demam.getSelectedItem().toString(),BerkeringatMalam.getSelectedItem().toString(),
                 KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
