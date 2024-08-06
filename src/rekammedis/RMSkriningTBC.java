@@ -136,23 +136,23 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
             }else if(i==24){
                 column.setPreferredWidth(58);
             }else if(i==25){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(198);
             }else if(i==26){
                 column.setPreferredWidth(200);
             }else if(i==27){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(97);
             }else if(i==28){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(75);
             }else if(i==29){
-                column.setPreferredWidth(94);
+                column.setPreferredWidth(85);
             }else if(i==30){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(81);
             }else if(i==31){
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(156);
             }else if(i==32){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==33){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(108);
             }else if(i==34){
                 column.setPreferredWidth(200);
             }
