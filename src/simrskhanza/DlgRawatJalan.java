@@ -10092,6 +10092,26 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             System.out.println("Notif : "+e);
         }
     }
+    //Cahya Mod
+    public void tampilkanDataTtv(String norawats,String keluhan,String suhu,String tensi,String tinggi,String respirasi,String berat,String nadi,String gcs,String alergi){
+        System.out.println("Data Awal Medis Keperawatan : "+norawats);
+        TKeluhan.setText(keluhan);
+//        TPemeriksaan.setText(pemeriksaan);
+        TPemeriksaan.setText("KU BAIK");
+        TSuhu.setText(suhu);
+        TTensi.setText(tensi);
+        TTinggi.setText(tinggi);
+        TRespirasi.setText(respirasi);
+        TBerat.setText(berat);
+        TNadi.setText(nadi);
+        TGCS.setText(gcs);
+        TAlergi.setText(alergi);
+//        SpO2.setText(spo);
+        SpO2.setText("0");
+//        LingkarPerut.setText(lingkarperut);
+        LingkarPerut.setText("-");
+    }
+    //End Cahya mod
     
     public void setNoRm(String norwt,Date tgl1,Date tgl2) {
         TNoRw.setText(norwt);

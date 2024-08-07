@@ -1293,6 +1293,11 @@ public final class DlgReg extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         panelGlass6 = new widget.panelisi();
         BtnSimpan = new widget.Button();
+        //Cahya mod
+        BtnSep = new widget.Button();
+        BtnLabelRm = new widget.Button();
+        BtnBuktiRegis = new widget.Button();
+        //End Cahya Mod
         BtnBatal = new widget.Button();
         BtnEdit = new widget.Button();
         BtnHapus = new widget.Button();
@@ -6515,6 +6520,41 @@ public final class DlgReg extends javax.swing.JDialog {
             }
         });
         panelGlass8.add(BtnSeek4);
+        
+        //Cahya Mod
+        BtnBuktiRegis.setText("Bukti Registrasi");
+        BtnBuktiRegis.setName("sepBpjse"); // NOI18N
+        BtnBuktiRegis.setGlassColor(new java.awt.Color(21, 125, 47));
+        BtnBuktiRegis.setPreferredSize(new java.awt.Dimension(140, 30));
+        BtnBuktiRegis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakRegisterActionPerformed(evt);
+            }
+        });
+        panelGlass8.add(BtnBuktiRegis);
+        
+        BtnSep.setText("SEP BPJS");
+        BtnSep.setName("sepBpjse"); // NOI18N
+        BtnSep.setGlassColor(new java.awt.Color(21, 125, 47));
+        BtnSep.setPreferredSize(new java.awt.Dimension(140, 30));
+        BtnSep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnSEPActionPerformed(evt);
+            }
+        });
+        panelGlass8.add(BtnSep);
+        
+        BtnLabelRm.setText("Cetak Label RM");
+        BtnLabelRm.setName("sepBpjse"); // NOI18N
+        BtnLabelRm.setGlassColor(new java.awt.Color(21, 125, 47));
+        BtnLabelRm.setPreferredSize(new java.awt.Dimension(140, 30));
+        BtnLabelRm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnBarcodeRM3ActionPerformed(evt);
+            }
+        });
+        panelGlass8.add(BtnLabelRm);
+        //End Cahya Mod
 
         jPanel2.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
@@ -9385,7 +9425,34 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_MnCetakRegisterActionPerformed
-
+    
+//Cahya Mod
+    private void MnBarcodeRM3ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+                if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+        }else{          
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Map<String, Object> param = new HashMap<>();                 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptBarcodeRM9.jasper","report","::[ Label Rekam Medis ]::","select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk, "+
+                   "pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.gol_darah, pasien.pekerjaan,"+
+                   "pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,"+
+                   "pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,"+
+                   "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj,', ',pasien.propinsipj) as alamatpj from pasien "+
+                   "inner join kelurahan inner join kecamatan inner join kabupaten "+
+                   "inner join penjab inner join propinsi on pasien.kd_prop=propinsi.kd_prop and pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel "+
+                   "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab  where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",param);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+//End Cahya Mod
+    
     private void DTPRegItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPRegItemStateChanged
         isNumber();
     }//GEN-LAST:event_DTPRegItemStateChanged
@@ -15072,6 +15139,11 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private widget.Button BtnSeek4;
     private widget.Button BtnSeek5;
     private widget.Button BtnSimpan;
+    //Cahya mod
+    private widget.Button BtnSep;
+    private widget.Button BtnLabelRm;
+    private widget.Button BtnBuktiRegis;
+    //End Cahya Mod
     private widget.Button BtnUnit;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkJln;

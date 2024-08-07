@@ -213,6 +213,10 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     private final DefaultTableModel tabModekasir,tabModekasir2;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    //Cahya Mod
+    private PreparedStatement ps;
+    private ResultSet rs;
+    //End Cahya Mod
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement psotomatis,psotomatis2,pskasir,pscaripiutang,psrekening;
     private ResultSet rskasir,rsrekening;
@@ -7614,7 +7618,14 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 i=tbKasirRalan.getSelectedColumn();
                 if(i==0){
                     if(akses.gettindakan_ralan()==true){
-                        MnDataRalanActionPerformed(null);
+//                        MnDataRalanActionPerformed(null);
+                        if(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),10).toString().equals("Belum")){
+                             //set status menjadi berkas diterima
+                            ppBerkasDIterimaBtnPrintActionPerformed(null);
+                            MnDataRalanActionPerformed(null);
+                        } else {
+                            MnDataRalanActionPerformed(null);
+                        }
                     }
                 }else if(i==1){
                     if(akses.getberi_obat()==true){
@@ -7646,7 +7657,14 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 i=tbKasirRalan.getSelectedColumn();
                 if(i==0){
                     if(akses.gettindakan_ralan()==true){
-                        MnDataRalanActionPerformed(null);
+//                        MnDataRalanActionPerformed(null);
+                        if(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),10).toString().equals("Belum")){
+                             //set status menjadi berkas diterima
+                            ppBerkasDIterimaBtnPrintActionPerformed(null);
+                            MnDataRalanActionPerformed(null);
+                        }else{
+                            MnDataRalanActionPerformed(null);
+                        }
                     }
                 }else if(i==1){
                     if(akses.getberi_obat()==true){
@@ -7837,7 +7855,43 @@ private void MnDataRalanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     dlgrwjl2.setLocationRelativeTo(internalFrame1);
                     dlgrwjl2.SetPoli(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),18).toString());
                     dlgrwjl2.SetPj(tbKasirRalan.getValueAt(tbKasirRalan.getSelectedRow(),17).toString());
-                    dlgrwjl2.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());    
+                    dlgrwjl2.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate());
+                    try {
+                        System.out.println("Ambil Awal Medis Keperawatan : "+TNoRw.getText());
+                        ps=koneksi.prepareStatement("SELECT penilaian_awal_keperawatan_ralan.no_rawat, penilaian_awal_keperawatan_ralan.keluhan_utama,penilaian_awal_keperawatan_ralan.suhu,penilaian_awal_keperawatan_ralan.td,penilaian_awal_keperawatan_ralan.tb,penilaian_awal_keperawatan_ralan.rr,penilaian_awal_keperawatan_ralan.bb,\n" +
+                                                    "penilaian_awal_keperawatan_ralan.nadi,penilaian_awal_keperawatan_ralan.gcs,penilaian_awal_keperawatan_ralan.alergi\n" +
+                                                    "FROM penilaian_awal_keperawatan_ralan\n" +
+                                                    "WHERE penilaian_awal_keperawatan_ralan.no_rawat=?");
+                        try {
+                            ps.setString(1,TNoRw.getText());
+                            rs=ps.executeQuery();
+                            if(rs.next()){
+                                dlgrwjl2.tampilkanDataTtv(rs.getString("no_rawat"),
+                                                          rs.getString("keluhan_utama"),
+                                                          rs.getString("suhu"),
+                                                          rs.getString("td"),
+                                                          rs.getString("tb"),
+                                                          rs.getString("rr"),
+                                                          rs.getString("bb"),
+                                                          rs.getString("nadi"),
+                                                          rs.getString("gcs"),
+                                                          rs.getString("alergi"));
+                            }
+                        } catch (Exception e) {
+//                            e
+                            System.out.println("Notif : "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    }
+//                    END GET DATA TTV
                     dlgrwjl2.setVisible(true);
                 } 
             }                               
