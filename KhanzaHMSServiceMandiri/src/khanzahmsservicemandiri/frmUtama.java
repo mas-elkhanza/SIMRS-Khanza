@@ -44,7 +44,7 @@ public class frmUtama extends javax.swing.JFrame {
     private final sekuel Sequel=new sekuel();
     private final SimpleDateFormat formattanggal = new SimpleDateFormat("yyyyMMdd");
     private Date date;
-    private final String norekening=Sequel.cariIsi("select set_akun_mandiri.no_rekening from set_akun_mandiri");
+    private final String norekening=Sequel.cariIsi("select set_akun_mandiri.no_rekening from set_akun_mandiri"),kodemcm=Sequel.cariIsi("select set_akun_mandiri.kode_mcm from set_akun_mandiri");
     private Scanner sc;
     private StringBuffer data;
     private String json="";
@@ -224,15 +224,15 @@ public class frmUtama extends javax.swing.JFrame {
                                             if(root.path("data").isArray()){
                                                 for(JsonNode list:root.path("data")){
                                                     if(list.path("transaksi").asText().substring(6,7).equals("D")){
-                                                        TeksArea.append("--> Melakukan pemrosesan \"Terkonfirmasi\" transaksi "+list.path("referensi").asText()+"\n");
+                                                        TeksArea.append("--> Melakukan pemrosesan \"Terkonfirmasi\" transaksi "+kodemcm+list.path("referensi").asText()+"\n");
                                                         Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Terkonfirmasi'",1,new String[]{
-                                                            list.path("referensi").asText()
+                                                            kodemcm+list.path("referensi").asText()
                                                         });
                                                     }else if(list.path("transaksi").asText().substring(6,7).equals("R")){
                                                         if(list.path("transaksi").asText().substring(7,8).equals("D")){
-                                                            TeksArea.append("--> Melakukan pemrosesan \"Pembayaran Gagal\" transaksi "+list.path("referensi").asText()+"\n");
+                                                            TeksArea.append("--> Melakukan pemrosesan \"Pembayaran Gagal\" transaksi "+kodemcm+list.path("referensi").asText()+"\n");
                                                             Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Pembayaran Gagal'",1,new String[]{
-                                                                list.path("referensi").asText()
+                                                                kodemcm+list.path("referensi").asText()
                                                             });
                                                         }
                                                     }
@@ -332,7 +332,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     fileWriter = new FileWriter(file);
                                                     fileWriter.write(
                                                         "P;"+rs.getString("tgl_pembayaran").substring(0,10).replaceAll("-","")+";"+rs.getString("no_rekening_sumber")+";1;"+rs.getString("nominal_pembayaran")+"\r\n"+
-                                                        rs.getString("no_rekening_tujuan")+";"+rs.getString("atas_nama_rekening_tujuan")+";"+rs.getString("kota_atas_nama_rekening_tujuan")+";;;IDR;"+rs.getString("nominal_pembayaran")+";"+rs.getString("nomor_tagihan")+";"+rs.getString("nomor_pembayaran")+";"+rs.getString("kode_metode")+";"+rs.getString("kode_transaksi")+";"+rs.getString("nama_bank")+";;;;;;;;;;;;;;;;;;;;;;;;;;;;;EPD1;"
+                                                        rs.getString("no_rekening_tujuan")+";"+rs.getString("atas_nama_rekening_tujuan")+";"+rs.getString("kota_atas_nama_rekening_tujuan")+";;;IDR;"+rs.getString("nominal_pembayaran")+";"+rs.getString("nomor_tagihan")+";"+rs.getString("nomor_pembayaran").replaceAll(kodemcm,"")+";"+rs.getString("kode_metode")+";"+rs.getString("kode_transaksi")+";"+rs.getString("nama_bank")+";;;;;;;;;;;;;;;;;;;;;;;;;;;;;EPD1;"
                                                     );
                                                     fileWriter.flush();
                                                     fileWriter.close();

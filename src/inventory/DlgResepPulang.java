@@ -985,9 +985,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(tbResep.getSelectedRow()!= -1){
             TNoRw.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()); 
             TPasien.setText(tbResep.getValueAt(tbResep.getSelectedRow(),3).toString()); 
-            Sequel.cariIsi("select kode_brng from databarang where concat(kode_brng,' ',nama_brng)=?",KdBarang,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
-            Sequel.cariIsi("select nama_brng from databarang where concat(kode_brng,' ',nama_brng)=?",NmBarang,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
-            Sequel.cariIsi("select kode_sat from databarang where concat(kode_brng,' ',nama_brng)=?",Satuan,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
+            Sequel.cariIsi("select databarang.kode_brng from databarang where concat(databarang.kode_brng,' ',databarang.nama_brng)=?",KdBarang,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
+            Sequel.cariIsi("select databarang.nama_brng from databarang where concat(databarang.kode_brng,' ',databarang.nama_brng)=?",NmBarang,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
+            Sequel.cariIsi("select databarang.kode_sat from databarang where concat(databarang.kode_brng,' ',databarang.nama_brng)=?",Satuan,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
          }
     }
    

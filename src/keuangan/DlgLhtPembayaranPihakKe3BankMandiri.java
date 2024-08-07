@@ -41,7 +41,7 @@ public final class DlgLhtPembayaranPihakKe3BankMandiri extends javax.swing.JDial
     private double total=0;
     private Scanner sc;
     private StringBuffer data;
-    private String f,json="";
+    private String f,json="",kodemcm=Sequel.cariIsi("select set_akun_mandiri.kode_mcm from set_akun_mandiri");;
     private javax.swing.JFileChooser jfc = new JFileChooser();   
     private JsonNode root;
     private ObjectMapper mapper = new ObjectMapper();
@@ -425,15 +425,15 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     if(root.path("data").isArray()){
                         for(JsonNode list:root.path("data")){
                             if(list.path("transaksi").asText().substring(6,7).equals("D")){
-                                System.out.println("Melakukan pemrosesan \"Terkonfirmasi\" transaksi "+list.path("referensi").asText());
+                                System.out.println("Melakukan pemrosesan \"Terkonfirmasi\" transaksi "+kodemcm+list.path("referensi").asText());
                                 Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Terkonfirmasi'",1,new String[]{
-                                    list.path("referensi").asText()
+                                    kodemcm+list.path("referensi").asText()
                                 });
                             }else if(list.path("transaksi").asText().substring(6,7).equals("R")){
                                 if(list.path("transaksi").asText().substring(7,8).equals("D")){
-                                    System.out.println("Melakukan pemrosesan \"Pembayaran Gagal\" transaksi "+list.path("referensi").asText());
+                                    System.out.println("Melakukan pemrosesan \"Pembayaran Gagal\" transaksi "+kodemcm+list.path("referensi").asText());
                                     Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Pembayaran Gagal'",1,new String[]{
-                                        list.path("referensi").asText()
+                                        kodemcm+list.path("referensi").asText()
                                     });
                                 }
                             }
