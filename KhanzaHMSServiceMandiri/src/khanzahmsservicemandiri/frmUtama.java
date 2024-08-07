@@ -224,15 +224,15 @@ public class frmUtama extends javax.swing.JFrame {
                                             if(root.path("data").isArray()){
                                                 for(JsonNode list:root.path("data")){
                                                     if(list.path("transaksi").asText().substring(6,7).equals("D")){
-                                                        TeksArea.append("--> Melakukan pemrosesan \"Terkonfirmasi\" transaksi "+list.path("referensi").asText()+"\n");
+                                                        TeksArea.append("--> Melakukan pemrosesan \"Terkonfirmasi\" transaksi "+kodemcm+list.path("referensi").asText()+"\n");
                                                         Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Terkonfirmasi'",1,new String[]{
-                                                            list.path("referensi").asText()
+                                                            kodemcm+list.path("referensi").asText()
                                                         });
                                                     }else if(list.path("transaksi").asText().substring(6,7).equals("R")){
                                                         if(list.path("transaksi").asText().substring(7,8).equals("D")){
-                                                            TeksArea.append("--> Melakukan pemrosesan \"Pembayaran Gagal\" transaksi "+list.path("referensi").asText()+"\n");
+                                                            TeksArea.append("--> Melakukan pemrosesan \"Pembayaran Gagal\" transaksi "+kodemcm+list.path("referensi").asText()+"\n");
                                                             Sequel.mengedit3("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran=?","status_transaksi='Pembayaran Gagal'",1,new String[]{
-                                                                list.path("referensi").asText()
+                                                                kodemcm+list.path("referensi").asText()
                                                             });
                                                         }
                                                     }
