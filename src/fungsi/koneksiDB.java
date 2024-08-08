@@ -1525,7 +1525,6 @@ public class koneksiDB {
         return var;
     }
     
-    // MODIF
     public static String URLFINGERPRINTBPJS() {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
