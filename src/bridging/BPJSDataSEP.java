@@ -44,6 +44,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+//Cahya Mod https://stackoverflow.com/questions/6710350/copying-text-to-the-clipboard-using-java
+import java.awt.datatransfer.StringSelection;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+//End Cahya Mod
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.JOptionPane;
@@ -928,6 +933,15 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         } catch (Exception e) {
             ADDANTRIANAPIMOBILEJKN="";
             System.out.println("Notif : "+e);
+        }
+        
+        try {
+            urlfinger = koneksiDB.URLFINGERPRINTBPJS();
+            userfinger = koneksiDB.USERFINGERPRINTBPJS();
+            passfinger = koneksiDB.PASSWORDFINGERPRINTBPJS();
+            urlaplikasi = koneksiDB.URLAPLIKASIFINGERPRINTBPJS();
+        } catch (Exception e) {
+            System.out.println("E : " + e);
         }
     }
 
@@ -5797,6 +5811,9 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
     private void BtnFingerPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFingerPrintActionPerformed
         if (!NoKartu.toString().equals("")) {
+            StringSelection stringSelection = new StringSelection(NoKartu.getText());
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            clipboard.setContents(stringSelection, null);
             BukaFingerPrint(NoKartu.getText());
         }
     }//GEN-LAST:event_BtnFingerPrintActionPerformed
