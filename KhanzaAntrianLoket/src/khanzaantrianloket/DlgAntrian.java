@@ -267,6 +267,11 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
 
         Antrian.setText("1");
         Antrian.setName("Antrian"); // NOI18N
+        Antrian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AntrianActionPerformed(evt);
+            }
+        });
         panelisi5.add(Antrian);
         Antrian.setBounds(210, 12, 60, 24);
 
@@ -368,6 +373,10 @@ public class DlgAntrian extends javax.swing.JDialog implements ActionListener{
             System.out.println(e);
         }  
     }//GEN-LAST:event_BtnBatal2ActionPerformed
+
+    private void AntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AntrianActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AntrianActionPerformed
 
 
 
