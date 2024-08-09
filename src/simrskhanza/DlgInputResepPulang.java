@@ -182,8 +182,7 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
             aktifkanbatch = "no";
         }
     }
-    private DlgBarang barang=new DlgBarang(null,false);
-    private double x=0,y=0,z=0,stokbarang=0,kenaikan=0;
+    private double y=0,stokbarang=0,kenaikan=0;
     private int jml=0,i=0,index;
     private double[] jumlah,harga,stok;
     private String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,dosis,nobatch,nofaktur;
