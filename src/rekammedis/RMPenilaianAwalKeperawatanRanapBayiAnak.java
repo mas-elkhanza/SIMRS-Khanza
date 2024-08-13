@@ -862,6 +862,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel202 = new widget.Label();
         Kesadaran = new widget.ComboBox();
         jLabel80 = new widget.Label();
+        jLabel203 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2050,7 +2051,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel16.setText("x/menit");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
-        jLabel16.setBounds(120, 670, 50, 23);
+        jLabel16.setBounds(124, 670, 50, 23);
 
         Nadi.setFocusTraversalPolicyProvider(true);
         Nadi.setName("Nadi"); // NOI18N
@@ -2060,12 +2061,13 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
         FormInput.add(Nadi);
-        Nadi.setBounds(80, 670, 45, 23);
+        Nadi.setBounds(76, 670, 45, 23);
 
-        jLabel17.setText("Nadi :");
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel17.setText("Nadi");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(30, 670, 40, 23);
+        jLabel17.setBounds(44, 670, 40, 23);
 
         jLabel18.setText("Suhu :");
         jLabel18.setName("jLabel18"); // NOI18N
@@ -2085,7 +2087,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel22.setText("TD :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(380, 640, 70, 23);
+        jLabel22.setBounds(423, 640, 40, 23);
 
         TD.setFocusTraversalPolicyProvider(true);
         TD.setName("TD"); // NOI18N
@@ -2095,7 +2097,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
         FormInput.add(TD);
-        TD.setBounds(450, 640, 60, 23);
+        TD.setBounds(467, 640, 60, 23);
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel20.setText("°C");
@@ -2107,13 +2109,13 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel23.setText("mmHg");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(510, 640, 50, 23);
+        jLabel23.setBounds(530, 640, 50, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("x/menit");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(660, 640, 50, 23);
+        jLabel25.setBounds(678, 640, 50, 23);
 
         RR.setFocusTraversalPolicyProvider(true);
         RR.setName("RR"); // NOI18N
@@ -2123,12 +2125,12 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
         FormInput.add(RR);
-        RR.setBounds(610, 640, 45, 23);
+        RR.setBounds(630, 640, 45, 23);
 
         jLabel26.setText("RR :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(570, 640, 40, 23);
+        jLabel26.setBounds(586, 640, 40, 23);
 
         jLabel29.setText("GCS(E,V,M) :");
         jLabel29.setName("jLabel29"); // NOI18N
@@ -2143,13 +2145,13 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
         FormInput.add(GCS);
-        GCS.setBounds(340, 640, 60, 23);
+        GCS.setBounds(344, 640, 60, 23);
 
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel40.setText("cm");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(410, 670, 50, 23);
+        jLabel40.setBounds(413, 670, 50, 23);
 
         TB.setFocusTraversalPolicyProvider(true);
         TB.setName("TB"); // NOI18N
@@ -2159,17 +2161,17 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
         FormInput.add(TB);
-        TB.setBounds(370, 670, 45, 23);
+        TB.setBounds(365, 670, 45, 23);
 
         jLabel41.setText("TB :");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
-        jLabel41.setBounds(320, 670, 40, 23);
+        jLabel41.setBounds(321, 670, 40, 23);
 
         jLabel42.setText("LK :");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
-        jLabel42.setBounds(620, 670, 40, 23);
+        jLabel42.setBounds(608, 670, 40, 23);
 
         LK.setFocusTraversalPolicyProvider(true);
         LK.setName("LK"); // NOI18N
@@ -2179,12 +2181,12 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
         FormInput.add(LK);
-        LK.setBounds(660, 670, 45, 23);
+        LK.setBounds(652, 670, 45, 23);
 
         jLabel43.setText("BB :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(160, 670, 70, 23);
+        jLabel43.setBounds(162, 670, 70, 23);
 
         BB.setFocusTraversalPolicyProvider(true);
         BB.setName("BB"); // NOI18N
@@ -2194,7 +2196,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
         FormInput.add(BB);
-        BB.setBounds(230, 670, 45, 23);
+        BB.setBounds(236, 670, 45, 23);
 
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel47.setText("cm");
@@ -2206,13 +2208,13 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel48.setText("Kg");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(270, 670, 50, 23);
+        jLabel48.setBounds(284, 670, 30, 23);
 
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel49.setText("cm");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(580, 670, 50, 23);
+        jLabel49.setBounds(555, 670, 50, 23);
 
         LP.setFocusTraversalPolicyProvider(true);
         LP.setName("LP"); // NOI18N
@@ -2222,12 +2224,12 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
         FormInput.add(LP);
-        LP.setBounds(530, 670, 45, 23);
+        LP.setBounds(507, 670, 45, 23);
 
         jLabel50.setText("LP :");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
-        jLabel50.setBounds(480, 670, 40, 23);
+        jLabel50.setBounds(463, 670, 40, 23);
 
         jLabel51.setText("LD :");
         jLabel51.setName("jLabel51"); // NOI18N
@@ -2248,7 +2250,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel52.setText("cm");
         jLabel52.setName("jLabel52"); // NOI18N
         FormInput.add(jLabel52);
-        jLabel52.setBounds(710, 670, 30, 23);
+        jLabel52.setBounds(700, 670, 30, 23);
 
         jLabel202.setText(":");
         jLabel202.setName("jLabel202"); // NOI18N
@@ -2270,6 +2272,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
         jLabel80.setBounds(44, 640, 70, 23);
+
+        jLabel203.setText(":");
+        jLabel203.setName("jLabel203"); // NOI18N
+        FormInput.add(jLabel203);
+        jLabel203.setBounds(0, 670, 72, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -4315,6 +4322,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel202;
+    private widget.Label jLabel203;
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
