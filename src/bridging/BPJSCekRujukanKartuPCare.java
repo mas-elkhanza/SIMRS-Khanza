@@ -7499,7 +7499,7 @@ public final class BPJSCekRujukanKartuPCare extends javax.swing.JDialog {
                         jammulai=rs.getString("jam_mulai");
                         jamselesai=rs.getString("jam_selesai");
                         kuota=rs.getInt("kuota");
-                        datajam=Sequel.cariIsi("select DATE_ADD(concat('"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"',' ','"+jammulai+"'),INTERVAL "+(Integer.parseInt(TNoReg.getText())*10)+" MINUTE) ");
+                        datajam=Sequel.cariIsi("select DATE_ADD(concat('"+Valid.SetTgl(TanggalSEP.getSelectedItem()+"")+"',' ','"+jammulai+"'),INTERVAL "+(Integer.parseInt(TNoReg.getText())*5)+" MINUTE) ");
                         parsedDate = dateFormat.parse(datajam);
                     }else{
                         statusantrean=false;

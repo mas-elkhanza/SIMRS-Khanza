@@ -43,7 +43,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private String hadir="0",siang="0",malam="0",tepatwaktu="0",toleransi="0",
-            terlambat1="0",terlambat2="0",terlambat3="0",pagi="0",pilih="",keterlambatan="0",durasi="0";
+            terlambat1="0",terlambat2="0",terlambat3="0",pagi="0",keterlambatan="0",durasi="0";
     private int liburhariraya=0,liburakhad=0,jumlahhari=0,wajibmasuk=0;
     
     /** Creates new form DlgBangsal

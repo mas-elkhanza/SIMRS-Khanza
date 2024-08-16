@@ -1,8 +1,8 @@
 <?php 
-    if(isset($_SESSION["ses_admin"])){
+    if(isset($_SESSION["ses_dokter"])){
         $halaman = isset($_GET["act"])?$_GET["act"]:NULL;
         if(!isset($_SESSION["nm_dokter"])){
-            $queryuser                      = @bukaquery2("select dokter.nm_dokter from dokter where dokter.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_admin"],"d"),20)."'");
+            $queryuser                      = @bukaquery2("select dokter.nm_dokter from dokter where dokter.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_dokter"],"d"),20)."'");
             while($rsqueryuser = mysqli_fetch_array($queryuser)) {
                 $_SESSION["nm_dokter"]      = $rsqueryuser["nm_dokter"];
             }

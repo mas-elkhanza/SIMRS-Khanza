@@ -691,7 +691,7 @@ public class frmUtama extends javax.swing.JFrame {
                                         kodepoli=Sequel.cariIsi("select maping_poli_bpjs.kd_poli_bpjs from maping_poli_bpjs where maping_poli_bpjs.kd_poli_rs=?",rs.getString("kd_poli"));
                                         if((!kodedokter.equals(""))&&(!kodepoli.equals(""))){
                                             try {     
-                                                datajam=Sequel.cariIsi("select DATE_ADD(concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),INTERVAL "+(Integer.parseInt(rs.getString("no_reg"))*10)+" MINUTE) ");
+                                                datajam=Sequel.cariIsi("select DATE_ADD(concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),INTERVAL "+(Integer.parseInt(rs.getString("no_reg"))*5)+" MINUTE) ");
                                                 parsedDate = dateFormat.parse(datajam);
                                                 if(!rs.getString("kd_pj").equals(kodebpjs)){
                                                     headers = new HttpHeaders();

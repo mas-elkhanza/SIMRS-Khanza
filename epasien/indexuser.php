@@ -284,7 +284,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
+                            <li><a href="index.php?act=UpdatePassword"><i class="material-icons">person</i>Ubah Password</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="pages/logout.php"><i class="material-icons">input</i>Log Out</a></li>
                         </ul>

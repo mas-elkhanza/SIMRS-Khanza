@@ -61,7 +61,7 @@
                          $password  = validTeks4($_POST['password'],40);
                          if(getOne2("select count(*) from user where user.id_user=AES_ENCRYPT('$username','nur') and user.password=AES_ENCRYPT('$password','windi')")>0){
                              if(getOne2("select count(*) from dokter where dokter.kd_dokter='$username'")>0){
-                                $_SESSION["ses_admin"]= encrypt_decrypt($username,"e");
+                                $_SESSION["ses_dokter"]= encrypt_decrypt($username,"e");
                                 exit(header("Location:index.php"));
                              }else{
                                 echo "Username/Password ada yang salah. Silahkan ulangi...!";

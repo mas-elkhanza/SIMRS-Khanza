@@ -1,7 +1,7 @@
 <?php	
      session_start();
-     $_SESSION["ses_pasien"]=null;
-     unset($_SESSION["ses_pasien"]); 
+     $_SESSION["ses_dokter"]=null;
+     unset($_SESSION["ses_dokter"]); 
      session_destroy();
-     exit(header("Location:../index.php?act=LoginPasien"));
+     exit(header("Location:../index.php"));
 ?>

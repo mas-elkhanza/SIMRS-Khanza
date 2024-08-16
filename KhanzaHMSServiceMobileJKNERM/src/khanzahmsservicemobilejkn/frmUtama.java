@@ -783,7 +783,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             
                                             if(task3.equals("")){
                                                 try {     
-                                                    datajam=Sequel.cariIsi("select DATE_ADD(concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),INTERVAL "+(Integer.parseInt(rs.getString("no_reg"))*10)+" MINUTE) ");
+                                                    datajam=Sequel.cariIsi("select DATE_ADD(concat('"+rs.getString("tgl_registrasi")+"',' ','"+rs2.getString("jam_mulai")+"'),INTERVAL "+(Integer.parseInt(rs.getString("no_reg"))*5)+" MINUTE) ");
                                                     parsedDate = dateFormat.parse(datajam);
                                                     if(!rs.getString("kd_pj").equals(kodebpjs)){
                                                         headers = new HttpHeaders();
