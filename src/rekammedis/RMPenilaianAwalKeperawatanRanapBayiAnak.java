@@ -8275,11 +8275,9 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         }
     }
     
-    public void setNoRm(String norwt, Date tgl2,String carabayar,String norm) {
+    public void setNoRm(String norwt,Date tgl2) {
         TNoRw.setText(norwt);
-        TNoRM.setText(norm);
         TCari.setText(norwt);
-        //CaraBayar.setText(carabayar);
         DTPCari2.setDate(tgl2);    
         isRawat(); 
     }
