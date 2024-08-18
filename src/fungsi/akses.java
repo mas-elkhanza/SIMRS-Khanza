@@ -232,7 +232,7 @@ public final class akses {
             metode_pembayaran_bankmandiri=false,bank_tujuan_transfer_bankmandiri=false,kodetransaksi_tujuan_transfer_bankmandiri=false,konsultasi_medik=false,jawaban_konsultasi_medik=false,
             pcare_cek_alergi=false,pcare_cek_prognosa=false,data_sasaran_usiaproduktif=false,data_sasaran_usialansia=false,skrining_perilaku_merokok_sekolah_remaja=false,
             skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false,skrining_risiko_kanker_payudara=false,skrining_risiko_kanker_paru=false,skrining_tbc=false,
-            skrining_kesehatan_gigi_mulut_remaja=false,penilaian_awal_keperawatan_ranap_bayi=false;
+            skrining_kesehatan_gigi_mulut_remaja=false,penilaian_awal_keperawatan_ranap_bayi=false,booking_mcu_perusahaan=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1314,6 +1314,7 @@ public final class akses {
                         akses.skrining_tbc=true;
                         akses.skrining_kesehatan_gigi_mulut_remaja=true;
                         akses.penilaian_awal_keperawatan_ranap_bayi=true;
+                        akses.booking_mcu_perusahaan=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2379,6 +2380,7 @@ public final class akses {
                         akses.skrining_tbc=rs2.getBoolean("skrining_tbc");
                         akses.skrining_kesehatan_gigi_mulut_remaja=rs2.getBoolean("skrining_kesehatan_gigi_mulut_remaja");
                         akses.penilaian_awal_keperawatan_ranap_bayi=rs2.getBoolean("penilaian_awal_keperawatan_ranap_bayi");
+                        akses.booking_mcu_perusahaan=rs2.getBoolean("booking_mcu_perusahaan");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3442,6 +3444,7 @@ public final class akses {
                         akses.skrining_tbc=false;
                         akses.skrining_kesehatan_gigi_mulut_remaja=false;
                         akses.penilaian_awal_keperawatan_ranap_bayi=false;
+                        akses.booking_mcu_perusahaan=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4528,6 +4531,7 @@ public final class akses {
         akses.skrining_tbc=false;
         akses.skrining_kesehatan_gigi_mulut_remaja=false;
         akses.penilaian_awal_keperawatan_ranap_bayi=false;
+        akses.booking_mcu_perusahaan=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5630,4 +5634,5 @@ public final class akses {
     public static boolean getskrining_tbc(){return akses.skrining_tbc;}
     public static boolean getskrining_kesehatan_gigi_mulut_remaja(){return akses.skrining_kesehatan_gigi_mulut_remaja;}
     public static boolean getpenilaian_awal_keperawatan_ranap_bayi(){return akses.penilaian_awal_keperawatan_ranap_bayi;}
+    public static boolean getbooking_mcu_perusahaan(){return akses.booking_mcu_perusahaan;}
 }   

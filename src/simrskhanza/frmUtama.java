@@ -791,6 +791,7 @@ import laporan.LaporanRekapSkriningPernapasanRalanPerTahun;
 import laporan.LaporanSisaDietPasien;
 import laporan.LaporanTahunanIGD;
 import laporan.LaporanTahunanIRJ;
+import permintaan.DlgBookingMCUPerusahaan;
 import surat.MasterMenolakAnjuranMedis;
 import permintaan.DlgBookingPeriksa;
 import permintaan.DlgCariPermintaanLabMB;
@@ -21658,6 +21659,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnBookingMCUPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgBookingMCUPerusahaan form=new DlgBookingMCUPerusahaan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22352,7 +22365,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnReferensiPoliMobileJKNFKTP,btnReferensiDokterMobileJKNFKTP,btnSKPPenilaianPegawai,btnMandiriMetodePembayaran,btnMandiriBankTujuanTRansfer,btnPembayaranPihakKe3BankMandiri,
             btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik,btnDataSasaranUsiaProduktif,
             btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan,btnSkriningObesitas,btnSkriningRisikoKankerPayudara,btnSkriningRisikoKankerParu,
-            btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak;
+            btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan;
     
     public void isWall(){
         try{            
@@ -22488,6 +22501,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbooking_registrasi()==true){
                 Panelmenu.add(btnBookingRegistrasi);
+                jmlmenu++;
+            }
+            
+            if(akses.getbooking_mcu_perusahaan()==true){
+                Panelmenu.add(btnBookingMCUPerusahaan);
                 jmlmenu++;
             }
             
@@ -27740,6 +27758,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnBookingRegistrasi);
             jmlmenu++;
         }
+        
+        if(akses.getbooking_mcu_perusahaan()==true){
+            Panelmenu.add(btnBookingMCUPerusahaan);
+            jmlmenu++;
+        }
 
         if(akses.getigd()==true){
             Panelmenu.add(btnIGD);  
@@ -32968,6 +32991,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbooking_registrasi()==true){
             if(btnBookingRegistrasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBookingRegistrasi);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getbooking_mcu_perusahaan()==true){
+            if(btnBookingMCUPerusahaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBookingMCUPerusahaan);
                 jmlmenu++;
             }                
         }
@@ -44975,5 +45005,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningTBC.setName("btnSkriningTBC"); 
         btnSkriningTBC.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningTBC.addActionListener(this::btnSkriningTBCActionPerformed);
+        
+        btnBookingMCUPerusahaan = new widget.ButtonBig();
+        btnBookingMCUPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6002396_building_coronavirus_covid19_health_hospital_icon.png"))); 
+        btnBookingMCUPerusahaan.setText("Booking MCU Perusahaan");
+        btnBookingMCUPerusahaan.setIconTextGap(0);
+        btnBookingMCUPerusahaan.setName("btnBookingMCUPerusahaan"); 
+        btnBookingMCUPerusahaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBookingMCUPerusahaan.addActionListener(this::btnBookingMCUPerusahaanActionPerformed);
     }
 }

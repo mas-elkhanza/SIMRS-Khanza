@@ -38,7 +38,7 @@ import kepegawaian.DlgCariPetugas;
  * @author perpustakaan
  */
 public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabModeMasalah,tabModeDetailMasalah,tabModeRencana,tabModeDetailRencana;
+    private final DefaultTableModel tabMode,tabModeMasalah,tabModeImunisasi,tabModeDetailMasalah,tabModeRencana,tabModeDetailRencana;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -452,6 +452,36 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeImunisasi=new DefaultTableModel(null,new Object[]{
+                "Kode","Nama Imunisasi","Ke 1","Ke 2","Ke 3","Ke 4","Ke 5","Ke 6"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbImunisasi.setModel(tabModeImunisasi);
+        tbImunisasi.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbImunisasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
+        for (i = 0; i < 8; i++) {
+            TableColumn column = tbImunisasi.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==1){
+                column.setPreferredWidth(250);
+            }else{
+                column.setPreferredWidth(50);
+            }
+        }
+        tbImunisasi.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KetAnamnesis.setDocument(new batasInput((byte)30).getKata(KetAnamnesis));
@@ -8246,18 +8276,23 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         try {
             ps=koneksi.prepareStatement(
                     "select pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,"+
-                    "bahasa_pasien.nama_bahasa,pasien.pnd,pasien.pekerjaan,reg_periksa.tgl_registrasi,reg_periksa.jam_reg "+
+                    "bahasa_pasien.nama_bahasa,pasien.pnd,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,penjab.png_jawab "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                    "where pasien.no_rkm_medis=?");
+                    "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                    "where reg_periksa.no_rawat=?");
             try {
-                ps.setString(1,TNoRM.getText());
+                ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     DTPCari1.setDate(rs.getDate("tgl_registrasi"));
+                    Agama.setText(rs.getString("agama"));
+                    Bahasa.setText(rs.getString("nama_bahasa"));
+                    PendidikanPasien.setText(rs.getString("pnd"));
+                    CaraBayar.setText(rs.getString("png_jawab"));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
                 }
             } catch (Exception e) {
