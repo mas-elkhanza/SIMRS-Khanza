@@ -708,11 +708,6 @@ public final class DlgKunjunganRalan extends javax.swing.JDialog {
         kddokter.setEditable(false);
         kddokter.setName("kddokter"); // NOI18N
         kddokter.setPreferredSize(new java.awt.Dimension(75, 23));
-        kddokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kddokterKeyPressed(evt);
-            }
-        });
         FormInput.add(kddokter);
         kddokter.setBounds(78, 40, 85, 23);
 
@@ -1271,10 +1266,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void BtnSeek3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSeek3KeyPressed
         //Valid.pindah(evt,DTPCari2,TCari);
     }//GEN-LAST:event_BtnSeek3KeyPressed
-
-    private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kddokterKeyPressed
 
     private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
         dokter.isCek();

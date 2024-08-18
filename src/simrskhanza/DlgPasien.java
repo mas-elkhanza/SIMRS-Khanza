@@ -508,10 +508,10 @@ public class DlgPasien extends javax.swing.JDialog {
             });
         } 
         
-        pengurutan=Sequel.cariIsi("select urutan from set_urut_no_rkm_medis");
-        tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
-        bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
-        posisitahun=Sequel.cariIsi("select posisi_tahun_bulan from set_urut_no_rkm_medis");
+        pengurutan=Sequel.cariIsi("select set_urut_no_rkm_medis.urutan from set_urut_no_rkm_medis");
+        tahun=Sequel.cariIsi("select set_urut_no_rkm_medis.tahun from set_urut_no_rkm_medis");
+        bulan=Sequel.cariIsi("select set_urut_no_rkm_medis.bulan from set_urut_no_rkm_medis");
+        posisitahun=Sequel.cariIsi("select set_urut_no_rkm_medis.posisi_tahun_bulan from set_urut_no_rkm_medis");
         
         penjab.addWindowListener(new WindowListener() {
             @Override
