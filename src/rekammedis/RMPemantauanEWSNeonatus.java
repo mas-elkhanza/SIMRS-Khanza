@@ -1962,6 +1962,7 @@ public final class RMPemantauanEWSNeonatus extends javax.swing.JDialog {
             }
         }
     }
+    
     private void jam(){
         ActionListener taskPerformer = new ActionListener(){
             private int nilai_jam;

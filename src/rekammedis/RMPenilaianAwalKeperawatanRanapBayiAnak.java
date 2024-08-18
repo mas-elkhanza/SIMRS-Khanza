@@ -12,6 +12,7 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
@@ -42,8 +43,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private PreparedStatement ps,ps2;
+    private ResultSet rs,rs2;
     private int i=0,jml=0,index=0;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
@@ -60,6 +61,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private JsonNode response;
     private FileReader myObj;
     private String TANGGALMUNDUR="yes";
+    private MasterCariImunisasi imunisasi=new MasterCariImunisasi(null,false);
+    private boolean ke1=false,ke2=false,ke3=false,ke4=false,ke5=false,ke6=false;
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -703,6 +706,41 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         }
         tbRencanaDetail.setDefaultRenderer(Object.class, new WarnaTable());
         
+        imunisasi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(imunisasi.getTable().getSelectedRow()!= -1){ 
+                    KdImunisasi.setText(imunisasi.getTable().getValueAt(imunisasi.getTable().getSelectedRow(),0).toString());
+                    NmImunisasi.setText(imunisasi.getTable().getValueAt(imunisasi.getTable().getSelectedRow(),1).toString());   
+                }              
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        imunisasi.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    imunisasi.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        
         try {
             TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
         } catch (Exception e) {
@@ -724,6 +762,18 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private void initComponents() {
 
         TanggalRegistrasi = new widget.TextBox();
+        DlgRiwayatImunisasi = new javax.swing.JDialog();
+        internalFrame4 = new widget.InternalFrame();
+        panelBiasa2 = new widget.PanelBiasa();
+        jLabel99 = new widget.Label();
+        BtnKeluarImunisasi = new widget.Button();
+        BtnSimpanImunisasi = new widget.Button();
+        BtnImunisasi = new widget.Button();
+        NmImunisasi = new widget.TextBox();
+        KdImunisasi = new widget.TextBox();
+        jLabel85 = new widget.Label();
+        ImunisasiKe = new widget.ComboBox();
+        BtnHapusImunisasi = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -1225,6 +1275,123 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
 
+        DlgRiwayatImunisasi.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        DlgRiwayatImunisasi.setName("DlgRiwayatImunisasi"); // NOI18N
+        DlgRiwayatImunisasi.setUndecorated(true);
+        DlgRiwayatImunisasi.setResizable(false);
+
+        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Riwayat Imunisasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame4.setName("internalFrame4"); // NOI18N
+        internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
+
+        panelBiasa2.setName("panelBiasa2"); // NOI18N
+        panelBiasa2.setLayout(null);
+
+        jLabel99.setText("Imunisasi :");
+        jLabel99.setName("jLabel99"); // NOI18N
+        panelBiasa2.add(jLabel99);
+        jLabel99.setBounds(0, 13, 67, 23);
+
+        BtnKeluarImunisasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnKeluarImunisasi.setMnemonic('U');
+        BtnKeluarImunisasi.setText("Tutup");
+        BtnKeluarImunisasi.setToolTipText("Alt+U");
+        BtnKeluarImunisasi.setName("BtnKeluarImunisasi"); // NOI18N
+        BtnKeluarImunisasi.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluarImunisasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluarImunisasiActionPerformed(evt);
+            }
+        });
+        panelBiasa2.add(BtnKeluarImunisasi);
+        BtnKeluarImunisasi.setBounds(340, 50, 100, 30);
+
+        BtnSimpanImunisasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpanImunisasi.setMnemonic('S');
+        BtnSimpanImunisasi.setText("Simpan");
+        BtnSimpanImunisasi.setToolTipText("Alt+S");
+        BtnSimpanImunisasi.setName("BtnSimpanImunisasi"); // NOI18N
+        BtnSimpanImunisasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanImunisasiActionPerformed(evt);
+            }
+        });
+        panelBiasa2.add(BtnSimpanImunisasi);
+        BtnSimpanImunisasi.setBounds(10, 50, 100, 30);
+
+        BtnImunisasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnImunisasi.setMnemonic('2');
+        BtnImunisasi.setToolTipText("Alt+2");
+        BtnImunisasi.setName("BtnImunisasi"); // NOI18N
+        BtnImunisasi.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnImunisasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnImunisasiActionPerformed(evt);
+            }
+        });
+        BtnImunisasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnImunisasiKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BtnImunisasi);
+        BtnImunisasi.setBounds(307, 13, 28, 23);
+
+        NmImunisasi.setEditable(false);
+        NmImunisasi.setName("NmImunisasi"); // NOI18N
+        NmImunisasi.setPreferredSize(new java.awt.Dimension(207, 23));
+        panelBiasa2.add(NmImunisasi);
+        NmImunisasi.setBounds(124, 13, 180, 23);
+
+        KdImunisasi.setEditable(false);
+        KdImunisasi.setName("KdImunisasi"); // NOI18N
+        KdImunisasi.setPreferredSize(new java.awt.Dimension(80, 23));
+        KdImunisasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KdImunisasiKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(KdImunisasi);
+        KdImunisasi.setBounds(71, 13, 50, 23);
+
+        jLabel85.setText("Ke :");
+        jLabel85.setName("jLabel85"); // NOI18N
+        panelBiasa2.add(jLabel85);
+        jLabel85.setBounds(343, 13, 30, 23);
+
+        ImunisasiKe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
+        ImunisasiKe.setName("ImunisasiKe"); // NOI18N
+        ImunisasiKe.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ImunisasiKeKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(ImunisasiKe);
+        ImunisasiKe.setBounds(377, 13, 60, 23);
+
+        BtnHapusImunisasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapusImunisasi.setMnemonic('H');
+        BtnHapusImunisasi.setText("Hapus");
+        BtnHapusImunisasi.setToolTipText("Alt+H");
+        BtnHapusImunisasi.setName("BtnHapusImunisasi"); // NOI18N
+        BtnHapusImunisasi.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapusImunisasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHapusImunisasiActionPerformed(evt);
+            }
+        });
+        BtnHapusImunisasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnHapusImunisasiKeyPressed(evt);
+            }
+        });
+        panelBiasa2.add(BtnHapusImunisasi);
+        BtnHapusImunisasi.setBounds(230, 50, 100, 30);
+
+        internalFrame4.add(panelBiasa2, java.awt.BorderLayout.CENTER);
+
+        DlgRiwayatImunisasi.getContentPane().add(internalFrame4, java.awt.BorderLayout.CENTER);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -1501,7 +1668,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Anamnesis.setBounds(74, 100, 130, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2024 07:06:56" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2024 14:29:46" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -4869,7 +5036,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         label29.setBounds(630, 2355, 130, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-08-2024" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2024" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -5021,7 +5188,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -5035,7 +5202,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -6749,9 +6916,9 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_AlergiKeyPressed
 
     private void BtnTambahImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahImunisasiActionPerformed
-        /*if(TNoRM.getText().equals("")){
+        if(TNoRM.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Pilih terlebih dahulu pasien yang mau dimasukkan data riwayat imunisasinya...");
-            Informasi.requestFocus();
+            Anamnesis.requestFocus();
         }else{
             KdImunisasi.setText("");
             NmImunisasi.setText("");
@@ -6761,7 +6928,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             BtnHapusImunisasi.setVisible(false);
             DlgRiwayatImunisasi.setLocationRelativeTo(internalFrame1);
             DlgRiwayatImunisasi.setVisible(true);
-        }*/
+        }
     }//GEN-LAST:event_BtnTambahImunisasiActionPerformed
 
     private void BtnPanggilHapusImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPanggilHapusImunisasiActionPerformed
@@ -7557,6 +7724,54 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Valid.pindah(evt,CaraTransportasiPulang,TCariMasalah);
     }//GEN-LAST:event_TransportasiYangDigunakanKeyPressed
 
+    private void BtnKeluarImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarImunisasiActionPerformed
+        DlgRiwayatImunisasi.dispose();
+    }//GEN-LAST:event_BtnKeluarImunisasiActionPerformed
+
+    private void BtnSimpanImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanImunisasiActionPerformed
+        if(KdImunisasi.getText().trim().equals("")||NmImunisasi.getText().trim().equals("")){
+            Valid.textKosong(BtnImunisasi,"Imunisasi");
+        }else{
+            if(Sequel.menyimpantf("riwayat_imunisasi","?,?,?","Riwayat Imunisasi",3,new String[]{
+                TNoRM.getText(),KdImunisasi.getText(),ImunisasiKe.getSelectedItem().toString()
+            })==true){
+                KdImunisasi.setText("");
+                NmImunisasi.setText("");
+                ImunisasiKe.setSelectedIndex(0);
+                tampilImunisasi();
+            }
+        }
+    }//GEN-LAST:event_BtnSimpanImunisasiActionPerformed
+
+    private void BtnImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnImunisasiActionPerformed
+        imunisasi.isCek();
+        imunisasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        imunisasi.setLocationRelativeTo(internalFrame1);
+        imunisasi.setVisible(true);
+    }//GEN-LAST:event_BtnImunisasiActionPerformed
+
+    private void BtnImunisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnImunisasiKeyPressed
+        //Valid.pindah(evt,Monitoring,BtnSimpan);
+    }//GEN-LAST:event_BtnImunisasiKeyPressed
+
+    private void KdImunisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdImunisasiKeyPressed
+
+    }//GEN-LAST:event_KdImunisasiKeyPressed
+
+    private void ImunisasiKeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ImunisasiKeKeyPressed
+        Valid.pindah(evt,TglAsuhan,TD);
+    }//GEN-LAST:event_ImunisasiKeKeyPressed
+
+    private void BtnHapusImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusImunisasiActionPerformed
+        Sequel.queryu2("delete from riwayat_imunisasi where no_rkm_medis=? and kode_imunisasi=? and no_imunisasi=?",3,new String[]{TNoRM.getText(),KdImunisasi.getText(),ImunisasiKe.getSelectedItem().toString()});
+        DlgRiwayatImunisasi.dispose();
+        tampilImunisasi();
+    }//GEN-LAST:event_BtnHapusImunisasiActionPerformed
+
+    private void BtnHapusImunisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusImunisasiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnHapusImunisasiKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -7595,13 +7810,17 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.Button BtnDPJP;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
+    private widget.Button BtnHapusImunisasi;
+    private widget.Button BtnImunisasi;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKeluarImunisasi;
     private widget.Button BtnPanggilHapusImunisasi;
     private widget.Button BtnPetugas;
     private widget.Button BtnPetugas2;
     private widget.Button BtnPrint;
     private widget.Button BtnPrint1;
     private widget.Button BtnSimpan;
+    private widget.Button BtnSimpanImunisasi;
     private widget.Button BtnTambahImunisasi;
     private widget.Button BtnTambahMasalah;
     private widget.Button BtnTambahRencana;
@@ -7615,6 +7834,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.Tanggal DTPCari2;
     private widget.TextBox DariSaudara;
     private widget.TextArea DetailRencana;
+    private javax.swing.JDialog DlgRiwayatImunisasi;
     private widget.TextBox Durasi;
     private widget.ComboBox EdukasiPsikolgis;
     private widget.PanelBiasa FormInput;
@@ -7635,6 +7855,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.ComboBox HambatanBelajar;
     private widget.ComboBox HambatanCaraBicara;
     private widget.ComboBox HubunganAnggotaKeluarga;
+    private widget.ComboBox ImunisasiKe;
     private widget.ComboBox InformasiPerencanaanPulang;
     private widget.ComboBox IntegumentDecubitus;
     private widget.ComboBox IntegumentKulit;
@@ -7646,6 +7867,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.ComboBox KardiovaskularPulsasi;
     private widget.ComboBox KardiovaskularSirkulasi;
     private widget.TextBox KdDPJP;
+    private widget.TextBox KdImunisasi;
     private widget.TextBox KdPetugas;
     private widget.TextBox KdPetugas2;
     private widget.ComboBox KelainanBawaan;
@@ -7722,6 +7944,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.TextBox NilaiResikoTotal;
     private widget.TextBox NilaiWajah;
     private widget.TextBox NmDPJP;
+    private widget.TextBox NmImunisasi;
     private widget.TextBox NmPetugas;
     private widget.TextBox NmPetugas2;
     private widget.ComboBox Nyeri;
@@ -7819,6 +8042,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
+    private widget.InternalFrame internalFrame4;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel113;
@@ -8023,6 +8247,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.Label jLabel82;
     private widget.Label jLabel83;
     private widget.Label jLabel84;
+    private widget.Label jLabel85;
     private widget.Label jLabel86;
     private widget.Label jLabel87;
     private widget.Label jLabel88;
@@ -8035,6 +8260,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.Label jLabel96;
     private widget.Label jLabel97;
     private widget.Label jLabel98;
+    private widget.Label jLabel99;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
@@ -8056,6 +8282,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.Label label16;
     private widget.Label label29;
     private widget.PanelBiasa panelBiasa1;
+    private widget.PanelBiasa panelBiasa2;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -8938,6 +9165,70 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         } catch (Exception e) {
             NilaiResikoTotal.setText("0");
             KeteranganTingkatRisiko.setText("Risiko Rendah 7 - 11");
+        }
+    }
+    
+    private void tampilImunisasi() {
+        try {
+            Valid.tabelKosong(tabModeImunisasi);
+            ps=koneksi.prepareStatement(
+                    "select master_imunisasi.kode_imunisasi,master_imunisasi.nama_imunisasi from master_imunisasi inner join riwayat_imunisasi on riwayat_imunisasi.kode_imunisasi=master_imunisasi.kode_imunisasi "+
+                    "where riwayat_imunisasi.no_rkm_medis=? group by master_imunisasi.kode_imunisasi order by master_imunisasi.kode_imunisasi  ");
+            try {
+                ps.setString(1,TNoRM.getText());
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    ke1=false;ke2=false;ke3=false;ke4=false;ke5=false;ke6=false;
+                    ps2=koneksi.prepareStatement("select * from riwayat_imunisasi where riwayat_imunisasi.no_rkm_medis=? and riwayat_imunisasi.kode_imunisasi=?");
+                    try {
+                        ps2.setString(1,TNoRM.getText());
+                        ps2.setString(2,rs.getString(1));
+                        rs2=ps2.executeQuery();
+                        while(rs2.next()){
+                            if(rs2.getInt("no_imunisasi")==1){
+                                ke1=true;
+                            }
+                            if(rs2.getInt("no_imunisasi")==2){
+                                ke2=true;
+                            }
+                            if(rs2.getInt("no_imunisasi")==3){
+                                ke3=true;
+                            }
+                            if(rs2.getInt("no_imunisasi")==4){
+                                ke4=true;
+                            }
+                            if(rs2.getInt("no_imunisasi")==5){
+                                ke5=true;
+                            }
+                            if(rs2.getInt("no_imunisasi")==6){
+                                ke6=true;
+                            }
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    
+                    tabModeImunisasi.addRow(new Object[]{rs.getString(1),rs.getString(2),ke1,ke2,ke3,ke4,ke5,ke6});
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
         }
     }
 }
