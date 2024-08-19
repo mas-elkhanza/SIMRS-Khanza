@@ -59,17 +59,20 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] judul={"Kode Kriteria","Kriteria","Ya","Tidak"};
-        tabMode=new DefaultTableModel(null,judul){
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "P","No.RM","Nama Pasien","JK","No.KTP","No.Pegawai","No.Booking","Tgl.Booking","Jam Booking"
+            }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==2)||(colIndex==3)) {
+                if (colIndex==0) {
                     a=true;
                 }
                 return a;
              }
              Class[] types = new Class[] {
-                java.lang.String.class,java.lang.String.class,java.lang.Boolean.class,java.lang.Boolean.class 
+                java.lang.Boolean.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -81,16 +84,26 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(20);
             }else if(i==1){
-                column.setPreferredWidth(570);
+                column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(24);
+                column.setPreferredWidth(200);
             }else if(i==3){
-                column.setPreferredWidth(37);
+                column.setPreferredWidth(25);
+            }else if(i==4){
+                column.setPreferredWidth(110);
+            }else if(i==5){
+                column.setPreferredWidth(110);
+            }else if(i==6){
+                column.setPreferredWidth(110);
+            }else if(i==7){
+                column.setPreferredWidth(70);
+            }else if(i==8){
+                column.setPreferredWidth(70);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -263,8 +276,8 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup = new javax.swing.JPopupMenu();
+        ppPilih = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
-        KdPerusahaan = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -287,19 +300,38 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         KdCaraBayar = new widget.TextBox();
         NmCaraBayar = new widget.TextBox();
         BtnCaraBayar = new widget.Button();
-        panelisi1 = new widget.panelisi();
-        BtnSimpan = new widget.Button();
         jLabel9 = new widget.Label();
         NmPerusahaan = new widget.TextBox();
         BtnPerusahaan = new widget.Button();
+        KdPerusahaan = new widget.TextBox();
+        panelisi1 = new widget.panelisi();
+        BtnSimpan = new widget.Button();
+        BtnBatal1 = new widget.Button();
         label10 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari1 = new widget.Button();
-        label11 = new widget.Label();
+        jLabel7 = new widget.Label();
+        LCount = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
 
         Popup.setName("Popup"); // NOI18N
+
+        ppPilih.setBackground(new java.awt.Color(255, 255, 254));
+        ppPilih.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPilih.setForeground(new java.awt.Color(50, 50, 50));
+        ppPilih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPilih.setText("Pilih Semua");
+        ppPilih.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPilih.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPilih.setName("ppPilih"); // NOI18N
+        ppPilih.setPreferredSize(new java.awt.Dimension(180, 25));
+        ppPilih.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPilihActionPerformed(evt);
+            }
+        });
+        Popup.add(ppPilih);
 
         ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
         ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -316,10 +348,6 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             }
         });
         Popup.add(ppBersihkan);
-
-        KdPerusahaan.setEditable(false);
-        KdPerusahaan.setHighlighter(null);
-        KdPerusahaan.setName("KdPerusahaan"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -357,7 +385,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
         panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 74));
+        panelisi3.setPreferredSize(new java.awt.Dimension(100, 104));
         panelisi3.setLayout(null);
 
         label13.setText("Dokter MCU :");
@@ -375,7 +403,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(KdDokter);
-        KdDokter.setBounds(89, 40, 100, 23);
+        KdDokter.setBounds(89, 40, 101, 23);
 
         NmDokter.setEditable(false);
         NmDokter.setName("NmDokter"); // NOI18N
@@ -400,7 +428,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label17);
-        label17.setBounds(430, 10, 110, 23);
+        label17.setBounds(420, 10, 110, 23);
 
         KdPoli.setEditable(false);
         KdPoli.setName("KdPoli"); // NOI18N
@@ -411,13 +439,13 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(KdPoli);
-        KdPoli.setBounds(544, 10, 60, 23);
+        KdPoli.setBounds(534, 10, 61, 23);
 
         NmPoli.setEditable(false);
         NmPoli.setName("NmPoli"); // NOI18N
         NmPoli.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(NmPoli);
-        NmPoli.setBounds(607, 10, 170, 23);
+        NmPoli.setBounds(597, 10, 170, 23);
 
         BtnPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPoli.setMnemonic('2');
@@ -430,7 +458,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(BtnPoli);
-        BtnPoli.setBounds(780, 10, 28, 23);
+        BtnPoli.setBounds(770, 10, 28, 23);
 
         jLabel16.setText("Tanggal MCU :");
         jLabel16.setName("jLabel16"); // NOI18N
@@ -494,7 +522,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label18);
-        label18.setBounds(430, 40, 110, 23);
+        label18.setBounds(420, 40, 110, 23);
 
         KdCaraBayar.setEditable(false);
         KdCaraBayar.setName("KdCaraBayar"); // NOI18N
@@ -505,13 +533,13 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(KdCaraBayar);
-        KdCaraBayar.setBounds(544, 40, 60, 23);
+        KdCaraBayar.setBounds(534, 40, 61, 23);
 
         NmCaraBayar.setEditable(false);
         NmCaraBayar.setName("NmCaraBayar"); // NOI18N
         NmCaraBayar.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(NmCaraBayar);
-        NmCaraBayar.setBounds(607, 40, 170, 23);
+        NmCaraBayar.setBounds(597, 40, 170, 23);
 
         BtnCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnCaraBayar.setMnemonic('2');
@@ -524,7 +552,43 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(BtnCaraBayar);
-        BtnCaraBayar.setBounds(780, 40, 28, 23);
+        BtnCaraBayar.setBounds(770, 40, 28, 23);
+
+        jLabel9.setText("Instansi MCU :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        jLabel9.setPreferredSize(new java.awt.Dimension(55, 23));
+        panelisi3.add(jLabel9);
+        jLabel9.setBounds(0, 70, 85, 23);
+
+        NmPerusahaan.setEditable(false);
+        NmPerusahaan.setName("NmPerusahaan"); // NOI18N
+        NmPerusahaan.setPreferredSize(new java.awt.Dimension(150, 24));
+        panelisi3.add(NmPerusahaan);
+        NmPerusahaan.setBounds(162, 70, 210, 24);
+
+        BtnPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPerusahaan.setMnemonic('1');
+        BtnPerusahaan.setToolTipText("Alt+1");
+        BtnPerusahaan.setName("BtnPerusahaan"); // NOI18N
+        BtnPerusahaan.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnPerusahaan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnPerusahaanActionPerformed(evt);
+            }
+        });
+        BtnPerusahaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnPerusahaanKeyPressed(evt);
+            }
+        });
+        panelisi3.add(BtnPerusahaan);
+        BtnPerusahaan.setBounds(375, 70, 28, 23);
+
+        KdPerusahaan.setEditable(false);
+        KdPerusahaan.setHighlighter(null);
+        KdPerusahaan.setName("KdPerusahaan"); // NOI18N
+        panelisi3.add(KdPerusahaan);
+        KdPerusahaan.setBounds(89, 70, 71, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -550,40 +614,31 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         });
         panelisi1.add(BtnSimpan);
 
-        jLabel9.setText("Instansi :");
-        jLabel9.setName("jLabel9"); // NOI18N
-        jLabel9.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelisi1.add(jLabel9);
-
-        NmPerusahaan.setEditable(false);
-        NmPerusahaan.setName("NmPerusahaan"); // NOI18N
-        NmPerusahaan.setPreferredSize(new java.awt.Dimension(150, 24));
-        panelisi1.add(NmPerusahaan);
-
-        BtnPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPerusahaan.setMnemonic('1');
-        BtnPerusahaan.setToolTipText("Alt+1");
-        BtnPerusahaan.setName("BtnPerusahaan"); // NOI18N
-        BtnPerusahaan.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnPerusahaan.addActionListener(new java.awt.event.ActionListener() {
+        BtnBatal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
+        BtnBatal1.setMnemonic('B');
+        BtnBatal1.setText("Batal");
+        BtnBatal1.setToolTipText("Alt+B");
+        BtnBatal1.setName("BtnBatal1"); // NOI18N
+        BtnBatal1.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPerusahaanActionPerformed(evt);
+                BtnBatal1ActionPerformed(evt);
             }
         });
-        BtnPerusahaan.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnBatal1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPerusahaanKeyPressed(evt);
+                BtnBatal1KeyPressed(evt);
             }
         });
-        panelisi1.add(BtnPerusahaan);
+        panelisi1.add(BtnBatal1);
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(60, 23));
+        label10.setPreferredSize(new java.awt.Dimension(65, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(140, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(170, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -608,9 +663,16 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         });
         panelisi1.add(BtnCari1);
 
-        label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(5, 23));
-        panelisi1.add(label11);
+        jLabel7.setText("Record :");
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelisi1.add(jLabel7);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(45, 23));
+        panelisi1.add(LCount);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -715,7 +777,7 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
 
 private void BtnCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari1ActionPerformed
     if(NmPerusahaan.getText().trim().equals("")){
-        Valid.textKosong(BtnPerusahaan,"Perusahaan");
+        Valid.textKosong(BtnPerusahaan,"Perusahaan/Instansi MCU");
     }else{
         tampil();
     }
@@ -731,8 +793,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
     for(i=0;i<tbDokter.getRowCount();i++){ 
-        tbDokter.setValueAt(false,i,2);
-        tbDokter.setValueAt(false,i,3);
+        tbDokter.setValueAt(false,i,0);
     }
 }//GEN-LAST:event_ppBersihkanActionPerformed
 
@@ -819,6 +880,29 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         penjab.setVisible(true);
     }//GEN-LAST:event_BtnCaraBayarActionPerformed
 
+    private void BtnBatal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal1ActionPerformed
+        for(i=0;i<tbDokter.getRowCount();i++){ 
+            if(tbDokter.getValueAt(i,0).toString().equals("true")){
+                if(Sequel.meghapustf("booking_mcu_perusahaan","no_mcu",tbDokter.getValueAt(i,6).toString())==true){
+                    tabMode.removeRow(i);
+                    i--;
+                } 
+            }
+        }
+        
+        LCount.setText(""+tabMode.getRowCount());
+    }//GEN-LAST:event_BtnBatal1ActionPerformed
+
+    private void BtnBatal1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatal1KeyPressed
+        
+    }//GEN-LAST:event_BtnBatal1KeyPressed
+
+    private void ppPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihActionPerformed
+        for(i=0;i<tbDokter.getRowCount();i++){ 
+            tbDokter.setValueAt(true,i,0);
+        }
+    }//GEN-LAST:event_ppPilihActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -836,6 +920,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.Button BtnBatal;
+    private widget.Button BtnBatal1;
     private widget.Button BtnCaraBayar;
     private widget.Button BtnCari;
     private widget.Button BtnCari1;
@@ -851,6 +937,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.TextBox KdDokter;
     private widget.TextBox KdPerusahaan;
     private widget.TextBox KdPoli;
+    private widget.Label LCount;
     private widget.ComboBox Menit;
     private widget.TextBox NmCaraBayar;
     private widget.TextBox NmDokter;
@@ -861,27 +948,78 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Tanggal Tanggal;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
+    private widget.Label jLabel7;
     private widget.Label jLabel9;
     private widget.Label label10;
-    private widget.Label label11;
     private widget.Label label13;
     private widget.Label label17;
     private widget.Label label18;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppPilih;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        
+        Valid.tabelKosong(tabMode);
+        try{
+            if(TCari.getText().equals("")){
+                ps=koneksi.prepareStatement(
+                        "select pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.no_ktp,pasien.nip,booking_mcu_perusahaan.tanggal_booking,booking_mcu_perusahaan.jam_booking," +
+                        "booking_mcu_perusahaan.no_mcu from pasien inner join booking_mcu_perusahaan on booking_mcu_perusahaan.no_rkm_medis=pasien.no_rkm_medis " +
+                        "where booking_mcu_perusahaan.status='Terdaftar' and booking_mcu_perusahaan.kode_perusahaan=? and booking_mcu_perusahaan.tanggal_mcu=? order by pasien.nip");
+            }else{
+                ps=koneksi.prepareStatement(
+                        "select pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.no_ktp,pasien.nip,booking_mcu_perusahaan.tanggal_booking,booking_mcu_perusahaan.jam_booking," +
+                        "booking_mcu_perusahaan.no_mcu from pasien inner join booking_mcu_perusahaan on booking_mcu_perusahaan.no_rkm_medis=pasien.no_rkm_medis " +
+                        "where booking_mcu_perusahaan.status='Terdaftar' and booking_mcu_perusahaan.kode_perusahaan=? and booking_mcu_perusahaan.tanggal_mcu=? and "+
+                        "(pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pasien.no_ktp like ? or pasien.nip like ? or booking_mcu_perusahaan.no_mcu like ?) order by pasien.nip");
+            }
+                
+            try {
+                if(TCari.getText().equals("")){
+                    ps.setString(1,KdPerusahaan.getText());
+                    ps.setString(2,Valid.SetTgl(Tanggal.getSelectedItem()+""));
+                }else{
+                    ps.setString(1,KdPerusahaan.getText());
+                    ps.setString(2,Valid.SetTgl(Tanggal.getSelectedItem()+""));
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                }   
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("no_ktp"),
+                        rs.getString("nip"),rs.getString("no_mcu"),rs.getString("tanggal_booking"),rs.getString("jam_booking")
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LCount.setText(""+tabMode.getRowCount());
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
     }
     
     
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
+        BtnSimpan.setEnabled(akses.getbooking_mcu_perusahaan());
+        BtnCari.setEnabled(akses.getbooking_mcu_perusahaan());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
