@@ -967,7 +967,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSelesaiActionPerformed
         for(i=0;i<tbDokter.getRowCount();i++){ 
             if(tbDokter.getValueAt(i,0).toString().equals("true")){
-                Sequel.mengedit2("booking_mcu_perusahaan","no_mcu=?","status='Selesai'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
+                Sequel.mengedit3("booking_mcu_perusahaan","no_mcu=?","status='Selesai'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
                 tbDokter.setValueAt("Selesai",i, 11);
             }
         }
@@ -980,7 +980,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnMenungguActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenungguActionPerformed
         for(i=0;i<tbDokter.getRowCount();i++){ 
             if(tbDokter.getValueAt(i,0).toString().equals("true")){
-                Sequel.mengedit2("booking_mcu_perusahaan","no_mcu=?","status='Menunggu Hasil'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
+                Sequel.mengedit3("booking_mcu_perusahaan","no_mcu=?","status='Menunggu Hasil'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
                 tbDokter.setValueAt("Menunggu Hasil",i, 11);
             }
         }
