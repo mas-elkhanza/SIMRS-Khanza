@@ -2,17 +2,22 @@ package permintaan;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -20,20 +25,22 @@ import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPerusahaan;
 import simrskhanza.DlgCariPoli;
+import fungsi.sekuel;
 
 public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
+    private sekuel Sequel=new sekuel();
     private PreparedStatement ps;
     private ResultSet rs;
     private Connection koneksi=koneksiDB.condb();
     private int i=0;
-    private double total=0;
-    private String nofak="",mem="",ptg="",sat="",bar="",tanggal="",order="order by databarang.nama_brng";
     private DlgCariPerusahaan perusahaan=new DlgCariPerusahaan(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private StringBuilder htmlContent;
+    private String pilihan="";
+    
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
@@ -43,7 +50,7 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "P","No.RM","Nama Pasien","JK","Umur","No.HP","No.KTP","No.Pegawai","No.Booking","Tgl.Booking","Jam Booking","Status MCU","Kode Instansi","Nama Instansi",
-                "No.Pelayanan","No.Urut","Kode Dokter","Nama Dokter MCU","Kode Unit","Nama Unit/Poli MCU","Kode Bayar","Cara/Jenis Bayar","Stts Daftar","Stts Poli MCU"
+                "No.Pelayanan","No.Urut","Kode Dokter","Nama Dokter MCU","Kode Unit","Nama Unit/Poli MCU","Kode Bayar","Cara/Jenis Bayar","Stts Daftar","Stts Poli"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -79,14 +86,49 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(25);
             }else if(i==4){
+                column.setPreferredWidth(40);
+            }else if(i==5){
+                column.setPreferredWidth(100);
+            }else if(i==6){
                 column.setPreferredWidth(110);
+            }else if(i==7){
+                column.setPreferredWidth(110);
+            }else if(i==8){
+                column.setPreferredWidth(100);
+            }else if(i==9){
+                column.setPreferredWidth(70);
+            }else if(i==10){
+                column.setPreferredWidth(70);
+            }else if(i==11){
+                column.setPreferredWidth(80);
+            }else if(i==12){
+                column.setPreferredWidth(75);
+            }else if(i==13){
+                column.setPreferredWidth(160);
+            }else if(i==14){
+                column.setPreferredWidth(105);
+            }else if(i==15){
+                column.setPreferredWidth(47);
+            }else if(i==16){
+                column.setPreferredWidth(90);
+            }else if(i==17){
+                column.setPreferredWidth(160);
+            }else if(i==18){
+                column.setPreferredWidth(60);
+            }else if(i==19){
+                column.setPreferredWidth(140);
+            }else if(i==20){
+                column.setPreferredWidth(65);
+            }else if(i==21){
+                column.setPreferredWidth(130);
+            }else if(i==22){
+                column.setPreferredWidth(60);
+            }else if(i==23){
+                column.setPreferredWidth(55);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        KdDokter.setDocument(new batasInput((byte)15).getKata(KdDokter));
-        NmDokter.setDocument(new batasInput((byte)70).getKata(NmDokter));
-        KdPerusahaan.setDocument(new batasInput((byte)25).getKata(KdPerusahaan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));  
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -219,7 +261,9 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup1 = new javax.swing.JPopupMenu();
-        MnKodeBarangDesc = new javax.swing.JMenuItem();
+        ppPilih = new javax.swing.JMenuItem();
+        ppBersihkan = new javax.swing.JMenuItem();
+        ppBatalMCU = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelisi3 = new widget.panelisi();
         label11 = new widget.Label();
@@ -254,21 +298,53 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
 
         Popup1.setName("Popup1"); // NOI18N
 
-        MnKodeBarangDesc.setBackground(new java.awt.Color(255, 255, 254));
-        MnKodeBarangDesc.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKodeBarangDesc.setForeground(new java.awt.Color(50, 50, 50));
-        MnKodeBarangDesc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKodeBarangDesc.setText("Urutkan Berdasar Kode Barang Descending");
-        MnKodeBarangDesc.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        MnKodeBarangDesc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        MnKodeBarangDesc.setName("MnKodeBarangDesc"); // NOI18N
-        MnKodeBarangDesc.setPreferredSize(new java.awt.Dimension(280, 26));
-        MnKodeBarangDesc.addActionListener(new java.awt.event.ActionListener() {
+        ppPilih.setBackground(new java.awt.Color(255, 255, 254));
+        ppPilih.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPilih.setForeground(new java.awt.Color(50, 50, 50));
+        ppPilih.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPilih.setText("Pilih Semua");
+        ppPilih.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPilih.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPilih.setName("ppPilih"); // NOI18N
+        ppPilih.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppPilih.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKodeBarangDescActionPerformed(evt);
+                ppPilihActionPerformed(evt);
             }
         });
-        Popup1.add(MnKodeBarangDesc);
+        Popup1.add(ppPilih);
+
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkan.setText("Bersihkan Pilihan");
+        ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkan.setName("ppBersihkan"); // NOI18N
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanActionPerformed(evt);
+            }
+        });
+        Popup1.add(ppBersihkan);
+
+        ppBatalMCU.setBackground(new java.awt.Color(255, 255, 254));
+        ppBatalMCU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBatalMCU.setForeground(new java.awt.Color(50, 50, 50));
+        ppBatalMCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBatalMCU.setText("Batalkan Pendaftaran MCU");
+        ppBatalMCU.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBatalMCU.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBatalMCU.setName("ppBatalMCU"); // NOI18N
+        ppBatalMCU.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppBatalMCU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBatalMCUActionPerformed(evt);
+            }
+        });
+        Popup1.add(ppBatalMCU);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -322,6 +398,7 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
         panelisi3.add(KdPerusahaan);
         KdPerusahaan.setBounds(449, 40, 80, 23);
 
+        NmDokter.setEditable(false);
         NmDokter.setName("NmDokter"); // NOI18N
         NmDokter.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(NmDokter);
@@ -388,13 +465,9 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
         panelisi3.add(KdPoli);
         KdPoli.setBounds(94, 10, 53, 23);
 
+        NmPoli.setEditable(false);
         NmPoli.setName("NmPoli"); // NOI18N
         NmPoli.setPreferredSize(new java.awt.Dimension(80, 23));
-        NmPoli.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmPoliKeyPressed(evt);
-            }
-        });
         panelisi3.add(NmPoli);
         NmPoli.setBounds(149, 10, 150, 23);
 
@@ -636,46 +709,252 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         NmDokter.setText("");
         KdPerusahaan.setText("");
         NmPerusahaan.setText("");
+        tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
         }else{
-            Valid.pindah(evt, BtnPrint, BtnKeluar);
+            Valid.pindah(evt, BtnPrint, BtnMenunggu);
         }
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+            BtnPrint.requestFocus();
+        }else if(tabMode.getRowCount()!=0){
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            try {            
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi2 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"+                    
+                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                );
+                bg.close();
+
+                File f;            
+                BufferedWriter bw; 
+
+                pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                switch (pilihan) {
+                    case "Laporan 1 (HTML)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>JK</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Umur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.HP</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.KTP</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Pegawai</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Booking</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Booking</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jam Booking</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Status MCU</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Instansi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Instansi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Pelayanan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Urut</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Dokter</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Dokter MCU</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Unit</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Unit/Poli MCU</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Cara/Jenis Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stts Daftar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stts Poli</td>"+
+                                "</tr>"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,8)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,9)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,10)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,11)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,12)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,13)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,14)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,15)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,16)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,17)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,19)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,20)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,21)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,22)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,23)+"</td>"+
+                                    "</tr>"
+                                ); 
+                            }            
+
+                            f = new File("LaporanMCUPerusahaan.html");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write("<html>"+
+                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                        "<body>"+
+                                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>LAPORAN MCU PERUSAHAAN PERIODE "+Tgl1.getSelectedItem()+" S.D. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>"+
+                                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                htmlContent.toString()+
+                                            "</table>"+
+                                        "</body>"+                   
+                                     "</html>"
+                            );
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 2 (WPS)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.RM</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Pasien</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>JK</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Umur</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.HP</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.KTP</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Pegawai</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Booking</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tgl.Booking</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Jam Booking</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Status MCU</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Instansi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Instansi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Pelayanan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>No.Urut</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Dokter</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Dokter MCU</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Unit</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Nama Unit/Poli MCU</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kode Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Cara/Jenis Bayar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stts Daftar</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'>Stts Poli</td>"+
+                                "</tr>"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "<tr class='isi'>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,1)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,2)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,3)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,4)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,5)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,6)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,7)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,8)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,9)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,10)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,11)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,12)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,13)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,14)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,15)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,16)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,17)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,18)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,19)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,20)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,21)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,22)+"</td>"+
+                                        "<td valign='top'>"+tabMode.getValueAt(i,23)+"</td>"+
+                                    "</tr>"
+                                ); 
+                            }            
+
+                            f = new File("LaporanMCUPerusahaan.wps");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write("<html>"+
+                                        "<head><link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" /></head>"+
+                                        "<body>"+
+                                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                "<tr class='isi2'>"+
+                                                    "<td valign='top' align='center'>"+
+                                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                        "<font size='2' face='Tahoma'>LAPORAN MCU PERUSAHAAN PERIODE "+Tgl1.getSelectedItem()+" S.D. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
+                                                    "</td>"+
+                                               "</tr>"+
+                                            "</table>"+
+                                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                                htmlContent.toString()+
+                                            "</table>"+
+                                        "</body>"+                   
+                                     "</html>"
+                            );
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 3 (CSV)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "\"No.RM\";\"Nama Pasien\";\"JK\";\"Umur\";\"No.HP\";\"No.KTP\";\"No.Pegawai\";\"No.Booking\";\"Tgl.Booking\";\"Jam Booking\";\"Status MCU\";\"Kode Instansi\";\"Nama Instansi\";\"No.Pelayanan\";\"No.Urut\";\"Kode Dokter\";\"Nama Dokter MCU\";\"Kode Unit\";\"Nama Unit/Poli MCU\";\"Kode Bayar\";\"Cara/Jenis Bayar\";\"Stts Daftar\";\"Stts Poli\"\n"
+                            ); 
+                            for(i=0;i<tabMode.getRowCount();i++){  
+                                htmlContent.append(                             
+                                    "\""+tabMode.getValueAt(i,1)+"\";\""+tabMode.getValueAt(i,2)+"\";\""+tabMode.getValueAt(i,3)+"\";\""+tabMode.getValueAt(i,4)+"\";\""+tabMode.getValueAt(i,5)+"\";\""+tabMode.getValueAt(i,6)+"\";\""+tabMode.getValueAt(i,7)+"\";\""+tabMode.getValueAt(i,8)+"\";\""+tabMode.getValueAt(i,9)+"\";\""+tabMode.getValueAt(i,10)+"\";\""+tabMode.getValueAt(i,11)+"\";\""+tabMode.getValueAt(i,12)+"\";\""+tabMode.getValueAt(i,13)+"\";\""+tabMode.getValueAt(i,14)+"\";\""+tabMode.getValueAt(i,15)+"\";\""+tabMode.getValueAt(i,16)+"\";\""+tabMode.getValueAt(i,17)+"\";\""+tabMode.getValueAt(i,18)+"\";\""+tabMode.getValueAt(i,19)+"\";\""+tabMode.getValueAt(i,20)+"\";\""+tabMode.getValueAt(i,21)+"\";\""+tabMode.getValueAt(i,22)+"\";\""+tabMode.getValueAt(i,23)+"\"\n"
+                                ); 
+                            }            
+
+                            f = new File("LaporanMCUPerusahaan.csv");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(htmlContent.toString());
+
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break; 
+                }                 
+            } catch (Exception e) {
+            }     
+            this.setCursor(Cursor.getDefaultCursor());
+        }
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnPrintActionPerformed(null);
         }else{
-            Valid.pindah(evt,BtnAll,BtnAll);
+            Valid.pindah(evt,BtnSelesai,BtnKeluar);
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
+        dokter.dispose();
+        poli.dispose();
+        perusahaan.dispose();
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             dispose();
-        }else{Valid.pindah(evt,BtnPrint,kdbar);}*/
+        }else{Valid.pindah(evt,BtnPrint,TCari);}
     }//GEN-LAST:event_BtnKeluarKeyPressed
-
-    private void MnKodeBarangDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKodeBarangDescActionPerformed
-        //order="order by databarang.kode_brng desc";
-        //tampil();
-    }//GEN-LAST:event_MnKodeBarangDescActionPerformed
-
-    private void NmPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmPoliKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NmPoliKeyPressed
 
     private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliActionPerformed
         poli.isCek();
@@ -686,29 +965,55 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPoliActionPerformed
 
     private void BtnSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSelesaiActionPerformed
-        /*for(i=0;i<tbDokter.getRowCount();i++){
+        for(i=0;i<tbDokter.getRowCount();i++){ 
             if(tbDokter.getValueAt(i,0).toString().equals("true")){
-                if(Sequel.meghapustf("booking_mcu_perusahaan","no_mcu",tbDokter.getValueAt(i,6).toString())==true){
-                    tabMode.removeRow(i);
-                    i--;
-                }
+                Sequel.mengedit2("booking_mcu_perusahaan","no_mcu=?","status='Selesai'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
+                tbDokter.setValueAt("Selesai",i, 11);
             }
         }
-
-        LCount.setText(""+tabMode.getRowCount());*/
     }//GEN-LAST:event_BtnSelesaiActionPerformed
 
     private void BtnSelesaiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSelesaiKeyPressed
-        //Valid.pindah(evt,BtnSimpan,TCari);
+        Valid.pindah(evt,BtnMenunggu,BtnPrint);
     }//GEN-LAST:event_BtnSelesaiKeyPressed
 
     private void BtnMenungguActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenungguActionPerformed
-        // TODO add your handling code here:
+        for(i=0;i<tbDokter.getRowCount();i++){ 
+            if(tbDokter.getValueAt(i,0).toString().equals("true")){
+                Sequel.mengedit2("booking_mcu_perusahaan","no_mcu=?","status='Menunggu Hasil'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
+                tbDokter.setValueAt("Menunggu Hasil",i, 11);
+            }
+        }
     }//GEN-LAST:event_BtnMenungguActionPerformed
 
     private void BtnMenungguKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnMenungguKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt, BtnAll, BtnSelesai);
     }//GEN-LAST:event_BtnMenungguKeyPressed
+
+    private void ppPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihActionPerformed
+        for(i=0;i<tbDokter.getRowCount();i++){
+            tbDokter.setValueAt(true,i,0);
+        }
+    }//GEN-LAST:event_ppPilihActionPerformed
+
+    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        for(i=0;i<tbDokter.getRowCount();i++){
+            tbDokter.setValueAt(false,i,0);
+        }
+    }//GEN-LAST:event_ppBersihkanActionPerformed
+
+    private void ppBatalMCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBatalMCUActionPerformed
+        for(i=0;i<tbDokter.getRowCount();i++){ 
+            if(tbDokter.getValueAt(i,0).toString().equals("true")){
+                if(Sequel.meghapustf("reg_periksa","no_rawat",tbDokter.getValueAt(i,14).toString())==true){
+                    Sequel.mengedit2("booking_mcu_perusahaan","no_mcu=?","status='Terdaftar'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
+                    tabMode.removeRow(i);
+                    i--;
+                }  
+            }
+        }
+        LCount.setText(""+tabMode.getRowCount());
+    }//GEN-LAST:event_ppBatalMCUActionPerformed
 
     /**
     * @param args the command line arguments
@@ -740,7 +1045,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox KdPerusahaan;
     private widget.TextBox KdPoli;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnKodeBarangDesc;
     private widget.TextBox NmDokter;
     private widget.TextBox NmPerusahaan;
     private widget.TextBox NmPoli;
@@ -758,6 +1062,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
+    private javax.swing.JMenuItem ppBatalMCU;
+    private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppPilih;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -847,5 +1154,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         BtnSelesai.setEnabled(akses.getbooking_mcu_perusahaan());
         BtnMenunggu.setEnabled(akses.getbooking_mcu_perusahaan());
         BtnPrint.setEnabled(akses.getbooking_mcu_perusahaan());
+        if(akses.getkode().equals("Admin Utama")){
+            ppBatalMCU.setEnabled(true);
+        }else{
+            ppBatalMCU.setEnabled(false);
+        } 
     }
 }
