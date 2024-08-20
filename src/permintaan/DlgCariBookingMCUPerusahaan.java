@@ -969,6 +969,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(tbDokter.getValueAt(i,0).toString().equals("true")){
                 Sequel.mengedit3("booking_mcu_perusahaan","no_mcu=?","status='Selesai'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
                 tbDokter.setValueAt("Selesai",i, 11);
+                tbDokter.setValueAt(false,i,0);
             }
         }
     }//GEN-LAST:event_BtnSelesaiActionPerformed
@@ -982,6 +983,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(tbDokter.getValueAt(i,0).toString().equals("true")){
                 Sequel.mengedit3("booking_mcu_perusahaan","no_mcu=?","status='Menunggu Hasil'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
                 tbDokter.setValueAt("Menunggu Hasil",i, 11);
+                tbDokter.setValueAt(false,i,0);
             }
         }
     }//GEN-LAST:event_BtnMenungguActionPerformed
