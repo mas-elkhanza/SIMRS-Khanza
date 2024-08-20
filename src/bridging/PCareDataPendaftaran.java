@@ -3350,7 +3350,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     if(SimpanAntrianOnSite()==true){
                         insertPCare();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter / Nomor Referensi..!!");
+                        JOptionPane.showMessageDialog(null,"Maaf, antrian mobile JKN gagal dibuat. Silahkan cek jadwal dokter..!!");
                     }
                 }else{
                     insertPCare();

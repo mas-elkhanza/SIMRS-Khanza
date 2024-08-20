@@ -48,7 +48,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private sekuel Sequel=new sekuel();
-    private int jml=0,i=0,row=0,index=0;
+    private int i=0;
     private DlgCariPerusahaan perusahaan=new DlgCariPerusahaan(null,false);
     private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
@@ -110,13 +110,17 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(70);
             }else if(i==9){
-                column.setPreferredWidth(70);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==10){
-                column.setPreferredWidth(70);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==11){
-                column.setPreferredWidth(70);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==12){
-                column.setPreferredWidth(70);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -378,19 +382,9 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
 
         TNoReg.setName("TNoReg"); // NOI18N
         TNoReg.setPreferredSize(new java.awt.Dimension(170, 23));
-        TNoReg.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRegKeyPressed(evt);
-            }
-        });
 
         TNoRw.setName("TNoRw"); // NOI18N
         TNoRw.setPreferredSize(new java.awt.Dimension(170, 23));
-        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRwKeyPressed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -440,11 +434,6 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         KdDokter.setEditable(false);
         KdDokter.setName("KdDokter"); // NOI18N
         KdDokter.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdDokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdDokterKeyPressed(evt);
-            }
-        });
         panelisi3.add(KdDokter);
         KdDokter.setBounds(89, 40, 101, 23);
 
@@ -476,11 +465,6 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         KdPoli.setEditable(false);
         KdPoli.setName("KdPoli"); // NOI18N
         KdPoli.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdPoli.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPoliKeyPressed(evt);
-            }
-        });
         panelisi3.add(KdPoli);
         KdPoli.setBounds(534, 10, 61, 23);
 
@@ -570,11 +554,6 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         KdCaraBayar.setEditable(false);
         KdCaraBayar.setName("KdCaraBayar"); // NOI18N
         KdCaraBayar.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdCaraBayar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdCaraBayarKeyPressed(evt);
-            }
-        });
         panelisi3.add(KdCaraBayar);
         KdCaraBayar.setBounds(534, 40, 61, 23);
 
@@ -658,9 +637,9 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         panelisi1.add(BtnSimpan);
 
         BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
-        BtnBatal.setMnemonic('B');
+        BtnBatal.setMnemonic('H');
         BtnBatal.setText("Hapus");
-        BtnBatal.setToolTipText("Alt+B");
+        BtnBatal.setToolTipText("Alt+H");
         BtnBatal.setName("BtnBatal"); // NOI18N
         BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnBatal.addActionListener(new java.awt.event.ActionListener() {
@@ -762,7 +741,11 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
+        DlgCariBookingMCUPerusahaan form=new DlgCariBookingMCUPerusahaan(null,false);
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnCariActionPerformed
 
@@ -917,7 +900,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,BtnKeluar,TCari);
+            Valid.pindah(evt,BtnKeluar,BtnBatal);
         }
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -935,7 +918,7 @@ private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCa
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             BtnCari1.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-           // Keterangan.requestFocus();
+            BtnBatal.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             tbDokter.requestFocus();
         }
@@ -970,14 +953,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         dokter.setAlwaysOnTop(false);
         dokter.setVisible(true);
     }//GEN-LAST:event_BtnDokterActionPerformed
-
-    private void KdDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokterKeyPressed
-        
-    }//GEN-LAST:event_KdDokterKeyPressed
-
-    private void KdPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPoliKeyPressed
-        
-    }//GEN-LAST:event_KdPoliKeyPressed
 
     private void BtnPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPoliActionPerformed
         poli.isCek();
@@ -1027,16 +1002,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_CmbMenitKeyPressed
 
     private void CmbDetikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CmbDetikKeyPressed
-        //Valid.pindah(evt,Menit,btnPetugas);
+        Valid.pindah(evt,CmbMenit,BtnPoli);
     }//GEN-LAST:event_CmbDetikKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
         Valid.pindah(evt,TCari,CmbJam);
     }//GEN-LAST:event_TanggalKeyPressed
-
-    private void KdCaraBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdCaraBayarKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdCaraBayarKeyPressed
 
     private void BtnCaraBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCaraBayarActionPerformed
         penjab.isCek();
@@ -1060,7 +1031,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
-        
+       Valid.pindah(evt,BtnSimpan,TCari); 
     }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void ppPilihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPilihActionPerformed
@@ -1068,14 +1039,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             tbDokter.setValueAt(true,i,0);
         }
     }//GEN-LAST:event_ppPilihActionPerformed
-
-    private void TNoRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRegKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TNoRegKeyPressed
-
-    private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TNoRwKeyPressed
 
     /**
     * @param args the command line arguments
