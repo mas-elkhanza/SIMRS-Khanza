@@ -100,7 +100,7 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
             }else if(i==10){
                 column.setPreferredWidth(70);
             }else if(i==11){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(81);
             }else if(i==12){
                 column.setPreferredWidth(75);
             }else if(i==13){
@@ -1007,10 +1007,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void ppBatalMCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBatalMCUActionPerformed
         for(i=0;i<tbDokter.getRowCount();i++){ 
             if(tbDokter.getValueAt(i,0).toString().equals("true")){
-                if(Sequel.meghapustf("reg_periksa","no_rawat",tbDokter.getValueAt(i,14).toString())==true){
-                    Sequel.mengedit2("booking_mcu_perusahaan","no_mcu=?","status='Terdaftar'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
-                    tabMode.removeRow(i);
-                    i--;
+                if(Sequel.meghapustf("booking_mcu_perusahaan_berhasil_registrasi","no_mcu",tbDokter.getValueAt(i,8).toString())==true){
+                    if(Sequel.meghapustf("reg_periksa","no_rawat",tbDokter.getValueAt(i,14).toString())==true){
+                        Sequel.mengedit3("booking_mcu_perusahaan","no_mcu=?","status='Terdaftar'",1,new String[]{tbDokter.getValueAt(i,8).toString()});
+                        tabMode.removeRow(i);
+                        i--;
+                    }else{
+                        Sequel.menyimpan2("booking_mcu_perusahaan_berhasil_registrasi","?,?",2,new String[]{
+                            tbDokter.getValueAt(i,8).toString(),tbDokter.getValueAt(i,14).toString()
+                        });
+                    }
                 }  
             }
         }
