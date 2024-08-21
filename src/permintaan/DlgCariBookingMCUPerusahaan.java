@@ -26,6 +26,7 @@ import kepegawaian.DlgCariDokter;
 import simrskhanza.DlgCariPerusahaan;
 import simrskhanza.DlgCariPoli;
 import fungsi.sekuel;
+import rekammedis.RMRiwayatPerawatan;
 
 public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -261,6 +262,7 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
     private void initComponents() {
 
         Popup1 = new javax.swing.JPopupMenu();
+        ppRiwayatPerawatan = new javax.swing.JMenuItem();
         ppPilih = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
         ppBatalMCU = new javax.swing.JMenuItem();
@@ -297,6 +299,22 @@ public class DlgCariBookingMCUPerusahaan extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
 
         Popup1.setName("Popup1"); // NOI18N
+
+        ppRiwayatPerawatan.setBackground(new java.awt.Color(255, 255, 254));
+        ppRiwayatPerawatan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRiwayatPerawatan.setForeground(new java.awt.Color(50, 50, 50));
+        ppRiwayatPerawatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppRiwayatPerawatan.setText("Riwayat Perawatan");
+        ppRiwayatPerawatan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppRiwayatPerawatan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppRiwayatPerawatan.setName("ppRiwayatPerawatan"); // NOI18N
+        ppRiwayatPerawatan.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppRiwayatPerawatan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppRiwayatPerawatanActionPerformed(evt);
+            }
+        });
+        Popup1.add(ppRiwayatPerawatan);
 
         ppPilih.setBackground(new java.awt.Color(255, 255, 254));
         ppPilih.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1023,6 +1041,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         LCount.setText(""+tabMode.getRowCount());
     }//GEN-LAST:event_ppBatalMCUActionPerformed
 
+    private void ppRiwayatPerawatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRiwayatPerawatanActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+        }else{
+            if(tbDokter.getSelectedRow()!= -1){               
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
+                resume.setNoRm(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString(),tbDokter.getValueAt(tbDokter.getSelectedRow(),2).toString());
+                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                resume.setLocationRelativeTo(internalFrame1);
+                resume.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());                
+            }
+        }
+    }//GEN-LAST:event_ppRiwayatPerawatanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1073,6 +1107,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private javax.swing.JMenuItem ppBatalMCU;
     private javax.swing.JMenuItem ppBersihkan;
     private javax.swing.JMenuItem ppPilih;
+    private javax.swing.JMenuItem ppRiwayatPerawatan;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
@@ -1162,6 +1197,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         BtnSelesai.setEnabled(akses.getbooking_mcu_perusahaan());
         BtnMenunggu.setEnabled(akses.getbooking_mcu_perusahaan());
         BtnPrint.setEnabled(akses.getbooking_mcu_perusahaan());
+        ppRiwayatPerawatan.setEnabled(akses.getresume_pasien());
         if(akses.getkode().equals("Admin Utama")){
             ppBatalMCU.setEnabled(true);
         }else{
