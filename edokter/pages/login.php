@@ -45,6 +45,24 @@
                             <span id="MsgIsi2" style="color:#CC0000; font-size:10px;"></span>
                         </div>
                     </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">assignment</i>
+                        </span>
+                        <div class="form-line">
+                            <table width="100%" border="0">
+                                <tr>
+                                    <td width="50%" valign="top">
+                                        <img width="98%" height="45px" src="pages/captcha.php" alt="gambar" />
+                                    </td>
+                                    <td width="50%">
+                                        <input type="text" class="form-control" onkeydown="setDefault(this, document.getElementById('MsgIsi3'));" id="TxtIsi3" name="inputcaptcha" pattern="[0-9]{1,6}" title=" 0-9 (Maksimal 6 karakter)" required placeholder="Masukkan Captcha" autocomplete="off" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <span id="MsgIsi3" style="color:#CC0000; font-size:10px;"></span>
+                        </span>
+                    </div>
                     <div class="row">
                         <div class="col-xs-4">
                             <button class="btn btn-block bg-pink waves-effect" name="BtnLogin" type="submit">LOG IN</button>
@@ -57,18 +75,23 @@
                 <?php 
                     $BtnLogin=isset($_POST['BtnLogin'])?$_POST['BtnLogin']:NULL;
                     if (isset($BtnLogin)) {
-                         $username  = validTeks4($_POST['username'],20);
-                         $password  = validTeks4($_POST['password'],40);
-                         if(getOne2("select count(*) from user where user.id_user=AES_ENCRYPT('$username','nur') and user.password=AES_ENCRYPT('$password','windi')")>0){
-                             if(getOne2("select count(*) from dokter where dokter.kd_dokter='$username'")>0){
-                                $_SESSION["ses_dokter"]= encrypt_decrypt($username,"e");
-                                exit(header("Location:index.php"));
-                             }else{
+                        if(@$_SESSION["Capcay"]==getOne2("select aes_encrypt(".validTeks4($_POST["inputcaptcha"],10).",'windi')")){
+                            unset($_SESSION['Capcay']);
+                            $username  = validTeks4($_POST['username'],20);
+                            $password  = validTeks4($_POST['password'],40);
+                            if(getOne2("select count(*) from user where user.id_user=AES_ENCRYPT('$username','nur') and user.password=AES_ENCRYPT('$password','windi')")>0){
+                                if(getOne2("select count(*) from dokter where dokter.kd_dokter='$username'")>0){
+                                   $_SESSION["ses_dokter"]= encrypt_decrypt($username,"e");
+                                   exit(header("Location:index.php"));
+                                }else{
+                                   echo "Username/Password ada yang salah. Silahkan ulangi...!";
+                                }  
+                            }else{
                                 echo "Username/Password ada yang salah. Silahkan ulangi...!";
-                             }  
-                         }else{
-                             echo "Username/Password ada yang salah. Silahkan ulangi...!";
-                         }
+                            }
+                        }else{
+                            echo "Captcha tidak sesuai, silahkan ulangi ...!";
+                        }
                     }
                 ?>
             </div>

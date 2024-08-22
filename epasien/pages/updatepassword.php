@@ -41,18 +41,58 @@
                              if($passwordbaru==$passwordbaruulangi){
                                  if(strlen($passwordbaru)>5){
                                      if(bukaquery2("update personal_pasien set password=AES_ENCRYPT('$passwordbaru','windi') where personal_pasien.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."'")){
-                                         echo "Ubah password berhasil...";
+                                         echo "<div class='row clearfix'>
+                                                    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                                        <div class='card'>
+                                                            <div class='body bg-danger'>
+                                                                <center><h4>Ubah password berhasil...</h4></center>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                               </div>";
                                      }else{
-                                         echo "Gagal ubah password. Silahkan ulangi...!";
+                                         echo "<div class='row clearfix'>
+                                                    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                                        <div class='card'>
+                                                            <div class='body bg-success'>
+                                                                <center><h4>Gagal ubah password. Silahkan ulangi...!</h4></center>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                               </div>";
                                      }
                                  }else{
-                                     echo "Password minimal 6 karakter. Silahkan ulangi...!";
+                                     echo "<div class='row clearfix'>
+                                                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                                    <div class='card'>
+                                                        <div class='body bg-success'>
+                                                            <center><h4>Gagal mengubah password.<br>Password minimal 6 karakter. Silahkan ulangi...!</h4></center>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                           </div>";
                                  }
                              }else{
-                                 echo "Password baru harus cocok. Silahkan ulangi...!";
+                                 echo "<div class='row clearfix'>
+                                            <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                                <div class='card'>
+                                                    <div class='body bg-success'>
+                                                        <center><h4>Gagal mengubah password.<br>Password baru harus cocok. Silahkan ulangi...!</h4></center>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       </div>";
                              }
                          }else{
-                             echo "Password lama salah. Silahkan ulangi...!";
+                             echo "<div class='row clearfix'>
+                                        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                            <div class='card'>
+                                                <div class='body bg-success'>
+                                                    <center><h4>Gagal mengubah password.<br>Password lama salah. Silahkan ulangi...!</h4></center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                   </div>";
                          }
                     }
                 ?>

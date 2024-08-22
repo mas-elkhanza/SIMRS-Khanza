@@ -76,7 +76,7 @@
                     <li <?=$halaman=="Admin"?"class='active'":""?>>
                         <a href="index.php?act=Pasien">
                             <i class="material-icons">assignment_ind</i>
-                            <span>Daftar Pasien</span>
+                            <span>Daftar Pasien/Pegawai</span>
                         </a>
                     </li>
                 </ul>
