@@ -67,7 +67,8 @@
                                                    </div>";
                                         }else{
                                             if(!empty($_POST["nomorrm"])){
-                                                foreach($_POST["nomorrm"] as $nomorrm){
+                                                $datarm = validTeks($_POST["nomorrm"]);
+                                                foreach($datarm as $nomorrm){
                                                     $max       = getOne2("select ifnull(MAX(CONVERT(RIGHT(booking_mcu_perusahaan.no_mcu,4),signed)),0)+1 from booking_mcu_perusahaan where booking_mcu_perusahaan.tanggal_mcu='$thnmcu-$blnmcu-$tglmcu'");
                                                     $nobooking = "MCU"."$thnmcu$blnmcu$tglmcu".sprintf("%04s", $max);
                                                     $insert    = Tambah4("booking_mcu_perusahaan","'$sekarang',current_time(),'$nomorrm','$thnmcu-$blnmcu-$tglmcu','$nobooking','Terdaftar','$perusahaan'");
@@ -121,70 +122,70 @@
                         </form>
                     </div>
                     <div role="tabpanel" <?=($status=="Aktif"?"class='tab-pane fade in active'":"class='tab-pane fade'")?> id="riwayat">
-                        <div class="table-responsive">
-                            <?php
-                                $thnsekarang = substr($sekarang,0,4);
-                                $blnsekarang = substr($sekarang,5,2);
-                                $tglsekarang = substr($sekarang,8,2);
-                                $thncarimcu  = $thnsekarang;
-                                $blncarimcu  = $blnsekarang;
-                                $tglcarimcu  = $tglsekarang;
-                                $thncarimcu2 = $thnsekarang;
-                                $blncarimcu2 = $blnsekarang;
-                                $tglcarimcu2 = $tglsekarang;
-                                if(isset($_POST["BtnCari"])){
-                                    $thncarimcu  = validTeks(trim(isset($_POST['tgl_cari_mcu']))?substr($_POST['tgl_cari_mcu'],6,4):$thnsekarang);
-                                    $blncarimcu  = validTeks(trim(isset($_POST['tgl_cari_mcu']))?substr($_POST['tgl_cari_mcu'],3,2):$blnsekarang);
-                                    $tglcarimcu  = validTeks(trim(isset($_POST['tgl_cari_mcu']))?substr($_POST['tgl_cari_mcu'],0,2):$tglsekarang);
-                                    $thncarimcu2 = validTeks(trim(isset($_POST['tgl_cari_mcu2']))?substr($_POST['tgl_cari_mcu2'],6,4):$thnsekarang);
-                                    $blncarimcu2 = validTeks(trim(isset($_POST['tgl_cari_mcu2']))?substr($_POST['tgl_cari_mcu2'],3,2):$blnsekarang);
-                                    $tglcarimcu2 = validTeks(trim(isset($_POST['tgl_cari_mcu2']))?substr($_POST['tgl_cari_mcu2'],0,2):$tglsekarang);
+                        <?php
+                            $thnsekarang = substr($sekarang,0,4);
+                            $blnsekarang = substr($sekarang,5,2);
+                            $tglsekarang = substr($sekarang,8,2);
+                            $thncarimcu  = $thnsekarang;
+                            $blncarimcu  = $blnsekarang;
+                            $tglcarimcu  = $tglsekarang;
+                            $thncarimcu2 = $thnsekarang;
+                            $blncarimcu2 = $blnsekarang;
+                            $tglcarimcu2 = $tglsekarang;
+                            if(isset($_POST["BtnCari"])){
+                                $thncarimcu  = validTeks(trim(isset($_POST['tgl_cari_mcu']))?substr($_POST['tgl_cari_mcu'],6,4):$thnsekarang);
+                                $blncarimcu  = validTeks(trim(isset($_POST['tgl_cari_mcu']))?substr($_POST['tgl_cari_mcu'],3,2):$blnsekarang);
+                                $tglcarimcu  = validTeks(trim(isset($_POST['tgl_cari_mcu']))?substr($_POST['tgl_cari_mcu'],0,2):$tglsekarang);
+                                $thncarimcu2 = validTeks(trim(isset($_POST['tgl_cari_mcu2']))?substr($_POST['tgl_cari_mcu2'],6,4):$thnsekarang);
+                                $blncarimcu2 = validTeks(trim(isset($_POST['tgl_cari_mcu2']))?substr($_POST['tgl_cari_mcu2'],3,2):$blnsekarang);
+                                $tglcarimcu2 = validTeks(trim(isset($_POST['tgl_cari_mcu2']))?substr($_POST['tgl_cari_mcu2'],0,2):$tglsekarang);
+                            }
+                            if(isset($_GET['iyem'])){
+                                $json = json_decode(encrypt_decrypt($_GET['iyem'],"d"),true);
+                                if (isset($json["tgl_cari_mcu"])) {
+                                    $thncarimcu  = validTeks(trim(isset($json['tgl_cari_mcu']))?substr($json['tgl_cari_mcu'],6,4):$thnsekarang);
+                                    $blncarimcu  = validTeks(trim(isset($json['tgl_cari_mcu']))?substr($json['tgl_cari_mcu'],3,2):$blnsekarang);
+                                    $tglcarimcu  = validTeks(trim(isset($json['tgl_cari_mcu']))?substr($json['tgl_cari_mcu'],0,2):$tglsekarang);
                                 }
-                                if(isset($_GET['iyem'])){
-                                    $json = json_decode(encrypt_decrypt($_GET['iyem'],"d"),true);
-                                    if (isset($json["tgl_cari_mcu"])) {
-                                        $thncarimcu  = validTeks(trim(isset($json['tgl_cari_mcu']))?substr($json['tgl_cari_mcu'],6,4):$thnsekarang);
-                                        $blncarimcu  = validTeks(trim(isset($json['tgl_cari_mcu']))?substr($json['tgl_cari_mcu'],3,2):$blnsekarang);
-                                        $tglcarimcu  = validTeks(trim(isset($json['tgl_cari_mcu']))?substr($json['tgl_cari_mcu'],0,2):$tglsekarang);
-                                    }
-                                    
-                                    if (isset($json["tgl_cari_mcu2"])) {
-                                        $thncarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],6,4):$thnsekarang);
-                                        $blncarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],3,2):$blnsekarang);
-                                        $tglcarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],0,2):$tglsekarang);
-                                    }
-                                    
-                                    if (isset($json["nomcuhapus"])) {
-                                        $hapus=Hapus2("booking_mcu_perusahaan","no_mcu='".validTeks($json["nomcuhapus"])."'");
-                                        if(!$hapus){
-                                            echo "<div class='row clearfix'>
-                                                      <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                                                          <div class='card'>
-                                                              <div class='body bg-success'>
-                                                                   <center><h4>No.Booking MCU ".validTeks($json["nomcuhapus"])." gagal dihapus, silahkan hubungi bagian administrasi kami...!</h4></center>
-                                                              </div>
+
+                                if (isset($json["tgl_cari_mcu2"])) {
+                                    $thncarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],6,4):$thnsekarang);
+                                    $blncarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],3,2):$blnsekarang);
+                                    $tglcarimcu2 = validTeks(trim(isset($json['tgl_cari_mcu2']))?substr($json['tgl_cari_mcu2'],0,2):$tglsekarang);
+                                }
+
+                                if (isset($json["nomcuhapus"])) {
+                                    $hapus=Hapus2("booking_mcu_perusahaan","no_mcu='".validTeks($json["nomcuhapus"])."'");
+                                    if(!$hapus){
+                                        echo "<div class='row clearfix'>
+                                                  <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                                                      <div class='card'>
+                                                          <div class='body bg-success'>
+                                                               <center><h4>No.Booking MCU ".validTeks($json["nomcuhapus"])." gagal dihapus, silahkan hubungi bagian administrasi kami...!</h4></center>
                                                           </div>
                                                       </div>
-                                                  </div>";
-                                        }
+                                                  </div>
+                                              </div>";
                                     }
                                 }
-                            ?>
-                            <form id="form_validation" action="" method="POST">
-                                <label for="tgl_cari_mcu">Tanggal MCU</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_mcu" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarimcu."-".$blncarimcu."-".$thncarimcu;?>"/>
-                                    </div>
+                            }
+                        ?>
+                        <form id="form_validation" action="" method="POST">
+                            <label for="tgl_cari_mcu">Tanggal MCU</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_mcu" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarimcu."-".$blncarimcu."-".$thncarimcu;?>"/>
                                 </div>
-                                <label for="tgl_cari_mcu2">Sampai Dengan</label>
-                                <div class="form-group">
-                                    <div class="form-line">
-                                        <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_mcu2" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarimcu2."-".$blncarimcu2."-".$thncarimcu2;?>"/>
-                                    </div>
+                            </div>
+                            <label for="tgl_cari_mcu2">Sampai Dengan</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_mcu2" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarimcu2."-".$blncarimcu2."-".$thncarimcu2;?>"/>
                                 </div>
-                                <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Cari Data MCU</button></center>
-                            </form>
+                            </div>
+                            <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Cari Data MCU</button></center>
+                        </form>
+                        <div class="table-responsive">
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>

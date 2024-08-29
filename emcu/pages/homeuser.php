@@ -80,6 +80,12 @@
                             <span>Karyawan/Pegawai Terdaftar</span>
                         </a>
                     </li>
+                    <li <?=$halaman=="PasienBaru"?"class='active'":""?>>
+                        <a href="index.php?act=PasienBaru">
+                            <i class="material-icons">person_add</i>
+                            <span>Pengajuan Pasien Baru</span>
+                        </a>
+                    </li>
                     <li <?=$halaman=="BookingMCU"?"class='active'":""?>>
                         <a href="index.php?act=BookingMCU">
                             <i class="material-icons">description</i>

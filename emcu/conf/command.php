@@ -33,7 +33,7 @@
     function formProtek() {
         $aksi=isset($_GET['act'])?$_GET['act']:NULL;
         if (!cekSessiAdmin()) {
-            $form = array ('HomeUser','Pasien','UpdatePassword','BookingMCU','HasilMCU','RiwayatMCU');
+            $form = array ('HomeUser','Pasien','UpdatePassword','BookingMCU','HasilMCU','RiwayatMCU','PasienBaru');
             foreach ($form as $page) {
                 if ($aksi==$page) {
                     echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -54,6 +54,7 @@
             case "BookingMCU"              : include_once("pages/listbookingmcu.php"); break;
             case "HasilMCU"                : include_once("pages/listhasilmcu.php"); break;
             case "RiwayatMCU"              : include_once("pages/listriwayatmcu.php"); break;
+            case "PasienBaru"              : include_once("pages/listpasienbaru.php"); break;
             default                        : include_once("pages/listhome.php");
         }   
     }

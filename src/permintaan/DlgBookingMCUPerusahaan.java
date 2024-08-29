@@ -307,6 +307,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         Popup = new javax.swing.JPopupMenu();
         ppPilih = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
+        ppPengajuanPasienBaru = new javax.swing.JMenuItem();
         TNoReg = new widget.TextBox();
         TNoRw = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -379,6 +380,22 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             }
         });
         Popup.add(ppBersihkan);
+
+        ppPengajuanPasienBaru.setBackground(new java.awt.Color(255, 255, 254));
+        ppPengajuanPasienBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPengajuanPasienBaru.setForeground(new java.awt.Color(50, 50, 50));
+        ppPengajuanPasienBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPengajuanPasienBaru.setText("Pengajuan Pasien Baru");
+        ppPengajuanPasienBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPengajuanPasienBaru.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPengajuanPasienBaru.setName("ppPengajuanPasienBaru"); // NOI18N
+        ppPengajuanPasienBaru.setPreferredSize(new java.awt.Dimension(180, 25));
+        ppPengajuanPasienBaru.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPengajuanPasienBaruActionPerformed(evt);
+            }
+        });
+        Popup.add(ppPengajuanPasienBaru);
 
         TNoReg.setName("TNoReg"); // NOI18N
         TNoReg.setPreferredSize(new java.awt.Dimension(170, 23));
@@ -494,7 +511,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
         jLabel16.setBounds(0, 10, 85, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-08-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1040,6 +1057,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }//GEN-LAST:event_ppPilihActionPerformed
 
+    private void ppPengajuanPasienBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanPasienBaruActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ppPengajuanPasienBaruActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1095,6 +1116,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppPengajuanPasienBaru;
     private javax.swing.JMenuItem ppPilih;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
