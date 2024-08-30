@@ -53,6 +53,7 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
     private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
     private DlgCariPoli poli=new DlgCariPoli(null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgPasienBaruMCUPerusahaan pasienbaru=new DlgPasienBaruMCUPerusahaan(null,false);
     private String status="",BASENOREG="",URUTNOREG="",umur="0",sttsumur="Th";
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     
@@ -1058,7 +1059,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_ppPilihActionPerformed
 
     private void ppPengajuanPasienBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanPasienBaruActionPerformed
-        // TODO add your handling code here:
+        pasienbaru.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pasienbaru.setLocationRelativeTo(internalFrame1);
+        pasienbaru.setVisible(true);
     }//GEN-LAST:event_ppPengajuanPasienBaruActionPerformed
 
     /**
@@ -1183,18 +1186,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     
     public void isCek(){
-        autoNomor();
         TCari.requestFocus();
         BtnSimpan.setEnabled(akses.getbooking_mcu_perusahaan());
         BtnBatal.setEnabled(akses.getbooking_mcu_perusahaan());
         BtnCari.setEnabled(akses.getbooking_mcu_perusahaan());
     }
-    
-    private void autoNomor() {
-        /*Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(skp_penilaian.nomor_penilaian,3),signed)),0) from skp_penilaian where left(skp_penilaian.tanggal,10)='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "SKP"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),4,NoPenilaian); */
-    }
-
  
     private void jam(){
         ActionListener taskPerformer = new ActionListener(){
