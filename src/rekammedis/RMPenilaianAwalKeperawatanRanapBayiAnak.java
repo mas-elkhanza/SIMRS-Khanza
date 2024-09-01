@@ -6690,7 +6690,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_BtnPrint1ActionPerformed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
-        //Valid.pindah(evt,BtnDPJP,MacamKasus);
+        Valid.pindah2(evt,KetAnamnesis,RPS);
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
     private void AnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesisKeyPressed
@@ -6756,11 +6756,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_BtnDPJPKeyPressed
 
     private void TibadiRuangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TibadiRuangKeyPressed
-        //Valid.pindah(evt,KetAnamnesis,CaraMasuk);
+        Valid.pindah(evt,BtnDPJP,Anamnesis);
     }//GEN-LAST:event_TibadiRuangKeyPressed
 
     private void RPSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPSKeyPressed
-        //Valid.pindah2(evt,CaraMasuk,RPD);
+        Valid.pindah2(evt,TglAsuhan,RPD);
     }//GEN-LAST:event_RPSKeyPressed
 
     private void RPKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPKKeyPressed
@@ -6772,7 +6772,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_RPDKeyPressed
 
     private void RPOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPOKeyPressed
-        //Valid.pindah2(evt,RPK,RPembedahan);
+        Valid.pindah2(evt,RPK,Alergi);
     }//GEN-LAST:event_RPOKeyPressed
 
     private void DetailRencanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DetailRencanaKeyPressed
@@ -6780,7 +6780,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_DetailRencanaKeyPressed
 
     private void KetAnamnesisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetAnamnesisKeyPressed
-        Valid.pindah(evt,Anamnesis,TibadiRuang);
+        Valid.pindah(evt,Anamnesis,TglAsuhan);
     }//GEN-LAST:event_KetAnamnesisKeyPressed
 
     private void tbMasalahKeperawatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbMasalahKeperawatanMouseClicked
@@ -6912,7 +6912,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_TCariRencanaKeyPressed
 
     private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
-        //Valid.pindah(evt,RPO,AlatBantu);
+        Valid.pindah(evt,RPO,UsiaTengkurap);
     }//GEN-LAST:event_AlergiKeyPressed
 
     private void BtnTambahImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahImunisasiActionPerformed
