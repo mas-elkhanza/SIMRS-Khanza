@@ -21,6 +21,7 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -34,7 +35,7 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
     private ResultSet rs;
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String status="";
+    private String status="",tahun="",awalantahun="",bulan="",awalanbulan="",posisitahun="",pengurutan="";
     public String KodePerusahaan="",TanggalMCU="";
     
     /** Creates new form DlgProgramStudi
@@ -175,6 +176,31 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
             });
         }
         
+        DTPDaftar.setDate(new Date());
+        
+        try {
+            ps=koneksi.prepareStatement("select set_urut_no_rkm_medis.urutan,set_urut_no_rkm_medis.tahun,set_urut_no_rkm_medis.bulan,set_urut_no_rkm_medis.posisi_tahun_bulan from set_urut_no_rkm_medis");
+            try {
+                rs=ps.executeQuery();
+                if(rs.next()){
+                    pengurutan=rs.getString("urutan");
+                    tahun=rs.getString("tahun");
+                    bulan=rs.getString("bulan");
+                    posisitahun=rs.getString("posisi_tahun_bulan");
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        } 
     }
 
     /** This method is called from within the constructor to
@@ -189,8 +215,9 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
         Popup = new javax.swing.JPopupMenu();
         ppPilih = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
-        TNoReg = new widget.TextBox();
-        TNoRw = new widget.TextBox();
+        DTPDaftar = new widget.Tanggal();
+        NoRm = new widget.TextBox();
+        TNo = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         scrollPane1 = new widget.ScrollPane();
         tbDokter = new widget.Table();
@@ -238,11 +265,24 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
         });
         Popup.add(ppBersihkan);
 
-        TNoReg.setName("TNoReg"); // NOI18N
-        TNoReg.setPreferredSize(new java.awt.Dimension(170, 23));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-09-2024" }));
+        DTPDaftar.setDisplayFormat("dd-MM-yyyy");
+        DTPDaftar.setName("DTPDaftar"); // NOI18N
+        DTPDaftar.setOpaque(false);
 
-        TNoRw.setName("TNoRw"); // NOI18N
-        TNoRw.setPreferredSize(new java.awt.Dimension(170, 23));
+        NoRm.setHighlighter(null);
+        NoRm.setName("NoRm"); // NOI18N
+        NoRm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoRmKeyPressed(evt);
+            }
+        });
+
+        TNo.setEditable(false);
+        TNo.setBackground(new java.awt.Color(245, 250, 240));
+        TNo.setHighlighter(null);
+        TNo.setName("TNo"); // NOI18N
+        TNo.setOpaque(true);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -486,6 +526,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
     }//GEN-LAST:event_ppPilihActionPerformed
 
+    private void NoRmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRmKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoRmKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -507,11 +551,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Button BtnCari1;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
+    private widget.Tanggal DTPDaftar;
     private widget.Label LCount;
+    private widget.TextBox NoRm;
     private javax.swing.JPopupMenu Popup;
     private widget.TextBox TCari;
-    private widget.TextBox TNoReg;
-    private widget.TextBox TNoRw;
+    private widget.TextBox TNo;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel7;
     private widget.Label label10;
@@ -591,6 +636,56 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             LCount.setText(""+tabMode.getRowCount());
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }
+    }
+    
+    private void autoNomor() {  
+        if(tahun.equals("Yes")){
+            awalantahun=DTPDaftar.getSelectedItem().toString().substring(8,10);
+        }else{
+            awalantahun="";
+        }
+
+        if(bulan.equals("Yes")){
+            awalanbulan=DTPDaftar.getSelectedItem().toString().substring(3,5);
+        }else{
+            awalanbulan="";
+        }
+
+        if(posisitahun.equals("Depan")){
+            switch (pengurutan) {
+                case "Straight":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(set_no_rkm_medis.no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                    break;
+                case "Terminal":
+                    Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),5,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                    break;
+                case "Middle":
+                    Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),1,2),SUBSTRING(RIGHT(set_no_rkm_medis.no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                    break;
+            }
+        }else if(posisitahun.equals("Belakang")){
+            switch (pengurutan) {
+                case "Straight":
+                    Valid.autoNomer3("select ifnull(MAX(CONVERT(LEFT(set_no_rkm_medis.no_rkm_medis,6),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                    break;
+                case "Terminal":
+                    Valid.autoNomer4("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),5,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),1,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                    break;
+                case "Middle":
+                    Valid.autoNomer5("select ifnull(MAX(CONVERT(CONCAT(SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),3,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),1,2),SUBSTRING(LEFT(set_no_rkm_medis.no_rkm_medis,6),5,2)),signed)),0) from set_no_rkm_medis","",6,NoRm);
+                    break;
+            }            
+        }
+
+        if(posisitahun.equals("Depan")){
+            TNo.setText(awalantahun+awalanbulan+NoRm.getText());
+        }else if(posisitahun.equals("Belakang")){
+            if(!(awalanbulan+awalantahun).equals("")){
+                TNo.setText(NoRm.getText()+"-"+awalanbulan+awalantahun);
+            }else{
+                TNo.setText(NoRm.getText());
+            }            
         }
     }
 }
