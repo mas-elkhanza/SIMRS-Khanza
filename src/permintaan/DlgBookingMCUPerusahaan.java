@@ -1059,9 +1059,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_ppPilihActionPerformed
 
     private void ppPengajuanPasienBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanPasienBaruActionPerformed
-        pasienbaru.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        pasienbaru.setLocationRelativeTo(internalFrame1);
-        pasienbaru.setVisible(true);
+        if(NmPerusahaan.getText().trim().equals("")||KdPerusahaan.getText().trim().equals("")){
+            Valid.textKosong(BtnPerusahaan,"Perusahaan/Instansi MCU");
+        }else{
+            pasienbaru.KodePerusahaan=KdPerusahaan.getText();
+            pasienbaru.TanggalMCU=Valid.SetTgl(Tanggal.getSelectedItem()+"");
+            pasienbaru.tampil();
+            pasienbaru.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            pasienbaru.setLocationRelativeTo(internalFrame1);
+            pasienbaru.setVisible(true);
+        }
     }//GEN-LAST:event_ppPengajuanPasienBaruActionPerformed
 
     /**

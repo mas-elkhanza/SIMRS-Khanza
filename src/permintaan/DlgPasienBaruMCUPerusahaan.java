@@ -45,7 +45,10 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "P","No.RM","Nama Pasien","JK","No.KTP","No.Pegawai","No.Booking","Tgl.Booking","Jam Booking","Status","Tahun","Bulan","Hari"
+                "P","No.Pengajuan","Nama Pasien","No.KTP","J.K","Tempat Lahir","Tgl.Lahir","Nama Ibu","Alamat","Kelurahan","Kecamatan","Kabupaten","Propinsi",
+                "G.D.","Pekerjaan","Status Nikah","Agama/Kepercayaan","Tanggal MCU","No.Telp/No.HP","Umur","Pendidikan","P.J./Keluarga","Nama P.J./Keluarga",
+                "Pekerjaan P.J/Keluarga","Alamat P.J./Keluarga","Kelurahan P.J./Keluarga","Kecamatan P.J./Keluarga","Kabupaten P.J./Keluarga",
+                "Propinsi P.J./Keluarga","Suku Bangsa Pasien","Bahasa Pasien","Cacat Fisik","Email","NIP","Status"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -55,10 +58,12 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
                 return a;
              }
              Class[] types = new Class[] {
-                java.lang.Boolean.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                java.lang.String.class
+                java.lang.Boolean.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -70,38 +75,78 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 35; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(100);
             }else if(i==2){
                 column.setPreferredWidth(200);
             }else if(i==3){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(120);
             }else if(i==4){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(25);
             }else if(i==5){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(100);
             }else if(i==6){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(65);
             }else if(i==7){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(150);
             }else if(i==8){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(200);
             }else if(i==9){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(100);
             }else if(i==10){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(100);
             }else if(i==11){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(100);
             }else if(i==12){
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(30);
+            }else if(i==14){
+                column.setPreferredWidth(100);
+            }else if(i==15){
+                column.setPreferredWidth(100);
+            }else if(i==16){
+                column.setPreferredWidth(110);
+            }else if(i==17){
+                column.setPreferredWidth(74);
+            }else if(i==18){
+                column.setPreferredWidth(120);
+            }else if(i==19){
+                column.setPreferredWidth(50);
+            }else if(i==20){
+                column.setPreferredWidth(65);
+            }else if(i==21){
+                column.setPreferredWidth(70);
+            }else if(i==22){
+                column.setPreferredWidth(150);
+            }else if(i==23){
+                column.setPreferredWidth(105);
+            }else if(i==24){
+                column.setPreferredWidth(200);
+            }else if(i==25){
+                column.setPreferredWidth(130);
+            }else if(i==26){
+                column.setPreferredWidth(130);
+            }else if(i==27){
+                column.setPreferredWidth(130);
+            }else if(i==28){
+                column.setPreferredWidth(130);
+            }else if(i==29){
+                column.setPreferredWidth(105);
+            }else if(i==30){
+                column.setPreferredWidth(100);
+            }else if(i==31){
+                column.setPreferredWidth(100);
+            }else if(i==32){
+                column.setPreferredWidth(150);
+            }else if(i==33){
+                column.setPreferredWidth(120);
+            }else if(i==34){
+                column.setPreferredWidth(115);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -144,7 +189,6 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
         Popup = new javax.swing.JPopupMenu();
         ppPilih = new javax.swing.JMenuItem();
         ppBersihkan = new javax.swing.JMenuItem();
-        ppPengajuanPasienBaru = new javax.swing.JMenuItem();
         TNoReg = new widget.TextBox();
         TNoRw = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -193,22 +237,6 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
             }
         });
         Popup.add(ppBersihkan);
-
-        ppPengajuanPasienBaru.setBackground(new java.awt.Color(255, 255, 254));
-        ppPengajuanPasienBaru.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppPengajuanPasienBaru.setForeground(new java.awt.Color(50, 50, 50));
-        ppPengajuanPasienBaru.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppPengajuanPasienBaru.setText("Pengajuan Pasien Baru");
-        ppPengajuanPasienBaru.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppPengajuanPasienBaru.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppPengajuanPasienBaru.setName("ppPengajuanPasienBaru"); // NOI18N
-        ppPengajuanPasienBaru.setPreferredSize(new java.awt.Dimension(180, 25));
-        ppPengajuanPasienBaru.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppPengajuanPasienBaruActionPerformed(evt);
-            }
-        });
-        Popup.add(ppPengajuanPasienBaru);
 
         TNoReg.setName("TNoReg"); // NOI18N
         TNoReg.setPreferredSize(new java.awt.Dimension(170, 23));
@@ -437,11 +465,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         for(i=0;i<tbDokter.getRowCount();i++){ 
-            if(tbDokter.getValueAt(i,0).toString().equals("true")){
-                if(Sequel.meghapustf("booking_mcu_perusahaan","no_mcu",tbDokter.getValueAt(i,6).toString())==true){
+            if(tbDokter.getValueAt(i,0).toString().equals("true")&&tbDokter.getValueAt(i,34).toString().equals("Menunggu Konfirmasi")){
+                if(Sequel.meghapustf("booking_mcu_perusahaan_pasien_baru","no_pengajuan",tbDokter.getValueAt(i,1).toString())==true){
                     tabMode.removeRow(i);
                     i--;
-                } 
+                }
             }
         }
         
@@ -457,10 +485,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             tbDokter.setValueAt(true,i,0);
         }
     }//GEN-LAST:event_ppPilihActionPerformed
-
-    private void ppPengajuanPasienBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanPasienBaruActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ppPengajuanPasienBaruActionPerformed
 
     /**
     * @param args the command line arguments
@@ -493,41 +517,49 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Label label10;
     private widget.panelisi panelisi1;
     private javax.swing.JMenuItem ppBersihkan;
-    private javax.swing.JMenuItem ppPengajuanPasienBaru;
     private javax.swing.JMenuItem ppPilih;
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
     public void tampil() {
-        /*Valid.tabelKosong(tabMode);
+        Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.no_ktp,pasien.nip,booking_mcu_perusahaan.tanggal_booking,booking_mcu_perusahaan.jam_booking," +
-                        "booking_mcu_perusahaan.no_mcu,if(pasien.tgl_daftar=booking_mcu_perusahaan.tanggal_mcu,'Baru','Lama') as daftar,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,"+
-                        "(TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12)) as bulan,"+
-                        "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(pasien.tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari "+
-                        "from pasien inner join booking_mcu_perusahaan on booking_mcu_perusahaan.no_rkm_medis=pasien.no_rkm_medis where booking_mcu_perusahaan.status='Terdaftar' and "+
-                        "booking_mcu_perusahaan.kode_perusahaan=? and booking_mcu_perusahaan.tanggal_mcu=? order by pasien.nip");
+                        "select booking_mcu_perusahaan_pasien_baru.no_pengajuan,booking_mcu_perusahaan_pasien_baru.nm_pasien,booking_mcu_perusahaan_pasien_baru.no_ktp,"+
+                        "booking_mcu_perusahaan_pasien_baru.jk,booking_mcu_perusahaan_pasien_baru.tmp_lahir,booking_mcu_perusahaan_pasien_baru.tgl_lahir,booking_mcu_perusahaan_pasien_baru.nm_ibu,"+
+                        "booking_mcu_perusahaan_pasien_baru.alamat,booking_mcu_perusahaan_pasien_baru.kelurahan,booking_mcu_perusahaan_pasien_baru.kecamatan,booking_mcu_perusahaan_pasien_baru.kabupaten,"+
+                        "booking_mcu_perusahaan_pasien_baru.propinsi,booking_mcu_perusahaan_pasien_baru.gol_darah,booking_mcu_perusahaan_pasien_baru.pekerjaan,booking_mcu_perusahaan_pasien_baru.stts_nikah,"+
+                        "booking_mcu_perusahaan_pasien_baru.agama,booking_mcu_perusahaan_pasien_baru.tgl_mcu,booking_mcu_perusahaan_pasien_baru.no_tlp,booking_mcu_perusahaan_pasien_baru.umur,"+
+                        "booking_mcu_perusahaan_pasien_baru.pnd,booking_mcu_perusahaan_pasien_baru.keluarga,booking_mcu_perusahaan_pasien_baru.namakeluarga,booking_mcu_perusahaan_pasien_baru.pekerjaanpj,"+
+                        "booking_mcu_perusahaan_pasien_baru.alamatpj,booking_mcu_perusahaan_pasien_baru.kelurahanpj,booking_mcu_perusahaan_pasien_baru.kecamatanpj,booking_mcu_perusahaan_pasien_baru.kabupatenpj,"+
+                        "booking_mcu_perusahaan_pasien_baru.propinsipj,booking_mcu_perusahaan_pasien_baru.suku_bangsa,booking_mcu_perusahaan_pasien_baru.bahasa_pasien,booking_mcu_perusahaan_pasien_baru.cacat_fisik,"+
+                        "booking_mcu_perusahaan_pasien_baru.email,booking_mcu_perusahaan_pasien_baru.nip,booking_mcu_perusahaan_pasien_baru.status from booking_mcu_perusahaan_pasien_baru "+
+                        "where booking_mcu_perusahaan_pasien_baru.perusahaan_pasien=? and booking_mcu_perusahaan_pasien_baru.tgl_mcu=? order by booking_mcu_perusahaan_pasien_baru.nip");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.no_ktp,pasien.nip,booking_mcu_perusahaan.tanggal_booking,booking_mcu_perusahaan.jam_booking," +
-                        "booking_mcu_perusahaan.no_mcu,if(pasien.tgl_daftar=booking_mcu_perusahaan.tanggal_mcu,'Baru','Lama') as daftar,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,"+
-                        "(TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12)) as bulan,"+
-                        "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(pasien.tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari "+
-                        "from pasien inner join booking_mcu_perusahaan on booking_mcu_perusahaan.no_rkm_medis=pasien.no_rkm_medis where booking_mcu_perusahaan.status='Terdaftar' and "+
-                        "booking_mcu_perusahaan.kode_perusahaan=? and booking_mcu_perusahaan.tanggal_mcu=? and (pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or pasien.no_ktp like ? "+
-                        "or pasien.nip like ? or booking_mcu_perusahaan.no_mcu like ?) order by pasien.nip");
+                        "select booking_mcu_perusahaan_pasien_baru.no_pengajuan,booking_mcu_perusahaan_pasien_baru.nm_pasien,booking_mcu_perusahaan_pasien_baru.no_ktp,"+
+                        "booking_mcu_perusahaan_pasien_baru.jk,booking_mcu_perusahaan_pasien_baru.tmp_lahir,booking_mcu_perusahaan_pasien_baru.tgl_lahir,booking_mcu_perusahaan_pasien_baru.nm_ibu,"+
+                        "booking_mcu_perusahaan_pasien_baru.alamat,booking_mcu_perusahaan_pasien_baru.kelurahan,booking_mcu_perusahaan_pasien_baru.kecamatan,booking_mcu_perusahaan_pasien_baru.kabupaten,"+
+                        "booking_mcu_perusahaan_pasien_baru.propinsi,booking_mcu_perusahaan_pasien_baru.gol_darah,booking_mcu_perusahaan_pasien_baru.pekerjaan,booking_mcu_perusahaan_pasien_baru.stts_nikah,"+
+                        "booking_mcu_perusahaan_pasien_baru.agama,booking_mcu_perusahaan_pasien_baru.tgl_mcu,booking_mcu_perusahaan_pasien_baru.no_tlp,booking_mcu_perusahaan_pasien_baru.umur,"+
+                        "booking_mcu_perusahaan_pasien_baru.pnd,booking_mcu_perusahaan_pasien_baru.keluarga,booking_mcu_perusahaan_pasien_baru.namakeluarga,booking_mcu_perusahaan_pasien_baru.pekerjaanpj,"+
+                        "booking_mcu_perusahaan_pasien_baru.alamatpj,booking_mcu_perusahaan_pasien_baru.kelurahanpj,booking_mcu_perusahaan_pasien_baru.kecamatanpj,booking_mcu_perusahaan_pasien_baru.kabupatenpj,"+
+                        "booking_mcu_perusahaan_pasien_baru.propinsipj,booking_mcu_perusahaan_pasien_baru.suku_bangsa,booking_mcu_perusahaan_pasien_baru.bahasa_pasien,booking_mcu_perusahaan_pasien_baru.cacat_fisik,"+
+                        "booking_mcu_perusahaan_pasien_baru.email,booking_mcu_perusahaan_pasien_baru.nip,booking_mcu_perusahaan_pasien_baru.status from booking_mcu_perusahaan_pasien_baru "+
+                        "where booking_mcu_perusahaan_pasien_baru.perusahaan_pasien=? and booking_mcu_perusahaan_pasien_baru.tgl_mcu=? and (booking_mcu_perusahaan_pasien_baru.no_pengajuan like ? or "+
+                        "booking_mcu_perusahaan_pasien_baru.nm_pasien like ? or booking_mcu_perusahaan_pasien_baru.no_ktp like ? or booking_mcu_perusahaan_pasien_baru.status like ? or "+
+                        "booking_mcu_perusahaan_pasien_baru.nip like ?) order by booking_mcu_perusahaan_pasien_baru.nip");
             }
                 
             try {
                 if(TCari.getText().equals("")){
-                    ps.setString(1,KdPerusahaan.getText());
-                    ps.setString(2,Valid.SetTgl(Tanggal.getSelectedItem()+""));
+                    ps.setString(1,KodePerusahaan);
+                    ps.setString(2,TanggalMCU);
                 }else{
-                    ps.setString(1,KdPerusahaan.getText());
-                    ps.setString(2,Valid.SetTgl(Tanggal.getSelectedItem()+""));
+                    ps.setString(1,KodePerusahaan);
+                    ps.setString(2,TanggalMCU);
                     ps.setString(3,"%"+TCari.getText()+"%");
                     ps.setString(4,"%"+TCari.getText()+"%");
                     ps.setString(5,"%"+TCari.getText()+"%");
@@ -537,9 +569,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        false,rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("no_ktp"),
-                        rs.getString("nip"),rs.getString("no_mcu"),rs.getString("tanggal_booking"),rs.getString("jam_booking"),
-                        rs.getString("daftar"),rs.getString("tahun"),rs.getString("bulan"),rs.getString("hari")
+                        false,rs.getString("no_pengajuan"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("jk"),rs.getString("tmp_lahir"),
+                        rs.getString("tgl_lahir"),rs.getString("nm_ibu"),rs.getString("alamat"),rs.getString("kelurahan"),rs.getString("kecamatan"),
+                        rs.getString("kabupaten"),rs.getString("propinsi"),rs.getString("gol_darah"),rs.getString("pekerjaan"),rs.getString("stts_nikah"),
+                        rs.getString("agama"),rs.getString("tgl_mcu"),rs.getString("no_tlp"),rs.getString("umur"),rs.getString("pnd"),rs.getString("keluarga"),
+                        rs.getString("namakeluarga"),rs.getString("pekerjaanpj"),rs.getString("alamatpj"),rs.getString("kelurahanpj"),rs.getString("kecamatanpj"),
+                        rs.getString("kabupatenpj"),rs.getString("propinsipj"),rs.getString("suku_bangsa"),rs.getString("bahasa_pasien"),rs.getString("cacat_fisik"),
+                        rs.getString("email"),rs.getString("nip"),rs.getString("status")
                     });
                 }
             } catch (Exception e) {
@@ -555,8 +591,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             LCount.setText(""+tabMode.getRowCount());
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
-        }*/
+        }
     }
-    
-    
 }
