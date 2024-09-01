@@ -442,7 +442,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        
+        for(i=0;i<tbDokter.getRowCount();i++){ 
+            if(tbDokter.getValueAt(i,0).toString().equals("true")&&tbDokter.getValueAt(i,34).toString().equals("Menunggu Konfirmasi")){
+                
+            }
+        }
+        /*
+        "P"0,"No.Pengajuan"1,"Nama Pasien"2,"No.KTP"3,"J.K"4,"Tempat Lahir"5,"Tgl.Lahir"6,"Nama Ibu"7,"Alamat"8,"Kelurahan"9,"Kecamatan"10,
+        "Kabupaten"11,"Propinsi"12,"G.D."13,"Pekerjaan"14,"Status Nikah"15,"Agama/Kepercayaan"16,"Tanggal MCU"17,"No.Telp/No.HP"18,"Umur"19,
+        "Pendidikan"20,"P.J./Keluarga"21,"Nama P.J./Keluarga"22,"Pekerjaan P.J/Keluarga"23,"Alamat P.J./Keluarga"24,"Kelurahan P.J./Keluarga"25,
+        "Kecamatan P.J./Keluarga"26,"Kabupaten P.J./Keluarga"27,"Propinsi P.J./Keluarga"28,"Suku Bangsa Pasien"29,"Bahasa Pasien"30,
+        "Cacat Fisik"31,"Email"32,"NIP"33,"Status"34*/
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
