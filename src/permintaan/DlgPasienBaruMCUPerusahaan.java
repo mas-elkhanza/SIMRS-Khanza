@@ -12,6 +12,7 @@
 package permintaan;
 
 import fungsi.WarnaTable;
+import fungsi.akses;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
@@ -35,7 +36,8 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
     private ResultSet rs;
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String status="",tahun="",awalantahun="",bulan="",awalanbulan="",posisitahun="",pengurutan="",kdkel="",kdkec="",kdkab="",kdprop="";
+    private String status="",tahun="",awalantahun="",bulan="",awalanbulan="",posisitahun="",pengurutan="",kdkel="",kdkec="",kdkab="",kdprop="",
+            kdbahasa="",kdcacatfisik="",kdsuku="";
     public String KodePerusahaan="",TanggalMCU="";
     
     /** Creates new form DlgProgramStudi
@@ -452,6 +454,33 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 kdkab=Sequel.cariIsi("select kabupaten.kd_kab from kabupaten where kabupaten.nm_kab=?",tbDokter.getValueAt(i,11).toString());
                 Sequel.queryu4("insert ignore into propinsi values(?,?)",2,new String[]{"0",tbDokter.getValueAt(i,12).toString()}); 
                 kdprop=Sequel.cariIsi("select propinsi.kd_prop from propinsi where propinsi.nm_prop=?",tbDokter.getValueAt(i,12).toString());
+                Sequel.queryu4("insert ignore into bahasa_pasien values(?,?)",2,new String[]{"0",tbDokter.getValueAt(i,30).toString()});
+                kdbahasa=Sequel.cariIsi("select bahasa_pasien.id from propinsi where bahasa_pasien.nama_bahasa=?",tbDokter.getValueAt(i,30).toString());
+                Sequel.queryu4("insert ignore into cacat_fisik values(?,?)",2,new String[]{"0",tbDokter.getValueAt(i,31).toString()});
+                kdcacatfisik=Sequel.cariIsi("select cacat_fisik.id from propinsi where cacat_fisik.nama_cacat=?",tbDokter.getValueAt(i,31).toString());
+                Sequel.queryu4("insert ignore into suku_bangsa values(?,?)",2,new String[]{"0",tbDokter.getValueAt(i,29).toString()});
+                kdsuku=Sequel.cariIsi("select suku_bangsa.id from propinsi where suku_bangsa.nama_suku_bangsa=?",tbDokter.getValueAt(i,29).toString());
+                autoNomor();
+                if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
+                    "no_rkm_medis","nm_pasien","no_ktp","jk","tmp_lahir","tgl_lahir","nm_ibu","alamat","gol_darah","pekerjaan","stts_nikah","agama","tgl_daftar","no_tlp","umur","pnd","keluarga","namakeluarga","kd_pj","no_peserta","kd_kel","kd_kec","kd_kab","pekerjaanpj","alamatpj","kelurahanpj","kecamatanpj","kabupatenpj","perusahaan_pasien","suku_bangsa","bahasa_pasien","cacat_fisik","email","nip","kd_prop","propinsipj"
+                })==false){
+                    autoNomor();
+                    if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
+
+                    })==false){
+                        autoNomor();
+                        if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
+
+                        })==false){
+                            autoNomor();
+                            if(Sequel.menyimpantf2("pasien","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rekam Medis Pasien",36,new String[]{
+
+                            })==false){
+                                autoNomor();
+                            }
+                        }
+                    }
+                }
             }
         }
         /*

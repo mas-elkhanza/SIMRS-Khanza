@@ -903,7 +903,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel27 = new widget.Label();
         PBLahir = new widget.TextBox();
         jLabel24 = new widget.Label();
-        TB1 = new widget.TextBox();
+        RiwayatPersalinanLainnya = new widget.TextBox();
         jLabel28 = new widget.Label();
         jLabel73 = new widget.Label();
         jLabel74 = new widget.Label();
@@ -1378,11 +1378,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         BtnHapusImunisasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnHapusImunisasiActionPerformed(evt);
-            }
-        });
-        BtnHapusImunisasi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnHapusImunisasiKeyPressed(evt);
             }
         });
         panelBiasa2.add(BtnHapusImunisasi);
@@ -2502,15 +2497,15 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(jLabel24);
         jLabel24.setBounds(400, 590, 50, 23);
 
-        TB1.setFocusTraversalPolicyProvider(true);
-        TB1.setName("TB1"); // NOI18N
-        TB1.addKeyListener(new java.awt.event.KeyAdapter() {
+        RiwayatPersalinanLainnya.setFocusTraversalPolicyProvider(true);
+        RiwayatPersalinanLainnya.setName("RiwayatPersalinanLainnya"); // NOI18N
+        RiwayatPersalinanLainnya.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TB1KeyPressed(evt);
+                RiwayatPersalinanLainnyaKeyPressed(evt);
             }
         });
-        FormInput.add(TB1);
-        TB1.setBounds(494, 590, 360, 23);
+        FormInput.add(RiwayatPersalinanLainnya);
+        RiwayatPersalinanLainnya.setBounds(494, 590, 360, 23);
 
         jLabel28.setText("Lainnya :");
         jLabel28.setName("jLabel28"); // NOI18N
@@ -4247,11 +4242,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiGizi1.setText("0");
         NilaiGizi1.setFocusTraversalPolicyProvider(true);
         NilaiGizi1.setName("NilaiGizi1"); // NOI18N
-        NilaiGizi1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiGizi1KeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiGizi1);
         NilaiGizi1.setBounds(794, 1670, 60, 23);
 
@@ -4293,11 +4283,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiGizi2.setText("0");
         NilaiGizi2.setFocusTraversalPolicyProvider(true);
         NilaiGizi2.setName("NilaiGizi2"); // NOI18N
-        NilaiGizi2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiGizi2KeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiGizi2);
         NilaiGizi2.setBounds(794, 1700, 60, 23);
 
@@ -4339,11 +4324,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiGizi3.setText("0");
         NilaiGizi3.setFocusTraversalPolicyProvider(true);
         NilaiGizi3.setName("NilaiGizi3"); // NOI18N
-        NilaiGizi3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiGizi3KeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiGizi3);
         NilaiGizi3.setBounds(794, 1730, 60, 23);
 
@@ -4379,11 +4359,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiGizi4.setText("0");
         NilaiGizi4.setFocusTraversalPolicyProvider(true);
         NilaiGizi4.setName("NilaiGizi4"); // NOI18N
-        NilaiGizi4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiGizi4KeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiGizi4);
         NilaiGizi4.setBounds(794, 1760, 60, 23);
 
@@ -4403,11 +4378,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         TotalNilaiGizi.setText("0");
         TotalNilaiGizi.setFocusTraversalPolicyProvider(true);
         TotalNilaiGizi.setName("TotalNilaiGizi"); // NOI18N
-        TotalNilaiGizi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TotalNilaiGiziKeyPressed(evt);
-            }
-        });
         FormInput.add(TotalNilaiGizi);
         TotalNilaiGizi.setBounds(774, 1790, 80, 23);
 
@@ -4697,11 +4667,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiWajah.setText("0");
         NilaiWajah.setFocusTraversalPolicyProvider(true);
         NilaiWajah.setName("NilaiWajah"); // NOI18N
-        NilaiWajah.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiWajahKeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiWajah);
         NilaiWajah.setBounds(426, 2120, 40, 23);
 
@@ -4730,11 +4695,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiMenangis.setText("0");
         NilaiMenangis.setFocusTraversalPolicyProvider(true);
         NilaiMenangis.setName("NilaiMenangis"); // NOI18N
-        NilaiMenangis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiMenangisKeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiMenangis);
         NilaiMenangis.setBounds(814, 2120, 40, 23);
 
@@ -4763,11 +4723,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiKaki.setText("0");
         NilaiKaki.setFocusTraversalPolicyProvider(true);
         NilaiKaki.setName("NilaiKaki"); // NOI18N
-        NilaiKaki.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiKakiKeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiKaki);
         NilaiKaki.setBounds(426, 2150, 40, 23);
 
@@ -4796,11 +4751,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiBersuara.setText("0");
         NilaiBersuara.setFocusTraversalPolicyProvider(true);
         NilaiBersuara.setName("NilaiBersuara"); // NOI18N
-        NilaiBersuara.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiBersuaraKeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiBersuara);
         NilaiBersuara.setBounds(814, 2150, 40, 23);
 
@@ -4829,11 +4779,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiAktifitas.setText("0");
         NilaiAktifitas.setFocusTraversalPolicyProvider(true);
         NilaiAktifitas.setName("NilaiAktifitas"); // NOI18N
-        NilaiAktifitas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiAktifitasKeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiAktifitas);
         NilaiAktifitas.setBounds(426, 2180, 40, 23);
 
@@ -4847,11 +4792,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         SkalaNyeri.setText("0");
         SkalaNyeri.setFocusTraversalPolicyProvider(true);
         SkalaNyeri.setName("SkalaNyeri"); // NOI18N
-        SkalaNyeri.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkalaNyeriKeyPressed(evt);
-            }
-        });
         FormInput.add(SkalaNyeri);
         SkalaNyeri.setBounds(774, 2180, 80, 23);
 
@@ -6849,7 +6789,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             Rencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            //KeteranganDiketahuiDietisen.requestFocus();
+            TransportasiYangDigunakan.requestFocus();
         }
     }//GEN-LAST:event_BtnCariMasalahKeyPressed
 
@@ -6859,7 +6799,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         }else if((evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN)||(evt.getKeyCode()==KeyEvent.VK_TAB)){
             Rencana.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            //KeteranganDiketahuiDietisen.requestFocus();
+            TransportasiYangDigunakan.requestFocus();
         }
     }//GEN-LAST:event_TCariMasalahKeyPressed
 
@@ -6932,10 +6872,10 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_BtnTambahImunisasiActionPerformed
 
     private void BtnPanggilHapusImunisasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPanggilHapusImunisasiActionPerformed
-        /*if(tbImunisasi.getSelectedRow()>-1){
+        if(tbImunisasi.getSelectedRow()>-1){
             if(TNoRM.getText().equals("")){
                 JOptionPane.showMessageDialog(null,"Pilih terlebih dahulu pasien yang mau dihapus data riwayat imunisasinya...");
-                Informasi.requestFocus();
+                tbImunisasi.requestFocus();
             }else{
                 BtnImunisasi.setEnabled(false);
                 KdImunisasi.setText(tbImunisasi.getValueAt(tbImunisasi.getSelectedRow(),0).toString());
@@ -6947,23 +6887,23 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
-        }*/
+        }
     }//GEN-LAST:event_BtnPanggilHapusImunisasiActionPerformed
 
     private void UsiaTengkurapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaTengkurapKeyPressed
-        //Valid.pindah(evt,KetKelainanBawaan,UsiaDuduk);
+        Valid.pindah(evt,Alergi,UsiaDuduk);
     }//GEN-LAST:event_UsiaTengkurapKeyPressed
 
     private void UsiaDudukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaDudukKeyPressed
-        //Valid.pindah(evt,UsiaTengkurap,UsiaBerdiri);
+        Valid.pindah(evt,UsiaTengkurap,UsiaBerdiri);
     }//GEN-LAST:event_UsiaDudukKeyPressed
 
     private void UsiaBerdiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaBerdiriKeyPressed
-        //Valid.pindah(evt,UsiaDuduk,UsiaGigi);
+        Valid.pindah(evt,UsiaDuduk,UsiaGigi);
     }//GEN-LAST:event_UsiaBerdiriKeyPressed
 
     private void UsiaGigiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaGigiKeyPressed
-        //Valid.pindah(evt,UsiaBerdiri,UsiaBerjalan);
+        Valid.pindah(evt,UsiaBerdiri,UsiaBerjalan);
     }//GEN-LAST:event_UsiaGigiKeyPressed
 
     private void UsiaBerjalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaBerjalanKeyPressed
@@ -6975,7 +6915,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_UsiaBicaraKeyPressed
 
     private void UsiaMembacaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaMembacaKeyPressed
-        //Valid.pindah(evt,UsiaBicara,UsiaMenulis);
+        Valid.pindah(evt,UsiaBicara,UsiaMenulis);
     }//GEN-LAST:event_UsiaMembacaKeyPressed
 
     private void UsiaMenulisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaMenulisKeyPressed
@@ -6983,11 +6923,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_UsiaMenulisKeyPressed
 
     private void GangguanEmosiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GangguanEmosiKeyPressed
-        //Valid.pindah(evt,UsiaMenulis,AlatBantu);
+        Valid.pindah(evt,UsiaMenulis,Anakke);
     }//GEN-LAST:event_GangguanEmosiKeyPressed
 
     private void AnakkeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnakkeKeyPressed
-        //Valid.pindah(evt,AlatBantu,DariSaudara);
+        Valid.pindah(evt,GangguanEmosi,DariSaudara);
     }//GEN-LAST:event_AnakkeKeyPressed
 
     private void DariSaudaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DariSaudaraKeyPressed
@@ -7015,35 +6955,35 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_UmurKelahiranKeyPressed
 
     private void BBLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBLahirKeyPressed
-        //Valid.pindah(evt,GCS,PBLahir);
+        Valid.pindah(evt,GCS,PBLahir);
     }//GEN-LAST:event_BBLahirKeyPressed
 
     private void PBLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PBLahirKeyPressed
-        //Valid.pindah(evt,BBLahir,LP);
+        Valid.pindah(evt,BBLahir,RiwayatPersalinanLainnya);
     }//GEN-LAST:event_PBLahirKeyPressed
 
-    private void TB1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TB1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TB1KeyPressed
+    private void RiwayatPersalinanLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPersalinanLainnyaKeyPressed
+        Valid.pindah(evt,PBLahir,Kesadaran);
+    }//GEN-LAST:event_RiwayatPersalinanLainnyaKeyPressed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
-        Valid.pindah(evt,TD,RR);
+        Valid.pindah(evt,Suhu,BB);
     }//GEN-LAST:event_NadiKeyPressed
 
     private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        Valid.pindah(evt,RR,GCS);
+        Valid.pindah(evt,RR,Nadi);
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        //Valid.pindah(evt,Informasi,Nadi);
+        Valid.pindah(evt,GCS,RR);
     }//GEN-LAST:event_TDKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        Valid.pindah(evt,Nadi,Suhu);
+        Valid.pindah(evt,TD,Suhu);
     }//GEN-LAST:event_RRKeyPressed
 
     private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
-        Valid.pindah(evt,Suhu,BB);
+        Valid.pindah(evt,Kesadaran,TD);
     }//GEN-LAST:event_GCSKeyPressed
 
     private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
@@ -7055,7 +6995,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_LKKeyPressed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
-        Valid.pindah(evt,GCS,TB);
+        Valid.pindah(evt,Nadi,TB);
     }//GEN-LAST:event_BBKeyPressed
 
     private void LPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LPKeyPressed
@@ -7063,15 +7003,15 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_LPKeyPressed
 
     private void LDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LDKeyPressed
-        //Valid.pindah(evt,LK,KeluhanUtama);
+        Valid.pindah(evt,LK,SistemSarafKepala);
     }//GEN-LAST:event_LDKeyPressed
 
     private void KesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesadaranKeyPressed
-        //Valid.pindah(evt,JumlahAlkohol,KeadaanUmum);
+        Valid.pindah(evt,RiwayatPersalinanLainnya,GCS);
     }//GEN-LAST:event_KesadaranKeyPressed
 
     private void SistemSarafKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistemSarafKepalaKeyPressed
-        Valid.pindah(evt,TB,KetSistemSarafKepala);
+        Valid.pindah(evt,LD,KetSistemSarafKepala);
     }//GEN-LAST:event_SistemSarafKepalaKeyPressed
 
     private void KetSistemSarafKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetSistemSarafKepalaKeyPressed
@@ -7311,11 +7251,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_WBAKKeyPressed
 
     private void LBAKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LBAKKeyPressed
-        //Valid.pindah(evt,WBAK,PolaAktifitasMandi);
+        Valid.pindah(evt,WBAK,KondisiPsikologis);
     }//GEN-LAST:event_LBAKKeyPressed
 
     private void KondisiPsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiPsikologisKeyPressed
-        //Valid.pindah(evt,KesimpulanGangguanFungsi,AdakahPerilaku);
+        Valid.pindah(evt,LBAK,AdakahPerilaku);
     }//GEN-LAST:event_KondisiPsikologisKeyPressed
 
     private void AdakahPerilakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AdakahPerilakuKeyPressed
@@ -7359,11 +7299,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_EdukasiPsikolgisKeyPressed
 
     private void KeteranganEdukasiPsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganEdukasiPsikologisKeyPressed
-        //Valid.pindah(evt,EdukasiPsikolgis,Nyeri);
+        Valid.pindah(evt,EdukasiPsikolgis,BahasaSehari);
     }//GEN-LAST:event_KeteranganEdukasiPsikologisKeyPressed
 
     private void BahasaSehariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BahasaSehariKeyPressed
-        //Valid.pindah(evt,ResponEmosi,KemampuanBacaTulis);
+        Valid.pindah(evt,KeteranganEdukasiPsikologis,KemampuanBacaTulis);
     }//GEN-LAST:event_BahasaSehariKeyPressed
 
     private void KemampuanBacaTulisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KemampuanBacaTulisKeyPressed
@@ -7375,15 +7315,15 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_ButuhPenerjemahKeyPressed
 
     private void KeteranganButuhPenerjemahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganButuhPenerjemahKeyPressed
-        //Valid.pindah(evt,ButuhPenerjemah,TerdapatHambatanBelajar);
+        Valid.pindah(evt,ButuhPenerjemah,TerdapatHambatanBelajar);
     }//GEN-LAST:event_KeteranganButuhPenerjemahKeyPressed
 
     private void TerdapatHambatanBelajarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerdapatHambatanBelajarKeyPressed
-        //Valid.pindah(evt,KeteranganButuhPenerjemah,HambatanBelajar);
+        Valid.pindah(evt,KeteranganButuhPenerjemah,HambatanBelajar);
     }//GEN-LAST:event_TerdapatHambatanBelajarKeyPressed
 
     private void HambatanBelajarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HambatanBelajarKeyPressed
-        //Valid.pindah(evt,TerdapatHambatanBelajar,KeteranganHambatanBelajar);
+        Valid.pindah(evt,TerdapatHambatanBelajar,KeteranganHambatanBelajar);
     }//GEN-LAST:event_HambatanBelajarKeyPressed
 
     private void KeteranganHambatanBelajarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganHambatanBelajarKeyPressed
@@ -7419,7 +7359,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_PemahamanPenyakitKeyPressed
 
     private void PemahamanPerawatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemahamanPerawatanKeyPressed
-        //Valid.pindah(evt,PemahamanPengobatan,SG1);
+        Valid.pindah(evt,PemahamanPengobatan,SG1);
     }//GEN-LAST:event_PemahamanPerawatanKeyPressed
 
     private void PemahamanPengobatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemahamanPengobatanKeyPressed
@@ -7432,12 +7372,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_SG1ItemStateChanged
 
     private void SG1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG1KeyPressed
-        //Valid.pindah(evt,KetLapor,SG2);
+        Valid.pindah(evt,PemahamanPerawatan,SG2);
     }//GEN-LAST:event_SG1KeyPressed
-
-    private void NilaiGizi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiGizi1KeyPressed
 
     private void SG2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG2ItemStateChanged
         NilaiGizi2.setText(SG2.getSelectedIndex()+"");
@@ -7448,10 +7384,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Valid.pindah(evt,SG1,SG3);
     }//GEN-LAST:event_SG2KeyPressed
 
-    private void NilaiGizi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiGizi2KeyPressed
-
     private void SG3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG3ItemStateChanged
         NilaiGizi3.setText(SG3.getSelectedIndex()+"");
         TotalNilaiGizi.setText(""+(Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText())+Integer.parseInt(NilaiGizi4.getText())));
@@ -7461,29 +7393,17 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Valid.pindah(evt,SG2,SG4);
     }//GEN-LAST:event_SG3KeyPressed
 
-    private void NilaiGizi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiGizi3KeyPressed
-
     private void SG4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SG4ItemStateChanged
         NilaiGizi4.setText(SG4.getSelectedIndex()+"");
         TotalNilaiGizi.setText(""+(Integer.parseInt(NilaiGizi1.getText())+Integer.parseInt(NilaiGizi2.getText())+Integer.parseInt(NilaiGizi3.getText())+Integer.parseInt(NilaiGizi4.getText())));
     }//GEN-LAST:event_SG4ItemStateChanged
 
     private void SG4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SG4KeyPressed
-        //Valid.pindah(evt,SG3,SkalaWajah);
+        Valid.pindah(evt,SG3,KeteranganSkriningGizi);
     }//GEN-LAST:event_SG4KeyPressed
 
-    private void NilaiGizi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiGizi4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiGizi4KeyPressed
-
-    private void TotalNilaiGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TotalNilaiGiziKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TotalNilaiGiziKeyPressed
-
     private void KeteranganSkriningGiziKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganSkriningGiziKeyPressed
-        //Valid.pindah(evt,SG3,SkalaResiko1);
+        Valid.pindah(evt,SG4,SkalaResiko1);
     }//GEN-LAST:event_KeteranganSkriningGiziKeyPressed
 
     private void SkalaResiko1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaResiko1ItemStateChanged
@@ -7592,7 +7512,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_SkalaResiko7ItemStateChanged
 
     private void SkalaResiko7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaResiko7KeyPressed
-        //Valid.pindah(evt,SkalaResiko6,SkalaNIPS1);
+        Valid.pindah(evt,SkalaResiko6,SkalaWajah);
     }//GEN-LAST:event_SkalaResiko7KeyPressed
 
     private void SkalaWajahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaWajahItemStateChanged
@@ -7604,10 +7524,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Valid.pindah(evt,SG4,SkalaKaki);
     }//GEN-LAST:event_SkalaWajahKeyPressed
 
-    private void NilaiWajahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiWajahKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiWajahKeyPressed
-
     private void SkalaMenangisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaMenangisItemStateChanged
         NilaiMenangis.setText(SkalaMenangis.getSelectedIndex()+"");
         SkalaNyeri.setText(""+(Integer.parseInt(NilaiWajah.getText())+Integer.parseInt(NilaiKaki.getText())+Integer.parseInt(NilaiAktifitas.getText())+Integer.parseInt(NilaiMenangis.getText())+Integer.parseInt(NilaiBersuara.getText())));
@@ -7616,10 +7532,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private void SkalaMenangisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaMenangisKeyPressed
         Valid.pindah(evt,SkalaAktifitas,SkalaBersuara);
     }//GEN-LAST:event_SkalaMenangisKeyPressed
-
-    private void NilaiMenangisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiMenangisKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiMenangisKeyPressed
 
     private void SkalaKakiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaKakiItemStateChanged
         NilaiKaki.setText(SkalaKaki.getSelectedIndex()+"");
@@ -7630,10 +7542,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Valid.pindah(evt,SkalaWajah,SkalaAktifitas);
     }//GEN-LAST:event_SkalaKakiKeyPressed
 
-    private void NilaiKakiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiKakiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiKakiKeyPressed
-
     private void SkalaBersuaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaBersuaraItemStateChanged
         NilaiBersuara.setText(SkalaBersuara.getSelectedIndex()+"");
         SkalaNyeri.setText(""+(Integer.parseInt(NilaiWajah.getText())+Integer.parseInt(NilaiKaki.getText())+Integer.parseInt(NilaiAktifitas.getText())+Integer.parseInt(NilaiMenangis.getText())+Integer.parseInt(NilaiBersuara.getText())));
@@ -7643,10 +7551,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Valid.pindah(evt,SkalaMenangis,Nyeri);
     }//GEN-LAST:event_SkalaBersuaraKeyPressed
 
-    private void NilaiBersuaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiBersuaraKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiBersuaraKeyPressed
-
     private void SkalaAktifitasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SkalaAktifitasItemStateChanged
         NilaiAktifitas.setText(SkalaAktifitas.getSelectedIndex()+"");
         SkalaNyeri.setText(""+(Integer.parseInt(NilaiWajah.getText())+Integer.parseInt(NilaiKaki.getText())+Integer.parseInt(NilaiAktifitas.getText())+Integer.parseInt(NilaiMenangis.getText())+Integer.parseInt(NilaiBersuara.getText())));
@@ -7655,14 +7559,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private void SkalaAktifitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaAktifitasKeyPressed
         Valid.pindah(evt,SkalaKaki,SkalaMenangis);
     }//GEN-LAST:event_SkalaAktifitasKeyPressed
-
-    private void NilaiAktifitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiAktifitasKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiAktifitasKeyPressed
-
-    private void SkalaNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkalaNyeriKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SkalaNyeriKeyPressed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
         Valid.pindah(evt,SkalaBersuara,Lokasi);
@@ -7693,11 +7589,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_PadaDokterKeyPressed
 
     private void KetDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetDokterKeyPressed
-        Valid.pindah(evt,PadaDokter,Rencana);
+        Valid.pindah(evt,PadaDokter,InformasiPerencanaanPulang);
     }//GEN-LAST:event_KetDokterKeyPressed
 
     private void InformasiPerencanaanPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiPerencanaanPulangKeyPressed
-        //Valid.pindah(evt,SkalaNIPS5,LamaRatarata);
+        Valid.pindah(evt,KetDokter,LamaRatarata);
     }//GEN-LAST:event_InformasiPerencanaanPulangKeyPressed
 
     private void TanggalPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalPulangKeyPressed
@@ -7751,7 +7647,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_BtnImunisasiActionPerformed
 
     private void BtnImunisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnImunisasiKeyPressed
-        //Valid.pindah(evt,Monitoring,BtnSimpan);
+        Valid.pindah(evt,Alergi,BtnSimpan);
     }//GEN-LAST:event_BtnImunisasiKeyPressed
 
     private void KdImunisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdImunisasiKeyPressed
@@ -7767,10 +7663,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         DlgRiwayatImunisasi.dispose();
         tampilImunisasi();
     }//GEN-LAST:event_BtnHapusImunisasiActionPerformed
-
-    private void BtnHapusImunisasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusImunisasiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnHapusImunisasiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -7974,6 +7866,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.ComboBox RespirasiRetraksi;
     private widget.ComboBox RespirasiSuaraNafas;
     private widget.ComboBox RespirasiVolume;
+    private widget.TextBox RiwayatPersalinanLainnya;
     private widget.ComboBox SG1;
     private widget.ComboBox SG2;
     private widget.ComboBox SG3;
@@ -8004,7 +7897,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.ComboBox SkalaWajah;
     private widget.TextBox Suhu;
     private widget.TextBox TB;
-    private widget.TextBox TB1;
     private widget.TextBox TCari;
     private widget.TextBox TCariMasalah;
     private widget.TextBox TCariRencana;
