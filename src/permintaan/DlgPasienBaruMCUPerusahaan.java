@@ -26,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import widget.Button;
 
 public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -35,7 +36,7 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
     private ResultSet rs;
     private sekuel Sequel=new sekuel();
     private int i=0;
-    private String status="",tahun="",awalantahun="",bulan="",awalanbulan="",posisitahun="",pengurutan="",kdkel="",kdkec="",kdkab="",kdprop="",
+    private String tahun="",awalantahun="",bulan="",awalanbulan="",posisitahun="",pengurutan="",kdkel="",kdkec="",kdkab="",kdprop="",
             kdbahasa="",kdcacatfisik="",kdsuku="";
     public String KodePerusahaan="",TanggalMCU="",KodeCaraBayar="";
     
@@ -817,5 +818,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 TNo.setText(NoRm.getText());
             }            
         }
+    }
+    
+    public Button getSimpan(){
+        return BtnSimpan;
     }
 }

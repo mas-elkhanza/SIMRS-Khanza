@@ -281,6 +281,14 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
+        pasienbaru.getSimpan().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pasienbaru.dispose();
+                tampil();
+            }
+        });
+        
         try {
             URUTNOREG=koneksiDB.URUTNOREG();
         } catch (Exception e) {
