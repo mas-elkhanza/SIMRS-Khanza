@@ -281,13 +281,26 @@ public class DlgBookingMCUPerusahaan extends javax.swing.JDialog {
             public void keyReleased(KeyEvent e) {}
         });
         
-        pasienbaru.getSimpan().addActionListener(new ActionListener() {
+        pasienbaru.addWindowListener(new WindowListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                pasienbaru.dispose();
-                tampil();
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pasienbaru.status=="Selesai"){
+                    tampil();
+                }      
             }
-        });
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });  
         
         try {
             URUTNOREG=koneksiDB.URUTNOREG();
@@ -1075,6 +1088,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             pasienbaru.KodePerusahaan=KdPerusahaan.getText();
             pasienbaru.KodeCaraBayar=KdCaraBayar.getText();
             pasienbaru.TanggalMCU=Valid.SetTgl(Tanggal.getSelectedItem()+"");
+            pasienbaru.status="";
             pasienbaru.tampil();
             pasienbaru.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             pasienbaru.setLocationRelativeTo(internalFrame1);

@@ -38,7 +38,7 @@ public class DlgPasienBaruMCUPerusahaan extends javax.swing.JDialog {
     private int i=0;
     private String tahun="",awalantahun="",bulan="",awalanbulan="",posisitahun="",pengurutan="",kdkel="",kdkec="",kdkab="",kdprop="",
             kdbahasa="",kdcacatfisik="",kdsuku="";
-    public String KodePerusahaan="",TanggalMCU="",KodeCaraBayar="";
+    public String KodePerusahaan="",TanggalMCU="",KodeCaraBayar="",status="";
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -572,6 +572,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
                 }
             }
+        }
+        
+        if(tabMode.getRowCount()==0){
+            status="Selesai";
+            this.dispose();
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
