@@ -1061,8 +1061,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void ppPengajuanPasienBaruActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPengajuanPasienBaruActionPerformed
         if(NmPerusahaan.getText().trim().equals("")||KdPerusahaan.getText().trim().equals("")){
             Valid.textKosong(BtnPerusahaan,"Perusahaan/Instansi MCU");
+        }else if(KdCaraBayar.getText().trim().equals("")||NmCaraBayar.getText().trim().equals("")){
+            Valid.textKosong(BtnCaraBayar,"Jenis/Cara Bayar MCU");
         }else{
             pasienbaru.KodePerusahaan=KdPerusahaan.getText();
+            pasienbaru.KodeCaraBayar=KdCaraBayar.getText();
             pasienbaru.TanggalMCU=Valid.SetTgl(Tanggal.getSelectedItem()+"");
             pasienbaru.tampil();
             pasienbaru.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

@@ -71,6 +71,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         super(parent, modal);
         initComponents();
         
+        DlgRiwayatImunisasi.setSize(465,112);
+        
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
             "Tgl.Asuhan","Macam Kasus","Anamnesis","Tiba Di Ruang Rawat","Cara Masuk","Riwayat Penyakit Saat Ini","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga",
@@ -8355,6 +8357,10 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         RPD.setText("");
         RPK.setText("");
         RPO.setText("");
+        Alergi.setText("");
+        UsiaTengkurap.setText("");
+        UsiaDuduk.setText("");
+        UsiaBerdiri.setText("");
         Rencana.setText("");
         for (i = 0; i < tabModeMasalah.getRowCount(); i++) {
             tabModeMasalah.setValueAt(false,i,0);
@@ -8394,7 +8400,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,"+
+                    "select pasien.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,"+
                     "bahasa_pasien.nama_bahasa,pasien.pnd,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,penjab.png_jawab "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
@@ -8404,6 +8410,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
