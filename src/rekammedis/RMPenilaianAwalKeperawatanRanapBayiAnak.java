@@ -90,7 +90,16 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             "Kondisi Psikologi","Adakah Perilaku","Keterangan Perilaku","Gangguan Jiwa Masa Lalu","Hubungan Dengan Keluarga","Agama Pasien","Tinggal Dengan",
             "Keterangan Tinggal Dengan","Pekerjaan P.J.","Pembayaran Pasien","Nilai Kepercayaan","Keterangan Nilai Kepercayaan","Bahasa Sehari-hari Pasien",
             "Pend.Pasien","Pend.P.J.","Edukasi Diberikan","Keterangan Edukasi Diberikan","Bahasa Sehari-hari Pendamping","Kemampuan Baca & Tulis Pendamping",
-            "Pendamping Butuh Penerjamah","Keterangan Pendamping Butuh Penerjamah","edukasi_terdapat_hambatan","edukasi_hambatan_belajar","edukasi_hambatan_belajar_keterangan","edukasi_hambatan_bicara","edukasi_bahasa_isyarat","edukasi_cara_belajar","edukasi_menerima_informasi","edukasi_menerima_informasi_keterangan","edukasi_nutrisi","edukasi_penyakit","edukasi_pengobatan","edukasi_perawatan","skrining_gizi1","nilai_gizi1","skrining_gizi2","nilai_gizi2","skrining_gizi3","nilai_gizi3","skrining_gizi4","nilai_gizi4","total_nilai","keterangan_skrining_gizi","penilaian_humptydumpty_skala1","penilaian_humptydumpty_nilai1","penilaian_humptydumpty_skala2","penilaian_humptydumpty_nilai2","penilaian_humptydumpty_skala3","penilaian_humptydumpty_nilai3","penilaian_humptydumpty_skala4","penilaian_humptydumpty_nilai4","penilaian_humptydumpty_skala5","penilaian_humptydumpty_nilai5","penilaian_humptydumpty_skala6","penilaian_humptydumpty_nilai6","penilaian_humptydumpty_skala7","penilaian_humptydumpty_nilai7","penilaian_humptydumpty_totalnilai","hasil_skrining_penilaian_humptydumpty","nyeri_wajah","nyeri_nilai_wajah","nyeri_kaki","nyeri_nilai_kaki","nyeri_aktifitas","nyeri_nilai_aktifitas","nyeri_menangis","nyeri_nilai_menangis","nyeri_bersuara","nyeri_nilai_bersuara","nyeri_nilai_total","nyeri_kondisi","nyeri_lokasi","nyeri_durasi","nyeri_frekuensi","nyeri_hilang","nyeri_hilang_keterangan","nyeri_diberitahukan_pada_dokter","nyeri_diberitahukan_pada_dokter_keterangan","informasi_perencanaan_pulang","lama_ratarata","perencanaan_pulang","kondisi_klinis_pulang","perawatan_lanjutan_dirumah","cara_transportasi_pulang","transportasi_digunakan","Rencana Keperawatan Lainnya"
+            "Pendamping Butuh Penerjamah","Keterangan Pendamping Butuh Penerjamah","Terdapat Hambatan","Hambatan Belajar","Keterangan Hambatan Belajar",
+            "Hambatan Bicara","Hambatan Bahasa Isyarat","Cara Belajar Disukai","Menerima Informasi","Keterangan Kesediaan Menerima Informasi","Pemahaman Tentang Nutrisi/Diet",
+            "Pemahaman Tentang Penyakit","Pemahaman Tentang Pengobatan","Pemahaman Tentang Perawatan","Skrining Gizi 1","N.G.1","Skrining Gizi 2","N.G.2",
+            "Skrining Gizi 3","N.G.3","Skrining Gizi 4","N.G.4","T.N.Gizi","Keterangan Skrining Gizi","Skala Humpty Dumpty 1","N.H. 1","Skala Humpty Dumpty 2","N.H. 2",
+            "Skala Humpty Dumpty 3","N.H. 3","Skala Humpty Dumpty 4","N.H. 4","Skala Humpty Dumpty 5","N.H. 5","Skala Humpty Dumpty 6","N.H. 6","Skala Humpty Dumpty 7","N.H. 7",
+            "Total H.D.","Hasil Skrining Penilaian Humpty Dumpty","Nyeri Wajah","N.Nyeri Wajah","Nyeri Kaki","N.Nyeri Kaki","Nyeri Aktifitas","N.Nyeri Aktifitas",
+            "Nyeri Menangis","N.Nyeri Menangis","Nyeri Bersuara","N.Nyeri Bersuara","Total Nilai Nyeri","Kondisi Nyeri","Lokasi Nyeri","Durasi Nyeri","Frekuensi Nyeri",
+            "Nyeri Hilang Bila","Keterangan Nyeri Hilang","Nyeri Diberitahukan Dokter","Jam Nyeri Diberitahukan","Informasi Perencanaan Pulang","Lama Rawat Rata-rata",
+            "Perencanaan Pulang","Kondisi Klinis Saat Pulang","Perawatan Lanjutan Yang Diberikan Di Rumah","Cara Transportasi Pulang","Transportasi Yang Digunakan",
+            "Rencana Keperawatan Lainnya"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -100,7 +109,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 175; i++) {
+        for (i = 0; i < 100; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -126,332 +135,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 column.setPreferredWidth(150);
             }else if(i==11){
                 column.setPreferredWidth(117);
-            }else if(i==12){
-                column.setPreferredWidth(78);
-            }else if(i==13){
-                column.setPreferredWidth(150);
-            }else if(i==14){
-                column.setPreferredWidth(110);
-            }else if(i==15){
-                column.setPreferredWidth(70);
-            }else if(i==16){
-                column.setPreferredWidth(220);
-            }else if(i==17){
-                column.setPreferredWidth(170);
-            }else if(i==18){
-                column.setPreferredWidth(170);
-            }else if(i==19){
-                column.setPreferredWidth(170);
-            }else if(i==20){
-                column.setPreferredWidth(150);
-            }else if(i==21){
-                column.setPreferredWidth(150);
-            }else if(i==22){
-                column.setPreferredWidth(125);
-            }else if(i==23){
-                column.setPreferredWidth(210);
-            }else if(i==24){
-                column.setPreferredWidth(130);
-            }else if(i==25){
-                column.setPreferredWidth(130);
-            }else if(i==26){
-                column.setPreferredWidth(48);
-            }else if(i==27){
-                column.setPreferredWidth(65);
-            }else if(i==28){
-                column.setPreferredWidth(44);
-            }else if(i==29){
-                column.setPreferredWidth(59);
-            }else if(i==30){
-                column.setPreferredWidth(61);
-            }else if(i==31){
-                column.setPreferredWidth(59);
-            }else if(i==32){
-                column.setPreferredWidth(120);
-            }else if(i==33){
-                column.setPreferredWidth(85);
-            }else if(i==34){
-                column.setPreferredWidth(64);
-            }else if(i==35){
-                column.setPreferredWidth(60);
-            }else if(i==36){
-                column.setPreferredWidth(74);
-            }else if(i==37){
-                column.setPreferredWidth(67);
-            }else if(i==38){
-                column.setPreferredWidth(52);
-            }else if(i==39){
-                column.setPreferredWidth(52);
-            }else if(i==40){
-                column.setPreferredWidth(44);
-            }else if(i==41){
-                column.setPreferredWidth(44);
-            }else if(i==42){
-                column.setPreferredWidth(150);
-            }else if(i==43){
-                column.setPreferredWidth(150);
-            }else if(i==44){
-                column.setPreferredWidth(106);
-            }else if(i==45){
-                column.setPreferredWidth(130);
-            }else if(i==46){
-                column.setPreferredWidth(65);
-            }else if(i==47){
-                column.setPreferredWidth(50);
-            }else if(i==48){
-                column.setPreferredWidth(130);
-            }else if(i==49){
-                column.setPreferredWidth(72);
-            }else if(i==50){
-                column.setPreferredWidth(54);
-            }else if(i==51){
-                column.setPreferredWidth(63);
-            }else if(i==52){
-                column.setPreferredWidth(69);
-            }else if(i==53){
-                column.setPreferredWidth(97);
-            }else if(i==54){
-                column.setPreferredWidth(75);
-            }else if(i==55){
-                column.setPreferredWidth(170);
-            }else if(i==56){
-                column.setPreferredWidth(70);
-            }else if(i==57){
-                column.setPreferredWidth(140);
-            }else if(i==58){
-                column.setPreferredWidth(140);
-            }else if(i==59){
-                column.setPreferredWidth(140);
-            }else if(i==60){
-                column.setPreferredWidth(140);
-            }else if(i==61){
-                column.setPreferredWidth(140);
-            }else if(i==62){
-                column.setPreferredWidth(111);
-            }else if(i==63){
-                column.setPreferredWidth(60);
-            }else if(i==64){
-                column.setPreferredWidth(60);
-            }else if(i==65){
-                column.setPreferredWidth(140);
-            }else if(i==66){
-                column.setPreferredWidth(119);
-            }else if(i==67){
-                column.setPreferredWidth(65);
-            }else if(i==68){
-                column.setPreferredWidth(74);
-            }else if(i==69){
-                column.setPreferredWidth(140);
-            }else if(i==70){
-                column.setPreferredWidth(41);
-            }else if(i==71){
-                column.setPreferredWidth(91);
-            }else if(i==72){
-                column.setPreferredWidth(66);
-            }else if(i==73){
-                column.setPreferredWidth(44);
-            }else if(i==74){
-                column.setPreferredWidth(159);
-            }else if(i==75){
-                column.setPreferredWidth(140);
-            }else if(i==76){
-                column.setPreferredWidth(94);
-            }else if(i==77){
-                column.setPreferredWidth(79);
-            }else if(i==78){
-                column.setPreferredWidth(140);
-            }else if(i==79){
-                column.setPreferredWidth(140);
-            }else if(i==80){
-                column.setPreferredWidth(79);
-            }else if(i==81){
-                column.setPreferredWidth(80);
-            }else if(i==82){
-                column.setPreferredWidth(85);
-            }else if(i==83){
-                column.setPreferredWidth(80);
-            }else if(i==84){
-                column.setPreferredWidth(79);
-            }else if(i==85){
-                column.setPreferredWidth(80);
-            }else if(i==86){
-                column.setPreferredWidth(80);
-            }else if(i==87){
-                column.setPreferredWidth(80);
-            }else if(i==88){
-                column.setPreferredWidth(103);
-            }else if(i==89){
-                column.setPreferredWidth(103);
-            }else if(i==90){
-                column.setPreferredWidth(103);
-            }else if(i==91){
-                column.setPreferredWidth(103);
-            }else if(i==92){
-                column.setPreferredWidth(103);
-            }else if(i==93){
-                column.setPreferredWidth(68);
-            }else if(i==94){
-                column.setPreferredWidth(90);
-            }else if(i==95){
-                column.setPreferredWidth(140);
-            }else if(i==96){
-                column.setPreferredWidth(65);
-            }else if(i==97){
-                column.setPreferredWidth(108);
-            }else if(i==98){
-                column.setPreferredWidth(120);
-            }else if(i==99){
-                column.setPreferredWidth(180);
-            }else if(i==100){
-                column.setPreferredWidth(67);
-            }else if(i==101){
-                column.setPreferredWidth(104);
-            }else if(i==102){
-                column.setPreferredWidth(140);
-            }else if(i==103){
-                column.setPreferredWidth(140);
-            }else if(i==104){
-                column.setPreferredWidth(170);
-            }else if(i==105){
-                column.setPreferredWidth(170);
-            }else if(i==106){
-                column.setPreferredWidth(161);
-            }else if(i==107){
-                column.setPreferredWidth(106);
-            }else if(i==108){
-                column.setPreferredWidth(250);
-            }else if(i==109){
-                column.setPreferredWidth(157);
-            }else if(i==110){
-                column.setPreferredWidth(105);
-            }else if(i==111){
-                column.setPreferredWidth(55);
-            }else if(i==112){
-                column.setPreferredWidth(140);
-            }else if(i==113){
-                column.setPreferredWidth(90);
-            }else if(i==114){
-                column.setPreferredWidth(90);
-            }else if(i==115){
-                column.setPreferredWidth(150);
-            }else if(i==116){
-                column.setPreferredWidth(110);
-            }else if(i==117){
-                column.setPreferredWidth(110);
-            }else if(i==118){
-                column.setPreferredWidth(95);
-            }else if(i==119){
-                column.setPreferredWidth(150);
-            }else if(i==120){
-                column.setPreferredWidth(80);
-            }else if(i==121){
-                column.setPreferredWidth(140);
-            }else if(i==122){
-                column.setPreferredWidth(140);
-            }else if(i==123){
-                column.setPreferredWidth(100);
-            }else if(i==124){
-                column.setPreferredWidth(85);
-            }else if(i==125){
-                column.setPreferredWidth(65);
-            }else if(i==126){
-                column.setPreferredWidth(80);
-            }else if(i==127){
-                column.setPreferredWidth(140);
-            }else if(i==128){
-                column.setPreferredWidth(140);
-            }else if(i==129){
-                column.setPreferredWidth(77);
-            }else if(i==130){
-                column.setPreferredWidth(40);
-            }else if(i==131){
-                column.setPreferredWidth(77);
-            }else if(i==132){
-                column.setPreferredWidth(40);
-            }else if(i==133){
-                column.setPreferredWidth(177);
-            }else if(i==134){
-                column.setPreferredWidth(40);
-            }else if(i==135){
-                column.setPreferredWidth(77);
-            }else if(i==136){
-                column.setPreferredWidth(40);
-            }else if(i==137){
-                column.setPreferredWidth(162);
-            }else if(i==138){
-                column.setPreferredWidth(40);
-            }else if(i==139){
-                column.setPreferredWidth(162);
-            }else if(i==140){
-                column.setPreferredWidth(40);
-            }else if(i==141){
-                column.setPreferredWidth(40);
-            }else if(i==142){
-                column.setPreferredWidth(82);
-            }else if(i==143){
-                column.setPreferredWidth(40);
-            }else if(i==144){
-                column.setPreferredWidth(82);
-            }else if(i==145){
-                column.setPreferredWidth(40);
-            }else if(i==146){
-                column.setPreferredWidth(82);
-            }else if(i==147){
-                column.setPreferredWidth(40);
-            }else if(i==148){
-                column.setPreferredWidth(82);
-            }else if(i==149){
-                column.setPreferredWidth(40);
-            }else if(i==150){
-                column.setPreferredWidth(82);
-            }else if(i==151){
-                column.setPreferredWidth(40);
-            }else if(i==152){
-                column.setPreferredWidth(82);
-            }else if(i==153){
-                column.setPreferredWidth(40);
-            }else if(i==154){
-                column.setPreferredWidth(82);
-            }else if(i==155){
-                column.setPreferredWidth(40);
-            }else if(i==156){
-                column.setPreferredWidth(82);
-            }else if(i==157){
-                column.setPreferredWidth(40);
-            }else if(i==158){
-                column.setPreferredWidth(82);
-            }else if(i==159){
-                column.setPreferredWidth(40);
-            }else if(i==160){
-                column.setPreferredWidth(86);
-            }else if(i==161){
-                column.setPreferredWidth(44);
-            }else if(i==162){
-                column.setPreferredWidth(86);
-            }else if(i==163){
-                column.setPreferredWidth(44);
-            }else if(i==164){
-                column.setPreferredWidth(40);
-            }else if(i==165){
-                column.setPreferredWidth(380);
-            }else if(i==166){
-                column.setPreferredWidth(40);
-            }else if(i==167){
-                column.setPreferredWidth(317);
-            }else if(i==168){
-                column.setPreferredWidth(40);
-            }else if(i==169){
-                column.setPreferredWidth(58);
-            }else if(i==170){
-                column.setPreferredWidth(165);
-            }else if(i==171){
-                column.setPreferredWidth(149);
-            }else if(i==172){
-                column.setPreferredWidth(209);
-            }else if(i==173){
-                column.setPreferredWidth(107);
-            }else if(i==174){
-                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -5456,76 +5139,76 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 BufferedWriter bw; 
                 
                 ps=koneksi.prepareStatement(
-                    "select penilaian_awal_keperawatan_ranap.no_rawat,penilaian_awal_keperawatan_ranap.tanggal,penilaian_awal_keperawatan_ranap.informasi,penilaian_awal_keperawatan_ranap.ket_informasi,penilaian_awal_keperawatan_ranap.tiba_diruang_rawat,"+
-                    "penilaian_awal_keperawatan_ranap.kasus_trauma,penilaian_awal_keperawatan_ranap.cara_masuk,penilaian_awal_keperawatan_ranap.rps,penilaian_awal_keperawatan_ranap.rpd,penilaian_awal_keperawatan_ranap.rpk,penilaian_awal_keperawatan_ranap.rpo,"+
-                    "penilaian_awal_keperawatan_ranap.riwayat_pembedahan,penilaian_awal_keperawatan_ranap.riwayat_dirawat_dirs,penilaian_awal_keperawatan_ranap.alat_bantu_dipakai,penilaian_awal_keperawatan_ranap.riwayat_kehamilan,"+
-                    "penilaian_awal_keperawatan_ranap.riwayat_kehamilan_perkiraan,penilaian_awal_keperawatan_ranap.riwayat_tranfusi,penilaian_awal_keperawatan_ranap.riwayat_alergi,penilaian_awal_keperawatan_ranap.riwayat_merokok,"+
-                    "penilaian_awal_keperawatan_ranap.riwayat_merokok_jumlah,penilaian_awal_keperawatan_ranap.riwayat_alkohol,penilaian_awal_keperawatan_ranap.riwayat_alkohol_jumlah,penilaian_awal_keperawatan_ranap.riwayat_narkoba,"+
-                    "penilaian_awal_keperawatan_ranap.riwayat_olahraga,penilaian_awal_keperawatan_ranap.pemeriksaan_mental,penilaian_awal_keperawatan_ranap.pemeriksaan_keadaan_umum,penilaian_awal_keperawatan_ranap.pemeriksaan_gcs,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_td,penilaian_awal_keperawatan_ranap.pemeriksaan_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_rr,penilaian_awal_keperawatan_ranap.pemeriksaan_suhu,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_spo2,penilaian_awal_keperawatan_ranap.pemeriksaan_bb,penilaian_awal_keperawatan_ranap.pemeriksaan_tb,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_leher,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_pola_nafas,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_retraksi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_suara_nafas,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_volume_pernafasan,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_irama_nafas,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_batuk,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_peistatik_usus,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_anus,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pendengaran,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_motorik,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_kekuatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_warnakulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_turgor,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_integument_kulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_dekubitas,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_pergerakan_sendi,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_kekauatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_jumlah,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_durasi,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
-                    "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_lainlain,"+
-                    "penilaian_awal_keperawatan_ranap.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap.pola_aktifitas_berpakaian,"+
-                    "penilaian_awal_keperawatan_ranap.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap.pola_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap.pola_nutrisi_porsi_makan,"+
-                    "penilaian_awal_keperawatan_ranap.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_aktifitas,"+
-                    "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ambulasi,"+
-                    "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah,"+
-                    "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kesimpulan,"+
-                    "penilaian_awal_keperawatan_ranap.riwayat_psiko_kondisi_psiko,penilaian_awal_keperawatan_ranap.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku,"+
-                    "penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_hubungan_keluarga,penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal,"+
-                    "penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.riwayat_psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan_keterangan,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_nyeri,penilaian_awal_keperawatan_ranap.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_kualitas,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap.penilaian_nyeri_lokasi,penilaian_awal_keperawatan_ranap.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap.penilaian_nyeri_skala,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_nyeri_waktu,penilaian_awal_keperawatan_ranap.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_diberitahukan_dokter,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala1,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai1,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala3,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala4,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai4,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala6,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_totalnilai,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala1,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai1,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai2,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala4,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai4,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai5,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala7,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai8,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala10,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai11,"+
-                    "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_totalnilai,penilaian_awal_keperawatan_ranap.skrining_gizi1,penilaian_awal_keperawatan_ranap.nilai_gizi1,penilaian_awal_keperawatan_ranap.skrining_gizi2,"+
-                    "penilaian_awal_keperawatan_ranap.nilai_gizi2,penilaian_awal_keperawatan_ranap.nilai_total_gizi,penilaian_awal_keperawatan_ranap.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap.skrining_gizi_ket_diagnosa_khusus,"+
-                    "penilaian_awal_keperawatan_ranap.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap.rencana,penilaian_awal_keperawatan_ranap.nip1,"+
-                    "penilaian_awal_keperawatan_ranap.nip2,penilaian_awal_keperawatan_ranap.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
+                    "select penilaian_awal_keperawatan_ranap_bayi.no_rawat,penilaian_awal_keperawatan_ranap_bayi.tanggal,penilaian_awal_keperawatan_ranap_bayi.informasi,penilaian_awal_keperawatan_ranap_bayi.ket_informasi,penilaian_awal_keperawatan_ranap_bayi.tiba_diruang_rawat,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.kasus_trauma,penilaian_awal_keperawatan_ranap_bayi.cara_masuk,penilaian_awal_keperawatan_ranap_bayi.rps,penilaian_awal_keperawatan_ranap_bayi.rpd,penilaian_awal_keperawatan_ranap_bayi.rpk,penilaian_awal_keperawatan_ranap_bayi.rpo,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.riwayat_pembedahan,penilaian_awal_keperawatan_ranap_bayi.riwayat_dirawat_dirs,penilaian_awal_keperawatan_ranap_bayi.alat_bantu_dipakai,penilaian_awal_keperawatan_ranap_bayi.riwayat_kehamilan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.riwayat_kehamilan_perkiraan,penilaian_awal_keperawatan_ranap_bayi.riwayat_tranfusi,penilaian_awal_keperawatan_ranap_bayi.riwayat_alergi,penilaian_awal_keperawatan_ranap_bayi.riwayat_merokok,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.riwayat_merokok_jumlah,penilaian_awal_keperawatan_ranap_bayi.riwayat_alkohol,penilaian_awal_keperawatan_ranap_bayi.riwayat_alkohol_jumlah,penilaian_awal_keperawatan_ranap_bayi.riwayat_narkoba,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.riwayat_olahraga,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_mental,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_keadaan_umum,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gcs,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_td,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_nadi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_rr,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_suhu,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_spo2,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_bb,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_tb,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kepala,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kepala_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_wajah,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_wajah_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_leher,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kejang,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kejang_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_sensorik,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_sirkulasi,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_sirkulasi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_pola_nafas,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_retraksi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_suara_nafas,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_volume_pernafasan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_jenis_pernafasan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_jenis_pernafasan_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_irama_nafas,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_batuk,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_mulut,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_mulut_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_gigi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_gigi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_lidah,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_tenggorokan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_tenggorokan_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_peistatik_usus,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_anus,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pengelihatan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pengelihatan_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pendengaran,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_bicara,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_sensorik,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_motorik,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_kekuatan_otot,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_warnakulit,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_turgor,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_kulit,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_dekubitas,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_pergerakan_sendi,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_kekauatan_otot,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_nyeri_sendi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_nyeri_sendi_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_oedema,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_oedema_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_fraktur,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_fraktur_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_frekuensi_jumlah,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_frekuensi_durasi,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_lainlain,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_berpakaian,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_porsi_makan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap_bayi.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_aktifitas,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ambulasi,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_bawah,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_bawah_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_menggenggam,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_menggenggam_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_koordinasi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_kesimpulan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_kondisi_psiko,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_perilaku,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_hubungan_keluarga,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_tinggal,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_tinggal_keterangan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_nilai_kepercayaan_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_edukasi_diberikan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_edukasi_diberikan_keterangan,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_penyebab,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_kualitas,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_lokasi,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_skala,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_waktu,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_diberitahukan_dokter,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala1,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai1,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala3,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala4,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai4,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala6,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_totalnilai,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala1,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai1,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai2,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala4,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai4,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai5,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala7,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai8,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai9,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala10,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai11,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_totalnilai,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi1,penilaian_awal_keperawatan_ranap_bayi.nilai_gizi1,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi2,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.nilai_gizi2,penilaian_awal_keperawatan_ranap_bayi.nilai_total_gizi,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_ket_diagnosa_khusus,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap_bayi.rencana,penilaian_awal_keperawatan_ranap_bayi.nip1,"+
+                    "penilaian_awal_keperawatan_ranap_bayi.nip2,penilaian_awal_keperawatan_ranap_bayi.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
                     "reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.agama,pasien.pekerjaan,pasien.pnd,penjab.png_jawab,bahasa_pasien.nama_bahasa "+
                     "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join penilaian_awal_keperawatan_ranap on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap.no_rawat "+
-                    "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap.nip1=pengkaji1.nip "+
-                    "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap.nip2=pengkaji2.nip "+
-                    "inner join dokter on penilaian_awal_keperawatan_ranap.kd_dokter=dokter.kd_dokter "+
+                    "inner join penilaian_awal_keperawatan_ranap_bayi on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap_bayi.no_rawat "+
+                    "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap_bayi.nip1=pengkaji1.nip "+
+                    "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap_bayi.nip2=pengkaji2.nip "+
+                    "inner join dokter on penilaian_awal_keperawatan_ranap_bayi.kd_dokter=dokter.kd_dokter "+
                     "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                     "inner join penjab on penjab.kd_pj=reg_periksa.kd_pj where "+
-                    "penilaian_awal_keperawatan_ranap.tanggal between ? and ? "+
-                    (TCari.getText().trim().equals("")?"":"and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_awal_keperawatan_ranap.nip1 like ? or "+
-                    "pengkaji1.nama like ? or penilaian_awal_keperawatan_ranap.kd_dokter like ? or dokter.nm_dokter like ?)")+
-                    " order by penilaian_awal_keperawatan_ranap.tanggal");
+                    "penilaian_awal_keperawatan_ranap_bayi.tanggal between ? and ? "+
+                    (TCari.getText().trim().equals("")?"":"and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_awal_keperawatan_ranap_bayi.nip1 like ? or "+
+                    "pengkaji1.nama like ? or penilaian_awal_keperawatan_ranap_bayi.kd_dokter like ? or dokter.nm_dokter like ?)")+
+                    " order by penilaian_awal_keperawatan_ranap_bayi.tanggal");
 
                 try {
                     ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -6446,8 +6129,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 masalahkeperawatan="";
                 ps=koneksi.prepareStatement(
                     "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
-                    "inner join penilaian_awal_keperawatan_ranap_masalah on penilaian_awal_keperawatan_ranap_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
-                    "where penilaian_awal_keperawatan_ranap_masalah.no_rawat=? order by penilaian_awal_keperawatan_ranap_masalah.kode_masalah");
+                    "inner join penilaian_awal_keperawatan_ranap_bayi_masalah on penilaian_awal_keperawatan_ranap_bayi_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
+                    "where penilaian_awal_keperawatan_ranap_bayi_masalah.no_rawat=? order by penilaian_awal_keperawatan_ranap_bayi_masalah.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -6472,8 +6155,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 masalahkeperawatan="";
                 ps=koneksi.prepareStatement(
                     "select master_rencana_keperawatan.kode_rencana,master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
-                    "inner join penilaian_awal_keperawatan_ranap_rencana on penilaian_awal_keperawatan_ranap_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
-                    "where penilaian_awal_keperawatan_ranap_rencana.no_rawat=? order by penilaian_awal_keperawatan_ranap_rencana.kode_rencana");
+                    "inner join penilaian_awal_keperawatan_ranap_bayi_rencana on penilaian_awal_keperawatan_ranap_bayi_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
+                    "where penilaian_awal_keperawatan_ranap_bayi_rencana.no_rawat=? order by penilaian_awal_keperawatan_ranap_bayi_rencana.kode_rencana");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -6495,138 +6178,138 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
             param.put("rencana",masalahkeperawatan); 
             Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRanap.jasper","report","::[ Laporan Penilaian Awal Keperawatan Rawat Inap ]::",
-                "select penilaian_awal_keperawatan_ranap.no_rawat,penilaian_awal_keperawatan_ranap.tanggal,penilaian_awal_keperawatan_ranap.informasi,penilaian_awal_keperawatan_ranap.ket_informasi,penilaian_awal_keperawatan_ranap.tiba_diruang_rawat,"+
-                "penilaian_awal_keperawatan_ranap.kasus_trauma,penilaian_awal_keperawatan_ranap.cara_masuk,penilaian_awal_keperawatan_ranap.rps,penilaian_awal_keperawatan_ranap.rpd,penilaian_awal_keperawatan_ranap.rpk,penilaian_awal_keperawatan_ranap.rpo,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_pembedahan,penilaian_awal_keperawatan_ranap.riwayat_dirawat_dirs,penilaian_awal_keperawatan_ranap.alat_bantu_dipakai,penilaian_awal_keperawatan_ranap.riwayat_kehamilan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_kehamilan_perkiraan,penilaian_awal_keperawatan_ranap.riwayat_tranfusi,penilaian_awal_keperawatan_ranap.riwayat_alergi,penilaian_awal_keperawatan_ranap.riwayat_merokok,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_merokok_jumlah,penilaian_awal_keperawatan_ranap.riwayat_alkohol,penilaian_awal_keperawatan_ranap.riwayat_alkohol_jumlah,penilaian_awal_keperawatan_ranap.riwayat_narkoba,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_olahraga,penilaian_awal_keperawatan_ranap.pemeriksaan_mental,penilaian_awal_keperawatan_ranap.pemeriksaan_keadaan_umum,penilaian_awal_keperawatan_ranap.pemeriksaan_gcs,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_td,penilaian_awal_keperawatan_ranap.pemeriksaan_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_rr,penilaian_awal_keperawatan_ranap.pemeriksaan_suhu,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_spo2,penilaian_awal_keperawatan_ranap.pemeriksaan_bb,penilaian_awal_keperawatan_ranap.pemeriksaan_tb,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_leher,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_pola_nafas,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_retraksi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_suara_nafas,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_volume_pernafasan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_irama_nafas,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_batuk,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_peistatik_usus,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_anus,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pendengaran,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_motorik,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_kekuatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_warnakulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_turgor,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_integument_kulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_dekubitas,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_pergerakan_sendi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_kekauatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_jumlah,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_durasi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_lainlain,"+
-                "penilaian_awal_keperawatan_ranap.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap.pola_aktifitas_berpakaian,"+
-                "penilaian_awal_keperawatan_ranap.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap.pola_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap.pola_nutrisi_porsi_makan,"+
-                "penilaian_awal_keperawatan_ranap.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_aktifitas,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ambulasi,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kesimpulan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_kondisi_psiko,penilaian_awal_keperawatan_ranap.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_hubungan_keluarga,penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri,penilaian_awal_keperawatan_ranap.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_kualitas,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap.penilaian_nyeri_lokasi,penilaian_awal_keperawatan_ranap.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap.penilaian_nyeri_skala,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_waktu,penilaian_awal_keperawatan_ranap.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_diberitahukan_dokter,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala1,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai1,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala3,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala4,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai4,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala6,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_totalnilai,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala1,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai1,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai2,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala4,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai4,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai5,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala7,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai8,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala10,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai11,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_totalnilai,penilaian_awal_keperawatan_ranap.skrining_gizi1,penilaian_awal_keperawatan_ranap.nilai_gizi1,penilaian_awal_keperawatan_ranap.skrining_gizi2,"+
-                "penilaian_awal_keperawatan_ranap.nilai_gizi2,penilaian_awal_keperawatan_ranap.nilai_total_gizi,penilaian_awal_keperawatan_ranap.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap.skrining_gizi_ket_diagnosa_khusus,"+
-                "penilaian_awal_keperawatan_ranap.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap.rencana,penilaian_awal_keperawatan_ranap.nip1,"+
-                "penilaian_awal_keperawatan_ranap.nip2,penilaian_awal_keperawatan_ranap.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
+                "select penilaian_awal_keperawatan_ranap_bayi.no_rawat,penilaian_awal_keperawatan_ranap_bayi.tanggal,penilaian_awal_keperawatan_ranap_bayi.informasi,penilaian_awal_keperawatan_ranap_bayi.ket_informasi,penilaian_awal_keperawatan_ranap_bayi.tiba_diruang_rawat,"+
+                "penilaian_awal_keperawatan_ranap_bayi.kasus_trauma,penilaian_awal_keperawatan_ranap_bayi.cara_masuk,penilaian_awal_keperawatan_ranap_bayi.rps,penilaian_awal_keperawatan_ranap_bayi.rpd,penilaian_awal_keperawatan_ranap_bayi.rpk,penilaian_awal_keperawatan_ranap_bayi.rpo,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_pembedahan,penilaian_awal_keperawatan_ranap_bayi.riwayat_dirawat_dirs,penilaian_awal_keperawatan_ranap_bayi.alat_bantu_dipakai,penilaian_awal_keperawatan_ranap_bayi.riwayat_kehamilan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_kehamilan_perkiraan,penilaian_awal_keperawatan_ranap_bayi.riwayat_tranfusi,penilaian_awal_keperawatan_ranap_bayi.riwayat_alergi,penilaian_awal_keperawatan_ranap_bayi.riwayat_merokok,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_merokok_jumlah,penilaian_awal_keperawatan_ranap_bayi.riwayat_alkohol,penilaian_awal_keperawatan_ranap_bayi.riwayat_alkohol_jumlah,penilaian_awal_keperawatan_ranap_bayi.riwayat_narkoba,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_olahraga,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_mental,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_keadaan_umum,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gcs,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_td,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_nadi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_rr,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_suhu,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_spo2,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_bb,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_tb,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kepala,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kepala_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_wajah,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_wajah_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_leher,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kejang,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kejang_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_sensorik,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_sirkulasi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_sirkulasi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_pola_nafas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_retraksi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_suara_nafas,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_volume_pernafasan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_jenis_pernafasan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_jenis_pernafasan_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_irama_nafas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_batuk,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_mulut,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_mulut_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_gigi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_gigi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_lidah,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_tenggorokan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_tenggorokan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_peistatik_usus,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_anus,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pengelihatan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pengelihatan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pendengaran,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_bicara,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_sensorik,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_motorik,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_kekuatan_otot,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_warnakulit,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_turgor,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_kulit,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_dekubitas,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_pergerakan_sendi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_kekauatan_otot,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_nyeri_sendi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_nyeri_sendi_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_oedema,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_oedema_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_fraktur,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_fraktur_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_frekuensi_jumlah,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_frekuensi_durasi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_lainlain,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_berpakaian,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_porsi_makan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap_bayi.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_aktifitas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ambulasi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_bawah,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_bawah_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_menggenggam,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_menggenggam_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_koordinasi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_kesimpulan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_kondisi_psiko,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_perilaku,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_hubungan_keluarga,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_tinggal,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_tinggal_keterangan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_nilai_kepercayaan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_edukasi_diberikan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_edukasi_diberikan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_penyebab,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_kualitas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_lokasi,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_skala,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_waktu,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_diberitahukan_dokter,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala1,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai1,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala3,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala4,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai4,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala6,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_totalnilai,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala1,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai1,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai2,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala4,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai4,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai5,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala7,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai8,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai9,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala10,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai11,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_totalnilai,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi1,penilaian_awal_keperawatan_ranap_bayi.nilai_gizi1,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi2,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nilai_gizi2,penilaian_awal_keperawatan_ranap_bayi.nilai_total_gizi,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_ket_diagnosa_khusus,"+
+                "penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap_bayi.rencana,penilaian_awal_keperawatan_ranap_bayi.nip1,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nip2,penilaian_awal_keperawatan_ranap_bayi.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
                 "reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.agama,pasien.pekerjaan,pasien.pnd,penjab.png_jawab,bahasa_pasien.nama_bahasa "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join penilaian_awal_keperawatan_ranap on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap.no_rawat "+
-                "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap.nip1=pengkaji1.nip "+
-                "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap.nip2=pengkaji2.nip "+
-                "inner join dokter on penilaian_awal_keperawatan_ranap.kd_dokter=dokter.kd_dokter "+
+                "inner join penilaian_awal_keperawatan_ranap_bayi on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap_bayi.no_rawat "+
+                "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap_bayi.nip1=pengkaji1.nip "+
+                "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap_bayi.nip2=pengkaji2.nip "+
+                "inner join dokter on penilaian_awal_keperawatan_ranap_bayi.kd_dokter=dokter.kd_dokter "+
                 "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                 "inner join penjab on penjab.kd_pj=reg_periksa.kd_pj where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             
             Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRanap2.jasper","report","::[ Laporan Penilaian Awal Keperawatan Rawat Inap ]::",
-                "select penilaian_awal_keperawatan_ranap.no_rawat,penilaian_awal_keperawatan_ranap.tanggal,penilaian_awal_keperawatan_ranap.informasi,penilaian_awal_keperawatan_ranap.ket_informasi,penilaian_awal_keperawatan_ranap.tiba_diruang_rawat,"+
-                "penilaian_awal_keperawatan_ranap.kasus_trauma,penilaian_awal_keperawatan_ranap.cara_masuk,penilaian_awal_keperawatan_ranap.rps,penilaian_awal_keperawatan_ranap.rpd,penilaian_awal_keperawatan_ranap.rpk,penilaian_awal_keperawatan_ranap.rpo,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_pembedahan,penilaian_awal_keperawatan_ranap.riwayat_dirawat_dirs,penilaian_awal_keperawatan_ranap.alat_bantu_dipakai,penilaian_awal_keperawatan_ranap.riwayat_kehamilan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_kehamilan_perkiraan,penilaian_awal_keperawatan_ranap.riwayat_tranfusi,penilaian_awal_keperawatan_ranap.riwayat_alergi,penilaian_awal_keperawatan_ranap.riwayat_merokok,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_merokok_jumlah,penilaian_awal_keperawatan_ranap.riwayat_alkohol,penilaian_awal_keperawatan_ranap.riwayat_alkohol_jumlah,penilaian_awal_keperawatan_ranap.riwayat_narkoba,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_olahraga,penilaian_awal_keperawatan_ranap.pemeriksaan_mental,penilaian_awal_keperawatan_ranap.pemeriksaan_keadaan_umum,penilaian_awal_keperawatan_ranap.pemeriksaan_gcs,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_td,penilaian_awal_keperawatan_ranap.pemeriksaan_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_rr,penilaian_awal_keperawatan_ranap.pemeriksaan_suhu,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_spo2,penilaian_awal_keperawatan_ranap.pemeriksaan_bb,penilaian_awal_keperawatan_ranap.pemeriksaan_tb,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_leher,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_pola_nafas,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_retraksi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_suara_nafas,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_volume_pernafasan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_irama_nafas,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_batuk,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_peistatik_usus,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_anus,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pendengaran,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_motorik,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_kekuatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_warnakulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_turgor,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_integument_kulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_dekubitas,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_pergerakan_sendi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_kekauatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_jumlah,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_durasi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_lainlain,"+
-                "penilaian_awal_keperawatan_ranap.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap.pola_aktifitas_berpakaian,"+
-                "penilaian_awal_keperawatan_ranap.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap.pola_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap.pola_nutrisi_porsi_makan,"+
-                "penilaian_awal_keperawatan_ranap.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_aktifitas,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ambulasi,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kesimpulan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_kondisi_psiko,penilaian_awal_keperawatan_ranap.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_hubungan_keluarga,penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri,penilaian_awal_keperawatan_ranap.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_kualitas,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap.penilaian_nyeri_lokasi,penilaian_awal_keperawatan_ranap.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap.penilaian_nyeri_skala,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_waktu,penilaian_awal_keperawatan_ranap.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_diberitahukan_dokter,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala1,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai1,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala3,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala4,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai4,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala6,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_totalnilai,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala1,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai1,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai2,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala4,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai4,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai5,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala7,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai8,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala10,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai11,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_totalnilai,penilaian_awal_keperawatan_ranap.skrining_gizi1,penilaian_awal_keperawatan_ranap.nilai_gizi1,penilaian_awal_keperawatan_ranap.skrining_gizi2,"+
-                "penilaian_awal_keperawatan_ranap.nilai_gizi2,penilaian_awal_keperawatan_ranap.nilai_total_gizi,penilaian_awal_keperawatan_ranap.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap.skrining_gizi_ket_diagnosa_khusus,"+
-                "penilaian_awal_keperawatan_ranap.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap.rencana,penilaian_awal_keperawatan_ranap.nip1,"+
-                "penilaian_awal_keperawatan_ranap.nip2,penilaian_awal_keperawatan_ranap.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
+                "select penilaian_awal_keperawatan_ranap_bayi.no_rawat,penilaian_awal_keperawatan_ranap_bayi.tanggal,penilaian_awal_keperawatan_ranap_bayi.informasi,penilaian_awal_keperawatan_ranap_bayi.ket_informasi,penilaian_awal_keperawatan_ranap_bayi.tiba_diruang_rawat,"+
+                "penilaian_awal_keperawatan_ranap_bayi.kasus_trauma,penilaian_awal_keperawatan_ranap_bayi.cara_masuk,penilaian_awal_keperawatan_ranap_bayi.rps,penilaian_awal_keperawatan_ranap_bayi.rpd,penilaian_awal_keperawatan_ranap_bayi.rpk,penilaian_awal_keperawatan_ranap_bayi.rpo,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_pembedahan,penilaian_awal_keperawatan_ranap_bayi.riwayat_dirawat_dirs,penilaian_awal_keperawatan_ranap_bayi.alat_bantu_dipakai,penilaian_awal_keperawatan_ranap_bayi.riwayat_kehamilan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_kehamilan_perkiraan,penilaian_awal_keperawatan_ranap_bayi.riwayat_tranfusi,penilaian_awal_keperawatan_ranap_bayi.riwayat_alergi,penilaian_awal_keperawatan_ranap_bayi.riwayat_merokok,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_merokok_jumlah,penilaian_awal_keperawatan_ranap_bayi.riwayat_alkohol,penilaian_awal_keperawatan_ranap_bayi.riwayat_alkohol_jumlah,penilaian_awal_keperawatan_ranap_bayi.riwayat_narkoba,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_olahraga,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_mental,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_keadaan_umum,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gcs,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_td,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_nadi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_rr,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_suhu,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_spo2,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_bb,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_tb,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kepala,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kepala_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_wajah,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_wajah_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_leher,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kejang,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_kejang_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_susunan_sensorik,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_sirkulasi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_sirkulasi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_pola_nafas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_retraksi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_suara_nafas,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_volume_pernafasan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_jenis_pernafasan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_jenis_pernafasan_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_irama_nafas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_respirasi_batuk,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_mulut,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_mulut_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_gigi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_gigi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_lidah,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_tenggorokan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_tenggorokan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_peistatik_usus,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_gastrointestinal_anus,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pengelihatan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pengelihatan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_pendengaran,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_bicara,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_sensorik,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_motorik,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_neurologi_kekuatan_otot,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_warnakulit,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_turgor,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_kulit,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_integument_dekubitas,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_pergerakan_sendi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_kekauatan_otot,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_nyeri_sendi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_nyeri_sendi_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_oedema,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_oedema_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_fraktur,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_muskuloskletal_fraktur_keterangan,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_frekuensi_jumlah,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_frekuensi_durasi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap_bayi.pemeriksaan_eliminasi_bak_lainlain,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_berpakaian,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap_bayi.pola_nutrisi_porsi_makan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap_bayi.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_aktifitas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ambulasi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_bawah,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_ekstrimitas_bawah_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_menggenggam,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_menggenggam_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_koordinasi_keterangan,penilaian_awal_keperawatan_ranap_bayi.pengkajian_fungsi_kesimpulan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_kondisi_psiko,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_perilaku,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_hubungan_keluarga,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_tinggal,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_tinggal_keterangan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_nilai_kepercayaan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_edukasi_diberikan,penilaian_awal_keperawatan_ranap_bayi.riwayat_psiko_edukasi_diberikan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_penyebab,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_kualitas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_lokasi,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_skala,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_waktu,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_diberitahukan_dokter,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala1,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai1,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala3,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala4,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai4,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_skala6,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_nilai6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhmorse_totalnilai,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala1,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai1,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala2,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai2,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai3,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala4,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai4,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala5,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai5,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai6,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala7,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai8,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai9,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala10,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_nilai11,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_jatuhsydney_totalnilai,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi1,penilaian_awal_keperawatan_ranap_bayi.nilai_gizi1,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi2,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nilai_gizi2,penilaian_awal_keperawatan_ranap_bayi.nilai_total_gizi,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_ket_diagnosa_khusus,"+
+                "penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap_bayi.rencana,penilaian_awal_keperawatan_ranap_bayi.nip1,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nip2,penilaian_awal_keperawatan_ranap_bayi.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
                 "reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.agama,pasien.pekerjaan,pasien.pnd,penjab.png_jawab,bahasa_pasien.nama_bahasa "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join penilaian_awal_keperawatan_ranap on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap.no_rawat "+
-                "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap.nip1=pengkaji1.nip "+
-                "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap.nip2=pengkaji2.nip "+
-                "inner join dokter on penilaian_awal_keperawatan_ranap.kd_dokter=dokter.kd_dokter "+
+                "inner join penilaian_awal_keperawatan_ranap_bayi on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap_bayi.no_rawat "+
+                "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap_bayi.nip1=pengkaji1.nip "+
+                "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap_bayi.nip2=pengkaji2.nip "+
+                "inner join dokter on penilaian_awal_keperawatan_ranap_bayi.kd_dokter=dokter.kd_dokter "+
                 "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                 "inner join penjab on penjab.kd_pj=reg_periksa.kd_pj where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }else{
@@ -8206,76 +7889,65 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                "select penilaian_awal_keperawatan_ranap.no_rawat,penilaian_awal_keperawatan_ranap.tanggal,penilaian_awal_keperawatan_ranap.informasi,penilaian_awal_keperawatan_ranap.ket_informasi,penilaian_awal_keperawatan_ranap.tiba_diruang_rawat,"+
-                "penilaian_awal_keperawatan_ranap.kasus_trauma,penilaian_awal_keperawatan_ranap.cara_masuk,penilaian_awal_keperawatan_ranap.rps,penilaian_awal_keperawatan_ranap.rpd,penilaian_awal_keperawatan_ranap.rpk,penilaian_awal_keperawatan_ranap.rpo,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_pembedahan,penilaian_awal_keperawatan_ranap.riwayat_dirawat_dirs,penilaian_awal_keperawatan_ranap.alat_bantu_dipakai,penilaian_awal_keperawatan_ranap.riwayat_kehamilan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_kehamilan_perkiraan,penilaian_awal_keperawatan_ranap.riwayat_tranfusi,penilaian_awal_keperawatan_ranap.riwayat_alergi,penilaian_awal_keperawatan_ranap.riwayat_merokok,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_merokok_jumlah,penilaian_awal_keperawatan_ranap.riwayat_alkohol,penilaian_awal_keperawatan_ranap.riwayat_alkohol_jumlah,penilaian_awal_keperawatan_ranap.riwayat_narkoba,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_olahraga,penilaian_awal_keperawatan_ranap.pemeriksaan_mental,penilaian_awal_keperawatan_ranap.pemeriksaan_keadaan_umum,penilaian_awal_keperawatan_ranap.pemeriksaan_gcs,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_td,penilaian_awal_keperawatan_ranap.pemeriksaan_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_rr,penilaian_awal_keperawatan_ranap.pemeriksaan_suhu,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_spo2,penilaian_awal_keperawatan_ranap.pemeriksaan_bb,penilaian_awal_keperawatan_ranap.pemeriksaan_tb,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kepala_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_wajah_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_leher,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang,penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_kejang_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_susunan_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_sirkulasi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_pola_nafas,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_retraksi,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_suara_nafas,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_volume_pernafasan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_jenis_pernafasan_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_irama_nafas,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_respirasi_batuk,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_mulut_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_gigi_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_lidah_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_tenggorokan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_abdomen_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_peistatik_usus,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_gastrointestinal_anus,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pengelihatan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_pendengaran,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_sensorik,penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_motorik,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_neurologi_kekuatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_warnakulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_turgor,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_integument_kulit,penilaian_awal_keperawatan_ranap.pemeriksaan_integument_dekubitas,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_pergerakan_sendi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_kekauatan_otot,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_nyeri_sendi_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_oedema_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_muskuloskletal_fraktur_keterangan,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_jumlah,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_frekuensi_durasi,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_konsistensi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bab_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_jumlah,"+
-                "penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_frekuensi_durasi,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_warna,penilaian_awal_keperawatan_ranap.pemeriksaan_eliminasi_bak_lainlain,"+
-                "penilaian_awal_keperawatan_ranap.pola_aktifitas_makanminum,penilaian_awal_keperawatan_ranap.pola_aktifitas_mandi,penilaian_awal_keperawatan_ranap.pola_aktifitas_eliminasi,penilaian_awal_keperawatan_ranap.pola_aktifitas_berpakaian,"+
-                "penilaian_awal_keperawatan_ranap.pola_aktifitas_berpindah,penilaian_awal_keperawatan_ranap.pola_nutrisi_frekuesi_makan,penilaian_awal_keperawatan_ranap.pola_nutrisi_jenis_makanan,penilaian_awal_keperawatan_ranap.pola_nutrisi_porsi_makan,"+
-                "penilaian_awal_keperawatan_ranap.pola_tidur_lama_tidur,penilaian_awal_keperawatan_ranap.pola_tidur_gangguan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kemampuan_sehari,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_aktifitas,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_berjalan_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ambulasi,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_atas_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_ekstrimitas_bawah_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_menggenggam_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_koordinasi_keterangan,penilaian_awal_keperawatan_ranap.pengkajian_fungsi_kesimpulan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_kondisi_psiko,penilaian_awal_keperawatan_ranap.riwayat_psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_hubungan_keluarga,penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_tinggal_keterangan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap.riwayat_psiko_nilai_kepercayaan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.riwayat_psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan,penilaian_awal_keperawatan_ranap.riwayat_psiko_edukasi_diberikan_keterangan,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri,penilaian_awal_keperawatan_ranap.penilaian_nyeri_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_penyebab,penilaian_awal_keperawatan_ranap.penilaian_nyeri_kualitas,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_kualitas,penilaian_awal_keperawatan_ranap.penilaian_nyeri_lokasi,penilaian_awal_keperawatan_ranap.penilaian_nyeri_menyebar,penilaian_awal_keperawatan_ranap.penilaian_nyeri_skala,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_waktu,penilaian_awal_keperawatan_ranap.penilaian_nyeri_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_ket_hilang,penilaian_awal_keperawatan_ranap.penilaian_nyeri_diberitahukan_dokter,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_nyeri_jam_diberitahukan_dokter,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala1,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai1,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai2,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala3,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala4,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai4,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai5,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_skala6,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhmorse_totalnilai,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala1,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai1,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala2,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai2,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai3,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala4,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai4,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala5,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai5,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai6,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala7,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai7,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala8,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai8,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai9,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala10,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai10,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_skala11,penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_nilai11,"+
-                "penilaian_awal_keperawatan_ranap.penilaian_jatuhsydney_totalnilai,penilaian_awal_keperawatan_ranap.skrining_gizi1,penilaian_awal_keperawatan_ranap.nilai_gizi1,penilaian_awal_keperawatan_ranap.skrining_gizi2,"+
-                "penilaian_awal_keperawatan_ranap.nilai_gizi2,penilaian_awal_keperawatan_ranap.nilai_total_gizi,penilaian_awal_keperawatan_ranap.skrining_gizi_diagnosa_khusus,penilaian_awal_keperawatan_ranap.skrining_gizi_ket_diagnosa_khusus,"+
-                "penilaian_awal_keperawatan_ranap.skrining_gizi_diketahui_dietisen,penilaian_awal_keperawatan_ranap.skrining_gizi_jam_diketahui_dietisen,penilaian_awal_keperawatan_ranap.rencana,penilaian_awal_keperawatan_ranap.nip1,"+
-                "penilaian_awal_keperawatan_ranap.nip2,penilaian_awal_keperawatan_ranap.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
+                "select penilaian_awal_keperawatan_ranap_bayi.no_rawat,penilaian_awal_keperawatan_ranap_bayi.tanggal,penilaian_awal_keperawatan_ranap_bayi.informasi,penilaian_awal_keperawatan_ranap_bayi.ket_informasi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.tiba_diruang_rawat,penilaian_awal_keperawatan_ranap_bayi.rps,penilaian_awal_keperawatan_ranap_bayi.rpd,penilaian_awal_keperawatan_ranap_bayi.rpk,penilaian_awal_keperawatan_ranap_bayi.rpo,"+
+                "penilaian_awal_keperawatan_ranap_bayi.alergi,penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_tengkurap,penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_duduk,penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_berdiri,"+
+                "penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_gigi_pertama,penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_berjalan,penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_bicara,penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_membaca,"+
+                "penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_menulis,penilaian_awal_keperawatan_ranap_bayi.tumbuh_kembang_gangguan_emosi,penilaian_awal_keperawatan_ranap_bayi.persalinan_anakke,penilaian_awal_keperawatan_ranap_bayi.persalinan_darisaudara,"+
+                "penilaian_awal_keperawatan_ranap_bayi.persalinan_kelahiran,penilaian_awal_keperawatan_ranap_bayi.persalinan_kelahiran_keterangan,penilaian_awal_keperawatan_ranap_bayi.persalinan_umur_kelahiran,penilaian_awal_keperawatan_ranap_bayi.persalinan_kelainan_bawaan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.persalinan_kelainan_bawaan_keterangan,penilaian_awal_keperawatan_ranap_bayi.persalinan_bb_lahir,penilaian_awal_keperawatan_ranap_bayi.persalinan_pb_lahir,penilaian_awal_keperawatan_ranap_bayi.persalinan_lainnya,"+
+                "penilaian_awal_keperawatan_ranap_bayi.fisik_kesadaran,penilaian_awal_keperawatan_ranap_bayi.fisik_gcs,penilaian_awal_keperawatan_ranap_bayi.fisik_td,penilaian_awal_keperawatan_ranap_bayi.fisik_rr,penilaian_awal_keperawatan_ranap_bayi.fisik_suhu,"+
+                "penilaian_awal_keperawatan_ranap_bayi.fisik_nadi,penilaian_awal_keperawatan_ranap_bayi.fisik_bb,penilaian_awal_keperawatan_ranap_bayi.fisik_tb,penilaian_awal_keperawatan_ranap_bayi.fisik_lp,penilaian_awal_keperawatan_ranap_bayi.fisik_lk,"+
+                "penilaian_awal_keperawatan_ranap_bayi.fisik_ld,penilaian_awal_keperawatan_ranap_bayi.saraf_pusat_kepala,penilaian_awal_keperawatan_ranap_bayi.saraf_pusat_kepala_keterangan,penilaian_awal_keperawatan_ranap_bayi.saraf_pusat_wajah,"+
+                "penilaian_awal_keperawatan_ranap_bayi.saraf_pusat_wajah_keterangan,penilaian_awal_keperawatan_ranap_bayi.saraf_pusat_leher,penilaian_awal_keperawatan_ranap_bayi.saraf_pusat_kejang,penilaian_awal_keperawatan_ranap_bayi.saraf_pusat_kejang_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.saraf_pusat_sensorik,penilaian_awal_keperawatan_ranap_bayi.kardiovaskuler_pulsasi,penilaian_awal_keperawatan_ranap_bayi.kardiovaskuler_sirkulasi,penilaian_awal_keperawatan_ranap_bayi.kardiovaskuler_sirkulasi_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.kardiovaskuler_denyut_nadi,penilaian_awal_keperawatan_ranap_bayi.respirasi_retraksi,penilaian_awal_keperawatan_ranap_bayi.respirasi_pola_nafas,penilaian_awal_keperawatan_ranap_bayi.respirasi_suara_nafas,"+
+                "penilaian_awal_keperawatan_ranap_bayi.respirasi_batuk,penilaian_awal_keperawatan_ranap_bayi.respirasi_volume,penilaian_awal_keperawatan_ranap_bayi.respirasi_jenis_pernapasan,penilaian_awal_keperawatan_ranap_bayi.respirasi_jenis_pernapasan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.respirasi_irama,penilaian_awal_keperawatan_ranap_bayi.gastro_mulut,penilaian_awal_keperawatan_ranap_bayi.gastro_mulut_keterangan,penilaian_awal_keperawatan_ranap_bayi.gastro_tenggorakan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.gastro_tenggorakan_keterangan,penilaian_awal_keperawatan_ranap_bayi.gastro_lidah,penilaian_awal_keperawatan_ranap_bayi.gastro_lidah_keterangan,penilaian_awal_keperawatan_ranap_bayi.gastro_abdomen,"+
+                "penilaian_awal_keperawatan_ranap_bayi.gastro_abdomen_keterangan,penilaian_awal_keperawatan_ranap_bayi.gastro_gigi,penilaian_awal_keperawatan_ranap_bayi.gastro_gigi_keterangan,penilaian_awal_keperawatan_ranap_bayi.gastro_usus,"+
+                "penilaian_awal_keperawatan_ranap_bayi.gastro_anus,penilaian_awal_keperawatan_ranap_bayi.neurologi_sensorik,penilaian_awal_keperawatan_ranap_bayi.neurologi_pengilihatan,penilaian_awal_keperawatan_ranap_bayi.neurologi_pengilihatan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.neurologi_alat_bantu_penglihatan,penilaian_awal_keperawatan_ranap_bayi.neurologi_motorik,penilaian_awal_keperawatan_ranap_bayi.neurologi_pendengaran,penilaian_awal_keperawatan_ranap_bayi.neurologi_bicara,"+
+                "penilaian_awal_keperawatan_ranap_bayi.neurologi_bicara_keterangan,penilaian_awal_keperawatan_ranap_bayi.neurologi_otot,penilaian_awal_keperawatan_ranap_bayi.inte_kulit,penilaian_awal_keperawatan_ranap_bayi.inte_warna_kulit,"+
+                "penilaian_awal_keperawatan_ranap_bayi.inte_tugor,penilaian_awal_keperawatan_ranap_bayi.inte_decubi,penilaian_awal_keperawatan_ranap_bayi.musku_odema,penilaian_awal_keperawatan_ranap_bayi.musku_odema_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.musku_pegerakansendi,penilaian_awal_keperawatan_ranap_bayi.musku_otot,penilaian_awal_keperawatan_ranap_bayi.musku_fraktur,penilaian_awal_keperawatan_ranap_bayi.musku_fraktur_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.musku_nyerisendi,penilaian_awal_keperawatan_ranap_bayi.musku_nyerisendi_keterangan,penilaian_awal_keperawatan_ranap_bayi.eliminasi_bab_frekuensi,penilaian_awal_keperawatan_ranap_bayi.eliminasi_bab_frekuensi_per,"+
+                "penilaian_awal_keperawatan_ranap_bayi.eliminasi_bab_konsistesi,penilaian_awal_keperawatan_ranap_bayi.eliminasi_bab_warna,penilaian_awal_keperawatan_ranap_bayi.eliminasi_bak_frekuensi,penilaian_awal_keperawatan_ranap_bayi.eliminasi_bak_frekuensi_per,"+
+                "penilaian_awal_keperawatan_ranap_bayi.eliminasi_bak_warna,penilaian_awal_keperawatan_ranap_bayi.eliminasi_bak_lainlain,penilaian_awal_keperawatan_ranap_bayi.psiko_kondisi,penilaian_awal_keperawatan_ranap_bayi.psiko_perilaku,"+
+                "penilaian_awal_keperawatan_ranap_bayi.psiko_perilaku_keterangan,penilaian_awal_keperawatan_ranap_bayi.psiko_gangguan_jiwa,penilaian_awal_keperawatan_ranap_bayi.psiko_hubungan_pasien,penilaian_awal_keperawatan_ranap_bayi.psiko_tinggal_dengan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.psiko_tinggal_dengan_keterangan,penilaian_awal_keperawatan_ranap_bayi.psiko_pekerjaan_pj,penilaian_awal_keperawatan_ranap_bayi.psiko_nilai_kepercayaan,penilaian_awal_keperawatan_ranap_bayi.psiko_nilai_kepercayaan_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.psiko_pendidikan_pj,penilaian_awal_keperawatan_ranap_bayi.psiko_edukasi,penilaian_awal_keperawatan_ranap_bayi.psiko_edukasi_keterangan,penilaian_awal_keperawatan_ranap_bayi.edukasi_bahasa,"+
+                "penilaian_awal_keperawatan_ranap_bayi.edukasi_baca_tulis,penilaian_awal_keperawatan_ranap_bayi.edukasi_penerjemah,penilaian_awal_keperawatan_ranap_bayi.edukasi_penerjemah_keterangan,penilaian_awal_keperawatan_ranap_bayi.edukasi_terdapat_hambatan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.edukasi_hambatan_belajar,penilaian_awal_keperawatan_ranap_bayi.edukasi_hambatan_belajar_keterangan,penilaian_awal_keperawatan_ranap_bayi.edukasi_hambatan_bicara,penilaian_awal_keperawatan_ranap_bayi.edukasi_bahasa_isyarat,"+
+                "penilaian_awal_keperawatan_ranap_bayi.edukasi_cara_belajar,penilaian_awal_keperawatan_ranap_bayi.edukasi_menerima_informasi,penilaian_awal_keperawatan_ranap_bayi.edukasi_menerima_informasi_keterangan,penilaian_awal_keperawatan_ranap_bayi.edukasi_nutrisi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.edukasi_penyakit,penilaian_awal_keperawatan_ranap_bayi.edukasi_pengobatan,penilaian_awal_keperawatan_ranap_bayi.edukasi_perawatan,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi1,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nilai_gizi1,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi2,penilaian_awal_keperawatan_ranap_bayi.nilai_gizi2,penilaian_awal_keperawatan_ranap_bayi.skrining_gizi3,penilaian_awal_keperawatan_ranap_bayi.nilai_gizi3,"+
+                "penilaian_awal_keperawatan_ranap_bayi.skrining_gizi4,penilaian_awal_keperawatan_ranap_bayi.nilai_gizi4,penilaian_awal_keperawatan_ranap_bayi.total_nilai,penilaian_awal_keperawatan_ranap_bayi.keterangan_skrining_gizi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_skala1,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_nilai1,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_skala2,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_nilai2,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_skala3,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_nilai3,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_skala4,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_nilai4,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_skala5,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_nilai5,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_skala6,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_nilai6,"+
+                "penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_skala7,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_nilai7,penilaian_awal_keperawatan_ranap_bayi.penilaian_humptydumpty_totalnilai,"+
+                "penilaian_awal_keperawatan_ranap_bayi.hasil_skrining_penilaian_humptydumpty,penilaian_awal_keperawatan_ranap_bayi.nyeri_wajah,penilaian_awal_keperawatan_ranap_bayi.nyeri_nilai_wajah,penilaian_awal_keperawatan_ranap_bayi.nyeri_kaki,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nyeri_nilai_kaki,penilaian_awal_keperawatan_ranap_bayi.nyeri_aktifitas,penilaian_awal_keperawatan_ranap_bayi.nyeri_nilai_aktifitas,penilaian_awal_keperawatan_ranap_bayi.nyeri_menangis,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nyeri_nilai_menangis,penilaian_awal_keperawatan_ranap_bayi.nyeri_bersuara,penilaian_awal_keperawatan_ranap_bayi.nyeri_nilai_bersuara,penilaian_awal_keperawatan_ranap_bayi.nyeri_nilai_total,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nyeri_kondisi,penilaian_awal_keperawatan_ranap_bayi.nyeri_lokasi,penilaian_awal_keperawatan_ranap_bayi.nyeri_durasi,penilaian_awal_keperawatan_ranap_bayi.nyeri_frekuensi,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nyeri_hilang,penilaian_awal_keperawatan_ranap_bayi.nyeri_hilang_keterangan,penilaian_awal_keperawatan_ranap_bayi.nyeri_diberitahukan_pada_dokter,penilaian_awal_keperawatan_ranap_bayi.nyeri_diberitahukan_pada_dokter_keterangan,"+
+                "penilaian_awal_keperawatan_ranap_bayi.informasi_perencanaan_pulang,penilaian_awal_keperawatan_ranap_bayi.lama_ratarata,penilaian_awal_keperawatan_ranap_bayi.perencanaan_pulang,penilaian_awal_keperawatan_ranap_bayi.kondisi_klinis_pulang,"+
+                "penilaian_awal_keperawatan_ranap_bayi.perawatan_lanjutan_dirumah,penilaian_awal_keperawatan_ranap_bayi.cara_transportasi_pulang,penilaian_awal_keperawatan_ranap_bayi.transportasi_digunakan,penilaian_awal_keperawatan_ranap_bayi.rencana,"+
+                "penilaian_awal_keperawatan_ranap_bayi.nip1,penilaian_awal_keperawatan_ranap_bayi.nip2,penilaian_awal_keperawatan_ranap_bayi.kd_dokter,pasien.tgl_lahir,pasien.jk,pengkaji1.nama as pengkaji1,pengkaji2.nama as pengkaji2,dokter.nm_dokter,"+
                 "reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.agama,pasien.pekerjaan,pasien.pnd,penjab.png_jawab,bahasa_pasien.nama_bahasa "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join penilaian_awal_keperawatan_ranap on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap.no_rawat "+
-                "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap.nip1=pengkaji1.nip "+
-                "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap.nip2=pengkaji2.nip "+
-                "inner join dokter on penilaian_awal_keperawatan_ranap.kd_dokter=dokter.kd_dokter "+
+                "inner join penilaian_awal_keperawatan_ranap_bayi on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap_bayi.no_rawat "+
+                "inner join petugas as pengkaji1 on penilaian_awal_keperawatan_ranap_bayi.nip1=pengkaji1.nip "+
+                "inner join petugas as pengkaji2 on penilaian_awal_keperawatan_ranap_bayi.nip2=pengkaji2.nip "+
+                "inner join dokter on penilaian_awal_keperawatan_ranap_bayi.kd_dokter=dokter.kd_dokter "+
                 "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                 "inner join penjab on penjab.kd_pj=reg_periksa.kd_pj where "+
-                "penilaian_awal_keperawatan_ranap.tanggal between ? and ? "+
-                (TCari.getText().trim().equals("")?"":"and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_awal_keperawatan_ranap.nip1 like ? or "+
-                "pengkaji1.nama like ? or penilaian_awal_keperawatan_ranap.kd_dokter like ? or dokter.nm_dokter like ?)")+
-                " order by penilaian_awal_keperawatan_ranap.tanggal");
+                "penilaian_awal_keperawatan_ranap_bayi.tanggal between ? and ? "+
+                (TCari.getText().trim().equals("")?"":"and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or penilaian_awal_keperawatan_ranap_bayi.nip1 like ? or "+
+                "pengkaji1.nama like ? or penilaian_awal_keperawatan_ranap_bayi.kd_dokter like ? or dokter.nm_dokter like ?)")+
+                " order by penilaian_awal_keperawatan_ranap_bayi.tanggal");
             
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
@@ -8622,10 +8294,10 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_ranap());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ranap());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap()); 
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_keperawatan_ranap_bayi());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_keperawatan_ranap_bayi());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap_bayi());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_keperawatan_ranap_bayi()); 
         BtnTambahMasalah.setEnabled(akses.getmaster_masalah_keperawatan()); 
         BtnTambahRencana.setEnabled(akses.getmaster_rencana_keperawatan()); 
         if(akses.getjml2()>=1){
@@ -8676,8 +8348,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 Valid.tabelKosong(tabModeDetailMasalah);
                 ps=koneksi.prepareStatement(
                         "select master_masalah_keperawatan.kode_masalah,master_masalah_keperawatan.nama_masalah from master_masalah_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ranap_masalah on penilaian_awal_keperawatan_ranap_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
-                        "where penilaian_awal_keperawatan_ranap_masalah.no_rawat=? order by penilaian_awal_keperawatan_ranap_masalah.kode_masalah");
+                        "inner join penilaian_awal_keperawatan_ranap_bayi_masalah on penilaian_awal_keperawatan_ranap_bayi_masalah.kode_masalah=master_masalah_keperawatan.kode_masalah "+
+                        "where penilaian_awal_keperawatan_ranap_bayi_masalah.no_rawat=? order by penilaian_awal_keperawatan_ranap_bayi_masalah.kode_masalah");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -8702,8 +8374,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 Valid.tabelKosong(tabModeDetailRencana);
                 ps=koneksi.prepareStatement(
                         "select master_rencana_keperawatan.kode_rencana,master_rencana_keperawatan.rencana_keperawatan from master_rencana_keperawatan "+
-                        "inner join penilaian_awal_keperawatan_ranap_rencana on penilaian_awal_keperawatan_ranap_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
-                        "where penilaian_awal_keperawatan_ranap_rencana.no_rawat=? order by penilaian_awal_keperawatan_ranap_rencana.kode_rencana");
+                        "inner join penilaian_awal_keperawatan_ranap_bayi_rencana on penilaian_awal_keperawatan_ranap_bayi_rencana.kode_rencana=master_rencana_keperawatan.kode_rencana "+
+                        "where penilaian_awal_keperawatan_ranap_bayi_rencana.no_rawat=? order by penilaian_awal_keperawatan_ranap_bayi_rencana.kode_rencana");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -8729,7 +8401,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_awal_keperawatan_ranap where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_awal_keperawatan_ranap_bayi where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             TNoRM1.setText("");
@@ -8746,7 +8418,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("penilaian_awal_keperawatan_ranap","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,ket_informasi=?,tiba_diruang_rawat=?,kasus_trauma=?,cara_masuk=?,rps=?,rpd=?,rpk=?,rpo=?,riwayat_pembedahan=?,riwayat_dirawat_dirs=?,alat_bantu_dipakai=?,riwayat_kehamilan=?,riwayat_kehamilan_perkiraan=?,riwayat_tranfusi=?,riwayat_alergi=?,riwayat_merokok=?,riwayat_merokok_jumlah=?,riwayat_alkohol=?,riwayat_alkohol_jumlah=?,riwayat_narkoba=?,riwayat_olahraga=?,pemeriksaan_mental=?,pemeriksaan_keadaan_umum=?,pemeriksaan_gcs=?,pemeriksaan_td=?,pemeriksaan_nadi=?,pemeriksaan_rr=?,pemeriksaan_suhu=?,pemeriksaan_spo2=?,pemeriksaan_bb=?,pemeriksaan_tb=?,pemeriksaan_susunan_kepala=?,pemeriksaan_susunan_kepala_keterangan=?,pemeriksaan_susunan_wajah=?,pemeriksaan_susunan_wajah_keterangan=?,pemeriksaan_susunan_leher=?,pemeriksaan_susunan_kejang=?,pemeriksaan_susunan_kejang_keterangan=?,pemeriksaan_susunan_sensorik=?,pemeriksaan_kardiovaskuler_denyut_nadi=?,pemeriksaan_kardiovaskuler_sirkulasi=?,pemeriksaan_kardiovaskuler_sirkulasi_keterangan=?,pemeriksaan_kardiovaskuler_pulsasi=?,pemeriksaan_respirasi_pola_nafas=?,pemeriksaan_respirasi_retraksi=?,pemeriksaan_respirasi_suara_nafas=?,pemeriksaan_respirasi_volume_pernafasan=?,pemeriksaan_respirasi_jenis_pernafasan=?,pemeriksaan_respirasi_jenis_pernafasan_keterangan=?,pemeriksaan_respirasi_irama_nafas=?,pemeriksaan_respirasi_batuk=?,pemeriksaan_gastrointestinal_mulut=?,pemeriksaan_gastrointestinal_mulut_keterangan=?,pemeriksaan_gastrointestinal_gigi=?,pemeriksaan_gastrointestinal_gigi_keterangan=?,pemeriksaan_gastrointestinal_lidah=?,pemeriksaan_gastrointestinal_lidah_keterangan=?,pemeriksaan_gastrointestinal_tenggorokan=?,pemeriksaan_gastrointestinal_tenggorokan_keterangan=?,pemeriksaan_gastrointestinal_abdomen=?,pemeriksaan_gastrointestinal_abdomen_keterangan=?,pemeriksaan_gastrointestinal_peistatik_usus=?,pemeriksaan_gastrointestinal_anus=?,pemeriksaan_neurologi_pengelihatan=?,pemeriksaan_neurologi_pengelihatan_keterangan=?,pemeriksaan_neurologi_alat_bantu_penglihatan=?,pemeriksaan_neurologi_pendengaran=?,pemeriksaan_neurologi_bicara=?,pemeriksaan_neurologi_bicara_keterangan=?,pemeriksaan_neurologi_sensorik=?,pemeriksaan_neurologi_motorik=?,pemeriksaan_neurologi_kekuatan_otot=?,pemeriksaan_integument_warnakulit=?,pemeriksaan_integument_turgor=?,pemeriksaan_integument_kulit=?,pemeriksaan_integument_dekubitas=?,pemeriksaan_muskuloskletal_pergerakan_sendi=?,pemeriksaan_muskuloskletal_kekauatan_otot=?,pemeriksaan_muskuloskletal_nyeri_sendi=?,pemeriksaan_muskuloskletal_nyeri_sendi_keterangan=?,pemeriksaan_muskuloskletal_oedema=?,pemeriksaan_muskuloskletal_oedema_keterangan=?,pemeriksaan_muskuloskletal_fraktur=?,pemeriksaan_muskuloskletal_fraktur_keterangan=?,pemeriksaan_eliminasi_bab_frekuensi_jumlah=?,pemeriksaan_eliminasi_bab_frekuensi_durasi=?,pemeriksaan_eliminasi_bab_konsistensi=?,pemeriksaan_eliminasi_bab_warna=?,pemeriksaan_eliminasi_bak_frekuensi_jumlah=?,pemeriksaan_eliminasi_bak_frekuensi_durasi=?,pemeriksaan_eliminasi_bak_warna=?,pemeriksaan_eliminasi_bak_lainlain=?,pola_aktifitas_makanminum=?,pola_aktifitas_mandi=?,pola_aktifitas_eliminasi=?,pola_aktifitas_berpakaian=?,pola_aktifitas_berpindah=?,pola_nutrisi_frekuesi_makan=?,pola_nutrisi_jenis_makanan=?,pola_nutrisi_porsi_makan=?,pola_tidur_lama_tidur=?,pola_tidur_gangguan=?,pengkajian_fungsi_kemampuan_sehari=?,pengkajian_fungsi_aktifitas=?,pengkajian_fungsi_berjalan=?,pengkajian_fungsi_berjalan_keterangan=?,pengkajian_fungsi_ambulasi=?,pengkajian_fungsi_ekstrimitas_atas=?,pengkajian_fungsi_ekstrimitas_atas_keterangan=?,pengkajian_fungsi_ekstrimitas_bawah=?,pengkajian_fungsi_ekstrimitas_bawah_keterangan=?,pengkajian_fungsi_menggenggam=?,pengkajian_fungsi_menggenggam_keterangan=?,pengkajian_fungsi_koordinasi=?,pengkajian_fungsi_koordinasi_keterangan=?,pengkajian_fungsi_kesimpulan=?,riwayat_psiko_kondisi_psiko=?,riwayat_psiko_gangguan_jiwa=?,riwayat_psiko_perilaku=?,riwayat_psiko_perilaku_keterangan=?,riwayat_psiko_hubungan_keluarga=?,riwayat_psiko_tinggal=?,riwayat_psiko_tinggal_keterangan=?,riwayat_psiko_nilai_kepercayaan=?,riwayat_psiko_nilai_kepercayaan_keterangan=?,riwayat_psiko_pendidikan_pj=?,riwayat_psiko_edukasi_diberikan=?,riwayat_psiko_edukasi_diberikan_keterangan=?,penilaian_nyeri=?,penilaian_nyeri_penyebab=?,penilaian_nyeri_ket_penyebab=?,penilaian_nyeri_kualitas=?,penilaian_nyeri_ket_kualitas=?,penilaian_nyeri_lokasi=?,penilaian_nyeri_menyebar=?,penilaian_nyeri_skala=?,penilaian_nyeri_waktu=?,penilaian_nyeri_hilang=?,penilaian_nyeri_ket_hilang=?,penilaian_nyeri_diberitahukan_dokter=?,penilaian_nyeri_jam_diberitahukan_dokter=?,penilaian_jatuhmorse_skala1=?,penilaian_jatuhmorse_nilai1=?,penilaian_jatuhmorse_skala2=?,penilaian_jatuhmorse_nilai2=?,penilaian_jatuhmorse_skala3=?,penilaian_jatuhmorse_nilai3=?,penilaian_jatuhmorse_skala4=?,penilaian_jatuhmorse_nilai4=?,penilaian_jatuhmorse_skala5=?,penilaian_jatuhmorse_nilai5=?,penilaian_jatuhmorse_skala6=?,penilaian_jatuhmorse_nilai6=?,penilaian_jatuhmorse_totalnilai=?,penilaian_jatuhsydney_skala1=?,penilaian_jatuhsydney_nilai1=?,penilaian_jatuhsydney_skala2=?,penilaian_jatuhsydney_nilai2=?,penilaian_jatuhsydney_skala3=?,penilaian_jatuhsydney_nilai3=?,penilaian_jatuhsydney_skala4=?,penilaian_jatuhsydney_nilai4=?,penilaian_jatuhsydney_skala5=?,penilaian_jatuhsydney_nilai5=?,penilaian_jatuhsydney_skala6=?,penilaian_jatuhsydney_nilai6=?,penilaian_jatuhsydney_skala7=?,penilaian_jatuhsydney_nilai7=?,penilaian_jatuhsydney_skala8=?,penilaian_jatuhsydney_nilai8=?,penilaian_jatuhsydney_skala9=?,penilaian_jatuhsydney_nilai9=?,penilaian_jatuhsydney_skala10=?,penilaian_jatuhsydney_nilai10=?,penilaian_jatuhsydney_skala11=?,penilaian_jatuhsydney_nilai11=?,penilaian_jatuhsydney_totalnilai=?,skrining_gizi1=?,nilai_gizi1=?,skrining_gizi2=?,nilai_gizi2=?,nilai_total_gizi=?,skrining_gizi_diagnosa_khusus=?,skrining_gizi_ket_diagnosa_khusus=?,skrining_gizi_diketahui_dietisen=?,skrining_gizi_jam_diketahui_dietisen=?,rencana=?,nip1=?,nip2=?,kd_dokter=?",194,new String[]{
+        /*if(Sequel.mengedittf("penilaian_awal_keperawatan_ranap_bayi","no_rawat=?","no_rawat=?,tanggal=?,informasi=?,ket_informasi=?,tiba_diruang_rawat=?,kasus_trauma=?,cara_masuk=?,rps=?,rpd=?,rpk=?,rpo=?,riwayat_pembedahan=?,riwayat_dirawat_dirs=?,alat_bantu_dipakai=?,riwayat_kehamilan=?,riwayat_kehamilan_perkiraan=?,riwayat_tranfusi=?,riwayat_alergi=?,riwayat_merokok=?,riwayat_merokok_jumlah=?,riwayat_alkohol=?,riwayat_alkohol_jumlah=?,riwayat_narkoba=?,riwayat_olahraga=?,pemeriksaan_mental=?,pemeriksaan_keadaan_umum=?,pemeriksaan_gcs=?,pemeriksaan_td=?,pemeriksaan_nadi=?,pemeriksaan_rr=?,pemeriksaan_suhu=?,pemeriksaan_spo2=?,pemeriksaan_bb=?,pemeriksaan_tb=?,pemeriksaan_susunan_kepala=?,pemeriksaan_susunan_kepala_keterangan=?,pemeriksaan_susunan_wajah=?,pemeriksaan_susunan_wajah_keterangan=?,pemeriksaan_susunan_leher=?,pemeriksaan_susunan_kejang=?,pemeriksaan_susunan_kejang_keterangan=?,pemeriksaan_susunan_sensorik=?,pemeriksaan_kardiovaskuler_denyut_nadi=?,pemeriksaan_kardiovaskuler_sirkulasi=?,pemeriksaan_kardiovaskuler_sirkulasi_keterangan=?,pemeriksaan_kardiovaskuler_pulsasi=?,pemeriksaan_respirasi_pola_nafas=?,pemeriksaan_respirasi_retraksi=?,pemeriksaan_respirasi_suara_nafas=?,pemeriksaan_respirasi_volume_pernafasan=?,pemeriksaan_respirasi_jenis_pernafasan=?,pemeriksaan_respirasi_jenis_pernafasan_keterangan=?,pemeriksaan_respirasi_irama_nafas=?,pemeriksaan_respirasi_batuk=?,pemeriksaan_gastrointestinal_mulut=?,pemeriksaan_gastrointestinal_mulut_keterangan=?,pemeriksaan_gastrointestinal_gigi=?,pemeriksaan_gastrointestinal_gigi_keterangan=?,pemeriksaan_gastrointestinal_lidah=?,pemeriksaan_gastrointestinal_lidah_keterangan=?,pemeriksaan_gastrointestinal_tenggorokan=?,pemeriksaan_gastrointestinal_tenggorokan_keterangan=?,pemeriksaan_gastrointestinal_abdomen=?,pemeriksaan_gastrointestinal_abdomen_keterangan=?,pemeriksaan_gastrointestinal_peistatik_usus=?,pemeriksaan_gastrointestinal_anus=?,pemeriksaan_neurologi_pengelihatan=?,pemeriksaan_neurologi_pengelihatan_keterangan=?,pemeriksaan_neurologi_alat_bantu_penglihatan=?,pemeriksaan_neurologi_pendengaran=?,pemeriksaan_neurologi_bicara=?,pemeriksaan_neurologi_bicara_keterangan=?,pemeriksaan_neurologi_sensorik=?,pemeriksaan_neurologi_motorik=?,pemeriksaan_neurologi_kekuatan_otot=?,pemeriksaan_integument_warnakulit=?,pemeriksaan_integument_turgor=?,pemeriksaan_integument_kulit=?,pemeriksaan_integument_dekubitas=?,pemeriksaan_muskuloskletal_pergerakan_sendi=?,pemeriksaan_muskuloskletal_kekauatan_otot=?,pemeriksaan_muskuloskletal_nyeri_sendi=?,pemeriksaan_muskuloskletal_nyeri_sendi_keterangan=?,pemeriksaan_muskuloskletal_oedema=?,pemeriksaan_muskuloskletal_oedema_keterangan=?,pemeriksaan_muskuloskletal_fraktur=?,pemeriksaan_muskuloskletal_fraktur_keterangan=?,pemeriksaan_eliminasi_bab_frekuensi_jumlah=?,pemeriksaan_eliminasi_bab_frekuensi_durasi=?,pemeriksaan_eliminasi_bab_konsistensi=?,pemeriksaan_eliminasi_bab_warna=?,pemeriksaan_eliminasi_bak_frekuensi_jumlah=?,pemeriksaan_eliminasi_bak_frekuensi_durasi=?,pemeriksaan_eliminasi_bak_warna=?,pemeriksaan_eliminasi_bak_lainlain=?,pola_aktifitas_makanminum=?,pola_aktifitas_mandi=?,pola_aktifitas_eliminasi=?,pola_aktifitas_berpakaian=?,pola_aktifitas_berpindah=?,pola_nutrisi_frekuesi_makan=?,pola_nutrisi_jenis_makanan=?,pola_nutrisi_porsi_makan=?,pola_tidur_lama_tidur=?,pola_tidur_gangguan=?,pengkajian_fungsi_kemampuan_sehari=?,pengkajian_fungsi_aktifitas=?,pengkajian_fungsi_berjalan=?,pengkajian_fungsi_berjalan_keterangan=?,pengkajian_fungsi_ambulasi=?,pengkajian_fungsi_ekstrimitas_atas=?,pengkajian_fungsi_ekstrimitas_atas_keterangan=?,pengkajian_fungsi_ekstrimitas_bawah=?,pengkajian_fungsi_ekstrimitas_bawah_keterangan=?,pengkajian_fungsi_menggenggam=?,pengkajian_fungsi_menggenggam_keterangan=?,pengkajian_fungsi_koordinasi=?,pengkajian_fungsi_koordinasi_keterangan=?,pengkajian_fungsi_kesimpulan=?,riwayat_psiko_kondisi_psiko=?,riwayat_psiko_gangguan_jiwa=?,riwayat_psiko_perilaku=?,riwayat_psiko_perilaku_keterangan=?,riwayat_psiko_hubungan_keluarga=?,riwayat_psiko_tinggal=?,riwayat_psiko_tinggal_keterangan=?,riwayat_psiko_nilai_kepercayaan=?,riwayat_psiko_nilai_kepercayaan_keterangan=?,riwayat_psiko_pendidikan_pj=?,riwayat_psiko_edukasi_diberikan=?,riwayat_psiko_edukasi_diberikan_keterangan=?,penilaian_nyeri=?,penilaian_nyeri_penyebab=?,penilaian_nyeri_ket_penyebab=?,penilaian_nyeri_kualitas=?,penilaian_nyeri_ket_kualitas=?,penilaian_nyeri_lokasi=?,penilaian_nyeri_menyebar=?,penilaian_nyeri_skala=?,penilaian_nyeri_waktu=?,penilaian_nyeri_hilang=?,penilaian_nyeri_ket_hilang=?,penilaian_nyeri_diberitahukan_dokter=?,penilaian_nyeri_jam_diberitahukan_dokter=?,penilaian_jatuhmorse_skala1=?,penilaian_jatuhmorse_nilai1=?,penilaian_jatuhmorse_skala2=?,penilaian_jatuhmorse_nilai2=?,penilaian_jatuhmorse_skala3=?,penilaian_jatuhmorse_nilai3=?,penilaian_jatuhmorse_skala4=?,penilaian_jatuhmorse_nilai4=?,penilaian_jatuhmorse_skala5=?,penilaian_jatuhmorse_nilai5=?,penilaian_jatuhmorse_skala6=?,penilaian_jatuhmorse_nilai6=?,penilaian_jatuhmorse_totalnilai=?,penilaian_jatuhsydney_skala1=?,penilaian_jatuhsydney_nilai1=?,penilaian_jatuhsydney_skala2=?,penilaian_jatuhsydney_nilai2=?,penilaian_jatuhsydney_skala3=?,penilaian_jatuhsydney_nilai3=?,penilaian_jatuhsydney_skala4=?,penilaian_jatuhsydney_nilai4=?,penilaian_jatuhsydney_skala5=?,penilaian_jatuhsydney_nilai5=?,penilaian_jatuhsydney_skala6=?,penilaian_jatuhsydney_nilai6=?,penilaian_jatuhsydney_skala7=?,penilaian_jatuhsydney_nilai7=?,penilaian_jatuhsydney_skala8=?,penilaian_jatuhsydney_nilai8=?,penilaian_jatuhsydney_skala9=?,penilaian_jatuhsydney_nilai9=?,penilaian_jatuhsydney_skala10=?,penilaian_jatuhsydney_nilai10=?,penilaian_jatuhsydney_skala11=?,penilaian_jatuhsydney_nilai11=?,penilaian_jatuhsydney_totalnilai=?,skrining_gizi1=?,nilai_gizi1=?,skrining_gizi2=?,nilai_gizi2=?,nilai_total_gizi=?,skrining_gizi_diagnosa_khusus=?,skrining_gizi_ket_diagnosa_khusus=?,skrining_gizi_diketahui_dietisen=?,skrining_gizi_jam_diketahui_dietisen=?,rencana=?,nip1=?,nip2=?,kd_dokter=?",194,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Anamnesis.getSelectedItem().toString(),KetAnamnesis.getText(),TibadiRuang.getSelectedItem().toString(),MacamKasus.getSelectedItem().toString(), 
                     CaraMasuk.getSelectedItem().toString(),RPS.getText(),RPD.getText(),RPK.getText(),RPO.getText(),RPembedahan.getText(),RDirawatRS.getText(),AlatBantuDipakai.getSelectedItem().toString(),SedangMenyusui.getSelectedItem().toString(),KetSedangMenyusui.getText(),RTranfusi.getText(), 
                     Alergi.getText(),KebiasaanMerokok.getSelectedItem().toString(),KebiasaanJumlahRokok.getText(),KebiasaanAlkohol.getSelectedItem().toString(),KebiasaanJumlahAlkohol.getText(),KebiasaanNarkoba.getSelectedItem().toString(),OlahRaga.getSelectedItem().toString(),KesadaranMental.getText(), 
@@ -8948,11 +8620,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 tbObat.setValueAt(DiketahuiDietisen.getSelectedItem().toString(),tbObat.getSelectedRow(),172);                
                 tbObat.setValueAt(KeteranganDiketahuiDietisen.getText(),tbObat.getSelectedRow(),173);                
                 tbObat.setValueAt(Rencana.getText(),tbObat.getSelectedRow(),174);  
-                Sequel.meghapus("penilaian_awal_keperawatan_ranap_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                Sequel.meghapus("penilaian_awal_keperawatan_ranap_rencana","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Sequel.meghapus("penilaian_awal_keperawatan_ranap_bayi_masalah","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Sequel.meghapus("penilaian_awal_keperawatan_ranap_bayi_rencana","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
+                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_bayi_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
                             tabModeDetailMasalah.addRow(new String[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
@@ -8961,7 +8633,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 }
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_rencana","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
+                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_bayi_rencana","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
                             tabModeDetailRencana.addRow(new String[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
@@ -9153,7 +8825,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     
 
     private void simpan() {
-        /*if(Sequel.menyimpantf("penilaian_awal_keperawatan_ranap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",193,new String[]{
+        /*if(Sequel.menyimpantf("penilaian_awal_keperawatan_ranap_bayi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",193,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Anamnesis.getSelectedItem().toString(),KetAnamnesis.getText(),TibadiRuang.getSelectedItem().toString(),MacamKasus.getSelectedItem().toString(), 
                 CaraMasuk.getSelectedItem().toString(),RPS.getText(),RPD.getText(),RPK.getText(),RPO.getText(),RPembedahan.getText(),RDirawatRS.getText(),AlatBantuDipakai.getSelectedItem().toString(),SedangMenyusui.getSelectedItem().toString(),KetSedangMenyusui.getText(),RTranfusi.getText(), 
                 Alergi.getText(),KebiasaanMerokok.getSelectedItem().toString(),KebiasaanJumlahRokok.getText(),KebiasaanAlkohol.getSelectedItem().toString(),KebiasaanJumlahAlkohol.getText(),KebiasaanNarkoba.getSelectedItem().toString(),OlahRaga.getSelectedItem().toString(),KesadaranMental.getText(), 
@@ -9206,7 +8878,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 });
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
+                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_bayi_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
                             tabModeDetailMasalah.addRow(new String[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
@@ -9215,7 +8887,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 }
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_rencana","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
+                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_bayi_rencana","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
                             tabModeDetailRencana.addRow(new String[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
