@@ -212,7 +212,37 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         KetGastrointestinalLidah.setDocument(new batasInput((int)30).getKata(KetGastrointestinalLidah));
         KetGastrointestinalAbdomen.setDocument(new batasInput((int)30).getKata(KetGastrointestinalAbdomen));
         KetGastrointestinalGigi.setDocument(new batasInput((int)30).getKata(KetGastrointestinalGigi));
-        
+        KetNeurologiPenglihatan.setDocument(new batasInput((int)30).getKata(KetNeurologiPenglihatan));
+        KetNeurologiBicara.setDocument(new batasInput((int)30).getKata(KetNeurologiBicara));
+        KetMuskuloskletalOedema.setDocument(new batasInput((int)30).getKata(KetMuskuloskletalOedema));
+        KetMuskuloskletalFraktur.setDocument(new batasInput((int)30).getKata(KetMuskuloskletalFraktur));
+        KetMuskuloskletalNyeriSendi.setDocument(new batasInput((int)30).getKata(KetMuskuloskletalNyeriSendi));
+        BAB.setDocument(new batasInput((int)3).getKata(BAB));
+        XBAB.setDocument(new batasInput((int)10).getKata(XBAB));
+        KBAB.setDocument(new batasInput((int)20).getKata(KBAB));
+        WBAB.setDocument(new batasInput((int)20).getKata(WBAB));
+        BAK.setDocument(new batasInput((int)3).getKata(BAK));
+        XBAK.setDocument(new batasInput((int)10).getKata(XBAK));
+        WBAK.setDocument(new batasInput((int)20).getKata(WBAK));
+        LBAK.setDocument(new batasInput((int)20).getKata(LBAK));
+        KeteranganAdakahPerilaku.setDocument(new batasInput((int)30).getKata(KeteranganAdakahPerilaku));
+        KeteranganTinggalDengan.setDocument(new batasInput((int)30).getKata(KeteranganTinggalDengan));
+        PekerjaanPJ.setDocument(new batasInput((int)30).getKata(PekerjaanPJ));
+        KeteranganNilaiKepercayaan.setDocument(new batasInput((int)30).getKata(KeteranganNilaiKepercayaan));
+        KeteranganEdukasiPsikologis.setDocument(new batasInput((int)30).getKata(KeteranganEdukasiPsikologis));
+        KeteranganButuhPenerjemah.setDocument(new batasInput((int)30).getKata(KeteranganButuhPenerjemah));
+        KeteranganHambatanBelajar.setDocument(new batasInput((int)30).getKata(KeteranganHambatanBelajar));
+        KeteranganKesediaanMenerimaInformasi.setDocument(new batasInput((int)30).getKata(KeteranganKesediaanMenerimaInformasi));
+        KeteranganSkriningGizi.setDocument(new batasInput((int)50).getKata(KeteranganSkriningGizi));
+        KeteranganTingkatRisiko.setDocument(new batasInput((int)50).getKata(KeteranganTingkatRisiko));
+        Lokasi.setDocument(new batasInput((int)50).getKata(Lokasi));
+        Durasi.setDocument(new batasInput((int)25).getKata(Durasi));
+        Frekuensi.setDocument(new batasInput((int)25).getKata(Frekuensi));
+        KetNyeri.setDocument(new batasInput((int)40).getKata(KetNyeri));
+        NyeriKetDokter.setDocument(new batasInput((int)15).getKata(NyeriKetDokter));
+        LamaRatarata.setDocument(new batasInput((int)3).getKata(LamaRatarata));
+        KondisiPulang.setDocument(new batasInput((int)100).getKata(KondisiPulang));
+        PerawatanLanjutan.setDocument(new batasInput((int)300).getKata(PerawatanLanjutan));
         Rencana.setDocument(new batasInput((int)200).getKata(Rencana));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
