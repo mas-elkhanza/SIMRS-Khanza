@@ -75,9 +75,9 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","NIP Pengkaji 1","Nama Pengkaji 1","NIP Pengkaji 2","Nama Pengkaji 2","Kode DPJP","Nama DPJP",
-            "Tgl.Asuhan","Anamnesa","Keterangan Anamnesa","Kondisi Tiba Di Ruang Rawat","Riwayat Penyakit Saat Ini","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga",
+            "Tgl.Asuhan","Anamnesa","Keterangan Anamnesa","Kondisi Tiba Di Ruang","Riwayat Penyakit Saat Ini","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga",
             "Riwayat Penggunaan Obat","Riwayat Alergi","Tengkurap","Duduk","Berdiri","Gigi Pertama","Berjalan","Bicara","Membaca","Menulis","Gangguan Emosi",
-            "Anak Ke","Bersaudara","Cara Kelahiran","Keterangan Cara Kelahiran","Umur Kelahiran","Kelainan Bawaan","Keterangan Kelainan Bawaan","BB Lahir","PP Lahir",
+            "Anak Ke","Bersaudara","Cara Kelahiran","Keterangan Cara Kelahiran","Umur Kelahiran","Kelainan Bawaan","Keterangan Kelainan Bawaan","BB Lahir","PB Lahir",
             "Riwayat Persalinan Lainnya","Kesadaran","GCS","TD(mmHg)","RR(x/menit)","Suhu(°C)","Nadi(x/menit)","BB(Kg)","TB(cm)","LP(cm)","LK(cm)","LD(cm)",
             "Saraf Pusat Kepala","Keterangan Saraf Pusat Kepala","Saraf Pusat Wajah","Keterangan Saraf Pusat Wajah","Saraf Pusat Leher","Saraf Pusat Kejang",
             "Keterangan Saraf Pusat Kejang","Saraf Pusat Sensorik","Kardi Pulsasi","Kardio Sirkulasi","Keterangan Kardio Sirkulasi","Kardio Denyut Nadi","Respi Retraksi",
@@ -135,6 +135,64 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 column.setPreferredWidth(150);
             }else if(i==11){
                 column.setPreferredWidth(117);
+            }else if(i==12){
+                column.setPreferredWidth(85);
+            }else if(i==13){
+                column.setPreferredWidth(130);
+            }else if(i==14){
+                column.setPreferredWidth(115);
+            }else if(i==15){
+                column.setPreferredWidth(250);
+            }else if(i==16){
+                column.setPreferredWidth(160);
+            }else if(i==17){
+                column.setPreferredWidth(160);
+            }else if(i==18){
+                column.setPreferredWidth(160);
+            }else if(i==19){
+                column.setPreferredWidth(100);
+            }else if(i==20){
+                column.setPreferredWidth(59);
+            }else if(i==21){
+                column.setPreferredWidth(40);
+            }else if(i==22){
+                column.setPreferredWidth(41);
+            }else if(i==23){
+                column.setPreferredWidth(72);
+            }else if(i==24){
+                column.setPreferredWidth(50);
+            }else if(i==25){
+                column.setPreferredWidth(39);
+            }else if(i==26){
+                column.setPreferredWidth(55);
+            }else if(i==27){
+                column.setPreferredWidth(46);
+            }else if(i==28){
+                column.setPreferredWidth(120);
+            }else if(i==29){
+                column.setPreferredWidth(48);
+            }else if(i==30){
+                column.setPreferredWidth(64);
+            }else if(i==31){
+                column.setPreferredWidth(80);
+            }else if(i==32){
+                column.setPreferredWidth(140);
+            }else if(i==33){
+                column.setPreferredWidth(84);
+            }else if(i==34){
+                column.setPreferredWidth(92);
+            }else if(i==35){
+                column.setPreferredWidth(151);
+            }else if(i==36){
+                column.setPreferredWidth(48);
+            }else if(i==37){
+                column.setPreferredWidth(48);
+            }else if(i==38){
+                column.setPreferredWidth(145);
+            }else if(i==39){
+                column.setPreferredWidth(90);
+            }else if(i==40){
+                column.setPreferredWidth(50);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
