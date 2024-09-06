@@ -235,11 +235,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         KeteranganKesediaanMenerimaInformasi.setDocument(new batasInput((int)30).getKata(KeteranganKesediaanMenerimaInformasi));
         KeteranganSkriningGizi.setDocument(new batasInput((int)50).getKata(KeteranganSkriningGizi));
         KeteranganTingkatRisiko.setDocument(new batasInput((int)50).getKata(KeteranganTingkatRisiko));
-        Lokasi.setDocument(new batasInput((int)50).getKata(Lokasi));
-        Durasi.setDocument(new batasInput((int)25).getKata(Durasi));
-        Frekuensi.setDocument(new batasInput((int)25).getKata(Frekuensi));
-        KetNyeri.setDocument(new batasInput((int)40).getKata(KetNyeri));
-        NyeriKetDokter.setDocument(new batasInput((int)15).getKata(NyeriKetDokter));
+        LokasiNyeri.setDocument(new batasInput((int)50).getKata(LokasiNyeri));
+        DurasiNyeri.setDocument(new batasInput((int)25).getKata(DurasiNyeri));
+        FrekuensiNyeri.setDocument(new batasInput((int)25).getKata(FrekuensiNyeri));
+        KetNyeriHilang.setDocument(new batasInput((int)40).getKata(KetNyeriHilang));
+        NyeriJamDiberitahuDokter.setDocument(new batasInput((int)15).getKata(NyeriJamDiberitahuDokter));
         LamaRatarata.setDocument(new batasInput((int)3).getKata(LamaRatarata));
         KondisiPulang.setDocument(new batasInput((int)100).getKata(KondisiPulang));
         PerawatanLanjutan.setDocument(new batasInput((int)300).getKata(PerawatanLanjutan));
@@ -836,7 +836,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiKepercayaan = new widget.ComboBox();
         KeteranganNilaiKepercayaan = new widget.TextBox();
         jLabel199 = new widget.Label();
-        Bahasa = new widget.TextBox();
+        BahasaPasien = new widget.TextBox();
         jLabel287 = new widget.Label();
         jLabel200 = new widget.Label();
         PendidikanPasien = new widget.TextBox();
@@ -960,18 +960,18 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jSeparator13 = new javax.swing.JSeparator();
         Nyeri = new widget.ComboBox();
         jLabel83 = new widget.Label();
-        Lokasi = new widget.TextBox();
+        LokasiNyeri = new widget.TextBox();
         jLabel88 = new widget.Label();
-        Frekuensi = new widget.TextBox();
-        Durasi = new widget.TextBox();
+        FrekuensiNyeri = new widget.TextBox();
+        DurasiNyeri = new widget.TextBox();
         jLabel89 = new widget.Label();
         NyeriHilang = new widget.ComboBox();
-        KetNyeri = new widget.TextBox();
+        KetNyeriHilang = new widget.TextBox();
         jLabel86 = new widget.Label();
         NyeriPadaDokter = new widget.ComboBox();
         jLabel84 = new widget.Label();
         jLabel87 = new widget.Label();
-        NyeriKetDokter = new widget.TextBox();
+        NyeriJamDiberitahuDokter = new widget.TextBox();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel90 = new widget.Label();
         jLabel91 = new widget.Label();
@@ -995,6 +995,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel265 = new widget.Label();
         jLabel266 = new widget.Label();
         TransportasiYangDigunakan = new widget.ComboBox();
+        jLabel236 = new widget.Label();
+        jLabel237 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1414,7 +1416,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         Anamnesis.setBounds(74, 100, 130, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024 09:55:16" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-09-2024 09:31:45" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -3605,11 +3607,11 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(jLabel199);
         jLabel199.setBounds(610, 1420, 120, 23);
 
-        Bahasa.setEditable(false);
-        Bahasa.setFocusTraversalPolicyProvider(true);
-        Bahasa.setName("Bahasa"); // NOI18N
-        FormInput.add(Bahasa);
-        Bahasa.setBounds(734, 1420, 120, 23);
+        BahasaPasien.setEditable(false);
+        BahasaPasien.setFocusTraversalPolicyProvider(true);
+        BahasaPasien.setName("BahasaPasien"); // NOI18N
+        FormInput.add(BahasaPasien);
+        BahasaPasien.setBounds(734, 1420, 120, 23);
 
         jLabel287.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel287.setText("Nilai-nilai Kepercayaan/Budaya Yang Perlu Diperhatikan");
@@ -4584,40 +4586,40 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(jLabel83);
         jLabel83.setBounds(604, 2215, 46, 23);
 
-        Lokasi.setFocusTraversalPolicyProvider(true);
-        Lokasi.setName("Lokasi"); // NOI18N
-        Lokasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        LokasiNyeri.setFocusTraversalPolicyProvider(true);
+        LokasiNyeri.setName("LokasiNyeri"); // NOI18N
+        LokasiNyeri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LokasiKeyPressed(evt);
+                LokasiNyeriKeyPressed(evt);
             }
         });
-        FormInput.add(Lokasi);
-        Lokasi.setBounds(654, 2215, 200, 23);
+        FormInput.add(LokasiNyeri);
+        LokasiNyeri.setBounds(654, 2215, 200, 23);
 
         jLabel88.setText("Frekuensi :");
         jLabel88.setName("jLabel88"); // NOI18N
         FormInput.add(jLabel88);
         jLabel88.setBounds(600, 2245, 100, 23);
 
-        Frekuensi.setFocusTraversalPolicyProvider(true);
-        Frekuensi.setName("Frekuensi"); // NOI18N
-        Frekuensi.addKeyListener(new java.awt.event.KeyAdapter() {
+        FrekuensiNyeri.setFocusTraversalPolicyProvider(true);
+        FrekuensiNyeri.setName("FrekuensiNyeri"); // NOI18N
+        FrekuensiNyeri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                FrekuensiKeyPressed(evt);
+                FrekuensiNyeriKeyPressed(evt);
             }
         });
-        FormInput.add(Frekuensi);
-        Frekuensi.setBounds(704, 2245, 150, 23);
+        FormInput.add(FrekuensiNyeri);
+        FrekuensiNyeri.setBounds(704, 2245, 150, 23);
 
-        Durasi.setFocusTraversalPolicyProvider(true);
-        Durasi.setName("Durasi"); // NOI18N
-        Durasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        DurasiNyeri.setFocusTraversalPolicyProvider(true);
+        DurasiNyeri.setName("DurasiNyeri"); // NOI18N
+        DurasiNyeri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DurasiKeyPressed(evt);
+                DurasiNyeriKeyPressed(evt);
             }
         });
-        FormInput.add(Durasi);
-        Durasi.setBounds(417, 2245, 150, 23);
+        FormInput.add(DurasiNyeri);
+        DurasiNyeri.setBounds(417, 2245, 150, 23);
 
         jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel89.setText("Nyeri hilang bila");
@@ -4635,15 +4637,15 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(NyeriHilang);
         NyeriHilang.setBounds(465, 2275, 165, 23);
 
-        KetNyeri.setFocusTraversalPolicyProvider(true);
-        KetNyeri.setName("KetNyeri"); // NOI18N
-        KetNyeri.addKeyListener(new java.awt.event.KeyAdapter() {
+        KetNyeriHilang.setFocusTraversalPolicyProvider(true);
+        KetNyeriHilang.setName("KetNyeriHilang"); // NOI18N
+        KetNyeriHilang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KetNyeriKeyPressed(evt);
+                KetNyeriHilangKeyPressed(evt);
             }
         });
-        FormInput.add(KetNyeri);
-        KetNyeri.setBounds(636, 2275, 218, 23);
+        FormInput.add(KetNyeriHilang);
+        KetNyeriHilang.setBounds(636, 2275, 218, 23);
 
         jLabel86.setText("Diberitahukan pada dokter ?");
         jLabel86.setName("jLabel86"); // NOI18N
@@ -4671,15 +4673,15 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(jLabel87);
         jLabel87.setBounds(375, 2245, 45, 23);
 
-        NyeriKetDokter.setFocusTraversalPolicyProvider(true);
-        NyeriKetDokter.setName("NyeriKetDokter"); // NOI18N
-        NyeriKetDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+        NyeriJamDiberitahuDokter.setFocusTraversalPolicyProvider(true);
+        NyeriJamDiberitahuDokter.setName("NyeriJamDiberitahuDokter"); // NOI18N
+        NyeriJamDiberitahuDokter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NyeriKetDokterKeyPressed(evt);
+                NyeriJamDiberitahuDokterKeyPressed(evt);
             }
         });
-        FormInput.add(NyeriKetDokter);
-        NyeriKetDokter.setBounds(774, 2305, 80, 23);
+        FormInput.add(NyeriJamDiberitahuDokter);
+        NyeriJamDiberitahuDokter.setBounds(774, 2305, 80, 23);
 
         jSeparator14.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator14.setForeground(new java.awt.Color(239, 244, 234));
@@ -4732,7 +4734,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         label29.setBounds(630, 2355, 130, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-09-2024" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -4844,6 +4846,16 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(TransportasiYangDigunakan);
         TransportasiYangDigunakan.setBounds(511, 2465, 140, 23);
 
+        jLabel236.setText(":");
+        jLabel236.setName("jLabel236"); // NOI18N
+        FormInput.add(jLabel236);
+        jLabel236.setBounds(0, 1790, 107, 23);
+
+        jLabel237.setText(":");
+        jLabel237.setName("jLabel237"); // NOI18N
+        FormInput.add(jLabel237);
+        jLabel237.setBounds(0, 2050, 122, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -4884,7 +4896,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-09-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -4898,7 +4910,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-09-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -7317,39 +7329,39 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_SkalaAktifitasKeyPressed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
-        Valid.pindah(evt,SkalaBersuara,Lokasi);
+        Valid.pindah(evt,SkalaBersuara,LokasiNyeri);
     }//GEN-LAST:event_NyeriKeyPressed
 
-    private void LokasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiKeyPressed
-        Valid.pindah(evt,Nyeri,Durasi);
-    }//GEN-LAST:event_LokasiKeyPressed
+    private void LokasiNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiNyeriKeyPressed
+        Valid.pindah(evt,Nyeri,DurasiNyeri);
+    }//GEN-LAST:event_LokasiNyeriKeyPressed
 
-    private void FrekuensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FrekuensiKeyPressed
-        Valid.pindah(evt,Durasi,NyeriHilang);
-    }//GEN-LAST:event_FrekuensiKeyPressed
+    private void FrekuensiNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FrekuensiNyeriKeyPressed
+        Valid.pindah(evt,DurasiNyeri,NyeriHilang);
+    }//GEN-LAST:event_FrekuensiNyeriKeyPressed
 
-    private void DurasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DurasiKeyPressed
-        Valid.pindah(evt,Lokasi,Frekuensi);
-    }//GEN-LAST:event_DurasiKeyPressed
+    private void DurasiNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DurasiNyeriKeyPressed
+        Valid.pindah(evt,LokasiNyeri,FrekuensiNyeri);
+    }//GEN-LAST:event_DurasiNyeriKeyPressed
 
     private void NyeriHilangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriHilangKeyPressed
-        Valid.pindah(evt,Frekuensi,KetNyeri);
+        Valid.pindah(evt,FrekuensiNyeri,KetNyeriHilang);
     }//GEN-LAST:event_NyeriHilangKeyPressed
 
-    private void KetNyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetNyeriKeyPressed
+    private void KetNyeriHilangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetNyeriHilangKeyPressed
         Valid.pindah(evt,NyeriHilang,NyeriPadaDokter);
-    }//GEN-LAST:event_KetNyeriKeyPressed
+    }//GEN-LAST:event_KetNyeriHilangKeyPressed
 
     private void NyeriPadaDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriPadaDokterKeyPressed
-        Valid.pindah(evt,KetNyeri,NyeriKetDokter);
+        Valid.pindah(evt,KetNyeriHilang,NyeriJamDiberitahuDokter);
     }//GEN-LAST:event_NyeriPadaDokterKeyPressed
 
-    private void NyeriKetDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKetDokterKeyPressed
+    private void NyeriJamDiberitahuDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriJamDiberitahuDokterKeyPressed
         Valid.pindah(evt,NyeriPadaDokter,InformasiPerencanaanPulang);
-    }//GEN-LAST:event_NyeriKetDokterKeyPressed
+    }//GEN-LAST:event_NyeriJamDiberitahuDokterKeyPressed
 
     private void InformasiPerencanaanPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiPerencanaanPulangKeyPressed
-        Valid.pindah(evt,NyeriKetDokter,LamaRatarata);
+        Valid.pindah(evt,NyeriJamDiberitahuDokter,LamaRatarata);
     }//GEN-LAST:event_InformasiPerencanaanPulangKeyPressed
 
     private void TanggalPulangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalPulangKeyPressed
@@ -7450,7 +7462,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.TextBox BAK;
     private widget.TextBox BB;
     private widget.TextBox BBLahir;
-    private widget.TextBox Bahasa;
+    private widget.TextBox BahasaPasien;
     private widget.TextBox BahasaSehari;
     private widget.Button BtnAll;
     private widget.Button BtnAllMasalah;
@@ -7487,12 +7499,12 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.TextBox DariSaudara;
     private widget.TextArea DetailRencana;
     private javax.swing.JDialog DlgRiwayatImunisasi;
-    private widget.TextBox Durasi;
+    private widget.TextBox DurasiNyeri;
     private widget.ComboBox EdukasiPsikolgis;
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormMasalahRencana;
     private widget.PanelBiasa FormMenu;
-    private widget.TextBox Frekuensi;
+    private widget.TextBox FrekuensiNyeri;
     private widget.TextBox GCS;
     private widget.TextBox GangguanEmosi;
     private widget.ComboBox GangguanJiwa;
@@ -7540,7 +7552,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.TextBox KetMuskuloskletalOedema;
     private widget.TextBox KetNeurologiBicara;
     private widget.TextBox KetNeurologiPenglihatan;
-    private widget.TextBox KetNyeri;
+    private widget.TextBox KetNyeriHilang;
     private widget.TextBox KetRespirasiJenisPernafasan;
     private widget.TextBox KetSistemSarafKejang;
     private widget.TextBox KetSistemSarafKepala;
@@ -7562,7 +7574,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.TextBox LK;
     private widget.TextBox LP;
     private widget.TextBox LamaRatarata;
-    private widget.TextBox Lokasi;
+    private widget.TextBox LokasiNyeri;
     private widget.ComboBox MuskuloskletalFraktur;
     private widget.ComboBox MuskuloskletalKekuatanOtot;
     private widget.ComboBox MuskuloskletalNyeriSendi;
@@ -7600,7 +7612,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.TextBox NmPetugas2;
     private widget.ComboBox Nyeri;
     private widget.ComboBox NyeriHilang;
-    private widget.TextBox NyeriKetDokter;
+    private widget.TextBox NyeriJamDiberitahuDokter;
     private widget.ComboBox NyeriPadaDokter;
     private widget.TextBox PBLahir;
     private widget.PanelBiasa PanelAccor;
@@ -7809,6 +7821,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     private widget.Label jLabel233;
     private widget.Label jLabel234;
     private widget.Label jLabel235;
+    private widget.Label jLabel236;
+    private widget.Label jLabel237;
     private widget.Label jLabel24;
     private widget.Label jLabel240;
     private widget.Label jLabel242;
@@ -8049,7 +8063,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                         rs.getString("musku_otot"),rs.getString("musku_fraktur"),rs.getString("musku_fraktur_keterangan"),rs.getString("musku_nyerisendi"),rs.getString("musku_nyerisendi_keterangan"),rs.getString("eliminasi_bab_frekuensi"),rs.getString("eliminasi_bab_frekuensi_per"),
                         rs.getString("eliminasi_bab_konsistesi"),rs.getString("eliminasi_bab_warna"),rs.getString("eliminasi_bak_frekuensi"),rs.getString("eliminasi_bak_frekuensi_per"),rs.getString("eliminasi_bak_warna"),rs.getString("eliminasi_bak_lainlain"),
                         rs.getString("psiko_kondisi"),rs.getString("psiko_perilaku"),rs.getString("psiko_perilaku_keterangan"),rs.getString("psiko_gangguan_jiwa"),rs.getString("psiko_hubungan_pasien"),rs.getString("agama"),rs.getString("psiko_tinggal_dengan"),
-                        rs.getString("psiko_tinggal_dengan_keterangan"),rs.getString("psiko_pekerjaan_pj"),rs.getString("png_jawab"),rs.getString("psiko_nilai_kepercayaan"),rs.getString("nama_bahasa"),rs.getString("pnd"),rs.getString("psiko_nilai_kepercayaan_keterangan"),
+                        rs.getString("psiko_tinggal_dengan_keterangan"),rs.getString("psiko_pekerjaan_pj"),rs.getString("png_jawab"),rs.getString("psiko_nilai_kepercayaan"),rs.getString("psiko_nilai_kepercayaan_keterangan"),rs.getString("nama_bahasa"),rs.getString("pnd"),
                         rs.getString("psiko_pendidikan_pj"),rs.getString("psiko_edukasi"),rs.getString("psiko_edukasi_keterangan"),rs.getString("edukasi_bahasa"),rs.getString("edukasi_baca_tulis"),rs.getString("edukasi_penerjemah"),rs.getString("edukasi_penerjemah_keterangan"),
                         rs.getString("edukasi_terdapat_hambatan"),rs.getString("edukasi_hambatan_belajar"),rs.getString("edukasi_hambatan_belajar_keterangan"),rs.getString("edukasi_hambatan_bicara"),rs.getString("edukasi_bahasa_isyarat"),rs.getString("edukasi_cara_belajar"),
                         rs.getString("edukasi_menerima_informasi"),rs.getString("edukasi_menerima_informasi_keterangan"),rs.getString("edukasi_nutrisi"),rs.getString("edukasi_penyakit"),rs.getString("edukasi_pengobatan"),rs.getString("edukasi_perawatan"),
@@ -8249,13 +8263,13 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         NilaiBersuara.setText("0");
         SkalaNyeri.setText("0");
         Nyeri.setSelectedIndex(0);
-        Lokasi.setText("");
-        Durasi.setText("");
-        Frekuensi.setText("");
+        LokasiNyeri.setText("");
+        DurasiNyeri.setText("");
+        FrekuensiNyeri.setText("");
         NyeriHilang.setSelectedIndex(0);
-        KetNyeri.setText("");
+        KetNyeriHilang.setText("");
         NyeriPadaDokter.setSelectedIndex(0);
-        NyeriKetDokter.setText("");
+        NyeriJamDiberitahuDokter.setText("");
         InformasiPerencanaanPulang.setSelectedIndex(0);
         LamaRatarata.setText("");
         TanggalPulang.setDate(new Date());
@@ -8319,7 +8333,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     DTPCari1.setDate(rs.getDate("tgl_registrasi"));
                     Agama.setText(rs.getString("agama"));
-                    Bahasa.setText(rs.getString("nama_bahasa"));
+                    BahasaPasien.setText(rs.getString("nama_bahasa"));
                     PendidikanPasien.setText(rs.getString("pnd"));
                     CaraBayar.setText(rs.getString("png_jawab"));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
@@ -8887,11 +8901,29 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 GastrointestinalMulut.getSelectedItem().toString(),KetGastrointestinalMulut.getText(),GastrointestinalTenggorakan.getSelectedItem().toString(),KetGastrointestinalTenggorakan.getText(),GastrointestinalLidah.getSelectedItem().toString(),KetGastrointestinalLidah.getText(),GastrointestinalAbdomen.getSelectedItem().toString(),KetGastrointestinalAbdomen.getText(),GastrointestinalGigi.getSelectedItem().toString(),KetGastrointestinalGigi.getText(),GastrointestinalUsus.getSelectedItem().toString(),
                 GastrointestinalAnus.getSelectedItem().toString(),NeurologiSensorik.getSelectedItem().toString(),NeurologiPenglihatan.getSelectedItem().toString(),KetNeurologiPenglihatan.getText(),NeurologiAlatBantuPenglihatan.getSelectedItem().toString(),NeurologiMotorik.getSelectedItem().toString(),NeurologiPendengaran.getSelectedItem().toString(),NeurologiBicara.getSelectedItem().toString(),KetNeurologiBicara.getText(),NeurologiOtot.getSelectedItem().toString(),IntegumentKulit.getSelectedItem().toString(),
                 IntegumentWarnaKulit.getSelectedItem().toString(),IntegumentTurgor.getSelectedItem().toString(),IntegumentDecubitus.getSelectedItem().toString(),MuskuloskletalOedema.getSelectedItem().toString(),KetMuskuloskletalOedema.getText(),MuskuloskletalPegerakanSendi.getSelectedItem().toString(),MuskuloskletalKekuatanOtot.getSelectedItem().toString(),MuskuloskletalFraktur.getSelectedItem().toString(),KetMuskuloskletalFraktur.getText(),MuskuloskletalNyeriSendi.getSelectedItem().toString(),
-                KetMuskuloskletalNyeriSendi.getText(),"eliminasi_bab_frekuensi","eliminasi_bab_frekuensi_per","eliminasi_bab_konsistesi","eliminasi_bab_warna","eliminasi_bak_frekuensi","eliminasi_bak_frekuensi_per","eliminasi_bak_warna","eliminasi_bak_lainlain","psiko_kondisi","psiko_perilaku","psiko_perilaku_keterangan","psiko_gangguan_jiwa","psiko_hubungan_pasien","psiko_tinggal_dengan","psiko_tinggal_dengan_keterangan","psiko_pekerjaan_pj","psiko_nilai_kepercayaan","psiko_nilai_kepercayaan_keterangan","psiko_pendidikan_pj","psiko_edukasi","psiko_edukasi_keterangan","edukasi_bahasa","edukasi_baca_tulis","edukasi_penerjemah","edukasi_penerjemah_keterangan","edukasi_terdapat_hambatan","edukasi_hambatan_belajar","edukasi_hambatan_belajar_keterangan","edukasi_hambatan_bicara","edukasi_bahasa_isyarat","edukasi_cara_belajar","edukasi_menerima_informasi","edukasi_menerima_informasi_keterangan","edukasi_nutrisi","edukasi_penyakit","edukasi_pengobatan","edukasi_perawatan","skrining_gizi1","nilai_gizi1","skrining_gizi2","nilai_gizi2","skrining_gizi3","nilai_gizi3","skrining_gizi4","nilai_gizi4","total_nilai","keterangan_skrining_gizi","penilaian_humptydumpty_skala1","penilaian_humptydumpty_nilai1","penilaian_humptydumpty_skala2","penilaian_humptydumpty_nilai2","penilaian_humptydumpty_skala3","penilaian_humptydumpty_nilai3","penilaian_humptydumpty_skala4","penilaian_humptydumpty_nilai4","penilaian_humptydumpty_skala5","penilaian_humptydumpty_nilai5","penilaian_humptydumpty_skala6","penilaian_humptydumpty_nilai6","penilaian_humptydumpty_skala7","penilaian_humptydumpty_nilai7","penilaian_humptydumpty_totalnilai","hasil_skrining_penilaian_humptydumpty","nyeri_wajah","nyeri_nilai_wajah","nyeri_kaki","nyeri_nilai_kaki","nyeri_aktifitas","nyeri_nilai_aktifitas","nyeri_menangis","nyeri_nilai_menangis","nyeri_bersuara","nyeri_nilai_bersuara","nyeri_nilai_total","nyeri_kondisi","nyeri_lokasi","nyeri_durasi","nyeri_frekuensi","nyeri_hilang","nyeri_hilang_keterangan","nyeri_diberitahukan_pada_dokter","nyeri_diberitahukan_pada_dokter_keterangan","informasi_perencanaan_pulang","lama_ratarata","perencanaan_pulang","kondisi_klinis_pulang","perawatan_lanjutan_dirumah","cara_transportasi_pulang","transportasi_digunakan","rencana","nip1","nip2","kd_dokter"
+                KetMuskuloskletalNyeriSendi.getText(),BAB.getText(),XBAB.getText(),KBAB.getText(),WBAB.getText(),BAK.getText(),XBAK.getText(),WBAK.getText(),LBAK.getText(),KondisiPsikologis.getSelectedItem().toString(),AdakahPerilaku.getSelectedItem().toString(),KeteranganAdakahPerilaku.getText(),GangguanJiwa.getSelectedItem().toString(),HubunganAnggotaKeluarga.getSelectedItem().toString(),TinggalDengan.getSelectedItem().toString(),KeteranganTinggalDengan.getText(),PekerjaanPJ.getText(),
+                NilaiKepercayaan.getSelectedItem().toString(),KeteranganNilaiKepercayaan.getText(),PendidikanPJ.getSelectedItem().toString(),EdukasiPsikolgis.getSelectedItem().toString(),KeteranganEdukasiPsikologis.getText(),BahasaSehari.getText(),KemampuanBacaTulis.getSelectedItem().toString(),ButuhPenerjemah.getSelectedItem().toString(),KeteranganButuhPenerjemah.getText(),TerdapatHambatanBelajar.getSelectedItem().toString(),HambatanBelajar.getSelectedItem().toString(),KeteranganHambatanBelajar.getText(),
+                HambatanCaraBicara.getSelectedItem().toString(),HambatanBahasaIsyarat.getSelectedItem().toString(),CaraBelajarDisukai.getSelectedItem().toString(),KesediaanMenerimaInformasi.getSelectedItem().toString(),KeteranganKesediaanMenerimaInformasi.getText(),PemahamanNutrisi.getSelectedItem().toString(),PemahamanPenyakit.getSelectedItem().toString(),PemahamanPengobatan.getSelectedItem().toString(),PemahamanPerawatan.getSelectedItem().toString(),SG1.getSelectedItem().toString(),
+                NilaiGizi1.getText(),SG2.getSelectedItem().toString(),NilaiGizi2.getText(),SG3.getSelectedItem().toString(),NilaiGizi3.getText(),SG4.getSelectedItem().toString(),NilaiGizi4.getText(),TotalNilaiGizi.getText(),KeteranganSkriningGizi.getText(),SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),
+                NilaiResiko4.getText(),SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),SkalaResiko7.getSelectedItem().toString(),NilaiResiko7.getText(),NilaiResikoTotal.getText(),KeteranganTingkatRisiko.getText(),SkalaWajah.getSelectedItem().toString(),NilaiWajah.getText(),SkalaKaki.getSelectedItem().toString(),NilaiKaki.getText(),SkalaAktifitas.getSelectedItem().toString(),NilaiAktifitas.getText(),
+                SkalaMenangis.getSelectedItem().toString(),NilaiMenangis.getText(),SkalaBersuara.getSelectedItem().toString(),NilaiBersuara.getText(),SkalaNyeri.getText(),Nyeri.getSelectedItem().toString(),LokasiNyeri.getText(),DurasiNyeri.getText(),FrekuensiNyeri.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeriHilang.getText(),NyeriPadaDokter.getSelectedItem().toString(),NyeriJamDiberitahuDokter.getText(),InformasiPerencanaanPulang.getSelectedItem().toString(),
+                LamaRatarata.getText(),Valid.SetTgl(TanggalPulang.getSelectedItem()+""),KondisiPulang.getText(),PerawatanLanjutan.getText(),CaraTransportasiPulang.getSelectedItem().toString(),TransportasiYangDigunakan.getSelectedItem().toString(),Rencana.getText(),KdPetugas.getText(),KdPetugas2.getText(),KdDPJP.getText()
             })==true){
                 tabMode.addRow(new String[]{
-                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),KdPetugas2.getText(),NmPetugas2.getText(),KdDPJP.getText(),NmDPJP.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
-                    
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText().substring(0,1),KdPetugas.getText(),NmPetugas.getText(),KdPetugas2.getText(),NmPetugas2.getText(),KdDPJP.getText(),NmDPJP.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Anamnesis.getSelectedItem().toString(),KetAnamnesis.getText(),TibadiRuang.getSelectedItem().toString(),RPS.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),
+                    UsiaTengkurap.getText(),UsiaDuduk.getText(),UsiaBerdiri.getText(),UsiaGigi.getText(),UsiaBerjalan.getText(),UsiaBicara.getText(),UsiaMembaca.getText(),UsiaMenulis.getText(),GangguanEmosi.getText(),Anakke.getText(),DariSaudara.getText(),CaraKelahiran.getSelectedItem().toString(),KetCaraKelahiran.getText(),UmurKelahiran.getSelectedItem().toString(),KelainanBawaan.getSelectedItem().toString(),KetKelainanBawaan.getText(),BBLahir.getText(),PBLahir.getText(),RiwayatPersalinanLainnya.getText(),
+                    Kesadaran.getSelectedItem().toString(),GCS.getText(),TD.getText(),RR.getText(),Suhu.getText(),Nadi.getText(),BB.getText(),TB.getText(),LP.getText(),LK.getText(),LD.getText(),SistemSarafKepala.getSelectedItem().toString(),KetSistemSarafKepala.getText(),SistemSarafWajah.getSelectedItem().toString(),KetSistemSarafWajah.getText(),SistemSarafLeher.getSelectedItem().toString(),SistemSarafKejang.getSelectedItem().toString(),KetSistemSarafKejang.getText(),SistemSarafSensorik.getSelectedItem().toString(),
+                    KardiovaskularPulsasi.getSelectedItem().toString(),KardiovaskularSirkulasi.getSelectedItem().toString(),KetKardiovaskularSirkulasi.getText(),KardiovaskularDenyutNadi.getSelectedItem().toString(),RespirasiRetraksi.getSelectedItem().toString(),RespirasiPolaNafas.getSelectedItem().toString(),RespirasiSuaraNafas.getSelectedItem().toString(),RespirasiBatuk.getSelectedItem().toString(),RespirasiVolume.getSelectedItem().toString(),RespirasiJenisPernafasan.getSelectedItem().toString(),
+                    KetRespirasiJenisPernafasan.getText(),RespirasiIrama.getSelectedItem().toString(),GastrointestinalMulut.getSelectedItem().toString(),KetGastrointestinalMulut.getText(),GastrointestinalTenggorakan.getSelectedItem().toString(),KetGastrointestinalTenggorakan.getText(),GastrointestinalLidah.getSelectedItem().toString(),KetGastrointestinalLidah.getText(),GastrointestinalAbdomen.getSelectedItem().toString(),KetGastrointestinalAbdomen.getText(),GastrointestinalGigi.getSelectedItem().toString(),
+                    KetGastrointestinalGigi.getText(),GastrointestinalUsus.getSelectedItem().toString(),GastrointestinalAnus.getSelectedItem().toString(),NeurologiSensorik.getSelectedItem().toString(),NeurologiPenglihatan.getSelectedItem().toString(),KetNeurologiPenglihatan.getText(),NeurologiAlatBantuPenglihatan.getSelectedItem().toString(),NeurologiMotorik.getSelectedItem().toString(),NeurologiPendengaran.getSelectedItem().toString(),NeurologiBicara.getSelectedItem().toString(),KetNeurologiBicara.getText(),
+                    NeurologiOtot.getSelectedItem().toString(),IntegumentKulit.getSelectedItem().toString(),IntegumentWarnaKulit.getSelectedItem().toString(),IntegumentTurgor.getSelectedItem().toString(),IntegumentDecubitus.getSelectedItem().toString(),MuskuloskletalOedema.getSelectedItem().toString(),KetMuskuloskletalOedema.getText(),MuskuloskletalPegerakanSendi.getSelectedItem().toString(),MuskuloskletalKekuatanOtot.getSelectedItem().toString(),MuskuloskletalFraktur.getSelectedItem().toString(),
+                    KetMuskuloskletalFraktur.getText(),MuskuloskletalNyeriSendi.getSelectedItem().toString(),KetMuskuloskletalNyeriSendi.getText(),BAB.getText(),XBAB.getText(),KBAB.getText(),WBAB.getText(),BAK.getText(),XBAK.getText(),WBAK.getText(),LBAK.getText(),KondisiPsikologis.getSelectedItem().toString(),AdakahPerilaku.getSelectedItem().toString(),KeteranganAdakahPerilaku.getText(),GangguanJiwa.getSelectedItem().toString(),HubunganAnggotaKeluarga.getSelectedItem().toString(),Agama.getText(),
+                    TinggalDengan.getSelectedItem().toString(),KeteranganTinggalDengan.getText(),PekerjaanPJ.getText(),CaraBayar.getText(),NilaiKepercayaan.getSelectedItem().toString(),KeteranganNilaiKepercayaan.getText(),BahasaPasien.getText(),PendidikanPasien.getText(),PendidikanPJ.getSelectedItem().toString(),EdukasiPsikolgis.getSelectedItem().toString(),KeteranganEdukasiPsikologis.getText(),BahasaSehari.getText(),KemampuanBacaTulis.getSelectedItem().toString(),ButuhPenerjemah.getSelectedItem().toString(),
+                    KeteranganButuhPenerjemah.getText(),TerdapatHambatanBelajar.getSelectedItem().toString(),HambatanBelajar.getSelectedItem().toString(),KeteranganHambatanBelajar.getText(),HambatanCaraBicara.getSelectedItem().toString(),HambatanBahasaIsyarat.getSelectedItem().toString(),CaraBelajarDisukai.getSelectedItem().toString(),KesediaanMenerimaInformasi.getSelectedItem().toString(),KeteranganKesediaanMenerimaInformasi.getText(),PemahamanNutrisi.getSelectedItem().toString(),
+                    PemahamanPenyakit.getSelectedItem().toString(),PemahamanPengobatan.getSelectedItem().toString(),PemahamanPerawatan.getSelectedItem().toString(),SG1.getSelectedItem().toString(),NilaiGizi1.getText(),SG2.getSelectedItem().toString(),NilaiGizi2.getText(),SG3.getSelectedItem().toString(),NilaiGizi3.getText(),SG4.getSelectedItem().toString(),NilaiGizi4.getText(),TotalNilaiGizi.getText(),KeteranganSkriningGizi.getText(),SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),
+                    SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(),SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),SkalaResiko7.getSelectedItem().toString(),NilaiResiko7.getText(),NilaiResikoTotal.getText(),KeteranganTingkatRisiko.getText(),SkalaWajah.getSelectedItem().toString(),
+                    NilaiWajah.getText(),SkalaKaki.getSelectedItem().toString(),NilaiKaki.getText(),SkalaAktifitas.getSelectedItem().toString(),NilaiAktifitas.getText(),SkalaMenangis.getSelectedItem().toString(),NilaiMenangis.getText(),SkalaBersuara.getSelectedItem().toString(),NilaiBersuara.getText(),SkalaNyeri.getText(),Nyeri.getSelectedItem().toString(),LokasiNyeri.getText(),DurasiNyeri.getText(),FrekuensiNyeri.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeriHilang.getText(),
+                    NyeriPadaDokter.getSelectedItem().toString(),NyeriJamDiberitahuDokter.getText(),InformasiPerencanaanPulang.getSelectedItem().toString(),LamaRatarata.getText(),Valid.SetTgl(TanggalPulang.getSelectedItem()+""),KondisiPulang.getText(),PerawatanLanjutan.getText(),CaraTransportasiPulang.getSelectedItem().toString(),TransportasiYangDigunakan.getSelectedItem().toString(),Rencana.getText()
                 });
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
