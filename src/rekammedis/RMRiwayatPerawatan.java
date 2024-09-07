@@ -27054,19 +27054,50 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                   "Gastrointestinal :"+
                                                   "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                                       "<tr>"+
-                                                         "<td width='50%' border='0'>Mulut : "+rs2.getString("gastro_mulut")+(rs2.getString("gastro_mulut_keterangan").equals("")?"":", "+rs2.getString("gastro_mulut_keterangan"))+"</td>"+
-                                                         "<td width='50%' border='0'>Tenggorokan : "+rs2.getString("gastro_tenggorakan")+(rs2.getString("gastro_tenggorakan_keterangan").equals("")?"":", "+rs2.getString("gastro_tenggorakan_keterangan"))+"</td>"+
+                                                         "<td width='33%' border='0'>Mulut : "+rs2.getString("gastro_mulut")+(rs2.getString("gastro_mulut_keterangan").equals("")?"":", "+rs2.getString("gastro_mulut_keterangan"))+"</td>"+
+                                                         "<td width='33%' border='0'>Tenggorokan : "+rs2.getString("gastro_tenggorakan")+(rs2.getString("gastro_tenggorakan_keterangan").equals("")?"":", "+rs2.getString("gastro_tenggorakan_keterangan"))+"</td>"+
+                                                         "<td width='33%' border='0'>Lidah : "+rs2.getString("gastro_lidah")+(rs2.getString("gastro_lidah_keterangan").equals("")?"":", "+rs2.getString("gastro_lidah_keterangan"))+"</td>"+
                                                       "</tr>"+
                                                       "<tr>"+
-                                                         "<td width='50%' border='0'>Lidah : "+rs2.getString("gastro_lidah")+(rs2.getString("gastro_lidah_keterangan").equals("")?"":", "+rs2.getString("gastro_lidah_keterangan"))+"</td>"+
-                                                         "<td width='50%' border='0'>Abdomen : "+rs2.getString("gastro_abdomen")+(rs2.getString("gastro_abdomen_keterangan").equals("")?"":", "+rs2.getString("gastro_abdomen_keterangan"))+"</td>"+
+                                                         "<td width='33%' border='0'>Abdomen : "+rs2.getString("gastro_abdomen")+(rs2.getString("gastro_abdomen_keterangan").equals("")?"":", "+rs2.getString("gastro_abdomen_keterangan"))+"</td>"+
+                                                         "<td width='33%' border='0'>Gigi : "+rs2.getString("gastro_gigi")+(rs2.getString("gastro_gigi_keterangan").equals("")?"":", "+rs2.getString("gastro_gigi_keterangan"))+"</td>"+
+                                                         "<td width='33%' border='0'>Peistatik Usus : "+rs2.getString("gastro_usus")+"</td>"+
                                                       "</tr>"+
                                                       "<tr>"+
-                                                         "<td width='50%' border='0'>Gigi : "+rs2.getString("gastro_gigi")+(rs2.getString("gastro_gigi_keterangan").equals("")?"":", "+rs2.getString("gastro_gigi_keterangan"))+"</td>"+
-                                                         "<td width='50%' border='0'>Peistatik Usus : "+rs2.getString("gastro_usus")+"</td>"+
+                                                         "<td width='33%' border='0'>Anus : "+rs2.getString("gastro_anus")+"</td>"+
+                                                      "</tr>"+
+                                                  "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                  "Neurologi :"+
+                                                  "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                         "<td width='33%' border='0'>Sensorik : "+rs2.getString("neurologi_sensorik")+"</td>"+
+                                                         "<td width='33%' border='0'>Penglihatan : "+rs2.getString("neurologi_pengilihatan")+(rs2.getString("neurologi_pengilihatan_keterangan").equals("")?"":", "+rs2.getString("neurologi_pengilihatan_keterangan"))+"</td>"+
+                                                         "<td width='33%' border='0'>Alat Bantu Penglihatan : "+rs2.getString("neurologi_alat_bantu_penglihatan")+"</td>"+
                                                       "</tr>"+
                                                       "<tr>"+
-                                                         "<td width='50%' border='0'>Anus : "+rs2.getString("gastro_anus")+"</td>"+
+                                                         "<td width='33%' border='0'>Motorik : "+rs2.getString("neurologi_motorik")+"</td>"+
+                                                         "<td width='33%' border='0'>Pendengaran : "+rs2.getString("neurologi_pendengaran")+"</td>"+
+                                                         "<td width='33%' border='0'>Bicara : "+rs2.getString("neurologi_bicara")+(rs2.getString("neurologi_bicara_keterangan").equals("")?"":", "+rs2.getString("neurologi_bicara_keterangan"))+"</td>"+
+                                                      "</tr>"+
+                                                      "<tr>"+
+                                                         "<td width='33%' border='0'>Otot : "+rs2.getString("neurologi_otot")+"</td>"+
+                                                      "</tr>"+
+                                                  "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                  "Integument :"+
+                                                  "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                      "<tr>"+
+                                                         "<td width='25%' border='0'>Kulit : "+rs2.getString("inte_kulit")+"</td>"+
+                                                         "<td width='25%' border='0'>Warna Kulit : "+rs2.getString("inte_warna_kulit")+"</td>"+
+                                                         "<td width='20%' border='0'>Turgor : "+rs2.getString("inte_tugor")+"</td>"+
+                                                         "<td width='30%' border='0'>Resiko Decubi : "+rs2.getString("inte_decubi")+"</td>"+
                                                       "</tr>"+
                                                   "</table>"+
                                               "</td>"+
