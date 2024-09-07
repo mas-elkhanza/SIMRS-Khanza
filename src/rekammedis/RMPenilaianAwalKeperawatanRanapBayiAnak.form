@@ -229,6 +229,14 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="widget.editorpane" name="LoadHTML">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="LoadHTML" noResource="true"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -5124,7 +5132,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel218">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Butuh Penerjamah :"/>
+                            <Property name="text" type="java.lang.String" value="Butuh Penerjemah :"/>
                             <Property name="name" type="java.lang.String" value="jLabel218" noResource="true"/>
                           </Properties>
                           <Constraints>
