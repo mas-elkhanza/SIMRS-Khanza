@@ -7585,10 +7585,37 @@
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                         <Property name="columns" type="int" value="0"/>
                         <Property name="horizontalGap" type="int" value="1"/>
-                        <Property name="rows" type="int" value="3"/>
+                        <Property name="rows" type="int" value="4"/>
                         <Property name="verticalGap" type="int" value="1"/>
                       </Layout>
                       <SubComponents>
+                        <Container class="widget.ScrollPane" name="scrollPane9">
+                          <Properties>
+                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                                <TitledBorder justification="1" position="2" title="Riwayat Imunisasi :">
+                                  <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                                    <LineBorder>
+                                      <Color PropertyName="color" blue="fe" green="ff" red="ff" type="rgb"/>
+                                    </LineBorder>
+                                  </Border>
+                                  <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
+                                  <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
+                                </TitledBorder>
+                              </Border>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="scrollPane9" noResource="true"/>
+                          </Properties>
+
+                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                          <SubComponents>
+                            <Component class="widget.Table" name="tbImunisasi2">
+                              <Properties>
+                                <Property name="name" type="java.lang.String" value="tbImunisasi2" noResource="true"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
                         <Container class="widget.ScrollPane" name="Scroll7">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -7604,14 +7631,14 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                           <SubComponents>
-                            <Component class="widget.Table" name="tbMasalahDetail">
+                            <Component class="widget.Table" name="tbMasalahDetailMasalah">
                               <Properties>
-                                <Property name="name" type="java.lang.String" value="tbMasalahDetail" noResource="true"/>
+                                <Property name="name" type="java.lang.String" value="tbMasalahDetailMasalah" noResource="true"/>
                               </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Container class="widget.ScrollPane" name="Scroll9">
+                        <Container class="widget.ScrollPane" name="Scroll11">
                           <Properties>
                             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -7620,7 +7647,7 @@
                                 </LineBorder>
                               </Border>
                             </Property>
-                            <Property name="name" type="java.lang.String" value="Scroll9" noResource="true"/>
+                            <Property name="name" type="java.lang.String" value="Scroll11" noResource="true"/>
                             <Property name="opaque" type="boolean" value="true"/>
                           </Properties>
 
@@ -7664,9 +7691,6 @@
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="DetailRencana" noResource="true"/>
                               </Properties>
-                              <Events>
-                                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DetailRencanaKeyPressed"/>
-                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
