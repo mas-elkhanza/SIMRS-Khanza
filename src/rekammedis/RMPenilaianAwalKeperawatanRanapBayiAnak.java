@@ -8108,8 +8108,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             NyeriPadaDokter.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),187).toString());                
             NyeriJamDiberitahuDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),188).toString());                
             InformasiPerencanaanPulang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),189).toString());                
-            LamaRatarata.setText(tbObat.getValueAt(tbObat.getSelectedRow(),190).toString());                
-            Valid.SetTgl(TanggalPulang.getSelectedItem()+""),tbObat.getSelectedRow(),191).toString());                
+            LamaRatarata.setText(tbObat.getValueAt(tbObat.getSelectedRow(),190).toString());                          
             KondisiPulang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),192).toString());                
             PerawatanLanjutan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),193).toString());                
             CaraTransportasiPulang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),194).toString());                
@@ -8134,7 +8133,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                     tbImunisasi2.getValueAt(i,6),tbImunisasi2.getValueAt(i,7)
                 });
             }
-            Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());    
+            Valid.SetTgl(TanggalPulang,tbObat.getValueAt(tbObat.getSelectedRow(),191).toString());  
         }
     }
 
