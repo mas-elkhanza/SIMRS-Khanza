@@ -1270,9 +1270,9 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel288 = new widget.Label();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel214 = new widget.Label();
-        jLabel215 = new widget.Label();
         jLabel216 = new widget.Label();
         BahasaSehari = new widget.TextBox();
+        jLabel215 = new widget.Label();
         jLabel217 = new widget.Label();
         KemampuanBacaTulis = new widget.ComboBox();
         jLabel218 = new widget.Label();
@@ -1329,8 +1329,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jLabel179 = new widget.Label();
         jLabel180 = new widget.Label();
         TotalNilaiGizi = new widget.TextBox();
-        jLabel240 = new widget.Label();
         KeteranganSkriningGizi = new widget.TextBox();
+        jLabel240 = new widget.Label();
         jSeparator9 = new javax.swing.JSeparator();
         jLabel242 = new widget.Label();
         jLabel243 = new widget.Label();
@@ -4116,12 +4116,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(jLabel214);
         jLabel214.setBounds(10, 1480, 560, 23);
 
-        jLabel215.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel215.setText("Bahasa Sehari-hari ");
-        jLabel215.setName("jLabel215"); // NOI18N
-        FormInput.add(jLabel215);
-        jLabel215.setBounds(44, 1500, 120, 23);
-
         jLabel216.setText(":");
         jLabel216.setName("jLabel216"); // NOI18N
         FormInput.add(jLabel216);
@@ -4136,6 +4130,12 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         });
         FormInput.add(BahasaSehari);
         BahasaSehari.setBounds(147, 1500, 110, 23);
+
+        jLabel215.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel215.setText("Bahasa Sehari-hari ");
+        jLabel215.setName("jLabel215"); // NOI18N
+        FormInput.add(jLabel215);
+        jLabel215.setBounds(44, 1500, 120, 23);
 
         jLabel217.setText("Kemampuan Baca & Tulis :");
         jLabel217.setName("jLabel217"); // NOI18N
@@ -4566,12 +4566,6 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         FormInput.add(TotalNilaiGizi);
         TotalNilaiGizi.setBounds(774, 1790, 80, 23);
 
-        jLabel240.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel240.setText("Keterangan");
-        jLabel240.setName("jLabel240"); // NOI18N
-        FormInput.add(jLabel240);
-        jLabel240.setBounds(44, 1790, 100, 23);
-
         KeteranganSkriningGizi.setFocusTraversalPolicyProvider(true);
         KeteranganSkriningGizi.setName("KeteranganSkriningGizi"); // NOI18N
         KeteranganSkriningGizi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -4581,6 +4575,12 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         });
         FormInput.add(KeteranganSkriningGizi);
         KeteranganSkriningGizi.setBounds(111, 1790, 383, 23);
+
+        jLabel240.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel240.setText("Keterangan");
+        jLabel240.setName("jLabel240"); // NOI18N
+        FormInput.add(jLabel240);
+        jLabel240.setBounds(44, 1790, 100, 23);
 
         jSeparator9.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator9.setForeground(new java.awt.Color(239, 244, 234));
