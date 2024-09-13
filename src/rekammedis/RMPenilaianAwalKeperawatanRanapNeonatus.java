@@ -41,12 +41,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.text.Document;
-import javax.swing.text.html.HTMLEditorKit;
-import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
-
 
 /**
  *
@@ -1130,9 +1126,9 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jLabel67 = new widget.Label();
         RiwayatPenyakitKeluarga = new widget.ComboBox();
         KeteranganRiwayatPenyakitKeluarga = new widget.TextBox();
-        jLabel68 = new widget.Label();
         jLabel69 = new widget.Label();
         RiwayatImunisasi = new widget.ComboBox();
+        jLabel68 = new widget.Label();
         KeteranganRiwayatImunisasi = new widget.TextBox();
         TranfusiDarah = new widget.ComboBox();
         jLabel70 = new widget.Label();
@@ -3056,12 +3052,6 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(KeteranganRiwayatPenyakitKeluarga);
         KeteranganRiwayatPenyakitKeluarga.setBounds(287, 680, 567, 23);
 
-        jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel68.setText("Riwayat Imunisasi");
-        jLabel68.setName("jLabel68"); // NOI18N
-        FormInput.add(jLabel68);
-        jLabel68.setBounds(44, 710, 110, 23);
-
         jLabel69.setText(":");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
@@ -3076,6 +3066,12 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         });
         FormInput.add(RiwayatImunisasi);
         RiwayatImunisasi.setBounds(144, 710, 100, 23);
+
+        jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel68.setText("Riwayat Imunisasi");
+        jLabel68.setName("jLabel68"); // NOI18N
+        FormInput.add(jLabel68);
+        jLabel68.setBounds(44, 710, 110, 23);
 
         KeteranganRiwayatImunisasi.setFocusTraversalPolicyProvider(true);
         KeteranganRiwayatImunisasi.setName("KeteranganRiwayatImunisasi"); // NOI18N
