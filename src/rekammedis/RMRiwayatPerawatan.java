@@ -464,7 +464,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         MnGeneratePDF.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnGeneratePDF.setForeground(new java.awt.Color(50, 50, 50));
         MnGeneratePDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnGeneratePDF.setText("Jadikan PDF");
+        MnGeneratePDF.setText("Generate File PDF");
         MnGeneratePDF.setName("MnGeneratePDF"); // NOI18N
         MnGeneratePDF.setPreferredSize(new java.awt.Dimension(220, 26));
         MnGeneratePDF.addActionListener(new java.awt.event.ActionListener() {

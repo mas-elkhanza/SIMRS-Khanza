@@ -1604,4 +1604,14 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String URLAKSESFILEESIGN(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("URLAKSESFILEESIGN");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }
