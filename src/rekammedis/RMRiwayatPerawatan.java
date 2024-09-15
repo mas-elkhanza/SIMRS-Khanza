@@ -45,6 +45,7 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import simrskhanza.DlgCariPasien;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.kernel.pdf.PdfWriter;
+import java.util.Base64;
 
 /**
  *
@@ -2585,11 +2586,28 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 bg.write(".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}.isi a{text-decoration:none;color:#8b9b95;padding:0 0 0 0px;font-family: Tahoma;font-size: 8.5px;border: white;}");
                 bg.close();
 
-                PdfWriter pdf = new PdfWriter(NoRawat.getText().replaceAll("/","")+".pdf");
+                PdfWriter pdf = new PdfWriter("RPP"+NoRawat.getText().replaceAll("/","")+".pdf");
                 HtmlConverter.convertToPdf(
                     LoadHTMLRiwayatPerawatan.getText().replaceAll("<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />").
                           replaceAll("<body>",
                                      "<body>"+
+                                        "<table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>" +
+                                            "<tr>" +
+                                                "<td width='15%' border='0'>" +
+                                                    "<img width='50' height='50' src='data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(Sequel.cariGambar("select setting.logo from setting").readAllBytes())+"'/>" +
+                                                "</td>" +
+                                                "<td width='85%' border='0'>" +
+                                                    "<center>" +
+                                                        "<font color='000000' size='3'  face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                        "<font color='000000' size='1'  face='Tahoma'>"+
+                                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br/>" +
+                                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+
+                                                            "<br>RIWAYAT PERAWATAN" +
+                                                        "</font> " +
+                                                    "</center>" +
+                                                "</td>" +
+                                            "</tr>" +
+                                        "</table><br>"+
                                         "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                            "<tr class='isi'>"+ 
                                              "<td valign='top' width='20%'>No.RM</td>"+
@@ -2655,7 +2673,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                           ).
                           replaceAll((getClass().getResource("/picture/"))+"","./gambar/"), pdf
                 );
-                File f = new File(NoRawat.getText().replaceAll("/","")+".pdf");   
+                File f = new File("RPP"+NoRawat.getText().replaceAll("/","")+".pdf");   
                 Desktop.getDesktop().browse(f.toURI());
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -5741,6 +5759,23 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                  teks.replaceAll("<head>","<head><link href=\"file.css\" rel=\"stylesheet\" type=\"text/css\" />").
                       replaceAll("<body>",
                                  "<body>"+
+                                    "<table width='100%' align='center' border='0' class='tbl_form' cellspacing='0' cellpadding='0'>" +
+                                        "<tr>" +
+                                            "<td width='15%' border='0'>" +
+                                                "<img width='50' height='50' src='data:image/jpeg;base64,"+Base64.getEncoder().encodeToString(Sequel.cariGambar("select setting.logo from setting").readAllBytes())+"'/>" +
+                                            "</td>" +
+                                            "<td width='85%' border='0'>" +
+                                                "<center>" +
+                                                    "<font color='000000' size='3'  face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                    "<font color='000000' size='1'  face='Tahoma'>"+
+                                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br/>" +
+                                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+
+                                                        "<br>RIWAYAT PERAWATAN" +
+                                                    "</font> " +
+                                                "</center>" +
+                                            "</td>" +
+                                        "</tr>" +
+                                    "</table><br>"+
                                     "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                        "<tr class='isi'>"+ 
                                          "<td valign='top' width='20%'>No.RM</td>"+
