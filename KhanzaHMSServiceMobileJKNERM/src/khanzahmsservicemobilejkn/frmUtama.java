@@ -250,7 +250,7 @@ public class frmUtama extends javax.swing.JFrame {
                         TeksArea.append("Menjalankan WS tambah antrian Mobile JKN Pasien BPJS\n");
                         
                         //pasien JKN
-                        ps=koneksi.prepareStatement(
+                        /*ps=koneksi.prepareStatement(
                                 "SELECT referensi_mobilejkn_bpjs.nobooking,referensi_mobilejkn_bpjs.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,referensi_mobilejkn_bpjs.nohp,referensi_mobilejkn_bpjs.nomorkartu,"+
                                 "referensi_mobilejkn_bpjs.nik,referensi_mobilejkn_bpjs.tanggalperiksa,poliklinik.nm_poli,dokter.nm_dokter,referensi_mobilejkn_bpjs.jampraktek,"+
                                 "referensi_mobilejkn_bpjs.jeniskunjungan,referensi_mobilejkn_bpjs.nomorreferensi,referensi_mobilejkn_bpjs.status,referensi_mobilejkn_bpjs.validasi,"+
@@ -324,7 +324,7 @@ public class frmUtama extends javax.swing.JFrame {
                             if(ps!=null){
                                 ps.close();
                             }
-                        }
+                        }*/
                         
                         TeksArea.append("Menjalankan WS batal antrian Mobile JKN Pasien BPJS\n");
                         ps=koneksi.prepareStatement(
@@ -415,7 +415,7 @@ public class frmUtama extends javax.swing.JFrame {
                                 "INNER JOIN pasien ON reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                                 "INNER JOIN poliklinik ON reg_periksa.kd_poli=poliklinik.kd_poli "+
                                 "INNER JOIN dokter ON reg_periksa.kd_dokter=dokter.kd_dokter "+
-                                "WHERE referensi_mobilejkn_bpjs.statuskirim='Sudah' and referensi_mobilejkn_bpjs.tanggalperiksa between '"+Tanggal1.getText()+"' and '"+Tanggal2.getText()+"' "+
+                                "WHERE referensi_mobilejkn_bpjs.status='Checkin' and referensi_mobilejkn_bpjs.tanggalperiksa between '"+Tanggal1.getText()+"' and '"+Tanggal2.getText()+"' "+
                                 "order by referensi_mobilejkn_bpjs.tanggalperiksa");
                         try {
                             rs=ps.executeQuery();

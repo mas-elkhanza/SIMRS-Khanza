@@ -3522,7 +3522,7 @@
 				</graphicElement>
 			</line>
 		</band>
-		<band height="71">
+		<band height="58">
 			<staticText>
 				<reportElement x="3" y="2" width="137" height="11" uuid="6f735635-8d41-46b7-8024-5db758648c2d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -3638,6 +3638,223 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Suara Napas : "+$F{respirasi_suara_napas}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="58" uuid="aa69eda4-9028-49f0-8062-633a7f8e51b2">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="556" y="0" width="1" height="58" uuid="833a533f-24c3-4d12-b083-18e397fc9695">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="59">
+			<staticText>
+				<reportElement x="3" y="2" width="137" height="11" uuid="2e37c717-16be-4579-a6a9-2a6c64f49ceb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Gastrointestinal :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="14" y="12" width="272" height="11" uuid="48a148b4-437d-4d69-892c-42d5ddefa2c1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mulut : "+$F{gastrointestinal_mulut}+($F{gastrointestinal_mulut_keterangan}.equals("")?"":", "+$F{gastrointestinal_mulut_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="12" width="267" height="11" uuid="17bab13c-04a0-4249-9458-3f3c69ceee60">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lidah : "+$F{gastrointestinal_lidah}+($F{gastrointestinal_lidah_keterangan}.equals("")?"":", "+$F{gastrointestinal_lidah_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="24" width="272" height="11" uuid="c2ff73a7-1d56-4dcb-9708-d35f4cbec561">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tenggorokan : "+$F{gastrointestinal_tenggorakan}+($F{gastrointestinal_tenggorakan_keterangan}.equals("")?"":", "+$F{gastrointestinal_tenggorakan_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="24" width="267" height="11" uuid="b15df708-961d-4f70-835d-7fe9fe7df779">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Abdomen : "+$F{gastrointestinal_abdomen}+($F{gastrointestinal_abdomen_keterangan}.equals("")?"":", "+$F{gastrointestinal_abdomen_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="36" width="272" height="11" uuid="c30a9b25-2db7-4fba-ab26-082e15a9075c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BAB : "+$F{gastrointestinal_bab}+($F{gastrointestinal_bab_keterangan}.equals("")?"":", "+$F{gastrointestinal_bab_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="36" width="267" height="11" uuid="6c7be62c-ce7a-462f-8f27-20d192bb199b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Warna BAB : "+$F{gastrointestinal_warnabab}+($F{gastrointestinal_warnabab_keterangan}.equals("")?"":", "+$F{gastrointestinal_warnabab_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="48" width="272" height="11" uuid="5e3c62af-8eae-447c-af2d-cdfc934a0d07">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["BAK : "+$F{gastrointestinal_bak}+($F{gastrointestinal_bak_keterangan}.equals("")?"":", "+$F{gastrointestinal_bak_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="48" width="267" height="11" uuid="837208e9-a50c-4467-8275-062a522698ff">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Warna BAK : "+$F{gastrointestinal_bakwarna}+($F{gastrointestinal_bakwarna_keterangan}.equals("")?"":", "+$F{gastrointestinal_bakwarna_keterangan})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="59" uuid="f479ad19-6411-4529-912f-cf1c2c0336fb">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="556" y="0" width="1" height="59" uuid="b38a2e93-2e26-4382-9132-cfcd7056a939">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="47">
+			<staticText>
+				<reportElement x="3" y="2" width="137" height="11" uuid="8a53eb27-3916-405a-aea8-ea88a2148c6c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Neurologi :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="14" y="12" width="113" height="11" uuid="656f8b4a-656a-4d35-9b1d-b07094ede02a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Posisi Mata  : "+$F{neurologi_posisi_mata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="12" width="313" height="11" uuid="1247f3f7-9951-42f7-a094-1f16fd835ef7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Kelopak Mata : "+$F{neurologi_kelopak_mata}+($F{neurologi_kelopak_mata_keterangan}.equals("")?"":", "+$F{neurologi_kelopak_mata_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="24" width="272" height="11" uuid="b3015a08-9702-4845-8737-f55404802b45">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Konjungtiva : "+$F{neurologi_konjugtiva}+($F{neurologi_konjugtiva_keterangan}.equals("")?"":", "+$F{neurologi_konjugtiva_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="24" width="267" height="11" uuid="92a8d6af-155c-4c87-8171-962195046898">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sklera : "+$F{neurologi_sklera}+($F{neurologi_sklera_keterangan}.equals("")?"":", "+$F{neurologi_sklera_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="36" width="272" height="11" uuid="beda71d5-0cf8-4465-981d-7dfc3e513d67">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pendengaran : "+$F{neurologi_pendengaran}+($F{neurologi_pendengaran_keterangan}.equals("")?"":", "+$F{neurologi_pendengaran_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="36" width="267" height="11" uuid="88fa8001-ea36-41ba-8265-83bf193900d8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Penciuman : "+$F{neurologi_penciuman}+($F{neurologi_penciuman_keterangan}.equals("")?"":", "+$F{neurologi_penciuman_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="12" width="114" height="11" uuid="067bb105-e5c3-488f-9ec9-81d501bf2454">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Besar Pupil : "+$F{neurologi_besar_pupil}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="60">
