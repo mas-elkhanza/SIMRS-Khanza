@@ -3857,6 +3857,7 @@
 				<textFieldExpression><![CDATA["Besar Pupil : "+$F{neurologi_besar_pupil}]]></textFieldExpression>
 			</textField>
 		</band>
+		<band height="50"/>
 		<band height="60">
 			<line>
 				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="255" y="-1" width="1" height="59" uuid="9401d158-12aa-4fd8-a873-8c986116a35f">
