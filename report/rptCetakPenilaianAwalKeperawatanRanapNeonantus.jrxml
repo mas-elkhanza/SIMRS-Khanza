@@ -3856,6 +3856,127 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Besar Pupil : "+$F{neurologi_besar_pupil}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="47" uuid="79874611-b951-424b-9174-7f92be2fc864">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="556" y="0" width="1" height="47" uuid="340acd6f-f695-42a5-815e-099547d1ae1f">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="49">
+			<staticText>
+				<reportElement x="3" y="2" width="137" height="11" uuid="398df673-ca9b-469f-9b49-393230640f99">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Integument :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="14" y="12" width="204" height="11" uuid="466a25b0-83b6-4d8e-ac39-c67c79ec12b8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Warna Kulit  : "+$F{integument_warna_kulit}+($F{integument_warna_kulit_keterangan}.equals("")?"":", "+$F{integument_warna_kulit_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="218" y="12" width="222" height="11" uuid="b7b6d438-1f1e-4c7c-bc1d-646375f35670">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Vernic Kaseosa : "+$F{integument_vernic_kaseosa}+($F{integument_vernic_kaseosa_keterangan}.equals("")?"":", "+$F{integument_vernic_kaseosa_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="12" width="114" height="11" uuid="886866fa-2c84-42cd-bb9b-b880e581dc6a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Turgor : "+$F{integument_turgor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="24" width="199" height="11" uuid="a59c8652-5aa7-4ee5-942e-17f8a402afbf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lanugo : "+$F{integument_lanugo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="24" width="129" height="11" uuid="151bf4cd-bd87-4d63-88df-4216d10ccd24">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Kulit : "+$F{integument_kulit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="342" y="24" width="212" height="11" uuid="99948837-8711-467b-9c47-d6e807297f79">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Kriteria Risiko Dekubitas : "+$F{integument_risiko_dekubitas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="38" width="551" height="11" uuid="d5e3a89f-97cb-47b6-8f7d-5f0734a34a78">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Reproduksi : "+$F{reproduksi}+($F{reproduksi_keterangan}.equals("")?"":", "+$F{reproduksi_keterangan})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="49" uuid="3abd3a28-7016-452f-9e1e-0a8cbf970ef3">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="556" y="0" width="1" height="49" uuid="5a91293a-a700-4575-a7eb-270f90dcfaa6">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 		<band height="50"/>
 		<band height="60">
