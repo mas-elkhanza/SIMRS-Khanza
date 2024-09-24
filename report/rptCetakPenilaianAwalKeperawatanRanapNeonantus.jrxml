@@ -3978,6 +3978,78 @@
 				</graphicElement>
 			</line>
 		</band>
+		<band height="35">
+			<staticText>
+				<reportElement x="3" y="2" width="137" height="11" uuid="94324f82-6ee3-4a14-b4ec-d73c36b43681">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Sistem Muskuloskeletal :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="14" y="12" width="272" height="11" uuid="b7b0e70e-5908-4ce6-8dc1-f0a66ef67bf7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Rekoil Telinga "+$F{muskuloskeletal_rekoil_telinga}+($F{muskuloskeletal_rekoil_telinga_keterangan}.equals("")?"":", "+$F{muskuloskeletal_rekoil_telinga_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="24" width="272" height="11" uuid="e295bfdf-f850-4105-828c-c1d8bbd2b326">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Tungkai : "+$F{muskuloskeletal_tungkai}+($F{muskuloskeletal_tungkai_keterangan}.equals("")?"":", "+$F{muskuloskeletal_tungkai_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="12" width="267" height="11" uuid="fb571bf2-b17d-4835-ba18-2ad9a2d3ed17">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Lengan : "+$F{muskuloskeletal_lengan}+($F{muskuloskeletal_lengan_keterangan}.equals("")?"":", "+$F{muskuloskeletal_lengan_keterangan})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="24" width="267" height="11" uuid="a583677f-b1de-4878-be79-7d3946eb73e9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Garis Telapak Kaki : "+$F{muskuloskeletal_telapak_kaki}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="1" height="35" uuid="b7a3bdb9-c834-48db-8fbb-5360db4182a1">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="556" y="0" width="1" height="35" uuid="3483b2b6-3f61-4237-875a-55a33f98b240">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
 		<band height="50"/>
 		<band height="60">
 			<line>

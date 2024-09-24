@@ -589,12 +589,12 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         jLabel39.setText("Masukkan Passphrase :");
         jLabel39.setName("jLabel39"); // NOI18N
         panelisi5.add(jLabel39);
-        jLabel39.setBounds(0, 10, 140, 23);
+        jLabel39.setBounds(0, 10, 130, 23);
 
         Phrase.setHighlighter(null);
         Phrase.setName("Phrase"); // NOI18N
         panelisi5.add(Phrase);
-        Phrase.setBounds(144, 10, 150, 23);
+        Phrase.setBounds(134, 10, 160, 23);
 
         internalFrame8.add(panelisi5, java.awt.BorderLayout.CENTER);
 
@@ -2820,6 +2820,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_MnGeneratePDFESignActionPerformed
 
     private void BtnClosePhraseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClosePhraseActionPerformed
+        Phrase.setText("");
         WindowPhrase.dispose();
     }//GEN-LAST:event_BtnClosePhraseActionPerformed
 
@@ -2955,7 +2956,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         authStr = koneksiDB.USERNAMEAPIESIGN()+":"+koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                                         headers.add("Authorization", "Basic " + base64Creds);
                                         requestJson = "{"+
                                                           "\"file\":\"RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf\","+
@@ -3085,7 +3086,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         authStr = koneksiDB.USERNAMEAPIESIGN()+":"+koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.APPLICATION_JSON);
+                                        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                                         headers.add("Authorization", "Basic " + base64Creds);
                                         requestJson = "{"+
                                                           "\"file\":\"RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf\","+
