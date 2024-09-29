@@ -60,6 +60,63 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import simrskhanza.DlgCariBahasa;
+import simrskhanza.DlgCariBahasa;
+import simrskhanza.DlgCariBahasa;
+import simrskhanza.DlgCariCacatFisik;
+import simrskhanza.DlgCariCacatFisik;
+import simrskhanza.DlgCariCacatFisik;
+import simrskhanza.DlgCariCaraBayar;
+import simrskhanza.DlgCariCaraBayar;
+import simrskhanza.DlgCariCaraBayar;
+import simrskhanza.DlgCariPerusahaan;
+import simrskhanza.DlgCariPerusahaan;
+import simrskhanza.DlgCariPerusahaan;
+import simrskhanza.DlgCariSuku;
+import simrskhanza.DlgCariSuku;
+import simrskhanza.DlgCariSuku;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgGolonganPolri;
+import simrskhanza.DlgGolonganPolri;
+import simrskhanza.DlgGolonganPolri;
+import simrskhanza.DlgGolonganTNI;
+import simrskhanza.DlgGolonganTNI;
+import simrskhanza.DlgGolonganTNI;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgJabatanPolri;
+import simrskhanza.DlgJabatanPolri;
+import simrskhanza.DlgJabatanPolri;
+import simrskhanza.DlgJabatanTNI;
+import simrskhanza.DlgJabatanTNI;
+import simrskhanza.DlgJabatanTNI;
+import simrskhanza.DlgKabupaten;
+import simrskhanza.DlgKabupaten;
+import simrskhanza.DlgKabupaten;
+import simrskhanza.DlgKecamatan;
+import simrskhanza.DlgKecamatan;
+import simrskhanza.DlgKecamatan;
+import simrskhanza.DlgKelurahan;
+import simrskhanza.DlgKelurahan;
+import simrskhanza.DlgKelurahan;
+import simrskhanza.DlgPangkatPolri;
+import simrskhanza.DlgPangkatPolri;
+import simrskhanza.DlgPangkatPolri;
+import simrskhanza.DlgPangkatTNI;
+import simrskhanza.DlgPangkatTNI;
+import simrskhanza.DlgPangkatTNI;
+import simrskhanza.DlgPropinsi;
+import simrskhanza.DlgPropinsi;
+import simrskhanza.DlgPropinsi;
+import simrskhanza.DlgSatuanPolri;
+import simrskhanza.DlgSatuanPolri;
+import simrskhanza.DlgSatuanPolri;
+import simrskhanza.DlgSatuanTNI;
+import simrskhanza.DlgSatuanTNI;
+import simrskhanza.DlgSatuanTNI;
 
 
 /**
@@ -3377,7 +3434,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-08-2024" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2024" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3509,7 +3566,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(743, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-08-2024" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2024" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);

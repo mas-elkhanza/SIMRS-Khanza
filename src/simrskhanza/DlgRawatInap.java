@@ -140,6 +140,15 @@ import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
 import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
+import simrskhanza.DlgCariPasien;
+import simrskhanza.DlgCariPasien;
+import simrskhanza.DlgCariPasien;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgCatatan;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujuk;
 
 /**
  *

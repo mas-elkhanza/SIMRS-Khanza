@@ -53,6 +53,11 @@ import static com.jcraft.jsch.ChannelSftp.SSH_FX_NO_SUCH_FILE;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
+import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -64,13 +69,19 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+import org.apache.commons.io.FileUtils;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.http.converter.ByteArrayHttpMessageConverter;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -86,7 +97,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private int i=0,urut=0,w=0,s=0,urutdpjp=0;
     private double biayaperawatan=0;
-    private String kddpjp="",dpjp="",dokterrujukan="",polirujukan="",keputusan="",ke1="",ke2="",ke3="",ke4="",ke5="",ke6="",file="",path="",authStr="",base64Creds="",requestJson;
+    private String kddpjp="",dpjp="",json,dokterrujukan="",polirujukan="",keputusan="",ke1="",ke2="",ke3="",ke4="",ke5="",ke6="",file="",path="",authStr="",base64Creds="",requestJson;
     private StringBuilder htmlContent;
     private HttpClient http = new HttpClient();
     private GetMethod get;
@@ -98,8 +109,9 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private ChannelSftp sftpChannel;
     private Properties config;
     private HttpHeaders headers;
-    private HttpEntity requestEntity;
     private ObjectMapper mapper= new ObjectMapper();
+    private MultiValueMap<String, Object> map;
+    private HttpEntity<MultiValueMap<String, Object>> requestEntity;
     private JsonNode root;
     private JsonNode nameNode;
     private SSLContext sslContext;
@@ -2951,30 +2963,41 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     );
                                     System.out.println("Membuat ulang File RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf untuk dikirim ke server");
                                     File f = new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");   
-                                    sftpChannel.put("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf",koneksiDB.SFTPFILEESIGNFOLDER());
+                                    sftpChannel.put("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf","RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
                                     try {
                                         authStr = koneksiDB.USERNAMEAPIESIGN()+":"+koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                                        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
                                         headers.add("Authorization", "Basic " + base64Creds);
-                                        requestJson = "{"+
-                                                          "\"file\":\"RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf\","+
-                                                          "\"nik\":\""+Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode())+"\","+
-                                                          "\"passphrase\":\""+Phrase.getText()+"\","+
-                                                          "\"tampilan\":\"visible\","+
-                                                          "\"image\":\"false\","+
-                                                          "\"linkQR\":\""+koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf"+"\","+
-                                                          "\"width\":\"90\","+
-                                                          "\"height\":\"90\","+
-                                                          "\"tag_koordinat\":\"#\""+
-                                                      "}";
-                                        System.out.println("Request JSON : "+requestJson);
+                                        map= new LinkedMultiValueMap<>();
+                                        try (FileInputStream imageInFile = new FileInputStream(f)) {
+                                            byte fileData[] = new byte[(int) f.length()];
+                                            imageInFile.read(fileData);
+                                            file=Base64.getEncoder().encodeToString(fileData);
+                                        } catch (FileNotFoundException e) {
+                                            System.out.println("File tidak ketemu : " + e);
+                                        } catch (IOException ioe) {
+                                            System.out.println("Error " + ioe);
+                                        }
+                                        map.add("file",file);
+                                        map.add("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode()));
+                                        map.add("passphrase",Phrase.getText());
+                                        map.add("tampilan","visible");
+                                        map.add("image","false");
+                                        map.add("linkQR",koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                        map.add("width","90");
+                                        map.add("height","90");
+                                        map.add("tag_koordinat","#");
+                                        requestEntity = new HttpEntity<>(map, headers);
                                         System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
-                                        requestEntity = new HttpEntity(requestJson,headers);
-                                        root = mapper.readTree(getRest().exchange(koneksiDB.URLAPIESIGN(), HttpMethod.POST, requestEntity, String.class).getBody());
-                                        System.out.println("Respon : "+root);
-                                        f.delete();
+                                        System.out.println("linkQR : "+koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                        json = mapper.readTree(getRest().postForEntity(koneksiDB.URLAPIESIGN(),requestEntity, String.class).getBody()).toString();
+                                        System.out.println("Respon : "+json);
+                                        //ResponseEntity<byte[]> result = getRest().exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST, requestEntity, byte[].class);
+                                        //f.delete();
+                                        //FileOutputStream fileOutputStream = new FileOutputStream("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                        //org.apache.commons.io.IOUtils.write(result.getBody(), fileOutputStream);
                                     }catch (Exception ex) {
                                         //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
                                         System.out.println("Notifikasi Bridging : "+ex);
@@ -3081,30 +3104,40 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     System.out.println("Membuat File RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf untuk dikirim ke server");
                                     File f = new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");   
                                     sftpChannel.put("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf","RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                    f.delete();
                                     try {
                                         authStr = koneksiDB.USERNAMEAPIESIGN()+":"+koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                                        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
                                         headers.add("Authorization", "Basic " + base64Creds);
-                                        requestJson = "{"+
-                                                          "\"file\":\"RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf\","+
-                                                          "\"nik\":\""+Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode())+"\","+
-                                                          "\"passphrase\":\""+Phrase.getText()+"\","+
-                                                          "\"tampilan\":\"visible\","+
-                                                          "\"image\":\"false\","+
-                                                          "\"linkQR\":\""+koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf"+"\","+
-                                                          "\"width\":\"90\","+
-                                                          "\"height\":\"90\","+
-                                                          "\"tag_koordinat\":\"#\""+
-                                                      "}";
-                                        System.out.println("Request JSON : "+requestJson);
+                                        map= new LinkedMultiValueMap<>();
+                                        try (FileInputStream imageInFile = new FileInputStream(f)) {
+                                            byte fileData[] = new byte[(int) f.length()];
+                                            imageInFile.read(fileData);
+                                            file=Base64.getEncoder().encodeToString(fileData);
+                                        } catch (FileNotFoundException e) {
+                                            System.out.println("File tidak ketemu : " + e);
+                                        } catch (IOException ioe) {
+                                            System.out.println("Error " + ioe);
+                                        }
+                                        map.add("file",file);
+                                        map.add("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode()));
+                                        map.add("passphrase",Phrase.getText());
+                                        map.add("tampilan","visible");
+                                        map.add("image","false");
+                                        map.add("linkQR",koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                        map.add("width","90");
+                                        map.add("height","90");
+                                        map.add("tag_koordinat","#");
+                                        requestEntity = new HttpEntity<>(map, headers);
                                         System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
-                                        requestEntity = new HttpEntity(requestJson,headers);
-                                        root = mapper.readTree(getRest().exchange(koneksiDB.URLAPIESIGN(), HttpMethod.POST, requestEntity, String.class).getBody());
-                                        System.out.println("Respon : "+root);
-                                        f.delete();
+                                        System.out.println("linkQR : "+koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                        json = mapper.readTree(getRest().postForEntity(koneksiDB.URLAPIESIGN(),requestEntity, String.class).getBody()).toString();
+                                        System.out.println("Respon : "+json);
+                                        //ResponseEntity<byte[]> result = getRest().exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST, requestEntity, byte[].class);
+                                        //f.delete();
+                                        //FileOutputStream fileOutputStream = new FileOutputStream("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
+                                        //org.apache.commons.io.IOUtils.write(result.getBody(), fileOutputStream);
                                     }catch (Exception ex) {
                                         //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
                                         System.out.println("Notifikasi Bridging : "+ex);
