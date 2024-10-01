@@ -4318,7 +4318,7 @@
 				<textFieldExpression><![CDATA[", Jika Ya : "+$F{hambatan_belajar}+($F{hambatan_belajar_keterangan}.equals("")?"":$F{hambatan_belajar_keterangan})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="3" y="39" width="146" height="11" uuid="f3ba3548-1065-40f2-832f-0c3d2c33193a">
+				<reportElement positionType="Float" x="3" y="39" width="164" height="11" uuid="f3ba3548-1065-40f2-832f-0c3d2c33193a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -4329,7 +4329,7 @@
 				<textFieldExpression><![CDATA["Hambatan Cara Bicara : "+$F{hambatan_cara_bicara}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="149" y="39" width="155" height="11" uuid="506c332d-d96c-4c5e-bcdd-e308beaa2af9">
+				<reportElement positionType="Float" x="167" y="39" width="155" height="11" uuid="506c332d-d96c-4c5e-bcdd-e308beaa2af9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -4340,7 +4340,7 @@
 				<textFieldExpression><![CDATA["Hambatan Bahasa Isyarat : "+$F{hambatan_bahasa_isyarat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="304" y="39" width="251" height="11" uuid="6020b09a-e010-47cb-9119-a0518ec00398">
+				<reportElement positionType="Float" x="322" y="39" width="233" height="11" uuid="6020b09a-e010-47cb-9119-a0518ec00398">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
