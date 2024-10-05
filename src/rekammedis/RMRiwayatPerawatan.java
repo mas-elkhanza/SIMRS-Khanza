@@ -76,10 +76,13 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
+import org.springframework.http.converter.ResourceHttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -2971,7 +2974,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
                                         headers.add("Authorization", "Basic " + base64Creds);
                                         map= new LinkedMultiValueMap<>();
-                                        try (FileInputStream imageInFile = new FileInputStream(f)) {
+                                        /*try (FileInputStream imageInFile = new FileInputStream(f)) {
                                             byte fileData[] = new byte[(int) f.length()];
                                             imageInFile.read(fileData);
                                             file=Base64.getEncoder().encodeToString(fileData);
@@ -2979,8 +2982,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             System.out.println("File tidak ketemu : " + e);
                                         } catch (IOException ioe) {
                                             System.out.println("Error " + ioe);
-                                        }
-                                        map.add("file",file);
+                                        }*/
+                                        //FileSystemResource resource = new FileSystemResource(f.getAbsoluteFile());
+                                        map.add("file",koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
                                         map.add("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode()));
                                         map.add("passphrase",Phrase.getText());
                                         map.add("tampilan","visible");
@@ -2992,8 +2996,15 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         requestEntity = new HttpEntity<>(map, headers);
                                         System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
                                         System.out.println("linkQR : "+koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        json = mapper.readTree(getRest().postForEntity(koneksiDB.URLAPIESIGN(),requestEntity, String.class).getBody()).toString();
-                                        System.out.println("Respon : "+json);
+                                        RestTemplate rest=getRest();
+                                        rest.getMessageConverters().add(new ByteArrayHttpMessageConverter());
+                                        rest.getMessageConverters().add(new StringHttpMessageConverter());
+                                        rest.getMessageConverters().add(new ResourceHttpMessageConverter());
+                                        ResponseEntity<byte[]> respon;
+                                        respon=rest.exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST,requestEntity,byte[].class);
+                                        if (respon.getStatusCode().equals(HttpStatus.OK)) {
+
+                                        }
                                         //ResponseEntity<byte[]> result = getRest().exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST, requestEntity, byte[].class);
                                         //f.delete();
                                         //FileOutputStream fileOutputStream = new FileOutputStream("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
@@ -3111,7 +3122,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
                                         headers.add("Authorization", "Basic " + base64Creds);
                                         map= new LinkedMultiValueMap<>();
-                                        try (FileInputStream imageInFile = new FileInputStream(f)) {
+                                        /*try (FileInputStream imageInFile = new FileInputStream(f)) {
                                             byte fileData[] = new byte[(int) f.length()];
                                             imageInFile.read(fileData);
                                             file=Base64.getEncoder().encodeToString(fileData);
@@ -3119,8 +3130,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             System.out.println("File tidak ketemu : " + e);
                                         } catch (IOException ioe) {
                                             System.out.println("Error " + ioe);
-                                        }
-                                        map.add("file",file);
+                                        }*/
+                                        //FileSystemResource resource = new FileSystemResource(f.getAbsoluteFile());
+                                        map.add("file",koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
                                         map.add("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode()));
                                         map.add("passphrase",Phrase.getText());
                                         map.add("tampilan","visible");
@@ -3132,8 +3144,15 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         requestEntity = new HttpEntity<>(map, headers);
                                         System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
                                         System.out.println("linkQR : "+koneksiDB.URLAKSESFILEESIGN()+"/RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        json = mapper.readTree(getRest().postForEntity(koneksiDB.URLAPIESIGN(),requestEntity, String.class).getBody()).toString();
-                                        System.out.println("Respon : "+json);
+                                        RestTemplate rest=getRest();
+                                        rest.getMessageConverters().add(new ByteArrayHttpMessageConverter());
+                                        rest.getMessageConverters().add(new StringHttpMessageConverter());
+                                        rest.getMessageConverters().add(new ResourceHttpMessageConverter());
+                                        ResponseEntity<byte[]> respon;
+                                        respon=rest.exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST,requestEntity,byte[].class);
+                                        if (respon.getStatusCode().equals(HttpStatus.OK)) {
+
+                                        }
                                         //ResponseEntity<byte[]> result = getRest().exchange(koneksiDB.URLAPIESIGN(),HttpMethod.POST, requestEntity, byte[].class);
                                         //f.delete();
                                         //FileOutputStream fileOutputStream = new FileOutputStream("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");

@@ -36,7 +36,7 @@ public class frmUtama extends javax.swing.JFrame {
     private PreparedStatement ps,pscari;
     private ResultSet rs,rscari;
     private ApiPcare api=new ApiPcare();
-    private String URL="",bangsal="",requestJson="",kunjungansakit="true",diagnosa2="",diagnosa3="",otorisasi,kamar="",divreg="",kacab="",userpcare="",terapiobat="",terapinonobat="",bmhp="";
+    private String URL="",requestJson="",diagnosa2="",diagnosa3="",otorisasi,terapiobat="",bmhp="";
     private HttpHeaders headers,headerscari;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -54,9 +54,6 @@ public class frmUtama extends javax.swing.JFrame {
         try {
             otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
             URL=koneksiDB.URLAPIPCARE(); 
-            divreg=koneksiDB.DIVREGPCARE();
-            kacab=koneksiDB.KACABPCARE();
-            userpcare=koneksiDB.USERPCARE();
         } catch (Exception e) {
             TeksArea.append("E : "+e);
         } 
@@ -613,7 +610,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                                           "}";
                                                             TeksArea.append(requestJson+"\n");
                                                             requestEntity = new HttpEntity(requestJson,headerscari);
-                                                            requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                                            requestJson=api.getRest().exchange(URL+"/kunjungan/V1", HttpMethod.POST, requestEntity, String.class).getBody();
                                                             TeksArea.append(requestJson+"\n");
                                                             root = mapper.readTree(requestJson);
                                                             nameNode = root.path("metaData");
@@ -758,7 +755,7 @@ public class frmUtama extends javax.swing.JFrame {
                                               "}";
                                 TeksArea.append(requestJson+"\n");
                                 requestEntity = new HttpEntity(requestJson,headerscari);
-                                requestJson=api.getRest().exchange(URL+"/kunjungan", HttpMethod.POST, requestEntity, String.class).getBody();
+                                requestJson=api.getRest().exchange(URL+"/kunjungan/V1", HttpMethod.POST, requestEntity, String.class).getBody();
                                 TeksArea.append(requestJson+"\n");
                                 root = mapper.readTree(requestJson);
                                 nameNode = root.path("metaData");
@@ -1533,19 +1530,15 @@ public class frmUtama extends javax.swing.JFrame {
                 pscari.setString(1,norwt);
                 rscari=pscari.executeQuery();
                 terapiobat="";
-                terapinonobat="";
                 bmhp="";
                 while(rscari.next()){
                     if(rscari.getString("nama").toLowerCase().contains("obat")){
                         terapiobat=rscari.getString("nama_brng")+" "+rscari.getString("jml")+", "+terapiobat;
                     }else if(rscari.getString("nama").toLowerCase().contains("bmhp")||rscari.getString("nama").toLowerCase().contains("bhp")){
                         bmhp=rscari.getString("nama_brng")+" "+rscari.getString("jml")+", "+bmhp;
-                    }else{
-                        terapinonobat=rscari.getString("nama_brng")+" "+rscari.getString("jml")+", "+terapinonobat;
                     }
                 }
                 TerapiObat.setText(terapiobat);
-                TerapiNonObat.setText(terapinonobat);
                 BMHP.setText(bmhp);
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1563,7 +1556,8 @@ public class frmUtama extends javax.swing.JFrame {
                 pscari=koneksi.prepareStatement(
                         "select pemeriksaan_ralan.tensi,pemeriksaan_ralan.nadi,pemeriksaan_ralan.respirasi,pemeriksaan_ralan.tinggi,"+
                         "pemeriksaan_ralan.berat,pemeriksaan_ralan.kesadaran,pemeriksaan_ralan.keluhan,pemeriksaan_ralan.lingkar_perut,"+
-                        "pemeriksaan_ralan.penilaian,pemeriksaan_ralan.alergi,pemeriksaan_ralan.suhu_tubuh from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? "+
+                        "pemeriksaan_ralan.penilaian,pemeriksaan_ralan.alergi,pemeriksaan_ralan.suhu_tubuh,pemeriksaan_ralan.pemeriksaan,"+
+                        "pemeriksaan_ralan.instruksi from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=? "+
                         "order by pemeriksaan_ralan.tgl_perawatan,pemeriksaan_ralan.jam_rawat desc limit 1");
                 try{
                     pscari.setString(1,norwt);
@@ -1590,9 +1584,10 @@ public class frmUtama extends javax.swing.JFrame {
                         TinggiBadan.setText(rscari.getString("tinggi"));
                         BeratBadan.setText(rscari.getString("berat"));
                         LingkarPerut.setText(rscari.getString("lingkar_perut"));
-                        Keluhan.setText(rscari.getString("keluhan"));
+                        Keluhan.setText(rscari.getString("keluhan")+(rscari.getString("pemeriksaan").equals("")?"":", "+rscari.getString("pemeriksaan")));
                         NmSadar.setText(rscari.getString("kesadaran"));
                         TSuhu.setText(rscari.getString("suhu_tubuh"));
+                        TerapiNonObat.setText(rscari.getString("instruksi").equals("")?"Tidak Ada Terapi":rscari.getString("instruksi"));
                         if(rscari.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rscari.getString("kesadaran").equals("Somnolence")){
@@ -1750,7 +1745,7 @@ public class frmUtama extends javax.swing.JFrame {
                 
                 pscari=koneksi.prepareStatement(
                         "select pemeriksaan_ranap.tensi, pemeriksaan_ranap.nadi, pemeriksaan_ranap.respirasi, pemeriksaan_ranap.tinggi, pemeriksaan_ranap.berat, pemeriksaan_ranap.keluhan,pemeriksaan_ranap.kesadaran,pemeriksaan_ranap.penilaian,"+
-                        "pemeriksaan_ranap.alergi,pemeriksaan_ranap.suhu_tubuh from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat=? order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat desc limit 1");
+                        "pemeriksaan_ranap.alergi,pemeriksaan_ranap.suhu_tubuh,pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.instruksi from pemeriksaan_ranap where pemeriksaan_ranap.no_rawat=? order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat desc limit 1");
                 try{
                     pscari.setString(1,norwt);
                     rscari=pscari.executeQuery();
@@ -1776,9 +1771,10 @@ public class frmUtama extends javax.swing.JFrame {
                         TinggiBadan.setText(rscari.getString("tinggi"));
                         BeratBadan.setText(rscari.getString("berat"));
                         LingkarPerut.setText("40");
-                        Keluhan.setText(rscari.getString("keluhan"));
+                        Keluhan.setText(rscari.getString("keluhan")+(rscari.getString("pemeriksaan").equals("")?"":", "+rscari.getString("pemeriksaan")));
                         NmSadar.setText(rscari.getString("kesadaran"));
                         TSuhu.setText(rscari.getString("suhu_tubuh"));
+                        TerapiNonObat.setText(rscari.getString("instruksi").equals("")?"Tidak Ada Terapi":rscari.getString("instruksi"));
                         if(rscari.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rscari.getString("kesadaran").equals("Somnolence")){
