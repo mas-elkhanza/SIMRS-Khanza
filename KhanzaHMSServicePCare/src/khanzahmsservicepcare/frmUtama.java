@@ -1538,8 +1538,8 @@ public class frmUtama extends javax.swing.JFrame {
                         bmhp=rscari.getString("nama_brng")+" "+rscari.getString("jml")+", "+bmhp;
                     }
                 }
-                TerapiObat.setText(terapiobat.equals("")?"Tidak Ada Obat":terapiobat);
-                BMHP.setText(bmhp.equals("")?"Tidak Ada BHP":bmhp);
+                TerapiObat.setText(terapiobat.equals("")?"Tidak Ada":terapiobat);
+                BMHP.setText(bmhp.equals("")?"Tidak Ada":bmhp);
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -1697,6 +1697,7 @@ public class frmUtama extends javax.swing.JFrame {
                         KdAlergiObat.setText("00");
                         NmAlergiObat.setText("Tidak Ada");
                         TSuhu.setText("0");
+                        TerapiNonObat.setText("Tidak Ada");
                     }
                 }catch(Exception ex){
                     TeksArea.append("Notif : "+ex+"\n");
@@ -1884,6 +1885,7 @@ public class frmUtama extends javax.swing.JFrame {
                         KdAlergiObat.setText("00");
                         NmAlergiObat.setText("Tidak Ada");
                         TSuhu.setText("0");
+                        TerapiNonObat.setText("Tidak Ada");
                     }
                 }catch(Exception ex){
                     TeksArea.append("Notif : "+ex+"\n");
