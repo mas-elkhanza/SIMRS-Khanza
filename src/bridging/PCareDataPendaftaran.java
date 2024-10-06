@@ -6494,7 +6494,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         Keluhan.setText(rs.getString("keluhan")+(rs.getString("pemeriksaan").equals("")?"":", "+rs.getString("pemeriksaan")));
                         NmSadar.setText(rs.getString("kesadaran"));
                         TSuhu.setText(rs.getString("suhu_tubuh"));
-                        TerapiNonObat.setText(rs.getString("instruksi").equals("")?"Tidak Ada Terapi":rs.getString("instruksi"));
+                        TerapiNonObat.setText(rs.getString("instruksi").equals("")?"Tidak Ada":rs.getString("instruksi"));
                         if(rs.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rs.getString("kesadaran").equals("Somnolence")){
@@ -6601,6 +6601,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         KdAlergiObat.setText("00");
                         NmAlergiObat.setText("Tidak Ada");
                         TSuhu.setText("0");
+                        TerapiNonObat.setText("Tidak Ada");
                     }
                 }catch(Exception ex){
                     System.out.println(ex);
@@ -6680,7 +6681,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         Keluhan.setText(rs.getString("keluhan")+(rs.getString("pemeriksaan").equals("")?"":", "+rs.getString("pemeriksaan")));
                         NmSadar.setText(rs.getString("kesadaran"));
                         TSuhu.setText(rs.getString("suhu_tubuh"));
-                        TerapiNonObat.setText(rs.getString("instruksi").equals("")?"Tidak Ada Terapi":rs.getString("instruksi"));
+                        TerapiNonObat.setText(rs.getString("instruksi").equals("")?"Tidak Ada":rs.getString("instruksi"));
                         if(rs.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rs.getString("kesadaran").equals("Somnolence")){
@@ -6787,6 +6788,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         KdAlergiObat.setText("00");
                         NmAlergiObat.setText("Tidak Ada");
                         TSuhu.setText("0");
+                        TerapiNonObat.setText("Tidak Ada");
                     }
                 }catch(Exception ex){
                     System.out.println(ex);
@@ -6996,7 +6998,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         Keluhan.setText(rs.getString("keluhan")+(rs.getString("pemeriksaan").equals("")?"":", "+rs.getString("pemeriksaan")));
                         NmSadar.setText(rs.getString("kesadaran"));
                         TSuhu.setText(rs.getString("suhu_tubuh"));
-                        TerapiNonObat.setText(rs.getString("instruksi").equals("")?"Tidak Ada Terapi":rs.getString("instruksi"));
+                        TerapiNonObat.setText(rs.getString("instruksi").equals("")?"Tidak Ada":rs.getString("instruksi"));
                         if(rs.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rs.getString("kesadaran").equals("Somnolence")){
@@ -7185,7 +7187,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         Keluhan.setText(rs.getString("keluhan")+(rs.getString("pemeriksaan").equals("")?"":", "+rs.getString("pemeriksaan")));
                         NmSadar.setText(rs.getString("kesadaran"));
                         TSuhu.setText(rs.getString("suhu_tubuh"));
-                        TerapiNonObat.setText(rs.getString("instruksi").equals("")?"Tidak Ada Terapi":rs.getString("instruksi"));
+                        TerapiNonObat.setText(rs.getString("instruksi").equals("")?"Tidak Ada":rs.getString("instruksi"));
                         if(rs.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rs.getString("kesadaran").equals("Somnolence")){

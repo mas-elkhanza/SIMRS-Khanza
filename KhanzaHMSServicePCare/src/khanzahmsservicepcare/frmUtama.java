@@ -1587,7 +1587,7 @@ public class frmUtama extends javax.swing.JFrame {
                         Keluhan.setText(rscari.getString("keluhan")+(rscari.getString("pemeriksaan").equals("")?"":", "+rscari.getString("pemeriksaan")));
                         NmSadar.setText(rscari.getString("kesadaran"));
                         TSuhu.setText(rscari.getString("suhu_tubuh"));
-                        TerapiNonObat.setText(rscari.getString("instruksi").equals("")?"Tidak Ada Terapi":rscari.getString("instruksi"));
+                        TerapiNonObat.setText(rscari.getString("instruksi").equals("")?"Tidak Ada":rscari.getString("instruksi"));
                         if(rscari.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rscari.getString("kesadaran").equals("Somnolence")){
@@ -1774,7 +1774,7 @@ public class frmUtama extends javax.swing.JFrame {
                         Keluhan.setText(rscari.getString("keluhan")+(rscari.getString("pemeriksaan").equals("")?"":", "+rscari.getString("pemeriksaan")));
                         NmSadar.setText(rscari.getString("kesadaran"));
                         TSuhu.setText(rscari.getString("suhu_tubuh"));
-                        TerapiNonObat.setText(rscari.getString("instruksi").equals("")?"Tidak Ada Terapi":rscari.getString("instruksi"));
+                        TerapiNonObat.setText(rscari.getString("instruksi").equals("")?"Tidak Ada":rscari.getString("instruksi"));
                         if(rscari.getString("kesadaran").equals("Compos Mentis")){
                             KdSadar.setText("01");
                         }else if(rscari.getString("kesadaran").equals("Somnolence")){
