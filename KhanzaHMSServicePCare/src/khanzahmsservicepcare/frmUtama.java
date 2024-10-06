@@ -1538,8 +1538,8 @@ public class frmUtama extends javax.swing.JFrame {
                         bmhp=rscari.getString("nama_brng")+" "+rscari.getString("jml")+", "+bmhp;
                     }
                 }
-                TerapiObat.setText(terapiobat);
-                BMHP.setText(bmhp);
+                TerapiObat.setText(terapiobat.equals("")?"Tidak Ada Obat":terapiobat);
+                BMHP.setText(bmhp.equals("")?"Tidak Ada BHP":bmhp);
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{

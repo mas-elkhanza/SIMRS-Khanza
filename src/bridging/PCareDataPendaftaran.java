@@ -6445,8 +6445,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         bmhp=rs.getString("nama_brng")+" "+rs.getString("jml")+", "+bmhp;
                     }
                 }
-                TerapiObat.setText(terapiobat);
-                BMHP.setText(bmhp);
+                TerapiObat.setText(terapiobat.equals("")?"Tidak Ada Obat":terapiobat);
+                BMHP.setText(bmhp.equals("")?"Tidak Ada BHP":bmhp);
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
@@ -6589,7 +6589,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         TinggiBadan.setText("0");
                         BeratBadan.setText("0");
                         LingkarPerut.setText("0");
-                        Keluhan.setText("0");
+                        Keluhan.setText("Tidak Ada Keluhan");
                         KdSadar.setText("");
                         NmSadar.setText("");
                         KdPrognosa.setText("02");
@@ -6775,7 +6775,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         TinggiBadan.setText("0");
                         BeratBadan.setText("0");
                         LingkarPerut.setText("0");
-                        Keluhan.setText("0");
+                        Keluhan.setText("Tidak Ada Keluhan");
                         KdSadar.setText("");
                         NmSadar.setText("");
                         KdPrognosa.setText("02");
@@ -6947,8 +6947,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         bmhp=rs.getString("nama_brng")+" "+rs.getString("jml")+", "+bmhp;
                     }
                 }
-                TerapiObat.setText(terapiobat);
-                BMHP.setText(bmhp);
+                TerapiObat.setText(terapiobat.equals("")?"Tidak Ada Obat":terapiobat);
+                BMHP.setText(bmhp.equals("")?"Tidak Ada BHP":bmhp);
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{

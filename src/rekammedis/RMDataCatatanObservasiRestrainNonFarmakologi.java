@@ -110,11 +110,6 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        GCS.setDocument(new batasInput((byte)10).getKata(GCS));
-        TD.setDocument(new batasInput((byte)8).getKata(TD));
-        HR.setDocument(new batasInput((byte)5).getKata(HR));
-        RR.setDocument(new batasInput((byte)5).getKata(RR));
-        Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
         SPO.setDocument(new batasInput((byte)3).getKata(SPO));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
@@ -231,22 +226,10 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
-        GCS = new widget.TextBox();
-        jLabel17 = new widget.Label();
-        HR = new widget.TextBox();
-        jLabel20 = new widget.Label();
-        jLabel22 = new widget.Label();
-        Suhu = new widget.TextBox();
-        jLabel23 = new widget.Label();
-        TD = new widget.TextBox();
-        jLabel26 = new widget.Label();
-        jLabel27 = new widget.Label();
-        jLabel25 = new widget.Label();
-        RR = new widget.TextBox();
-        jLabel28 = new widget.Label();
         jLabel29 = new widget.Label();
         SPO = new widget.TextBox();
         jLabel35 = new widget.Label();
+        CaraMasuk = new widget.ComboBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -519,7 +502,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 124));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 184));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
@@ -670,104 +653,10 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jLabel12.setText("GCS (E,V,M) :");
+        jLabel12.setText("Lokasi Pemasangan Restarin :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(0, 70, 80, 23);
-
-        GCS.setFocusTraversalPolicyProvider(true);
-        GCS.setName("GCS"); // NOI18N
-        GCS.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                GCSKeyPressed(evt);
-            }
-        });
-        FormInput.add(GCS);
-        GCS.setBounds(84, 70, 50, 23);
-
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel17.setText("x/menit");
-        jLabel17.setName("jLabel17"); // NOI18N
-        FormInput.add(jLabel17);
-        jLabel17.setBounds(382, 70, 50, 23);
-
-        HR.setFocusTraversalPolicyProvider(true);
-        HR.setName("HR"); // NOI18N
-        HR.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                HRKeyPressed(evt);
-            }
-        });
-        FormInput.add(HR);
-        HR.setBounds(339, 70, 40, 23);
-
-        jLabel20.setText("HR :");
-        jLabel20.setName("jLabel20"); // NOI18N
-        FormInput.add(jLabel20);
-        jLabel20.setBounds(295, 70, 40, 23);
-
-        jLabel22.setText("Suhu :");
-        jLabel22.setName("jLabel22"); // NOI18N
-        FormInput.add(jLabel22);
-        jLabel22.setBounds(570, 70, 40, 23);
-
-        Suhu.setFocusTraversalPolicyProvider(true);
-        Suhu.setName("Suhu"); // NOI18N
-        Suhu.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SuhuKeyPressed(evt);
-            }
-        });
-        FormInput.add(Suhu);
-        Suhu.setBounds(614, 70, 40, 23);
-
-        jLabel23.setText("TD :");
-        jLabel23.setName("jLabel23"); // NOI18N
-        FormInput.add(jLabel23);
-        jLabel23.setBounds(138, 70, 40, 23);
-
-        TD.setFocusTraversalPolicyProvider(true);
-        TD.setName("TD"); // NOI18N
-        TD.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TDKeyPressed(evt);
-            }
-        });
-        FormInput.add(TD);
-        TD.setBounds(182, 70, 70, 23);
-
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel26.setText("°C");
-        jLabel26.setName("jLabel26"); // NOI18N
-        FormInput.add(jLabel26);
-        jLabel26.setBounds(657, 70, 30, 23);
-
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel27.setText("mmHg");
-        jLabel27.setName("jLabel27"); // NOI18N
-        FormInput.add(jLabel27);
-        jLabel27.setBounds(255, 70, 40, 23);
-
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel25.setText("x/menit");
-        jLabel25.setName("jLabel25"); // NOI18N
-        FormInput.add(jLabel25);
-        jLabel25.setBounds(517, 70, 50, 23);
-
-        RR.setFocusTraversalPolicyProvider(true);
-        RR.setName("RR"); // NOI18N
-        RR.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RRKeyPressed(evt);
-            }
-        });
-        FormInput.add(RR);
-        RR.setBounds(474, 70, 40, 23);
-
-        jLabel28.setText("RR :");
-        jLabel28.setName("jLabel28"); // NOI18N
-        FormInput.add(jLabel28);
-        jLabel28.setBounds(430, 70, 40, 23);
+        jLabel12.setBounds(0, 70, 170, 23);
 
         jLabel29.setText("SpO2 :");
         jLabel29.setName("jLabel29"); // NOI18N
@@ -789,6 +678,16 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
         jLabel35.setBounds(773, 70, 30, 23);
+
+        CaraMasuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baby Box", "Inkubator", "Kursi Roda" }));
+        CaraMasuk.setName("CaraMasuk"); // NOI18N
+        CaraMasuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CaraMasukKeyPressed(evt);
+            }
+        });
+        FormInput.add(CaraMasuk);
+        CaraMasuk.setBounds(79, 100, 105, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1080,7 +979,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            GCS.requestFocus();
+            //GCS.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
         }
@@ -1095,7 +994,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Detik,GCS);
+        //Valid.pindah(evt,Detik,GCS);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnCatatanObservasiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIGDActionPerformed
@@ -1124,29 +1023,13 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         }
     }//GEN-LAST:event_MnCatatanObservasiIGDActionPerformed
 
-    private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
-        Valid.pindah(evt,btnPetugas,TD);
-    }//GEN-LAST:event_GCSKeyPressed
-
-    private void HRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HRKeyPressed
-        Valid.pindah(evt,TD,RR);
-    }//GEN-LAST:event_HRKeyPressed
-
-    private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        Valid.pindah(evt,RR,SPO);
-    }//GEN-LAST:event_SuhuKeyPressed
-
-    private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,GCS,HR);
-    }//GEN-LAST:event_TDKeyPressed
-
-    private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        Valid.pindah(evt,HR,Suhu);
-    }//GEN-LAST:event_RRKeyPressed
-
     private void SPOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SPOKeyPressed
-        Valid.pindah(evt,Suhu,BtnSimpan);
+        //Valid.pindah(evt,Suhu,BtnSimpan);
     }//GEN-LAST:event_SPOKeyPressed
+
+    private void CaraMasukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CaraMasukKeyPressed
+        //Valid.pindah(evt,AsalPasien,DiperolehDari);
+    }//GEN-LAST:event_CaraMasukKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1173,14 +1056,13 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.ComboBox CaraMasuk;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkKejadian;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox GCS;
-    private widget.TextBox HR;
     private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.Label LCount;
@@ -1189,12 +1071,9 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.TextBox RR;
     private widget.TextBox SPO;
     private widget.ScrollPane Scroll;
-    private widget.TextBox Suhu;
     private widget.TextBox TCari;
-    private widget.TextBox TD;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
@@ -1206,17 +1085,9 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel12;
     private widget.Label jLabel16;
-    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
-    private widget.Label jLabel20;
     private widget.Label jLabel21;
-    private widget.Label jLabel22;
-    private widget.Label jLabel23;
-    private widget.Label jLabel25;
-    private widget.Label jLabel26;
-    private widget.Label jLabel27;
-    private widget.Label jLabel28;
     private widget.Label jLabel29;
     private widget.Label jLabel35;
     private widget.Label jLabel4;
@@ -1295,14 +1166,8 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     }
     
     public void emptTeks() {
-        GCS.setText("");
-        TD.setText("");
-        HR.setText("");
-        RR.setText("");
-        Suhu.setText("");
         SPO.setText("");
         Tanggal.setDate(new Date());
-        GCS.requestFocus();
     } 
 
     private void getData() {
@@ -1316,11 +1181,6 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,2));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(3,5));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(6,8));
-            GCS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            HR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             SPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
@@ -1463,7 +1323,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("catatan_observasi_ranap","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,gcs=?,td=?,hr=?,rr=?,suhu=?,spo2=?,nip=?",13,new String[]{
+        /*if(Sequel.mengedittf("catatan_observasi_ranap","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,gcs=?,td=?,hr=?,rr=?,suhu=?,spo2=?,nip=?",13,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
             tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
@@ -1485,7 +1345,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),14);
             tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),15);
             emptTeks();
-        }
+        }*/
     }
 
     private void hapus() {
@@ -1501,7 +1361,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("catatan_observasi_ranap","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
+        /*if(Sequel.menyimpantf("catatan_observasi_ranap","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText()
         })==true){
@@ -1512,7 +1372,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } 
+        } */
     }
     
     
