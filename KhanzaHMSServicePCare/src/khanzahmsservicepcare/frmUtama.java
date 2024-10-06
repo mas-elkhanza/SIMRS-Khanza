@@ -579,7 +579,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                                             "\"noKartu\": \""+NoKartu.getText()+"\"," +
                                                                             "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem()+"\"," +
                                                                             "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
-                                                                            "\"keluhan\": \""+Keluhan.getText()+"\"," +
+                                                                            "\"keluhan\": \""+(Keluhan.getText().equals("")?"Tidak Ada":Keluhan.getText())+"\"," +
                                                                             "\"kdSadar\": \""+KdSadar.getText()+"\"," +
                                                                             "\"sistole\": "+Sistole.getText()+"," +
                                                                             "\"diastole\": "+Diastole.getText()+"," +
@@ -598,14 +598,14 @@ public class frmUtama extends javax.swing.JFrame {
                                                                             "\"rujukLanjut\": null," +
                                                                             "\"kdTacc\": -1," +
                                                                             "\"alasanTacc\": null," +
-                                                                            "\"anamnesa\": \""+Keluhan.getText()+"\"," +
+                                                                            "\"anamnesa\": \""+(Keluhan.getText().equals("")?"Tidak Ada":Keluhan.getText())+"\"," +
                                                                             "\"alergiMakan\": \""+KdAlergiMakanan.getText()+"\"," +
                                                                             "\"alergiUdara\": \""+KdAlergiUdara.getText()+"\"," +
                                                                             "\"alergiObat\": \""+KdAlergiObat.getText()+"\"," +
                                                                             "\"kdPrognosa\": \""+KdPrognosa.getText()+"\"," +
-                                                                            "\"terapiObat\": \""+TerapiObat.getText()+"\"," +
-                                                                            "\"terapiNonObat\": \""+TerapiNonObat.getText()+"\"," +
-                                                                            "\"bmhp\": \""+BMHP.getText()+"\"," +
+                                                                            "\"terapiObat\": \""+(TerapiObat.getText().equals("")?"Tidak Ada":TerapiObat.getText())+"\"," +
+                                                                            "\"terapiNonObat\": \""+(TerapiNonObat.getText().equals("")?"Tidak Ada":TerapiNonObat.getText())+"\"," +
+                                                                            "\"bmhp\": \""+(BMHP.getText().equals("")?"Tidak Ada":BMHP.getText())+"\"," +
                                                                             "\"suhu\": \""+TSuhu.getText()+"\"" +
                                                                           "}";
                                                             TeksArea.append(requestJson+"\n");
@@ -724,7 +724,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"noKartu\": \""+NoKartu.getText()+"\"," +
                                                 "\"tglDaftar\": \""+TanggalDaftar.getSelectedItem()+"\"," +
                                                 "\"kdPoli\": \""+KdPoliTujuan.getText()+"\"," +
-                                                "\"keluhan\": \""+Keluhan.getText()+"\"," +
+                                                "\"keluhan\": \""+(Keluhan.getText().equals("")?"Tidak Ada":Keluhan.getText())+"\"," +
                                                 "\"kdSadar\": \""+KdSadar.getText()+"\"," +
                                                 "\"sistole\": "+Sistole.getText()+"," +
                                                 "\"diastole\": "+Diastole.getText()+"," +
@@ -743,14 +743,14 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"rujukLanjut\": null," +
                                                 "\"kdTacc\": -1," +
                                                 "\"alasanTacc\": null," +
-                                                "\"anamnesa\": \""+Keluhan.getText()+"\"," +
+                                                "\"anamnesa\": \""+(Keluhan.getText().equals("")?"Tidak Ada":Keluhan.getText())+"\"," +
                                                 "\"alergiMakan\": \""+KdAlergiMakanan.getText()+"\"," +
                                                 "\"alergiUdara\": \""+KdAlergiUdara.getText()+"\"," +
                                                 "\"alergiObat\": \""+KdAlergiObat.getText()+"\"," +
                                                 "\"kdPrognosa\": \""+KdPrognosa.getText()+"\"," +
-                                                "\"terapiObat\": \""+TerapiObat.getText()+"\"," +
-                                                "\"terapiNonObat\": \""+TerapiNonObat.getText()+"\"," +
-                                                "\"bmhp\": \""+BMHP.getText()+"\"," +
+                                                "\"terapiObat\": \""+(TerapiObat.getText().equals("")?"Tidak Ada":TerapiObat.getText())+"\"," +
+                                                "\"terapiNonObat\": \""+(TerapiNonObat.getText().equals("")?"Tidak Ada":TerapiNonObat.getText())+"\"," +
+                                                "\"bmhp\": \""+(BMHP.getText().equals("")?"Tidak Ada":BMHP.getText())+"\"," +
                                                 "\"suhu\": \""+TSuhu.getText()+"\"" +
                                               "}";
                                 TeksArea.append(requestJson+"\n");

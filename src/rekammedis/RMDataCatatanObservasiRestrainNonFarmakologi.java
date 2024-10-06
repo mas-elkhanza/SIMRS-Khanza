@@ -230,6 +230,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         SPO = new widget.TextBox();
         jLabel35 = new widget.Label();
         CaraMasuk = new widget.ComboBox();
+        jLabel5 = new widget.Label();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -510,7 +511,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         FormInput.setPreferredSize(new java.awt.Dimension(100, 225));
         FormInput.setLayout(null);
 
-        jLabel4.setText("No.Rawat :");
+        jLabel4.setText(":");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
         jLabel4.setBounds(0, 10, 80, 23);
@@ -688,6 +689,12 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         });
         FormInput.add(CaraMasuk);
         CaraMasuk.setBounds(79, 100, 105, 23);
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("No.Rawat");
+        jLabel5.setName("jLabel5"); // NOI18N
+        FormInput.add(jLabel5);
+        jLabel5.setBounds(25, 10, 80, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1091,6 +1098,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     private widget.Label jLabel29;
     private widget.Label jLabel35;
     private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
