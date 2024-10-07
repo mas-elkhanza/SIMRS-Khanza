@@ -59,8 +59,8 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","GCS (E,V,M)",
-            "TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu(°C)","SpO2(%)","NIP","Nama Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","Tangan Kiri",
+            "Tangan Kanan","Badan","Kaki Kiri","Kaki Kanan","Edema","Iritasi","Sirkulasi","Kondisi","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,7 +70,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -101,8 +101,14 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             }else if(i==13){
                 column.setPreferredWidth(55);
             }else if(i==14){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(55);
             }else if(i==15){
+                column.setPreferredWidth(55);
+            }else if(i==16){
+                column.setPreferredWidth(55);
+            }else if(i==17){
+                column.setPreferredWidth(90);
+            }else if(i==18){
                 column.setPreferredWidth(160);
             }
         }
@@ -1165,39 +1171,39 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     }//GEN-LAST:event_MnCatatanObservasiIGDActionPerformed
 
     private void TanganKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanganKiriKeyPressed
-        //Valid.pindah(evt,AsalPasien,DiperolehDari);
+        Valid.pindah(evt,btnPetugas,TanganKanan);
     }//GEN-LAST:event_TanganKiriKeyPressed
 
     private void TanganKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanganKananKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TanganKiri,Badan);
     }//GEN-LAST:event_TanganKananKeyPressed
 
     private void KakiKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KakiKiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Badan,KakiKanan);
     }//GEN-LAST:event_KakiKiriKeyPressed
 
     private void KakiKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KakiKananKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KakiKiri,Edema);
     }//GEN-LAST:event_KakiKananKeyPressed
 
     private void BadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BadanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TanganKanan,KakiKiri);
     }//GEN-LAST:event_BadanKeyPressed
 
     private void EdemaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdemaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KakiKanan,Iritasi);
     }//GEN-LAST:event_EdemaKeyPressed
 
     private void IritasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IritasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Edema,Sirkulasi);
     }//GEN-LAST:event_IritasiKeyPressed
 
     private void SirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SirkulasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Iritasi,Kondisi);
     }//GEN-LAST:event_SirkulasiKeyPressed
 
     private void KondisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiKeyPressed
-        //Valid.pindah2(evt,KondisiPulang,CaraTransportasiPulang);
+        Valid.pindah2(evt,Sirkulasi,BtnSimpan);
     }//GEN-LAST:event_KondisiKeyPressed
 
     /**
