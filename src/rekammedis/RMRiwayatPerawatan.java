@@ -394,6 +394,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiRanap = new widget.CekBox();
         chkCatatanObservasiRanapKebidanan = new widget.CekBox();
         chkCatatanObservasiRanapPostPartum = new widget.CekBox();
+        chkCatatanObservasiRestrainNonFarmakologi = new widget.CekBox();
         chkFollowUpDBD = new widget.CekBox();
         chkCatatanKeseimbanganCairan = new widget.CekBox();
         chkCatatanCekGDS = new widget.CekBox();
@@ -823,7 +824,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3385));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3430));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1270,6 +1271,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiRanapPostPartum.setOpaque(false);
         chkCatatanObservasiRanapPostPartum.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanObservasiRanapPostPartum);
+
+        chkCatatanObservasiRestrainNonFarmakologi.setSelected(true);
+        chkCatatanObservasiRestrainNonFarmakologi.setText("Catatan Observasi Restrain Nonfarmakologi");
+        chkCatatanObservasiRestrainNonFarmakologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCatatanObservasiRestrainNonFarmakologi.setName("chkCatatanObservasiRestrainNonFarmakologi"); // NOI18N
+        chkCatatanObservasiRestrainNonFarmakologi.setOpaque(false);
+        chkCatatanObservasiRestrainNonFarmakologi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkCatatanObservasiRestrainNonFarmakologi);
 
         chkFollowUpDBD.setSelected(true);
         chkFollowUpDBD.setText("Follow Up DBD");
@@ -2553,6 +2562,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningTBC.setSelected(true);
             chkAsuhanMedisMCU.setSelected(true);
             chkAsuhanKeperawatanRanapBayi.setSelected(true);
+            chkCatatanObservasiRestrainNonFarmakologi.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2701,6 +2711,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningTBC.setSelected(false);
             chkAsuhanMedisMCU.setSelected(false);
             chkAsuhanKeperawatanRanapBayi.setSelected(false);
+            chkCatatanObservasiRestrainNonFarmakologi.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3310,6 +3321,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkCatatanObservasiRanap;
     private widget.CekBox chkCatatanObservasiRanapKebidanan;
     private widget.CekBox chkCatatanObservasiRanapPostPartum;
+    private widget.CekBox chkCatatanObservasiRestrainNonFarmakologi;
     private widget.CekBox chkCatatanPersalinan;
     private widget.CekBox chkChecklistKriteriaKeluarHCU;
     private widget.CekBox chkChecklistKriteriaKeluarICU;
@@ -14665,6 +14677,78 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center'>"+rs2.getString("kontraksi")+"</td>"+
                                     "<td valign='top' colspan='2'>"+rs2.getString("perdarahan")+"</td>"+
                                     "<td valign='top' colspan='2'>"+rs2.getString("keterangan")+"</td>"+
+                                 "</tr>"
+                            );                                        
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+            
+            //menampilkan catatan observasi restrain non farmakologi
+            if(chkCatatanObservasiRestrainNonFarmakologi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat,"+
+                            "catatan_observasi_restrain_nonfarma.tangan_kiri,catatan_observasi_restrain_nonfarma.tangan_kanan,catatan_observasi_restrain_nonfarma.kaki_kiri,"+
+                            "catatan_observasi_restrain_nonfarma.kaki_kanan,catatan_observasi_restrain_nonfarma.badan,catatan_observasi_restrain_nonfarma.edema,"+
+                            "catatan_observasi_restrain_nonfarma.iritasi,catatan_observasi_restrain_nonfarma.sirkulasi,catatan_observasi_restrain_nonfarma.kondisi_keterangan,"+
+                            "catatan_observasi_restrain_nonfarma.nip,petugas.nama from catatan_observasi_restrain_nonfarma inner join petugas on catatan_observasi_restrain_nonfarma.nip=petugas.nip "+
+                            "where catatan_observasi_restrain_nonfarma.no_rawat='"+norawat+"' order by catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Catatan Observasi Restrain Nonfarmakologi</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='middle' width='4%' bgcolor='#FFFAF8' rowspan='2'>No.</td>"+
+                                    "<td valign='middle' width='15%' bgcolor='#FFFAF8' rowspan='2'>Tanggal</td>"+
+                                    "<td valign='middle' width='23%' bgcolor='#FFFAF8' colspan='5'>Lokasi Pemasangan Restarin</td>"+
+                                    "<td valign='middle' width='17%' bgcolor='#FFFAF8' colspan='3'>Observasi Lokasi Pemasangan</td>"+
+                                    "<td valign='middle' width='20%' bgcolor='#FFFAF8' rowspan='2'>Kondisi</td>"+
+                                    "<td valign='middle' width='21%' bgcolor='#FFFAF8' rowspan='2'>Petugas</td>"+
+                                 "</tr>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8'>Tangan Kiri</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8'>Tangan Kanan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8'>Badan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8'>Kaki Kiri</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8'>Kaki Kanan</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8'>Edema</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8'>Iritasi</td>"+
+                                    "<td valign='middle' bgcolor='#FFFAF8'>Sirkulasi</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' align='center' rowspan='3'>"+w+"</td>"+
+                                    "<td valign='top' rowspan='3'>"+rs2.getString("tgl_perawatan")+" "+rs2.getString("jam_rawat")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("tangan_kiri")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("tangan_kanan")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("badan")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("kaki_kiri")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("kaki_kanan")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("edema")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("iritasi")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("sirkulasi")+"</td>"+
+                                    "<td valign='top' align='center'>"+rs2.getString("kondisi_keterangan")+"</td>"+
+                                    "<td valign='top' rowspan='3'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                  "</tr>"
                             );                                        
                             w++;
