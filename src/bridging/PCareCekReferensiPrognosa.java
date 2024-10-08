@@ -115,7 +115,7 @@ public final class PCareCekReferensiPrognosa extends javax.swing.JDialog {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));  
             otorisasi=koneksiDB.USERPCARE()+":"+koneksiDB.PASSPCARE()+":095";
-            URL = prop.getProperty("URLAPIPCARE")+"/alergi/prognosa";          
+            URL = prop.getProperty("URLAPIPCARE")+"/prognosa";          
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
