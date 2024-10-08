@@ -48,4 +48,26 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-light-blue hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">face</i>
+            </div>
+            <div class="content">
+                <div class="text">PASIEN BARU</div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(booking_mcu_perusahaan_pasien_baru.no_pengajuan) FROM booking_mcu_perusahaan_pasien_baru WHERE booking_mcu_perusahaan_pasien_baru.perusahaan_pasien='".validTeks4(encrypt_decrypt($_SESSION["ses_emcu"],"d"),20)."'");?>" data-speed="1000" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box bg-grey hover-expand-effect">
+            <div class="icon">
+                <i class="material-icons">favorite</i>
+            </div>
+            <div class="content">
+                <div class="text">P.B. TERKONFIRMASI</div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(booking_mcu_perusahaan_pasien_baru.no_pengajuan) FROM booking_mcu_perusahaan_pasien_baru WHERE booking_mcu_perusahaan_pasien_baru.perusahaan_pasien='".validTeks4(encrypt_decrypt($_SESSION["ses_emcu"],"d"),20)."' and booking_mcu_perusahaan_pasien_baru.status='Sudah Dikonfirmasi'");?>" data-speed="1000" data-fresh-interval="20"></div>
+            </div>
+        </div>
+    </div>
 </div>

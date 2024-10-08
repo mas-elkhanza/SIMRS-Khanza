@@ -91,21 +91,21 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             }else if(i==8){
                 column.setPreferredWidth(65);
             }else if(i==9){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(79);
             }else if(i==10){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(44);
             }else if(i==11){
-                column.setPreferredWidth(65);
-            }else if(i==12){
                 column.setPreferredWidth(50);
+            }else if(i==12){
+                column.setPreferredWidth(61);
             }else if(i==13){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(50);
             }else if(i==14){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(50);
             }else if(i==15){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(50);
             }else if(i==16){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(160);
             }else if(i==17){
                 column.setPreferredWidth(90);
             }else if(i==18){
@@ -922,7 +922,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                     if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+" "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
                         hapus();
                     }
@@ -953,7 +953,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                         if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+" "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
                             if(TanggalRegistrasi.getText().equals("")){
                                 TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
@@ -1007,26 +1007,32 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanObservasiRanap.jasper","report","::[ Data Catatan Observasi Rawat Inap ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ranap.tgl_perawatan,catatan_observasi_ranap.jam_rawat,catatan_observasi_ranap.gcs,"+
-                    "catatan_observasi_ranap.td,catatan_observasi_ranap.hr,catatan_observasi_ranap.rr,catatan_observasi_ranap.suhu,catatan_observasi_ranap.spo2,"+
-                    "catatan_observasi_ranap.nip,petugas.nama from catatan_observasi_ranap inner join reg_periksa on catatan_observasi_ranap.no_rawat=reg_periksa.no_rawat "+
+                Valid.MyReportqry("rptDataCatatanObservasiRestrainNonFarmakologi.jasper","report","::[ Data Catatan Observasi Rawat Inap ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat,"+
+                    "catatan_observasi_restrain_nonfarma.tangan_kiri,catatan_observasi_restrain_nonfarma.tangan_kanan,catatan_observasi_restrain_nonfarma.kaki_kiri,"+
+                    "catatan_observasi_restrain_nonfarma.kaki_kanan,catatan_observasi_restrain_nonfarma.badan,catatan_observasi_restrain_nonfarma.edema,"+
+                    "catatan_observasi_restrain_nonfarma.iritasi,catatan_observasi_restrain_nonfarma.sirkulasi,catatan_observasi_restrain_nonfarma.kondisi_keterangan,"+
+                    "catatan_observasi_restrain_nonfarma.nip,petugas.nama from catatan_observasi_restrain_nonfarma "+
+                    "inner join reg_periksa on catatan_observasi_restrain_nonfarma.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ranap.nip=petugas.nip where "+
-                    "catatan_observasi_ranap.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_ranap.tgl_perawatan,catatan_observasi_ranap.jam_rawat",param);
+                    "inner join petugas on catatan_observasi_restrain_nonfarma.nip=petugas.nip where "+
+                    "catatan_observasi_restrain_nonfarma.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat",param);
             }else{
-                Valid.MyReportqry("rptDataCatatanObservasiRanap.jasper","report","::[ Data Catatan Observasi Rawat Inap ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ranap.tgl_perawatan,catatan_observasi_ranap.jam_rawat,catatan_observasi_ranap.gcs,"+
-                    "catatan_observasi_ranap.td,catatan_observasi_ranap.hr,catatan_observasi_ranap.rr,catatan_observasi_ranap.suhu,catatan_observasi_ranap.spo2,"+
-                    "catatan_observasi_ranap.nip,petugas.nama from catatan_observasi_ranap inner join reg_periksa on catatan_observasi_ranap.no_rawat=reg_periksa.no_rawat "+
+                Valid.MyReportqry("rptDataCatatanObservasiRestrainNonFarmakologi.jasper","report","::[ Data Catatan Observasi Restrain Nonfarmakologi ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat,"+
+                    "catatan_observasi_restrain_nonfarma.tangan_kiri,catatan_observasi_restrain_nonfarma.tangan_kanan,catatan_observasi_restrain_nonfarma.kaki_kiri,"+
+                    "catatan_observasi_restrain_nonfarma.kaki_kanan,catatan_observasi_restrain_nonfarma.badan,catatan_observasi_restrain_nonfarma.edema,"+
+                    "catatan_observasi_restrain_nonfarma.iritasi,catatan_observasi_restrain_nonfarma.sirkulasi,catatan_observasi_restrain_nonfarma.kondisi_keterangan,"+
+                    "catatan_observasi_restrain_nonfarma.nip,petugas.nama from catatan_observasi_restrain_nonfarma "+
+                    "inner join reg_periksa on catatan_observasi_restrain_nonfarma.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ranap.nip=petugas.nip where "+
-                    "catatan_observasi_ranap.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                    "inner join petugas on catatan_observasi_restrain_nonfarma.nip=petugas.nip where "+
+                    "catatan_observasi_restrain_nonfarma.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or catatan_observasi_ranap.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by catatan_observasi_ranap.tgl_perawatan,catatan_observasi_ranap.jam_rawat ",param);
+                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or catatan_observasi_restrain_nonfarma.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
+                    "order by catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1298,23 +1304,29 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ranap.tgl_perawatan,catatan_observasi_ranap.jam_rawat,catatan_observasi_ranap.gcs,"+
-                    "catatan_observasi_ranap.td,catatan_observasi_ranap.hr,catatan_observasi_ranap.rr,catatan_observasi_ranap.suhu,catatan_observasi_ranap.spo2,"+
-                    "catatan_observasi_ranap.nip,petugas.nama from catatan_observasi_ranap inner join reg_periksa on catatan_observasi_ranap.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat,"+
+                    "catatan_observasi_restrain_nonfarma.tangan_kiri,catatan_observasi_restrain_nonfarma.tangan_kanan,catatan_observasi_restrain_nonfarma.kaki_kiri,"+
+                    "catatan_observasi_restrain_nonfarma.kaki_kanan,catatan_observasi_restrain_nonfarma.badan,catatan_observasi_restrain_nonfarma.edema,"+
+                    "catatan_observasi_restrain_nonfarma.iritasi,catatan_observasi_restrain_nonfarma.sirkulasi,catatan_observasi_restrain_nonfarma.kondisi_keterangan,"+
+                    "catatan_observasi_restrain_nonfarma.nip,petugas.nama from catatan_observasi_restrain_nonfarma "+
+                    "inner join reg_periksa on catatan_observasi_restrain_nonfarma.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ranap.nip=petugas.nip where "+
-                    "catatan_observasi_ranap.tgl_perawatan between ? and ? order by catatan_observasi_ranap.tgl_perawatan,catatan_observasi_ranap.jam_rawat");
+                    "inner join petugas on catatan_observasi_restrain_nonfarma.nip=petugas.nip where "+
+                    "catatan_observasi_restrain_nonfarma.tgl_perawatan between ? and ? order by catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ranap.tgl_perawatan,catatan_observasi_ranap.jam_rawat,catatan_observasi_ranap.gcs,"+
-                    "catatan_observasi_ranap.td,catatan_observasi_ranap.hr,catatan_observasi_ranap.rr,catatan_observasi_ranap.suhu,catatan_observasi_ranap.spo2,"+
-                    "catatan_observasi_ranap.nip,petugas.nama from catatan_observasi_ranap inner join reg_periksa on catatan_observasi_ranap.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
+                    "catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat,"+
+                    "catatan_observasi_restrain_nonfarma.tangan_kiri,catatan_observasi_restrain_nonfarma.tangan_kanan,catatan_observasi_restrain_nonfarma.kaki_kiri,"+
+                    "catatan_observasi_restrain_nonfarma.kaki_kanan,catatan_observasi_restrain_nonfarma.badan,catatan_observasi_restrain_nonfarma.edema,"+
+                    "catatan_observasi_restrain_nonfarma.iritasi,catatan_observasi_restrain_nonfarma.sirkulasi,catatan_observasi_restrain_nonfarma.kondisi_keterangan,"+
+                    "catatan_observasi_restrain_nonfarma.nip,petugas.nama from catatan_observasi_restrain_nonfarma "+
+                    "inner join reg_periksa on catatan_observasi_restrain_nonfarma.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ranap.nip=petugas.nip where "+
-                    "catatan_observasi_ranap.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or catatan_observasi_ranap.nip like ? or petugas.nama like ?) "+
-                    "order by catatan_observasi_ranap.tgl_perawatan,catatan_observasi_ranap.jam_rawat ");
+                    "inner join petugas on catatan_observasi_restrain_nonfarma.nip=petugas.nip where "+
+                    "catatan_observasi_restrain_nonfarma.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or catatan_observasi_restrain_nonfarma.nip like ? or petugas.nama like ?) "+
+                    "order by catatan_observasi_restrain_nonfarma.tgl_perawatan,catatan_observasi_restrain_nonfarma.jam_rawat ");
             }
                 
             try {
@@ -1336,8 +1348,9 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
-                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("gcs"),rs.getString("td"),
-                        rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),rs.getString("spo2"),rs.getString("nip"),
+                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("tangan_kiri"),rs.getString("tangan_kanan"),
+                        rs.getString("badan"),rs.getString("kaki_kiri"),rs.getString("kaki_kanan"),rs.getString("edema"),
+                        rs.getString("iritasi"),rs.getString("sirkulasi"),rs.getString("kondisi_keterangan"),rs.getString("nip"),
                         rs.getString("nama")
                     });
                 }
@@ -1382,7 +1395,15 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(0,2));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(3,5));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(6,8));
-            Kondisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            TanganKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            TanganKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Badan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            KakiKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            KakiKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Edema.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Iritasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Sirkulasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Kondisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
     }
@@ -1524,10 +1545,12 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("catatan_observasi_ranap","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,gcs=?,td=?,hr=?,rr=?,suhu=?,spo2=?,nip=?",13,new String[]{
+        if(Sequel.mengedittf("catatan_observasi_restrain_nonfarma","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,tangan_kiri=?,"+
+            "tangan_kanan=?,kaki_kiri=?,kaki_kanan=?,badan=?,edema=?,iritasi=?,sirkulasi=?,kondisi_keterangan=?,nip=?",16,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            TanganKiri.getSelectedItem().toString(),TanganKanan.getSelectedItem().toString(),KakiKiri.getSelectedItem().toString(),KakiKanan.getSelectedItem().toString(),
+            Badan.getSelectedItem().toString(),Edema.getSelectedItem().toString(),Iritasi.getSelectedItem().toString(),Sirkulasi.getSelectedItem().toString(),Kondisi.getText(),
+            NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1537,20 +1560,23 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),6);
             tbObat.setValueAt(Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(GCS.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(TD.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(HR.getText(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(RR.getText(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(Suhu.getText(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(SPO.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(TanganKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(TanganKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(Badan.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(KakiKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(KakiKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(Edema.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(Iritasi.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(Sirkulasi.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(Kondisi.getText(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),18);
             emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from catatan_observasi_ranap where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
+        if(Sequel.queryu2tf("delete from catatan_observasi_restrain_nonfarma where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1562,18 +1588,22 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
     }
 
     private void simpan() {
-        /*if(Sequel.menyimpantf("catatan_observasi_ranap","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
+        if(Sequel.menyimpantf("catatan_observasi_restrain_nonfarma","?,?,?,?,?,?,?,?,?,?,?,?,?","Data",13,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText()
+                TanganKiri.getSelectedItem().toString(),TanganKanan.getSelectedItem().toString(),KakiKiri.getSelectedItem().toString(),KakiKanan.getSelectedItem().toString(),
+                Badan.getSelectedItem().toString(),Edema.getSelectedItem().toString(),Iritasi.getSelectedItem().toString(),Sirkulasi.getSelectedItem().toString(),Kondisi.getText(),
+                NIP.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText(),NamaPetugas.getText()
+                TanganKiri.getSelectedItem().toString(),TanganKanan.getSelectedItem().toString(),Badan.getSelectedItem().toString(),KakiKiri.getSelectedItem().toString(),
+                KakiKanan.getSelectedItem().toString(),Edema.getSelectedItem().toString(),Iritasi.getSelectedItem().toString(),Sirkulasi.getSelectedItem().toString(),
+                Kondisi.getText(),NIP.getText(),NamaPetugas.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } */
+        } 
     }
     
     

@@ -7,12 +7,12 @@
     $thnbesok    = substr($besok,0,4);
     $blnbesok    = substr($besok,5,2);
     $tglbesok    = substr($besok,8,2);
+    $sekarang    = date("Y-m-d");
     $thnmcu      = validTeks(trim(isset($_POST['tgl_mcu']))?substr($_POST['tgl_mcu'],6,4):$thnbesok);
     $blnmcu      = validTeks(trim(isset($_POST['tgl_mcu']))?substr($_POST['tgl_mcu'],3,2):$blnbesok);
     $tglmcu      = validTeks(trim(isset($_POST['tgl_mcu']))?substr($_POST['tgl_mcu'],0,2):$tglbesok);
     $interval    = getOne2("select (TO_DAYS('$thnmcu-$blnmcu-$tglmcu')-TO_DAYS('$sekarang'))");
     $perusahaan  = validTeks4(encrypt_decrypt($_SESSION["ses_emcu"],"d"),20);
-    $sekarang    = date("Y-m-d");
     $status      = "";
     if(isset($_POST["BtnCari"])||isset($_GET['iyem'])){
         $status="Aktif";

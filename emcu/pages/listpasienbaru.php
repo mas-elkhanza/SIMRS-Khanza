@@ -7,12 +7,12 @@
     $thnbesok         = substr($besok,0,4);
     $blnbesok         = substr($besok,5,2);
     $tglbesok         = substr($besok,8,2);
+    $sekarang         = date("Y-m-d");
     $thnmcu           = validTeks(trim(isset($_POST['tgl_daftar']))?substr($_POST['tgl_daftar'],6,4):$thnbesok);
     $blnmcu           = validTeks(trim(isset($_POST['tgl_daftar']))?substr($_POST['tgl_daftar'],3,2):$blnbesok);
     $tglmcu           = validTeks(trim(isset($_POST['tgl_daftar']))?substr($_POST['tgl_daftar'],0,2):$tglbesok);
     $interval         = getOne2("select (TO_DAYS('$thnmcu-$blnmcu-$tglmcu')-TO_DAYS('$sekarang'))");
     $perusahaan       = validTeks4(encrypt_decrypt($_SESSION["ses_emcu"],"d"),20);
-    $sekarang         = date("Y-m-d");
     $thnsekarang      = substr($sekarang,0,4);
     $blnsekarang      = substr($sekarang,5,2);
     $tglsekarang      = substr($sekarang,8,2);
