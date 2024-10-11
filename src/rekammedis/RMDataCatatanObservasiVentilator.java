@@ -59,7 +59,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","Mode",
-            "VR","Pakar","RR","REF/PS","EE","NIP","Nama Petugas"
+            "VT","Pakar","RR","REF/PS","EE","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -88,11 +88,11 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             }else if(i==7){
                 column.setPreferredWidth(60);
             }else if(i==8){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(120);
             }else if(i==9){
                 column.setPreferredWidth(65);
             }else if(i==10){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(120);
             }else if(i==11){
                 column.setPreferredWidth(65);
             }else if(i==12){
@@ -184,7 +184,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiIGD = new javax.swing.JMenuItem();
+        MnCatatanObservasiVentilator = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -244,19 +244,19 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanObservasiIGD.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanObservasiIGD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanObservasiIGD.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanObservasiIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanObservasiIGD.setText("Formulir Catatan Observasi IGD");
-        MnCatatanObservasiIGD.setName("MnCatatanObservasiIGD"); // NOI18N
-        MnCatatanObservasiIGD.setPreferredSize(new java.awt.Dimension(230, 26));
-        MnCatatanObservasiIGD.addActionListener(new java.awt.event.ActionListener() {
+        MnCatatanObservasiVentilator.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanObservasiVentilator.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanObservasiVentilator.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanObservasiVentilator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanObservasiVentilator.setText("Formulir Catatan Observasi Ventilator");
+        MnCatatanObservasiVentilator.setName("MnCatatanObservasiVentilator"); // NOI18N
+        MnCatatanObservasiVentilator.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnCatatanObservasiVentilator.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanObservasiIGDActionPerformed(evt);
+                MnCatatanObservasiVentilatorActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanObservasiIGD);
+        jPopupMenu1.add(MnCatatanObservasiVentilator);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -924,7 +924,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanObservasiIGD.jasper","report","::[ Data Catatan Observasi IGD ]::",
+                Valid.MyReportqry("rptDataCatatanObservasiVentilator.jasper","report","::[ Data Catatan Observasi Ventilator ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
                     "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
@@ -933,7 +933,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
                     "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
                     "catatan_observasi_ventilator.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat",param);
             }else{
-                Valid.MyReportqry("rptDataCatatanObservasiIGD.jasper","report","::[ Data Catatan Observasi IGD ]::",
+                Valid.MyReportqry("rptDataCatatanObservasiVentilator.jasper","report","::[ Data Catatan Observasi Ventilator ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
                     "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
@@ -1061,7 +1061,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
         Valid.pindah(evt,Detik,Mode);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanObservasiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIGDActionPerformed
+    private void MnCatatanObservasiVentilatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiVentilatorActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1071,7 +1071,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirCatatanObservasiIGD.jasper","report","::[ Formulir Catatan Observasi IGD ]::",
+            Valid.MyReportqry("rptFormulirCatatanObservasiVentilator.jasper","report","::[ Formulir Catatan Observasi Ventilator ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,dokter.nm_dokter,"+
                     "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
@@ -1080,7 +1080,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
                     "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                     "order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnCatatanObservasiIGDActionPerformed
+    }//GEN-LAST:event_MnCatatanObservasiVentilatorActionPerformed
 
     private void PakarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PakarKeyPressed
         Valid.pindah(evt,VT,RR);
@@ -1142,7 +1142,7 @@ public final class RMDataCatatanObservasiVentilator extends javax.swing.JDialog 
     private widget.ComboBox Jam;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiIGD;
+    private javax.swing.JMenuItem MnCatatanObservasiVentilator;
     private widget.ComboBox Mode;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
