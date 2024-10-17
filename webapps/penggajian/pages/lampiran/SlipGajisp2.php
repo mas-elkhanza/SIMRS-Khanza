@@ -676,7 +676,7 @@ print isset($header)?$header:NULL;*/
                                             $pajak       = isset($baris25[6])?validangka($baris25[6]):0;
                                             $pribadi     = isset($baris25[7])?validangka($baris25[7]):0;
                                             $lain        = isset($baris25[8])?validangka($baris25[8]):0;
-                                            $ktg         = isset($baris25[9])?validangka($baris25[9]):"Lain-lain";
+                                            $ktg         = isset($baris25[9])?$baris25[9]:"Lain-lain";
                                             $bpjs        = isset($baris25[10])?validangka($baris25[10]):0;
 
                                             $ttljamsostek=$ttljamsostek+$jamsostek;
