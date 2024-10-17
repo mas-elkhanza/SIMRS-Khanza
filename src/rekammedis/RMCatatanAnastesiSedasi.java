@@ -61,13 +61,14 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Tgl.Operasi","Diagnosa","Rencana Tindakan", 
-            "TB","BB","TD","IO2","Nadi","Pernapasan","Suhu","Asesmen Fisik Cardiovasculer","Asesmen Fisik Paru","Asesmen Fisik Abdomen", 
-            "Asesmen Fisik Extrimitas","Asesmen Fisik Endokrin","Asesmen Fisik Ginjal","Asesmen Fisik Obat-obatan","Asesmen Fisik Laborat", 
-            "Asesmen Fisik Penunjang","Riwayat Penyakit Alergi Obat","Riwayat Penyakit Alergi Lainnya","Riwayat Penyakit Terapi", 
-            "Kebiasaan Merokok","Jml.Rokok","Kebiasaan Alkohol","Jml.Alko","Penggunaan Obat","Obat Dikonsumsi","Riwayat Medis Cardiovasculer", 
-            "Riwayat Medis Respiratory","Riwayat Medis Endocrine","Riwayat Medis Lainnya","Angka ASA","Mulai Puasa","Rencana Anestesi", 
-            "Rencana Perawatan","Catatan Khusus"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode DPJP Anastesi","Nama DPJP Anastesi","NIP Petugas Anastesi","Nama Petugas Anastesi",
+            "Kode DPJP Bedah","Nama DPJP Bedah","NIP Petugas Bedah","Nama Petugas Bedah","Tanggal","Diagnosa Pra Bedah","Tindakan/Jenis Pembedahan",
+            "Diagnosa Pasca Bedah","Jam","Kesadaran","TD(mmHg)","Nadi(x/m)","RR(x/m)","Suhu(°C)","Saturasi O2","TB(Cm)","BB(Kg)","GD","Rhesus","HB(gr/dl)",
+            "HT(%)","Leko(ul)","Trombo(ul)","BTCT(mnt)","GDS(MG/dl)","Pre Induksi Lainnya","Hiopotensi","TCI","CPB","Ventilator","Broncoskopy","Glidescope",
+            "USG","Stimulator Syaraf","Teknik & Alat Khusus Lainnya","EKG","Keterangan EKG","Arteri Line","Keterangan Arteri Line","CVP","Keterangan CVP",
+            "EtCO2","Stetoskop","NIBP","NGT","BIS","Cath A Pulmo","SpO2","Kateter Urine","Temp.","Monitoring Lainnya","ASA","Alergi","Keterangan Alergi",
+            "Penyulit Pra Anastesi/Sedasi","Lanjut Tindakan","Sedasi","Keterangan Sedasi","Spinal","Anestesi Umum","Keterangan Anestesi Umum","Blok Perifer",
+            "Keterangan Blok Perifer","Epidural","Batal Tindakan","Alasan/Keterangan Batal Tindakan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -92,89 +93,40 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                 column.setPreferredWidth(80);
             }else if(i==6){
                 column.setPreferredWidth(150);
-            }else if(i==7){
-                column.setPreferredWidth(115);
-            }else if(i==8){
-                column.setPreferredWidth(115);
-            }else if(i==9){
-                column.setPreferredWidth(170);
-            }else if(i==10){
-                column.setPreferredWidth(170);
-            }else if(i==11){
-                column.setPreferredWidth(35);
-            }else if(i==12){
-                column.setPreferredWidth(35);
-            }else if(i==13){
-                column.setPreferredWidth(50);
-            }else if(i==14){
-                column.setPreferredWidth(35);
-            }else if(i==15){
-                column.setPreferredWidth(35);
-            }else if(i==16){
-                column.setPreferredWidth(55);
-            }else if(i==17){
-                column.setPreferredWidth(35);
-            }else if(i==18){
-                column.setPreferredWidth(170);
-            }else if(i==19){
-                column.setPreferredWidth(170);
-            }else if(i==20){
-                column.setPreferredWidth(170);
-            }else if(i==21){
-                column.setPreferredWidth(170);
-            }else if(i==22){
-                column.setPreferredWidth(170);
-            }else if(i==23){
-                column.setPreferredWidth(170);
-            }else if(i==24){
-                column.setPreferredWidth(170);
-            }else if(i==25){
-                column.setPreferredWidth(170);
-            }else if(i==26){
-                column.setPreferredWidth(170);
-            }else if(i==27){
-                column.setPreferredWidth(170);
-            }else if(i==28){
-                column.setPreferredWidth(170);
-            }else if(i==29){
-                column.setPreferredWidth(170);
-            }else if(i==30){
-                column.setPreferredWidth(100);
-            }else if(i==31){
-                column.setPreferredWidth(55);
-            }else if(i==32){
-                column.setPreferredWidth(97);
-            }else if(i==33){
-                column.setPreferredWidth(49);
-            }else if(i==34){
-                column.setPreferredWidth(94);
-            }else if(i==35){
-                column.setPreferredWidth(130);
-            }else if(i==36){
-                column.setPreferredWidth(170);
-            }else if(i==37){
-                column.setPreferredWidth(170);
-            }else if(i==38){
-                column.setPreferredWidth(170);
-            }else if(i==39){
-                column.setPreferredWidth(170);
-            }else if(i==40){
-                column.setPreferredWidth(60);
-            }else if(i==41){
-                column.setPreferredWidth(115);
-            }else if(i==42){
-                column.setPreferredWidth(95);
-            }else if(i==43){
-                column.setPreferredWidth(140);
-            }else if(i==44){
-                column.setPreferredWidth(170);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        DiagnosaPreBedah.setDocument(new batasInput((byte)100).getKata(DiagnosaPreBedah));
-        Tindakan.setDocument(new batasInput((byte)100).getKata(Tindakan));
+        DiagnosaPreBedah.setDocument(new batasInput((byte)50).getKata(DiagnosaPreBedah));
+        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
+        DiagnosaPaskaBedah.setDocument(new batasInput((byte)50).getKata(DiagnosaPaskaBedah));
+        Jam.setDocument(new batasInput((byte)10).getKata(Jam));
+        TD.setDocument(new batasInput((byte)8).getKata(TD));
+        Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
+        RR.setDocument(new batasInput((byte)5).getKata(RR));
+        Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
+        Saturasi.setDocument(new batasInput((byte)5).getKata(Saturasi));
+        TB.setDocument(new batasInput((byte)5).getKata(TB));
+        BB.setDocument(new batasInput((byte)5).getKata(BB));
+        HB.setDocument(new batasInput((byte)5).getKata(HB));
+        HT.setDocument(new batasInput((byte)5).getKata(HT));
+        Leko.setDocument(new batasInput((byte)5).getKata(Leko));
+        Trombo.setDocument(new batasInput((byte)5).getKata(Trombo));
+        BTCT.setDocument(new batasInput((byte)5).getKata(BTCT));
+        GDS.setDocument(new batasInput((byte)5).getKata(GDS));
+        LainLainPrInduksi.setDocument(new batasInput((byte)30).getKata(LainLainPrInduksi));
+        TeknikAlatLainnya.setDocument(new batasInput((byte)100).getKata(TeknikAlatLainnya));
+        CVPKeterangan.setDocument(new batasInput((byte)50).getKata(CVPKeterangan));
+        ArteriLineKeterangan.setDocument(new batasInput((byte)50).getKata(ArteriLineKeterangan));
+        EKGLeadKeterangan.setDocument(new batasInput((byte)50).getKata(EKGLeadKeterangan));
+        MonitoringLainLain.setDocument(new batasInput((byte)100).getKata(MonitoringLainLain));
+        AlergiKeterangan.setDocument(new batasInput((byte)50).getKata(AlergiKeterangan));
+        PenyulitPra.setDocument(new batasInput((byte)150).getKata(PenyulitPra));
+        SedasiKeterangan.setDocument(new batasInput((byte)30).getKata(SedasiKeterangan));
+        AnastesiUmumKeterangan.setDocument(new batasInput((byte)30).getKata(AnastesiUmumKeterangan));
+        BlokPeriferKeterangan.setDocument(new batasInput((byte)30).getKata(BlokPeriferKeterangan));
+        BatalTindakanKeterangan.setDocument(new batasInput((byte)150).getKata(BatalTindakanKeterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
