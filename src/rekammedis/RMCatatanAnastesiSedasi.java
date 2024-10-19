@@ -99,35 +99,35 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        DiagnosaPreBedah.setDocument(new batasInput((byte)50).getKata(DiagnosaPreBedah));
-        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
-        DiagnosaPaskaBedah.setDocument(new batasInput((byte)50).getKata(DiagnosaPaskaBedah));
-        Jam.setDocument(new batasInput((byte)10).getKata(Jam));
-        TD.setDocument(new batasInput((byte)8).getKata(TD));
-        Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
-        RR.setDocument(new batasInput((byte)5).getKata(RR));
-        Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
-        Saturasi.setDocument(new batasInput((byte)5).getKata(Saturasi));
-        TB.setDocument(new batasInput((byte)5).getKata(TB));
-        BB.setDocument(new batasInput((byte)5).getKata(BB));
-        HB.setDocument(new batasInput((byte)5).getKata(HB));
-        HT.setDocument(new batasInput((byte)5).getKata(HT));
-        Leko.setDocument(new batasInput((byte)5).getKata(Leko));
-        Trombo.setDocument(new batasInput((byte)5).getKata(Trombo));
-        BTCT.setDocument(new batasInput((byte)5).getKata(BTCT));
-        GDS.setDocument(new batasInput((byte)5).getKata(GDS));
-        LainLainPrInduksi.setDocument(new batasInput((byte)30).getKata(LainLainPrInduksi));
-        TeknikAlatLainnya.setDocument(new batasInput((byte)100).getKata(TeknikAlatLainnya));
-        CVPKeterangan.setDocument(new batasInput((byte)50).getKata(CVPKeterangan));
-        ArteriLineKeterangan.setDocument(new batasInput((byte)50).getKata(ArteriLineKeterangan));
-        EKGLeadKeterangan.setDocument(new batasInput((byte)50).getKata(EKGLeadKeterangan));
-        MonitoringLainLain.setDocument(new batasInput((byte)100).getKata(MonitoringLainLain));
-        AlergiKeterangan.setDocument(new batasInput((byte)50).getKata(AlergiKeterangan));
-        PenyulitPra.setDocument(new batasInput((byte)150).getKata(PenyulitPra));
-        SedasiKeterangan.setDocument(new batasInput((byte)30).getKata(SedasiKeterangan));
-        AnastesiUmumKeterangan.setDocument(new batasInput((byte)30).getKata(AnastesiUmumKeterangan));
-        BlokPeriferKeterangan.setDocument(new batasInput((byte)30).getKata(BlokPeriferKeterangan));
-        BatalTindakanKeterangan.setDocument(new batasInput((byte)150).getKata(BatalTindakanKeterangan));
+        DiagnosaPreBedah.setDocument(new batasInput((int)50).getKata(DiagnosaPreBedah));
+        Tindakan.setDocument(new batasInput((int)50).getKata(Tindakan));
+        DiagnosaPaskaBedah.setDocument(new batasInput((int)50).getKata(DiagnosaPaskaBedah));
+        Jam.setDocument(new batasInput((int)10).getKata(Jam));
+        TD.setDocument(new batasInput((int)8).getKata(TD));
+        Nadi.setDocument(new batasInput((int)5).getKata(Nadi));
+        RR.setDocument(new batasInput((int)5).getKata(RR));
+        Suhu.setDocument(new batasInput((int)5).getKata(Suhu));
+        Saturasi.setDocument(new batasInput((int)5).getKata(Saturasi));
+        TB.setDocument(new batasInput((int)5).getKata(TB));
+        BB.setDocument(new batasInput((int)5).getKata(BB));
+        HB.setDocument(new batasInput((int)5).getKata(HB));
+        HT.setDocument(new batasInput((int)5).getKata(HT));
+        Leko.setDocument(new batasInput((int)5).getKata(Leko));
+        Trombo.setDocument(new batasInput((int)5).getKata(Trombo));
+        BTCT.setDocument(new batasInput((int)5).getKata(BTCT));
+        GDS.setDocument(new batasInput((int)5).getKata(GDS));
+        LainLainPrInduksi.setDocument(new batasInput((int)30).getKata(LainLainPrInduksi));
+        TeknikAlatLainnya.setDocument(new batasInput((int)100).getKata(TeknikAlatLainnya));
+        CVPKeterangan.setDocument(new batasInput((int)50).getKata(CVPKeterangan));
+        ArteriLineKeterangan.setDocument(new batasInput((int)50).getKata(ArteriLineKeterangan));
+        EKGLeadKeterangan.setDocument(new batasInput((int)50).getKata(EKGLeadKeterangan));
+        MonitoringLainLain.setDocument(new batasInput((int)100).getKata(MonitoringLainLain));
+        AlergiKeterangan.setDocument(new batasInput((int)50).getKata(AlergiKeterangan));
+        PenyulitPra.setDocument(new batasInput((int)150).getKata(PenyulitPra));
+        SedasiKeterangan.setDocument(new batasInput((int)30).getKata(SedasiKeterangan));
+        AnastesiUmumKeterangan.setDocument(new batasInput((int)30).getKata(AnastesiUmumKeterangan));
+        BlokPeriferKeterangan.setDocument(new batasInput((int)30).getKata(BlokPeriferKeterangan));
+        BatalTindakanKeterangan.setDocument(new batasInput((int)150).getKata(BatalTindakanKeterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -379,8 +379,8 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel113 = new widget.Label();
-        jLabel130 = new widget.Label();
         LanjutTindakan = new widget.ComboBox();
+        jLabel130 = new widget.Label();
         Sedasi = new widget.ComboBox();
         jLabel71 = new widget.Label();
         SedasiKeterangan = new widget.TextBox();
@@ -1727,14 +1727,13 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         FormInput.add(jLabel113);
         jLabel113.setBounds(10, 640, 130, 23);
 
-        jLabel130.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel130.setText("Lanjut Tindakan");
-        jLabel130.setName("jLabel130"); // NOI18N
-        FormInput.add(jLabel130);
-        jLabel130.setBounds(44, 660, 125, 23);
-
         LanjutTindakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         LanjutTindakan.setName("LanjutTindakan"); // NOI18N
+        LanjutTindakan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LanjutTindakanItemStateChanged(evt);
+            }
+        });
         LanjutTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 LanjutTindakanKeyPressed(evt);
@@ -1742,6 +1741,12 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         });
         FormInput.add(LanjutTindakan);
         LanjutTindakan.setBounds(133, 660, 80, 23);
+
+        jLabel130.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel130.setText("Lanjut Tindakan");
+        jLabel130.setName("jLabel130"); // NOI18N
+        FormInput.add(jLabel130);
+        jLabel130.setBounds(44, 660, 125, 23);
 
         Sedasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Sedang", "Dalam", "Lain-lain" }));
         Sedasi.setName("Sedasi"); // NOI18N
@@ -1858,6 +1863,11 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
 
         BatalTindakan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         BatalTindakan.setName("BatalTindakan"); // NOI18N
+        BatalTindakan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                BatalTindakanItemStateChanged(evt);
+            }
+        });
         BatalTindakan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BatalTindakanKeyPressed(evt);
@@ -2694,6 +2704,38 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     private void BatalTindakanKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BatalTindakanKeteranganKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_BatalTindakanKeteranganKeyPressed
+
+    private void LanjutTindakanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LanjutTindakanItemStateChanged
+        if(LanjutTindakan.getSelectedIndex()==1){
+            Sedasi.setSelectedIndex(0);
+            SedasiKeterangan.setText("");
+            Epidural.setSelectedIndex(0);
+            Spinal.setSelectedIndex(0);
+            AnastesiUmum.setSelectedIndex(0);
+            AnastesiUmumKeterangan.setText("");
+            BlokPerifer.setSelectedIndex(0);
+            BlokPeriferKeterangan.setText("");
+        }else if(LanjutTindakan.getSelectedIndex()==0){
+            BatalTindakan.setSelectedIndex(0);
+            BatalTindakanKeterangan.setText("");
+        }
+    }//GEN-LAST:event_LanjutTindakanItemStateChanged
+
+    private void BatalTindakanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BatalTindakanItemStateChanged
+        if(BatalTindakan.getSelectedIndex()==1){
+            LanjutTindakan.setSelectedIndex(1);
+            Sedasi.setSelectedIndex(0);
+            SedasiKeterangan.setText("");
+            Epidural.setSelectedIndex(0);
+            Spinal.setSelectedIndex(0);
+            AnastesiUmum.setSelectedIndex(0);
+            AnastesiUmumKeterangan.setText("");
+            BlokPerifer.setSelectedIndex(0);
+            BlokPeriferKeterangan.setText("");
+        }else if(BatalTindakan.getSelectedIndex()==0){
+            BatalTindakanKeterangan.setText("");
+        }
+    }//GEN-LAST:event_BatalTindakanItemStateChanged
 
     /**
     * @param args the command line arguments
