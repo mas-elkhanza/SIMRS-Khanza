@@ -1066,13 +1066,9 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         FormInput.add(jLabel32);
         jLabel32.setBounds(0, 250, 90, 23);
 
+        GD.setEditable(false);
         GD.setFocusTraversalPolicyProvider(true);
         GD.setName("GD"); // NOI18N
-        GD.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                GDKeyPressed(evt);
-            }
-        });
         FormInput.add(GD);
         GD.setBounds(94, 250, 55, 23);
 
@@ -2398,7 +2394,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterAnestesiActionPerformed
 
     private void BtnDokterAnestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterAnestesiKeyPressed
-        //Valid.pindah(evt,Edukasi,Hubungan);
+        Valid.pindah(evt,DiagnosaPaskaBedah,BtnDokterBedah);
     }//GEN-LAST:event_BtnDokterAnestesiKeyPressed
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
@@ -2442,11 +2438,11 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_DiagnosaPreBedahKeyPressed
 
     private void TindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKeyPressed
-        //Valid.pindah(evt,Diagnosa,TB);
+        Valid.pindah(evt,DiagnosaPreBedah,DiagnosaPaskaBedah);
     }//GEN-LAST:event_TindakanKeyPressed
 
     private void DiagnosaPaskaBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaPaskaBedahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tindakan,BtnDokterBedah);
     }//GEN-LAST:event_DiagnosaPaskaBedahKeyPressed
 
     private void BtnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterBedahActionPerformed
@@ -2454,7 +2450,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterBedahActionPerformed
 
     private void BtnDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterBedahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DiagnosaPaskaBedah,BtnPetugasAnastesi);
     }//GEN-LAST:event_BtnDokterBedahKeyPressed
 
     private void BtnPetugasAnastesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasAnastesiActionPerformed
@@ -2462,7 +2458,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPetugasAnastesiActionPerformed
 
     private void BtnPetugasAnastesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasAnastesiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BtnDokterBedah,BtnPetugasBedah);
     }//GEN-LAST:event_BtnPetugasAnastesiKeyPressed
 
     private void BtnPetugasBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasBedahActionPerformed
@@ -2470,51 +2466,47 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPetugasBedahActionPerformed
 
     private void BtnPetugasBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasBedahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BtnPetugasAnastesi,Jam);
     }//GEN-LAST:event_BtnPetugasBedahKeyPressed
 
     private void JamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKeyPressed
-        Valid.pindah(evt,Tindakan,Nadi);
+        Valid.pindah(evt,BtnPetugasBedah,Kesadaran);
     }//GEN-LAST:event_JamKeyPressed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
-        Valid.pindah(evt,Jam,TD);
+        Valid.pindah(evt,TD,RR);
     }//GEN-LAST:event_NadiKeyPressed
 
     private void TDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TDKeyPressed
-        Valid.pindah(evt,Nadi,Saturasi);
+        Valid.pindah(evt,Kesadaran,Nadi);
     }//GEN-LAST:event_TDKeyPressed
 
     private void SaturasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaturasiKeyPressed
-        //Valid.pindah(evt,TD,Nadi);
+        Valid.pindah(evt,Suhu,TB);
     }//GEN-LAST:event_SaturasiKeyPressed
 
     private void KesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesadaranKeyPressed
-        //Valid.pindah(evt,PenyakitTerapi,PenyakitKebiasaanJumlahRokok);
+        Valid.pindah(evt,Jam,TD);
     }//GEN-LAST:event_KesadaranKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Nadi,Suhu);
     }//GEN-LAST:event_RRKeyPressed
 
     private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        //Valid.pindah(evt,Nadi,Pernapasan);
+        Valid.pindah(evt,RR,Saturasi);
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
-        Valid.pindah(evt,Tindakan,Nadi);
+        Valid.pindah(evt,Saturasi,BB);
     }//GEN-LAST:event_TBKeyPressed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
-        Valid.pindah(evt,Jam,TD);
+        Valid.pindah(evt,TB,Rhesus);
     }//GEN-LAST:event_BBKeyPressed
 
-    private void GDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GDKeyPressed
-
     private void RhesusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RhesusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BB,HB);
     }//GEN-LAST:event_RhesusKeyPressed
 
     private void HBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HBKeyPressed
