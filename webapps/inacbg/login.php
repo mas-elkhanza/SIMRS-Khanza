@@ -10,12 +10,16 @@
             session_start();
             $_SESSION['ses_admin_casemix']="admin";
             $codernik= validTeks4($_GET['codernik'],30);
+            $norawat= validTeks4($_GET['norawat'],30);
+            $carabayar= validTeks4($_GET['carabayar'],30);
             if(($_GET['page']=="KlaimBaruOtomatis")){
                 $url = "index.php?act=KlaimBaruOtomatis&codernik=".$codernik;	
             }else if(($_GET['page']=="KlaimBaruManual")){
                 $url = "index.php?act=KlaimBaruManual&action=no&codernik=".$codernik;	
             }else if(($_GET['page']=="KlaimBaruManual2")){
                 $url = "index.php?act=KlaimBaruManual2&action=no&codernik=".$codernik;	
+            }else if(($_GET['page']=="DetailKirimDesktop")){
+                $url = "index.php?act=DetailKirimDesktop&codernik=".$codernik."&norawat=".$norawat."&carabayar=".$carabayar;	
             }                 		
         }else{
             session_start();

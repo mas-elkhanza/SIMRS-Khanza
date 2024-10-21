@@ -1030,19 +1030,19 @@
         echo $msg['metadata']['message']."";
     }
     
-    function MenghapusKlaim($nomor_sep,$coder_nik){	
-        $request ='{
-                        "metadata": {
-                            "method":"delete_claim"
-                        },
-                        "data": {
-                            "nomor_sep":"'.$nomor_sep.'",
-                            "coder_nik":"'.$coder_nik.'"
-                        }
-                  }';
-        $msg= Request($request);
-        echo $msg['metadata']['message']."";
-    }
+    // function MenghapusKlaim($nomor_sep,$coder_nik){	
+    //     $request ='{
+    //                     "metadata": {
+    //                         "method":"delete_claim"
+    //                     },
+    //                     "data": {
+    //                         "nomor_sep":"'.$nomor_sep.'",
+    //                         "coder_nik":"'.$coder_nik.'"
+    //                     }
+    //               }';
+    //     $msg= Request($request);
+    //     echo $msg['metadata']['message']."";
+    // }
     
     function CetakKlaim($nomor_sep){	
         $request ='{
@@ -1076,4 +1076,108 @@
         $msg = json_decode($hasildecrypt,true);
         return $msg;
     }
+
+    function MenghapusKlaim($nomor_sep, $coder_nik)
+{
+    EditUlangKlaim($nomor_sep);
+    $request = '{
+                        "metadata": {
+                            "method":"delete_claim"
+                        },
+                        "data": {
+                            "nomor_sep":"' . $nomor_sep . '",
+                            "coder_nik":"' . $coder_nik . '"
+                        }
+                  }';
+    $msg = Request($request);
+    echo "<h3>Pesan : " . $msg['metadata']['code'] . ":" . $msg['metadata']['message'] . ". <br>Halaman akan refresh dalam 1 detik</h3>";
+    if ($msg['metadata']['code'] == "200") {
+
+        Hapus2("inacbg_grouping_stage12", "no_sep='" . $nomor_sep . "'");
+        Hapus2("inacbg_klaim_baru2", "no_sep='" . $nomor_sep . "'");
+        Hapus2("inacbg_klaim_baru", "no_sep='" . $nomor_sep . "'");
+        Hapus2("inacbg_data_terkirim2", "no_sep='" . $nomor_sep . "'");
+        Hapus2("inacbg_data_terkirim", "no_sep='" . $nomor_sep . "'");
+        Hapus2("inacbg_data_terkirim_final", "no_sep='" . $nomor_sep . "'");
+        Hapus2("inacbg_data_terkirim_final_dc", "no_sep='" . $nomor_sep . "'");
+        echo "<meta http-equiv='refresh' content='1'>";
+    }
+    echo $msg['metadata']['message'] . "";
+}
+
+
+function GetHistoryKlaim($norekammedis)
+{
+    $kueryambilriwayat = "SELECT
+	inacbg_grouping_stage12.no_sep,
+	bridging_sep.tglsep,bridging_sep.jnspelayanan,bridging_sep.tglpulang,
+	inacbg_grouping_stage12.code_cbg,
+	inacbg_grouping_stage12.deskripsi,
+	inacbg_grouping_stage12.tarif,
+	bridging_sep.nomr 
+FROM
+	bridging_sep
+	INNER JOIN inacbg_grouping_stage12 ON bridging_sep.no_sep = inacbg_grouping_stage12.no_sep
+    where bridging_sep.nomr='$norekammedis' order by 1 desc";
+
+    $hasilriwayat = bukaquery($kueryambilriwayat);
+    $jumlahriwayat = mysqli_num_rows($hasilriwayat);
+    if (mysqli_num_rows($hasilriwayat) != 0) {
+        echo "<table width='100%' border='0' align='center' cellpadding='0' cellspacing='0' class='table table-sm table-striped table-bordered table-hover table-responsive'>
+        <tr class='thead-dark'>
+        <th><div align='center'>No SEP</div></th>
+        <th><div align='center'>TglSEP</div></th>
+        <th><div align='center'>CODECBG</div></th>
+        <th><div align='center'>DESKRIPSI</div></th>
+        <th><div align='center'>TARIF</div></th>
+        <th><div align='center'>Status</div></th>
+        <th><div align='center'>TglPulang</div></th>
+        <th><div align='center'>StatusKirim</div></th>
+    </tr>
+    </thead>";
+        while ($barisan = mysqli_fetch_array($hasilriwayat)) {
+            $statuskirim = "";
+            if (getOne("select count(inacbg_data_terkirim_final.no_sep) from inacbg_data_terkirim_final where inacbg_data_terkirim_final.no_sep='" . $barisan['no_sep'] . "'") > 0) {
+                $statuskirim = "Final";
+                if (getOne("select count(inacbg_data_terkirim_final_dc.no_sep) from inacbg_data_terkirim_final_dc where inacbg_data_terkirim_final_dc.no_sep='" . $barisan['no_sep'] . "'") > 0) {
+                    $statuskirim = "Terkirim DC";
+                }
+            }
+            echo "<tr>
+        <td>" . $barisan['no_sep'] . "</td>
+        <td>" . $barisan['tglsep'] . "</td>
+        <td>" . $barisan['code_cbg'] . "</td>
+        <td>" . $barisan['deskripsi'] . "</td>
+        <td>" . $barisan['tarif'] . "</td>
+        <td>" . str_replace('2', 'Ralan', str_replace('1', 'Ranap', $barisan['jnspelayanan'])) . "</td>
+        <td>" . $barisan['tglpulang'] . "</td>
+        <td>" . $statuskirim . "</td>
+        </tr>";
+        }
+        echo "</table>";
+    }
+}
+
+function PrintClaimData($nomor_sep)
+{
+    $request = '{
+                        "metadata": {
+                            "method":"claim_print"
+                        },
+                        "data": {
+                            "nomor_sep":"' . $nomor_sep . '"
+                        }
+                   }';
+    $msg = Request($request);
+    // echo "Data : " . $request;
+    if ($msg['metadata']['code'] == "200") {
+        // return $msg['metadata']['code'];
+        Hapus2("inacbg_data_printclaim", "no_sep='" . $nomor_sep . "'");
+        InsertData2("inacbg_data_printclaim", "'" . $nomor_sep . "','" . $msg['data'] . "'");
+        echo "<h4>PDF Hasil NCC Tersedia</h4>";
+        MengambilDetailKlaim($nomor_sep);
+    } else {
+        echo "<h4>PDF Hasil NCC Belum Tersedia.</h4>";
+    }
+}
 ?>

@@ -1849,6 +1849,9 @@ public class frmUtama extends javax.swing.JFrame {
         MnInfoLaborat2 = new javax.swing.JMenuItem();
         jSeparator13 = new javax.swing.JPopupMenu.Separator();
         MnRekapHadir6 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        MnKompilasiBerkas = new javax.swing.JMenuItem();
+        MnKompilasiBerkasBPJS = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
 
         DlgLogin.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -2055,7 +2058,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/09/2024" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/10/2024" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -8270,6 +8273,62 @@ public class frmUtama extends javax.swing.JFrame {
         jMenu7.add(MnRekapHadir6);
 
         MenuBar.add(jMenu7);
+
+        jMenu10.setBackground(new java.awt.Color(20, 0, 20));
+        jMenu10.setBorder(null);
+        jMenu10.setForeground(new java.awt.Color(255, 255, 253));
+        jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Archive.png"))); // NOI18N
+        jMenu10.setMnemonic('G');
+        jMenu10.setText("Kompilasi Berkas");
+        jMenu10.setToolTipText("Alt+G");
+        jMenu10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jMenu10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jMenu10.setName("jMenu10"); // NOI18N
+        jMenu10.setPreferredSize(new java.awt.Dimension(121, 26));
+        jMenu10.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu10MenuSelected(evt);
+            }
+        });
+        jMenu10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu10MouseClicked(evt);
+            }
+        });
+
+        MnKompilasiBerkas.setBackground(new java.awt.Color(255, 255, 254));
+        MnKompilasiBerkas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKompilasiBerkas.setForeground(new java.awt.Color(50, 90, 40));
+        MnKompilasiBerkas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
+        MnKompilasiBerkas.setText("Kompilasi Berkas RM");
+        MnKompilasiBerkas.setName("MnKompilasiBerkas"); // NOI18N
+        MnKompilasiBerkas.setPreferredSize(new java.awt.Dimension(260, 30));
+        MnKompilasiBerkas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKompilasiBerkasActionPerformed(evt);
+            }
+        });
+        jMenu10.add(MnKompilasiBerkas);
+
+        MnKompilasiBerkasBPJS.setBackground(new java.awt.Color(255, 255, 254));
+        MnKompilasiBerkasBPJS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKompilasiBerkasBPJS.setForeground(new java.awt.Color(50, 90, 40));
+        MnKompilasiBerkasBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/PatientFile.png"))); // NOI18N
+        MnKompilasiBerkasBPJS.setText("Kompilasi Berkas BPJS");
+        MnKompilasiBerkasBPJS.setName("MnKompilasiBerkasBPJS"); // NOI18N
+        MnKompilasiBerkasBPJS.setPreferredSize(new java.awt.Dimension(260, 30));
+        MnKompilasiBerkasBPJS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnKompilasiBerkasBPJSActionPerformed(evt);
+            }
+        });
+        jMenu10.add(MnKompilasiBerkasBPJS);
+
+        MenuBar.add(jMenu10);
 
         jMenu4.setBackground(new java.awt.Color(20, 0, 20));
         jMenu4.setBorder(null);
@@ -14625,6 +14684,32 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         Valid.panggilUrl("antrianmobilejkn.php");
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnInfoMobileJKNActionPerformed
+
+    private void MnKompilasiBerkasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKompilasiBerkasActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        DlgKompilasiBerkas kompilasi=new DlgKompilasiBerkas(this,true);
+        kompilasi.setSize(PanelWall.getWidth(), PanelWall.getHeight());
+        kompilasi.setLocationRelativeTo(PanelWall);
+        kompilasi.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_MnKompilasiBerkasActionPerformed
+
+    private void MnKompilasiBerkasBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKompilasiBerkasBPJSActionPerformed
+        isTutup();
+        DlgHome.dispose();
+        DlgKompilasiBerkasKlaimBPJS kompilasi=new DlgKompilasiBerkasKlaimBPJS(this,true);
+        kompilasi.setSize(PanelWall.getWidth(), PanelWall.getHeight());
+        kompilasi.setLocationRelativeTo(PanelWall);
+        kompilasi.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_MnKompilasiBerkasBPJSActionPerformed
+
+    private void jMenu10MenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu10MenuSelected
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu10MenuSelected
+
+    private void jMenu10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu10MouseClicked
 
     private void btnKategoriPerpustakaanActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
@@ -21827,6 +21912,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JMenuItem MnInfoLaborat3;
     private javax.swing.JMenuItem MnInfoMobileJKN;
     private javax.swing.JMenuItem MnKoleksiPenelitian;
+    private javax.swing.JMenuItem MnKompilasiBerkas;
+    private javax.swing.JMenuItem MnKompilasiBerkasBPJS;
     private javax.swing.JMenuItem MnLogin;
     private javax.swing.JMenuItem MnPengajuanCutiPegawai;
     private javax.swing.JMenuItem MnRekapBulanan;
@@ -22333,6 +22420,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;

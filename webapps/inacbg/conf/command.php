@@ -47,7 +47,7 @@
     function formProtek() {
             $aksi=isset($_GET['act'])?$_GET['act']:NULL;
             if (!cekUser()) {
-                $form = array ('HomeAdmin','KlaimBaruOtomatis','KlaimBaruManual','KlaimBaruManual2','DetailKirim');
+                $form = array ('HomeAdmin','KlaimBaruOtomatis','KlaimBaruManual','KlaimBaruManual2','DetailKirim','DetailKirimDesktop');
                     foreach ($form as $page) {
                         if ($aksi==$page) {
                             echo "<META HTTP-EQUIV = 'Refresh' Content = '0; URL = ?act=Home'>";
@@ -68,6 +68,7 @@
                 case 'KlaimBaruManual'      : include_once('pages/klaimbarumanual.php'); break;
                 case 'KlaimBaruManual2'     : include_once('pages/klaimbarumanual2.php'); break;
                 case 'DetailKirim'          : include_once('pages/detailkirim.php'); break;
+                case 'DetailKirimDesktop'   : include_once('pages/detailkirimdesktop.php'); break;
 
                 default                     : include_once('pages/kontak.php');
 

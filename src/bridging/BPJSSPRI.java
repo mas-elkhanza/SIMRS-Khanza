@@ -1690,6 +1690,48 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }
         }
     }
+    
+    public void CetakSPRIKlaim(String nomorsep, String nomorrawat) {
+        String nomorsurat = Sequel.cariIsi("select bridging_surat_pri_bpjs.no_surat from bridging_surat_pri_bpjs where bridging_surat_pri_bpjs.no_rawat='" + nomorrawat + "'");
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Map<String, Object> param = new HashMap<>();
+        param.put("namars", akses.getnamars());
+        param.put("alamatrs", akses.getalamatrs());
+        param.put("kotars", akses.getkabupatenrs());
+        param.put("propinsirs", akses.getpropinsirs());
+        param.put("kontakrs", akses.getkontakrs());
+        param.put("logo", Sequel.cariGambar("select bpjs from gambar"));
+        param.put("parameter", nomorrawat);
+        Valid.MyReportqry("rptBridgingSuratPRI2.jasper", "report", "::[ Data Surat PRI VClaim ]::",
+                "select bridging_surat_pri_bpjs.no_rawat,bridging_surat_pri_bpjs.no_kartu,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"
+                + "pasien.jk,bridging_surat_pri_bpjs.diagnosa,bridging_surat_pri_bpjs.tgl_surat,bridging_surat_pri_bpjs.no_surat,"
+                + "bridging_surat_pri_bpjs.tgl_rencana,bridging_surat_pri_bpjs.kd_dokter_bpjs,bridging_surat_pri_bpjs.nm_dokter_bpjs,"
+                + "bridging_surat_pri_bpjs.kd_poli_bpjs,bridging_surat_pri_bpjs.nm_poli_bpjs from reg_periksa inner join bridging_surat_pri_bpjs "
+                + "on bridging_surat_pri_bpjs.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                + "where bridging_surat_pri_bpjs.no_surat='" + nomorsurat + "'", param);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+
+    public void CetakSPRIKlaimPDF(String nomorsep, String nomorrawat) {
+        String nomorsurat = Sequel.cariIsi("select bridging_surat_pri_bpjs.no_surat from bridging_surat_pri_bpjs where bridging_surat_pri_bpjs.no_rawat='" + nomorrawat + "'");
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        Map<String, Object> param = new HashMap<>();
+        param.put("namars", akses.getnamars());
+        param.put("alamatrs", akses.getalamatrs());
+        param.put("kotars", akses.getkabupatenrs());
+        param.put("propinsirs", akses.getpropinsirs());
+        param.put("kontakrs", akses.getkontakrs());
+        param.put("logo", Sequel.cariGambar("select bpjs from gambar"));
+        param.put("parameter", nomorrawat);
+        Valid.MyReportqrypdfKlaim("rptBridgingSuratPRI2.jasper", "report", "2SPRI",
+                "select bridging_surat_pri_bpjs.no_rawat,bridging_surat_pri_bpjs.no_kartu,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,"
+                + "pasien.jk,bridging_surat_pri_bpjs.diagnosa,bridging_surat_pri_bpjs.tgl_surat,bridging_surat_pri_bpjs.no_surat,"
+                + "bridging_surat_pri_bpjs.tgl_rencana,bridging_surat_pri_bpjs.kd_dokter_bpjs,bridging_surat_pri_bpjs.nm_dokter_bpjs,"
+                + "bridging_surat_pri_bpjs.kd_poli_bpjs,bridging_surat_pri_bpjs.nm_poli_bpjs from reg_periksa inner join bridging_surat_pri_bpjs "
+                + "on bridging_surat_pri_bpjs.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                + "where bridging_surat_pri_bpjs.no_surat='" + nomorsurat + "'", param, "hasilkompilasiklaim", nomorrawat.replaceAll("/", ""));
+        this.setCursor(Cursor.getDefaultCursor());
+    }
 
 
 }

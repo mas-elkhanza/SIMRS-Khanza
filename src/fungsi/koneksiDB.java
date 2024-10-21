@@ -1614,4 +1614,14 @@ public class koneksiDB {
         }
         return var;
     }
+    
+    public static String DIRRME(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("DIRRME");
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
 }
