@@ -2061,7 +2061,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-           //Valid.pindah(evt,CatatanKhusus,BtnBatal);
+           Valid.pindah(evt,BatalTindakanKeterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -2510,191 +2510,191 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_RhesusKeyPressed
 
     private void HBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HBKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Rhesus,HT);
     }//GEN-LAST:event_HBKeyPressed
 
     private void HTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HTKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HB,Leko);
     }//GEN-LAST:event_HTKeyPressed
 
     private void LekoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LekoKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HT,Trombo);
     }//GEN-LAST:event_LekoKeyPressed
 
     private void TromboKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TromboKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Leko,BTCT);
     }//GEN-LAST:event_TromboKeyPressed
 
     private void BTCTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BTCTKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Trombo,GDS);
     }//GEN-LAST:event_BTCTKeyPressed
 
     private void GDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GDSKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BTCT,LainLainPrInduksi);
     }//GEN-LAST:event_GDSKeyPressed
 
     private void LainLainPrInduksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLainPrInduksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GDS,TCI);
     }//GEN-LAST:event_LainLainPrInduksiKeyPressed
 
     private void TCIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCIKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LainLainPrInduksi,Glidescope);
     }//GEN-LAST:event_TCIKeyPressed
 
     private void GlidescopeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GlidescopeKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TCI,StimulatorSaraf);
     }//GEN-LAST:event_GlidescopeKeyPressed
 
     private void StimulatorSarafKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StimulatorSarafKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Glidescope,CPB);
     }//GEN-LAST:event_StimulatorSarafKeyPressed
 
     private void CPBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CPBKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,StimulatorSaraf,USG);
     }//GEN-LAST:event_CPBKeyPressed
 
     private void USGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USGKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CPB,Ventilator);
     }//GEN-LAST:event_USGKeyPressed
 
     private void VentilatorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VentilatorKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,USG,Broncoskopy);
     }//GEN-LAST:event_VentilatorKeyPressed
 
     private void BroncoskopyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BroncoskopyKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Ventilator,Hiopotensi);
     }//GEN-LAST:event_BroncoskopyKeyPressed
 
     private void HiopotensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HiopotensiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Broncoskopy,TeknikAlatLainnya);
     }//GEN-LAST:event_HiopotensiKeyPressed
 
     private void TeknikAlatLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TeknikAlatLainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Hiopotensi,Etco2);
     }//GEN-LAST:event_TeknikAlatLainnyaKeyPressed
 
     private void Etco2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Etco2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TeknikAlatLainnya,Stetoskop);
     }//GEN-LAST:event_Etco2KeyPressed
 
     private void SpO2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpO2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NGT,NIBP);
     }//GEN-LAST:event_SpO2KeyPressed
 
     private void StetoskopKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StetoskopKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Etco2,CathAPulmo);
     }//GEN-LAST:event_StetoskopKeyPressed
 
     private void NIBPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIBPKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SpO2,KateterUrine);
     }//GEN-LAST:event_NIBPKeyPressed
 
     private void CathAPulmoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CathAPulmoKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Stetoskop,NGT);
     }//GEN-LAST:event_CathAPulmoKeyPressed
 
     private void KateterUrineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KateterUrineKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NIBP,BIS);
     }//GEN-LAST:event_KateterUrineKeyPressed
 
     private void NGTKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NGTKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CathAPulmo,SpO2);
     }//GEN-LAST:event_NGTKeyPressed
 
     private void BISKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BISKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KateterUrine,CVP);
     }//GEN-LAST:event_BISKeyPressed
 
     private void CVPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CVPKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BIS,CVPKeterangan);
     }//GEN-LAST:event_CVPKeyPressed
 
     private void CVPKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CVPKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CVP,ArteriLine);
     }//GEN-LAST:event_CVPKeteranganKeyPressed
 
     private void ArteriLineKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ArteriLineKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ArteriLine,Temp);
     }//GEN-LAST:event_ArteriLineKeteranganKeyPressed
 
     private void ArteriLineKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ArteriLineKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CVPKeterangan,ArteriLineKeterangan);
     }//GEN-LAST:event_ArteriLineKeyPressed
 
     private void TempKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TempKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ArteriLineKeterangan,EKGLead);
     }//GEN-LAST:event_TempKeyPressed
 
     private void EKGLeadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EKGLeadKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Temp,EKGLeadKeterangan);
     }//GEN-LAST:event_EKGLeadKeyPressed
 
     private void EKGLeadKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EKGLeadKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EKGLead,MonitoringLainLain);
     }//GEN-LAST:event_EKGLeadKeteranganKeyPressed
 
     private void MonitoringLainLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MonitoringLainLainKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EKGLeadKeterangan,AngkaAsa);
     }//GEN-LAST:event_MonitoringLainLainKeyPressed
 
     private void AngkaAsaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AngkaAsaKeyPressed
-        //Valid.pindah(evt,RencanaAnestesi,RencanaPerawatan);
+        Valid.pindah(evt,MonitoringLainLain,Alergi);
     }//GEN-LAST:event_AngkaAsaKeyPressed
 
     private void PenyulitPraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyulitPraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AlergiKeterangan,LanjutTindakan);
     }//GEN-LAST:event_PenyulitPraKeyPressed
 
     private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AngkaAsa,AlergiKeterangan);
     }//GEN-LAST:event_AlergiKeyPressed
 
     private void AlergiKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Alergi,PenyulitPra);
     }//GEN-LAST:event_AlergiKeteranganKeyPressed
 
     private void LanjutTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LanjutTindakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PenyulitPra,Sedasi);
     }//GEN-LAST:event_LanjutTindakanKeyPressed
 
     private void SedasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SedasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LanjutTindakan,SedasiKeterangan);
     }//GEN-LAST:event_SedasiKeyPressed
 
     private void SedasiKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SedasiKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sedasi,Epidural);
     }//GEN-LAST:event_SedasiKeteranganKeyPressed
 
     private void SpinalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpinalKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Epidural,AnastesiUmum);
     }//GEN-LAST:event_SpinalKeyPressed
 
     private void EpiduralKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EpiduralKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SedasiKeterangan,Spinal);
     }//GEN-LAST:event_EpiduralKeyPressed
 
     private void AnastesiUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnastesiUmumKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Spinal,AnastesiUmumKeterangan);
     }//GEN-LAST:event_AnastesiUmumKeyPressed
 
     private void AnastesiUmumKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnastesiUmumKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AnastesiUmum,BlokPerifer);
     }//GEN-LAST:event_AnastesiUmumKeteranganKeyPressed
 
     private void BlokPeriferKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BlokPeriferKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AnastesiUmumKeterangan,BlokPeriferKeterangan);
     }//GEN-LAST:event_BlokPeriferKeyPressed
 
     private void BlokPeriferKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BlokPeriferKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BlokPerifer,BatalTindakan);
     }//GEN-LAST:event_BlokPeriferKeteranganKeyPressed
 
     private void BatalTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BatalTindakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BlokPeriferKeterangan,BatalTindakanKeterangan);
     }//GEN-LAST:event_BatalTindakanKeyPressed
 
     private void BatalTindakanKeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BatalTindakanKeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BatalTindakan,BtnSimpan);
     }//GEN-LAST:event_BatalTindakanKeteranganKeyPressed
 
     private void LanjutTindakanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LanjutTindakanItemStateChanged
