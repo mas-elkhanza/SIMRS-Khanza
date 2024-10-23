@@ -68,11 +68,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Umur","Kode Petugas","Nama Petugas","Tanggal",
-            "Jenis Kelamin","Skor","Umur","Skor","Apakah Pernah Merokok","Skor",
-            "Jumlah Rokok/hari/Batang","Lama Merokok/Tahun","Apakah Pernah Merasa Nafas Pendek","Skor","Apakah Kesulitan Mengeluarkan Dahak saat sakit (Flu)","Skor",
-            "Apakah Biasanya Batuk saat sakit (Flu)","Skor","Apakah Dokter Pernah Meminta Pemeriksaan Spirometri","Skor", 
-            "Total Skor","Tindakan"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Umur","Kode Petugas","Nama Petugas","Tanggal","Jenis Kelamin","N.JK","Umur","N.U","Pernah Merokok","N.M",
+            "Jml.Rokok","Lama Merokok","Nafas Pendek","N.N.P","Sulit Keluar Dahak","N.K.D","Biasa Batuk","N.B.B","Spirometri","N.S","Total Skor","Tindakan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -1649,13 +1646,13 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningRisikoKankerPayudara.jasper","report","::[ Formulir Skrining Risiko Kanker Payudara ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_puma.nip,"+
-                    "petugas.nama,skrining_puma.tanggal,skrining_puma.faktor_risiko_awal1,skrining_puma.nilai_risiko_awal1,"+
-                    "skrining_puma.faktor_risiko_awal2,skrining_puma.nilai_risiko_awal2,skrining_puma.faktor_risiko_awal3,"+
-                    "skrining_puma.nilai_risiko_awal3,skrining_puma.faktor_risiko_awal4,skrining_puma.nilai_risiko_awal4,"+
-                    "skrining_puma.faktor_risiko_awal5,skrining_puma.nilai_risiko_awal5,skrining_puma.faktor_risiko_awal6,"+
-                    "skrining_puma.nilai_risiko_awal6,skrining_puma.faktor_risiko_awal7,skrining_puma.nilai_risiko_awal7,"+
-                    "skrining_puma.faktor_risiko_awal8,skrining_puma.nilai_risiko_awal8,skrining_puma.faktor_risiko_awal9,"+
-                    "skrining_puma.nilai_risiko_awal9,skrining_puma.faktor_risiko_awal10,skrining_puma.nilai_risiko_awal10,"+
+                    "petugas.nama,skrining_puma.tanggal,skrining_puma.jk,skrining_puma.nilai_jk,"+
+                    "skrining_puma.usia,skrining_puma.nilai_usia,skrining_puma.pernah_merokok,"+
+                    "skrining_puma.nilai_pernah_merokok,skrining_puma.jumlah_rokok_perhari,skrining_puma.lama_merokok,"+
+                    "skrining_puma.napas_pendek,skrining_puma.nilai_napas_pendek,skrining_puma.punya_dahak,"+
+                    "skrining_puma.nilai_punya_dahak,skrining_puma.biasa_batuk,skrining_puma.nilai_biasa_batuk,"+
+                    "skrining_puma.spirometri,skrining_puma.nilai_spirometri,skrining_puma.nilai_total,"+
+                    "skrining_puma.keterangan_hasil_skrining,skrining_puma.faktor_risiko_awal10,skrining_puma.nilai_risiko_awal10,"+
                     "skrining_puma.faktor_risiko_awal11,skrining_puma.nilai_risiko_awal11,skrining_puma.faktor_risiko_awal12,"+
                     "skrining_puma.nilai_risiko_awal12,skrining_puma.faktor_risiko_awal13,skrining_puma.nilai_risiko_awal13,"+
                     "skrining_puma.faktor_risiko_awal14,skrining_puma.nilai_risiko_awal14,skrining_puma.faktor_risiko_tinggi1,"+
@@ -1909,63 +1906,25 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_puma.nip,"+
-                    "petugas.nama,skrining_puma.tanggal,skrining_puma.faktor_risiko_awal1,skrining_puma.nilai_risiko_awal1,"+
-                    "skrining_puma.faktor_risiko_awal2,skrining_puma.nilai_risiko_awal2,skrining_puma.faktor_risiko_awal3,"+
-                    "skrining_puma.nilai_risiko_awal3,skrining_puma.faktor_risiko_awal4,skrining_puma.nilai_risiko_awal4,"+
-                    "skrining_puma.faktor_risiko_awal5,skrining_puma.nilai_risiko_awal5,skrining_puma.faktor_risiko_awal6,"+
-                    "skrining_puma.nilai_risiko_awal6,skrining_puma.faktor_risiko_awal7,skrining_puma.nilai_risiko_awal7,"+
-                    "skrining_puma.faktor_risiko_awal8,skrining_puma.nilai_risiko_awal8,skrining_puma.faktor_risiko_awal9,"+
-                    "skrining_puma.nilai_risiko_awal9,skrining_puma.faktor_risiko_awal10,skrining_puma.nilai_risiko_awal10,"+
-                    "skrining_puma.faktor_risiko_awal11,skrining_puma.nilai_risiko_awal11,skrining_puma.faktor_risiko_awal12,"+
-                    "skrining_puma.nilai_risiko_awal12,skrining_puma.faktor_risiko_awal13,skrining_puma.nilai_risiko_awal13,"+
-                    "skrining_puma.faktor_risiko_awal14,skrining_puma.nilai_risiko_awal14,skrining_puma.faktor_risiko_tinggi1,"+
-                    "skrining_puma.nilai_risiko_tinggi1,skrining_puma.faktor_risiko_tinggi2,skrining_puma.nilai_risiko_tinggi2,"+
-                    "skrining_puma.faktor_risiko_tinggi3,skrining_puma.nilai_risiko_tinggi3,skrining_puma.faktor_risiko_tinggi4,"+
-                    "skrining_puma.nilai_risiko_tinggi4,skrining_puma.faktor_risiko_tinggi5,skrining_puma.nilai_risiko_tinggi5,"+
-                    "skrining_puma.faktor_risiko_tinggi6,skrining_puma.nilai_risiko_tinggi6,skrining_puma.faktor_risiko_tinggi7,"+
-                    "skrining_puma.nilai_risiko_tinggi7,skrining_puma.faktor_risiko_tinggi8,skrining_puma.nilai_risiko_tinggi8,"+
-                    "skrining_puma.faktor_risiko_tinggi9,skrining_puma.nilai_risiko_tinggi9,skrining_puma.faktor_risiko_tinggi10,"+
-                    "skrining_puma.nilai_risiko_tinggi10,skrining_puma.faktor_risiko_tinggi11,skrining_puma.nilai_risiko_tinggi11,"+
-                    "skrining_puma.faktor_risiko_tinggi12,skrining_puma.nilai_risiko_tinggi12,skrining_puma.faktor_risiko_tinggi13,"+
-                    "skrining_puma.nilai_risiko_tinggi13,skrining_puma.faktor_kecurigaan_ganas1,skrining_puma.nilai_kecurigaan_ganas1,"+
-                    "skrining_puma.faktor_kecurigaan_ganas2,skrining_puma.nilai_kecurigaan_ganas2,skrining_puma.faktor_kecurigaan_ganas3,"+
-                    "skrining_puma.nilai_kecurigaan_ganas3,skrining_puma.faktor_kecurigaan_ganas4,skrining_puma.nilai_kecurigaan_ganas4,"+
-                    "skrining_puma.faktor_kecurigaan_ganas5,skrining_puma.nilai_kecurigaan_ganas5,skrining_puma.faktor_kecurigaan_ganas6,"+
-                    "skrining_puma.nilai_kecurigaan_ganas6,skrining_puma.faktor_kecurigaan_ganas7,skrining_puma.nilai_kecurigaan_ganas7,"+
-                    "skrining_puma.faktor_kecurigaan_ganas8,skrining_puma.nilai_kecurigaan_ganas8,skrining_puma.total_skor,"+
-                    "skrining_puma.hasil_sadanis,skrining_puma.tindak_lanjut_sadanis,skrining_puma.hasil_skrining,"+
-                    "skrining_puma.keterangan from skrining_puma inner join reg_periksa on skrining_puma.no_rawat=reg_periksa.no_rawat "+
+                    "petugas.nama,skrining_puma.tanggal,skrining_puma.jk,skrining_puma.nilai_jk,"+
+                    "skrining_puma.usia,skrining_puma.nilai_usia,skrining_puma.pernah_merokok,"+
+                    "skrining_puma.nilai_pernah_merokok,skrining_puma.jumlah_rokok_perhari,skrining_puma.lama_merokok,"+
+                    "skrining_puma.napas_pendek,skrining_puma.nilai_napas_pendek,skrining_puma.punya_dahak,"+
+                    "skrining_puma.nilai_punya_dahak,skrining_puma.biasa_batuk,skrining_puma.nilai_biasa_batuk,"+
+                    "skrining_puma.spirometri,skrining_puma.nilai_spirometri,skrining_puma.nilai_total,"+
+                    "skrining_puma.keterangan_hasil_skrining from skrining_puma inner join reg_periksa on skrining_puma.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_puma.nip=petugas.nip "+
                     "where skrining_puma.tanggal between ? and ? order by skrining_puma.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_puma.nip,"+
-                    "petugas.nama,skrining_puma.tanggal,skrining_puma.faktor_risiko_awal1,skrining_puma.nilai_risiko_awal1,"+
-                    "skrining_puma.faktor_risiko_awal2,skrining_puma.nilai_risiko_awal2,skrining_puma.faktor_risiko_awal3,"+
-                    "skrining_puma.nilai_risiko_awal3,skrining_puma.faktor_risiko_awal4,skrining_puma.nilai_risiko_awal4,"+
-                    "skrining_puma.faktor_risiko_awal5,skrining_puma.nilai_risiko_awal5,skrining_puma.faktor_risiko_awal6,"+
-                    "skrining_puma.nilai_risiko_awal6,skrining_puma.faktor_risiko_awal7,skrining_puma.nilai_risiko_awal7,"+
-                    "skrining_puma.faktor_risiko_awal8,skrining_puma.nilai_risiko_awal8,skrining_puma.faktor_risiko_awal9,"+
-                    "skrining_puma.nilai_risiko_awal9,skrining_puma.faktor_risiko_awal10,skrining_puma.nilai_risiko_awal10,"+
-                    "skrining_puma.faktor_risiko_awal11,skrining_puma.nilai_risiko_awal11,skrining_puma.faktor_risiko_awal12,"+
-                    "skrining_puma.nilai_risiko_awal12,skrining_puma.faktor_risiko_awal13,skrining_puma.nilai_risiko_awal13,"+
-                    "skrining_puma.faktor_risiko_awal14,skrining_puma.nilai_risiko_awal14,skrining_puma.faktor_risiko_tinggi1,"+
-                    "skrining_puma.nilai_risiko_tinggi1,skrining_puma.faktor_risiko_tinggi2,skrining_puma.nilai_risiko_tinggi2,"+
-                    "skrining_puma.faktor_risiko_tinggi3,skrining_puma.nilai_risiko_tinggi3,skrining_puma.faktor_risiko_tinggi4,"+
-                    "skrining_puma.nilai_risiko_tinggi4,skrining_puma.faktor_risiko_tinggi5,skrining_puma.nilai_risiko_tinggi5,"+
-                    "skrining_puma.faktor_risiko_tinggi6,skrining_puma.nilai_risiko_tinggi6,skrining_puma.faktor_risiko_tinggi7,"+
-                    "skrining_puma.nilai_risiko_tinggi7,skrining_puma.faktor_risiko_tinggi8,skrining_puma.nilai_risiko_tinggi8,"+
-                    "skrining_puma.faktor_risiko_tinggi9,skrining_puma.nilai_risiko_tinggi9,skrining_puma.faktor_risiko_tinggi10,"+
-                    "skrining_puma.nilai_risiko_tinggi10,skrining_puma.faktor_risiko_tinggi11,skrining_puma.nilai_risiko_tinggi11,"+
-                    "skrining_puma.faktor_risiko_tinggi12,skrining_puma.nilai_risiko_tinggi12,skrining_puma.faktor_risiko_tinggi13,"+
-                    "skrining_puma.nilai_risiko_tinggi13,skrining_puma.faktor_kecurigaan_ganas1,skrining_puma.nilai_kecurigaan_ganas1,"+
-                    "skrining_puma.faktor_kecurigaan_ganas2,skrining_puma.nilai_kecurigaan_ganas2,skrining_puma.faktor_kecurigaan_ganas3,"+
-                    "skrining_puma.nilai_kecurigaan_ganas3,skrining_puma.faktor_kecurigaan_ganas4,skrining_puma.nilai_kecurigaan_ganas4,"+
-                    "skrining_puma.faktor_kecurigaan_ganas5,skrining_puma.nilai_kecurigaan_ganas5,skrining_puma.faktor_kecurigaan_ganas6,"+
-                    "skrining_puma.nilai_kecurigaan_ganas6,skrining_puma.faktor_kecurigaan_ganas7,skrining_puma.nilai_kecurigaan_ganas7,"+
-                    "skrining_puma.faktor_kecurigaan_ganas8,skrining_puma.nilai_kecurigaan_ganas8,skrining_puma.total_skor,"+
-                    "skrining_puma.hasil_sadanis,skrining_puma.tindak_lanjut_sadanis,skrining_puma.hasil_skrining,"+
-                    "skrining_puma.keterangan from skrining_puma inner join reg_periksa on skrining_puma.no_rawat=reg_periksa.no_rawat "+
+                    "petugas.nama,skrining_puma.tanggal,skrining_puma.jk,skrining_puma.nilai_jk,"+
+                    "skrining_puma.usia,skrining_puma.nilai_usia,skrining_puma.pernah_merokok,"+
+                    "skrining_puma.nilai_pernah_merokok,skrining_puma.jumlah_rokok_perhari,skrining_puma.lama_merokok,"+
+                    "skrining_puma.napas_pendek,skrining_puma.nilai_napas_pendek,skrining_puma.punya_dahak,"+
+                    "skrining_puma.nilai_punya_dahak,skrining_puma.biasa_batuk,skrining_puma.nilai_biasa_batuk,"+
+                    "skrining_puma.spirometri,skrining_puma.nilai_spirometri,skrining_puma.nilai_total,"+
+                    "skrining_puma.keterangan_hasil_skrining from skrining_puma inner join reg_periksa on skrining_puma.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_puma.nip=petugas.nip "+
                     "where skrining_puma.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or skrining_puma.nip like ? or petugas.nama like ?) "+
@@ -1990,22 +1949,10 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("faktor_risiko_awal1"),rs.getString("nilai_risiko_awal1"),rs.getString("faktor_risiko_awal2"),
-                        rs.getString("nilai_risiko_awal2"),rs.getString("faktor_risiko_awal3"),rs.getString("nilai_risiko_awal3"),rs.getString("faktor_risiko_awal4"),rs.getString("nilai_risiko_awal4"),
-                        rs.getString("faktor_risiko_awal5"),rs.getString("nilai_risiko_awal5"),rs.getString("faktor_risiko_awal6"),rs.getString("nilai_risiko_awal6"),rs.getString("faktor_risiko_awal7"),
-                        rs.getString("nilai_risiko_awal7"),rs.getString("faktor_risiko_awal8"),rs.getString("nilai_risiko_awal8"),rs.getString("faktor_risiko_awal9"),rs.getString("nilai_risiko_awal9"),
-                        rs.getString("faktor_risiko_awal10"),rs.getString("nilai_risiko_awal10"),rs.getString("faktor_risiko_awal11"),rs.getString("nilai_risiko_awal11"),rs.getString("faktor_risiko_awal12"),
-                        rs.getString("nilai_risiko_awal12"),rs.getString("faktor_risiko_awal13"),rs.getString("nilai_risiko_awal13"),rs.getString("faktor_risiko_awal14"),rs.getString("nilai_risiko_awal14"),
-                        rs.getString("faktor_risiko_tinggi1"),rs.getString("nilai_risiko_tinggi1"),rs.getString("faktor_risiko_tinggi2"),rs.getString("nilai_risiko_tinggi2"),rs.getString("faktor_risiko_tinggi3"),
-                        rs.getString("nilai_risiko_tinggi3"),rs.getString("faktor_risiko_tinggi4"),rs.getString("nilai_risiko_tinggi4"),rs.getString("faktor_risiko_tinggi5"),rs.getString("nilai_risiko_tinggi5"),
-                        rs.getString("faktor_risiko_tinggi6"),rs.getString("nilai_risiko_tinggi6"),rs.getString("faktor_risiko_tinggi7"),rs.getString("nilai_risiko_tinggi7"),rs.getString("faktor_risiko_tinggi8"),
-                        rs.getString("nilai_risiko_tinggi8"),rs.getString("faktor_risiko_tinggi9"),rs.getString("nilai_risiko_tinggi9"),rs.getString("faktor_risiko_tinggi10"),rs.getString("nilai_risiko_tinggi10"),
-                        rs.getString("faktor_risiko_tinggi11"),rs.getString("nilai_risiko_tinggi11"),rs.getString("faktor_risiko_tinggi12"),rs.getString("nilai_risiko_tinggi12"),rs.getString("faktor_risiko_tinggi13"),
-                        rs.getString("nilai_risiko_tinggi13"),rs.getString("faktor_kecurigaan_ganas1"),rs.getString("nilai_kecurigaan_ganas1"),rs.getString("faktor_kecurigaan_ganas2"),rs.getString("nilai_kecurigaan_ganas2"),
-                        rs.getString("faktor_kecurigaan_ganas3"),rs.getString("nilai_kecurigaan_ganas3"),rs.getString("faktor_kecurigaan_ganas4"),rs.getString("nilai_kecurigaan_ganas4"),rs.getString("faktor_kecurigaan_ganas5"),
-                        rs.getString("nilai_kecurigaan_ganas5"),rs.getString("faktor_kecurigaan_ganas6"),rs.getString("nilai_kecurigaan_ganas6"),rs.getString("faktor_kecurigaan_ganas7"),rs.getString("nilai_kecurigaan_ganas7"),
-                        rs.getString("faktor_kecurigaan_ganas8"),rs.getString("nilai_kecurigaan_ganas8"),rs.getString("total_skor"),rs.getString("hasil_sadanis"),rs.getString("tindak_lanjut_sadanis"),
-                        rs.getString("hasil_skrining"),rs.getString("keterangan")
+                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("jk"),rs.getString("nilai_jk"),rs.getString("usia"),
+                        rs.getString("nilai_usia"),rs.getString("pernah_merokok"),rs.getString("nilai_pernah_merokok"),rs.getString("jumlah_rokok_perhari"),rs.getString("lama_merokok"),
+                        rs.getString("napas_pendek"),rs.getString("nilai_napas_pendek"),rs.getString("punya_dahak"),rs.getString("nilai_punya_dahak"),rs.getString("biasa_batuk"),
+                        rs.getString("nilai_biasa_batuk"),rs.getString("spirometri"),rs.getString("nilai_spirometri"),rs.getString("nilai_total"),rs.getString("keterangan_hasil_skrining")
                     });
                 }
             } catch (Exception e) {
@@ -2229,9 +2176,9 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_puma","no_rawat=?","no_rawat=?,tanggal=?,faktor_risiko_awal1=?,nilai_risiko_awal1=?,faktor_risiko_awal2=?,nilai_risiko_awal2=?,faktor_risiko_awal3=?,"+
-                "nilai_risiko_awal3=?,faktor_risiko_awal4=?,nilai_risiko_awal4=?,faktor_risiko_awal5=?,nilai_risiko_awal5=?,faktor_risiko_awal6=?,nilai_risiko_awal6=?,faktor_risiko_awal7=?,nilai_risiko_awal7=?,"+
-                "faktor_risiko_awal8=?,nilai_risiko_awal8=?,faktor_risiko_awal9=?,nilai_risiko_awal9=?,faktor_risiko_awal10=?,nilai_risiko_awal10=?,faktor_risiko_awal11=?,nilai_risiko_awal11=?,faktor_risiko_awal12=?,"+
+        if(Sequel.mengedittf("skrining_puma","no_rawat=?","no_rawat=?,tanggal=?,jk=?,nilai_jk=?,usia=?,nilai_usia=?,pernah_merokok=?,"+
+                "nilai_pernah_merokok=?,jumlah_rokok_perhari=?,lama_merokok=?,napas_pendek=?,nilai_napas_pendek=?,punya_dahak=?,nilai_punya_dahak=?,biasa_batuk=?,nilai_biasa_batuk=?,"+
+                "spirometri=?,nilai_spirometri=?,nilai_total=?,keterangan_hasil_skrining=?,faktor_risiko_awal10=?,nilai_risiko_awal10=?,faktor_risiko_awal11=?,nilai_risiko_awal11=?,faktor_risiko_awal12=?,"+
                 "nilai_risiko_awal12=?,faktor_risiko_awal13=?,nilai_risiko_awal13=?,faktor_risiko_awal14=?,nilai_risiko_awal14=?,faktor_risiko_tinggi1=?,nilai_risiko_tinggi1=?,faktor_risiko_tinggi2=?,nilai_risiko_tinggi2=?,"+
                 "faktor_risiko_tinggi3=?,nilai_risiko_tinggi3=?,faktor_risiko_tinggi4=?,nilai_risiko_tinggi4=?,faktor_risiko_tinggi5=?,nilai_risiko_tinggi5=?,faktor_risiko_tinggi6=?,nilai_risiko_tinggi6=?,"+
                 "faktor_risiko_tinggi7=?,nilai_risiko_tinggi7=?,faktor_risiko_tinggi8=?,nilai_risiko_tinggi8=?,faktor_risiko_tinggi9=?,nilai_risiko_tinggi9=?,faktor_risiko_tinggi10=?,nilai_risiko_tinggi10=?,"+
