@@ -35,6 +35,7 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
+import kepegawaian.DlgCariPetugas;
 
 
 /**
@@ -50,6 +51,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
+    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
     private String finger="";
     private String TANGGALMUNDUR="yes";
@@ -89,11 +91,63 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(25);
             }else if(i==5){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(100);
             }else if(i==6){
                 column.setPreferredWidth(150);
+            }else if(i==7){
+                column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(150);
+            }else if(i==9){
+                column.setPreferredWidth(100);
+            }else if(i==10){
+                column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(100);
+            }else if(i==12){
+                column.setPreferredWidth(150);
+            }else if(i==13){
+                column.setPreferredWidth(115);
+            }else if(i==14){
+                column.setPreferredWidth(150);
+            }else if(i==15){
+                column.setPreferredWidth(150);
+            }else if(i==16){
+                column.setPreferredWidth(150);
+            }else if(i==17){
+                column.setPreferredWidth(55);
+            }else if(i==18){
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(60);
+            }else if(i==20){
+                column.setPreferredWidth(55);
+            }else if(i==21){
+                column.setPreferredWidth(50);
+            }else if(i==22){
+                column.setPreferredWidth(50);
+            }else if(i==23){
+                column.setPreferredWidth(65);
+            }else if(i==24){
+                column.setPreferredWidth(45);
+            }else if(i==25){
+                column.setPreferredWidth(40);
+            }else if(i==26){
+                column.setPreferredWidth(32);
+            }else if(i==27){
+                column.setPreferredWidth(45);
+            }else if(i==28){
+                column.setPreferredWidth(50);
+            }else if(i==29){
+                column.setPreferredWidth(45);
+            }else if(i==30){
+                column.setPreferredWidth(47);
+            }else if(i==31){
+                column.setPreferredWidth(55);
+            }else if(i==32){
+                column.setPreferredWidth(45);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -161,9 +215,44 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(dokter.getTable().getSelectedRow()!= -1){
-                    KdDokterAnestesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    NmDokterAnastesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    KdDokterAnestesi.requestFocus();
+                    if(i==1){
+                        KdDokterAnestesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        NmDokterAnastesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        BtnDokterAnestesi.requestFocus();
+                    }else if(i==2){
+                        KdDokterBedah.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        NmDokterBedah.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        BtnDokterBedah.requestFocus();
+                    }
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        petugas.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(petugas.getTable().getSelectedRow()!= -1){
+                    if(i==1){
+                        KdPetugasAnastesi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugasAnastesi.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        BtnPetugasAnastesi.requestFocus();
+                    }else if(i==2){
+                        KdPetugasBedah.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugasBedah.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                        BtnPetugasBedah.requestFocus();
+                    }
                 }
             }
             @Override
@@ -2386,6 +2475,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatKeyPressed
 
     private void BtnDokterAnestesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterAnestesiActionPerformed
+        i=1;
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
@@ -2442,11 +2532,16 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_TindakanKeyPressed
 
     private void DiagnosaPaskaBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaPaskaBedahKeyPressed
-        Valid.pindah(evt,Tindakan,BtnDokterBedah);
+        Valid.pindah(evt,Tindakan,BtnDokterAnestesi);
     }//GEN-LAST:event_DiagnosaPaskaBedahKeyPressed
 
     private void BtnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterBedahActionPerformed
-        // TODO add your handling code here:
+        i=2;
+        dokter.isCek();
+        dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        dokter.setLocationRelativeTo(internalFrame1);
+        dokter.setAlwaysOnTop(false);
+        dokter.setVisible(true);
     }//GEN-LAST:event_BtnDokterBedahActionPerformed
 
     private void BtnDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterBedahKeyPressed
@@ -2454,7 +2549,12 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterBedahKeyPressed
 
     private void BtnPetugasAnastesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasAnastesiActionPerformed
-        // TODO add your handling code here:
+        i=1;
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
     }//GEN-LAST:event_BtnPetugasAnastesiActionPerformed
 
     private void BtnPetugasAnastesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasAnastesiKeyPressed
@@ -2462,7 +2562,12 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnPetugasAnastesiKeyPressed
 
     private void BtnPetugasBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasBedahActionPerformed
-        // TODO add your handling code here:
+        i=2;
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setAlwaysOnTop(false);
+        petugas.setVisible(true);
     }//GEN-LAST:event_BtnPetugasBedahActionPerformed
 
     private void BtnPetugasBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasBedahKeyPressed
@@ -2984,7 +3089,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                         "catatan_anestesi_sedasi.perencanaan_lanjut_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut_sedasi_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_spinal,"+
                         "catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum,catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer,"+
                         "catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_epidural,catatan_anestesi_sedasi.perencanaan_batal,"+
-                        "catatan_anestesi_sedasi.perencanaan_batal_alasan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "catatan_anestesi_sedasi.perencanaan_batal_alasan,catatan_anestesi_sedasi.tanggal,pasien.gol_darah from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join catatan_anestesi_sedasi on reg_periksa.no_rawat=catatan_anestesi_sedasi.no_rawat "+
                         "inner join dokter as dokteranestesi on catatan_anestesi_sedasi.kd_dokter_anestesi=dokteranestesi.kd_dokter "+
                         "inner join dokter as dokterbedah on catatan_anestesi_sedasi.kd_dokter_bedah=dokterbedah.kd_dokter "+
@@ -3011,7 +3116,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                         "catatan_anestesi_sedasi.perencanaan_lanjut_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut_sedasi_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_spinal,"+
                         "catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum,catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer,"+
                         "catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_epidural,catatan_anestesi_sedasi.perencanaan_batal,"+
-                        "catatan_anestesi_sedasi.perencanaan_batal_alasan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "catatan_anestesi_sedasi.perencanaan_batal_alasan,catatan_anestesi_sedasi.tanggal,pasien.gol_darah from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join catatan_anestesi_sedasi on reg_periksa.no_rawat=catatan_anestesi_sedasi.no_rawat "+
                         "inner join dokter as dokteranestesi on catatan_anestesi_sedasi.kd_dokter_anestesi=dokteranestesi.kd_dokter "+
                         "inner join dokter as dokterbedah on catatan_anestesi_sedasi.kd_dokter_bedah=dokterbedah.kd_dokter "+
@@ -3036,10 +3141,20 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    /*
+                    "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode DPJP Anastesi","Nama DPJP Anastesi","NIP Petugas Anastesi","Nama Petugas Anastesi",
+                    "Kode DPJP Bedah","Nama DPJP Bedah","NIP Petugas Bedah","Nama Petugas Bedah","Tanggal","Diagnosa Pra Bedah","Tindakan/Jenis Pembedahan",
+                    "Diagnosa Pasca Bedah","Jam","Kesadaran","TD(mmHg)","Nadi(x/m)","RR(x/m)","Suhu(°C)","Saturasi O2","TB(Cm)","BB(Kg)","GD","Rhesus","HB(gr/dl)",
+                    "HT(%)","Leko(ul)","Trombo(ul)","BTCT(mnt)","GDS(MG/dl)","Pre Induksi Lainnya","Hiopotensi","TCI","CPB","Ventilator","Broncoskopy","Glidescope",
+                    "USG","Stimulator Syaraf","Teknik & Alat Khusus Lainnya","EKG","Keterangan EKG","Arteri Line","Keterangan Arteri Line","CVP","Keterangan CVP",
+                    "EtCO2","Stetoskop","NIBP","NGT","BIS","Cath A Pulmo","SpO2","Kateter Urine","Temp.","Monitoring Lainnya","ASA","Alergi","Keterangan Alergi",
+                    "Penyulit Pra Anastesi/Sedasi","Lanjut Tindakan","Sedasi","Keterangan Sedasi","Spinal","Anestesi Umum","Keterangan Anestesi Umum","Blok Perifer",
+                    "Keterangan Blok Perifer","Epidural","Batal Tindakan","Alasan/Keterangan Batal Tindakan"
+                    */
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("nip_perawat_anestesi"),rs.getString("petugasanestesi"),
-                        rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),rs.getString("nip_perawat_ok"),rs.getString("petugasbedah"),rs.getString("diagnosa_pre_bedah"),rs.getString("tindakan_jenis_pembedahan"),rs.getString("diagnosa_pasca_bedah"),rs.getString("pre_induksi_jam"),
-                        rs.getString("pre_induksi_kesadaran"),rs.getString("pre_induksi_td"),rs.getString("pre_induksi_nadi"),rs.getString("pre_induksi_rr"),rs.getString("pre_induksi_suhu"),rs.getString("pre_induksi_o2"),rs.getString("pre_induksi_tb"),rs.getString("pre_induksi_bb"),
+                        rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),rs.getString("nip_perawat_ok"),rs.getString("petugasbedah"),rs.getString("tanggal"),rs.getString("diagnosa_pre_bedah"),rs.getString("tindakan_jenis_pembedahan"),rs.getString("diagnosa_pasca_bedah"),rs.getString("pre_induksi_jam"),
+                        rs.getString("pre_induksi_kesadaran"),rs.getString("pre_induksi_td"),rs.getString("pre_induksi_nadi"),rs.getString("pre_induksi_rr"),rs.getString("pre_induksi_suhu"),rs.getString("pre_induksi_o2"),rs.getString("pre_induksi_tb"),rs.getString("pre_induksi_bb"),rs.getString("gol_darah"),
                         rs.getString("pre_induksi_rhesus"),rs.getString("pre_induksi_hb"),rs.getString("pre_induksi_ht"),rs.getString("pre_induksi_leko"),rs.getString("pre_induksi_trombo"),rs.getString("pre_induksi_btct"),rs.getString("pre_induksi_gds"),rs.getString("pre_induksi_lainlain"),
                         rs.getString("teknik_alat_hiopotensi"),rs.getString("teknik_alat_tci"),rs.getString("teknik_alat_cpb"),rs.getString("teknik_alat_ventilasi"),rs.getString("teknik_alat_broncoskopy"),rs.getString("teknik_alat_glidescopi"),rs.getString("teknik_alat_usg"),
                         rs.getString("teknik_alat_stimulator_saraf"),rs.getString("teknik_alat_lainlain"),rs.getString("monitoring_ekg"),rs.getString("monitoring_ekg_keterangan"),rs.getString("monitoring_arteri"),rs.getString("monitoring_arteri_keterangan"),rs.getString("monitoring_cvp"),
