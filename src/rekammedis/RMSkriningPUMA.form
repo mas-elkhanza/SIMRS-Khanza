@@ -928,7 +928,7 @@
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
                             <StringItem index="0" value="Perempuan"/>
-                            <StringItem index="1" value="Laki - Laki"/>
+                            <StringItem index="1" value="Laki-laki"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="JK" noResource="true"/>
@@ -1113,7 +1113,7 @@
                     <Component class="widget.Label" name="jLabel76">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Perempuan atau Laki - Laki ?"/>
+                        <Property name="text" type="java.lang.String" value="Perempuan atau laki-laki ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel76" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1137,7 +1137,7 @@
                     <Component class="widget.Label" name="jLabel78">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Usia Dalam Tahun"/>
+                        <Property name="text" type="java.lang.String" value="Usia dalam tahun"/>
                         <Property name="name" type="java.lang.String" value="jLabel78" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1183,7 +1183,7 @@
                     <Component class="widget.Label" name="jLabel95">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda Pernah Merokok ?"/>
+                        <Property name="text" type="java.lang.String" value="Apakah Anda pernah merokok ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel95" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1251,7 +1251,7 @@
                     <Component class="widget.Label" name="jLabel98">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="- Jika Pernah Berapa Rata - Rata Jumlah Rokok /hari?"/>
+                        <Property name="text" type="java.lang.String" value="- Jika pernah, berapa rata-rata jumlah rokok/hari?"/>
                         <Property name="name" type="java.lang.String" value="jLabel98" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1276,7 +1276,7 @@
                     <Component class="widget.Label" name="jLabel104">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="- Sudah Berapa Lama Merokok ?"/>
+                        <Property name="text" type="java.lang.String" value="- Sudah berapa lama merokok ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel104" noResource="true"/>
                       </Properties>
                       <Constraints>

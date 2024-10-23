@@ -171,7 +171,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             }else if(i==43){
                 column.setPreferredWidth(150);
             }else if(i==44){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(40);
             }else if(i==45){
                 column.setPreferredWidth(130);
             }else if(i==46){
@@ -179,9 +179,25 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             }else if(i==47){
                 column.setPreferredWidth(130);
             }else if(i==48){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(40);
             }else if(i==49){
                 column.setPreferredWidth(130);
+            }else if(i==50){
+                column.setPreferredWidth(45);
+            }else if(i==51){
+                column.setPreferredWidth(60);
+            }else if(i==52){
+                column.setPreferredWidth(40);
+            }else if(i==53){
+                column.setPreferredWidth(40);
+            }else if(i==54){
+                column.setPreferredWidth(40);
+            }else if(i==55){
+                column.setPreferredWidth(90);
+            }else if(i==56){
+                column.setPreferredWidth(45);
+            }else if(i==57){
+                column.setPreferredWidth(90);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
