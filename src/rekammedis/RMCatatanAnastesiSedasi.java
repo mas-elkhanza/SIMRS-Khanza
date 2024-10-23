@@ -80,7 +80,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 50; i++) {
+        for (i = 0; i < 60; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -170,6 +170,18 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                 column.setPreferredWidth(100);
             }else if(i==43){
                 column.setPreferredWidth(150);
+            }else if(i==44){
+                column.setPreferredWidth(45);
+            }else if(i==45){
+                column.setPreferredWidth(130);
+            }else if(i==46){
+                column.setPreferredWidth(60);
+            }else if(i==47){
+                column.setPreferredWidth(130);
+            }else if(i==48){
+                column.setPreferredWidth(45);
+            }else if(i==49){
+                column.setPreferredWidth(130);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

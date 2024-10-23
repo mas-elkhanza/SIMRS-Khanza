@@ -1694,14 +1694,12 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }//GEN-LAST:event_JKKeyPressed
 
     private void umurItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_umurItemStateChanged
-        if ((!umur.getSelectedItem().toString().equals(""))) {
-            if ((umur.getSelectedItem().toString().equals("40 -49 Tahun"))) {
-                skorUmur.setText("0");
-            } else if ((umur.getSelectedItem().toString().equals("50 -59 Tahun"))) {
-                skorUmur.setText("1");
-            }else if ((umur.getSelectedItem().toString().equals("> 60 Tahun"))) {
-                skorUmur.setText("2");
-            }
+        if(umur.getSelectedItem().toString().equals("40-49")){
+            skorUmur.setText("0");
+        }else if(umur.getSelectedItem().toString().equals("50-59")){
+            skorUmur.setText("1");
+        }else if(umur.getSelectedItem().toString().equals(">60")){
+            skorUmur.setText("2");
         }
         isTotal();
     }//GEN-LAST:event_umurItemStateChanged
