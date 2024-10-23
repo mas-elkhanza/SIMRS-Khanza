@@ -329,11 +329,11 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel119 = new widget.Label();
         skorSpirometri = new widget.TextBox();
         jLabel121 = new widget.Label();
-        jLabel124 = new widget.Label();
         jSeparator4 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         jLabel136 = new widget.Label();
         jLabel137 = new widget.Label();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel5 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -532,7 +532,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-10-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -546,7 +546,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-10-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -607,7 +607,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 426));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 425));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -637,13 +637,13 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 430));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 400));
         FormInput.setLayout(null);
 
-        jLabel4.setText("No.Rawat :");
+        jLabel4.setText(":");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 75, 23);
+        jLabel4.setBounds(0, 10, 65, 23);
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
@@ -653,7 +653,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw);
-        TNoRw.setBounds(79, 10, 141, 23);
+        TNoRw.setBounds(69, 10, 141, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
@@ -664,10 +664,10 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(TPasien);
-        TPasien.setBounds(336, 10, 285, 23);
+        TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-10-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -677,19 +677,19 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tanggal);
-        Tanggal.setBounds(79, 40, 90, 23);
+        Tanggal.setBounds(69, 40, 90, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
         FormInput.add(TNoRM);
-        TNoRM.setBounds(222, 10, 112, 23);
+        TNoRM.setBounds(212, 10, 112, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel16);
-        jLabel16.setBounds(0, 40, 75, 23);
+        jLabel16.setBounds(0, 40, 65, 23);
 
         Jam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         Jam.setName("Jam"); // NOI18N
@@ -699,7 +699,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Jam);
-        Jam.setBounds(173, 40, 62, 23);
+        Jam.setBounds(163, 40, 62, 23);
 
         Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Menit.setName("Menit"); // NOI18N
@@ -709,7 +709,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Menit);
-        Menit.setBounds(238, 40, 62, 23);
+        Menit.setBounds(228, 40, 62, 23);
 
         Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Detik.setName("Detik"); // NOI18N
@@ -719,7 +719,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Detik);
-        Detik.setBounds(303, 40, 62, 23);
+        Detik.setBounds(293, 40, 62, 23);
 
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
@@ -728,18 +728,18 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setName("ChkKejadian"); // NOI18N
         FormInput.add(ChkKejadian);
-        ChkKejadian.setBounds(368, 40, 23, 23);
+        ChkKejadian.setBounds(358, 40, 23, 23);
 
         jLabel18.setText("Petugas :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(400, 40, 70, 23);
+        jLabel18.setBounds(390, 40, 70, 23);
 
         KdPetugas.setEditable(false);
         KdPetugas.setHighlighter(null);
         KdPetugas.setName("KdPetugas"); // NOI18N
         FormInput.add(KdPetugas);
-        KdPetugas.setBounds(474, 40, 94, 23);
+        KdPetugas.setBounds(464, 40, 104, 23);
 
         NmPetugas.setEditable(false);
         NmPetugas.setName("NmPetugas"); // NOI18N
@@ -786,14 +786,14 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(JK);
-        JK.setBounds(560, 100, 140, 23);
+        JK.setBounds(590, 90, 105, 23);
 
         jLabel92.setText("Skor :");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(690, 100, 50, 23);
+        jLabel92.setBounds(690, 90, 50, 23);
 
-        umur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "40 -49 Tahun", "50 -59 Tahun", "> 60 Tahun" }));
+        umur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "40-49", "50-59", ">60" }));
         umur.setName("umur"); // NOI18N
         umur.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -806,44 +806,44 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(umur);
-        umur.setBounds(560, 130, 140, 23);
+        umur.setBounds(605, 120, 90, 23);
 
         jLabel69.setText("Skor :");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(690, 130, 50, 23);
+        jLabel69.setBounds(690, 120, 50, 23);
 
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(670, 395, 70, 23);
+        jLabel73.setBounds(670, 370, 70, 23);
 
         TotalHasil.setEditable(false);
         TotalHasil.setText("0");
         TotalHasil.setFocusTraversalPolicyProvider(true);
         TotalHasil.setName("TotalHasil"); // NOI18N
         FormInput.add(TotalHasil);
-        TotalHasil.setBounds(744, 395, 45, 23);
+        TotalHasil.setBounds(744, 370, 45, 23);
 
         skorJk.setEditable(false);
         skorJk.setText("0");
         skorJk.setFocusTraversalPolicyProvider(true);
         skorJk.setName("skorJk"); // NOI18N
         FormInput.add(skorJk);
-        skorJk.setBounds(744, 100, 45, 23);
+        skorJk.setBounds(744, 90, 45, 23);
 
         skorUmur.setEditable(false);
         skorUmur.setText("0");
         skorUmur.setFocusTraversalPolicyProvider(true);
         skorUmur.setName("skorUmur"); // NOI18N
         FormInput.add(skorUmur);
-        skorUmur.setBounds(744, 130, 45, 23);
+        skorUmur.setBounds(744, 120, 45, 23);
 
         jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel148.setText("Tindakan");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
-        jLabel148.setBounds(44, 395, 90, 23);
+        jLabel148.setBounds(11, 370, 90, 23);
 
         Tindakan.setEditable(false);
         Tindakan.setFocusTraversalPolicyProvider(true);
@@ -854,7 +854,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tindakan);
-        Tindakan.setBounds(120, 395, 520, 23);
+        Tindakan.setBounds(67, 370, 580, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -864,7 +864,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("Skrining PUMA");
+        jLabel99.setText("Skrining PUMA :");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
         jLabel99.setBounds(11, 70, 200, 23);
@@ -873,25 +873,25 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel75.setText("1.");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(54, 100, 20, 23);
+        jLabel75.setBounds(44, 90, 20, 23);
 
         jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel76.setText("Perempuan atau Laki - Laki ?");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(72, 100, 270, 23);
+        jLabel76.setBounds(62, 90, 270, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel77.setText("2.");
         jLabel77.setName("jLabel77"); // NOI18N
         FormInput.add(jLabel77);
-        jLabel77.setBounds(54, 130, 20, 23);
+        jLabel77.setBounds(44, 120, 20, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel78.setText("Usia Dalam Tahun");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(72, 130, 250, 23);
+        jLabel78.setBounds(62, 120, 250, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
@@ -903,19 +903,19 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel149.setText(":");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(0, 395, 116, 23);
+        jLabel149.setBounds(0, 370, 63, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel95.setText("Apakah Anda Pernah Merokok ?");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
-        jLabel95.setBounds(72, 160, 370, 23);
+        jLabel95.setBounds(62, 150, 370, 23);
 
         jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel96.setText("3.");
         jLabel96.setName("jLabel96"); // NOI18N
         FormInput.add(jLabel96);
-        jLabel96.setBounds(54, 160, 20, 23);
+        jLabel96.setBounds(44, 150, 20, 23);
 
         PernahMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Pernah" }));
         PernahMerokok.setName("PernahMerokok"); // NOI18N
@@ -930,63 +930,63 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(PernahMerokok);
-        PernahMerokok.setBounds(560, 160, 140, 23);
+        PernahMerokok.setBounds(605, 150, 90, 23);
 
         jLabel97.setText("Skor :");
         jLabel97.setName("jLabel97"); // NOI18N
         FormInput.add(jLabel97);
-        jLabel97.setBounds(700, 160, 40, 23);
+        jLabel97.setBounds(700, 150, 40, 23);
 
         skorPernahMerokok.setEditable(false);
         skorPernahMerokok.setText("0");
         skorPernahMerokok.setFocusTraversalPolicyProvider(true);
         skorPernahMerokok.setName("skorPernahMerokok"); // NOI18N
         FormInput.add(skorPernahMerokok);
-        skorPernahMerokok.setBounds(744, 160, 45, 23);
+        skorPernahMerokok.setBounds(744, 150, 45, 23);
 
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel98.setText("Jika Pernah Berapa Rata - Rata Jumlah Rokok / hari");
+        jLabel98.setText("- Jika Pernah Berapa Rata - Rata Jumlah Rokok /hari?");
         jLabel98.setName("jLabel98"); // NOI18N
         FormInput.add(jLabel98);
-        jLabel98.setBounds(72, 190, 360, 23);
+        jLabel98.setBounds(72, 180, 360, 23);
 
         JumlahRokok.setEditable(false);
         JumlahRokok.setText("0");
         JumlahRokok.setFocusTraversalPolicyProvider(true);
         JumlahRokok.setName("JumlahRokok"); // NOI18N
         FormInput.add(JumlahRokok);
-        JumlahRokok.setBounds(599, 190, 100, 23);
+        JumlahRokok.setBounds(605, 180, 50, 23);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel104.setText("Sudah Berapa Lama Merokok ?");
+        jLabel104.setText("- Sudah Berapa Lama Merokok ?");
         jLabel104.setName("jLabel104"); // NOI18N
         FormInput.add(jLabel104);
-        jLabel104.setBounds(72, 220, 340, 23);
+        jLabel104.setBounds(72, 210, 340, 23);
 
         jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel106.setText("Tahun");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
-        jLabel106.setBounds(710, 220, 50, 23);
+        jLabel106.setBounds(658, 210, 50, 23);
 
         LamaMerokok.setEditable(false);
         LamaMerokok.setText("0");
         LamaMerokok.setFocusTraversalPolicyProvider(true);
         LamaMerokok.setName("LamaMerokok"); // NOI18N
         FormInput.add(LamaMerokok);
-        LamaMerokok.setBounds(599, 220, 100, 23);
+        LamaMerokok.setBounds(605, 210, 50, 23);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("4.");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
-        jLabel107.setBounds(54, 255, 20, 23);
+        jLabel107.setBounds(44, 240, 20, 23);
 
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel108.setText("Apakah Anda pernah merasa napas pendek ketika Anda berjalan lebih cepat ");
+        jLabel108.setText("Apakah Anda pernah merasa napas pendek ketika Anda berjalan lebih cepat pada jalan yang datar");
         jLabel108.setName("jLabel108"); // NOI18N
         FormInput.add(jLabel108);
-        jLabel108.setBounds(72, 250, 420, 23);
+        jLabel108.setBounds(62, 235, 540, 23);
 
         NafasPendek.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         NafasPendek.setName("NafasPendek"); // NOI18N
@@ -1001,31 +1001,31 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(NafasPendek);
-        NafasPendek.setBounds(570, 250, 130, 23);
+        NafasPendek.setBounds(605, 240, 90, 23);
 
         jLabel109.setText("Skor :");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(690, 250, 50, 23);
+        jLabel109.setBounds(690, 240, 50, 23);
 
         skorNafas.setEditable(false);
         skorNafas.setText("0");
         skorNafas.setFocusTraversalPolicyProvider(true);
         skorNafas.setName("skorNafas"); // NOI18N
         FormInput.add(skorNafas);
-        skorNafas.setBounds(744, 250, 45, 23);
+        skorNafas.setBounds(744, 240, 45, 23);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel110.setText("Apakah Anda biasanya mempunyai dahak yang berasal dari paru atau kesulitan");
+        jLabel110.setText("Apakah Anda biasanya mempunyai dahak yang berasal dari paru atau kesulitan mengeluarkan dahak saat");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
-        jLabel110.setBounds(72, 280, 530, 23);
+        jLabel110.setBounds(62, 265, 530, 23);
 
         jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel111.setText("5.");
         jLabel111.setName("jLabel111"); // NOI18N
         FormInput.add(jLabel111);
-        jLabel111.setBounds(54, 285, 20, 23);
+        jLabel111.setBounds(44, 270, 20, 23);
 
         Dahak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Dahak.setName("Dahak"); // NOI18N
@@ -1040,37 +1040,37 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Dahak);
-        Dahak.setBounds(570, 280, 130, 23);
+        Dahak.setBounds(605, 270, 90, 23);
 
         jLabel112.setText("Skor :");
         jLabel112.setName("jLabel112"); // NOI18N
         FormInput.add(jLabel112);
-        jLabel112.setBounds(690, 280, 50, 23);
+        jLabel112.setBounds(690, 270, 50, 23);
 
         skordahak.setEditable(false);
         skordahak.setText("0");
         skordahak.setFocusTraversalPolicyProvider(true);
         skordahak.setName("skordahak"); // NOI18N
         FormInput.add(skordahak);
-        skordahak.setBounds(744, 280, 45, 23);
+        skordahak.setBounds(744, 270, 45, 23);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel113.setText("mengeluarkan dahak saat Anda sedang tidak menderita selesma/flu ?");
+        jLabel113.setText("Anda sedang tidak menderita selesma/flu ?");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
-        jLabel113.setBounds(72, 293, 530, 23);
+        jLabel113.setBounds(62, 278, 530, 23);
 
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel114.setText("6.");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
-        jLabel114.setBounds(54, 315, 20, 23);
+        jLabel114.setBounds(44, 300, 20, 23);
 
         jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel115.setText("Apakah Anda biasanya batuk saat Anda sedang tidak menderita selesma/flu ?");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
-        jLabel115.setBounds(72, 315, 460, 23);
+        jLabel115.setBounds(62, 300, 460, 23);
 
         Batuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Batuk.setName("Batuk"); // NOI18N
@@ -1085,31 +1085,31 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Batuk);
-        Batuk.setBounds(570, 310, 130, 23);
+        Batuk.setBounds(605, 300, 90, 23);
 
         jLabel116.setText("Skor :");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
-        jLabel116.setBounds(690, 310, 50, 23);
+        jLabel116.setBounds(690, 300, 50, 23);
 
         skorBatuk.setEditable(false);
         skorBatuk.setText("0");
         skorBatuk.setFocusTraversalPolicyProvider(true);
         skorBatuk.setName("skorBatuk"); // NOI18N
         FormInput.add(skorBatuk);
-        skorBatuk.setBounds(744, 310, 45, 23);
+        skorBatuk.setBounds(744, 300, 45, 23);
 
         jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel117.setText("7.");
         jLabel117.setName("jLabel117"); // NOI18N
         FormInput.add(jLabel117);
-        jLabel117.setBounds(54, 350, 20, 23);
+        jLabel117.setBounds(44, 330, 20, 23);
 
         jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel118.setText("Apakah Dokter atau tenaga medis lainnya pernah meminta Anda untuk melakukan");
+        jLabel118.setText("Apakah Dokter atau tenaga medis lainnya pernah meminta Anda untuk melakukan pemeriksaan spirometri");
         jLabel118.setName("jLabel118"); // NOI18N
         FormInput.add(jLabel118);
-        jLabel118.setBounds(72, 340, 530, 23);
+        jLabel118.setBounds(62, 325, 530, 23);
 
         Spirometri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Spirometri.setName("Spirometri"); // NOI18N
@@ -1124,31 +1124,25 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Spirometri);
-        Spirometri.setBounds(570, 340, 130, 23);
+        Spirometri.setBounds(605, 330, 90, 23);
 
         jLabel119.setText("Skor :");
         jLabel119.setName("jLabel119"); // NOI18N
         FormInput.add(jLabel119);
-        jLabel119.setBounds(700, 340, 40, 23);
+        jLabel119.setBounds(700, 330, 40, 23);
 
         skorSpirometri.setEditable(false);
         skorSpirometri.setText("0");
         skorSpirometri.setFocusTraversalPolicyProvider(true);
         skorSpirometri.setName("skorSpirometri"); // NOI18N
         FormInput.add(skorSpirometri);
-        skorSpirometri.setBounds(744, 340, 45, 23);
+        skorSpirometri.setBounds(744, 330, 45, 23);
 
         jLabel121.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel121.setText("pemeriksaan spirometri atau peak flow meter (meniup ke dalam suatu alat) untuk");
+        jLabel121.setText("atau peak flow meter (meniup ke dalam suatu alat) untuk mengetahui fungsi paru anda ?");
         jLabel121.setName("jLabel121"); // NOI18N
         FormInput.add(jLabel121);
-        jLabel121.setBounds(72, 353, 530, 23);
-
-        jLabel124.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel124.setText("mengetahui fungsi paru anda ?");
-        jLabel124.setName("jLabel124"); // NOI18N
-        FormInput.add(jLabel124);
-        jLabel124.setBounds(72, 366, 530, 23);
+        jLabel121.setBounds(62, 338, 530, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
@@ -1157,24 +1151,30 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.add(jSeparator4);
         jSeparator4.setBounds(0, 1290, 807, 1);
 
-        jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator5.setName("jSeparator5"); // NOI18N
-        FormInput.add(jSeparator5);
-        jSeparator5.setBounds(44, 390, 763, 1);
-
         jLabel136.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel136.setText("Batang");
         jLabel136.setName("jLabel136"); // NOI18N
         FormInput.add(jLabel136);
-        jLabel136.setBounds(710, 190, 80, 23);
+        jLabel136.setBounds(658, 180, 80, 23);
 
         jLabel137.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel137.setText("pada jalan yang datar atau pada jalan yang sedikit menanjak ?");
+        jLabel137.setText("atau pada jalan yang sedikit menanjak ?");
         jLabel137.setName("jLabel137"); // NOI18N
         FormInput.add(jLabel137);
-        jLabel137.setBounds(72, 263, 530, 23);
+        jLabel137.setBounds(62, 248, 530, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 360, 807, 1);
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("No.Rawat");
+        jLabel5.setName("jLabel5"); // NOI18N
+        FormInput.add(jLabel5);
+        jLabel5.setBounds(11, 10, 65, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1860,7 +1860,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.Label jLabel118;
     private widget.Label jLabel119;
     private widget.Label jLabel121;
-    private widget.Label jLabel124;
     private widget.Label jLabel136;
     private widget.Label jLabel137;
     private widget.Label jLabel148;
@@ -1870,6 +1869,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel69;
     private widget.Label jLabel7;
@@ -1888,9 +1888,9 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -2125,9 +2125,9 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>608){
+            if(internalFrame1.getHeight()>568){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,465));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,425));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{

@@ -970,6 +970,7 @@ import rekammedis.RMSkriningNutrisiLansia;
 import rekammedis.RMSkriningObesitas;
 import rekammedis.RMSkriningRisikoKankerParu;
 import rekammedis.RMSkriningKesehatanGigiMulutRemaja;
+import rekammedis.RMSkriningPUMA;
 import rekammedis.RMSkriningRisikoKankerPayudara;
 import rekammedis.RMSkriningTBC;
 import rekammedis.RMTimeOutSebelumInsisi;
@@ -21793,6 +21794,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSkriningPUMAActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningPUMA form=new RMSkriningPUMA(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22488,7 +22502,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik,btnDataSasaranUsiaProduktif,
             btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan,btnSkriningObesitas,btnSkriningRisikoKankerPayudara,btnSkriningRisikoKankerParu,
             btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnCatatanObservasiRestrainNonFramakologi,
-            btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi;
+            btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA;
     
     public void isWall(){
         try{            
@@ -26649,6 +26663,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_tbc()==true){
                 Panelmenu.add(btnSkriningTBC);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_puma()==true){
+                Panelmenu.add(btnSkriningPUMA);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -31903,6 +31922,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_tbc()==true){
             Panelmenu.add(btnSkriningTBC);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_puma()==true){
+            Panelmenu.add(btnSkriningPUMA);
             jmlmenu++;
         }
 
@@ -38769,6 +38793,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_puma()==true){
+            if(btnSkriningPUMA.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningPUMA);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -45203,6 +45234,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningTBC.setName("btnSkriningTBC"); 
         btnSkriningTBC.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningTBC.addActionListener(this::btnSkriningTBCActionPerformed);
+        
+        btnSkriningPUMA = new widget.ButtonBig();
+        btnSkriningPUMA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6067589_coronavirus_covid-19_lungs_pneumonia_icon.png"))); 
+        btnSkriningPUMA.setText("Skrining PUMA");
+        btnSkriningPUMA.setIconTextGap(0);
+        btnSkriningPUMA.setName("btnSkriningPUMA"); 
+        btnSkriningPUMA.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningPUMA.addActionListener(this::btnSkriningPUMAActionPerformed);
         
         btnBookingMCUPerusahaan = new widget.ButtonBig();
         btnBookingMCUPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6002396_building_coronavirus_covid19_health_hospital_icon.png"))); 
