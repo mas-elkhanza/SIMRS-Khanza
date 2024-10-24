@@ -98,48 +98,50 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==9){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(35);
             }else if(i==10){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(40);
             }else if(i==11){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(35);
             }else if(i==12){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(90);
             }else if(i==13){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(35);
             }else if(i==14){
-                column.setPreferredWidth(140);
-            }else if(i==15){
-                column.setPreferredWidth(130);
-            }else if(i==16){
-                column.setPreferredWidth(200);
-            }else if(i==17){
-                column.setPreferredWidth(45);
-            }else if(i==18){
-                column.setPreferredWidth(250);
-            }else if(i==19){
-                column.setPreferredWidth(45);
-            }else if(i==20){
-                column.setPreferredWidth(190);
-            }else if(i==21){
-                column.setPreferredWidth(45);
-            }else if(i==22){
-                column.setPreferredWidth(250);
-            }else if(i==23){
-                column.setPreferredWidth(45);
-            }else if(i==24){
                 column.setPreferredWidth(65);
+            }else if(i==15){
+                column.setPreferredWidth(85);
+            }else if(i==16){
+                column.setPreferredWidth(85);
+            }else if(i==17){
+                column.setPreferredWidth(35);
+            }else if(i==18){
+                column.setPreferredWidth(100);
+            }else if(i==19){
+                column.setPreferredWidth(35);
+            }else if(i==20){
+                column.setPreferredWidth(70);
+            }else if(i==21){
+                column.setPreferredWidth(35);
+            }else if(i==22){
+                column.setPreferredWidth(70);
+            }else if(i==23){
+                column.setPreferredWidth(35);
+            }else if(i==24){
+                column.setPreferredWidth(50);
             }else if(i==25){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
-        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
+        Tindakan.setDocument(new batasInput((int)150).getKata(Tindakan));
+        JumlahRokok.setDocument(new batasInput((byte)3).getKata(JumlahRokok));
+        LamaMerokok.setDocument(new batasInput((byte)3).getKata(LamaMerokok));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -230,7 +232,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSkriningRisikoKankerPayudara = new javax.swing.JMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -278,12 +279,12 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         TglLahir = new widget.TextBox();
         JK = new widget.ComboBox();
         jLabel92 = new widget.Label();
-        umur = new widget.ComboBox();
+        Usia = new widget.ComboBox();
         jLabel69 = new widget.Label();
         jLabel73 = new widget.Label();
         TotalHasil = new widget.TextBox();
         skorJk = new widget.TextBox();
-        skorUmur = new widget.TextBox();
+        skorUsia = new widget.TextBox();
         jLabel148 = new widget.Label();
         Tindakan = new widget.TextBox();
         jSeparator1 = new javax.swing.JSeparator();
@@ -790,20 +791,20 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.add(jLabel92);
         jLabel92.setBounds(690, 90, 50, 23);
 
-        umur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "40-49", "50-59", ">60" }));
-        umur.setName("umur"); // NOI18N
-        umur.addItemListener(new java.awt.event.ItemListener() {
+        Usia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "40-49", "50-59", ">60" }));
+        Usia.setName("Usia"); // NOI18N
+        Usia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                umurItemStateChanged(evt);
+                UsiaItemStateChanged(evt);
             }
         });
-        umur.addKeyListener(new java.awt.event.KeyAdapter() {
+        Usia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                umurKeyPressed(evt);
+                UsiaKeyPressed(evt);
             }
         });
-        FormInput.add(umur);
-        umur.setBounds(605, 120, 90, 23);
+        FormInput.add(Usia);
+        Usia.setBounds(605, 120, 90, 23);
 
         jLabel69.setText("Skor :");
         jLabel69.setName("jLabel69"); // NOI18N
@@ -829,12 +830,12 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.add(skorJk);
         skorJk.setBounds(744, 90, 45, 23);
 
-        skorUmur.setEditable(false);
-        skorUmur.setText("0");
-        skorUmur.setFocusTraversalPolicyProvider(true);
-        skorUmur.setName("skorUmur"); // NOI18N
-        FormInput.add(skorUmur);
-        skorUmur.setBounds(744, 120, 45, 23);
+        skorUsia.setEditable(false);
+        skorUsia.setText("0");
+        skorUsia.setFocusTraversalPolicyProvider(true);
+        skorUsia.setName("skorUsia"); // NOI18N
+        FormInput.add(skorUsia);
+        skorUsia.setBounds(744, 120, 45, 23);
 
         jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel148.setText("Tindakan");
@@ -842,7 +843,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.add(jLabel148);
         jLabel148.setBounds(11, 370, 90, 23);
 
-        Tindakan.setEditable(false);
         Tindakan.setFocusTraversalPolicyProvider(true);
         Tindakan.setName("Tindakan"); // NOI18N
         Tindakan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -947,12 +947,10 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.add(jLabel98);
         jLabel98.setBounds(72, 180, 360, 23);
 
-        JumlahRokok.setEditable(false);
-        JumlahRokok.setText("0");
         JumlahRokok.setFocusTraversalPolicyProvider(true);
         JumlahRokok.setName("JumlahRokok"); // NOI18N
         FormInput.add(JumlahRokok);
-        JumlahRokok.setBounds(605, 180, 50, 23);
+        JumlahRokok.setBounds(615, 180, 50, 23);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel104.setText("- Sudah berapa lama merokok ?");
@@ -964,14 +962,12 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel106.setText("Tahun");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
-        jLabel106.setBounds(658, 210, 50, 23);
+        jLabel106.setBounds(668, 210, 50, 23);
 
-        LamaMerokok.setEditable(false);
-        LamaMerokok.setText("0");
         LamaMerokok.setFocusTraversalPolicyProvider(true);
         LamaMerokok.setName("LamaMerokok"); // NOI18N
         FormInput.add(LamaMerokok);
-        LamaMerokok.setBounds(605, 210, 50, 23);
+        LamaMerokok.setBounds(615, 210, 50, 23);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("4.");
@@ -1152,7 +1148,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel136.setText("Batang");
         jLabel136.setName("jLabel136"); // NOI18N
         FormInput.add(jLabel136);
-        jLabel136.setBounds(658, 180, 80, 23);
+        jLabel136.setBounds(668, 180, 80, 23);
 
         jLabel137.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel137.setText("atau pada jalan yang sedikit menanjak ?");
@@ -1201,6 +1197,10 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
+        }else if(PernahMerokok.getSelectedItem().toString().equals("Pernah")&&JumlahRokok.getText().trim().equals("")){
+            Valid.textKosong(JumlahRokok,"Jumlah Merokok");
+        }else if(PernahMerokok.getSelectedItem().toString().equals("Pernah")&&LamaMerokok.getText().trim().equals("")){
+            Valid.textKosong(LamaMerokok,"Lama Merokok");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1266,6 +1266,10 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
+        }else if(PernahMerokok.getSelectedItem().toString().equals("Pernah")&&JumlahRokok.getText().trim().equals("")){
+            Valid.textKosong(JumlahRokok,"Jumlah Merokok");
+        }else if(PernahMerokok.getSelectedItem().toString().equals("Pernah")&&LamaMerokok.getText().trim().equals("")){
+            Valid.textKosong(LamaMerokok,"Lama Merokok");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
@@ -1687,23 +1691,23 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }//GEN-LAST:event_JKItemStateChanged
 
     private void JKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKKeyPressed
-        Valid.pindah(evt,TCari,umur);
+        Valid.pindah(evt,TCari,Usia);
     }//GEN-LAST:event_JKKeyPressed
 
-    private void umurItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_umurItemStateChanged
-        if(umur.getSelectedItem().toString().equals("40-49")){
-            skorUmur.setText("0");
-        }else if(umur.getSelectedItem().toString().equals("50-59")){
-            skorUmur.setText("1");
-        }else if(umur.getSelectedItem().toString().equals(">60")){
-            skorUmur.setText("2");
+    private void UsiaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_UsiaItemStateChanged
+        if(Usia.getSelectedItem().toString().equals("40-49")){
+            skorUsia.setText("0");
+        }else if(Usia.getSelectedItem().toString().equals("50-59")){
+            skorUsia.setText("1");
+        }else if(Usia.getSelectedItem().toString().equals(">60")){
+            skorUsia.setText("2");
         }
         isTotal();
-    }//GEN-LAST:event_umurItemStateChanged
+    }//GEN-LAST:event_UsiaItemStateChanged
 
-    private void umurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_umurKeyPressed
+    private void UsiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsiaKeyPressed
         Valid.pindah(evt,JK,PernahMerokok);
-    }//GEN-LAST:event_umurKeyPressed
+    }//GEN-LAST:event_UsiaKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1723,7 +1727,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }//GEN-LAST:event_PernahMerokokItemStateChanged
 
     private void PernahMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernahMerokokKeyPressed
-        Valid.pindah(evt,umur,NafasPendek);
+        Valid.pindah(evt,Usia,NafasPendek);
     }//GEN-LAST:event_PernahMerokokKeyPressed
 
     private void NafasPendekItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NafasPendekItemStateChanged
@@ -1836,8 +1840,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.TextBox Tindakan;
     private widget.TextBox TotalHasil;
     private widget.TextBox Umur;
+    private widget.ComboBox Usia;
     private widget.Button btnPetugas;
-    private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel104;
     private widget.Label jLabel106;
@@ -1894,10 +1898,9 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.TextBox skorNafas;
     private widget.TextBox skorPernahMerokok;
     private widget.TextBox skorSpirometri;
-    private widget.TextBox skorUmur;
+    private widget.TextBox skorUsia;
     private widget.TextBox skordahak;
     private widget.Table tbObat;
-    private widget.ComboBox umur;
     // End of variables declaration//GEN-END:variables
     
     public void tampil() {
@@ -1975,12 +1978,12 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         Tanggal.setDate(new Date());
         JK.setSelectedIndex(0);
         skorJk.setText("0");
-        umur.setSelectedIndex(0);
-        skorUmur.setText("0");
+        Usia.setSelectedIndex(0);
+        skorUsia.setText("0");
         PernahMerokok.setSelectedIndex(0);
         skorPernahMerokok.setText("0");
-        JumlahRokok.setText("0");
-        LamaMerokok.setText("0");
+        JumlahRokok.setText("");
+        LamaMerokok.setText("");
         NafasPendek.setSelectedIndex(0);
         skorNafas.setText("0");
         Dahak.setSelectedIndex(0);
@@ -2006,8 +2009,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
             JK.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             skorJk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            umur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            skorUmur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Usia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            skorUsia.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             PernahMerokok.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             skorPernahMerokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             JumlahRokok.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
@@ -2047,6 +2050,15 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                         JK.setSelectedItem("Laki-laki");
                     }else{
                         JK.setSelectedItem("Perempuan");
+                    }
+                    if(rs.getString("sttsumur").equals("Th")){
+                        if((rs.getInt("umurdaftar")>=40)&&(rs.getInt("umurdaftar")<=49)){
+                            Usia.setSelectedIndex(0);
+                        }else if((rs.getInt("umurdaftar")>=50)&&(rs.getInt("umurdaftar")<=59)){
+                            Usia.setSelectedIndex(1);
+                        }else if(rs.getInt("umurdaftar")>60){
+                            Usia.setSelectedIndex(2);
+                        }
                     }
                 }
             } catch (Exception e) {
@@ -2176,22 +2188,11 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_puma","no_rawat=?","no_rawat=?,tanggal=?,jk=?,nilai_jk=?,usia=?,nilai_usia=?,pernah_merokok=?,"+
-                "nilai_pernah_merokok=?,jumlah_rokok_perhari=?,lama_merokok=?,napas_pendek=?,nilai_napas_pendek=?,punya_dahak=?,nilai_punya_dahak=?,biasa_batuk=?,nilai_biasa_batuk=?,"+
-                "spirometri=?,nilai_spirometri=?,nilai_total=?,keterangan_hasil_skrining=?,faktor_risiko_awal10=?,nilai_risiko_awal10=?,faktor_risiko_awal11=?,nilai_risiko_awal11=?,faktor_risiko_awal12=?,"+
-                "nilai_risiko_awal12=?,faktor_risiko_awal13=?,nilai_risiko_awal13=?,faktor_risiko_awal14=?,nilai_risiko_awal14=?,faktor_risiko_tinggi1=?,nilai_risiko_tinggi1=?,faktor_risiko_tinggi2=?,nilai_risiko_tinggi2=?,"+
-                "faktor_risiko_tinggi3=?,nilai_risiko_tinggi3=?,faktor_risiko_tinggi4=?,nilai_risiko_tinggi4=?,faktor_risiko_tinggi5=?,nilai_risiko_tinggi5=?,faktor_risiko_tinggi6=?,nilai_risiko_tinggi6=?,"+
-                "faktor_risiko_tinggi7=?,nilai_risiko_tinggi7=?,faktor_risiko_tinggi8=?,nilai_risiko_tinggi8=?,faktor_risiko_tinggi9=?,nilai_risiko_tinggi9=?,faktor_risiko_tinggi10=?,nilai_risiko_tinggi10=?,"+
-                "faktor_risiko_tinggi11=?,nilai_risiko_tinggi11=?,faktor_risiko_tinggi12=?,nilai_risiko_tinggi12=?,faktor_risiko_tinggi13=?,nilai_risiko_tinggi13=?,faktor_kecurigaan_ganas1=?,nilai_kecurigaan_ganas1=?,"+
-                "faktor_kecurigaan_ganas2=?,nilai_kecurigaan_ganas2=?,faktor_kecurigaan_ganas3=?,nilai_kecurigaan_ganas3=?,faktor_kecurigaan_ganas4=?,nilai_kecurigaan_ganas4=?,faktor_kecurigaan_ganas5=?,nilai_kecurigaan_ganas5=?,"+
-                "faktor_kecurigaan_ganas6=?,nilai_kecurigaan_ganas6=?,faktor_kecurigaan_ganas7=?,nilai_kecurigaan_ganas7=?,faktor_kecurigaan_ganas8=?,nilai_kecurigaan_ganas8=?,total_skor=?,hasil_sadanis=?,tindak_lanjut_sadanis=?,"+
-                "hasil_skrining=?,keterangan=?,nip=?",79,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                JK.getSelectedItem().toString(),skorJk.getText(),umur.getSelectedItem().toString(),skorUmur.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),
-                JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),
-                Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(), 
-                TotalHasil.getText(),Tindakan.getText(),
-                KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("skrining_puma","no_rawat=?","no_rawat=?,tanggal=?,jk=?,nilai_jk=?,usia=?,nilai_usia=?,pernah_merokok=?,nilai_pernah_merokok=?,jumlah_rokok_perhari=?,lama_merokok=?,napas_pendek=?,nilai_napas_pendek=?,punya_dahak=?,nilai_punya_dahak=?,biasa_batuk=?,nilai_biasa_batuk=?,"+
+                "spirometri=?,nilai_spirometri=?,nilai_total=?,keterangan_hasil_skrining=?,nip=?",22,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),JK.getSelectedItem().toString(),skorJk.getText(),Usia.getSelectedItem().toString(),skorUsia.getText(),PernahMerokok.getSelectedItem().toString(),
+                skorPernahMerokok.getText(),JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),
+                skorSpirometri.getText(),TotalHasil.getText(),Tindakan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2203,8 +2204,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
                tbObat.setValueAt(JK.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
                tbObat.setValueAt(skorJk.getText(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(umur.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(skorUmur.getText(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(Usia.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(skorUsia.getText(),tbObat.getSelectedRow(),11);
                tbObat.setValueAt(PernahMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
                tbObat.setValueAt(skorPernahMerokok.getText(),tbObat.getSelectedRow(),13);
                tbObat.setValueAt(JumlahRokok.getText(),tbObat.getSelectedRow(),14);
@@ -2238,7 +2239,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private void isTotal() {
         try {
             TotalHasil.setText(""+(
-                    Integer.parseInt(skorJk.getText())+Integer.parseInt(skorUmur.getText())+
+                    Integer.parseInt(skorJk.getText())+Integer.parseInt(skorUsia.getText())+
                     Integer.parseInt(skorPernahMerokok.getText())+
                     Integer.parseInt(skorNafas.getText())+
                     Integer.parseInt(skordahak.getText())+Integer.parseInt(skorBatuk.getText())+
@@ -2256,19 +2257,16 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
       
 
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_puma","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",78,new String[]{
+        if(Sequel.menyimpantf("skrining_puma","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",21,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            JK.getSelectedItem().toString(),skorJk.getText(),umur.getSelectedItem().toString(),skorUmur.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),
-            JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),
-            Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(), 
-            TotalHasil.getText(),Tindakan.getText(),KdPetugas.getText()
+            JK.getSelectedItem().toString(),skorJk.getText(),Usia.getSelectedItem().toString(),skorUsia.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),
+            JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),Dahak.getSelectedItem().toString(),skordahak.getText(),
+            Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(),TotalHasil.getText(),Tindakan.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                JK.getSelectedItem().toString(),skorJk.getText(),umur.getSelectedItem().toString(),skorUmur.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),
-                JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),
-                Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(), 
-                TotalHasil.getText(),Tindakan.getText()
+                JK.getSelectedItem().toString(),skorJk.getText(),Usia.getSelectedItem().toString(),skorUsia.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),
+                skorNafas.getText(),Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(),TotalHasil.getText(),Tindakan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();

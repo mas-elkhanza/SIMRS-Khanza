@@ -80,7 +80,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 70; i++) {
+        for (i = 0; i < 75; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -203,11 +203,35 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             }else if(i==59){
                 column.setPreferredWidth(150);
             }else if(i==60){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
             }else if(i==61){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(50);
             }else if(i==62){
                 column.setPreferredWidth(150);
+            }else if(i==63){
+                column.setPreferredWidth(150);
+            }else if(i==64){
+                column.setPreferredWidth(90);
+            }else if(i==65){
+                column.setPreferredWidth(45);
+            }else if(i==66){
+                column.setPreferredWidth(150);
+            }else if(i==67){
+                column.setPreferredWidth(45);
+            }else if(i==68){
+                column.setPreferredWidth(87);
+            }else if(i==69){
+                column.setPreferredWidth(150);
+            }else if(i==70){
+                column.setPreferredWidth(70);
+            }else if(i==71){
+                column.setPreferredWidth(150);
+            }else if(i==72){
+                column.setPreferredWidth(52);
+            }else if(i==73){
+                column.setPreferredWidth(80);
+            }else if(i==74){
+                column.setPreferredWidth(180);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -3201,16 +3225,6 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    /*
-                    "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode DPJP Anastesi","Nama DPJP Anastesi","NIP Petugas Anastesi","Nama Petugas Anastesi",
-                    "Kode DPJP Bedah","Nama DPJP Bedah","NIP Petugas Bedah","Nama Petugas Bedah","Tanggal","Diagnosa Pra Bedah","Tindakan/Jenis Pembedahan",
-                    "Diagnosa Pasca Bedah","Jam","Kesadaran","TD(mmHg)","Nadi(x/m)","RR(x/m)","Suhu(°C)","Saturasi O2","TB(Cm)","BB(Kg)","GD","Rhesus","HB(gr/dl)",
-                    "HT(%)","Leko(ul)","Trombo(ul)","BTCT(mnt)","GDS(MG/dl)","Pre Induksi Lainnya","Hiopotensi","TCI","CPB","Ventilator","Broncoskopy","Glidescope",
-                    "USG","Stimulator Syaraf","Teknik & Alat Khusus Lainnya","EKG","Keterangan EKG","Arteri Line","Keterangan Arteri Line","CVP","Keterangan CVP",
-                    "EtCO2","Stetoskop","NIBP","NGT","BIS","Cath A Pulmo","SpO2","Kateter Urine","Temp.","Monitoring Lainnya","ASA","Alergi","Keterangan Alergi",
-                    "Penyulit Pra Anastesi/Sedasi","Lanjut Tindakan","Sedasi","Keterangan Sedasi","Spinal","Anestesi Umum","Keterangan Anestesi Umum","Blok Perifer",
-                    "Keterangan Blok Perifer","Epidural","Batal Tindakan","Alasan/Keterangan Batal Tindakan"
-                    */
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("nip_perawat_anestesi"),rs.getString("petugasanestesi"),
                         rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),rs.getString("nip_perawat_ok"),rs.getString("petugasbedah"),rs.getString("tanggal"),rs.getString("diagnosa_pre_bedah"),rs.getString("tindakan_jenis_pembedahan"),rs.getString("diagnosa_pasca_bedah"),rs.getString("pre_induksi_jam"),
@@ -3315,13 +3329,93 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
+            /*
+            "No.Rawat"0,"No.RM"1,"Nama Pasien"2,"Tgl.Lahir"3,"J.K."4,"Kode DPJP Anastesi"5,"Nama DPJP Anastesi"6,"NIP Petugas Anastesi"7,"Nama Petugas Anastesi"8,
+            "Kode DPJP Bedah9","Nama DPJP Bedah"10,"NIP Petugas Bedah","Nama Petugas Bedah","Tanggal","Diagnosa Pra Bedah","Tindakan/Jenis Pembedahan",
+            "Diagnosa Pasca Bedah","Jam","Kesadaran","TD(mmHg)","Nadi(x/m)","RR(x/m)","Suhu(°C)","Saturasi O2","TB(Cm)","BB(Kg)","GD","Rhesus","HB(gr/dl)",
+            "HT(%)","Leko(ul)","Trombo(ul)","BTCT(mnt)","GDS(MG/dl)","Pre Induksi Lainnya","Hiopotensi","TCI","CPB","Ventilator","Broncoskopy","Glidescope",
+            "USG","Stimulator Syaraf","Teknik & Alat Khusus Lainnya","EKG","Keterangan EKG","Arteri Line","Keterangan Arteri Line","CVP","Keterangan CVP",
+            "EtCO2","Stetoskop","NIBP","NGT","BIS","Cath A Pulmo","SpO2","Kateter Urine","Temp.","Monitoring Lainnya","ASA","Alergi","Keterangan Alergi",
+            "Penyulit Pra Anastesi/Sedasi","Lanjut Tindakan","Sedasi","Keterangan Sedasi","Spinal","Anestesi Umum","Keterangan Anestesi Umum","Blok Perifer",
+            "Keterangan Blok Perifer","Epidural","Batal Tindakan","Alasan/Keterangan Batal Tindakan"
+            */
+            
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-            DiagnosaPreBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            KdDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            NmDokterAnastesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            KdPetugasAnastesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            NmPetugasAnastesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            KdDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            NmDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            KdPetugasBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            NmPetugasBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            DiagnosaPreBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            DiagnosaPaskaBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Jam.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Kesadaran.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Saturasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            GD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            Rhesus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            HB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            HT.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            Leko.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            Trombo.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            BTCT.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            GDS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            LainLainPrInduksi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            Hiopotensi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            TCI.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            CPB.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            Ventilator.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            Broncoskopy.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            Glidescope.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
+            USG.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+            StimulatorSaraf.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+            TeknikAlatLainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            EKGLead.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            EKGLeadKeterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            ArteriLine.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            ArteriLineKeterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
+            CVP.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
+            CVPKeterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
+            Etco2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
+            Stetoskop.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString());
+            NIBP.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString());
+            NGT.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString());
+            BIS.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),53).toString());
+            CathAPulmo.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),54).toString());
+            SpO2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),55).toString());
+            KateterUrine.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),56).toString());
+            Temp.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),57).toString());
+            MonitoringLainLain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString());
+            AngkaAsa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
+            Alergi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
+            AlergiKeterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
+            PenyulitPra.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+            LanjutTindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
+            Sedasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());
+            SedasiKeterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),65).toString());
+            Spinal.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString());
+            AnastesiUmum.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
+            AnastesiUmumKeterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
+            BlokPerifer.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString());
+            BlokPeriferKeterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
+            Epidural.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
+            BatalTindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),72).toString());
+            BatalTindakanKeterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),73).toString());
+            
+            Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
         }
     }
 
