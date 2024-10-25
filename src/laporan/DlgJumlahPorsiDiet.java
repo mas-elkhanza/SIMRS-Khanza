@@ -511,7 +511,7 @@ public class DlgJumlahPorsiDiet extends javax.swing.JDialog {
                         jmlh26=jmlh26+h26;
                         jmlh27=jmlh27+h27;
                         jmlh28=jmlh28+h28;
-                        jmlh29=jmlh28+h28;
+                        jmlh29=jmlh29+h29;
                         jmlh30=jmlh30+h30;
                         jmlh31=jmlh31+h31;    
                         tabMode.addRow(new String[]{                        

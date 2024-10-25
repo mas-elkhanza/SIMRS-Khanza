@@ -130,7 +130,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }else if(i==23){
                 column.setPreferredWidth(35);
             }else if(i==24){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(56);
             }else if(i==25){
                 column.setPreferredWidth(250);
             }
@@ -1331,81 +1331,24 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 11</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.11</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 12</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.12</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 13</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.13</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Awal 14</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.A.14</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T.10</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 11</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T 11</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 12</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T 12</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Tinggi 13</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.T 13</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kecurigaan Keganasan 8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.G.8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Kelamin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.JK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.U</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.M</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jml.Rokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama Merokok</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nafas Pendek</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.N.P</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sulit Keluar Dahak</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K.D</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Biasa Batuk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.B.B</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Spirometri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.S</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pemeriksaan SADANIS</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindak Lanjut Sadanis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindakan</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1437,68 +1380,11 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,36).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,38).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,51).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,52).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,53).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,54).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,55).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,56).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,57).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,58).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,59).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,60).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,61).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,62).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,63).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,64).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,65).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,66).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,67).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,68).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,69).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,70).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,71).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,72).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,73).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,74).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,75).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,76).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,77).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,78).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,79).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,80).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,81).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,82).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='6000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1700px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1523,7 +1409,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='6000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='1700px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
