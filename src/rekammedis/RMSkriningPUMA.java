@@ -231,7 +231,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningRisikoKankerPayudara = new javax.swing.JMenuItem();
+        MnSkriningPuma = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -335,19 +335,19 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningRisikoKankerPayudara.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningRisikoKankerPayudara.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningRisikoKankerPayudara.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningRisikoKankerPayudara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningRisikoKankerPayudara.setText("Formulir Skrining Risiko Kanker Payudara");
-        MnSkriningRisikoKankerPayudara.setName("MnSkriningRisikoKankerPayudara"); // NOI18N
-        MnSkriningRisikoKankerPayudara.setPreferredSize(new java.awt.Dimension(280, 26));
-        MnSkriningRisikoKankerPayudara.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningPuma.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningPuma.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningPuma.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningPuma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningPuma.setText("Formulir Skrining PUMA");
+        MnSkriningPuma.setName("MnSkriningPuma"); // NOI18N
+        MnSkriningPuma.setPreferredSize(new java.awt.Dimension(280, 26));
+        MnSkriningPuma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningRisikoKankerPayudaraActionPerformed(evt);
+                MnSkriningPumaActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningRisikoKankerPayudara);
+        jPopupMenu1.add(MnSkriningPuma);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1522,7 +1522,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         Valid.pindah(evt,TCari,JK);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningRisikoKankerPayudaraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningRisikoKankerPayudaraActionPerformed
+    private void MnSkriningPumaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningPumaActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1565,7 +1565,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_puma.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningRisikoKankerPayudaraActionPerformed
+    }//GEN-LAST:event_MnSkriningPumaActionPerformed
 
     private void JKItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JKItemStateChanged
         if(JK.getSelectedIndex()==1){
@@ -1709,7 +1709,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.TextBox LamaMerokok;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningRisikoKankerPayudara;
+    private javax.swing.JMenuItem MnSkriningPuma;
     private widget.ComboBox NafasPendek;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;

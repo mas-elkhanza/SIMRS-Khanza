@@ -19,7 +19,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="MnPenilaianMedis">
+        <MenuItem class="javax.swing.JMenuItem" name="MnPenilaianSedasi">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -33,14 +33,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Laporan Penilaian Pre Anestesi"/>
-            <Property name="name" type="java.lang.String" value="MnPenilaianMedis" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Laporan Catatan Anestesi-Sedasi"/>
+            <Property name="name" type="java.lang.String" value="MnPenilaianSedasi" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[220, 26]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnPenilaianMedisActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnPenilaianSedasiActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -915,12 +915,12 @@
                         <Component class="widget.Label" name="jLabel109">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="I. Penilaian Pra Induksi :"/>
+                            <Property name="text" type="java.lang.String" value="I. PENILAIAN PRA INDUKSI"/>
                             <Property name="name" type="java.lang.String" value="jLabel109" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="10" y="170" width="130" height="23"/>
+                              <AbsoluteConstraints x="10" y="170" width="170" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1531,7 +1531,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="413" y="280" width="30" height="23"/>
+                              <AbsoluteConstraints x="413" y="280" width="40" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1584,12 +1584,12 @@
                         <Component class="widget.Label" name="jLabel110">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="II. Teknik &amp; Alat Khusus"/>
+                            <Property name="text" type="java.lang.String" value="II. TEKNIK &amp; ALAT KHUSUS"/>
                             <Property name="name" type="java.lang.String" value="jLabel110" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="10" y="310" width="130" height="23"/>
+                              <AbsoluteConstraints x="10" y="310" width="160" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1907,7 +1907,7 @@
                         <Component class="widget.Label" name="jLabel111">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="III. Monitoring"/>
+                            <Property name="text" type="java.lang.String" value="III. MONITORING"/>
                             <Property name="name" type="java.lang.String" value="jLabel111" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2392,7 +2392,7 @@
                         <Component class="widget.Label" name="jLabel112">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="IV. Status Fisik"/>
+                            <Property name="text" type="java.lang.String" value="IV. STATUS FISIK"/>
                             <Property name="name" type="java.lang.String" value="jLabel112" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2553,7 +2553,7 @@
                         <Component class="widget.Label" name="jLabel113">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="V. Perencanaan"/>
+                            <Property name="text" type="java.lang.String" value="V. PERENCANAAN"/>
                             <Property name="name" type="java.lang.String" value="jLabel113" noResource="true"/>
                           </Properties>
                           <Constraints>

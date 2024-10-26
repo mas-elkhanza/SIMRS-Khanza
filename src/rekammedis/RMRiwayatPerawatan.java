@@ -414,6 +414,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSignOutSebelumMenutupLuka = new widget.CekBox();
         chkChecklistPostOperasi = new widget.CekBox();
         chkAsuhanPreOperasi = new widget.CekBox();
+        chkCatatanAnastesiSedasi = new widget.CekBox();
         chkAsuhanPreAnestesi = new widget.CekBox();
         chkSkorAldrettePascaAnestesi = new widget.CekBox();
         chkSkorStewardPascaAnestesi = new widget.CekBox();
@@ -825,7 +826,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3455));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3480));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1432,6 +1433,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanPreOperasi.setOpaque(false);
         chkAsuhanPreOperasi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanPreOperasi);
+
+        chkCatatanAnastesiSedasi.setSelected(true);
+        chkCatatanAnastesiSedasi.setText("Catatan Anestesi-Sedasi");
+        chkCatatanAnastesiSedasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCatatanAnastesiSedasi.setName("chkCatatanAnastesiSedasi"); // NOI18N
+        chkCatatanAnastesiSedasi.setOpaque(false);
+        chkCatatanAnastesiSedasi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkCatatanAnastesiSedasi);
 
         chkAsuhanPreAnestesi.setSelected(true);
         chkAsuhanPreAnestesi.setText("Penilaian Pre Operasi");
@@ -2573,6 +2582,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanKeperawatanRanapBayi.setSelected(true);
             chkCatatanObservasiRestrainNonFarmakologi.setSelected(true);
             chkCatatanObservasiVentilator.setSelected(true);
+            chkCatatanAnastesiSedasi.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2723,6 +2733,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanKeperawatanRanapBayi.setSelected(false);
             chkCatatanObservasiRestrainNonFarmakologi.setSelected(false);
             chkCatatanObservasiVentilator.setSelected(false);
+            chkCatatanAnastesiSedasi.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3321,6 +3332,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanTerapiWicara;
     private widget.CekBox chkBerkasDigital;
     private widget.CekBox chkCatatanADIMEGizi;
+    private widget.CekBox chkCatatanAnastesiSedasi;
     private widget.CekBox chkCatatanCekGDS;
     private widget.CekBox chkCatatanDokter;
     private widget.CekBox chkCatatanKeperawatanRalan;
@@ -3959,6 +3971,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanChecklistPostOperasi(rs.getString("no_rawat"));
                     //menampilkan asuhan awal pre operasi
                     menampilkanAsuhanPreOperasi(rs.getString("no_rawat"));
+                    //menampilkan catatan anastesi sedasi
+                    menampilkanCatatanAnestesiSedasi(rs.getString("no_rawat"));
                     //menampilkan asuhan awal pre anestesi
                     menampilkanAsuhanPreAnestesi(rs.getString("no_rawat"));
                     //menampilkan Skor Aldrette Pasca Anestes
@@ -13280,6 +13294,176 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Penilaian Pre Anastesi : "+e);
+        }
+    }
+    
+    private void menampilkanCatatanAnestesiSedasi(String norawat) {
+        try {
+            if(chkCatatanAnastesiSedasi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select catatan_anestesi_sedasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,"+
+                            "catatan_anestesi_sedasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi,catatan_anestesi_sedasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
+                            "catatan_anestesi_sedasi.nip_perawat_ok,petugasbedah.nama as petugasbedah,catatan_anestesi_sedasi.diagnosa_pre_bedah,catatan_anestesi_sedasi.tindakan_jenis_pembedahan,"+
+                            "catatan_anestesi_sedasi.diagnosa_pasca_bedah,catatan_anestesi_sedasi.pre_induksi_jam,catatan_anestesi_sedasi.pre_induksi_kesadaran,catatan_anestesi_sedasi.pre_induksi_td,"+
+                            "catatan_anestesi_sedasi.pre_induksi_nadi,catatan_anestesi_sedasi.pre_induksi_rr,catatan_anestesi_sedasi.pre_induksi_suhu,catatan_anestesi_sedasi.pre_induksi_o2,"+
+                            "catatan_anestesi_sedasi.pre_induksi_tb,catatan_anestesi_sedasi.pre_induksi_bb,catatan_anestesi_sedasi.pre_induksi_rhesus,catatan_anestesi_sedasi.pre_induksi_hb,"+
+                            "catatan_anestesi_sedasi.pre_induksi_ht,catatan_anestesi_sedasi.pre_induksi_leko,catatan_anestesi_sedasi.pre_induksi_trombo,catatan_anestesi_sedasi.pre_induksi_btct,"+
+                            "catatan_anestesi_sedasi.pre_induksi_gds,catatan_anestesi_sedasi.pre_induksi_lainlain,catatan_anestesi_sedasi.teknik_alat_hiopotensi,catatan_anestesi_sedasi.teknik_alat_tci,"+
+                            "catatan_anestesi_sedasi.teknik_alat_cpb,catatan_anestesi_sedasi.teknik_alat_ventilasi,catatan_anestesi_sedasi.teknik_alat_broncoskopy,catatan_anestesi_sedasi.teknik_alat_glidescopi,"+
+                            "catatan_anestesi_sedasi.teknik_alat_usg,catatan_anestesi_sedasi.teknik_alat_stimulator_saraf,catatan_anestesi_sedasi.teknik_alat_lainlain,catatan_anestesi_sedasi.monitoring_ekg,"+
+                            "catatan_anestesi_sedasi.monitoring_ekg_keterangan,catatan_anestesi_sedasi.monitoring_arteri,catatan_anestesi_sedasi.monitoring_arteri_keterangan,catatan_anestesi_sedasi.monitoring_cvp,"+
+                            "catatan_anestesi_sedasi.monitoring_cvp_keterangan,catatan_anestesi_sedasi.monitoring_etco,catatan_anestesi_sedasi.monitoring_stetoskop,catatan_anestesi_sedasi.monitoring_nibp,"+
+                            "catatan_anestesi_sedasi.monitoring_ngt,catatan_anestesi_sedasi.monitoring_bis,catatan_anestesi_sedasi.monitoring_cath_a_pulmo,catatan_anestesi_sedasi.monitoring_spo2,"+
+                            "catatan_anestesi_sedasi.monitoring_kateter,catatan_anestesi_sedasi.monitoring_temp,catatan_anestesi_sedasi.monitoring_lainlain,catatan_anestesi_sedasi.status_fisik_asa,"+
+                            "catatan_anestesi_sedasi.status_fisik_alergi,catatan_anestesi_sedasi.status_fisik_alergi_keterangan,catatan_anestesi_sedasi.status_fisik_penyulit_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut,"+
+                            "catatan_anestesi_sedasi.perencanaan_lanjut_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut_sedasi_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_spinal,"+
+                            "catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum,catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer,"+
+                            "catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_epidural,catatan_anestesi_sedasi.perencanaan_batal,"+
+                            "catatan_anestesi_sedasi.perencanaan_batal_alasan,catatan_anestesi_sedasi.tanggal from catatan_anestesi_sedasi "+
+                            "inner join dokter as dokteranestesi on catatan_anestesi_sedasi.kd_dokter_anestesi=dokteranestesi.kd_dokter "+
+                            "inner join dokter as dokterbedah on catatan_anestesi_sedasi.kd_dokter_bedah=dokterbedah.kd_dokter "+
+                            "inner join petugas as petugasanestesi on catatan_anestesi_sedasi.nip_perawat_anestesi=petugasanestesi.nip "+
+                            "inner join petugas as petugasbedah on catatan_anestesi_sedasi.nip_perawat_ok=petugasbedah.nip "+
+                            "where catatan_anestesi_sedasi.no_rawat='"+norawat+"' order by catatan_anestesi_sedasi.tanggal").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Catatan Anestesi-Sedasi</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='50%' border='0'>Diagnosa Pra-Bedah : "+rs2.getString("diagnosa_pre_bedah")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Tindakan : "+rs2.getString("tindakan_jenis_pembedahan")+"</td>"+
+                                              "<td width='50%' border='0'>Diagnosa Paska-Bedah : "+rs2.getString("diagnosa_pasca_bedah")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>DPJP Anestesi : "+rs2.getString("kd_dokter_anestesi")+" "+rs2.getString("dokteranestesi")+"</td>"+
+                                              "<td width='50%' border='0'>Perawat Anestesi : "+rs2.getString("nip_perawat_anestesi")+" "+rs2.getString("petugasanestesi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>DPJP Bedah : "+rs2.getString("kd_dokter_bedah")+" "+rs2.getString("dokterbedah")+"</td>"+
+                                              "<td width='50%' border='0'>Perawat Bedah : "+rs2.getString("nip_perawat_ok")+" "+rs2.getString("petugasbedah")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. PENILAIAN PRA INDUKSI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='25%'>Jam : "+rs2.getString("pre_induksi_jam")+"</td>"+
+                                              "<td width='25%'>Kesadaran : "+rs2.getString("pre_induksi_kesadaran")+"</td>"+
+                                              "<td width='25%'>TD : "+rs2.getString("pre_induksi_td")+" mmHg</td>"+
+                                              "<td width='25%'>Nadi : "+rs2.getString("pre_induksi_nadi")+" x/m</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='25%'>RR : "+rs2.getString("pre_induksi_rr")+" x/m</td>"+
+                                              "<td width='25%'>Suhu : "+rs2.getString("pre_induksi_suhu")+" °C</td>"+
+                                              "<td width='25%'>Saturasi O2 : "+rs2.getString("pre_induksi_o2")+"</td>"+
+                                              "<td width='25%'>TB : "+rs2.getString("pre_induksi_tb")+" Cm</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='25%'>BB : "+rs2.getString("pre_induksi_bb")+" Kg</td>"+
+                                              "<td width='25%'>Rhesus : "+rs2.getString("pre_induksi_rhesus")+"</td>"+
+                                              "<td width='25%'>HT : "+rs2.getString("pre_induksi_ht")+" %</td>"+
+                                              "<td width='25%'>HB : "+rs2.getString("pre_induksi_hb")+" gr/dl</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='25%'>Leko : "+rs2.getString("pre_induksi_leko")+" ul</td>"+
+                                              "<td width='25%'>Trombo : "+rs2.getString("pre_induksi_trombo")+" ul</td>"+
+                                              "<td width='25%'>BT-CT : "+rs2.getString("pre_induksi_btct")+" mnt</td>"+
+                                              "<td width='25%'>GDS : "+rs2.getString("pre_induksi_gds")+" MG/dl</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td colspan='4'>Lain-lain : "+rs2.getString("pre_induksi_lainlain")+" mnt</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "II. TEKNIK & ALAT KHUSUS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='25%'>TCI : "+rs2.getString("teknik_alat_tci")+"</td>"+
+                                              "<td width='25%'>Glidescope : "+rs2.getString("teknik_alat_glidescopi")+"</td>"+
+                                              "<td width='25%'>Stimulator Saraf : "+rs2.getString("teknik_alat_stimulator_saraf")+"</td>"+
+                                              "<td width='25%'>CPB : "+rs2.getString("teknik_alat_cpb")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='25%'>USG : "+rs2.getString("teknik_alat_usg")+"</td>"+
+                                              "<td width='25%'>Ventilator : "+rs2.getString("teknik_alat_ventilasi")+"</td>"+
+                                              "<td width='25%'>Broncoskopy : "+rs2.getString("teknik_alat_broncoskopy")+"</td>"+
+                                              "<td width='25%'>Hiopotensi : "+rs2.getString("teknik_alat_hiopotensi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td colspan='4'>Lainnya : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. MONITORING"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='25%'>EtCO2 : "+rs2.getString("teknik_alat_tci")+"</td>"+
+                                              "<td width='25%'>Stetoskop : "+rs2.getString("teknik_alat_glidescopi")+"</td>"+
+                                              "<td width='25%'>Cath A Pulmo : "+rs2.getString("teknik_alat_stimulator_saraf")+"</td>"+
+                                              "<td width='25%'>NGT : "+rs2.getString("teknik_alat_cpb")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='25%'>SpO2 : "+rs2.getString("teknik_alat_usg")+"</td>"+
+                                              "<td width='25%'>NIBP : "+rs2.getString("teknik_alat_ventilasi")+"</td>"+
+                                              "<td width='25%'>Kateter Urine : "+rs2.getString("teknik_alat_broncoskopy")+"</td>"+
+                                              "<td width='25%'>BIS : "+rs2.getString("teknik_alat_hiopotensi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td colspan='2'>CVP : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                              "<td colspan='2'>Arteri Line : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td>Temp. : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                              "<td colspan='3'>EKG Lead : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td colspan='4'>Lain-lain : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
                         }
                         htmlContent.append(
                               "</table>"+

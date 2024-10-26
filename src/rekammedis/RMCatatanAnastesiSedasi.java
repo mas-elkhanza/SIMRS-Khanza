@@ -386,7 +386,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnPenilaianSedasi = new javax.swing.JMenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -593,19 +593,19 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianMedis.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Pre Anestesi");
-        MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
+        MnPenilaianSedasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianSedasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnPenilaianSedasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianSedasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnPenilaianSedasi.setText("Laporan Catatan Anestesi-Sedasi");
+        MnPenilaianSedasi.setName("MnPenilaianSedasi"); // NOI18N
+        MnPenilaianSedasi.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnPenilaianSedasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianMedisActionPerformed(evt);
+                MnPenilaianSedasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianMedis);
+        jPopupMenu1.add(MnPenilaianSedasi);
 
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
@@ -1058,10 +1058,10 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         BtnPetugasBedah.setBounds(696, 140, 28, 23);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("I. Penilaian Pra Induksi :");
+        jLabel109.setText("I. PENILAIAN PRA INDUKSI");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(10, 170, 130, 23);
+        jLabel109.setBounds(10, 170, 170, 23);
 
         jLabel15.setText("Kesadaran :");
         jLabel15.setName("jLabel15"); // NOI18N
@@ -1399,7 +1399,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         jLabel46.setText("MG/dl");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(413, 280, 30, 23);
+        jLabel46.setBounds(413, 280, 40, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
@@ -1416,10 +1416,10 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         jSeparator6.setBounds(0, 310, 750, 1);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel110.setText("II. Teknik & Alat Khusus");
+        jLabel110.setText("II. TEKNIK & ALAT KHUSUS");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
-        jLabel110.setBounds(10, 310, 130, 23);
+        jLabel110.setBounds(10, 310, 160, 23);
 
         jLabel47.setText("TCI :");
         jLabel47.setName("jLabel47"); // NOI18N
@@ -1571,7 +1571,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         jSeparator8.setBounds(0, 420, 750, 1);
 
         jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel111.setText("III. Monitoring");
+        jLabel111.setText("III. MONITORING");
         jLabel111.setName("jLabel111"); // NOI18N
         FormInput.add(jLabel111);
         jLabel111.setBounds(10, 420, 130, 23);
@@ -1816,7 +1816,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         jSeparator10.setBounds(0, 560, 750, 1);
 
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel112.setText("IV. Status Fisik");
+        jLabel112.setText("IV. STATUS FISIK");
         jLabel112.setName("jLabel112"); // NOI18N
         FormInput.add(jLabel112);
         jLabel112.setBounds(10, 560, 130, 23);
@@ -1891,7 +1891,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         jSeparator12.setBounds(0, 640, 750, 1);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel113.setText("V. Perencanaan");
+        jLabel113.setText("V. PERENCANAAN");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
         jLabel113.setBounds(10, 640, 130, 23);
@@ -2635,7 +2635,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         Valid.pindah(evt,BtnDokterAnestesi,DiagnosaPreBedah);
     }//GEN-LAST:event_TglAsuhanKeyPressed
 
-    private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
+    private void MnPenilaianSedasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianSedasiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -2665,7 +2665,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                 "inner join dokter on catatan_anestesi_sedasi.kd_dokter=dokter.kd_dokter where catatan_anestesi_sedasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                 "and catatan_anestesi_sedasi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianMedisActionPerformed
+    }//GEN-LAST:event_MnPenilaianSedasiActionPerformed
 
     private void DiagnosaPreBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaPreBedahKeyPressed
         Valid.pindah(evt,TglAsuhan,Tindakan);
@@ -3054,7 +3054,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
     private widget.ComboBox LanjutTindakan;
     private widget.TextBox Leko;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private javax.swing.JMenuItem MnPenilaianSedasi;
     private widget.TextBox MonitoringLainLain;
     private widget.ComboBox NGT;
     private widget.ComboBox NIBP;
