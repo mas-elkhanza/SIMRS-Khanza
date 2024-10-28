@@ -13382,31 +13382,31 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "I. PENILAIAN PRA INDUKSI"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='25%'>Jam : "+rs2.getString("pre_induksi_jam")+"</td>"+
-                                              "<td width='25%'>Kesadaran : "+rs2.getString("pre_induksi_kesadaran")+"</td>"+
-                                              "<td width='25%'>TD : "+rs2.getString("pre_induksi_td")+" mmHg</td>"+
-                                              "<td width='25%'>Nadi : "+rs2.getString("pre_induksi_nadi")+" x/m</td>"+
+                                              "<td width='25%' border='0'>Jam : "+rs2.getString("pre_induksi_jam")+"</td>"+
+                                              "<td width='25%' border='0'>Kesadaran : "+rs2.getString("pre_induksi_kesadaran")+"</td>"+
+                                              "<td width='25%' border='0'>TD : "+rs2.getString("pre_induksi_td")+" mmHg</td>"+
+                                              "<td width='25%' border='0'>Nadi : "+rs2.getString("pre_induksi_nadi")+" x/m</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='25%'>RR : "+rs2.getString("pre_induksi_rr")+" x/m</td>"+
-                                              "<td width='25%'>Suhu : "+rs2.getString("pre_induksi_suhu")+" °C</td>"+
-                                              "<td width='25%'>Saturasi O2 : "+rs2.getString("pre_induksi_o2")+"</td>"+
-                                              "<td width='25%'>TB : "+rs2.getString("pre_induksi_tb")+" Cm</td>"+
+                                              "<td width='25%' border='0'>RR : "+rs2.getString("pre_induksi_rr")+" x/m</td>"+
+                                              "<td width='25%' border='0'>Suhu : "+rs2.getString("pre_induksi_suhu")+" °C</td>"+
+                                              "<td width='25%' border='0'>Saturasi O2 : "+rs2.getString("pre_induksi_o2")+"</td>"+
+                                              "<td width='25%' border='0'>TB : "+rs2.getString("pre_induksi_tb")+" Cm</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='25%'>BB : "+rs2.getString("pre_induksi_bb")+" Kg</td>"+
-                                              "<td width='25%'>Rhesus : "+rs2.getString("pre_induksi_rhesus")+"</td>"+
-                                              "<td width='25%'>HT : "+rs2.getString("pre_induksi_ht")+" %</td>"+
-                                              "<td width='25%'>HB : "+rs2.getString("pre_induksi_hb")+" gr/dl</td>"+
+                                              "<td width='25%' border='0'>BB : "+rs2.getString("pre_induksi_bb")+" Kg</td>"+
+                                              "<td width='25%' border='0'>Rhesus : "+rs2.getString("pre_induksi_rhesus")+"</td>"+
+                                              "<td width='25%' border='0'>HT : "+rs2.getString("pre_induksi_ht")+" %</td>"+
+                                              "<td width='25%' border='0'>HB : "+rs2.getString("pre_induksi_hb")+" gr/dl</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='25%'>Leko : "+rs2.getString("pre_induksi_leko")+" ul</td>"+
-                                              "<td width='25%'>Trombo : "+rs2.getString("pre_induksi_trombo")+" ul</td>"+
-                                              "<td width='25%'>BT-CT : "+rs2.getString("pre_induksi_btct")+" mnt</td>"+
-                                              "<td width='25%'>GDS : "+rs2.getString("pre_induksi_gds")+" MG/dl</td>"+
+                                              "<td width='25%' border='0'>Leko : "+rs2.getString("pre_induksi_leko")+" ul</td>"+
+                                              "<td width='25%' border='0'>Trombo : "+rs2.getString("pre_induksi_trombo")+" ul</td>"+
+                                              "<td width='25%' border='0'>BT-CT : "+rs2.getString("pre_induksi_btct")+" mnt</td>"+
+                                              "<td width='25%' border='0'>GDS : "+rs2.getString("pre_induksi_gds")+" MG/dl</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td colspan='4'>Lain-lain : "+rs2.getString("pre_induksi_lainlain")+" mnt</td>"+
+                                              "<td colspan='4' border='0'>Lain-lain : "+rs2.getString("pre_induksi_lainlain")+" mnt</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -13416,19 +13416,19 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "II. TEKNIK & ALAT KHUSUS"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='25%'>TCI : "+rs2.getString("teknik_alat_tci")+"</td>"+
-                                              "<td width='25%'>Glidescope : "+rs2.getString("teknik_alat_glidescopi")+"</td>"+
-                                              "<td width='25%'>Stimulator Saraf : "+rs2.getString("teknik_alat_stimulator_saraf")+"</td>"+
-                                              "<td width='25%'>CPB : "+rs2.getString("teknik_alat_cpb")+"</td>"+
+                                              "<td width='25%' border='0'>TCI : "+rs2.getString("teknik_alat_tci")+"</td>"+
+                                              "<td width='25%' border='0'>Glidescope : "+rs2.getString("teknik_alat_glidescopi")+"</td>"+
+                                              "<td width='25%' border='0'>Stimulator Saraf : "+rs2.getString("teknik_alat_stimulator_saraf")+"</td>"+
+                                              "<td width='25%' border='0'>CPB : "+rs2.getString("teknik_alat_cpb")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='25%'>USG : "+rs2.getString("teknik_alat_usg")+"</td>"+
-                                              "<td width='25%'>Ventilator : "+rs2.getString("teknik_alat_ventilasi")+"</td>"+
-                                              "<td width='25%'>Broncoskopy : "+rs2.getString("teknik_alat_broncoskopy")+"</td>"+
-                                              "<td width='25%'>Hiopotensi : "+rs2.getString("teknik_alat_hiopotensi")+"</td>"+
+                                              "<td width='25%' border='0'>USG : "+rs2.getString("teknik_alat_usg")+"</td>"+
+                                              "<td width='25%' border='0'>Ventilator : "+rs2.getString("teknik_alat_ventilasi")+"</td>"+
+                                              "<td width='25%' border='0'>Broncoskopy : "+rs2.getString("teknik_alat_broncoskopy")+"</td>"+
+                                              "<td width='25%' border='0'>Hiopotensi : "+rs2.getString("teknik_alat_hiopotensi")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td colspan='4'>Lainnya : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                              "<td colspan='4' border='0'>Lainnya : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
@@ -13438,27 +13438,67 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "III. MONITORING"+  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
                                           "<tr>"+
-                                              "<td width='25%'>EtCO2 : "+rs2.getString("teknik_alat_tci")+"</td>"+
-                                              "<td width='25%'>Stetoskop : "+rs2.getString("teknik_alat_glidescopi")+"</td>"+
-                                              "<td width='25%'>Cath A Pulmo : "+rs2.getString("teknik_alat_stimulator_saraf")+"</td>"+
-                                              "<td width='25%'>NGT : "+rs2.getString("teknik_alat_cpb")+"</td>"+
+                                              "<td width='25%' border='0'>EtCO2 : "+rs2.getString("monitoring_etco")+"</td>"+
+                                              "<td width='25%' border='0'>Stetoskop : "+rs2.getString("monitoring_stetoskop")+"</td>"+
+                                              "<td width='25%' border='0'>Cath A Pulmo : "+rs2.getString("monitoring_cath_a_pulmo")+"</td>"+
+                                              "<td width='25%' border='0'>NGT : "+rs2.getString("monitoring_ngt")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td width='25%'>SpO2 : "+rs2.getString("teknik_alat_usg")+"</td>"+
-                                              "<td width='25%'>NIBP : "+rs2.getString("teknik_alat_ventilasi")+"</td>"+
-                                              "<td width='25%'>Kateter Urine : "+rs2.getString("teknik_alat_broncoskopy")+"</td>"+
-                                              "<td width='25%'>BIS : "+rs2.getString("teknik_alat_hiopotensi")+"</td>"+
+                                              "<td width='25%' border='0'>SpO2 : "+rs2.getString("monitoring_spo2")+"</td>"+
+                                              "<td width='25%' border='0'>NIBP : "+rs2.getString("monitoring_nibp")+"</td>"+
+                                              "<td width='25%' border='0'>Kateter Urine : "+rs2.getString("monitoring_kateter")+"</td>"+
+                                              "<td width='25%' border='0'>BIS : "+rs2.getString("monitoring_bis")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td colspan='2'>CVP : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
-                                              "<td colspan='2'>Arteri Line : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                              "<td colspan='2' border='0'>CVP : "+rs2.getString("monitoring_cvp")+(rs2.getString("monitoring_cvp_keterangan").equals("")?"":", "+rs2.getString("monitoring_cvp_keterangan"))+"</td>"+
+                                              "<td colspan='2' border='0'>Arteri Line : "+rs2.getString("monitoring_arteri")+(rs2.getString("monitoring_arteri_keterangan").equals("")?"":", "+rs2.getString("monitoring_arteri_keterangan"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td>Temp. : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
-                                              "<td colspan='3'>EKG Lead : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                              "<td width='25%' border='0'>Temp. : "+rs2.getString("monitoring_temp")+"</td>"+
+                                              "<td colspan='3' border='0'>EKG Lead : "+rs2.getString("monitoring_ekg")+(rs2.getString("monitoring_ekg_keterangan").equals("")?"":", "+rs2.getString("monitoring_ekg_keterangan"))+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
-                                              "<td colspan='4'>Lain-lain : "+rs2.getString("teknik_alat_lainlain")+"</td>"+
+                                              "<td colspan='4' border='0'>Lain-lain : "+rs2.getString("monitoring_lainlain")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "IV. STATUS FISIK"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='25%' border='0'>Angka ASA : "+rs2.getString("status_fisik_asa")+"</td>"+
+                                              "<td width='75%' border='0'>Alergi : "+rs2.getString("status_fisik_alergi")+(rs2.getString("status_fisik_alergi_keterangan").equals("")?"":", "+rs2.getString("status_fisik_alergi_keterangan"))+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td colspan='4' border='0'>Penyulit Pra Anastesi/Sedasi : "+rs2.getString("status_fisik_penyulit_sedasi")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "V. PERENCANAAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                  "Lanjut Tindakan : "+rs2.getString("perencanaan_lanjut")+"<br>"+
+                                                  "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                     "<tr>"+
+                                                        "<td width='50%' border='0'>Sedasi : "+rs2.getString("perencanaan_lanjut_sedasi")+(rs2.getString("perencanaan_lanjut_sedasi_keterangan").equals("")?"":", "+rs2.getString("perencanaan_lanjut_sedasi_keterangan"))+"</td>"+
+                                                        "<td width='25%' border='0'>Epidural : "+rs2.getString("perencanaan_lanjut_epidural")+"</td>"+
+                                                        "<td width='25%' border='0'>Spinal : "+rs2.getString("perencanaan_lanjut_spinal")+"</td>"+
+                                                     "</tr>"+
+                                                     "<tr>"+
+                                                        "<td width='50%' border='0'>Anastesi Umum : "+rs2.getString("perencanaan_lanjut_anestesi_umum")+(rs2.getString("perencanaan_lanjut_anestesi_umum_keterangan").equals("")?"":", "+rs2.getString("perencanaan_lanjut_anestesi_umum_keterangan"))+"</td>"+
+                                                        "<td colspan='2' border='0'>Blok Perifer : "+rs2.getString("perencanaan_lanjut_blok_perifer")+(rs2.getString("perencanaan_lanjut_blok_perifer_keterangan").equals("")?"":", "+rs2.getString("perencanaan_lanjut_blok_perifer_keterangan"))+"</td>"+
+                                                     "</tr>"+
+                                                  "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Batal Tindakan : "+rs2.getString("perencanaan_batal")+(rs2.getString("perencanaan_batal_alasan").equals("")?"":", "+rs2.getString("perencanaan_batal_alasan"))+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
