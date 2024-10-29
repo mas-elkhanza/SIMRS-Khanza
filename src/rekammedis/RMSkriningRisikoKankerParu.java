@@ -826,7 +826,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(665, 380, 70, 23);
+        jLabel73.setBounds(670, 380, 70, 23);
 
         TotalHasil.setEditable(false);
         TotalHasil.setText("0");

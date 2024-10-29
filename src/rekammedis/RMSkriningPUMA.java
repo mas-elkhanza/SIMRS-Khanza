@@ -285,7 +285,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         TotalHasil = new widget.TextBox();
         skorJk = new widget.TextBox();
         skorUsia = new widget.TextBox();
-        jLabel148 = new widget.Label();
         Tindakan = new widget.TextBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
@@ -294,7 +293,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel77 = new widget.Label();
         jLabel78 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel149 = new widget.Label();
         jLabel95 = new widget.Label();
         jLabel96 = new widget.Label();
         PernahMerokok = new widget.ComboBox();
@@ -332,6 +330,9 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel137 = new widget.Label();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new widget.Label();
+        jLabel101 = new widget.Label();
+        jLabel150 = new widget.Label();
+        jLabel149 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -341,7 +342,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         MnSkriningPuma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSkriningPuma.setText("Formulir Skrining PUMA");
         MnSkriningPuma.setName("MnSkriningPuma"); // NOI18N
-        MnSkriningPuma.setPreferredSize(new java.awt.Dimension(280, 26));
+        MnSkriningPuma.setPreferredSize(new java.awt.Dimension(170, 26));
         MnSkriningPuma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSkriningPumaActionPerformed(evt);
@@ -530,7 +531,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-10-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -544,7 +545,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-10-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -605,7 +606,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 425));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 435));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -635,7 +636,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 400));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 410));
         FormInput.setLayout(null);
 
         jLabel4.setText(":");
@@ -665,7 +666,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-10-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -814,14 +815,14 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(670, 370, 70, 23);
+        jLabel73.setBounds(670, 380, 70, 23);
 
         TotalHasil.setEditable(false);
         TotalHasil.setText("0");
         TotalHasil.setFocusTraversalPolicyProvider(true);
         TotalHasil.setName("TotalHasil"); // NOI18N
         FormInput.add(TotalHasil);
-        TotalHasil.setBounds(744, 370, 45, 23);
+        TotalHasil.setBounds(744, 380, 45, 23);
 
         skorJk.setEditable(false);
         skorJk.setText("0");
@@ -837,12 +838,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         FormInput.add(skorUsia);
         skorUsia.setBounds(744, 120, 45, 23);
 
-        jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel148.setText("Tindakan");
-        jLabel148.setName("jLabel148"); // NOI18N
-        FormInput.add(jLabel148);
-        jLabel148.setBounds(11, 370, 90, 23);
-
         Tindakan.setFocusTraversalPolicyProvider(true);
         Tindakan.setName("Tindakan"); // NOI18N
         Tindakan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -851,7 +846,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tindakan);
-        Tindakan.setBounds(67, 370, 580, 23);
+        Tindakan.setBounds(111, 380, 480, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -861,7 +856,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("Skrining PUMA :");
+        jLabel99.setText("I. ANAMNESIS");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
         jLabel99.setBounds(11, 70, 200, 23);
@@ -896,11 +891,6 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
         jSeparator3.setBounds(0, 1240, 807, 1);
-
-        jLabel149.setText(":");
-        jLabel149.setName("jLabel149"); // NOI18N
-        FormInput.add(jLabel149);
-        jLabel149.setBounds(0, 370, 63, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel95.setText("Apakah Anda pernah merokok ?");
@@ -945,7 +935,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel98.setText("- Jika pernah, berapa rata-rata jumlah rokok/hari ?");
         jLabel98.setName("jLabel98"); // NOI18N
         FormInput.add(jLabel98);
-        jLabel98.setBounds(72, 180, 360, 23);
+        jLabel98.setBounds(62, 180, 360, 23);
 
         JumlahRokok.setFocusTraversalPolicyProvider(true);
         JumlahRokok.setName("JumlahRokok"); // NOI18N
@@ -956,7 +946,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel104.setText("- Sudah berapa lama merokok ?");
         jLabel104.setName("jLabel104"); // NOI18N
         FormInput.add(jLabel104);
-        jLabel104.setBounds(72, 210, 340, 23);
+        jLabel104.setBounds(62, 210, 340, 23);
 
         jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel106.setText("Tahun");
@@ -1168,6 +1158,23 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
         jLabel5.setBounds(11, 10, 65, 23);
+
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel101.setText("II. INTERPRETASI");
+        jLabel101.setName("jLabel101"); // NOI18N
+        FormInput.add(jLabel101);
+        jLabel101.setBounds(10, 360, 200, 23);
+
+        jLabel150.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel150.setText("Keterangan");
+        jLabel150.setName("jLabel150"); // NOI18N
+        FormInput.add(jLabel150);
+        jLabel150.setBounds(44, 380, 90, 23);
+
+        jLabel149.setText(":");
+        jLabel149.setName("jLabel149"); // NOI18N
+        FormInput.add(jLabel149);
+        jLabel149.setBounds(0, 380, 107, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1534,7 +1541,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningRisikoKankerPayudara.jasper","report","::[ Formulir Skrining Risiko Kanker Payudara ]::",
+            Valid.MyReportqry("rptFormulirSkriningPUMA.jasper","report","::[ Formulir Skrining PUMA ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_puma.nip,"+
                     "petugas.nama,skrining_puma.tanggal,skrining_puma.jk,skrining_puma.nilai_jk,"+
                     "skrining_puma.usia,skrining_puma.nilai_usia,skrining_puma.pernah_merokok,"+
@@ -1542,26 +1549,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                     "skrining_puma.napas_pendek,skrining_puma.nilai_napas_pendek,skrining_puma.punya_dahak,"+
                     "skrining_puma.nilai_punya_dahak,skrining_puma.biasa_batuk,skrining_puma.nilai_biasa_batuk,"+
                     "skrining_puma.spirometri,skrining_puma.nilai_spirometri,skrining_puma.nilai_total,"+
-                    "skrining_puma.keterangan_hasil_skrining,skrining_puma.faktor_risiko_awal10,skrining_puma.nilai_risiko_awal10,"+
-                    "skrining_puma.faktor_risiko_awal11,skrining_puma.nilai_risiko_awal11,skrining_puma.faktor_risiko_awal12,"+
-                    "skrining_puma.nilai_risiko_awal12,skrining_puma.faktor_risiko_awal13,skrining_puma.nilai_risiko_awal13,"+
-                    "skrining_puma.faktor_risiko_awal14,skrining_puma.nilai_risiko_awal14,skrining_puma.faktor_risiko_tinggi1,"+
-                    "skrining_puma.nilai_risiko_tinggi1,skrining_puma.faktor_risiko_tinggi2,skrining_puma.nilai_risiko_tinggi2,"+
-                    "skrining_puma.faktor_risiko_tinggi3,skrining_puma.nilai_risiko_tinggi3,skrining_puma.faktor_risiko_tinggi4,"+
-                    "skrining_puma.nilai_risiko_tinggi4,skrining_puma.faktor_risiko_tinggi5,skrining_puma.nilai_risiko_tinggi5,"+
-                    "skrining_puma.faktor_risiko_tinggi6,skrining_puma.nilai_risiko_tinggi6,skrining_puma.faktor_risiko_tinggi7,"+
-                    "skrining_puma.nilai_risiko_tinggi7,skrining_puma.faktor_risiko_tinggi8,skrining_puma.nilai_risiko_tinggi8,"+
-                    "skrining_puma.faktor_risiko_tinggi9,skrining_puma.nilai_risiko_tinggi9,skrining_puma.faktor_risiko_tinggi10,"+
-                    "skrining_puma.nilai_risiko_tinggi10,skrining_puma.faktor_risiko_tinggi11,skrining_puma.nilai_risiko_tinggi11,"+
-                    "skrining_puma.faktor_risiko_tinggi12,skrining_puma.nilai_risiko_tinggi12,skrining_puma.faktor_risiko_tinggi13,"+
-                    "skrining_puma.nilai_risiko_tinggi13,skrining_puma.faktor_kecurigaan_ganas1,skrining_puma.nilai_kecurigaan_ganas1,"+
-                    "skrining_puma.faktor_kecurigaan_ganas2,skrining_puma.nilai_kecurigaan_ganas2,skrining_puma.faktor_kecurigaan_ganas3,"+
-                    "skrining_puma.nilai_kecurigaan_ganas3,skrining_puma.faktor_kecurigaan_ganas4,skrining_puma.nilai_kecurigaan_ganas4,"+
-                    "skrining_puma.faktor_kecurigaan_ganas5,skrining_puma.nilai_kecurigaan_ganas5,skrining_puma.faktor_kecurigaan_ganas6,"+
-                    "skrining_puma.nilai_kecurigaan_ganas6,skrining_puma.faktor_kecurigaan_ganas7,skrining_puma.nilai_kecurigaan_ganas7,"+
-                    "skrining_puma.faktor_kecurigaan_ganas8,skrining_puma.nilai_kecurigaan_ganas8,skrining_puma.total_skor,"+
-                    "skrining_puma.hasil_sadanis,skrining_puma.tindak_lanjut_sadanis,skrining_puma.hasil_skrining,"+
-                    "skrining_puma.keterangan from skrining_puma inner join reg_periksa on skrining_puma.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_puma.keterangan_hasil_skrining from skrining_puma inner join reg_periksa on skrining_puma.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_puma.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
@@ -1729,6 +1717,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.ComboBox Usia;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel101;
     private widget.Label jLabel104;
     private widget.Label jLabel106;
     private widget.Label jLabel107;
@@ -1747,8 +1736,8 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private widget.Label jLabel121;
     private widget.Label jLabel136;
     private widget.Label jLabel137;
-    private widget.Label jLabel148;
     private widget.Label jLabel149;
+    private widget.Label jLabel150;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
@@ -1973,9 +1962,9 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>568){
+            if(internalFrame1.getHeight()>578){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,425));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,435));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
