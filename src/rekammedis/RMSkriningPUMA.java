@@ -530,7 +530,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-10-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -544,7 +544,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-10-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -665,7 +665,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-10-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-10-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -942,7 +942,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         skorPernahMerokok.setBounds(744, 150, 45, 23);
 
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel98.setText("- Jika pernah, berapa rata-rata jumlah rokok/hari?");
+        jLabel98.setText("- Jika pernah, berapa rata-rata jumlah rokok/hari ?");
         jLabel98.setName("jLabel98"); // NOI18N
         FormInput.add(jLabel98);
         jLabel98.setBounds(72, 180, 360, 23);

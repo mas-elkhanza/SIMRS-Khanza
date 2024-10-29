@@ -1248,7 +1248,7 @@
                     <Component class="widget.Label" name="jLabel98">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="- Jika pernah, berapa rata-rata jumlah rokok/hari?"/>
+                        <Property name="text" type="java.lang.String" value="- Jika pernah, berapa rata-rata jumlah rokok/hari ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel98" noResource="true"/>
                       </Properties>
                       <Constraints>
