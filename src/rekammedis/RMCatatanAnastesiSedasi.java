@@ -2649,20 +2649,30 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
             Valid.MyReportqry("rptCetakPenilaianPreAnestesi.jasper","report","::[ Laporan Penilaian Pre Anestesi ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,catatan_anestesi_sedasi.tanggal,"+
-                "catatan_anestesi_sedasi.kd_dokter,DATE_FORMAT(catatan_anestesi_sedasi.tanggal_operasi,'%d-%m-%Y %H:%m:%s') as tanggal_operasi,catatan_anestesi_sedasi.diagnosa,"+
-                "catatan_anestesi_sedasi.rencana_tindakan,catatan_anestesi_sedasi.tb,catatan_anestesi_sedasi.bb,catatan_anestesi_sedasi.td,catatan_anestesi_sedasi.io2,"+
-                "catatan_anestesi_sedasi.nadi,catatan_anestesi_sedasi.pernapasan,catatan_anestesi_sedasi.suhu,catatan_anestesi_sedasi.fisik_cardiovasculer,catatan_anestesi_sedasi.fisik_paru,"+
-                "catatan_anestesi_sedasi.fisik_abdomen,catatan_anestesi_sedasi.fisik_extrimitas,catatan_anestesi_sedasi.fisik_endokrin,catatan_anestesi_sedasi.fisik_ginjal,"+
-                "catatan_anestesi_sedasi.fisik_obatobatan,catatan_anestesi_sedasi.fisik_laborat,catatan_anestesi_sedasi.fisik_penunjang,catatan_anestesi_sedasi.riwayat_penyakit_alergiobat,"+
-                "catatan_anestesi_sedasi.riwayat_penyakit_alergilainnya,catatan_anestesi_sedasi.riwayat_penyakit_terapi,catatan_anestesi_sedasi.riwayat_kebiasaan_merokok,"+
-                "catatan_anestesi_sedasi.riwayat_kebiasaan_ket_merokok,catatan_anestesi_sedasi.riwayat_kebiasaan_alkohol,catatan_anestesi_sedasi.riwayat_kebiasaan_ket_alkohol,"+
-                "catatan_anestesi_sedasi.riwayat_kebiasaan_obat,catatan_anestesi_sedasi.riwayat_kebiasaan_ket_obat,catatan_anestesi_sedasi.riwayat_medis_cardiovasculer,"+
-                "catatan_anestesi_sedasi.riwayat_medis_respiratory,catatan_anestesi_sedasi.riwayat_medis_endocrine,catatan_anestesi_sedasi.riwayat_medis_lainnya,"+
-                "catatan_anestesi_sedasi.asa,DATE_FORMAT(catatan_anestesi_sedasi.puasa,'%d-%m-%Y %H:%m:%s') as puasa,catatan_anestesi_sedasi.rencana_anestesi,catatan_anestesi_sedasi.rencana_perawatan,"+
-                "catatan_anestesi_sedasi.catatan_khusus,dokter.nm_dokter from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,catatan_anestesi_sedasi.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,"+
+                "catatan_anestesi_sedasi.nip_perawat_anestesi,petugasanestesi.nama as petugasanestesi,catatan_anestesi_sedasi.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
+                "catatan_anestesi_sedasi.nip_perawat_ok,petugasbedah.nama as petugasbedah,catatan_anestesi_sedasi.diagnosa_pre_bedah,catatan_anestesi_sedasi.tindakan_jenis_pembedahan,"+
+                "catatan_anestesi_sedasi.diagnosa_pasca_bedah,catatan_anestesi_sedasi.pre_induksi_jam,catatan_anestesi_sedasi.pre_induksi_kesadaran,catatan_anestesi_sedasi.pre_induksi_td,"+
+                "catatan_anestesi_sedasi.pre_induksi_nadi,catatan_anestesi_sedasi.pre_induksi_rr,catatan_anestesi_sedasi.pre_induksi_suhu,catatan_anestesi_sedasi.pre_induksi_o2,"+
+                "catatan_anestesi_sedasi.pre_induksi_tb,catatan_anestesi_sedasi.pre_induksi_bb,catatan_anestesi_sedasi.pre_induksi_rhesus,catatan_anestesi_sedasi.pre_induksi_hb,"+
+                "catatan_anestesi_sedasi.pre_induksi_ht,catatan_anestesi_sedasi.pre_induksi_leko,catatan_anestesi_sedasi.pre_induksi_trombo,catatan_anestesi_sedasi.pre_induksi_btct,"+
+                "catatan_anestesi_sedasi.pre_induksi_gds,catatan_anestesi_sedasi.pre_induksi_lainlain,catatan_anestesi_sedasi.teknik_alat_hiopotensi,catatan_anestesi_sedasi.teknik_alat_tci,"+
+                "catatan_anestesi_sedasi.teknik_alat_cpb,catatan_anestesi_sedasi.teknik_alat_ventilasi,catatan_anestesi_sedasi.teknik_alat_broncoskopy,catatan_anestesi_sedasi.teknik_alat_glidescopi,"+
+                "catatan_anestesi_sedasi.teknik_alat_usg,catatan_anestesi_sedasi.teknik_alat_stimulator_saraf,catatan_anestesi_sedasi.teknik_alat_lainlain,catatan_anestesi_sedasi.monitoring_ekg,"+
+                "catatan_anestesi_sedasi.monitoring_ekg_keterangan,catatan_anestesi_sedasi.monitoring_arteri,catatan_anestesi_sedasi.monitoring_arteri_keterangan,catatan_anestesi_sedasi.monitoring_cvp,"+
+                "catatan_anestesi_sedasi.monitoring_cvp_keterangan,catatan_anestesi_sedasi.monitoring_etco,catatan_anestesi_sedasi.monitoring_stetoskop,catatan_anestesi_sedasi.monitoring_nibp,"+
+                "catatan_anestesi_sedasi.monitoring_ngt,catatan_anestesi_sedasi.monitoring_bis,catatan_anestesi_sedasi.monitoring_cath_a_pulmo,catatan_anestesi_sedasi.monitoring_spo2,"+
+                "catatan_anestesi_sedasi.monitoring_kateter,catatan_anestesi_sedasi.monitoring_temp,catatan_anestesi_sedasi.monitoring_lainlain,catatan_anestesi_sedasi.status_fisik_asa,"+
+                "catatan_anestesi_sedasi.status_fisik_alergi,catatan_anestesi_sedasi.status_fisik_alergi_keterangan,catatan_anestesi_sedasi.status_fisik_penyulit_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut,"+
+                "catatan_anestesi_sedasi.perencanaan_lanjut_sedasi,catatan_anestesi_sedasi.perencanaan_lanjut_sedasi_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_spinal,"+
+                "catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum,catatan_anestesi_sedasi.perencanaan_lanjut_anestesi_umum_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer,"+
+                "catatan_anestesi_sedasi.perencanaan_lanjut_blok_perifer_keterangan,catatan_anestesi_sedasi.perencanaan_lanjut_epidural,catatan_anestesi_sedasi.perencanaan_batal,"+
+                "catatan_anestesi_sedasi.perencanaan_batal_alasan,catatan_anestesi_sedasi.tanggal,pasien.gol_darah from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join catatan_anestesi_sedasi on reg_periksa.no_rawat=catatan_anestesi_sedasi.no_rawat "+
-                "inner join dokter on catatan_anestesi_sedasi.kd_dokter=dokter.kd_dokter where catatan_anestesi_sedasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
+                "inner join dokter as dokteranestesi on catatan_anestesi_sedasi.kd_dokter_anestesi=dokteranestesi.kd_dokter "+
+                "inner join dokter as dokterbedah on catatan_anestesi_sedasi.kd_dokter_bedah=dokterbedah.kd_dokter "+
+                "inner join petugas as petugasanestesi on catatan_anestesi_sedasi.nip_perawat_anestesi=petugasanestesi.nip "+
+                "inner join petugas as petugasbedah on catatan_anestesi_sedasi.nip_perawat_ok=petugasbedah.nip where catatan_anestesi_sedasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                 "and catatan_anestesi_sedasi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianSedasiActionPerformed

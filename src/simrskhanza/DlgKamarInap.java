@@ -8387,7 +8387,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         NoRmBayi.setText("");
         NmBayi.setText("");    
         if(tbKamIn.getSelectedRow()>-1){
-            tabMode.removeRow(row+1);
+            tabMode.removeRow(tbKamIn.getSelectedRow()+1);
         }
     }//GEN-LAST:event_BtnHapusGabungActionPerformed
 
