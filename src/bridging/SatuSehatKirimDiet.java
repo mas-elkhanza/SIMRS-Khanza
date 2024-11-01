@@ -909,6 +909,7 @@ public final class SatuSehatKirimDiet extends javax.swing.JDialog {
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_diet());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_diet());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_diet());
     }
     

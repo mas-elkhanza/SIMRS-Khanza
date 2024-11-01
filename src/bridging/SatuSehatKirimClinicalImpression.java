@@ -928,6 +928,7 @@ public final class SatuSehatKirimClinicalImpression extends javax.swing.JDialog 
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_clinicalimpression());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_clinicalimpression());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_clinicalimpression());
     }
     

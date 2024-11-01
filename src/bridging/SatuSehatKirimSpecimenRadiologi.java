@@ -851,6 +851,7 @@ public final class SatuSehatKirimSpecimenRadiologi extends javax.swing.JDialog {
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_specimen_radiologi());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_specimen_radiologi());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_specimen_radiologi());
     }
     

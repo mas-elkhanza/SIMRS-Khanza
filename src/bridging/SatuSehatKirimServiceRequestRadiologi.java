@@ -923,6 +923,7 @@ public final class SatuSehatKirimServiceRequestRadiologi extends javax.swing.JDi
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_servicerequest_radiologi());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_servicerequest_radiologi());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_servicerequest_radiologi());
     }
     

@@ -858,6 +858,7 @@ public final class SatuSehatKirimSpecimenLabMB extends javax.swing.JDialog {
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_specimen_labmb());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_specimen_labmb());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_specimen_labmb());
     }
     

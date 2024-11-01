@@ -987,6 +987,7 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_lab());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_lab());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_diagnosticreport_lab());
     }
     

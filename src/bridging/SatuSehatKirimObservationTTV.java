@@ -4727,6 +4727,7 @@ public final class SatuSehatKirimObservationTTV extends javax.swing.JDialog {
     
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_observationttv());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_observationttv());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_observationttv());
     }
     

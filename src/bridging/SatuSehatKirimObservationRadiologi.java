@@ -923,6 +923,7 @@ public final class SatuSehatKirimObservationRadiologi extends javax.swing.JDialo
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_observation_radiologi());
+        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_observation_radiologi());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_observation_radiologi());
     }
     
