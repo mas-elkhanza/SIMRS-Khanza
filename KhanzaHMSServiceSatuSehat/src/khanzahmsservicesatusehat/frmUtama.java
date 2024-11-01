@@ -7480,15 +7480,15 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                 "\"value\" : \""+rs.getString("no_rawat")+"\"" +
                                             "}," +
-                                            "\"title\" : \"Rencana Rawat Pasien\"," +
+                                            "\"title\" : \"Instruksi Medik dan Keperawatan Pasien\"," +
                                             "\"status\" : \"active\"," +
                                             "\"category\" : [" +
                                                 "{" +
                                                     "\"coding\" : [" +
                                                         "{" +
                                                             "\"system\" : \"http://snomed.info/sct\"," +
-                                                            "\"code\" : \"736353004\"," +
-                                                            "\"display\" : \"Inpatient care plan\"" +
+                                                            "\"code\" : \"736271009\"," +
+                                                            "\"display\" : \"Outpatient care plan\"" +
                                                         "}" +
                                                     "]" +
                                                 "}" +
@@ -7572,15 +7572,15 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                 "\"value\" : \""+rs.getString("no_rawat")+"\"" +
                                             "}," +
-                                            "\"title\" : \"Rencana Rawat Pasien\"," +
+                                            "\"title\" : \"Instruksi Medik dan Keperawatan Pasien\"," +
                                             "\"status\" : \"active\"," +
                                             "\"category\" : [" +
                                                 "{" +
                                                     "\"coding\" : [" +
                                                         "{" +
                                                             "\"system\" : \"http://snomed.info/sct\"," +
-                                                            "\"code\" : \"736353004\"," +
-                                                            "\"display\" : \"Inpatient care plan\"" +
+                                                            "\"code\" : \"736271009\"," +
+                                                            "\"display\" : \"Outpatient care plan\"" +
                                                         "}" +
                                                     "]" +
                                                 "}" +

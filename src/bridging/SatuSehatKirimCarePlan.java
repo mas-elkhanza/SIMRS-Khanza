@@ -566,15 +566,15 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                                         "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                         "\"value\" : \""+tbObat.getValueAt(i,2).toString()+"\"" +
                                     "}," +
-                                    "\"title\" : \"Rencana Rawat Pasien\"," +
+                                    "\"title\" : \"Instruksi Medik dan Keperawatan Pasien\"," +
                                     "\"status\" : \"active\"," +
                                     "\"category\" : [" +
                                         "{" +
                                             "\"coding\" : [" +
                                                 "{" +
                                                     "\"system\" : \"http://snomed.info/sct\"," +
-                                                    "\"code\" : \"736353004\"," +
-                                                    "\"display\" : \"Inpatient care plan\"" +
+                                                    "\"code\" : \"736271009\"," +
+                                                    "\"display\" : \"Outpatient care plan\"" +
                                                 "}" +
                                             "]" +
                                         "}" +
@@ -649,15 +649,15 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                                         "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                         "\"value\" : \""+tbObat.getValueAt(i,2).toString()+"\"" +
                                     "}," +
-                                    "\"title\" : \"Rencana Rawat Pasien\"," +
+                                    "\"title\" : \"Instruksi Medik dan Keperawatan Pasien\"," +
                                     "\"status\" : \"active\"," +
                                     "\"category\" : [" +
                                         "{" +
                                             "\"coding\" : [" +
                                                 "{" +
                                                     "\"system\" : \"http://snomed.info/sct\"," +
-                                                    "\"code\" : \"736353004\"," +
-                                                    "\"display\" : \"Inpatient care plan\"" +
+                                                    "\"code\" : \"736271009\"," +
+                                                    "\"display\" : \"Outpatient care plan\"" +
                                                 "}" +
                                             "]" +
                                         "}" +
