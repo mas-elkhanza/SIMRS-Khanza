@@ -501,7 +501,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
             );
             bg.close();
 
-            File f = new File("DataSatuSehatDiet.html");            
+            File f = new File("DataSatuSehatCarePlan.html");            
             BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -511,7 +511,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT DIET<br><br></font>"+        
+                                    "<font size='2' face='Tahoma'>DATA PENGIRIMAN SATU SEHAT CARE PLAN<br><br></font>"+        
                                 "</td>"+
                            "</tr>"+
                         "</table>")
