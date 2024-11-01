@@ -179,13 +179,13 @@
     <entry key="SFTPMANDIRIPORT">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="SFTPMANDIRIUSER">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="SFTPMANDIRIPAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="URLAPIESIGN">http://localhost</entry>
-    <entry key="USERNAMEAPIESIGN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="PASSAPIESIGN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="URLAKSESFILEESIGN">http://localhost</entry>
-    <entry key="SFTPFILEESIGNHOST">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="SFTPFILEESIGNPORT">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="SFTPFILEESIGNUSER">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="SFTPFILEESIGNPAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-    <entry key="SFTPFILEESIGNFOLDER">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+    <entry key="URLAPIESIGN">https://esign.jemberkab.go.id/api/sign/pdf</entry>
+    <entry key="USERNAMEAPIESIGN">6yTePH8GEKfAhUM7NDvztQ==</entry>
+    <entry key="PASSAPIESIGN">44oB160TXymkmgkKCmrabg==</entry>
+    <entry key="URLAKSESFILEESIGN">https://rsdbalung.simkeskhanza.com/suratsurat</entry>
+    <entry key="SFTPFILEESIGNHOST">CQ5Kfm5ILnLOu+e6AFp0cF/pXKrdgCX8xaM0HTMb1Fk=</entry>
+    <entry key="SFTPFILEESIGNPORT">fvvu/wqeVHAys9jWVltWsA==</entry>
+    <entry key="SFTPFILEESIGNUSER">bAXbb94guPz+B30Ics1QDw==</entry>
+    <entry key="SFTPFILEESIGNPAS">5/E2gzGZ+SOG9tal860JJ3/7uyy7V7L3Q8zIw6oL25w=</entry>
+    <entry key="SFTPFILEESIGNFOLDER">bsX283RtohX0NO9hyh+GAIKiafyYwSe7hhw/HWdydQQ=</entry>
 </properties>
