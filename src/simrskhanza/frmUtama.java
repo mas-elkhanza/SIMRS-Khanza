@@ -482,6 +482,7 @@ import bridging.SatuSehatKirimEncounter;
 import bridging.SatuSehatKirimMedication;
 import bridging.SatuSehatKirimMedicationDispense;
 import bridging.SatuSehatKirimMedicationRequest;
+import bridging.SatuSehatKirimMedicationStatement;
 import bridging.SatuSehatKirimObservationLabMB;
 import bridging.SatuSehatKirimObservationLabPK;
 import bridging.SatuSehatKirimObservationRadiologi;
@@ -21819,6 +21820,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnKirimMedicationStatementSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {  
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatKirimMedicationStatement aplikasi=new SatuSehatKirimMedicationStatement(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22514,7 +22526,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik,btnDataSasaranUsiaProduktif,
             btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan,btnSkriningObesitas,btnSkriningRisikoKankerPayudara,btnSkriningRisikoKankerParu,
             btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnCatatanObservasiRestrainNonFramakologi,
-            btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat;
+            btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat;
     
     public void isWall(){
         try{            
@@ -25654,6 +25666,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsatu_sehat_kirim_medicationdispense()==true){
                 Panelmenu.add(btnKirimMedicationDispenseSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_kirim_medicationstatement()==true){
+                Panelmenu.add(btnKirimMedicationStatementSatuSehat);
                 jmlmenu++;
             }
             
@@ -30919,6 +30936,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsatu_sehat_kirim_medicationdispense()==true){
             Panelmenu.add(btnKirimMedicationDispenseSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_kirim_medicationstatement()==true){
+            Panelmenu.add(btnKirimMedicationStatementSatuSehat);
             jmlmenu++;
         }
         
@@ -37383,6 +37405,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_kirim_medicationdispense()==true){
             if(btnKirimMedicationDispenseSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKirimMedicationDispenseSatuSehat);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsatu_sehat_kirim_medicationstatement()==true){
+            if(btnKirimMedicationStatementSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnKirimMedicationStatementSatuSehat);
                 jmlmenu++;
             }                
         }
@@ -44847,6 +44876,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKirimMedicationDispenseSatuSehat.setName("btnKirimMedicationDispenseSatuSehat"); 
         btnKirimMedicationDispenseSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKirimMedicationDispenseSatuSehat.addActionListener(this::btnKirimMedicationDispenseSatuSehatActionPerformed);
+        
+        btnKirimMedicationStatementSatuSehat = new widget.ButtonBig();
+        btnKirimMedicationStatementSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnKirimMedicationStatementSatuSehat.setText("Kirim Medication Statement Satu Sehat");
+        btnKirimMedicationStatementSatuSehat.setIconTextGap(0);
+        btnKirimMedicationStatementSatuSehat.setName("btnKirimMedicationStatementSatuSehat"); 
+        btnKirimMedicationStatementSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnKirimMedicationStatementSatuSehat.addActionListener(this::btnKirimMedicationStatementSatuSehatActionPerformed);
         
         btnHasilUSGNeonatus = new widget.ButtonBig();
         btnHasilUSGNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7744782_mom_baby_mom and baby_mothers day_mother_icon.png")));

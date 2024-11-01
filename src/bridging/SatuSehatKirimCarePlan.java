@@ -567,22 +567,35 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                         json = "{" +
                                     "\"resourceType\" : \"CarePlan\"," +
                                     "\"identifier\" : {" +
-                                        "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"system\" : \"http://sys-ids.kemkes.go.id/careplan/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                         "\"value\" : \""+tbObat.getValueAt(i,2).toString()+"\"" +
                                     "}," +
                                     "\"title\" : \"Instruksi Medik dan Keperawatan Pasien\"," +
                                     "\"status\" : \"active\"," +
-                                    "\"category\" : [" +
-                                        "{" +
-                                            "\"coding\" : [" +
-                                                "{" +
-                                                    "\"system\" : \"http://snomed.info/sct\"," +
-                                                    "\"code\" : \"736271009\"," +
-                                                    "\"display\" : \"Outpatient care plan\"" +
-                                                "}" +
-                                            "]" +
-                                        "}" +
-                                    "]," +
+                                    (tbObat.getValueAt(i,12).toString().equals("Ralan")?
+                                        "\"category\" : [" +
+                                            "{" +
+                                                "\"coding\" : [" +
+                                                    "{" +
+                                                        "\"system\" : \"http://snomed.info/sct\"," +
+                                                        "\"code\" : \"736271009\"," +
+                                                        "\"display\" : \"Outpatient care plan\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "],":
+                                        "\"category\" : [" +
+                                            "{" +
+                                                "\"coding\" : [" +
+                                                    "{" +
+                                                        "\"system\" : \"http://snomed.info/sct\"," +
+                                                        "\"code\" : \"736353004\"," +
+                                                        "\"display\" : \"Inpatient care plan\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "],"
+                                    )+
                                     "\"intent\" : \"plan\"," +
                                     "\"description\" : \""+tbObat.getValueAt(i,7).toString()+"\"," +
                                     "\"subject\" : {" +
@@ -650,22 +663,35 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                                     "\"resourceType\" : \"CarePlan\"," +
                                     "\"id\": \""+tbObat.getValueAt(i,11).toString()+"\"," +
                                     "\"identifier\" : {" +
-                                        "\"system\" : \"http://sys-ids.kemkes.go.id/composition/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                        "\"system\" : \"http://sys-ids.kemkes.go.id/careplan/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                         "\"value\" : \""+tbObat.getValueAt(i,2).toString()+"\"" +
                                     "}," +
                                     "\"title\" : \"Instruksi Medik dan Keperawatan Pasien\"," +
                                     "\"status\" : \"active\"," +
-                                    "\"category\" : [" +
-                                        "{" +
-                                            "\"coding\" : [" +
-                                                "{" +
-                                                    "\"system\" : \"http://snomed.info/sct\"," +
-                                                    "\"code\" : \"736271009\"," +
-                                                    "\"display\" : \"Outpatient care plan\"" +
-                                                "}" +
-                                            "]" +
-                                        "}" +
-                                    "]," +
+                                    (tbObat.getValueAt(i,12).toString().equals("Ralan")?
+                                        "\"category\" : [" +
+                                            "{" +
+                                                "\"coding\" : [" +
+                                                    "{" +
+                                                        "\"system\" : \"http://snomed.info/sct\"," +
+                                                        "\"code\" : \"736271009\"," +
+                                                        "\"display\" : \"Outpatient care plan\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "],":
+                                        "\"category\" : [" +
+                                            "{" +
+                                                "\"coding\" : [" +
+                                                    "{" +
+                                                        "\"system\" : \"http://snomed.info/sct\"," +
+                                                        "\"code\" : \"736353004\"," +
+                                                        "\"display\" : \"Inpatient care plan\"" +
+                                                    "}" +
+                                                "]" +
+                                            "}" +
+                                        "],"
+                                    )+
                                     "\"intent\" : \"plan\"," +
                                     "\"description\" : \""+tbObat.getValueAt(i,7).toString()+"\"," +
                                     "\"subject\" : {" +
