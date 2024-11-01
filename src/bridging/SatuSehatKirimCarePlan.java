@@ -455,11 +455,11 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Pasien</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Encounter</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Instruksi Diet/Gizi</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rencana Perawatan/Care Plan</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas/Praktisi</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.KTP Praktisi</b></td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Diet</b></td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Care Plan</b></td>"+
                 "</tr>"
             );
             for (i = 0; i < tabMode.getRowCount(); i++) {
