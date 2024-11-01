@@ -961,6 +961,7 @@ import rekammedis.RMRiwayatKamarPasien;
 import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
+import rekammedis.RMSkriningAdiksiNikotin;
 import rekammedis.RMSkriningKekerasanPadaPerempuan;
 import rekammedis.RMSkriningMPP;
 import rekammedis.RMSkriningMPPFormA;
@@ -21831,6 +21832,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSkriningAdiksiNikotinActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningAdiksiNikotin form=new RMSkriningAdiksiNikotin(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22526,7 +22540,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnMandiriKodeTransaksiTujuanTRansfer,btnSKPRekapitulasiPenilaian,btnPCareReferensiAlergi,btnPCareReferensiPrognosa,btnKonsultasiMedik,btnDataSasaranUsiaProduktif,
             btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan,btnSkriningObesitas,btnSkriningRisikoKankerPayudara,btnSkriningRisikoKankerParu,
             btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnCatatanObservasiRestrainNonFramakologi,
-            btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat;
+            btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin;
     
     public void isWall(){
         try{            
@@ -26702,6 +26716,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_puma()==true){
                 Panelmenu.add(btnSkriningPUMA);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_adiksi_nikotin()==true){
+                Panelmenu.add(btnSkriningAdiksiNikotin);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -31971,6 +31990,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_puma()==true){
             Panelmenu.add(btnSkriningPUMA);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_adiksi_nikotin()==true){
+            Panelmenu.add(btnSkriningAdiksiNikotin);
             jmlmenu++;
         }
 
@@ -38858,6 +38882,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_adiksi_nikotin()==true){
+            if(btnSkriningAdiksiNikotin.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningAdiksiNikotin);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -45308,6 +45339,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningPUMA.setName("btnSkriningPUMA"); 
         btnSkriningPUMA.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningPUMA.addActionListener(this::btnSkriningPUMAActionPerformed);
+        
+        btnSkriningAdiksiNikotin = new widget.ButtonBig();
+        btnSkriningAdiksiNikotin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6230216_cigar_cigaret_cigarette_tobacco_icon.png"))); 
+        btnSkriningAdiksiNikotin.setText("Skrining Adiksi Nikotin");
+        btnSkriningAdiksiNikotin.setIconTextGap(0);
+        btnSkriningAdiksiNikotin.setName("btnSkriningAdiksiNikotin"); 
+        btnSkriningAdiksiNikotin.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningAdiksiNikotin.addActionListener(this::btnSkriningAdiksiNikotinActionPerformed);
         
         btnBookingMCUPerusahaan = new widget.ButtonBig();
         btnBookingMCUPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6002396_building_coronavirus_covid19_health_hospital_icon.png"))); 

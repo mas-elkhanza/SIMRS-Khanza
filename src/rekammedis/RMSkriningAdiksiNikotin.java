@@ -2008,10 +2008,10 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_risiko_kanker_payudara());
-        BtnHapus.setEnabled(akses.getskrining_risiko_kanker_payudara());
-        BtnEdit.setEnabled(akses.getskrining_risiko_kanker_payudara());
-        BtnPrint.setEnabled(akses.getskrining_risiko_kanker_payudara()); 
+        BtnSimpan.setEnabled(akses.getskrining_adiksi_nikotin());
+        BtnHapus.setEnabled(akses.getskrining_adiksi_nikotin());
+        BtnEdit.setEnabled(akses.getskrining_adiksi_nikotin());
+        BtnPrint.setEnabled(akses.getskrining_adiksi_nikotin()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
