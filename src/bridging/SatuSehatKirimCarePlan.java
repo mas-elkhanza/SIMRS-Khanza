@@ -68,7 +68,8 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new String[]{
                 "P","Tanggal Registrasi","No.Rawat","No.RM","Nama Pasien","No.KTP Pasien","ID Encounter",
-                "Rencana Perawatan/Care Plan","Petugas/Praktisi","No.KTP Praktisi","Tanggal","ID Care Plan"
+                "Rencana Perawatan/Care Plan","Petugas/Praktisi","No.KTP Praktisi","Tanggal","ID Care Plan",
+                "Status"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -80,7 +81,8 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
              Class[] types = new Class[] {
                  java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
                  java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
-                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, 
+                 java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -93,7 +95,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -119,6 +121,8 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                 column.setPreferredWidth(110);
             }else if(i==11){
                 column.setPreferredWidth(220);
+            }else if(i==12){
+                column.setPreferredWidth(60);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -603,8 +607,8 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                         root = mapper.readTree(json);
                         response = root.path("id");
                         if(!response.asText().equals("")){
-                            if(Sequel.menyimpantf2("satu_sehat_careplan","?,?,?","Diet/Gizi",3,new String[]{
-                                tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,10).toString().substring(0,19),response.asText()
+                            if(Sequel.menyimpantf2("satu_sehat_careplan","?,?,?,?,?","Rencana Perawatan",5,new String[]{
+                                tbObat.getValueAt(i,2).toString(),tbObat.getValueAt(i,10).toString().substring(0,10),tbObat.getValueAt(i,10).toString().substring(11,19),tbObat.getValueAt(i,12).toString(),response.asText()
                             })==true){
                                 tbObat.setValueAt(response.asText(),i,11);
                                 tbObat.setValueAt(false,i,0);
@@ -785,7 +789,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("no_ktp"),rs.getString("id_encounter"),rs.getString("rtl"),rs.getString("nama"),rs.getString("ktppraktisi"),
-                        rs.getString("tgl_perawatan")+" "+rs.getString("jam_rawat"),rs.getString("satu_sehat_careplan")
+                        rs.getString("tgl_perawatan")+" "+rs.getString("jam_rawat"),rs.getString("satu_sehat_careplan"),"Ralan"
                     });
                 }
             } catch (Exception e) {
@@ -830,7 +834,7 @@ public final class SatuSehatKirimCarePlan extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         false,rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("no_ktp"),rs.getString("id_encounter"),rs.getString("rtl"),rs.getString("nama"),rs.getString("ktppraktisi"),
-                        rs.getString("tgl_perawatan")+" "+rs.getString("jam_rawat"),rs.getString("satu_sehat_careplan")
+                        rs.getString("tgl_perawatan")+" "+rs.getString("jam_rawat"),rs.getString("satu_sehat_careplan"),"Ranap"
                     });
                 }
             } catch (Exception e) {

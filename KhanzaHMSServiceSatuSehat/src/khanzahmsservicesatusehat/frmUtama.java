@@ -7517,8 +7517,8 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan2("satu_sehat_diet","?,?,?","Diet/Gizi",3,new String[]{
-                                        rs.getString("no_rawat"),rs.getString("tanggal"),response.asText()
+                                    Sequel.menyimpan2("satu_sehat_careplan","?,?,?,?,?","Rencana Perawatan",5,new String[]{
+                                        rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ralan",response.asText()
                                     });
                                 }
                             }catch(Exception e){
@@ -7609,8 +7609,8 @@ public class frmUtama extends javax.swing.JFrame {
                                 root = mapper.readTree(json);
                                 response = root.path("id");
                                 if(!response.asText().equals("")){
-                                    Sequel.menyimpan2("satu_sehat_diet","?,?,?","Diet/Gizi",3,new String[]{
-                                        rs.getString("no_rawat"),rs.getString("tanggal"),response.asText()
+                                    Sequel.menyimpan2("satu_sehat_careplan","?,?,?,?,?","Rencana Perawatan",5,new String[]{
+                                        rs.getString("no_rawat"),rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),"Ranap",response.asText()
                                     });
                                 }
                             }catch(Exception e){
