@@ -7702,7 +7702,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"category\": {" +
                                                 "\"coding\": [" +
                                                     "{" +
-                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medication-statement-category\"," +
                                                         "\"code\": \"outpatient\"," +
                                                         "\"display\": \"Outpatient\"" +
                                                     "}" +
@@ -7847,9 +7847,9 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"category\": {" +
                                                 "\"coding\": [" +
                                                     "{" +
-                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
-                                                        "\"code\": \"outpatient\"," +
-                                                        "\"display\": \"Outpatient\"" +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medication-statement-category\"," +
+                                                        "\"code\": \"inpatient\"," +
+                                                        "\"display\": \"Inpatient\"" +
                                                     "}" +
                                                 "]" +
                                             "}," +
@@ -7994,7 +7994,7 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"category\": {" +
                                                 "\"coding\": [" +
                                                     "{" +
-                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medication-statement-category\"," +
                                                         "\"code\": \"outpatient\"," +
                                                         "\"display\": \"Outpatient\"" +
                                                     "}" +
@@ -8141,9 +8141,9 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"category\": {" +
                                                 "\"coding\": [" +
                                                     "{" +
-                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medicationrequest-category\"," +
-                                                        "\"code\": \"outpatient\"," +
-                                                        "\"display\": \"Outpatient\"" +
+                                                        "\"system\": \"http://terminology.hl7.org/CodeSystem/medication-statement-category\"," +
+                                                        "\"code\": \"inpatient\"," +
+                                                        "\"display\": \"Inpatient\"" +
                                                     "}" +
                                                 "]" +
                                             "}," +
