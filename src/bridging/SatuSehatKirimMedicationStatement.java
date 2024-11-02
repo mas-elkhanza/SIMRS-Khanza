@@ -662,12 +662,7 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                                             "{" +
                                                 "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                 "\"use\": \"official\"," +
-                                                "\"value\": \""+tbObat.getValueAt(i,25).toString()+"\"" +
-                                            "}," +
-                                            "{" +
-                                                "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                "\"use\": \"official\"," +
-                                                "\"value\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
+                                                "\"value\": \""+tbObat.getValueAt(i,25).toString()+"-"+tbObat.getValueAt(i,11).toString()+"\"" +
                                             "}" +
                                         "]," +
                                         "\"status\": \"completed\"," +
@@ -720,10 +715,14 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                                             "}" +
                                         "]," +
                                         "\"dateAsserted\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"+07:00\"," +
+                                        "\"informationSource\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"," +
+                                            "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
+                                        "}," +
                                         "\"context\": {" +
                                             "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                         "}," +
-                                        "\"note\": [{\"text\": \"Obat sudah diserahkan ke pasien\"}]" +
+                                        "\"note\": [{\"text\": \"Pasien sudah memahami aturan pakai yang dijelaskan oleh petugas & Obat sudah diserahkan ke pasien\"}]" +
                                     "}";
                             System.out.println("URL : "+link+"/MedicationStatement");
                             System.out.println("Request JSON : "+json);
@@ -754,12 +753,7 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                                             "{" +
                                                 "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                 "\"use\": \"official\"," +
-                                                "\"value\": \""+tbObat.getValueAt(i,25).toString()+"\"" +
-                                            "}," +
-                                            "{" +
-                                                "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                "\"use\": \"official\"," +
-                                                "\"value\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
+                                                "\"value\": \""+tbObat.getValueAt(i,25).toString()+"-"+tbObat.getValueAt(i,11).toString()+"-"+tbObat.getValueAt(i,27).toString()+"\"" +
                                             "}" +
                                         "]," +
                                         "\"status\": \"completed\"," +
@@ -812,10 +806,14 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                                             "}" +
                                         "]," +
                                         "\"dateAsserted\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"+07:00\"," +
+                                        "\"informationSource\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"," +
+                                            "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
+                                        "}," +
                                         "\"context\": {" +
                                             "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                         "}," +
-                                        "\"note\": [{\"text\": \"Obat sudah diserahkan ke pasien\"}]" +
+                                        "\"note\": [{\"text\": \"Pasien sudah memahami aturan pakai yang dijelaskan oleh petugas & Obat sudah diserahkan ke pasien\"}]" +
                                     "}";
                             System.out.println("URL : "+link+"/MedicationStatement");
                             System.out.println("Request JSON : "+json);
@@ -826,7 +824,7 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                             response = root.path("id");
                             if(!response.asText().equals("")){
                                 if(Sequel.menyimpantf2("satu_sehat_medicationstatement_racikan","?,?,?,?","Obat/Alkes",4,new String[]{
-                                    tbObat.getValueAt(i,25).toString(),tbObat.getValueAt(i,11).toString(),tbObat.getValueAt(i,11).toString(),response.asText()
+                                    tbObat.getValueAt(i,25).toString(),tbObat.getValueAt(i,11).toString(),tbObat.getValueAt(i,27).toString(),response.asText()
                                 })==true){
                                     tbObat.setValueAt(response.asText(),i,26);
                                     tbObat.setValueAt(false,i,0);
@@ -889,12 +887,7 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                                             "{" +
                                                 "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                 "\"use\": \"official\"," +
-                                                "\"value\": \""+tbObat.getValueAt(i,25).toString()+"\"" +
-                                            "}," +
-                                            "{" +
-                                                "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                "\"use\": \"official\"," +
-                                                "\"value\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
+                                                "\"value\": \""+tbObat.getValueAt(i,25).toString()+"-"+tbObat.getValueAt(i,11).toString()+"\"" +
                                             "}" +
                                         "]," +
                                         "\"status\": \"completed\"," +
@@ -947,10 +940,14 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                                             "}" +
                                         "]," +
                                         "\"dateAsserted\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"+07:00\"," +
+                                        "\"informationSource\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"," +
+                                            "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
+                                        "}," +
                                         "\"context\": {" +
                                             "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                         "}," +
-                                        "\"note\": [{\"text\": \"Sudah dilakukan proses telaah obat oleh petugas dan obat sudah diserahkan ke pasien\"}]" +
+                                        "\"note\": [{\"text\": \"Pasien sudah memahami aturan pakai yang dijelaskan oleh petugas & Obat sudah diserahkan ke pasien\"}]" +
                                     "}";
                             System.out.println("URL : "+link+"/MedicationStatement/"+tbObat.getValueAt(i,26).toString());
                             System.out.println("Request JSON : "+json);
@@ -973,12 +970,7 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                                             "{" +
                                                 "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                 "\"use\": \"official\"," +
-                                                "\"value\": \""+tbObat.getValueAt(i,25).toString()+"\"" +
-                                            "}," +
-                                            "{" +
-                                                "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                "\"use\": \"official\"," +
-                                                "\"value\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
+                                                "\"value\": \""+tbObat.getValueAt(i,25).toString()+"-"+tbObat.getValueAt(i,11).toString()+"-"+tbObat.getValueAt(i,27).toString()+"\"" +
                                             "}" +
                                         "]," +
                                         "\"status\": \"completed\"," +
@@ -1031,10 +1023,14 @@ public final class SatuSehatKirimMedicationStatement extends javax.swing.JDialog
                                             "}" +
                                         "]," +
                                         "\"dateAsserted\": \""+tbObat.getValueAt(i,21).toString().replaceAll(" ","T")+"+07:00\"," +
+                                        "\"informationSource\": {" +
+                                            "\"reference\": \"Patient/"+idpasien+"\"," +
+                                            "\"display\": \""+tbObat.getValueAt(i,4).toString()+"\"" +
+                                        "}," +
                                         "\"context\": {" +
                                             "\"reference\": \"Encounter/"+tbObat.getValueAt(i,8).toString()+"\"" +
                                         "}," +
-                                        "\"note\": [{\"text\": \"Sudah dilakukan proses telaah obat oleh petugas dan obat sudah diserahkan ke pasien\"}]" +
+                                        "\"note\": [{\"text\": \"Pasien sudah memahami aturan pakai yang dijelaskan oleh petugas & Obat sudah diserahkan ke pasien\"}]" +
                                     "}";
                             System.out.println("URL : "+link+"/MedicationStatement/"+tbObat.getValueAt(i,26).toString());
                             System.out.println("Request JSON : "+json);

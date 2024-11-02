@@ -7688,14 +7688,9 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"MedicationStatement\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("no_resep")+"\"" +
-                                                "}," +
-                                                "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("kode_brng")+"\"" +
+                                                    "\"value\": \""+rs.getString("no_resep")+"-"+rs.getString("kode_brng")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"completed\"," +
@@ -7748,6 +7743,10 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]," +
                                             "\"dateAsserted\": \""+rs.getString("tgl_penyerahan")+"T"+rs.getString("jam_penyerahan")+"+07:00\"," +
+                                            "\"informationSource\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
                                             "\"context\": {" +
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
@@ -7833,14 +7832,9 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"MedicationStatement\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("no_resep")+"\"" +
-                                                "}," +
-                                                "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("kode_brng")+"\"" +
+                                                    "\"value\": \""+rs.getString("no_resep")+"-"+rs.getString("kode_brng")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"completed\"," +
@@ -7893,6 +7887,10 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]," +
                                             "\"dateAsserted\": \""+rs.getString("tgl_penyerahan")+"T"+rs.getString("jam_penyerahan")+"+07:00\"," +
+                                            "\"informationSource\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
                                             "\"context\": {" +
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
@@ -7980,14 +7978,9 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"MedicationStatement\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("no_resep")+"\"" +
-                                                "}," +
-                                                "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("kode_brng")+"-"+rs.getString("no_racik")+"\"" +
+                                                    "\"value\": \""+rs.getString("no_resep")+"-"+rs.getString("kode_brng")+"-"+rs.getString("no_racik")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"completed\"," +
@@ -8040,6 +8033,10 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]," +
                                             "\"dateAsserted\": \""+rs.getString("tgl_penyerahan")+"T"+rs.getString("jam_penyerahan")+"+07:00\"," +
+                                            "\"informationSource\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
                                             "\"context\": {" +
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +
@@ -8127,14 +8124,9 @@ public class frmUtama extends javax.swing.JFrame {
                                             "\"resourceType\": \"MedicationStatement\"," +
                                             "\"identifier\": [" +
                                                 "{" +
-                                                    "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                                    "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("no_resep")+"\"" +
-                                                "}," +
-                                                "{" +
                                                     "\"system\": \"http://sys-ids.kemkes.go.id/medicationstatement-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                                     "\"use\": \"official\"," +
-                                                    "\"value\": \""+rs.getString("kode_brng")+"-"+rs.getString("no_racik")+"\"" +
+                                                    "\"value\": \""+rs.getString("no_resep")+"-"+rs.getString("kode_brng")+"-"+rs.getString("no_racik")+"\"" +
                                                 "}" +
                                             "]," +
                                             "\"status\": \"completed\"," +
@@ -8187,6 +8179,10 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]," +
                                             "\"dateAsserted\": \""+rs.getString("tgl_penyerahan")+"T"+rs.getString("jam_penyerahan")+"+07:00\"," +
+                                            "\"informationSource\": {" +
+                                                "\"reference\": \"Patient/"+idpasien+"\"," +
+                                                "\"display\": \""+rs.getString("nm_pasien")+"\"" +
+                                            "}," +
                                             "\"context\": {" +
                                                 "\"reference\": \"Encounter/"+rs.getString("id_encounter")+"\"" +
                                             "}," +

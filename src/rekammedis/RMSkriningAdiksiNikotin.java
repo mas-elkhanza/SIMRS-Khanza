@@ -313,11 +313,11 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         Kesimpulan = new widget.TextBox();
         jLabel73 = new widget.Label();
         TotalSkor = new widget.TextBox();
-        jSeparator5 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel150 = new widget.Label();
         jLabel152 = new widget.Label();
         SkalaMotivasi = new widget.ComboBox();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel101 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -516,7 +516,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -530,7 +530,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -673,7 +673,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 75, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-10-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -758,7 +758,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         btnPetugas.setBounds(761, 40, 28, 23);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("Kuisioner Adiksi Nikotin Fagerstroom ( Skala Fagerstroom )");
+        jLabel99.setText("I. ANAMNESIS");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
         jLabel99.setBounds(11, 70, 290, 23);
@@ -767,15 +767,15 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         jLabel75.setText("1.");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(44, 100, 20, 23);
+        jLabel75.setBounds(44, 90, 20, 23);
 
         jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel76.setText("Berapa banyak rokok yang anda hisap dalam satu hari");
+        jLabel76.setText("Berapa banyak rokok yang Anda hisap dalam satu hari ?");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(62, 100, 300, 23);
+        jLabel76.setBounds(62, 90, 300, 23);
 
-        HisapRokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1-10", "11-20", "21-30", "31 atau Lebih" }));
+        HisapRokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1-10", "11-20", "21-30", ">=31" }));
         HisapRokok.setName("HisapRokok"); // NOI18N
         HisapRokok.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -788,34 +788,33 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(HisapRokok);
-        HisapRokok.setBounds(520, 100, 180, 23);
+        HisapRokok.setBounds(600, 90, 100, 23);
 
         jLabel92.setText("Skor :");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(700, 100, 40, 23);
+        jLabel92.setBounds(700, 90, 40, 23);
 
         skorHisap.setEditable(false);
         skorHisap.setText("0");
         skorHisap.setFocusTraversalPolicyProvider(true);
         skorHisap.setName("skorHisap"); // NOI18N
         FormInput.add(skorHisap);
-        skorHisap.setBounds(744, 100, 45, 23);
+        skorHisap.setBounds(744, 90, 45, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel77.setText("2.");
         jLabel77.setName("jLabel77"); // NOI18N
         FormInput.add(jLabel77);
-        jLabel77.setBounds(44, 130, 20, 23);
+        jLabel77.setBounds(44, 120, 20, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("Seberapa cepat anda menyalakan rokok pertama anda setelah terjaga");
+        jLabel78.setText("Seberapa cepat Anda menyalakan rokok pertama anda setelah terjaga ?");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(62, 130, 370, 23);
+        jLabel78.setBounds(62, 120, 370, 23);
 
-        CepatMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dalam 5 menit", "6 hingga 30 menit ", "31 hingga 60 menit", "Setelah 60 menit" }));
-        CepatMerokok.setSelectedIndex(3);
+        CepatMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dalam 5 Menit", "6 Hingga 30 Menit ", "31 Hingga 60 Menit", "Setelah 60 Menit" }));
         CepatMerokok.setName("CepatMerokok"); // NOI18N
         CepatMerokok.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -828,33 +827,33 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(CepatMerokok);
-        CepatMerokok.setBounds(520, 130, 180, 23);
+        CepatMerokok.setBounds(555, 120, 145, 23);
 
         jLabel69.setText("Skor :");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(700, 130, 40, 23);
+        jLabel69.setBounds(700, 120, 40, 23);
 
         skorCepatRokok.setEditable(false);
         skorCepatRokok.setText("0");
         skorCepatRokok.setFocusTraversalPolicyProvider(true);
         skorCepatRokok.setName("skorCepatRokok"); // NOI18N
         FormInput.add(skorCepatRokok);
-        skorCepatRokok.setBounds(744, 130, 45, 23);
+        skorCepatRokok.setBounds(744, 120, 45, 23);
 
         jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel96.setText("3.");
         jLabel96.setName("jLabel96"); // NOI18N
         FormInput.add(jLabel96);
-        jLabel96.setBounds(44, 160, 20, 23);
+        jLabel96.setBounds(44, 150, 20, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel95.setText("Rokok mana yang paling anda tidak relakan untuk di hentikan");
+        jLabel95.setText("Rokok mana yang paling Anda tidak relakan untuk di hentikan ?");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
-        jLabel95.setBounds(62, 160, 370, 23);
+        jLabel95.setBounds(62, 150, 370, 23);
 
-        RelakanRokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lainnya", "Rokok pertama pada pagi hari" }));
+        RelakanRokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lainnya", "Rokok Pertama Pada Pagi Hari" }));
         RelakanRokok.setName("RelakanRokok"); // NOI18N
         RelakanRokok.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -867,31 +866,31 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(RelakanRokok);
-        RelakanRokok.setBounds(520, 160, 180, 23);
+        RelakanRokok.setBounds(500, 150, 200, 23);
 
         jLabel97.setText("Skor :");
         jLabel97.setName("jLabel97"); // NOI18N
         FormInput.add(jLabel97);
-        jLabel97.setBounds(700, 160, 40, 23);
+        jLabel97.setBounds(700, 150, 40, 23);
 
         skorRelakanRokok.setEditable(false);
         skorRelakanRokok.setText("0");
         skorRelakanRokok.setFocusTraversalPolicyProvider(true);
         skorRelakanRokok.setName("skorRelakanRokok"); // NOI18N
         FormInput.add(skorRelakanRokok);
-        skorRelakanRokok.setBounds(744, 160, 45, 23);
+        skorRelakanRokok.setBounds(744, 150, 45, 23);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("4.");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
-        jLabel107.setBounds(44, 190, 20, 23);
+        jLabel107.setBounds(44, 180, 20, 23);
 
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel108.setText("Apakah anda merokok lebih banyak dalam jam pertama hari anda dari pada sisa hari anda");
+        jLabel108.setText("Apakah Anda merokok lebih banyak dalam jam pertama hari anda dari pada sisa hari Anda ?");
         jLabel108.setName("jLabel108"); // NOI18N
         FormInput.add(jLabel108);
-        jLabel108.setBounds(62, 190, 440, 23);
+        jLabel108.setBounds(62, 180, 470, 23);
 
         BanyakRokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         BanyakRokok.setName("BanyakRokok"); // NOI18N
@@ -906,37 +905,37 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(BanyakRokok);
-        BanyakRokok.setBounds(520, 190, 180, 23);
+        BanyakRokok.setBounds(610, 180, 90, 23);
 
         jLabel109.setText("Skor :");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(700, 190, 40, 23);
+        jLabel109.setBounds(700, 180, 40, 23);
 
         skorBanyakRokok.setEditable(false);
         skorBanyakRokok.setText("0");
         skorBanyakRokok.setFocusTraversalPolicyProvider(true);
         skorBanyakRokok.setName("skorBanyakRokok"); // NOI18N
         FormInput.add(skorBanyakRokok);
-        skorBanyakRokok.setBounds(744, 190, 45, 23);
+        skorBanyakRokok.setBounds(744, 180, 45, 23);
 
         jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel111.setText("5.");
         jLabel111.setName("jLabel111"); // NOI18N
         FormInput.add(jLabel111);
-        jLabel111.setBounds(44, 220, 20, 23);
+        jLabel111.setBounds(44, 210, 20, 23);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel110.setText("Apakah anda kesulitan menahan rasa ingin merokok di tempat yang dilarang seperti :");
+        jLabel110.setText("Apakah Anda kesulitan menahan rasa ingin merokok di tempat yang dilarang seperti bangunan umum,");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
-        jLabel110.setBounds(62, 220, 440, 23);
+        jLabel110.setBounds(62, 205, 550, 23);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel113.setText("Bangunan Umum, Pesawat terbang, atau ditempat kerja");
+        jLabel113.setText("pesawat terbang, atau di tempat kerja ?");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
-        jLabel113.setBounds(62, 233, 530, 23);
+        jLabel113.setBounds(62, 217, 530, 23);
 
         Kesulitan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Kesulitan.setName("Kesulitan"); // NOI18N
@@ -951,37 +950,37 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kesulitan);
-        Kesulitan.setBounds(520, 220, 180, 23);
+        Kesulitan.setBounds(610, 210, 90, 23);
 
         jLabel112.setText("Skor :");
         jLabel112.setName("jLabel112"); // NOI18N
         FormInput.add(jLabel112);
-        jLabel112.setBounds(700, 220, 40, 23);
+        jLabel112.setBounds(700, 210, 40, 23);
 
         skorKesulitan.setEditable(false);
         skorKesulitan.setText("0");
         skorKesulitan.setFocusTraversalPolicyProvider(true);
         skorKesulitan.setName("skorKesulitan"); // NOI18N
         FormInput.add(skorKesulitan);
-        skorKesulitan.setBounds(744, 220, 45, 23);
+        skorKesulitan.setBounds(744, 210, 45, 23);
 
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel114.setText("6.");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
-        jLabel114.setBounds(44, 250, 20, 23);
+        jLabel114.setBounds(44, 240, 20, 23);
 
         jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel115.setText("Apakah Anda masih merokok ketika anda sakit berat, sehingga anda harus berbaring");
+        jLabel115.setText("Apakah Anda masih merokok ketika Anda sakit berat, sehingga Anda harus berbaring");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
-        jLabel115.setBounds(62, 250, 440, 23);
+        jLabel115.setBounds(62, 235, 440, 23);
 
         jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel118.setText("dalam sebagian besar waktu anda");
+        jLabel118.setText("dalam sebagian besar waktu Anda ?");
         jLabel118.setName("jLabel118"); // NOI18N
         FormInput.add(jLabel118);
-        jLabel118.setBounds(62, 263, 530, 23);
+        jLabel118.setBounds(62, 247, 530, 23);
 
         Sakit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Sakit.setName("Sakit"); // NOI18N
@@ -996,19 +995,19 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(Sakit);
-        Sakit.setBounds(520, 250, 180, 23);
+        Sakit.setBounds(610, 240, 90, 23);
 
         jLabel116.setText("Skor :");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
-        jLabel116.setBounds(700, 250, 40, 23);
+        jLabel116.setBounds(700, 240, 40, 23);
 
         skorSakit.setEditable(false);
         skorSakit.setText("0");
         skorSakit.setFocusTraversalPolicyProvider(true);
         skorSakit.setName("skorSakit"); // NOI18N
         FormInput.add(skorSakit);
-        skorSakit.setBounds(744, 250, 45, 23);
+        skorSakit.setBounds(744, 240, 45, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1021,12 +1020,12 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         jLabel148.setText("Kesimpulan");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
-        jLabel148.setBounds(44, 300, 60, 23);
+        jLabel148.setBounds(44, 290, 80, 23);
 
         jLabel149.setText(":");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(85, 300, 40, 23);
+        jLabel149.setBounds(-5, 290, 130, 23);
 
         Kesimpulan.setEditable(false);
         Kesimpulan.setFocusTraversalPolicyProvider(true);
@@ -1037,44 +1036,30 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kesimpulan);
-        Kesimpulan.setBounds(130, 300, 540, 23);
+        Kesimpulan.setBounds(130, 290, 540, 23);
 
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(670, 300, 70, 23);
+        jLabel73.setBounds(670, 290, 70, 23);
 
         TotalSkor.setEditable(false);
         TotalSkor.setText("0");
         TotalSkor.setFocusTraversalPolicyProvider(true);
         TotalSkor.setName("TotalSkor"); // NOI18N
         FormInput.add(TotalSkor);
-        TotalSkor.setBounds(744, 300, 45, 23);
-
-        jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator5.setName("jSeparator5"); // NOI18N
-        FormInput.add(jSeparator5);
-        jSeparator5.setBounds(44, 290, 763, 1);
-
-        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator2.setName("jSeparator2"); // NOI18N
-        FormInput.add(jSeparator2);
-        jSeparator2.setBounds(44, 330, 763, 1);
+        TotalSkor.setBounds(744, 290, 45, 23);
 
         jLabel150.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel150.setText("Skala Motivasi");
         jLabel150.setName("jLabel150"); // NOI18N
         FormInput.add(jLabel150);
-        jLabel150.setBounds(44, 340, 69, 23);
+        jLabel150.setBounds(44, 340, 90, 23);
 
         jLabel152.setText(":");
         jLabel152.setName("jLabel152"); // NOI18N
         FormInput.add(jLabel152);
-        jLabel152.setBounds(85, 340, 40, 23);
+        jLabel152.setBounds(-5, 340, 130, 23);
 
         SkalaMotivasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Saya SUDAH memutuskan TIDAK akan berhenti merokok seumur hidup saya", "2. Saya TIDAK PERNAH berpikir untuk berhenti merokok. Saya TIDAK PUNYA rencana untuk berhenti", "3. Saya PERNAH berpikir untuk berhentl merokok, tetapi Saya TIDAK PUNYA rencana", "4. TERKADANG saya berpikir untuk berhenti merokok, tetapi saya tidak punya rencana", "5. Saya SERING berpikir untuk berhentl merokok, tetapi saya tidak punya rencana", "6. Saya BERENCANA untuk berhenti merokok dalam 6 bulan ke depan", "7. Saya berencana untuk berhenti merokok dalam 30 hari ke depan", "8. Saya masih merokok, tetapi saya mau berubah. Saya siap untuk berhenti merokok", "9. Saya sudah berhenti merokok, tetapisaya khawatir akan merokok kembali, saya butuh lingkungan tanpa asap rokok", "10. Saya sudah berhenti merokok", " " }));
         SkalaMotivasi.setSelectedIndex(7);
@@ -1090,7 +1075,20 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(SkalaMotivasi);
-        SkalaMotivasi.setBounds(130, 340, 660, 23);
+        SkalaMotivasi.setBounds(130, 340, 659, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 270, 807, 1);
+
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel101.setText("II. INTERPRETASI");
+        jLabel101.setName("jLabel101"); // NOI18N
+        FormInput.add(jLabel101);
+        jLabel101.setBounds(10, 270, 200, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1723,6 +1721,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
     private widget.Button btnPetugas;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel101;
     private widget.Label jLabel107;
     private widget.Label jLabel108;
     private widget.Label jLabel109;
@@ -1760,8 +1759,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
