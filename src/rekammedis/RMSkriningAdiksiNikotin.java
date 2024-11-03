@@ -516,7 +516,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -530,7 +530,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -591,7 +591,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 450));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 375));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -621,7 +621,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 380));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 350));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -673,7 +673,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 75, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-11-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -788,7 +788,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(HisapRokok);
-        HisapRokok.setBounds(600, 90, 100, 23);
+        HisapRokok.setBounds(610, 90, 90, 23);
 
         jLabel92.setText("Skor :");
         jLabel92.setName("jLabel92"); // NOI18N
@@ -814,7 +814,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         FormInput.add(jLabel78);
         jLabel78.setBounds(62, 120, 370, 23);
 
-        CepatMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dalam 5 Menit", "6 Hingga 30 Menit ", "31 Hingga 60 Menit", "Setelah 60 Menit" }));
+        CepatMerokok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dalam 5 Menit", "6 Hingga 30 Menit", "31 Hingga 60 Menit", "Setelah 60 Menit" }));
         CepatMerokok.setName("CepatMerokok"); // NOI18N
         CepatMerokok.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1025,7 +1025,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         jLabel149.setText(":");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(-5, 290, 130, 23);
+        jLabel149.setBounds(0, 290, 108, 23);
 
         Kesimpulan.setEditable(false);
         Kesimpulan.setFocusTraversalPolicyProvider(true);
@@ -1036,7 +1036,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kesimpulan);
-        Kesimpulan.setBounds(130, 290, 540, 23);
+        Kesimpulan.setBounds(112, 290, 500, 23);
 
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
@@ -1054,15 +1054,14 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
         jLabel150.setText("Skala Motivasi");
         jLabel150.setName("jLabel150"); // NOI18N
         FormInput.add(jLabel150);
-        jLabel150.setBounds(44, 340, 90, 23);
+        jLabel150.setBounds(44, 320, 90, 23);
 
         jLabel152.setText(":");
         jLabel152.setName("jLabel152"); // NOI18N
         FormInput.add(jLabel152);
-        jLabel152.setBounds(-5, 340, 130, 23);
+        jLabel152.setBounds(0, 320, 120, 23);
 
-        SkalaMotivasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Saya SUDAH memutuskan TIDAK akan berhenti merokok seumur hidup saya", "2. Saya TIDAK PERNAH berpikir untuk berhenti merokok. Saya TIDAK PUNYA rencana untuk berhenti", "3. Saya PERNAH berpikir untuk berhentl merokok, tetapi Saya TIDAK PUNYA rencana", "4. TERKADANG saya berpikir untuk berhenti merokok, tetapi saya tidak punya rencana", "5. Saya SERING berpikir untuk berhentl merokok, tetapi saya tidak punya rencana", "6. Saya BERENCANA untuk berhenti merokok dalam 6 bulan ke depan", "7. Saya berencana untuk berhenti merokok dalam 30 hari ke depan", "8. Saya masih merokok, tetapi saya mau berubah. Saya siap untuk berhenti merokok", "9. Saya sudah berhenti merokok, tetapisaya khawatir akan merokok kembali, saya butuh lingkungan tanpa asap rokok", "10. Saya sudah berhenti merokok", " " }));
-        SkalaMotivasi.setSelectedIndex(7);
+        SkalaMotivasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Saya SUDAH memutuskan TIDAK akan berhenti merokok seumur hidup Saya", "2. Saya TIDAK PERNAH berpikir untuk berhenti merokok. Saya TIDAK PUNYA rencana untuk berhenti", "3. Saya PERNAH berpikir untuk berhentl merokok, tetapi Saya TIDAK PUNYA rencana", "4. TERKADANG Saya berpikir untuk berhenti merokok, tetapi Saya tidak punya rencana", "5. Saya SERING berpikir untuk berhentl merokok, tetapi Saya tidak punya rencana", "6. Saya BERENCANA untuk berhenti merokok dalam 6 bulan ke depan", "7. Saya berencana untuk berhenti merokok dalam 30 hari ke depan", "8. Saya masih merokok, tetapi Saya mau berubah. Saya siap untuk berhenti merokok", "9. Saya sudah berhenti merokok, tetapi Saya khawatir akan merokok kembali, Saya butuh lingkungan tanpa asap rokok", "10. Saya sudah berhenti merokok" }));
         SkalaMotivasi.setName("SkalaMotivasi"); // NOI18N
         SkalaMotivasi.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1075,7 +1074,7 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }
         });
         FormInput.add(SkalaMotivasi);
-        SkalaMotivasi.setBounds(130, 340, 659, 23);
+        SkalaMotivasi.setBounds(124, 320, 665, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
@@ -1542,23 +1541,21 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
     }//GEN-LAST:event_MnSkriningAdiksiNikotinActionPerformed
 
     private void HisapRokokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HisapRokokItemStateChanged
-        if ((!HisapRokok.getSelectedItem().toString().equals(""))) {
-            switch (HisapRokok.getSelectedItem().toString()) {
-                case "1-10":
-                    skorHisap.setText("0");
-                    break;
-                case "11-20":
-                    skorHisap.setText("1");
-                    break;
-                case "21-30":
-                    skorHisap.setText("2");
-                    break;
-                case "31 atau Lebih":
-                    skorHisap.setText("3");
-                    break;
-                default:
-                    break;
-            }
+        switch (HisapRokok.getSelectedItem().toString()) {
+            case "1-10":
+                skorHisap.setText("0");
+                break;
+            case "11-20":
+                skorHisap.setText("1");
+                break;
+            case "21-30":
+                skorHisap.setText("2");
+                break;
+            case ">=31":
+                skorHisap.setText("3");
+                break;
+            default:
+                break;
         }
         isTotal();
     }//GEN-LAST:event_HisapRokokItemStateChanged
@@ -1568,23 +1565,21 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
     }//GEN-LAST:event_HisapRokokKeyPressed
 
     private void CepatMerokokItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CepatMerokokItemStateChanged
-        if ((!CepatMerokok.getSelectedItem().toString().equals(""))) {
-            switch (CepatMerokok.getSelectedItem().toString()) {
-                case "Dalam 5 menit":
-                    skorCepatRokok.setText("3");
-                    break;
-                case "6 hingga 30 menit ":
-                    skorCepatRokok.setText("2");
-                    break;
-                case "31 hingga 60 menit":
-                    skorCepatRokok.setText("1");
-                    break;
-                case "Setelah 60 menit":
-                    skorCepatRokok.setText("0");
-                    break;
-                default:
-                    break;
-            }
+        switch (CepatMerokok.getSelectedItem().toString()) {
+            case "Dalam 5 Menit":
+                skorCepatRokok.setText("3");
+                break;
+            case "6 Hingga 30 Menit":
+                skorCepatRokok.setText("2");
+                break;
+            case "31 Hingga 60 Menit":
+                skorCepatRokok.setText("1");
+                break;
+            case "Setelah 60 Menit":
+                skorCepatRokok.setText("0");
+                break;
+            default:
+                break;
         }
         isTotal();
     }//GEN-LAST:event_CepatMerokokItemStateChanged
@@ -1986,9 +1981,9 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>608){
+            if(internalFrame1.getHeight()>573){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,410));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,375));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -2158,8 +2153,6 @@ public final class RMSkriningAdiksiNikotin extends javax.swing.JDialog {
             }else{
                 Kesimpulan.setText("Ketergantungan Rendah");
             }
-            
-
         } catch (Exception e) {
             Kesimpulan.setText("Ketergantungan Rendah");
         }
