@@ -32,7 +32,7 @@ import org.springframework.http.MediaType;
 public class frmUtama extends javax.swing.JFrame {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
-    private String json="",link="",nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",iddokter="",idpasien="",sistole="0",diastole="0",signa1="1",signa2="1";
+    private String json="",link="",nol_jam = "",nol_menit = "",nol_detik = "",jam="",menit="",detik="",iddokter="",idpasien="",sistole="0",diastole="0",signa1="1",signa2="1",idrequest="";
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -4341,6 +4341,7 @@ public class frmUtama extends javax.swing.JFrame {
                         try {
                             idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
                             iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                            idrequest=Sequel.cariIsi("select satu_sehat_medicationrequest.id_medicationrequest where satu_sehat_medicationrequest.no_resep='"+rs.getString("no_resep")+"' and satu_sehat_medicationrequest.kode_brng='"+rs.getString("kode_brng")+"'");
                             arrSplit = rs.getString("aturan").toLowerCase().split("x");
                             signa1="1";
                             try {
@@ -4409,6 +4410,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Location/"+rs.getString("id_lokasi_satusehat")+"\"," +
                                                 "\"display\": \""+rs.getString("nm_bangsal")+"\"" +
                                             "},"+
+                                            (idrequest.equals("")?"":
+                                                "\"authorizingPrescription\": [{" +
+                                                    "\"reference\": \"MedicationRequest/"+idrequest+"\"" +
+                                                "}],"
+                                            )+
                                             "\"quantity\": {" +
                                                 "\"system\": \""+rs.getString("denominator_system")+"\"," +
                                                 "\"code\": \""+rs.getString("denominator_code")+"\"," +
@@ -4518,6 +4524,7 @@ public class frmUtama extends javax.swing.JFrame {
                         try {
                             idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
                             iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
+                            idrequest=Sequel.cariIsi("select satu_sehat_medicationrequest.id_medicationrequest where satu_sehat_medicationrequest.no_resep='"+rs.getString("no_resep")+"' and satu_sehat_medicationrequest.kode_brng='"+rs.getString("kode_brng")+"'");
                             arrSplit = rs.getString("aturan").toLowerCase().split("x");
                             signa1="1";
                             try {
@@ -4586,6 +4593,11 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\": \"Location/"+rs.getString("id_lokasi_satusehat")+"\"," +
                                                 "\"display\": \""+rs.getString("nm_bangsal")+"\"" +
                                             "},"+
+                                            (idrequest.equals("")?"":
+                                                "\"authorizingPrescription\": [{" +
+                                                    "\"reference\": \"MedicationRequest/"+idrequest+"\"" +
+                                                "}],"
+                                            )+
                                             "\"quantity\": {" +
                                                 "\"system\": \""+rs.getString("denominator_system")+"\"," +
                                                 "\"code\": \""+rs.getString("denominator_code")+"\"," +

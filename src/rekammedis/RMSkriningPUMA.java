@@ -530,7 +530,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -544,7 +544,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -665,7 +665,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-10-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -938,6 +938,11 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
 
         JumlahRokok.setFocusTraversalPolicyProvider(true);
         JumlahRokok.setName("JumlahRokok"); // NOI18N
+        JumlahRokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JumlahRokokKeyPressed(evt);
+            }
+        });
         FormInput.add(JumlahRokok);
         JumlahRokok.setBounds(615, 180, 50, 23);
 
@@ -955,6 +960,11 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
 
         LamaMerokok.setFocusTraversalPolicyProvider(true);
         LamaMerokok.setName("LamaMerokok"); // NOI18N
+        LamaMerokok.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LamaMerokokKeyPressed(evt);
+            }
+        });
         FormInput.add(LamaMerokok);
         LamaMerokok.setBounds(615, 210, 50, 23);
 
@@ -1600,7 +1610,12 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     }//GEN-LAST:event_PernahMerokokItemStateChanged
 
     private void PernahMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernahMerokokKeyPressed
-        Valid.pindah(evt,Usia,NafasPendek);
+        if(PernahMerokok.getSelectedIndex()==0){
+            Valid.pindah(evt,Usia,NafasPendek);
+        }else if(PernahMerokok.getSelectedIndex()==1){
+            Valid.pindah(evt,Usia,JumlahRokok);
+        }
+            
     }//GEN-LAST:event_PernahMerokokKeyPressed
 
     private void NafasPendekItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NafasPendekItemStateChanged
@@ -1654,6 +1669,14 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     private void SpirometriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SpirometriKeyPressed
         Valid.pindah(evt,Batuk,BtnSimpan);
     }//GEN-LAST:event_SpirometriKeyPressed
+
+    private void JumlahRokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JumlahRokokKeyPressed
+        Valid.pindah(evt,PernahMerokok,LamaMerokok);
+    }//GEN-LAST:event_JumlahRokokKeyPressed
+
+    private void LamaMerokokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LamaMerokokKeyPressed
+        Valid.pindah(evt,JumlahRokok,NafasPendek);
+    }//GEN-LAST:event_LamaMerokokKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1851,23 +1874,14 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
     public void emptTeks() {
         Tanggal.setDate(new Date());
         JK.setSelectedIndex(0);
-        skorJk.setText("0");
         Usia.setSelectedIndex(0);
-        skorUsia.setText("0");
         PernahMerokok.setSelectedIndex(0);
-        skorPernahMerokok.setText("0");
         JumlahRokok.setText("");
         LamaMerokok.setText("");
         NafasPendek.setSelectedIndex(0);
-        skorNafas.setText("0");
         Dahak.setSelectedIndex(0);
-        skordahak.setText("0");
         Batuk.setSelectedIndex(0);
-        skorBatuk.setText("0");
         Spirometri.setSelectedIndex(0);
-        skorSpirometri.setText("0");
-        TotalHasil.setText("0");
-        Tindakan.setText("Edukasi Bahaya Rokok");
         JK.requestFocus();
     } 
 
