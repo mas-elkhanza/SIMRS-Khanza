@@ -234,7 +234,7 @@ public final class akses {
             skrining_kekerasan_pada_perempuan=false,skrining_obesitas=false,skrining_risiko_kanker_payudara=false,skrining_risiko_kanker_paru=false,skrining_tbc=false,
             skrining_kesehatan_gigi_mulut_remaja=false,penilaian_awal_keperawatan_ranap_bayi=false,booking_mcu_perusahaan=false,catatan_observasi_restrain_nonfarma=false,
             catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,skrining_puma=false,satu_sehat_kirim_careplan=false,satu_sehat_kirim_medicationstatement=false,
-            skrining_adiksi_nikotin=false;
+            skrining_adiksi_nikotin=false,skrining_thalassemia=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1324,6 +1324,7 @@ public final class akses {
                         akses.satu_sehat_kirim_careplan=true;
                         akses.satu_sehat_kirim_medicationstatement=true;
                         akses.skrining_adiksi_nikotin=true;
+                        akses.skrining_thalassemia=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2397,6 +2398,7 @@ public final class akses {
                         akses.satu_sehat_kirim_careplan=rs2.getBoolean("satu_sehat_kirim_careplan");
                         akses.satu_sehat_kirim_medicationstatement=rs2.getBoolean("satu_sehat_kirim_medicationstatement");
                         akses.skrining_adiksi_nikotin=rs2.getBoolean("skrining_adiksi_nikotin");
+                        akses.skrining_thalassemia=rs2.getBoolean("skrining_thalassemia");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3468,6 +3470,7 @@ public final class akses {
                         akses.satu_sehat_kirim_careplan=false;
                         akses.satu_sehat_kirim_medicationstatement=false;
                         akses.skrining_adiksi_nikotin=false;
+                        akses.skrining_thalassemia=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4562,6 +4565,7 @@ public final class akses {
         akses.satu_sehat_kirim_careplan=false;
         akses.satu_sehat_kirim_medicationstatement=false;
         akses.skrining_adiksi_nikotin=false;
+        akses.skrining_thalassemia=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5672,4 +5676,5 @@ public final class akses {
     public static boolean getsatu_sehat_kirim_careplan(){return akses.satu_sehat_kirim_careplan;}
     public static boolean getsatu_sehat_kirim_medicationstatement(){return akses.satu_sehat_kirim_medicationstatement;}
     public static boolean getskrining_adiksi_nikotin(){return akses.skrining_adiksi_nikotin;}
+    public static boolean getskrining_thalassemia(){return akses.skrining_thalassemia;}
 }   
