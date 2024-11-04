@@ -67,9 +67,9 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Rutin Menerima Transfusi Darah","Saudara Thalasemia","Keluarga Rutin Transfusi","Tumbuh Kembang Terlambat",
-            "Anemia","Icterus","Facies Folley","Perut Buncit","Gizi Kurang / Buruk","Perawakan pendek","Hiperpigmentasi",
-            "pemeriksaan Hb","Pemeriksaan MVC","Pemeriksaan MCHC","Pemeriksaan Darah tepi","Keterangan"
+            "Rutin Menerima Transfusi","Keluarga Rutin Transfusi","Ada Saudara Thalassemia","Tumbuh Kembang Terlambat",
+            "Anemia","Ikterus","Perut Buncit","Gizi Kurang/Buruk","Facies Cooley","Perawakan Pendek","Hiperpigmentasi Kulit",
+            "HB","MVC","MCHC","Darah Tepi","Tindak Lanjut"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -98,37 +98,37 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(170);
-            }else if(i==9){
-                column.setPreferredWidth(105);
-            }else if(i==10){
-                column.setPreferredWidth(125);
-            }else if(i==11){
-                column.setPreferredWidth(105);
-            }else if(i==12){
-                column.setPreferredWidth(64);
-            }else if(i==13){
-                column.setPreferredWidth(64);
-            }else if(i==14){
-                column.setPreferredWidth(95);
-            }else if(i==15){
-                column.setPreferredWidth(95);
-            }else if(i==16){
                 column.setPreferredWidth(135);
+            }else if(i==9){
+                column.setPreferredWidth(130);
+            }else if(i==10){
+                column.setPreferredWidth(135);
+            }else if(i==11){
+                column.setPreferredWidth(150);
+            }else if(i==12){
+                column.setPreferredWidth(50);
+            }else if(i==13){
+                column.setPreferredWidth(50);
+            }else if(i==14){
+                column.setPreferredWidth(70);
+            }else if(i==15){
+                column.setPreferredWidth(100);
+            }else if(i==16){
+                column.setPreferredWidth(80);
             }else if(i==17){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(103);
             }else if(i==18){
-                column.setPreferredWidth(95);
+                column.setPreferredWidth(115);
             }else if(i==19){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(60);
             }else if(i==20){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(50);
             }else if(i==21){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(50);
             }else if(i==22){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(80);
             }else if(i==23){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(300);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -226,7 +226,7 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningObesitas = new javax.swing.JMenuItem();
+        MnSkriningThalassemia = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -317,19 +317,19 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningObesitas.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningObesitas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningObesitas.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningObesitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningObesitas.setText("Formulir Skrining Obesitas");
-        MnSkriningObesitas.setName("MnSkriningObesitas"); // NOI18N
-        MnSkriningObesitas.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningObesitas.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningThalassemia.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningThalassemia.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningThalassemia.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningThalassemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningThalassemia.setText("Formulir Skrining Thalassemia");
+        MnSkriningThalassemia.setName("MnSkriningThalassemia"); // NOI18N
+        MnSkriningThalassemia.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningThalassemia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningObesitasActionPerformed(evt);
+                MnSkriningThalassemiaActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningObesitas);
+        jPopupMenu1.add(MnSkriningThalassemia);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1239,20 +1239,22 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebiasaan Makan Manis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Aktifitas Fisik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Istirahat Cukup</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko Merokok</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Alkohol/Merokok Keluarga</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penggunaan Steroid</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB(Kg)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB(Cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IMT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kasifikasi IMT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>LP(Cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko L.P.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Obesitas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rutin Menerima Transfusi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Rutin Transfusi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ada Saudara Thalassemia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tumbuh Kembang Terlambat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anemia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ikterus</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perut Buncit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gizi Kurang/Buruk</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Facies Cooley</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perawakan Pendek</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hiperpigmentasi Kulit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>HB</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MVC</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MCHC</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Darah Tepi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindak Lanjut</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1280,11 +1282,13 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
                             "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='1700px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1305,17 +1309,17 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataSkriningObesitas.html");            
+                File f = new File("DataSkriningThalassemia.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='1700px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING OBESITAS<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING THALASSEMIA<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1438,7 +1442,7 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,btnPetugas);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningObesitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningObesitasActionPerformed
+    private void MnSkriningThalassemiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningThalassemiaActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1450,16 +1454,16 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningObesitas.jasper","report","::[ Formulir Skrining Obesitas ]::",
+            Valid.MyReportqry("rptFormulirSkriningThalasemia.jasper","report","::[ Formulir Skrining Thalassemia ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.kebiasaan_makan_manis,skrining_thalassemia.aktifitas_fisik_setiap_hari,skrining_thalassemia.istirahat_cukup,skrining_thalassemia.risiko_merokok,"+
-                    "skrining_thalassemia.riwayat_minum_alkohol_merokok_keluarga,skrining_thalassemia.riwayat_penggunaan_obat_steroid,skrining_thalassemia.berat_badan,skrining_thalassemia.tinggi_badan,"+
-                    "skrining_thalassemia.imt,skrining_thalassemia.kasifikasi_imt,skrining_thalassemia.lingkar_pinggang,skrining_thalassemia.risiko_lingkar_pinggang,skrining_thalassemia.status_obesitas,"+
-                    "skrining_thalassemia.keterangan from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_thalassemia.nip=petugas.nip "+
-                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
+                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
+                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
+                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur from skrining_thalassemia inner join reg_periksa "+
+                    "on skrining_thalassemia.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
+                    "on skrining_thalassemia.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningObesitasActionPerformed
+    }//GEN-LAST:event_MnSkriningThalassemiaActionPerformed
 
     private void TransfusiDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarahKeyPressed
         Valid.pindah(evt,btnPetugas,SaudaraTalasemia);
@@ -1614,7 +1618,7 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
     private widget.ComboBox MCHC;
     private widget.ComboBox MVC;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningObesitas;
+    private javax.swing.JMenuItem MnSkriningThalassemia;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox Pendek;
@@ -1679,28 +1683,22 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            /*
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Kebiasaan Makan Manis","Aktifitas Fisik","Istirahat Cukup","Risiko Merokok","Riwayat Alkohol/Merokok Keluarga",
-            "Riwayat Penggunaan Steroid","BB(Kg)","TB(Cm)","IMT","Kasifikasi IMT","LP","Risiko L.P.",
-            "Status Obesitas","Keterangan"
-            */
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.kebiasaan_makan_manis,skrining_thalassemia.aktifitas_fisik_setiap_hari,skrining_thalassemia.istirahat_cukup,skrining_thalassemia.risiko_merokok,"+
-                    "skrining_thalassemia.riwayat_minum_alkohol_merokok_keluarga,skrining_thalassemia.riwayat_penggunaan_obat_steroid,skrining_thalassemia.berat_badan,skrining_thalassemia.tinggi_badan,"+
-                    "skrining_thalassemia.imt,skrining_thalassemia.kasifikasi_imt,skrining_thalassemia.lingkar_pinggang,skrining_thalassemia.risiko_lingkar_pinggang,skrining_thalassemia.status_obesitas,"+
-                    "skrining_thalassemia.keterangan from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
+                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
+                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
+                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_thalassemia.nip=petugas.nip "+
                     "where skrining_thalassemia.tanggal between ? and ? order by skrining_thalassemia.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.kebiasaan_makan_manis,skrining_thalassemia.aktifitas_fisik_setiap_hari,skrining_thalassemia.istirahat_cukup,skrining_thalassemia.risiko_merokok,"+
-                    "skrining_thalassemia.riwayat_minum_alkohol_merokok_keluarga,skrining_thalassemia.riwayat_penggunaan_obat_steroid,skrining_thalassemia.berat_badan,skrining_thalassemia.tinggi_badan,"+
-                    "skrining_thalassemia.imt,skrining_thalassemia.kasifikasi_imt,skrining_thalassemia.lingkar_pinggang,skrining_thalassemia.risiko_lingkar_pinggang,skrining_thalassemia.status_obesitas,"+
-                    "skrining_thalassemia.keterangan from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
+                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
+                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
+                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_thalassemia.nip=petugas.nip "+
                     "where skrining_thalassemia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or skrining_thalassemia.nip like ? or petugas.nama like ?) "+
@@ -1725,9 +1723,9 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("kebiasaan_makan_manis"),rs.getString("aktifitas_fisik_setiap_hari"),rs.getString("istirahat_cukup"),rs.getString("risiko_merokok"),rs.getString("riwayat_minum_alkohol_merokok_keluarga"),
-                        rs.getString("riwayat_penggunaan_obat_steroid"),rs.getString("berat_badan"),rs.getString("tinggi_badan"),rs.getString("imt"),rs.getString("kasifikasi_imt"),rs.getString("lingkar_pinggang"),
-                        rs.getString("risiko_lingkar_pinggang"),rs.getString("status_obesitas"),rs.getString("keterangan")
+                        rs.getString("transfusi_darah"),rs.getString("rutin_transfusi"),rs.getString("saudara_thalassemia"),rs.getString("tumbuh_kembang_terlambat"),rs.getString("anemia"),rs.getString("ikterus"),
+                        rs.getString("perut_buncit"),rs.getString("gizi_kurang"),rs.getString("facies_cooley"),rs.getString("perawakan_pendek"),rs.getString("hiperpigmentasi_kulit"),rs.getString("hemoglobin"),
+                        rs.getString("mvc"),rs.getString("mchc"),rs.getString("darah_tepi"),rs.getString("tindak_lanjut")
                     });
                 }
             } catch (Exception e) {
@@ -1943,12 +1941,12 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
 
     private void ganti() {
         if(Sequel.mengedittf("skrining_thalassemia","no_rawat=?","no_rawat=?,tanggal=?,nip=?,transfusi_darah=?,rutin_transfusi=?,saudara_thalassemia=?,tumbuh_kembang_terlambat=?,anemia=?,"+
-                "ikterus=?,perut_bunci=?,gizi_kurang=?,facies_cooley=?,perawakan_pendek=?,hiperpigmentasi_kulit=?,hemoglobin=?,mvc=?,mchc=?,darah_tepi=?,tindak_lanjut=?",20,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),TransfusiDarah.getSelectedItem().toString(),
-                SaudaraTalasemia.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),
-                Icterus.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(),GiziKurang.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),
-                Hiperpigmentasi.getSelectedItem().toString(),Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),
-                TindakLanjut.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                "ikterus=?,perut_buncit=?,gizi_kurang=?,facies_cooley=?,perawakan_pendek=?,hiperpigmentasi_kulit=?,hemoglobin=?,mvc=?,mchc=?,darah_tepi=?,tindak_lanjut=?",20,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                KdPetugas.getText(),TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(), 
+                TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(), 
+                GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(), 
+                Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1959,14 +1957,14 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
                tbObat.setValueAt(TransfusiDarah.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(SaudaraTalasemia.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(RutinTransfusi.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(RutinTransfusi.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(SaudaraTalasemia.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
                tbObat.setValueAt(TumbangTerlambat.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
                tbObat.setValueAt(Anemia.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
                tbObat.setValueAt(Icterus.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(FaciesCooley.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(PerutBuncit.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(GiziKurang.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(PerutBuncit.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(GiziKurang.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(FaciesCooley.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
                tbObat.setValueAt(Pendek.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
                tbObat.setValueAt(Hiperpigmentasi.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
                tbObat.setValueAt(Hb.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
@@ -1994,16 +1992,15 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
     private void simpan() {
         if(Sequel.menyimpantf("skrining_thalassemia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            TransfusiDarah.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(), 
-            TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),
-            PerutBuncit.getSelectedItem().toString(),GiziKurang.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(),
-            Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText(),
-            KdPetugas.getText()
+            KdPetugas.getText(),TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(), 
+            TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(), 
+            GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(), 
+            Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                TransfusiDarah.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),
-                FaciesCooley.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(),GiziKurang.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(),Hb.getSelectedItem().toString(),
+                TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(),TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),
+                PerutBuncit.getSelectedItem().toString(),GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(),Hb.getSelectedItem().toString(),
                 MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
