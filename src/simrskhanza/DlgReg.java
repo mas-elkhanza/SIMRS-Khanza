@@ -9,12 +9,7 @@
   karena telah berdoa buruk, semua ini kami lakukan karena kami ti
   dak pernah rela karya kami dibajak tanpa ijin.
  */
-/*
- * DlgReg.java
- *
- * Created on Jun 8, 2010, choose Tools | Templates
- * and open the template in10:28:56 PM
- */
+
 
 package simrskhanza;
 import bridging.BPJSCekDataIndukKecelakaan;
