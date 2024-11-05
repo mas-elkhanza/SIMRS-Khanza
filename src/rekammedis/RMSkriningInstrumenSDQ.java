@@ -57,6 +57,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
     private StringBuilder htmlContent;
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -304,6 +305,12 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -318,8 +325,9 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnPenilaianLanjutanRisikoJatuh = new javax.swing.JMenuItem();
-        JK = new widget.TextBox();
         LoadHTML = new widget.editorpane();
+        Jk = new widget.TextBox();
+        TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -522,11 +530,15 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         });
         jPopupMenu1.add(MnPenilaianLanjutanRisikoJatuh);
 
-        JK.setHighlighter(null);
-        JK.setName("JK"); // NOI18N
-
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
+
+        Jk.setEditable(false);
+        Jk.setFocusTraversalPolicyProvider(true);
+        Jk.setName("Jk"); // NOI18N
+
+        TanggalRegistrasi.setHighlighter(null);
+        TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -698,7 +710,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -712,7 +724,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -834,7 +846,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-11-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -2137,7 +2149,6 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
-            isPsien();
         }else{            
             Valid.pindah(evt,TCari,Tanggal);
         }
@@ -2183,7 +2194,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 Kesimpulan.getText()
             })==true){
                 tabMode.addRow(new String[]{
-                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                     SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),
                     SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),
                     SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),
@@ -3239,8 +3250,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox JK;
     private widget.ComboBox Jam;
+    private widget.TextBox Jk;
     private widget.TextBox Kesimpulan;
     private widget.TextBox KesimpulanSkorC;
     private widget.TextBox KesimpulanSkorE;
@@ -3316,6 +3327,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
+    private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
     private widget.TextBox TotalNilai;
     private widget.Button btnPetugas;
@@ -3577,7 +3589,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             SDQ1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
             NilaiSDQ1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
             SDQ2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
@@ -3635,24 +3647,28 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
+    
     private void isRawat() {
-         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
-    }
-
-    private void isPsien() {
         try {
-            ps=koneksi.prepareStatement("select pasien.nm_pasien,pasien.jk,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir from pasien where pasien.no_rkm_medis=?");
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,"+
+                    "reg_periksa.tgl_registrasi,reg_periksa.jam_reg "+
+                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "where reg_periksa.no_rawat=?");
             try {
-                ps.setString(1,TNoRM.getText());
+                ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
                     TPasien.setText(rs.getString("nm_pasien"));
-                    JK.setText(rs.getString("jk"));
-                    TglLahir.setText(rs.getString("lahir"));
+                    Jk.setText(rs.getString("jk"));
+                    TglLahir.setText(rs.getString("tgl_lahir"));
+                    TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
-            }finally {
+            } finally{
                 if(rs!=null){
                     rs.close();
                 }
@@ -3664,31 +3680,22 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             System.out.println("Notif : "+e);
         }
     }
-    
-    public void setNoRm(String norwt, Date tgl2) {
+ 
+    public void setNoRm(String norwt,Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
-        DTPCari2.setDate(tgl2);
-        isRawat();
-        isPsien();
+        DTPCari2.setDate(tgl2);    
+        isRawat(); 
         ChkInput.setSelected(true);
         isForm();
     }
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>718){
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,576));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }else{
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+            FormInput.setVisible(true);      
+            ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
@@ -3807,7 +3814,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
             tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
-            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),4);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(SDQ1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
             tbObat.setValueAt(NilaiSDQ1.getText(),tbObat.getSelectedRow(),7);

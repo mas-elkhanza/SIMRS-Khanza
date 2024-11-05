@@ -962,6 +962,7 @@ import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningAdiksiNikotin;
+import rekammedis.RMSkriningInstrumenSDQ;
 import rekammedis.RMSkriningKekerasanPadaPerempuan;
 import rekammedis.RMSkriningMPP;
 import rekammedis.RMSkriningMPPFormA;
@@ -21859,6 +21860,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSkriningInstrumenSDQActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningInstrumenSDQ form=new RMSkriningInstrumenSDQ(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22555,7 +22569,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan,btnSkriningObesitas,btnSkriningRisikoKankerPayudara,btnSkriningRisikoKankerParu,
             btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnCatatanObservasiRestrainNonFramakologi,
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
-            btnSkriningThalassemia;
+            btnSkriningThalassemia,btnSkriningInstrumenSDQ;
     
     public void isWall(){
         try{            
@@ -26741,6 +26755,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_thalassemia()==true){
                 Panelmenu.add(btnSkriningThalassemia);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_instrumen_sdq()==true){
+                Panelmenu.add(btnSkriningInstrumenSDQ);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -32020,6 +32039,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_thalassemia()==true){
             Panelmenu.add(btnSkriningThalassemia);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_instrumen_sdq()==true){
+            Panelmenu.add(btnSkriningInstrumenSDQ);
             jmlmenu++;
         }
 
@@ -38921,6 +38945,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_instrumen_sdq()==true){
+            if(btnSkriningInstrumenSDQ.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningInstrumenSDQ);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpengambilan_utd2()==true){
             if(btnPengambilanUTD2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengambilanUTD2); 
@@ -45387,6 +45418,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningThalassemia.setName("btnSkriningThalassemia"); 
         btnSkriningThalassemia.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningThalassemia.addActionListener(this::btnSkriningThalassemiaActionPerformed);
+        
+        btnSkriningInstrumenSDQ = new widget.ButtonBig();
+        btnSkriningInstrumenSDQ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8322715_smile_emoji_emoticon_feeling_face_icon.png"))); 
+        btnSkriningInstrumenSDQ.setText("Skrining Instrumen SDQ");
+        btnSkriningInstrumenSDQ.setIconTextGap(0);
+        btnSkriningInstrumenSDQ.setName("btnSkriningInstrumenSDQ"); 
+        btnSkriningInstrumenSDQ.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningInstrumenSDQ.addActionListener(this::btnSkriningInstrumenSDQActionPerformed);
         
         btnBookingMCUPerusahaan = new widget.ButtonBig();
         btnBookingMCUPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6002396_building_coronavirus_covid19_health_hospital_icon.png"))); 
