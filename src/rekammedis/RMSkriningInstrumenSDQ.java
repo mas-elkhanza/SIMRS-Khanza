@@ -85,7 +85,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 71; i++) {
+        for (i = 0; i < 72; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -2419,6 +2419,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,68).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,69).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,70).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,71).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -3763,8 +3764,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
                 SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
                 SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
-                SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),NilaiKesimpulanSkorH.getText(),
-                KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText(),
+                SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),TotalNilai.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),
+                NilaiKesimpulanSkorH.getText(),KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -3825,19 +3826,20 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             tbObat.setValueAt(NilaiSDQ24.getText(),tbObat.getSelectedRow(),55);
             tbObat.setValueAt(SDQ25.getSelectedItem().toString(),tbObat.getSelectedRow(),56);
             tbObat.setValueAt(NilaiSDQ25.getText(),tbObat.getSelectedRow(),57);
-            tbObat.setValueAt(KesimpulanSkorE.getText(),tbObat.getSelectedRow(),58);
-            tbObat.setValueAt(NilaiKesimpulanSkorE.getText(),tbObat.getSelectedRow(),59);
-            tbObat.setValueAt(KesimpulanSkorC.getText(),tbObat.getSelectedRow(),60);
-            tbObat.setValueAt(NilaiKesimpulanSkorC.getText(),tbObat.getSelectedRow(),61);
-            tbObat.setValueAt(KesimpulanSkorH.getText(),tbObat.getSelectedRow(),62);
-            tbObat.setValueAt(NilaiKesimpulanSkorH.getText(),tbObat.getSelectedRow(),63);
-            tbObat.setValueAt(KesimpulanSkorP.getText(),tbObat.getSelectedRow(),64);
-            tbObat.setValueAt(NilaiKesimpulanSkorP.getText(),tbObat.getSelectedRow(),65);
-            tbObat.setValueAt(KesimpulanSkorPr.getText(),tbObat.getSelectedRow(),66);
-            tbObat.setValueAt(NilaiKesimpulanSkorPr.getText(),tbObat.getSelectedRow(),67);
-            tbObat.setValueAt(KesimpulanKesulitan.getText(),tbObat.getSelectedRow(),68);
-            tbObat.setValueAt(NilaiKesimpulanKesulitan.getText(),tbObat.getSelectedRow(),69);
-            tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),70);
+            tbObat.setValueAt(TotalNilai.getText(),tbObat.getSelectedRow(),58);
+            tbObat.setValueAt(KesimpulanSkorE.getText(),tbObat.getSelectedRow(),59);
+            tbObat.setValueAt(NilaiKesimpulanSkorE.getText(),tbObat.getSelectedRow(),60);
+            tbObat.setValueAt(KesimpulanSkorC.getText(),tbObat.getSelectedRow(),61);
+            tbObat.setValueAt(NilaiKesimpulanSkorC.getText(),tbObat.getSelectedRow(),62);
+            tbObat.setValueAt(KesimpulanSkorH.getText(),tbObat.getSelectedRow(),63);
+            tbObat.setValueAt(NilaiKesimpulanSkorH.getText(),tbObat.getSelectedRow(),64);
+            tbObat.setValueAt(KesimpulanSkorP.getText(),tbObat.getSelectedRow(),65);
+            tbObat.setValueAt(NilaiKesimpulanSkorP.getText(),tbObat.getSelectedRow(),66);
+            tbObat.setValueAt(KesimpulanSkorPr.getText(),tbObat.getSelectedRow(),67);
+            tbObat.setValueAt(NilaiKesimpulanSkorPr.getText(),tbObat.getSelectedRow(),68);
+            tbObat.setValueAt(KesimpulanKesulitan.getText(),tbObat.getSelectedRow(),69);
+            tbObat.setValueAt(NilaiKesimpulanKesulitan.getText(),tbObat.getSelectedRow(),70);
+            tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),71);
             emptTeks();
         }
     }
@@ -3978,15 +3980,15 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
 
     private void simpan() {
         if(Sequel.menyimpantf("skrining_instrumen_sdq","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",67,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(), 
             SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
             SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(), 
             SDQ9.getSelectedItem().toString(),NilaiSDQ9.getText(),SDQ10.getSelectedItem().toString(),NilaiSDQ10.getText(),SDQ11.getSelectedItem().toString(),NilaiSDQ11.getText(),SDQ12.getSelectedItem().toString(),NilaiSDQ12.getText(),
             SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
             SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
             SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
-            SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),NilaiKesimpulanSkorH.getText(),
-            KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
+            SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),TotalNilai.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),
+            NilaiKesimpulanSkorH.getText(),KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),NIP.getText(),NamaPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
@@ -3996,8 +3998,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ13.getSelectedItem().toString(),NilaiSDQ13.getText(),SDQ14.getSelectedItem().toString(),NilaiSDQ14.getText(),SDQ15.getSelectedItem().toString(),NilaiSDQ15.getText(),SDQ16.getSelectedItem().toString(),NilaiSDQ16.getText(),
                 SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
                 SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
-                SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),NilaiKesimpulanSkorH.getText(),
-                KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
+                SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),TotalNilai.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),
+                NilaiKesimpulanSkorH.getText(),KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
             });
             emptTeks();
             LCount.setText(""+tabMode.getRowCount());
