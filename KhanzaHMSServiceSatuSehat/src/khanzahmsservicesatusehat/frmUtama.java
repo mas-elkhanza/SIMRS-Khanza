@@ -4341,7 +4341,7 @@ public class frmUtama extends javax.swing.JFrame {
                         try {
                             idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
                             iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
-                            idrequest=Sequel.cariIsi("select satu_sehat_medicationrequest.id_medicationrequest where satu_sehat_medicationrequest.no_resep='"+rs.getString("no_resep")+"' and satu_sehat_medicationrequest.kode_brng='"+rs.getString("kode_brng")+"'");
+                            idrequest=Sequel.cariIsi("select satu_sehat_medicationrequest.id_medicationrequest from satu_sehat_medicationrequest where satu_sehat_medicationrequest.no_resep='"+rs.getString("no_resep")+"' and satu_sehat_medicationrequest.kode_brng='"+rs.getString("kode_brng")+"'");
                             arrSplit = rs.getString("aturan").toLowerCase().split("x");
                             signa1="1";
                             try {
@@ -4524,7 +4524,7 @@ public class frmUtama extends javax.swing.JFrame {
                         try {
                             idpasien=cekViaSatuSehat.tampilIDPasien(rs.getString("no_ktp"));
                             iddokter=cekViaSatuSehat.tampilIDParktisi(rs.getString("ktppraktisi"));
-                            idrequest=Sequel.cariIsi("select satu_sehat_medicationrequest.id_medicationrequest where satu_sehat_medicationrequest.no_resep='"+rs.getString("no_resep")+"' and satu_sehat_medicationrequest.kode_brng='"+rs.getString("kode_brng")+"'");
+                            idrequest=Sequel.cariIsi("select satu_sehat_medicationrequest.id_medicationrequest from satu_sehat_medicationrequest where satu_sehat_medicationrequest.no_resep='"+rs.getString("no_resep")+"' and satu_sehat_medicationrequest.kode_brng='"+rs.getString("kode_brng")+"'");
                             arrSplit = rs.getString("aturan").toLowerCase().split("x");
                             signa1="1";
                             try {

@@ -479,40 +479,56 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel275 = new widget.Label();
         TotalNilai = new widget.TextBox();
         jLabel276 = new widget.Label();
-        jLabel277 = new widget.Label();
         SkorE = new widget.TextBox();
         jLabel278 = new widget.Label();
-        jLabel279 = new widget.Label();
         SkorC = new widget.TextBox();
         jLabel280 = new widget.Label();
-        jLabel281 = new widget.Label();
         SkorH = new widget.TextBox();
         jLabel282 = new widget.Label();
-        jLabel283 = new widget.Label();
         SkorP = new widget.TextBox();
         jLabel284 = new widget.Label();
-        jLabel285 = new widget.Label();
         SkorPr = new widget.TextBox();
         jLabel286 = new widget.Label();
-        jLabel287 = new widget.Label();
         SkorKesulitan = new widget.TextBox();
         jLabel288 = new widget.Label();
         KesimpulanSkorE = new widget.TextBox();
         jLabel59 = new widget.Label();
-        jLabel289 = new widget.Label();
-        jLabel290 = new widget.Label();
         jLabel291 = new widget.Label();
-        jLabel292 = new widget.Label();
         KesimpulanSkorC = new widget.TextBox();
         jLabel293 = new widget.Label();
-        jLabel294 = new widget.Label();
         KesimpulanSkorH = new widget.TextBox();
         jLabel295 = new widget.Label();
-        jLabel296 = new widget.Label();
         KesimpulanSkorP = new widget.TextBox();
         jLabel297 = new widget.Label();
-        jLabel298 = new widget.Label();
         KesimpulanSkorPr = new widget.TextBox();
+        jLabel299 = new widget.Label();
+        jLabel300 = new widget.Label();
+        jLabel301 = new widget.Label();
+        jLabel302 = new widget.Label();
+        jLabel303 = new widget.Label();
+        jLabel304 = new widget.Label();
+        jLabel305 = new widget.Label();
+        jLabel306 = new widget.Label();
+        jLabel307 = new widget.Label();
+        jLabel308 = new widget.Label();
+        jLabel309 = new widget.Label();
+        jLabel310 = new widget.Label();
+        jLabel311 = new widget.Label();
+        jLabel312 = new widget.Label();
+        jLabel313 = new widget.Label();
+        jLabel314 = new widget.Label();
+        jLabel315 = new widget.Label();
+        jLabel316 = new widget.Label();
+        jLabel317 = new widget.Label();
+        jLabel318 = new widget.Label();
+        jLabel227 = new widget.Label();
+        jLabel224 = new widget.Label();
+        jLabel221 = new widget.Label();
+        jLabel319 = new widget.Label();
+        jSeparator3 = new javax.swing.JSeparator();
+        Kesimpulan1 = new widget.TextBox();
+        jLabel277 = new widget.Label();
+        jLabel279 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -710,7 +726,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -724,7 +740,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -816,7 +832,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 1050));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 1103));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -846,7 +862,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-11-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -975,7 +991,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ1);
-        SDQ1.setBounds(595, 90, 115, 23);
+        SDQ1.setBounds(590, 90, 115, 23);
 
         jLabel218.setText("Nilai :");
         jLabel218.setName("jLabel218"); // NOI18N
@@ -989,10 +1005,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         NilaiSDQ1.setBounds(749, 90, 40, 23);
 
         jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel220.setText("2. Saya gelisah. saya tidak dapat diam untuk waktu lama");
+        jLabel220.setText("2.");
         jLabel220.setName("jLabel220"); // NOI18N
         FormInput.add(jLabel220);
-        jLabel220.setBounds(44, 120, 300, 23);
+        jLabel220.setBounds(44, 120, 25, 23);
 
         jLabel222.setText("Nilai :");
         jLabel222.setName("jLabel222"); // NOI18N
@@ -1000,10 +1016,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel222.setBounds(695, 120, 50, 23);
 
         jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel223.setText("3. Saya sering sakit kepala, sakit perut atau macam-macam sakit lainnya");
+        jLabel223.setText("3");
         jLabel223.setName("jLabel223"); // NOI18N
         FormInput.add(jLabel223);
-        jLabel223.setBounds(44, 150, 560, 23);
+        jLabel223.setBounds(44, 150, 25, 23);
 
         jLabel225.setText("Nilai :");
         jLabel225.setName("jLabel225"); // NOI18N
@@ -1011,10 +1027,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel225.setBounds(695, 150, 50, 23);
 
         jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel226.setText("4. Kalau saya memiliki mainan, CD, atau makanan, Saya biasanya berbagi dengan orang lain");
+        jLabel226.setText("4.");
         jLabel226.setName("jLabel226"); // NOI18N
         FormInput.add(jLabel226);
-        jLabel226.setBounds(44, 180, 560, 23);
+        jLabel226.setBounds(44, 180, 25, 23);
 
         jLabel228.setText("Nilai :");
         jLabel228.setName("jLabel228"); // NOI18N
@@ -1022,10 +1038,10 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel228.setBounds(695, 180, 50, 23);
 
         jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel229.setText("10. Bila sedang gelisah atau cemas badan saya sering bergerak  –  gerak tanpa saya sadari");
+        jLabel229.setText("10.");
         jLabel229.setName("jLabel229"); // NOI18N
         FormInput.add(jLabel229);
-        jLabel229.setBounds(44, 360, 520, 23);
+        jLabel229.setBounds(44, 360, 25, 23);
 
         jLabel231.setText("Nilai :");
         jLabel231.setName("jLabel231"); // NOI18N
@@ -1045,16 +1061,16 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jSeparator2.setBounds(0, 70, 810, 1);
 
         jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel232.setText("5. Saya menjadi sangat marah dan sering tidak dapat mengendalikan kemarahan saya");
+        jLabel232.setText("5.");
         jLabel232.setName("jLabel232"); // NOI18N
         FormInput.add(jLabel232);
-        jLabel232.setBounds(44, 210, 510, 23);
+        jLabel232.setBounds(44, 210, 25, 23);
 
         jLabel236.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel236.setText("1. Saya berusaha baik kepada orang lain. Saya peduli dengan perasaan mereka");
+        jLabel236.setText("1.");
         jLabel236.setName("jLabel236"); // NOI18N
         FormInput.add(jLabel236);
-        jLabel236.setBounds(44, 90, 550, 23);
+        jLabel236.setBounds(44, 90, 25, 23);
 
         jLabel239.setText("Nilai :");
         jLabel239.setName("jLabel239"); // NOI18N
@@ -1077,124 +1093,124 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel242.setBounds(695, 360, 50, 23);
 
         jLabel230.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel230.setText("6. Saya lebih suka sendiri daripada bersama dengan orang yang seusiaku");
+        jLabel230.setText("6.");
         jLabel230.setName("jLabel230"); // NOI18N
         FormInput.add(jLabel230);
-        jLabel230.setBounds(44, 240, 480, 23);
+        jLabel230.setBounds(44, 240, 25, 23);
 
         jLabel233.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel233.setText("7. Saya biasanya melakukan apa yang diperintahkan oleh orang lain");
+        jLabel233.setText("7.");
         jLabel233.setName("jLabel233"); // NOI18N
         FormInput.add(jLabel233);
-        jLabel233.setBounds(44, 270, 490, 23);
+        jLabel233.setBounds(44, 270, 25, 23);
 
         jLabel243.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel243.setText("8. Saya banyak merasa cemas atau khawatir terhadap apapun");
+        jLabel243.setText("8.");
         jLabel243.setName("jLabel243"); // NOI18N
         FormInput.add(jLabel243);
-        jLabel243.setBounds(44, 300, 440, 23);
+        jLabel243.setBounds(44, 300, 25, 23);
 
         jLabel244.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel244.setText("9. Saya selalu siap menolong jika seseorang terluka, kecewa atau merasa sakit");
+        jLabel244.setText("9.");
         jLabel244.setName("jLabel244"); // NOI18N
         FormInput.add(jLabel244);
-        jLabel244.setBounds(44, 330, 530, 23);
+        jLabel244.setBounds(44, 330, 25, 23);
 
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel58.setText("I. DETEKSI DINI MASALAH EMOSI DAN PERILAKU MENGGUNAKAN KUISIONER KEKUATAN DAN KELEMAHAN (SDQ) :");
+        jLabel58.setText("I. DETEKSI DINI MASALAH EMOSI DAN PERILAKU MENGGUNAKAN KUISIONER KEKUATAN DAN KELEMAHAN (SDQ)");
         jLabel58.setName("jLabel58"); // NOI18N
         FormInput.add(jLabel58);
         jLabel58.setBounds(11, 70, 580, 23);
 
         jLabel235.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel235.setText("11. Saya mempunyai satu orang teman baik atau lebih");
+        jLabel235.setText("11.");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(44, 390, 520, 23);
+        jLabel235.setBounds(44, 390, 25, 23);
 
         jLabel237.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel237.setText("12. Saya sering bertengkar dengan orang lain. Saya dapat memaksa orang lain melakukan yang saya inginkan");
+        jLabel237.setText("12.");
         jLabel237.setName("jLabel237"); // NOI18N
         FormInput.add(jLabel237);
-        jLabel237.setBounds(44, 420, 550, 23);
+        jLabel237.setBounds(44, 420, 25, 23);
 
         jLabel238.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel238.setText("13. Saya sering merasa tidak bahagia, sedih atau menangis");
+        jLabel238.setText("13.");
         jLabel238.setName("jLabel238"); // NOI18N
         FormInput.add(jLabel238);
-        jLabel238.setBounds(44, 450, 520, 23);
+        jLabel238.setBounds(44, 450, 25, 23);
 
         jLabel245.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel245.setText("14. Orang lain seusia saya umumnya menyukai saya");
+        jLabel245.setText("14.");
         jLabel245.setName("jLabel245"); // NOI18N
         FormInput.add(jLabel245);
-        jLabel245.setBounds(44, 480, 520, 23);
+        jLabel245.setBounds(44, 480, 25, 23);
 
         jLabel246.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel246.setText("15. Perhatian saya mudah teralih, saya sulit untuk memusatkan perhatian pada apapun");
+        jLabel246.setText("15.");
         jLabel246.setName("jLabel246"); // NOI18N
         FormInput.add(jLabel246);
-        jLabel246.setBounds(44, 510, 520, 23);
+        jLabel246.setBounds(44, 510, 25, 23);
 
         jLabel247.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel247.setText("16. Saya merasa gugup dalam situasi baru, saya mudah kehilangan rasa percaya Diri");
+        jLabel247.setText("16.");
         jLabel247.setName("jLabel247"); // NOI18N
         FormInput.add(jLabel247);
-        jLabel247.setBounds(44, 540, 520, 23);
+        jLabel247.setBounds(44, 540, 25, 23);
 
         jLabel248.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel248.setText("17. Saya bersikap baik terhadap anak-anak yang lebih muda dari saya");
+        jLabel248.setText("17.");
         jLabel248.setName("jLabel248"); // NOI18N
         FormInput.add(jLabel248);
-        jLabel248.setBounds(44, 570, 520, 23);
+        jLabel248.setBounds(44, 570, 25, 23);
 
         jLabel249.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel249.setText("18. Saya sering dituduh berbohong atau berbuat curang");
+        jLabel249.setText("18.");
         jLabel249.setName("jLabel249"); // NOI18N
         FormInput.add(jLabel249);
-        jLabel249.setBounds(44, 600, 520, 23);
+        jLabel249.setBounds(44, 600, 25, 23);
 
         jLabel250.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel250.setText("19. Saya sering diganggu atau dipermainkan oleh anak-anak atau remaja lainnya");
+        jLabel250.setText("19.");
         jLabel250.setName("jLabel250"); // NOI18N
         FormInput.add(jLabel250);
-        jLabel250.setBounds(44, 630, 520, 23);
+        jLabel250.setBounds(44, 630, 25, 23);
 
         jLabel251.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel251.setText("20. Saya sering menawarkan diri untuk membantu orang lain (orang tua, guru, anak-anak)");
+        jLabel251.setText("20.");
         jLabel251.setName("jLabel251"); // NOI18N
         FormInput.add(jLabel251);
-        jLabel251.setBounds(44, 660, 520, 23);
+        jLabel251.setBounds(44, 660, 25, 23);
 
         jLabel252.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel252.setText("21. Saya berpikir terlebih dulu akibat yang akan terjadi, sebelum berbuat atau melakukan sesuatu");
+        jLabel252.setText("21.");
         jLabel252.setName("jLabel252"); // NOI18N
         FormInput.add(jLabel252);
-        jLabel252.setBounds(44, 690, 520, 23);
+        jLabel252.setBounds(44, 690, 25, 23);
 
         jLabel253.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel253.setText("22. Saya mengambil barang yang bukan milik saya dari rumah, sekolah atau dari mana saja");
+        jLabel253.setText("22.");
         jLabel253.setName("jLabel253"); // NOI18N
         FormInput.add(jLabel253);
-        jLabel253.setBounds(44, 720, 520, 23);
+        jLabel253.setBounds(44, 720, 25, 23);
 
         jLabel254.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel254.setText("23. Saya lebih mudah berteman dengan orang dewasa daripada dengan orang seusia   Saya");
+        jLabel254.setText("23.");
         jLabel254.setName("jLabel254"); // NOI18N
         FormInput.add(jLabel254);
-        jLabel254.setBounds(44, 750, 520, 23);
+        jLabel254.setBounds(44, 750, 25, 23);
 
         jLabel255.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel255.setText("24. Banyak yang saya takuti, saya mudah menjadi takut");
+        jLabel255.setText("24.");
         jLabel255.setName("jLabel255"); // NOI18N
         FormInput.add(jLabel255);
-        jLabel255.setBounds(44, 780, 520, 23);
+        jLabel255.setBounds(44, 780, 25, 23);
 
         jLabel256.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel256.setText("Memiliki perhatian yang baik terhadap apapun, mampu menyelesaikan tugas ");
+        jLabel256.setText("Memiliki perhatian yang baik terhadap apapun, mampu menyelesaikan tugas atau pekerjaan ");
         jLabel256.setName("jLabel256"); // NOI18N
         FormInput.add(jLabel256);
-        jLabel256.setBounds(63, 810, 480, 23);
+        jLabel256.setBounds(63, 805, 480, 23);
 
         SDQ2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ2.setName("SDQ2"); // NOI18N
@@ -1214,7 +1230,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ2);
-        SDQ2.setBounds(595, 120, 115, 23);
+        SDQ2.setBounds(590, 120, 115, 23);
 
         SDQ3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ3.setName("SDQ3"); // NOI18N
@@ -1234,7 +1250,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ3);
-        SDQ3.setBounds(595, 150, 115, 23);
+        SDQ3.setBounds(590, 150, 115, 23);
 
         SDQ4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ4.setName("SDQ4"); // NOI18N
@@ -1254,7 +1270,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ4);
-        SDQ4.setBounds(595, 180, 115, 23);
+        SDQ4.setBounds(590, 180, 115, 23);
 
         SDQ5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ5.setName("SDQ5"); // NOI18N
@@ -1274,7 +1290,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ5);
-        SDQ5.setBounds(595, 210, 115, 23);
+        SDQ5.setBounds(590, 210, 115, 23);
 
         SDQ6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ6.setName("SDQ6"); // NOI18N
@@ -1294,7 +1310,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ6);
-        SDQ6.setBounds(595, 240, 115, 23);
+        SDQ6.setBounds(590, 240, 115, 23);
 
         SDQ7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ7.setName("SDQ7"); // NOI18N
@@ -1314,7 +1330,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ7);
-        SDQ7.setBounds(595, 270, 115, 23);
+        SDQ7.setBounds(590, 270, 115, 23);
 
         SDQ8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ8.setName("SDQ8"); // NOI18N
@@ -1334,7 +1350,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ8);
-        SDQ8.setBounds(595, 300, 115, 23);
+        SDQ8.setBounds(590, 300, 115, 23);
 
         SDQ9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ9.setName("SDQ9"); // NOI18N
@@ -1354,7 +1370,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ9);
-        SDQ9.setBounds(595, 330, 115, 23);
+        SDQ9.setBounds(590, 330, 115, 23);
 
         SDQ10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ10.setName("SDQ10"); // NOI18N
@@ -1374,7 +1390,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ10);
-        SDQ10.setBounds(595, 360, 115, 23);
+        SDQ10.setBounds(590, 360, 115, 23);
 
         SDQ11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ11.setName("SDQ11"); // NOI18N
@@ -1394,7 +1410,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ11);
-        SDQ11.setBounds(595, 390, 115, 23);
+        SDQ11.setBounds(590, 390, 115, 23);
 
         SDQ12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ12.setName("SDQ12"); // NOI18N
@@ -1414,7 +1430,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ12);
-        SDQ12.setBounds(595, 420, 115, 23);
+        SDQ12.setBounds(590, 420, 115, 23);
 
         SDQ13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ13.setName("SDQ13"); // NOI18N
@@ -1434,7 +1450,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ13);
-        SDQ13.setBounds(595, 450, 115, 23);
+        SDQ13.setBounds(590, 450, 115, 23);
 
         SDQ14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ14.setName("SDQ14"); // NOI18N
@@ -1454,7 +1470,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ14);
-        SDQ14.setBounds(595, 480, 115, 23);
+        SDQ14.setBounds(590, 480, 115, 23);
 
         SDQ15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ15.setName("SDQ15"); // NOI18N
@@ -1474,7 +1490,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ15);
-        SDQ15.setBounds(595, 510, 115, 23);
+        SDQ15.setBounds(590, 510, 115, 23);
 
         SDQ16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ16.setName("SDQ16"); // NOI18N
@@ -1494,7 +1510,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ16);
-        SDQ16.setBounds(595, 540, 115, 23);
+        SDQ16.setBounds(590, 540, 115, 23);
 
         SDQ17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ17.setName("SDQ17"); // NOI18N
@@ -1514,7 +1530,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ17);
-        SDQ17.setBounds(595, 570, 115, 23);
+        SDQ17.setBounds(590, 570, 115, 23);
 
         SDQ18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ18.setName("SDQ18"); // NOI18N
@@ -1534,7 +1550,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ18);
-        SDQ18.setBounds(595, 600, 115, 23);
+        SDQ18.setBounds(590, 600, 115, 23);
 
         SDQ19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ19.setName("SDQ19"); // NOI18N
@@ -1554,7 +1570,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ19);
-        SDQ19.setBounds(595, 630, 115, 23);
+        SDQ19.setBounds(590, 630, 115, 23);
 
         SDQ20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ20.setName("SDQ20"); // NOI18N
@@ -1574,7 +1590,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ20);
-        SDQ20.setBounds(595, 660, 115, 23);
+        SDQ20.setBounds(590, 660, 115, 23);
 
         SDQ21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ21.setName("SDQ21"); // NOI18N
@@ -1594,7 +1610,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ21);
-        SDQ21.setBounds(595, 690, 115, 23);
+        SDQ21.setBounds(590, 690, 115, 23);
 
         SDQ22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ22.setName("SDQ22"); // NOI18N
@@ -1614,7 +1630,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ22);
-        SDQ22.setBounds(595, 720, 115, 23);
+        SDQ22.setBounds(590, 720, 115, 23);
 
         SDQ23.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ23.setName("SDQ23"); // NOI18N
@@ -1634,7 +1650,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ23);
-        SDQ23.setBounds(595, 750, 115, 23);
+        SDQ23.setBounds(590, 750, 115, 23);
 
         SDQ24.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ24.setName("SDQ24"); // NOI18N
@@ -1654,7 +1670,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ24);
-        SDQ24.setBounds(595, 780, 115, 23);
+        SDQ24.setBounds(590, 780, 115, 23);
 
         SDQ25.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Benar", "Agak Benar", "Selalu Benar" }));
         SDQ25.setName("SDQ25"); // NOI18N
@@ -1674,7 +1690,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SDQ25);
-        SDQ25.setBounds(595, 810, 115, 23);
+        SDQ25.setBounds(590, 810, 115, 23);
 
         NilaiSDQ2.setEditable(false);
         NilaiSDQ2.setFocusTraversalPolicyProvider(true);
@@ -1899,31 +1915,30 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel272.setText("F. Penilaian Skor Kesulitan ");
         jLabel272.setName("jLabel272"); // NOI18N
         FormInput.add(jLabel272);
-        jLabel272.setBounds(44, 1020, 160, 23);
+        jLabel272.setBounds(44, 1040, 160, 23);
 
         Kesimpulan.setEditable(false);
         Kesimpulan.setFocusTraversalPolicyProvider(true);
         Kesimpulan.setName("Kesimpulan"); // NOI18N
         FormInput.add(Kesimpulan);
-        Kesimpulan.setBounds(220, 1020, 220, 23);
+        Kesimpulan.setBounds(210, 1040, 240, 23);
 
         jLabel273.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel273.setText(" atau pekerjaan rumah sampai selesai");
+        jLabel273.setText("rumah sampai selesai.");
         jLabel273.setName("jLabel273"); // NOI18N
         FormInput.add(jLabel273);
-        jLabel273.setBounds(61, 823, 400, 23);
+        jLabel273.setBounds(63, 817, 400, 23);
 
         jLabel274.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel274.setText("25.");
         jLabel274.setName("jLabel274"); // NOI18N
         FormInput.add(jLabel274);
-        jLabel274.setBounds(44, 815, 20, 23);
+        jLabel274.setBounds(44, 810, 20, 23);
 
-        jLabel275.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel275.setText("Total Nilai :");
         jLabel275.setName("jLabel275"); // NOI18N
         FormInput.add(jLabel275);
-        jLabel275.setBounds(685, 840, 60, 23);
+        jLabel275.setBounds(615, 840, 130, 23);
 
         TotalNilai.setEditable(false);
         TotalNilai.setFocusTraversalPolicyProvider(true);
@@ -1931,209 +1946,305 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         FormInput.add(TotalNilai);
         TotalNilai.setBounds(749, 840, 40, 23);
 
-        jLabel276.setText("Skor Gejala Emosional ( E )");
+        jLabel276.setText("Skor Gejala Emosional (E) :");
         jLabel276.setName("jLabel276"); // NOI18N
         FormInput.add(jLabel276);
-        jLabel276.setBounds(595, 870, 140, 23);
-
-        jLabel277.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel277.setText(" :");
-        jLabel277.setName("jLabel277"); // NOI18N
-        FormInput.add(jLabel277);
-        jLabel277.setBounds(735, 870, 10, 23);
+        jLabel276.setBounds(565, 890, 180, 23);
 
         SkorE.setEditable(false);
         SkorE.setFocusTraversalPolicyProvider(true);
         SkorE.setName("SkorE"); // NOI18N
         FormInput.add(SkorE);
-        SkorE.setBounds(749, 870, 40, 23);
+        SkorE.setBounds(749, 890, 40, 23);
 
-        jLabel278.setText("Skor Masalah Perilaku ( C )");
+        jLabel278.setText("Skor Masalah Perilaku (C) :");
         jLabel278.setName("jLabel278"); // NOI18N
         FormInput.add(jLabel278);
-        jLabel278.setBounds(595, 900, 140, 23);
-
-        jLabel279.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel279.setText(" :");
-        jLabel279.setName("jLabel279"); // NOI18N
-        FormInput.add(jLabel279);
-        jLabel279.setBounds(735, 900, 10, 23);
+        jLabel278.setBounds(565, 920, 180, 23);
 
         SkorC.setEditable(false);
         SkorC.setFocusTraversalPolicyProvider(true);
         SkorC.setName("SkorC"); // NOI18N
         FormInput.add(SkorC);
-        SkorC.setBounds(749, 900, 40, 23);
+        SkorC.setBounds(749, 920, 40, 23);
 
-        jLabel280.setText("Skor Hiperaktivitas ( H )");
+        jLabel280.setText("Skor Hiperaktivitas (H) :");
         jLabel280.setName("jLabel280"); // NOI18N
         FormInput.add(jLabel280);
-        jLabel280.setBounds(595, 930, 140, 23);
-
-        jLabel281.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel281.setText(" :");
-        jLabel281.setName("jLabel281"); // NOI18N
-        FormInput.add(jLabel281);
-        jLabel281.setBounds(735, 930, 10, 23);
+        jLabel280.setBounds(565, 950, 180, 23);
 
         SkorH.setEditable(false);
         SkorH.setFocusTraversalPolicyProvider(true);
         SkorH.setName("SkorH"); // NOI18N
         FormInput.add(SkorH);
-        SkorH.setBounds(749, 930, 40, 23);
+        SkorH.setBounds(749, 950, 40, 23);
 
-        jLabel282.setText("Skor Masalah Teman Sebaya ( P )");
+        jLabel282.setText("Skor Masalah Teman Sebaya (P) :");
         jLabel282.setName("jLabel282"); // NOI18N
         FormInput.add(jLabel282);
-        jLabel282.setBounds(565, 960, 170, 23);
-
-        jLabel283.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel283.setText(" :");
-        jLabel283.setName("jLabel283"); // NOI18N
-        FormInput.add(jLabel283);
-        jLabel283.setBounds(735, 960, 10, 23);
+        jLabel282.setBounds(565, 980, 180, 23);
 
         SkorP.setEditable(false);
         SkorP.setFocusTraversalPolicyProvider(true);
         SkorP.setName("SkorP"); // NOI18N
         FormInput.add(SkorP);
-        SkorP.setBounds(749, 960, 40, 23);
+        SkorP.setBounds(749, 980, 40, 23);
 
-        jLabel284.setText("Skor Kekuatan Proporsional ( Pr )");
+        jLabel284.setText("Skor Kekuatan Proporsional (Pr) :");
         jLabel284.setName("jLabel284"); // NOI18N
         FormInput.add(jLabel284);
-        jLabel284.setBounds(565, 990, 170, 23);
-
-        jLabel285.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel285.setText(" :");
-        jLabel285.setName("jLabel285"); // NOI18N
-        FormInput.add(jLabel285);
-        jLabel285.setBounds(735, 990, 10, 23);
+        jLabel284.setBounds(565, 1010, 180, 23);
 
         SkorPr.setEditable(false);
         SkorPr.setFocusTraversalPolicyProvider(true);
         SkorPr.setName("SkorPr"); // NOI18N
         FormInput.add(SkorPr);
-        SkorPr.setBounds(749, 990, 40, 23);
+        SkorPr.setBounds(749, 1010, 40, 23);
 
-        jLabel286.setText("Skor Total Kesulitan");
+        jLabel286.setText("Skor Total Kesulitan :");
         jLabel286.setName("jLabel286"); // NOI18N
         FormInput.add(jLabel286);
-        jLabel286.setBounds(595, 1020, 140, 23);
-
-        jLabel287.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel287.setText(" :");
-        jLabel287.setName("jLabel287"); // NOI18N
-        FormInput.add(jLabel287);
-        jLabel287.setBounds(735, 1020, 10, 23);
+        jLabel286.setBounds(565, 1040, 180, 23);
 
         SkorKesulitan.setEditable(false);
         SkorKesulitan.setFocusTraversalPolicyProvider(true);
         SkorKesulitan.setName("SkorKesulitan"); // NOI18N
         FormInput.add(SkorKesulitan);
-        SkorKesulitan.setBounds(749, 1020, 40, 23);
+        SkorKesulitan.setBounds(749, 1040, 40, 23);
 
         jLabel288.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel288.setText("A. Penilaian Gejala Emosional ( E )");
+        jLabel288.setText("A. Penilaian Gejala Emosional (E)");
         jLabel288.setName("jLabel288"); // NOI18N
         FormInput.add(jLabel288);
-        jLabel288.setBounds(44, 870, 170, 23);
+        jLabel288.setBounds(44, 890, 170, 23);
 
         KesimpulanSkorE.setEditable(false);
         KesimpulanSkorE.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorE.setName("KesimpulanSkorE"); // NOI18N
         FormInput.add(KesimpulanSkorE);
-        KesimpulanSkorE.setBounds(220, 870, 220, 23);
+        KesimpulanSkorE.setBounds(210, 890, 240, 23);
 
         jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel59.setText("II. INTEPRETASI DAN KESIMPULAN HASIL PEMERIKSAAN (SDQ) :");
         jLabel59.setName("jLabel59"); // NOI18N
         FormInput.add(jLabel59);
-        jLabel59.setBounds(11, 843, 550, 23);
-
-        jLabel289.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel289.setText(" :");
-        jLabel289.setName("jLabel289"); // NOI18N
-        FormInput.add(jLabel289);
-        jLabel289.setBounds(210, 1020, 10, 23);
-
-        jLabel290.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel290.setText(" :");
-        jLabel290.setName("jLabel290"); // NOI18N
-        FormInput.add(jLabel290);
-        jLabel290.setBounds(210, 870, 10, 23);
+        jLabel59.setBounds(11, 873, 550, 23);
 
         jLabel291.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel291.setText("B. Penilaian Masalah Perilaku ( C )");
+        jLabel291.setText("B. Penilaian Masalah Perilaku (C)");
         jLabel291.setName("jLabel291"); // NOI18N
         FormInput.add(jLabel291);
-        jLabel291.setBounds(44, 900, 170, 23);
-
-        jLabel292.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel292.setText(" :");
-        jLabel292.setName("jLabel292"); // NOI18N
-        FormInput.add(jLabel292);
-        jLabel292.setBounds(210, 900, 10, 23);
+        jLabel291.setBounds(44, 920, 170, 23);
 
         KesimpulanSkorC.setEditable(false);
         KesimpulanSkorC.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorC.setName("KesimpulanSkorC"); // NOI18N
         FormInput.add(KesimpulanSkorC);
-        KesimpulanSkorC.setBounds(220, 900, 220, 23);
+        KesimpulanSkorC.setBounds(210, 920, 240, 23);
 
         jLabel293.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel293.setText("C. Penilaian Hiperaktivitas ( H )");
+        jLabel293.setText("C. Penilaian Hiperaktivitas (H)");
         jLabel293.setName("jLabel293"); // NOI18N
         FormInput.add(jLabel293);
-        jLabel293.setBounds(44, 930, 170, 23);
-
-        jLabel294.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel294.setText(" :");
-        jLabel294.setName("jLabel294"); // NOI18N
-        FormInput.add(jLabel294);
-        jLabel294.setBounds(210, 930, 10, 23);
+        jLabel293.setBounds(44, 950, 170, 23);
 
         KesimpulanSkorH.setEditable(false);
         KesimpulanSkorH.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorH.setName("KesimpulanSkorH"); // NOI18N
         FormInput.add(KesimpulanSkorH);
-        KesimpulanSkorH.setBounds(220, 930, 220, 23);
+        KesimpulanSkorH.setBounds(210, 950, 240, 23);
 
         jLabel295.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel295.setText("D. Masalah Teman Sebaya ( P )");
+        jLabel295.setText("D. Masalah Teman Sebaya (P)");
         jLabel295.setName("jLabel295"); // NOI18N
         FormInput.add(jLabel295);
-        jLabel295.setBounds(44, 960, 160, 23);
-
-        jLabel296.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel296.setText(" :");
-        jLabel296.setName("jLabel296"); // NOI18N
-        FormInput.add(jLabel296);
-        jLabel296.setBounds(210, 960, 10, 23);
+        jLabel295.setBounds(44, 980, 160, 23);
 
         KesimpulanSkorP.setEditable(false);
         KesimpulanSkorP.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorP.setName("KesimpulanSkorP"); // NOI18N
         FormInput.add(KesimpulanSkorP);
-        KesimpulanSkorP.setBounds(220, 960, 220, 23);
+        KesimpulanSkorP.setBounds(210, 980, 240, 23);
 
         jLabel297.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel297.setText("E. Penilaian Skor Kekuatan ( Pr )");
+        jLabel297.setText("E. Penilaian Skor Kekuatan (Pr)");
         jLabel297.setName("jLabel297"); // NOI18N
         FormInput.add(jLabel297);
-        jLabel297.setBounds(44, 990, 170, 23);
-
-        jLabel298.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel298.setText(" :");
-        jLabel298.setName("jLabel298"); // NOI18N
-        FormInput.add(jLabel298);
-        jLabel298.setBounds(210, 990, 10, 23);
+        jLabel297.setBounds(44, 1010, 170, 23);
 
         KesimpulanSkorPr.setEditable(false);
         KesimpulanSkorPr.setFocusTraversalPolicyProvider(true);
         KesimpulanSkorPr.setName("KesimpulanSkorPr"); // NOI18N
         FormInput.add(KesimpulanSkorPr);
-        KesimpulanSkorPr.setBounds(220, 990, 220, 23);
+        KesimpulanSkorPr.setBounds(210, 1010, 240, 23);
+
+        jLabel299.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel299.setText("Banyak yang Saya takuti, Saya mudah menjadi takut.");
+        jLabel299.setName("jLabel299"); // NOI18N
+        FormInput.add(jLabel299);
+        jLabel299.setBounds(63, 780, 520, 23);
+
+        jLabel300.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel300.setText("Saya lebih mudah berteman dengan orang dewasa daripada dengan orang seusia Saya.");
+        jLabel300.setName("jLabel300"); // NOI18N
+        FormInput.add(jLabel300);
+        jLabel300.setBounds(63, 750, 520, 23);
+
+        jLabel301.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel301.setText("Saya mengambil barang yang bukan milik Saya dari rumah, sekolah atau dari mana saja.");
+        jLabel301.setName("jLabel301"); // NOI18N
+        FormInput.add(jLabel301);
+        jLabel301.setBounds(63, 720, 520, 23);
+
+        jLabel302.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel302.setText("Saya berpikir terlebih dulu akibat yang akan terjadi, sebelum berbuat atau melakukan sesuatu.");
+        jLabel302.setName("jLabel302"); // NOI18N
+        FormInput.add(jLabel302);
+        jLabel302.setBounds(63, 690, 520, 23);
+
+        jLabel303.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel303.setText("Saya sering menawarkan diri untuk membantu orang lain (orang tua, guru, anak-anak).");
+        jLabel303.setName("jLabel303"); // NOI18N
+        FormInput.add(jLabel303);
+        jLabel303.setBounds(63, 660, 520, 23);
+
+        jLabel304.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel304.setText("Saya sering diganggu atau dipermainkan oleh anak-anak atau remaja lainnya.");
+        jLabel304.setName("jLabel304"); // NOI18N
+        FormInput.add(jLabel304);
+        jLabel304.setBounds(63, 630, 520, 23);
+
+        jLabel305.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel305.setText("Saya sering dituduh berbohong atau berbuat curang.");
+        jLabel305.setName("jLabel305"); // NOI18N
+        FormInput.add(jLabel305);
+        jLabel305.setBounds(63, 600, 520, 23);
+
+        jLabel306.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel306.setText("Saya bersikap baik terhadap anak-anak yang lebih muda dari Saya.");
+        jLabel306.setName("jLabel306"); // NOI18N
+        FormInput.add(jLabel306);
+        jLabel306.setBounds(63, 570, 520, 23);
+
+        jLabel307.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel307.setText("Saya merasa gugup dalam situasi baru, Saya mudah kehilangan rasa percaya diri.");
+        jLabel307.setName("jLabel307"); // NOI18N
+        FormInput.add(jLabel307);
+        jLabel307.setBounds(63, 540, 520, 23);
+
+        jLabel308.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel308.setText("Perhatian Saya mudah teralih, Saya sulit untuk memusatkan perhatian pada apapun.");
+        jLabel308.setName("jLabel308"); // NOI18N
+        FormInput.add(jLabel308);
+        jLabel308.setBounds(63, 510, 520, 23);
+
+        jLabel309.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel309.setText("Orang lain seusia Saya umumnya menyukai Saya.");
+        jLabel309.setName("jLabel309"); // NOI18N
+        FormInput.add(jLabel309);
+        jLabel309.setBounds(63, 480, 520, 23);
+
+        jLabel310.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel310.setText("Saya sering merasa tidak bahagia, sedih atau menangis.");
+        jLabel310.setName("jLabel310"); // NOI18N
+        FormInput.add(jLabel310);
+        jLabel310.setBounds(63, 450, 520, 23);
+
+        jLabel311.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel311.setText("Saya sering bertengkar dengan orang lain. Saya dapat memaksa orang lain melakukan yang Saya inginkan.");
+        jLabel311.setName("jLabel311"); // NOI18N
+        FormInput.add(jLabel311);
+        jLabel311.setBounds(63, 420, 550, 23);
+
+        jLabel312.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel312.setText("Saya mempunyai satu orang teman baik atau lebih.");
+        jLabel312.setName("jLabel312"); // NOI18N
+        FormInput.add(jLabel312);
+        jLabel312.setBounds(63, 390, 520, 23);
+
+        jLabel313.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel313.setText("Bila sedang gelisah atau cemas badan Saya sering bergerak–gerak tanpa Saya sadari.");
+        jLabel313.setName("jLabel313"); // NOI18N
+        FormInput.add(jLabel313);
+        jLabel313.setBounds(63, 360, 520, 23);
+
+        jLabel314.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel314.setText("Saya selalu siap menolong jika seseorang terluka, kecewa atau merasa sakit.");
+        jLabel314.setName("jLabel314"); // NOI18N
+        FormInput.add(jLabel314);
+        jLabel314.setBounds(63, 330, 530, 23);
+
+        jLabel315.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel315.setText("Saya banyak merasa cemas atau khawatir terhadap apapun");
+        jLabel315.setName("jLabel315"); // NOI18N
+        FormInput.add(jLabel315);
+        jLabel315.setBounds(63, 300, 440, 23);
+
+        jLabel316.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel316.setText(" Saya biasanya melakukan apa yang diperintahkan oleh orang lain.");
+        jLabel316.setName("jLabel316"); // NOI18N
+        FormInput.add(jLabel316);
+        jLabel316.setBounds(63, 270, 490, 23);
+
+        jLabel317.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel317.setText("Saya lebih suka sendiri daripada bersama dengan orang yang seusiaku.");
+        jLabel317.setName("jLabel317"); // NOI18N
+        FormInput.add(jLabel317);
+        jLabel317.setBounds(63, 240, 480, 23);
+
+        jLabel318.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel318.setText("Saya menjadi sangat marah dan sering tidak dapat mengendalikan kemarahan Saya.");
+        jLabel318.setName("jLabel318"); // NOI18N
+        FormInput.add(jLabel318);
+        jLabel318.setBounds(63, 210, 510, 23);
+
+        jLabel227.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel227.setText("Kalau Saya memiliki mainan, CD, atau makanan, Saya biasanya berbagi dengan orang lain.");
+        jLabel227.setName("jLabel227"); // NOI18N
+        FormInput.add(jLabel227);
+        jLabel227.setBounds(63, 180, 530, 23);
+
+        jLabel224.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel224.setText("Saya sering sakit kepala, sakit perut atau macam-macam sakit lainnya.");
+        jLabel224.setName("jLabel224"); // NOI18N
+        FormInput.add(jLabel224);
+        jLabel224.setBounds(63, 150, 530, 23);
+
+        jLabel221.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel221.setText("Saya gelisah. Saya tidak dapat diam untuk waktu lama.");
+        jLabel221.setName("jLabel221"); // NOI18N
+        FormInput.add(jLabel221);
+        jLabel221.setBounds(63, 120, 390, 23);
+
+        jLabel319.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel319.setText("Saya berusaha baik kepada orang lain. Saya peduli dengan perasaan mereka.");
+        jLabel319.setName("jLabel319"); // NOI18N
+        FormInput.add(jLabel319);
+        jLabel319.setBounds(63, 90, 520, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 870, 810, 1);
+
+        Kesimpulan1.setEditable(false);
+        Kesimpulan1.setFocusTraversalPolicyProvider(true);
+        Kesimpulan1.setName("Kesimpulan1"); // NOI18N
+        FormInput.add(Kesimpulan1);
+        Kesimpulan1.setBounds(111, 1070, 678, 23);
+
+        jLabel277.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel277.setText("Keterangan");
+        jLabel277.setName("jLabel277"); // NOI18N
+        FormInput.add(jLabel277);
+        jLabel277.setBounds(44, 1070, 80, 23);
+
+        jLabel279.setText(":");
+        jLabel279.setName("jLabel279"); // NOI18N
+        FormInput.add(jLabel279);
+        jLabel279.setBounds(0, 1070, 107, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3253,6 +3364,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
     private widget.TextBox Kesimpulan;
+    private widget.TextBox Kesimpulan1;
     private widget.TextBox KesimpulanSkorC;
     private widget.TextBox KesimpulanSkorE;
     private widget.TextBox KesimpulanSkorH;
@@ -3338,10 +3450,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.Label jLabel21;
     private widget.Label jLabel218;
     private widget.Label jLabel220;
+    private widget.Label jLabel221;
     private widget.Label jLabel222;
     private widget.Label jLabel223;
+    private widget.Label jLabel224;
     private widget.Label jLabel225;
     private widget.Label jLabel226;
+    private widget.Label jLabel227;
     private widget.Label jLabel228;
     private widget.Label jLabel229;
     private widget.Label jLabel230;
@@ -3395,24 +3510,35 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private widget.Label jLabel278;
     private widget.Label jLabel279;
     private widget.Label jLabel280;
-    private widget.Label jLabel281;
     private widget.Label jLabel282;
-    private widget.Label jLabel283;
     private widget.Label jLabel284;
-    private widget.Label jLabel285;
     private widget.Label jLabel286;
-    private widget.Label jLabel287;
     private widget.Label jLabel288;
-    private widget.Label jLabel289;
-    private widget.Label jLabel290;
     private widget.Label jLabel291;
-    private widget.Label jLabel292;
     private widget.Label jLabel293;
-    private widget.Label jLabel294;
     private widget.Label jLabel295;
-    private widget.Label jLabel296;
     private widget.Label jLabel297;
-    private widget.Label jLabel298;
+    private widget.Label jLabel299;
+    private widget.Label jLabel300;
+    private widget.Label jLabel301;
+    private widget.Label jLabel302;
+    private widget.Label jLabel303;
+    private widget.Label jLabel304;
+    private widget.Label jLabel305;
+    private widget.Label jLabel306;
+    private widget.Label jLabel307;
+    private widget.Label jLabel308;
+    private widget.Label jLabel309;
+    private widget.Label jLabel310;
+    private widget.Label jLabel311;
+    private widget.Label jLabel312;
+    private widget.Label jLabel313;
+    private widget.Label jLabel314;
+    private widget.Label jLabel315;
+    private widget.Label jLabel316;
+    private widget.Label jLabel317;
+    private widget.Label jLabel318;
+    private widget.Label jLabel319;
     private widget.Label jLabel4;
     private widget.Label jLabel58;
     private widget.Label jLabel59;
@@ -3422,6 +3548,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -3885,96 +4012,101 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     }
     
     private void isTotal() {
-            TotalNilai.setText(""+(
-                    Integer.parseInt(NilaiSDQ1.getText())+Integer.parseInt(NilaiSDQ2.getText())+Integer.parseInt(NilaiSDQ3.getText())+Integer.parseInt(NilaiSDQ4.getText())+Integer.parseInt(NilaiSDQ5.getText())+
-                    Integer.parseInt(NilaiSDQ6.getText())+Integer.parseInt(NilaiSDQ7.getText())+Integer.parseInt(NilaiSDQ8.getText())+Integer.parseInt(NilaiSDQ9.getText())+Integer.parseInt(NilaiSDQ10.getText())+
-                    Integer.parseInt(NilaiSDQ11.getText())+Integer.parseInt(NilaiSDQ12.getText())+Integer.parseInt(NilaiSDQ13.getText())+Integer.parseInt(NilaiSDQ14.getText())+Integer.parseInt(NilaiSDQ15.getText())+
-                    Integer.parseInt(NilaiSDQ16.getText())+Integer.parseInt(NilaiSDQ17.getText())+Integer.parseInt(NilaiSDQ18.getText())+Integer.parseInt(NilaiSDQ19.getText())+Integer.parseInt(NilaiSDQ20.getText())+
-                    Integer.parseInt(NilaiSDQ21.getText())+Integer.parseInt(NilaiSDQ22.getText())+Integer.parseInt(NilaiSDQ23.getText())+Integer.parseInt(NilaiSDQ24.getText())+Integer.parseInt(NilaiSDQ25.getText())
-            ));
+        TotalNilai.setText(""+(
+            Integer.parseInt(NilaiSDQ1.getText())+Integer.parseInt(NilaiSDQ2.getText())+Integer.parseInt(NilaiSDQ3.getText())+Integer.parseInt(NilaiSDQ4.getText())+Integer.parseInt(NilaiSDQ5.getText())+
+            Integer.parseInt(NilaiSDQ6.getText())+Integer.parseInt(NilaiSDQ7.getText())+Integer.parseInt(NilaiSDQ8.getText())+Integer.parseInt(NilaiSDQ9.getText())+Integer.parseInt(NilaiSDQ10.getText())+
+            Integer.parseInt(NilaiSDQ11.getText())+Integer.parseInt(NilaiSDQ12.getText())+Integer.parseInt(NilaiSDQ13.getText())+Integer.parseInt(NilaiSDQ14.getText())+Integer.parseInt(NilaiSDQ15.getText())+
+            Integer.parseInt(NilaiSDQ16.getText())+Integer.parseInt(NilaiSDQ17.getText())+Integer.parseInt(NilaiSDQ18.getText())+Integer.parseInt(NilaiSDQ19.getText())+Integer.parseInt(NilaiSDQ20.getText())+
+            Integer.parseInt(NilaiSDQ21.getText())+Integer.parseInt(NilaiSDQ22.getText())+Integer.parseInt(NilaiSDQ23.getText())+Integer.parseInt(NilaiSDQ24.getText())+Integer.parseInt(NilaiSDQ25.getText())
+        ));
     }
+    
     private void SkorE() {
         try {
             SkorE.setText(""+(
-                    Integer.parseInt(NilaiSDQ3.getText())+Integer.parseInt(NilaiSDQ8.getText())+Integer.parseInt(NilaiSDQ13.getText())+Integer.parseInt(NilaiSDQ16.getText())+Integer.parseInt(NilaiSDQ24.getText())
-                    
+                Integer.parseInt(NilaiSDQ3.getText())+Integer.parseInt(NilaiSDQ8.getText())+Integer.parseInt(NilaiSDQ13.getText())+Integer.parseInt(NilaiSDQ16.getText())+Integer.parseInt(NilaiSDQ24.getText())
             ));
+            
             if(Integer.parseInt(SkorE.getText())>7){
                 KesimpulanSkorE.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>6){
-                KesimpulanSkorE.setText("Ambang / Boderline");
+                KesimpulanSkorE.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorE.setText("Normal");
             }
         } catch (Exception e) {
             KesimpulanSkorE.setText("Normal");
         }
-            SkorKesulitan();
+        SkorKesulitan();
     }
-     private void SkorC() {
+    
+    private void SkorC() {
          try {
             SkorC.setText(""+(
-                    Integer.parseInt(NilaiSDQ5.getText())+Integer.parseInt(NilaiSDQ7.getText())+Integer.parseInt(NilaiSDQ12.getText())+Integer.parseInt(NilaiSDQ18.getText())+Integer.parseInt(NilaiSDQ22.getText())
-                    
+                Integer.parseInt(NilaiSDQ5.getText())+Integer.parseInt(NilaiSDQ7.getText())+Integer.parseInt(NilaiSDQ12.getText())+Integer.parseInt(NilaiSDQ18.getText())+Integer.parseInt(NilaiSDQ22.getText())
             ));
+            
             if(Integer.parseInt(SkorC.getText())>6){
                 KesimpulanSkorC.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>4){
-                KesimpulanSkorC.setText("Ambang / Boderline");
+                KesimpulanSkorC.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorE.setText("Normal");
             }
         } catch (Exception e) {
             KesimpulanSkorC.setText("Normal");
         }
-            SkorKesulitan();
+        SkorKesulitan();
     }
-     private void SkorH() {
+    
+    private void SkorH() {
          try {
             SkorH.setText(""+(
-                    Integer.parseInt(NilaiSDQ2.getText())+Integer.parseInt(NilaiSDQ10.getText())+Integer.parseInt(NilaiSDQ15.getText())+Integer.parseInt(NilaiSDQ21.getText())+Integer.parseInt(NilaiSDQ25.getText())
-                    
+                Integer.parseInt(NilaiSDQ2.getText())+Integer.parseInt(NilaiSDQ10.getText())+Integer.parseInt(NilaiSDQ15.getText())+Integer.parseInt(NilaiSDQ21.getText())+Integer.parseInt(NilaiSDQ25.getText())
             ));
+            
             if(Integer.parseInt(SkorH.getText())>7){
                 KesimpulanSkorH.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>6){
-                KesimpulanSkorH.setText("Ambang / Boderline");
+                KesimpulanSkorH.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorH.setText("Normal");
             }
         } catch (Exception e) {
             KesimpulanSkorH.setText("Normal");
         }
-            SkorKesulitan();
+        SkorKesulitan();
     }
+    
     private void SkorP() {
         try {
             SkorP.setText(""+(
                     Integer.parseInt(NilaiSDQ6.getText())+Integer.parseInt(NilaiSDQ11.getText())+Integer.parseInt(NilaiSDQ14.getText())+Integer.parseInt(NilaiSDQ19.getText())+Integer.parseInt(NilaiSDQ23.getText())
-                    
             ));
+            
             if(Integer.parseInt(SkorP.getText())>6){
                 KesimpulanSkorP.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>4){
-                KesimpulanSkorP.setText("Ambang / Boderline");
+                KesimpulanSkorP.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorP.setText("Normal");
             }
         } catch (Exception e) {
             KesimpulanSkorP.setText("Normal");
         }
-            SkorKesulitan();
+        SkorKesulitan();
     }
+    
     private void SkorPr() {
         try {
             SkorPr.setText(""+(
-                    Integer.parseInt(NilaiSDQ1.getText())+Integer.parseInt(NilaiSDQ4.getText())+Integer.parseInt(NilaiSDQ9.getText())+Integer.parseInt(NilaiSDQ17.getText())+Integer.parseInt(NilaiSDQ20.getText())
-                    
+                Integer.parseInt(NilaiSDQ1.getText())+Integer.parseInt(NilaiSDQ4.getText())+Integer.parseInt(NilaiSDQ9.getText())+Integer.parseInt(NilaiSDQ17.getText())+Integer.parseInt(NilaiSDQ20.getText())
             ));
+            
             if(Integer.parseInt(SkorPr.getText())<4){
                 KesimpulanSkorPr.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())<5){
-                KesimpulanSkorPr.setText("Ambang / Boderline");
+                KesimpulanSkorPr.setText("Ambang/Boderline");
             }else{
                 KesimpulanSkorPr.setText("Normal");
             }
@@ -3982,16 +4114,17 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             KesimpulanSkorPr.setText("Normal");
         }
     }
+    
     private void SkorKesulitan() {
         try {
             SkorKesulitan.setText(""+(
-                    Integer.parseInt(SkorE.getText())+Integer.parseInt(SkorC.getText())+Integer.parseInt(SkorH.getText())+Integer.parseInt(SkorP.getText())
-                    
+                Integer.parseInt(SkorE.getText())+Integer.parseInt(SkorC.getText())+Integer.parseInt(SkorH.getText())+Integer.parseInt(SkorP.getText())
             ));
+            
             if(Integer.parseInt(SkorKesulitan.getText())>20){
                 Kesimpulan.setText("Abnormal");
             }else if(Integer.parseInt(TotalNilai.getText())>16){
-                Kesimpulan.setText("Ambang / Boderline");
+                Kesimpulan.setText("Ambang/Boderline");
             }else{
                 Kesimpulan.setText("Normal");
             }
