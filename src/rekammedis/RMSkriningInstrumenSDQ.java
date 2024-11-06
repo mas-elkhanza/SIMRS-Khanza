@@ -3386,40 +3386,46 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skrining_instrumen_sdq.tanggal,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala1,skrining_instrumen_sdq.penilaian_skrining_nilai1,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala2,skrining_instrumen_sdq.penilaian_skrining_nilai2,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala3,skrining_instrumen_sdq.penilaian_skrining_nilai3,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala4,skrining_instrumen_sdq.penilaian_skrining_nilai4,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala5,skrining_instrumen_sdq.penilaian_skrining_nilai5,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala6,skrining_instrumen_sdq.penilaian_skrining_nilai6,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala7,skrining_instrumen_sdq.penilaian_skrining_nilai7,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala8,skrining_instrumen_sdq.penilaian_skrining_nilai8,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala9,skrining_instrumen_sdq.penilaian_skrining_nilai9,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala10,skrining_instrumen_sdq.penilaian_skrining_nilai10,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_totalnilai,"+
-                    "skrining_instrumen_sdq.nip,petugas.nama "+
-                    "from skrining_instrumen_sdq inner join reg_periksa on skrining_instrumen_sdq.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_instrumen_sdq.nip=petugas.nip where "+
+                    "skrining_instrumen_sdq.pernyataansdq1,skrining_instrumen_sdq.nilai_sdq1,skrining_instrumen_sdq.pernyataansdq2,skrining_instrumen_sdq.nilai_sdq2,"+
+                    "skrining_instrumen_sdq.pernyataansdq3,skrining_instrumen_sdq.nilai_sdq3,skrining_instrumen_sdq.pernyataansdq4,skrining_instrumen_sdq.nilai_sdq4,"+
+                    "skrining_instrumen_sdq.pernyataansdq5,skrining_instrumen_sdq.nilai_sdq5,skrining_instrumen_sdq.pernyataansdq6,skrining_instrumen_sdq.nilai_sdq6,"+
+                    "skrining_instrumen_sdq.pernyataansdq7,skrining_instrumen_sdq.nilai_sdq7,skrining_instrumen_sdq.pernyataansdq8,skrining_instrumen_sdq.nilai_sdq8,"+
+                    "skrining_instrumen_sdq.pernyataansdq9,skrining_instrumen_sdq.nilai_sdq9,skrining_instrumen_sdq.pernyataansdq10,skrining_instrumen_sdq.nilai_sdq10,"+
+                    "skrining_instrumen_sdq.pernyataansdq11,skrining_instrumen_sdq.nilai_sdq11,skrining_instrumen_sdq.pernyataansdq12,skrining_instrumen_sdq.nilai_sdq12,"+
+                    "skrining_instrumen_sdq.pernyataansdq13,skrining_instrumen_sdq.nilai_sdq13,skrining_instrumen_sdq.pernyataansdq14,skrining_instrumen_sdq.nilai_sdq14,"+
+                    "skrining_instrumen_sdq.pernyataansdq15,skrining_instrumen_sdq.nilai_sdq15,skrining_instrumen_sdq.pernyataansdq16,skrining_instrumen_sdq.nilai_sdq16,"+
+                    "skrining_instrumen_sdq.pernyataansdq17,skrining_instrumen_sdq.nilai_sdq17,skrining_instrumen_sdq.pernyataansdq18,skrining_instrumen_sdq.nilai_sdq18,"+
+                    "skrining_instrumen_sdq.pernyataansdq19,skrining_instrumen_sdq.nilai_sdq19,skrining_instrumen_sdq.pernyataansdq20,skrining_instrumen_sdq.nilai_sdq20,"+
+                    "skrining_instrumen_sdq.pernyataansdq21,skrining_instrumen_sdq.nilai_sdq21,skrining_instrumen_sdq.pernyataansdq22,skrining_instrumen_sdq.nilai_sdq22,"+
+                    "skrining_instrumen_sdq.pernyataansdq23,skrining_instrumen_sdq.nilai_sdq23,skrining_instrumen_sdq.pernyataansdq24,skrining_instrumen_sdq.nilai_sdq24,"+
+                    "skrining_instrumen_sdq.pernyataansdq25,skrining_instrumen_sdq.nilai_sdq25,skrining_instrumen_sdq.nilai_total_sdq,skrining_instrumen_sdq.gejala_emosional,"+
+                    "skrining_instrumen_sdq.nilai_gejala_emosional,skrining_instrumen_sdq.masalah_perilaku,skrining_instrumen_sdq.nilai_masalah_perilaku,skrining_instrumen_sdq.hiperaktivitas,"+
+                    "skrining_instrumen_sdq.nilai_hiperaktivitas,skrining_instrumen_sdq.teman_sebaya,skrining_instrumen_sdq.nilai_teman_sebaya,skrining_instrumen_sdq.kekuatan,"+
+                    "skrining_instrumen_sdq.nilai_kekuatan,skrining_instrumen_sdq.kesulitan,skrining_instrumen_sdq.nilai_kesulitan,skrining_instrumen_sdq.keterangan,"+
+                    "skrining_instrumen_sdq.nip,petugas.nama from skrining_instrumen_sdq inner join reg_periksa on skrining_instrumen_sdq.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_sdq.nip=petugas.nip where "+
                     "skrining_instrumen_sdq.tanggal between ? and ? order by skrining_instrumen_sdq.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skrining_instrumen_sdq.tanggal,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala1,skrining_instrumen_sdq.penilaian_skrining_nilai1,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala2,skrining_instrumen_sdq.penilaian_skrining_nilai2,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala3,skrining_instrumen_sdq.penilaian_skrining_nilai3,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala4,skrining_instrumen_sdq.penilaian_skrining_nilai4,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala5,skrining_instrumen_sdq.penilaian_skrining_nilai5,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala6,skrining_instrumen_sdq.penilaian_skrining_nilai6,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala7,skrining_instrumen_sdq.penilaian_skrining_nilai7,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala8,skrining_instrumen_sdq.penilaian_skrining_nilai8,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala9,skrining_instrumen_sdq.penilaian_skrining_nilai9,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_skala10,skrining_instrumen_sdq.penilaian_skrining_nilai10,"+
-                    "skrining_instrumen_sdq.penilaian_skrining_totalnilai,"+
-                    "skrining_instrumen_sdq.nip,petugas.nama "+
-                    "from skrining_instrumen_sdq inner join reg_periksa on skrining_instrumen_sdq.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_instrumen_sdq.nip=petugas.nip where "+
+                    "skrining_instrumen_sdq.pernyataansdq1,skrining_instrumen_sdq.nilai_sdq1,skrining_instrumen_sdq.pernyataansdq2,skrining_instrumen_sdq.nilai_sdq2,"+
+                    "skrining_instrumen_sdq.pernyataansdq3,skrining_instrumen_sdq.nilai_sdq3,skrining_instrumen_sdq.pernyataansdq4,skrining_instrumen_sdq.nilai_sdq4,"+
+                    "skrining_instrumen_sdq.pernyataansdq5,skrining_instrumen_sdq.nilai_sdq5,skrining_instrumen_sdq.pernyataansdq6,skrining_instrumen_sdq.nilai_sdq6,"+
+                    "skrining_instrumen_sdq.pernyataansdq7,skrining_instrumen_sdq.nilai_sdq7,skrining_instrumen_sdq.pernyataansdq8,skrining_instrumen_sdq.nilai_sdq8,"+
+                    "skrining_instrumen_sdq.pernyataansdq9,skrining_instrumen_sdq.nilai_sdq9,skrining_instrumen_sdq.pernyataansdq10,skrining_instrumen_sdq.nilai_sdq10,"+
+                    "skrining_instrumen_sdq.pernyataansdq11,skrining_instrumen_sdq.nilai_sdq11,skrining_instrumen_sdq.pernyataansdq12,skrining_instrumen_sdq.nilai_sdq12,"+
+                    "skrining_instrumen_sdq.pernyataansdq13,skrining_instrumen_sdq.nilai_sdq13,skrining_instrumen_sdq.pernyataansdq14,skrining_instrumen_sdq.nilai_sdq14,"+
+                    "skrining_instrumen_sdq.pernyataansdq15,skrining_instrumen_sdq.nilai_sdq15,skrining_instrumen_sdq.pernyataansdq16,skrining_instrumen_sdq.nilai_sdq16,"+
+                    "skrining_instrumen_sdq.pernyataansdq17,skrining_instrumen_sdq.nilai_sdq17,skrining_instrumen_sdq.pernyataansdq18,skrining_instrumen_sdq.nilai_sdq18,"+
+                    "skrining_instrumen_sdq.pernyataansdq19,skrining_instrumen_sdq.nilai_sdq19,skrining_instrumen_sdq.pernyataansdq20,skrining_instrumen_sdq.nilai_sdq20,"+
+                    "skrining_instrumen_sdq.pernyataansdq21,skrining_instrumen_sdq.nilai_sdq21,skrining_instrumen_sdq.pernyataansdq22,skrining_instrumen_sdq.nilai_sdq22,"+
+                    "skrining_instrumen_sdq.pernyataansdq23,skrining_instrumen_sdq.nilai_sdq23,skrining_instrumen_sdq.pernyataansdq24,skrining_instrumen_sdq.nilai_sdq24,"+
+                    "skrining_instrumen_sdq.pernyataansdq25,skrining_instrumen_sdq.nilai_sdq25,skrining_instrumen_sdq.nilai_total_sdq,skrining_instrumen_sdq.gejala_emosional,"+
+                    "skrining_instrumen_sdq.nilai_gejala_emosional,skrining_instrumen_sdq.masalah_perilaku,skrining_instrumen_sdq.nilai_masalah_perilaku,skrining_instrumen_sdq.hiperaktivitas,"+
+                    "skrining_instrumen_sdq.nilai_hiperaktivitas,skrining_instrumen_sdq.teman_sebaya,skrining_instrumen_sdq.nilai_teman_sebaya,skrining_instrumen_sdq.kekuatan,"+
+                    "skrining_instrumen_sdq.nilai_kekuatan,skrining_instrumen_sdq.kesulitan,skrining_instrumen_sdq.nilai_kesulitan,skrining_instrumen_sdq.keterangan,"+
+                    "skrining_instrumen_sdq.nip,petugas.nama from skrining_instrumen_sdq inner join reg_periksa on skrining_instrumen_sdq.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_sdq.nip=petugas.nip where "+
                     "skrining_instrumen_sdq.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or skrining_instrumen_sdq.nip like ? or petugas.nama like ?) "+
                     "order by skrining_instrumen_sdq.tanggal ");
             }
@@ -3441,13 +3447,17 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("penilaian_skrining_skala1"),rs.getString("penilaian_skrining_nilai1"),rs.getString("penilaian_skrining_skala2"),rs.getString("penilaian_skrining_nilai2"),
-                        rs.getString("penilaian_skrining_skala3"),rs.getString("penilaian_skrining_nilai3"),rs.getString("penilaian_skrining_skala4"),rs.getString("penilaian_skrining_nilai4"),
-                        rs.getString("penilaian_skrining_skala5"),rs.getString("penilaian_skrining_nilai5"),rs.getString("penilaian_skrining_skala6"),rs.getString("penilaian_skrining_nilai6"),
-                        rs.getString("penilaian_skrining_skala7"),rs.getString("penilaian_skrining_nilai7"),rs.getString("penilaian_skrining_skala8"),rs.getString("penilaian_skrining_nilai8"),
-                        rs.getString("penilaian_skrining_skala9"),rs.getString("penilaian_skrining_nilai9"),rs.getString("penilaian_skrining_skala10"),rs.getString("penilaian_skrining_nilai10"),
-                        rs.getString("penilaian_skrining_totalnilai"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("pernyataansdq1"),rs.getString("nilai_sdq1"),rs.getString("pernyataansdq2"),rs.getString("nilai_sdq2"),rs.getString("pernyataansdq3"),rs.getString("nilai_sdq3"),rs.getString("pernyataansdq4"),
+                        rs.getString("nilai_sdq4"),rs.getString("pernyataansdq5"),rs.getString("nilai_sdq5"),rs.getString("pernyataansdq6"),rs.getString("nilai_sdq6"),rs.getString("pernyataansdq7"),rs.getString("nilai_sdq7"),
+                        rs.getString("pernyataansdq8"),rs.getString("nilai_sdq8"),rs.getString("pernyataansdq9"),rs.getString("nilai_sdq9"),rs.getString("pernyataansdq10"),rs.getString("nilai_sdq10"),rs.getString("pernyataansdq11"),
+                        rs.getString("nilai_sdq11"),rs.getString("pernyataansdq12"),rs.getString("nilai_sdq12"),rs.getString("pernyataansdq13"),rs.getString("nilai_sdq13"),rs.getString("pernyataansdq14"),rs.getString("nilai_sdq14"),
+                        rs.getString("pernyataansdq15"),rs.getString("nilai_sdq15"),rs.getString("pernyataansdq16"),rs.getString("nilai_sdq16"),rs.getString("pernyataansdq17"),rs.getString("nilai_sdq17"),rs.getString("pernyataansdq18"),
+                        rs.getString("nilai_sdq18"),rs.getString("pernyataansdq19"),rs.getString("nilai_sdq19"),rs.getString("pernyataansdq20"),rs.getString("nilai_sdq20"),rs.getString("pernyataansdq21"),rs.getString("nilai_sdq21"),
+                        rs.getString("pernyataansdq22"),rs.getString("nilai_sdq22"),rs.getString("pernyataansdq23"),rs.getString("nilai_sdq23"),rs.getString("pernyataansdq24"),rs.getString("nilai_sdq24"),rs.getString("pernyataansdq25"),
+                        rs.getString("nilai_sdq25"),rs.getString("nilai_total_sdq"),rs.getString("gejala_emosional"),rs.getString("nilai_gejala_emosional"),rs.getString("masalah_perilaku"),rs.getString("nilai_masalah_perilaku"),
+                        rs.getString("hiperaktivitas"),rs.getString("nilai_hiperaktivitas"),rs.getString("teman_sebaya"),rs.getString("nilai_teman_sebaya"),rs.getString("kekuatan"),rs.getString("nilai_kekuatan"),rs.getString("kesulitan"),
+                        rs.getString("nilai_kesulitan"),rs.getString("keterangan")
                     });
                 }
             } catch (Exception e) {
@@ -3754,7 +3764,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
                 SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
                 SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),NilaiKesimpulanSkorH.getText(),
-                KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),Keterangan.getText(),
+                KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -3825,8 +3835,8 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             tbObat.setValueAt(NilaiKesimpulanSkorP.getText(),tbObat.getSelectedRow(),65);
             tbObat.setValueAt(KesimpulanSkorPr.getText(),tbObat.getSelectedRow(),66);
             tbObat.setValueAt(NilaiKesimpulanSkorPr.getText(),tbObat.getSelectedRow(),67);
-            tbObat.setValueAt(KesimpulanSkorPr.getText(),tbObat.getSelectedRow(),68);
-            tbObat.setValueAt(NilaiKesimpulanSkorPr.getText(),tbObat.getSelectedRow(),69);
+            tbObat.setValueAt(KesimpulanKesulitan.getText(),tbObat.getSelectedRow(),68);
+            tbObat.setValueAt(NilaiKesimpulanKesulitan.getText(),tbObat.getSelectedRow(),69);
             tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),70);
             emptTeks();
         }
@@ -3967,7 +3977,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("penilaian_skrining_instrumen_sdq","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",67,new String[]{
+        if(Sequel.menyimpantf("skrining_instrumen_sdq","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",67,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
             SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
             SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(), 
@@ -3976,7 +3986,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
             SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
             SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),NilaiKesimpulanSkorH.getText(),
-            KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),Keterangan.getText()
+            KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),NIP.getText(),NamaPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
@@ -3987,7 +3997,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 SDQ17.getSelectedItem().toString(),NilaiSDQ17.getText(),SDQ18.getSelectedItem().toString(),NilaiSDQ18.getText(),SDQ19.getSelectedItem().toString(),NilaiSDQ19.getText(),SDQ20.getSelectedItem().toString(),NilaiSDQ20.getText(),
                 SDQ21.getSelectedItem().toString(),NilaiSDQ21.getText(),SDQ22.getSelectedItem().toString(),NilaiSDQ22.getText(),SDQ23.getSelectedItem().toString(),NilaiSDQ23.getText(),SDQ24.getSelectedItem().toString(),NilaiSDQ24.getText(),
                 SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),NilaiKesimpulanSkorH.getText(),
-                KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),Keterangan.getText()
+                KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
             });
             emptTeks();
             LCount.setText(""+tabMode.getRowCount());
