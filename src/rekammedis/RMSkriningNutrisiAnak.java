@@ -1922,7 +1922,7 @@ public final class RMSkriningNutrisiAnak extends javax.swing.JDialog {
         SG4.setSelectedIndex(0);
         Nilai4.setText("0");
         TotalHasil.setText("0");
-        LabelSkrining.setText("Status Gizi Normal");
+        LabelSkrining.setText("Risiko Rendah");
         BB.requestFocus();
     } 
 

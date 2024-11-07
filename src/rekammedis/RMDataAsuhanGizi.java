@@ -159,11 +159,11 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
         BBPerTB.setDocument(new batasInput((byte)5).getKata(BBPerTB));
         LiLAPerU.setDocument(new batasInput((byte)5).getKata(LiLAPerU));
         Biokimia.setDocument(new batasInput((int)1000).getKata(Biokimia));
-        FisikKlinis.setDocument(new batasInput((int)1000).getKata(FisikKlinis));
-        RiwayatPersonal.setDocument(new batasInput((int)100).getKata(RiwayatPersonal));
-        PolaMakan.setDocument(new batasInput((int)100).getKata(PolaMakan));
-        DiagnosisGizi.setDocument(new batasInput((int)1000).getKata(DiagnosisGizi));
-        IntervensiGizi.setDocument(new batasInput((int)1000).getKata(IntervensiGizi));
+        FisikKlinis.setDocument(new batasInput((int)2000).getKata(FisikKlinis));
+        RiwayatPersonal.setDocument(new batasInput((int)1000).getKata(RiwayatPersonal));
+        PolaMakan.setDocument(new batasInput((int)2000).getKata(PolaMakan));
+        DiagnosisGizi.setDocument(new batasInput((int)2000).getKata(DiagnosisGizi));
+        IntervensiGizi.setDocument(new batasInput((int)2000).getKata(IntervensiGizi));
         Monitoring.setDocument(new batasInput((int)1000).getKata(Monitoring));
         
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
@@ -2155,6 +2155,7 @@ public final class RMDataAsuhanGizi extends javax.swing.JDialog {
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     umur=rs.getInt("umurdaftar");
                     sttsumur=rs.getString("sttsumur");
+                    DiagnosaMasukRanap.setText(Sequel.cariIsi("select kamar_inap.diagnosa_awal from kamar_inap where kamar_inap.no_rawat='"+TNoRw.getText()+"' order by kamar_inap.tgl_masuk asc,kamar_inap.jam_masuk asc limit 1"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

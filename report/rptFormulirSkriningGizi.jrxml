@@ -345,7 +345,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" pattern="#,##0.#;#,##0.#">
 				<reportElement positionType="Float" x="218" y="160" width="42" height="14" uuid="b3052a7c-22f5-44ff-b866-02f94b4f6f28">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -353,7 +353,7 @@ inner join petugas on monitoring_asuhan_gizi.nip=petugas.nip]]>
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{skor_imt}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(Double.parseDouble($F{skrining_bb})/((Double.parseDouble($F{skrining_tb})/100)*(Double.parseDouble($F{skrining_tb})/100)))]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="189" y="160" width="28" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="194a8fac-ab95-4788-89f0-876536624974">

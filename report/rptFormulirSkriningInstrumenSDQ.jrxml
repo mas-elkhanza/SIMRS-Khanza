@@ -667,7 +667,7 @@
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Pertanyaan]]></text>
+				<text><![CDATA[Pernyataan]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="29" y="29" width="19" height="11" forecolor="#000000" backcolor="#F0F0DC" uuid="3a607421-69a6-4b39-8d2a-e384ab62b53d">

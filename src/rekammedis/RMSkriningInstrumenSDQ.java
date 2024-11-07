@@ -1013,7 +1013,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel222.setBounds(695, 120, 50, 23);
 
         jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel223.setText("3");
+        jLabel223.setText("3.");
         jLabel223.setName("jLabel223"); // NOI18N
         FormInput.add(jLabel223);
         jLabel223.setBounds(44, 150, 25, 23);
