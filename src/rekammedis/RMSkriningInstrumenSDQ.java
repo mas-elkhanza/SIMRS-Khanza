@@ -98,137 +98,139 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(25);
             }else if(i==5){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(90);
             }else if(i==6){
-                column.setPreferredWidth(85);
-            }else if(i==7){
-                column.setPreferredWidth(40);
-            }else if(i==8){
-                column.setPreferredWidth(85);
-            }else if(i==9){
-                column.setPreferredWidth(40);
-            }else if(i==10){
-                column.setPreferredWidth(85);
-            }else if(i==11){
-                column.setPreferredWidth(40);
-            }else if(i==12){
-                column.setPreferredWidth(85);
-            }else if(i==13){
-                column.setPreferredWidth(40);
-            }else if(i==14){
-                column.setPreferredWidth(85);
-            }else if(i==15){
-                column.setPreferredWidth(40);
-            }else if(i==16){
-                column.setPreferredWidth(85);
-            }else if(i==17){
-                column.setPreferredWidth(40);
-            }else if(i==18){
-                column.setPreferredWidth(85);
-            }else if(i==19){
-                column.setPreferredWidth(40);
-            }else if(i==20){
-                column.setPreferredWidth(85);
-            }else if(i==21){
-                column.setPreferredWidth(40);
-            }else if(i==22){
-                column.setPreferredWidth(85);
-            }else if(i==23){
-                column.setPreferredWidth(40);
-            }else if(i==24){
-                column.setPreferredWidth(85);
-            }else if(i==25){
-                column.setPreferredWidth(40);
-            }else if(i==26){
-                column.setPreferredWidth(40);
-            }else if(i==27){
-                column.setPreferredWidth(85);
-            }else if(i==28){
                 column.setPreferredWidth(150);
-            }else if(i==29){
-                column.setPreferredWidth(65);
-            }else if(i==30){
-                column.setPreferredWidth(160);
-            }else if(i==31){
-                column.setPreferredWidth(65);
-            }else if(i==32){
-                column.setPreferredWidth(25);
-            }else if(i==33){
+            }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(50);
+            }else if(i==10){
+                column.setPreferredWidth(80);
+            }else if(i==11){
+                column.setPreferredWidth(50);
+            }else if(i==12){
+                column.setPreferredWidth(80);
+            }else if(i==13){
+                column.setPreferredWidth(50);
+            }else if(i==14){
+                column.setPreferredWidth(80);
+            }else if(i==15){
+                column.setPreferredWidth(50);
+            }else if(i==16){
+                column.setPreferredWidth(80);
+            }else if(i==17){
+                column.setPreferredWidth(50);
+            }else if(i==18){
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(50);
+            }else if(i==20){
+                column.setPreferredWidth(80);
+            }else if(i==21){
+                column.setPreferredWidth(50);
+            }else if(i==22){
+                column.setPreferredWidth(80);
+            }else if(i==23){
+                column.setPreferredWidth(50);
+            }else if(i==24){
+                column.setPreferredWidth(80);
+            }else if(i==25){
+                column.setPreferredWidth(50);
+            }else if(i==26){
+                column.setPreferredWidth(80);
+            }else if(i==27){
+                column.setPreferredWidth(50);
+            }else if(i==28){
+                column.setPreferredWidth(80);
+            }else if(i==29){
+                column.setPreferredWidth(50);
+            }else if(i==30){
+                column.setPreferredWidth(80);
+            }else if(i==31){
+                column.setPreferredWidth(50);
+            }else if(i==32){
+                column.setPreferredWidth(80);
+            }else if(i==33){
+                column.setPreferredWidth(50);
             }else if(i==34){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==35){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==36){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==37){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==38){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==39){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==40){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==41){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==42){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==43){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==44){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==45){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==46){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==47){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==48){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==49){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==50){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==51){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==52){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==53){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==54){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==55){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             }else if(i==56){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(80);
             }else if(i==57){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(50);
             }else if(i==58){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(82);
             }else if(i==59){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==60){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(45);
             }else if(i==61){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==62){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(45);
             }else if(i==63){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==64){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(45);
             }else if(i==65){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==66){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(45);
             }else if(i==67){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }else if(i==68){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(45);
             }else if(i==69){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(120);
             }else if(i==70){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(45);
+            }else if(i==71){
+                column.setPreferredWidth(250);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2424,7 +2426,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='4000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='5000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -2449,7 +2451,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='4000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='5000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -3549,66 +3551,79 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            SDQ1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            NilaiSDQ1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            SDQ2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            NilaiSDQ2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            SDQ3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            NilaiSDQ3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            SDQ4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            NilaiSDQ4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            SDQ5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            NilaiSDQ5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            SDQ6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            NilaiSDQ6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            SDQ7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            NilaiSDQ7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            SDQ8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            NilaiSDQ8.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            SDQ9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            NilaiSDQ9.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            SDQ10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ10.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ11.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ12.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ12.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ13.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ13.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ14.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ14.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ15.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ15.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ16.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ16.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ17.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ17.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ18.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ18.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ19.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ19.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ20.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ20.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ21.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ21.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ22.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ22.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ23.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ23.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ24.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ24.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            SDQ25.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            NilaiSDQ25.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            
-            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
-            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
-            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            SDQ1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            NilaiSDQ1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            SDQ2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            NilaiSDQ2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            SDQ3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            NilaiSDQ3.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            SDQ4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            NilaiSDQ4.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+             SDQ5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            NilaiSDQ5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            SDQ6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            NilaiSDQ6.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            SDQ7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            NilaiSDQ7.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            SDQ8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            NilaiSDQ8.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            SDQ9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            NilaiSDQ9.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            SDQ10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            NilaiSDQ10.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            SDQ11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            NilaiSDQ11.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            SDQ12.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            NilaiSDQ12.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            SDQ13.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            NilaiSDQ13.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            SDQ14.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            NilaiSDQ14.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            SDQ15.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            NilaiSDQ15.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            SDQ16.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            NilaiSDQ16.setText(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
+            SDQ17.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+            NilaiSDQ17.setText(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+            SDQ18.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            NilaiSDQ18.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            SDQ19.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            NilaiSDQ19.setText(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            SDQ20.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
+            NilaiSDQ20.setText(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
+            SDQ21.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
+            NilaiSDQ21.setText(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString());
+            SDQ22.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString());
+            NilaiSDQ22.setText(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString());
+            SDQ23.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString());
+            NilaiSDQ23.setText(tbObat.getValueAt(tbObat.getSelectedRow(),53).toString());
+            SDQ24.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),54).toString());
+            NilaiSDQ24.setText(tbObat.getValueAt(tbObat.getSelectedRow(),55).toString());
+            SDQ25.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),56).toString());
+            NilaiSDQ25.setText(tbObat.getValueAt(tbObat.getSelectedRow(),57).toString());
+            TotalNilai.setText(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString());
+            KesimpulanSkorE.setText(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString());
+            NilaiKesimpulanSkorE.setText(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
+            KesimpulanSkorC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
+            NilaiKesimpulanSkorC.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+            KesimpulanSkorH.setText(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
+            NilaiKesimpulanSkorH.setText(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());
+            KesimpulanSkorP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),65).toString());
+            NilaiKesimpulanSkorP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString());
+            KesimpulanSkorPr.setText(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
+            NilaiKesimpulanSkorPr.setText(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
+            KesimpulanKesulitan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString());
+            NilaiKesimpulanKesulitan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
+            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,16));
+            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
     
@@ -3792,7 +3807,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             tbObat.setValueAt(NilaiSDQ7.getText(),tbObat.getSelectedRow(),21);
             tbObat.setValueAt(SDQ8.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
             tbObat.setValueAt(NilaiSDQ8.getText(),tbObat.getSelectedRow(),23);
-            tbObat.setValueAt( SDQ9.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(SDQ9.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
             tbObat.setValueAt(NilaiSDQ9.getText(),tbObat.getSelectedRow(),25);
             tbObat.setValueAt(SDQ10.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
             tbObat.setValueAt(NilaiSDQ10.getText(),tbObat.getSelectedRow(),27);
