@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="MnSkriningObesitas">
+        <MenuItem class="javax.swing.JMenuItem" name="MnSkriningInstrumenSRQ">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -25,14 +25,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Formulir Skrining Obesitas"/>
-            <Property name="name" type="java.lang.String" value="MnSkriningObesitas" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Formulir Skrining SRQ"/>
+            <Property name="name" type="java.lang.String" value="MnSkriningInstrumenSRQ" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[200, 26]"/>
+              <Dimension value="[180, 26]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnSkriningObesitasActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnSkriningInstrumenSRQActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -932,12 +932,12 @@
                     <Component class="widget.Label" name="jLabel99">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="I. ANAMNESIS"/>
+                        <Property name="text" type="java.lang.String" value="I. DETEKSI DINI MASALAH EMOSI DAN PERILAKU MENGGUNAKAN SELF REPORTING QUISIONERE"/>
                         <Property name="name" type="java.lang.String" value="jLabel99" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="11" y="70" width="200" height="23"/>
+                          <AbsoluteConstraints x="11" y="70" width="700" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -2234,7 +2234,7 @@
                     <Component class="widget.Label" name="jLabel117">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value=" Apakah Anda merasa sulit berpikir jernih ?"/>
+                        <Property name="text" type="java.lang.String" value="Apakah Anda merasa sulit berpikir jernih ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel117" noResource="true"/>
                       </Properties>
                       <Constraints>

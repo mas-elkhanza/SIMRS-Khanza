@@ -282,7 +282,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningObesitas = new javax.swing.JMenuItem();
+        MnSkriningInstrumenSRQ = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -441,19 +441,19 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningObesitas.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningObesitas.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningObesitas.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningObesitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningObesitas.setText("Formulir Skrining Obesitas");
-        MnSkriningObesitas.setName("MnSkriningObesitas"); // NOI18N
-        MnSkriningObesitas.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningObesitas.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningInstrumenSRQ.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningInstrumenSRQ.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningInstrumenSRQ.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningInstrumenSRQ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningInstrumenSRQ.setText("Formulir Skrining SRQ");
+        MnSkriningInstrumenSRQ.setName("MnSkriningInstrumenSRQ"); // NOI18N
+        MnSkriningInstrumenSRQ.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnSkriningInstrumenSRQ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningObesitasActionPerformed(evt);
+                MnSkriningInstrumenSRQActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningObesitas);
+        jPopupMenu1.add(MnSkriningInstrumenSRQ);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -888,10 +888,10 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("I. ANAMNESIS");
+        jLabel99.setText("I. DETEKSI DINI MASALAH EMOSI DAN PERILAKU MENGGUNAKAN SELF REPORTING QUISIONERE");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
-        jLabel99.setBounds(11, 70, 200, 23);
+        jLabel99.setBounds(11, 70, 700, 23);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel100.setText("1.");
@@ -1594,7 +1594,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         jLabel116.setBounds(62, 270, 480, 23);
 
         jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel117.setText(" Apakah Anda merasa sulit berpikir jernih ?");
+        jLabel117.setText("Apakah Anda merasa sulit berpikir jernih ?");
         jLabel117.setName("jLabel117"); // NOI18N
         FormInput.add(jLabel117);
         jLabel117.setBounds(62, 300, 450, 23);
@@ -2093,7 +2093,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningObesitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningObesitasActionPerformed
+    private void MnSkriningInstrumenSRQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningInstrumenSRQActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -2105,16 +2105,21 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningObesitas.jasper","report","::[ Formulir Skrining Obesitas ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_instrumen_srq.nip,petugas.nama,skrining_instrumen_srq.tanggal,"+
-                    "skrining_instrumen_srq.kebiasaan_makan_manis,skrining_instrumen_srq.aktifitas_fisik_setiap_hari,skrining_instrumen_srq.istirahat_cukup,skrining_instrumen_srq.risiko_merokok,"+
-                    "skrining_instrumen_srq.riwayat_minum_alkohol_merokok_keluarga,skrining_instrumen_srq.riwayat_penggunaan_obat_steroid,skrining_instrumen_srq.berat_badan,skrining_instrumen_srq.tinggi_badan,"+
-                    "skrining_instrumen_srq.imt,skrining_instrumen_srq.kasifikasi_imt,skrining_instrumen_srq.lingkar_pinggang,skrining_instrumen_srq.risiko_lingkar_pinggang,skrining_instrumen_srq.status_obesitas,"+
-                    "skrining_instrumen_srq.keterangan from skrining_instrumen_srq inner join reg_periksa on skrining_instrumen_srq.no_rawat=reg_periksa.no_rawat "+
+            Valid.MyReportqry("rptFormulirSkriningInstrumenSRQ.jasper","report","::[ Formulir Skrining Instrumen SRQ ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_instrumen_srq.nip,petugas.nama,skrining_instrumen_srq.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "skrining_instrumen_srq.pernyataansrq1,skrining_instrumen_srq.nilai_srq1,skrining_instrumen_srq.pernyataansrq2,skrining_instrumen_srq.nilai_srq2,skrining_instrumen_srq.pernyataansrq3,"+
+                    "skrining_instrumen_srq.nilai_srq3,skrining_instrumen_srq.pernyataansrq4,skrining_instrumen_srq.nilai_srq4,skrining_instrumen_srq.pernyataansrq5,skrining_instrumen_srq.nilai_srq5,"+
+                    "skrining_instrumen_srq.pernyataansrq6,skrining_instrumen_srq.nilai_srq6,skrining_instrumen_srq.pernyataansrq7,skrining_instrumen_srq.nilai_srq7,skrining_instrumen_srq.pernyataansrq8,"+
+                    "skrining_instrumen_srq.nilai_srq8,skrining_instrumen_srq.pernyataansrq9,skrining_instrumen_srq.nilai_srq9,skrining_instrumen_srq.pernyataansrq10,skrining_instrumen_srq.nilai_srq10,"+
+                    "skrining_instrumen_srq.pernyataansrq11,skrining_instrumen_srq.nilai_srq11,skrining_instrumen_srq.pernyataansrq12,skrining_instrumen_srq.nilai_srq12,skrining_instrumen_srq.pernyataansrq13,"+
+                    "skrining_instrumen_srq.nilai_srq13,skrining_instrumen_srq.pernyataansrq14,skrining_instrumen_srq.nilai_srq14,skrining_instrumen_srq.pernyataansrq15,skrining_instrumen_srq.nilai_srq15,"+
+                    "skrining_instrumen_srq.pernyataansrq16,skrining_instrumen_srq.nilai_srq16,skrining_instrumen_srq.pernyataansrq17,skrining_instrumen_srq.nilai_srq17,skrining_instrumen_srq.pernyataansrq18,"+
+                    "skrining_instrumen_srq.nilai_srq18,skrining_instrumen_srq.pernyataansrq19,skrining_instrumen_srq.nilai_srq19,skrining_instrumen_srq.pernyataansrq20,skrining_instrumen_srq.nilai_srq20,"+
+                    "skrining_instrumen_srq.nilai_total_srq,skrining_instrumen_srq.kesimpulan from skrining_instrumen_srq inner join reg_periksa on skrining_instrumen_srq.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_srq.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningObesitasActionPerformed
+    }//GEN-LAST:event_MnSkriningInstrumenSRQActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -2421,7 +2426,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningObesitas;
+    private javax.swing.JMenuItem MnSkriningInstrumenSRQ;
     private widget.TextBox NilaiSRQ1;
     private widget.TextBox NilaiSRQ10;
     private widget.TextBox NilaiSRQ11;
