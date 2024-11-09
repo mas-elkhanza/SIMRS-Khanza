@@ -1484,11 +1484,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();         
                 
                 if(aktifkanbatch.equals("yes")){
-                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*"+hppfarmasi+") as aset,gudangbarang."+hppfarmasi+" as harga "+
+                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*"+hppfarmasi+") as aset,databarang."+hppfarmasi+" as harga "+
                             "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
                 }else{
-                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*"+hppfarmasi+") as aset,gudangbarang."+hppfarmasi+" as harga "+
+                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*"+hppfarmasi+") as aset,databarang."+hppfarmasi+" as harga "+
                             "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
                 }

@@ -3485,13 +3485,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
     public void emptTeks() {
         Tanggal.setDate(new Date());
         SDQ1.setSelectedIndex(0);
-        NilaiSDQ1.setText("0");
+        NilaiSDQ1.setText("2");
         SDQ2.setSelectedIndex(0);
         NilaiSDQ2.setText("0");
         SDQ3.setSelectedIndex(0);
         NilaiSDQ3.setText("0");
         SDQ4.setSelectedIndex(0);
-        NilaiSDQ4.setText("0");
+        NilaiSDQ4.setText("2");
         SDQ5.setSelectedIndex(0);
         NilaiSDQ5.setText("0");
         SDQ6.setSelectedIndex(0);
@@ -3501,7 +3501,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SDQ8.setSelectedIndex(0);
         NilaiSDQ8.setText("0");
         SDQ9.setSelectedIndex(0);
-        NilaiSDQ9.setText("0");
+        NilaiSDQ9.setText("2");
         SDQ10.setSelectedIndex(0);
         NilaiSDQ10.setText("0");
         SDQ11.setSelectedIndex(0);
@@ -3517,13 +3517,13 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         SDQ16.setSelectedIndex(0);
         NilaiSDQ16.setText("0");
         SDQ17.setSelectedIndex(0);
-        NilaiSDQ17.setText("0");
+        NilaiSDQ17.setText("2");
         SDQ18.setSelectedIndex(0);
         NilaiSDQ18.setText("0");
         SDQ19.setSelectedIndex(0);
         NilaiSDQ19.setText("0");
         SDQ20.setSelectedIndex(0);
-        NilaiSDQ20.setText("0");
+        NilaiSDQ20.setText("2");
         SDQ21.setSelectedIndex(0);
         NilaiSDQ21.setText("0");
         SDQ22.setSelectedIndex(0);

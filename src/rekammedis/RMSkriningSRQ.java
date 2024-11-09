@@ -283,7 +283,6 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
         jLabel100 = new widget.Label();
         jLabel101 = new widget.Label();
@@ -295,16 +294,6 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         jLabel107 = new widget.Label();
         jLabel108 = new widget.Label();
         jLabel109 = new widget.Label();
-        jLabel110 = new widget.Label();
-        jLabel111 = new widget.Label();
-        jLabel112 = new widget.Label();
-        jLabel113 = new widget.Label();
-        jLabel114 = new widget.Label();
-        jLabel115 = new widget.Label();
-        jLabel116 = new widget.Label();
-        jLabel117 = new widget.Label();
-        jLabel118 = new widget.Label();
-        jLabel119 = new widget.Label();
         SRQ1 = new widget.ComboBox();
         SRQ2 = new widget.ComboBox();
         SRQ3 = new widget.ComboBox();
@@ -337,16 +326,6 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         SRQ20 = new widget.ComboBox();
         jLabel130 = new widget.Label();
         NilaiSRQ1 = new widget.TextBox();
-        jLabel131 = new widget.Label();
-        jLabel132 = new widget.Label();
-        jLabel133 = new widget.Label();
-        jLabel134 = new widget.Label();
-        jLabel135 = new widget.Label();
-        jLabel136 = new widget.Label();
-        jLabel137 = new widget.Label();
-        jLabel138 = new widget.Label();
-        jLabel139 = new widget.Label();
-        jLabel140 = new widget.Label();
         jLabel141 = new widget.Label();
         jLabel142 = new widget.Label();
         jLabel143 = new widget.Label();
@@ -390,6 +369,28 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         Kesimpulan = new widget.TextBox();
         jLabel162 = new widget.Label();
         TotalNilai = new widget.TextBox();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel110 = new widget.Label();
+        jLabel111 = new widget.Label();
+        jLabel112 = new widget.Label();
+        jLabel113 = new widget.Label();
+        jLabel114 = new widget.Label();
+        jLabel115 = new widget.Label();
+        jLabel116 = new widget.Label();
+        jLabel117 = new widget.Label();
+        jLabel118 = new widget.Label();
+        jLabel119 = new widget.Label();
+        jLabel131 = new widget.Label();
+        jLabel132 = new widget.Label();
+        jLabel133 = new widget.Label();
+        jLabel134 = new widget.Label();
+        jLabel135 = new widget.Label();
+        jLabel136 = new widget.Label();
+        jLabel137 = new widget.Label();
+        jLabel138 = new widget.Label();
+        jLabel139 = new widget.Label();
+        jLabel140 = new widget.Label();
+        jSeparator2 = new javax.swing.JSeparator();
         jLabel163 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -589,7 +590,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -603,7 +604,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -694,7 +695,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 765));
+        FormInput.setPreferredSize(new java.awt.Dimension(830, 773));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -724,7 +725,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-11-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -840,138 +841,71 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator1.setName("jSeparator1"); // NOI18N
-        FormInput.add(jSeparator1);
-        jSeparator1.setBounds(0, 70, 900, 1);
-
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("I. PERTANYAAN :");
+        jLabel99.setText("I. ANAMNESIS");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
         jLabel99.setBounds(11, 70, 200, 23);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("1. Apakah anda sering merasa sakit kepala ?");
+        jLabel100.setText("1.");
         jLabel100.setName("jLabel100"); // NOI18N
         FormInput.add(jLabel100);
-        jLabel100.setBounds(44, 100, 240, 23);
+        jLabel100.setBounds(44, 90, 25, 23);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel101.setText("2. Apakah Anda kehilangan nafsu makan ?");
+        jLabel101.setText("2.");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(44, 130, 240, 23);
+        jLabel101.setBounds(44, 120, 25, 23);
 
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel102.setText("3. Apakah tidur Anda tidak nyenyak ?");
+        jLabel102.setText("3.");
         jLabel102.setName("jLabel102"); // NOI18N
         FormInput.add(jLabel102);
-        jLabel102.setBounds(44, 160, 240, 23);
+        jLabel102.setBounds(44, 150, 25, 23);
 
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel103.setText("4. Apakah Anda mudah merasa takut ?");
+        jLabel103.setText("4.");
         jLabel103.setName("jLabel103"); // NOI18N
         FormInput.add(jLabel103);
-        jLabel103.setBounds(44, 190, 240, 23);
+        jLabel103.setBounds(44, 180, 25, 23);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel104.setText("5. Apakah Anda merasa cemas, tegang, atau khawatir ?");
+        jLabel104.setText("5.");
         jLabel104.setName("jLabel104"); // NOI18N
         FormInput.add(jLabel104);
-        jLabel104.setBounds(44, 220, 280, 23);
+        jLabel104.setBounds(44, 210, 25, 23);
 
         jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel105.setText("6. Apakah tangan Anda gemetar ?");
+        jLabel105.setText("6.");
         jLabel105.setName("jLabel105"); // NOI18N
         FormInput.add(jLabel105);
-        jLabel105.setBounds(44, 250, 240, 23);
+        jLabel105.setBounds(44, 240, 25, 23);
 
         jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel106.setText("7. Apakah Anda mengalami gangguan pencernaan ?");
+        jLabel106.setText("7.");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
-        jLabel106.setBounds(44, 280, 270, 23);
+        jLabel106.setBounds(44, 270, 25, 23);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel107.setText("8. Apakah Anda merasa sulit berpikir jernih ?");
+        jLabel107.setText("8.");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
-        jLabel107.setBounds(44, 310, 240, 23);
+        jLabel107.setBounds(44, 300, 25, 23);
 
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel108.setText("9. Apakah Anda merasa tidak bahagia ?");
+        jLabel108.setText("9.");
         jLabel108.setName("jLabel108"); // NOI18N
         FormInput.add(jLabel108);
-        jLabel108.setBounds(44, 340, 240, 23);
+        jLabel108.setBounds(44, 330, 25, 23);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("10. Apakah Anda lebih sering menangis?");
+        jLabel109.setText("10.");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(44, 370, 240, 23);
-
-        jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel110.setText(":");
-        jLabel110.setName("jLabel110"); // NOI18N
-        FormInput.add(jLabel110);
-        jLabel110.setBounds(590, 220, 10, 23);
-
-        jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel111.setText(":");
-        jLabel111.setName("jLabel111"); // NOI18N
-        FormInput.add(jLabel111);
-        jLabel111.setBounds(590, 190, 10, 23);
-
-        jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel112.setText(":");
-        jLabel112.setName("jLabel112"); // NOI18N
-        FormInput.add(jLabel112);
-        jLabel112.setBounds(590, 160, 10, 23);
-
-        jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel113.setText(":");
-        jLabel113.setName("jLabel113"); // NOI18N
-        FormInput.add(jLabel113);
-        jLabel113.setBounds(590, 130, 10, 23);
-
-        jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel114.setText(":");
-        jLabel114.setName("jLabel114"); // NOI18N
-        FormInput.add(jLabel114);
-        jLabel114.setBounds(590, 100, 10, 23);
-
-        jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel115.setText(":");
-        jLabel115.setName("jLabel115"); // NOI18N
-        FormInput.add(jLabel115);
-        jLabel115.setBounds(590, 250, 10, 23);
-
-        jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel116.setText(":");
-        jLabel116.setName("jLabel116"); // NOI18N
-        FormInput.add(jLabel116);
-        jLabel116.setBounds(590, 280, 10, 23);
-
-        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel117.setText(":");
-        jLabel117.setName("jLabel117"); // NOI18N
-        FormInput.add(jLabel117);
-        jLabel117.setBounds(590, 310, 10, 23);
-
-        jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel118.setText(":");
-        jLabel118.setName("jLabel118"); // NOI18N
-        FormInput.add(jLabel118);
-        jLabel118.setBounds(590, 340, 10, 23);
-
-        jLabel119.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel119.setText(":");
-        jLabel119.setName("jLabel119"); // NOI18N
-        FormInput.add(jLabel119);
-        jLabel119.setBounds(590, 370, 10, 23);
+        jLabel109.setBounds(44, 360, 25, 23);
 
         SRQ1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ1.setName("SRQ1"); // NOI18N
@@ -986,7 +920,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ1);
-        SRQ1.setBounds(600, 100, 100, 23);
+        SRQ1.setBounds(610, 90, 90, 23);
 
         SRQ2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ2.setName("SRQ2"); // NOI18N
@@ -1001,7 +935,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ2);
-        SRQ2.setBounds(600, 130, 100, 23);
+        SRQ2.setBounds(610, 120, 90, 23);
 
         SRQ3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ3.setName("SRQ3"); // NOI18N
@@ -1016,7 +950,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ3);
-        SRQ3.setBounds(600, 160, 100, 23);
+        SRQ3.setBounds(610, 150, 90, 23);
 
         SRQ4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ4.setName("SRQ4"); // NOI18N
@@ -1031,7 +965,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ4);
-        SRQ4.setBounds(600, 190, 100, 23);
+        SRQ4.setBounds(610, 180, 90, 23);
 
         SRQ5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ5.setName("SRQ5"); // NOI18N
@@ -1046,7 +980,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ5);
-        SRQ5.setBounds(600, 220, 100, 23);
+        SRQ5.setBounds(610, 210, 90, 23);
 
         SRQ6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ6.setName("SRQ6"); // NOI18N
@@ -1061,7 +995,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ6);
-        SRQ6.setBounds(600, 250, 100, 23);
+        SRQ6.setBounds(610, 240, 90, 23);
 
         SRQ7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ7.setName("SRQ7"); // NOI18N
@@ -1076,7 +1010,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ7);
-        SRQ7.setBounds(600, 280, 100, 23);
+        SRQ7.setBounds(610, 270, 90, 23);
 
         SRQ8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ8.setName("SRQ8"); // NOI18N
@@ -1091,7 +1025,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ8);
-        SRQ8.setBounds(600, 310, 100, 23);
+        SRQ8.setBounds(610, 300, 90, 23);
 
         SRQ9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ9.setName("SRQ9"); // NOI18N
@@ -1106,7 +1040,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ9);
-        SRQ9.setBounds(600, 340, 100, 23);
+        SRQ9.setBounds(610, 330, 90, 23);
 
         SRQ10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ10.setName("SRQ10"); // NOI18N
@@ -1121,67 +1055,67 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ10);
-        SRQ10.setBounds(600, 370, 100, 23);
+        SRQ10.setBounds(610, 360, 90, 23);
 
         jLabel120.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel120.setText("11. Apakah Anda merasa sulit untuk menikmati aktivitas sehari-hari ?");
+        jLabel120.setText("11.");
         jLabel120.setName("jLabel120"); // NOI18N
         FormInput.add(jLabel120);
-        jLabel120.setBounds(44, 400, 340, 23);
+        jLabel120.setBounds(44, 390, 25, 23);
 
         jLabel121.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel121.setText("12. Apakah Anda mengalami kesulitan untuk mengambil keputusan ?");
+        jLabel121.setText("12.");
         jLabel121.setName("jLabel121"); // NOI18N
         FormInput.add(jLabel121);
-        jLabel121.setBounds(44, 430, 340, 23);
+        jLabel121.setBounds(44, 420, 25, 23);
 
         jLabel122.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel122.setText("13. Apakah aktivitas/tugas sehari-hari Anda terbengkalai ?");
+        jLabel122.setText("13.");
         jLabel122.setName("jLabel122"); // NOI18N
         FormInput.add(jLabel122);
-        jLabel122.setBounds(44, 460, 340, 23);
+        jLabel122.setBounds(44, 450, 25, 23);
 
         jLabel123.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel123.setText("14. Apakah Anda merasa tidak mampu berperan dalam kehidupan ini ?");
+        jLabel123.setText("14.");
         jLabel123.setName("jLabel123"); // NOI18N
         FormInput.add(jLabel123);
-        jLabel123.setBounds(44, 490, 470, 23);
+        jLabel123.setBounds(44, 480, 25, 23);
 
         jLabel124.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel124.setText("15. Apakah Anda kehilangan minat terhadap banyak hal ?");
+        jLabel124.setText("15.");
         jLabel124.setName("jLabel124"); // NOI18N
         FormInput.add(jLabel124);
-        jLabel124.setBounds(44, 520, 340, 23);
+        jLabel124.setBounds(44, 510, 25, 23);
 
         jLabel125.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel125.setText("16. Apakah Anda merasa tidak berharga ?");
+        jLabel125.setText("16.");
         jLabel125.setName("jLabel125"); // NOI18N
         FormInput.add(jLabel125);
-        jLabel125.setBounds(44, 550, 240, 23);
+        jLabel125.setBounds(44, 540, 25, 23);
 
         jLabel126.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel126.setText("17. Apakah Anda mempunyai pikiran untuk mengakhiri hidup Anda ?");
+        jLabel126.setText("17.");
         jLabel126.setName("jLabel126"); // NOI18N
         FormInput.add(jLabel126);
-        jLabel126.setBounds(44, 580, 340, 23);
+        jLabel126.setBounds(44, 570, 25, 23);
 
         jLabel127.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel127.setText("18. Apakah Anda merasa lelah sepanjang waktu ?");
+        jLabel127.setText("18.");
         jLabel127.setName("jLabel127"); // NOI18N
         FormInput.add(jLabel127);
-        jLabel127.setBounds(44, 610, 410, 23);
+        jLabel127.setBounds(44, 600, 25, 23);
 
         jLabel128.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel128.setText("19. Apakah Anda merasa tidak enak di perut ?");
+        jLabel128.setText("19.");
         jLabel128.setName("jLabel128"); // NOI18N
         FormInput.add(jLabel128);
-        jLabel128.setBounds(44, 640, 240, 23);
+        jLabel128.setBounds(44, 630, 25, 23);
 
         jLabel129.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel129.setText("20. Apakah Anda mudah lelah ?");
+        jLabel129.setText("20.");
         jLabel129.setName("jLabel129"); // NOI18N
         FormInput.add(jLabel129);
-        jLabel129.setBounds(44, 670, 240, 23);
+        jLabel129.setBounds(44, 660, 25, 23);
 
         SRQ11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ11.setName("SRQ11"); // NOI18N
@@ -1196,7 +1130,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ11);
-        SRQ11.setBounds(600, 400, 100, 23);
+        SRQ11.setBounds(610, 390, 90, 23);
 
         SRQ12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ12.setName("SRQ12"); // NOI18N
@@ -1211,7 +1145,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ12);
-        SRQ12.setBounds(600, 430, 100, 23);
+        SRQ12.setBounds(610, 420, 90, 23);
 
         SRQ13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ13.setName("SRQ13"); // NOI18N
@@ -1226,7 +1160,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ13);
-        SRQ13.setBounds(600, 460, 100, 23);
+        SRQ13.setBounds(610, 450, 90, 23);
 
         SRQ14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ14.setName("SRQ14"); // NOI18N
@@ -1241,7 +1175,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ14);
-        SRQ14.setBounds(600, 490, 100, 23);
+        SRQ14.setBounds(610, 480, 90, 23);
 
         SRQ15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ15.setName("SRQ15"); // NOI18N
@@ -1256,7 +1190,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ15);
-        SRQ15.setBounds(600, 520, 100, 23);
+        SRQ15.setBounds(610, 510, 90, 23);
 
         SRQ16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ16.setName("SRQ16"); // NOI18N
@@ -1271,7 +1205,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ16);
-        SRQ16.setBounds(600, 550, 100, 23);
+        SRQ16.setBounds(610, 540, 90, 23);
 
         SRQ17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ17.setName("SRQ17"); // NOI18N
@@ -1286,7 +1220,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ17);
-        SRQ17.setBounds(600, 580, 100, 23);
+        SRQ17.setBounds(610, 570, 90, 23);
 
         SRQ18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ18.setName("SRQ18"); // NOI18N
@@ -1301,7 +1235,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ18);
-        SRQ18.setBounds(600, 610, 100, 23);
+        SRQ18.setBounds(610, 600, 90, 23);
 
         SRQ19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ19.setName("SRQ19"); // NOI18N
@@ -1316,7 +1250,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ19);
-        SRQ19.setBounds(600, 640, 100, 23);
+        SRQ19.setBounds(610, 630, 90, 23);
 
         SRQ20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         SRQ20.setName("SRQ20"); // NOI18N
@@ -1331,321 +1265,373 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             }
         });
         FormInput.add(SRQ20);
-        SRQ20.setBounds(600, 670, 100, 23);
+        SRQ20.setBounds(610, 660, 90, 23);
 
-        jLabel130.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel130.setText("Nilai");
+        jLabel130.setText("Nilai :");
         jLabel130.setName("jLabel130"); // NOI18N
         FormInput.add(jLabel130);
-        jLabel130.setBounds(705, 100, 30, 23);
+        jLabel130.setBounds(700, 90, 40, 23);
 
         NilaiSRQ1.setHighlighter(null);
         NilaiSRQ1.setName("NilaiSRQ1"); // NOI18N
         FormInput.add(NilaiSRQ1);
-        NilaiSRQ1.setBounds(730, 100, 50, 23);
+        NilaiSRQ1.setBounds(744, 90, 45, 23);
 
-        jLabel131.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel131.setText(":");
-        jLabel131.setName("jLabel131"); // NOI18N
-        FormInput.add(jLabel131);
-        jLabel131.setBounds(590, 400, 10, 23);
-
-        jLabel132.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel132.setText(":");
-        jLabel132.setName("jLabel132"); // NOI18N
-        FormInput.add(jLabel132);
-        jLabel132.setBounds(590, 430, 10, 23);
-
-        jLabel133.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel133.setText(":");
-        jLabel133.setName("jLabel133"); // NOI18N
-        FormInput.add(jLabel133);
-        jLabel133.setBounds(590, 460, 10, 23);
-
-        jLabel134.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel134.setText(":");
-        jLabel134.setName("jLabel134"); // NOI18N
-        FormInput.add(jLabel134);
-        jLabel134.setBounds(590, 490, 10, 23);
-
-        jLabel135.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel135.setText(":");
-        jLabel135.setName("jLabel135"); // NOI18N
-        FormInput.add(jLabel135);
-        jLabel135.setBounds(590, 520, 10, 23);
-
-        jLabel136.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel136.setText(":");
-        jLabel136.setName("jLabel136"); // NOI18N
-        FormInput.add(jLabel136);
-        jLabel136.setBounds(590, 550, 10, 23);
-
-        jLabel137.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel137.setText(":");
-        jLabel137.setName("jLabel137"); // NOI18N
-        FormInput.add(jLabel137);
-        jLabel137.setBounds(590, 580, 10, 23);
-
-        jLabel138.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel138.setText(":");
-        jLabel138.setName("jLabel138"); // NOI18N
-        FormInput.add(jLabel138);
-        jLabel138.setBounds(590, 610, 10, 23);
-
-        jLabel139.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel139.setText(":");
-        jLabel139.setName("jLabel139"); // NOI18N
-        FormInput.add(jLabel139);
-        jLabel139.setBounds(590, 640, 10, 23);
-
-        jLabel140.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel140.setText(":");
-        jLabel140.setName("jLabel140"); // NOI18N
-        FormInput.add(jLabel140);
-        jLabel140.setBounds(590, 670, 10, 23);
-
-        jLabel141.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel141.setText("Nilai");
+        jLabel141.setText("Nilai :");
         jLabel141.setName("jLabel141"); // NOI18N
         FormInput.add(jLabel141);
-        jLabel141.setBounds(705, 130, 30, 23);
+        jLabel141.setBounds(700, 120, 40, 23);
 
-        jLabel142.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel142.setText("Nilai");
+        jLabel142.setText("Nilai :");
         jLabel142.setName("jLabel142"); // NOI18N
         FormInput.add(jLabel142);
-        jLabel142.setBounds(705, 160, 30, 23);
+        jLabel142.setBounds(700, 150, 40, 23);
 
-        jLabel143.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel143.setText("Nilai");
+        jLabel143.setText("Nilai :");
         jLabel143.setName("jLabel143"); // NOI18N
         FormInput.add(jLabel143);
-        jLabel143.setBounds(705, 190, 30, 23);
+        jLabel143.setBounds(700, 180, 40, 23);
 
-        jLabel144.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel144.setText("Nilai");
+        jLabel144.setText("Nilai :");
         jLabel144.setName("jLabel144"); // NOI18N
         FormInput.add(jLabel144);
-        jLabel144.setBounds(705, 220, 30, 23);
+        jLabel144.setBounds(700, 210, 40, 23);
 
-        jLabel145.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel145.setText("Nilai");
+        jLabel145.setText("Nilai :");
         jLabel145.setName("jLabel145"); // NOI18N
         FormInput.add(jLabel145);
-        jLabel145.setBounds(705, 250, 30, 23);
+        jLabel145.setBounds(700, 240, 40, 23);
 
-        jLabel146.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel146.setText("Nilai");
+        jLabel146.setText("Nilai :");
         jLabel146.setName("jLabel146"); // NOI18N
         FormInput.add(jLabel146);
-        jLabel146.setBounds(705, 280, 30, 23);
+        jLabel146.setBounds(700, 270, 40, 23);
 
-        jLabel147.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel147.setText("Nilai");
+        jLabel147.setText("Nilai :");
         jLabel147.setName("jLabel147"); // NOI18N
         FormInput.add(jLabel147);
-        jLabel147.setBounds(705, 310, 30, 23);
+        jLabel147.setBounds(700, 300, 40, 23);
 
-        jLabel148.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel148.setText("Nilai");
+        jLabel148.setText("Nilai :");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
-        jLabel148.setBounds(705, 340, 30, 23);
+        jLabel148.setBounds(700, 330, 40, 23);
 
-        jLabel149.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel149.setText("Nilai");
+        jLabel149.setText("Nilai :");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(705, 370, 30, 23);
+        jLabel149.setBounds(700, 360, 40, 23);
 
-        jLabel150.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel150.setText("Nilai");
+        jLabel150.setText("Nilai :");
         jLabel150.setName("jLabel150"); // NOI18N
         FormInput.add(jLabel150);
-        jLabel150.setBounds(705, 400, 30, 23);
+        jLabel150.setBounds(700, 390, 40, 23);
 
-        jLabel151.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel151.setText("Nilai");
+        jLabel151.setText("Nilai :");
         jLabel151.setName("jLabel151"); // NOI18N
         FormInput.add(jLabel151);
-        jLabel151.setBounds(705, 430, 30, 23);
+        jLabel151.setBounds(700, 420, 40, 23);
 
-        jLabel152.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel152.setText("Nilai");
+        jLabel152.setText("Nilai :");
         jLabel152.setName("jLabel152"); // NOI18N
         FormInput.add(jLabel152);
-        jLabel152.setBounds(705, 460, 30, 23);
+        jLabel152.setBounds(700, 450, 40, 23);
 
-        jLabel153.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel153.setText("Nilai");
+        jLabel153.setText("Nilai :");
         jLabel153.setName("jLabel153"); // NOI18N
         FormInput.add(jLabel153);
-        jLabel153.setBounds(705, 490, 30, 23);
+        jLabel153.setBounds(700, 480, 40, 23);
 
-        jLabel154.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel154.setText("Nilai");
+        jLabel154.setText("Nilai :");
         jLabel154.setName("jLabel154"); // NOI18N
         FormInput.add(jLabel154);
-        jLabel154.setBounds(705, 520, 30, 23);
+        jLabel154.setBounds(700, 510, 40, 23);
 
-        jLabel155.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel155.setText("Nilai");
+        jLabel155.setText("Nilai :");
         jLabel155.setName("jLabel155"); // NOI18N
         FormInput.add(jLabel155);
-        jLabel155.setBounds(705, 550, 30, 23);
+        jLabel155.setBounds(700, 540, 40, 23);
 
-        jLabel156.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel156.setText("Nilai");
+        jLabel156.setText("Nilai :");
         jLabel156.setName("jLabel156"); // NOI18N
         FormInput.add(jLabel156);
-        jLabel156.setBounds(705, 580, 30, 23);
+        jLabel156.setBounds(700, 570, 40, 23);
 
-        jLabel157.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel157.setText("Nilai");
+        jLabel157.setText("Nilai :");
         jLabel157.setName("jLabel157"); // NOI18N
         FormInput.add(jLabel157);
-        jLabel157.setBounds(705, 610, 30, 23);
+        jLabel157.setBounds(700, 600, 40, 23);
 
-        jLabel158.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel158.setText("Nilai");
+        jLabel158.setText("Nilai :");
         jLabel158.setName("jLabel158"); // NOI18N
         FormInput.add(jLabel158);
-        jLabel158.setBounds(705, 640, 30, 23);
+        jLabel158.setBounds(700, 630, 40, 23);
 
-        jLabel159.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel159.setText("Nilai");
+        jLabel159.setText("Nilai :");
         jLabel159.setName("jLabel159"); // NOI18N
         FormInput.add(jLabel159);
-        jLabel159.setBounds(705, 670, 30, 23);
+        jLabel159.setBounds(700, 660, 40, 23);
 
         NilaiSRQ2.setHighlighter(null);
         NilaiSRQ2.setName("NilaiSRQ2"); // NOI18N
         FormInput.add(NilaiSRQ2);
-        NilaiSRQ2.setBounds(730, 130, 50, 23);
+        NilaiSRQ2.setBounds(744, 120, 45, 23);
 
         NilaiSRQ3.setHighlighter(null);
         NilaiSRQ3.setName("NilaiSRQ3"); // NOI18N
         FormInput.add(NilaiSRQ3);
-        NilaiSRQ3.setBounds(730, 160, 50, 23);
+        NilaiSRQ3.setBounds(744, 150, 45, 23);
 
         NilaiSRQ4.setHighlighter(null);
         NilaiSRQ4.setName("NilaiSRQ4"); // NOI18N
         FormInput.add(NilaiSRQ4);
-        NilaiSRQ4.setBounds(730, 190, 50, 23);
+        NilaiSRQ4.setBounds(744, 180, 45, 23);
 
         NilaiSRQ5.setHighlighter(null);
         NilaiSRQ5.setName("NilaiSRQ5"); // NOI18N
         FormInput.add(NilaiSRQ5);
-        NilaiSRQ5.setBounds(730, 220, 50, 23);
+        NilaiSRQ5.setBounds(744, 210, 45, 23);
 
         NilaiSRQ6.setHighlighter(null);
         NilaiSRQ6.setName("NilaiSRQ6"); // NOI18N
         FormInput.add(NilaiSRQ6);
-        NilaiSRQ6.setBounds(730, 250, 50, 23);
+        NilaiSRQ6.setBounds(744, 240, 45, 23);
 
         NilaiSRQ7.setHighlighter(null);
         NilaiSRQ7.setName("NilaiSRQ7"); // NOI18N
         FormInput.add(NilaiSRQ7);
-        NilaiSRQ7.setBounds(730, 280, 50, 23);
+        NilaiSRQ7.setBounds(744, 270, 45, 23);
 
         NilaiSRQ8.setHighlighter(null);
         NilaiSRQ8.setName("NilaiSRQ8"); // NOI18N
         FormInput.add(NilaiSRQ8);
-        NilaiSRQ8.setBounds(730, 310, 50, 23);
+        NilaiSRQ8.setBounds(744, 300, 45, 23);
 
         NilaiSRQ9.setHighlighter(null);
         NilaiSRQ9.setName("NilaiSRQ9"); // NOI18N
         FormInput.add(NilaiSRQ9);
-        NilaiSRQ9.setBounds(730, 340, 50, 23);
+        NilaiSRQ9.setBounds(744, 330, 45, 23);
 
         NilaiSRQ10.setHighlighter(null);
         NilaiSRQ10.setName("NilaiSRQ10"); // NOI18N
         FormInput.add(NilaiSRQ10);
-        NilaiSRQ10.setBounds(730, 370, 50, 23);
+        NilaiSRQ10.setBounds(744, 360, 45, 23);
 
         NilaiSRQ11.setHighlighter(null);
         NilaiSRQ11.setName("NilaiSRQ11"); // NOI18N
         FormInput.add(NilaiSRQ11);
-        NilaiSRQ11.setBounds(730, 400, 50, 23);
+        NilaiSRQ11.setBounds(744, 390, 45, 23);
 
         NilaiSRQ12.setHighlighter(null);
         NilaiSRQ12.setName("NilaiSRQ12"); // NOI18N
         FormInput.add(NilaiSRQ12);
-        NilaiSRQ12.setBounds(730, 430, 50, 23);
+        NilaiSRQ12.setBounds(744, 420, 45, 23);
 
         NilaiSRQ13.setHighlighter(null);
         NilaiSRQ13.setName("NilaiSRQ13"); // NOI18N
         FormInput.add(NilaiSRQ13);
-        NilaiSRQ13.setBounds(730, 460, 50, 23);
+        NilaiSRQ13.setBounds(744, 450, 45, 23);
 
         NilaiSRQ14.setHighlighter(null);
         NilaiSRQ14.setName("NilaiSRQ14"); // NOI18N
         FormInput.add(NilaiSRQ14);
-        NilaiSRQ14.setBounds(730, 490, 50, 23);
+        NilaiSRQ14.setBounds(744, 480, 45, 23);
 
         NilaiSRQ15.setHighlighter(null);
         NilaiSRQ15.setName("NilaiSRQ15"); // NOI18N
         FormInput.add(NilaiSRQ15);
-        NilaiSRQ15.setBounds(730, 520, 50, 23);
+        NilaiSRQ15.setBounds(744, 510, 45, 23);
 
         NilaiSRQ16.setHighlighter(null);
         NilaiSRQ16.setName("NilaiSRQ16"); // NOI18N
         FormInput.add(NilaiSRQ16);
-        NilaiSRQ16.setBounds(730, 550, 50, 23);
+        NilaiSRQ16.setBounds(744, 540, 45, 23);
 
         NilaiSRQ17.setHighlighter(null);
         NilaiSRQ17.setName("NilaiSRQ17"); // NOI18N
         FormInput.add(NilaiSRQ17);
-        NilaiSRQ17.setBounds(730, 580, 50, 23);
+        NilaiSRQ17.setBounds(744, 570, 45, 23);
 
         NilaiSRQ18.setHighlighter(null);
         NilaiSRQ18.setName("NilaiSRQ18"); // NOI18N
         FormInput.add(NilaiSRQ18);
-        NilaiSRQ18.setBounds(730, 610, 50, 23);
+        NilaiSRQ18.setBounds(744, 600, 45, 23);
 
         NilaiSRQ19.setHighlighter(null);
         NilaiSRQ19.setName("NilaiSRQ19"); // NOI18N
         FormInput.add(NilaiSRQ19);
-        NilaiSRQ19.setBounds(730, 640, 50, 23);
+        NilaiSRQ19.setBounds(744, 630, 45, 23);
 
         NilaiSRQ20.setHighlighter(null);
         NilaiSRQ20.setName("NilaiSRQ20"); // NOI18N
         FormInput.add(NilaiSRQ20);
-        NilaiSRQ20.setBounds(730, 670, 50, 23);
+        NilaiSRQ20.setBounds(744, 660, 45, 23);
 
         jLabel160.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel160.setText("Kesimpulan");
         jLabel160.setName("jLabel160"); // NOI18N
         FormInput.add(jLabel160);
-        jLabel160.setBounds(44, 730, 60, 23);
+        jLabel160.setBounds(44, 740, 70, 23);
 
-        jLabel161.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel161.setText(":");
         jLabel161.setName("jLabel161"); // NOI18N
         FormInput.add(jLabel161);
-        jLabel161.setBounds(110, 730, 10, 23);
+        jLabel161.setBounds(0, 740, 107, 23);
 
         Kesimpulan.setHighlighter(null);
         Kesimpulan.setName("Kesimpulan"); // NOI18N
         FormInput.add(Kesimpulan);
-        Kesimpulan.setBounds(120, 730, 660, 23);
+        Kesimpulan.setBounds(111, 740, 678, 23);
 
-        jLabel162.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel162.setText("Total Nilai SRQ");
+        jLabel162.setText("Total Nilai SRQ :");
         jLabel162.setName("jLabel162"); // NOI18N
         FormInput.add(jLabel162);
-        jLabel162.setBounds(640, 700, 80, 23);
+        jLabel162.setBounds(610, 690, 130, 23);
 
         TotalNilai.setHighlighter(null);
         TotalNilai.setName("TotalNilai"); // NOI18N
         FormInput.add(TotalNilai);
-        TotalNilai.setBounds(730, 700, 50, 23);
+        TotalNilai.setBounds(744, 690, 45, 23);
+
+        jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator1.setName("jSeparator1"); // NOI18N
+        FormInput.add(jSeparator1);
+        jSeparator1.setBounds(0, 70, 807, 1);
+
+        jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel110.setText("Apakah Anda sering merasa sakit kepala ?");
+        jLabel110.setName("jLabel110"); // NOI18N
+        FormInput.add(jLabel110);
+        jLabel110.setBounds(62, 90, 450, 23);
+
+        jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel111.setText("Apakah Anda kehilangan nafsu makan ?");
+        jLabel111.setName("jLabel111"); // NOI18N
+        FormInput.add(jLabel111);
+        jLabel111.setBounds(62, 120, 450, 23);
+
+        jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel112.setText("Apakah tidur Anda tidak nyenyak ?");
+        jLabel112.setName("jLabel112"); // NOI18N
+        FormInput.add(jLabel112);
+        jLabel112.setBounds(62, 150, 450, 23);
+
+        jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel113.setText("Apakah Anda mudah merasa takut ?");
+        jLabel113.setName("jLabel113"); // NOI18N
+        FormInput.add(jLabel113);
+        jLabel113.setBounds(62, 180, 450, 23);
+
+        jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel114.setText("Apakah Anda merasa cemas, tegang, atau khawatir ?");
+        jLabel114.setName("jLabel114"); // NOI18N
+        FormInput.add(jLabel114);
+        jLabel114.setBounds(62, 210, 490, 23);
+
+        jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel115.setText("Apakah tangan Anda gemetar ?");
+        jLabel115.setName("jLabel115"); // NOI18N
+        FormInput.add(jLabel115);
+        jLabel115.setBounds(62, 240, 450, 23);
+
+        jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel116.setText("Apakah Anda mengalami gangguan pencernaan ?");
+        jLabel116.setName("jLabel116"); // NOI18N
+        FormInput.add(jLabel116);
+        jLabel116.setBounds(62, 270, 480, 23);
+
+        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel117.setText(" Apakah Anda merasa sulit berpikir jernih ?");
+        jLabel117.setName("jLabel117"); // NOI18N
+        FormInput.add(jLabel117);
+        jLabel117.setBounds(62, 300, 450, 23);
+
+        jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel118.setText("Apakah Anda merasa tidak bahagia ?");
+        jLabel118.setName("jLabel118"); // NOI18N
+        FormInput.add(jLabel118);
+        jLabel118.setBounds(62, 330, 450, 23);
+
+        jLabel119.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel119.setText("Apakah Anda lebih sering menangis?");
+        jLabel119.setName("jLabel119"); // NOI18N
+        FormInput.add(jLabel119);
+        jLabel119.setBounds(62, 360, 450, 23);
+
+        jLabel131.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel131.setText("Apakah Anda merasa sulit untuk menikmati aktivitas sehari-hari ?");
+        jLabel131.setName("jLabel131"); // NOI18N
+        FormInput.add(jLabel131);
+        jLabel131.setBounds(62, 390, 550, 23);
+
+        jLabel132.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel132.setText("Apakah Anda mengalami kesulitan untuk mengambil keputusan ?");
+        jLabel132.setName("jLabel132"); // NOI18N
+        FormInput.add(jLabel132);
+        jLabel132.setBounds(62, 420, 550, 23);
+
+        jLabel133.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel133.setText("Apakah aktivitas/tugas sehari-hari Anda terbengkalai ?");
+        jLabel133.setName("jLabel133"); // NOI18N
+        FormInput.add(jLabel133);
+        jLabel133.setBounds(62, 450, 550, 23);
+
+        jLabel134.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel134.setText("Apakah Anda merasa tidak mampu berperan dalam kehidupan ini ?");
+        jLabel134.setName("jLabel134"); // NOI18N
+        FormInput.add(jLabel134);
+        jLabel134.setBounds(62, 480, 540, 23);
+
+        jLabel135.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel135.setText("Apakah Anda kehilangan minat terhadap banyak hal ?");
+        jLabel135.setName("jLabel135"); // NOI18N
+        FormInput.add(jLabel135);
+        jLabel135.setBounds(62, 510, 550, 23);
+
+        jLabel136.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel136.setText("Apakah Anda merasa tidak berharga ?");
+        jLabel136.setName("jLabel136"); // NOI18N
+        FormInput.add(jLabel136);
+        jLabel136.setBounds(62, 540, 450, 23);
+
+        jLabel137.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel137.setText("Apakah Anda mempunyai pikiran untuk mengakhiri hidup Anda ?");
+        jLabel137.setName("jLabel137"); // NOI18N
+        FormInput.add(jLabel137);
+        jLabel137.setBounds(62, 570, 550, 23);
+
+        jLabel138.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel138.setText("Apakah Anda merasa lelah sepanjang waktu ?");
+        jLabel138.setName("jLabel138"); // NOI18N
+        FormInput.add(jLabel138);
+        jLabel138.setBounds(62, 600, 540, 23);
+
+        jLabel139.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel139.setText("Apakah Anda merasa tidak enak di perut ?");
+        jLabel139.setName("jLabel139"); // NOI18N
+        FormInput.add(jLabel139);
+        jLabel139.setBounds(62, 630, 450, 23);
+
+        jLabel140.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel140.setText("Apakah Anda mudah lelah ?");
+        jLabel140.setName("jLabel140"); // NOI18N
+        FormInput.add(jLabel140);
+        jLabel140.setBounds(62, 660, 450, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 720, 807, 1);
 
         jLabel163.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel163.setText(":");
+        jLabel163.setText("II. INTERPRETASI");
         jLabel163.setName("jLabel163"); // NOI18N
         FormInput.add(jLabel163);
-        jLabel163.setBounds(720, 700, 10, 23);
+        jLabel163.setBounds(10, 720, 200, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2454,6 +2440,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -2463,13 +2450,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            /*
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Kebiasaan Makan Manis","Aktifitas Fisik","Istirahat Cukup","Risiko Merokok","Riwayat Alkohol/Merokok Keluarga",
-            "Riwayat Penggunaan Steroid","BB(Kg)","TB(Cm)","IMT","Kasifikasi IMT","LP","Risiko L.P.",
-            "Status Obesitas","Keterangan"
-            */
-            if(TCari.getText().trim().equals("")){
+           if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_obesitas.nip,petugas.nama,skrining_obesitas.tanggal,"+
                     "skrining_obesitas.kebiasaan_makan_manis,skrining_obesitas.aktifitas_fisik_setiap_hari,skrining_obesitas.istirahat_cukup,skrining_obesitas.risiko_merokok,"+
@@ -2654,17 +2635,10 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>608){
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,586));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }else{
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+            FormInput.setVisible(true);      
+            ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
