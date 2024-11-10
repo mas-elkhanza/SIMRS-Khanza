@@ -1739,7 +1739,7 @@
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[II. INTEPRETASI DAN KESIMPULAN HASIL PEMERIKSAAN (SDQ) :]]></text>
+				<text><![CDATA[II. INTEPRETASI DAN KESIMPULAN HASIL PEMERIKSAAN (SDQ)]]></text>
 			</staticText>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="10" y="0" width="1" height="117" uuid="133d4578-8563-4f73-9c35-4fc874150934">

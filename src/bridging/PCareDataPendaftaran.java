@@ -3360,8 +3360,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     simpanKunjungan();
                     emptTeks();
                 }
-            }
-                
+            }   
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -7388,16 +7387,17 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             NmDiagnosa2.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),27).toString());
             KdDiagnosa3.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),28).toString());
             NmDiagnosa3.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),29).toString());
-            KdAlergiMakanan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),30).toString());
-            NmAlergiMakanan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),31).toString());
-            KdAlergiUdara.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),32).toString());
-            NmAlergiUdara.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),33).toString());
-            KdAlergiObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),34).toString());
-            NmAlergiObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),35).toString());
-            KdPrognosa.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),36).toString());
-            NmPrognosa.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),37).toString());
-            TerapiNonObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),38).toString());
-            BMHP.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),39).toString());
+            Status.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),30).toString());
+            KdAlergiMakanan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),31).toString());
+            NmAlergiMakanan.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),32).toString());
+            KdAlergiUdara.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),33).toString());
+            NmAlergiUdara.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),34).toString());
+            KdAlergiObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),35).toString());
+            NmAlergiObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),36).toString());
+            KdPrognosa.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),37).toString());
+            NmPrognosa.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),38).toString());
+            TerapiNonObat.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),39).toString());
+            BMHP.setText(tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),40).toString());
             Valid.SetTgl(TanggalPulang,tbKunjungan.getValueAt(tbKunjungan.getSelectedRow(),21).toString());
             TglLahir.setText(Sequel.cariIsi("select pasien.tgl_lahir from pasien where pasien.no_rkm_medis=?",TNoRM.getText()));
         }
