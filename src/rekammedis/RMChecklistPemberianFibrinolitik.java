@@ -75,9 +75,15 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Rutin Menerima Transfusi","Keluarga Rutin Transfusi","Ada Saudara Thalassemia","Tumbuh Kembang Terlambat",
-            "Anemia","Ikterus","Perut Buncit","Gizi Kurang/Buruk","Facies Cooley","Perawakan Pendek","Hiperpigmentasi Kulit",
-            "HB","MVC","MCHC","Darah Tepi","Tindak Lanjut"
+            "Kontra Indikasi 1","Keterangan Kontra Indikasi 1","Kontra Indikasi 2","Keterangan Kontra Indikasi 2",
+            "Kontra Indikasi 3","Keterangan Kontra Indikasi 3","Kontra Indikasi 4","Keterangan Kontra Indikasi 4",
+            "Kontra Indikasi 5","Keterangan Kontra Indikasi 5","Kontra Indikasi 6","Keterangan Kontra Indikasi 6",
+            "Kontra Indikasi 7","Keterangan Kontra Indikasi 7","Kontra Indikasi 8","Keterangan Kontra Indikasi 8",
+            "Kontra Indikasi 9","Keterangan Kontra Indikasi 9","Kontra Indikasi 10","Keterangan Kontra Indikasi 10",
+            "Risiko Tinggi 1","Keterangan Risiko Tinggi 1","Risiko Tinggi 2","Keterangan Risiko Tinggi 2",
+            "Risiko Tinggi 3","Keterangan Risiko Tinggi 3","Risiko Tinggi 4","Keterangan Risiko Tinggi 4",
+            "Risiko Tinggi 5","Keterangan Risiko Tinggi 5","Kesimpulan","EKG Pre Streptase","EKG Post Streptase",
+            "Cek Troponin"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -87,7 +93,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 42; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -105,38 +111,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
-            }else if(i==8){
-                column.setPreferredWidth(135);
-            }else if(i==9){
-                column.setPreferredWidth(130);
-            }else if(i==10){
-                column.setPreferredWidth(135);
-            }else if(i==11){
-                column.setPreferredWidth(150);
-            }else if(i==12){
-                column.setPreferredWidth(50);
-            }else if(i==13){
-                column.setPreferredWidth(50);
-            }else if(i==14){
-                column.setPreferredWidth(70);
-            }else if(i==15){
-                column.setPreferredWidth(100);
-            }else if(i==16){
-                column.setPreferredWidth(80);
-            }else if(i==17){
-                column.setPreferredWidth(103);
-            }else if(i==18){
-                column.setPreferredWidth(115);
-            }else if(i==19){
-                column.setPreferredWidth(60);
-            }else if(i==20){
-                column.setPreferredWidth(50);
-            }else if(i==21){
-                column.setPreferredWidth(50);
-            }else if(i==22){
-                column.setPreferredWidth(80);
-            }else if(i==23){
-                column.setPreferredWidth(300);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -328,23 +302,23 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         jLabel110 = new widget.Label();
         jLabel80 = new widget.Label();
         RisikoTinggi1 = new widget.ComboBox();
-        NilaiRisikoTinggi1 = new widget.TextBox();
+        KeteranganRisikoTinggi1 = new widget.TextBox();
         jLabel83 = new widget.Label();
         jLabel111 = new widget.Label();
         RisikoTinggi2 = new widget.ComboBox();
-        NilaiRisikoTinggi2 = new widget.TextBox();
+        KeteranganRisikoTinggi2 = new widget.TextBox();
         jLabel112 = new widget.Label();
         jLabel85 = new widget.Label();
         RisikoTinggi3 = new widget.ComboBox();
-        NilaiRisikoTinggi3 = new widget.TextBox();
+        KeteranganRisikoTinggi3 = new widget.TextBox();
         jLabel87 = new widget.Label();
         jLabel113 = new widget.Label();
         RisikoTinggi4 = new widget.ComboBox();
-        NilaiRisikoTinggi4 = new widget.TextBox();
+        KeteranganRisikoTinggi4 = new widget.TextBox();
         jLabel92 = new widget.Label();
         jLabel114 = new widget.Label();
         RisikoTinggi5 = new widget.ComboBox();
-        NilaiRisikoTinggi5 = new widget.TextBox();
+        KeteranganRisikoTinggi5 = new widget.TextBox();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel125 = new widget.Label();
         jSeparator6 = new javax.swing.JSeparator();
@@ -1173,14 +1147,14 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(RisikoTinggi1);
         RisikoTinggi1.setBounds(600, 410, 80, 23);
 
-        NilaiRisikoTinggi1.setName("NilaiRisikoTinggi1"); // NOI18N
-        NilaiRisikoTinggi1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganRisikoTinggi1.setName("KeteranganRisikoTinggi1"); // NOI18N
+        KeteranganRisikoTinggi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiRisikoTinggi1KeyPressed(evt);
+                KeteranganRisikoTinggi1KeyPressed(evt);
             }
         });
-        FormInput.add(NilaiRisikoTinggi1);
-        NilaiRisikoTinggi1.setBounds(683, 410, 106, 23);
+        FormInput.add(KeteranganRisikoTinggi1);
+        KeteranganRisikoTinggi1.setBounds(683, 410, 106, 23);
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel83.setText("Edema Paru (Rales)");
@@ -1204,14 +1178,14 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(RisikoTinggi2);
         RisikoTinggi2.setBounds(600, 440, 80, 23);
 
-        NilaiRisikoTinggi2.setName("NilaiRisikoTinggi2"); // NOI18N
-        NilaiRisikoTinggi2.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganRisikoTinggi2.setName("KeteranganRisikoTinggi2"); // NOI18N
+        KeteranganRisikoTinggi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiRisikoTinggi2KeyPressed(evt);
+                KeteranganRisikoTinggi2KeyPressed(evt);
             }
         });
-        FormInput.add(NilaiRisikoTinggi2);
-        NilaiRisikoTinggi2.setBounds(683, 440, 106, 23);
+        FormInput.add(KeteranganRisikoTinggi2);
+        KeteranganRisikoTinggi2.setBounds(683, 440, 106, 23);
 
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel112.setText("3.");
@@ -1235,14 +1209,14 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(RisikoTinggi3);
         RisikoTinggi3.setBounds(600, 470, 80, 23);
 
-        NilaiRisikoTinggi3.setName("NilaiRisikoTinggi3"); // NOI18N
-        NilaiRisikoTinggi3.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganRisikoTinggi3.setName("KeteranganRisikoTinggi3"); // NOI18N
+        KeteranganRisikoTinggi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiRisikoTinggi3KeyPressed(evt);
+                KeteranganRisikoTinggi3KeyPressed(evt);
             }
         });
-        FormInput.add(NilaiRisikoTinggi3);
-        NilaiRisikoTinggi3.setBounds(683, 470, 106, 23);
+        FormInput.add(KeteranganRisikoTinggi3);
+        KeteranganRisikoTinggi3.setBounds(683, 470, 106, 23);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel87.setText("Kontradiksi Terapi Fibrinolitik");
@@ -1266,14 +1240,14 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(RisikoTinggi4);
         RisikoTinggi4.setBounds(600, 500, 80, 23);
 
-        NilaiRisikoTinggi4.setName("NilaiRisikoTinggi4"); // NOI18N
-        NilaiRisikoTinggi4.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganRisikoTinggi4.setName("KeteranganRisikoTinggi4"); // NOI18N
+        KeteranganRisikoTinggi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiRisikoTinggi4KeyPressed(evt);
+                KeteranganRisikoTinggi4KeyPressed(evt);
             }
         });
-        FormInput.add(NilaiRisikoTinggi4);
-        NilaiRisikoTinggi4.setBounds(683, 500, 106, 23);
+        FormInput.add(KeteranganRisikoTinggi4);
+        KeteranganRisikoTinggi4.setBounds(683, 500, 106, 23);
 
         jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel92.setText("Memerlukan RJP");
@@ -1297,14 +1271,14 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(RisikoTinggi5);
         RisikoTinggi5.setBounds(600, 530, 80, 23);
 
-        NilaiRisikoTinggi5.setName("NilaiRisikoTinggi5"); // NOI18N
-        NilaiRisikoTinggi5.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganRisikoTinggi5.setName("KeteranganRisikoTinggi5"); // NOI18N
+        KeteranganRisikoTinggi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiRisikoTinggi5KeyPressed(evt);
+                KeteranganRisikoTinggi5KeyPressed(evt);
             }
         });
-        FormInput.add(NilaiRisikoTinggi5);
-        NilaiRisikoTinggi5.setBounds(683, 530, 106, 23);
+        FormInput.add(KeteranganRisikoTinggi5);
+        KeteranganRisikoTinggi5.setBounds(683, 530, 106, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
@@ -1765,13 +1739,13 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningThalasemia.jasper","report","::[ Formulir Skrining Thalassemia ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
-                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
-                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
-                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur from skrining_thalassemia inner join reg_periksa "+
-                    "on skrining_thalassemia.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
-                    "on skrining_thalassemia.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_pemberian_fibrinolitik.nip,petugas.nama,checklist_pemberian_fibrinolitik.tanggal,"+
+                    "checklist_pemberian_fibrinolitik.transfusi_darah,checklist_pemberian_fibrinolitik.rutin_transfusi,checklist_pemberian_fibrinolitik.saudara_thalassemia,checklist_pemberian_fibrinolitik.tumbuh_kembang_terlambat,"+
+                    "checklist_pemberian_fibrinolitik.anemia,checklist_pemberian_fibrinolitik.ikterus,checklist_pemberian_fibrinolitik.perut_buncit,checklist_pemberian_fibrinolitik.gizi_kurang,checklist_pemberian_fibrinolitik.facies_cooley,"+
+                    "checklist_pemberian_fibrinolitik.perawakan_pendek,checklist_pemberian_fibrinolitik.hiperpigmentasi_kulit,checklist_pemberian_fibrinolitik.hemoglobin,checklist_pemberian_fibrinolitik.mvc,checklist_pemberian_fibrinolitik.mchc,"+
+                    "checklist_pemberian_fibrinolitik.darah_tepi,checklist_pemberian_fibrinolitik.tindak_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur from checklist_pemberian_fibrinolitik inner join reg_periksa "+
+                    "on checklist_pemberian_fibrinolitik.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
+                    "on checklist_pemberian_fibrinolitik.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningThalassemiaActionPerformed
 
@@ -1867,41 +1841,41 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         // TODO add your handling code here:
     }//GEN-LAST:event_RisikoTinggi1KeyPressed
 
-    private void NilaiRisikoTinggi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi1KeyPressed
+    private void KeteranganRisikoTinggi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiRisikoTinggi1KeyPressed
+    }//GEN-LAST:event_KeteranganRisikoTinggi1KeyPressed
 
     private void RisikoTinggi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_RisikoTinggi2KeyPressed
 
-    private void NilaiRisikoTinggi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi2KeyPressed
+    private void KeteranganRisikoTinggi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiRisikoTinggi2KeyPressed
+    }//GEN-LAST:event_KeteranganRisikoTinggi2KeyPressed
 
     private void RisikoTinggi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi3KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_RisikoTinggi3KeyPressed
 
-    private void NilaiRisikoTinggi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi3KeyPressed
+    private void KeteranganRisikoTinggi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiRisikoTinggi3KeyPressed
+    }//GEN-LAST:event_KeteranganRisikoTinggi3KeyPressed
 
     private void RisikoTinggi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi4KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_RisikoTinggi4KeyPressed
 
-    private void NilaiRisikoTinggi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi4KeyPressed
+    private void KeteranganRisikoTinggi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiRisikoTinggi4KeyPressed
+    }//GEN-LAST:event_KeteranganRisikoTinggi4KeyPressed
 
     private void RisikoTinggi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi5KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_RisikoTinggi5KeyPressed
 
-    private void NilaiRisikoTinggi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi5KeyPressed
+    private void KeteranganRisikoTinggi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiRisikoTinggi5KeyPressed
+    }//GEN-LAST:event_KeteranganRisikoTinggi5KeyPressed
 
     private void EkgPreStrepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkgPreStrepKeyPressed
         // TODO add your handling code here:
@@ -1963,6 +1937,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.TextBox KeteranganKontraIndikasi7;
     private widget.TextBox KeteranganKontraIndikasi8;
     private widget.TextBox KeteranganKontraIndikasi9;
+    private widget.TextBox KeteranganRisikoTinggi1;
+    private widget.TextBox KeteranganRisikoTinggi2;
+    private widget.TextBox KeteranganRisikoTinggi3;
+    private widget.TextBox KeteranganRisikoTinggi4;
+    private widget.TextBox KeteranganRisikoTinggi5;
     private widget.ComboBox KontraIndikasi1;
     private widget.ComboBox KontraIndikasi10;
     private widget.ComboBox KontraIndikasi2;
@@ -1977,11 +1956,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningThalassemia;
-    private widget.TextBox NilaiRisikoTinggi1;
-    private widget.TextBox NilaiRisikoTinggi2;
-    private widget.TextBox NilaiRisikoTinggi3;
-    private widget.TextBox NilaiRisikoTinggi4;
-    private widget.TextBox NilaiRisikoTinggi5;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox RisikoTinggi1;
@@ -2065,24 +2039,34 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
-                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
-                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
-                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_thalassemia.nip=petugas.nip "+
-                    "where skrining_thalassemia.tanggal between ? and ? order by skrining_thalassemia.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_pemberian_fibrinolitik.nip,petugas.nama,checklist_pemberian_fibrinolitik.tanggal,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi1,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi1,checklist_pemberian_fibrinolitik.kontra_indikasi2,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi2,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi3,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi3,checklist_pemberian_fibrinolitik.kontra_indikasi4,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi4,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi5,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi5,checklist_pemberian_fibrinolitik.kontra_indikasi6,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi6,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi7,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi7,checklist_pemberian_fibrinolitik.kontra_indikasi8,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi8,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi9,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi9,checklist_pemberian_fibrinolitik.kontra_indikasi10,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi10,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi1,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi1,checklist_pemberian_fibrinolitik.risiko_tinggi2,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi2,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi3,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi3,checklist_pemberian_fibrinolitik.risiko_tinggi4,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi4,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi5,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi5,checklist_pemberian_fibrinolitik.kesimpulan,checklist_pemberian_fibrinolitik.persyaratan_ekg_pre_streptase,"+
+                    "checklist_pemberian_fibrinolitik.persyaratan_ekg_post_streptase,checklist_pemberian_fibrinolitik.cek_troponin from checklist_pemberian_fibrinolitik inner join reg_periksa on checklist_pemberian_fibrinolitik.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on checklist_pemberian_fibrinolitik.nip=petugas.nip "+
+                    "where checklist_pemberian_fibrinolitik.tanggal between ? and ? order by checklist_pemberian_fibrinolitik.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
-                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
-                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
-                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_thalassemia.nip=petugas.nip "+
-                    "where skrining_thalassemia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_thalassemia.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_thalassemia.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_pemberian_fibrinolitik.nip,petugas.nama,checklist_pemberian_fibrinolitik.tanggal,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi1,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi1,checklist_pemberian_fibrinolitik.kontra_indikasi2,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi2,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi3,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi3,checklist_pemberian_fibrinolitik.kontra_indikasi4,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi4,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi5,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi5,checklist_pemberian_fibrinolitik.kontra_indikasi6,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi6,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi7,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi7,checklist_pemberian_fibrinolitik.kontra_indikasi8,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi8,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi9,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi9,checklist_pemberian_fibrinolitik.kontra_indikasi10,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi10,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi1,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi1,checklist_pemberian_fibrinolitik.risiko_tinggi2,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi2,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi3,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi3,checklist_pemberian_fibrinolitik.risiko_tinggi4,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi4,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi5,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi5,checklist_pemberian_fibrinolitik.kesimpulan,checklist_pemberian_fibrinolitik.persyaratan_ekg_pre_streptase,"+
+                    "checklist_pemberian_fibrinolitik.persyaratan_ekg_post_streptase,checklist_pemberian_fibrinolitik.cek_troponin from checklist_pemberian_fibrinolitik inner join reg_periksa on checklist_pemberian_fibrinolitik.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on checklist_pemberian_fibrinolitik.nip=petugas.nip "+
+                    "where checklist_pemberian_fibrinolitik.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or checklist_pemberian_fibrinolitik.nip like ? or petugas.nama like ?) "+
+                    "order by checklist_pemberian_fibrinolitik.tanggal ");
             }
                 
             try {
@@ -2103,9 +2087,13 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("transfusi_darah"),rs.getString("rutin_transfusi"),rs.getString("saudara_thalassemia"),rs.getString("tumbuh_kembang_terlambat"),rs.getString("anemia"),rs.getString("ikterus"),
-                        rs.getString("perut_buncit"),rs.getString("gizi_kurang"),rs.getString("facies_cooley"),rs.getString("perawakan_pendek"),rs.getString("hiperpigmentasi_kulit"),rs.getString("hemoglobin"),
-                        rs.getString("mvc"),rs.getString("mchc"),rs.getString("darah_tepi"),rs.getString("tindak_lanjut")
+                        rs.getString("kontra_indikasi1"),rs.getString("keterangan_kontra_indikasi1"),rs.getString("kontra_indikasi2"),rs.getString("keterangan_kontra_indikasi2"),rs.getString("kontra_indikasi3"),
+                        rs.getString("keterangan_kontra_indikasi3"),rs.getString("kontra_indikasi4"),rs.getString("keterangan_kontra_indikasi4"),rs.getString("kontra_indikasi5"),rs.getString("keterangan_kontra_indikasi5"),
+                        rs.getString("kontra_indikasi6"),rs.getString("keterangan_kontra_indikasi6"),rs.getString("kontra_indikasi7"),rs.getString("keterangan_kontra_indikasi7"),rs.getString("kontra_indikasi8"),
+                        rs.getString("keterangan_kontra_indikasi8"),rs.getString("kontra_indikasi9"),rs.getString("keterangan_kontra_indikasi9"),rs.getString("kontra_indikasi10"),rs.getString("keterangan_kontra_indikasi10"),
+                        rs.getString("risiko_tinggi1"),rs.getString("keterangan_risiko_tinggi1"),rs.getString("risiko_tinggi2"),rs.getString("keterangan_risiko_tinggi2"),rs.getString("risiko_tinggi3"),
+                        rs.getString("keterangan_risiko_tinggi3"),rs.getString("risiko_tinggi4"),rs.getString("keterangan_risiko_tinggi4"),rs.getString("risiko_tinggi5"),rs.getString("keterangan_risiko_tinggi5"),
+                        rs.getString("kesimpulan"),rs.getString("persyaratan_ekg_pre_streptase"),rs.getString("persyaratan_ekg_post_streptase"),rs.getString("cek_troponin")
                     });
                 }
             } catch (Exception e) {
@@ -2126,7 +2114,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     
     public void emptTeks() {
         KontraIndikasi1.setSelectedIndex(0);
-        Kesimpulan.setText("Edukasi Kesehatan");
+        Kesimpulan.setText("Aman untuk diberikan fibrinolitik.");
         Tanggal.setDate(new Date());
         KontraIndikasi1.requestFocus();
     } 
@@ -2204,10 +2192,10 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_thalassemia());
-        BtnHapus.setEnabled(akses.getskrining_thalassemia());
-        BtnEdit.setEnabled(akses.getskrining_thalassemia());
-        BtnPrint.setEnabled(akses.getskrining_thalassemia()); 
+        BtnSimpan.setEnabled(akses.getchecklist_pemberian_fibrinolitik());
+        BtnHapus.setEnabled(akses.getchecklist_pemberian_fibrinolitik());
+        BtnEdit.setEnabled(akses.getchecklist_pemberian_fibrinolitik());
+        BtnPrint.setEnabled(akses.getchecklist_pemberian_fibrinolitik()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2285,13 +2273,21 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_thalassemia","no_rawat=?","no_rawat=?,tanggal=?,nip=?,transfusi_darah=?,rutin_transfusi=?,saudara_thalassemia=?,tumbuh_kembang_terlambat=?,anemia=?,"+
-                "ikterus=?,perut_buncit=?,gizi_kurang=?,facies_cooley=?,perawakan_pendek=?,hiperpigmentasi_kulit=?,hemoglobin=?,mvc=?,mchc=?,darah_tepi=?,tindak_lanjut=?",20,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                KdPetugas.getText(),TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(), 
-                TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(), 
-                GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(), 
-                Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("checklist_pemberian_fibrinolitik","no_rawat=?","no_rawat=?,tanggal=?,nip=?,kontra_indikasi1=?,keterangan_kontra_indikasi1=?,kontra_indikasi2=?,keterangan_kontra_indikasi2=?,"+
+                "kontra_indikasi3=?,keterangan_kontra_indikasi3=?,kontra_indikasi4=?,keterangan_kontra_indikasi4=?,kontra_indikasi5=?,keterangan_kontra_indikasi5=?,kontra_indikasi6=?,keterangan_kontra_indikasi6=?,"+
+                "kontra_indikasi7=?,keterangan_kontra_indikasi7=?,kontra_indikasi8=?,keterangan_kontra_indikasi8=?,kontra_indikasi9=?,keterangan_kontra_indikasi9=?,kontra_indikasi10=?,keterangan_kontra_indikasi10=?,"+
+                "risiko_tinggi1=?,keterangan_risiko_tinggi1=?,risiko_tinggi2=?,keterangan_risiko_tinggi2=?,risiko_tinggi3=?,keterangan_risiko_tinggi3=?,risiko_tinggi4=?,keterangan_risiko_tinggi4=?,risiko_tinggi5=?,"+
+                "keterangan_risiko_tinggi5=?,kesimpulan=?,persyaratan_ekg_pre_streptase=?,persyaratan_ekg_post_streptase=?,cek_troponin=?",38,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdPetugas.getText(),
+                KontraIndikasi1.getSelectedItem().toString(),KeteranganKontraIndikasi1.getText(),KontraIndikasi2.getSelectedItem().toString(),KeteranganKontraIndikasi2.getText(),
+                KontraIndikasi3.getSelectedItem().toString(),KeteranganKontraIndikasi3.getText(),KontraIndikasi4.getSelectedItem().toString(),KeteranganKontraIndikasi4.getText(),
+                KontraIndikasi5.getSelectedItem().toString(),KeteranganKontraIndikasi5.getText(),KontraIndikasi6.getSelectedItem().toString(),KeteranganKontraIndikasi6.getText(),
+                KontraIndikasi7.getSelectedItem().toString(),KeteranganKontraIndikasi7.getText(),KontraIndikasi8.getSelectedItem().toString(),KeteranganKontraIndikasi8.getText(),
+                KontraIndikasi9.getSelectedItem().toString(),KeteranganKontraIndikasi9.getText(),KontraIndikasi10.getSelectedItem().toString(),KeteranganKontraIndikasi10.getText(),
+                RisikoTinggi1.getSelectedItem().toString(),KeteranganRisikoTinggi1.getText(),RisikoTinggi2.getSelectedItem().toString(),KeteranganRisikoTinggi2.getText(),
+                RisikoTinggi3.getSelectedItem().toString(),KeteranganRisikoTinggi3.getText(),RisikoTinggi4.getSelectedItem().toString(),KeteranganRisikoTinggi4.getText(),
+                RisikoTinggi5.getSelectedItem().toString(),KeteranganRisikoTinggi5.getText(),Kesimpulan.getText(),EkgPreStrep.getText(),EkgPostStrep.getText(),CekTroponin.getText(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2301,28 +2297,46 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(TransfusiDarah.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(RutinTransfusi.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(SaudaraTalasemia.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(TumbangTerlambat.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(Anemia.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(Icterus.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(PerutBuncit.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(GiziKurang.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(FaciesCooley.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(Pendek.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(Hiperpigmentasi.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(Hb.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(MVC.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(MCHC.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(DarahTepi.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(TindakLanjut.getText(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(KontraIndikasi1.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(KeteranganKontraIndikasi1.getText(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(KontraIndikasi2.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(KeteranganKontraIndikasi2.getText(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(KontraIndikasi3.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(KeteranganKontraIndikasi3.getText(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(KontraIndikasi4.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(KeteranganKontraIndikasi4.getText(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(KontraIndikasi5.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(KeteranganKontraIndikasi5.getText(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(KontraIndikasi6.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(KeteranganKontraIndikasi6.getText(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(KontraIndikasi7.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(KeteranganKontraIndikasi7.getText(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(KontraIndikasi8.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt(KeteranganKontraIndikasi8.getText(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(KontraIndikasi9.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(KeteranganKontraIndikasi9.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(KontraIndikasi10.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(KeteranganKontraIndikasi10.getText(),tbObat.getSelectedRow(),27);
+               tbObat.setValueAt(RisikoTinggi1.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
+               tbObat.setValueAt(KeteranganRisikoTinggi1.getText(),tbObat.getSelectedRow(),29);
+               tbObat.setValueAt(RisikoTinggi2.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
+               tbObat.setValueAt(KeteranganRisikoTinggi2.getText(),tbObat.getSelectedRow(),31);
+               tbObat.setValueAt(RisikoTinggi3.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
+               tbObat.setValueAt(KeteranganRisikoTinggi3.getText(),tbObat.getSelectedRow(),33);
+               tbObat.setValueAt(RisikoTinggi4.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
+               tbObat.setValueAt(KeteranganRisikoTinggi4.getText(),tbObat.getSelectedRow(),35);
+               tbObat.setValueAt(RisikoTinggi5.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
+               tbObat.setValueAt(KeteranganRisikoTinggi5.getText(),tbObat.getSelectedRow(),37);
+               tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),38);
+               tbObat.setValueAt(EkgPreStrep.getText(),tbObat.getSelectedRow(),39);
+               tbObat.setValueAt(EkgPostStrep.getText(),tbObat.getSelectedRow(),40);
+               tbObat.setValueAt(CekTroponin.getText(),tbObat.getSelectedRow(),41);
                emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_thalassemia where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from checklist_pemberian_fibrinolitik where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2335,21 +2349,30 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     
 
     private void simpan() {
-        /*if(Sequel.menyimpantf("skrining_thalassemia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            KdPetugas.getText(),TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(), 
-            TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(), 
-            GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(), 
-            Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText()
+        if(Sequel.menyimpantf("checklist_pemberian_fibrinolitik","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",37,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdPetugas.getText(),
+            KontraIndikasi1.getSelectedItem().toString(),KeteranganKontraIndikasi1.getText(),KontraIndikasi2.getSelectedItem().toString(),KeteranganKontraIndikasi2.getText(),
+            KontraIndikasi3.getSelectedItem().toString(),KeteranganKontraIndikasi3.getText(),KontraIndikasi4.getSelectedItem().toString(),KeteranganKontraIndikasi4.getText(),
+            KontraIndikasi5.getSelectedItem().toString(),KeteranganKontraIndikasi5.getText(),KontraIndikasi6.getSelectedItem().toString(),KeteranganKontraIndikasi6.getText(),
+            KontraIndikasi7.getSelectedItem().toString(),KeteranganKontraIndikasi7.getText(),KontraIndikasi8.getSelectedItem().toString(),KeteranganKontraIndikasi8.getText(),
+            KontraIndikasi9.getSelectedItem().toString(),KeteranganKontraIndikasi9.getText(),KontraIndikasi10.getSelectedItem().toString(),KeteranganKontraIndikasi10.getText(),
+            RisikoTinggi1.getSelectedItem().toString(),KeteranganRisikoTinggi1.getText(),RisikoTinggi2.getSelectedItem().toString(),KeteranganRisikoTinggi2.getText(),
+            RisikoTinggi3.getSelectedItem().toString(),KeteranganRisikoTinggi3.getText(),RisikoTinggi4.getSelectedItem().toString(),KeteranganRisikoTinggi4.getText(),
+            RisikoTinggi5.getSelectedItem().toString(),KeteranganRisikoTinggi5.getText(),Kesimpulan.getText(),EkgPreStrep.getText(),EkgPostStrep.getText(),CekTroponin.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(),TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),
-                PerutBuncit.getSelectedItem().toString(),GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(),Hb.getSelectedItem().toString(),
-                MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText()
+                KontraIndikasi1.getSelectedItem().toString(),KeteranganKontraIndikasi1.getText(),KontraIndikasi2.getSelectedItem().toString(),KeteranganKontraIndikasi2.getText(),
+                KontraIndikasi3.getSelectedItem().toString(),KeteranganKontraIndikasi3.getText(),KontraIndikasi4.getSelectedItem().toString(),KeteranganKontraIndikasi4.getText(),
+                KontraIndikasi5.getSelectedItem().toString(),KeteranganKontraIndikasi5.getText(),KontraIndikasi6.getSelectedItem().toString(),KeteranganKontraIndikasi6.getText(),
+                KontraIndikasi7.getSelectedItem().toString(),KeteranganKontraIndikasi7.getText(),KontraIndikasi8.getSelectedItem().toString(),KeteranganKontraIndikasi8.getText(),
+                KontraIndikasi9.getSelectedItem().toString(),KeteranganKontraIndikasi9.getText(),KontraIndikasi10.getSelectedItem().toString(),KeteranganKontraIndikasi10.getText(),
+                RisikoTinggi1.getSelectedItem().toString(),KeteranganRisikoTinggi1.getText(),RisikoTinggi2.getSelectedItem().toString(),KeteranganRisikoTinggi2.getText(),
+                RisikoTinggi3.getSelectedItem().toString(),KeteranganRisikoTinggi3.getText(),RisikoTinggi4.getSelectedItem().toString(),KeteranganRisikoTinggi4.getText(),
+                RisikoTinggi5.getSelectedItem().toString(),KeteranganRisikoTinggi5.getText(),Kesimpulan.getText(),EkgPreStrep.getText(),EkgPostStrep.getText(),CekTroponin.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } */
+        }
     }
 }
