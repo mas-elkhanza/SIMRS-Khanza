@@ -853,6 +853,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi4.setName("KontraIndikasi4"); // NOI18N
+        KontraIndikasi4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi4ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi4KeyPressed(evt);
@@ -881,6 +886,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi7.setName("KontraIndikasi7"); // NOI18N
+        KontraIndikasi7.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi7ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi7KeyPressed(evt);
@@ -906,6 +916,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi5.setName("KontraIndikasi5"); // NOI18N
+        KontraIndikasi5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi5ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi5KeyPressed(evt);
@@ -928,6 +943,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi6.setName("KontraIndikasi6"); // NOI18N
+        KontraIndikasi6.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi6ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi6KeyPressed(evt);
@@ -953,6 +973,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi8.setName("KontraIndikasi8"); // NOI18N
+        KontraIndikasi8.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi8ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi8KeyPressed(evt);
@@ -978,6 +1003,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi9.setName("KontraIndikasi9"); // NOI18N
+        KontraIndikasi9.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi9ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi9KeyPressed(evt);
@@ -1003,6 +1033,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi2.setName("KontraIndikasi2"); // NOI18N
+        KontraIndikasi2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi2ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi2KeyPressed(evt);
@@ -1046,6 +1081,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi3.setName("KontraIndikasi3"); // NOI18N
+        KontraIndikasi3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi3ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi3KeyPressed(evt);
@@ -1113,6 +1153,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         KontraIndikasi10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KontraIndikasi10.setName("KontraIndikasi10"); // NOI18N
+        KontraIndikasi10.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                KontraIndikasi10ItemStateChanged(evt);
+            }
+        });
         KontraIndikasi10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KontraIndikasi10KeyPressed(evt);
@@ -1144,6 +1189,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         RisikoTinggi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RisikoTinggi1.setName("RisikoTinggi1"); // NOI18N
+        RisikoTinggi1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RisikoTinggi1ItemStateChanged(evt);
+            }
+        });
         RisikoTinggi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RisikoTinggi1KeyPressed(evt);
@@ -1175,6 +1225,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         RisikoTinggi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RisikoTinggi2.setName("RisikoTinggi2"); // NOI18N
+        RisikoTinggi2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RisikoTinggi2ItemStateChanged(evt);
+            }
+        });
         RisikoTinggi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RisikoTinggi2KeyPressed(evt);
@@ -1206,6 +1261,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         RisikoTinggi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RisikoTinggi3.setName("RisikoTinggi3"); // NOI18N
+        RisikoTinggi3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RisikoTinggi3ItemStateChanged(evt);
+            }
+        });
         RisikoTinggi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RisikoTinggi3KeyPressed(evt);
@@ -1237,6 +1297,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         RisikoTinggi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RisikoTinggi4.setName("RisikoTinggi4"); // NOI18N
+        RisikoTinggi4.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RisikoTinggi4ItemStateChanged(evt);
+            }
+        });
         RisikoTinggi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RisikoTinggi4KeyPressed(evt);
@@ -1268,6 +1333,11 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         RisikoTinggi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RisikoTinggi5.setName("RisikoTinggi5"); // NOI18N
+        RisikoTinggi5.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RisikoTinggi5ItemStateChanged(evt);
+            }
+        });
         RisikoTinggi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RisikoTinggi5KeyPressed(evt);
@@ -1420,7 +1490,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Kesimpulan,BtnBatal);
+            Valid.pindah(evt,CekTroponin,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1790,7 +1860,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     }//GEN-LAST:event_MnSkriningThalassemiaActionPerformed
 
     private void KontraIndikasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi1KeyPressed
-        //Valid.pindah(evt,btnPetugas,SaudaraTalasemia);
+        Valid.pindah(evt,btnPetugas,KeteranganKontraIndikasi1);
     }//GEN-LAST:event_KontraIndikasi1KeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
@@ -1798,140 +1868,196 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        //Valid.pindah(evt,DarahTepi,BtnSimpan);
+        Valid.pindah(evt,KeteranganRisikoTinggi5,EkgPreStrep);
     }//GEN-LAST:event_KesimpulanKeyPressed
 
     private void KeteranganKontraIndikasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi1,KontraIndikasi2);
     }//GEN-LAST:event_KeteranganKontraIndikasi1KeyPressed
 
     private void KontraIndikasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi3,KeteranganKontraIndikasi4);
     }//GEN-LAST:event_KontraIndikasi4KeyPressed
 
     private void KeteranganKontraIndikasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi4,KontraIndikasi5);
     }//GEN-LAST:event_KeteranganKontraIndikasi4KeyPressed
 
     private void KeteranganKontraIndikasi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi7KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi7,KontraIndikasi8);
     }//GEN-LAST:event_KeteranganKontraIndikasi7KeyPressed
 
     private void KontraIndikasi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi7KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi6,KeteranganKontraIndikasi7);
     }//GEN-LAST:event_KontraIndikasi7KeyPressed
 
     private void KeteranganKontraIndikasi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi5,KontraIndikasi6);
     }//GEN-LAST:event_KeteranganKontraIndikasi5KeyPressed
 
     private void KontraIndikasi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi4,KeteranganKontraIndikasi5);
     }//GEN-LAST:event_KontraIndikasi5KeyPressed
 
     private void KontraIndikasi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi6KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi5,KeteranganKontraIndikasi6);
     }//GEN-LAST:event_KontraIndikasi6KeyPressed
 
     private void KeteranganKontraIndikasi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi6KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi6,KontraIndikasi7);
     }//GEN-LAST:event_KeteranganKontraIndikasi6KeyPressed
 
     private void KontraIndikasi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi8KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi7,KeteranganKontraIndikasi8);
     }//GEN-LAST:event_KontraIndikasi8KeyPressed
 
     private void KeteranganKontraIndikasi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi8KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi8,KontraIndikasi9);
     }//GEN-LAST:event_KeteranganKontraIndikasi8KeyPressed
 
     private void KontraIndikasi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi9KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi8,KeteranganKontraIndikasi9);
     }//GEN-LAST:event_KontraIndikasi9KeyPressed
 
     private void KeteranganKontraIndikasi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi9KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi9,KontraIndikasi10);
     }//GEN-LAST:event_KeteranganKontraIndikasi9KeyPressed
 
     private void KontraIndikasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi1,KeteranganKontraIndikasi2);
     }//GEN-LAST:event_KontraIndikasi2KeyPressed
 
     private void KeteranganKontraIndikasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi2,KontraIndikasi3);
     }//GEN-LAST:event_KeteranganKontraIndikasi2KeyPressed
 
     private void KontraIndikasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi2,KeteranganKontraIndikasi3);
     }//GEN-LAST:event_KontraIndikasi3KeyPressed
 
     private void KeteranganKontraIndikasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi3,KontraIndikasi4);
     }//GEN-LAST:event_KeteranganKontraIndikasi3KeyPressed
 
     private void KontraIndikasi10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi10KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi9,KeteranganKontraIndikasi10);
     }//GEN-LAST:event_KontraIndikasi10KeyPressed
 
     private void KeteranganKontraIndikasi10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi10KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontraIndikasi10,RisikoTinggi1);
     }//GEN-LAST:event_KeteranganKontraIndikasi10KeyPressed
 
     private void RisikoTinggi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKontraIndikasi10,KeteranganRisikoTinggi1);
     }//GEN-LAST:event_RisikoTinggi1KeyPressed
 
     private void KeteranganRisikoTinggi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoTinggi1,RisikoTinggi2);
     }//GEN-LAST:event_KeteranganRisikoTinggi1KeyPressed
 
     private void RisikoTinggi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganRisikoTinggi1,KeteranganRisikoTinggi2);
     }//GEN-LAST:event_RisikoTinggi2KeyPressed
 
     private void KeteranganRisikoTinggi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoTinggi2,RisikoTinggi3);
     }//GEN-LAST:event_KeteranganRisikoTinggi2KeyPressed
 
     private void RisikoTinggi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganRisikoTinggi2,KeteranganRisikoTinggi3);
     }//GEN-LAST:event_RisikoTinggi3KeyPressed
 
     private void KeteranganRisikoTinggi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoTinggi3,RisikoTinggi4);
     }//GEN-LAST:event_KeteranganRisikoTinggi3KeyPressed
 
     private void RisikoTinggi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganRisikoTinggi3,KeteranganRisikoTinggi4);
     }//GEN-LAST:event_RisikoTinggi4KeyPressed
 
     private void KeteranganRisikoTinggi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoTinggi4,RisikoTinggi5);
     }//GEN-LAST:event_KeteranganRisikoTinggi4KeyPressed
 
     private void RisikoTinggi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganRisikoTinggi4,KeteranganRisikoTinggi5);
     }//GEN-LAST:event_RisikoTinggi5KeyPressed
 
     private void KeteranganRisikoTinggi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRisikoTinggi5KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoTinggi5,Kesimpulan);
     }//GEN-LAST:event_KeteranganRisikoTinggi5KeyPressed
 
     private void EkgPreStrepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkgPreStrepKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kesimpulan,EkgPostStrep);
     }//GEN-LAST:event_EkgPreStrepKeyPressed
 
     private void EkgPostStrepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkgPostStrepKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EkgPreStrep,CekTroponin);
     }//GEN-LAST:event_EkgPostStrepKeyPressed
 
     private void CekTroponinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CekTroponinKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,EkgPostStrep,BtnSimpan);
     }//GEN-LAST:event_CekTroponinKeyPressed
 
     private void KontraIndikasi1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi1ItemStateChanged
-        // TODO add your handling code here:
+        HasilKesimpulan();
     }//GEN-LAST:event_KontraIndikasi1ItemStateChanged
+
+    private void KontraIndikasi2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi2ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi2ItemStateChanged
+
+    private void KontraIndikasi3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi3ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi3ItemStateChanged
+
+    private void KontraIndikasi4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi4ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi4ItemStateChanged
+
+    private void KontraIndikasi5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi5ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi5ItemStateChanged
+
+    private void KontraIndikasi6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi6ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi6ItemStateChanged
+
+    private void KontraIndikasi7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi7ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi7ItemStateChanged
+
+    private void KontraIndikasi8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi8ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi8ItemStateChanged
+
+    private void KontraIndikasi9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi9ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi9ItemStateChanged
+
+    private void KontraIndikasi10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KontraIndikasi10ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_KontraIndikasi10ItemStateChanged
+
+    private void RisikoTinggi1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RisikoTinggi1ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_RisikoTinggi1ItemStateChanged
+
+    private void RisikoTinggi2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RisikoTinggi2ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_RisikoTinggi2ItemStateChanged
+
+    private void RisikoTinggi3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RisikoTinggi3ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_RisikoTinggi3ItemStateChanged
+
+    private void RisikoTinggi4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RisikoTinggi4ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_RisikoTinggi4ItemStateChanged
+
+    private void RisikoTinggi5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RisikoTinggi5ItemStateChanged
+        HasilKesimpulan();
+    }//GEN-LAST:event_RisikoTinggi5ItemStateChanged
 
     /**
     * @param args the command line arguments

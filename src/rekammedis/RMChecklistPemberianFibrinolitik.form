@@ -1075,6 +1075,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi4" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi4ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi4KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1120,6 +1121,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi7" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi7ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi7KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1164,6 +1166,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi5" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi5ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi5KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1207,6 +1210,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi6" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi6ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi6KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1251,6 +1255,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi8" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi8ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi8KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1295,6 +1300,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi9" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi9ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi9KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1339,6 +1345,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi2" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi2ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi2KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1419,6 +1426,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi3" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi3ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi3KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1547,6 +1555,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi10" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi10ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi10KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1603,6 +1612,7 @@
                         <Property name="name" type="java.lang.String" value="RisikoTinggi1" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RisikoTinggi1ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RisikoTinggi1KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1659,6 +1669,7 @@
                         <Property name="name" type="java.lang.String" value="RisikoTinggi2" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RisikoTinggi2ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RisikoTinggi2KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1715,6 +1726,7 @@
                         <Property name="name" type="java.lang.String" value="RisikoTinggi3" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RisikoTinggi3ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RisikoTinggi3KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1771,6 +1783,7 @@
                         <Property name="name" type="java.lang.String" value="RisikoTinggi4" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RisikoTinggi4ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RisikoTinggi4KeyPressed"/>
                       </Events>
                       <Constraints>
@@ -1827,6 +1840,7 @@
                         <Property name="name" type="java.lang.String" value="RisikoTinggi5" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RisikoTinggi5ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RisikoTinggi5KeyPressed"/>
                       </Events>
                       <Constraints>
