@@ -7507,7 +7507,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]," +
                                             "\"intent\" : \"plan\"," +
-                                            "\"description\" : \""+rs.getString("rtl")+"\"," +
+                                            "\"description\" : \""+rs.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"," +
                                             "\"subject\" : {" +
                                                 "\"reference\" : \"Patient/"+idpasien+"\"," +
                                                 "\"display\" : \""+rs.getString("nm_pasien")+"\"" +
@@ -7599,7 +7599,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "}" +
                                             "]," +
                                             "\"intent\" : \"plan\"," +
-                                            "\"description\" : \""+rs.getString("rtl")+"\"," +
+                                            "\"description\" : \""+rs.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>").replaceAll("\t", " ")+"\"," +
                                             "\"subject\" : {" +
                                                 "\"reference\" : \"Patient/"+idpasien+"\"," +
                                                 "\"display\" : \""+rs.getString("nm_pasien")+"\"" +

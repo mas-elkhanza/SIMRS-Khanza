@@ -1,5 +1,13 @@
 /*
- * Kontribusi Agus Budiyono Puskesmas Kerjo
+  Dilarang keras memperjualbelikan/mengambil keuntungan dari Software 
+  ini dalam bentuk apapun tanpa seijin pembuat software
+  (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
+  npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
+  nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
+  nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
+  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
+  karena telah berdoa buruk, semua ini kami lakukan karena kami ti
+  dak pernah rela karya kami dibajak tanpa ijin.
  */
 
 package rekammedis;
@@ -276,44 +284,43 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
         jLabel78 = new widget.Label();
-        jLabel80 = new widget.Label();
-        SaudaraTalasemia = new widget.ComboBox();
-        RutinTransfusi = new widget.ComboBox();
-        jLabel81 = new widget.Label();
-        jLabel96 = new widget.Label();
-        TumbangTerlambat = new widget.ComboBox();
-        jLabel102 = new widget.Label();
-        Anemia = new widget.ComboBox();
-        jLabel103 = new widget.Label();
-        jLabel106 = new widget.Label();
-        Icterus = new widget.ComboBox();
-        FaciesCooley = new widget.ComboBox();
-        jLabel109 = new widget.Label();
-        jLabel112 = new widget.Label();
-        PerutBuncit = new widget.ComboBox();
-        jLabel115 = new widget.Label();
-        GiziKurang = new widget.ComboBox();
-        jLabel118 = new widget.Label();
-        Pendek = new widget.ComboBox();
-        jLabel121 = new widget.Label();
-        Hiperpigmentasi = new widget.ComboBox();
-        jLabel123 = new widget.Label();
-        Hb = new widget.ComboBox();
-        jLabel125 = new widget.Label();
-        jLabel128 = new widget.Label();
-        MVC = new widget.ComboBox();
-        jLabel131 = new widget.Label();
-        MCHC = new widget.ComboBox();
-        DarahTepi = new widget.ComboBox();
-        jLabel137 = new widget.Label();
         TindakLanjut = new widget.TextBox();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel104 = new widget.Label();
-        jLabel105 = new widget.Label();
-        jLabel107 = new widget.Label();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel124 = new widget.Label();
+        TindakLanjut1 = new widget.TextBox();
+        jLabel79 = new widget.Label();
+        TransfusiDarah1 = new widget.ComboBox();
+        TindakLanjut2 = new widget.TextBox();
+        TindakLanjut3 = new widget.TextBox();
+        TransfusiDarah2 = new widget.ComboBox();
+        jLabel81 = new widget.Label();
+        TindakLanjut4 = new widget.TextBox();
+        TransfusiDarah3 = new widget.ComboBox();
+        jLabel82 = new widget.Label();
+        jLabel84 = new widget.Label();
+        TransfusiDarah4 = new widget.ComboBox();
+        TindakLanjut5 = new widget.TextBox();
+        jLabel86 = new widget.Label();
+        jLabel87 = new widget.Label();
+        TransfusiDarah5 = new widget.ComboBox();
+        TindakLanjut6 = new widget.TextBox();
+        jLabel88 = new widget.Label();
+        jLabel89 = new widget.Label();
+        TransfusiDarah6 = new widget.ComboBox();
+        TindakLanjut7 = new widget.TextBox();
+        jLabel90 = new widget.Label();
+        TransfusiDarah7 = new widget.ComboBox();
+        TindakLanjut8 = new widget.TextBox();
+        jLabel100 = new widget.Label();
+        jLabel101 = new widget.Label();
+        jLabel102 = new widget.Label();
+        jLabel91 = new widget.Label();
+        TransfusiDarah8 = new widget.ComboBox();
+        TindakLanjut9 = new widget.TextBox();
+        jLabel103 = new widget.Label();
+        jLabel104 = new widget.Label();
+        jLabel105 = new widget.Label();
+        jLabel106 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -511,7 +518,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -525,7 +532,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -616,7 +623,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(810, 330));
+        FormInput.setPreferredSize(new java.awt.Dimension(810, 530));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -646,7 +653,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -770,7 +777,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             }
         });
         FormInput.add(TransfusiDarah);
-        TransfusiDarah.setBounds(270, 90, 80, 23);
+        TransfusiDarah.setBounds(600, 90, 80, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -780,259 +787,16 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("I. ANAMNESIS (Bila Ada Jawaban YA, Lakukan Pemeriksaan Laboratorium)");
+        jLabel99.setText("I. PASIEN KONTRA INDIKASI UNTUK PEMBERIAN FIBRINOLISTIK");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
         jLabel99.setBounds(11, 70, 420, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("1. Apakah rutin menerima transfusi darah ?");
+        jLabel78.setText("TB Sistolitik >180-200 mmHg Atau Diastolik >100-110 mmHg");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(44, 90, 230, 23);
-
-        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel80.setText("2. Apakah memiliki saudara thalasemia ?");
-        jLabel80.setName("jLabel80"); // NOI18N
-        FormInput.add(jLabel80);
-        jLabel80.setBounds(44, 120, 230, 23);
-
-        SaudaraTalasemia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SaudaraTalasemia.setName("SaudaraTalasemia"); // NOI18N
-        SaudaraTalasemia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaudaraTalasemiaKeyPressed(evt);
-            }
-        });
-        FormInput.add(SaudaraTalasemia);
-        SaudaraTalasemia.setBounds(270, 120, 80, 23);
-
-        RutinTransfusi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        RutinTransfusi.setName("RutinTransfusi"); // NOI18N
-        RutinTransfusi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RutinTransfusiKeyPressed(evt);
-            }
-        });
-        FormInput.add(RutinTransfusi);
-        RutinTransfusi.setBounds(709, 90, 80, 23);
-
-        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("3. Apakah ada keluarga yang rutin melakukan transfusi darah ?");
-        jLabel81.setName("jLabel81"); // NOI18N
-        FormInput.add(jLabel81);
-        jLabel81.setBounds(390, 90, 320, 23);
-
-        jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel96.setText("4. Riwayat tumbuh kembang dan pubertas terlambat ?");
-        jLabel96.setName("jLabel96"); // NOI18N
-        FormInput.add(jLabel96);
-        jLabel96.setBounds(390, 120, 300, 23);
-
-        TumbangTerlambat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TumbangTerlambat.setName("TumbangTerlambat"); // NOI18N
-        TumbangTerlambat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TumbangTerlambatKeyPressed(evt);
-            }
-        });
-        FormInput.add(TumbangTerlambat);
-        TumbangTerlambat.setBounds(709, 120, 80, 23);
-
-        jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel102.setText("II. PEMERIKSAAN FISIK");
-        jLabel102.setName("jLabel102"); // NOI18N
-        FormInput.add(jLabel102);
-        jLabel102.setBounds(11, 150, 200, 23);
-
-        Anemia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anemia.setName("Anemia"); // NOI18N
-        Anemia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AnemiaKeyPressed(evt);
-            }
-        });
-        FormInput.add(Anemia);
-        Anemia.setBounds(123, 170, 80, 23);
-
-        jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel103.setText("Anemia/Pucat");
-        jLabel103.setName("jLabel103"); // NOI18N
-        FormInput.add(jLabel103);
-        jLabel103.setBounds(44, 170, 100, 23);
-
-        jLabel106.setText("Ikterus :");
-        jLabel106.setName("jLabel106"); // NOI18N
-        FormInput.add(jLabel106);
-        jLabel106.setBounds(245, 170, 50, 23);
-
-        Icterus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Icterus.setName("Icterus"); // NOI18N
-        Icterus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                IcterusKeyPressed(evt);
-            }
-        });
-        FormInput.add(Icterus);
-        Icterus.setBounds(299, 170, 80, 23);
-
-        FaciesCooley.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        FaciesCooley.setName("FaciesCooley"); // NOI18N
-        FaciesCooley.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                FaciesCooleyKeyPressed(evt);
-            }
-        });
-        FormInput.add(FaciesCooley);
-        FaciesCooley.setBounds(123, 200, 80, 23);
-
-        jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("Facies Cooley");
-        jLabel109.setName("jLabel109"); // NOI18N
-        FormInput.add(jLabel109);
-        jLabel109.setBounds(44, 200, 100, 23);
-
-        jLabel112.setText("Perut Buncit :");
-        jLabel112.setName("jLabel112"); // NOI18N
-        FormInput.add(jLabel112);
-        jLabel112.setBounds(401, 170, 90, 23);
-
-        PerutBuncit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        PerutBuncit.setName("PerutBuncit"); // NOI18N
-        PerutBuncit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PerutBuncitKeyPressed(evt);
-            }
-        });
-        FormInput.add(PerutBuncit);
-        PerutBuncit.setBounds(495, 170, 80, 23);
-
-        jLabel115.setText("Gizi Kurang/Buruk :");
-        jLabel115.setName("jLabel115"); // NOI18N
-        FormInput.add(jLabel115);
-        jLabel115.setBounds(585, 170, 120, 23);
-
-        GiziKurang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        GiziKurang.setName("GiziKurang"); // NOI18N
-        GiziKurang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                GiziKurangKeyPressed(evt);
-            }
-        });
-        FormInput.add(GiziKurang);
-        GiziKurang.setBounds(709, 170, 80, 23);
-
-        jLabel118.setText(" Perawakan Pendek :");
-        jLabel118.setName("jLabel118"); // NOI18N
-        FormInput.add(jLabel118);
-        jLabel118.setBounds(232, 200, 120, 23);
-
-        Pendek.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Pendek.setName("Pendek"); // NOI18N
-        Pendek.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PendekKeyPressed(evt);
-            }
-        });
-        FormInput.add(Pendek);
-        Pendek.setBounds(356, 200, 80, 23);
-
-        jLabel121.setText("Hiperpigmentasi Kulit :");
-        jLabel121.setName("jLabel121"); // NOI18N
-        FormInput.add(jLabel121);
-        jLabel121.setBounds(470, 200, 130, 23);
-
-        Hiperpigmentasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Hiperpigmentasi.setName("Hiperpigmentasi"); // NOI18N
-        Hiperpigmentasi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                HiperpigmentasiKeyPressed(evt);
-            }
-        });
-        FormInput.add(Hiperpigmentasi);
-        Hiperpigmentasi.setBounds(604, 200, 80, 23);
-
-        jLabel123.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel123.setText("III. PEMERIKSAAN LABORATORIUM");
-        jLabel123.setName("jLabel123"); // NOI18N
-        FormInput.add(jLabel123);
-        jLabel123.setBounds(11, 230, 200, 23);
-
-        Hb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "< 11 mg/dl" }));
-        Hb.setName("Hb"); // NOI18N
-        Hb.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                HbItemStateChanged(evt);
-            }
-        });
-        Hb.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                HbKeyPressed(evt);
-            }
-        });
-        FormInput.add(Hb);
-        Hb.setBounds(113, 250, 105, 23);
-
-        jLabel125.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel125.setText("Hemoglobin");
-        jLabel125.setName("jLabel125"); // NOI18N
-        FormInput.add(jLabel125);
-        jLabel125.setBounds(44, 250, 80, 23);
-
-        jLabel128.setText("MVC :");
-        jLabel128.setName("jLabel128"); // NOI18N
-        FormInput.add(jLabel128);
-        jLabel128.setBounds(240, 250, 50, 23);
-
-        MVC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "< 80 fl" }));
-        MVC.setName("MVC"); // NOI18N
-        MVC.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                MVCItemStateChanged(evt);
-            }
-        });
-        MVC.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MVCKeyPressed(evt);
-            }
-        });
-        FormInput.add(MVC);
-        MVC.setBounds(294, 250, 87, 23);
-
-        jLabel131.setText("MCHC :");
-        jLabel131.setName("jLabel131"); // NOI18N
-        FormInput.add(jLabel131);
-        jLabel131.setBounds(398, 250, 60, 23);
-
-        MCHC.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "< 27 pq" }));
-        MCHC.setName("MCHC"); // NOI18N
-        MCHC.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                MCHCItemStateChanged(evt);
-            }
-        });
-        MCHC.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MCHCKeyPressed(evt);
-            }
-        });
-        FormInput.add(MCHC);
-        MCHC.setBounds(462, 250, 92, 23);
-
-        DarahTepi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "< 100.000 mm3" }));
-        DarahTepi.setName("DarahTepi"); // NOI18N
-        DarahTepi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DarahTepiKeyPressed(evt);
-            }
-        });
-        FormInput.add(DarahTepi);
-        DarahTepi.setBounds(659, 250, 130, 23);
-
-        jLabel137.setText("Darah Tepi :");
-        jLabel137.setName("jLabel137"); // NOI18N
-        FormInput.add(jLabel137);
-        jLabel137.setBounds(565, 250, 90, 23);
+        jLabel78.setBounds(60, 90, 320, 23);
 
         TindakLanjut.setName("TindakLanjut"); // NOI18N
         TindakLanjut.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1041,49 +805,281 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             }
         });
         FormInput.add(TindakLanjut);
-        TindakLanjut.setBounds(44, 300, 745, 23);
-
-        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator2.setName("jSeparator2"); // NOI18N
-        FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 150, 807, 1);
-
-        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator3.setName("jSeparator3"); // NOI18N
-        FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 230, 807, 1);
-
-        jLabel104.setText(":");
-        jLabel104.setName("jLabel104"); // NOI18N
-        FormInput.add(jLabel104);
-        jLabel104.setBounds(0, 170, 119, 23);
-
-        jLabel105.setText(":");
-        jLabel105.setName("jLabel105"); // NOI18N
-        FormInput.add(jLabel105);
-        jLabel105.setBounds(0, 200, 119, 23);
-
-        jLabel107.setText(":");
-        jLabel107.setName("jLabel107"); // NOI18N
-        FormInput.add(jLabel107);
-        jLabel107.setBounds(0, 250, 109, 23);
+        TindakLanjut.setBounds(44, 500, 745, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 280, 807, 1);
+        jSeparator4.setBounds(0, 480, 807, 1);
 
         jLabel124.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel124.setText("IV. TINDAK LANJUT");
         jLabel124.setName("jLabel124"); // NOI18N
         FormInput.add(jLabel124);
-        jLabel124.setBounds(11, 280, 200, 23);
+        jLabel124.setBounds(11, 480, 200, 23);
+
+        TindakLanjut1.setName("TindakLanjut1"); // NOI18N
+        TindakLanjut1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut1KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut1);
+        TindakLanjut1.setBounds(680, 90, 100, 23);
+
+        jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel79.setText("Riwayat Trauma Tertutup Signifikan Pada Kepala / Wajah Dalam 3 Minggu Terakhir");
+        jLabel79.setName("jLabel79"); // NOI18N
+        FormInput.add(jLabel79);
+        jLabel79.setBounds(60, 180, 460, 23);
+
+        TransfusiDarah1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TransfusiDarah1.setName("TransfusiDarah1"); // NOI18N
+        TransfusiDarah1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransfusiDarah1KeyPressed(evt);
+            }
+        });
+        FormInput.add(TransfusiDarah1);
+        TransfusiDarah1.setBounds(600, 180, 80, 23);
+
+        TindakLanjut2.setName("TindakLanjut2"); // NOI18N
+        TindakLanjut2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut2KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut2);
+        TindakLanjut2.setBounds(680, 180, 100, 23);
+
+        TindakLanjut3.setName("TindakLanjut3"); // NOI18N
+        TindakLanjut3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut3KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut3);
+        TindakLanjut3.setBounds(680, 270, 100, 23);
+
+        TransfusiDarah2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TransfusiDarah2.setName("TransfusiDarah2"); // NOI18N
+        TransfusiDarah2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransfusiDarah2KeyPressed(evt);
+            }
+        });
+        FormInput.add(TransfusiDarah2);
+        TransfusiDarah2.setBounds(600, 270, 80, 23);
+
+        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel81.setText("Riwayat Perdarahan Intrakranial");
+        jLabel81.setName("jLabel81"); // NOI18N
+        FormInput.add(jLabel81);
+        jLabel81.setBounds(60, 270, 180, 23);
+
+        TindakLanjut4.setName("TindakLanjut4"); // NOI18N
+        TindakLanjut4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut4KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut4);
+        TindakLanjut4.setBounds(680, 210, 100, 23);
+
+        TransfusiDarah3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TransfusiDarah3.setName("TransfusiDarah3"); // NOI18N
+        TransfusiDarah3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransfusiDarah3KeyPressed(evt);
+            }
+        });
+        FormInput.add(TransfusiDarah3);
+        TransfusiDarah3.setBounds(600, 210, 80, 23);
+
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel82.setText("Stroke Iskemik >3 Jam Atau <3 Bulan");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(60, 210, 200, 23);
+
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel84.setText("Penyakit sistemik serius (misalnya kanker tingkat lanjut, penyakit hati, atau gagal ginjal berat)");
+        jLabel84.setName("jLabel84"); // NOI18N
+        FormInput.add(jLabel84);
+        jLabel84.setBounds(80, 310, 470, 23);
+
+        TransfusiDarah4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TransfusiDarah4.setName("TransfusiDarah4"); // NOI18N
+        TransfusiDarah4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransfusiDarah4KeyPressed(evt);
+            }
+        });
+        FormInput.add(TransfusiDarah4);
+        TransfusiDarah4.setBounds(600, 240, 80, 23);
+
+        TindakLanjut5.setName("TindakLanjut5"); // NOI18N
+        TindakLanjut5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut5KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut5);
+        TindakLanjut5.setBounds(680, 240, 100, 23);
+
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel86.setText("Trauma Mayor, Pembedahan(Termasuk Bedah Laser Mata), Perdarahan Gigi/Gusi Dalam 2-4 Minggu Terakhir");
+        jLabel86.setName("jLabel86"); // NOI18N
+        FormInput.add(jLabel86);
+        jLabel86.setBounds(60, 240, 550, 23);
+
+        jLabel87.setText(":");
+        jLabel87.setName("jLabel87"); // NOI18N
+        FormInput.add(jLabel87);
+        jLabel87.setBounds(30, 320, 580, 23);
+
+        TransfusiDarah5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TransfusiDarah5.setName("TransfusiDarah5"); // NOI18N
+        TransfusiDarah5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransfusiDarah5KeyPressed(evt);
+            }
+        });
+        FormInput.add(TransfusiDarah5);
+        TransfusiDarah5.setBounds(640, 320, 80, 23);
+
+        TindakLanjut6.setName("TindakLanjut6"); // NOI18N
+        TindakLanjut6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut6KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut6);
+        TindakLanjut6.setBounds(720, 320, 100, 23);
+
+        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel88.setText("Perdarahan, Masalah Pembekuan/Penggunaan Antikoagulan");
+        jLabel88.setName("jLabel88"); // NOI18N
+        FormInput.add(jLabel88);
+        jLabel88.setBounds(80, 350, 550, 23);
+
+        jLabel89.setText(":");
+        jLabel89.setName("jLabel89"); // NOI18N
+        FormInput.add(jLabel89);
+        jLabel89.setBounds(30, 350, 340, 23);
+
+        TransfusiDarah6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TransfusiDarah6.setName("TransfusiDarah6"); // NOI18N
+        TransfusiDarah6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransfusiDarah6KeyPressed(evt);
+            }
+        });
+        FormInput.add(TransfusiDarah6);
+        TransfusiDarah6.setBounds(640, 350, 80, 23);
+
+        TindakLanjut7.setName("TindakLanjut7"); // NOI18N
+        TindakLanjut7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut7KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut7);
+        TindakLanjut7.setBounds(720, 350, 100, 23);
+
+        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel90.setText("Perbedaan TD Sistolik Lengan Kanan Dan Kiri >15 mmHg");
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(60, 120, 470, 23);
+
+        TransfusiDarah7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TransfusiDarah7.setName("TransfusiDarah7"); // NOI18N
+        TransfusiDarah7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransfusiDarah7KeyPressed(evt);
+            }
+        });
+        FormInput.add(TransfusiDarah7);
+        TransfusiDarah7.setBounds(600, 120, 80, 23);
+
+        TindakLanjut8.setName("TindakLanjut8"); // NOI18N
+        TindakLanjut8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut8KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut8);
+        TindakLanjut8.setBounds(680, 120, 100, 23);
+
+        jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel100.setText("1.");
+        jLabel100.setName("jLabel100"); // NOI18N
+        FormInput.add(jLabel100);
+        jLabel100.setBounds(44, 90, 25, 23);
+
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel101.setText("2.");
+        jLabel101.setName("jLabel101"); // NOI18N
+        FormInput.add(jLabel101);
+        jLabel101.setBounds(44, 120, 25, 23);
+
+        jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel102.setText("3.");
+        jLabel102.setName("jLabel102"); // NOI18N
+        FormInput.add(jLabel102);
+        jLabel102.setBounds(44, 150, 25, 23);
+
+        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel91.setText("Riwayat Penyakit System Saraf Pusat Struktural");
+        jLabel91.setName("jLabel91"); // NOI18N
+        FormInput.add(jLabel91);
+        jLabel91.setBounds(60, 150, 470, 23);
+
+        TransfusiDarah8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TransfusiDarah8.setName("TransfusiDarah8"); // NOI18N
+        TransfusiDarah8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TransfusiDarah8KeyPressed(evt);
+            }
+        });
+        FormInput.add(TransfusiDarah8);
+        TransfusiDarah8.setBounds(600, 150, 80, 23);
+
+        TindakLanjut9.setName("TindakLanjut9"); // NOI18N
+        TindakLanjut9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakLanjut9KeyPressed(evt);
+            }
+        });
+        FormInput.add(TindakLanjut9);
+        TindakLanjut9.setBounds(680, 150, 100, 23);
+
+        jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel103.setText("4.");
+        jLabel103.setName("jLabel103"); // NOI18N
+        FormInput.add(jLabel103);
+        jLabel103.setBounds(44, 180, 25, 23);
+
+        jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel104.setText("5.");
+        jLabel104.setName("jLabel104"); // NOI18N
+        FormInput.add(jLabel104);
+        jLabel104.setBounds(44, 210, 25, 23);
+
+        jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel105.setText("6.");
+        jLabel105.setName("jLabel105"); // NOI18N
+        FormInput.add(jLabel105);
+        jLabel105.setBounds(44, 240, 25, 23);
+
+        jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel106.setText("7.");
+        jLabel106.setName("jLabel106"); // NOI18N
+        FormInput.add(jLabel106);
+        jLabel106.setBounds(44, 270, 25, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1466,111 +1462,84 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     }//GEN-LAST:event_MnSkriningThalassemiaActionPerformed
 
     private void TransfusiDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarahKeyPressed
-        Valid.pindah(evt,btnPetugas,SaudaraTalasemia);
+        //Valid.pindah(evt,btnPetugas,SaudaraTalasemia);
     }//GEN-LAST:event_TransfusiDarahKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void SaudaraTalasemiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaudaraTalasemiaKeyPressed
-        Valid.pindah(evt,TransfusiDarah,RutinTransfusi);
-    }//GEN-LAST:event_SaudaraTalasemiaKeyPressed
-
-    private void RutinTransfusiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RutinTransfusiKeyPressed
-        Valid.pindah(evt,SaudaraTalasemia,TumbangTerlambat);
-    }//GEN-LAST:event_RutinTransfusiKeyPressed
-
-    private void TumbangTerlambatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TumbangTerlambatKeyPressed
-        Valid.pindah(evt,RutinTransfusi,Anemia);
-    }//GEN-LAST:event_TumbangTerlambatKeyPressed
-
-    private void AnemiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnemiaKeyPressed
-        Valid.pindah(evt,TumbangTerlambat,Icterus);
-    }//GEN-LAST:event_AnemiaKeyPressed
-
-    private void IcterusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IcterusKeyPressed
-        Valid.pindah(evt,Anemia,PerutBuncit);
-    }//GEN-LAST:event_IcterusKeyPressed
-
-    private void FaciesCooleyKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FaciesCooleyKeyPressed
-       Valid.pindah(evt,GiziKurang,Pendek);
-    }//GEN-LAST:event_FaciesCooleyKeyPressed
-
-    private void PerutBuncitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerutBuncitKeyPressed
-        Valid.pindah(evt,Icterus,GiziKurang);
-    }//GEN-LAST:event_PerutBuncitKeyPressed
-
-    private void GiziKurangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GiziKurangKeyPressed
-        Valid.pindah(evt,PerutBuncit,FaciesCooley);
-    }//GEN-LAST:event_GiziKurangKeyPressed
-
-    private void PendekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendekKeyPressed
-        Valid.pindah(evt,FaciesCooley,Hiperpigmentasi);
-    }//GEN-LAST:event_PendekKeyPressed
-
-    private void HiperpigmentasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HiperpigmentasiKeyPressed
-        Valid.pindah(evt,Pendek,Hb);
-    }//GEN-LAST:event_HiperpigmentasiKeyPressed
-
-    private void HbKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HbKeyPressed
-        Valid.pindah(evt,Hiperpigmentasi,MVC);
-    }//GEN-LAST:event_HbKeyPressed
-
-    private void MVCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MVCKeyPressed
-        Valid.pindah(evt,Hb,MCHC);
-    }//GEN-LAST:event_MVCKeyPressed
-
-    private void MCHCKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MCHCKeyPressed
-        Valid.pindah(evt,MVC,DarahTepi);
-    }//GEN-LAST:event_MCHCKeyPressed
-
-    private void DarahTepiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DarahTepiKeyPressed
-        Valid.pindah(evt,MCHC,TindakLanjut);
-    }//GEN-LAST:event_DarahTepiKeyPressed
-
-    private void HbItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HbItemStateChanged
-        switch (Hb.getSelectedItem().toString()) {
-            case "< 11 mg/dl":
-                TindakLanjut.setText("Pasien dicurigai sebagai pembawa sifat Thalassemia Rujuk Ke FKTRL atau dapat juga melakukan rujukan sampel ");
-                break;
-            case "Normal":
-                TindakLanjut.setText("Edukasi Kesehatan");
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_HbItemStateChanged
-
-    private void MVCItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MVCItemStateChanged
-        switch (MVC.getSelectedItem().toString()) {
-            case "< 80 fl":
-                TindakLanjut.setText("Pasien dicurigai sebagai pembawa sifat Thalassemia Rujuk Ke FKTRL atau dapat juga melakukan rujukan sampel");
-                break;
-            case "Normal":
-                TindakLanjut.setText("Edukasi Kesehatan");
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_MVCItemStateChanged
-
-    private void MCHCItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_MCHCItemStateChanged
-        switch (MCHC.getSelectedItem().toString()) {
-            case "< 27 pq":
-                TindakLanjut.setText("Pasien dicurigai sebagai pembawa sifat Thalassemia Rujuk Ke FKTRL atau dapat juga melakukan rujukan sampel");
-                break;
-            case "Normal":
-                TindakLanjut.setText("Edukasi Kesehatan");
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_MCHCItemStateChanged
-
     private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
-        Valid.pindah(evt,DarahTepi,BtnSimpan);
+        //Valid.pindah(evt,DarahTepi,BtnSimpan);
     }//GEN-LAST:event_TindakLanjutKeyPressed
+
+    private void TindakLanjut1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut1KeyPressed
+
+    private void TransfusiDarah1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransfusiDarah1KeyPressed
+
+    private void TindakLanjut2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut2KeyPressed
+
+    private void TindakLanjut3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut3KeyPressed
+
+    private void TransfusiDarah2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransfusiDarah2KeyPressed
+
+    private void TindakLanjut4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut4KeyPressed
+
+    private void TransfusiDarah3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransfusiDarah3KeyPressed
+
+    private void TransfusiDarah4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransfusiDarah4KeyPressed
+
+    private void TindakLanjut5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut5KeyPressed
+
+    private void TransfusiDarah5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransfusiDarah5KeyPressed
+
+    private void TindakLanjut6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut6KeyPressed
+
+    private void TransfusiDarah6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransfusiDarah6KeyPressed
+
+    private void TindakLanjut7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut7KeyPressed
+
+    private void TransfusiDarah7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransfusiDarah7KeyPressed
+
+    private void TindakLanjut8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut8KeyPressed
+
+    private void TransfusiDarah8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TransfusiDarah8KeyPressed
+
+    private void TindakLanjut9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut9KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TindakLanjut9KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1589,7 +1558,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ComboBox Anemia;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1602,29 +1570,17 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.CekBox ChkKejadian;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private widget.ComboBox DarahTepi;
     private widget.ComboBox Detik;
-    private widget.ComboBox FaciesCooley;
     private widget.PanelBiasa FormInput;
-    private widget.ComboBox GiziKurang;
-    private widget.ComboBox Hb;
-    private widget.ComboBox Hiperpigmentasi;
-    private widget.ComboBox Icterus;
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private widget.ComboBox MCHC;
-    private widget.ComboBox MVC;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningThalassemia;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox Pendek;
-    private widget.ComboBox PerutBuncit;
-    private widget.ComboBox RutinTransfusi;
-    private widget.ComboBox SaudaraTalasemia;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1634,45 +1590,58 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
     private widget.TextBox TindakLanjut;
+    private widget.TextBox TindakLanjut1;
+    private widget.TextBox TindakLanjut2;
+    private widget.TextBox TindakLanjut3;
+    private widget.TextBox TindakLanjut4;
+    private widget.TextBox TindakLanjut5;
+    private widget.TextBox TindakLanjut6;
+    private widget.TextBox TindakLanjut7;
+    private widget.TextBox TindakLanjut8;
+    private widget.TextBox TindakLanjut9;
     private widget.ComboBox TransfusiDarah;
-    private widget.ComboBox TumbangTerlambat;
+    private widget.ComboBox TransfusiDarah1;
+    private widget.ComboBox TransfusiDarah2;
+    private widget.ComboBox TransfusiDarah3;
+    private widget.ComboBox TransfusiDarah4;
+    private widget.ComboBox TransfusiDarah5;
+    private widget.ComboBox TransfusiDarah6;
+    private widget.ComboBox TransfusiDarah7;
+    private widget.ComboBox TransfusiDarah8;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel100;
+    private widget.Label jLabel101;
     private widget.Label jLabel102;
     private widget.Label jLabel103;
     private widget.Label jLabel104;
     private widget.Label jLabel105;
     private widget.Label jLabel106;
-    private widget.Label jLabel107;
-    private widget.Label jLabel109;
-    private widget.Label jLabel112;
-    private widget.Label jLabel115;
-    private widget.Label jLabel118;
-    private widget.Label jLabel121;
-    private widget.Label jLabel123;
     private widget.Label jLabel124;
-    private widget.Label jLabel125;
-    private widget.Label jLabel128;
-    private widget.Label jLabel131;
-    private widget.Label jLabel137;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
+    private widget.Label jLabel236;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel78;
+    private widget.Label jLabel79;
     private widget.Label jLabel8;
-    private widget.Label jLabel80;
     private widget.Label jLabel81;
-    private widget.Label jLabel96;
+    private widget.Label jLabel82;
+    private widget.Label jLabel84;
+    private widget.Label jLabel86;
+    private widget.Label jLabel87;
+    private widget.Label jLabel88;
+    private widget.Label jLabel89;
+    private widget.Label jLabel90;
+    private widget.Label jLabel91;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1746,20 +1715,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     
     public void emptTeks() {
         TransfusiDarah.setSelectedIndex(0);
-        SaudaraTalasemia.setSelectedIndex(0);
-        RutinTransfusi.setSelectedIndex(0);
-        TumbangTerlambat.setSelectedIndex(0);
-        Anemia.setSelectedIndex(0);
-        Icterus.setSelectedIndex(0);
-        FaciesCooley.setSelectedIndex(0);
-        PerutBuncit.setSelectedIndex(0);
-        GiziKurang.setSelectedIndex(0);
-        Pendek.setSelectedIndex(0);
-        Hiperpigmentasi.setSelectedIndex(0);
-        Hb.setSelectedIndex(0);
-        MVC.setSelectedIndex(0);
-        MCHC.setSelectedIndex(0);
-        DarahTepi.setSelectedIndex(0);
         TindakLanjut.setText("Edukasi Kesehatan");
         Tanggal.setDate(new Date());
         TransfusiDarah.requestFocus();
@@ -1776,20 +1731,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
             TransfusiDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            SaudaraTalasemia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            RutinTransfusi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            TumbangTerlambat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Anemia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Icterus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            FaciesCooley.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            PerutBuncit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            GiziKurang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Pendek.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Hiperpigmentasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Hb.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            MVC.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            MCHC.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            DarahTepi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             TindakLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
@@ -1940,7 +1881,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_thalassemia","no_rawat=?","no_rawat=?,tanggal=?,nip=?,transfusi_darah=?,rutin_transfusi=?,saudara_thalassemia=?,tumbuh_kembang_terlambat=?,anemia=?,"+
+        /*if(Sequel.mengedittf("skrining_thalassemia","no_rawat=?","no_rawat=?,tanggal=?,nip=?,transfusi_darah=?,rutin_transfusi=?,saudara_thalassemia=?,tumbuh_kembang_terlambat=?,anemia=?,"+
                 "ikterus=?,perut_buncit=?,gizi_kurang=?,facies_cooley=?,perawakan_pendek=?,hiperpigmentasi_kulit=?,hemoglobin=?,mvc=?,mchc=?,darah_tepi=?,tindak_lanjut=?",20,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 KdPetugas.getText(),TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(), 
@@ -1973,7 +1914,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                tbObat.setValueAt(DarahTepi.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
                tbObat.setValueAt(TindakLanjut.getText(),tbObat.getSelectedRow(),23);
                emptTeks();
-        }
+        }*/
     }
 
     private void hapus() {
@@ -1990,7 +1931,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     
 
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_thalassemia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
+        /*if(Sequel.menyimpantf("skrining_thalassemia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             KdPetugas.getText(),TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(), 
             TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(), 
@@ -2005,6 +1946,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } 
+        } */
     }
 }
