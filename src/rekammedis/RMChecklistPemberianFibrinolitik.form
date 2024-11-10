@@ -935,6 +935,7 @@
                         <Property name="name" type="java.lang.String" value="KontraIndikasi1" noResource="true"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="KontraIndikasi1ItemStateChanged"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontraIndikasi1KeyPressed"/>
                       </Events>
                       <Constraints>
