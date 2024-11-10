@@ -143,7 +143,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
-        TindakLanjut.setDocument(new batasInput((int)300).getKata(TindakLanjut));
+        Kesimpulan.setDocument(new batasInput((int)300).getKata(Kesimpulan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -280,41 +280,41 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         btnPetugas = new widget.Button();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
-        TransfusiDarah = new widget.ComboBox();
+        KontraIndikasi1 = new widget.ComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
         jLabel78 = new widget.Label();
-        TindakLanjut = new widget.TextBox();
+        Kesimpulan = new widget.TextBox();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel124 = new widget.Label();
-        TindakLanjut1 = new widget.TextBox();
+        KeteranganKontraIndikasi1 = new widget.TextBox();
         jLabel79 = new widget.Label();
-        TransfusiDarah1 = new widget.ComboBox();
-        TindakLanjut2 = new widget.TextBox();
-        TindakLanjut3 = new widget.TextBox();
-        TransfusiDarah2 = new widget.ComboBox();
+        KontraIndikasi4 = new widget.ComboBox();
+        KeteranganKontraIndikasi4 = new widget.TextBox();
+        KeteranganKontraIndikasi7 = new widget.TextBox();
+        KontraIndikasi7 = new widget.ComboBox();
         jLabel81 = new widget.Label();
-        TindakLanjut4 = new widget.TextBox();
-        TransfusiDarah3 = new widget.ComboBox();
+        KeteranganKontraIndikasi5 = new widget.TextBox();
+        KontraIndikasi5 = new widget.ComboBox();
         jLabel82 = new widget.Label();
         jLabel84 = new widget.Label();
-        TransfusiDarah4 = new widget.ComboBox();
-        TindakLanjut5 = new widget.TextBox();
+        KontraIndikasi6 = new widget.ComboBox();
+        KeteranganKontraIndikasi6 = new widget.TextBox();
         jLabel86 = new widget.Label();
-        TransfusiDarah5 = new widget.ComboBox();
-        TindakLanjut6 = new widget.TextBox();
+        KontraIndikasi8 = new widget.ComboBox();
+        KeteranganKontraIndikasi8 = new widget.TextBox();
         jLabel88 = new widget.Label();
-        TransfusiDarah6 = new widget.ComboBox();
-        TindakLanjut7 = new widget.TextBox();
+        KontraIndikasi9 = new widget.ComboBox();
+        KeteranganKontraIndikasi9 = new widget.TextBox();
         jLabel90 = new widget.Label();
-        TransfusiDarah7 = new widget.ComboBox();
-        TindakLanjut8 = new widget.TextBox();
+        KontraIndikasi2 = new widget.ComboBox();
+        KeteranganKontraIndikasi2 = new widget.TextBox();
         jLabel100 = new widget.Label();
         jLabel101 = new widget.Label();
         jLabel102 = new widget.Label();
         jLabel91 = new widget.Label();
-        TransfusiDarah8 = new widget.ComboBox();
-        TindakLanjut9 = new widget.TextBox();
+        KontraIndikasi3 = new widget.ComboBox();
+        KeteranganKontraIndikasi3 = new widget.TextBox();
         jLabel103 = new widget.Label();
         jLabel104 = new widget.Label();
         jLabel105 = new widget.Label();
@@ -323,30 +323,41 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         jLabel108 = new widget.Label();
         jLabel89 = new widget.Label();
         jLabel109 = new widget.Label();
-        TransfusiDarah9 = new widget.ComboBox();
-        TindakLanjut10 = new widget.TextBox();
+        KontraIndikasi10 = new widget.ComboBox();
+        KeteranganKontraIndikasi10 = new widget.TextBox();
         jLabel110 = new widget.Label();
         jLabel80 = new widget.Label();
-        TransfusiDarah10 = new widget.ComboBox();
-        TindakLanjut11 = new widget.TextBox();
+        RisikoTinggi1 = new widget.ComboBox();
+        NilaiRisikoTinggi1 = new widget.TextBox();
         jLabel83 = new widget.Label();
         jLabel111 = new widget.Label();
-        TransfusiDarah11 = new widget.ComboBox();
-        TindakLanjut12 = new widget.TextBox();
+        RisikoTinggi2 = new widget.ComboBox();
+        NilaiRisikoTinggi2 = new widget.TextBox();
         jLabel112 = new widget.Label();
         jLabel85 = new widget.Label();
-        TransfusiDarah12 = new widget.ComboBox();
-        TindakLanjut13 = new widget.TextBox();
+        RisikoTinggi3 = new widget.ComboBox();
+        NilaiRisikoTinggi3 = new widget.TextBox();
         jLabel87 = new widget.Label();
         jLabel113 = new widget.Label();
-        TransfusiDarah13 = new widget.ComboBox();
-        TindakLanjut14 = new widget.TextBox();
+        RisikoTinggi4 = new widget.ComboBox();
+        NilaiRisikoTinggi4 = new widget.TextBox();
         jLabel92 = new widget.Label();
         jLabel114 = new widget.Label();
-        TransfusiDarah14 = new widget.ComboBox();
-        TindakLanjut15 = new widget.TextBox();
+        RisikoTinggi5 = new widget.ComboBox();
+        NilaiRisikoTinggi5 = new widget.TextBox();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel125 = new widget.Label();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel126 = new widget.Label();
+        EkgPreStrep = new widget.TextBox();
+        jLabel115 = new widget.Label();
+        jLabel17 = new widget.Label();
+        jLabel116 = new widget.Label();
+        jLabel20 = new widget.Label();
+        EkgPostStrep = new widget.TextBox();
+        CekTroponin = new widget.TextBox();
+        jLabel117 = new widget.Label();
+        jLabel22 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -649,7 +660,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(810, 630));
+        FormInput.setPreferredSize(new java.awt.Dimension(810, 723));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -795,15 +806,15 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        TransfusiDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah.setName("TransfusiDarah"); // NOI18N
-        TransfusiDarah.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi1.setName("KontraIndikasi1"); // NOI18N
+        KontraIndikasi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarahKeyPressed(evt);
+                KontraIndikasi1KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah);
-        TransfusiDarah.setBounds(600, 90, 80, 23);
+        FormInput.add(KontraIndikasi1);
+        KontraIndikasi1.setBounds(600, 90, 80, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -824,14 +835,14 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel78);
         jLabel78.setBounds(62, 90, 430, 23);
 
-        TindakLanjut.setName("TindakLanjut"); // NOI18N
-        TindakLanjut.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kesimpulan.setName("Kesimpulan"); // NOI18N
+        Kesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjutKeyPressed(evt);
+                KesimpulanKeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut);
-        TindakLanjut.setBounds(44, 580, 745, 23);
+        FormInput.add(Kesimpulan);
+        Kesimpulan.setBounds(44, 580, 745, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
@@ -844,16 +855,16 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         jLabel124.setText("II. PASIEN RISIKO TINGGI UNTUK PEMBERIAN FIBRINOLITIK");
         jLabel124.setName("jLabel124"); // NOI18N
         FormInput.add(jLabel124);
-        jLabel124.setBounds(11, 390, 650, 23);
+        jLabel124.setBounds(11, 390, 540, 23);
 
-        TindakLanjut1.setName("TindakLanjut1"); // NOI18N
-        TindakLanjut1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi1.setName("KeteranganKontraIndikasi1"); // NOI18N
+        KeteranganKontraIndikasi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut1KeyPressed(evt);
+                KeteranganKontraIndikasi1KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut1);
-        TindakLanjut1.setBounds(683, 90, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi1);
+        KeteranganKontraIndikasi1.setBounds(683, 90, 106, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel79.setText("Riwayat Trauma Tertutup Signifikan Pada Kepala / Wajah Dalam 3 Minggu Terakhir");
@@ -861,43 +872,43 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel79);
         jLabel79.setBounds(62, 180, 490, 23);
 
-        TransfusiDarah1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah1.setName("TransfusiDarah1"); // NOI18N
-        TransfusiDarah1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi4.setName("KontraIndikasi4"); // NOI18N
+        KontraIndikasi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah1KeyPressed(evt);
+                KontraIndikasi4KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah1);
-        TransfusiDarah1.setBounds(600, 180, 80, 23);
+        FormInput.add(KontraIndikasi4);
+        KontraIndikasi4.setBounds(600, 180, 80, 23);
 
-        TindakLanjut2.setName("TindakLanjut2"); // NOI18N
-        TindakLanjut2.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi4.setName("KeteranganKontraIndikasi4"); // NOI18N
+        KeteranganKontraIndikasi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut2KeyPressed(evt);
+                KeteranganKontraIndikasi4KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut2);
-        TindakLanjut2.setBounds(683, 180, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi4);
+        KeteranganKontraIndikasi4.setBounds(683, 180, 106, 23);
 
-        TindakLanjut3.setName("TindakLanjut3"); // NOI18N
-        TindakLanjut3.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi7.setName("KeteranganKontraIndikasi7"); // NOI18N
+        KeteranganKontraIndikasi7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut3KeyPressed(evt);
+                KeteranganKontraIndikasi7KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut3);
-        TindakLanjut3.setBounds(683, 270, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi7);
+        KeteranganKontraIndikasi7.setBounds(683, 270, 106, 23);
 
-        TransfusiDarah2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah2.setName("TransfusiDarah2"); // NOI18N
-        TransfusiDarah2.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi7.setName("KontraIndikasi7"); // NOI18N
+        KontraIndikasi7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah2KeyPressed(evt);
+                KontraIndikasi7KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah2);
-        TransfusiDarah2.setBounds(600, 270, 80, 23);
+        FormInput.add(KontraIndikasi7);
+        KontraIndikasi7.setBounds(600, 270, 80, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel81.setText("Riwayat Perdarahan Intrakranial");
@@ -905,24 +916,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel81);
         jLabel81.setBounds(62, 270, 410, 23);
 
-        TindakLanjut4.setName("TindakLanjut4"); // NOI18N
-        TindakLanjut4.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi5.setName("KeteranganKontraIndikasi5"); // NOI18N
+        KeteranganKontraIndikasi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut4KeyPressed(evt);
+                KeteranganKontraIndikasi5KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut4);
-        TindakLanjut4.setBounds(683, 210, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi5);
+        KeteranganKontraIndikasi5.setBounds(683, 210, 106, 23);
 
-        TransfusiDarah3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah3.setName("TransfusiDarah3"); // NOI18N
-        TransfusiDarah3.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi5.setName("KontraIndikasi5"); // NOI18N
+        KontraIndikasi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah3KeyPressed(evt);
+                KontraIndikasi5KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah3);
-        TransfusiDarah3.setBounds(600, 210, 80, 23);
+        FormInput.add(KontraIndikasi5);
+        KontraIndikasi5.setBounds(600, 210, 80, 23);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel82.setText("Stroke Iskemik >3 Jam Atau <3 Bulan");
@@ -936,24 +947,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel84);
         jLabel84.setBounds(62, 360, 520, 23);
 
-        TransfusiDarah4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah4.setName("TransfusiDarah4"); // NOI18N
-        TransfusiDarah4.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi6.setName("KontraIndikasi6"); // NOI18N
+        KontraIndikasi6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah4KeyPressed(evt);
+                KontraIndikasi6KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah4);
-        TransfusiDarah4.setBounds(600, 240, 80, 23);
+        FormInput.add(KontraIndikasi6);
+        KontraIndikasi6.setBounds(600, 240, 80, 23);
 
-        TindakLanjut5.setName("TindakLanjut5"); // NOI18N
-        TindakLanjut5.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi6.setName("KeteranganKontraIndikasi6"); // NOI18N
+        KeteranganKontraIndikasi6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut5KeyPressed(evt);
+                KeteranganKontraIndikasi6KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut5);
-        TindakLanjut5.setBounds(683, 240, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi6);
+        KeteranganKontraIndikasi6.setBounds(683, 240, 106, 23);
 
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel86.setText("Trauma Mayor, Pembedahan(Termasuk Bedah Laser Mata), Perdarahan Gigi/Gusi Dalam 2-4 Minggu Terakhir");
@@ -961,24 +972,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel86);
         jLabel86.setBounds(62, 240, 550, 23);
 
-        TransfusiDarah5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah5.setName("TransfusiDarah5"); // NOI18N
-        TransfusiDarah5.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi8.setName("KontraIndikasi8"); // NOI18N
+        KontraIndikasi8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah5KeyPressed(evt);
+                KontraIndikasi8KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah5);
-        TransfusiDarah5.setBounds(600, 300, 80, 23);
+        FormInput.add(KontraIndikasi8);
+        KontraIndikasi8.setBounds(600, 300, 80, 23);
 
-        TindakLanjut6.setName("TindakLanjut6"); // NOI18N
-        TindakLanjut6.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi8.setName("KeteranganKontraIndikasi8"); // NOI18N
+        KeteranganKontraIndikasi8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut6KeyPressed(evt);
+                KeteranganKontraIndikasi8KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut6);
-        TindakLanjut6.setBounds(683, 300, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi8);
+        KeteranganKontraIndikasi8.setBounds(683, 300, 106, 23);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel88.setText("Perdarahan, Masalah Pembekuan/Penggunaan Antikoagulan");
@@ -986,24 +997,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel88);
         jLabel88.setBounds(62, 300, 510, 23);
 
-        TransfusiDarah6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah6.setName("TransfusiDarah6"); // NOI18N
-        TransfusiDarah6.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi9.setName("KontraIndikasi9"); // NOI18N
+        KontraIndikasi9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah6KeyPressed(evt);
+                KontraIndikasi9KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah6);
-        TransfusiDarah6.setBounds(600, 330, 80, 23);
+        FormInput.add(KontraIndikasi9);
+        KontraIndikasi9.setBounds(600, 330, 80, 23);
 
-        TindakLanjut7.setName("TindakLanjut7"); // NOI18N
-        TindakLanjut7.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi9.setName("KeteranganKontraIndikasi9"); // NOI18N
+        KeteranganKontraIndikasi9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut7KeyPressed(evt);
+                KeteranganKontraIndikasi9KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut7);
-        TindakLanjut7.setBounds(683, 330, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi9);
+        KeteranganKontraIndikasi9.setBounds(683, 330, 106, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("Perbedaan TD Sistolik Lengan Kanan Dan Kiri >15 mmHg");
@@ -1011,24 +1022,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel90);
         jLabel90.setBounds(62, 120, 470, 23);
 
-        TransfusiDarah7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah7.setName("TransfusiDarah7"); // NOI18N
-        TransfusiDarah7.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi2.setName("KontraIndikasi2"); // NOI18N
+        KontraIndikasi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah7KeyPressed(evt);
+                KontraIndikasi2KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah7);
-        TransfusiDarah7.setBounds(600, 120, 80, 23);
+        FormInput.add(KontraIndikasi2);
+        KontraIndikasi2.setBounds(600, 120, 80, 23);
 
-        TindakLanjut8.setName("TindakLanjut8"); // NOI18N
-        TindakLanjut8.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi2.setName("KeteranganKontraIndikasi2"); // NOI18N
+        KeteranganKontraIndikasi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut8KeyPressed(evt);
+                KeteranganKontraIndikasi2KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut8);
-        TindakLanjut8.setBounds(683, 120, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi2);
+        KeteranganKontraIndikasi2.setBounds(683, 120, 106, 23);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel100.setText("1.");
@@ -1054,24 +1065,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel91);
         jLabel91.setBounds(62, 150, 470, 23);
 
-        TransfusiDarah8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah8.setName("TransfusiDarah8"); // NOI18N
-        TransfusiDarah8.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi3.setName("KontraIndikasi3"); // NOI18N
+        KontraIndikasi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah8KeyPressed(evt);
+                KontraIndikasi3KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah8);
-        TransfusiDarah8.setBounds(600, 150, 80, 23);
+        FormInput.add(KontraIndikasi3);
+        KontraIndikasi3.setBounds(600, 150, 80, 23);
 
-        TindakLanjut9.setName("TindakLanjut9"); // NOI18N
-        TindakLanjut9.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi3.setName("KeteranganKontraIndikasi3"); // NOI18N
+        KeteranganKontraIndikasi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut9KeyPressed(evt);
+                KeteranganKontraIndikasi3KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut9);
-        TindakLanjut9.setBounds(683, 150, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi3);
+        KeteranganKontraIndikasi3.setBounds(683, 150, 106, 23);
 
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel103.setText("4.");
@@ -1121,24 +1132,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel109);
         jLabel109.setBounds(44, 360, 25, 23);
 
-        TransfusiDarah9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah9.setName("TransfusiDarah9"); // NOI18N
-        TransfusiDarah9.addKeyListener(new java.awt.event.KeyAdapter() {
+        KontraIndikasi10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KontraIndikasi10.setName("KontraIndikasi10"); // NOI18N
+        KontraIndikasi10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah9KeyPressed(evt);
+                KontraIndikasi10KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah9);
-        TransfusiDarah9.setBounds(600, 360, 80, 23);
+        FormInput.add(KontraIndikasi10);
+        KontraIndikasi10.setBounds(600, 360, 80, 23);
 
-        TindakLanjut10.setName("TindakLanjut10"); // NOI18N
-        TindakLanjut10.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKontraIndikasi10.setName("KeteranganKontraIndikasi10"); // NOI18N
+        KeteranganKontraIndikasi10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut10KeyPressed(evt);
+                KeteranganKontraIndikasi10KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut10);
-        TindakLanjut10.setBounds(683, 360, 106, 23);
+        FormInput.add(KeteranganKontraIndikasi10);
+        KeteranganKontraIndikasi10.setBounds(683, 360, 106, 23);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel110.setText("1.");
@@ -1152,24 +1163,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel80);
         jLabel80.setBounds(62, 410, 240, 23);
 
-        TransfusiDarah10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah10.setName("TransfusiDarah10"); // NOI18N
-        TransfusiDarah10.addKeyListener(new java.awt.event.KeyAdapter() {
+        RisikoTinggi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RisikoTinggi1.setName("RisikoTinggi1"); // NOI18N
+        RisikoTinggi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah10KeyPressed(evt);
+                RisikoTinggi1KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah10);
-        TransfusiDarah10.setBounds(600, 410, 80, 23);
+        FormInput.add(RisikoTinggi1);
+        RisikoTinggi1.setBounds(600, 410, 80, 23);
 
-        TindakLanjut11.setName("TindakLanjut11"); // NOI18N
-        TindakLanjut11.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiRisikoTinggi1.setName("NilaiRisikoTinggi1"); // NOI18N
+        NilaiRisikoTinggi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut11KeyPressed(evt);
+                NilaiRisikoTinggi1KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut11);
-        TindakLanjut11.setBounds(683, 410, 106, 23);
+        FormInput.add(NilaiRisikoTinggi1);
+        NilaiRisikoTinggi1.setBounds(683, 410, 106, 23);
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel83.setText("Edema Paru (Rales)");
@@ -1183,24 +1194,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel111);
         jLabel111.setBounds(44, 440, 25, 23);
 
-        TransfusiDarah11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah11.setName("TransfusiDarah11"); // NOI18N
-        TransfusiDarah11.addKeyListener(new java.awt.event.KeyAdapter() {
+        RisikoTinggi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RisikoTinggi2.setName("RisikoTinggi2"); // NOI18N
+        RisikoTinggi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah11KeyPressed(evt);
+                RisikoTinggi2KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah11);
-        TransfusiDarah11.setBounds(600, 440, 80, 23);
+        FormInput.add(RisikoTinggi2);
+        RisikoTinggi2.setBounds(600, 440, 80, 23);
 
-        TindakLanjut12.setName("TindakLanjut12"); // NOI18N
-        TindakLanjut12.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiRisikoTinggi2.setName("NilaiRisikoTinggi2"); // NOI18N
+        NilaiRisikoTinggi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut12KeyPressed(evt);
+                NilaiRisikoTinggi2KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut12);
-        TindakLanjut12.setBounds(683, 440, 106, 23);
+        FormInput.add(NilaiRisikoTinggi2);
+        NilaiRisikoTinggi2.setBounds(683, 440, 106, 23);
 
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel112.setText("3.");
@@ -1214,24 +1225,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel85);
         jLabel85.setBounds(62, 470, 430, 23);
 
-        TransfusiDarah12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah12.setName("TransfusiDarah12"); // NOI18N
-        TransfusiDarah12.addKeyListener(new java.awt.event.KeyAdapter() {
+        RisikoTinggi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RisikoTinggi3.setName("RisikoTinggi3"); // NOI18N
+        RisikoTinggi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah12KeyPressed(evt);
+                RisikoTinggi3KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah12);
-        TransfusiDarah12.setBounds(600, 470, 80, 23);
+        FormInput.add(RisikoTinggi3);
+        RisikoTinggi3.setBounds(600, 470, 80, 23);
 
-        TindakLanjut13.setName("TindakLanjut13"); // NOI18N
-        TindakLanjut13.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiRisikoTinggi3.setName("NilaiRisikoTinggi3"); // NOI18N
+        NilaiRisikoTinggi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut13KeyPressed(evt);
+                NilaiRisikoTinggi3KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut13);
-        TindakLanjut13.setBounds(683, 470, 106, 23);
+        FormInput.add(NilaiRisikoTinggi3);
+        NilaiRisikoTinggi3.setBounds(683, 470, 106, 23);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel87.setText("Kontradiksi Terapi Fibrinolitik");
@@ -1245,24 +1256,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel113);
         jLabel113.setBounds(44, 500, 25, 23);
 
-        TransfusiDarah13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah13.setName("TransfusiDarah13"); // NOI18N
-        TransfusiDarah13.addKeyListener(new java.awt.event.KeyAdapter() {
+        RisikoTinggi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RisikoTinggi4.setName("RisikoTinggi4"); // NOI18N
+        RisikoTinggi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah13KeyPressed(evt);
+                RisikoTinggi4KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah13);
-        TransfusiDarah13.setBounds(600, 500, 80, 23);
+        FormInput.add(RisikoTinggi4);
+        RisikoTinggi4.setBounds(600, 500, 80, 23);
 
-        TindakLanjut14.setName("TindakLanjut14"); // NOI18N
-        TindakLanjut14.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiRisikoTinggi4.setName("NilaiRisikoTinggi4"); // NOI18N
+        NilaiRisikoTinggi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut14KeyPressed(evt);
+                NilaiRisikoTinggi4KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut14);
-        TindakLanjut14.setBounds(683, 500, 106, 23);
+        FormInput.add(NilaiRisikoTinggi4);
+        NilaiRisikoTinggi4.setBounds(683, 500, 106, 23);
 
         jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel92.setText("Memerlukan RJP");
@@ -1276,24 +1287,24 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         FormInput.add(jLabel114);
         jLabel114.setBounds(44, 530, 25, 23);
 
-        TransfusiDarah14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah14.setName("TransfusiDarah14"); // NOI18N
-        TransfusiDarah14.addKeyListener(new java.awt.event.KeyAdapter() {
+        RisikoTinggi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RisikoTinggi5.setName("RisikoTinggi5"); // NOI18N
+        RisikoTinggi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarah14KeyPressed(evt);
+                RisikoTinggi5KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah14);
-        TransfusiDarah14.setBounds(600, 530, 80, 23);
+        FormInput.add(RisikoTinggi5);
+        RisikoTinggi5.setBounds(600, 530, 80, 23);
 
-        TindakLanjut15.setName("TindakLanjut15"); // NOI18N
-        TindakLanjut15.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiRisikoTinggi5.setName("NilaiRisikoTinggi5"); // NOI18N
+        NilaiRisikoTinggi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TindakLanjut15KeyPressed(evt);
+                NilaiRisikoTinggi5KeyPressed(evt);
             }
         });
-        FormInput.add(TindakLanjut15);
-        TindakLanjut15.setBounds(683, 530, 106, 23);
+        FormInput.add(NilaiRisikoTinggi5);
+        NilaiRisikoTinggi5.setBounds(683, 530, 106, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
@@ -1307,6 +1318,82 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         jLabel125.setName("jLabel125"); // NOI18N
         FormInput.add(jLabel125);
         jLabel125.setBounds(11, 560, 650, 23);
+
+        jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator6.setName("jSeparator6"); // NOI18N
+        FormInput.add(jSeparator6);
+        jSeparator6.setBounds(0, 610, 807, 1);
+
+        jLabel126.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel126.setText("IV. PERSYARATAN");
+        jLabel126.setName("jLabel126"); // NOI18N
+        FormInput.add(jLabel126);
+        jLabel126.setBounds(11, 610, 650, 23);
+
+        EkgPreStrep.setName("EkgPreStrep"); // NOI18N
+        EkgPreStrep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EkgPreStrepKeyPressed(evt);
+            }
+        });
+        FormInput.add(EkgPreStrep);
+        EkgPreStrep.setBounds(143, 630, 646, 23);
+
+        jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel115.setText("EKG Pre Streptase");
+        jLabel115.setName("jLabel115"); // NOI18N
+        FormInput.add(jLabel115);
+        jLabel115.setBounds(44, 630, 110, 23);
+
+        jLabel17.setText(":");
+        jLabel17.setName("jLabel17"); // NOI18N
+        jLabel17.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(0, 630, 139, 23);
+
+        jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel116.setText("EKG Post Streptase");
+        jLabel116.setName("jLabel116"); // NOI18N
+        FormInput.add(jLabel116);
+        jLabel116.setBounds(44, 660, 110, 23);
+
+        jLabel20.setText(":");
+        jLabel20.setName("jLabel20"); // NOI18N
+        jLabel20.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(0, 660, 144, 23);
+
+        EkgPostStrep.setName("EkgPostStrep"); // NOI18N
+        EkgPostStrep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EkgPostStrepKeyPressed(evt);
+            }
+        });
+        FormInput.add(EkgPostStrep);
+        EkgPostStrep.setBounds(148, 660, 641, 23);
+
+        CekTroponin.setName("CekTroponin"); // NOI18N
+        CekTroponin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CekTroponinKeyPressed(evt);
+            }
+        });
+        FormInput.add(CekTroponin);
+        CekTroponin.setBounds(119, 690, 670, 23);
+
+        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel117.setText("Cek Troponin ");
+        jLabel117.setName("jLabel117"); // NOI18N
+        FormInput.add(jLabel117);
+        jLabel117.setBounds(44, 690, 110, 23);
+
+        jLabel22.setText(":");
+        jLabel22.setName("jLabel22"); // NOI18N
+        jLabel22.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(0, 690, 115, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1354,7 +1441,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,TindakLanjut,BtnBatal);
+            Valid.pindah(evt,Kesimpulan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1688,133 +1775,145 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         }
     }//GEN-LAST:event_MnSkriningThalassemiaActionPerformed
 
-    private void TransfusiDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarahKeyPressed
+    private void KontraIndikasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi1KeyPressed
         //Valid.pindah(evt,btnPetugas,SaudaraTalasemia);
-    }//GEN-LAST:event_TransfusiDarahKeyPressed
+    }//GEN-LAST:event_KontraIndikasi1KeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void TindakLanjutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjutKeyPressed
+    private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
         //Valid.pindah(evt,DarahTepi,BtnSimpan);
-    }//GEN-LAST:event_TindakLanjutKeyPressed
+    }//GEN-LAST:event_KesimpulanKeyPressed
 
-    private void TindakLanjut1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut1KeyPressed
+    private void KeteranganKontraIndikasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut1KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi1KeyPressed
 
-    private void TransfusiDarah1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah1KeyPressed
+    private void KontraIndikasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah1KeyPressed
+    }//GEN-LAST:event_KontraIndikasi4KeyPressed
 
-    private void TindakLanjut2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut2KeyPressed
+    private void KeteranganKontraIndikasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut2KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi4KeyPressed
 
-    private void TindakLanjut3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut3KeyPressed
+    private void KeteranganKontraIndikasi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi7KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut3KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi7KeyPressed
 
-    private void TransfusiDarah2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah2KeyPressed
+    private void KontraIndikasi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi7KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah2KeyPressed
+    }//GEN-LAST:event_KontraIndikasi7KeyPressed
 
-    private void TindakLanjut4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut4KeyPressed
+    private void KeteranganKontraIndikasi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut4KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi5KeyPressed
 
-    private void TransfusiDarah3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah3KeyPressed
+    private void KontraIndikasi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah3KeyPressed
+    }//GEN-LAST:event_KontraIndikasi5KeyPressed
 
-    private void TransfusiDarah4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah4KeyPressed
+    private void KontraIndikasi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi6KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah4KeyPressed
+    }//GEN-LAST:event_KontraIndikasi6KeyPressed
 
-    private void TindakLanjut5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut5KeyPressed
+    private void KeteranganKontraIndikasi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi6KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut5KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi6KeyPressed
 
-    private void TransfusiDarah5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah5KeyPressed
+    private void KontraIndikasi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi8KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah5KeyPressed
+    }//GEN-LAST:event_KontraIndikasi8KeyPressed
 
-    private void TindakLanjut6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut6KeyPressed
+    private void KeteranganKontraIndikasi8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi8KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut6KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi8KeyPressed
 
-    private void TransfusiDarah6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah6KeyPressed
+    private void KontraIndikasi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi9KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah6KeyPressed
+    }//GEN-LAST:event_KontraIndikasi9KeyPressed
 
-    private void TindakLanjut7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut7KeyPressed
+    private void KeteranganKontraIndikasi9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi9KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut7KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi9KeyPressed
 
-    private void TransfusiDarah7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah7KeyPressed
+    private void KontraIndikasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah7KeyPressed
+    }//GEN-LAST:event_KontraIndikasi2KeyPressed
 
-    private void TindakLanjut8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut8KeyPressed
+    private void KeteranganKontraIndikasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut8KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi2KeyPressed
 
-    private void TransfusiDarah8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah8KeyPressed
+    private void KontraIndikasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah8KeyPressed
+    }//GEN-LAST:event_KontraIndikasi3KeyPressed
 
-    private void TindakLanjut9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut9KeyPressed
+    private void KeteranganKontraIndikasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut9KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi3KeyPressed
 
-    private void TransfusiDarah9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah9KeyPressed
+    private void KontraIndikasi10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi10KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah9KeyPressed
+    }//GEN-LAST:event_KontraIndikasi10KeyPressed
 
-    private void TindakLanjut10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut10KeyPressed
+    private void KeteranganKontraIndikasi10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKontraIndikasi10KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut10KeyPressed
+    }//GEN-LAST:event_KeteranganKontraIndikasi10KeyPressed
 
-    private void TransfusiDarah10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah10KeyPressed
+    private void RisikoTinggi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah10KeyPressed
+    }//GEN-LAST:event_RisikoTinggi1KeyPressed
 
-    private void TindakLanjut11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut11KeyPressed
+    private void NilaiRisikoTinggi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut11KeyPressed
+    }//GEN-LAST:event_NilaiRisikoTinggi1KeyPressed
 
-    private void TransfusiDarah11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah11KeyPressed
+    private void RisikoTinggi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah11KeyPressed
+    }//GEN-LAST:event_RisikoTinggi2KeyPressed
 
-    private void TindakLanjut12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut12KeyPressed
+    private void NilaiRisikoTinggi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut12KeyPressed
+    }//GEN-LAST:event_NilaiRisikoTinggi2KeyPressed
 
-    private void TransfusiDarah12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah12KeyPressed
+    private void RisikoTinggi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah12KeyPressed
+    }//GEN-LAST:event_RisikoTinggi3KeyPressed
 
-    private void TindakLanjut13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut13KeyPressed
+    private void NilaiRisikoTinggi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut13KeyPressed
+    }//GEN-LAST:event_NilaiRisikoTinggi3KeyPressed
 
-    private void TransfusiDarah13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah13KeyPressed
+    private void RisikoTinggi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah13KeyPressed
+    }//GEN-LAST:event_RisikoTinggi4KeyPressed
 
-    private void TindakLanjut14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut14KeyPressed
+    private void NilaiRisikoTinggi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut14KeyPressed
+    }//GEN-LAST:event_NilaiRisikoTinggi4KeyPressed
 
-    private void TransfusiDarah14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarah14KeyPressed
+    private void RisikoTinggi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoTinggi5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TransfusiDarah14KeyPressed
+    }//GEN-LAST:event_RisikoTinggi5KeyPressed
 
-    private void TindakLanjut15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakLanjut15KeyPressed
+    private void NilaiRisikoTinggi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiRisikoTinggi5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TindakLanjut15KeyPressed
+    }//GEN-LAST:event_NilaiRisikoTinggi5KeyPressed
+
+    private void EkgPreStrepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkgPreStrepKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EkgPreStrepKeyPressed
+
+    private void EkgPostStrepKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkgPostStrepKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EkgPostStrepKeyPressed
+
+    private void CekTroponinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CekTroponinKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CekTroponinKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1841,21 +1940,55 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.TextBox CekTroponin;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkKejadian;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
+    private widget.TextBox EkgPostStrep;
+    private widget.TextBox EkgPreStrep;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
     private widget.TextBox KdPetugas;
+    private widget.TextBox Kesimpulan;
+    private widget.TextBox KeteranganKontraIndikasi1;
+    private widget.TextBox KeteranganKontraIndikasi10;
+    private widget.TextBox KeteranganKontraIndikasi2;
+    private widget.TextBox KeteranganKontraIndikasi3;
+    private widget.TextBox KeteranganKontraIndikasi4;
+    private widget.TextBox KeteranganKontraIndikasi5;
+    private widget.TextBox KeteranganKontraIndikasi6;
+    private widget.TextBox KeteranganKontraIndikasi7;
+    private widget.TextBox KeteranganKontraIndikasi8;
+    private widget.TextBox KeteranganKontraIndikasi9;
+    private widget.ComboBox KontraIndikasi1;
+    private widget.ComboBox KontraIndikasi10;
+    private widget.ComboBox KontraIndikasi2;
+    private widget.ComboBox KontraIndikasi3;
+    private widget.ComboBox KontraIndikasi4;
+    private widget.ComboBox KontraIndikasi5;
+    private widget.ComboBox KontraIndikasi6;
+    private widget.ComboBox KontraIndikasi7;
+    private widget.ComboBox KontraIndikasi8;
+    private widget.ComboBox KontraIndikasi9;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningThalassemia;
+    private widget.TextBox NilaiRisikoTinggi1;
+    private widget.TextBox NilaiRisikoTinggi2;
+    private widget.TextBox NilaiRisikoTinggi3;
+    private widget.TextBox NilaiRisikoTinggi4;
+    private widget.TextBox NilaiRisikoTinggi5;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
+    private widget.ComboBox RisikoTinggi1;
+    private widget.ComboBox RisikoTinggi2;
+    private widget.ComboBox RisikoTinggi3;
+    private widget.ComboBox RisikoTinggi4;
+    private widget.ComboBox RisikoTinggi5;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1864,37 +1997,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
-    private widget.TextBox TindakLanjut;
-    private widget.TextBox TindakLanjut1;
-    private widget.TextBox TindakLanjut10;
-    private widget.TextBox TindakLanjut11;
-    private widget.TextBox TindakLanjut12;
-    private widget.TextBox TindakLanjut13;
-    private widget.TextBox TindakLanjut14;
-    private widget.TextBox TindakLanjut15;
-    private widget.TextBox TindakLanjut2;
-    private widget.TextBox TindakLanjut3;
-    private widget.TextBox TindakLanjut4;
-    private widget.TextBox TindakLanjut5;
-    private widget.TextBox TindakLanjut6;
-    private widget.TextBox TindakLanjut7;
-    private widget.TextBox TindakLanjut8;
-    private widget.TextBox TindakLanjut9;
-    private widget.ComboBox TransfusiDarah;
-    private widget.ComboBox TransfusiDarah1;
-    private widget.ComboBox TransfusiDarah10;
-    private widget.ComboBox TransfusiDarah11;
-    private widget.ComboBox TransfusiDarah12;
-    private widget.ComboBox TransfusiDarah13;
-    private widget.ComboBox TransfusiDarah14;
-    private widget.ComboBox TransfusiDarah2;
-    private widget.ComboBox TransfusiDarah3;
-    private widget.ComboBox TransfusiDarah4;
-    private widget.ComboBox TransfusiDarah5;
-    private widget.ComboBox TransfusiDarah6;
-    private widget.ComboBox TransfusiDarah7;
-    private widget.ComboBox TransfusiDarah8;
-    private widget.ComboBox TransfusiDarah9;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
@@ -1912,12 +2014,19 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.Label jLabel112;
     private widget.Label jLabel113;
     private widget.Label jLabel114;
+    private widget.Label jLabel115;
+    private widget.Label jLabel116;
+    private widget.Label jLabel117;
     private widget.Label jLabel124;
     private widget.Label jLabel125;
+    private widget.Label jLabel126;
     private widget.Label jLabel16;
+    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
     private widget.Label jLabel236;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
@@ -1944,6 +2053,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -2015,10 +2125,10 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     }
     
     public void emptTeks() {
-        TransfusiDarah.setSelectedIndex(0);
-        TindakLanjut.setText("Edukasi Kesehatan");
+        KontraIndikasi1.setSelectedIndex(0);
+        Kesimpulan.setText("Edukasi Kesehatan");
         Tanggal.setDate(new Date());
-        TransfusiDarah.requestFocus();
+        KontraIndikasi1.requestFocus();
     } 
 
     private void getData() {
@@ -2031,8 +2141,8 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
-            TransfusiDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            TindakLanjut.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            KontraIndikasi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -2081,17 +2191,10 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>527){
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,355));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }else{
-                ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
-                FormInput.setVisible(true);      
-                ChkInput.setVisible(true);
-            }
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+            FormInput.setVisible(true);      
+            ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
             ChkInput.setVisible(false);            
             PanelInput.setPreferredSize(new Dimension(WIDTH,20));
