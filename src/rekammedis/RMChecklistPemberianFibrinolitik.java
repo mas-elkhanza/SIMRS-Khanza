@@ -111,6 +111,74 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==8){
+                column.setPreferredWidth(95);
+            }else if(i==9){
+                column.setPreferredWidth(152);
+            }else if(i==10){
+                column.setPreferredWidth(95);
+            }else if(i==11){
+                column.setPreferredWidth(152);
+            }else if(i==12){
+                column.setPreferredWidth(95);
+            }else if(i==13){
+                column.setPreferredWidth(152);
+            }else if(i==14){
+                column.setPreferredWidth(95);
+            }else if(i==15){
+                column.setPreferredWidth(152);
+            }else if(i==16){
+                column.setPreferredWidth(95);
+            }else if(i==17){
+                column.setPreferredWidth(152);
+            }else if(i==18){
+                column.setPreferredWidth(95);
+            }else if(i==19){
+                column.setPreferredWidth(152);
+            }else if(i==20){
+                column.setPreferredWidth(95);
+            }else if(i==21){
+                column.setPreferredWidth(152);
+            }else if(i==22){
+                column.setPreferredWidth(95);
+            }else if(i==23){
+                column.setPreferredWidth(152);
+            }else if(i==24){
+                column.setPreferredWidth(95);
+            }else if(i==25){
+                column.setPreferredWidth(152);
+            }else if(i==26){
+                column.setPreferredWidth(100);
+            }else if(i==27){
+                column.setPreferredWidth(157);
+            }else if(i==28){
+                column.setPreferredWidth(82);
+            }else if(i==29){
+                column.setPreferredWidth(141);
+            }else if(i==30){
+                column.setPreferredWidth(82);
+            }else if(i==31){
+                column.setPreferredWidth(141);
+            }else if(i==32){
+                column.setPreferredWidth(82);
+            }else if(i==33){
+                column.setPreferredWidth(141);
+            }else if(i==34){
+                column.setPreferredWidth(82);
+            }else if(i==35){
+                column.setPreferredWidth(141);
+            }else if(i==36){
+                column.setPreferredWidth(82);
+            }else if(i==37){
+                column.setPreferredWidth(141);
+            }else if(i==38){
+                column.setPreferredWidth(200);
+            }else if(i==39){
+                column.setPreferredWidth(150);
+            }else if(i==40){
+                column.setPreferredWidth(150);
+            }else if(i==41){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
