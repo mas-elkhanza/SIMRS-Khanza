@@ -276,7 +276,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningThalassemia = new javax.swing.JMenuItem();
+        MnChecklistPemberianFibrinolitik = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -403,19 +403,19 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningThalassemia.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningThalassemia.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningThalassemia.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningThalassemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningThalassemia.setText("Formulir Skrining Thalassemia");
-        MnSkriningThalassemia.setName("MnSkriningThalassemia"); // NOI18N
-        MnSkriningThalassemia.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningThalassemia.addActionListener(new java.awt.event.ActionListener() {
+        MnChecklistPemberianFibrinolitik.setBackground(new java.awt.Color(255, 255, 254));
+        MnChecklistPemberianFibrinolitik.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnChecklistPemberianFibrinolitik.setForeground(new java.awt.Color(50, 50, 50));
+        MnChecklistPemberianFibrinolitik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnChecklistPemberianFibrinolitik.setText("Formulir Checklist Pemberian Fibrinolitik");
+        MnChecklistPemberianFibrinolitik.setName("MnChecklistPemberianFibrinolitik"); // NOI18N
+        MnChecklistPemberianFibrinolitik.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnChecklistPemberianFibrinolitik.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningThalassemiaActionPerformed(evt);
+                MnChecklistPemberianFibrinolitikActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningThalassemia);
+        jPopupMenu1.add(MnChecklistPemberianFibrinolitik);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1750,7 +1750,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='4500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1775,7 +1775,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='4500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
@@ -1904,7 +1904,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         Valid.pindah(evt,Detik,btnPetugas);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningThalassemiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningThalassemiaActionPerformed
+    private void MnChecklistPemberianFibrinolitikActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnChecklistPemberianFibrinolitikActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1925,7 +1925,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                     "on checklist_pemberian_fibrinolitik.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
                     "on checklist_pemberian_fibrinolitik.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningThalassemiaActionPerformed
+    }//GEN-LAST:event_MnChecklistPemberianFibrinolitikActionPerformed
 
     private void KontraIndikasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraIndikasi1KeyPressed
         Valid.pindah(evt,btnPetugas,KeteranganKontraIndikasi1);
@@ -2193,7 +2193,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningThalassemia;
+    private javax.swing.JMenuItem MnChecklistPemberianFibrinolitik;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox RisikoTinggi1;
