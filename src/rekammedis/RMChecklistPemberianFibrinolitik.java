@@ -172,7 +172,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             }else if(i==37){
                 column.setPreferredWidth(141);
             }else if(i==38){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(250);
             }else if(i==39){
                 column.setPreferredWidth(150);
             }else if(i==40){
@@ -597,7 +597,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -611,7 +611,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -732,7 +732,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -808,11 +808,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         KdPetugas.setEditable(false);
         KdPetugas.setHighlighter(null);
         KdPetugas.setName("KdPetugas"); // NOI18N
-        KdPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPetugasKeyPressed(evt);
-            }
-        });
         FormInput.add(KdPetugas);
         KdPetugas.setBounds(474, 40, 94, 23);
 
@@ -1880,18 +1875,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
         Valid.pindah(evt,Menit,btnPetugas);
     }//GEN-LAST:event_DetikKeyPressed
 
-    private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Detik.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Alergi.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }*/
-    }//GEN-LAST:event_KdPetugasKeyPressed
-
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         petugas.emptTeks();
         petugas.isCek();
@@ -1916,14 +1899,19 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningThalasemia.jasper","report","::[ Formulir Skrining Thalassemia ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_pemberian_fibrinolitik.nip,petugas.nama,checklist_pemberian_fibrinolitik.tanggal,"+
-                    "checklist_pemberian_fibrinolitik.transfusi_darah,checklist_pemberian_fibrinolitik.rutin_transfusi,checklist_pemberian_fibrinolitik.saudara_thalassemia,checklist_pemberian_fibrinolitik.tumbuh_kembang_terlambat,"+
-                    "checklist_pemberian_fibrinolitik.anemia,checklist_pemberian_fibrinolitik.ikterus,checklist_pemberian_fibrinolitik.perut_buncit,checklist_pemberian_fibrinolitik.gizi_kurang,checklist_pemberian_fibrinolitik.facies_cooley,"+
-                    "checklist_pemberian_fibrinolitik.perawakan_pendek,checklist_pemberian_fibrinolitik.hiperpigmentasi_kulit,checklist_pemberian_fibrinolitik.hemoglobin,checklist_pemberian_fibrinolitik.mvc,checklist_pemberian_fibrinolitik.mchc,"+
-                    "checklist_pemberian_fibrinolitik.darah_tepi,checklist_pemberian_fibrinolitik.tindak_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur from checklist_pemberian_fibrinolitik inner join reg_periksa "+
-                    "on checklist_pemberian_fibrinolitik.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
-                    "on checklist_pemberian_fibrinolitik.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+            Valid.MyReportqry("rptFormulirChecklistPemberianFibrinolitik.jasper","report","::[ Formulir Checklist Pemberian Fibrinolitik ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_pemberian_fibrinolitik.nip,petugas.nama,checklist_pemberian_fibrinolitik.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi1,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi1,checklist_pemberian_fibrinolitik.kontra_indikasi2,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi2,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi3,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi3,checklist_pemberian_fibrinolitik.kontra_indikasi4,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi4,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi5,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi5,checklist_pemberian_fibrinolitik.kontra_indikasi6,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi6,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi7,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi7,checklist_pemberian_fibrinolitik.kontra_indikasi8,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi8,"+
+                    "checklist_pemberian_fibrinolitik.kontra_indikasi9,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi9,checklist_pemberian_fibrinolitik.kontra_indikasi10,checklist_pemberian_fibrinolitik.keterangan_kontra_indikasi10,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi1,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi1,checklist_pemberian_fibrinolitik.risiko_tinggi2,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi2,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi3,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi3,checklist_pemberian_fibrinolitik.risiko_tinggi4,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi4,"+
+                    "checklist_pemberian_fibrinolitik.risiko_tinggi5,checklist_pemberian_fibrinolitik.keterangan_risiko_tinggi5,checklist_pemberian_fibrinolitik.kesimpulan,checklist_pemberian_fibrinolitik.persyaratan_ekg_pre_streptase,"+
+                    "checklist_pemberian_fibrinolitik.persyaratan_ekg_post_streptase,checklist_pemberian_fibrinolitik.cek_troponin from checklist_pemberian_fibrinolitik inner join reg_periksa on checklist_pemberian_fibrinolitik.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on checklist_pemberian_fibrinolitik.nip=petugas.nip "+
+                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnChecklistPemberianFibrinolitikActionPerformed
 
@@ -2239,7 +2227,6 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
     private widget.Label jLabel20;
     private widget.Label jLabel21;
     private widget.Label jLabel22;
-    private widget.Label jLabel236;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
