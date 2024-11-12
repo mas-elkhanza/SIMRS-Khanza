@@ -93,12 +93,33 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==8){
+                column.setPreferredWidth(40);
+            }else if(i==9){
+                column.setPreferredWidth(103);
+            }else if(i==10){
+                column.setPreferredWidth(76);
+            }else if(i==11){
+                column.setPreferredWidth(83);
+            }else if(i==12){
+                column.setPreferredWidth(70);
+            }else if(i==13){
+                column.setPreferredWidth(104);
+            }else if(i==14){
+                column.setPreferredWidth(71);
+            }else if(i==15){
+                column.setPreferredWidth(63);
+            }else if(i==16){
+                column.setPreferredWidth(68);
+            }else if(i==17){
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
+        KeteranganKesimpulan.setDocument(new batasInput((int)100).getKata(KeteranganKesimpulan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -274,7 +295,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         MnSkriningKankerKolorektal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnSkriningKankerKolorektal.setText("Formulir Skrining Kanker Kolorektal");
         MnSkriningKankerKolorektal.setName("MnSkriningKankerKolorektal"); // NOI18N
-        MnSkriningKankerKolorektal.setPreferredSize(new java.awt.Dimension(290, 26));
+        MnSkriningKankerKolorektal.setPreferredSize(new java.awt.Dimension(240, 26));
         MnSkriningKankerKolorektal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnSkriningKankerKolorektalActionPerformed(evt);
@@ -747,7 +768,6 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         FormInput.add(TingkatResiko1);
         TingkatResiko1.setBounds(44, 250, 90, 23);
 
-        KeteranganKesimpulan.setEditable(false);
         KeteranganKesimpulan.setName("KeteranganKesimpulan"); // NOI18N
         KeteranganKesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1136,7 +1156,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='1500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1157,17 +1177,17 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataSkriningThalassemia.html");            
+                File f = new File("DataSkriningKankerKolorektal.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='1500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING THALASSEMIA<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING KANKER KOLOREKTAL<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1294,15 +1314,13 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),12).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirQuestionnaireKankerKolorektal.jasper","report","::[ Formulir Penilaian Questionnaire Kanker Kolorektal ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skrining_kanker_kolorektal.tanggal,"+
-                    "skrining_kanker_kolorektal.riwayat_keluarga,skrining_kanker_kolorektal.riwayat_keluarga_nilai,skrining_kanker_kolorektal.peserta_merokok,"+
-                    "skrining_kanker_kolorektal.peserta_merokok_nilai,"+
-                    "skrining_kanker_kolorektal.totalnilai,skrining_kanker_kolorektal.kategorinilai,"+
-                    "skrining_kanker_kolorektal.nip,petugas.nama "+
+            Valid.MyReportqry("rptFormulirSkriningKankerKolorektal.jasper","report","::[ Formulir Skrining Kanker Kolorektal ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kanker_kolorektal.tanggal,"+
+                    "skrining_kanker_kolorektal.riwayat_polip_adenomatosa,skrining_kanker_kolorektal.riwayat_bab_berdarah,skrining_kanker_kolorektal.riwayat_reseksi_kuratif,skrining_kanker_kolorektal.colok_dubur,"+
+                    "skrining_kanker_kolorektal.riwayat_kolorektal_keluarga,skrining_kanker_kolorektal.darah_samar_feses,skrining_kanker_kolorektal.rujuk_faskes_lanjut,skrining_kanker_kolorektal.kesimpulan,"+
+                    "skrining_kanker_kolorektal.keterangan_kesimpulan,skrining_kanker_kolorektal.nip,petugas.nama "+
                     "from skrining_kanker_kolorektal inner join reg_periksa on skrining_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_kanker_kolorektal.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kanker_kolorektal.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningKankerKolorektalActionPerformed
 
@@ -1553,10 +1571,10 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             Rujuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
             Kesimpulan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
             KeteranganKesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
-            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
-            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
-            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
+            Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
+            Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
+            Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
     
