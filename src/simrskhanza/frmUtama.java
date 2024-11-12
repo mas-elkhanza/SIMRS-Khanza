@@ -964,6 +964,7 @@ import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningAdiksiNikotin;
 import rekammedis.RMSkriningInstrumenSDQ;
+import rekammedis.RMSkriningKankerKolorektal;
 import rekammedis.RMSkriningKekerasanPadaPerempuan;
 import rekammedis.RMSkriningMPP;
 import rekammedis.RMSkriningMPPFormA;
@@ -21901,6 +21902,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSkriningKankerKolorektalActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningKankerKolorektal form=new RMSkriningKankerKolorektal(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22597,7 +22611,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnDataSasaranUsiaLansia,btnSkriningMerokokUsiaSekolah,btnSkriningKekerasanPadaPerempuan,btnSkriningObesitas,btnSkriningRisikoKankerPayudara,btnSkriningRisikoKankerParu,
             btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnCatatanObservasiRestrainNonFramakologi,
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
-            btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik;
+            btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal;
     
     public void isWall(){
         try{            
@@ -26798,6 +26812,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_instrumen_srq()==true){
                 Panelmenu.add(btnSkriningInstrumenSRQ);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_kanker_kolorektal()==true){
+                Panelmenu.add(btnSkriningKankerKolorektal);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -32092,6 +32111,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_instrumen_srq()==true){
             Panelmenu.add(btnSkriningInstrumenSRQ);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_kanker_kolorektal()==true){
+            Panelmenu.add(btnSkriningKankerKolorektal);
             jmlmenu++;
         }
 
@@ -38908,6 +38932,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_kanker_kolorektal()==true){
+            if(btnSkriningKankerKolorektal.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningKankerKolorektal);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getmpp_skrining()==true){
             if(btnSkriningManagerPelayananPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSkriningManagerPelayananPasien);
@@ -45496,6 +45527,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningInstrumenSRQ.setName("btnSkriningInstrumenSRQ"); 
         btnSkriningInstrumenSRQ.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningInstrumenSRQ.addActionListener(this::btnSkriningInstrumenSRQActionPerformed);
+        
+        btnSkriningKankerKolorektal = new widget.ButtonBig();
+        btnSkriningKankerKolorektal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5728186_bowel_constipation_diarrhea_irritable_sick_icon.png"))); 
+        btnSkriningKankerKolorektal.setText("Skrining Kanker Kolorektal");
+        btnSkriningKankerKolorektal.setIconTextGap(0);
+        btnSkriningKankerKolorektal.setName("btnSkriningKankerKolorektal"); 
+        btnSkriningKankerKolorektal.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningKankerKolorektal.addActionListener(this::btnSkriningKankerKolorektalActionPerformed);
         
         btnChecklistPemberianFibrinolitik = new widget.ButtonBig();
         btnChecklistPemberianFibrinolitik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2620524_cv_employee_job_seeker_unemployee_icon.png"))); 
