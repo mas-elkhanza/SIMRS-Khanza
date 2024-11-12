@@ -8,12 +8,16 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +31,9 @@ import javax.swing.Timer;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 
@@ -43,7 +50,9 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private String finger="",umur="";
+    private String finger="";
+    private String TANGGALMUNDUR="yes";
+    private StringBuilder htmlContent;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -54,10 +63,9 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","Tanggal",
-            "Umur","Riwayat BAB Berdarah","Riwayat Polip Adenomatosa","Riwayat Reseksi Kuratif",
-            "Colok Dubur","Darah Samar Feses","Riwayat Kanker di Keluarga","Rujuk ke FKTRL",
-            "Kesimpulan","Keterangan","NIP","Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Tgl.Lahir","JK","NIP","Petugas","Tanggal","Umur","Polip Adenomatosa",
+            "BAB Berdarah","Reseksi Kuratif","Colok Dubur","Kolorektal Keluarga","Darah Samar","Rujuk FKTL","Kesimpulan",
+            "Keterangan Kesimpulan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,39 +80,19 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(105);
             }else if(i==1){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(70);
             }else if(i==2){
-                column.setPreferredWidth(160);
+                column.setPreferredWidth(150);
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(25);
+                column.setPreferredWidth(35);
             }else if(i==5){
-                column.setPreferredWidth(115);
+                column.setPreferredWidth(80);
             }else if(i==6){
-                column.setPreferredWidth(125);
+                column.setPreferredWidth(150);
             }else if(i==7){
-                column.setPreferredWidth(150);
-            }else if(i==8){
-                column.setPreferredWidth(150);
-            }else if(i==9){
-                column.setPreferredWidth(150);
-            }else if(i==10){
-                column.setPreferredWidth(90);
-            }else if(i==11){
-                column.setPreferredWidth(80);
-            }else if(i==12){
-                column.setPreferredWidth(150);
-            }else if(i==13){
-                column.setPreferredWidth(90);
-            }else if(i==14){
-                column.setPreferredWidth(80);
-            }else if(i==15){
-                column.setPreferredWidth(100);
-            }else if(i==16){
-                column.setPreferredWidth(40);
-            }else if(i==17){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(115);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -161,6 +149,31 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm();
+        
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
+        
         jam();
     }
 
@@ -177,7 +190,8 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSkriningKankerKolorektal = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
-        RiwayatKeluarga = new widget.ComboBox();
+        TanggalRegistrasi = new widget.TextBox();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -226,29 +240,31 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         jLabel220 = new widget.Label();
         jSeparator2 = new javax.swing.JSeparator();
         TingkatResiko1 = new widget.Label();
-        KetKesimpulan = new widget.TextBox();
-        jLabel219 = new widget.Label();
+        KeteranganKesimpulan = new widget.TextBox();
         jLabel17 = new widget.Label();
         Umur = new widget.TextBox();
-        jLabel221 = new widget.Label();
-        jLabel223 = new widget.Label();
         Polip = new widget.ComboBox();
         jLabel224 = new widget.Label();
-        jLabel225 = new widget.Label();
         Reseksi = new widget.ComboBox();
         jLabel58 = new widget.Label();
-        jLabel218 = new widget.Label();
-        jLabel226 = new widget.Label();
-        ColokDubur = new widget.ComboBox();
+        KolorektalKeluaga = new widget.ComboBox();
         jLabel222 = new widget.Label();
-        jLabel227 = new widget.Label();
         DarahSamar = new widget.ComboBox();
         jLabel228 = new widget.Label();
-        jLabel229 = new widget.Label();
-        jLabel230 = new widget.Label();
-        jLabel231 = new widget.Label();
         Rujuk = new widget.ComboBox();
+        jLabel230 = new widget.Label();
         Kesimpulan = new widget.ComboBox();
+        jLabel5 = new widget.Label();
+        ColokDubur = new widget.ComboBox();
+        jLabel218 = new widget.Label();
+        jLabel20 = new widget.Label();
+        jLabel22 = new widget.Label();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel23 = new widget.Label();
+        jLabel24 = new widget.Label();
+        jLabel59 = new widget.Label();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel25 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -256,7 +272,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         MnSkriningKankerKolorektal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSkriningKankerKolorektal.setForeground(new java.awt.Color(50, 50, 50));
         MnSkriningKankerKolorektal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningKankerKolorektal.setText("Formulir Penilaian Questionnaire Kanker Kolorektal");
+        MnSkriningKankerKolorektal.setText("Formulir Skrining Kanker Kolorektal");
         MnSkriningKankerKolorektal.setName("MnSkriningKankerKolorektal"); // NOI18N
         MnSkriningKankerKolorektal.setPreferredSize(new java.awt.Dimension(290, 26));
         MnSkriningKankerKolorektal.addActionListener(new java.awt.event.ActionListener() {
@@ -269,18 +285,11 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
 
-        RiwayatKeluarga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        RiwayatKeluarga.setName("RiwayatKeluarga"); // NOI18N
-        RiwayatKeluarga.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                RiwayatKeluargaItemStateChanged(evt);
-            }
-        });
-        RiwayatKeluarga.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RiwayatKeluargaKeyPressed(evt);
-            }
-        });
+        TanggalRegistrasi.setHighlighter(null);
+        TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -452,7 +461,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -466,7 +475,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -527,7 +536,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 320));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 305));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -560,10 +569,10 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(100, 250));
         FormInput.setLayout(null);
 
-        jLabel4.setText("No.Rawat :");
+        jLabel4.setText(":");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 80, 23);
+        jLabel4.setBounds(0, 10, 65, 23);
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
@@ -573,7 +582,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw);
-        TNoRw.setBounds(84, 10, 136, 23);
+        TNoRw.setBounds(69, 10, 136, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
@@ -584,10 +593,10 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(TPasien);
-        TPasien.setBounds(336, 10, 285, 23);
+        TPasien.setBounds(321, 10, 300, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-11-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -597,7 +606,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tanggal);
-        Tanggal.setBounds(84, 40, 90, 23);
+        Tanggal.setBounds(69, 40, 90, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
@@ -608,13 +617,13 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRM);
-        TNoRM.setBounds(222, 10, 112, 23);
+        TNoRM.setBounds(207, 10, 112, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel16);
-        jLabel16.setBounds(0, 40, 80, 23);
+        jLabel16.setBounds(0, 40, 65, 23);
 
         Jam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         Jam.setName("Jam"); // NOI18N
@@ -624,7 +633,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(Jam);
-        Jam.setBounds(178, 40, 62, 23);
+        Jam.setBounds(163, 40, 62, 23);
 
         Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Menit.setName("Menit"); // NOI18N
@@ -634,7 +643,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(Menit);
-        Menit.setBounds(243, 40, 62, 23);
+        Menit.setBounds(229, 40, 62, 23);
 
         Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Detik.setName("Detik"); // NOI18N
@@ -644,7 +653,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(Detik);
-        Detik.setBounds(308, 40, 62, 23);
+        Detik.setBounds(295, 40, 62, 23);
 
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
@@ -653,7 +662,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setName("ChkKejadian"); // NOI18N
         FormInput.add(ChkKejadian);
-        ChkKejadian.setBounds(373, 40, 23, 23);
+        ChkKejadian.setBounds(360, 40, 23, 23);
 
         jLabel18.setText("Petugas :");
         jLabel18.setName("jLabel18"); // NOI18N
@@ -699,37 +708,30 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel57.setText("I. Riwayat Diri Sendiri");
+        jLabel57.setText("I. RIWAYAT DIRI SENDIRI");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
-        jLabel57.setBounds(11, 80, 330, 23);
+        jLabel57.setBounds(11, 70, 330, 23);
 
-        jLabel217.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel217.setText("Riwayat BAB Berdarah tanpa hemoroid");
+        jLabel217.setText("Riwayat BAB Berdarah Tanpa Hemoroid :");
         jLabel217.setName("jLabel217"); // NOI18N
         FormInput.add(jLabel217);
-        jLabel217.setBounds(44, 140, 200, 23);
+        jLabel217.setBounds(495, 90, 210, 23);
 
         BabDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         BabDarah.setName("BabDarah"); // NOI18N
-        BabDarah.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                BabDarahItemStateChanged(evt);
-            }
-        });
         BabDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BabDarahKeyPressed(evt);
             }
         });
         FormInput.add(BabDarah);
-        BabDarah.setBounds(260, 140, 120, 23);
+        BabDarah.setBounds(709, 90, 80, 23);
 
-        jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel220.setText("Riwayat Polip Adenomatosa");
+        jLabel220.setText("Riwayat Polip Adenomatosa :");
         jLabel220.setName("jLabel220"); // NOI18N
         FormInput.add(jLabel220);
-        jLabel220.setBounds(410, 110, 180, 23);
+        jLabel220.setBounds(208, 90, 170, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -739,30 +741,30 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         jSeparator2.setBounds(0, 70, 810, 1);
 
         TingkatResiko1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TingkatResiko1.setText("Kesimpulan :");
+        TingkatResiko1.setText("Kesimpulan");
         TingkatResiko1.setToolTipText("");
         TingkatResiko1.setName("TingkatResiko1"); // NOI18N
         FormInput.add(TingkatResiko1);
-        TingkatResiko1.setBounds(30, 260, 90, 23);
+        TingkatResiko1.setBounds(44, 250, 90, 23);
 
-        KetKesimpulan.setEditable(false);
-        KetKesimpulan.setName("KetKesimpulan"); // NOI18N
-        FormInput.add(KetKesimpulan);
-        KetKesimpulan.setBounds(230, 260, 550, 23);
-
-        jLabel219.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel219.setText(":");
-        jLabel219.setName("jLabel219"); // NOI18N
-        FormInput.add(jLabel219);
-        jLabel219.setBounds(640, 110, 10, 23);
+        KeteranganKesimpulan.setEditable(false);
+        KeteranganKesimpulan.setName("KeteranganKesimpulan"); // NOI18N
+        KeteranganKesimpulan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKesimpulanKeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganKesimpulan);
+        KeteranganKesimpulan.setBounds(204, 250, 585, 23);
 
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel17.setText("Umur Saat Ini");
         jLabel17.setName("jLabel17"); // NOI18N
         jLabel17.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel17);
-        jLabel17.setBounds(44, 110, 80, 23);
+        jLabel17.setBounds(44, 90, 80, 23);
 
+        Umur.setEditable(false);
         Umur.setHighlighter(null);
         Umur.setName("Umur"); // NOI18N
         Umur.addActionListener(new java.awt.event.ActionListener() {
@@ -776,162 +778,87 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(Umur);
-        Umur.setBounds(260, 110, 120, 23);
-
-        jLabel221.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel221.setText(":");
-        jLabel221.setName("jLabel221"); // NOI18N
-        FormInput.add(jLabel221);
-        jLabel221.setBounds(250, 110, 10, 23);
-
-        jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel223.setText(":");
-        jLabel223.setName("jLabel223"); // NOI18N
-        FormInput.add(jLabel223);
-        jLabel223.setBounds(250, 140, 10, 23);
+        Umur.setBounds(122, 90, 70, 23);
 
         Polip.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Polip.setName("Polip"); // NOI18N
-        Polip.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                PolipItemStateChanged(evt);
-            }
-        });
         Polip.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 PolipKeyPressed(evt);
             }
         });
         FormInput.add(Polip);
-        Polip.setBounds(650, 110, 130, 23);
+        Polip.setBounds(382, 90, 80, 23);
 
         jLabel224.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel224.setText("Riwayat Reseksi Kuratif Kanker Kolerektal");
         jLabel224.setName("jLabel224"); // NOI18N
         FormInput.add(jLabel224);
-        jLabel224.setBounds(410, 140, 230, 23);
-
-        jLabel225.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel225.setText(":");
-        jLabel225.setName("jLabel225"); // NOI18N
-        FormInput.add(jLabel225);
-        jLabel225.setBounds(640, 140, 10, 23);
+        jLabel224.setBounds(44, 120, 230, 23);
 
         Reseksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Reseksi.setName("Reseksi"); // NOI18N
-        Reseksi.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ReseksiItemStateChanged(evt);
-            }
-        });
         Reseksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 ReseksiKeyPressed(evt);
             }
         });
         FormInput.add(Reseksi);
-        Reseksi.setBounds(650, 140, 130, 23);
+        Reseksi.setBounds(258, 120, 80, 23);
 
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel58.setText("II. Hasil Pemeriksaan ");
+        jLabel58.setText("II. HASIL PEMERIKSAAN");
         jLabel58.setName("jLabel58"); // NOI18N
         FormInput.add(jLabel58);
-        jLabel58.setBounds(11, 170, 250, 23);
+        jLabel58.setBounds(11, 150, 250, 23);
 
-        jLabel218.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel218.setText("Colok Dubur");
-        jLabel218.setName("jLabel218"); // NOI18N
-        FormInput.add(jLabel218);
-        jLabel218.setBounds(44, 200, 160, 23);
-
-        jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel226.setText(":");
-        jLabel226.setName("jLabel226"); // NOI18N
-        FormInput.add(jLabel226);
-        jLabel226.setBounds(250, 200, 10, 23);
-
-        ColokDubur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        ColokDubur.setName("ColokDubur"); // NOI18N
-        ColokDubur.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ColokDuburItemStateChanged(evt);
-            }
-        });
-        ColokDubur.addKeyListener(new java.awt.event.KeyAdapter() {
+        KolorektalKeluaga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KolorektalKeluaga.setName("KolorektalKeluaga"); // NOI18N
+        KolorektalKeluaga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ColokDuburKeyPressed(evt);
+                KolorektalKeluagaKeyPressed(evt);
             }
         });
-        FormInput.add(ColokDubur);
-        ColokDubur.setBounds(260, 200, 120, 23);
+        FormInput.add(KolorektalKeluaga);
+        KolorektalKeluaga.setBounds(439, 170, 80, 23);
 
-        jLabel222.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel222.setText("Darah Samar Feses");
+        jLabel222.setText("Darah Samar Feses :");
         jLabel222.setName("jLabel222"); // NOI18N
         FormInput.add(jLabel222);
-        jLabel222.setBounds(44, 230, 160, 23);
-
-        jLabel227.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel227.setText(":");
-        jLabel227.setName("jLabel227"); // NOI18N
-        FormInput.add(jLabel227);
-        jLabel227.setBounds(250, 230, 10, 23);
+        jLabel222.setBounds(545, 170, 160, 23);
 
         DarahSamar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         DarahSamar.setName("DarahSamar"); // NOI18N
-        DarahSamar.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DarahSamarItemStateChanged(evt);
-            }
-        });
         DarahSamar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DarahSamarKeyPressed(evt);
             }
         });
         FormInput.add(DarahSamar);
-        DarahSamar.setBounds(260, 230, 120, 23);
+        DarahSamar.setBounds(709, 170, 80, 23);
 
-        jLabel228.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel228.setText("Riwayat Kolorectal di Keluarga");
+        jLabel228.setText("Riwayat Kolorektal Di Keluarga :");
         jLabel228.setName("jLabel228"); // NOI18N
         FormInput.add(jLabel228);
-        jLabel228.setBounds(410, 200, 180, 23);
-
-        jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel229.setText(":");
-        jLabel229.setName("jLabel229"); // NOI18N
-        FormInput.add(jLabel229);
-        jLabel229.setBounds(640, 200, 10, 23);
-
-        jLabel230.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel230.setText("Rujuk Ke Fasilitas Tingkat Lanjut");
-        jLabel230.setName("jLabel230"); // NOI18N
-        FormInput.add(jLabel230);
-        jLabel230.setBounds(410, 230, 230, 23);
-
-        jLabel231.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel231.setText(":");
-        jLabel231.setName("jLabel231"); // NOI18N
-        FormInput.add(jLabel231);
-        jLabel231.setBounds(640, 230, 10, 23);
+        jLabel228.setBounds(255, 170, 180, 23);
 
         Rujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Rujuk.setName("Rujuk"); // NOI18N
-        Rujuk.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                RujukItemStateChanged(evt);
-            }
-        });
         Rujuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RujukKeyPressed(evt);
             }
         });
         FormInput.add(Rujuk);
-        Rujuk.setBounds(650, 230, 130, 23);
+        Rujuk.setBounds(214, 200, 80, 23);
 
-        Kesimpulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Suspeck" }));
+        jLabel230.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel230.setText("Rujuk Ke Fasilitas Tingkat Lanjut");
+        jLabel230.setName("jLabel230"); // NOI18N
+        FormInput.add(jLabel230);
+        jLabel230.setBounds(44, 200, 230, 23);
+
+        Kesimpulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Suspek" }));
         Kesimpulan.setName("Kesimpulan"); // NOI18N
         Kesimpulan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -944,7 +871,79 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kesimpulan);
-        Kesimpulan.setBounds(100, 260, 120, 23);
+        Kesimpulan.setBounds(111, 250, 90, 23);
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel5.setText("No.Rawat");
+        jLabel5.setName("jLabel5"); // NOI18N
+        FormInput.add(jLabel5);
+        jLabel5.setBounds(11, 10, 80, 23);
+
+        ColokDubur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        ColokDubur.setName("ColokDubur"); // NOI18N
+        ColokDubur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ColokDuburKeyPressed(evt);
+            }
+        });
+        FormInput.add(ColokDubur);
+        ColokDubur.setBounds(115, 170, 80, 23);
+
+        jLabel218.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel218.setText("Colok Dubur");
+        jLabel218.setName("jLabel218"); // NOI18N
+        FormInput.add(jLabel218);
+        jLabel218.setBounds(44, 170, 100, 23);
+
+        jLabel20.setText(":");
+        jLabel20.setName("jLabel20"); // NOI18N
+        jLabel20.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(0, 90, 118, 23);
+
+        jLabel22.setText(":");
+        jLabel22.setName("jLabel22"); // NOI18N
+        jLabel22.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(0, 120, 254, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 150, 810, 1);
+
+        jLabel23.setText(":");
+        jLabel23.setName("jLabel23"); // NOI18N
+        jLabel23.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel23);
+        jLabel23.setBounds(0, 170, 111, 23);
+
+        jLabel24.setText(":");
+        jLabel24.setName("jLabel24"); // NOI18N
+        jLabel24.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(0, 200, 210, 23);
+
+        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel59.setText("III. INTERPRETASI");
+        jLabel59.setName("jLabel59"); // NOI18N
+        FormInput.add(jLabel59);
+        jLabel59.setBounds(11, 230, 250, 23);
+
+        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator4.setName("jSeparator4"); // NOI18N
+        FormInput.add(jSeparator4);
+        jSeparator4.setBounds(0, 230, 810, 1);
+
+        jLabel25.setText(":");
+        jLabel25.setName("jLabel25"); // NOI18N
+        jLabel25.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(0, 250, 107, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -975,21 +974,16 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
-            if(Sequel.menyimpantf("kuisioner_kanker_kolorektal","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",18,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Umur.getText(),BabDarah.getSelectedItem().toString(),Polip.getSelectedItem().toString(),Reseksi.getSelectedItem().toString(),
-                ColokDubur.getSelectedItem().toString(),DarahSamar.getSelectedItem().toString(),RiwayatKeluarga.getSelectedItem().toString(),Rujuk.getSelectedItem().toString(),
-                NIP.getText(),NamaPetugas.getText()
-            })==true){
-                tabMode.addRow(new String[]{
-                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Umur.getText(),BabDarah.getSelectedItem().toString(),Polip.getSelectedItem().toString(),Reseksi.getSelectedItem().toString(),
-                ColokDubur.getSelectedItem().toString(),DarahSamar.getSelectedItem().toString(),RiwayatKeluarga.getSelectedItem().toString(),Rujuk.getSelectedItem().toString(),
-                NIP.getText(),NamaPetugas.getText()
-                });
-                emptTeks();
-                LCount.setText(""+tabMode.getRowCount());
-            }  
+            if(akses.getkode().equals("Admin Utama")){
+                simpan();
+            }else{
+                if(TanggalRegistrasi.getText().equals("")){
+                    TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                }
+                if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem())==true){
+                    simpan();
+                }
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -997,7 +991,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,KetKesimpulan,BtnBatal);
+            Valid.pindah(evt,KeteranganKesimpulan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1018,8 +1012,10 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString())){
-                    hapus();
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                    if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
+                        hapus();
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
                 }
@@ -1047,8 +1043,15 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString())){
-                        ganti();
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
+                            if(TanggalRegistrasi.getText().equals("")){
+                                TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                            }
+                            if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem())==true){
+                                ganti();
+                            }
+                        }
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
                     }
@@ -1084,41 +1087,97 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Map<String, Object> param = new HashMap<>(); 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptQuestionnaireKankerKolorektal.jasper","report","::[ Data Questionnaire Kanker Kolorektal ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,kuisioner_kanker_kolorektal.tanggal,"+
-                    "kuisioner_kanker_kolorektal.riwayat_keluarga,kuisioner_kanker_kolorektal.riwayat_keluarga_nilai,kuisioner_kanker_kolorektal.peserta_merokok,"+
-                    "kuisioner_kanker_kolorektal.peserta_merokok_nilai,"+
-                    "kuisioner_kanker_kolorektal.totalnilai,kuisioner_kanker_kolorektal.kategorinilai,"+
-                    "kuisioner_kanker_kolorektal.nip,petugas.nama "+
-                    "from kuisioner_kanker_kolorektal inner join reg_periksa on kuisioner_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on kuisioner_kanker_kolorektal.nip=petugas.nip where "+
-                    "kuisioner_kanker_kolorektal.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' "+
-                    "order by kuisioner_kanker_kolorektal.tanggal",param);
-            }else{
-                Valid.MyReportqry("rptQuestionnaireKankerKolorektal.jasper","report","::[ Data Questionnaire Kanker Kolorektal ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,kuisioner_kanker_kolorektal.tanggal,"+
-                    "kuisioner_kanker_kolorektal.riwayat_keluarga,kuisioner_kanker_kolorektal.riwayat_keluarga_nilai,kuisioner_kanker_kolorektal.peserta_merokok,"+
-                    "kuisioner_kanker_kolorektal.peserta_merokok_nilai,"+
-                    "kuisioner_kanker_kolorektal.totalnilai,kuisioner_kanker_kolorektal.kategorinilai,"+
-                    "kuisioner_kanker_kolorektal.nip,petugas.nama "+
-                    "from kuisioner_kanker_kolorektal inner join reg_periksa on kuisioner_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on kuisioner_kanker_kolorektal.nip=petugas.nip where "+
-                    "kuisioner_kanker_kolorektal.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or kuisioner_kanker_kolorektal.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by kuisioner_kanker_kolorektal.tanggal ",param);
-            }  
+            try{
+                htmlContent = new StringBuilder();
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.R.M.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>JK</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Polip Adenomatosa</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BAB Berdarah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Reseksi Kuratif</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Colok Dubur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kolorektal Keluarga</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Darah Samar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk FKTL</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kesimpulan</b></td>"+
+                    "</tr>"
+                );
+                for (i = 0; i < tabMode.getRowCount(); i++) {
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                        "</tr>");
+                }
+                LoadHTML.setText(
+                    "<html>"+
+                      "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>"
+                );
+
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
+
+                File f = new File("DataSkriningThalassemia.html");            
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
+                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                            "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                "<tr class='isi2'>"+
+                                    "<td valign='top' align='center'>"+
+                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING THALASSEMIA<br><br></font>"+        
+                                    "</td>"+
+                               "</tr>"+
+                            "</table>")
+                );
+                bw.close();                         
+                Desktop.getDesktop().browse(f.toURI());
+
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1236,88 +1295,73 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),12).toString():finger)+"\n"+Tanggal.getSelectedItem());
             Valid.MyReportqry("rptFormulirQuestionnaireKankerKolorektal.jasper","report","::[ Formulir Penilaian Questionnaire Kanker Kolorektal ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,kuisioner_kanker_kolorektal.tanggal,"+
-                    "kuisioner_kanker_kolorektal.riwayat_keluarga,kuisioner_kanker_kolorektal.riwayat_keluarga_nilai,kuisioner_kanker_kolorektal.peserta_merokok,"+
-                    "kuisioner_kanker_kolorektal.peserta_merokok_nilai,"+
-                    "kuisioner_kanker_kolorektal.totalnilai,kuisioner_kanker_kolorektal.kategorinilai,"+
-                    "kuisioner_kanker_kolorektal.nip,petugas.nama "+
-                    "from kuisioner_kanker_kolorektal inner join reg_periksa on kuisioner_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,skrining_kanker_kolorektal.tanggal,"+
+                    "skrining_kanker_kolorektal.riwayat_keluarga,skrining_kanker_kolorektal.riwayat_keluarga_nilai,skrining_kanker_kolorektal.peserta_merokok,"+
+                    "skrining_kanker_kolorektal.peserta_merokok_nilai,"+
+                    "skrining_kanker_kolorektal.totalnilai,skrining_kanker_kolorektal.kategorinilai,"+
+                    "skrining_kanker_kolorektal.nip,petugas.nama "+
+                    "from skrining_kanker_kolorektal inner join reg_periksa on skrining_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on kuisioner_kanker_kolorektal.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on skrining_kanker_kolorektal.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningKankerKolorektalActionPerformed
 
-    private void BabDarahItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BabDarahItemStateChanged
-       
-    }//GEN-LAST:event_BabDarahItemStateChanged
-
     private void BabDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BabDarahKeyPressed
-       
+        Valid.pindah(evt,Polip,Reseksi);
     }//GEN-LAST:event_BabDarahKeyPressed
 
     private void UmurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_UmurKeyPressed
 
-    private void PolipItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PolipItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PolipItemStateChanged
-
     private void PolipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PolipKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,btnPetugas,BabDarah);
     }//GEN-LAST:event_PolipKeyPressed
 
-    private void ReseksiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ReseksiItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ReseksiItemStateChanged
-
     private void ReseksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ReseksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BabDarah,ColokDubur);
     }//GEN-LAST:event_ReseksiKeyPressed
 
-    private void ColokDuburItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ColokDuburItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ColokDuburItemStateChanged
-
-    private void ColokDuburKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColokDuburKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ColokDuburKeyPressed
-
-    private void DarahSamarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DarahSamarItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DarahSamarItemStateChanged
+    private void KolorektalKeluagaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KolorektalKeluagaKeyPressed
+        Valid.pindah(evt,ColokDubur,DarahSamar);
+    }//GEN-LAST:event_KolorektalKeluagaKeyPressed
 
     private void DarahSamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DarahSamarKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KolorektalKeluaga,Rujuk);
     }//GEN-LAST:event_DarahSamarKeyPressed
 
-    private void RiwayatKeluargaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RiwayatKeluargaItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatKeluargaItemStateChanged
-
-    private void RiwayatKeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatKeluargaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RiwayatKeluargaKeyPressed
-
-    private void RujukItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RujukItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RujukItemStateChanged
-
     private void RujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RujukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DarahSamar,Kesimpulan);
     }//GEN-LAST:event_RujukKeyPressed
 
     private void KesimpulanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_KesimpulanItemStateChanged
-        isRectal();
+        switch (Kesimpulan.getSelectedItem().toString()) {
+            case "Normal":
+                KeteranganKesimpulan.setText("Tidak dicurigai kanker kolorektal");
+                break;
+            case "Suspek":
+                KeteranganKesimpulan.setText("Dicurigai kanker kolorektal");
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_KesimpulanItemStateChanged
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Rujuk,KeteranganKesimpulan);
     }//GEN-LAST:event_KesimpulanKeyPressed
 
     private void UmurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UmurActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UmurActionPerformed
+
+    private void ColokDuburKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColokDuburKeyPressed
+        Valid.pindah(evt,Reseksi,KolorektalKeluaga);
+    }//GEN-LAST:event_ColokDuburKeyPressed
+
+    private void KeteranganKesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKesimpulanKeyPressed
+        Valid.pindah(evt,Kesimpulan,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKesimpulanKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1356,8 +1400,10 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.ComboBox Kesimpulan;
-    private widget.TextBox KetKesimpulan;
+    private widget.TextBox KeteranganKesimpulan;
+    private widget.ComboBox KolorektalKeluaga;
     private widget.Label LCount;
+    private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningKankerKolorektal;
     private widget.TextBox NIP;
@@ -1365,7 +1411,6 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox Polip;
     private widget.ComboBox Reseksi;
-    private widget.ComboBox RiwayatKeluarga;
     private widget.ComboBox Rujuk;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1373,6 +1418,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
+    private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
     private widget.Label TingkatResiko1;
     private widget.TextBox Umur;
@@ -1382,31 +1428,32 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel21;
     private widget.Label jLabel217;
     private widget.Label jLabel218;
-    private widget.Label jLabel219;
+    private widget.Label jLabel22;
     private widget.Label jLabel220;
-    private widget.Label jLabel221;
     private widget.Label jLabel222;
-    private widget.Label jLabel223;
     private widget.Label jLabel224;
-    private widget.Label jLabel225;
-    private widget.Label jLabel226;
-    private widget.Label jLabel227;
     private widget.Label jLabel228;
-    private widget.Label jLabel229;
+    private widget.Label jLabel23;
     private widget.Label jLabel230;
-    private widget.Label jLabel231;
+    private widget.Label jLabel24;
+    private widget.Label jLabel25;
     private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel57;
     private widget.Label jLabel58;
+    private widget.Label jLabel59;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -1418,25 +1465,23 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.umurdaftar,kuisioner_kanker_kolorektal.tanggal,"+
-                    "kuisioner_kanker_kolorektal.riwayat_keluarga,kuisioner_kanker_kolorektal.riwayat_keluarga_nilai,kuisioner_kanker_kolorektal.peserta_merokok,"+
-                    "kuisioner_kanker_kolorektal.peserta_merokok_nilai,kuisioner_kanker_kolorektal.totalnilai,kuisioner_kanker_kolorektal.kategorinilai,"+
-                    "kuisioner_kanker_kolorektal.nip,petugas.nama "+
-                    "from kuisioner_kanker_kolorektal inner join reg_periksa on kuisioner_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on kuisioner_kanker_kolorektal.nip=petugas.nip where "+
-                    "kuisioner_kanker_kolorektal.tanggal between ? and ? order by kuisioner_kanker_kolorektal.tanggal");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kanker_kolorektal.tanggal,"+
+                    "skrining_kanker_kolorektal.riwayat_polip_adenomatosa,skrining_kanker_kolorektal.riwayat_bab_berdarah,skrining_kanker_kolorektal.riwayat_reseksi_kuratif,skrining_kanker_kolorektal.colok_dubur,"+
+                    "skrining_kanker_kolorektal.riwayat_kolorektal_keluarga,skrining_kanker_kolorektal.darah_samar_feses,skrining_kanker_kolorektal.rujuk_faskes_lanjut,skrining_kanker_kolorektal.kesimpulan,"+
+                    "skrining_kanker_kolorektal.keterangan_kesimpulan,skrining_kanker_kolorektal.nip,petugas.nama "+
+                    "from skrining_kanker_kolorektal inner join reg_periksa on skrining_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kanker_kolorektal.nip=petugas.nip where "+
+                    "skrining_kanker_kolorektal.tanggal between ? and ? order by skrining_kanker_kolorektal.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.umurdaftar,kuisioner_kanker_kolorektal.tanggal,"+
-                    "kuisioner_kanker_kolorektal.riwayat_keluarga,kuisioner_kanker_kolorektal.riwayat_keluarga_nilai,kuisioner_kanker_kolorektal.peserta_merokok,"+
-                    "kuisioner_kanker_kolorektal.peserta_merokok_nilai,kuisioner_kanker_kolorektal.totalnilai,kuisioner_kanker_kolorektal.kategorinilai,"+
-                    "kuisioner_kanker_kolorektal.nip,petugas.nama "+
-                    "from kuisioner_kanker_kolorektal inner join reg_periksa on kuisioner_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on kuisioner_kanker_kolorektal.nip=petugas.nip where "+
-                    "kuisioner_kanker_kolorektal.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or kuisioner_kanker_kolorektal.nip like ? or petugas.nama like ?) "+
-                    "order by kuisioner_kanker_kolorektal.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kanker_kolorektal.tanggal,"+
+                    "skrining_kanker_kolorektal.riwayat_polip_adenomatosa,skrining_kanker_kolorektal.riwayat_bab_berdarah,skrining_kanker_kolorektal.riwayat_reseksi_kuratif,skrining_kanker_kolorektal.colok_dubur,"+
+                    "skrining_kanker_kolorektal.riwayat_kolorektal_keluarga,skrining_kanker_kolorektal.darah_samar_feses,skrining_kanker_kolorektal.rujuk_faskes_lanjut,skrining_kanker_kolorektal.kesimpulan,"+
+                    "skrining_kanker_kolorektal.keterangan_kesimpulan,skrining_kanker_kolorektal.nip,petugas.nama "+
+                    "from skrining_kanker_kolorektal inner join reg_periksa on skrining_kanker_kolorektal.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kanker_kolorektal.nip=petugas.nip where "+
+                    "skrining_kanker_kolorektal.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or skrining_kanker_kolorektal.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_kanker_kolorektal.tanggal ");
             }
                 
             try {
@@ -1456,9 +1501,9 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
-                        rs.getString("umurdaftar"),rs.getString("riwayat_keluarga_nilai"),rs.getString("peserta_merokok"),rs.getString("peserta_merokok_nilai"),
-                        rs.getString("totalnilai"),rs.getString("kategorinilai"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("riwayat_polip_adenomatosa"),rs.getString("riwayat_bab_berdarah"),rs.getString("riwayat_reseksi_kuratif"),rs.getString("colok_dubur"),
+                        rs.getString("riwayat_kolorektal_keluarga"),rs.getString("darah_samar_feses"),rs.getString("rujuk_faskes_lanjut"),rs.getString("kesimpulan"),rs.getString("keterangan_kesimpulan")
                     });
                 }
             } catch (Exception e) {
@@ -1479,36 +1524,35 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        Umur.setText("");
         BabDarah.setSelectedIndex(0);
         Polip.setSelectedIndex(0);
         Reseksi.setSelectedIndex(0);
-        ColokDubur.setSelectedIndex(0);
+        KolorektalKeluaga.setSelectedIndex(0);
         DarahSamar.setSelectedIndex(0);
-        RiwayatKeluarga.setSelectedIndex(0);
+        KolorektalKeluaga.setSelectedIndex(0);
         Rujuk.setSelectedIndex(0);
         Kesimpulan.setSelectedIndex(0);
-        KetKesimpulan.setText("Tidak dicurigai kanker kolorektal");
-        BabDarah.requestFocus();
+        KeteranganKesimpulan.setText("Tidak dicurigai kanker kolorektal");
+        Polip.requestFocus();
     } 
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
+            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            BabDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Polip.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Reseksi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            ColokDubur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            DarahSamar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            RiwayatKeluarga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Rujuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Kesimpulan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            KetKesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Polip.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            BabDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Reseksi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            ColokDubur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            KolorektalKeluaga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            DarahSamar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Rujuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Kesimpulan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            KeteranganKesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(14,16));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().substring(17,19));
@@ -1519,9 +1563,8 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,reg_periksa.umurdaftar "+
-                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where reg_periksa.no_rawat=?");
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,reg_periksa.umurdaftar,reg_periksa.tgl_registrasi,reg_periksa.jam_reg, "+
+                    "reg_periksa.sttsumur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
@@ -1531,8 +1574,8 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
                     TPasien.setText(rs.getString("nm_pasien"));
                     JK.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
-                    Umur.setText(rs.getString("umurdaftar"));
-                    
+                    Umur.setText(rs.getString("umurdaftar")+" "+rs.getString("sttsumur"));
+                    TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1561,7 +1604,7 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,320));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,305));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1573,10 +1616,10 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     }
     
     public void isCek(){
-       // BtnSimpan.setEnabled(akses.getkuisioner_kanker_kolorektal());
-       // BtnHapus.setEnabled(akses.getkuisioner_kanker_kolorektal());
-       // BtnEdit.setEnabled(akses.getkuisioner_kanker_kolorektal());
-      //  BtnPrint.setEnabled(akses.getkuisioner_kanker_kolorektal()); 
+        BtnSimpan.setEnabled(akses.getskrining_kanker_kolorektal());
+        BtnHapus.setEnabled(akses.getskrining_kanker_kolorektal());
+        BtnEdit.setEnabled(akses.getskrining_kanker_kolorektal());
+        BtnPrint.setEnabled(akses.getskrining_kanker_kolorektal()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1586,7 +1629,18 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
                 NIP.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
-        }            
+        }  
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+                ChkKejadian.setEnabled(false);
+                Jam.setEnabled(false);
+                Menit.setEnabled(false);
+                Detik.setEnabled(false);
+            }
+        }
     }
 
     private void jam(){
@@ -1643,40 +1697,38 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("kuisioner_kanker_kolorektal","tanggal=? and no_rawat=?","no_rawat=?,tanggal=?,riwayat_keluarga=?,riwayat_keluarga_nilai=?,peserta_merokok=?,"+
-                "peserta_merokok_nilai=?,totalnilai=?,kategorinilai=?,"+
-                "nip=?",11,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Umur.getText(),BabDarah.getSelectedItem().toString(),Polip.getSelectedItem().toString(),Reseksi.getSelectedItem().toString(),
-                ColokDubur.getSelectedItem().toString(),DarahSamar.getSelectedItem().toString(),RiwayatKeluarga.getSelectedItem().toString(),Rujuk.getSelectedItem().toString(),
-                NIP.getText(),NamaPetugas.getText(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("skrining_kanker_kolorektal","no_rawat=?","no_rawat=?,tanggal=?,nip=?,riwayat_polip_adenomatosa=?,riwayat_bab_berdarah=?,riwayat_reseksi_kuratif=?,colok_dubur=?,"+
+                "riwayat_kolorektal_keluarga=?,darah_samar_feses=?,rujuk_faskes_lanjut=?,kesimpulan=?,keterangan_kesimpulan=?",13,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
+                Polip.getSelectedItem().toString(),BabDarah.getSelectedItem().toString(),Reseksi.getSelectedItem().toString(),ColokDubur.getSelectedItem().toString(),
+                KolorektalKeluaga.getSelectedItem().toString(),DarahSamar.getSelectedItem().toString(),Rujuk.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),
+                KeteranganKesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
             tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
-            tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
-            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),5);
-            Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            BabDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Polip.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Reseksi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            ColokDubur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            DarahSamar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            RiwayatKeluarga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Rujuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Kesimpulan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            KetKesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),4);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),5);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(Umur.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(Polip.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(BabDarah.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(Reseksi.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(ColokDubur.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(KolorektalKeluaga.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(DarahSamar.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(Rujuk.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(Kesimpulan.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(KeteranganKesimpulan.getText(),tbObat.getSelectedRow(),17);   
             emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from kuisioner_kanker_kolorektal where tanggal=? and no_rawat=?",2,new String[]{
-            tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.queryu2tf("delete from skrining_kanker_kolorektal where no_rawat=?",1,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
             emptTeks();
@@ -1685,17 +1737,21 @@ public final class RMSkriningKankerKolorektal extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
     }
-    
-    private void isRectal(){
-    switch (Kesimpulan.getSelectedItem().toString()) {
-            case "Normal":
-                KetKesimpulan.setText("Tidak dicurigai kanker kolorektal");
-                break;
-            case "Suspeck":
-                KetKesimpulan.setText("Dicurigai kanker kolorektal");
-                break;
-            default:
-                break;
+
+    private void simpan() {
+        if(Sequel.menyimpantf("skrining_kanker_kolorektal","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),NIP.getText(),
+            Polip.getSelectedItem().toString(),BabDarah.getSelectedItem().toString(),Reseksi.getSelectedItem().toString(),ColokDubur.getSelectedItem().toString(),
+            KolorektalKeluaga.getSelectedItem().toString(),DarahSamar.getSelectedItem().toString(),Rujuk.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),
+            KeteranganKesimpulan.getText()
+        })==true){
+            tabMode.addRow(new String[]{
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),NIP.getText(),NamaPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                Umur.getText(),Polip.getSelectedItem().toString(),BabDarah.getSelectedItem().toString(),Reseksi.getSelectedItem().toString(),ColokDubur.getSelectedItem().toString(),KolorektalKeluaga.getSelectedItem().toString(),DarahSamar.getSelectedItem().toString(),
+                Rujuk.getSelectedItem().toString(),Kesimpulan.getSelectedItem().toString(),KeteranganKesimpulan.getText()
+            });
+            emptTeks();
+            LCount.setText(""+tabMode.getRowCount());
+        } 
     }
-   }
 }
