@@ -437,7 +437,11 @@ public final class DlgCariJenis extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampil();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
         }
         LCount.setText(""+tabMode.getRowCount());
     }

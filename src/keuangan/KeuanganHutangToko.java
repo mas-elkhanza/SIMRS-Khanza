@@ -1086,6 +1086,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }else{
                 tampilAkunBayar();
             }
+        } catch (Exception e) {
+        }
+        
+        try {
             if(Valid.daysOld("./cache/akunbankmandiri.iyem")<30){
                 tampilAkunBankMandiri2();
             }else{
@@ -1686,7 +1690,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampilAkunBayar();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
         }
     } 
     

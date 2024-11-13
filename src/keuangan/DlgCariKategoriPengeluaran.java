@@ -372,17 +372,29 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("kategoripengeluaran");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("Kode").asText(),list.path("Kategori").asText(),list.path("AkunRekening").asText(),list.path("KontraAkun").asText()
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("Kode").asText(),list.path("Kategori").asText(),list.path("AkunRekening").asText(),list.path("KontraAkun").asText()
+                            });
+                        }
                     }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampil();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
         }
         LCount.setText(""+tabMode.getRowCount());
     } 

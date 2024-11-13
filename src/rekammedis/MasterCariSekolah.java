@@ -401,17 +401,29 @@ public final class MasterCariSekolah extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("master_sekolah");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("KodeSekolah").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaSekolah").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("KodeSekolah").asText(),list.path("NamaSekolah").asText()
-                        });                    
+                        });  
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeSekolah").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaSekolah").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("KodeSekolah").asText(),list.path("NamaSekolah").asText()
+                            });                    
+                        }
                     }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampil();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
         }
         LCount.setText(""+tabMode.getRowCount());
     }

@@ -2116,7 +2116,11 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             form.myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampilAkunBayar();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
         }
     } 
     

@@ -1080,7 +1080,11 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampilAkunBayar();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
         }
     } 
 }

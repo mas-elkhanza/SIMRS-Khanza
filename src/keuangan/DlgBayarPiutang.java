@@ -1633,7 +1633,11 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }
             myObj.close();
         } catch (Exception ex) {
-            System.out.println("Notifikasi : "+ex);
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampilAkunBayar();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
         }
     } 
 }
