@@ -2889,6 +2889,4 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             System.out.println("Notifikasi : "+e);
         }
     }
-        
-    
 }
