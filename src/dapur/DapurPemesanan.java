@@ -1,7 +1,6 @@
 package dapur;
 
 
-import ipsrs.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
@@ -35,11 +34,11 @@ public class DapurPemesanan extends javax.swing.JDialog {
     private validasi Valid=new validasi();
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private riwayatnonmedis Trackbarang=new riwayatnonmedis();
+    private riwayatdapur Trackbarang=new riwayatdapur();
     private PreparedStatement ps;
     private boolean[] ganti;
     private ResultSet rs;
-    private IPSRSCariPemesanan form=new IPSRSCariPemesanan(null,false);
+    private DapurCariPemesanan form=new DapurCariPemesanan(null,false);
     private double ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0,meterai=0;
     private int jml=0,i=0,row=0,index=0;
     private String[] kodebarang,namabarang,satuan;
@@ -49,7 +48,7 @@ public class DapurPemesanan extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem,Penerimaan_NonMedis="",PPN_Masukan="",Kontra_Penerimaan_NonMedis="";
+    private String iyem,Penerimaan_Dapur="",PPN_Masukan="",Kontra_Penerimaan_Dapur="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -168,7 +167,7 @@ public class DapurPemesanan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("DlgPemesananDapur")){
                     if(form.suplier.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(form.suplier.getTable().getValueAt(form.suplier.getTable().getSelectedRow(),1).toString());
@@ -191,7 +190,7 @@ public class DapurPemesanan extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("DlgPemesananDapur")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         form.suplier.dispose();
                     }                
@@ -208,7 +207,7 @@ public class DapurPemesanan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemesananIPSRS")){
+                if(akses.getform().equals("DlgPemesananDapur")){
                     if(form.petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
@@ -719,21 +718,11 @@ public class DapurPemesanan extends javax.swing.JDialog {
 
         TglFaktur.setDisplayFormat("dd-MM-yyyy");
         TglFaktur.setName("TglFaktur"); // NOI18N
-        TglFaktur.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglFakturKeyPressed(evt);
-            }
-        });
         panelisi3.add(TglFaktur);
         TglFaktur.setBounds(243, 40, 95, 23);
 
         TglTempo.setDisplayFormat("dd-MM-yyyy");
         TglTempo.setName("TglTempo"); // NOI18N
-        TglTempo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglTempoKeyPressed(evt);
-            }
-        });
         panelisi3.add(TglTempo);
         TglTempo.setBounds(243, 70, 95, 23);
 
@@ -745,11 +734,6 @@ public class DapurPemesanan extends javax.swing.JDialog {
 
         NoOrder.setName("NoOrder"); // NOI18N
         NoOrder.setPreferredSize(new java.awt.Dimension(207, 23));
-        NoOrder.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoOrderKeyPressed(evt);
-            }
-        });
         panelisi3.add(NoOrder);
         NoOrder.setBounds(78, 70, 95, 23);
 
@@ -770,6 +754,9 @@ public class DapurPemesanan extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         form.emptTeks();    
         form.isCek();
+        form.Penerimaan_Dapur=Penerimaan_Dapur;
+        form.PPN_Masukan=PPN_Masukan;
+        form.Kontra_Penerimaan_Dapur=Kontra_Penerimaan_Dapur;
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
@@ -814,7 +801,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf2("ipsrspemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Faktur",14,new String[]{
+                if(Sequel.menyimpantf2("dapurpemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Faktur",14,new String[]{
                     NoFaktur.getText(),NoOrder.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),
                     Valid.SetTgl(TglFaktur.getSelectedItem()+""),Valid.SetTgl(TglTempo.getSelectedItem()+""),""+sbttl,""+ttldisk,""+ttl,
                     ""+ppn,""+meterai,""+(ttl+ppn+meterai),"Belum Dibayar"
@@ -822,17 +809,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){  
                         if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                            if(Sequel.menyimpantf2("ipsrsdetailpesan","?,?,?,?,?,?,?,?,?","Transaksi Penerimaan",9,new String[]{
+                            if(Sequel.menyimpantf2("dapurdetailpesan","?,?,?,?,?,?,?,?,?","Transaksi Penerimaan",9,new String[]{
                                 NoFaktur.getText(),tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
                                 tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,5).toString(),tbDokter.getValueAt(i,6).toString(),
                                 tbDokter.getValueAt(i,7).toString(),tbDokter.getValueAt(i,8).toString(),tbDokter.getValueAt(i,9).toString()
                             })==true){
                                 Trackbarang.catatRiwayat(tbDokter.getValueAt(i,1).toString(),Valid.SetAngka(tbDokter.getValueAt(i,0).toString()),0,"Penerimaan", akses.getkode(),"Simpan");
-                                Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok+?",2,new String[]{
+                                Sequel.mengedit("dapurbarang","kode_brng=?","stok=stok+?",2,new String[]{
                                     tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,1).toString()
                                 });
-                                if(tbDokter.getValueAt(i,4).toString().equals("true")&&(akses.getipsrs_barang()==true)){
-                                    Sequel.mengedit("ipsrsbarang","kode_brng=?","harga=?",2,new String[]{
+                                if(tbDokter.getValueAt(i,4).toString().equals("true")&&(akses.getdapur_barang()==true)){
+                                    Sequel.mengedit("dapurbarang","kode_brng=?","harga=?",2,new String[]{
                                         (Double.parseDouble(tbDokter.getValueAt(i,5).toString())+((Double.parseDouble(tppn.getText())/100)*Double.parseDouble(tbDokter.getValueAt(i,5).toString())))+"",tbDokter.getValueAt(i,1).toString()
                                     }); 
                                 }
@@ -847,12 +834,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                    
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Penerimaan_NonMedis,"PERSEDIAAN BARANG NON MEDIS",""+(ttl+meterai),"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Penerimaan_Dapur,"PERSEDIAAN BARANG DAPUR",""+(ttl+meterai),"0"});
                     if(ppn>0){
-                        Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{PPN_Masukan,"PPN Masukan Barang Non Medis",""+ppn,"0"});
+                        Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{PPN_Masukan,"PPN Masukan Barang Dapur",""+ppn,"0"});
                     }
-                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Penerimaan_NonMedis,"HUTANG BARANG NON MEDIS","0",""+(ttl+ppn+meterai)}); 
-                    sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN BARANG NON MEDIS/PENUNJANG"+", OLEH "+akses.getkode());
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Penerimaan_Dapur,"HUTANG BARANG NON MEDIS","0",""+(ttl+ppn+meterai)}); 
+                    sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN BARANG DAPUR"+", OLEH "+akses.getkode());
                 }
                 
                 if(sukses==true){
@@ -988,13 +975,10 @@ private void NoFakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 }//GEN-LAST:event_NoFakturKeyPressed
 
 private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdsupKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());           
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             NoFaktur.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?", nmsup,kdsup.getText());
+            Sequel.cariIsi("select dapursuplier.nama_suplier from dapursuplier where dapursuplier.kode_suplier=?", nmsup,kdsup.getText());
             kdptg.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
@@ -1002,10 +986,7 @@ private void kdsupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kds
 }//GEN-LAST:event_kdsupKeyPressed
 
 private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdptgKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));          
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            nmptg.setText(form.petugas.tampil3(kdptg.getText()));
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             kdsup.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             nmptg.setText(form.petugas.tampil3(kdptg.getText()));
@@ -1016,7 +997,7 @@ private void kdptgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdp
 }//GEN-LAST:event_kdptgKeyPressed
 
 private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        akses.setform("DlgPemesananIPSRS");
+        akses.setform("DlgPemesananDapur");
         form.suplier.emptTeks();
         form.suplier.isCek();
         form.suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1026,7 +1007,7 @@ private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 }//GEN-LAST:event_btnSuplierActionPerformed
 
 private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("DlgPemesananIPSRS");
+        akses.setform("DlgPemesananDapur");
         form.petugas.emptTeks();
         form.petugas.isCek();
         form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1038,7 +1019,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if(tampikan==true){
             try {
-                if(Valid.daysOld("./cache/penerimaanipsrs.iyem")<8){
+                if(Valid.daysOld("./cache/penerimaandapur.iyem")<8){
                     tampil2();
                 }else{
                     tampil();
@@ -1048,7 +1029,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         }
         
         try {
-            if(Valid.daysOld("./cache/akunpemesananipsrs.iyem")<8){
+            if(Valid.daysOld("./cache/akunpemesanandapur.iyem")<8){
                 tampilAkun2();
             }else{
                 tampilAkun();
@@ -1059,8 +1040,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        akses.setform("DlgPemesananIPSRS");
-        IPSRSBarang barang=new IPSRSBarang(null,false);
+        akses.setform("DlgPemesananDapur");
+        DapurBarang barang=new DapurBarang(null,false);
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1092,18 +1073,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void TglPesanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPesanKeyPressed
         Valid.pindah(evt,NoFaktur,kdsup);
     }//GEN-LAST:event_TglPesanKeyPressed
-
-    private void TglFakturKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglFakturKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglFakturKeyPressed
-
-    private void TglTempoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglTempoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TglTempoKeyPressed
-
-    private void NoOrderKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoOrderKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoOrderKeyPressed
 
     private void tbDokterPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDokterPropertyChange
         if(this.isVisible()==true){
@@ -1200,13 +1169,13 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private void tampil() {
         try{
             Valid.tabelKosong(tabMode);
-            file=new File("./cache/penerimaanipsrs.iyem");
+            file=new File("./cache/penerimaandapur.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
             ps=koneksi.prepareStatement(
-                    "select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')'),ipsrsbarang.kode_sat,ipsrsbarang.harga "+
-                    " from ipsrsbarang where ipsrsbarang.status='1' order by ipsrsbarang.nama_brng");
+                    "select dapurbarang.kode_brng, dapurbarang.nama_brng,dapurbarang.kode_sat,dapurbarang.harga "+
+                    " from dapurbarang where dapurbarang.status='1' order by dapurbarang.nama_brng");
             try{   
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1223,7 +1192,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                     ps.close();
                 }
             }             
-            fileWriter.write("{\"penerimaanipsrs\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.write("{\"penerimaandapur\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
             iyem=null;  
@@ -1280,9 +1249,9 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],ganti[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i]});
             }
             
-            myObj = new FileReader("./cache/penerimaanipsrs.iyem");
+            myObj = new FileReader("./cache/penerimaandapur.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("penerimaanipsrs");
+            response = root.path("penerimaandapur");
             if(response.isArray()){
                 if(TCari.getText().trim().equals("")){
                     for(JsonNode list:response){
@@ -1373,31 +1342,31 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             btnPetugas.setEnabled(false);
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getpenerimaan_non_medis());
-            BtnTambah.setEnabled(akses.getipsrs_barang());
+            BtnTambah.setEnabled(akses.getdapur_barang());
             nmptg.setText(form.petugas.tampil3(kdptg.getText()));
         }        
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(ipsrspemesanan.no_faktur,3),signed)),0) from ipsrspemesanan where ipsrspemesanan.tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PNM"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(dapurpemesanan.no_faktur,3),signed)),0) from dapurpemesanan where dapurpemesanan.tgl_pesan='"+Valid.SetTgl(TglPesan.getSelectedItem()+"")+"'","PD"+TglPesan.getSelectedItem().toString().substring(6,10)+TglPesan.getSelectedItem().toString().substring(3,5)+TglPesan.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
 
     public void tampil(String noorder) {
         NoOrder.setText(noorder);
         kdsup.setText(Sequel.cariIsi("select surat_pemesanan_non_medis.kode_suplier from surat_pemesanan_non_medis where surat_pemesanan_non_medis.no_pemesanan=?",noorder));
-        nmsup.setText(Sequel.cariIsi("select ipsrssuplier.nama_suplier from ipsrssuplier where ipsrssuplier.kode_suplier=?",kdsup.getText()));
+        nmsup.setText(Sequel.cariIsi("select dapursuplier.nama_suplier from dapursuplier where dapursuplier.kode_suplier=?",kdsup.getText()));
         meterai=Sequel.cariIsiAngka("select surat_pemesanan_non_medis.meterai from surat_pemesanan_non_medis where surat_pemesanan_non_medis.no_pemesanan=?",noorder);
         ppn=Sequel.cariIsiAngka("select surat_pemesanan_non_medis.ppn from surat_pemesanan_non_medis where surat_pemesanan_non_medis.no_pemesanan=?",noorder);
         Meterai.setText(Valid.SetAngka2(meterai));
         try{
             Valid.tabelKosong(tabMode);
             ps=koneksi.prepareStatement(
-                "select detail_surat_pemesanan_non_medis.kode_brng,concat(ipsrsbarang.nama_brng,' (',ipsrsbarang.jenis,')') as nama_brng, "+
+                "select detail_surat_pemesanan_non_medis.kode_brng,concat(dapurbarang.nama_brng,' (',dapurbarang.jenis,')') as nama_brng, "+
                 "detail_surat_pemesanan_non_medis.kode_sat,detail_surat_pemesanan_non_medis.jumlah,detail_surat_pemesanan_non_medis.h_pesan, "+
                 "detail_surat_pemesanan_non_medis.subtotal,detail_surat_pemesanan_non_medis.dis,detail_surat_pemesanan_non_medis.besardis,detail_surat_pemesanan_non_medis.total "+
-                "from detail_surat_pemesanan_non_medis inner join ipsrsbarang "+
-                " on detail_surat_pemesanan_non_medis.kode_brng=ipsrsbarang.kode_brng "+
-                " where detail_surat_pemesanan_non_medis.no_pemesanan=? order by ipsrsbarang.nama_brng");
+                "from detail_surat_pemesanan_non_medis inner join dapurbarang "+
+                " on detail_surat_pemesanan_non_medis.kode_brng=dapurbarang.kode_brng "+
+                " where detail_surat_pemesanan_non_medis.no_pemesanan=? order by dapurbarang.nama_brng");
             try {
                 ps.setString(1,noorder);
                 rs=ps.executeQuery();
@@ -1426,17 +1395,17 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void tampilAkun() {         
          try{      
-             ps=koneksi.prepareStatement("select set_akun.Penerimaan_NonMedis,set_akun.PPN_Masukan,set_akun.Kontra_Penerimaan_NonMedis from set_akun");
+             PPN_Masukan=Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun");
+             ps=koneksi.prepareStatement("select set_akun2.Penerimaan_Dapur,set_akun2.Kontra_Penerimaan_Dapur from set_akun2");
              try{
                  rs=ps.executeQuery();
                  if(rs.next()){    
-                     Penerimaan_NonMedis=rs.getString("Penerimaan_NonMedis");
-                     PPN_Masukan=rs.getString("PPN_Masukan");
-                     Kontra_Penerimaan_NonMedis=rs.getString("Kontra_Penerimaan_NonMedis");
-                     file=new File("./cache/akunpemesananipsrs.iyem");
+                     Penerimaan_Dapur=rs.getString("Penerimaan_Dapur");
+                     Kontra_Penerimaan_Dapur=rs.getString("Kontra_Penerimaan_Dapur");
+                     file=new File("./cache/akunpemesanandapur.iyem");
                      file.createNewFile();
                      fileWriter = new FileWriter(file);
-                     fileWriter.write("{\"Penerimaan_NonMedis\":\""+Penerimaan_NonMedis+"\",\"PPN_Masukan\":\""+PPN_Masukan+"\",\"Kontra_Penerimaan_NonMedis\":\""+Kontra_Penerimaan_NonMedis+"\"}");
+                     fileWriter.write("{\"Penerimaan_Dapur\":\""+Penerimaan_Dapur+"\",\"PPN_Masukan\":\""+PPN_Masukan+"\",\"Kontra_Penerimaan_Dapur\":\""+Kontra_Penerimaan_Dapur+"\"}");
                      fileWriter.flush();
                      fileWriter.close();
                      iyem=null;
@@ -1458,11 +1427,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void tampilAkun2() {
         try {
-            myObj = new FileReader("./cache/akunpemesananipsrs.iyem");
+            myObj = new FileReader("./cache/akunpemesanandapur.iyem");
             root = mapper.readTree(myObj);
-            Penerimaan_NonMedis=root.path("Penerimaan_NonMedis").asText();
+            Penerimaan_Dapur=root.path("Penerimaan_Dapur").asText();
             PPN_Masukan=root.path("PPN_Masukan").asText();
-            Kontra_Penerimaan_NonMedis=root.path("Kontra_Penerimaan_NonMedis").asText();
+            Kontra_Penerimaan_Dapur=root.path("Kontra_Penerimaan_Dapur").asText();
             myObj.close();
         } catch (Exception ex) {
             if(ex.toString().contains("java.io.FileNotFoundException")){
