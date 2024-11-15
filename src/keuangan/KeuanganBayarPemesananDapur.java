@@ -1160,22 +1160,15 @@ public final class KeuanganBayarPemesananDapur extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));   
-            Valid.MyReportqry("rptBayarPemesananNonMedis.jasper","report","::[ Bayar Pemesanan ]::",
-                    "select bayar_pemesanan_dapur.tgl_bayar,dapurpemesanan.tgl_faktur,dapurpemesanan.tgl_pesan,"+
-                    "dapurpemesanan.tgl_tempo, bayar_pemesanan_dapur.no_faktur,"+
-                    "dapursuplier.nama_suplier,bayar_pemesanan_dapur.nama_bayar,bayar_pemesanan_dapur.no_bukti,"+
-                    "bayar_pemesanan_dapur.besar_bayar,bayar_pemesanan_dapur.keterangan,"+
-                    "bayar_pemesanan_dapur.nip,petugas.nama from bayar_pemesanan_dapur inner join petugas "+
-                    "inner join dapurpemesanan inner join dapursuplier on bayar_pemesanan_dapur.nip=petugas.nip "+
-                    "and bayar_pemesanan_dapur.no_faktur=dapurpemesanan.no_faktur "+
-                    "and dapurpemesanan.kode_suplier=dapursuplier.kode_suplier where "+
-                    "bayar_pemesanan_dapur.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and dapursuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_dapur.no_faktur like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and dapursuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and dapursuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and dapursuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_dapur.nama_bayar like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and dapursuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_dapur.no_bukti like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and dapursuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and bayar_pemesanan_dapur.keterangan like '%"+TCari.getText().trim()+"%' or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and dapursuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' and petugas.nama like '%"+TCari.getText().trim()+"%' "+
-                    " order by bayar_pemesanan_dapur.tgl_bayar",param);
+            Valid.MyReportqry("rptBayarPemesananDapur.jasper","report","::[ Bayar Pemesanan ]::",
+                    "select bayar_pemesanan_dapur.tgl_bayar,dapurpemesanan.tgl_faktur,dapurpemesanan.tgl_pesan,dapurpemesanan.tgl_tempo, bayar_pemesanan_dapur.no_faktur,"+
+                    "dapursuplier.nama_suplier,bayar_pemesanan_dapur.nama_bayar,bayar_pemesanan_dapur.no_bukti,bayar_pemesanan_dapur.besar_bayar,bayar_pemesanan_dapur.keterangan,"+
+                    "bayar_pemesanan_dapur.nip,petugas.nama from bayar_pemesanan_dapur inner join petugas on bayar_pemesanan_dapur.nip=petugas.nip "+
+                    "inner join dapurpemesanan on bayar_pemesanan_dapur.no_faktur=dapurpemesanan.no_faktur "+
+                    "inner join dapursuplier on dapurpemesanan.kode_suplier=dapursuplier.kode_suplier where "+
+                    "bayar_pemesanan_dapur.tgl_bayar between '"+Valid.SetTgl(TglCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglCari2.getSelectedItem()+"")+"' and dapursuplier.nama_suplier like '%"+nmsup.getText().trim()+"%' "+
+                    (TCari.getText().trim().equals("")?"":"and (bayar_pemesanan_dapur.no_faktur like '%"+TCari.getText().trim()+"%' or dapursuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or bayar_pemesanan_dapur.nama_bayar like '%"+TCari.getText().trim()+"%' or "+
+                    "bayar_pemesanan_dapur.no_bukti like '%"+TCari.getText().trim()+"%' or bayar_pemesanan_dapur.keterangan like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') ")+"order by bayar_pemesanan_dapur.tgl_bayar",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1573,46 +1566,27 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Valid.tabelKosong(tabMode);
         try{           
             ps=koneksi.prepareStatement(
-                    "select bayar_pemesanan_dapur.tgl_bayar,dapurpemesanan.tgl_faktur,dapurpemesanan.tgl_pesan,"+
-                    "dapurpemesanan.tgl_tempo, bayar_pemesanan_dapur.no_faktur,"+
-                    "dapursuplier.nama_suplier,bayar_pemesanan_dapur.nama_bayar,bayar_pemesanan_dapur.no_bukti,"+
-                    "bayar_pemesanan_dapur.besar_bayar,bayar_pemesanan_dapur.keterangan,"+
-                    "bayar_pemesanan_dapur.nip,petugas.nama from bayar_pemesanan_dapur inner join petugas "+
-                    "inner join dapurpemesanan inner join dapursuplier on bayar_pemesanan_dapur.nip=petugas.nip "+
-                    "and bayar_pemesanan_dapur.no_faktur=dapurpemesanan.no_faktur "+
-                    "and dapurpemesanan.kode_suplier=dapursuplier.kode_suplier where "+
-                    "bayar_pemesanan_dapur.tgl_bayar between ? and ? and dapursuplier.nama_suplier like ? and bayar_pemesanan_dapur.no_faktur like ? or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between ? and ? and dapursuplier.nama_suplier like ? and dapursuplier.nama_suplier like ? or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between ? and ? and dapursuplier.nama_suplier like ? and bayar_pemesanan_dapur.nama_bayar like ? or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between ? and ? and dapursuplier.nama_suplier like ? and bayar_pemesanan_dapur.no_bukti like ? or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between ? and ? and dapursuplier.nama_suplier like ? and bayar_pemesanan_dapur.keterangan like ? or "+
-                    "bayar_pemesanan_dapur.tgl_bayar between ? and ? and dapursuplier.nama_suplier like ? and petugas.nama like ? "+
-                    " order by bayar_pemesanan_dapur.tgl_bayar");
+                    "select bayar_pemesanan_dapur.tgl_bayar,dapurpemesanan.tgl_faktur,dapurpemesanan.tgl_pesan,dapurpemesanan.tgl_tempo, bayar_pemesanan_dapur.no_faktur,"+
+                    "dapursuplier.nama_suplier,bayar_pemesanan_dapur.nama_bayar,bayar_pemesanan_dapur.no_bukti,bayar_pemesanan_dapur.besar_bayar,bayar_pemesanan_dapur.keterangan,"+
+                    "bayar_pemesanan_dapur.nip,petugas.nama from bayar_pemesanan_dapur inner join petugas on bayar_pemesanan_dapur.nip=petugas.nip "+
+                    "inner join dapurpemesanan on bayar_pemesanan_dapur.no_faktur=dapurpemesanan.no_faktur "+
+                    "inner join dapursuplier on dapurpemesanan.kode_suplier=dapursuplier.kode_suplier where "+
+                    "bayar_pemesanan_dapur.tgl_bayar between ? and ? and dapursuplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (bayar_pemesanan_dapur.no_faktur like ? or dapursuplier.nama_suplier like ? or "+
+                    "bayar_pemesanan_dapur.nama_bayar like ? or bayar_pemesanan_dapur.no_bukti like ? or bayar_pemesanan_dapur.keterangan like ? or "+
+                    "petugas.nama like ?) ")+" order by bayar_pemesanan_dapur.tgl_bayar");
             try {            
                 ps.setString(1,Valid.SetTgl(TglCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglCari2.getSelectedItem()+""));
                 ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText()+"%");
-                ps.setString(5,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(6,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(7,"%"+nmsup.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText()+"%");
-                ps.setString(9,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(11,"%"+nmsup.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText()+"%");
-                ps.setString(13,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+nmsup.getText().trim()+"%");
-                ps.setString(16,"%"+TCari.getText()+"%");
-                ps.setString(17,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(18,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(19,"%"+nmsup.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText()+"%");
-                ps.setString(21,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(23,"%"+nmsup.getText().trim()+"%");
-                ps.setString(24,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
                 rs=ps.executeQuery();
                 total=0;
                 while(rs.next()){                
