@@ -1691,9 +1691,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "select ipsrspemesanan.no_faktur,ipsrspemesanan.no_order,ipsrssuplier.nama_suplier, "+
                     "petugas.nama,ipsrspemesanan.tgl_tempo,ipsrspemesanan.tgl_pesan,ipsrspemesanan.tgl_faktur,ipsrspemesanan.tagihan,"+
                     "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_non_medis where bayar_pemesanan_non_medis.no_faktur=ipsrspemesanan.no_faktur) as bayar, "+
-                    "ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrspemesanan inner join ipsrssuplier inner join petugas "+
-                    "on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
-                    "and ipsrspemesanan.nip=petugas.nip where "+
+                    "ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrspemesanan inner join ipsrssuplier on ipsrspemesanan.kode_suplier=ipsrssuplier.kode_suplier "+
+                    "inner join petugas on ipsrspemesanan.nip=petugas.nip where "+
                     tanggaldatang+tanggaltempo+"(ipsrspemesanan.status='Belum Dibayar' or ipsrspemesanan.status='Belum Lunas') and ipsrssuplier.nama_suplier like ? "+
                     (TCari.getText().trim().equals("")?"":"and (ipsrspemesanan.no_faktur like ? or ipsrspemesanan.no_order like ? or ipsrspemesanan.tgl_tempo like ? or "+
                     "ipsrssuplier.nama_suplier like ? or petugas.nama like ?)")+" order by ipsrspemesanan.tgl_tempo ");

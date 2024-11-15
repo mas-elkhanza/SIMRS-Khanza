@@ -235,7 +235,7 @@ public final class akses {
             skrining_kesehatan_gigi_mulut_remaja=false,penilaian_awal_keperawatan_ranap_bayi=false,booking_mcu_perusahaan=false,catatan_observasi_restrain_nonfarma=false,
             catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,skrining_puma=false,satu_sehat_kirim_careplan=false,satu_sehat_kirim_medicationstatement=false,
             skrining_adiksi_nikotin=false,skrining_thalassemia=false,skrining_instrumen_sdq=false,skrining_instrumen_srq=false,checklist_pemberian_fibrinolitik=false,
-            skrining_kanker_kolorektal=false,dapur_pemesanan=false,bayar_pesan_dapur=false;
+            skrining_kanker_kolorektal=false,dapur_pemesanan=false,bayar_pesan_dapur=false,hutang_dapur=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1332,6 +1332,7 @@ public final class akses {
                         akses.skrining_kanker_kolorektal=true;
                         akses.dapur_pemesanan=true;
                         akses.bayar_pesan_dapur=true;
+                        akses.hutang_dapur=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2412,6 +2413,7 @@ public final class akses {
                         akses.skrining_kanker_kolorektal=rs2.getBoolean("skrining_kanker_kolorektal");
                         akses.dapur_pemesanan=rs2.getBoolean("dapur_pemesanan");
                         akses.bayar_pesan_dapur=rs2.getBoolean("bayar_pesan_dapur");
+                        akses.hutang_dapur=rs2.getBoolean("hutang_dapur");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3490,6 +3492,7 @@ public final class akses {
                         akses.skrining_kanker_kolorektal=false;
                         akses.dapur_pemesanan=false;
                         akses.bayar_pesan_dapur=false;
+                        akses.hutang_dapur=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4591,6 +4594,7 @@ public final class akses {
         akses.skrining_kanker_kolorektal=false;
         akses.dapur_pemesanan=false;
         akses.bayar_pesan_dapur=false;
+        akses.hutang_dapur=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5708,4 +5712,5 @@ public final class akses {
     public static boolean getskrining_kanker_kolorektal(){return akses.skrining_kanker_kolorektal;}
     public static boolean getdapur_pemesanan(){return akses.dapur_pemesanan;}
     public static boolean getbayar_pesan_dapur(){return akses.bayar_pesan_dapur;}
+    public static boolean gethutang_dapur(){return akses.hutang_dapur;}
 }   
