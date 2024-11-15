@@ -45705,7 +45705,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHutangDapur.addActionListener(this::btnHutangDapurActionPerformed);
         
         btnTagihanHutangDapur = new widget.ButtonBig();
-        btnTagihanHutangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2570304_business_company_economic_finance_interprise_icon.png")));
+        btnTagihanHutangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_3387311_document_money_report_sheet_shopping_icon_48px.png")));
         btnTagihanHutangDapur.setText("Titip Faktur/Tagihan Dapur");
         btnTagihanHutangDapur.setIconTextGap(0);
         btnTagihanHutangDapur.setName("btnTagihanHutangDapur"); 
