@@ -751,6 +751,7 @@ import keuangan.KeuanganPengajuanBiaya;
 import keuangan.KeuanganPersetujuanPengajuanBiaya;
 import keuangan.KeuanganRekapPengajuanBiaya;
 import keuangan.KeuanganRingkasanPiutangPerJensBayar;
+import keuangan.KeuanganTagihanDapur;
 import keuangan.KeuanganValidasiPersetujuanPengajuanBiaya;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
@@ -21953,6 +21954,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     } 
+    
+    private void btnTagihanHutangDapurActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganTagihanDapur form=new KeuanganTagihanDapur(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22650,7 +22663,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnCatatanObservasiRestrainNonFramakologi,
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
             btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal,btnPenerimaanBarangDapur,btnBayarPesanDapur,
-            btnHutangDapur;
+            btnHutangDapur,btnTagihanHutangDapur;
     
     public void isWall(){
         try{            
@@ -25003,6 +25016,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbayar_pemesanan_iventaris()==true){
                 Panelmenu.add(btnBayarPemesananInventaris);
+                jmlmenu++;
+            }
+            
+            if(akses.gettitip_faktur_dapur()==true){
+                Panelmenu.add(btnTagihanHutangDapur);
                 jmlmenu++;
             }
             
@@ -30319,6 +30337,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbayar_pemesanan_iventaris()==true){
             Panelmenu.add(btnBayarPemesananInventaris);
+            jmlmenu++;
+        }
+        
+        if(akses.gettitip_faktur_dapur()==true){
+            Panelmenu.add(btnTagihanHutangDapur);
             jmlmenu++;
         }
         
@@ -36520,6 +36543,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbayar_pemesanan_iventaris()==true){
             if(btnBayarPemesananInventaris.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBayarPemesananInventaris);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gettitip_faktur_dapur()==true){
+            if(btnTagihanHutangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnTagihanHutangDapur);
                 jmlmenu++;
             }                
         }
@@ -45673,5 +45703,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHutangDapur.setName("btnHutangDapur"); 
         btnHutangDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHutangDapur.addActionListener(this::btnHutangDapurActionPerformed);
+        
+        btnTagihanHutangDapur = new widget.ButtonBig();
+        btnTagihanHutangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2570304_business_company_economic_finance_interprise_icon.png")));
+        btnTagihanHutangDapur.setText("Titip Faktur/Tagihan Dapur");
+        btnTagihanHutangDapur.setIconTextGap(0);
+        btnTagihanHutangDapur.setName("btnTagihanHutangDapur"); 
+        btnTagihanHutangDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnTagihanHutangDapur.addActionListener(this::btnTagihanHutangDapurActionPerformed);
     }
 }

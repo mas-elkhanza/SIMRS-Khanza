@@ -54,6 +54,7 @@ public final class DlgPindahGudang extends javax.swing.JDialog {
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
     private double nilaitotal=0;
     private String aktifkanbatch="no",DEPOAKTIFOBAT="";
+    private boolean sukses=false;
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
@@ -1660,6 +1661,8 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     }
 
     private void hapus() {
+        Sequel.AutoComitFalse();
+        sukses=true;
         if(Sequel.queryu2tf("delete from mutasibarang where kd_bangsaldari=? and kd_bangsalke=? and tanggal=? and kode_brng=? and no_batch=? and no_faktur=?",6,new String[]{
                 kddari.getText(),kdke.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),kdbarang.getText(),nobatch.getText(),nofaktur.getText()
             })==true){
@@ -1678,8 +1681,20 @@ private void BtnCetakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 Sequel.menyimpan("gudangbarang","'"+kdbarang.getText()+"','"+kdke.getText()+"','-"+jumlah.getText()+"','',''", 
                                  "stok=stok-"+jumlah.getText()+"","kode_brng='"+kdbarang.getText()+"' and kd_bangsal='"+kdke.getText()+"' and no_batch='' and no_faktur=''");
             }
-            BtnCariActionPerformed(null);
+        }else{
+            sukses=false;
         }
+        
+        if(sukses==true){
+            Sequel.Commit();
+        }else{
+            JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+            Sequel.RollBack();
+        } 
+        Sequel.AutoComitTrue();
+        if(sukses==true){
+            BtnCariActionPerformed(null);
+        } 
     }
     
 }

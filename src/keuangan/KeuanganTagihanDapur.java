@@ -1159,7 +1159,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select photo from bukti_pemesanan_logistik where no_faktur=?");
+                ps=koneksi.prepareStatement("select bukti_pemesanan_logistik.photo from bukti_pemesanan_logistik where bukti_pemesanan_logistik.no_faktur=?");
                 try {
                     ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
                     rs=ps.executeQuery();
@@ -1189,8 +1189,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_tagihan,3),signed)),0) from dapur_titip_faktur where tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "TN"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoTagihan); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(dapur_titip_faktur.no_tagihan,3),signed)),0) from dapur_titip_faktur where dapur_titip_faktur.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+                "TD"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoTagihan); 
     }
     
     public void isCek(){
