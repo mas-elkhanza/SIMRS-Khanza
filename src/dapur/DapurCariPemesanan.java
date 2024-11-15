@@ -27,6 +27,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
+import keuangan.KeuanganBayarPemesananDapur;
 
 public class DapurCariPemesanan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -1012,7 +1013,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(!tbDokter.getValueAt(tbDokter.getSelectedRow(),8).toString().trim().equals("")){
             Valid.textKosong(TCari,"No.Faktur");
         }else{
-            /*this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             KeuanganBayarPemesananDapur bayarpesan=new KeuanganBayarPemesananDapur(null,false);
             bayarpesan.setData(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
             bayarpesan.tampil();
@@ -1020,7 +1021,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             bayarpesan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             bayarpesan.setLocationRelativeTo(internalFrame1);
             bayarpesan.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());*/
+            this.setCursor(Cursor.getDefaultCursor());
         }   
     }//GEN-LAST:event_ppBayarActionPerformed
 
@@ -1253,7 +1254,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             ppHapus.setEnabled(false);
         }        
-        //ppBayar.setEnabled(akses.getbayar_pesan_dapur());
+        ppBayar.setEnabled(akses.getbayar_pesan_dapur());
     }
     
     private void isPhoto(){
