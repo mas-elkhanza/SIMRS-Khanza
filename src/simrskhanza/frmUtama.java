@@ -641,6 +641,7 @@ import dapur.DapurRBiayaHarian;
 import dapur.DapurRHPembelian;
 import dapur.DapurRingkasanPengadaan;
 import dapur.DapurRiwayatBarang;
+import dapur.DapurSuratPemesanan;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
 import grafikanalisa.GrafikKeslingLimbahB3CairPertanggal;
 import inventaris.KeslingLimbahB3MedisCair;
@@ -21978,6 +21979,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSuratPemesananDapurActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurSuratPemesanan form=new DapurSuratPemesanan(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22675,7 +22688,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnCatatanObservasiRestrainNonFramakologi,
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
             btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal,btnPenerimaanBarangDapur,btnBayarPesanDapur,
-            btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur;
+            btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur,btnSuratPemesananDapur;
     
     public void isWall(){
         try{            
@@ -23802,6 +23815,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdapur_suplier()==true){
                 Panelmenu.add(btnSuplierDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getsurat_pemesanan_dapur()==true){
+                Panelmenu.add(btnSuratPemesananDapur);
                 jmlmenu++;
             }
             
@@ -29138,6 +29156,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdapur_suplier()==true){
             Panelmenu.add(btnSuplierDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getsurat_pemesanan_dapur()==true){
+            Panelmenu.add(btnSuratPemesananDapur);
             jmlmenu++;
         }
         
@@ -34861,6 +34884,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdapur_suplier()==true){
             if(btnSuplierDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSuplierDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsurat_pemesanan_dapur()==true){
+            if(btnSuratPemesananDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSuratPemesananDapur);
                 jmlmenu++;
             }                
         }
@@ -45748,5 +45778,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnValidasiTagihanDapur.setName("btnValidasiTagihanDapur"); 
         btnValidasiTagihanDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnValidasiTagihanDapur.addActionListener(this::btnValidasiTagihanDapurActionPerformed);
+        
+        btnSuratPemesananDapur = new widget.ButtonBig();
+        btnSuratPemesananDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2570321_business_checklist_company_economic_finance_icon.png"))); 
+        btnSuratPemesananDapur.setText("Surat Pemesanan Barang Dapur");
+        btnSuratPemesananDapur.setIconTextGap(0);
+        btnSuratPemesananDapur.setName("btnSuratPemesananDapur"); 
+        btnSuratPemesananDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSuratPemesananDapur.addActionListener(this::btnSuratPemesananDapurActionPerformed);
     }
 }
