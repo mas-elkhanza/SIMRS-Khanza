@@ -753,6 +753,7 @@ import keuangan.KeuanganRekapPengajuanBiaya;
 import keuangan.KeuanganRingkasanPiutangPerJensBayar;
 import keuangan.KeuanganTagihanDapur;
 import keuangan.KeuanganValidasiPersetujuanPengajuanBiaya;
+import keuangan.KeuanganValidasiTagihanDapur;
 import laporan.DlgBulananKlasifikasiPasienRanap;
 import laporan.DlgDaftarPasienRanap;
 import laporan.DlgDaftarPasienRanapPolri;
@@ -21966,6 +21967,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnValidasiTagihanDapurActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganValidasiTagihanDapur form=new KeuanganValidasiTagihanDapur(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22663,7 +22675,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningKesehatanGigiMulutRemaja,btnSkriningTBC,btnPenilaianAwalKeperawatanRanapBayiAnak,btnBookingMCUPerusahaan,btnCatatanObservasiRestrainNonFramakologi,
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
             btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal,btnPenerimaanBarangDapur,btnBayarPesanDapur,
-            btnHutangDapur,btnTagihanHutangDapur;
+            btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur;
     
     public void isWall(){
         try{            
@@ -25019,13 +25031,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.gethutang_dapur()==true){
+                Panelmenu.add(btnHutangDapur);
+                jmlmenu++;
+            }
+            
             if(akses.gettitip_faktur_dapur()==true){
                 Panelmenu.add(btnTagihanHutangDapur);
                 jmlmenu++;
             }
             
-            if(akses.gethutang_dapur()==true){
-                Panelmenu.add(btnHutangDapur);
+            if(akses.getvalidasi_tagihan_dapur()==true){
+                Panelmenu.add(btnValidasiTagihanDapur);
                 jmlmenu++;
             }
             
@@ -30340,13 +30357,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             jmlmenu++;
         }
         
+        if(akses.gethutang_dapur()==true){
+            Panelmenu.add(btnHutangDapur);
+            jmlmenu++;
+        }
+        
         if(akses.gettitip_faktur_dapur()==true){
             Panelmenu.add(btnTagihanHutangDapur);
             jmlmenu++;
         }
-        
-        if(akses.gethutang_dapur()==true){
-            Panelmenu.add(btnHutangDapur);
+            
+        if(akses.getvalidasi_tagihan_dapur()==true){
+            Panelmenu.add(btnValidasiTagihanDapur);
             jmlmenu++;
         }
 
@@ -36547,6 +36569,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gethutang_dapur()==true){
+            if(btnHutangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHutangDapur);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gettitip_faktur_dapur()==true){
             if(btnTagihanHutangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnTagihanHutangDapur);
@@ -36554,9 +36583,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
-        if(akses.gethutang_dapur()==true){
-            if(btnHutangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnHutangDapur);
+        if(akses.getvalidasi_tagihan_dapur()==true){
+            if(btnValidasiTagihanDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnValidasiTagihanDapur);
                 jmlmenu++;
             }                
         }
@@ -45689,7 +45718,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenerimaanBarangDapur.addActionListener(this::btnPenerimaanBarangDapurActionPerformed);
         
         btnBayarPesanDapur = new widget.ButtonBig();
-        btnBayarPesanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8822938_money_bag_gold_bars_icon.png")));
+        btnBayarPesanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2620509_employee_job_note_seeker_unemployee_icon.png")));
         btnBayarPesanDapur.setText("Bayar Pesan Dapur");
         btnBayarPesanDapur.setIconTextGap(0);
         btnBayarPesanDapur.setName("btnBayarPesanDapur"); 
@@ -45711,5 +45740,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnTagihanHutangDapur.setName("btnTagihanHutangDapur"); 
         btnTagihanHutangDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnTagihanHutangDapur.addActionListener(this::btnTagihanHutangDapurActionPerformed);
+        
+        btnValidasiTagihanDapur = new widget.ButtonBig();
+        btnValidasiTagihanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_3387295_credit_finance_machine_payment_shopping_icon_48px.png"))); 
+        btnValidasiTagihanDapur.setText("Validasi Titip Faktur/Tagihan Dapur");
+        btnValidasiTagihanDapur.setIconTextGap(0);
+        btnValidasiTagihanDapur.setName("btnValidasiTagihanDapur"); 
+        btnValidasiTagihanDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnValidasiTagihanDapur.addActionListener(this::btnValidasiTagihanDapurActionPerformed);
     }
 }
