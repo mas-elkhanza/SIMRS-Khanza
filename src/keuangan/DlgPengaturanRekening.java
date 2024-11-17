@@ -96,7 +96,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Lebih_Bayar_Klaim_BPJS_RVP,Piutang_BPJS_RVP,Sisa_Uang_Muka_Ranap,Kontra_Penerimaan_AsetInventaris,
             Kontra_Hibah_Aset,Hibah_Non_Medis,Kontra_Hibah_Non_Medis,Bayar_JM_Dokter,PPN_Masukan,Pengadaan_Dapur,
             Stok_Keluar_Dapur,Kontra_Stok_Keluar_Dapur,PPN_Keluaran,Diskon_Piutang,Piutang_Tidak_Terbayar,Lebih_Bayar_Piutang,
-            Penerimaan_Dapur,Kontra_Penerimaan_Dapur,Bayar_Pemesanan_Dapur;
+            Penerimaan_Dapur,Kontra_Penerimaan_Dapur,Bayar_Pemesanan_Dapur,Retur_Beli_Dapur,Kontra_Retur_Beli_Dapur;
     private String copyakun="";
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
@@ -812,6 +812,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Penerimaan_Dapur=tbPengaturan.getValueAt(194,1).toString();
             Kontra_Penerimaan_Dapur=tbPengaturan.getValueAt(195,1).toString();
             Bayar_Pemesanan_Dapur=tbPengaturan.getValueAt(196,1).toString();
+            Retur_Beli_Dapur=tbPengaturan.getValueAt(197,1).toString();
+            Kontra_Retur_Beli_Dapur=tbPengaturan.getValueAt(198,1).toString();
             
             if(Pengadaan_Obat.equals("")||Pemesanan_Obat.equals("")||Kontra_Pemesanan_Obat.equals("")||Bayar_Pemesanan_Obat.equals("")||Penjualan_Obat.equals("")||
                     Piutang_Obat.equals("")||Kontra_Piutang_Obat.equals("")||Retur_Ke_Suplayer.equals("")||Kontra_Retur_Ke_Suplayer.equals("")||
@@ -867,7 +869,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Piutang_BPJS_RVP.equals("")||Sisa_Uang_Muka_Ranap.equals("")||Kontra_Penerimaan_AsetInventaris.equals("")||Kontra_Hibah_Aset.equals("")||
                     Hibah_Non_Medis.equals("")||Kontra_Hibah_Non_Medis.equals("")||Bayar_JM_Dokter.equals("")||PPN_Masukan.equals("")||Stok_Keluar_Dapur.equals("")||
                     Kontra_Stok_Keluar_Dapur.equals("")||Pengadaan_Dapur.equals("")||PPN_Keluaran.equals("")||Diskon_Piutang.equals("")||Piutang_Tidak_Terbayar.equals("")||
-                    Lebih_Bayar_Piutang.equals("")||Penerimaan_Dapur.equals("")||Kontra_Penerimaan_Dapur.equals("")||Bayar_Pemesanan_Dapur.equals("")){
+                    Lebih_Bayar_Piutang.equals("")||Penerimaan_Dapur.equals("")||Kontra_Penerimaan_Dapur.equals("")||Bayar_Pemesanan_Dapur.equals("")||Retur_Beli_Dapur.equals("")||
+                    Kontra_Retur_Beli_Dapur.equals("")){
                     JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
                     tbPengaturan.requestFocus();
             }else{
@@ -925,8 +928,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     PPN_Keluaran,Diskon_Piutang,Piutang_Tidak_Terbayar,Lebih_Bayar_Piutang
                 });
                 Sequel.queryu("delete from set_akun2");
-                Sequel.menyimpan("set_akun2","?,?,?",3,new String[]{
-                    Penerimaan_Dapur,Kontra_Penerimaan_Dapur,Bayar_Pemesanan_Dapur
+                Sequel.menyimpan("set_akun2","?,?,?,?,?",5,new String[]{
+                    Penerimaan_Dapur,Kontra_Penerimaan_Dapur,Bayar_Pemesanan_Dapur,Retur_Beli_Dapur,Kontra_Retur_Beli_Dapur
                 });
                 JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
                 tampil();
@@ -1398,6 +1401,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Penerimaan_Dapur="";
             Kontra_Penerimaan_Dapur="";
             Bayar_Pemesanan_Dapur="";
+            Retur_Beli_Dapur="";
+            Kontra_Retur_Beli_Dapur="";
             
             ps=koneksi.prepareStatement("select * from set_akun_ralan");
             try {
@@ -1664,6 +1669,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Penerimaan_Dapur=rs.getString("Penerimaan_Dapur");
                     Kontra_Penerimaan_Dapur=rs.getString("Kontra_Penerimaan_Dapur");
                     Bayar_Pemesanan_Dapur=rs.getString("Bayar_Pemesanan_Dapur");
+                    Retur_Beli_Dapur=rs.getString("Retur_Beli_Dapur");
+                    Kontra_Retur_Beli_Dapur=rs.getString("Kontra_Retur_Beli_Dapur");
                 }               
             } catch (Exception e) {
                 System.out.println("Notif Set Akun :"+e);
@@ -2660,6 +2667,16 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Bayar_Pemesanan_Dapur),
                 Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Bayar_Pemesanan_Dapur),
                 Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Bayar_Pemesanan_Dapur)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Akun Retur Barang Dapur Kering & Basah Ke Suplier pada menu Retur Ke Suplier Dapur",Retur_Beli_Dapur,
+                Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Retur_Beli_Dapur),
+                Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Retur_Beli_Dapur),
+                Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Retur_Beli_Dapur)
+            });
+            tabMode.addRow(new Object[]{" [Debet] Kontra Akun Retur Barang Dapur Kering & Basah ke Suplier pada menu Retur Ke Suplier Dapur",Kontra_Retur_Beli_Dapur,
+                Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Kontra_Retur_Beli_Dapur),
+                Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Kontra_Retur_Beli_Dapur),
+                Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Kontra_Retur_Beli_Dapur)
             });
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
