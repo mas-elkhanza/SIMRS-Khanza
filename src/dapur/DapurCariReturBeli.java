@@ -771,14 +771,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Penerimaan"); 
             
             Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptReturBeliNonMedis.jasper","report","::[ Transaksi Retur Ke Suplier Barang Non Medis dan Penunjang ( Lab & RO ) ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptReturBeliDapur.jasper","report","::[ Transaksi Retur Ke Suplier Barang Dapur Kering & Basah ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -827,12 +827,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         
                     Sequel.queryu("delete from tampjurnal");
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Retur_Beli_Dapur from set_akun2"),"RETUR BELI NON MEDIS",rs.getString("total"),"0"
+                        Sequel.cariIsi("select Retur_Beli_Dapur from set_akun2"),"RETUR BELI DAPUR",rs.getString("total"),"0"
                     });    
                     Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Kontra_Retur_Beli_Dapur from set_akun2"),"KONTRA RETUR BELI NON MEDIS","0",rs.getString("total")
+                        Sequel.cariIsi("select Kontra_Retur_Beli_Dapur from set_akun2"),"KONTRA RETUR BELI DAPUR","0",rs.getString("total")
                     }); 
-                    sukses=jur.simpanJurnal(rs.getString("no_retur_beli"),"U","BATAL TRANSAKSI RETUR BELI BARANG PENUNJANG/NON MEDIS"+", OLEH "+akses.getkode());
+                    sukses=jur.simpanJurnal(rs.getString("no_retur_beli"),"U","BATAL TRANSAKSI RETUR BELI BARANG DAPUR"+", OLEH "+akses.getkode());
                     
                     if(sukses==true){
                         Sequel.queryu2("delete from dapurreturbeli where no_retur_beli=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
@@ -938,21 +938,22 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             if(!nmbar.getText().equals("")){
                 caribarang= " and dapurbarang.nama_brng like '%"+nmbar.getText()+"%' ";
             }
+            if(!Jenis.getSelectedItem().toString().equals("Semua")){
+                caribarang= " and dapurbarang.jenis like '%"+Jenis.getSelectedItem().toString()+"%' ";
+            }
+            
             ps=koneksi.prepareStatement(
                     "select dapurreturbeli.no_retur_beli,dapurreturbeli.kode_suplier,dapursuplier.nama_suplier, "+
                     "dapurreturbeli.nip,petugas.nama,dapurreturbeli.tgl_retur,dapurreturbeli.catatan "+
-                    " from dapurreturbeli inner join dapursuplier inner join petugas  "+
-                    " inner join dapur_detail_returbeli inner join dapurbarang inner join kodesatuan "+
-                    " inner join dapurjenisbarang "+
-                    " on dapur_detail_returbeli.kode_brng=dapurbarang.kode_brng "+
-                    " and dapur_detail_returbeli.kode_sat=kodesatuan.kode_sat "+
-                    " and dapurreturbeli.no_retur_beli=dapur_detail_returbeli.no_retur_beli "+
-                    " and dapurreturbeli.kode_suplier=dapursuplier.kode_suplier "+
-                    " and dapurreturbeli.nip=petugas.nip and dapurbarang.jenis=dapurjenisbarang.kd_jenis"+
-                    " where dapurreturbeli.tgl_retur between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' "+carifaktur+carisuplier+caripetugas+carijenis+caribarang+
+                    "from dapurreturbeli inner join dapursuplier on dapurreturbeli.kode_suplier=dapursuplier.kode_suplier "+
+                    "inner join petugas on dapurreturbeli.nip=petugas.nip "+
+                    "inner join dapur_detail_returbeli on dapurreturbeli.no_retur_beli=dapur_detail_returbeli.no_retur_beli "+
+                    "inner join dapurbarang on dapur_detail_returbeli.kode_brng=dapurbarang.kode_brng "+
+                    "inner join kodesatuan on dapur_detail_returbeli.kode_sat=kodesatuan.kode_sat where "+
+                    "dapurreturbeli.tgl_retur between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' "+carifaktur+carisuplier+caripetugas+carijenis+caribarang+
                     (TCari.getText().trim().equals("")?"":" and (dapurreturbeli.no_retur_beli like '%"+TCari.getText()+"%' or dapurreturbeli.kode_suplier like '%"+TCari.getText()+"%' or dapursuplier.nama_suplier like '%"+TCari.getText()+"%' or "+
                     " dapurreturbeli.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%' or dapur_detail_returbeli.kode_brng like '%"+TCari.getText()+"%' or "+
-                    " dapurbarang.nama_brng like '%"+TCari.getText()+"%' or dapur_detail_returbeli.kode_sat like '%"+TCari.getText()+"%' or dapurjenisbarang.nm_jenis like '%"+TCari.getText()+"%') ")+
+                    " dapurbarang.nama_brng like '%"+TCari.getText()+"%' or dapur_detail_returbeli.kode_sat like '%"+TCari.getText()+"%' or dapurbarang.jenis like '%"+TCari.getText()+"%') ")+
                     " group by dapurreturbeli.no_retur_beli order by dapurreturbeli.tgl_retur,dapurreturbeli.no_retur_beli ");
             try {
                 rs=ps.executeQuery();
@@ -965,13 +966,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     ps2=koneksi.prepareStatement("select dapur_detail_returbeli.kode_brng,dapurbarang.nama_brng, "+
                         "dapur_detail_returbeli.kode_sat,kodesatuan.satuan,dapur_detail_returbeli.jml_retur,dapur_detail_returbeli.h_retur, "+
                         "dapur_detail_returbeli.h_beli,dapur_detail_returbeli.total,dapur_detail_returbeli.no_faktur "+
-                        "from dapur_detail_returbeli inner join dapurbarang inner join kodesatuan inner join dapurjenisbarang "+
-                        " on dapur_detail_returbeli.kode_brng=dapurbarang.kode_brng and dapurbarang.jenis=dapurjenisbarang.kd_jenis "+
-                        " and dapur_detail_returbeli.kode_sat=kodesatuan.kode_sat where "+
-                        " dapur_detail_returbeli.no_retur_beli='"+rs.getString("no_retur_beli")+"'"+carijenis+caribarang+
-                        " and (dapur_detail_returbeli.kode_brng like '%"+TCari.getText().trim()+"%' or dapurbarang.nama_brng like '%"+TCari.getText().trim()+"%' or "+
-                        " dapur_detail_returbeli.kode_sat like '%"+TCari.getText().trim()+"%' or dapurjenisbarang.nm_jenis like '%"+TCari.getText().trim()+"%' or "+
-                        " dapur_detail_returbeli.no_faktur like '%"+TCari.getText().trim()+"%') "+
+                        "from dapur_detail_returbeli inner join dapurbarang on dapur_detail_returbeli.kode_brng=dapurbarang.kode_brng "+
+                        "inner join kodesatuan on dapur_detail_returbeli.kode_sat=kodesatuan.kode_sat where "+
+                        "dapur_detail_returbeli.no_retur_beli='"+rs.getString("no_retur_beli")+"'"+carijenis+caribarang+
+                        (TCari.getText().trim().equals("")?"":" and (dapur_detail_returbeli.kode_brng like '%"+TCari.getText().trim()+"%' or "+
+                        "dapurbarang.nama_brng like '%"+TCari.getText().trim()+"%' or dapur_detail_returbeli.kode_sat like '%"+TCari.getText().trim()+"%' or "+
+                        "dapurbarang.jenis like '%"+TCari.getText().trim()+"%' or dapur_detail_returbeli.no_faktur like '%"+TCari.getText().trim()+"%') ")+
                         "order by dapur_detail_returbeli.kode_brng  ");
                     try {
                         rs2=ps2.executeQuery();
