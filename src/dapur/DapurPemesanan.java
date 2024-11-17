@@ -1341,7 +1341,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
             kdptg.setText(akses.getkode());
-            BtnSimpan.setEnabled(akses.getpenerimaan_non_medis());
+            BtnSimpan.setEnabled(akses.getdapur_pemesanan());
             BtnTambah.setEnabled(akses.getdapur_barang());
             nmptg.setText(form.petugas.tampil3(kdptg.getText()));
         }        
@@ -1353,20 +1353,19 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     public void tampil(String noorder) {
         NoOrder.setText(noorder);
-        kdsup.setText(Sequel.cariIsi("select surat_pemesanan_non_medis.kode_suplier from surat_pemesanan_non_medis where surat_pemesanan_non_medis.no_pemesanan=?",noorder));
+        kdsup.setText(Sequel.cariIsi("select surat_pemesanan_dapur.kode_suplier from surat_pemesanan_dapur where surat_pemesanan_dapur.no_pemesanan=?",noorder));
         nmsup.setText(Sequel.cariIsi("select dapursuplier.nama_suplier from dapursuplier where dapursuplier.kode_suplier=?",kdsup.getText()));
-        meterai=Sequel.cariIsiAngka("select surat_pemesanan_non_medis.meterai from surat_pemesanan_non_medis where surat_pemesanan_non_medis.no_pemesanan=?",noorder);
-        ppn=Sequel.cariIsiAngka("select surat_pemesanan_non_medis.ppn from surat_pemesanan_non_medis where surat_pemesanan_non_medis.no_pemesanan=?",noorder);
+        meterai=Sequel.cariIsiAngka("select surat_pemesanan_dapur.meterai from surat_pemesanan_dapur where surat_pemesanan_dapur.no_pemesanan=?",noorder);
+        ppn=Sequel.cariIsiAngka("select surat_pemesanan_dapur.ppn from surat_pemesanan_dapur where surat_pemesanan_dapur.no_pemesanan=?",noorder);
         Meterai.setText(Valid.SetAngka2(meterai));
         try{
             Valid.tabelKosong(tabMode);
             ps=koneksi.prepareStatement(
-                "select detail_surat_pemesanan_non_medis.kode_brng,concat(dapurbarang.nama_brng,' (',dapurbarang.jenis,')') as nama_brng, "+
-                "detail_surat_pemesanan_non_medis.kode_sat,detail_surat_pemesanan_non_medis.jumlah,detail_surat_pemesanan_non_medis.h_pesan, "+
-                "detail_surat_pemesanan_non_medis.subtotal,detail_surat_pemesanan_non_medis.dis,detail_surat_pemesanan_non_medis.besardis,detail_surat_pemesanan_non_medis.total "+
-                "from detail_surat_pemesanan_non_medis inner join dapurbarang "+
-                " on detail_surat_pemesanan_non_medis.kode_brng=dapurbarang.kode_brng "+
-                " where detail_surat_pemesanan_non_medis.no_pemesanan=? order by dapurbarang.nama_brng");
+                "select detail_surat_pemesanan_dapur.kode_brng,concat(dapurbarang.nama_brng,' (',dapurbarang.jenis,')') as nama_brng, "+
+                "detail_surat_pemesanan_dapur.kode_sat,detail_surat_pemesanan_dapur.jumlah,detail_surat_pemesanan_dapur.h_pesan, "+
+                "detail_surat_pemesanan_dapur.subtotal,detail_surat_pemesanan_dapur.dis,detail_surat_pemesanan_dapur.besardis,detail_surat_pemesanan_dapur.total "+
+                "from detail_surat_pemesanan_dapur inner join dapurbarang on detail_surat_pemesanan_dapur.kode_brng=dapurbarang.kode_brng "+
+                "where detail_surat_pemesanan_dapur.no_pemesanan=? order by dapurbarang.nama_brng");
             try {
                 ps.setString(1,noorder);
                 rs=ps.executeQuery();
