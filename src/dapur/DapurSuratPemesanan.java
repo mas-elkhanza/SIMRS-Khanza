@@ -307,7 +307,7 @@ public class DapurSuratPemesanan extends javax.swing.JDialog {
         DlgCetak.setUndecorated(true);
         DlgCetak.setResizable(false);
 
-        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Pemesanan Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
+        internalFrame5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Cetak Surat Pemesanan Barang Dapur Kering & Basah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
         internalFrame5.setName("internalFrame5"); // NOI18N
         internalFrame5.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1250,7 +1250,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 param.put("petugas",nmptg.getText()); 
                 param.put("kabidkeu",KabidKeu.getText()); 
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptSuratPemesananDapur.jasper","report","::[ Transaksi Pemesanan Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptSuratPemesananDapur.jasper","report","::[ Transaksi Pemesanan Barang Dapur ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrint5ActionPerformed
@@ -1375,8 +1375,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             iyem="";
             
             ps=koneksi.prepareStatement("select dapurbarang.kode_brng, dapurbarang.nama_brng,dapurbarang.kode_sat, "+
-                " dapurbarang.harga from dapurbarang inner join dapurjenisbarang on dapurbarang.jenis=dapurjenisbarang.kd_jenis "+
-                " where dapurbarang.status='1' order by dapurbarang.nama_brng");
+                " dapurbarang.harga from dapurbarang where dapurbarang.status='1' order by dapurbarang.nama_brng");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -1581,10 +1580,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     public void panggilgetData(String nopengajuan){
         try{
             ps=koneksi.prepareStatement(
-                "select dapurbarang.kode_brng, dapurbarang.nama_brng,dapurbarang.kode_sat,detail_pengajuan_barang_nonmedis.jumlah,detail_pengajuan_barang_nonmedis.total,"+
-                " detail_pengajuan_barang_nonmedis.h_pengajuan from dapurbarang inner join dapurjenisbarang inner join detail_pengajuan_barang_nonmedis "+
-                " on dapurbarang.jenis=dapurjenisbarang.kd_jenis and dapurbarang.kode_brng=detail_pengajuan_barang_nonmedis.kode_brng "+
-                " where detail_pengajuan_barang_nonmedis.no_pengajuan=?");
+                "select dapurbarang.kode_brng, dapurbarang.nama_brng,dapurbarang.kode_sat,detail_pengajuan_barang_dapur.jumlah,detail_pengajuan_barang_dapur.total,"+
+                " detail_pengajuan_barang_dapur.h_pengajuan from dapurbarang inner join dapurjenisbarang inner join detail_pengajuan_barang_dapur "+
+                " on dapurbarang.jenis=dapurjenisbarang.kd_jenis and dapurbarang.kode_brng=detail_pengajuan_barang_dapur.kode_brng "+
+                " where detail_pengajuan_barang_dapur.no_pengajuan=?");
             try {
                 ps.setString(1,nopengajuan);
                 rs=ps.executeQuery();

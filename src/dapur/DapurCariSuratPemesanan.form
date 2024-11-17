@@ -131,7 +131,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="::[ Cetak Surat Pemesanan Barang Non Medis dan Penunjang ( Lab &amp; RO ) ]::">
+                <TitledBorder title="::[ Cetak Surat Pemesanan Barang Dapur Kering &amp; Basah ]::">
                   <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
                       <Color PropertyName="color" blue="e1" green="eb" red="e6" type="rgb"/>

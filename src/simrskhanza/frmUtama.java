@@ -45780,7 +45780,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnValidasiTagihanDapur.addActionListener(this::btnValidasiTagihanDapurActionPerformed);
         
         btnSuratPemesananDapur = new widget.ButtonBig();
-        btnSuratPemesananDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2570321_business_checklist_company_economic_finance_icon.png"))); 
+        btnSuratPemesananDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2570304_business_company_economic_finance_interprise_icon.png"))); 
         btnSuratPemesananDapur.setText("Surat Pemesanan Barang Dapur");
         btnSuratPemesananDapur.setIconTextGap(0);
         btnSuratPemesananDapur.setName("btnSuratPemesananDapur"); 
