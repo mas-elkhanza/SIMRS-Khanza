@@ -646,6 +646,7 @@ import dapur.DapurRingkasanPemesananBarang;
 import dapur.DapurRingkasanPenerimaanBarang;
 import dapur.DapurRingkasanPengadaanBarang;
 import dapur.DapurRingkasanPengajuanBarang;
+import dapur.DapurRingkasanReturBeliBarang;
 import dapur.DapurRiwayatBarang;
 import dapur.DapurSuratPemesanan;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
@@ -22066,6 +22067,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnRingkasanReturBeliDapurActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurRingkasanReturBeliBarang aplikasi=new DapurRingkasanReturBeliBarang(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22764,7 +22776,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
             btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal,btnPenerimaanBarangDapur,btnBayarPesanDapur,
             btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur,btnSuratPemesananDapur,btnPengajuanBarangDapur,btnReturBarangDapur,btnHibahDapur,btnRingkasanPenerimaanDapur,
-            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur;
+            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur;
     
     public void isWall(){
         try{            
@@ -22834,6 +22846,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 isCariKosong();                
             }else if(!TCari.getText().equals("")){
                 isCariIsi();
+                isCariIsi2();
             }    
         }
             
@@ -23961,6 +23974,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdapur_returbeli()==true){
                 Panelmenu.add(btnReturBarangDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getringkasan_returbeli_dapur()==true){
+                Panelmenu.add(btnRingkasanReturBeliDapur);
                 jmlmenu++;
             }
             
@@ -29332,6 +29350,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdapur_returbeli()==true){
             Panelmenu.add(btnReturBarangDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getringkasan_returbeli_dapur()==true){
+            Panelmenu.add(btnRingkasanReturBeliDapur);
             jmlmenu++;
         }
 
@@ -35112,6 +35135,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdapur_returbeli()==true){
             if(btnReturBarangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnReturBarangDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getringkasan_returbeli_dapur()==true){
+            if(btnRingkasanReturBeliDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanReturBeliDapur);
                 jmlmenu++;
             }                
         }
@@ -41090,7 +41120,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-        
+    }
+    
+    private void isCariIsi2() {
         if(akses.getjam_diet_pasien()==true){
             if(btnJamDietPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJamDietPasien);
@@ -45398,7 +45430,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnRingkasanPengadaanDapur = new widget.ButtonBig();
         btnRingkasanPengadaanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
-        btnRingkasanPengadaanDapur.setText("Ringkasan Pengadaan Barang Dapur");
+        btnRingkasanPengadaanDapur.setText("Ringkasan Pengadaan Dapur");
         btnRingkasanPengadaanDapur.setIconTextGap(0);
         btnRingkasanPengadaanDapur.setName("btnRingkasanPengadaanDapur");
         btnRingkasanPengadaanDapur.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46027,5 +46059,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPemesananDapur.setName("btnRingkasanPemesananDapur");
         btnRingkasanPemesananDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanPemesananDapur.addActionListener(this::btnRingkasanPemesananDapurActionPerformed);
+        
+        
+        btnRingkasanReturBeliDapur = new widget.ButtonBig();
+        btnRingkasanReturBeliDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
+        btnRingkasanReturBeliDapur.setText("Ringkasan Retur Suplier Dapur");
+        btnRingkasanReturBeliDapur.setIconTextGap(0);
+        btnRingkasanReturBeliDapur.setName("btnRingkasanReturBeliDapur");
+        btnRingkasanReturBeliDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanReturBeliDapur.addActionListener(this::btnRingkasanReturBeliDapurActionPerformed);
     }
 }
