@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
 
-public class DapurRingkasanPengadaan extends javax.swing.JDialog {
+public class DapurRingkasanPengadaanBarang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -41,7 +41,7 @@ public class DapurRingkasanPengadaan extends javax.swing.JDialog {
     /** Creates new form DlgProgramStudi
      * @param parent
      * @param modal */
-    public DapurRingkasanPengadaan(java.awt.Frame parent, boolean modal) {
+    public DapurRingkasanPengadaanBarang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -1016,7 +1016,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DapurRingkasanPengadaan dialog = new DapurRingkasanPengadaan(new javax.swing.JFrame(), true);
+            DapurRingkasanPengadaanBarang dialog = new DapurRingkasanPengadaanBarang(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {

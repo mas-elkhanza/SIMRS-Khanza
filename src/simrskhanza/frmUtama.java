@@ -644,7 +644,7 @@ import dapur.DapurRHPembelian;
 import dapur.DapurReturBeli;
 import dapur.DapurRingkasanPemesananBarang;
 import dapur.DapurRingkasanPenerimaanBarang;
-import dapur.DapurRingkasanPengadaan;
+import dapur.DapurRingkasanPengadaanBarang;
 import dapur.DapurRingkasanPengajuanBarang;
 import dapur.DapurRiwayatBarang;
 import dapur.DapurSuratPemesanan;
@@ -21093,7 +21093,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
     private void btnRingkasanPengadaanDapurActionPerformed(java.awt.event.ActionEvent evt) {
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DapurRingkasanPengadaan aplikasi=new DapurRingkasanPengadaan(this,false);
+        DapurRingkasanPengadaanBarang aplikasi=new DapurRingkasanPengadaanBarang(this,false);
         aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         aplikasi.setLocationRelativeTo(PanelUtama);
         aplikasi.setVisible(true);
@@ -23934,6 +23934,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getdapur_ringkasan_pembelian()==true){
+                Panelmenu.add(btnRingkasanPengadaanDapur);
+                jmlmenu++;
+            }
+            
             if(akses.getdapur_pemesanan()==true){
                 Panelmenu.add(btnPenerimaanBarangDapur);
                 jmlmenu++;
@@ -23976,11 +23981,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getrekap_pengadaan_dapur()==true){
                 Panelmenu.add(btnRekapPengadaanDapur);
-                jmlmenu++;
-            }
-            
-            if(akses.getdapur_ringkasan_pembelian()==true){
-                Panelmenu.add(btnRingkasanPengadaanDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -29304,6 +29304,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             Panelmenu.add(btnPembelianDapur);
             jmlmenu++;
         }
+
+        if(akses.getdapur_ringkasan_pembelian()==true){
+            Panelmenu.add(btnRingkasanPengadaanDapur);
+            jmlmenu++;
+        }
         
         if(akses.getdapur_pemesanan()==true){
             Panelmenu.add(btnPenerimaanBarangDapur);
@@ -29347,11 +29352,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getrekap_pengadaan_dapur()==true){
             Panelmenu.add(btnRekapPengadaanDapur);
-            jmlmenu++;
-        }
-
-        if(akses.getdapur_ringkasan_pembelian()==true){
-            Panelmenu.add(btnRingkasanPengadaanDapur);
             jmlmenu++;
         }
 
@@ -35074,6 +35074,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getdapur_ringkasan_pembelian()==true){
+            if(btnRingkasanPengadaanDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanPengadaanDapur);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getdapur_pemesanan()==true){
             if(btnPenerimaanBarangDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenerimaanBarangDapur);
@@ -35133,13 +35140,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getrekap_pengadaan_dapur()==true){
             if(btnRekapPengadaanDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnRekapPengadaanDapur);
-                jmlmenu++;
-            }                
-        }
-        
-        if(akses.getdapur_ringkasan_pembelian()==true){
-            if(btnRingkasanPengadaanDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
-                Panelmenu.add(btnRingkasanPengadaanDapur);
                 jmlmenu++;
             }                
         }
