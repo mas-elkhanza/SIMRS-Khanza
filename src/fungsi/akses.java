@@ -236,7 +236,7 @@ public final class akses {
             catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,skrining_puma=false,satu_sehat_kirim_careplan=false,satu_sehat_kirim_medicationstatement=false,
             skrining_adiksi_nikotin=false,skrining_thalassemia=false,skrining_instrumen_sdq=false,skrining_instrumen_srq=false,checklist_pemberian_fibrinolitik=false,
             skrining_kanker_kolorektal=false,dapur_pemesanan=false,bayar_pesan_dapur=false,hutang_dapur=false,titip_faktur_dapur=false,validasi_tagihan_dapur=false,
-            surat_pemesanan_dapur=false,pengajuan_barang_dapur=false,dapur_returbeli=false;
+            surat_pemesanan_dapur=false,pengajuan_barang_dapur=false,dapur_returbeli=false,hibah_dapur=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1339,6 +1339,7 @@ public final class akses {
                         akses.surat_pemesanan_dapur=true;
                         akses.pengajuan_barang_dapur=true;
                         akses.dapur_returbeli=true;
+                        akses.hibah_dapur=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2425,6 +2426,7 @@ public final class akses {
                         akses.surat_pemesanan_dapur=rs2.getBoolean("surat_pemesanan_dapur");
                         akses.pengajuan_barang_dapur=rs2.getBoolean("pengajuan_barang_dapur");
                         akses.dapur_returbeli=rs2.getBoolean("dapur_returbeli");
+                        akses.hibah_dapur=rs2.getBoolean("hibah_dapur");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3509,6 +3511,7 @@ public final class akses {
                         akses.surat_pemesanan_dapur=false;
                         akses.pengajuan_barang_dapur=false;
                         akses.dapur_returbeli=false;
+                        akses.hibah_dapur=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4616,6 +4619,7 @@ public final class akses {
         akses.surat_pemesanan_dapur=false;
         akses.pengajuan_barang_dapur=false;
         akses.dapur_returbeli=false;
+        akses.hibah_dapur=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5739,4 +5743,5 @@ public final class akses {
     public static boolean getsurat_pemesanan_dapur(){return akses.surat_pemesanan_dapur;}
     public static boolean getpengajuan_barang_dapur(){return akses.pengajuan_barang_dapur;}
     public static boolean getdapur_returbeli(){return akses.dapur_returbeli;}
+    public static boolean gethibah_dapur(){return akses.hibah_dapur;}
 }   

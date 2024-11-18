@@ -1,8 +1,5 @@
 package dapur;
 
-
-
-import ipsrs.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable2;
@@ -51,8 +48,8 @@ public class DapurHibah extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
-    private IPSRSCariHibah form=new IPSRSCariHibah(null,false);
-    private riwayatnonmedis Trackbarang=new riwayatnonmedis();
+    private DapurCariHibah form=new DapurCariHibah(null,false);
+    private riwayatdapur Trackbarang=new riwayatdapur();
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -157,7 +154,7 @@ public class DapurHibah extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("IPSRSHibah")){
+                if(akses.getform().equals("DapurHibah")){
                     if(form.asalhibah.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(form.asalhibah.getTable().getValueAt(form.asalhibah.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(form.asalhibah.getTable().getValueAt(form.asalhibah.getTable().getSelectedRow(),1).toString());
@@ -180,7 +177,7 @@ public class DapurHibah extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("IPSRSHibah")){
+                if(akses.getform().equals("DapurHibah")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         form.asalhibah.dispose();
                     }                
@@ -197,7 +194,7 @@ public class DapurHibah extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("IPSRSHibah")){
+                if(akses.getform().equals("DapurHibah")){
                     if(form.petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(form.petugas.getTable().getValueAt(form.petugas.getTable().getSelectedRow(),1).toString());
@@ -289,7 +286,7 @@ public class DapurHibah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Hibah Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Transaksi Hibah Barang Dapur Kering & Basah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -604,8 +601,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        akses.setform("IPSRSHibah");
-        IPSRSBarang barang=new IPSRSBarang(null,false);
+        akses.setform("DapurHibah");
+        DapurBarang barang=new DapurBarang(null,false);
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -697,18 +694,18 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 Sequel.AutoComitFalse();
                 sukses=true;
                 
-                if(Sequel.menyimpantf2("ipsrs_hibah","?,?,?,?,?,?","No.Hibah",6,new String[]{
+                if(Sequel.menyimpantf2("dapur_hibah","?,?,?,?,?,?","No.Hibah",6,new String[]{
                     NoFaktur.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglBeli.getSelectedItem()+""),sbttl+"",Keterangan.getText()
                 })==true){
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){  
                         if(Valid.SetAngka(tbDokter.getValueAt(i,0).toString())>0){
-                            if(Sequel.menyimpantf2("ipsrs_detail_hibah","?,?,?,?,?,?","Transaksi Hibah",6,new String[]{
+                            if(Sequel.menyimpantf2("dapur_detail_hibah","?,?,?,?,?,?","Transaksi Hibah",6,new String[]{
                                 NoFaktur.getText(),tbDokter.getValueAt(i,1).toString(),tbDokter.getValueAt(i,3).toString(),
                                 tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,4).toString(),tbDokter.getValueAt(i,5).toString()
                             })==true){
                                 Trackbarang.catatRiwayat(tbDokter.getValueAt(i,1).toString(),Valid.SetAngka(tbDokter.getValueAt(i,0).toString()),0,"Hibah", akses.getkode(),"Simpan");
-                                Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok+?",2,new String[]{
+                                Sequel.mengedit("dapurbarang","kode_brng=?","stok=stok+?",2,new String[]{
                                     tbDokter.getValueAt(i,0).toString(),tbDokter.getValueAt(i,1).toString()
                                 });
                             }else{
@@ -722,9 +719,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                    
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Hibah_Non_Medis from set_akun"),"PERSEDIAAN BARANG NON MEDIS",""+(sbttl),"0"});
-                    Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Hibah_Non_Medis from set_akun"),"PENDAPATAN HIBAH","0",""+(sbttl)}); 
-                    sukses=jur.simpanJurnal(NoFaktur.getText(),"U","HIBAH BARANG NON MEDIS, OLEH "+akses.getkode());  
+                    Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Hibah_Dapur from set_akun2"),"PERSEDIAAN BARANG DAPUR",""+(sbttl),"0"});
+                    Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Hibah_Dapur from set_akun2"),"PENDAPATAN HIBAH","0",""+(sbttl)}); 
+                    sukses=jur.simpanJurnal(NoFaktur.getText(),"U","HIBAH BARANG DAPUR, OLEH "+akses.getkode());  
                 }
                 
                 if(sukses==true){
@@ -798,7 +795,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_TglBeliKeyPressed
 
     private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        akses.setform("IPSRSHibah");
+        akses.setform("DapurHibah");
         form.asalhibah.emptTeks();
         form.asalhibah.isCek();
         form.asalhibah.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -808,7 +805,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_btnSuplierActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("IPSRSHibah");
+        akses.setform("DapurHibah");
         form.petugas.emptTeks();
         form.petugas.isCek();
         form.petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -889,13 +886,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private void tampil() {
         try{
             Valid.tabelKosong(tabMode);
-            file=new File("./cache/hibahipsrs.iyem");
+            file=new File("./cache/hibahdapur.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             iyem="";
             ps=koneksi.prepareStatement(
-                    "select ipsrsbarang.kode_brng, concat(ipsrsbarang.nama_brng,' (',ipsrsjenisbarang.nm_jenis,')'),ipsrsbarang.kode_sat,ipsrsbarang.harga "+
-                    " from ipsrsbarang inner join ipsrsjenisbarang on ipsrsjenisbarang.kd_jenis=ipsrsbarang.jenis where ipsrsbarang.status='1' order by ipsrsbarang.nama_brng");
+                    "select dapurbarang.kode_brng, dapurbarang.nama_brng,dapurbarang.kode_sat,dapurbarang.harga "+
+                    " from dapurbarang where dapurbarang.status='1' order by dapurbarang.nama_brng");
             try{   
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -912,7 +909,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     ps.close();
                 }
             }             
-            fileWriter.write("{\"hibahipsrs\":["+iyem.substring(0,iyem.length()-1)+"]}");
+            fileWriter.write("{\"hibahdapur\":["+iyem.substring(0,iyem.length()-1)+"]}");
             fileWriter.flush();
             fileWriter.close();
             iyem=null;  
@@ -961,9 +958,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],harga[i],subtotal[i]});
             }
             
-            myObj = new FileReader("./cache/hibahipsrs.iyem");
+            myObj = new FileReader("./cache/hibahdapur.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("hibahipsrs");
+            response = root.path("hibahdapur");
             if(response.isArray()){
                 if(TCari.getText().trim().equals("")){
                     for(JsonNode list:response){
@@ -1027,17 +1024,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             kdptg.setEditable(false);
             btnPetugas.setEnabled(false);
             kdptg.setText(akses.getkode());
-            BtnSimpan.setEnabled(akses.gethibah_non_medis());
-            BtnTambah.setEnabled(akses.getipsrs_barang());
+            BtnSimpan.setEnabled(akses.gethibah_dapur());
+            BtnTambah.setEnabled(akses.getdapur_barang());
             nmptg.setText(form.petugas.tampil3(kdptg.getText()));
         }        
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_hibah,3),signed)),0) from ipsrs_hibah where tgl_hibah='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"' ",
-                "HN"+TglBeli.getSelectedItem().toString().substring(6,10)+TglBeli.getSelectedItem().toString().substring(3,5)+TglBeli.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(dapur_hibah.no_hibah,3),signed)),0) from dapur_hibah where dapur_hibah.tgl_hibah='"+Valid.SetTgl(TglBeli.getSelectedItem()+"")+"' ",
+                "HD"+TglBeli.getSelectedItem().toString().substring(6,10)+TglBeli.getSelectedItem().toString().substring(3,5)+TglBeli.getSelectedItem().toString().substring(0,2),3,NoFaktur); 
     }
-
-    
  
 }

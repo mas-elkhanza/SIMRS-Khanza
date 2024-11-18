@@ -1,5 +1,5 @@
 package dapur;
-import ipsrs.*;
+
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -33,13 +33,13 @@ public class DapurCariHibah extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     public  InventarisAsalHibah asalhibah=new InventarisAsalHibah(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    public  IPSRSBarang barang=new IPSRSBarang(null,false);
+    public  DapurBarang barang=new DapurBarang(null,false);
     private PreparedStatement ps,ps2,pscaribeli;
     private ResultSet rs,rs2;
     private double totalhibah=0;
     private Jurnal jur=new Jurnal();
     private boolean sukses=false;
-    private riwayatnonmedis Trackbarang=new riwayatnonmedis();
+    private riwayatdapur Trackbarang=new riwayatdapur();
     private int i=0;
 
     /** Creates new form DlgProgramStudi
@@ -112,7 +112,7 @@ public class DapurCariHibah extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("IPSRSCariHibah")){
+                if(akses.getform().equals("DapurCariHibah")){
                     if(asalhibah.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(asalhibah.getTable().getValueAt(asalhibah.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(asalhibah.getTable().getValueAt(asalhibah.getTable().getSelectedRow(),1).toString());
@@ -135,7 +135,7 @@ public class DapurCariHibah extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("IPSRSCariHibah")){
+                if(akses.getform().equals("DapurCariHibah")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         asalhibah.dispose();
                     }                
@@ -152,7 +152,7 @@ public class DapurCariHibah extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("IPSRSCariHibah")){
+                if(akses.getform().equals("DapurCariHibah")){
                     if(petugas.getTable().getSelectedRow()!= -1){                   
                         kdptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                         nmptg.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
@@ -177,7 +177,7 @@ public class DapurCariHibah extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("IPSRSCariHibah")){
+                if(akses.getform().equals("DapurCariHibah")){
                     if(barang.getTable().getSelectedRow()!= -1){                   
                         kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());                    
                         nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
@@ -200,7 +200,7 @@ public class DapurCariHibah extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("IPSRSCariHibah")){
+                if(akses.getform().equals("DapurCariHibah")){
                     if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         barang.dispose();
                     }                
@@ -209,32 +209,6 @@ public class DapurCariHibah extends javax.swing.JDialog {
             @Override
             public void keyReleased(KeyEvent e) {}
         });
-        
-        barang.jenis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("IPSRSCariHibah")){
-                    if(barang.jenis.getTable().getSelectedRow()!= -1){                   
-                        kdjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),0).toString());                    
-                        nmjenis.setText(barang.jenis.getTable().getValueAt(barang.jenis.getTable().getSelectedRow(),1).toString());
-                    }   
-                    kdjenis.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
     }
 
     /** This method is called from within the constructor to
@@ -266,10 +240,8 @@ public class DapurCariHibah extends javax.swing.JDialog {
         kdbar = new widget.TextBox();
         nmbar = new widget.TextBox();
         btnBarang = new widget.Button();
-        label7 = new widget.Label();
-        kdjenis = new widget.TextBox();
-        nmjenis = new widget.TextBox();
-        btnJenis = new widget.Button();
+        jLabel9 = new widget.Label();
+        Jenis = new widget.ComboBox();
         panelisi3 = new widget.panelisi();
         label15 = new widget.Label();
         NoFaktur = new widget.TextBox();
@@ -313,7 +285,7 @@ public class DapurCariHibah extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Hibah Barang Non Medis dan Penunjang ( Lab & RO ) ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Hibah Barang Dapur Kering & Basah ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -480,35 +452,15 @@ public class DapurCariHibah extends javax.swing.JDialog {
         panelisi4.add(btnBarang);
         btnBarang.setBounds(734, 10, 28, 23);
 
-        label7.setText("Jenis :");
-        label7.setName("label7"); // NOI18N
-        panelisi4.add(label7);
-        label7.setBounds(0, 10, 42, 23);
+        jLabel9.setText("Jenis Barang :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        panelisi4.add(jLabel9);
+        jLabel9.setBounds(0, 10, 90, 23);
 
-        kdjenis.setEditable(false);
-        kdjenis.setName("kdjenis"); // NOI18N
-        kdjenis.setPreferredSize(new java.awt.Dimension(207, 23));
-        panelisi4.add(kdjenis);
-        kdjenis.setBounds(45, 10, 61, 23);
-
-        nmjenis.setEditable(false);
-        nmjenis.setName("nmjenis"); // NOI18N
-        nmjenis.setPreferredSize(new java.awt.Dimension(207, 23));
-        panelisi4.add(nmjenis);
-        nmjenis.setBounds(108, 10, 180, 23);
-
-        btnJenis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnJenis.setMnemonic('1');
-        btnJenis.setToolTipText("Alt+1");
-        btnJenis.setName("btnJenis"); // NOI18N
-        btnJenis.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnJenis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnJenisActionPerformed(evt);
-            }
-        });
-        panelisi4.add(btnJenis);
-        btnJenis.setBounds(290, 10, 25, 23);
+        Jenis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Kering", "Basah" }));
+        Jenis.setName("Jenis"); // NOI18N
+        panelisi4.add(Jenis);
+        Jenis.setBounds(94, 10, 120, 23);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -652,7 +604,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        akses.setform("IPSRSCariHibah");
+        akses.setform("DapurCariHibah");
         asalhibah.emptTeks();
         asalhibah.isCek();
         asalhibah.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -662,7 +614,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnSuplierActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        akses.setform("IPSRSCariHibah");
+        akses.setform("DapurCariHibah");
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -676,7 +628,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_TglBeli1KeyPressed
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        akses.setform("IPSRSCariHibah");
+        akses.setform("DapurCariHibah");
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -721,8 +673,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         TCari.setText("");
         NoFaktur.setText("");
         kdbar.setText("");
-        kdjenis.setText("");
-        nmjenis.setText("");
         nmbar.setText("");
         kdsup.setText("");
         nmsup.setText("");
@@ -791,7 +741,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TCari,"No.Faktur");
         }else{
            try {
-               pscaribeli=koneksi.prepareStatement("select no_hibah,totalhibah,tgl_hibah from ipsrs_hibah where no_hibah=?");
+               pscaribeli=koneksi.prepareStatement("select no_hibah,totalhibah,tgl_hibah from dapur_hibah where no_hibah=?");
                try {
                   pscaribeli.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString());
                   rs=pscaribeli.executeQuery();
@@ -799,13 +749,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       Sequel.AutoComitFalse();
                       sukses=true;
 
-                      ps2=koneksi.prepareStatement("select kode_brng,jumlah from ipsrs_detail_hibah where no_hibah=? ");
+                      ps2=koneksi.prepareStatement("select kode_brng,jumlah from dapur_detail_hibah where no_hibah=? ");
                       try {
                           ps2.setString(1,rs.getString(1));
                           rs2=ps2.executeQuery();
                           while(rs2.next()){
                               Trackbarang.catatRiwayat(rs2.getString("kode_brng"),0,rs2.getDouble("jumlah"),"Hibah", akses.getkode(),"Hapus");
-                              Sequel.mengedit("ipsrsbarang","kode_brng=?","stok=stok-?",2,new String[]{
+                              Sequel.mengedit("dapurbarang","kode_brng=?","stok=stok-?",2,new String[]{
                                      rs2.getString("jumlah"),rs2.getString("kode_brng")
                               });
                           }
@@ -821,12 +771,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       }
                       
                       Sequel.queryu("delete from tampjurnal");
-                      Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Hibah_Non_Medis from set_akun"),"PERSEDIAAN BARANG NON MEDIS","0",rs.getString("totalhibah")});
-                      Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Hibah_Non_Medis from set_akun"),"PENDAPATAN HIBAH",rs.getString("totalhibah"),"0"}); 
-                      sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PEMBATALAN HIBAH BARANG NON MEDIS, OLEH "+akses.getkode());  
+                      Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Hibah_Dapur from set_akun2"),"PERSEDIAAN BARANG DAPUR","0",rs.getString("totalhibah")});
+                      Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Hibah_Dapur from set_akun2"),"PENDAPATAN HIBAH",rs.getString("totalhibah"),"0"}); 
+                      sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PEMBATALAN HIBAH BARANG DAPUR, OLEH "+akses.getkode());  
                       
                       if(sukses==true){
-                          Sequel.queryu2("delete from ipsrs_hibah where no_hibah=?",1,new String[]{rs.getString("no_hibah")});
+                          Sequel.queryu2("delete from dapur_hibah where no_hibah=?",1,new String[]{rs.getString("no_hibah")});
                           Sequel.Commit();
                           tampil();
                       }else{
@@ -859,14 +809,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisActionPerformed
-        akses.setform("IPSRSCariHibah");
-        barang.jenis.isCek();
-        barang.jenis.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        barang.jenis.setLocationRelativeTo(internalFrame1);
-        barang.jenis.setVisible(true);
-    }//GEN-LAST:event_btnJenisActionPerformed
-
     /**
     * @param args the command line arguments
     */
@@ -888,20 +830,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
+    private widget.ComboBox Jenis;
     private widget.Label LTotal;
     private widget.TextBox NoFaktur;
     private widget.TextBox TCari;
     private widget.Tanggal TglBeli1;
     private widget.Tanggal TglBeli2;
     private widget.Button btnBarang;
-    private widget.Button btnJenis;
     private widget.Button btnPetugas;
     private widget.Button btnSuplier;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdbar;
-    private widget.TextBox kdjenis;
     private widget.TextBox kdptg;
     private widget.TextBox kdsup;
     private widget.Label label10;
@@ -911,10 +853,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label15;
     private widget.Label label16;
     private widget.Label label17;
-    private widget.Label label7;
     private widget.Label label9;
     private widget.TextBox nmbar;
-    private widget.TextBox nmjenis;
     private widget.TextBox nmptg;
     private widget.TextBox nmsup;
     private widget.panelisi panelisi1;
@@ -928,25 +868,25 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{            
-            ps=koneksi.prepareStatement("select ipsrs_hibah.tgl_hibah,ipsrs_hibah.no_hibah, "+
-                    "ipsrs_hibah.kode_pemberi,pemberihibah.nama_pemberi, "+
-                    "ipsrs_hibah.nip,petugas.nama,ipsrs_hibah.totalhibah,"+
-                    "ipsrs_hibah.keterangan from "+
-                    "ipsrs_hibah inner join pemberihibah on ipsrs_hibah.kode_pemberi=pemberihibah.kode_pemberi "+
-                    "inner join petugas on ipsrs_hibah.nip=petugas.nip "+
-                    "inner join ipsrs_detail_hibah on ipsrs_hibah.no_hibah=ipsrs_detail_hibah.no_hibah "+
-                    "inner join ipsrsbarang on ipsrs_detail_hibah.kode_brng=ipsrsbarang.kode_brng "+
-                    "inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "+
-                    "where ipsrs_hibah.tgl_hibah between ? and ? and ipsrs_hibah.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and ipsrsjenisbarang.nm_jenis like ? and ipsrsbarang.nama_brng like ? "+
-                    (TCari.getText().trim().equals("")?"":"and (ipsrs_hibah.no_hibah like ? or ipsrs_hibah.kode_pemberi like ? or pemberihibah.nama_pemberi like ? or ipsrs_hibah.nip like ? or petugas.nama like ? or "+
-                    "ipsrsjenisbarang.nm_jenis like ? or ipsrs_detail_hibah.kode_brng like ? or ipsrsbarang.nama_brng like ?)")+" group by ipsrs_hibah.no_hibah order by ipsrs_hibah.tgl_hibah,ipsrs_hibah.no_hibah ");
+            ps=koneksi.prepareStatement("select dapur_hibah.tgl_hibah,dapur_hibah.no_hibah, "+
+                    "dapur_hibah.kode_pemberi,pemberihibah.nama_pemberi, "+
+                    "dapur_hibah.nip,petugas.nama,dapur_hibah.totalhibah,"+
+                    "dapur_hibah.keterangan from "+
+                    "dapur_hibah inner join pemberihibah on dapur_hibah.kode_pemberi=pemberihibah.kode_pemberi "+
+                    "inner join petugas on dapur_hibah.nip=petugas.nip "+
+                    "inner join dapur_detail_hibah on dapur_hibah.no_hibah=dapur_detail_hibah.no_hibah "+
+                    "inner join dapurbarang on dapur_detail_hibah.kode_brng=dapurbarang.kode_brng "+
+                    "inner join dapurjenisbarang on dapurbarang.jenis=dapurjenisbarang.kd_jenis "+
+                    "where dapur_hibah.tgl_hibah between ? and ? and dapur_hibah.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and dapurjenisbarang.nm_jenis like ? and dapurbarang.nama_brng like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (dapur_hibah.no_hibah like ? or dapur_hibah.kode_pemberi like ? or pemberihibah.nama_pemberi like ? or dapur_hibah.nip like ? or petugas.nama like ? or "+
+                    "dapurjenisbarang.nm_jenis like ? or dapur_detail_hibah.kode_brng like ? or dapurbarang.nama_brng like ?)")+" group by dapur_hibah.no_hibah order by dapur_hibah.tgl_hibah,dapur_hibah.no_hibah ");
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
                 ps.setString(3,"%"+NoFaktur.getText()+"%");
                 ps.setString(4,"%"+nmsup.getText()+"%");
                 ps.setString(5,"%"+nmptg.getText()+"%");
-                ps.setString(6,"%"+nmjenis.getText()+"%");
+                ps.setString(6,"%"+Jenis.getSelectedItem().toString()+"%");
                 ps.setString(7,"%"+nmbar.getText()+"%");
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(8,"%"+TCari.getText()+"%");
@@ -964,18 +904,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
                           rs.getString(5)+", "+rs.getString(6),"","",""
                     });      
-                    ps2=koneksi.prepareStatement("select ipsrs_detail_hibah.kode_brng,ipsrsbarang.nama_brng, "+
-                        "ipsrsbarang.jenis,ipsrsjenisbarang.nm_jenis,ipsrs_detail_hibah.jumlah,ipsrs_detail_hibah.h_hibah, "+
-                        "ipsrs_detail_hibah.subtotalhibah,ipsrs_detail_hibah.kode_sat "+
-                        "from ipsrs_detail_hibah inner join ipsrsbarang on ipsrs_detail_hibah.kode_brng=ipsrsbarang.kode_brng "+
-                        "inner join ipsrsjenisbarang on ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis where "+
-                        " ipsrs_detail_hibah.no_hibah=? and ipsrsbarang.nama_brng like ? and ipsrsjenisbarang.nm_jenis like ? "+
-                        (TCari.getText().trim().equals("")?"":"and (ipsrs_detail_hibah.kode_brng like ? or ipsrsbarang.nama_brng like ? or "+
-                        "ipsrsjenisbarang.nm_jenis like ?)")+" order by ipsrs_detail_hibah.kode_brng  ");
+                    ps2=koneksi.prepareStatement("select dapur_detail_hibah.kode_brng,dapurbarang.nama_brng, "+
+                        "dapurbarang.jenis,dapurjenisbarang.nm_jenis,dapur_detail_hibah.jumlah,dapur_detail_hibah.h_hibah, "+
+                        "dapur_detail_hibah.subtotalhibah,dapur_detail_hibah.kode_sat "+
+                        "from dapur_detail_hibah inner join dapurbarang on dapur_detail_hibah.kode_brng=dapurbarang.kode_brng "+
+                        "inner join dapurjenisbarang on dapurbarang.jenis=dapurjenisbarang.kd_jenis where "+
+                        " dapur_detail_hibah.no_hibah=? and dapurbarang.nama_brng like ? and dapurjenisbarang.nm_jenis like ? "+
+                        (TCari.getText().trim().equals("")?"":"and (dapur_detail_hibah.kode_brng like ? or dapurbarang.nama_brng like ? or "+
+                        "dapurjenisbarang.nm_jenis like ?)")+" order by dapur_detail_hibah.kode_brng  ");
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmbar.getText()+"%");
-                        ps2.setString(3,"%"+nmjenis.getText()+"%");
+                        ps2.setString(3,"%"+Jenis.getSelectedItem().toString()+"%");
                         if(!TCari.getText().trim().equals("")){
                             ps2.setString(4,"%"+TCari.getText()+"%");
                             ps2.setString(5,"%"+TCari.getText()+"%");
@@ -1020,8 +960,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     public void emptTeks() {
         kdbar.setText("");
         nmbar.setText("");
-        kdjenis.setText("");
-        nmjenis.setText("");
         NoFaktur.setText("");
         kdsup.setText("");
         nmsup.setText("");
@@ -1031,7 +969,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
     
     public void isCek(){
-        BtnPrint.setEnabled(akses.gethibah_non_medis());
+        BtnPrint.setEnabled(akses.gethibah_dapur());
         if(akses.getkode().equals("Admin Utama")){
             ppHapus.setEnabled(true);
         }else{
