@@ -200,7 +200,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             catatan_observasi_restrain_nonfarma=false,catatan_observasi_ventilator=false,catatan_anestesi_sedasi=false,skrining_puma=false,satu_sehat_kirim_careplan=false,satu_sehat_kirim_medicationstatement=false,
             skrining_adiksi_nikotin=false,skrining_thalassemia=false,skrining_instrumen_sdq=false,skrining_instrumen_srq=false,checklist_pemberian_fibrinolitik=false,skrining_kanker_kolorektal=false,dapur_pemesanan=false,
             bayar_pesan_dapur=false,hutang_dapur=false,titip_faktur_dapur=false,validasi_tagihan_dapur=false,surat_pemesanan_dapur=false,pengajuan_barang_dapur=false,dapur_returbeli=false,hibah_dapur=false,
-            ringkasan_penerimaan_dapur=false;
+            ringkasan_penerimaan_dapur=false,ringkasan_pengajuan_dapur=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -824,7 +824,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         catatan_observasi_restrain_nonfarma=false;catatan_observasi_ventilator=false;catatan_anestesi_sedasi=false;skrining_puma=false;satu_sehat_kirim_careplan=false;satu_sehat_kirim_medicationstatement=false;
         skrining_adiksi_nikotin=false;skrining_thalassemia=false;skrining_instrumen_sdq=false;skrining_instrumen_srq=false;checklist_pemberian_fibrinolitik=false;skrining_kanker_kolorektal=false;dapur_pemesanan=false;
         bayar_pesan_dapur=false;hutang_dapur=false;titip_faktur_dapur=false;validasi_tagihan_dapur=false;surat_pemesanan_dapur=false;pengajuan_barang_dapur=false;dapur_returbeli=false;hibah_dapur=false;
-        ringkasan_penerimaan_dapur=false;
+        ringkasan_penerimaan_dapur=false;ringkasan_pengajuan_dapur=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1065,7 +1065,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.catatan_observasi_ventilator,user.catatan_anestesi_sedasi,user.skrining_puma,user.satu_sehat_kirim_careplan,user.satu_sehat_kirim_medicationstatement,"+
                 "user.skrining_adiksi_nikotin,user.skrining_thalassemia,user.skrining_instrumen_sdq,user.skrining_instrumen_srq,user.checklist_pemberian_fibrinolitik,"+
                 "user.skrining_kanker_kolorektal,user.dapur_pemesanan,user.bayar_pesan_dapur,user.hutang_dapur,user.titip_faktur_dapur,user.validasi_tagihan_dapur,"+
-                "user.surat_pemesanan_dapur,user.pengajuan_barang_dapur,user.dapur_returbeli,user.hibah_dapur,user.ringkasan_penerimaan_dapur from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.surat_pemesanan_dapur,user.pengajuan_barang_dapur,user.dapur_returbeli,user.hibah_dapur,user.ringkasan_penerimaan_dapur,user.ringkasan_pengajuan_dapur from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1189,7 +1189,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     skrining_kekerasan_pada_perempuan=rs.getBoolean("skrining_kekerasan_pada_perempuan");skrining_obesitas=rs.getBoolean("skrining_obesitas");skrining_risiko_kanker_payudara=rs.getBoolean("skrining_risiko_kanker_payudara");skrining_risiko_kanker_paru=rs.getBoolean("skrining_risiko_kanker_paru");skrining_tbc=rs.getBoolean("skrining_tbc");skrining_kesehatan_gigi_mulut_remaja=rs.getBoolean("skrining_kesehatan_gigi_mulut_remaja");penilaian_awal_keperawatan_ranap_bayi=rs.getBoolean("penilaian_awal_keperawatan_ranap_bayi");booking_mcu_perusahaan=rs.getBoolean("booking_mcu_perusahaan");
                     catatan_observasi_restrain_nonfarma=rs.getBoolean("catatan_observasi_restrain_nonfarma");catatan_observasi_ventilator=rs.getBoolean("catatan_observasi_ventilator");catatan_anestesi_sedasi=rs.getBoolean("catatan_anestesi_sedasi");skrining_puma=rs.getBoolean("skrining_puma");satu_sehat_kirim_careplan=rs.getBoolean("satu_sehat_kirim_careplan");satu_sehat_kirim_medicationstatement=rs.getBoolean("satu_sehat_kirim_medicationstatement");skrining_adiksi_nikotin=rs.getBoolean("skrining_adiksi_nikotin");skrining_thalassemia=rs.getBoolean("skrining_thalassemia");skrining_instrumen_sdq=rs.getBoolean("skrining_instrumen_sdq");
                     skrining_instrumen_srq=rs.getBoolean("skrining_instrumen_srq");checklist_pemberian_fibrinolitik=rs.getBoolean("checklist_pemberian_fibrinolitik");skrining_kanker_kolorektal=rs.getBoolean("skrining_kanker_kolorektal");dapur_pemesanan=rs.getBoolean("dapur_pemesanan");bayar_pesan_dapur=rs.getBoolean("bayar_pesan_dapur");hutang_dapur=rs.getBoolean("hutang_dapur");titip_faktur_dapur=rs.getBoolean("titip_faktur_dapur");validasi_tagihan_dapur=rs.getBoolean("validasi_tagihan_dapur");surat_pemesanan_dapur=rs.getBoolean("surat_pemesanan_dapur");pengajuan_barang_dapur=rs.getBoolean("pengajuan_barang_dapur");
-                    dapur_returbeli=rs.getBoolean("dapur_returbeli");hibah_dapur=rs.getBoolean("hibah_dapur");ringkasan_penerimaan_dapur=rs.getBoolean("ringkasan_penerimaan_dapur");
+                    dapur_returbeli=rs.getBoolean("dapur_returbeli");hibah_dapur=rs.getBoolean("hibah_dapur");ringkasan_penerimaan_dapur=rs.getBoolean("ringkasan_penerimaan_dapur");ringkasan_pengajuan_dapur=rs.getBoolean("ringkasan_pengajuan_dapur");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -2112,6 +2112,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[F]Ringkasan Penerimaan Dapur".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[F]Ringkasan Penerimaan Dapur",ringkasan_penerimaan_dapur});
+        }
+        
+        if("[F]Ringkasan Pengajuan Dapur".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[F]Ringkasan Pengajuan Dapur",ringkasan_pengajuan_dapur});
         }
                 
         if("[G]Jenis Inventaris".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6447,6 +6451,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[F]Ringkasan Penerimaan Dapur".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_penerimaan_dapur='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[F]Ringkasan Pengajuan Dapur".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","ringkasan_pengajuan_dapur='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[G]Jenis Inventaris".equals(tbUser.getValueAt(i,1).toString())){
