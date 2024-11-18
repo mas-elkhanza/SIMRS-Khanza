@@ -722,7 +722,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptHibahNonMedis.jasper","report","::[ Transaksi Hibah Barang Non Medis ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptHibahDapur.jasper","report","::[ Transaksi Hibah Barang Dapur Kering & Basah ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -876,17 +876,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     "inner join petugas on dapur_hibah.nip=petugas.nip "+
                     "inner join dapur_detail_hibah on dapur_hibah.no_hibah=dapur_detail_hibah.no_hibah "+
                     "inner join dapurbarang on dapur_detail_hibah.kode_brng=dapurbarang.kode_brng "+
-                    "inner join dapurjenisbarang on dapurbarang.jenis=dapurjenisbarang.kd_jenis "+
-                    "where dapur_hibah.tgl_hibah between ? and ? and dapur_hibah.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and dapurjenisbarang.nm_jenis like ? and dapurbarang.nama_brng like ? "+
+                    "where dapur_hibah.tgl_hibah between ? and ? and dapur_hibah.no_hibah like ? and pemberihibah.nama_pemberi like ? and petugas.nama like ?  and dapurbarang.jenis like ? and dapurbarang.nama_brng like ? "+
                     (TCari.getText().trim().equals("")?"":"and (dapur_hibah.no_hibah like ? or dapur_hibah.kode_pemberi like ? or pemberihibah.nama_pemberi like ? or dapur_hibah.nip like ? or petugas.nama like ? or "+
-                    "dapurjenisbarang.nm_jenis like ? or dapur_detail_hibah.kode_brng like ? or dapurbarang.nama_brng like ?)")+" group by dapur_hibah.no_hibah order by dapur_hibah.tgl_hibah,dapur_hibah.no_hibah ");
+                    "dapurbarang.jenis like ? or dapur_detail_hibah.kode_brng like ? or dapurbarang.nama_brng like ?)")+" group by dapur_hibah.no_hibah order by dapur_hibah.tgl_hibah,dapur_hibah.no_hibah ");
             try {
                 ps.setString(1,Valid.SetTgl(TglBeli1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglBeli2.getSelectedItem()+""));
                 ps.setString(3,"%"+NoFaktur.getText()+"%");
                 ps.setString(4,"%"+nmsup.getText()+"%");
                 ps.setString(5,"%"+nmptg.getText()+"%");
-                ps.setString(6,"%"+Jenis.getSelectedItem().toString()+"%");
+                ps.setString(6,"%"+Jenis.getSelectedItem().toString().replaceAll("Semua","")+"%");
                 ps.setString(7,"%"+nmbar.getText()+"%");
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(8,"%"+TCari.getText()+"%");
@@ -905,17 +904,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                           rs.getString(5)+", "+rs.getString(6),"","",""
                     });      
                     ps2=koneksi.prepareStatement("select dapur_detail_hibah.kode_brng,dapurbarang.nama_brng, "+
-                        "dapurbarang.jenis,dapurjenisbarang.nm_jenis,dapur_detail_hibah.jumlah,dapur_detail_hibah.h_hibah, "+
+                        "dapurbarang.jenis,dapurbarang.jenis,dapur_detail_hibah.jumlah,dapur_detail_hibah.h_hibah, "+
                         "dapur_detail_hibah.subtotalhibah,dapur_detail_hibah.kode_sat "+
                         "from dapur_detail_hibah inner join dapurbarang on dapur_detail_hibah.kode_brng=dapurbarang.kode_brng "+
-                        "inner join dapurjenisbarang on dapurbarang.jenis=dapurjenisbarang.kd_jenis where "+
-                        " dapur_detail_hibah.no_hibah=? and dapurbarang.nama_brng like ? and dapurjenisbarang.nm_jenis like ? "+
+                        "where dapur_detail_hibah.no_hibah=? and dapurbarang.nama_brng like ? and dapurbarang.jenis like ? "+
                         (TCari.getText().trim().equals("")?"":"and (dapur_detail_hibah.kode_brng like ? or dapurbarang.nama_brng like ? or "+
-                        "dapurjenisbarang.nm_jenis like ?)")+" order by dapur_detail_hibah.kode_brng  ");
+                        "dapurbarang.jenis like ?)")+" order by dapur_detail_hibah.kode_brng  ");
                     try {
                         ps2.setString(1,rs.getString(2));
                         ps2.setString(2,"%"+nmbar.getText()+"%");
-                        ps2.setString(3,"%"+Jenis.getSelectedItem().toString()+"%");
+                        ps2.setString(3,"%"+Jenis.getSelectedItem().toString().replaceAll("Semua","")+"%");
                         if(!TCari.getText().trim().equals("")){
                             ps2.setString(4,"%"+TCari.getText()+"%");
                             ps2.setString(5,"%"+TCari.getText()+"%");
@@ -924,8 +922,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         rs2=ps2.executeQuery();
                         int no=1;
                         while(rs2.next()){
-                            tabMode.addRow(new Object[]{"",no+". "+rs2.getString(1),rs2.getString(2),rs2.getString(4),
-                                            rs2.getString(5)+" "+rs2.getString(8),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7))});
+                            tabMode.addRow(new Object[]{
+                                "",no+". "+rs2.getString(1),rs2.getString(2),rs2.getString(4),rs2.getString(5)+" "+rs2.getString(8),Valid.SetAngka(rs2.getDouble(6)),Valid.SetAngka(rs2.getDouble(7))
+                            });
                             no++;
                         }
                         tabMode.addRow(new Object[]{"","Keterangan :",rs.getString("keterangan"),"Total :","","",Valid.SetAngka(rs.getDouble("totalhibah"))});
