@@ -647,6 +647,7 @@ import dapur.DapurRingkasanPenerimaanBarang;
 import dapur.DapurRingkasanPengadaanBarang;
 import dapur.DapurRingkasanPengajuanBarang;
 import dapur.DapurRingkasanReturBeliBarang;
+import dapur.DapurRingkasanStokKeluarBarang;
 import dapur.DapurRiwayatBarang;
 import dapur.DapurSuratPemesanan;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
@@ -22078,6 +22079,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnRingkasanStokKeluarDapurActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DapurRingkasanStokKeluarBarang aplikasi=new DapurRingkasanStokKeluarBarang(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22776,7 +22788,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
             btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal,btnPenerimaanBarangDapur,btnBayarPesanDapur,
             btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur,btnSuratPemesananDapur,btnPengajuanBarangDapur,btnReturBarangDapur,btnHibahDapur,btnRingkasanPenerimaanDapur,
-            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur;
+            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur;
     
     public void isWall(){
         try{            
@@ -23969,6 +23981,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getdapur_stok_keluar()==true){
                 Panelmenu.add(btnPengeluaranDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getringkasan_stokkeluar_dapur()==true){
+                Panelmenu.add(btnRingkasanStokKeluarDapur);
                 jmlmenu++;
             }
             
@@ -29345,6 +29362,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getdapur_stok_keluar()==true){
             Panelmenu.add(btnPengeluaranDapur);
+            jmlmenu++;
+        }
+        
+        if(akses.getringkasan_stokkeluar_dapur()==true){
+            Panelmenu.add(btnRingkasanStokKeluarDapur);
             jmlmenu++;
         }
         
@@ -35128,6 +35150,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getdapur_stok_keluar()==true){
             if(btnPengeluaranDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPengeluaranDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getringkasan_stokkeluar_dapur()==true){
+            if(btnRingkasanStokKeluarDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnRingkasanStokKeluarDapur);
                 jmlmenu++;
             }                
         }
@@ -40938,7 +40967,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-        
+    }
+    
+    private void isCariIsi2() {
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -41120,9 +41151,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-    }
-    
-    private void isCariIsi2() {
+        
         if(akses.getjam_diet_pasien()==true){
             if(btnJamDietPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnJamDietPasien);
@@ -46060,7 +46089,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanPemesananDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanPemesananDapur.addActionListener(this::btnRingkasanPemesananDapurActionPerformed);
         
-        
         btnRingkasanReturBeliDapur = new widget.ButtonBig();
         btnRingkasanReturBeliDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
         btnRingkasanReturBeliDapur.setText("Ringkasan Retur Suplier Dapur");
@@ -46068,5 +46096,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanReturBeliDapur.setName("btnRingkasanReturBeliDapur");
         btnRingkasanReturBeliDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanReturBeliDapur.addActionListener(this::btnRingkasanReturBeliDapurActionPerformed);
+        
+        btnRingkasanStokKeluarDapur = new widget.ButtonBig();
+        btnRingkasanStokKeluarDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/if_binary-tree_49580.png"))); 
+        btnRingkasanStokKeluarDapur.setText("Ringkasan Stok Keluar Dapur");
+        btnRingkasanStokKeluarDapur.setIconTextGap(0);
+        btnRingkasanStokKeluarDapur.setName("btnRingkasanStokKeluarDapur");
+        btnRingkasanStokKeluarDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnRingkasanStokKeluarDapur.addActionListener(this::btnRingkasanStokKeluarDapurActionPerformed);
     }
 }
