@@ -10,7 +10,7 @@
  */
 
 package dapur;
-import ipsrs.*;
+
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -130,7 +130,7 @@ public class DapurStokKeluarBarangPerTanggal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Keluar Barang Non Medis Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Stok Keluar Barang Dapur Kering & Basah Per Tanggal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -409,7 +409,7 @@ public class DapurStokKeluarBarangPerTanggal extends javax.swing.JDialog {
                 param.put("jd29","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),29)+")");
                 param.put("jd30","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),30)+")");
                 param.put("jd31","("+konversi(Integer.parseInt(ThnCari.getSelectedItem().toString()),Integer.parseInt(BlnCari.getSelectedItem().toString()),31)+")");
-                Valid.MyReportqry("rptStokKeluarIPSRSPerTanggal.jasper","report","::[ Pengadaan Barang Non Medis Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
+                Valid.MyReportqry("rptStokKeluarDapurPerTanggal.jasper","report","::[ Pengadaan Barang Dapur Kering & Basah Per Tanggal ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);            
                                  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -539,12 +539,9 @@ public class DapurStokKeluarBarangPerTanggal extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                  "select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng, "
-                + " kodesatuan.satuan,ipsrsjenisbarang.nm_jenis as ipsrsjenisbarang,ipsrsbarang.stok "
-                + " from ipsrsbarang inner join kodesatuan inner join ipsrsjenisbarang  "
-                + " on ipsrsbarang.kode_sat=kodesatuan.kode_sat and ipsrsbarang.jenis=ipsrsjenisbarang.kd_jenis "
-                + " where ipsrsbarang.kode_brng like ? or ipsrsbarang.nama_brng like ? or "
-                + " ipsrsjenisbarang.nm_jenis like ? order by ipsrsbarang.nama_brng");
+                "select dapurbarang.kode_brng, dapurbarang.nama_brng,kodesatuan.satuan,dapurbarang.jenis as dapurjenisbarang,dapurbarang.stok "+
+                "from dapurbarang inner join kodesatuan on dapurbarang.kode_sat=kodesatuan.kode_sat where dapurbarang.kode_brng like ? or "+
+                "dapurbarang.nama_brng like ? or dapurbarang.jenis like ? order by dapurbarang.nama_brng");
             try {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -585,14 +582,14 @@ public class DapurStokKeluarBarangPerTanggal extends javax.swing.JDialog {
                     h31=JmlBarang(ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"-31",rs.getString("kode_brng"));
                     
                     tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("ipsrsjenisbarang"),rs.getString("stok"),
+                        rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("dapurjenisbarang"),rs.getString("stok"),
                         h1,h2,h3,h4,h5,h6,h7,h8,h9,h10,h11,h12,h13,h14,h15,h16,h17,h18,h19,h20,h21,h22,h23,h24,h25,h26,h27,h28,h29,h30,h31,
                         (h1+h2+h3+h4+h5+h6+h7+h8+h9+h10+h11+h12+h13+h14+h15+h16+h17+h18+h19+h20+h21+h22+h23+h24+h25+h26+h27+h28+h29+h30+h31)
                     });
                     i++;
                 }
             } catch (Exception e) {
-                System.out.println("inventory.DlgObatPerTanggal.tampil() : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -647,10 +644,10 @@ public class DapurStokKeluarBarangPerTanggal extends javax.swing.JDialog {
     }
     
     private double JmlBarang(String tanggal,String kodebarang){
-        return Sequel.cariIsiAngka("select sum(ipsrsdetailpengeluaran.jumlah)"+
-                        " from ipsrspengeluaran inner join ipsrsdetailpengeluaran "+
-                        " on ipsrspengeluaran.no_keluar=ipsrsdetailpengeluaran.no_keluar "+
-                        " where ipsrsdetailpengeluaran.kode_brng='"+kodebarang+"' and ipsrspengeluaran.tanggal=?",tanggal);
+        return Sequel.cariIsiAngka("select sum(dapurdetailpengeluaran.jumlah)"+
+                        " from dapurpengeluaran inner join dapurdetailpengeluaran "+
+                        " on dapurpengeluaran.no_keluar=dapurdetailpengeluaran.no_keluar "+
+                        " where dapurdetailpengeluaran.kode_brng='"+kodebarang+"' and dapurpengeluaran.tanggal=?",tanggal);
     }
     
 }
