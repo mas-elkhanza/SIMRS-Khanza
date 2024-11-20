@@ -238,7 +238,7 @@ public final class akses {
             skrining_kanker_kolorektal=false,dapur_pemesanan=false,bayar_pesan_dapur=false,hutang_dapur=false,titip_faktur_dapur=false,validasi_tagihan_dapur=false,
             surat_pemesanan_dapur=false,pengajuan_barang_dapur=false,dapur_returbeli=false,hibah_dapur=false,ringkasan_penerimaan_dapur=false,ringkasan_pengajuan_dapur=false,
             ringkasan_pemesanan_dapur=false,ringkasan_returbeli_dapur=false,ringkasan_stokkeluar_dapur=false,dapur_stokkeluar_pertanggal=false,sirkulasi_dapur=false,
-            sirkulasi_dapur2=false,verifikasi_penerimaan_dapur=false,nilai_penerimaan_vendor_dapur_perbulan=false;
+            sirkulasi_dapur2=false,verifikasi_penerimaan_dapur=false,nilai_penerimaan_vendor_dapur_perbulan=false,ringkasan_hutang_vendor_dapur=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1352,6 +1352,7 @@ public final class akses {
                         akses.sirkulasi_dapur2=true;
                         akses.verifikasi_penerimaan_dapur=true;
                         akses.nilai_penerimaan_vendor_dapur_perbulan=true;
+                        akses.ringkasan_hutang_vendor_dapur=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2449,6 +2450,7 @@ public final class akses {
                         akses.sirkulasi_dapur2=rs2.getBoolean("sirkulasi_dapur2");
                         akses.verifikasi_penerimaan_dapur=rs2.getBoolean("verifikasi_penerimaan_dapur");
                         akses.nilai_penerimaan_vendor_dapur_perbulan=rs2.getBoolean("nilai_penerimaan_vendor_dapur_perbulan");
+                        akses.ringkasan_hutang_vendor_dapur=rs2.getBoolean("ringkasan_hutang_vendor_dapur");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3544,6 +3546,7 @@ public final class akses {
                         akses.sirkulasi_dapur2=false;
                         akses.verifikasi_penerimaan_dapur=false;
                         akses.nilai_penerimaan_vendor_dapur_perbulan=false;
+                        akses.ringkasan_hutang_vendor_dapur=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4662,6 +4665,7 @@ public final class akses {
         akses.sirkulasi_dapur2=false;
         akses.verifikasi_penerimaan_dapur=false;
         akses.nilai_penerimaan_vendor_dapur_perbulan=false;
+        akses.ringkasan_hutang_vendor_dapur=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5796,4 +5800,5 @@ public final class akses {
     public static boolean getsirkulasi_dapur2(){return akses.sirkulasi_dapur2;}
     public static boolean getverifikasi_penerimaan_dapur(){return akses.verifikasi_penerimaan_dapur;}
     public static boolean getnilai_penerimaan_vendor_dapur_perbulan(){return akses.nilai_penerimaan_vendor_dapur_perbulan;}
+    public static boolean getringkasan_hutang_vendor_dapur(){return akses.ringkasan_hutang_vendor_dapur;}
 }   
