@@ -46279,7 +46279,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnVerifikasiPenerimaanDapur.addActionListener(this::btnVerifikasiPenerimaanDapurActionPerformed);
         
         btnNilaiPenerimaanVendorDapurPerBulan = new widget.ButtonBig();
-        btnNilaiPenerimaanVendorDapurPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2570291_business_economic_finance_interprise_of_icon.png"))); 
+        btnNilaiPenerimaanVendorDapurPerBulan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_File_Files_Folder_Clipboard_Data_Confirm_3909329.png"))); 
         btnNilaiPenerimaanVendorDapurPerBulan.setText("Nilai Penerimaan Vendor Dapur Per Bulan");
         btnNilaiPenerimaanVendorDapurPerBulan.setIconTextGap(0);
         btnNilaiPenerimaanVendorDapurPerBulan.setName("btnNilaiPenerimaanVendorDapurPerBulan");
