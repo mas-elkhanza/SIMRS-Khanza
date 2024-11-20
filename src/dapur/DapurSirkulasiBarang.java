@@ -541,18 +541,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             ps=koneksi.prepareStatement("select dapurbarang.kode_brng,dapurbarang.nama_brng, "+
                         "kodesatuan.satuan,dapurbarang.stok,(dapurbarang.stok*dapurbarang.harga) as aset "+
                         "from dapurbarang inner join kodesatuan on dapurbarang.kode_sat=kodesatuan.kode_sat "+
-                        "where dapurbarang.nama_brng like ? and dapurbarang.kode_brng like ? or "+
-                        "dapurbarang.nama_brng like ? and dapurbarang.nama_brng like ? or "+
-                        "dapurbarang.nama_brng like ? and kodesatuan.satuan like ? "+
+                        "where dapurbarang.nama_brng like ? "+
+                        (TCari.getText().trim().equals("")?"":"and (dapurbarang.kode_brng like ? or dapurbarang.nama_brng like ? or kodesatuan.satuan like ?) ")+
                         " order by dapurbarang.kode_brng");
             try {
                 ttltotalbeli=0;ttltotalpesan=0;ttltotalkeluar=0;ttlaset=0;ttltotalhibah=0;
                 ps.setString(1,"%"+nmbar.getText()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+nmbar.getText()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+nmbar.getText()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();            
                 while(rs.next()){
                     totalbeli=0;jumlahbeli=0;totalpesan=0;jumlahpesan=0;jumlahkeluar=0;
