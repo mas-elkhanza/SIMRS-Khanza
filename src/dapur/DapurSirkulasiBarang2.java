@@ -555,6 +555,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " order by dapurbarang.kode_brng");
             try {
                 ttltotalbeli=0;ttltotalpesan=0;ttltotalkeluar=0;ttltotalstokawal=0;ttltotalstokakhir=0;ttltotalhibah=0;
+                ps.setString(1,"%"+nmbar.getText()+"%");
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
                     ps.setString(3,"%"+TCari.getText().trim()+"%");

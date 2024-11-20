@@ -650,6 +650,7 @@ import dapur.DapurRingkasanReturBeliBarang;
 import dapur.DapurRingkasanStokKeluarBarang;
 import dapur.DapurRiwayatBarang;
 import dapur.DapurSirkulasiBarang;
+import dapur.DapurSirkulasiBarang2;
 import dapur.DapurStokKeluarBarangPerTanggal;
 import dapur.DapurSuratPemesanan;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
@@ -22112,6 +22113,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     } 
+    
+    private void btnSirkulasiDapur2ActionPerformed(java.awt.event.ActionEvent evt) {                                                             
+        isTutup();
+        DapurSirkulasiBarang2 form=new DapurSirkulasiBarang2(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22810,7 +22821,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
             btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal,btnPenerimaanBarangDapur,btnBayarPesanDapur,
             btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur,btnSuratPemesananDapur,btnPengajuanBarangDapur,btnReturBarangDapur,btnHibahDapur,btnRingkasanPenerimaanDapur,
-            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur,btnStokKeluarDapurPerTanggal,btnSirkulasiDapur;
+            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur,btnStokKeluarDapurPerTanggal,btnSirkulasiDapur,btnSirkulasiDapur2;
     
     public void isWall(){
         try{            
@@ -24048,6 +24059,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsirkulasi_dapur()==true){
                 Panelmenu.add(btnSirkulasiDapur);
+                jmlmenu++;
+            }
+            
+            if(akses.getsirkulasi_dapur2()==true){
+                Panelmenu.add(btnSirkulasiDapur2);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -29439,6 +29455,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsirkulasi_dapur()==true){
             Panelmenu.add(btnSirkulasiDapur);
+            jmlmenu++;
+        }
+            
+        if(akses.getsirkulasi_dapur2()==true){
+            Panelmenu.add(btnSirkulasiDapur2);
             jmlmenu++;
         }
 
@@ -35255,6 +35276,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsirkulasi_dapur()==true){
             if(btnSirkulasiDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSirkulasiDapur);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getsirkulasi_dapur2()==true){
+            if(btnSirkulasiDapur2.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSirkulasiDapur2);
                 jmlmenu++;
             }                
         }
@@ -46176,5 +46204,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSirkulasiDapur.setName("btnSirkulasiDapur");
         btnSirkulasiDapur.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSirkulasiDapur.addActionListener(this::btnSirkulasiDapurActionPerformed);
+        
+        btnSirkulasiDapur2 = new widget.ButtonBig();
+        btnSirkulasiDapur2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); 
+        btnSirkulasiDapur2.setText("Sirkulasi Barang Dapur 2");
+        btnSirkulasiDapur2.setIconTextGap(0);
+        btnSirkulasiDapur2.setName("btnSirkulasiDapur2");
+        btnSirkulasiDapur2.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSirkulasiDapur2.addActionListener(this::btnSirkulasiDapur2ActionPerformed);
     }
 }
