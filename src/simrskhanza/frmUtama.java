@@ -46276,7 +46276,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanStokKeluarDapur.addActionListener(this::btnRingkasanStokKeluarDapurActionPerformed);
         
         btnStokKeluarDapurPerTanggal = new widget.ButtonBig();
-        btnStokKeluarDapurPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8822952_bar_chart_negative_descending_icon.png"))); 
+        btnStokKeluarDapurPerTanggal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2151696_barbecue_cooking_food_garden_grill_icon.png"))); 
         btnStokKeluarDapurPerTanggal.setText("Stok Keluar Dapur Per Tanggal");
         btnStokKeluarDapurPerTanggal.setIconTextGap(0);
         btnStokKeluarDapurPerTanggal.setName("btnStokKeluarDapurPerTanggal");
@@ -46316,7 +46316,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnNilaiPenerimaanVendorDapurPerBulan.addActionListener(this::btnNilaiPenerimaanVendorDapurPerBulanActionPerformed);
         
         btnRingkasanHutangVendorBarangDapur = new widget.ButtonBig();
-        btnRingkasanHutangVendorBarangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_File_Files_Folder_Clipboard_Data_Confirm_3909329.png"))); 
+        btnRingkasanHutangVendorBarangDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2151697_bread_cutting_food_knife_rye_icon.png"))); 
         btnRingkasanHutangVendorBarangDapur.setText("Ringkasan Hutang Vendor Dapur");
         btnRingkasanHutangVendorBarangDapur.setIconTextGap(0);
         btnRingkasanHutangVendorBarangDapur.setName("btnRingkasanHutangVendorBarangDapur");
