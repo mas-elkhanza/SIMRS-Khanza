@@ -653,6 +653,7 @@ import dapur.DapurSirkulasiBarang;
 import dapur.DapurSirkulasiBarang2;
 import dapur.DapurStokKeluarBarangPerTanggal;
 import dapur.DapurSuratPemesanan;
+import dapur.DapurVerifikasiPenerimaan;
 import grafikanalisa.GrafikKeslingLimbahB3CairBulan;
 import grafikanalisa.GrafikKeslingLimbahB3CairPertanggal;
 import inventaris.KeslingLimbahB3MedisCair;
@@ -22123,6 +22124,16 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     } 
+    
+    private void btnVerifikasiPenerimaanDapurActionPerformed(java.awt.event.ActionEvent evt) {                                                             
+        isTutup();
+        DapurVerifikasiPenerimaan form=new DapurVerifikasiPenerimaan(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22821,7 +22832,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiVentilator,btnCatatanAnastesiSedasi,btnSkriningPUMA,btnKirimCarePlanSatuSehat,btnKirimMedicationStatementSatuSehat,btnSkriningAdiksiNikotin,
             btnSkriningThalassemia,btnSkriningInstrumenSDQ,btnSkriningInstrumenSRQ,btnChecklistPemberianFibrinolitik,btnSkriningKankerKolorektal,btnPenerimaanBarangDapur,btnBayarPesanDapur,
             btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur,btnSuratPemesananDapur,btnPengajuanBarangDapur,btnReturBarangDapur,btnHibahDapur,btnRingkasanPenerimaanDapur,
-            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur,btnStokKeluarDapurPerTanggal,btnSirkulasiDapur,btnSirkulasiDapur2;
+            btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur,btnStokKeluarDapurPerTanggal,btnSirkulasiDapur,btnSirkulasiDapur2,
+            btnVerifikasiPenerimaanDapur;
     
     public void isWall(){
         try{            
@@ -24064,6 +24076,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsirkulasi_dapur2()==true){
                 Panelmenu.add(btnSirkulasiDapur2);
+                jmlmenu++;
+            }
+            
+            if(akses.getverifikasi_penerimaan_dapur()==true){
+                Panelmenu.add(btnVerifikasiPenerimaanDapur);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==6){ 
@@ -29460,6 +29477,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
         if(akses.getsirkulasi_dapur2()==true){
             Panelmenu.add(btnSirkulasiDapur2);
+            jmlmenu++;
+        }
+        
+        if(akses.getverifikasi_penerimaan_dapur()==true){
+            Panelmenu.add(btnVerifikasiPenerimaanDapur);
             jmlmenu++;
         }
 
@@ -35287,6 +35309,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getverifikasi_penerimaan_dapur()==true){
+            if(btnVerifikasiPenerimaanDapur.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnVerifikasiPenerimaanDapur);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getasal_hibah()==true){
             if(btnAsalHibah.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnAsalHibah);  
@@ -40939,7 +40968,9 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-        
+    }
+    
+    private void isCariIsi2() {
         if(akses.getzis_pengeluaran_penerima_dankes()==true){
             if(btnZISPengeluaranPenerimaDankes.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnZISPengeluaranPenerimaDankes);
@@ -41051,9 +41082,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
-    }
-    
-    private void isCariIsi2() {
+        
         if(akses.getaplikasi()==true){
             if(btnSetupAplikasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSetupAplikasi);
@@ -46212,5 +46241,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSirkulasiDapur2.setName("btnSirkulasiDapur2");
         btnSirkulasiDapur2.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSirkulasiDapur2.addActionListener(this::btnSirkulasiDapur2ActionPerformed);
+        
+        btnVerifikasiPenerimaanDapur = new widget.ButtonBig();
+        btnVerifikasiPenerimaanDapur.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2570299_business_company_economic_finance_interprise_icon.png"))); 
+        btnVerifikasiPenerimaanDapur.setText("Verifikasi Penerimaan Dapur");
+        btnVerifikasiPenerimaanDapur.setIconTextGap(0);
+        btnVerifikasiPenerimaanDapur.setName("btnVerifikasiPenerimaanDapur");
+        btnVerifikasiPenerimaanDapur.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnVerifikasiPenerimaanDapur.addActionListener(this::btnVerifikasiPenerimaanDapurActionPerformed);
     }
 }
