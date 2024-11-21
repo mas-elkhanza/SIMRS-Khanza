@@ -1581,8 +1581,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         try{
             ps=koneksi.prepareStatement(
                 "select dapurbarang.kode_brng, dapurbarang.nama_brng,dapurbarang.kode_sat,detail_pengajuan_barang_dapur.jumlah,detail_pengajuan_barang_dapur.total,"+
-                " detail_pengajuan_barang_dapur.h_pengajuan from dapurbarang inner join dapurjenisbarang inner join detail_pengajuan_barang_dapur "+
-                " on dapurbarang.jenis=dapurjenisbarang.kd_jenis and dapurbarang.kode_brng=detail_pengajuan_barang_dapur.kode_brng "+
+                " detail_pengajuan_barang_dapur.h_pengajuan from dapurbarang inner join detail_pengajuan_barang_dapur "+
+                " on dapurbarang.kode_brng=detail_pengajuan_barang_dapur.kode_brng "+
                 " where detail_pengajuan_barang_dapur.no_pengajuan=?");
             try {
                 ps.setString(1,nopengajuan);
