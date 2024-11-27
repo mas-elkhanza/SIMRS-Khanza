@@ -1565,6 +1565,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
         Parametrium.setText("");
         Ovarium.setText("");
         Doppler.setText("");
+        Kesimpulan.setText("");
         Tanggal.setDate(new Date());
         TabRawat.setSelectedIndex(0);
         KirimanDari.requestFocus();
