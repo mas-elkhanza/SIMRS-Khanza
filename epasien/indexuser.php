@@ -351,6 +351,15 @@
                             <li <?=$subhalaman=="AntrianEKG"?"class='active'":""?>>
                                 <a href="index.php?act=AntrianEKG&hal=AntrianTindakan">EKG</a>
                             </li>
+                            <li <?=$subhalaman=="AntrianEndoskopiFaring"?"class='active'":""?>>
+                                <a href="index.php?act=AntrianEndoskopiFaring&hal=AntrianTindakan">Endoskopi Faring/Laringoskopi</a>
+                            </li>
+                            <li <?=$subhalaman=="AntrianEndoskopiHidung"?"class='active'":""?>>
+                                <a href="index.php?act=AntrianEndoskopiHidung&hal=AntrianTindakan">Endoskopi Hidung</a>
+                            </li>
+                            <li <?=$subhalaman=="AntrianEndoskopiTelinga"?"class='active'":""?>>
+                                <a href="index.php?act=AntrianEndoskopiTelinga&hal=AntrianTindakan">Endoskopi Telinga</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?=$halaman=="Surat"?"class='active'":""?>>
@@ -376,6 +385,17 @@
                             </li>
                             <li <?=$subhalaman=="SuratCovid"?"class='active'":""?>>
                                 <a href="index.php?act=SuratCovid&hal=Surat">Keterangan Covid</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li <?=$halaman=="Persetujuan"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">assignment_turned_in</i>
+                            <span>Persetujuan</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="PersetujuanUmum"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanUmum&hal=Persetujuan">Persetujuan Umum</a>
                             </li>
                         </ul>
                     </li>

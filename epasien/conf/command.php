@@ -119,6 +119,9 @@
                 case "AntrianUSGGynecologi"                    : include_once("pages/listriwayatusgynecologi.php"); break;
                 case "AntrianUSGNeonatus"                      : include_once("pages/listriwayatusgneonatus.php"); break;
                 case "AntrianEKG"                              : include_once("pages/listriwayatekg.php"); break;
+                case "AntrianEndoskopiFaring"                  : include_once("pages/listriwayatendoskopifaring.php"); break;
+                case "AntrianEndoskopiHidung"                  : include_once("pages/listriwayatendoskopihidung.php"); break;
+                case "AntrianEndoskopiTelinga"                 : include_once("pages/listriwayatendoskopitelinga.php"); break;
                 case "KartuPasien"                             : include_once("pages/listkartu.php"); break;
                 case "TampilPermintaanLab"                     : include_once("pages/listtampilpermintaanlab.php"); break;
                 case "TampilHasilLab"                          : include_once("pages/listtampilhasillab.php"); break;
@@ -134,6 +137,9 @@
                 case "HasilUSGGynecologi"                      : include_once("pages/listhasilusgynecologi.php"); break;
                 case "HasilUSGNeonatus"                        : include_once("pages/listhasilusgneonatus.php"); break;
                 case "HasilEKG"                                : include_once("pages/listhasilekg.php"); break;
+                case "HasilEndoskopiFaring"                    : include_once("pages/listhasilendoskopifaring.php"); break;
+                case "HasilEndoskopiHidung"                    : include_once("pages/listhasilendoskopihidung.php"); break;
+                case "HasilEndoskopiTelinga"                   : include_once("pages/listhasilendoskopitelinga.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }
