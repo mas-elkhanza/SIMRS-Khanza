@@ -48,7 +48,7 @@
                                 FROM pegawai inner join stts_kerja
                                 inner join departemen 
                                on pegawai.stts_kerja=stts_kerja.stts
-                               and pegawai.departemen=departemen.dep_id where pegawai.stts_aktif<>'KELUAR' order by pegawai.id ASC  ";
+                               and pegawai.departemen=departemen.dep_id where pegawai.stts_aktif='AKTIF' order by pegawai.id ASC  ";
                 $hasil6       = bukaquery($_sql);
 
                 if(mysqli_num_rows($hasil6)!=0) {

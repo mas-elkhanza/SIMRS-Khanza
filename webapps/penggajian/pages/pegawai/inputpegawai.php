@@ -543,6 +543,8 @@
                             <option id='TxtIsi24' value='AKTIF'>AKTIF</option>
                             <option id='TxtIsi24' value='CUTI'>CUTI</option>
                             <option id='TxtIsi24' value='KELUAR'>KELUAR</option>
+                            <option id='TxtIsi24' value='NON AKTIF'>NON AKTIF</option>
+                            <option id='TxtIsi24' value='TENAGA LUAR'>TENAGA LUAR</option>
                         </select>
                         <span id="MsgIsi24" style="color:#CC0000; font-size:10px;"></span>
                     </td>

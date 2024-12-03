@@ -111,12 +111,29 @@
                 case "TampilSuratKontrol"                      : include_once("pages/listtampilsuratkontrol.php"); break;
                 case "Perpustakaan"                            : include_once("pages/listperpustakaan.php"); break;
                 case "AntrianPemeriksaanLab"                   : include_once("pages/listriwayatlaborat.php"); break;
+                case "AntrianPemeriksaanLabMB"                 : include_once("pages/listriwayatlaboratmb.php"); break;
+                case "AntrianPemeriksaanLabPA"                 : include_once("pages/listriwayatlaboratpa.php"); break;
+                case "AntrianPemeriksaanRad"                   : include_once("pages/listriwayatradiologi.php"); break;
+                case "AntrianUSGKandungan"                     : include_once("pages/listriwayatusgkandungan.php"); break;
+                case "AntrianUSGUrologi"                       : include_once("pages/listriwayatusgurologi.php"); break;
+                case "AntrianUSGGynecologi"                    : include_once("pages/listriwayatusgynecologi.php"); break;
+                case "AntrianUSGNeonatus"                      : include_once("pages/listriwayatusgneonatus.php"); break;
+                case "AntrianEKG"                              : include_once("pages/listriwayatekg.php"); break;
                 case "KartuPasien"                             : include_once("pages/listkartu.php"); break;
                 case "TampilPermintaanLab"                     : include_once("pages/listtampilpermintaanlab.php"); break;
                 case "TampilHasilLab"                          : include_once("pages/listtampilhasillab.php"); break;
                 case "UpdatePassword"                          : include_once("pages/updatepassword.php"); break;
                 case "RiwayatMCU"                              : include_once("pages/listriwayatmcu.php"); break;
                 case "HasilMCU"                                : include_once("pages/listhasilmcu.php"); break;
+                case "HasilLabPK"                              : include_once("pages/listhasillabpk.php"); break;
+                case "HasilLabMB"                              : include_once("pages/listhasillabmb.php"); break;
+                case "HasilLabPA"                              : include_once("pages/listhasillabpa.php"); break;
+                case "HasilRad"                                : include_once("pages/listhasilradiologi.php"); break;
+                case "HasilUSGKandungan"                       : include_once("pages/listhasilusgkandungan.php"); break;
+                case "HasilUSGUrologi"                         : include_once("pages/listhasilusgurologi.php"); break;
+                case "HasilUSGGynecologi"                      : include_once("pages/listhasilusgynecologi.php"); break;
+                case "HasilUSGNeonatus"                        : include_once("pages/listhasilusgneonatus.php"); break;
+                case "HasilEKG"                                : include_once("pages/listhasilekg.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }

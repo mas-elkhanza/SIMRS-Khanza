@@ -20,7 +20,7 @@
         </table><br>
         <div style="width: 100%; height: 78%; overflow: auto;">
         <?php
-            $say    = "keanggotaan.koperasi='Y'";
+            $say    = "keanggotaan.koperasi='Y' and pegawai.stts_aktif='AKTIF'";
             $_sql   = "SELECT pegawai.id,pegawai.nik,pegawai.nama FROM pegawai inner join keanggotaan on pegawai.id=keanggotaan.id
                        where $say and pegawai.nik like '%".$keyword."%' or $say and pegawai.nama like '%".$keyword."%' ORDER BY pegawai.id ASC ";
             $hasil  = bukaquery($_sql);

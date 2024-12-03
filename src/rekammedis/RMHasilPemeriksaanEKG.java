@@ -601,7 +601,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         label11.setBounds(538, 40, 52, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2024 07:18:10" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2024 07:14:20" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -771,7 +771,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         FormInput.add(scrollPane17);
         scrollPane17.setBounds(87, 230, 637, 153);
 
-        jLabel45.setText("Kompleks QRS  :");
+        jLabel45.setText("Kompleks QRS :");
         jLabel45.setName("jLabel45"); // NOI18N
         jLabel45.setPreferredSize(new java.awt.Dimension(68, 14));
         FormInput.add(jLabel45);
@@ -828,7 +828,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -842,7 +842,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-02-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-04-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

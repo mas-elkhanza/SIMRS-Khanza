@@ -7,7 +7,7 @@
     $db_username            = "root";
     $db_password            = "";
     $db_name                = "sik";
-    define('URUTNOREG', 'dokter'); // dokter / poli / dokter + poli
+    define('URUTNOREG', 'dokter + poli'); // dokter / poli / dokter + poli
     $month          = date('Y-m');
     $date           = date('Y-m-d');
     $time           = date('H:i:s');

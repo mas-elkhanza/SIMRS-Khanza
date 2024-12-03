@@ -1,0 +1,46 @@
+<?php
+    if(strpos($_SERVER['REQUEST_URI'],"pages")){
+        exit(header("Location:../index.php"));
+    }
+?>
+<div class="block-header">
+    <h2><center>RIWAYAT PEMERIKSAAN RADIOLOGI</center></h2>
+</div>
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
+                            <tr>
+                                <th width="20%"><center>Tanggal & Jam</center></th>
+                                <th width="17%"><center>No.Rawat</center></th>
+                                <th width="20%"><center>Cara Bayar</center></th>
+                                <th width="33%"><center>Dokter Perujuk</center></th>
+                                <th width="10%"><center>Detail</center></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $queryperiksa = bukaquery(
+                                "select periksa_radiologi.no_rawat,date_format(periksa_radiologi.tgl_periksa,'%d/%m/%Y') as tanggal,periksa_radiologi.tgl_periksa,periksa_radiologi.jam,dokter.nm_dokter,penjab.png_jawab from periksa_radiologi inner join reg_periksa on periksa_radiologi.no_rawat=reg_periksa.no_rawat inner join penjab on reg_periksa.kd_pj=penjab.kd_pj ".
+                                "inner join dokter on periksa_radiologi.dokter_perujuk=dokter.kd_dokter where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' group by concat(periksa_radiologi.no_rawat,periksa_radiologi.tgl_periksa,periksa_radiologi.jam) order by periksa_radiologi.tgl_periksa desc,periksa_radiologi.jam desc"
+                            );
+                            while($rsqueryperiksa = mysqli_fetch_array($queryperiksa)) {
+                               echo "<tr>
+                                        <td align='center' valign='middle'>".$rsqueryperiksa["tanggal"]." ".$rsqueryperiksa["jam"]."</td>
+                                        <td align='center' valign='middle'>".$rsqueryperiksa["no_rawat"]."</td>
+                                        <td align='center' valign='middle'>".$rsqueryperiksa["png_jawab"]."</td>
+                                        <td align='center' valign='middle'>".$rsqueryperiksa["nm_dokter"]."</td>
+                                        <td align='center' valign='middle'><a href='index.php?act=HasilRad&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryperiksa["no_rawat"]."\",\"tglperiksa\":\"".$rsqueryperiksa["tgl_periksa"]."\",\"jam\":\"".$rsqueryperiksa["jam"]."\"}","e")."' class='btn btn-danger waves-effect'>Hasil</a></td>
+                                     </tr>";
+                            }
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

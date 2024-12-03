@@ -20,7 +20,7 @@
         }
         $keyword      = $_GET['keyword'];
         $keyword      = validTeks($keyword);
-        $_sql         = "SELECT pegawai.id,pegawai.nik,pegawai.nama FROM pegawai where pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%' ORDER BY pegawai.nik ASC";
+        $_sql         = "SELECT pegawai.id,pegawai.nik,pegawai.nama FROM pegawai where pegawai.stts_aktif='AKTIF' and pegawai.nik like '%".$keyword."%' or pegawai.stts_aktif='AKTIF' and pegawai.nama like '%".$keyword."%' ORDER BY pegawai.nik ASC";
         $hasil        = bukaquery($_sql);
         $jumlah       = mysqli_num_rows($hasil);
         if(mysqli_num_rows($hasil)!=0) {

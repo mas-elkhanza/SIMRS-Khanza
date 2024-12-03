@@ -46,7 +46,7 @@
                 from pegawai inner join pendidikan inner join stts_kerja inner join kelompok_jabatan inner join resiko_kerja inner join emergency_index
                 inner join jnj_jabatan inner join departemen on pegawai.departemen=departemen.dep_id and pegawai.pendidikan=pendidikan.tingkat and pegawai.stts_kerja=stts_kerja.stts and pegawai.jnj_jabatan=jnj_jabatan.kode
                 and pegawai.kode_kelompok=kelompok_jabatan.kode_kelompok and pegawai.kode_resiko=resiko_kerja.kode_resiko and pegawai.kode_emergency=emergency_index.kode_emergency
-                where pegawai.stts_aktif<>'KELUAR' and pegawai.id ='".$id."' ";
+                where pegawai.stts_aktif='AKTIF' and pegawai.id ='".$id."' ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         $hasilcari=bukaquery($_sql);
@@ -568,7 +568,12 @@
 				       </tr>
 				       <tr class='isi6'>
 				         <TD width='130px'>Tunjangan Jabatan</TD><td width='3px'>:</td><TD>".formatDuit($tnjjbtn)."</TD>
-				       </tr>";
+				       </tr>
+                                       <TR class='isi6'>
+                                         <TD width='130px'>&nbsp;&nbsp;&nbsp;<i>Upah Pokok</i></TD>
+                                         <td width='3px'>:</td>
+                                         <td width='140px' align=right><i>".formatDuit($gapok+$tnjjbtn)."</i></td>
+                                       </TR>";
                                        echo "<tr class='isi6'>
 						 <td width='130px'>Tunjangan KaSift</td><td width='3px'>:</td><td width='140px'> ".formatDuit($ttlkasift)."</td></tr>";
                                        

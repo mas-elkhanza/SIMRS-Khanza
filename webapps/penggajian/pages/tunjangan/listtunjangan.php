@@ -24,7 +24,7 @@
             </table><br> 
             <div style="width: 100%; height: 78%; overflow: auto;">
             <?php
-                $_sql    = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.departemen from pegawai where pegawai.stts_aktif<>'KELUAR' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen like '%".$keyword."%') order by pegawai.id ASC ";
+                $_sql    = "select pegawai.id,pegawai.nik,pegawai.nama,pegawai.departemen from pegawai where pegawai.stts_aktif='AKTIF' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen like '%".$keyword."%') order by pegawai.id ASC ";
                 $hasil   = bukaquery($_sql);
                 $jumlah  = mysqli_num_rows($hasil);
                 if(mysqli_num_rows($hasil)!=0) {
