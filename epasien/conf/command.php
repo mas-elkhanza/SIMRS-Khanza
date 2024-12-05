@@ -125,6 +125,7 @@
                 case "PersetujuanUmum"                         : include_once("pages/listriwayatpersetujuanumum.php"); break;
                 case "PersetujuanRencanaPemulangan"            : include_once("pages/listriwayatpersetujuanrencanapemulangan.php"); break;
                 case "PersetujuanPenyerahanResepRalan"         : include_once("pages/listriwayatpersetujuanpenyerahanresepralan.php"); break;
+                case "PersetujuanPernyataanPasienUmum"         : include_once("pages/listriwayatpersetujuanpernyataanpasienumum.php"); break;
                 case "KartuPasien"                             : include_once("pages/listkartu.php"); break;
                 case "TampilPermintaanLab"                     : include_once("pages/listtampilpermintaanlab.php"); break;
                 case "TampilHasilLab"                          : include_once("pages/listtampilhasillab.php"); break;
@@ -146,9 +147,11 @@
                 case "AmbilPersetujuanUmum"                    : include_once("pages/ambilpersetujuanumum.php"); break;
                 case "AmbilPersetujuanRencanaPemulangan"       : include_once("pages/ambilpersetujuanrencanapemulangan.php"); break;
                 case "AmbilPenyerahanResepRalan"               : include_once("pages/ambilpersetujuanpenyerahanresepralan.php"); break;
+                case "AmbilPersetujuanPernyataanPasienUmum"    : include_once("pages/ambilpersetujuanpernyataanpasienumum.php"); break;
                 case "HasilPersetujuanUmum"                    : include_once("pages/listhasilpersetujuanumum.php"); break;
                 case "HasilPersetujuanRencanaPemulangan"       : include_once("pages/listhasilpersetujuanrencanapemulangan.php"); break;
                 case "HasilPenyerahanResepRalan"               : include_once("pages/listhasilpersetujuanpenyerahanresepralan.php"); break;
+                case "HasilPersetujuanPernyataanPasienUmum"    : include_once("pages/listhasilpersetujuanpernyataanpasienumum.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }
