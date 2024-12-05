@@ -80,8 +80,8 @@
                     @$terlambat1     = $barisketerlambatan[1];
                     @$terlambat2     = $barisketerlambatan[2];
                     
-                    if(file_exists(host()."webapps/presensi/".$hariini.$shift.$idpeg.".jpeg")){
-                        @unlink(host()."webapps/presensi/".$hariini.$shift.$idpeg.".jpeg");
+                    if(file_exists(host()."/webapps/presensi/".$hariini.$shift.$idpeg.".jpeg")){
+                        @unlink(host()."/webapps/presensi/".$hariini.$shift.$idpeg.".jpeg");
                     }
                     
                     @$img            = $_POST["image"];

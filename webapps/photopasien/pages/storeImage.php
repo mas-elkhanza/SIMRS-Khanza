@@ -2,8 +2,8 @@
     require_once('../../conf/conf.php');
     session_start();
     
-    if(file_exists(host()."webapps/photopasien/pages/upload/".$_SESSION["pasien"].".jpeg")){
-        @unlink(host()."webapps/photopasien/pages/upload/".$_SESSION["pasien"].".jpeg");
+    if(file_exists(host()."/webapps/photopasien/pages/upload/".$_SESSION["pasien"].".jpeg")){
+        @unlink(host()."/webapps/photopasien/pages/upload/".$_SESSION["pasien"].".jpeg");
     }
     
     $img            = $_POST["image"];

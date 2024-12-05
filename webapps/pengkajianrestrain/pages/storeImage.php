@@ -1,8 +1,8 @@
 <?php
     require_once('../../conf/conf.php');
     $norawat           = validTeks4($_POST["norawat"],20);
-    if(file_exists(host()."webapps/pengkajianrestrain/pages/upload/".$norawat.".jpeg")){
-        @unlink(host()."webapps/pengkajianrestrain/pages/upload/".$norawat.".jpeg");
+    if(file_exists(host()."/webapps/pengkajianrestrain/pages/upload/".$norawat.".jpeg")){
+        @unlink(host()."/webapps/pengkajianrestrain/pages/upload/".$norawat.".jpeg");
     }
     
     $img                = $_POST["image"];

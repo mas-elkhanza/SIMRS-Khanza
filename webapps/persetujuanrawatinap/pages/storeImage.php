@@ -1,8 +1,8 @@
 <?php
     require_once('../../conf/conf.php');
     $nopersetujuan           = validTeks4($_POST["nopersetujuan"],20);
-    if(file_exists(host()."webapps/persetujuanrawatinap/pages/upload/".$nopersetujuan.".jpeg")){
-        @unlink(host()."webapps/persetujuanrawatinap/pages/upload/".$nopersetujuan.".jpeg");
+    if(file_exists(host()."/webapps/persetujuanrawatinap/pages/upload/".$nopersetujuan.".jpeg")){
+        @unlink(host()."/webapps/persetujuanrawatinap/pages/upload/".$nopersetujuan.".jpeg");
     }
     
     $img                    = $_POST["image"];

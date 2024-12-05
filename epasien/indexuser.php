@@ -397,6 +397,36 @@
                             <li <?=$subhalaman=="PersetujuanUmum"?"class='active'":""?>>
                                 <a href="index.php?act=PersetujuanUmum&hal=Persetujuan">Persetujuan Umum</a>
                             </li>
+                            <li <?=$subhalaman=="PersetujuanPenolakanTindakan"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanPenolakanTindakan&hal=Persetujuan">Persetujuan/Penolakan Tindakan</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanRencanaPemulangan"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanRencanaPemulangan&hal=Persetujuan">Rencana Pemulangan</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanPenyerahanResepRalan"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan">Penyerahan Resep Ralan</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanPernyataanPasienUmum"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanPernyataanPasienUmum&hal=Persetujuan">Pernyataan Pasien Umum</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanPernyataanPulangAPS"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanPernyataanPulangAPS&hal=Persetujuan">Pernyataan Pulang APS</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanTransferAntarRuang"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanTransferAntarRuang&hal=Persetujuan">Transfer Antar Ruang</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanRawatInap"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanRawatInap&hal=Persetujuan">Persetujuan Rawat Inap</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanPenundaanPelayanan"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanPenundaanPelayanan&hal=Persetujuan">Penundaan Pelayanan</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanPenolakanAnjuranMedis"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanPenolakanAnjuranMedis&hal=Persetujuan">Penolakan Anjuran Medis</a>
+                            </li>
+                            <li <?=$subhalaman=="PersetujuanRestrain"?"class='active'":""?>>
+                                <a href="index.php?act=PersetujuanRestrain&hal=Persetujuan">Persetujuan Restrain</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?=$halaman=="Fasilitas"?"class='active'":""?>>

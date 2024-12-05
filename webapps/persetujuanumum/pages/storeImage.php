@@ -3,8 +3,8 @@
     $nosurat           = validTeks4($_POST["nosurat"],20);
     $pengobatan_kepada = validTeks4($_POST["pengobatan_kepada"],20);
     $nilai_kepercayaan = validTeks4($_POST["nilai_kepercayaan"],50);
-    if(file_exists(host()."webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg")){
-        @unlink(host()."webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg");
+    if(file_exists(host()."/webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg")){
+        @unlink(host()."/webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg");
     }
     
     $img                    = $_POST["image"];

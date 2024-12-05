@@ -112,11 +112,11 @@
                                             Kesimpulan : ".$rsqueryendoskopi["kesimpulan"]."
                                         </td>
                                     </tr>";
-            $querygambarusg= bukaquery(
+            $querygambarendoskopi= bukaquery(
                 "select hasil_endoskopi_hidung_gambar.photo from hasil_endoskopi_hidung_gambar where hasil_endoskopi_hidung_gambar.no_rawat='".$norawat."'"
             );
-            if($rsquerygambarusg= mysqli_fetch_array($querygambarusg)){
-                $src = 'data: '.mime_content_type("http://".host()."/webapps/hasilpemeriksaanendoskopihidung/".$rsquerygambarusg["photo"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/hasilpemeriksaanendoskopihidung/".$rsquerygambarusg["photo"]));
+            if($rsquerygambarendoskopi= mysqli_fetch_array($querygambarendoskopi)){
+                $src = 'data: '.mime_content_type("http://".host()."/webapps/hasilpemeriksaanendoskopihidung/".$rsquerygambarendoskopi["photo"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/hasilpemeriksaanendoskopihidung/".$rsquerygambarendoskopi["photo"]));
                 echo "              <tr>
                                         <td valign='middle' colspan='3'><img alt='Gambar USG' src='$src' width='100%' height='500px'/></td>
                                     </tr>";
