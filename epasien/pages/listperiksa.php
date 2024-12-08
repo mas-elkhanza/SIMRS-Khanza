@@ -11,7 +11,7 @@
                                  <div class='row'>
                                       <div class='col-md-12 col-sm-12'>
                                            <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                <h3>Gagal melakukan booking</h3><br>
+                                                <h3>Gagal melakukan booking</h3><br/>
                                                 Captcha tidak sesuai, silahkan ulangi ...!
                                            </div>
                                       </div>
@@ -54,7 +54,7 @@
                                                 <h3>Booking berhasil</h3>
                                              </div>
                                              <div class='news-thumb wow fadeInUp' data-wow-delay='0.2s'>
-                                                <br>
+                                                <br/>
                                                 <b>
                                                 <table width='95%' border='0' align='center'>
                                                     <tr><td width='29%' align='left' valign='top'>No. Booking</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>$no_urut</td></tr>
@@ -67,10 +67,10 @@
                                                     <tr><td width='29%' align='left' valign='top'>Unit/Poliklinik</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>".getOne("select nm_poli from poliklinik where kd_poli='$poli'")."</td></tr>
                                                 </table>
                                                 </b>
-                                                <br>
+                                                <br/>
                                              </div>
                                              <a href='pages/CetakBooking.php?iyem=".encrypt_decrypt("{\"nobooking\":\"$no_urut\"}","e")."' target=_blank class='form-control btn btn-success wow fadeInUp'> Cetak </a>
-                                             <br><br>
+                                             <br/><br/>
                                              Catatan : Nomor booking wajib anda ingat. Nomor booking bukan merupakan nomor pendaftaran poliklinik/unit. Kami akan melakukan pengecekan terhadap jadwal & kuota dokter yang tersedia berdasarkan booking Anda. Konfirmasi booking periksa akan Kami sampaikan melalui E-Mail atau Nomor HP/Telp Anda. Atau <a href='index.php?act=CekBooking' class='btn btn-danger'>Cek Booking</a> untuk melihat status booking Anda
                                          </div>
                                      </div>
@@ -82,7 +82,7 @@
                                          <div class='row'>
                                               <div class='col-md-12 col-sm-12'>
                                                    <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                        <h3>Gagal melakukan booking</h3><br>
+                                                        <h3>Gagal melakukan booking</h3><br/>
                                                         Nomor HP/Telp yang Anda gunakan untuk melakukan booking terdeteksi sudah digunakan sebelumnya pada tanggal yang sama. <a href='index.php?act=CekBooking' class='btn btn-danger'>Cek Booking</a> jika anda sudah melakukan booking sebelumnya 
                                                    </div>
                                               </div>
@@ -96,7 +96,7 @@
                                      <div class='row'>
                                           <div class='col-md-12 col-sm-12'>
                                                <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                    <h3>Gagal melakukan booking</h3><br>
+                                                    <h3>Gagal melakukan booking</h3><br/>
                                                     Semua field wajib diisi
                                                </div>
                                           </div>
@@ -111,7 +111,7 @@
                                  <div class='row'>
                                       <div class='col-md-12 col-sm-12'>
                                            <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                <h3>Gagal melakukan booking</h3><br>
+                                                <h3>Gagal melakukan booking</h3><br/>
                                                 Maksimal booking 1 hari sebelum periksa
                                            </div>
                                       </div>

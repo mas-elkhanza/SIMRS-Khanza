@@ -24,7 +24,7 @@
                                         </td>
                                         <td width='60%'>
                                             <center>
-                                                <font size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br>
+                                                <font size='3'  face='Tahoma'>".$setting["nama_instansi"]."</font><br/>
                                                 <font size='1'  face='Tahoma'>
                                                     ".$setting["alamat_instansi"].", ".$setting["kabupaten"].", ".$setting["propinsi"]."<br/>
                                                     ".$setting["kontak"].", E-mail : ".$setting["email"]."
@@ -65,10 +65,10 @@
                         window.onload = function() { window.print(); }
                      </script>";
             }else{
-                echo "<br><br><br><br><center>Tidak ditemukan</center>";
+                echo "<br/><br/><br/><br/><center>Tidak ditemukan</center>";
             } 
         }else{
-            echo "<br><br><br><br><center>Tidak ditemukan</center>";
+            echo "<br/><br/><br/><br/><center>Tidak ditemukan</center>";
         } 
     ?>  
     </body>

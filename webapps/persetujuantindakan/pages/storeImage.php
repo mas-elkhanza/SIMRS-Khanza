@@ -1,8 +1,8 @@
 <?php
     require_once('../../conf/conf.php');
     $nopernyataan           = validTeks4($_POST["nopernyataan"],20);
-    if(file_exists(host()."/webapps/persetujuantindakan/pages/upload/".$nopernyataan.".jpeg")){
-        @unlink(host()."/webapps/persetujuantindakan/pages/upload/".$nopernyataan.".jpeg");
+    if(file_exists(host()."/webapps/persetujuantindakan/pages/upload/".$nopernyataan."PP.jpeg")){
+        @unlink(host()."/webapps/persetujuantindakan/pages/upload/".$nopernyataan."PP.jpeg");
     }
     
     $tindakan_konfirmasi    = "false";
@@ -58,7 +58,7 @@
     $image_type_aux         = explode("image/", $image_parts[0]);
     $image_type             = $image_type_aux[1];
     $image_base64           = base64_decode($image_parts[1]);
-    $fileName               = $nopernyataan."PI.jpeg";
+    $fileName               = $nopernyataan."PP.jpeg";
     $file                   = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
     

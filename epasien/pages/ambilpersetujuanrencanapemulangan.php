@@ -33,7 +33,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>RENCANA PEMULANGAN PASIEN NO.RAWAT $norawat</center></h2>
+                                <h2><center>RENCANA PEMULANGAN PASIEN<br/>No.Rawat $norawat</center></h2>
                                 <h7><center>( Hanya bisa dilakukan di jaringan lokal ".$_SESSION["nama_instansi"]." )</center></h7>
                             </div>
                             <div class='body'>
@@ -42,7 +42,7 @@
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                         <tr>
                                             <td width='25%'>Nama Pasien</td>
-                                            <td width='70%'>: ".$_SESSION["nm_pasien"]."</td>
+                                            <td width='75%'>: ".$_SESSION["nm_pasien"]."</td>
                                         </tr>
                                         <tr>
                                             <td width='25%'>Nomor Rekam Medis</td>
@@ -165,7 +165,7 @@
                                         <div class='col-md-12 text-center'>
                                             <center><div id='my_camera'></div><center>
                                             <input type='hidden' name='image' class='image-tag' onkeydown='setDefault(this, document.getElementById('MsgIsi1'));' id='TxtIsi1'>
-                                            <br>
+                                            <br/>
                                             <input type='submit' name='BtnSimpan' class='btn btn-warning' value='Ya, Saya sebagai Pasien/Keluarga Pasien' onClick='take_snapshot()'>
                                             <a href='index.php?act=PersetujuanRencanaPemulangan&hal=Persetujuan' class='btn btn-danger waves-effect'>Kembali</a>
                                         </div>
@@ -194,7 +194,7 @@
                 if(file_put_contents($file, $image_base64)){
                     if(file_exists("../webapps/perencanaanpemulangan/pages/upload/".str_replace("/","",$norawat).".jpeg")){
                         if(Tambah3("bukti_perencanaan_pemulangan_saksikeluarga","'".$norawat."','pages/upload/$fileName'")){
-                            JSRedirect2("index.php?act=PersetujuanRencanaPemulangan&hal=Persetujuan",4);
+                            JSRedirect("index.php?act=PersetujuanRencanaPemulangan&hal=Persetujuan");
                         }
                     }
                 }else{
@@ -237,7 +237,7 @@
                     </div>
                  </div>
               </div>";
-        JSRedirect("index.php?act=PersetujuanRencanaPemulangan&hal=Persetujuan");
+        JSRedirect2("index.php?act=PersetujuanRencanaPemulangan&hal=Persetujuan",4);
     }
 ?>
 <script language="JavaScript">

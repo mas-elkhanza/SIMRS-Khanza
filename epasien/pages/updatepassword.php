@@ -66,7 +66,7 @@
                                                 <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                                                     <div class='card'>
                                                         <div class='body bg-success'>
-                                                            <center><h4>Gagal mengubah password.<br>Password minimal 6 karakter. Silahkan ulangi...!</h4></center>
+                                                            <center><h4>Gagal mengubah password.<br/>Password minimal 6 karakter. Silahkan ulangi...!</h4></center>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -77,7 +77,7 @@
                                             <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                                                 <div class='card'>
                                                     <div class='body bg-success'>
-                                                        <center><h4>Gagal mengubah password.<br>Password baru harus cocok. Silahkan ulangi...!</h4></center>
+                                                        <center><h4>Gagal mengubah password.<br/>Password baru harus cocok. Silahkan ulangi...!</h4></center>
                                                     </div>
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@
                                         <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                                             <div class='card'>
                                                 <div class='body bg-success'>
-                                                    <center><h4>Gagal mengubah password.<br>Password lama salah. Silahkan ulangi...!</h4></center>
+                                                    <center><h4>Gagal mengubah password.<br/>Password lama salah. Silahkan ulangi...!</h4></center>
                                                 </div>
                                             </div>
                                         </div>

@@ -25,8 +25,9 @@
                         <tbody>
                         <?php 
                             $queryperiksa = bukaquery(
-                                "select surat_pernyataan_pasien_umum.no_surat,date_format(surat_pernyataan_pasien_umum.tanggal,'%d/%m/%Y') as tanggalperiksa,surat_pernyataan_pasien_umum.nama_pj,surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.no_telp from surat_pernyataan_pasien_umum ".
-                                "inner join reg_periksa on surat_pernyataan_pasien_umum.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' order by surat_pernyataan_pasien_umum.tanggal desc"
+                                "select surat_pernyataan_pasien_umum.no_surat,date_format(surat_pernyataan_pasien_umum.tanggal,'%d/%m/%Y') as tanggalperiksa,surat_pernyataan_pasien_umum.nama_pj,surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.no_telp,ifnull(surat_pernyataan_pasien_umum_pembuat_pernyataan.photo,'') as photo from surat_pernyataan_pasien_umum ".
+                                "inner join reg_periksa on surat_pernyataan_pasien_umum.no_rawat=reg_periksa.no_rawat left join surat_pernyataan_pasien_umum_pembuat_pernyataan on surat_pernyataan_pasien_umum_pembuat_pernyataan.no_surat=surat_pernyataan_pasien_umum.no_surat where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' ".
+                                "order by surat_pernyataan_pasien_umum.tanggal desc"
                             );
                             while($rsqueryperiksa = mysqli_fetch_array($queryperiksa)) {
                                echo "<tr>
@@ -35,9 +36,8 @@
                                         <td align='center' valign='middle'>".$rsqueryperiksa["no_ktppj"]."</td>
                                         <td align='center' valign='middle'>".$rsqueryperiksa["nama_pj"]."</td>
                                         <td align='center' valign='middle'>".$rsqueryperiksa["no_telp"]."</td>".
-                                        (getOne2("select count(surat_pernyataan_pasien_umum_pembuat_pernyataan.no_surat) from surat_pernyataan_pasien_umum_pembuat_pernyataan where surat_pernyataan_pasien_umum_pembuat_pernyataan.no_surat='".$rsqueryperiksa["no_surat"]."'")==0?
-                                        "<td align='center' valign='middle'><a href='index.php?act=AmbilPersetujuanPernyataanPasienUmum&iyem=".encrypt_decrypt("{\"nopersetujuan\":\"".$rsqueryperiksa["no_surat"]."\"}","e")."' class='btn btn-warning waves-effect'>Ambil</a></td>":
-                                        "<td align='center' valign='middle'><a href='index.php?act=HasilPersetujuanPernyataanPasienUmum&iyem=".encrypt_decrypt("{\"nopersetujuan\":\"".$rsqueryperiksa["no_surat"]."\"}","e")."' class='btn btn-danger waves-effect'>Lihat</a></td>").
+                                        ($rsqueryperiksa["photo"]==""?"<td align='center' valign='middle'><a href='index.php?act=AmbilPersetujuanPernyataanPasienUmum&iyem=".encrypt_decrypt("{\"nopersetujuan\":\"".$rsqueryperiksa["no_surat"]."\"}","e")."' class='btn btn-warning waves-effect'>Ambil</a></td>":
+                                        "<td align='center' valign='middle'><a href='index.php?act=HasilPersetujuanPernyataanPasienUmum&iyem=".encrypt_decrypt("{\"nopersetujuan\":\"".$rsqueryperiksa["no_surat"]."\",\"photo\":\"".$rsqueryperiksa["photo"]."\"}","e")."' class='btn btn-danger waves-effect'>Lihat</a></td>").
                                     "</tr>";
                             }
                         ?>

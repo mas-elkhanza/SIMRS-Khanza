@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-12 text-center">
                     <br>
-                    <input type="button" class="btn btn-warning" value="Ya, Saya sebagai Saksi 1 Keluarga" onClick="take_snapshot()">
+                    <input type="button" class="btn btn-warning" value="Ya, Saya sebagai saksi 1 keluarga" onClick="take_snapshot()">
                     <button class="btn btn-danger">Simpan</button>
                 </div>
             </div>

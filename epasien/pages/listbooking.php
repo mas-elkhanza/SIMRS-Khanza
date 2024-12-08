@@ -22,7 +22,7 @@
                                 <div class='row'>
                                     <div class='col-md-12 col-sm-12'>
                                         <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                            <h3>Booking tidak ditemukan</h3><br>
+                                            <h3>Booking tidak ditemukan</h3><br/>
                                             Silahkan masukkan No. Booking dan No. Hp/Telp dengan benar... !!! 
                                         </div>
                                     </div>
@@ -37,7 +37,7 @@
                                     <div class='row'>
                                         <div class='col-md-12 col-sm-12'>
                                             <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                <h3>Booking kadaluarsa</h3><br>
+                                                <h3>Booking kadaluarsa</h3><br/>
                                                 Silahkan melakukan booking ulang... !!! 
                                             </div>
                                         </div>
@@ -52,7 +52,7 @@
                                         <div class='row'>
                                             <div class='col-md-12 col-sm-12'>
                                                 <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                    <h3>No. Booking $nobooking</h3><br>
+                                                    <h3>No. Booking $nobooking</h3><br/>
                                                     Mohon maaf, booking Anda masih menunggu peninjauan dari admin Kami. Silahkan cek kembali beberapa saat lagi   
                                                 </div>
                                             </div>
@@ -67,7 +67,7 @@
                                         <div class='row'>
                                             <div class='col-md-12 col-sm-12'>
                                                 <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                    <h3>No. Booking $nobooking</h3><br>
+                                                    <h3>No. Booking $nobooking</h3><br/>
                                                     Mohon maaf, booking Anda ditolak".($balasan==""?"":". $balasan").". Silahkan buat janji/booking kembali untuk tanggal/poli yang lain
                                                 </div>
                                             </div>
@@ -84,10 +84,10 @@
                                             <div class='row'>
                                                 <div class='col-md-12 col-sm-12'>
                                                     <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                        <h3>No. Booking $nobooking</h3><br>
-                                                        Booking Anda diterima, admin Kami sudah melakukan verifikasi data Anda".($balasan==""?"":".<br>$balasan").".<br><br>
+                                                        <h3>No. Booking $nobooking</h3><br/>
+                                                        Booking Anda diterima, admin Kami sudah melakukan verifikasi data Anda".($balasan==""?"":".<br/>$balasan").".<br/><br/>
                                                         <div class='news-thumb wow fadeInUp' data-wow-delay='0.2s'>
-                                                            <br>
+                                                            <br/>
                                                             <b>
                                                                <table width='95%' border='0' align='center'>
                                                                  <tr><td width='29%' align='left' valign='top'>Tgl. Booking</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>".$rsquerycekbookingperiksa["tanggal_booking"]." ".$rsquerycekbookingperiksa["jam_booking"]."</td></tr>
@@ -103,9 +103,9 @@
                                                                  <tr><td width='29%' align='left' valign='top'>Password Login</td><td valign='top' width='3%' align='center'>:</td><td width='68%' align='left' valign='top'>".$rsquerycekbookingperiksa["pass"]."</td></tr>
                                                                </table>
                                                             </b>
-                                                            <br>
+                                                            <br/>
                                                         </div>                
-                                                        <br>Silahkan hapalkan nomor rekam medis dan password Anda, dan Anda wajib menjaga kerahasiaannya. Klik <a href='index.php?act=LoginPasien' class='btn btn-success' >Log In</a> dan gunakan nomor rekam medis serta password Anda untuk masuk ke aplikasi EPasien kami. Untuk menjaga keamanan data, silahkan ubah password default yang sudah kami berikan di aplikasi EPasien setelah anda login.                     
+                                                        <br/>Silahkan hapalkan nomor rekam medis dan password Anda, dan Anda wajib menjaga kerahasiaannya. Klik <a href='index.php?act=LoginPasien' class='btn btn-success' >Log In</a> dan gunakan nomor rekam medis serta password Anda untuk masuk ke aplikasi EPasien kami. Untuk menjaga keamanan data, silahkan ubah password default yang sudah kami berikan di aplikasi EPasien setelah anda login.                     
                                                     </div>
                                                 </div>
                                             </div>
@@ -117,7 +117,7 @@
                                             <div class='row'>
                                                 <div class='col-md-12 col-sm-12'>
                                                     <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                                        <h3>Gagal</h3><br> 
+                                                        <h3>Gagal</h3><br/> 
                                                         Terjadi kesalahan saat pengecekan booking
                                                     </div>
                                                 </div>
@@ -135,7 +135,7 @@
                             <div class='row'>
                                 <div class='col-md-12 col-sm-12'>
                                     <div class='about-info wow fadeInUp' data-wow-delay='0.1s'>
-                                        <h3>Gagal</h3><br> 
+                                        <h3>Gagal</h3><br/> 
                                         Terjadi kesalahan saat pengecekan booking
                                     </div>
                                 </div>

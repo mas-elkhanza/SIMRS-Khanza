@@ -25,7 +25,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>KETENTUAN RAWAT INAP DAN PERSETUJUAN UMUM<br>NO. $nopersetujuan Tanggal ".$rsquerypersetujuan["tanggal"]."</center></h2>
+                                <h2><center>KETENTUAN RAWAT INAP DAN PERSETUJUAN UMUM<br/>No. $nopersetujuan Tanggal ".$rsquerypersetujuan["tanggal"]."</center></h2>
                                 <h7><center>( Hanya bisa dilakukan di jaringan lokal ".$_SESSION["nama_instansi"]." )</center></h7>
                             </div>
                             <div class='body'>
@@ -37,7 +37,7 @@
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                         <tr>
                                             <td width='100%'>
-                                                <b>A. Tarif Ruang Perawatan</b><br>
+                                                <b>A. Tarif Ruang Perawatan</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
                                                         <td width='30%'>Kelas 3</td><td width='20%'>Rp. 200.000</td><td width='30%'>VIP</td><td width='20%'>Rp. 600.000</td>
@@ -53,7 +53,7 @@
                                         </tr>
                                         <tr>
                                             <td width='100%'>
-                                                <b>B. Jumlah Tempat Tidur</b><br>
+                                                <b>B. Jumlah Tempat Tidur</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>";
             $_sql="Select kamar.kelas,count(kamar.kelas) as jumlah from kamar group by kamar.kelas" ;  
             $hasil=bukaquery($_sql);
@@ -67,7 +67,7 @@
                                         </tr>
                                         <tr>
                                             <td width='100%'>
-                                                <b>C. Angsuran Awal</b><br>
+                                                <b>C. Angsuran Awal</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
                                                         <td width='30%'>Kelas 3</td><td width='20%'>Rp. 600.000</td><td width='30%'>VIP</td><td width='20%'>Rp. 1.800.000</td>
@@ -83,7 +83,7 @@
                                         </tr>
                                         <tr>
                                             <td width='100%'>
-                                                <b>D. Peraturan Pembayaran Angsuran Awal Rawat Inap</b><br>
+                                                <b>D. Peraturan Pembayaran Angsuran Awal Rawat Inap</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
                                                         <td width='2%' valign='top'>1.</td><td width='98%'>Pembayaran Angsuran Awal besarnya nominal 50% dari biaya perawatan</td>
@@ -111,7 +111,7 @@
                                         </tr>
                                         <tr>
                                             <td width='100%'>
-                                                <b>E. Penghitungan Hari Perawatan</b><br>
+                                                <b>E. Penghitungan Hari Perawatan</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
                                                         <td width='2%' valign='top'>1.</td><td width='98%'>Perhitungan hari perawatan dimulai pada saat pasien dinyatakan masuk rawat inap</td>
@@ -124,12 +124,12 @@
                                         </tr>
                                         <tr>
                                             <td width='100%'>
-                                                <b>F. Tata Tertib Rawat Inap</b><br>
+                                                <b>F. Tata Tertib Rawat Inap</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
                                                         <td width='2%' valign='top'>1.</td><td width='98%'>
-                                                            Jam Berkunjung Pasien<br>
-                                                            &nbsp;- Rawat Inap : Siang Jam 11.00 - 13.00, Sore Jam 17.00 - 20.00<br>
+                                                            Jam Berkunjung Pasien<br/>
+                                                            &nbsp;- Rawat Inap : Siang Jam 11.00 - 13.00, Sore Jam 17.00 - 20.00<br/>
                                                             &nbsp;- ICU/PICU/NICU : Siang Jam 11.00 - 12.00, Sore Jam 17.00 - 18.00
                                                         </td>
                                                     </tr>
@@ -171,7 +171,7 @@
                                         </tr>
                                         <tr>
                                             <td width='100%'>
-                                                <b>G. Tata Tertib Pasien Pulang</b><br>
+                                                <b>G. Tata Tertib Pasien Pulang</b><br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
                                                         <td width='2%' valign='top'>1.</td><td width='98%'>Pasien pulang harus atas sepengetahuan atau seijin dokter yang merawat</td>
@@ -184,8 +184,8 @@
                                                     </tr>
                                                     <tr>
                                                         <td width='2%' valign='top'>4.</td><td width='98%'>
-                                                            Jadwal pelayanan pasien pulang<br>
-                                                            &nbsp;- Hari Senin - Jumat : 08.00 - 20.30 WIB<br>
+                                                            Jadwal pelayanan pasien pulang<br/>
+                                                            &nbsp;- Hari Senin - Jumat : 08.00 - 20.30 WIB<br/>
                                                             &nbsp;- Hari Sabtu - Minggu : 08.00 - 16.30 WIB
                                                         </td>
                                                     </tr>
@@ -202,7 +202,7 @@
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                         <tr>
                                             <td width='100%'>
-                                                A. Hak-hak Pasien yang dimaksud adalah hak-hak pasien sebagaimana yang diatur di dalam Undang-undang Nomor 44 Tahun 2009 tentang Rumah Sakit (Pasal 32 UU 44/2009), menebutkan bahwa setiap pasien mempunyai hak sebagai berikut :<br>
+                                                A. Hak-hak Pasien yang dimaksud adalah hak-hak pasien sebagaimana yang diatur di dalam Undang-undang Nomor 44 Tahun 2009 tentang Rumah Sakit (Pasal 32 UU 44/2009), menebutkan bahwa setiap pasien mempunyai hak sebagai berikut :<br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
                                                         <td width='2%' valign='top'>1.</td><td width='98%'>Memperoleh informasi mengenai tata tertib dan peraturan yang berlaku di Rumah Sakit;</td>
@@ -263,7 +263,7 @@
                                         </tr>
                                         <tr>
                                             <td width='100%'>
-                                                B. Kewajiban Pasien menurut UU No. 29 tahun 2004 pasal 53 adalah sebagai berikut :<br>
+                                                B. Kewajiban Pasien menurut UU No. 29 tahun 2004 pasal 53 adalah sebagai berikut :<br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
                                                         <td width='2%' valign='top'>1.</td><td width='98%'>Mentaati segala peraturan dan tata tertib di <?=$namars?></td>
@@ -384,7 +384,7 @@
                                         <div class='col-md-12 text-center'>
                                             <center><div id='my_camera'></div></center>
                                             <input type='hidden' name='image' class='image-tag' onkeydown='setDefault(this, document.getElementById('MsgIsi2'));' id='TxtIsi2'>
-                                            <br>
+                                            <br/>
                                             <input type='submit' name='BtnSimpan' class='btn btn-warning' value='Ya, Saya sebagai pembuat pernyataan' onClick='take_snapshot()'/>
                                             <a href='index.php?act=PersetujuanUmum&hal=Persetujuan' class='btn btn-danger waves-effect'>Kembali</a>
                                         </div>
@@ -400,8 +400,8 @@
                 $nopersetujuan     = validTeks4($_POST["nopersetujuan"],20);
                 $pengobatan_kepada = validTeks4($_POST["pengobatan_kepada"],20);
                 $nilai_kepercayaan = validTeks4($_POST["nilai_kepercayaan"],50);
-                if(file_exists("../webapps/persetujuanumum/pages/upload/".$nopersetujuan."PSU.jpeg")){
-                    @unlink("../webapps/persetujuanumum/pages/upload/".$nopersetujuan."PSU.jpeg");
+                if(file_exists("../webapps/persetujuanumum/pages/upload/".$nopersetujuan.".jpeg")){
+                    @unlink("../webapps/persetujuanumum/pages/upload/".$nopersetujuan.".jpeg");
                 }
                 $img               = $_POST["image"];
                 $folderPath        = "../webapps/persetujuanumum/pages/upload/";
@@ -409,14 +409,14 @@
                 $image_type_aux    = explode("image/", $image_parts[0]);
                 $image_type        = $image_type_aux[1];
                 $image_base64      = base64_decode($image_parts[1]);
-                $fileName          = $nopersetujuan."PSU.jpeg";
+                $fileName          = $nopersetujuan.".jpeg";
                 $file              = $folderPath . $fileName;
 
                 if(file_put_contents($file, $image_base64)){
-                    if(file_exists("../webapps/persetujuanumum/pages/upload/".$nopersetujuan."PSU.jpeg")){
+                    if(file_exists("../webapps/persetujuanumum/pages/upload/".$nopersetujuan.".jpeg")){
                         if(Tambah3("surat_persetujuan_umum_pembuat_pernyataan","'".$nopersetujuan."','pages/upload/$fileName'")){
                             Ubah2("surat_persetujuan_umum","pengobatan_kepada='$pengobatan_kepada',nilai_kepercayaan='$nilai_kepercayaan' where no_surat='$nopersetujuan'");
-                            JSRedirect2("index.php?act=PersetujuanUmum&hal=Persetujuan",4);
+                            JSRedirect("index.php?act=PersetujuanUmum&hal=Persetujuan");
                         }
                     }else{
                         echo "<div class='row clearfix'>
@@ -469,7 +469,7 @@
                     </div>
                  </div>
               </div>";
-        JSRedirect("index.php?act=PersetujuanUmum&hal=Persetujuan");
+        JSRedirect2("index.php?act=PersetujuanUmum&hal=Persetujuan",2);
     }
 ?>
 <script language="JavaScript">

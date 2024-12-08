@@ -11,7 +11,7 @@
                         from billing where no_rawat='$norawat' order by noindex");
         if(mysqli_num_rows($querybilling)!=0) {
             echo "<div class='block-header'>
-                    <h2><center>BILLING PERAWATAN<br>NO.$norawat</center></h2>
+                    <h2><center>BILLING PERAWATAN<br/>NO.$norawat</center></h2>
                   </div>
                   <div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>

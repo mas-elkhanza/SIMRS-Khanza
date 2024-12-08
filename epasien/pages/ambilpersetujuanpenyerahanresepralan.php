@@ -19,7 +19,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>PENYERAHAN RESEP OBAT RAWAT JALAN<br>NO. $noresep</center></h2>
+                                <h2><center>PENYERAHAN RESEP OBAT RAWAT JALAN<br/>No. $noresep</center></h2>
                                 <h7><center>( Hanya bisa dilakukan di jaringan lokal ".$_SESSION["nama_instansi"]." )</center></h7>
                             </div>
                             <div class='body'>
@@ -49,7 +49,7 @@
                                         <td width='35%'>: ".$_SESSION["no_tlp"]."</td>
                                     </tr>
                                 </table>
-                                <br>
+                                <br/>
                                 <table width='100%' align='center' class='table table-bordered table-hover js-basic-example dataTable'>
                                     <tr>
                                         <td width='3%'><div align='center'>No.</div></td>
@@ -114,7 +114,7 @@
                                         <div class='col-md-12 text-center'>
                                             <center><div id='my_camera'></div><center>
                                             <input type='hidden' name='image' class='image-tag' onkeydown='setDefault(this, document.getElementById('MsgIsi1'));' id='TxtIsi1'>
-                                            <br>
+                                            <br/>
                                             <input type='submit' name='BtnSimpan' class='btn btn-warning' value='Ya, Saya mengerti' onClick='take_snapshot()'>
                                             <a href='index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan' class='btn btn-danger waves-effect'>Kembali</a>
                                         </div>
@@ -144,7 +144,7 @@
                 if(file_exists("../webapps/penyerahanresep/pages/upload/".$noresep.".jpeg")){
                     if(Tambah3("bukti_penyerahan_resep_obat","'".$noresep."','pages/upload/$fileName'")){
                         Ubah2("resep_obat","tgl_penyerahan=current_date(),jam_penyerahan=current_time() where no_resep='$noresep'");
-                        JSRedirect2("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan",4);
+                        JSRedirect("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan");
                     }
                 }else{
                     echo "<div class='row clearfix'>
@@ -182,7 +182,7 @@
                     </div>
                  </div>
               </div>";
-        JSRedirect("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan");
+        JSRedirect2("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan",4);
     }
 ?>
 <script language="JavaScript">

@@ -25,8 +25,9 @@
                         <tbody>
                         <?php 
                             $queryperiksa = bukaquery(
-                                "select perencanaan_pemulangan.no_rawat,date_format(perencanaan_pemulangan.rencana_pulang,'%d/%m/%Y') as rencana_pulang,perencanaan_pemulangan.nama_pasien_keluarga,perencanaan_pemulangan.alasan_masuk,perencanaan_pemulangan.diagnosa_medis from perencanaan_pemulangan ".
-                                "inner join reg_periksa on perencanaan_pemulangan.no_rawat=reg_periksa.no_rawat where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' order by perencanaan_pemulangan.rencana_pulang desc"
+                                "select perencanaan_pemulangan.no_rawat,date_format(perencanaan_pemulangan.rencana_pulang,'%d/%m/%Y') as rencana_pulang,perencanaan_pemulangan.nama_pasien_keluarga,perencanaan_pemulangan.alasan_masuk,perencanaan_pemulangan.diagnosa_medis,ifnull(bukti_perencanaan_pemulangan_saksikeluarga.photo,'') as photo from perencanaan_pemulangan ".
+                                "inner join reg_periksa on perencanaan_pemulangan.no_rawat=reg_periksa.no_rawat left join bukti_perencanaan_pemulangan_saksikeluarga on bukti_perencanaan_pemulangan_saksikeluarga.no_rawat=perencanaan_pemulangan.no_rawat where reg_periksa.no_rkm_medis='".cleankar(encrypt_decrypt($_SESSION["ses_pasien"],"d"))."' ".
+                                "order by perencanaan_pemulangan.rencana_pulang desc"
                             );
                             while($rsqueryperiksa = mysqli_fetch_array($queryperiksa)) {
                                echo "<tr>
@@ -35,9 +36,8 @@
                                         <td align='center' valign='middle'>".$rsqueryperiksa["alasan_masuk"]."</td>
                                         <td align='center' valign='middle'>".$rsqueryperiksa["nama_pasien_keluarga"]."</td>
                                         <td align='center' valign='middle'>".$rsqueryperiksa["diagnosa_medis"]."</td>".
-                                        (getOne2("select count(bukti_perencanaan_pemulangan_saksikeluarga.no_rawat) from bukti_perencanaan_pemulangan_saksikeluarga where bukti_perencanaan_pemulangan_saksikeluarga.no_rawat='".$rsqueryperiksa["no_rawat"]."'")==0?
-                                        "<td align='center' valign='middle'><a href='index.php?act=AmbilPersetujuanRencanaPemulangan&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryperiksa["no_rawat"]."\"}","e")."' class='btn btn-warning waves-effect'>Ambil</a></td>":
-                                        "<td align='center' valign='middle'><a href='index.php?act=HasilPersetujuanRencanaPemulangan&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryperiksa["no_rawat"]."\"}","e")."' class='btn btn-danger waves-effect'>Lihat</a></td>").
+                                        ($rsqueryperiksa["photo"]==""?"<td align='center' valign='middle'><a href='index.php?act=AmbilPersetujuanRencanaPemulangan&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryperiksa["no_rawat"]."\"}","e")."' class='btn btn-warning waves-effect'>Ambil</a></td>":
+                                        "<td align='center' valign='middle'><a href='index.php?act=HasilPersetujuanRencanaPemulangan&iyem=".encrypt_decrypt("{\"norawat\":\"".$rsqueryperiksa["no_rawat"]."\",\"photo\":\"".$rsqueryperiksa["photo"]."\"}","e")."' class='btn btn-danger waves-effect'>Lihat</a></td>").
                                     "</tr>";
                             }
                         ?>

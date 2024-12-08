@@ -12,12 +12,12 @@
             "select bukti_penyerahan_resep_obat.photo from bukti_penyerahan_resep_obat where bukti_penyerahan_resep_obat.no_resep='".$noresep."'"
         );
         if($rsquerygambarpersetujuan= mysqli_fetch_array($querygambarpersetujuan)){
-            $src = 'data: '.mime_content_type("http://".host()."/webapps/penyerahanresep/".$rsquerygambarpersetujuan["photo"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/penyerahanresep/".$rsquerygambarpersetujuan["photo"]));
+            @$src = 'data: '.mime_content_type("http://".host()."/webapps/penyerahanresep/".$rsquerygambarpersetujuan["photo"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/penyerahanresep/".$rsquerygambarpersetujuan["photo"]));
             echo "<div class='row clearfix'>
                         <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                             <div class='card'>
                                 <div class='header'>
-                                    <h2><center>PENYERAHAN RESEP OBAT RAWAT JALAN<br>NO. $noresep</center></h2>
+                                    <h2><center>PENYERAHAN RESEP OBAT RAWAT JALAN<br/>No. $noresep</center></h2>
                                 </div>
                                 <div class='body'>
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
@@ -46,7 +46,7 @@
                                             <td width='35%'>: ".$_SESSION["no_tlp"]."</td>
                                         </tr>
                                     </table>
-                                    <br>
+                                    <br/>
                                     <table width='100%' align='center' class='table table-bordered table-hover js-basic-example dataTable'>
                                         <tr>
                                             <td width='3%'><div align='center'>No.</div></td>
@@ -107,10 +107,10 @@
                                     <br/>
                                     <br/>
                                     <h7><center>Pasien/Yang Mewakili<br/></h7>  
-                                    <br>
+                                    <br/>
                                     <div class='row'>
                                         <div class='col-md-12 text-center'>
-                                            <img alt='Gambar Persetujuan' src='$src' width='490px' height='420px'/><br><br>
+                                            <img alt='Gambar Persetujuan' src='$src' width='490px' height='420px'/><br/><br/>
                                             <a href='index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan' class='btn btn-danger waves-effect'>Kembali</a>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                         </div>
                      </div>
                   </div>";
-            JSRedirect("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan");
+            JSRedirect2("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan",4);
         }
     }else{
         echo "<div class='block-header'>
@@ -146,6 +146,6 @@
                     </div>
                  </div>
               </div>";
-        JSRedirect("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan");
+        JSRedirect2("index.php?act=PersetujuanPenyerahanResepRalan&hal=Persetujuan",4);
     }
 ?>

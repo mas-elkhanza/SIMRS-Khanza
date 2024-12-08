@@ -24,7 +24,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>PERNYATAAN PASIEN UMUM<br>NO. $nopersetujuan Tanggal ".$rsquerypersetujuan["tanggal"]."</center></h2>
+                                <h2><center>PERNYATAAN PASIEN UMUM<br/>No. $nopersetujuan Tanggal ".$rsquerypersetujuan["tanggal"]."</center></h2>
                                 <h7><center>( Hanya bisa dilakukan di jaringan lokal ".$_SESSION["nama_instansi"]." )</center></h7>
                             </div>
                             <div class='body'>
@@ -36,7 +36,7 @@
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                         <tr>
                                             <td width='25%'>Nama</td>
-                                            <td width='70%'>: ".$rsquerypersetujuan["nama_pj"]."</td>
+                                            <td width='75%'>: ".$rsquerypersetujuan["nama_pj"]."</td>
                                         </tr>
                                         <tr>
                                             <td width='25%'>Tempat/Tanggal Lahir</td>
@@ -88,9 +88,9 @@
                                     <br/>
                                     <h7>
                                         Menyatakan bahwa benar pasien tidak memiliki jaminan <b>ASURANSI/BPJS/TC/PT</b>, oleh karena itu saya bersedia bertanggung jawab dengan kewajiban administrasi rumah sakit sebagai <b>PASIEN UMUM (CASH)</b> dari awal sampai selesai perawatan.
-                                        <br><br>
+                                        <br/><br/>
                                         Saya sudah diedukasi oleh pihak ADMINISTRASI dan sudah mengerti, memahami, serta menyetujui bahwa pasien dirawat dengan pembayaran <b>UMUM/CASH</b> atas permintaan sendiri dan tanpa paksaan dari pihak manapun dan tidak akan menuntut/menggugat pernyataaan ini dikemudian hari untuk alasan apapun.
-                                        <br><br>
+                                        <br/><br/>
                                         Demikian surat ini saya buat dengan sebenar-benarnya agar dapat dipergunakan untuk tujuan diatas. Atas perhatiannya saya ucapkan terima kasih.
                                     </h7>
                                     <br/>
@@ -100,7 +100,7 @@
                                         <div class='col-md-12 text-center'>
                                             <center><div id='my_camera'></div></center>
                                             <input type='hidden' name='image' class='image-tag' onkeydown='setDefault(this, document.getElementById('MsgIsi2'));' id='TxtIsi2'>
-                                            <br>
+                                            <br/>
                                             <input type='submit' name='BtnSimpan' class='btn btn-warning' value='Ya, Saya sebagai pembuat pernyataan' onClick='take_snapshot()'/>
                                             <a href='index.php?act=PersetujuanPernyataanPasienUmum&hal=Persetujuan' class='btn btn-danger waves-effect'>Kembali</a>
                                         </div>
@@ -114,8 +114,8 @@
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $nopersetujuan     = validTeks4($_POST["nopersetujuan"],20);
-                if(file_exists("../webapps/pernyataanumum/pages/upload/".$nopersetujuan."PI.jpeg")){
-                    @unlink("../webapps/pernyataanumum/pages/upload/".$nopersetujuan."PI.jpeg");
+                if(file_exists("../webapps/pernyataanumum/pages/upload/".$nopersetujuan.".jpeg")){
+                    @unlink("../webapps/pernyataanumum/pages/upload/".$nopersetujuan.".jpeg");
                 }
                 $img               = $_POST["image"];
                 $folderPath        = "../webapps/pernyataanumum/pages/upload/";
@@ -123,13 +123,13 @@
                 $image_type_aux    = explode("image/", $image_parts[0]);
                 $image_type        = $image_type_aux[1];
                 $image_base64      = base64_decode($image_parts[1]);
-                $fileName          = $nopersetujuan."PI.jpeg";
+                $fileName          = $nopersetujuan.".jpeg";
                 $file              = $folderPath . $fileName;
 
                 if(file_put_contents($file, $image_base64)){
-                    if(file_exists("../webapps/pernyataanumum/pages/upload/".$nopersetujuan."PI.jpeg")){
+                    if(file_exists("../webapps/pernyataanumum/pages/upload/".$nopersetujuan.".jpeg")){
                         if(Tambah3("surat_pernyataan_pasien_umum_pembuat_pernyataan","'".$nopersetujuan."','pages/upload/$fileName'")){
-                            JSRedirect2("index.php?act=PersetujuanPernyataanPasienUmum&hal=Persetujuan",4);
+                            JSRedirect("index.php?act=PersetujuanPernyataanPasienUmum&hal=Persetujuan");
                         }
                     }else{
                         echo "<div class='row clearfix'>
@@ -182,7 +182,7 @@
                     </div>
                  </div>
               </div>";
-        JSRedirect("index.php?act=PersetujuanPernyataanPasienUmum&hal=Persetujuan");
+        JSRedirect2("index.php?act=PersetujuanPernyataanPasienUmum&hal=Persetujuan",4);
     }
 ?>
 <script language="JavaScript">

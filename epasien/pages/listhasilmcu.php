@@ -13,7 +13,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>HASIL PEMERIKSAAN MEDICAL CHECK UP<br>NO.$nomcuhasil</center></h2>
+                                <h2><center>HASIL PEMERIKSAAN MEDICAL CHECK UP<br/>NO.$nomcuhasil</center></h2>
                             </div>
                             <div class='body' align='justify'>";
             
@@ -651,7 +651,7 @@
                     echo "          <tr>
                                         <td valign='top' align='center'>".$w."</td>
                                         <td valign='top'>".$rsqueryperiksaradiologi["tgl_periksa"]." ".$rsqueryperiksaradiologi["jam"]."</td>
-                                        <td valign='top'>".$rsqueryperiksaradiologi["nm_perawatan"]."<br>".$rsqueryperiksaradiologi["proyeksi"]."</td>
+                                        <td valign='top'>".$rsqueryperiksaradiologi["nm_perawatan"]."<br/>".$rsqueryperiksaradiologi["proyeksi"]."</td>
                                         <td valign='top'>".$rsqueryperiksaradiologi["nm_dokter"]."</td>
                                         <td valign='top'>".$rsqueryperiksaradiologi["nama"]."</td>
                                     </tr>";
