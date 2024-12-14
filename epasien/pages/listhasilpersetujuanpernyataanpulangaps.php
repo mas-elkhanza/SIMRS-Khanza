@@ -16,8 +16,8 @@
             "from surat_pulang_atas_permintaan_sendiri where surat_pulang_atas_permintaan_sendiri.no_surat='$nopersetujuan'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
-            @$src  = 'data: '.mime_content_type("http://".host()."/webapps/pulangaps/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/pulangaps/".$photo));
-            @$src2 = 'data: '.mime_content_type("http://".host()."/webapps/pulangaps/".$photo2).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/pulangaps/".$photo2));
+            @$src  = 'data: '.@mime_content_type("http://".host()."/webapps/pulangaps/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/pulangaps/".$photo));
+            @$src2 = 'data: '.@mime_content_type("http://".host()."/webapps/pulangaps/".$photo2).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/pulangaps/".$photo2));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>

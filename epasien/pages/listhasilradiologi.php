@@ -77,7 +77,7 @@
                                         <td valign='top' align='center' bgcolor='#FCFCFC' colspan='3'>Gambar Radiologi</td>
                                       </tr>";
                                 while($rsquerygambarradiologi= mysqli_fetch_array($querygambarradiologi)){
-                                    $src = 'data: '.mime_content_type("http://".host()."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]));
+                                    $src = 'data: '.@mime_content_type("http://".host()."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]));
                                     echo "<tr>
                                             <td valign='top' align='center'></td>
                                             <td valign='top' colspan='3' align='center'><img alt='Gambar PA' src='$src' width='100%' height='500px'/></td>

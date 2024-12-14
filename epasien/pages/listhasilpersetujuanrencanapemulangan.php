@@ -23,7 +23,7 @@
             "inner join reg_periksa on reg_periksa.no_rawat=perencanaan_pemulangan.no_rawat where perencanaan_pemulangan.no_rawat='".$norawat."'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
-            @$src = 'data: '.mime_content_type("http://".host()."/webapps/perencanaanpemulangan/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/perencanaanpemulangan/".$photo));
+            @$src = 'data: '.@mime_content_type("http://".host()."/webapps/perencanaanpemulangan/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/perencanaanpemulangan/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>

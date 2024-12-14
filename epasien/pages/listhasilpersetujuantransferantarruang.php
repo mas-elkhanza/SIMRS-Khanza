@@ -14,7 +14,7 @@
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
             $photo = getOne("select bukti_persetujuan_transfer_pasien_antar_ruang.photo from bukti_persetujuan_transfer_pasien_antar_ruang where bukti_persetujuan_transfer_pasien_antar_ruang.no_rawat='".$norawat."' and bukti_persetujuan_transfer_pasien_antar_ruang.tanggal_masuk='".$tanggal."'");
-            @$src   = 'data: '.mime_content_type("http://".host()."/webapps/persetujuantransferruang/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuantransferruang/".$photo));
+            @$src   = 'data: '.@mime_content_type("http://".host()."/webapps/persetujuantransferruang/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuantransferruang/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
