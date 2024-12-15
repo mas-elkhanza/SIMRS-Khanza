@@ -4983,7 +4983,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "verifikasi_penerimaan_dapur='"+tbUser.getValueAt(i,1092).toString()+"',"+
                     "nilai_penerimaan_vendor_dapur_perbulan='"+tbUser.getValueAt(i,1093).toString()+"',"+
                     "ringkasan_hutang_vendor_dapur='"+tbUser.getValueAt(i,1094).toString()+"',"+
-                    "penilaian_psikologis_klinis='"+tbUser.getValueAt(i,1095).toString()+"'")==true){
+                    "penilaian_psikologi_klinis='"+tbUser.getValueAt(i,1095).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6277,7 +6277,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "verifikasi_penerimaan_dapur='"+tbUser.getValueAt(barisdicopy,1092).toString()+"',"+
                                         "nilai_penerimaan_vendor_dapur_perbulan='"+tbUser.getValueAt(barisdicopy,1093).toString()+"',"+
                                         "ringkasan_hutang_vendor_dapur='"+tbUser.getValueAt(barisdicopy,1094).toString()+"',"+
-                                        "penilaian_psikologis_klinis='"+tbUser.getValueAt(barisdicopy,1095).toString()+"'");
+                                        "penilaian_psikologi_klinis='"+tbUser.getValueAt(barisdicopy,1095).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6586,7 +6586,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.skrining_kanker_kolorektal,user.dapur_pemesanan,user.bayar_pesan_dapur,user.hutang_dapur,user.titip_faktur_dapur,user.validasi_tagihan_dapur,"+
                 "user.surat_pemesanan_dapur,user.pengajuan_barang_dapur,user.dapur_returbeli,user.hibah_dapur,user.ringkasan_penerimaan_dapur,user.ringkasan_pengajuan_dapur,"+
                 "user.ringkasan_pemesanan_dapur,user.ringkasan_returbeli_dapur,user.ringkasan_stokkeluar_dapur,user.dapur_stokkeluar_pertanggal,user.sirkulasi_dapur,"+
-                "user.sirkulasi_dapur2,user.verifikasi_penerimaan_dapur,user.nilai_penerimaan_vendor_dapur_perbulan,user.ringkasan_hutang_vendor_dapur,user.penilaian_psikologis_klinis from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.sirkulasi_dapur2,user.verifikasi_penerimaan_dapur,user.nilai_penerimaan_vendor_dapur_perbulan,user.ringkasan_hutang_vendor_dapur,user.penilaian_psikologi_klinis from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7694,7 +7694,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("verifikasi_penerimaan_dapur"),
                                rs.getBoolean("nilai_penerimaan_vendor_dapur_perbulan"),
                                rs.getBoolean("ringkasan_hutang_vendor_dapur"),
-                               rs.getBoolean("penilaian_psikologis_klinis")
+                               rs.getBoolean("penilaian_psikologi_klinis")
                             });
                         }   
                     } catch (Exception e) {
@@ -8791,7 +8791,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("verifikasi_penerimaan_dapur"),
                            rs.getBoolean("nilai_penerimaan_vendor_dapur_perbulan"),
                            rs.getBoolean("ringkasan_hutang_vendor_dapur"),
-                           rs.getBoolean("penilaian_psikologis_klinis")
+                           rs.getBoolean("penilaian_psikologi_klinis")
                         });
                     }                                             
                  }
