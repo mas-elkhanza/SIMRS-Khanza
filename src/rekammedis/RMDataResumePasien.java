@@ -2314,7 +2314,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             ps=koneksi.prepareStatement(
                     "select diagnosa_pasien.kd_penyakit,penyakit.nm_penyakit,diagnosa_pasien.prioritas "+
                     "from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
-                    "where diagnosa_pasien.no_rawat=? order by diagnosa_pasien.prioritas ");
+                    "where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='Ralan' order by diagnosa_pasien.prioritas ");
             try {
                 ps.setString(1,norwt);
                 rs=ps.executeQuery();

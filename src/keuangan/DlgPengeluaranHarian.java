@@ -109,7 +109,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
 
         Keterangan.setDocument(new batasInput((byte)70).getKata(Keterangan));
         KdPtg.setDocument(new batasInput((byte)20).getKata(KdPtg));
-        Pengeluaran.setDocument(new batasInput((byte)15).getKata(Pengeluaran));
+        Pengeluaran.setDocument(new batasInput((byte)15).getOnlyAngka(Pengeluaran));
         NoRekening.setDocument(new batasInput((byte)20).getKata(NoRekening));
         RekeningAtasNama.setDocument(new batasInput((byte)60).getKata(RekeningAtasNama));
         KotaAtasNamaRekening.setDocument(new batasInput((byte)20).getKata(KotaAtasNamaRekening));

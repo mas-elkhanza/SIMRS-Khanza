@@ -110,7 +110,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         Keperluan.setDocument(new batasInput((byte)70).getKata(Keperluan));
         Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         KdPtg.setDocument(new batasInput((byte)20).getKata(KdPtg));
-        pemasukan.setDocument(new batasInput((byte)15).getKata(pemasukan));
+        pemasukan.setDocument(new batasInput((byte)15).getOnlyAngka(pemasukan));
         Nomor.setDocument(new batasInput((byte)17).getKata(Nomor));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
