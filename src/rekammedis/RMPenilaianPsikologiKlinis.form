@@ -1032,6 +1032,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="AlasanPermasalahan" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AlasanPermasalahanKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="331" y="400" width="225" height="23"/>
@@ -1056,6 +1059,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="EkspektasiMasalah" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EkspektasiMasalahKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="629" y="400" width="225" height="23"/>
@@ -1151,6 +1157,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Penampilan" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PenampilanKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="159" y="540" width="695" height="23"/>
@@ -1175,6 +1184,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="EkspresiWajah" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EkspresiWajahKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="176" y="570" width="678" height="23"/>
@@ -1234,6 +1246,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="SuasanaHati" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SuasanaHatiKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="166" y="600" width="688" height="23"/>
@@ -1270,6 +1285,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TingkahLaku" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TingkahLakuKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="166" y="630" width="688" height="23"/>
@@ -1306,6 +1324,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="FungsiUmum" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FungsiUmumKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="168" y="660" width="686" height="23"/>
@@ -1342,6 +1363,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="FungsiIntelektual" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FungsiIntelektualKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="189" y="690" width="665" height="23"/>
@@ -1366,6 +1390,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Pengalaman" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="PengalamanKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="162" y="720" width="692" height="23"/>
@@ -1414,6 +1441,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Lainnya" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LainnyaKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="139" y="750" width="715" height="23"/>
@@ -1450,6 +1480,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Delusi" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="DelusiKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="173" y="800" width="681" height="23"/>
@@ -1486,6 +1519,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="ProsesPikiran" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ProsesPikiranKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="170" y="830" width="684" height="23"/>
@@ -1511,6 +1547,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Halusinasi" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="HalusinasiKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="151" y="860" width="703" height="23"/>
@@ -1559,6 +1598,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Afek" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AfekKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="125" y="890" width="729" height="23"/>
@@ -1606,6 +1648,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Insight" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="InsightKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="136" y="920" width="718" height="23"/>
@@ -1630,6 +1675,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Kesadaran" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KesadaranKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="153" y="950" width="701" height="23"/>
@@ -1678,6 +1726,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Orientasi" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="OrientasiKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="257" y="980" width="597" height="23"/>
@@ -1702,6 +1753,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="Atensi" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AtensiKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="132" y="1010" width="722" height="23"/>
@@ -1750,6 +1804,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="KontrolImpuls" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KontrolImpulsKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="173" y="1040" width="681" height="23"/>
@@ -1832,6 +1889,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="NamaTes" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NamaTesKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="364" y="1090" width="490" height="23"/>
@@ -1868,6 +1928,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="HasilTes" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="HasilTesKeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="98" y="1120" width="756" height="23"/>
@@ -2227,6 +2290,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TahapanIntevensi1" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TahapanIntevensi1KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="75" y="1520" width="380" height="23"/>
@@ -2240,6 +2306,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TargetTerapi1" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TargetTerapi1KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="474" y="1520" width="380" height="23"/>
@@ -2347,6 +2416,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TahapanIntevensi3" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TahapanIntevensi3KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="75" y="1580" width="380" height="23"/>
@@ -2385,6 +2457,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TahapanIntevensi2" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TahapanIntevensi2KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="75" y="1550" width="380" height="23"/>
@@ -2398,6 +2473,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TargetTerapi2" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TargetTerapi2KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="474" y="1550" width="380" height="23"/>
@@ -2423,6 +2501,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TahapanIntevensi4" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TahapanIntevensi4KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="75" y="1610" width="380" height="23"/>
@@ -2461,6 +2542,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TahapanIntevensi5" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TahapanIntevensi5KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="75" y="1640" width="380" height="23"/>
@@ -2499,6 +2583,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TahapanIntevensi6" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TahapanIntevensi6KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="75" y="1670" width="380" height="23"/>
@@ -2537,6 +2624,9 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="TahapanIntevensi7" noResource="true"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TahapanIntevensi7KeyPressed"/>
+                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="75" y="1700" width="380" height="23"/>

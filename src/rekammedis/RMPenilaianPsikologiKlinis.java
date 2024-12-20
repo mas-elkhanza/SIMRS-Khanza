@@ -936,6 +936,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         AlasanPermasalahan.setHighlighter(null);
         AlasanPermasalahan.setName("AlasanPermasalahan"); // NOI18N
+        AlasanPermasalahan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlasanPermasalahanKeyPressed(evt);
+            }
+        });
         FormInput.add(AlasanPermasalahan);
         AlasanPermasalahan.setBounds(331, 400, 225, 23);
 
@@ -946,6 +951,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         EkspektasiMasalah.setHighlighter(null);
         EkspektasiMasalah.setName("EkspektasiMasalah"); // NOI18N
+        EkspektasiMasalah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EkspektasiMasalahKeyPressed(evt);
+            }
+        });
         FormInput.add(EkspektasiMasalah);
         EkspektasiMasalah.setBounds(629, 400, 225, 23);
 
@@ -992,6 +1002,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Penampilan.setHighlighter(null);
         Penampilan.setName("Penampilan"); // NOI18N
+        Penampilan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PenampilanKeyPressed(evt);
+            }
+        });
         FormInput.add(Penampilan);
         Penampilan.setBounds(159, 540, 695, 23);
 
@@ -1002,6 +1017,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         EkspresiWajah.setHighlighter(null);
         EkspresiWajah.setName("EkspresiWajah"); // NOI18N
+        EkspresiWajah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EkspresiWajahKeyPressed(evt);
+            }
+        });
         FormInput.add(EkspresiWajah);
         EkspresiWajah.setBounds(176, 570, 678, 23);
 
@@ -1029,6 +1049,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         SuasanaHati.setHighlighter(null);
         SuasanaHati.setName("SuasanaHati"); // NOI18N
+        SuasanaHati.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SuasanaHatiKeyPressed(evt);
+            }
+        });
         FormInput.add(SuasanaHati);
         SuasanaHati.setBounds(166, 600, 688, 23);
 
@@ -1045,6 +1070,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         TingkahLaku.setHighlighter(null);
         TingkahLaku.setName("TingkahLaku"); // NOI18N
+        TingkahLaku.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TingkahLakuKeyPressed(evt);
+            }
+        });
         FormInput.add(TingkahLaku);
         TingkahLaku.setBounds(166, 630, 688, 23);
 
@@ -1061,6 +1091,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         FungsiUmum.setHighlighter(null);
         FungsiUmum.setName("FungsiUmum"); // NOI18N
+        FungsiUmum.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FungsiUmumKeyPressed(evt);
+            }
+        });
         FormInput.add(FungsiUmum);
         FungsiUmum.setBounds(168, 660, 686, 23);
 
@@ -1077,6 +1112,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         FungsiIntelektual.setHighlighter(null);
         FungsiIntelektual.setName("FungsiIntelektual"); // NOI18N
+        FungsiIntelektual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FungsiIntelektualKeyPressed(evt);
+            }
+        });
         FormInput.add(FungsiIntelektual);
         FungsiIntelektual.setBounds(189, 690, 665, 23);
 
@@ -1087,6 +1127,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Pengalaman.setHighlighter(null);
         Pengalaman.setName("Pengalaman"); // NOI18N
+        Pengalaman.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PengalamanKeyPressed(evt);
+            }
+        });
         FormInput.add(Pengalaman);
         Pengalaman.setBounds(162, 720, 692, 23);
 
@@ -1109,6 +1154,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Lainnya.setHighlighter(null);
         Lainnya.setName("Lainnya"); // NOI18N
+        Lainnya.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LainnyaKeyPressed(evt);
+            }
+        });
         FormInput.add(Lainnya);
         Lainnya.setBounds(139, 750, 715, 23);
 
@@ -1125,6 +1175,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Delusi.setHighlighter(null);
         Delusi.setName("Delusi"); // NOI18N
+        Delusi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DelusiKeyPressed(evt);
+            }
+        });
         FormInput.add(Delusi);
         Delusi.setBounds(173, 800, 681, 23);
 
@@ -1141,6 +1196,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         ProsesPikiran.setHighlighter(null);
         ProsesPikiran.setName("ProsesPikiran"); // NOI18N
+        ProsesPikiran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ProsesPikiranKeyPressed(evt);
+            }
+        });
         FormInput.add(ProsesPikiran);
         ProsesPikiran.setBounds(170, 830, 684, 23);
 
@@ -1152,6 +1212,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Halusinasi.setHighlighter(null);
         Halusinasi.setName("Halusinasi"); // NOI18N
+        Halusinasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HalusinasiKeyPressed(evt);
+            }
+        });
         FormInput.add(Halusinasi);
         Halusinasi.setBounds(151, 860, 703, 23);
 
@@ -1174,6 +1239,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Afek.setHighlighter(null);
         Afek.setName("Afek"); // NOI18N
+        Afek.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AfekKeyPressed(evt);
+            }
+        });
         FormInput.add(Afek);
         Afek.setBounds(125, 890, 729, 23);
 
@@ -1195,6 +1265,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Insight.setHighlighter(null);
         Insight.setName("Insight"); // NOI18N
+        Insight.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                InsightKeyPressed(evt);
+            }
+        });
         FormInput.add(Insight);
         Insight.setBounds(136, 920, 718, 23);
 
@@ -1205,6 +1280,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Kesadaran.setHighlighter(null);
         Kesadaran.setName("Kesadaran"); // NOI18N
+        Kesadaran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KesadaranKeyPressed(evt);
+            }
+        });
         FormInput.add(Kesadaran);
         Kesadaran.setBounds(153, 950, 701, 23);
 
@@ -1227,6 +1307,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Orientasi.setHighlighter(null);
         Orientasi.setName("Orientasi"); // NOI18N
+        Orientasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                OrientasiKeyPressed(evt);
+            }
+        });
         FormInput.add(Orientasi);
         Orientasi.setBounds(257, 980, 597, 23);
 
@@ -1237,6 +1322,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         Atensi.setHighlighter(null);
         Atensi.setName("Atensi"); // NOI18N
+        Atensi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AtensiKeyPressed(evt);
+            }
+        });
         FormInput.add(Atensi);
         Atensi.setBounds(132, 1010, 722, 23);
 
@@ -1259,6 +1349,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         KontrolImpuls.setHighlighter(null);
         KontrolImpuls.setName("KontrolImpuls"); // NOI18N
+        KontrolImpuls.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KontrolImpulsKeyPressed(evt);
+            }
+        });
         FormInput.add(KontrolImpuls);
         KontrolImpuls.setBounds(173, 1040, 681, 23);
 
@@ -1299,6 +1394,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         NamaTes.setHighlighter(null);
         NamaTes.setName("NamaTes"); // NOI18N
+        NamaTes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NamaTesKeyPressed(evt);
+            }
+        });
         FormInput.add(NamaTes);
         NamaTes.setBounds(364, 1090, 490, 23);
 
@@ -1315,6 +1415,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         HasilTes.setHighlighter(null);
         HasilTes.setName("HasilTes"); // NOI18N
+        HasilTes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HasilTesKeyPressed(evt);
+            }
+        });
         FormInput.add(HasilTes);
         HasilTes.setBounds(98, 1120, 756, 23);
 
@@ -1457,11 +1562,21 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         TahapanIntevensi1.setHighlighter(null);
         TahapanIntevensi1.setName("TahapanIntevensi1"); // NOI18N
+        TahapanIntevensi1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahapanIntevensi1KeyPressed(evt);
+            }
+        });
         FormInput.add(TahapanIntevensi1);
         TahapanIntevensi1.setBounds(75, 1520, 380, 23);
 
         TargetTerapi1.setHighlighter(null);
         TargetTerapi1.setName("TargetTerapi1"); // NOI18N
+        TargetTerapi1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TargetTerapi1KeyPressed(evt);
+            }
+        });
         FormInput.add(TargetTerapi1);
         TargetTerapi1.setBounds(474, 1520, 380, 23);
 
@@ -1505,6 +1620,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         TahapanIntevensi3.setHighlighter(null);
         TahapanIntevensi3.setName("TahapanIntevensi3"); // NOI18N
+        TahapanIntevensi3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahapanIntevensi3KeyPressed(evt);
+            }
+        });
         FormInput.add(TahapanIntevensi3);
         TahapanIntevensi3.setBounds(75, 1580, 380, 23);
 
@@ -1521,11 +1641,21 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         TahapanIntevensi2.setHighlighter(null);
         TahapanIntevensi2.setName("TahapanIntevensi2"); // NOI18N
+        TahapanIntevensi2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahapanIntevensi2KeyPressed(evt);
+            }
+        });
         FormInput.add(TahapanIntevensi2);
         TahapanIntevensi2.setBounds(75, 1550, 380, 23);
 
         TargetTerapi2.setHighlighter(null);
         TargetTerapi2.setName("TargetTerapi2"); // NOI18N
+        TargetTerapi2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TargetTerapi2KeyPressed(evt);
+            }
+        });
         FormInput.add(TargetTerapi2);
         TargetTerapi2.setBounds(474, 1550, 380, 23);
 
@@ -1537,6 +1667,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         TahapanIntevensi4.setHighlighter(null);
         TahapanIntevensi4.setName("TahapanIntevensi4"); // NOI18N
+        TahapanIntevensi4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahapanIntevensi4KeyPressed(evt);
+            }
+        });
         FormInput.add(TahapanIntevensi4);
         TahapanIntevensi4.setBounds(75, 1610, 380, 23);
 
@@ -1553,6 +1688,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         TahapanIntevensi5.setHighlighter(null);
         TahapanIntevensi5.setName("TahapanIntevensi5"); // NOI18N
+        TahapanIntevensi5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahapanIntevensi5KeyPressed(evt);
+            }
+        });
         FormInput.add(TahapanIntevensi5);
         TahapanIntevensi5.setBounds(75, 1640, 380, 23);
 
@@ -1569,6 +1709,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         TahapanIntevensi6.setHighlighter(null);
         TahapanIntevensi6.setName("TahapanIntevensi6"); // NOI18N
+        TahapanIntevensi6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahapanIntevensi6KeyPressed(evt);
+            }
+        });
         FormInput.add(TahapanIntevensi6);
         TahapanIntevensi6.setBounds(75, 1670, 380, 23);
 
@@ -1585,6 +1730,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
 
         TahapanIntevensi7.setHighlighter(null);
         TahapanIntevensi7.setName("TahapanIntevensi7"); // NOI18N
+        TahapanIntevensi7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TahapanIntevensi7KeyPressed(evt);
+            }
+        });
         FormInput.add(TahapanIntevensi7);
         TahapanIntevensi7.setBounds(75, 1700, 380, 23);
 
@@ -2064,7 +2214,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
     }//GEN-LAST:event_KetLokalisKeyPressed
 
     private void DinamikaPsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DinamikaPsikologisKeyPressed
-        //.pindah2(evt,Psikodinamika,BtnSimpan);
+        Valid.pindah2(evt,HasilTes,DiagnosaPsikologis);
     }//GEN-LAST:event_DinamikaPsikologisKeyPressed
 
     private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
@@ -2091,11 +2241,11 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
     private void PermasalahanSaatIniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PermasalahanSaatIniKeyPressed
-        //Valid.pindah(evt,Dikirimdari,Pakaian);
+        Valid.pindah(evt,RiwayatKeluhan,AlasanPermasalahan);
     }//GEN-LAST:event_PermasalahanSaatIniKeyPressed
 
     private void DikirimdariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DikirimdariKeyPressed
-        Valid.pindah(evt,KetAlloAuto,PermasalahanSaatIni);
+        Valid.pindah(evt,KetAlloAuto,KeluhanUtama);
     }//GEN-LAST:event_DikirimdariKeyPressed
 
     private void TujuanPemeriksaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TujuanPemeriksaanKeyPressed
@@ -2135,40 +2285,160 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
     }//GEN-LAST:event_KetAlloAutoKeyPressed
 
     private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
-        //Valid.pindah2(evt,Terapi,Edukasi);
+        Valid.pindah2(evt,Dikirimdari,RiwayatPenyakit);
     }//GEN-LAST:event_KeluhanUtamaKeyPressed
 
     private void RiwayatPenyakitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,KeluhanUtama,RiwayatKeluhan);
     }//GEN-LAST:event_RiwayatPenyakitKeyPressed
 
     private void RiwayatKeluhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatKeluhanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,RiwayatPenyakit,PermasalahanSaatIni);
     }//GEN-LAST:event_RiwayatKeluhanKeyPressed
 
     private void RiwayatHidupSingkatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatHidupSingkatKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,EkspektasiMasalah,Penampilan);
     }//GEN-LAST:event_RiwayatHidupSingkatKeyPressed
 
     private void TanggalPelaksanaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalPelaksanaanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,KontrolImpuls,NamaTes);
     }//GEN-LAST:event_TanggalPelaksanaanKeyPressed
 
     private void DiagnosaPsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaPsikologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,DinamikaPsikologis,ManifestasiFungsiPsikologis);
     }//GEN-LAST:event_DiagnosaPsikologisKeyPressed
 
     private void ManifestasiFungsiPsikologisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ManifestasiFungsiPsikologisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,DiagnosaPsikologis,RencanaIntervensi);
     }//GEN-LAST:event_ManifestasiFungsiPsikologisKeyPressed
 
     private void RencanaIntervensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RencanaIntervensiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah2(evt,ManifestasiFungsiPsikologis,TahapanIntevensi1);
     }//GEN-LAST:event_RencanaIntervensiKeyPressed
 
     private void EvaluasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EvaluasiKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_EvaluasiKeyPressed
+
+    private void AlasanPermasalahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlasanPermasalahanKeyPressed
+        Valid.pindah(evt,PermasalahanSaatIni,EkspektasiMasalah);
+    }//GEN-LAST:event_AlasanPermasalahanKeyPressed
+
+    private void EkspektasiMasalahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkspektasiMasalahKeyPressed
+        Valid.pindah(evt,AlasanPermasalahan,RiwayatHidupSingkat);
+    }//GEN-LAST:event_EkspektasiMasalahKeyPressed
+
+    private void PenampilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenampilanKeyPressed
+        Valid.pindah(evt,RiwayatHidupSingkat,EkspresiWajah);
+    }//GEN-LAST:event_PenampilanKeyPressed
+
+    private void EkspresiWajahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkspresiWajahKeyPressed
+        Valid.pindah(evt,Penampilan,SuasanaHati);
+    }//GEN-LAST:event_EkspresiWajahKeyPressed
+
+    private void SuasanaHatiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuasanaHatiKeyPressed
+        Valid.pindah(evt,EkspresiWajah,TingkahLaku);
+    }//GEN-LAST:event_SuasanaHatiKeyPressed
+
+    private void TingkahLakuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TingkahLakuKeyPressed
+        Valid.pindah(evt,SuasanaHati,FungsiUmum);
+    }//GEN-LAST:event_TingkahLakuKeyPressed
+
+    private void FungsiUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FungsiUmumKeyPressed
+        Valid.pindah(evt,TingkahLaku,FungsiIntelektual);
+    }//GEN-LAST:event_FungsiUmumKeyPressed
+
+    private void FungsiIntelektualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FungsiIntelektualKeyPressed
+        Valid.pindah(evt,FungsiUmum,Pengalaman);
+    }//GEN-LAST:event_FungsiIntelektualKeyPressed
+
+    private void PengalamanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PengalamanKeyPressed
+        Valid.pindah(evt,FungsiIntelektual,Lainnya);
+    }//GEN-LAST:event_PengalamanKeyPressed
+
+    private void LainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainnyaKeyPressed
+        Valid.pindah(evt,Pengalaman,Delusi);
+    }//GEN-LAST:event_LainnyaKeyPressed
+
+    private void DelusiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DelusiKeyPressed
+        Valid.pindah(evt,Lainnya,ProsesPikiran);
+    }//GEN-LAST:event_DelusiKeyPressed
+
+    private void ProsesPikiranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProsesPikiranKeyPressed
+        Valid.pindah(evt,Delusi,Halusinasi);
+    }//GEN-LAST:event_ProsesPikiranKeyPressed
+
+    private void HalusinasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HalusinasiKeyPressed
+        Valid.pindah(evt,ProsesPikiran,Afek);
+    }//GEN-LAST:event_HalusinasiKeyPressed
+
+    private void AfekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AfekKeyPressed
+        Valid.pindah(evt,Halusinasi,Insight);
+    }//GEN-LAST:event_AfekKeyPressed
+
+    private void InsightKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InsightKeyPressed
+        Valid.pindah(evt,Afek,Kesadaran);
+    }//GEN-LAST:event_InsightKeyPressed
+
+    private void KesadaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesadaranKeyPressed
+        Valid.pindah(evt,Insight,Orientasi);
+    }//GEN-LAST:event_KesadaranKeyPressed
+
+    private void OrientasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OrientasiKeyPressed
+        Valid.pindah(evt,Kesadaran,Atensi);
+    }//GEN-LAST:event_OrientasiKeyPressed
+
+    private void AtensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AtensiKeyPressed
+        Valid.pindah(evt,Orientasi,KontrolImpuls);
+    }//GEN-LAST:event_AtensiKeyPressed
+
+    private void KontrolImpulsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontrolImpulsKeyPressed
+        Valid.pindah(evt,Atensi,TanggalPelaksanaan);
+    }//GEN-LAST:event_KontrolImpulsKeyPressed
+
+    private void NamaTesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaTesKeyPressed
+        Valid.pindah(evt,TanggalPelaksanaan,HasilTes);
+    }//GEN-LAST:event_NamaTesKeyPressed
+
+    private void HasilTesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilTesKeyPressed
+        Valid.pindah(evt,NamaTes,DinamikaPsikologis);
+    }//GEN-LAST:event_HasilTesKeyPressed
+
+    private void TahapanIntevensi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TahapanIntevensi1KeyPressed
+        Valid.pindah(evt,RencanaIntervensi,TargetTerapi1);
+    }//GEN-LAST:event_TahapanIntevensi1KeyPressed
+
+    private void TahapanIntevensi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TahapanIntevensi2KeyPressed
+        Valid.pindah(evt,TargetTerapi1,TargetTerapi2);
+    }//GEN-LAST:event_TahapanIntevensi2KeyPressed
+
+    private void TahapanIntevensi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TahapanIntevensi3KeyPressed
+        Valid.pindah(evt,TargetTerapi2,TargetTerapi3);
+    }//GEN-LAST:event_TahapanIntevensi3KeyPressed
+
+    private void TahapanIntevensi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TahapanIntevensi4KeyPressed
+        Valid.pindah(evt,TargetTerapi3,TargetTerapi4);
+    }//GEN-LAST:event_TahapanIntevensi4KeyPressed
+
+    private void TahapanIntevensi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TahapanIntevensi5KeyPressed
+        Valid.pindah(evt,TargetTerapi4,TargetTerapi5);
+    }//GEN-LAST:event_TahapanIntevensi5KeyPressed
+
+    private void TahapanIntevensi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TahapanIntevensi6KeyPressed
+        Valid.pindah(evt,TargetTerapi5,TargetTerapi6);
+    }//GEN-LAST:event_TahapanIntevensi6KeyPressed
+
+    private void TahapanIntevensi7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TahapanIntevensi7KeyPressed
+        Valid.pindah(evt,TargetTerapi6,TargetTerapi7);
+    }//GEN-LAST:event_TahapanIntevensi7KeyPressed
+
+    private void TargetTerapi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TargetTerapi1KeyPressed
+        Valid.pindah(evt,TahapanIntevensi1,TahapanIntevensi2);
+    }//GEN-LAST:event_TargetTerapi1KeyPressed
+
+    private void TargetTerapi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TargetTerapi2KeyPressed
+        Valid.pindah(evt,TahapanIntevensi2,TahapanIntevensi3);
+    }//GEN-LAST:event_TargetTerapi2KeyPressed
 
     /**
     * @param args the command line arguments
