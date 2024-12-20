@@ -65,9 +65,9 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
             "Keluhan Utama","Riwayat Penyakit","Riwayat Keluhan","Permasalahan Saat Ini","Alasan","Ekspektasi","Riwayat Hidup Singkat","Penampilan",
             "Ekspresi Wajah","Suasana Hati","Tingkah Laku","Fungsi Umum","Fungsi Intelektual","Pengalaman","Lainnya","Delusi","Proses Pikiran",
             "Halusinasi","Afek","Insight","Kesadaran","Orientasi","Atensi","Kontrol Impuls","Tgl.Pelaksanaan","Nama Tes","Hasil Tes","Dinamika Psikologis",
-            "Diagnosa Psikologis","Manifestasi Fungsi Psikologis","Rencana Intervensi","Tahan Intervensi 1","Target Terapi 1","Tahan Intervensi 2",
-            "Target Terapi 2","Tahan Intervensi 3","Target Terapi 3","Tahan Intervensi 4","Target Terapi 4","Tahan Intervensi 5","Target Terapi 5",
-            "Tahan Intervensi 6","Target Terapi 6","Tahan Intervensi 7","Target Terapi 8","Evaluasi"
+            "Diagnosa Psikologis","Manifestasi Fungsi Psikologis","Rencana Intervensi","Tahapan Intervensi 1","Target Terapi 1","Tahapan Intervensi 2",
+            "Target Terapi 2","Tahapan Intervensi 3","Target Terapi 3","Tahapan Intervensi 4","Target Terapi 4","Tahapan Intervensi 5","Target Terapi 5",
+            "Tahapan Intervensi 6","Target Terapi 6","Tahapan Intervensi 7","Target Terapi 8","Evaluasi"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -107,10 +107,51 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        KetAlloAuto.setDocument(new batasInput((int)2000).getKata(KetAlloAuto));
-        DinamikaPsikologis.setDocument(new batasInput((int)50).getKata(DinamikaPsikologis));
-        KetLokalis.setDocument(new batasInput((int)3000).getKata(KetLokalis));
+        KetAlloAuto.setDocument(new batasInput((int)200).getKata(KetAlloAuto));
+        KeluhanUtama.setDocument(new batasInput((int)2000).getKata(KeluhanUtama));
+        RiwayatPenyakit.setDocument(new batasInput((int)1000).getKata(RiwayatPenyakit));
+        RiwayatKeluhan.setDocument(new batasInput((int)1000).getKata(RiwayatKeluhan));
+        AlasanPermasalahan.setDocument(new batasInput((int)100).getKata(AlasanPermasalahan));
+        EkspektasiMasalah.setDocument(new batasInput((int)100).getKata(EkspektasiMasalah));
+        RiwayatHidupSingkat.setDocument(new batasInput((int)1000).getKata(RiwayatHidupSingkat));
+        Penampilan.setDocument(new batasInput((int)150).getKata(Penampilan));
+        EkspresiWajah.setDocument(new batasInput((int)150).getKata(EkspresiWajah));
+        SuasanaHati.setDocument(new batasInput((int)150).getKata(SuasanaHati));
+        TingkahLaku.setDocument(new batasInput((int)150).getKata(TingkahLaku));
+        FungsiUmum.setDocument(new batasInput((int)150).getKata(FungsiUmum));
+        FungsiIntelektual.setDocument(new batasInput((int)150).getKata(FungsiIntelektual));
+        Pengalaman.setDocument(new batasInput((int)150).getKata(Pengalaman));
+        Lainnya.setDocument(new batasInput((int)150).getKata(Lainnya));
+        Delusi.setDocument(new batasInput((int)150).getKata(Delusi));
+        ProsesPikiran.setDocument(new batasInput((int)150).getKata(ProsesPikiran));
+        Halusinasi.setDocument(new batasInput((int)150).getKata(Halusinasi));
+        Afek.setDocument(new batasInput((int)150).getKata(Afek));
+        Insight.setDocument(new batasInput((int)150).getKata(Insight));
+        Kesadaran.setDocument(new batasInput((int)150).getKata(Kesadaran));
+        Orientasi.setDocument(new batasInput((int)150).getKata(Orientasi));
+        Atensi.setDocument(new batasInput((int)150).getKata(Atensi));
+        KontrolImpuls.setDocument(new batasInput((int)150).getKata(KontrolImpuls));
+        NamaTes.setDocument(new batasInput((int)100).getKata(NamaTes));
+        HasilTes.setDocument(new batasInput((int)200).getKata(HasilTes));
         DinamikaPsikologis.setDocument(new batasInput((int)1000).getKata(DinamikaPsikologis));
+        DiagnosaPsikologis.setDocument(new batasInput((int)1000).getKata(DiagnosaPsikologis));
+        ManifestasiFungsiPsikologis.setDocument(new batasInput((int)1000).getKata(ManifestasiFungsiPsikologis));
+        RencanaIntervensi.setDocument(new batasInput((int)1000).getKata(RencanaIntervensi));
+        TahapanIntevensi1.setDocument(new batasInput((int)100).getKata(TahapanIntevensi1));
+        TargetTerapi1.setDocument(new batasInput((int)100).getKata(TargetTerapi1));
+        TahapanIntevensi2.setDocument(new batasInput((int)100).getKata(TahapanIntevensi2));
+        TargetTerapi2.setDocument(new batasInput((int)100).getKata(TargetTerapi2));
+        TahapanIntevensi3.setDocument(new batasInput((int)100).getKata(TahapanIntevensi3));
+        TargetTerapi3.setDocument(new batasInput((int)100).getKata(TargetTerapi3));
+        TahapanIntevensi4.setDocument(new batasInput((int)100).getKata(TahapanIntevensi4));
+        TargetTerapi4.setDocument(new batasInput((int)100).getKata(TargetTerapi4));
+        TahapanIntevensi5.setDocument(new batasInput((int)100).getKata(TahapanIntevensi5));
+        TargetTerapi5.setDocument(new batasInput((int)100).getKata(TargetTerapi5));
+        TahapanIntevensi6.setDocument(new batasInput((int)100).getKata(TahapanIntevensi6));
+        TargetTerapi6.setDocument(new batasInput((int)100).getKata(TargetTerapi6));
+        TahapanIntevensi7.setDocument(new batasInput((int)100).getKata(TahapanIntevensi7));
+        TargetTerapi7.setDocument(new batasInput((int)100).getKata(TargetTerapi7));
+        Evaluasi.setDocument(new batasInput((int)1000).getKata(Evaluasi));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -2407,8 +2448,52 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         Dikirimdari.setSelectedIndex(0);
         TujuanPemeriksaan.setSelectedIndex(0);
         KetAlloAuto.setText("");
+        KeluhanUtama.setText("");
+        RiwayatPenyakit.setText("");
+        RiwayatKeluhan.setText("");
         PermasalahanSaatIni.setSelectedIndex(0);
+        AlasanPermasalahan.setText("");
+        EkspektasiMasalah.setText("");
+        RiwayatHidupSingkat.setText("");
+        Penampilan.setText("");
+        EkspresiWajah.setText("");
+        SuasanaHati.setText("");
+        TingkahLaku.setText("");
+        FungsiUmum.setText("");
+        FungsiIntelektual.setText("");
+        Pengalaman.setText("");
+        Lainnya.setText("");
+        Delusi.setText("");
+        ProsesPikiran.setText("");
+        Halusinasi.setText("");
+        Afek.setText("");
+        Insight.setText("");
+        Kesadaran.setText("");
+        Orientasi.setText("");
+        Atensi.setText("");
+        KontrolImpuls.setText("");
+        TanggalPelaksanaan.setDate(new Date());
+        NamaTes.setText("");
+        HasilTes.setText("");
         DinamikaPsikologis.setText("");
+        DiagnosaPsikologis.setText("");
+        ManifestasiFungsiPsikologis.setText("");
+        RencanaIntervensi.setText("");
+        TahapanIntevensi1.setText("");
+        TargetTerapi1.setText("");
+        TahapanIntevensi2.setText("");
+        TargetTerapi2.setText("");
+        TahapanIntevensi3.setText("");
+        TargetTerapi3.setText("");
+        TahapanIntevensi4.setText("");
+        TargetTerapi4.setText("");
+        TahapanIntevensi5.setText("");
+        TargetTerapi5.setText("");
+        TahapanIntevensi6.setText("");
+        TargetTerapi6.setText("");
+        TahapanIntevensi7.setText("");
+        TargetTerapi7.setText("");
+        Evaluasi.setText("");
         TglAsuhan.setDate(new Date());
         TabRawat.setSelectedIndex(0);
         TujuanPemeriksaan.requestFocus();
