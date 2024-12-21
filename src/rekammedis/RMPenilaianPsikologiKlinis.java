@@ -418,9 +418,9 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         jLabel65 = new widget.Label();
         Pengalaman = new widget.TextBox();
         jLabel125 = new widget.Label();
-        jLabel126 = new widget.Label();
         jLabel66 = new widget.Label();
         Lainnya = new widget.TextBox();
+        jLabel126 = new widget.Label();
         jLabel127 = new widget.Label();
         jLabel67 = new widget.Label();
         Delusi = new widget.TextBox();
@@ -913,7 +913,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         Informasi.setBounds(84, 70, 128, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2024 10:00:37" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-12-2024 19:24:24" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1232,12 +1232,6 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         FormInput.add(jLabel125);
         jLabel125.setBounds(84, 720, 110, 23);
 
-        jLabel126.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel126.setText("- Lainnya");
-        jLabel126.setName("jLabel126"); // NOI18N
-        FormInput.add(jLabel126);
-        jLabel126.setBounds(84, 750, 110, 23);
-
         jLabel66.setText(":");
         jLabel66.setName("jLabel66"); // NOI18N
         FormInput.add(jLabel66);
@@ -1252,6 +1246,12 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         });
         FormInput.add(Lainnya);
         Lainnya.setBounds(139, 750, 715, 23);
+
+        jLabel126.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel126.setText("- Lainnya");
+        jLabel126.setName("jLabel126"); // NOI18N
+        FormInput.add(jLabel126);
+        jLabel126.setBounds(84, 750, 110, 23);
 
         jLabel127.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel127.setText("Kondisi Patologis :");
@@ -1455,7 +1455,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         jLabel137.setBounds(44, 1070, 320, 23);
 
         TanggalPelaksanaan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPelaksanaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2024" }));
+        TanggalPelaksanaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-12-2024" }));
         TanggalPelaksanaan.setDisplayFormat("dd-MM-yyyy");
         TanggalPelaksanaan.setName("TanggalPelaksanaan"); // NOI18N
         TanggalPelaksanaan.setOpaque(false);
@@ -1937,7 +1937,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1951,7 +1951,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-12-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
