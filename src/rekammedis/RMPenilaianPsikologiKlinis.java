@@ -434,9 +434,9 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         jLabel131 = new widget.Label();
         Afek = new widget.TextBox();
         jLabel70 = new widget.Label();
-        jLabel132 = new widget.Label();
         jLabel71 = new widget.Label();
         Insight = new widget.TextBox();
+        jLabel132 = new widget.Label();
         jLabel72 = new widget.Label();
         Kesadaran = new widget.TextBox();
         jLabel133 = new widget.Label();
@@ -1343,12 +1343,6 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         FormInput.add(jLabel70);
         jLabel70.setBounds(0, 890, 121, 23);
 
-        jLabel132.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel132.setText("- Insight");
-        jLabel132.setName("jLabel132"); // NOI18N
-        FormInput.add(jLabel132);
-        jLabel132.setBounds(84, 920, 60, 23);
-
         jLabel71.setText(":");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
@@ -1363,6 +1357,12 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         });
         FormInput.add(Insight);
         Insight.setBounds(136, 920, 718, 23);
+
+        jLabel132.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel132.setText("- Insight");
+        jLabel132.setName("jLabel132"); // NOI18N
+        FormInput.add(jLabel132);
+        jLabel132.setBounds(84, 920, 80, 23);
 
         jLabel72.setText(":");
         jLabel72.setName("jLabel72"); // NOI18N
