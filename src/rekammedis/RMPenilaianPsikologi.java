@@ -323,7 +323,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Psikolog");
+        MnPenilaianMedis.setText("Laporan Penilaian Psikologi");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
         MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -889,7 +889,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         Informasi.setBounds(84, 70, 128, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024 18:15:29" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-12-2024 07:14:56" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -998,7 +998,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1012,7 +1012,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1303,7 +1303,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN PSIKOLOG<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN PSIKOLOGI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")

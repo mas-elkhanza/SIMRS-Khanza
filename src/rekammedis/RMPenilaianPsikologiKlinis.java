@@ -77,7 +77,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 58; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -110,11 +110,91 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(200);
             }else if(i==15){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(118);
             }else if(i==16){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(150);
             }else if(i==17){
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(150);
+            }else if(i==18){
+                column.setPreferredWidth(200);
+            }else if(i==19){
+                column.setPreferredWidth(130);
+            }else if(i==20){
+                column.setPreferredWidth(130);
+            }else if(i==21){
+                column.setPreferredWidth(130);
+            }else if(i==22){
+                column.setPreferredWidth(130);
+            }else if(i==23){
+                column.setPreferredWidth(130);
+            }else if(i==24){
+                column.setPreferredWidth(130);
+            }else if(i==25){
+                column.setPreferredWidth(130);
+            }else if(i==26){
+                column.setPreferredWidth(130);
+            }else if(i==27){
+                column.setPreferredWidth(130);
+            }else if(i==28){
+                column.setPreferredWidth(130);
+            }else if(i==29){
+                column.setPreferredWidth(130);
+            }else if(i==30){
+                column.setPreferredWidth(130);
+            }else if(i==31){
+                column.setPreferredWidth(130);
+            }else if(i==32){
+                column.setPreferredWidth(130);
+            }else if(i==33){
+                column.setPreferredWidth(130);
+            }else if(i==34){
+                column.setPreferredWidth(130);
+            }else if(i==35){
+                column.setPreferredWidth(130);
+            }else if(i==36){
+                column.setPreferredWidth(86);
+            }else if(i==37){
+                column.setPreferredWidth(130);
+            }else if(i==38){
+                column.setPreferredWidth(150);
+            }else if(i==39){
+                column.setPreferredWidth(200);
+            }else if(i==40){
+                column.setPreferredWidth(200);
+            }else if(i==41){
+                column.setPreferredWidth(200);
+            }else if(i==42){
+                column.setPreferredWidth(200);
+            }else if(i==43){
+                column.setPreferredWidth(150);
+            }else if(i==44){
+                column.setPreferredWidth(150);
+            }else if(i==45){
+                column.setPreferredWidth(150);
+            }else if(i==46){
+                column.setPreferredWidth(150);
+            }else if(i==47){
+                column.setPreferredWidth(150);
+            }else if(i==48){
+                column.setPreferredWidth(150);
+            }else if(i==49){
+                column.setPreferredWidth(150);
+            }else if(i==50){
+                column.setPreferredWidth(150);
+            }else if(i==51){
+                column.setPreferredWidth(150);
+            }else if(i==52){
+                column.setPreferredWidth(150);
+            }else if(i==53){
+                column.setPreferredWidth(150);
+            }else if(i==54){
+                column.setPreferredWidth(150);
+            }else if(i==55){
+                column.setPreferredWidth(150);
+            }else if(i==56){
+                column.setPreferredWidth(150);
+            }else if(i==57){
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -450,7 +530,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Psikolog");
+        MnPenilaianMedis.setText("Laporan Penilaian Psikologi Klinis");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
         MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -2068,37 +2148,71 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
                 htmlContent = new StringBuilder();
                 htmlContent.append(                             
                     "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='105px'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='70px'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='65px'><b>Tgl.Lahir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='55px'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80px'><b>NIP</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Nama Petugas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='115px'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='72px'><b>Dikirim Dari</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='62px'><b>Tujuan Pemeriksaan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85px'><b>Informasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='165px'><b>Keterangan Informasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='71px'><b>Rupa</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='79px'><b>Bentuk Tubuh</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='103px'><b>Tindakan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='99px'><b>Pakaian</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='150px'><b>Penyampaian/Ekspresi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='196px'><b>Berbicara</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='185px'><b>Penggunaan Kata</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Ciri Yang Menyolok</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Hasil Psikotes</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kepribadian</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Psikodinamika</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center' width='200px'><b>Kesimpulan Psikolog</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Psikolog</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dikirim Dari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tujuan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Anamnesis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keluhan Utama</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Penyakit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Keluhan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Permasalahan Saat Ini</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Alasan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ekspektasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Riwayat Hidup Singkat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Penampilan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ekspresi Wajah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suasana Hati</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tingkah Laku</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Fungsi Umum</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Fungsi Intelektual</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pengalaman</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Delusi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Proses Pikiran</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Halusinasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Afek</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Insight</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesadaran</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Orientasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Atensi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kontrol Impuls</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Pelaksanaan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Tes</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Hasil Tes</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dinamika Psikologis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa Psikologis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Manifestasi Fungsi Psikologis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Rencana Intervensi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahapan Intervensi 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Target Terapi 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahapan Intervensi 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Target Terapi 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahapan Intervensi 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Target Terapi 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahapan Intervensi 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Target Terapi 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahapan Intervensi 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Target Terapi 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahapan Intervensi 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Target Terapi 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tahapan Intervensi 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Target Terapi 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Evaluasi</b></td>"+
                     "</tr>"
                 );
                 
                 for (i = 0; i < tabMode.getRowCount(); i++) {
                     htmlContent.append(
                         "<tr class='isi'>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
@@ -2122,12 +2236,47 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,36).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,38).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,51).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,52).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,53).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,54).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,55).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,56).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,57).toString()+"</td>"+
+                            
                         "</tr>");
                 }
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2900' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='6000' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -2152,13 +2301,13 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='6000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN PSIKOLOG<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN PSIKOLOGI KLINIS<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
