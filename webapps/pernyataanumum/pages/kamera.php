@@ -48,7 +48,7 @@
     $jkpj           = "";    
     $alamatpj       = "";    
     $hubungan       = "";    
-    $no_tlppj       = ""; 
+    $no_telppj      = ""; 
     $_sql2  = "select DATE_FORMAT(surat_pernyataan_pasien_umum.tanggal,'%d-%m-%Y') as tanggal,surat_pernyataan_pasien_umum.nama_pj,
                surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.tempat_lahirpj,DATE_FORMAT(surat_pernyataan_pasien_umum.lahirpj,'%d-%m-%Y') as lahirpj,
                surat_pernyataan_pasien_umum.alamatpj,surat_pernyataan_pasien_umum.hubungan,surat_pernyataan_pasien_umum.no_telp,

@@ -84,7 +84,7 @@ public final class RMPenilaianPsikologi extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(60);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){

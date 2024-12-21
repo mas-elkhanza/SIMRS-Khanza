@@ -88,7 +88,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(65);
             }else if(i==4){
-                column.setPreferredWidth(55);
+                column.setPreferredWidth(60);
             }else if(i==5){
                 column.setPreferredWidth(80);
             }else if(i==6){
@@ -103,6 +103,18 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
                 column.setPreferredWidth(85);
             }else if(i==11){
                 column.setPreferredWidth(165);
+            }else if(i==12){
+                column.setPreferredWidth(300);
+            }else if(i==13){
+                column.setPreferredWidth(200);
+            }else if(i==14){
+                column.setPreferredWidth(200);
+            }else if(i==15){
+                column.setPreferredWidth(140);
+            }else if(i==16){
+                column.setPreferredWidth(140);
+            }else if(i==17){
+                column.setPreferredWidth(140);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -2697,8 +2709,20 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi_klinis.tanggal,"+
-                        "penilaian_psikologi_klinis.nip,penilaian_psikologi_klinis.anamnesis,penilaian_psikologi_klinis.dikirim_dari,penilaian_psikologi_klinis.tujuan_pemeriksaan,penilaian_psikologi_klinis.ket_anamnesis,penilaian_psikologi_klinis.rupa,penilaian_psikologi_klinis.bentuk_tubuh,penilaian_psikologi_klinis.tindakan,"+
-                        "penilaian_psikologi_klinis.pakaian,penilaian_psikologi_klinis.ekspresi,penilaian_psikologi_klinis.berbicara,penilaian_psikologi_klinis.penggunaan_kata,penilaian_psikologi_klinis.ciri_menyolok,penilaian_psikologi_klinis.hasil_psikotes,penilaian_psikologi_klinis.kepribadian,penilaian_psikologi_klinis.psikodinamika,penilaian_psikologi_klinis.kesimpulan_psikolog,petugas.nama "+
+                        "penilaian_psikologi_klinis.nip,penilaian_psikologi_klinis.anamnesis,penilaian_psikologi_klinis.dikirim_dari,penilaian_psikologi_klinis.tujuan_pemeriksaan,penilaian_psikologi_klinis.ket_anamnesis,"+
+                        "penilaian_psikologi_klinis.keluhan_utama,penilaian_psikologi_klinis.riwayat_penyakit,penilaian_psikologi_klinis.riwayat_keluhan,penilaian_psikologi_klinis.permasalahan_saat_ini,"+
+                        "penilaian_psikologi_klinis.permasalahan_alasan,penilaian_psikologi_klinis.permasalahan_ekspektasi,penilaian_psikologi_klinis.riwayat_hidup_singkat,penilaian_psikologi_klinis.kondisi_psikologis_penampilan,"+
+                        "penilaian_psikologi_klinis.kondisi_psikologis_ekspresi_wajah,penilaian_psikologi_klinis.kondisi_psikologis_suasana_hati,penilaian_psikologi_klinis.kondisi_psikologis_tingkah_laku,"+
+                        "penilaian_psikologi_klinis.kondisi_psikologis_fungsi_umum,penilaian_psikologi_klinis.kondisi_psikologis_fungsi_intelektual,penilaian_psikologi_klinis.kondisi_psikologis_pengalaman,"+
+                        "penilaian_psikologi_klinis.kondisi_psikologis_lainnya,penilaian_psikologi_klinis.kondisi_patologis_delusi,penilaian_psikologi_klinis.kondisi_patologis_proses_pikiran,"+
+                        "penilaian_psikologi_klinis.kondisi_patologis_halusinasi,penilaian_psikologi_klinis.kondisi_patologis_afek,penilaian_psikologi_klinis.kondisi_patologis_insight,"+
+                        "penilaian_psikologi_klinis.kondisi_patologis_kesadaran,penilaian_psikologi_klinis.kondisi_patologis_orientasi,penilaian_psikologi_klinis.kondisi_patologis_atensi,"+
+                        "penilaian_psikologi_klinis.kondisi_patologis_kontrol_impuls,penilaian_psikologi_klinis.psikotes_tanggal_pelaksanaan,penilaian_psikologi_klinis.psikotes_nama_tes,penilaian_psikologi_klinis.psikotes_hasil,"+
+                        "penilaian_psikologi_klinis.dinamika_psikologis,penilaian_psikologi_klinis.diagnosa_psikologis,penilaian_psikologi_klinis.manifestasi_fungsi_psikologis,penilaian_psikologi_klinis.rencana_intervensi,"+
+                        "penilaian_psikologi_klinis.tahapan_intervensi1,penilaian_psikologi_klinis.target_terapi1,penilaian_psikologi_klinis.tahapan_intervensi2,penilaian_psikologi_klinis.target_terapi2,"+
+                        "penilaian_psikologi_klinis.tahapan_intervensi3,penilaian_psikologi_klinis.target_terapi3,penilaian_psikologi_klinis.tahapan_intervensi4,penilaian_psikologi_klinis.target_terapi4,"+
+                        "penilaian_psikologi_klinis.tahapan_intervensi5,penilaian_psikologi_klinis.target_terapi5,penilaian_psikologi_klinis.tahapan_intervensi6,penilaian_psikologi_klinis.target_terapi6,"+
+                        "penilaian_psikologi_klinis.tahapan_intervensi7,penilaian_psikologi_klinis.target_terapi7,penilaian_psikologi_klinis.evaluasi,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_psikologi_klinis on reg_periksa.no_rawat=penilaian_psikologi_klinis.no_rawat "+
                         "inner join petugas on penilaian_psikologi_klinis.nip=petugas.nip where "+
@@ -2706,8 +2730,20 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
             }else{
                 ps=koneksi.prepareStatement(
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_psikologi_klinis.tanggal,"+
-                        "penilaian_psikologi_klinis.nip,penilaian_psikologi_klinis.anamnesis,penilaian_psikologi_klinis.dikirim_dari,penilaian_psikologi_klinis.tujuan_pemeriksaan,penilaian_psikologi_klinis.ket_anamnesis,penilaian_psikologi_klinis.rupa,penilaian_psikologi_klinis.bentuk_tubuh,penilaian_psikologi_klinis.tindakan,"+
-                        "penilaian_psikologi_klinis.pakaian,penilaian_psikologi_klinis.ekspresi,penilaian_psikologi_klinis.berbicara,penilaian_psikologi_klinis.penggunaan_kata,penilaian_psikologi_klinis.ciri_menyolok,penilaian_psikologi_klinis.hasil_psikotes,penilaian_psikologi_klinis.kepribadian,penilaian_psikologi_klinis.psikodinamika,penilaian_psikologi_klinis.kesimpulan_psikolog,petugas.nama "+
+                        "penilaian_psikologi_klinis.nip,penilaian_psikologi_klinis.anamnesis,penilaian_psikologi_klinis.dikirim_dari,penilaian_psikologi_klinis.tujuan_pemeriksaan,penilaian_psikologi_klinis.ket_anamnesis,"+
+                        "penilaian_psikologi_klinis.keluhan_utama,penilaian_psikologi_klinis.riwayat_penyakit,penilaian_psikologi_klinis.riwayat_keluhan,penilaian_psikologi_klinis.permasalahan_saat_ini,"+
+                        "penilaian_psikologi_klinis.permasalahan_alasan,penilaian_psikologi_klinis.permasalahan_ekspektasi,penilaian_psikologi_klinis.riwayat_hidup_singkat,penilaian_psikologi_klinis.kondisi_psikologis_penampilan,"+
+                        "penilaian_psikologi_klinis.kondisi_psikologis_ekspresi_wajah,penilaian_psikologi_klinis.kondisi_psikologis_suasana_hati,penilaian_psikologi_klinis.kondisi_psikologis_tingkah_laku,"+
+                        "penilaian_psikologi_klinis.kondisi_psikologis_fungsi_umum,penilaian_psikologi_klinis.kondisi_psikologis_fungsi_intelektual,penilaian_psikologi_klinis.kondisi_psikologis_pengalaman,"+
+                        "penilaian_psikologi_klinis.kondisi_psikologis_lainnya,penilaian_psikologi_klinis.kondisi_patologis_delusi,penilaian_psikologi_klinis.kondisi_patologis_proses_pikiran,"+
+                        "penilaian_psikologi_klinis.kondisi_patologis_halusinasi,penilaian_psikologi_klinis.kondisi_patologis_afek,penilaian_psikologi_klinis.kondisi_patologis_insight,"+
+                        "penilaian_psikologi_klinis.kondisi_patologis_kesadaran,penilaian_psikologi_klinis.kondisi_patologis_orientasi,penilaian_psikologi_klinis.kondisi_patologis_atensi,"+
+                        "penilaian_psikologi_klinis.kondisi_patologis_kontrol_impuls,penilaian_psikologi_klinis.psikotes_tanggal_pelaksanaan,penilaian_psikologi_klinis.psikotes_nama_tes,penilaian_psikologi_klinis.psikotes_hasil,"+
+                        "penilaian_psikologi_klinis.dinamika_psikologis,penilaian_psikologi_klinis.diagnosa_psikologis,penilaian_psikologi_klinis.manifestasi_fungsi_psikologis,penilaian_psikologi_klinis.rencana_intervensi,"+
+                        "penilaian_psikologi_klinis.tahapan_intervensi1,penilaian_psikologi_klinis.target_terapi1,penilaian_psikologi_klinis.tahapan_intervensi2,penilaian_psikologi_klinis.target_terapi2,"+
+                        "penilaian_psikologi_klinis.tahapan_intervensi3,penilaian_psikologi_klinis.target_terapi3,penilaian_psikologi_klinis.tahapan_intervensi4,penilaian_psikologi_klinis.target_terapi4,"+
+                        "penilaian_psikologi_klinis.tahapan_intervensi5,penilaian_psikologi_klinis.target_terapi5,penilaian_psikologi_klinis.tahapan_intervensi6,penilaian_psikologi_klinis.target_terapi6,"+
+                        "penilaian_psikologi_klinis.tahapan_intervensi7,penilaian_psikologi_klinis.target_terapi7,penilaian_psikologi_klinis.evaluasi,petugas.nama "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                         "inner join penilaian_psikologi_klinis on reg_periksa.no_rawat=penilaian_psikologi_klinis.no_rawat "+
                         "inner join petugas on penilaian_psikologi_klinis.nip=petugas.nip where "+
@@ -2732,8 +2768,17 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("dikirim_dari"),rs.getString("tujuan_pemeriksaan"),rs.getString("anamnesis"),rs.getString("ket_anamnesis"),rs.getString("rupa"),rs.getString("bentuk_tubuh"),rs.getString("tindakan"),
-                        rs.getString("pakaian"),rs.getString("ekspresi"),rs.getString("berbicara"),rs.getString("penggunaan_kata"),rs.getString("ciri_menyolok"),rs.getString("hasil_psikotes"),rs.getString("kepribadian"),rs.getString("psikodinamika"),rs.getString("kesimpulan_psikolog")                     
+                        rs.getString("dikirim_dari"),rs.getString("tujuan_pemeriksaan"),rs.getString("anamnesis"),rs.getString("ket_anamnesis"),rs.getString("keluhan_utama"),rs.getString("riwayat_penyakit"),
+                        rs.getString("riwayat_keluhan"),rs.getString("permasalahan_saat_ini"),rs.getString("permasalahan_alasan"),rs.getString("permasalahan_ekspektasi"),rs.getString("riwayat_hidup_singkat"),
+                        rs.getString("kondisi_psikologis_penampilan"),rs.getString("kondisi_psikologis_ekspresi_wajah"),rs.getString("kondisi_psikologis_suasana_hati"),rs.getString("kondisi_psikologis_tingkah_laku"),
+                        rs.getString("kondisi_psikologis_fungsi_umum"),rs.getString("kondisi_psikologis_fungsi_intelektual"),rs.getString("kondisi_psikologis_pengalaman"),rs.getString("kondisi_psikologis_lainnya"),
+                        rs.getString("kondisi_patologis_delusi"),rs.getString("kondisi_patologis_proses_pikiran"),rs.getString("kondisi_patologis_halusinasi"),rs.getString("kondisi_patologis_afek"),
+                        rs.getString("kondisi_patologis_insight"),rs.getString("kondisi_patologis_kesadaran"),rs.getString("kondisi_patologis_orientasi"),rs.getString("kondisi_patologis_atensi"),
+                        rs.getString("kondisi_patologis_kontrol_impuls"),rs.getString("psikotes_tanggal_pelaksanaan"),rs.getString("psikotes_nama_tes"),rs.getString("psikotes_hasil"),rs.getString("dinamika_psikologis"),
+                        rs.getString("diagnosa_psikologis"),rs.getString("manifestasi_fungsi_psikologis"),rs.getString("rencana_intervensi"),rs.getString("tahapan_intervensi1"),rs.getString("target_terapi1"),
+                        rs.getString("tahapan_intervensi2"),rs.getString("target_terapi2"),rs.getString("tahapan_intervensi3"),rs.getString("target_terapi3"),rs.getString("tahapan_intervensi4"),
+                        rs.getString("target_terapi4"),rs.getString("tahapan_intervensi5"),rs.getString("target_terapi5"),rs.getString("tahapan_intervensi6"),rs.getString("target_terapi6"),
+                        rs.getString("tahapan_intervensi7"),rs.getString("target_terapi7"),rs.getString("evaluasi")                     
                     });
                 }
             } catch (Exception e) {
