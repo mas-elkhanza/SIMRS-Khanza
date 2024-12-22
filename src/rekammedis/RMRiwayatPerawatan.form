@@ -692,7 +692,7 @@
                             </Property>
                             <Property name="name" type="java.lang.String" value="FormMenu" noResource="true"/>
                             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                              <Dimension value="[255, 3635]"/>
+                              <Dimension value="[255, 3660]"/>
                             </Property>
                           </Properties>
 
@@ -875,9 +875,21 @@
                             <Component class="widget.CekBox" name="chkAsuhanPsikolog">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Psikolog"/>
+                                <Property name="text" type="java.lang.String" value="Penilaian Psikologi"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkAsuhanPsikolog" noResource="true"/>
+                                <Property name="opaque" type="boolean" value="false"/>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[245, 22]"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="widget.CekBox" name="chkAsuhanPsikologiKlinis">
+                              <Properties>
+                                <Property name="selected" type="boolean" value="true"/>
+                                <Property name="text" type="java.lang.String" value="Penilaian Psikologi Klinis"/>
+                                <Property name="horizontalAlignment" type="int" value="2"/>
+                                <Property name="name" type="java.lang.String" value="chkAsuhanPsikologiKlinis" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[245, 22]"/>

@@ -353,6 +353,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanTerapiWicara = new widget.CekBox();
         chkPenatalaksanaanTerapiOkupasi = new widget.CekBox();
         chkAsuhanPsikolog = new widget.CekBox();
+        chkAsuhanPsikologiKlinis = new widget.CekBox();
         chkAsuhanKeperawatanRanap = new widget.CekBox();
         chkAsuhanKeperawatanRanapKandungan = new widget.CekBox();
         chkAsuhanKeperawatanRanapNeonatus = new widget.CekBox();
@@ -832,7 +833,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3635));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3660));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -959,6 +960,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanPsikolog.setOpaque(false);
         chkAsuhanPsikolog.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanPsikolog);
+
+        chkAsuhanPsikologiKlinis.setSelected(true);
+        chkAsuhanPsikologiKlinis.setText("Penilaian Psikologi Klinis");
+        chkAsuhanPsikologiKlinis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanPsikologiKlinis.setName("chkAsuhanPsikologiKlinis"); // NOI18N
+        chkAsuhanPsikologiKlinis.setOpaque(false);
+        chkAsuhanPsikologiKlinis.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanPsikologiKlinis);
 
         chkAsuhanKeperawatanRanap.setSelected(true);
         chkAsuhanKeperawatanRanap.setText("Awal Keperawatan Ranap Umum");
@@ -2652,6 +2661,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningInstrumenSRQ.setSelected(true);
             chkChecklistPemberianFibrinolitik.setSelected(true);
             chkSkriningKankerKolorektal.setSelected(true);
+            chkAsuhanPsikologiKlinis.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2810,6 +2820,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningInstrumenSRQ.setSelected(false);
             chkChecklistPemberianFibrinolitik.setSelected(false);
             chkSkriningKankerKolorektal.setSelected(false);
+            chkAsuhanPsikologiKlinis.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3459,6 +3470,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanPreInduksi;
     private widget.CekBox chkAsuhanPreOperasi;
     private widget.CekBox chkAsuhanPsikolog;
+    private widget.CekBox chkAsuhanPsikologiKlinis;
     private widget.CekBox chkAsuhanRisikoDekubitus;
     private widget.CekBox chkAsuhanTambahanBunuhDiri;
     private widget.CekBox chkAsuhanTambahanGeriatri;
@@ -4005,6 +4017,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanPenatalaksanaanTerapiOkupasi(rs.getString("no_rawat"));
                     //menampilkan asuhan psikolog
                     menampilkanAsuhanPsikolog(rs.getString("no_rawat"));
+                    //menampilkan asuhan psikologi klinis
+                    menampilkanAsuhanPsikologiKlinis(rs.getString("no_rawat"));
                     //menampilkan asuhan awal medis IGD
                     menampilkanAsuhanMedisIGD(rs.getString("no_rawat"));
                     //menampilkan asuhan awal medis IGD Psikiatri
@@ -29824,6 +29838,281 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Skrining TBC : "+e);
+        }
+    }
+    
+    private void menampilkanAsuhanPsikologiKlinis(String norawat) {
+        try {
+            if(chkAsuhanPsikologiKlinis.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penilaian_psikologi_klinis.tanggal,penilaian_psikologi_klinis.nip,penilaian_psikologi_klinis.anamnesis,penilaian_psikologi_klinis.dikirim_dari,penilaian_psikologi_klinis.tujuan_pemeriksaan,"+
+                            "penilaian_psikologi_klinis.ket_anamnesis,penilaian_psikologi_klinis.keluhan_utama,penilaian_psikologi_klinis.riwayat_penyakit,penilaian_psikologi_klinis.riwayat_keluhan,penilaian_psikologi_klinis.permasalahan_saat_ini,"+
+                            "penilaian_psikologi_klinis.permasalahan_alasan,penilaian_psikologi_klinis.permasalahan_ekspektasi,penilaian_psikologi_klinis.riwayat_hidup_singkat,penilaian_psikologi_klinis.kondisi_psikologis_penampilan,"+
+                            "penilaian_psikologi_klinis.kondisi_psikologis_ekspresi_wajah,penilaian_psikologi_klinis.kondisi_psikologis_suasana_hati,penilaian_psikologi_klinis.kondisi_psikologis_tingkah_laku,"+
+                            "penilaian_psikologi_klinis.kondisi_psikologis_fungsi_umum,penilaian_psikologi_klinis.kondisi_psikologis_fungsi_intelektual,penilaian_psikologi_klinis.kondisi_psikologis_pengalaman,"+
+                            "penilaian_psikologi_klinis.kondisi_psikologis_lainnya,penilaian_psikologi_klinis.kondisi_patologis_delusi,penilaian_psikologi_klinis.kondisi_patologis_proses_pikiran,"+
+                            "penilaian_psikologi_klinis.kondisi_patologis_halusinasi,penilaian_psikologi_klinis.kondisi_patologis_afek,penilaian_psikologi_klinis.kondisi_patologis_insight,"+
+                            "penilaian_psikologi_klinis.kondisi_patologis_kesadaran,penilaian_psikologi_klinis.kondisi_patologis_orientasi,penilaian_psikologi_klinis.kondisi_patologis_atensi,"+
+                            "penilaian_psikologi_klinis.kondisi_patologis_kontrol_impuls,penilaian_psikologi_klinis.psikotes_tanggal_pelaksanaan,penilaian_psikologi_klinis.psikotes_nama_tes,penilaian_psikologi_klinis.psikotes_hasil,"+
+                            "penilaian_psikologi_klinis.dinamika_psikologis,penilaian_psikologi_klinis.diagnosa_psikologis,penilaian_psikologi_klinis.manifestasi_fungsi_psikologis,penilaian_psikologi_klinis.rencana_intervensi,"+
+                            "penilaian_psikologi_klinis.tahapan_intervensi1,penilaian_psikologi_klinis.target_terapi1,penilaian_psikologi_klinis.tahapan_intervensi2,penilaian_psikologi_klinis.target_terapi2,"+
+                            "penilaian_psikologi_klinis.tahapan_intervensi3,penilaian_psikologi_klinis.target_terapi3,penilaian_psikologi_klinis.tahapan_intervensi4,penilaian_psikologi_klinis.target_terapi4,"+
+                            "penilaian_psikologi_klinis.tahapan_intervensi5,penilaian_psikologi_klinis.target_terapi5,penilaian_psikologi_klinis.tahapan_intervensi6,penilaian_psikologi_klinis.target_terapi6,"+
+                            "penilaian_psikologi_klinis.tahapan_intervensi7,penilaian_psikologi_klinis.target_terapi7,penilaian_psikologi_klinis.evaluasi,petugas.nama "+
+                            "from penilaian_psikologi_klinis inner join petugas on penilaian_psikologi_klinis.nip=petugas.nip "+
+                            "where penilaian_psikologi_klinis.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Psikologi Klinis</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='21%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='35%' border='0'>Psikolog : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                              "<td width='22%' border='0'>Tujuan Pemeriksaan : "+rs2.getString("tujuan_pemeriksaan")+"</td>"+
+                                              "<td width='22%' border='0'>Dikirim Dari : "+rs2.getString("dikirim_dari")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='21%' border='0'>Anamnesis : "+rs2.getString("anamnesis")+"</td>"+
+                                              "<td width='79%' border='0' colspan='3'>Keterangan Anamnesis : "+rs2.getString("ket_anamnesis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. PEMERIKSAAN PSIKOLOGIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Keluhan Utama : "+rs2.getString("keluhan_utama").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Riwayat Penyakit : "+rs2.getString("riwayat_penyakit").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Riwayat Keluhan : "+rs2.getString("riwayat_keluhan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Permasalah Saat Ini : "+rs2.getString("permasalahan_saat_ini")+"&nbsp;&nbsp;&nbsp;&nbsp;Alasan : "+rs2.getString("permasalahan_alasan")+"&nbsp;&nbsp;&nbsp;&nbsp;Ekspektasi : "+rs2.getString("permasalahan_ekspektasi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>Riwayat Hidup Singkat : "+rs2.getString("riwayat_hidup_singkat").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                  "Observasi :"+
+                                                  "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                       "<tr>"+
+                                                           "<td width='100%'>"+
+                                                                "Kondisi Psikologis :"+
+                                                                "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Penampilan : "+rs2.getString("kondisi_psikologis_penampilan")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Ekspresi Wajah : "+rs2.getString("kondisi_psikologis_ekspresi_wajah")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Suasana Hati : "+rs2.getString("kondisi_psikologis_suasana_hati")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Tingkah Laku : "+rs2.getString("kondisi_psikologis_tingkah_laku")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Fungsi Umum : "+rs2.getString("kondisi_psikologis_fungsi_umum")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Fungsi Intelektual : "+rs2.getString("kondisi_psikologis_fungsi_intelektual")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Pengalaman : "+rs2.getString("kondisi_psikologis_pengalaman")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Lainnya : "+rs2.getString("kondisi_psikologis_lainnya")+"</td>"+
+                                                                    "</tr>"+
+                                                                "</table>"+
+                                                           "</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td width='100%'>"+
+                                                                "Kondisi Patologis :"+
+                                                                "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Delusi/Waham : "+rs2.getString("kondisi_patologis_delusi")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Proses Pikiran : "+rs2.getString("kondisi_patologis_proses_pikiran")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Halusinasi : "+rs2.getString("kondisi_patologis_halusinasi")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Afek : "+rs2.getString("kondisi_patologis_afek")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Insight : "+rs2.getString("kondisi_patologis_insight")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Kesadaran : "+rs2.getString("kondisi_patologis_kesadaran")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Orientasi Ruang/Waktu/Tempat : "+rs2.getString("kondisi_patologis_orientasi")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Atensi : "+rs2.getString("kondisi_patologis_atensi")+"</td>"+
+                                                                    "</tr>"+
+                                                                    "<tr>"+
+                                                                        "<td width='100%'>- Kontrol Impuls : "+rs2.getString("kondisi_patologis_kontrol_impuls")+"</td>"+
+                                                                    "</tr>"+
+                                                                "</table>"+
+                                                           "</td>"+
+                                                       "</tr>"+
+                                                  "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+
+                                                  "Psikotes :"+
+                                                  "<table width='99%' border='0' align='right' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                                       "<tr>"+
+                                                           "<td width='30%'>Tanggal Pelaksanaan : "+rs2.getString("psikotes_tanggal_pelaksanaan")+"</td>"+
+                                                           "<td width='70%'>Nama Tes : "+rs2.getString("psikotes_nama_tes")+"</td>"+
+                                                       "</tr>"+
+                                                       "<tr>"+
+                                                           "<td width='100%' colspan='2'>Hasil : "+rs2.getString("psikotes_hasil")+"</td>"+
+                                                       "</tr>"+
+                                                  "</table>"+
+                                              "</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "II. DINAMIKA PSIKOLOGIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("dinamika_psikologis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. DIAGNOSA PSIKOLOGIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("diagnosa_psikologis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "IV. MANIFESTASI FUNGSI PSIKOLOGIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("manifestasi_fungsi_psikologis").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "V. RENCANA INTERVENSI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("rencana_intervensi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VI. PELAKSANAAN INTERVENSI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' bgcolor='#FFFAF8' align='center'>Sesi</td>"+
+                                              "<td valign='top' width='47%' bgcolor='#FFFAF8' align='center'>Tahapan Intervensi</td>"+
+                                              "<td valign='top' width='47%' bgcolor='#FFFAF8' align='center'>Target Terapi</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>1.</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi1")+"</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi1")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>2.</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi2")+"</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi2")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>3.</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi3")+"</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi3")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>4.</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi4")+"</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi4")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>5.</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi5")+"</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi5")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>6.</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi6")+"</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi6")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='6%' align='center'>7.</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi7")+"</td>"+
+                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi7")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "VII. EVALUASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='100%' border='0'>"+rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            );   
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Asuhan Fisioterapi : "+e);
         }
     }
     
