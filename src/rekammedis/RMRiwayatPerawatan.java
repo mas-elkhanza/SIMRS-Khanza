@@ -30050,38 +30050,38 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                           "<tr>"+
                                               "<td valign='top' width='6%' align='center'>1.</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi1")+"</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi1")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi1")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi1")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td valign='top' width='6%' align='center'>2.</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi2")+"</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi2")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi2")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi2")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td valign='top' width='6%' align='center'>3.</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi3")+"</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi3")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi3")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi3")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td valign='top' width='6%' align='center'>4.</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi4")+"</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi4")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi4")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi4")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td valign='top' width='6%' align='center'>5.</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi5")+"</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi5")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi5")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi5")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td valign='top' width='6%' align='center'>6.</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi6")+"</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi6")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi6")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi6")+"</td>"+
                                           "</tr>"+
                                           "<tr>"+
                                               "<td valign='top' width='6%' align='center'>7.</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("tahapan_intervensi7")+"</td>"+
-                                              "<td valign='top' width='47%' align='center'>"+rs2.getString("target_terapi7")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("tahapan_intervensi7")+"</td>"+
+                                              "<td valign='top' width='47%' align='left'>"+rs2.getString("target_terapi7")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
