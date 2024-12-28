@@ -82,7 +82,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+//import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 /**
  *
@@ -120,7 +120,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private Scheme scheme;
     private HttpComponentsClientHttpRequestFactory factory;
     private RestTemplate restTemplate;
-    private MappingJackson2HttpMessageConverter converter;
+    //private MappingJackson2HttpMessageConverter converter;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -30132,7 +30132,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         factory = new HttpComponentsClientHttpRequestFactory();
         factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
         restTemplate = new RestTemplate(factory);
-        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        //restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
         restTemplate.getMessageConverters().add(new ResourceHttpMessageConverter());
         return restTemplate;
