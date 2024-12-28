@@ -15,11 +15,12 @@
 <html lang="en">
 <head>
 
-    <title>Layar Informasi Jadwal Operasi</title>
+    <title>Layar Informasi RSIA</title>
 
     <!-- Meta START -->
     <link rel="icon" href="assets/img/rs.png" type="image/x-icon">
     <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="120" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <!-- Meta END -->
@@ -57,11 +58,11 @@
 <!-- Header START -->
 <header>
 
-<nav class="deep-orange accent-3">
+<nav class="pink accent-3">
     <div class="nav-wrapper">
         <ul class="center hide-on-med-and-down" id="nv">
             <li>
-                <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> Jadwal Operasi</a>
+                <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> Dashboard Pelayanan</a>
             </li>
             <li class="right" style="margin-right: 10px;">
                 <i class="material-icons">perm_contact_calendar</i>
@@ -107,11 +108,11 @@
         <!-- Row START -->
         <div class="row">
             <!-- Fungsi Setting Instansi -->
-            <?php $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
+            <?php $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
             ?>
             
             <div class="col s12" id="header-instansi">
-                <div class="card deep-orange accent-3 white-text">
+                <div class="card pink accent-3 white-text">
                     <div class="card-content">
                         <div class="left">
                             <img class="logo" src="data:image/jpeg;base64,<?php echo base64_encode($setting['logo'])?>"/>
@@ -139,12 +140,12 @@
 
 <!-- Footer START -->
 <footer class="page-footer">
-    <div class="footer-copyright deep-orange accent-3 white-text">
+    <div class="footer-copyright pink accent-3 white-text">
         <div class="container simple-marquee-container" id="footer">
-            <div class="marquee-sibling">
+            <div class="marquee-sibling pink accent-3">
               Tarif Kamar Umum
             </div>
-            <marquee class="marquee" scrollamount="4">
+            <marquee class="marquee  pink accent-3" scrollamount="11">
                   <?php 
                     $sql ="SELECT kelas, trf_kamar FROM kamar WHERE statusdata='1' GROUP BY kelas";
                     $hasil=bukaquery($sql);
@@ -152,6 +153,15 @@
                   ?>
                    <span class="marquee-content-items">| <?= $data['kelas'];?> Rp <?= number_format($data['trf_kamar'], 0, ".",",");?></span>
                   <?php } ?>
+
+                  <?php
+                    $sqlA ="SELECT pengumuman FROM pengumuman_epasien";
+                    $hasilA=bukaquery($sqlA);
+                    while ($dataA = mysqli_fetch_array ($hasilA)){
+                  ?>
+                   <span class="marquee-content-items">| <?= $dataA['pengumuman'];?></span>
+                  <?php } ?>
+
             </marquee>
         </div>
     </div>
@@ -191,6 +201,15 @@
     var auto_refresh = setInterval( function() { 
         $('#data').load('data_operasi.php').fadeIn("slow"); }, 5000); 
 </script>
+
+
+
+    <script>
+        // Redirect to another page after 80 seconds (80,000 milliseconds)
+        setTimeout(function() {
+            window.location.href = "http://192.168.1.111/slideshow/";
+        }, 80000); // 80 seconds
+    </script>
 
 </body>
 <!-- Body END -->
