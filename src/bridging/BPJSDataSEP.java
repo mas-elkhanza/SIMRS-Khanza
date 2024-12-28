@@ -6167,8 +6167,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         ppDetailSEPPeserta.setEnabled(akses.getbpjs_sep());
         ppPengajuan.setEnabled(akses.getbpjs_sep());
         ppPengajuan1.setEnabled(akses.getbpjs_sep());
-        ppPengajuan2.setEnabled(akses.getbpjs_sep());
-        ppPengajuan3.setEnabled(akses.getbpjs_sep());
+        //ppPengajuan2.setEnabled(akses.getbpjs_sep());
+        //ppPengajuan3.setEnabled(akses.getbpjs_sep());
         ppStatusFinger.setEnabled(akses.getbpjs_sep());
         ppPulang.setEnabled(akses.getbpjs_sep());
         ppSEP.setEnabled(akses.getbpjs_sep());               
@@ -6193,8 +6193,8 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
         ppDetailSEPPeserta.setEnabled(false);
         ppPengajuan.setEnabled(false);
         ppPengajuan1.setEnabled(false);
-        ppPengajuan2.setEnabled(false);
-        ppPengajuan3.setEnabled(false);
+        //ppPengajuan2.setEnabled(false);
+        //ppPengajuan3.setEnabled(false);
         ppStatusFinger.setEnabled(false);
         ppPulang.setEnabled(false);
         ppSEP.setEnabled(false);               
