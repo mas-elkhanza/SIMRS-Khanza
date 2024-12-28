@@ -11,12 +11,13 @@
  $jam=date("H:i");
 ?>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" coassets/jsntent="text/html; charset=utf-8" />
     <link href="css/default.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="conf/validator.js"></script>
     <title>Jadwal Praktek Dokter</title>
-    <script src="Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
-    <script src="Scripts/AC_ActiveX.js" type="text/javascript"></script>
+    <script src="assets/js/AC_RunActiveContent.js" type="text/javascript"></script>
+    <script src="assets/js/AC_ActiveX.js" type="text/javascript"></script>
+    <script src='assets/js//responsivevoice.js'></script>
 	<style type="text/css">
 	<!--
 	body {
@@ -86,15 +87,56 @@
     </table>
     <table border='0' witdh='100%' cellpadding='0' cellspacing='0'>
         <tr class='head2' border='0'>
-            <td width='35%' align='center'><font size='6' color='#DD0000'><b>Panggilan Poli</b></font></td><td><font size='6' color='#DD0000'><b>:</b></font></td>
+            <td width='35%' align='center'><font size='6' color='#DD0000'><b>Panggilan Poli (Dokter)</b></font></td><td><font size='6' color='#DD0000'><b>:</b></font></td>
             <td width='64%' align='center'>
             <?php 
-                $_sql="select * from antripoli where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
-                $hasil=bukaquery($_sql);
+                // $_sql="select * from antripoli where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
+                 $_sql="select 
+                   	antripoli.kd_dokter,
+                   	antripoli.kd_poli,
+                   	antripoli.status,
+                   	antripoli.no_rawat,
+                   	pasien.nm_pasien,
+                   	poliklinik.nm_poli,
+                   	dokter.nm_dokter,
+                   	reg_periksa.no_reg 
+                   	from antripoli 
+                   	left join reg_periksa
+                   	on antripoli.no_rawat=reg_periksa.no_rawat  
+                   	left join pasien
+                   	on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+                   	left join poliklinik 
+                    on antripoli.kd_poli=poliklinik.kd_poli
+                   	left join dokter 
+                   	on dokter.kd_dokter=antripoli.kd_dokter 
+                   	where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'" ;  
+                   $hasil=bukaquery($_sql);
                 while ($data = mysqli_fetch_array ($hasil)){
-                    echo "<font size='6' color='#DD0000'><b>".getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'")."</b></font>";
+                    echo "<font size='6' color='#DD0000'><b>".getOne("select concat(reg_periksa.no_reg,' ',reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien inner join antripoli on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where antripoli.no_rawat='".$data['no_rawat']."'")."</b></font>";
                     if($data['status']=="1"){
-                        echo "<audio autoplay='true' src='bell.wav'>";
+                        echo "<audio autoplay='true' src='bell.wav'>"; 
+                        ?>
+                        <script type="text/javascript">
+                        responsiveVoice.speak(
+                        ", , , , , , , , Antrian <?= strtolower($data['no_reg']);?>,Atas nama <?= strtolower($data['nm_pasien']);?>,Silahkan ke <?= strtolower($data['nm_poli']);?>,<?= strtolower($data['nm_dokter']);?>, ",
+                        "Indonesian Female",
+                        {
+                        pitch: 1, 
+                        rate: 0.9, 
+                        volume: 1
+                        }
+                        );</script>
+<!--                         <script type="text/javascript">
+                        responsiveVoice.speak(
+                        "Antrian <?= strtolower($data['no_reg']);?>,Atas nama <?= strtolower($data['nm_pasien']);?>,Silahkan ke <?= strtolower($data['nm_poli']);?>,<?= strtolower($data['nm_dokter']);?>, ",
+                        "Indonesian Female",
+                        {
+                        pitch: 1, 
+                        rate: 0.9, 
+                        volume: 1
+                        }
+                        );</script> -->
+                        <?php
                         bukaquery2("update antripoli set antripoli.status='0' where antripoli.kd_poli='".$kd_poli."' and antripoli.kd_dokter='".$kd_dokter."'");
                     }   
                 }
@@ -118,9 +160,9 @@
 
                 while ($data = mysqli_fetch_array ($hasil)){
                         echo "<tr class='isi7' >
-                                <td align='center'><font size='5' color='#555555' face='Tahoma'>".$data['no_reg']."</font></td>
-                                <td align='center'><font color='#555555' size='5'  face='Tahoma'>".$data['no_rawat']."</font></td>
-                                <td align='center'><font color='#555555' size='5'  face='Tahoma'>".$data['nm_pasien']."</font></td>
+                                <td align='center'><font size='5' color='gray' face='Tahoma'>".$data['no_reg']."</font></td>
+                                <td align='center'><font color='#DDDD00' size='5'  face='Tahoma'>".$data['no_rawat']."</font></td>
+                                <td align='center'><font color='gren' size='5'  face='Tahoma'>".$data['nm_pasien']."</font></td>
                             </tr> ";
                 }
         ?>
@@ -133,5 +175,5 @@
      <img src="ft-2.jpg" alt="bar-pic" width="100%" height="83">
 </body>
 <?php 
-  echo "<meta http-equiv='refresh' content='10;URL=?iyem=".encrypt_decrypt("{\"kd_poli\":\"".$kd_poli."\",\"kd_dokter\":\"".$kd_dokter."\"}","e")."'>";
+  echo "<meta http-equiv='refresh' content='25;URL=?iyem=".encrypt_decrypt("{\"kd_poli\":\"".$kd_poli."\",\"kd_dokter\":\"".$kd_dokter."\"}","e")."'>";
 ?>
