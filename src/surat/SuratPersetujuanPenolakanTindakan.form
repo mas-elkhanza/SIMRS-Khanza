@@ -35,7 +35,6 @@
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
                 </LineBorder>
               </Border>
-              <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
               <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -210,9 +209,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="32" green="32" red="32" type="rgb"/>
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="0"/>
-            </Property>
             <Property name="name" type="java.lang.String" value="TabRawat" noResource="true"/>
           </Properties>
           <Events>
@@ -322,9 +318,6 @@
                             <Component class="javax.swing.JTextArea" name="Diagnosa">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="Diagnosa" noResource="true"/>
                               </Properties>
@@ -531,13 +524,20 @@
                         <Component class="widget.ComboBox" name="HubunganDenganPasien">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="6">
-                                <StringItem index="0" value="Diri Sendiri"/>
-                                <StringItem index="1" value="Orang Tua"/>
+                              <StringArray count="13">
+                                <StringItem index="0" value="Suami"/>
+                                <StringItem index="1" value="Istri"/>
                                 <StringItem index="2" value="Anak"/>
-                                <StringItem index="3" value="Saudara Kandung"/>
-                                <StringItem index="4" value="Teman"/>
-                                <StringItem index="5" value="Lain-lain"/>
+                                <StringItem index="3" value="Ayah"/>
+                                <StringItem index="4" value="Ibu"/>
+                                <StringItem index="5" value="Saudara Kandung"/>
+                                <StringItem index="6" value="Keponakan"/>
+                                <StringItem index="7" value="Diri Sendiri"/>
+                                <StringItem index="8" value="Kakak"/>
+                                <StringItem index="9" value="Adik"/>
+                                <StringItem index="10" value="Teman"/>
+                                <StringItem index="11" value="Lain-lain"/>
+                                <StringItem index="12" value=" "/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="HubunganDenganPasien" noResource="true"/>
@@ -559,7 +559,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="16-10-2023"/>
+                                <StringItem index="0" value="07-02-2024"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -681,9 +681,6 @@
                             <Component class="javax.swing.JTextArea" name="TindakanKedokteran">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="TindakanKedokteran" noResource="true"/>
                               </Properties>
@@ -737,9 +734,6 @@
                             <Component class="javax.swing.JTextArea" name="IndikasiTindakan">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="IndikasiTindakan" noResource="true"/>
                               </Properties>
@@ -769,9 +763,6 @@
                             <Component class="javax.swing.JTextArea" name="TataCara">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="TataCara" noResource="true"/>
                               </Properties>
@@ -813,9 +804,6 @@
                             <Component class="javax.swing.JTextArea" name="Risiko">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="Risiko" noResource="true"/>
                               </Properties>
@@ -845,9 +833,6 @@
                             <Component class="javax.swing.JTextArea" name="Tujuan">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="Tujuan" noResource="true"/>
                               </Properties>
@@ -913,9 +898,6 @@
                             <Component class="javax.swing.JTextArea" name="Komplikasi">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="Komplikasi" noResource="true"/>
                               </Properties>
@@ -945,9 +927,6 @@
                             <Component class="javax.swing.JTextArea" name="Prognosis">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="Prognosis" noResource="true"/>
                               </Properties>
@@ -1001,9 +980,6 @@
                             <Component class="javax.swing.JTextArea" name="AlternatifResiko">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="AlternatifResiko" noResource="true"/>
                               </Properties>
@@ -1033,9 +1009,6 @@
                             <Component class="javax.swing.JTextArea" name="LainLain">
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
-                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                  <Font name="Tahoma" size="11" style="0"/>
-                                </Property>
                                 <Property name="rows" type="int" value="5"/>
                                 <Property name="name" type="java.lang.String" value="LainLain" noResource="true"/>
                               </Properties>
@@ -1206,7 +1179,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="16-10-2023"/>
+                                <StringItem index="0" value="07-02-2024"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1541,7 +1514,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="16-10-2023"/>
+                            <StringItem index="0" value="07-02-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1569,7 +1542,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="16-10-2023"/>
+                            <StringItem index="0" value="07-02-2024"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1796,9 +1769,6 @@
                             </Property>
                             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="32" green="32" red="32" type="rgb"/>
-                            </Property>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Tahoma" size="11" style="0"/>
                             </Property>
                             <Property name="name" type="java.lang.String" value="TabData" noResource="true"/>
                           </Properties>

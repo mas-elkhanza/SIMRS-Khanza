@@ -500,7 +500,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-06-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -514,7 +514,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-06-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -637,8 +637,13 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         FormInput.add(jLabel10);
         jLabel10.setBounds(0, 160, 75, 23);
 
-        Hubungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Saudara", "Keponakan" }));
+        Hubungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Ibu", "Saudara", "Keponakan", "Diri Sendiri", "Kakak", "Adik", "-" }));
         Hubungan.setName("Hubungan"); // NOI18N
+        Hubungan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HubunganActionPerformed(evt);
+            }
+        });
         Hubungan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HubunganKeyPressed(evt);
@@ -742,7 +747,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 70, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-06-2023 18:57:02" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2024 11:40:47" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1437,6 +1442,10 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
         }
     }//GEN-LAST:event_BtnPrint1ActionPerformed
+
+    private void HubunganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HubunganActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HubunganActionPerformed
 
     /**
     * @param args the command line arguments

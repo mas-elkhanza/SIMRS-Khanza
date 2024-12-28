@@ -53,7 +53,6 @@
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
                 </LineBorder>
               </Border>
-              <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
               <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -305,7 +304,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="02-07-2024"/>
+                        <StringItem index="0" value="07-02-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -333,7 +332,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="02-07-2024"/>
+                        <StringItem index="0" value="07-02-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -569,20 +568,17 @@
                 <Component class="widget.ComboBox" name="BertindakAtas">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="13">
+                      <StringArray count="10">
                         <StringItem index="0" value="Suami"/>
                         <StringItem index="1" value="Istri"/>
                         <StringItem index="2" value="Anak"/>
                         <StringItem index="3" value="Ayah"/>
-                        <StringItem index="4" value="Saudara"/>
-                        <StringItem index="5" value="Keponakan"/>
-                        <StringItem index="6" value="Cucu"/>
-                        <StringItem index="7" value="Kakek"/>
-                        <StringItem index="8" value="Nenek"/>
-                        <StringItem index="9" value="Kakak"/>
-                        <StringItem index="10" value="Adik"/>
-                        <StringItem index="11" value="Ibu"/>
-                        <StringItem index="12" value="Diri Sendiri"/>
+                        <StringItem index="4" value="Ibu"/>
+                        <StringItem index="5" value="Saudara"/>
+                        <StringItem index="6" value="Keponakan"/>
+                        <StringItem index="7" value="Diri Sendiri"/>
+                        <StringItem index="8" value="Kakak"/>
+                        <StringItem index="9" value="Adik"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="BertindakAtas" noResource="true"/>
@@ -718,7 +714,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="02-07-2024"/>
+                        <StringItem index="0" value="07-02-2024"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -927,7 +923,6 @@
                       <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                         <EmptyBorder/>
                       </Border>
-                      <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
                       <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
                     </TitledBorder>
                   </Border>

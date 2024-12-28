@@ -47,7 +47,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
     private PreparedStatement ps;
     private ResultSet rs;   
     private int i=0;
-    private String link="",json="",idpasien="",iddokter="",signa1="1",signa2="1",idrequest="";
+    private String link="",json="",idpasien="",iddokter="",signa1="1",signa2="1";
     private ApiSatuSehat api=new ApiSatuSehat();
     private HttpHeaders headers ;
     private HttpEntity requestEntity;
@@ -73,7 +73,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                 "ID Encounter","KFA Code","KFA System","Kode Barang","KFA Display","Form Code","Form System","Form Display",
                 "Route Code","Route System","Route Display","Denominator Code","Denominator System","Tanggal & Jam Resep","Jumlah",
                 "ID Medication","Aturan Pakai","No.Resep","ID Medication Dispense","No.Batch","No.Faktur","Tgl.Validasi","Status",
-                "ID Location","Asal Depo"
+                "ID Location","Asal Depo", "ID Medication Request"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -89,7 +89,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                 java.lang.String.class,java.lang.String.class,java.lang.String.class
+                 java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -102,7 +102,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 33; i++) {
+        for (i = 0; i < 34; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
@@ -170,6 +170,8 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                 column.setPreferredWidth(210);
             }else if(i==32){
                 column.setPreferredWidth(160);
+            }else if(i==33){
+                column.setPreferredWidth(210);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -533,6 +535,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Batch</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Faktur</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ID Medication Request</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -567,6 +570,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                             "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -667,7 +671,6 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                     } 
                     
                     try{
-                        idrequest=Sequel.cariIsi("select satu_sehat_medicationrequest.id_medicationrequest from satu_sehat_medicationrequest where satu_sehat_medicationrequest.no_resep='"+tbObat.getValueAt(i,25).toString()+"' and satu_sehat_medicationrequest.kode_brng='"+tbObat.getValueAt(i,11).toString()+"'");
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("Authorization", "Bearer "+api.TokenSatuSehat());
@@ -675,12 +678,12 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                     "\"resourceType\": \"MedicationDispense\"," +
                                     "\"identifier\": [" +
                                         "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/medicationdispense/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                             "\"use\": \"official\"," +
                                             "\"value\": \""+tbObat.getValueAt(i,25).toString()+"\"" +
                                         "}," +
                                         "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/medicationdispense-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/prescription-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                             "\"use\": \"official\"," +
                                             "\"value\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
                                         "}" +
@@ -718,11 +721,11 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                         "\"reference\": \"Location/"+tbObat.getValueAt(i,31).toString()+"\"," +
                                         "\"display\": \""+tbObat.getValueAt(i,32).toString()+"\"" +
                                     "},"+
-                                    (idrequest.equals("")?"":
-                                        "\"authorizingPrescription\": [{" +
-                                            "\"reference\": \"MedicationRequest/"+idrequest+"\"" +
-                                        "}],"
-                                    )+
+                                    "\"authorizingPrescription\": [" +
+                                        "{" +
+                                            "\"reference\": \"MedicationRequest/"+tbObat.getValueAt(i,33).toString()+"\"" +
+                                        "}" +
+                                    "],"+
                                     "\"quantity\": {" +
                                         "\"system\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                         "\"code\": \""+tbObat.getValueAt(i,19).toString()+"\"," +
@@ -834,12 +837,12 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                     "\"id\": \""+tbObat.getValueAt(i,26).toString()+"\"," +
                                     "\"identifier\": [" +
                                         "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/medicationdispense/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/prescription/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                             "\"use\": \"official\"," +
                                             "\"value\": \""+tbObat.getValueAt(i,25).toString()+"\"" +
                                         "}," +
                                         "{" +
-                                            "\"system\": \"http://sys-ids.kemkes.go.id/medicationdispense-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
+                                            "\"system\": \"http://sys-ids.kemkes.go.id/prescription-item/"+koneksiDB.IDSATUSEHAT()+"\"," +
                                             "\"use\": \"official\"," +
                                             "\"value\": \""+tbObat.getValueAt(i,11).toString()+"\"" +
                                         "}" +
@@ -877,6 +880,11 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                                         "\"reference\": \"Location/"+tbObat.getValueAt(i,31).toString()+"\"," +
                                         "\"display\": \""+tbObat.getValueAt(i,32).toString()+"\"" +
                                     "},"+
+                                    "\"authorizingPrescription\": [" +
+                                        "{" +
+                                            "\"reference\": \"MedicationRequest/"+tbObat.getValueAt(i,33).toString()+"\"" +
+                                        "}" +
+                                    "],"+
                                     "\"quantity\": {" +
                                         "\"system\": \""+tbObat.getValueAt(i,20).toString()+"\"," +
                                         "\"code\": \""+tbObat.getValueAt(i,19).toString()+"\"" +
@@ -995,7 +1003,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
         try{
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_medicationrequest.id_medicationrequest,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
                    "detail_pemberian_obat.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
                    "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
                    "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,detail_pemberian_obat.jml,satu_sehat_medication.id_medication,"+
@@ -1004,12 +1012,13 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                    "bangsal.nm_bangsal from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
                    "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
+                   "inner join satu_sehat_medicationrequest on satu_sehat_medicationrequest.no_resep=resep_obat.no_resep "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
                    "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=resep_obat.no_rawat and "+
                    "detail_pemberian_obat.tgl_perawatan=resep_obat.tgl_perawatan and detail_pemberian_obat.jam=resep_obat.jam "+
                    "inner join aturan_pakai on detail_pemberian_obat.no_rawat=aturan_pakai.no_rawat and "+
                    "detail_pemberian_obat.tgl_perawatan=aturan_pakai.tgl_perawatan and detail_pemberian_obat.jam=aturan_pakai.jam and "+
-                   "detail_pemberian_obat.kode_brng=aturan_pakai.kode_brng "+
+                   "detail_pemberian_obat.kode_brng=aturan_pakai.kode_brng  and detail_pemberian_obat.kode_brng=satu_sehat_medicationrequest.kode_brng "+
                    "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=detail_pemberian_obat.kode_brng "+
                    "inner join bangsal on bangsal.kd_bangsal=detail_pemberian_obat.kd_bangsal "+
                    "inner join satu_sehat_mapping_lokasi_depo_farmasi on satu_sehat_mapping_lokasi_depo_farmasi.kd_bangsal=bangsal.kd_bangsal "+
@@ -1043,7 +1052,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                         rs.getString("obat_display"),rs.getString("form_code"),rs.getString("form_system"),rs.getString("form_display"),rs.getString("route_code"),rs.getString("route_system"),
                         rs.getString("route_display"),rs.getString("denominator_code"),rs.getString("denominator_system"),rs.getString("tgl_peresepan")+" "+rs.getString("jam_peresepan"),
                         rs.getString("jml"),rs.getString("id_medication"),rs.getString("aturan"),rs.getString("no_resep"),rs.getString("id_medicationdispanse"),rs.getString("no_batch"),
-                        rs.getString("no_faktur"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),"Ralan",rs.getString("id_lokasi_satusehat"),rs.getString("nm_bangsal")
+                        rs.getString("no_faktur"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),"Ralan",rs.getString("id_lokasi_satusehat"),rs.getString("nm_bangsal"),rs.getString("id_medicationrequest")
                     });
                 }
             } catch (Exception e) {
@@ -1059,7 +1068,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
             
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
+                   "pegawai.nama,pegawai.no_ktp as ktppraktisi,satu_sehat_encounter.id_encounter,satu_sehat_medicationrequest.id_medicationrequest,satu_sehat_mapping_obat.obat_code,satu_sehat_mapping_obat.obat_system,"+
                    "detail_pemberian_obat.kode_brng,satu_sehat_mapping_obat.obat_display,satu_sehat_mapping_obat.form_code,satu_sehat_mapping_obat.form_system,satu_sehat_mapping_obat.form_display,"+
                    "satu_sehat_mapping_obat.route_code,satu_sehat_mapping_obat.route_system,satu_sehat_mapping_obat.route_display,satu_sehat_mapping_obat.denominator_code,"+
                    "satu_sehat_mapping_obat.denominator_system,resep_obat.tgl_peresepan,resep_obat.jam_peresepan,detail_pemberian_obat.jml,satu_sehat_medication.id_medication,"+
@@ -1068,12 +1077,13 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                    "bangsal.nm_bangsal from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join resep_obat on reg_periksa.no_rawat=resep_obat.no_rawat "+
                    "inner join pegawai on resep_obat.kd_dokter=pegawai.nik "+
+                   "inner join satu_sehat_medicationrequest on satu_sehat_medicationrequest.no_resep=resep_obat.no_resep "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat "+
                    "inner join detail_pemberian_obat on detail_pemberian_obat.no_rawat=resep_obat.no_rawat and "+
                    "detail_pemberian_obat.tgl_perawatan=resep_obat.tgl_perawatan and detail_pemberian_obat.jam=resep_obat.jam "+
                    "inner join aturan_pakai on detail_pemberian_obat.no_rawat=aturan_pakai.no_rawat and "+
                    "detail_pemberian_obat.tgl_perawatan=aturan_pakai.tgl_perawatan and detail_pemberian_obat.jam=aturan_pakai.jam and "+
-                   "detail_pemberian_obat.kode_brng=aturan_pakai.kode_brng "+
+                   "detail_pemberian_obat.kode_brng=aturan_pakai.kode_brng and detail_pemberian_obat.kode_brng=satu_sehat_medicationrequest.kode_brng "+
                    "inner join satu_sehat_mapping_obat on satu_sehat_mapping_obat.kode_brng=detail_pemberian_obat.kode_brng "+
                    "inner join bangsal on bangsal.kd_bangsal=detail_pemberian_obat.kd_bangsal "+
                    "inner join satu_sehat_mapping_lokasi_depo_farmasi on satu_sehat_mapping_lokasi_depo_farmasi.kd_bangsal=bangsal.kd_bangsal "+
@@ -1107,7 +1117,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                         rs.getString("obat_display"),rs.getString("form_code"),rs.getString("form_system"),rs.getString("form_display"),rs.getString("route_code"),rs.getString("route_system"),
                         rs.getString("route_display"),rs.getString("denominator_code"),rs.getString("denominator_system"),rs.getString("tgl_peresepan")+" "+rs.getString("jam_peresepan"),
                         rs.getString("jml"),rs.getString("id_medication"),rs.getString("aturan"),rs.getString("no_resep"),rs.getString("id_medicationdispanse"),rs.getString("no_batch"),
-                        rs.getString("no_faktur"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),"Ranap",rs.getString("id_lokasi_satusehat"),rs.getString("nm_bangsal")
+                        rs.getString("no_faktur"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),"Ranap",rs.getString("id_lokasi_satusehat"),rs.getString("nm_bangsal"),rs.getString("id_medicationrequest")
                     });
                 }
             } catch (Exception e) {
@@ -1128,7 +1138,6 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_medicationdispense());
-        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_medicationdispense());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_medicationdispense());
     }
     
