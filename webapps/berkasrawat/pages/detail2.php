@@ -86,8 +86,9 @@
                 if (isset($BtnSimpan)) {
                     $no_rawat           = validTeks(trim($_POST['no_rawat']));
                     $kode               = validTeks(trim($_POST['kode']));
-                    $dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-4))==".pdf")||(strtolower(substr($dokumen,-5))==".jpeg")){
+                    //$dokumen            = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
+                    $dokumen            = validTeks(str_replace(" ","_","pages/upload/".str_replace("/","",$no_rawat)."-".$_FILES['dokumen']['name']));
+					if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-4))==".pdf")||(strtolower(substr($dokumen,-5))==".jpeg")){
                         if(($_FILES['dokumen']['type'] == 'application/pdf')||($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
                             if((mime_content_type($_FILES['dokumen']['tmp_name'])== 'application/pdf')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
                                 if ((!empty($no_rawat))&&(!empty($kode))&&(!empty($dokumen))) {

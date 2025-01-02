@@ -59,8 +59,9 @@
                 $kategori      = validTeks(($_POST['kategori']));
                 $kode          = validTeks(trim($_POST['kode']));
                 $tgl_uploud    = validTeks(trim($_POST['ThnUploud'])."-".trim($_POST['BlnUploud'])."-".trim($_POST['TglUploud']));
-                $dokumen       = validTeks(str_replace(" ","_","pages/berkaspegawai/berkas/".$_FILES['dokumen']['name']));
-                if ((!empty($nik))&&(!empty($kode))&&(!empty($dokumen))) {
+                //$dokumen       = validTeks(str_replace(" ","_","pages/berkaspegawai/berkas/".$_FILES['dokumen']['name']));
+                $dokumen       = validTeks(str_replace(" ","_","pages/berkaspegawai/berkas/".$nik."_".$kode."_".$_FILES['dokumen']['name']));
+				if ((!empty($nik))&&(!empty($kode))&&(!empty($dokumen))) {
                     switch($action) {
                         case "TAMBAH":
                             if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-4))==".pdf")||(strtolower(substr($dokumen,-5))==".jpeg")){
