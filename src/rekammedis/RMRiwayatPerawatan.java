@@ -30132,9 +30132,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         factory = new HttpComponentsClientHttpRequestFactory();
         factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
         restTemplate = new RestTemplate(factory);
-        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        /*restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
-        restTemplate.getMessageConverters().add(new ResourceHttpMessageConverter());
+        restTemplate.getMessageConverters().add(new ResourceHttpMessageConverter());*/
         return restTemplate;
     }
 }
