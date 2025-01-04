@@ -319,6 +319,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
                     NoRMIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),0).toString());
                     NmIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),1).toString());
                     TglLahirIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),5).toString());
+                    NIKIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),2).toString());
                 }  
                 BtnIbuBayi.requestFocus();
             }
@@ -472,10 +473,10 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         jLabel43 = new widget.Label();
         BersalinDi = new widget.TextBox();
         jLabel116 = new widget.Label();
-        Anamnesis5 = new widget.ComboBox();
+        JenisPersalinanBayi = new widget.ComboBox();
         jLabel72 = new widget.Label();
         jLabel45 = new widget.Label();
-        Hubungan2 = new widget.TextBox();
+        IndikasiKeteranganPersalinan = new widget.TextBox();
         jLabel117 = new widget.Label();
         jLabel73 = new widget.Label();
         Anamnesis6 = new widget.ComboBox();
@@ -1448,15 +1449,15 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         FormInput.add(jLabel116);
         jLabel116.setBounds(332, 400, 80, 23);
 
-        Anamnesis5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Spontan/Normal", "Induksi", "Sectio Caesaria", "Vacum Ekstraksi" }));
-        Anamnesis5.setName("Anamnesis5"); // NOI18N
-        Anamnesis5.addKeyListener(new java.awt.event.KeyAdapter() {
+        JenisPersalinanBayi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Spontan/Normal", "Induksi", "Sectio Caesaria", "Vacum Ekstraksi" }));
+        JenisPersalinanBayi.setName("JenisPersalinanBayi"); // NOI18N
+        JenisPersalinanBayi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis5KeyPressed(evt);
+                JenisPersalinanBayiKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis5);
-        Anamnesis5.setBounds(134, 430, 133, 23);
+        FormInput.add(JenisPersalinanBayi);
+        JenisPersalinanBayi.setBounds(134, 430, 133, 23);
 
         jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel72.setText("Jenis Persalinan");
@@ -1469,15 +1470,15 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         FormInput.add(jLabel45);
         jLabel45.setBounds(0, 430, 130, 23);
 
-        Hubungan2.setName("Hubungan2"); // NOI18N
-        Hubungan2.setPreferredSize(new java.awt.Dimension(207, 23));
-        Hubungan2.addKeyListener(new java.awt.event.KeyAdapter() {
+        IndikasiKeteranganPersalinan.setName("IndikasiKeteranganPersalinan"); // NOI18N
+        IndikasiKeteranganPersalinan.setPreferredSize(new java.awt.Dimension(207, 23));
+        IndikasiKeteranganPersalinan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Hubungan2KeyPressed(evt);
+                IndikasiKeteranganPersalinanKeyPressed(evt);
             }
         });
-        FormInput.add(Hubungan2);
-        Hubungan2.setBounds(416, 430, 438, 23);
+        FormInput.add(IndikasiKeteranganPersalinan);
+        IndikasiKeteranganPersalinan.setBounds(416, 430, 438, 23);
 
         jLabel117.setText("Indikasi/Keterangan :");
         jLabel117.setName("jLabel117"); // NOI18N
@@ -3421,13 +3422,13 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         // TODO add your handling code here:
     }//GEN-LAST:event_BersalinDiKeyPressed
 
-    private void Anamnesis5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis5KeyPressed
+    private void JenisPersalinanBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisPersalinanBayiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis5KeyPressed
+    }//GEN-LAST:event_JenisPersalinanBayiKeyPressed
 
-    private void Hubungan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hubungan2KeyPressed
+    private void IndikasiKeteranganPersalinanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IndikasiKeteranganPersalinanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Hubungan2KeyPressed
+    }//GEN-LAST:event_IndikasiKeteranganPersalinanKeyPressed
 
     private void Anamnesis6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis6KeyPressed
         // TODO add your handling code here:
@@ -3741,7 +3742,6 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     private widget.ComboBox Anamnesis12;
     private widget.ComboBox Anamnesis13;
     private widget.ComboBox Anamnesis14;
-    private widget.ComboBox Anamnesis5;
     private widget.ComboBox Anamnesis6;
     private widget.ComboBox Anamnesis7;
     private widget.ComboBox Anamnesis8;
@@ -3781,10 +3781,11 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     private widget.ComboBox HIV;
     private widget.ComboBox HbsAg;
     private widget.TextBox Hidup;
-    private widget.TextBox Hubungan2;
+    private widget.TextBox IndikasiKeteranganPersalinan;
     private widget.ComboBox InisiasiMenyusui;
     private widget.ComboBox JK;
     private widget.TextBox JenisPersalinan;
+    private widget.ComboBox JenisPersalinanBayi;
     private widget.TextBox Jk;
     private widget.TextBox KdDokter;
     private widget.TextBox Keadaan;
