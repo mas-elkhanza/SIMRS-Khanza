@@ -67,10 +67,17 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         DlgRiwayatPersalinan.setSize(650,192);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
-            "Riwayat Penyakit Keluarga","Riwayat Penggunakan Obat","Riwayat Alergi","Keadaan Umum","GCS","Kesadaran","TD(mmHg)","Nadi(x/menit)","RR(x/menit)","Suhu","SpO2","BB(Kg)","TB(cm)","Kepala",
-            "Mata","Gigi & Mulut","THT","Thoraks","Jantung","Paru","Abdomen","Genital & Anus","Ekstremitas","Kulit","Ket.Pemeriksaan Fisik","Ket.Status Lokalis","Laboratorium","Radiologi",
-            "Penunjang Lainnya","Diagnosis/Asesmen","Tatalaksana","Edukasi"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Umur","NIK Bayi","No.RM IBU","Nama Ibu","NIK Ibu","Kode Dokter","Nama Dokter","Tanggal",
+            "G","P","A","Hidup","Usia Hamil","HbsAg","HIV/AIDS","Syphilis","Riwayat Obstetri Ibu","Keterangan Riwayat Obstetri Ibu","Faktor Risiko Neonatal",
+            "Keterangan Faktor Risiko Neonatal","Tgl & Jam Persalinan","Bersalin Di","Inisiasi Menyusui Dini","Jenis Persalinan","Indikasi/Keterangan","Aterm",
+            "Bernafas/Menangis","Tonus Otot Baik","Cairan Amnion Jernih","F 1","U 1","T 1","R 1","W 1","N 1'","F 5","U 5","T 5","R 5","W 5","N 5'","F 10","U 10",
+            "T 10","R 10","W 10","N 10'","Frekuensi Napas","N.F.N","Retraksi","N.R","Sianosis","N.S","Jalan Masuk Udara","N.J.M","Grunting","N.G","Ttl Down Score",
+            "Keterangan Down Score","Nadi(x/menit)","RR(x/menit)","Suhu(°C)","Saturasi O2(%)","BB(gram)","PB(cm)","LK(cm)","LD(cm)","Keadaan Umum","Keterangan Keadaan Umum",
+            "Kulit","Keterangan Kulit","Kepala","Keterangan Kepala","Mata","Keterangan Mata","Telinga","Keterangan Telinga","Hidung","Keterangan Hidung","Mulut",
+            "Keterangan Mulut","Tenggorokan","Keterangan Tenggorokan","Leher","Keterangan Leher","Thorax","Keterangan Thorax","Abdomen","Keterangan Abdomen",
+            "Genitalia","Keterangan Genitalia","Anus","Keterangan Anus","Muskuloskeletal","Keterangan Muskuloskeletal","Ekstrimitas","Keterangan Ekstrimitas",
+            "Paru","Keterangan Paru","Refleks Primitif","Keterangan Refleks Primitif","Kelainan Lainnya","Pemeriksaan Regional/Khusus/Tambahan","Laboratorium",
+            "Radiologi","Penunjang Lainnya","Diagnosis/Asesmen","Tatalaksana","Edukasi"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -93,84 +100,6 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
                 column.setPreferredWidth(55);
             }else if(i==5){
                 column.setPreferredWidth(80);
-            }else if(i==6){
-                column.setPreferredWidth(150);
-            }else if(i==7){
-                column.setPreferredWidth(115);
-            }else if(i==8){
-                column.setPreferredWidth(80);
-            }else if(i==9){
-                column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setPreferredWidth(300);
-            }else if(i==11){
-                column.setPreferredWidth(150);
-            }else if(i==12){
-                column.setPreferredWidth(150);
-            }else if(i==13){
-                column.setPreferredWidth(150);
-            }else if(i==14){
-                column.setPreferredWidth(150);
-            }else if(i==15){
-                column.setPreferredWidth(120);
-            }else if(i==16){
-                column.setPreferredWidth(90);
-            }else if(i==17){
-                column.setPreferredWidth(50);
-            }else if(i==18){
-                column.setPreferredWidth(80);
-            }else if(i==19){
-                column.setPreferredWidth(60);
-            }else if(i==20){
-                column.setPreferredWidth(75);
-            }else if(i==21){
-                column.setPreferredWidth(67);
-            }else if(i==22){
-                column.setPreferredWidth(40);
-            }else if(i==23){
-                column.setPreferredWidth(40);
-            }else if(i==24){
-                column.setPreferredWidth(40);
-            }else if(i==25){
-                column.setPreferredWidth(40);
-            }else if(i==26){
-                column.setPreferredWidth(80);
-            }else if(i==27){
-                column.setPreferredWidth(80);
-            }else if(i==28){
-                column.setPreferredWidth(80);
-            }else if(i==29){
-                column.setPreferredWidth(80);
-            }else if(i==30){
-                column.setPreferredWidth(80);
-            }else if(i==31){
-                column.setPreferredWidth(80);
-            }else if(i==32){
-                column.setPreferredWidth(80);
-            }else if(i==33){
-                column.setPreferredWidth(80);
-            }else if(i==34){
-                column.setPreferredWidth(80);
-            }else if(i==35){
-                column.setPreferredWidth(80);
-            }else if(i==36){
-                column.setPreferredWidth(80);
-            }else if(i==37){
-                column.setPreferredWidth(300);
-            }else if(i==38){
-                column.setPreferredWidth(200);
-            }else if(i==39){
-                column.setPreferredWidth(170);
-            }else if(i==40){
-                column.setPreferredWidth(170);
-            }else if(i==41){
-                column.setPreferredWidth(170);
-            }else if(i==42){
-                column.setPreferredWidth(150);
-            }else if(i==43){
-                column.setPreferredWidth(300);
-            }else if(i==44){
-                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
