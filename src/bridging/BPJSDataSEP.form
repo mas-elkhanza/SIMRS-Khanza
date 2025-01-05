@@ -750,7 +750,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="05-01-2025 19:37:08"/>
+                    <StringItem index="0" value="05-01-2025 22:11:14"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1663,7 +1663,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,94,0,0,5,108"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,94,0,0,5,99"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -3443,7 +3443,7 @@
                           </AuxValues>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="740" y="10" width="310" height="450"/>
+                              <AbsoluteConstraints x="740" y="20" width="300" height="440"/>
                             </Constraint>
                           </Constraints>
 
@@ -3453,7 +3453,7 @@
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
-                                <Property name="text" type="java.lang.String" value="1. Pasien dengan Rujukan baru&#xa;- Tujuan Kunjungan = Normal&#xa;dan yang lain kosongkan.&#xa;&#xa;2. Pasien dengan Kontrol Ulang&#xa;-Tujuan Kunjungan = Konsul Dokter&#xa;-Flag Prosedur &amp; Penunjang = Kosong&#xa;-Asesmen Pelayanan = Tujuan Kontrol&#xa;&#xa;3. Pasien pecah SEP (Internal)&#xa;-Tujuan Kunjungan = Normal&#xa;-Flag Prosedur &amp; Penunjang = Kosong&#xa;-Asesmen Pelayanan = 1. Poli Spesialis &#xa;                                      tidak tersedia pada &#xa;                                      hari sebelumnya&#xa;-No Rujukan ambil dari rujukan induk&#xa;&#xa;&#xa;"/>
+                                <Property name="text" type="java.lang.String" value="1. Pasien dengan Rujukan baru&#xa;- Tujuan Kunjungan = Normal&#xa;dan yang lain kosongkan.&#xa;&#xa;2. Pasien dengan Kontrol Ulang&#xa;-Tujuan Kunjungan = Konsul Dokter&#xa;-Flag Prosedur &amp; Penunjang = Kosong&#xa;-Asesmen Pelayanan = Tujuan Kontrol&#xa;&#xa;3. Pasien pecah SEP (Internal)&#xa;-Tujuan Kunjungan = Normal&#xa;-Flag Prosedur &amp; Penunjang = Kosong&#xa;-Asesmen Pelayanan = &#xa;  1. Poli Spesialis tidak tersedia &#xa;     pada hari sebelumnya&#xa;-No Rujukan ambil dari rujukan induk&#xa;&#xa;&#xa;"/>
                                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="cc" green="ff" red="33" type="rgb"/>
                                 </Property>
@@ -3471,7 +3471,7 @@
                           </AuxValues>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="1060" y="10" width="310" height="450"/>
+                              <AbsoluteConstraints x="1050" y="20" width="310" height="440"/>
                             </Constraint>
                           </Constraints>
 
@@ -3481,7 +3481,7 @@
                               <Properties>
                                 <Property name="columns" type="int" value="20"/>
                                 <Property name="rows" type="int" value="5"/>
-                                <Property name="text" type="java.lang.String" value="4. Pasien Rawat Inap&#xa;-Jenis Pelayanan = Rawat Inap&#xa;-Asal Rujukan RS (Apabila dari IGD)&#xa;-Asal Rujukan FKTP (Apabila dari POLI)&#xa;-Masukan Nomor SPRI&#xa;-Tujuan Kunjungan = Normal&#xa;-PPK Rujukan = RST REKSODIWIRYO&#xa;&#xa;5. Pasien Post Ranap&#xa;-Poli Tujuan = Sesuai Ranap&#xa;-No Rujukan = SEP Ranap&#xa;- Tanggal Rujukan = Tanggal SEP Ranap dibuat&#xa;-Inputkan Sukon (SKDP)&#xa;-Tujuan Kontrol = Normal&#xa;&#xa;6. Pasien IGD&#xa;-Poli Tujuan = IGD&#xa;- DOkter tujukan masukan DPJP&#xa;-Tujuan Kunjungan = Normal"/>
+                                <Property name="text" type="java.lang.String" value="4. Pasien Rawat Inap&#xa;-Jenis Pelayanan = Rawat Inap&#xa;-Asal Rujukan RS (Apabila dari IGD)&#xa;-Asal Rujukan FKTP (Apabila dari POLI)&#xa;-Masukan Nomor SPRI&#xa;-Tujuan Kunjungan = Normal&#xa;-PPK Rujukan = Nama Rumah Sakit ini&#xa;&#xa;5. Pasien Post Ranap&#xa;-Poli Tujuan = Sesuai Ranap&#xa;-No Rujukan = SEP Ranap&#xa;- Tanggal Rujukan = Tanggal SEP Ranap&#xa;                    dibuat&#xa;-Inputkan Surkon (SKDP)&#xa;-Tujuan Kontrol = Normal&#xa;&#xa;6. Pasien IGD&#xa;-Poli Tujuan = IGD&#xa;- DOkter tujukan masukan DPJP&#xa;-Tujuan Kunjungan = Normal"/>
                                 <Property name="name" type="java.lang.String" value="jTextArea1" noResource="true"/>
                               </Properties>
                             </Component>

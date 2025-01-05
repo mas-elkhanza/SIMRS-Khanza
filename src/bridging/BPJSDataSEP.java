@@ -3004,24 +3004,24 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
-        jTextArea2.setText("1. Pasien dengan Rujukan baru\n- Tujuan Kunjungan = Normal\ndan yang lain kosongkan.\n\n2. Pasien dengan Kontrol Ulang\n-Tujuan Kunjungan = Konsul Dokter\n-Flag Prosedur & Penunjang = Kosong\n-Asesmen Pelayanan = Tujuan Kontrol\n\n3. Pasien pecah SEP (Internal)\n-Tujuan Kunjungan = Normal\n-Flag Prosedur & Penunjang = Kosong\n-Asesmen Pelayanan = 1. Poli Spesialis \n                                      tidak tersedia pada \n                                      hari sebelumnya\n-No Rujukan ambil dari rujukan induk\n\n\n");
+        jTextArea2.setText("1. Pasien dengan Rujukan baru\n- Tujuan Kunjungan = Normal\ndan yang lain kosongkan.\n\n2. Pasien dengan Kontrol Ulang\n-Tujuan Kunjungan = Konsul Dokter\n-Flag Prosedur & Penunjang = Kosong\n-Asesmen Pelayanan = Tujuan Kontrol\n\n3. Pasien pecah SEP (Internal)\n-Tujuan Kunjungan = Normal\n-Flag Prosedur & Penunjang = Kosong\n-Asesmen Pelayanan = \n  1. Poli Spesialis tidak tersedia \n     pada hari sebelumnya\n-No Rujukan ambil dari rujukan induk\n\n\n");
         jTextArea2.setDisabledTextColor(new java.awt.Color(51, 255, 204));
         jTextArea2.setName("jTextArea2"); // NOI18N
         jScrollPane3.setViewportView(jTextArea2);
 
         FormInput.add(jScrollPane3);
-        jScrollPane3.setBounds(740, 10, 310, 450);
+        jScrollPane3.setBounds(740, 20, 300, 440);
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("4. Pasien Rawat Inap\n-Jenis Pelayanan = Rawat Inap\n-Asal Rujukan RS (Apabila dari IGD)\n-Asal Rujukan FKTP (Apabila dari POLI)\n-Masukan Nomor SPRI\n-Tujuan Kunjungan = Normal\n-PPK Rujukan = RST REKSODIWIRYO\n\n5. Pasien Post Ranap\n-Poli Tujuan = Sesuai Ranap\n-No Rujukan = SEP Ranap\n- Tanggal Rujukan = Tanggal SEP Ranap dibuat\n-Inputkan Sukon (SKDP)\n-Tujuan Kontrol = Normal\n\n6. Pasien IGD\n-Poli Tujuan = IGD\n- DOkter tujukan masukan DPJP\n-Tujuan Kunjungan = Normal");
+        jTextArea1.setText("4. Pasien Rawat Inap\n-Jenis Pelayanan = Rawat Inap\n-Asal Rujukan RS (Apabila dari IGD)\n-Asal Rujukan FKTP (Apabila dari POLI)\n-Masukan Nomor SPRI\n-Tujuan Kunjungan = Normal\n-PPK Rujukan = Nama Rumah Sakit ini\n\n5. Pasien Post Ranap\n-Poli Tujuan = Sesuai Ranap\n-No Rujukan = SEP Ranap\n- Tanggal Rujukan = Tanggal SEP Ranap\n                    dibuat\n-Inputkan Surkon (SKDP)\n-Tujuan Kontrol = Normal\n\n6. Pasien IGD\n-Poli Tujuan = IGD\n- DOkter tujukan masukan DPJP\n-Tujuan Kunjungan = Normal");
         jTextArea1.setName("jTextArea1"); // NOI18N
         jScrollPane2.setViewportView(jTextArea1);
 
         FormInput.add(jScrollPane2);
-        jScrollPane2.setBounds(1060, 10, 310, 450);
+        jScrollPane2.setBounds(1050, 20, 310, 440);
 
         Scroll1.setViewportView(FormInput);
 
