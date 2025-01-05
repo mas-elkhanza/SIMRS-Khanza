@@ -639,6 +639,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         TglLahirIbu = new widget.TextBox();
         jLabel15 = new widget.Label();
         NIKIbu = new widget.TextBox();
+        KeteranganDownScore = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1768,10 +1769,10 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         FormInput.add(NilaiGrunting);
         NilaiGrunting.setBounds(809, 730, 45, 23);
 
-        jLabel56.setText("Total Nilai :");
+        jLabel56.setText("Total Score & Keterangan :");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
-        jLabel56.setBounds(545, 760, 260, 23);
+        jLabel56.setBounds(402, 760, 170, 23);
 
         jLabel57.setText("Inisiasi Menyusui Dini :");
         jLabel57.setName("jLabel57"); // NOI18N
@@ -2699,6 +2700,16 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         NIKIbu.setName("NIKIbu"); // NOI18N
         FormInput.add(NIKIbu);
         NIKIbu.setBounds(724, 70, 130, 23);
+
+        KeteranganDownScore.setFocusTraversalPolicyProvider(true);
+        KeteranganDownScore.setName("KeteranganDownScore"); // NOI18N
+        KeteranganDownScore.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganDownScoreKeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganDownScore);
+        KeteranganDownScore.setBounds(576, 760, 230, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3716,6 +3727,10 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         // TODO add your handling code here:
     }//GEN-LAST:event_ParuKeyPressed
 
+    private void KeteranganDownScoreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganDownScoreKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeteranganDownScoreKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3785,6 +3800,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     private widget.ComboBox Kepala;
     private widget.TextBox KeteranganAbdomen;
     private widget.TextBox KeteranganAnus;
+    private widget.TextBox KeteranganDownScore;
     private widget.TextBox KeteranganEkstrimitas;
     private widget.TextBox KeteranganFaktorRisikoNeonatal;
     private widget.TextBox KeteranganGenitalia;

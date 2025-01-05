@@ -2141,12 +2141,12 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel56">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Total Nilai :"/>
+                            <Property name="text" type="java.lang.String" value="Total Score &amp; Keterangan :"/>
                             <Property name="name" type="java.lang.String" value="jLabel56" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="545" y="760" width="260" height="23"/>
+                              <AbsoluteConstraints x="402" y="760" width="170" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3916,6 +3916,20 @@
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="724" y="70" width="130" height="23"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                        <Component class="widget.TextBox" name="KeteranganDownScore">
+                          <Properties>
+                            <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
+                            <Property name="name" type="java.lang.String" value="KeteranganDownScore" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KeteranganDownScoreKeyPressed"/>
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="576" y="760" width="230" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
