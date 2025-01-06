@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-    <comment>KhanzaHMS</comment> 
+    <comment>KhanzaHMSRSKJ_LOKAL_DEV</comment> 
     <entry key="HOST">5k7+C7EnUw9nUv2Nix+DBA==</entry>
-    <entry key="DATABASE">kMfakcp0IzrsktTe2QccDA</entry>
+    <entry key="DATABASE">MYHEd1vPHF5HbbCWfOKeaw==</entry>
     <entry key="PORT">nioxtijcpDaKSUiUiP5FAg==</entry>
-    <entry key="USER">kMfakcp0IzrsktTe2QccDA</entry>
-    <entry key="PAS">csxmJ56bzRqX9IEJ3lkxhQ==</entry>
+    <entry key="USER">kMR3WfAwUK6MbhCyydxa0g==</entry>
+    <entry key="PAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="DEPOAKTIFOBAT">DPUM</entry>
     
     
