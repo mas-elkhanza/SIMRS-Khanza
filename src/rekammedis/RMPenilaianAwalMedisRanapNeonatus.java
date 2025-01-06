@@ -4063,9 +4063,104 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     }
 
     public void emptTeks() {
-        HbsAg.setSelectedIndex(0);
-        KeteranganRiwayatObstetri.setText("");
         TglAsuhan.setDate(new Date());
+        NoRMIbu.setText("");
+        NmIbu.setText("");
+        TglLahirIbu.setText("");
+        NIKIbu.setText("");
+        G.setText("");
+        P.setText("");
+        A.setText("");
+        Hidup.setText("");
+        UsiaKehamilan.setText("");
+        Valid.tabelKosong(tabModeRiwayatKehamilan);
+        HbsAg.setSelectedIndex(0);
+        HIV.setSelectedIndex(0);
+        Syphilis.setSelectedIndex(0);
+        RiwayatObstetri.setSelectedIndex(0);
+        KeteranganRiwayatObstetri.setText("");
+        FaktorRisikoNeonatal.setSelectedIndex(0);
+        KeteranganFaktorRisikoNeonatal.setText("");
+        TanggalPersalinan.setDate(new Date());
+        BersalinDi.setText("");
+        InisiasiMenyusui.setSelectedIndex(0);
+        JenisPersalinanBayi.setSelectedIndex(0);
+        IndikasiKeteranganPersalinan.setText("");
+        Aterm.setSelectedIndex(0);
+        Bernafas.setSelectedIndex(0);
+        TonusOtotBaik.setSelectedIndex(0);
+        CairanAmnion.setSelectedIndex(0);
+        Valid.tabelKosong(tabModeAPGAR);
+        tabModeAPGAR.addRow(new Object[]{"Frekuensi Jantung","Tidak Ada","< 100","> 100","","",""});
+        tabModeAPGAR.addRow(new Object[]{"Usaha Nafas","Tidak Ada","Lambat Tak Teratur","Menangis Kuat","","",""});
+        tabModeAPGAR.addRow(new Object[]{"Tanus Otot","Lumpuh","Ext. Fleksi Sedikit","Gerakan Aktif","","",""});
+        tabModeAPGAR.addRow(new Object[]{"Refleks","Tidak Ada Respon","Pergerakan Sedikit","Menangis","","",""});
+        tabModeAPGAR.addRow(new Object[]{"Warna","Biru Pucat","Tubuh Kemerahan, Tangan & Kaki Biru","Kemerahan","","",""});
+        N1.setText("");
+        N5.setText("");
+        N10.setText("");
+        FrekuensiNapas.setSelectedIndex(0);
+        NilaiFrekuensiNapas.setText("");
+        Retraksi.setSelectedIndex(0);
+        NilaiRetraksi.setText("");
+        Sianosis.setSelectedIndex(0);
+        NilaiSianosis.setText("");
+        JalanMasukUdara.setSelectedIndex(0);
+        NilaiJalanMasukUdara.setText("");
+        Grunting.setSelectedIndex(0);
+        NilaiGrunting.setText("");
+        TotalNilaiDownScore.setText("");
+        KeteranganDownScore.setText("");
+        Nadi.setText("");
+        RR.setText("");
+        Suhu.setText("");
+        Saturasi.setText("");
+        BeratBadan.setText("");
+        PanjangBadan.setText("");
+        LingkarKepala.setText("");
+        LingkarDada.setText("");
+        KondisiUmum.setSelectedIndex(0);
+        KeteranganKondisiUmum.setText("");
+        Kulit.setSelectedIndex(0);
+        KeteranganKulit.setText("");
+        Kepala.setSelectedIndex(0);
+        KeteranganKepala.setText("");
+        Mata.setSelectedIndex(0);
+        KeteranganMata.setText("");
+        Telinga.setSelectedIndex(0);
+        KeteranganTelinga.setText("");
+        Hidung.setSelectedIndex(0);
+        KeteranganHidung.setText("");
+        Mulut.setSelectedIndex(0);
+        KeteranganMulut.setText("");
+        Tenggorokan.setSelectedIndex(0);
+        KeteranganTenggorokan.setText("");
+        Leher.setSelectedIndex(0);
+        KeteranganLeher.setText("");
+        Thorax.setSelectedIndex(0);
+        KeteranganThorax.setText("");
+        Abdomen.setSelectedIndex(0);
+        KeteranganAbdomen.setText("");
+        Genitalia.setSelectedIndex(0);
+        KeteranganGenitalia.setText("");
+        Anus.setSelectedIndex(0);
+        KeteranganAnus.setText("");
+        Muskulos.setSelectedIndex(0);
+        KeteranganMuskulos.setText("");
+        Ekstrimitas.setSelectedIndex(0);
+        KeteranganEkstrimitas.setText("");
+        Paru.setSelectedIndex(0);
+        KeteranganParu.setText("");
+        Refleks.setSelectedIndex(0);
+        KeteranganRefleks.setText("");
+        KelainanLainnya.setText(""); 
+        PemeriksaanRegional.setText(""); 
+        Laborat.setText(""); 
+        Radiologi.setText(""); 
+        Penunjang.setText(""); 
+        Diagnosis.setText(""); 
+        Tatalaksana.setText(""); 
+        Edukasi.setText(""); 
         TabRawat.setSelectedIndex(0);
         HbsAg.requestFocus();
     } 
@@ -4086,8 +4181,8 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi "+
-                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,reg_periksa.jam_reg, "+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.no_ktp from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
@@ -4098,6 +4193,9 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
+                    TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
+                    UmurBayi.setText(rs.getString("umurdaftar")+" "+rs.getString("sttsumur"));
+                    NIKBayi.setText(rs.getString("no_ktp"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
