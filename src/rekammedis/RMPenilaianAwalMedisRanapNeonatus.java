@@ -1634,6 +1634,11 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
 
         FrekuensiNapas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "< 60", "60 - 80", "> 80" }));
         FrekuensiNapas.setName("FrekuensiNapas"); // NOI18N
+        FrekuensiNapas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                FrekuensiNapasItemStateChanged(evt);
+            }
+        });
         FrekuensiNapas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 FrekuensiNapasKeyPressed(evt);
@@ -1649,6 +1654,11 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
 
         Retraksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Retraksi Ringan", "Retraksi Berat" }));
         Retraksi.setName("Retraksi"); // NOI18N
+        Retraksi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                RetraksiItemStateChanged(evt);
+            }
+        });
         Retraksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RetraksiKeyPressed(evt);
@@ -1664,6 +1674,11 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
 
         Sianosis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Hilang Dengan O2", "Tidak Hilang Dengan O2" }));
         Sianosis.setName("Sianosis"); // NOI18N
+        Sianosis.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SianosisItemStateChanged(evt);
+            }
+        });
         Sianosis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 SianosisKeyPressed(evt);
@@ -1674,6 +1689,11 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
 
         JalanMasukUdara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Penurunan Ringan Udara Masuk", "Tidak Ada Udara Masuk" }));
         JalanMasukUdara.setName("JalanMasukUdara"); // NOI18N
+        JalanMasukUdara.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JalanMasukUdaraItemStateChanged(evt);
+            }
+        });
         JalanMasukUdara.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JalanMasukUdaraKeyPressed(evt);
@@ -1694,6 +1714,11 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
 
         Grunting.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Dapat Didengar Dengan Stetoskop", "Dapat Didengar Tanpa Stetoskop" }));
         Grunting.setName("Grunting"); // NOI18N
+        Grunting.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                GruntingItemStateChanged(evt);
+            }
+        });
         Grunting.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 GruntingKeyPressed(evt);
@@ -3465,19 +3490,19 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     }//GEN-LAST:event_FrekuensiNapasKeyPressed
 
     private void RetraksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RetraksiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FrekuensiNapas,Sianosis);
     }//GEN-LAST:event_RetraksiKeyPressed
 
     private void SianosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SianosisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Retraksi,JalanMasukUdara);
     }//GEN-LAST:event_SianosisKeyPressed
 
     private void JalanMasukUdaraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanMasukUdaraKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Sianosis,Grunting);
     }//GEN-LAST:event_JalanMasukUdaraKeyPressed
 
     private void GruntingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GruntingKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,JalanMasukUdara,KeteranganDownScore);
     }//GEN-LAST:event_GruntingKeyPressed
 
     private void NilaiSianosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiSianosisKeyPressed
@@ -3509,191 +3534,191 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     }//GEN-LAST:event_InisiasiMenyusuiKeyPressed
 
     private void NadiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NadiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TotalNilaiDownScore,RR);
     }//GEN-LAST:event_NadiKeyPressed
 
     private void RRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RRKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Nadi,Suhu);
     }//GEN-LAST:event_RRKeyPressed
 
     private void SuhuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuhuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RR,Saturasi);
     }//GEN-LAST:event_SuhuKeyPressed
 
     private void SaturasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaturasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Suhu,BeratBadan);
     }//GEN-LAST:event_SaturasiKeyPressed
 
     private void BeratBadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BeratBadanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Saturasi,PanjangBadan);
     }//GEN-LAST:event_BeratBadanKeyPressed
 
     private void PanjangBadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PanjangBadanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BeratBadan,LingkarKepala);
     }//GEN-LAST:event_PanjangBadanKeyPressed
 
     private void LingkarKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LingkarKepalaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PanjangBadan,LingkarDada);
     }//GEN-LAST:event_LingkarKepalaKeyPressed
 
     private void LingkarDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LingkarDadaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,LingkarKepala,KondisiUmum);
     }//GEN-LAST:event_LingkarDadaKeyPressed
 
     private void KondisiUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiUmumKeyPressed
-        //Valid.pindah(evt,KondisiUmum,KeteranganKepala);
+        Valid.pindah(evt,LingkarDada,KeteranganKondisiUmum);
     }//GEN-LAST:event_KondisiUmumKeyPressed
 
     private void KeteranganKondisiUmumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKondisiUmumKeyPressed
-        //Valid.pindah(evt,Kepala,Thoraks);
+        Valid.pindah(evt,KondisiUmum,Kulit);
     }//GEN-LAST:event_KeteranganKondisiUmumKeyPressed
 
     private void KulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KulitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKondisiUmum,KeteranganKulit);
     }//GEN-LAST:event_KulitKeyPressed
 
     private void KeteranganKulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKulitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kulit,Kepala);
     }//GEN-LAST:event_KeteranganKulitKeyPressed
 
     private void KepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KepalaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKulit,KeteranganKepala);
     }//GEN-LAST:event_KepalaKeyPressed
 
     private void KeteranganKepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKepalaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kepala,Mata);
     }//GEN-LAST:event_KeteranganKepalaKeyPressed
 
     private void MataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MataKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganKepala,KeteranganMata);
     }//GEN-LAST:event_MataKeyPressed
 
     private void KeteranganMataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganMataKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Mata,Telinga);
     }//GEN-LAST:event_KeteranganMataKeyPressed
 
     private void TelingaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelingaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganMata,KeteranganTelinga);
     }//GEN-LAST:event_TelingaKeyPressed
 
     private void KeteranganTelingaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTelingaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Telinga,Hidung);
     }//GEN-LAST:event_KeteranganTelingaKeyPressed
 
     private void HidungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HidungKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganTelinga,KeteranganHidung);
     }//GEN-LAST:event_HidungKeyPressed
 
     private void KeteranganHidungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganHidungKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Hidung,Mulut);
     }//GEN-LAST:event_KeteranganHidungKeyPressed
 
     private void MulutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MulutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganHidung,KeteranganMulut);
     }//GEN-LAST:event_MulutKeyPressed
 
     private void KeteranganMulutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganMulutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Mulut,Tenggorokan);
     }//GEN-LAST:event_KeteranganMulutKeyPressed
 
     private void KeteranganTenggorokanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTenggorokanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Tenggorokan,Leher);
     }//GEN-LAST:event_KeteranganTenggorokanKeyPressed
 
     private void TenggorokanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TenggorokanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganMulut,KeteranganTenggorokan);
     }//GEN-LAST:event_TenggorokanKeyPressed
 
     private void LeherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LeherKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganTenggorokan,KeteranganLeher);
     }//GEN-LAST:event_LeherKeyPressed
 
     private void KeteranganLeherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganLeherKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Leher,Thorax);
     }//GEN-LAST:event_KeteranganLeherKeyPressed
 
     private void ThoraxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ThoraxKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganLeher,KeteranganThorax);
     }//GEN-LAST:event_ThoraxKeyPressed
 
     private void KeteranganThoraxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganThoraxKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Thorax,Abdomen);
     }//GEN-LAST:event_KeteranganThoraxKeyPressed
 
     private void AbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AbdomenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganThorax,KeteranganAbdomen);
     }//GEN-LAST:event_AbdomenKeyPressed
 
     private void KeteranganAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganAbdomenKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Abdomen,Genitalia);
     }//GEN-LAST:event_KeteranganAbdomenKeyPressed
 
     private void GenitaliaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GenitaliaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganAbdomen,KeteranganGenitalia);
     }//GEN-LAST:event_GenitaliaKeyPressed
 
     private void KeteranganGenitaliaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGenitaliaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Genitalia,Anus);
     }//GEN-LAST:event_KeteranganGenitaliaKeyPressed
 
     private void AnusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganGenitalia,KeteranganAnus);
     }//GEN-LAST:event_AnusKeyPressed
 
     private void KeteranganAnusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganAnusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Anus,Muskulos);
     }//GEN-LAST:event_KeteranganAnusKeyPressed
 
     private void MuskulosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MuskulosKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganAnus,KeteranganMuskulos);
     }//GEN-LAST:event_MuskulosKeyPressed
 
     private void KeteranganMuskulosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganMuskulosKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Muskulos,Ekstrimitas);
     }//GEN-LAST:event_KeteranganMuskulosKeyPressed
 
     private void EkstrimitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkstrimitasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganMuskulos,KeteranganEkstrimitas);
     }//GEN-LAST:event_EkstrimitasKeyPressed
 
     private void KeteranganEkstrimitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganEkstrimitasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Ekstrimitas,Paru);
     }//GEN-LAST:event_KeteranganEkstrimitasKeyPressed
 
     private void KeteranganRefleksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRefleksKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Refleks,KelainanLainnya);
     }//GEN-LAST:event_KeteranganRefleksKeyPressed
 
     private void RefleksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RefleksKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganParu,KeteranganRefleks);
     }//GEN-LAST:event_RefleksKeyPressed
 
     private void KelainanLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelainanLainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganRefleks,PemeriksaanRegional);
     }//GEN-LAST:event_KelainanLainnyaKeyPressed
 
     private void PemeriksaanRegionalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanRegionalKeyPressed
-        //Valid.pindah2(evt,Penunjang,Tatalaksana);
+        Valid.pindah2(evt,KelainanLainnya,Laborat);
     }//GEN-LAST:event_PemeriksaanRegionalKeyPressed
 
     private void LaboratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LaboratKeyPressed
-        //Valid.pindah2(evt,KetLokalis,Radiologi);
+        Valid.pindah2(evt,PemeriksaanRegional,Radiologi);
     }//GEN-LAST:event_LaboratKeyPressed
 
     private void RadiologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RadiologiKeyPressed
-        //Valid.pindah2(evt,Laborat,Penunjang);
+        Valid.pindah2(evt,Laborat,Penunjang);
     }//GEN-LAST:event_RadiologiKeyPressed
 
     private void PenunjangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenunjangKeyPressed
-        //Valid.pindah2(evt,Radiologi,Diagnosis);
+        Valid.pindah2(evt,Radiologi,Diagnosis);
     }//GEN-LAST:event_PenunjangKeyPressed
 
     private void DiagnosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKeyPressed
-        //Valid.pindah2(evt,Penunjang,Tatalaksana);
+        Valid.pindah2(evt,Penunjang,Tatalaksana);
     }//GEN-LAST:event_DiagnosisKeyPressed
 
     private void TatalaksanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TatalaksanaKeyPressed
-        //Valid.pindah2(evt,Diagnosis,Edukasi);
+        Valid.pindah2(evt,Diagnosis,Edukasi);
     }//GEN-LAST:event_TatalaksanaKeyPressed
 
     private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
@@ -3714,16 +3739,41 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     }//GEN-LAST:event_BtnIbuBayiKeyPressed
 
     private void KeteranganParuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganParuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Paru,Refleks);
     }//GEN-LAST:event_KeteranganParuKeyPressed
 
     private void ParuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ParuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganEkstrimitas,KeteranganParu);
     }//GEN-LAST:event_ParuKeyPressed
 
     private void KeteranganDownScoreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganDownScoreKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Grunting,Nadi);
     }//GEN-LAST:event_KeteranganDownScoreKeyPressed
+
+    private void FrekuensiNapasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_FrekuensiNapasItemStateChanged
+        NilaiFrekuensiNapas.setText(FrekuensiNapas.getSelectedIndex()+"");
+        getNilaiDownScore();
+    }//GEN-LAST:event_FrekuensiNapasItemStateChanged
+
+    private void RetraksiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RetraksiItemStateChanged
+        NilaiRetraksi.setText(Retraksi.getSelectedIndex()+"");
+        getNilaiDownScore();
+    }//GEN-LAST:event_RetraksiItemStateChanged
+
+    private void SianosisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SianosisItemStateChanged
+        NilaiSianosis.setText(Sianosis.getSelectedIndex()+"");
+        getNilaiDownScore();
+    }//GEN-LAST:event_SianosisItemStateChanged
+
+    private void JalanMasukUdaraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JalanMasukUdaraItemStateChanged
+        NilaiJalanMasukUdara.setText(JalanMasukUdara.getSelectedIndex()+"");
+        getNilaiDownScore();
+    }//GEN-LAST:event_JalanMasukUdaraItemStateChanged
+
+    private void GruntingItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_GruntingItemStateChanged
+        NilaiGrunting.setText(Grunting.getSelectedIndex()+"");
+        getNilaiDownScore();
+    }//GEN-LAST:event_GruntingItemStateChanged
 
     /**
     * @param args the command line arguments
@@ -4155,16 +4205,16 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         N5.setText("");
         N10.setText("");
         FrekuensiNapas.setSelectedIndex(0);
-        NilaiFrekuensiNapas.setText("");
+        NilaiFrekuensiNapas.setText("0");
         Retraksi.setSelectedIndex(0);
-        NilaiRetraksi.setText("");
+        NilaiRetraksi.setText("0");
         Sianosis.setSelectedIndex(0);
-        NilaiSianosis.setText("");
+        NilaiSianosis.setText("0");
         JalanMasukUdara.setSelectedIndex(0);
-        NilaiJalanMasukUdara.setText("");
+        NilaiJalanMasukUdara.setText("0");
         Grunting.setSelectedIndex(0);
-        NilaiGrunting.setText("");
-        TotalNilaiDownScore.setText("");
+        NilaiGrunting.setText("0");
+        TotalNilaiDownScore.setText("0");
         KeteranganDownScore.setText("");
         Nadi.setText("");
         RR.setText("");
@@ -4361,6 +4411,18 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
             }
         } catch (Exception e) {
             N10.setText("");
+        }
+    }
+    
+    private void getNilaiDownScore() {
+        try {
+            if(NilaiFrekuensiNapas.getText().equals("")||NilaiRetraksi.getText().equals("")||NilaiSianosis.getText().equals("")||NilaiJalanMasukUdara.getText().equals("")||NilaiGrunting.getText().equals("")){
+                TotalNilaiDownScore.setText("0");
+            }else{
+                TotalNilaiDownScore.setText((Integer.parseInt(NilaiFrekuensiNapas.getText())+Integer.parseInt(NilaiRetraksi.getText())+Integer.parseInt(NilaiSianosis.getText())+Integer.parseInt(NilaiJalanMasukUdara.getText())+Integer.parseInt(NilaiGrunting.getText()))+"");
+            }
+        } catch (Exception e) {
+            TotalNilaiDownScore.setText("0");
         }
     }
     

@@ -1928,6 +1928,7 @@
                             <Property name="name" type="java.lang.String" value="FrekuensiNapas" noResource="true"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="FrekuensiNapasItemStateChanged"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FrekuensiNapasKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -1959,6 +1960,7 @@
                             <Property name="name" type="java.lang.String" value="Retraksi" noResource="true"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="RetraksiItemStateChanged"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="RetraksiKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -1990,6 +1992,7 @@
                             <Property name="name" type="java.lang.String" value="Sianosis" noResource="true"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SianosisItemStateChanged"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="SianosisKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -2010,6 +2013,7 @@
                             <Property name="name" type="java.lang.String" value="JalanMasukUdara" noResource="true"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JalanMasukUdaraItemStateChanged"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JalanMasukUdaraKeyPressed"/>
                           </Events>
                           <Constraints>
@@ -2052,6 +2056,7 @@
                             <Property name="name" type="java.lang.String" value="Grunting" noResource="true"/>
                           </Properties>
                           <Events>
+                            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="GruntingItemStateChanged"/>
                             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="GruntingKeyPressed"/>
                           </Events>
                           <Constraints>
