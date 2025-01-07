@@ -104,7 +104,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-01-2025"/>
+                        <StringItem index="0" value="07-01-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -748,9 +748,6 @@
                               <Dimension value="[80, 23]"/>
                             </Property>
                           </Properties>
-                          <Events>
-                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KdDokterKeyPressed"/>
-                          </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                               <AbsoluteConstraints x="354" y="40" width="90" height="23"/>
@@ -957,7 +954,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="06-01-2025 20:53:23"/>
+                                <StringItem index="0" value="07-01-2025 17:14:45"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1480,7 +1477,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="06-01-2025 20:53:24"/>
+                                <StringItem index="0" value="07-01-2025 17:14:46"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -2065,6 +2062,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="NilaiSianosis">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="NilaiSianosis" noResource="true"/>
                           </Properties>
@@ -2079,6 +2077,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="NilaiFrekuensiNapas">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="NilaiFrekuensiNapas" noResource="true"/>
                           </Properties>
@@ -2093,6 +2092,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="NilaiRetraksi">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="NilaiRetraksi" noResource="true"/>
                           </Properties>
@@ -2107,6 +2107,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="NilaiJalanMasukUdara">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="NilaiJalanMasukUdara" noResource="true"/>
                           </Properties>
@@ -2121,6 +2122,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="TotalNilaiDownScore">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="TotalNilaiDownScore" noResource="true"/>
                           </Properties>
@@ -2135,6 +2137,7 @@
                         </Component>
                         <Component class="widget.TextBox" name="NilaiGrunting">
                           <Properties>
+                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                             <Property name="name" type="java.lang.String" value="NilaiGrunting" noResource="true"/>
                           </Properties>
@@ -4032,7 +4035,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="06-01-2025"/>
+                            <StringItem index="0" value="07-01-2025"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -4060,7 +4063,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="06-01-2025"/>
+                            <StringItem index="0" value="07-01-2025"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
