@@ -1782,7 +1782,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     public void isCek(){
         autoNomor();
         TCari.requestFocus();
-        tppn.setText("11");
+        tppn.setText("12");
         Meterai.setText("0");
         BtnSimpan.setEnabled(akses.getpemesanan_obat());
         BtnTambah.setEnabled(akses.getobat());
