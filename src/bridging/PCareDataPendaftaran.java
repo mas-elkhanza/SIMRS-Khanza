@@ -106,10 +106,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
     private JsonNode response;
     private String kdptg,nmptg,status="",signa1="1",signa2="1",kdObatSK="",kodesarana="",terapiobat="",bmhp="";
     private String[] arrSplit;
-    private int day;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    private LocalDate date;
-    private DayOfWeek dow;
+    private Calendar cal = Calendar.getInstance();
+    private int day = cal.get(Calendar.DAY_OF_WEEK);
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -9418,9 +9416,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    date = LocalDate.parse(TanggalDaftar.getSelectedItem().toString(), formatter);
-                    dow = date.getDayOfWeek();
-                    day=dow.getValue();
+                    day=cal.get(Calendar.DAY_OF_WEEK);
                     switch (day) {
                         case 1:
                             hari="AKHAD";
