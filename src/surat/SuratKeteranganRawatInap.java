@@ -796,7 +796,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
                 param.put("TanggalAwal",TanggalAwal.getSelectedItem().toString());
                 param.put("TanggalAkhir",TanggalAkhir.getSelectedItem().toString());
                 param.put("nosakit",NoSurat.getText());
-                param.put("dokter",Sequel.cariIsi("select nm_dokter from dokter inner join dpjp_ranap on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=?",TNoRw.getText()));
+                param.put("dokter",Sequel.cariIsi("select nm_dokter from dokter inner join dpjp_ranap on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? LIMIT 1",TNoRw.getText()));
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
