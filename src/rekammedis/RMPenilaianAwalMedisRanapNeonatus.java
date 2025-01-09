@@ -72,7 +72,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
             "G","P","A","Hidup","Usia Hamil","HbsAg","HIV/AIDS","Syphilis","Riwayat Obstetri Ibu","Keterangan Riwayat Obstetri Ibu","Faktor Risiko Neonatal",
             "Keterangan Faktor Risiko Neonatal","Tgl & Jam Persalinan","Bersalin Di","Inisiasi Menyusui Dini","Jenis Persalinan","Indikasi/Keterangan","Aterm",
             "Bernafas/Menangis","Tonus Otot Baik","Cairan Amnion Jernih","F 1","U 1","T 1","R 1","W 1","N 1'","F 5","U 5","T 5","R 5","W 5","N 5'","F 10","U 10",
-            "T 10","R 10","W 10","N 10'","Frekuensi Napas","N.F.N","Retraksi","N.R","Sianosis","N.S","Jalan Masuk Udara","N.J.M","Grunting","N.G","Ttl Down Score",
+            "T 10","R 10","W 10","N 10'","Frekuensi Napas","N.F.N","Retraksi","N.R","Sianosis","N.S","Jalan Masuk Udara","N.J.M","Grunting","N.G","Ttl.D.S",
             "Keterangan Down Score","Nadi(x/menit)","RR(x/menit)","Suhu(°C)","Saturasi O2(%)","BB(gram)","PB(cm)","LK(cm)","LD(cm)","Keadaan Umum","Keterangan Keadaan Umum",
             "Kulit","Keterangan Kulit","Kepala","Keterangan Kepala","Mata","Keterangan Mata","Telinga","Keterangan Telinga","Hidung","Keterangan Hidung","Mulut",
             "Keterangan Mulut","Tenggorokan","Keterangan Tenggorokan","Leher","Keterangan Leher","Thorax","Keterangan Thorax","Abdomen","Keterangan Abdomen",
@@ -87,7 +87,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 70; i++) {
+        for (i = 0; i < 90; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -206,9 +206,41 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
             }else if(i==57){
                 column.setPreferredWidth(30);
             }else if(i==58){
-                column.setPreferredWidth(131);
+                column.setPreferredWidth(160);
             }else if(i==59){
                 column.setPreferredWidth(35);
+            }else if(i==60){
+                column.setPreferredWidth(171);
+            }else if(i==61){
+                column.setPreferredWidth(30);
+            }else if(i==62){
+                column.setPreferredWidth(42);
+            }else if(i==63){
+                column.setPreferredWidth(150);
+            }else if(i==64){
+                column.setPreferredWidth(76);
+            }else if(i==65){
+                column.setPreferredWidth(68);
+            }else if(i==66){
+                column.setPreferredWidth(52);
+            }else if(i==67){
+                column.setPreferredWidth(85);
+            }else if(i==68){
+                column.setPreferredWidth(54);
+            }else if(i==69){
+                column.setPreferredWidth(42);
+            }else if(i==70){
+                column.setPreferredWidth(42);
+            }else if(i==71){
+                column.setPreferredWidth(42);
+            }else if(i==72){
+                column.setPreferredWidth(86);
+            }else if(i==73){
+                column.setPreferredWidth(150);
+            }else if(i==74){
+                column.setPreferredWidth(86);
+            }else if(i==75){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
