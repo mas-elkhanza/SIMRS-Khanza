@@ -273,7 +273,7 @@
                     $dokumen    = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
                     if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-4))==".pdf")||(strtolower(substr($dokumen,-5))==".jpeg")){
                         if(($_FILES['dokumen']['type'] == 'application/pdf')||($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
-                            if((mime_content_type($_FILES['dokumen']['tmp_name'])== 'application/pdf')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
+                            if((@mime_content_type($_FILES['dokumen']['tmp_name'])== 'application/pdf')||(@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
                                 if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($asal))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_terima))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
                                     switch($action) {
                                         case "TAMBAH":

@@ -114,7 +114,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
             }else if(i==11){
                 column.setPreferredWidth(150);
             }else if(i==12){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(115);
             }else if(i==13){
                 column.setPreferredWidth(25);
             }else if(i==14){
@@ -126,10 +126,26 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
             }else if(i==17){
                 column.setPreferredWidth(60);
             }else if(i==18){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(60);
             }else if(i==19){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(60);
             }else if(i==20){
+                column.setPreferredWidth(60);
+            }else if(i==21){
+                column.setPreferredWidth(140);
+            }else if(i==22){
+                column.setPreferredWidth(170);
+            }else if(i==23){
+                column.setPreferredWidth(125);
+            }else if(i==24){
+                column.setPreferredWidth(177);
+            }else if(i==25){
+                column.setPreferredWidth(115);
+            }else if(i==26){
+                column.setPreferredWidth(150);
+            }else if(i==27){
+                column.setPreferredWidth(120);
+            }else if(i==28){
                 column.setPreferredWidth(90);
             }
         }
@@ -4501,7 +4517,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
 
     private void simpan() {
         if(Sequel.menyimpantf("penilaian_medis_ranap_neonatus","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",105,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),NoRMIbu.getText(),G.getText(),P.getText(),A.getText(),Hidup.getText(),UsiaHamil.getText(),HbsAg.getSelectedItem().toString(),HIV.getSelectedItem().toString(), 
+                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),NoRMIbu.getText(),G.getText(),P.getText(),A.getText(),Hidup.getText(),UsiaKehamilan.getText(),HbsAg.getSelectedItem().toString(),HIV.getSelectedItem().toString(), 
                 Syphilis.getSelectedItem().toString(),RiwayatObstetri.getSelectedItem().toString(),KeteranganRiwayatObstetri.getText(),FaktorRisikoNeonatal.getSelectedItem().toString(),KeteranganFaktorRisikoNeonatal.getText(),Valid.SetTgl(TglJamPersalinan.getSelectedItem()+"")+" "+TglJamPersalinan.getSelectedItem().toString().substring(11,19), 
                 BersalinDi.getText(),InisiasiMenyusui.getSelectedItem().toString(),JenisPersalinanBayi.getSelectedItem().toString(),IndikasiKeteranganPersalinan.getText(),Aterm.getSelectedItem().toString(),Bernafas.getSelectedItem().toString(),TonusOtotBaik.getSelectedItem().toString(),CairanAmnion.getSelectedItem().toString(),
                 tbAPGAR.getValueAt(0,4).toString(),tbAPGAR.getValueAt(1,4).toString(),tbAPGAR.getValueAt(2,4).toString(),tbAPGAR.getValueAt(3,4).toString(),tbAPGAR.getValueAt(4,4).toString(),N1.getText(),tbAPGAR.getValueAt(0,5).toString(),tbAPGAR.getValueAt(1,5).toString(),tbAPGAR.getValueAt(2,5).toString(),tbAPGAR.getValueAt(3,5).toString(),
@@ -4515,7 +4531,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
             })==true){
                 tabMode.addRow(new String[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),UmurBayi.getText(),NIKBayi.getText(),NoRMIbu.getText(),NmIbu.getText(),NIKIbu.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),G.getText(),
-                    P.getText(),A.getText(),Hidup.getText(),UsiaHamil.getText(),HbsAg.getSelectedItem().toString(),HIV.getSelectedItem().toString(),Syphilis.getSelectedItem().toString(),RiwayatObstetri.getSelectedItem().toString(),KeteranganRiwayatObstetri.getText(),FaktorRisikoNeonatal.getSelectedItem().toString(),KeteranganFaktorRisikoNeonatal.getText(),
+                    P.getText(),A.getText(),Hidup.getText(),UsiaKehamilan.getText(),HbsAg.getSelectedItem().toString(),HIV.getSelectedItem().toString(),Syphilis.getSelectedItem().toString(),RiwayatObstetri.getSelectedItem().toString(),KeteranganRiwayatObstetri.getText(),FaktorRisikoNeonatal.getSelectedItem().toString(),KeteranganFaktorRisikoNeonatal.getText(),
                     Valid.SetTgl(TglJamPersalinan.getSelectedItem()+"")+" "+TglJamPersalinan.getSelectedItem().toString().substring(11,19),BersalinDi.getText(),InisiasiMenyusui.getSelectedItem().toString(),JenisPersalinanBayi.getSelectedItem().toString(),IndikasiKeteranganPersalinan.getText(),Aterm.getSelectedItem().toString(),Bernafas.getSelectedItem().toString(),
                     TonusOtotBaik.getSelectedItem().toString(),CairanAmnion.getSelectedItem().toString(),tbAPGAR.getValueAt(0,4).toString(),tbAPGAR.getValueAt(1,4).toString(),tbAPGAR.getValueAt(2,4).toString(),tbAPGAR.getValueAt(3,4).toString(),tbAPGAR.getValueAt(4,4).toString(),N1.getText(),tbAPGAR.getValueAt(0,5).toString(),tbAPGAR.getValueAt(1,5).toString(),
                     tbAPGAR.getValueAt(2,5).toString(),tbAPGAR.getValueAt(3,5).toString(),tbAPGAR.getValueAt(4,5).toString(),N5.getText(),tbAPGAR.getValueAt(0,6).toString(),tbAPGAR.getValueAt(1,6).toString(),tbAPGAR.getValueAt(2,6).toString(),tbAPGAR.getValueAt(3,6).toString(),tbAPGAR.getValueAt(4,6).toString(),N10.getText(),FrekuensiNapas.getSelectedItem().toString(),

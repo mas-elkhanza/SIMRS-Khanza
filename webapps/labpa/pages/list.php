@@ -62,7 +62,7 @@
                     $gambar       = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
                     if((strtolower(substr($gambar,-4))==".jpg")||(strtolower(substr($gambar,-5))==".jpeg")){
                         if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
-                            if((mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
+                            if((@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
                                 if ((!empty($no_rawat))&&(!empty($kd_jenis_prw))&&(!empty($gambar))) {
                                     if(Tambah(" detail_periksa_labpa_gambar "," '$no_rawat','$kd_jenis_prw','$tanggal','$jam','$gambar'", " Gambar Lab PA " )){
                                         move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);

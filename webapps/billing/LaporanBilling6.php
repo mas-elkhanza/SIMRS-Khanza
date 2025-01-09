@@ -16,6 +16,7 @@
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
                 $petugas        = validTeks4(str_replace("_"," ",$_GET['petugas']),20); 
+                $petugas        = validTeks4(str_replace("/","",$petugas),20); 
                 $norawat        = validTeks4(str_replace("_"," ",$_GET['norawat']),20); 
                 $deposit        = validTeks4(str_replace("_"," ",$_GET['deposit']),20);
                 $pasien         = validTeks4(str_replace("_"," ",$_GET['pasien']),70);

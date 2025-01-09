@@ -116,7 +116,7 @@
                         case "TAMBAH":
                             if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-5))==".jpeg")){
                                 if(($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
-                                    if((mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
+                                    if((@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
                                         if(Tambah(" riwayat_penelitian "," '$id','$jenis_penelitian','$peranan','$judul_penelitian','$judul_jurnal','$tahun','$biaya_penelitian','$asal_dana','$dokumen'", " Riwayat Penelitian " )){
                                             move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                                         }

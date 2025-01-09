@@ -54,7 +54,7 @@
                     $gambar     = validTeks(str_replace(" ","_","pages/upload/".$_FILES['gambar']['name']));
                     if((strtolower(substr($gambar,-4))==".jpg")||(strtolower(substr($gambar,-5))==".jpeg")){
                         if(($_FILES['gambar']['type'] == 'image/jpeg')||($_FILES['gambar']['type'] == 'image/jpg')){
-                            if((mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
+                            if((@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['gambar']['tmp_name'])== 'image/jpg')){
                                 if ((!empty($no_rawat))&&(!empty($gambar))) {
                                     if(Tambah(" gambar_radiologi "," '$no_rawat','$tanggal','$jam','$gambar'", " Gambar Radiologi " )){
                                         move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
