@@ -87,7 +87,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 60; i++) {
+        for (i = 0; i < 70; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -194,9 +194,21 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
             }else if(i==51){
                 column.setPreferredWidth(35);
             }else if(i==52){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(88);
             }else if(i==53){
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(35);
+            }else if(i==54){
+                column.setPreferredWidth(85);
+            }else if(i==55){
+                column.setPreferredWidth(30);
+            }else if(i==56){
+                column.setPreferredWidth(121);
+            }else if(i==57){
+                column.setPreferredWidth(30);
+            }else if(i==58){
+                column.setPreferredWidth(131);
+            }else if(i==59){
+                column.setPreferredWidth(35);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
