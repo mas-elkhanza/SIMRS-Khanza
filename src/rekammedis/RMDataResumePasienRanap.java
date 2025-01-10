@@ -209,16 +209,16 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         HasilLaborat.setDocument(new batasInput((int)2000).getKata(HasilLaborat));
         TindakanSelamaDiRS.setDocument(new batasInput((int)2000).getKata(TindakanSelamaDiRS));
         ObatSelamaDiRS.setDocument(new batasInput((int)2000).getKata(ObatSelamaDiRS));
-        DiagnosaUtama.setDocument(new batasInput((int)80).getKata(DiagnosaUtama));
-        DiagnosaSekunder1.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder1));
-        DiagnosaSekunder2.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder2));
-        DiagnosaSekunder3.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder3));
-        DiagnosaSekunder4.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder4));
-        ProsedurUtama.setDocument(new batasInput((int)80).getKata(ProsedurUtama));
-        ProsedurSekunder1.setDocument(new batasInput((int)80).getKata(ProsedurSekunder1));
-        ProsedurSekunder2.setDocument(new batasInput((int)80).getKata(ProsedurSekunder2));
-        ProsedurSekunder3.setDocument(new batasInput((int)80).getKata(ProsedurSekunder3));
-        KodeDiagnosaUtama.setDocument(new batasInput((int)10).getKata(KodeDiagnosaUtama));
+        DiagnosaUtama.setDocument(new batasInput((int)1000).getKata(DiagnosaUtama));
+        DiagnosaSekunder1.setDocument(new batasInput((int)1000).getKata(DiagnosaSekunder1));
+        DiagnosaSekunder2.setDocument(new batasInput((int)1000).getKata(DiagnosaSekunder2));
+        DiagnosaSekunder3.setDocument(new batasInput((int)1000).getKata(DiagnosaSekunder3));
+        DiagnosaSekunder4.setDocument(new batasInput((int)1000).getKata(DiagnosaSekunder4));
+        ProsedurUtama.setDocument(new batasInput((int)1000).getKata(ProsedurUtama));
+        ProsedurSekunder1.setDocument(new batasInput((int)1000).getKata(ProsedurSekunder1));
+        ProsedurSekunder2.setDocument(new batasInput((int)1000).getKata(ProsedurSekunder2));
+        ProsedurSekunder3.setDocument(new batasInput((int)1000).getKata(ProsedurSekunder3));
+        KodeDiagnosaUtama.setDocument(new batasInput((int)1000).getKata(KodeDiagnosaUtama));
         KodeDiagnosaSekunder1.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder1));
         KodeDiagnosaSekunder2.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder2));
         KodeDiagnosaSekunder3.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder3));
@@ -890,7 +890,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -904,7 +904,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1062,7 +1062,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(DiagnosaUtama);
-        DiagnosaUtama.setBounds(150, 580, 520, 23);
+        DiagnosaUtama.setBounds(150, 563, 520, 40);
 
         jLabel27.setText("Diagnosa Utama :");
         jLabel27.setName("jLabel27"); // NOI18N
@@ -1757,7 +1757,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         KetDilanjutkan.setBounds(236, 1081, 270, 23);
 
         Kontrol.setForeground(new java.awt.Color(50, 70, 50));
-        Kontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2024 16:36:25" }));
+        Kontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024 17:22:03" }));
         Kontrol.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Kontrol.setName("Kontrol"); // NOI18N
         Kontrol.setOpaque(false);
