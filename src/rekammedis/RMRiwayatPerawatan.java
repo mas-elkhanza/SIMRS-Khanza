@@ -82,7 +82,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
-//import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 /**
  *
@@ -120,7 +120,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private Scheme scheme;
     private HttpComponentsClientHttpRequestFactory factory;
     private RestTemplate restTemplate;
-    //private MappingJackson2HttpMessageConverter converter;
+    private MappingJackson2HttpMessageConverter converter;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -4930,7 +4930,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "<tr height='"+internalFrame2.getHeight()+"px'>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
                                             "<td valign='top'>"+rs2.getString("tgl_periksa")+" "+rs2.getString("jam")+"</td>"+
-                                            "<td valign='top' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs2.getString("lokasi_gambar")+"'><img alt='Gambar Radiologi' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs2.getString("lokasi_gambar")+"' width='450' height='450'/></a></td>"+
+                                            "<td valign='top' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs2.getString("lokasi_gambar")+"'><img alt='Gambar Radiologi' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs2.getString("lokasi_gambar")+"' width='99%'/></a></td>"+
                                          "</tr>"); 
                                     w++;
                                 }
@@ -30132,9 +30132,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         factory = new HttpComponentsClientHttpRequestFactory();
         factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
         restTemplate = new RestTemplate(factory);
-        //restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        /*restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
-        restTemplate.getMessageConverters().add(new ResourceHttpMessageConverter());
+        restTemplate.getMessageConverters().add(new ResourceHttpMessageConverter());*/
         return restTemplate;
     }
 }

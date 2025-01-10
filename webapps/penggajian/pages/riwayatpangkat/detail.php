@@ -159,7 +159,7 @@
                         case "TAMBAH":
                             if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-5))==".jpeg")){
                                 if(($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
-                                    if((mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
+                                    if((@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
                                         if(Tambah(" riwayat_jabatan "," '$id','$jabatan','$tmt_pangkat','$tmt_pangkat_yad','$pejabat_penetap','$nomor_sk','$tgl_sk','$dasar_peraturan','$masa_kerja','$bln_kerja','$dokumen'", " Riwayat Jabatan " )){
                                             move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
                                         }

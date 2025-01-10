@@ -180,7 +180,7 @@
                         case "TAMBAH":
                             if(strtolower(substr($berkas,-4))==".pdf"){
                                 if($_FILES['berkas']['type'] == 'application/pdf'){
-                                    if(mime_content_type($_FILES['berkas']['tmp_name'])== 'application/pdf'){
+                                    if(@mime_content_type($_FILES['berkas']['tmp_name'])== 'application/pdf'){
                                         if(Tambah(" perpustakaan_ebook "," '$kode_ebook', '$judul_ebook', '$jml_halaman', '$kode_penerbit', '$kode_pengarang', '$thn_terbit', '$id_kategori', '$id_jenis', '$berkas'", " Koleksi Ebook " )){
                                             move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
                                             echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=TAMBAH'>";
@@ -203,7 +203,7 @@
                             }
                             if(strtolower(substr($berkas,-4))==".pdf"){
                                 if($_FILES['berkas']['type'] == 'application/pdf'){
-                                    if(mime_content_type($_FILES['berkas']['tmp_name'])== 'application/pdf'){
+                                    if(@mime_content_type($_FILES['berkas']['tmp_name'])== 'application/pdf'){
                                         if(Ubah(" perpustakaan_ebook ","kode_ebook='$kode_ebook',judul_ebook='$judul_ebook',jml_halaman='$jml_halaman',kode_penerbit='$kode_penerbit',kode_pengarang='$kode_pengarang',thn_terbit='$thn_terbit',id_kategori='$id_kategori',id_jenis='$id_jenis' $ph where kode_ebook='$kode_ebook2'", " Koleksi Ebook " )){
                                             move_uploaded_file($_FILES['berkas']['tmp_name'],$berkas);
                                             echo"<meta http-equiv='refresh' content='1;URL=?act=List&action=TAMBAH'>";
