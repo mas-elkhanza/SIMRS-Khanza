@@ -177,7 +177,7 @@ public final class SuratSakit extends javax.swing.JDialog {
         MnCetakSuratSakit.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakSuratSakit.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakSuratSakit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakSuratSakit.setText("Cetak Surat Sakit 1");
+        MnCetakSuratSakit.setText("Cetak Surat Sakit Rawat Inap");
         MnCetakSuratSakit.setName("MnCetakSuratSakit"); // NOI18N
         MnCetakSuratSakit.setPreferredSize(new java.awt.Dimension(200, 26));
         MnCetakSuratSakit.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public final class SuratSakit extends javax.swing.JDialog {
         MnCetakSuratSakit1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnCetakSuratSakit1.setForeground(new java.awt.Color(50, 50, 50));
         MnCetakSuratSakit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakSuratSakit1.setText("Cetak Surat Sakit 2");
+        MnCetakSuratSakit1.setText("Cetak Surat Sakit Rawat Jalan");
         MnCetakSuratSakit1.setName("MnCetakSuratSakit1"); // NOI18N
         MnCetakSuratSakit1.setPreferredSize(new java.awt.Dimension(200, 26));
         MnCetakSuratSakit1.addActionListener(new java.awt.event.ActionListener() {
@@ -907,6 +907,7 @@ public final class SuratSakit extends javax.swing.JDialog {
         Valid.pindah(evt,NoSurat,TanggalAkhir);
     }//GEN-LAST:event_TanggalAwalKeyPressed
 
+    //EDIT FORM CETAK SURAT SAKIT RAWAT INAP
     private void MnCetakSuratSakitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratSakitActionPerformed
        if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -984,6 +985,7 @@ public final class SuratSakit extends javax.swing.JDialog {
           }
     }//GEN-LAST:event_MnCetakSuratSakit2ActionPerformed
 
+    //EDIT FORM CETAK SURAT SAKIT RAWAT JALAN
     private void MnCetakSuratSakit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratSakit1ActionPerformed
         if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -1004,7 +1006,7 @@ public final class SuratSakit extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                kodedokter = Sequel.cariIsi("SELECT dpjp_ranap.kd_dokter FROM dpjp_ranap WHERE dpjp_ranap.no_rawat = ? LIMIT 1", TNoRw.getText());
+                kodedokter=Sequel.cariIsi("select reg_periksa.kd_dokter from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText());
                 namadokter=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kodedokter);
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",kodedokter);
                 Valid.MyReportqry("rptSuratSakit.jasper","report","::[ Surat Sakit ]::",
