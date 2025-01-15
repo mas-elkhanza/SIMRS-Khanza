@@ -24,20 +24,26 @@ public class WarnaTableRawatInap extends DefaultTableCellRenderer {
             component.setBackground(new Color(255,255,255));
             component.setForeground(new Color(188,33,114));
         } 
-        if(table.getValueAt(row,6).toString().equals("BPJS")){
+        if(table.getValueAt(row,6).toString().contains("BPJS")){
             component.setBackground(new Color(37,163,8));
             component.setForeground(new Color(0,0,0));
-        }else if(table.getValueAt(row,6).toString().equals("Umum")){
+        }else if(table.getValueAt(row,6).toString().contains("Umum")){
             component.setBackground(new Color(249,52,87));
             component.setForeground(new Color(0,0,0));
-        }else if(table.getValueAt(row,6).toString().equals("Asuransi")){
+        }else if(table.getValueAt(row,6).toString().contains("Asuransi")){
             component.setBackground(new Color(166,77,121));
             component.setForeground(new Color(0,0,0));
-        }else if(table.getValueAt(row,6).toString().equals("Perusahaan")){
+        }else if(table.getValueAt(row,6).toString().contains("Perusahaan")){
             component.setBackground(new Color(11,83,148));
             component.setForeground(new Color(0,0,0));
-    
+        }else if(table.getValueAt(row,6).toString().contains("Health")){
+            component.setBackground(new Color(108,162,255));
+            component.setForeground(new Color(0,0,0));
+        }else if(table.getValueAt(row,6).toString().contains("PJPK")){
+            component.setBackground(new Color(108,255,251));
+            component.setForeground(new Color(0,0,0));
         }
+        
         
          if (isSelected) {
             component.setForeground(new Color(188,33,114));
