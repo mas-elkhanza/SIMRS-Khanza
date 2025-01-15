@@ -9547,7 +9547,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.getkonsultasi_medik()==true){
             tinggi=tinggi+24;
         }
-        BtnAwalKeperawatanBayiAnak.setVisible(akses.getpenilaian_awal_keperawatan_ranap_neonatus());   
+        BtnAwalKeperawatanBayiAnak.setVisible(akses.getpenilaian_awal_keperawatan_ranap_bayi());   
         if(akses.getpenilaian_awal_keperawatan_ranap_bayi()==true){
             tinggi=tinggi+24;
         }

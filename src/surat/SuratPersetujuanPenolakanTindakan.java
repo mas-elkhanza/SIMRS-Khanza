@@ -2615,7 +2615,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
             LCount.setText(""+tabMode.getRowCount());
-            emptTeks();
+            TabRawat.setSelectedIndex(1);
         }else{
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
