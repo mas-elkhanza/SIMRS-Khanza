@@ -37,6 +37,8 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+//tambahan ichsan
+import fungsi.WarnaTableRawatInap;
 import inventory.DlgInputStokPasien;
 import inventory.DlgPenjualan;
 import inventory.DlgPeresepanDokter;
@@ -282,7 +284,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 column.setPreferredWidth(60);
             }
         }
-        tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
+        //tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
+        tbKamIn.setDefaultRenderer(Object.class, new WarnaTableRawatInap());
 
         norawat.setDocument(new batasInput((byte)17).getKata(norawat));
         kdkamar.setDocument(new batasInput((byte)15).getKata(kdkamar));
