@@ -284,8 +284,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 column.setPreferredWidth(60);
             }
         }
+        //original
         //tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
-        tbKamIn.setDefaultRenderer(Object.class, new WarnaTableRawatInap());
+        //pewarnaan
+        //tbKamIn.setDefaultRenderer(Object.class, new WarnaTableRawatInap());
+        try {
+            if(koneksiDB.AKTIFKANWARNARANAP().equals("yes")){
+                tbKamIn.setDefaultRenderer(Object.class, new WarnaTableRawatInap());
+            }else{
+                tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
+            }
+        } catch (Exception e) {
+            tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
+        }
 
         norawat.setDocument(new batasInput((byte)17).getKata(norawat));
         kdkamar.setDocument(new batasInput((byte)15).getKata(kdkamar));
