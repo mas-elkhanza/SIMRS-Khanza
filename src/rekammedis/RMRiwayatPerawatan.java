@@ -66,7 +66,6 @@ import javax.net.ssl.X509TrustManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.core.io.ByteArrayResource;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -76,13 +75,22 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.client.RestTemplate;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.ByteArrayHttpMessageConverter;
-import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
+
+
 
 /**
  *
@@ -110,8 +118,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private Properties config;
     private HttpHeaders headers;
     private ObjectMapper mapper= new ObjectMapper();
-    private MultiValueMap<String, Object> map;
-    private HttpEntity<MultiValueMap<String, Object>> requestEntity;
     private JsonNode root;
     private JsonNode nameNode;
     private SSLContext sslContext;
@@ -3122,7 +3128,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
                                         System.out.println("Notifikasi Bridging : "+ex);
                                     }*/
-                                    try {
+                                    /*try {
                                         authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         headers = new HttpHeaders();
@@ -3170,6 +3176,46 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        }
                                     } catch (Exception ex) {
                                         System.out.println("Notifikasi Bridging : " + ex);
+                                    }*/
+                                    try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+                                        HttpPost post = new HttpPost(koneksiDB.URLAPIESIGN());
+                                        authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
+                                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
+                                        post.addHeader("Authorization","Basic " + base64Creds);
+                                        MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
+                                            .addBinaryBody("file", f, ContentType.DEFAULT_BINARY, f.getName())
+                                            .addTextBody("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
+                                            .addTextBody("passphrase", Phrase.getText())
+                                            .addTextBody("tampilan", "visible")
+                                            .addTextBody("image", "false")
+                                            .addTextBody("linkQR", koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf")
+                                            .addTextBody("width", "90")
+                                            .addTextBody("height", "90")
+                                            .addTextBody("tag_koordinat", "#");
+                                        HttpEntity entity = entityBuilder.build();
+                                        post.setEntity(entity);
+                                        try (CloseableHttpResponse response = httpClient.execute(post)) {
+                                            System.out.println("Response Status: " + response.getCode());
+
+                                            if (response.getCode() == 200) {
+                                                // Menyimpan respons sebagai file
+                                                try (InputStream inputStream = response.getEntity().getContent();
+                                                    FileOutputStream outputStream = new FileOutputStream(f)) {
+                                                    byte[] buffer = new byte[1024];
+                                                    int bytesRead;
+                                                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                                                        outputStream.write(buffer, 0, bytesRead);
+                                                    }
+                                                    System.out.println("File respons berhasil disimpan di: " + f.getAbsolutePath());
+                                                }
+                                            } else {
+                                                // Tampilkan pesan kesalahan jika status bukan 200
+                                                System.out.println("Upload gagal, status code: " + response.getCode());
+                                                System.out.println("Error: " + EntityUtils.toString(response.getEntity()));
+                                            }
+                                        }
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
                                     }
                                 }
                             }
@@ -3300,7 +3346,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
                                         System.out.println("Notifikasi Bridging : "+ex);
                                     }*/
-                                    try {
+                                    /*try {
                                         authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         headers = new HttpHeaders();
@@ -3348,6 +3394,46 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        }
                                     } catch (Exception ex) {
                                         System.out.println("Notifikasi Bridging : " + ex);
+                                    }*/
+                                    try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+                                        HttpPost post = new HttpPost(koneksiDB.URLAPIESIGN());
+                                        authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
+                                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
+                                        post.addHeader("Authorization","Basic " + base64Creds);
+                                        MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
+                                            .addBinaryBody("file", f, ContentType.DEFAULT_BINARY, f.getName())
+                                            .addTextBody("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
+                                            .addTextBody("passphrase", Phrase.getText())
+                                            .addTextBody("tampilan", "visible")
+                                            .addTextBody("image", "false")
+                                            .addTextBody("linkQR", koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf")
+                                            .addTextBody("width", "90")
+                                            .addTextBody("height", "90")
+                                            .addTextBody("tag_koordinat", "#");
+                                        HttpEntity entity = entityBuilder.build();
+                                        post.setEntity(entity);
+                                        try (CloseableHttpResponse response = httpClient.execute(post)) {
+                                            System.out.println("Response Status: " + response.getCode());
+
+                                            if (response.getCode() == 200) {
+                                                // Menyimpan respons sebagai file
+                                                try (InputStream inputStream = response.getEntity().getContent();
+                                                    FileOutputStream outputStream = new FileOutputStream(f)) {
+                                                    byte[] buffer = new byte[1024];
+                                                    int bytesRead;
+                                                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                                                        outputStream.write(buffer, 0, bytesRead);
+                                                    }
+                                                    System.out.println("File respons berhasil disimpan di: " + f.getAbsolutePath());
+                                                }
+                                            } else {
+                                                // Tampilkan pesan kesalahan jika status bukan 200
+                                                System.out.println("Upload gagal, status code: " + response.getCode());
+                                                System.out.println("Error: " + EntityUtils.toString(response.getEntity()));
+                                            }
+                                        }
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
                                     }
                                 }
                             }
