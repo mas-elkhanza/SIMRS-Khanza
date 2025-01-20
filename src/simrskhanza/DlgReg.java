@@ -166,6 +166,7 @@ import rekammedis.RMPenilaianAwalMedisRalanPenyakitDalam;
 import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
 import rekammedis.RMPenilaianAwalMedisRalanRehabMedik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
+import rekammedis.RMPenilaianDerajatDehidrasi;
 import rekammedis.RMPenilaianFisioterapi;
 import rekammedis.RMPenilaianKorbanKekerasan;
 import rekammedis.RMPenilaianLanjutanRisikoJatuhAnak;
@@ -15350,6 +15351,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnPenilaianDerajatDehidrasiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianDerajatDehidrasi form=new RMPenilaianDerajatDehidrasi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -15787,7 +15810,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             MnPenilaianPreInduksi,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnSudahTerbitSEP,MnPenatalaksanaanTerapiOkupasi,MnHasilPemeriksaanUSGNeonatus,MnHasilEndoskopiFaringLaring,MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,
             MnPenilaianPasienImunitasRendah,MnCatatanKeseimbanganCairan,MnCatatanObservasiCHBP,MnCatatanObservasiInduksiPersalinan,MnPermintaanKonsultasiMedik,MnDataOperasi,MnDataKonsultasiMedik,MnSkriningMerokokUsiaSekolahRemaja,MnSkriningKekerasanPadaWanita,MnSkriningObesitas,
             MnSkriningRisikoKankerPayudara,MnSkriningRisikoKankerParu,MnSkriningKesehatanGigiMulutRemaja,MnSkriningTBC,MnCatatanAnastesiSedasi,MnSkriningPUMA,MnSkriningAdiksiNikotin,MnSkriningThalassemia,MnSkriningInstrumenSDQ,MnSkriningInstrumenSRQ,MnChecklistPemberianFibrinolitik,
-            MnSkriningKankerKolorektal,MnPenilaianPsikologKlinis;
+            MnSkriningKankerKolorektal,MnPenilaianPsikologKlinis,MnPenilaianDerajatDehidrasi;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining;
     
     private void tampil() {
@@ -16265,6 +16288,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnCopyResep.setEnabled(akses.getresep_dokter());
         MnPenilaianPsikolog.setEnabled(akses.getpenilaian_psikologi());
         MnPenilaianPsikologKlinis.setEnabled(akses.getpenilaian_psikologi_klinis());
+        MnPenilaianDerajatDehidrasi.setEnabled(akses.getpenilaian_derajat_dehidrasi());
         MnPenilaianPreOp.setEnabled(akses.getpenilaian_pre_operasi());
         MnPenilaianPreAnastesi.setEnabled(akses.getpenilaian_pre_anestesi());
         MnCatatanAnastesiSedasi.setEnabled(akses.getcatatan_anestesi_sedasi());
@@ -17171,6 +17195,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianPsikologKlinis.setPreferredSize(new java.awt.Dimension(260, 26));
         MnPenilaianPsikologKlinis.addActionListener(this::MnPenilaianPsikologKlinisActionPerformed);
         
+        MnPenilaianDerajatDehidrasi = new javax.swing.JMenuItem();
+        MnPenilaianDerajatDehidrasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianDerajatDehidrasi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPenilaianDerajatDehidrasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianDerajatDehidrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPenilaianDerajatDehidrasi.setText("Penilaian Derajat Dehidrasi");
+        MnPenilaianDerajatDehidrasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianDerajatDehidrasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianDerajatDehidrasi.setName("MnPenilaianDerajatDehidrasi");
+        MnPenilaianDerajatDehidrasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPenilaianDerajatDehidrasi.addActionListener(this::MnPenilaianDerajatDehidrasiActionPerformed);
+        
         MnHasilUSG = new javax.swing.JMenu();
         MnHasilUSG.setBackground(new java.awt.Color(255, 255, 254));
         MnHasilUSG.setForeground(new java.awt.Color(50, 50, 50));
@@ -17295,6 +17331,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianLain.add(MnPenilaianKorbanKekerasan);
         MnPenilaianLain.add(MnPenilaianPasienPenyakitMenular);
         MnPenilaianLain.add(MnPenilaianPasienImunitasRendah);
+        MnPenilaianLain.add(MnPenilaianDerajatDehidrasi);
         MnPenilaianLain.add(MnPenilaianMCU);
         MnPenilaianLain.add(MnHemodialisa);
         
