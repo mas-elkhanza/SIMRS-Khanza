@@ -49,6 +49,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private String finger="";
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -175,6 +176,12 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm();
         jam();
+        
+        try {
+            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+        } catch (Exception e) {
+            TANGGALMUNDUR="yes";
+        }
     }
 
 
@@ -190,6 +197,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnPenilaianDehidrasi = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
+        TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -233,17 +241,17 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         jLabel57 = new widget.Label();
-        jLabel217 = new widget.Label();
         Skala1 = new widget.ComboBox();
+        jLabel217 = new widget.Label();
         Nilai1 = new widget.TextBox();
-        jLabel220 = new widget.Label();
         Skala2 = new widget.ComboBox();
+        jLabel220 = new widget.Label();
         Nilai2 = new widget.TextBox();
-        jLabel223 = new widget.Label();
         Skala3 = new widget.ComboBox();
+        jLabel223 = new widget.Label();
         Nilai3 = new widget.TextBox();
-        jLabel226 = new widget.Label();
         Skala4 = new widget.ComboBox();
+        jLabel226 = new widget.Label();
         Nilai4 = new widget.TextBox();
         jLabel229 = new widget.Label();
         Skala5 = new widget.ComboBox();
@@ -258,7 +266,6 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         HasilPenilaian = new widget.TextArea();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -278,6 +285,9 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
+
+        TanggalRegistrasi.setHighlighter(null);
+        TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -524,7 +534,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 496));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 306));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -554,13 +564,13 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 443));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 283));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 80, 23);
+        jLabel4.setBounds(0, 10, 70, 23);
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
@@ -570,7 +580,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRw);
-        TNoRw.setBounds(84, 10, 136, 23);
+        TNoRw.setBounds(74, 10, 136, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
@@ -581,7 +591,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(TPasien);
-        TPasien.setBounds(336, 10, 285, 23);
+        TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
         Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-01-2025" }));
@@ -594,7 +604,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tanggal);
-        Tanggal.setBounds(84, 40, 90, 23);
+        Tanggal.setBounds(74, 40, 90, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
@@ -605,13 +615,13 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNoRM);
-        TNoRM.setBounds(222, 10, 112, 23);
+        TNoRM.setBounds(212, 10, 112, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel16);
-        jLabel16.setBounds(0, 40, 80, 23);
+        jLabel16.setBounds(0, 40, 70, 23);
 
         Jam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         Jam.setName("Jam"); // NOI18N
@@ -621,7 +631,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Jam);
-        Jam.setBounds(178, 40, 62, 23);
+        Jam.setBounds(168, 40, 62, 23);
 
         Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Menit.setName("Menit"); // NOI18N
@@ -631,7 +641,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Menit);
-        Menit.setBounds(243, 40, 62, 23);
+        Menit.setBounds(233, 40, 62, 23);
 
         Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Detik.setName("Detik"); // NOI18N
@@ -641,7 +651,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Detik);
-        Detik.setBounds(308, 40, 62, 23);
+        Detik.setBounds(298, 40, 62, 23);
 
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
@@ -650,18 +660,18 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setName("ChkKejadian"); // NOI18N
         FormInput.add(ChkKejadian);
-        ChkKejadian.setBounds(373, 40, 23, 23);
+        ChkKejadian.setBounds(363, 40, 23, 23);
 
         jLabel18.setText("Dokter :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(400, 40, 70, 23);
+        jLabel18.setBounds(390, 40, 70, 23);
 
         KdDokter.setEditable(false);
         KdDokter.setHighlighter(null);
         KdDokter.setName("KdDokter"); // NOI18N
         FormInput.add(KdDokter);
-        KdDokter.setBounds(474, 40, 94, 23);
+        KdDokter.setBounds(464, 40, 104, 23);
 
         NamaDokter.setEditable(false);
         NamaDokter.setName("NamaDokter"); // NOI18N
@@ -699,15 +709,9 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         jLabel57.setText("Item Penilaian :");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
-        jLabel57.setBounds(14, 70, 130, 23);
+        jLabel57.setBounds(11, 70, 130, 23);
 
-        jLabel217.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel217.setText("1. Keadaan Umum");
-        jLabel217.setName("jLabel217"); // NOI18N
-        FormInput.add(jLabel217);
-        jLabel217.setBounds(34, 90, 200, 23);
-
-        Skala1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Lesu/ Haus", "Gelisah,Haus,Mengantuk,Hingga Syok" }));
+        Skala1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Lesu/Haus", "Gelisah, Haus, Mengantuk, Hingga Syok" }));
         Skala1.setName("Skala1"); // NOI18N
         Skala1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -720,19 +724,19 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Skala1);
-        Skala1.setBounds(244, 90, 500, 23);
+        Skala1.setBounds(144, 90, 260, 23);
+
+        jLabel217.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel217.setText("1. Keadaan Umum");
+        jLabel217.setName("jLabel217"); // NOI18N
+        FormInput.add(jLabel217);
+        jLabel217.setBounds(44, 90, 110, 23);
 
         Nilai1.setEditable(false);
         Nilai1.setFocusTraversalPolicyProvider(true);
         Nilai1.setName("Nilai1"); // NOI18N
         FormInput.add(Nilai1);
-        Nilai1.setBounds(749, 90, 40, 23);
-
-        jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel220.setText("2. Mata");
-        jLabel220.setName("jLabel220"); // NOI18N
-        FormInput.add(jLabel220);
-        jLabel220.setBounds(34, 120, 200, 23);
+        Nilai1.setBounds(408, 90, 40, 23);
 
         Skala2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Biasa", "Cekung", "Sangat Cekung" }));
         Skala2.setName("Skala2"); // NOI18N
@@ -747,19 +751,19 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Skala2);
-        Skala2.setBounds(244, 120, 500, 23);
+        Skala2.setBounds(144, 120, 260, 23);
+
+        jLabel220.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel220.setText("2. Mata");
+        jLabel220.setName("jLabel220"); // NOI18N
+        FormInput.add(jLabel220);
+        jLabel220.setBounds(44, 120, 110, 23);
 
         Nilai2.setEditable(false);
         Nilai2.setFocusTraversalPolicyProvider(true);
         Nilai2.setName("Nilai2"); // NOI18N
         FormInput.add(Nilai2);
-        Nilai2.setBounds(749, 120, 40, 23);
-
-        jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel223.setText("3. Mulut");
-        jLabel223.setName("jLabel223"); // NOI18N
-        FormInput.add(jLabel223);
-        jLabel223.setBounds(34, 150, 200, 23);
+        Nilai2.setBounds(408, 120, 40, 23);
 
         Skala3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Biasa", "Kering", "Sangat Kering" }));
         Skala3.setName("Skala3"); // NOI18N
@@ -774,21 +778,21 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Skala3);
-        Skala3.setBounds(244, 150, 500, 23);
+        Skala3.setBounds(144, 150, 260, 23);
+
+        jLabel223.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel223.setText("3. Mulut");
+        jLabel223.setName("jLabel223"); // NOI18N
+        FormInput.add(jLabel223);
+        jLabel223.setBounds(44, 150, 110, 23);
 
         Nilai3.setEditable(false);
         Nilai3.setFocusTraversalPolicyProvider(true);
         Nilai3.setName("Nilai3"); // NOI18N
         FormInput.add(Nilai3);
-        Nilai3.setBounds(749, 150, 40, 23);
+        Nilai3.setBounds(408, 150, 40, 23);
 
-        jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel226.setText("4. Pernafasan");
-        jLabel226.setName("jLabel226"); // NOI18N
-        FormInput.add(jLabel226);
-        jLabel226.setBounds(34, 180, 200, 23);
-
-        Skala4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<30x/menit", "30-40/menit", ">40/menit" }));
+        Skala4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "< 30 x/menit", "30 - 40 x/menit", "> 40 x/menit" }));
         Skala4.setName("Skala4"); // NOI18N
         Skala4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -801,19 +805,25 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Skala4);
-        Skala4.setBounds(244, 180, 500, 23);
+        Skala4.setBounds(144, 180, 260, 23);
+
+        jLabel226.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel226.setText("4. Pernafasan");
+        jLabel226.setName("jLabel226"); // NOI18N
+        FormInput.add(jLabel226);
+        jLabel226.setBounds(44, 180, 110, 23);
 
         Nilai4.setEditable(false);
         Nilai4.setFocusTraversalPolicyProvider(true);
         Nilai4.setName("Nilai4"); // NOI18N
         FormInput.add(Nilai4);
-        Nilai4.setBounds(749, 180, 40, 23);
+        Nilai4.setBounds(408, 180, 40, 23);
 
         jLabel229.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel229.setText("5. Tugor");
         jLabel229.setName("jLabel229"); // NOI18N
         FormInput.add(jLabel229);
-        jLabel229.setBounds(34, 210, 200, 23);
+        jLabel229.setBounds(530, 90, 70, 23);
 
         Skala5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Baik", "Kurang", "Jelek" }));
         Skala5.setName("Skala5"); // NOI18N
@@ -828,21 +838,21 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Skala5);
-        Skala5.setBounds(244, 210, 500, 23);
+        Skala5.setBounds(585, 90, 160, 23);
 
         Nilai5.setEditable(false);
         Nilai5.setFocusTraversalPolicyProvider(true);
         Nilai5.setName("Nilai5"); // NOI18N
         FormInput.add(Nilai5);
-        Nilai5.setBounds(749, 210, 40, 23);
+        Nilai5.setBounds(749, 90, 40, 23);
 
         jLabel232.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel232.setText("6. Nadi");
         jLabel232.setName("jLabel232"); // NOI18N
         FormInput.add(jLabel232);
-        jLabel232.setBounds(34, 240, 210, 23);
+        jLabel232.setBounds(530, 120, 70, 23);
 
-        Skala6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<120x/menit", "120-140x/menit", ">140x/menit" }));
+        Skala6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "< 120 x/menit", "120 -140 x/menit", "> 140 x/menit" }));
         Skala6.setName("Skala6"); // NOI18N
         Skala6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -855,30 +865,30 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Skala6);
-        Skala6.setBounds(244, 240, 500, 23);
+        Skala6.setBounds(585, 120, 160, 23);
 
         Nilai6.setEditable(false);
         Nilai6.setFocusTraversalPolicyProvider(true);
         Nilai6.setName("Nilai6"); // NOI18N
         FormInput.add(Nilai6);
-        Nilai6.setBounds(749, 240, 40, 23);
+        Nilai6.setBounds(749, 120, 40, 23);
 
-        jLabel235.setText("Total :");
+        jLabel235.setText("Total Nilai :");
         jLabel235.setName("jLabel235"); // NOI18N
         FormInput.add(jLabel235);
-        jLabel235.setBounds(675, 270, 70, 23);
+        jLabel235.setBounds(675, 150, 70, 23);
 
         NilaiTotal.setEditable(false);
         NilaiTotal.setFocusTraversalPolicyProvider(true);
         NilaiTotal.setName("NilaiTotal"); // NOI18N
         FormInput.add(NilaiTotal);
-        NilaiTotal.setBounds(749, 270, 40, 23);
+        NilaiTotal.setBounds(749, 150, 40, 23);
 
         jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel30.setText("Hasil :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(14, 310, 80, 23);
+        jLabel30.setBounds(11, 210, 80, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
@@ -896,7 +906,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         scrollPane1.setViewportView(HasilPenilaian);
 
         FormInput.add(scrollPane1);
-        scrollPane1.setBounds(34, 330, 755, 43);
+        scrollPane1.setBounds(44, 230, 745, 43);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -910,14 +920,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 300, 810, 1);
-
-        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator4.setName("jSeparator4"); // NOI18N
-        FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 400, 810, 1);
+        jSeparator3.setBounds(0, 210, 810, 1);
 
         scrollInput.setViewportView(FormInput);
 
@@ -933,7 +936,6 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             isRawat();
-            isPsien();
         }else{            
             Valid.pindah(evt,TCari,Tanggal);
         }
@@ -949,22 +951,16 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         }else if(KdDokter.getText().trim().equals("")||NamaDokter.getText().trim().equals("")){
             Valid.textKosong(KdDokter,"Dokter");
         }else{
-            if(Sequel.menyimpantf("penilaian_dehidrasi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Skala1.getSelectedItem().toString(),Nilai1.getText(),Skala2.getSelectedItem().toString(),Nilai2.getText(),
-                Skala3.getSelectedItem().toString(),Nilai3.getText(),Skala4.getSelectedItem().toString(),Nilai4.getText(), 
-                Skala5.getSelectedItem().toString(),Nilai5.getText(),Skala6.getSelectedItem().toString(),Nilai6.getText(),
-                NilaiTotal.getText(),HasilPenilaian.getText(),KdDokter.getText()
-            })==true){
-                tabMode.addRow(new String[]{
-                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                    Skala1.getSelectedItem().toString(),Nilai1.getText(),Skala2.getSelectedItem().toString(),Nilai2.getText(),Skala3.getSelectedItem().toString(),Nilai3.getText(),
-                    Skala4.getSelectedItem().toString(),Nilai4.getText(),Skala5.getSelectedItem().toString(),Nilai5.getText(),Skala6.getSelectedItem().toString(),Nilai6.getText(),
-                    NilaiTotal.getText(),HasilPenilaian.getText(),KdDokter.getText(),NamaDokter.getText()
-                });
-                emptTeks();
-                LCount.setText(""+tabMode.getRowCount());
-            }  
+            if(akses.getkode().equals("Admin Utama")){
+                simpan();
+            }else{
+                if(TanggalRegistrasi.getText().equals("")){
+                    TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                }
+                if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem())==true){
+                    simpan();
+                }
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -994,9 +990,11 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
                 hapus();
             }else{
                 if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString())){
-                    hapus();
+                    if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),Sequel.ambiltanggalsekarang())==true){
+                        hapus();
+                    }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh dokter yang bersangkutan..!!");
                 }
             }
         }else{
@@ -1023,9 +1021,16 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
                     ganti();
                 }else{
                     if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString())){
-                        ganti();
+                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString(),Sequel.ambiltanggalsekarang())==true){
+                            if(TanggalRegistrasi.getText().equals("")){
+                                TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+                            }
+                            if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem())==true){
+                                ganti();
+                            }
+                        }
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
                     }
                 }
             }else{
@@ -1387,6 +1392,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
+    private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
     private widget.Button btnDokter;
     private widget.InternalFrame internalFrame1;
@@ -1411,7 +1417,6 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -1544,23 +1549,23 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
     }
     
     private void isRawat() {
-         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
-    }
-
-    private void isPsien() {
         try {
-            ps=koneksi.prepareStatement("select pasien.nm_pasien,pasien.jk,date_format(pasien.tgl_lahir,'%d-%m-%Y') as lahir from pasien where pasien.no_rkm_medis=?");
+            ps=koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,reg_periksa.jam_reg from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
             try {
-                ps.setString(1,TNoRM.getText());
+                ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
+                    TNoRM.setText(rs.getString("no_rkm_medis"));
+                    DTPCari1.setDate(rs.getDate("tgl_registrasi"));
                     TPasien.setText(rs.getString("nm_pasien"));
                     JK.setText(rs.getString("jk"));
-                    TglLahir.setText(rs.getString("lahir"));
+                    TglLahir.setText(rs.getString("tgl_lahir"));
+                    TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
-            }finally {
+            } finally{
                 if(rs!=null){
                     rs.close();
                 }
@@ -1576,19 +1581,17 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
-        isPsien();
         ChkInput.setSelected(true);
         isForm();
     }
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>668){
+            if(internalFrame1.getHeight()>468){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,470));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,306));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -1617,9 +1620,20 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             NamaDokter.setText(dokter.tampil3(KdDokter.getText()));
             if(NamaDokter.getText().equals("")){
                 KdDokter.setText("");
-                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
+                JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
             }
-        }            
+        }  
+        
+        if(TANGGALMUNDUR.equals("no")){
+            if(!akses.getkode().equals("Admin Utama")){
+                Tanggal.setEditable(false);
+                Tanggal.setEnabled(false);
+                ChkKejadian.setEnabled(false);
+                Jam.setEnabled(false);
+                Menit.setEnabled(false);
+                Detik.setEnabled(false);
+            }
+        }
     }
 
     private void jam(){
@@ -1749,5 +1763,22 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         }
     }
 
-
+    private void simpan() {
+        if(Sequel.menyimpantf("penilaian_dehidrasi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+            Skala1.getSelectedItem().toString(),Nilai1.getText(),Skala2.getSelectedItem().toString(),Nilai2.getText(),
+            Skala3.getSelectedItem().toString(),Nilai3.getText(),Skala4.getSelectedItem().toString(),Nilai4.getText(), 
+            Skala5.getSelectedItem().toString(),Nilai5.getText(),Skala6.getSelectedItem().toString(),Nilai6.getText(),
+            NilaiTotal.getText(),HasilPenilaian.getText(),KdDokter.getText()
+        })==true){
+            tabMode.addRow(new String[]{
+                TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                Skala1.getSelectedItem().toString(),Nilai1.getText(),Skala2.getSelectedItem().toString(),Nilai2.getText(),Skala3.getSelectedItem().toString(),Nilai3.getText(),
+                Skala4.getSelectedItem().toString(),Nilai4.getText(),Skala5.getSelectedItem().toString(),Nilai5.getText(),Skala6.getSelectedItem().toString(),Nilai6.getText(),
+                NilaiTotal.getText(),HasilPenilaian.getText(),KdDokter.getText(),NamaDokter.getText()
+            });
+            emptTeks();
+            LCount.setText(""+tabMode.getRowCount());
+        }  
+    }
 }
