@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="240" pageHeight="155" orientation="Landscape" columnWidth="230" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5">
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="240" pageHeight="155" orientation="Landscape" columnWidth="230" leftMargin="5" rightMargin="5" topMargin="5" bottomMargin="5" uuid="bc98e154-da7e-4bb0-9f45-fb0e85877da4">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -95,32 +96,47 @@
 	</background>
 	<detail>
 		<band height="145" splitType="Stretch">
+			<image>
+				<reportElement x="1" y="0" width="227" height="145" uuid="07fdc642-1745-466f-a19d-6108b9bb8bbc"/>
+				<imageExpression><![CDATA["http://192.168.1.6/kartu_pasien.png"]]></imageExpression>
+			</image>
 			<textField>
-				<reportElement x="6" y="94" width="174" height="15" forecolor="#002800"/>
-				<textElement lineSpacing="Single">
-					<font fontName="Tahoma" size="9" isBold="true"/>
+				<reportElement x="150" y="34" width="78" height="22" forecolor="#002800" uuid="5ff2d05c-2fde-48ec-8b78-8a44fdb20060"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="13" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement mode="Transparent" x="1" y="110" width="179" height="22"/>
+				<reportElement mode="Transparent" x="150" y="56" width="78" height="22" uuid="db1867af-006f-451f-89f1-3cb3accf4f6e"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false" barWidth="1" barHeight="15">
 					<jr:codeExpression><![CDATA[$F{no_rkm_medis}]]></jr:codeExpression>
 				</jr:barbecue>
 			</componentElement>
 			<textField>
-				<reportElement x="6" y="43" width="222" height="15" forecolor="#002800"/>
-				<textElement lineSpacing="Single">
+				<reportElement x="12" y="55" width="216" height="15" forecolor="#002800" uuid="bc121e95-617f-41b0-ad7c-aeac4072984c"/>
+				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="9" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_pasien}+"/"+$F{nm_ibu}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="6" y="60" width="222" height="15" forecolor="#002800"/>
-				<textElement lineSpacing="Single">
+				<reportElement x="12" y="66" width="108" height="15" forecolor="#002800" uuid="c365824e-5932-4ed9-934b-663fa7130bd0"/>
+				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="9" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.util.Date"><![CDATA[$F{tgl_daftar}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="12" y="81" width="216" height="30" forecolor="#002800" uuid="f683cc2b-9e07-4c0d-b568-dcbb735b4b0f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="7" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

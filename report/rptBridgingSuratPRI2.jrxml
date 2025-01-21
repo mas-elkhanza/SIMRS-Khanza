@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="390" columnWidth="533" leftMargin="42" rightMargin="20" topMargin="20" bottomMargin="20" uuid="479507e5-0db3-4ea9-9590-dbfa174d1542">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -28,7 +28,6 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<parameter name="prb" class="java.lang.String"/>
-	<parameter name="finger" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select bridging_surat_pri_bpjs.no_rawat,bridging_surat_pri_bpjs.no_kartu,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,
 pasien.jk,bridging_surat_pri_bpjs.diagnosa,bridging_surat_pri_bpjs.tgl_surat,bridging_surat_pri_bpjs.no_surat,
@@ -309,7 +308,7 @@ on bridging_surat_pri_bpjs.no_rawat=reg_periksa.no_rawat inner join pasien on re
 				<text><![CDATA[Tgl. Entri]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="375" y="178" width="105" height="13" uuid="d7f85d0d-d4d8-47b6-8d88-0ab27e60f5d3">
+				<reportElement x="367" y="220" width="105" height="13" uuid="d7f85d0d-d4d8-47b6-8d88-0ab27e60f5d3">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -319,7 +318,7 @@ on bridging_surat_pri_bpjs.no_rawat=reg_periksa.no_rawat inner join pasien on re
 				<text><![CDATA[Mengetahui]]></text>
 			</staticText>
 			<line>
-				<reportElement x="375" y="262" width="105" height="1" uuid="706ec081-ad86-4000-87fc-3f7a2101e072"/>
+				<reportElement x="367" y="262" width="105" height="1" uuid="706ec081-ad86-4000-87fc-3f7a2101e072"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
@@ -419,14 +418,6 @@ on bridging_surat_pri_bpjs.no_rawat=reg_periksa.no_rawat inner join pasien on re
 				</textElement>
 				<text><![CDATA[Demikian atas bantuannya diucapkan banyak terima kasih]]></text>
 			</staticText>
-			<componentElement>
-				<reportElement x="364" y="195" width="126" height="59" isRemoveLineWhenBlank="true" uuid="97741423-32fb-40f7-ae6e-b98d90de59ca">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
-					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
-				</jr:QRCode>
-			</componentElement>
 		</band>
 	</detail>
 	<columnFooter>

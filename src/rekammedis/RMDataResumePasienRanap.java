@@ -58,7 +58,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private RMCariDiet caridiet=new RMCariDiet(null,false);
     private RMCariLabPending carilabpending=new RMCariLabPending(null,false);
     private DlgDiagnosaPenyakit penyakit=new DlgDiagnosaPenyakit(null,false);
-    private String kodekamar="",namakamar="",tglkeluar="",jamkeluar="",finger="";
+    private String kodekamar="",namakamar="",tglkeluar="",jamkeluar="",finger="",kamaranak="", tglkeluaranak="", no_rawat_ibu="";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -530,6 +530,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnLaporanResume = new javax.swing.JMenuItem();
+        MnLaporanResumeAnak = new javax.swing.JMenuItem();
         MnInputDiagnosa = new javax.swing.JMenuItem();
         ppBerkasDigital = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
@@ -679,7 +680,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         MnLaporanResume.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnLaporanResume.setForeground(new java.awt.Color(50, 50, 50));
         MnLaporanResume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnLaporanResume.setText("Laporan Resume Pasien");
+        MnLaporanResume.setText("Cetak Resume Pasien");
         MnLaporanResume.setName("MnLaporanResume"); // NOI18N
         MnLaporanResume.setPreferredSize(new java.awt.Dimension(220, 26));
         MnLaporanResume.addActionListener(new java.awt.event.ActionListener() {
@@ -688,6 +689,20 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             }
         });
         jPopupMenu1.add(MnLaporanResume);
+
+        MnLaporanResumeAnak.setBackground(new java.awt.Color(255, 255, 254));
+        MnLaporanResumeAnak.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLaporanResumeAnak.setForeground(new java.awt.Color(50, 50, 50));
+        MnLaporanResumeAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnLaporanResumeAnak.setText("Cetak Resume Pasien Anak");
+        MnLaporanResumeAnak.setName("MnLaporanResumeAnak"); // NOI18N
+        MnLaporanResumeAnak.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnLaporanResumeAnak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnLaporanResumeAnakActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnLaporanResumeAnak);
 
         MnInputDiagnosa.setBackground(new java.awt.Color(255, 255, 254));
         MnInputDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -723,7 +738,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume Medis Pasien Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Resume Medis Pasien Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -890,7 +905,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-01-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -904,7 +919,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-01-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1757,7 +1772,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         KetDilanjutkan.setBounds(236, 1081, 270, 23);
 
         Kontrol.setForeground(new java.awt.Color(50, 70, 50));
-        Kontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024 17:22:03" }));
+        Kontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-01-2025 09:36:38" }));
         Kontrol.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Kontrol.setName("Kontrol"); // NOI18N
         Kontrol.setOpaque(false);
@@ -2357,6 +2372,65 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             Valid.MyReport("rptLaporanResumeRanap.jasper","report","::[ Laporan Resume Pasien ]::",param);
         }
     }//GEN-LAST:event_MnLaporanResumeActionPerformed
+	
+	private void MnLaporanResumeAnakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLaporanResumeAnakActionPerformed
+        if(tbObat.getSelectedRow()>-1){
+            Map<String, Object> param = new HashMap<>();    
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));            
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),3).toString():finger)+"\n"+Valid.SetTgl3(Keluar.getText())); 
+            try {
+                ps=koneksi.prepareStatement("select dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? and dpjp_ranap.kd_dokter<>?");
+                try {
+                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    ps.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                    rs=ps.executeQuery();
+                    i=2;
+                    while(rs.next()){
+                       if(i==2){
+                           finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
+                           param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+rs.getString("nm_dokter")+"\nID "+(finger.equals("")?rs.getString("kd_dokter"):finger)+"\n"+Valid.SetTgl3(Keluar.getText()));
+                           param.put("namadokter2",rs.getString("nm_dokter")); 
+                       }
+                       if(i==3){
+                           finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
+                           param.put("finger3","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+rs.getString("nm_dokter")+"\nID "+(finger.equals("")?rs.getString("kd_dokter"):finger)+"\n"+Valid.SetTgl3(Keluar.getText()));
+                           param.put("namadokter3",rs.getString("nm_dokter")); 
+                       }
+                       i++;
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
+            
+            //TAMBAHAN PARAMETER KAMAR ANAK
+            no_rawat_ibu=Sequel.cariIsi("select no_rawat from ranap_gabung where no_rawat2=?",tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
+            param.put("kamaranak",Sequel.cariIsi("SELECT CONCAT(kamar_inap.kd_kamar, ' ', bangsal.nm_bangsal) AS kamar_bangsal FROM  kamar_inap INNER JOIN kamar ON kamar_inap.kd_kamar = kamar.kd_kamar INNER JOIN bangsal ON kamar.kd_bangsal = bangsal.kd_bangsal WHERE  kamar_inap.no_rawat=? ORDER BY kamar_inap.tgl_keluar DESC,   kamar_inap.jam_keluar DESC LIMIT 1 OFFSET 1", no_rawat_ibu));
+            param.put("tglkeluaranak",Sequel.cariIsi("SELECT IF(kamar_inap.tgl_keluar='0000-00-00', CURRENT_DATE(), kamar_inap.tgl_keluar) AS tgl_keluar FROM   kamar_inap   INNER JOIN kamar ON kamar_inap.kd_kamar = kamar.kd_kamar   INNER JOIN bangsal ON kamar.kd_bangsal = bangsal.kd_bangsal WHERE   kamar_inap.no_rawat=? ORDER BY   kamar_inap.tgl_keluar DESC,   kamar_inap.jam_keluar DESC LIMIT 1 OFFSET 1",no_rawat_ibu));
+            param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            //param.put("ruang",KdRuang.getText()+" "+NmRuang.getText());
+            //param.put("tanggalkeluar",Valid.SetTgl3(Keluar.getText()));
+            //param.put("jamkeluar",JamKeluar.getText());
+            Valid.MyReport("rptLaporanResumeAnakRanap.jasper","report","::[ Laporan Resume Pasien Anak ]::",param);
+        }
+    }//GEN-LAST:event_MnLaporanResumeAnakActionPerformed
+
 
     private void BtnDokter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter1ActionPerformed
         if(TNoRw.getText().equals("")&&TNoRM.getText().equals("")){
@@ -2597,6 +2671,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnDokter6ActionPerformed
 
+    
     /**
     * @param args the command line arguments
     */
@@ -2679,6 +2754,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.TextBox Masuk;
     private javax.swing.JMenuItem MnInputDiagnosa;
     private javax.swing.JMenuItem MnLaporanResume;
+    private javax.swing.JMenuItem MnLaporanResumeAnak;
     private widget.TextBox NamaDokter;
     private widget.TextBox NamaDokterPengirim;
     private widget.TextBox NmRuang;

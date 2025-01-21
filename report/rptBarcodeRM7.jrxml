@@ -94,7 +94,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 	<title>
 		<band height="702">
 			<textField pattern="">
-				<reportElement mode="Transparent" x="37" y="479" width="13" height="108" uuid="9855990c-983c-4e64-aa5f-19b4f04ee65f"/>
+				<reportElement mode="Transparent" x="40" y="550" width="13" height="108" uuid="9855990c-983c-4e64-aa5f-19b4f04ee65f"/>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -102,7 +102,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 				<textFieldExpression><![CDATA["No. RM : "+$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="13" y="446" width="13" height="141" uuid="98250d50-995d-4e31-b2c6-0c25b5fea642"/>
+				<reportElement mode="Transparent" x="16" y="517" width="13" height="141" uuid="98250d50-995d-4e31-b2c6-0c25b5fea642"/>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -110,7 +110,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="25" y="446" width="13" height="141" uuid="9ebd0025-f270-43a3-acd1-94c2b7ef274f"/>
+				<reportElement mode="Transparent" x="28" y="517" width="13" height="141" uuid="9ebd0025-f270-43a3-acd1-94c2b7ef274f"/>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -118,7 +118,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 				<textFieldExpression><![CDATA["Tgl Lahir : "+$F{tgl_lahir}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="0" y="309" width="13" height="278" uuid="aa81eaf9-0b79-4968-bace-12fcebedf50b"/>
+				<reportElement mode="Transparent" x="3" y="380" width="13" height="278" uuid="aa81eaf9-0b79-4968-bace-12fcebedf50b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -126,7 +126,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="25" y="309" width="13" height="123" uuid="20e50133-3ef5-4142-aeb1-e629495ee776"/>
+				<reportElement mode="Transparent" x="28" y="380" width="13" height="123" uuid="20e50133-3ef5-4142-aeb1-e629495ee776"/>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -134,7 +134,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 				<textFieldExpression><![CDATA["Tanggal Dirawat :"]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="37" y="309" width="13" height="123" uuid="41b448dd-3633-4ba4-b390-690edff03c6c"/>
+				<reportElement mode="Transparent" x="40" y="380" width="13" height="123" uuid="41b448dd-3633-4ba4-b390-690edff03c6c"/>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>

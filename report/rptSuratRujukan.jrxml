@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="1ba57452-08f6-476a-b23b-dd876e17dcab">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -75,7 +75,7 @@ reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter w
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="804" splitType="Stretch">
+		<band height="757" splitType="Stretch">
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="1" y="0" width="70" height="74" uuid="0390c85d-7a3d-4f60-9097-3ef5bc94a745"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
@@ -193,7 +193,7 @@ reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter w
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="349" y="663" width="178" height="17" uuid="1e589d00-21d2-45c6-9486-cd3cd2fa236d"/>
+				<reportElement mode="Transparent" x="373" y="663" width="178" height="17" uuid="1e589d00-21d2-45c6-9486-cd3cd2fa236d"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -201,7 +201,7 @@ reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter w
 				<text><![CDATA[Dokter yang merawat,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="351" y="733" width="10" height="17" uuid="87af26d9-706b-46ea-8105-603bd3699ddc"/>
+				<reportElement mode="Transparent" x="376" y="731" width="10" height="17" uuid="87af26d9-706b-46ea-8105-603bd3699ddc"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -209,7 +209,7 @@ reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter w
 				<text><![CDATA[(]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="517" y="733" width="10" height="17" uuid="36b14d89-1bf6-49eb-9501-ed9da6616256"/>
+				<reportElement mode="Transparent" x="542" y="731" width="10" height="17" uuid="36b14d89-1bf6-49eb-9501-ed9da6616256"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -217,7 +217,7 @@ reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter w
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="360" y="733" width="158" height="17" uuid="7402b03b-abdb-4e2b-a8a7-a0234272622a"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="385" y="731" width="158" height="17" uuid="7402b03b-abdb-4e2b-a8a7-a0234272622a"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -271,7 +271,7 @@ reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter w
 				<textFieldExpression><![CDATA[$P{kotars}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="322" y="648" width="232" height="16" uuid="ccdb538e-7449-48bf-98b7-b5a0c50041c6"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Transparent" x="373" y="648" width="181" height="16" uuid="ccdb538e-7449-48bf-98b7-b5a0c50041c6"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -454,6 +454,38 @@ reg_periksa.no_rawat=rujuk.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter w
 				</textElement>
 				<textFieldExpression><![CDATA[$P{terpi}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="663" width="178" height="17" uuid="6be14091-99c6-4f45-aa38-9fd65c5e4c00"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Penerima]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="1" y="731" width="178" height="17" uuid="1d9394f9-cf62-4229-aaf1-9512486ae0b0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[( ................................. )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="183" y="731" width="178" height="17" uuid="7689c9c8-df60-4088-a672-086d1c9e6696"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[( ................................. )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="183" y="663" width="178" height="17" uuid="3e749a2a-9ed2-4db3-9d85-69dceba62063"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Petugas Rumah Sakit]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<summary>
