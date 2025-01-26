@@ -943,18 +943,26 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         
                           if(sukses==true){
                               Sequel.queryu("delete from tampjurnal");
-                              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                              if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                   Sequel.cariIsi("select Penerimaan_Toko from set_akun"),"PERSEDIAAN BARANG TOKO","0",rs.getString("total")
-                              });    
+                              })==false){
+                                    sukses=false;
+                              }    
                               if(rs.getDouble("ppn")>0){
-                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                         Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Toko","0",rs.getString("ppn")
-                                    }); 
+                                    })==false){
+                                        sukses=false;
+                                    } 
                               }
-                              Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                              if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                   Sequel.cariIsi("select Kontra_Penerimaan_Toko from set_akun"),"HUTANG BARANG TOKO",rs.getString("tagihan"),"0"
-                              }); 
-                              sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN TOKO"+", OLEH "+akses.getkode());
+                              })==false){
+                                    sukses=false;
+                              } 
+                              if(sukses==true){
+                                    sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN TOKO"+", OLEH "+akses.getkode());
+                              }
                           }     
                                
                           if(sukses==true){

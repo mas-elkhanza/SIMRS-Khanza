@@ -916,13 +916,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     }
                         
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         Sequel.cariIsi("select Retur_Piutang_Toko from set_akun"),"RETUR JUAL TOKO","0",rs.getString("total")
-                    });    
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                        })==false){
+                            sukses=false;
+                    }     
+                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         Sequel.cariIsi("select Kontra_Retur_Piutang_Toko from set_akun"),"KONTRA RETUR JUAL TOKO",rs.getString("total"),"0"
-                    }); 
-                    sukses=jur.simpanJurnal(rs.getString("no_retur_piutang"),"U","BATAL TRANSAKSI RETUR JUAL TOKO"+", OLEH "+akses.getkode());
+                        })==false){
+                            sukses=false;
+                    }  
+                    if(sukses==true){
+                        sukses=jur.simpanJurnal(rs.getString("no_retur_piutang"),"U","BATAL TRANSAKSI RETUR JUAL TOKO"+", OLEH "+akses.getkode());
+                    }
                     
                     if(sukses==true){
                         Sequel.queryu2("delete from tokoreturpiutang where no_retur_piutang=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});
