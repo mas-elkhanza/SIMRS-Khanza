@@ -797,13 +797,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       sukses=true;
 
                       Sequel.queryu("delete from tampjurnal");
-                      Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          rs.getString("kd_rek_aset"),"JENIS ASET/INVENTARIS","0",rs.getString("totalhibah")
-                      });    
-                      Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                          Kontra_Hibah_Aset,"PENDAPATAN HIBAH",rs.getString("totalhibah"),"0"
-                      }); 
-                      sukses=jur.simpanJurnal(rs.getString("no_hibah"),"U","PEMBATALAN HIBAH ASET/INVENTARIS "+", OLEH "+akses.getkode());
+                      if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{rs.getString("kd_rek_aset"),"JENIS ASET/INVENTARIS","0",rs.getString("totalhibah")})==false){
+                          sukses=false;
+                      }    
+                      if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{Kontra_Hibah_Aset,"PENDAPATAN HIBAH",rs.getString("totalhibah"),"0"})==false){
+                          sukses=false;
+                      } 
+                      if(sukses==true){
+                          sukses=jur.simpanJurnal(rs.getString("no_hibah"),"U","PEMBATALAN HIBAH ASET/INVENTARIS "+", OLEH "+akses.getkode());  
+                      }
+                        
                       if(sukses==true){
                           Sequel.queryu2("delete from inventaris_hibah where no_hibah=?",1,new String[]{rs.getString("no_hibah")});
                           Sequel.Commit();

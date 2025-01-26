@@ -826,13 +826,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     }
                         
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Retur_Beli_Dapur from set_akun2"),"RETUR BELI DAPUR",rs.getString("total"),"0"
-                    });    
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Kontra_Retur_Beli_Dapur from set_akun2"),"KONTRA RETUR BELI DAPUR","0",rs.getString("total")
-                    }); 
-                    sukses=jur.simpanJurnal(rs.getString("no_retur_beli"),"U","BATAL TRANSAKSI RETUR BELI BARANG DAPUR"+", OLEH "+akses.getkode());
+                    if(Sequel.menyimpantf("tampjurnal","?,?,?,?","Rekening",4,new String[]{Sequel.cariIsi("select Retur_Beli_Dapur from set_akun2"),"RETUR BELI DAPUR",rs.getString("total"),"0"})==false){
+                        sukses=false;
+                    }    
+                    if(Sequel.menyimpantf("tampjurnal","?,?,?,?","Rekening",4,new String[]{Sequel.cariIsi("select Kontra_Retur_Beli_Dapur from set_akun2"),"KONTRA RETUR BELI DAPUR","0",rs.getString("total")})==false){
+                        sukses=false;
+                    } 
+                    if(sukses==true){
+                        sukses=jur.simpanJurnal(rs.getString("no_retur_beli"),"U","BATAL TRANSAKSI RETUR BELI BARANG DAPUR"+", OLEH "+akses.getkode());
+                    }
                     
                     if(sukses==true){
                         Sequel.queryu2("delete from dapurreturbeli where no_retur_beli=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});

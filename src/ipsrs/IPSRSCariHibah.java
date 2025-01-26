@@ -820,9 +820,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       }
                       
                       Sequel.queryu("delete from tampjurnal");
-                      Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Hibah_Non_Medis from set_akun"),"PERSEDIAAN BARANG NON MEDIS","0",rs.getString("totalhibah")});
-                      Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Hibah_Non_Medis from set_akun"),"PENDAPATAN HIBAH",rs.getString("totalhibah"),"0"}); 
-                      sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PEMBATALAN HIBAH BARANG NON MEDIS, OLEH "+akses.getkode());  
+                      if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Hibah_Non_Medis from set_akun"),"PERSEDIAAN BARANG NON MEDIS","0",rs.getString("totalhibah")})==false){
+                          sukses=false;
+                      }
+                      if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Hibah_Non_Medis from set_akun"),"PENDAPATAN HIBAH",rs.getString("totalhibah"),"0"})==false){
+                          sukses=false;
+                      }
+                      if(sukses==true){
+                          sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PEMBATALAN HIBAH BARANG NON MEDIS, OLEH "+akses.getkode());
+                      }  
                       
                       if(sukses==true){
                           Sequel.queryu2("delete from ipsrs_hibah where no_hibah=?",1,new String[]{rs.getString("no_hibah")});

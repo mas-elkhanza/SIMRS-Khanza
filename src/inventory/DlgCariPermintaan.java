@@ -1069,8 +1069,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
                 aplikasi.tampilkanpermintaan=false;
-                aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                 aplikasi.isCek();
+                aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                 aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 aplikasi.setLocationRelativeTo(internalFrame1);
                 aplikasi.setVisible(true);
@@ -1099,8 +1099,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPengeluaranApotek aplikasi2=new DlgPengeluaranApotek(null,false);
                 aplikasi2.tampilkanpermintaan=false;
-                aplikasi2.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                 aplikasi2.isCek();
+                aplikasi2.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
                 aplikasi2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 aplikasi2.setLocationRelativeTo(internalFrame1);
                 aplikasi2.setVisible(true);

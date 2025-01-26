@@ -965,18 +965,20 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
                 
                 Sequel.queryu("delete from tampjurnal");
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Penerimaan_Dapur,"PERSEDIAAN BARANG DAPUR","0",rs.getString("total")
-                });    
+                if(Sequel.menyimpantf("tampjurnal","?,?,?,?","Rekening",4,new String[]{Penerimaan_Dapur,"PERSEDIAAN BARANG DAPUR","0",rs.getString("total")})==false){
+                    sukses=false;
+                }    
                 if(rs.getDouble("ppn")>0){
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        PPN_Masukan,"PPN Masukan Barang Dapur","0",rs.getString("ppn")
-                    }); 
+                    if(Sequel.menyimpantf("tampjurnal","?,?,?,?","Rekening",4,new String[]{PPN_Masukan,"PPN Masukan Barang Dapur","0",rs.getString("ppn")})==false){
+                        sukses=false;
+                    } 
                 }
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                    Kontra_Penerimaan_Dapur,"HUTANG BARANG DAPUR",rs.getString("tagihan"),"0"
-                }); 
-                sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DAPUR"+", OLEH "+akses.getkode());
+                if(Sequel.menyimpantf("tampjurnal","?,?,?,?","Rekening",4,new String[]{Kontra_Penerimaan_Dapur,"HUTANG BARANG DAPUR",rs.getString("tagihan"),"0"})==false){
+                    sukses=false;
+                } 
+                if(sukses==true){
+                    sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DAPUR"+", OLEH "+akses.getkode());
+                }
 
                 if(sukses==true){
                    Sequel.queryu2("delete from dapurpemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});

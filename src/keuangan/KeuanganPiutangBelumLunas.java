@@ -961,17 +961,27 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             }    
                             Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"' and nama_bayar='"+nmpenjab.getText()+"'","sisapiutang=sisapiutang-"+(Double.parseDouble(tabMode.getValueAt(i,11).toString())+Double.parseDouble(tabMode.getValueAt(i,12).toString())+Double.parseDouble(tabMode.getValueAt(i,13).toString())));
                             Sequel.queryu("delete from tampjurnal");                    
-                            Sequel.menyimpan("tampjurnal","'"+kdpenjab.getText()+"','BAYAR PIUTANG','0','"+(Double.parseDouble(tabMode.getValueAt(i,11).toString())+Double.parseDouble(tabMode.getValueAt(i,12).toString())+Double.parseDouble(tabMode.getValueAt(i,13).toString()))+"'","Rekening");    
+                            if(Sequel.menyimpantf2("tampjurnal","'"+kdpenjab.getText()+"','BAYAR PIUTANG','0','"+(Double.parseDouble(tabMode.getValueAt(i,11).toString())+Double.parseDouble(tabMode.getValueAt(i,12).toString())+Double.parseDouble(tabMode.getValueAt(i,13).toString()))+"'","Rekening")==false){
+                                sukses=false;
+                            }    
                             if(Double.parseDouble(tabMode.getValueAt(i,11).toString())>0){
-                                Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','"+tabMode.getValueAt(i,11).toString()+"','0'","Rekening"); 
+                                if(Sequel.menyimpantf2("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','"+tabMode.getValueAt(i,11).toString()+"','0'","Rekening")==false){
+                                    sukses=false;
+                                } 
                             }
                             if(Double.parseDouble(tabMode.getValueAt(i,12).toString())>0){
-                                Sequel.menyimpan("tampjurnal","'"+Diskon_Piutang+"','DISKON BAYAR','"+tabMode.getValueAt(i,12).toString()+"','0'","Rekening");
+                                if(Sequel.menyimpantf2("tampjurnal","'"+Diskon_Piutang+"','DISKON BAYAR','"+tabMode.getValueAt(i,12).toString()+"','0'","Rekening")==false){
+                                    sukses=false;
+                                } 
                             }
                             if(Double.parseDouble(tabMode.getValueAt(i,13).toString())>0){
-                                Sequel.menyimpan("tampjurnal","'"+Piutang_Tidak_Terbayar+"','PIUTANG TIDAK TERBAYAR','"+tabMode.getValueAt(i,13).toString()+"','0'","Rekening"); 
+                                if(Sequel.menyimpantf2("tampjurnal","'"+Piutang_Tidak_Terbayar+"','PIUTANG TIDAK TERBAYAR','"+tabMode.getValueAt(i,13).toString()+"','0'","Rekening")==false){
+                                    sukses=false;
+                                }  
                             }   
-                            sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","BAYAR PIUTANG"+", OLEH "+akses.getkode());                   
+                            if(sukses==true){
+                                sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","BAYAR PIUTANG"+", OLEH "+akses.getkode());  
+                            }                 
                         }else{
                             sukses=false;
                         }
@@ -987,9 +997,15 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         if(Sequel.menyimpantf("pemasukan_lain","?,?,?,?,?,?,?","Pemasukan",7,new String[]{
                             nomorpemasukan,Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),status,Double.toString(lebihbayar),akses.getkode().replaceAll("Admin Utama","-"),carabayar,"Pendapatan Lebih Bayar Piutang Pasien"
                         })==true){
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Lebih_Bayar_Piutang,"Lebih Bayar Piutang","0",Double.toString(lebihbayar)});
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{koderekening,AkunBayar.getSelectedItem().toString(),Double.toString(lebihbayar),"0"}); 
-                            sukses=jur.simpanJurnal(nomorpemasukan,"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
+                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Lebih_Bayar_Piutang,"Lebih Bayar Piutang","0",Double.toString(lebihbayar)})==false){
+                                sukses=false;
+                            } 
+                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{koderekening,AkunBayar.getSelectedItem().toString(),Double.toString(lebihbayar),"0"})==false){
+                                sukses=false;
+                            } 
+                            if(sukses==true){
+                                sukses=jur.simpanJurnal(nomorpemasukan,"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
+                            }
                             if(sukses==true){
                                 lebihbayar=0;
                                 carabayar="";

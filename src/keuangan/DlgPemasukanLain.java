@@ -726,9 +726,15 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         psakun.setString(1,KdKategori.getText());
                         rs=psakun.executeQuery();
                         if(rs.next()){
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",pemasukan.getText()});
-                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),pemasukan.getText(),"0"}); 
-                            sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
+                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",pemasukan.getText()})==false){
+                                sukses=false;
+                            }
+                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),pemasukan.getText(),"0"})==false){
+                                sukses=false;
+                            }
+                            if(sukses==true){
+                                sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
+                            }
                         }
                     } catch (Exception e) {
                         sukses=false;
@@ -811,9 +817,15 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                             psakun.setString(1,KdKategori.getText());
                             rs=psakun.executeQuery();
                             if(rs.next()){
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),pemasukan.getText(),"0"});
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",pemasukan.getText()}); 
-                                sukses=jur.simpanJurnal(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
+                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),pemasukan.getText(),"0"})==false){
+                                    sukses=false;
+                                } 
+                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",pemasukan.getText()})==false){
+                                    sukses=false;
+                                }
+                                if(sukses==true){
+                                    sukses=jur.simpanJurnal(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
+                                }
                             } 
                         } catch (Exception e) {
                             sukses=false;

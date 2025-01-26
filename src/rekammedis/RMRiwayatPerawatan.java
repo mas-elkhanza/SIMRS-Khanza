@@ -65,21 +65,14 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.core.io.Resource;
 import org.springframework.web.client.RestTemplate;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -89,6 +82,8 @@ import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.springframework.core.io.ByteArrayResource;
 
 
 
@@ -779,6 +774,16 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         Scroll1.setOpaque(true);
 
         tbRegistrasi.setName("tbRegistrasi"); // NOI18N
+        tbRegistrasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbRegistrasiMouseClicked(evt);
+            }
+        });
+        tbRegistrasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbRegistrasiKeyPressed(evt);
+            }
+        });
         Scroll1.setViewportView(tbRegistrasi);
 
         TabRawat.addTab("Riwayat Kunjungan", Scroll1);
@@ -3177,14 +3182,33 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     } catch (Exception ex) {
                                         System.out.println("Notifikasi Bridging : " + ex);
                                     }*/
-                                    try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+                                    try {
+                                        CloseableHttpClient httpClient = HttpClients.createDefault();
                                         HttpPost post = new HttpPost(koneksiDB.URLAPIESIGN());
                                         authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-                                        post.addHeader("Authorization","Basic " + base64Creds);
+                                        post.addHeader("Authorization", "Basic " + base64Creds);
+
+                                        // Validasi format file
+                                        if (!f.getName().toLowerCase().endsWith(".pdf")) {
+                                            System.out.println("File bukan PDF, pastikan file berformat .pdf");
+                                            return;
+                                        }
+                                        
+                                        System.out.println("Nama file: " + f.getName());
+                                        System.out.println("Ukuran file: " + f.length() + " bytes");
+                                        
+                                        try (PDDocument file = PDDocument.load(f)) {
+                                            System.out.println("File valid PDF");
+                                        } catch (IOException ex) {
+                                            System.out.println("File bukan PDF yang valid.");
+                                            return;
+                                        }
+
+                                        byte[] fileBytes = Files.readAllBytes(f.toPath());
                                         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
-                                            .addBinaryBody("file", f, ContentType.DEFAULT_BINARY, f.getName())
-                                            .addTextBody("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
+                                            .addBinaryBody("file", fileBytes, ContentType.APPLICATION_PDF, f.getName())
+                                            .addTextBody("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
                                             .addTextBody("passphrase", Phrase.getText())
                                             .addTextBody("tampilan", "visible")
                                             .addTextBody("image", "false")
@@ -3194,13 +3218,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             .addTextBody("tag_koordinat", "#");
                                         HttpEntity entity = entityBuilder.build();
                                         post.setEntity(entity);
+
                                         try (CloseableHttpResponse response = httpClient.execute(post)) {
                                             System.out.println("Response Status: " + response.getCode());
-
                                             if (response.getCode() == 200) {
-                                                // Menyimpan respons sebagai file
                                                 try (InputStream inputStream = response.getEntity().getContent();
-                                                    FileOutputStream outputStream = new FileOutputStream(f)) {
+                                                     FileOutputStream outputStream = new FileOutputStream(f)) {
                                                     byte[] buffer = new byte[1024];
                                                     int bytesRead;
                                                     while ((bytesRead = inputStream.read(buffer)) != -1) {
@@ -3209,13 +3232,14 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     System.out.println("File respons berhasil disimpan di: " + f.getAbsolutePath());
                                                 }
                                             } else {
-                                                // Tampilkan pesan kesalahan jika status bukan 200
                                                 System.out.println("Upload gagal, status code: " + response.getCode());
                                                 System.out.println("Error: " + EntityUtils.toString(response.getEntity()));
                                             }
+                                        } catch (IOException a) {
+                                            System.out.println("Error: " + a);
                                         }
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
+                                    } catch (Exception e) {
+                                        System.out.println("Error: " + e);
                                     }
                                 }
                             }
@@ -3395,14 +3419,33 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     } catch (Exception ex) {
                                         System.out.println("Notifikasi Bridging : " + ex);
                                     }*/
-                                    try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+                                    try {
+                                        CloseableHttpClient httpClient = HttpClients.createDefault();
                                         HttpPost post = new HttpPost(koneksiDB.URLAPIESIGN());
                                         authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-                                        post.addHeader("Authorization","Basic " + base64Creds);
+                                        post.addHeader("Authorization", "Basic " + base64Creds);
+
+                                        // Validasi format file
+                                        if (!f.getName().toLowerCase().endsWith(".pdf")) {
+                                            System.out.println("File bukan PDF, pastikan file berformat .pdf");
+                                            return;
+                                        }
+                                        
+                                        System.out.println("Nama file: " + f.getName());
+                                        System.out.println("Ukuran file: " + f.length() + " bytes");
+                                        
+                                        try (PDDocument file = PDDocument.load(f)) {
+                                            System.out.println("File valid PDF");
+                                        } catch (IOException ex) {
+                                            System.out.println("File bukan PDF yang valid.");
+                                            return;
+                                        }
+
+                                        byte[] fileBytes = Files.readAllBytes(f.toPath());
                                         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
-                                            .addBinaryBody("file", f, ContentType.DEFAULT_BINARY, f.getName())
-                                            .addTextBody("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
+                                            .addBinaryBody("file", fileBytes, ContentType.APPLICATION_PDF, f.getName())
+                                            .addTextBody("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
                                             .addTextBody("passphrase", Phrase.getText())
                                             .addTextBody("tampilan", "visible")
                                             .addTextBody("image", "false")
@@ -3412,13 +3455,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             .addTextBody("tag_koordinat", "#");
                                         HttpEntity entity = entityBuilder.build();
                                         post.setEntity(entity);
+
                                         try (CloseableHttpResponse response = httpClient.execute(post)) {
                                             System.out.println("Response Status: " + response.getCode());
-
                                             if (response.getCode() == 200) {
-                                                // Menyimpan respons sebagai file
                                                 try (InputStream inputStream = response.getEntity().getContent();
-                                                    FileOutputStream outputStream = new FileOutputStream(f)) {
+                                                     FileOutputStream outputStream = new FileOutputStream(f)) {
                                                     byte[] buffer = new byte[1024];
                                                     int bytesRead;
                                                     while ((bytesRead = inputStream.read(buffer)) != -1) {
@@ -3427,13 +3469,14 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     System.out.println("File respons berhasil disimpan di: " + f.getAbsolutePath());
                                                 }
                                             } else {
-                                                // Tampilkan pesan kesalahan jika status bukan 200
                                                 System.out.println("Upload gagal, status code: " + response.getCode());
                                                 System.out.println("Error: " + EntityUtils.toString(response.getEntity()));
                                             }
+                                        } catch (IOException a) {
+                                            System.out.println("Error: " + a);
                                         }
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
+                                    } catch (Exception e) {
+                                        System.out.println("Error: " + e);
                                     }
                                 }
                             }
@@ -3451,6 +3494,34 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             } 
         }
     }//GEN-LAST:event_BtnSimpanTandaTanganActionPerformed
+
+    private void tbRegistrasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRegistrasiKeyPressed
+        if(tabModeRegistrasi.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                try {
+                    R4.setSelected(true);
+                    NoRawat.setText(tabModeRegistrasi.getValueAt(tbRegistrasi.getSelectedRow(),1).toString());
+                    TabRawat.setSelectedIndex(2);
+                    tampilPerawatan();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbRegistrasiKeyPressed
+
+    private void tbRegistrasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRegistrasiMouseClicked
+        if(tabModeRegistrasi.getRowCount()!=0){
+            if((evt.getClickCount()==2)){
+                try {
+                    R4.setSelected(true);
+                    NoRawat.setText(tabModeRegistrasi.getValueAt(tbRegistrasi.getSelectedRow(),1).toString());
+                    TabRawat.setSelectedIndex(2);
+                    tampilPerawatan();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+    }//GEN-LAST:event_tbRegistrasiMouseClicked
 
     /**
     * @param args the command line arguments
@@ -4273,6 +4344,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanPenilaianPasienPenyakitMenular(rs.getString("no_rawat"));
                     //menampilkan pasien Imunitas Rendah
                     menampilkanPenilaianPasienImunitasRendah(rs.getString("no_rawat"));
+                    //menampilkan penilaian derajat dehidrasi
+                    menampilkanPenilaianDerajatDehidrasi(rs.getString("no_rawat"));
                     //menampilkan pasien keracunan
                     menampilkanPenilaianPasienKeracunan(rs.getString("no_rawat"));
                     //menampilkan skrining gizi lanjut
@@ -30658,6 +30731,95 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Asuhan medis Rawat Inap: "+e);
+        }
+    }
+    
+    private void menampilkanPenilaianDerajatDehidrasi(String norawat) {
+        try {
+            if(chkAsuhanLanjutanRisikoJatuhDewasa.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select penilaian_dehidrasi.tanggal,penilaian_dehidrasi.penilaian1,penilaian_dehidrasi.penilaian_nilai1,penilaian_dehidrasi.penilaian2,penilaian_dehidrasi.penilaian_nilai2,"+
+                            "penilaian_dehidrasi.penilaian3,penilaian_dehidrasi.penilaian_nilai3,penilaian_dehidrasi.penilaian4,penilaian_dehidrasi.penilaian_nilai4,penilaian_dehidrasi.penilaian5,"+
+                            "penilaian_dehidrasi.penilaian_nilai5,penilaian_dehidrasi.penilaian6,penilaian_dehidrasi.penilaian_nilai6,penilaian_dehidrasi.penilaian_totalnilai,penilaian_dehidrasi.hasil_penilaian,"+
+                            "penilaian_dehidrasi.kd_dokter,dokter.nm_dokter from penilaian_dehidrasi inner join dokter on penilaian_dehidrasi.kd_dokter=dokter.kd_dokter where "+
+                            "penilaian_dehidrasi.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Penilaian Derajat Dehidrasi Berdasarkan WHO</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                 "<tr align='center'>"+
+                                    "<td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td>"+
+                                    "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal & Dokter</td>"+
+                                    "<td valign='top' width='18%' bgcolor='#FFFAF8'>Item Penilaian</td>"+
+                                    "<td valign='top' width='30%' bgcolor='#FFFAF8'>Kriteria</td>"+
+                                    "<td valign='top' width='5%' bgcolor='#FFFAF8'>Skor</td>"+
+                                    "<td valign='top' width='28%' bgcolor='#FFFAF8'>Hasil Penilaian</td>"+
+                                 "</tr>"
+                        );
+                        rs2.beforeFirst();
+                        w=1;
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+w+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("tanggal")+"<br>"+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                    "<td valign='top' align='justify' valign='middle'>1. Keadaan Umum</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian1")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_nilai1")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle' rowspan='7'>"+rs2.getString("hasil_penilaian").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>2. Mata</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian2")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_nilai2")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>3. Mulut</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian3")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_nilai3")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>4. Pernafasan</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian4")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_nilai4")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>5. Tugor</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian5")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_nilai5")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='justify' valign='middle'>6. Nadi</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian6")+"</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_nilai6")+"</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top' align='center' valign='middle' colspan='2'>TOTAL</td>"+
+                                    "<td valign='top' align='center' valign='middle'>"+rs2.getString("penilaian_totalnilai")+"</td>"+
+                                 "</tr>"
+                            );                                     
+                            w++;
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Penilaian Derajat Dehidrasi : "+e);
         }
     }
     
