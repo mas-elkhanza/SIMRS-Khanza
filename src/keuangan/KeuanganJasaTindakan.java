@@ -24,14 +24,12 @@ import kepegawaian.DlgCariPegawai;
 import simrskhanza.DlgCariCaraBayar;
 
 public class KeuanganJasaTindakan extends javax.swing.JDialog {
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
+    private final sekuel Sequel=new sekuel();
+    private final validasi Valid=new validasi();
+    private final Connection koneksi=koneksiDB.condb();
     private DlgCariPegawai dokter=new DlgCariPegawai(null,false);
     private DlgCariCaraBayar carabayar=new DlgCariCaraBayar(null,false);
-    private int i=0,z=0;
     private StringBuilder htmlContent;
-    private String pilihan="";
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private double subjasasarana=0,subjasamedis=0,subjasamenejemen=0,subbhp=0,subtotal=0,

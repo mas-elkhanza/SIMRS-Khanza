@@ -196,6 +196,7 @@ public final class DlgStatusDataRM extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm();
+        MnInputDiagnosa.setEnabled(akses.getdiagnosa_pasien());
     }    
 
     /** This method is called from within the constructor to
