@@ -69,6 +69,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -3106,82 +3107,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     );
                                     System.out.println("Membuat ulang File RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf untuk dikirim ke server");
                                     File f = new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");   
-                                    /*try {
-                                        authStr = koneksiDB.USERNAMEAPIESIGN()+":"+koneksiDB.PASSAPIESIGN();
-                                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-                                        headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.APPLICATION_JSON);
-                                        headers.add("Authorization", "Basic " + base64Creds);
-                                        requestJson="{"+
-                                                        "\"nik\":\""+Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode())+"\"," +
-                                                        "\"passphrase\":\""+Phrase.getText()+"\"," +
-                                                        "\"signatureProperties\": [{" +
-                                                            "\"tampilan\": \"VISIBLE\"," +
-                                                            "\"tag_koordinat\": \"#\"," +
-                                                            "\"imageBase64\": \""+Base64.getEncoder().encodeToString(Sequel.cariGambar("select setting.logo from setting").readAllBytes())+"\"," +
-                                                            "\"width\": 90," +
-                                                            "\"height\": 90" +
-                                                        "}],"+
-                                                        "\"file\":\""+Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(f))+"\"" +
-                                                    "}";
-                                        System.out.println("JSON : "+requestJson);
-                                        requestEntity = new HttpEntity(requestJson,headers);
-                                        System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
-                                        requestJson = getRest().exchange(koneksiDB.URLAPIESIGN(), HttpMethod.POST, requestEntity, String.class).getBody();
-                                        System.out.println("JSON : "+requestJson);
-                                    }catch (Exception ex) {
-                                        //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        System.out.println("Notifikasi Bridging : "+ex);
-                                    }*/
-                                    /*try {
-                                        authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
-                                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-                                        headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-                                        headers.add("Authorization", "Basic " + base64Creds);
-
-                                        byte[] fileBytes = Files.readAllBytes(f.toPath());
-                                        ByteArrayResource fileAsResource = new ByteArrayResource(fileBytes) {
-                                            @Override
-                                            public String getFilename() {
-                                                return f.getName();
-                                            }
-                                        };
-
-                                        System.out.println("Resource class: " + fileAsResource.getClass().getName());
-                                        
-                                        map = new LinkedMultiValueMap<>();
-                                        map.add("file", fileAsResource);
-                                        map.add("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()));
-                                        map.add("passphrase", Phrase.getText());
-                                        map.add("tampilan", "visible");
-                                        map.add("image", "false");
-                                        map.add("linkQR", koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf");
-                                        map.add("width", "90");
-                                        map.add("height", "90");
-                                        map.add("tag_koordinat", "#");
-
-                                        requestEntity = new HttpEntity<>(map, headers);
-
-                                        System.out.println("URL E-Sign : " + koneksiDB.URLAPIESIGN());
-                                        System.out.println("linkQR : " + koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf");
-
-                                        //json = mapper.readTree(getRest().postForEntity(koneksiDB.URLAPIESIGN(), requestEntity, String.class).getBody()).toString();
-                                        ResponseEntity<Resource> response = getRest().exchange(
-                                            koneksiDB.URLAPIESIGN(),HttpMethod.POST,requestEntity,Resource.class
-                                        );
-                                        try (InputStream inputStream = response.getBody().getInputStream();
-                                            FileOutputStream outputStream = new FileOutputStream("downloadedFile.pdf")) {
-                                            byte[] buffer = new byte[1024];
-                                            int bytesRead;
-                                            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                                               outputStream.write(buffer, 0, bytesRead);
-                                            }
-                                            System.out.println("File downloaded successfully.");
-                                       }
-                                    } catch (Exception ex) {
-                                        System.out.println("Notifikasi Bridging : " + ex);
-                                    }*/
+                                    //sftpChannel.put("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf","RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
                                     try {
                                         CloseableHttpClient httpClient = HttpClients.createDefault();
                                         HttpPost post = new HttpPost(koneksiDB.URLAPIESIGN());
@@ -3197,17 +3123,18 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         
                                         System.out.println("Nama file: " + f.getName());
                                         System.out.println("Ukuran file: " + f.length() + " bytes");
+                                        System.out.println("Lokasi file: " + f.getPath());
                                         
-                                        try (PDDocument file = PDDocument.load(f)) {
+                                        try (PDDocument filenya = PDDocument.load(f)) {
                                             System.out.println("File valid PDF");
                                         } catch (IOException ex) {
                                             System.out.println("File bukan PDF yang valid.");
                                             return;
                                         }
 
-                                        byte[] fileBytes = Files.readAllBytes(f.toPath());
+                                        InputStream filepdf = new FileInputStream(f.getPath());
                                         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
-                                            .addBinaryBody("file", fileBytes, ContentType.APPLICATION_PDF, f.getName())
+                                            .addBinaryBody("file", filepdf, ContentType.APPLICATION_PDF, f.getName())
                                             .addTextBody("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
                                             .addTextBody("passphrase", Phrase.getText())
                                             .addTextBody("tampilan", "visible")
@@ -3342,83 +3269,6 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     );
                                     System.out.println("Membuat File RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf untuk dikirim ke server");
                                     File f = new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");   
-                                    //sftpChannel.put("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf","RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                    /*try {
-                                        authStr = koneksiDB.USERNAMEAPIESIGN()+":"+koneksiDB.PASSAPIESIGN();
-                                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-                                        headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.APPLICATION_JSON);
-                                        headers.add("Authorization", "Basic " + base64Creds);
-                                        requestJson="{"+
-                                                        "\"nik\":\""+Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?",akses.getkode())+"\"," +
-                                                        "\"passphrase\":\""+Phrase.getText()+"\"," +
-                                                        "\"signatureProperties\": [{" +
-                                                            "\"tampilan\": \"VISIBLE\"," +
-                                                            "\"tag_koordinat\": \"#\"," +
-                                                            "\"imageBase64\": \""+Base64.getEncoder().encodeToString(Sequel.cariGambar("select setting.logo from setting").readAllBytes())+"\"," +
-                                                            "\"width\": 90," +
-                                                            "\"height\": 90" +
-                                                        "}],"+
-                                                        "\"file\":\""+Base64.getEncoder().encodeToString(FileUtils.readFileToByteArray(f))+"\"" +
-                                                    "}";
-                                        System.out.println("JSON : "+requestJson);
-                                        requestEntity = new HttpEntity(requestJson,headers);
-                                        System.out.println("URL E-Sign : "+koneksiDB.URLAPIESIGN());
-                                        requestJson = getRest().exchange(koneksiDB.URLAPIESIGN(), HttpMethod.POST, requestEntity, String.class).getBody();
-                                        System.out.println("JSON : "+requestJson);
-                                    }catch (Exception ex) {
-                                        //sftpChannel.rm("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");
-                                        System.out.println("Notifikasi Bridging : "+ex);
-                                    }*/
-                                    /*try {
-                                        authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
-                                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-                                        headers = new HttpHeaders();
-                                        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
-                                        headers.add("Authorization", "Basic " + base64Creds);
-
-                                        byte[] fileBytes = Files.readAllBytes(f.toPath());
-                                        ByteArrayResource fileAsResource = new ByteArrayResource(fileBytes) {
-                                            @Override
-                                            public String getFilename() {
-                                                return f.getName();
-                                            }
-                                        };
-
-                                        System.out.println("Resource class: " + fileAsResource.getClass().getName());
-                                        
-                                        map = new LinkedMultiValueMap<>();
-                                        map.add("file", fileAsResource);
-                                        map.add("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()));
-                                        map.add("passphrase", Phrase.getText());
-                                        map.add("tampilan", "visible");
-                                        map.add("image", "false");
-                                        map.add("linkQR", koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf");
-                                        map.add("width", "90");
-                                        map.add("height", "90");
-                                        map.add("tag_koordinat", "#");
-
-                                        requestEntity = new HttpEntity<>(map, headers);
-
-                                        System.out.println("URL E-Sign : " + koneksiDB.URLAPIESIGN());
-                                        System.out.println("linkQR : " + koneksiDB.URLAKSESFILEESIGN() + "/RPP" + NoRawat.getText().trim().replaceAll("/", "") + ".pdf");
-
-                                        //json = mapper.readTree(getRest().postForEntity(koneksiDB.URLAPIESIGN(), requestEntity, String.class).getBody()).toString();
-                                        ResponseEntity<Resource> response = getRest().exchange(
-                                            koneksiDB.URLAPIESIGN(),HttpMethod.POST,requestEntity,Resource.class
-                                        );
-                                        try (InputStream inputStream = response.getBody().getInputStream();
-                                            FileOutputStream outputStream = new FileOutputStream("downloadedFile.pdf")) {
-                                            byte[] buffer = new byte[1024];
-                                            int bytesRead;
-                                            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                                               outputStream.write(buffer, 0, bytesRead);
-                                            }
-                                            System.out.println("File downloaded successfully.");
-                                       }
-                                    } catch (Exception ex) {
-                                        System.out.println("Notifikasi Bridging : " + ex);
-                                    }*/
                                     try {
                                         CloseableHttpClient httpClient = HttpClients.createDefault();
                                         HttpPost post = new HttpPost(koneksiDB.URLAPIESIGN());
@@ -3434,17 +3284,18 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         
                                         System.out.println("Nama file: " + f.getName());
                                         System.out.println("Ukuran file: " + f.length() + " bytes");
+                                        System.out.println("Lokasi file: " + f.getPath());
                                         
-                                        try (PDDocument file = PDDocument.load(f)) {
+                                        try (PDDocument filenya = PDDocument.load(f)) {
                                             System.out.println("File valid PDF");
                                         } catch (IOException ex) {
                                             System.out.println("File bukan PDF yang valid.");
                                             return;
                                         }
 
-                                        byte[] fileBytes = Files.readAllBytes(f.toPath());
+                                        InputStream filepdf = new FileInputStream(f.getPath());
                                         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
-                                            .addBinaryBody("file", fileBytes, ContentType.APPLICATION_PDF, f.getName())
+                                            .addBinaryBody("file", filepdf, ContentType.APPLICATION_PDF, f.getName())
                                             .addTextBody("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
                                             .addTextBody("passphrase", Phrase.getText())
                                             .addTextBody("tampilan", "visible")

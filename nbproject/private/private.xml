@@ -5,7 +5,7 @@
             <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
             <bookmark id="2">
                 <name/>
-                <line>1880</line>
+                <line>1948</line>
                 <key/>
             </bookmark>
         </file>
@@ -20,13 +20,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMHasilPemeriksaanEKG.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPengeluaranApotek.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMDataCatatanObservasiCHBP.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgCariPermintaan.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMRiwayatPerawatan.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/fungsi/akses.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMPenilaianDerajatDehidrasi.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/setting/database.xml</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/DlgCariPeriksaRadiologi.java</file>
         </group>
     </open-files>
 </project-private>

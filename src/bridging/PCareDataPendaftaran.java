@@ -5081,8 +5081,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                         pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
                         rscari=pscari.executeQuery();
                         while(rscari.next()){
-                            if(Sequel.cariInteger("select count(kode_brng) from pcare_obat_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kode_brng='"+rscari.getString("kode_brng")+"'")==0){
-                                arrSplit = Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kode_brng='"+rscari.getString("kode_brng")+"'").toLowerCase().split("x");
+                            if(Sequel.cariInteger("select count(pcare_obat_diberikan.kode_brng) from pcare_obat_diberikan where pcare_obat_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and pcare_obat_diberikan.jam='"+rscari.getString("jam")+"' and pcare_obat_diberikan.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and pcare_obat_diberikan.kode_brng='"+rscari.getString("kode_brng")+"'")==0){
+                                arrSplit = Sequel.cariIsi("select aturan_pakai.aturan from aturan_pakai where aturan_pakai.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and aturan_pakai.jam='"+rscari.getString("jam")+"' and aturan_pakai.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and aturan_pakai.kode_brng='"+rscari.getString("kode_brng")+"'").toLowerCase().split("x");
                                 signa1="1";
                                 try {
                                     if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){
@@ -6426,7 +6426,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
             
             ps=koneksi.prepareStatement(
-                    "select databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,jenis.nama from detail_pemberian_obat "+
+                    "select databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,jenis.nama,detail_pemberian_obat.tgl_perawatan,"+
+                    "detail_pemberian_obat.jam,detail_pemberian_obat.kode_brng from detail_pemberian_obat "+
                     "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
                     "inner join jenis on jenis.kdjns=databarang.kdjns where detail_pemberian_obat.no_rawat=? "+
                     "group by databarang.nama_brng");
@@ -6437,9 +6438,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 bmhp="";
                 while(rs.next()){
                     if(rs.getString("nama").toLowerCase().contains("obat")){
-                        terapiobat=rs.getString("nama_brng")+" "+rs.getString("jml")+", "+terapiobat;
+                        terapiobat=rs.getString("jml")+" "+rs.getString("nama_brng")+" "+Sequel.cariIsi("select aturan_pakai.aturan from aturan_pakai where aturan_pakai.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and aturan_pakai.jam='"+rscari.getString("jam")+"' and aturan_pakai.no_rawat='"+norwt+"' and aturan_pakai.kode_brng='"+rscari.getString("kode_brng")+"'").toLowerCase()+", "+terapiobat;
                     }else if(rs.getString("nama").toLowerCase().contains("bmhp")||rs.getString("nama").toLowerCase().contains("bhp")){
-                        bmhp=rs.getString("nama_brng")+" "+rs.getString("jml")+", "+bmhp;
+                        bmhp=rs.getString("jml")+" "+rs.getString("nama_brng")+", "+bmhp;
                     }
                 }
                 TerapiObat.setText(terapiobat.equals("")?"Tidak Ada Obat":terapiobat);
@@ -6930,7 +6931,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
             }
             
             ps=koneksi.prepareStatement(
-                    "select databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,jenis.nama from detail_pemberian_obat "+
+                    "select databarang.nama_brng,sum(detail_pemberian_obat.jml) as jml,jenis.nama,detail_pemberian_obat.tgl_perawatan,"+
+                    "detail_pemberian_obat.jam,detail_pemberian_obat.kode_brng from detail_pemberian_obat "+
                     "inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
                     "inner join jenis on jenis.kdjns=databarang.kdjns where detail_pemberian_obat.no_rawat=? "+
                     "group by databarang.nama_brng");
@@ -6941,9 +6943,9 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 bmhp="";
                 while(rs.next()){
                     if(rs.getString("nama").toLowerCase().contains("obat")){
-                        terapiobat=rs.getString("nama_brng")+" "+rs.getString("jml")+", "+terapiobat;
+                        terapiobat=rs.getString("jml")+" "+rs.getString("nama_brng")+" "+Sequel.cariIsi("select aturan_pakai.aturan from aturan_pakai where aturan_pakai.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and aturan_pakai.jam='"+rscari.getString("jam")+"' and aturan_pakai.no_rawat='"+norwt+"' and aturan_pakai.kode_brng='"+rscari.getString("kode_brng")+"'").toLowerCase()+", "+terapiobat;
                     }else if(rs.getString("nama").toLowerCase().contains("bmhp")||rs.getString("nama").toLowerCase().contains("bhp")){
-                        bmhp=rs.getString("nama_brng")+" "+rs.getString("jml")+", "+bmhp;
+                        bmhp=rs.getString("jml")+" "+rs.getString("nama_brng")+", "+bmhp;
                     }
                 }
                 TerapiObat.setText(terapiobat.equals("")?"Tidak Ada Obat":terapiobat);
@@ -8646,8 +8648,8 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                                             pscari.setString(1,tbKunjungan.getValueAt(i,0).toString());
                                             rscari=pscari.executeQuery();
                                             while(rscari.next()){
-                                                if(Sequel.cariInteger("select count(kode_brng) from pcare_obat_diberikan where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kode_brng='"+rscari.getString("kode_brng")+"'")==0){
-                                                    arrSplit = Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and jam='"+rscari.getString("jam")+"' and no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and kode_brng='"+rscari.getString("kode_brng")+"'").toLowerCase().split("x");
+                                                if(Sequel.cariInteger("select count(pcare_obat_diberikan.kode_brng) from pcare_obat_diberikan where pcare_obat_diberikan.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and pcare_obat_diberikan.jam='"+rscari.getString("jam")+"' and pcare_obat_diberikan.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and pcare_obat_diberikan.kode_brng='"+rscari.getString("kode_brng")+"'")==0){
+                                                    arrSplit = Sequel.cariIsi("select aturan_pakai.aturan from aturan_pakai where aturan_pakai.tgl_perawatan='"+rscari.getString("tgl_perawatan")+"' and aturan_pakai.jam='"+rscari.getString("jam")+"' and aturan_pakai.no_rawat='"+tbKunjungan.getValueAt(i,0).toString()+"' and aturan_pakai.kode_brng='"+rscari.getString("kode_brng")+"'").toLowerCase().split("x");
                                                     signa1="1";
                                                     try {
                                                         if(!arrSplit[0].replaceAll("[^0-9.]+", "").equals("")){

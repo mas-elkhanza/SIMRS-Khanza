@@ -239,7 +239,7 @@ public final class akses {
             surat_pemesanan_dapur=false,pengajuan_barang_dapur=false,dapur_returbeli=false,hibah_dapur=false,ringkasan_penerimaan_dapur=false,ringkasan_pengajuan_dapur=false,
             ringkasan_pemesanan_dapur=false,ringkasan_returbeli_dapur=false,ringkasan_stokkeluar_dapur=false,dapur_stokkeluar_pertanggal=false,sirkulasi_dapur=false,
             sirkulasi_dapur2=false,verifikasi_penerimaan_dapur=false,nilai_penerimaan_vendor_dapur_perbulan=false,ringkasan_hutang_vendor_dapur=false,penilaian_psikologi_klinis=false,
-            penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false;
+            penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false,ringkasan_jasa_tindakan_medis=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1357,6 +1357,7 @@ public final class akses {
                         akses.penilaian_psikologi_klinis=true;
                         akses.penilaian_awal_medis_ranap_neonatus=true;
                         akses.penilaian_derajat_dehidrasi=true;
+                        akses.ringkasan_jasa_tindakan_medis=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2458,6 +2459,7 @@ public final class akses {
                         akses.penilaian_psikologi_klinis=rs2.getBoolean("penilaian_psikologi_klinis");
                         akses.penilaian_awal_medis_ranap_neonatus=rs2.getBoolean("penilaian_awal_medis_ranap_neonatus");
                         akses.penilaian_derajat_dehidrasi=rs2.getBoolean("penilaian_derajat_dehidrasi");
+                        akses.ringkasan_jasa_tindakan_medis=rs2.getBoolean("ringkasan_jasa_tindakan_medis");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3557,6 +3559,7 @@ public final class akses {
                         akses.penilaian_psikologi_klinis=false;
                         akses.penilaian_awal_medis_ranap_neonatus=false;
                         akses.penilaian_derajat_dehidrasi=false;
+                        akses.ringkasan_jasa_tindakan_medis=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4679,6 +4682,7 @@ public final class akses {
         akses.penilaian_psikologi_klinis=false;
         akses.penilaian_awal_medis_ranap_neonatus=false;
         akses.penilaian_derajat_dehidrasi=false;
+        akses.ringkasan_jasa_tindakan_medis=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5817,4 +5821,5 @@ public final class akses {
     public static boolean getpenilaian_psikologi_klinis(){return akses.penilaian_psikologi_klinis;}
     public static boolean getpenilaian_awal_medis_ranap_neonatus(){return akses.penilaian_awal_medis_ranap_neonatus;}
     public static boolean getpenilaian_derajat_dehidrasi(){return akses.penilaian_derajat_dehidrasi;}
+    public static boolean getringkasan_jasa_tindakan_medis(){return akses.ringkasan_jasa_tindakan_medis;}
 }   

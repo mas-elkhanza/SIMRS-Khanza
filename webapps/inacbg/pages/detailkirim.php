@@ -20,6 +20,7 @@
             $action         = validTeks(isset($_GET['action'])?$_GET['action']:NULL);
             $codernik       = validTeks(isset($_GET['codernik'])?$_GET['codernik']:NULL);
             $carabayar      = validTeks(str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL);
+            $statuskirim    = validTeks(str_replace("_"," ",isset($_GET['statuskirim']))?str_replace("_"," ",$_GET['statuskirim']):NULL);
             $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                             reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,
                             pasien.umur,pasien.tgl_lahir,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,
@@ -124,16 +125,18 @@
             }
             
             echo "<input type=hidden name=no_rawat value='$norawat'>
-                  <input type=hidden name=tgl_registrasi value='$tgl_registrasi'>
+                  <input type=hidden name=tgl_registrasi value='$tgl_registrasi $jam_reg'>
                   <input type=hidden name=tgl_lahir value='$tgl_lahir'>
                   <input type=hidden name=nm_pasien value='$nm_pasien'>
                   <input type=hidden name=jnsrawat value='$jnsrawat'>
                   <input type=hidden name=jk value='$jk'>
                   <input type=hidden name=codernik value='$codernik'>";
             echo "<div align='center' class='link'>
-                      <a href='?act=KlaimBaruManual2&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar'>| List Data |</a>
+                      <a href='?act=KlaimBaruManual2&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=".str_replace(" ","_",$carabayar)."&statuskirim=".str_replace(" ","_",$statuskirim)."'>| List Data |</a>
                   </div>";
         ?>
+        <input name="carabayar" type="hidden" value="<?php echo $carabayar;?>">
+        <input name="statuskirim" type="hidden" value="<?php echo $statuskirim;?>">
         <div style="width: 100%; height: 87%; overflow: auto;">
         <table width="100%" align="center">
             <tr class="head">
@@ -190,9 +193,9 @@
                 <td width="57%">
                     <input name="keluar" class="text" type=text class="inputbox" 
                         value="<?php if($status_lanjut=="Ralan"){
-                                         echo $tgl_registrasi;
+                                         echo $tgl_registrasi." ".$jam_reg;
                                      }else{
-                                         echo getOne("select kamar_inap.tgl_keluar from kamar_inap where kamar_inap.no_rawat='".$norawat."'order by kamar_inap.tgl_keluar desc limit 1");
+                                         echo getOne("select concat(kamar_inap.tgl_keluar,' ',kamar_inap.jam_keluar) from kamar_inap where kamar_inap.no_rawat='".$norawat."'order by kamar_inap.tgl_keluar desc limit 1");
                                      }
                                 ?>" size="15" maxlength="10">
                 </td>
@@ -787,6 +790,8 @@
                 $jnsrawat          = validTeks(trim($_POST['jnsrawat']));
                 $sistole           = validTeks(trim($_POST['sistole']));
                 $diastole          = validTeks(trim($_POST['diastole']));
+                $carabayar         = validTeks6(trim($_POST['carabayar']),30);
+                $statuskirim       = validTeks6(trim($_POST['statuskirim']),30);
                 $gender            = "";
                 if($jk=="L"){
                     $gender="1";
@@ -826,7 +831,7 @@
                             $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$pemulasaraan_jenazah,$kantong_jenazah, 
                             $peti_jenazah,$plastik_erat,$desinfektan_jenazah,$mobil_jenazah,$desinfektan_mobil_jenazah,
                             $covid19_status_cd,$nomor_kartu_t,$episodes,$covid19_cc_ind,$sistole,$diastole);
-                        echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
+                        echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&carabayar=".str_replace(" ","_",$carabayar)."&statuskirim=".str_replace(" ","_",$statuskirim)."'>";
                     }else if ((empty($norawat))||(empty($nosep))||(empty($nokartu))||(empty($nomor_kartu_t))){
                         echo 'Semua field harus isi..!!!';
                     }
@@ -841,7 +846,7 @@
                             $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
                             $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$sistole,$diastole);
-                        echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
+                        echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&carabayar=".str_replace(" ","_",$carabayar)."&statuskirim=".str_replace(" ","_",$statuskirim)."'>";
                     }else if ((empty($norawat))||(empty($nosep))||(empty($nokartu))){
                         echo 'Semua field harus isi..!!!';
                     }
