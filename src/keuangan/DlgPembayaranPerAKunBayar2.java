@@ -680,23 +680,23 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                     notajual="";
                     nopemasukanlain="";
                     nodeposit="";
-                    nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
+                    nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
                     if(!nonota.equals("")){
                         norawatinap=rs.getString("no_nota");
                     }else if(nonota.equals("")){
-                        nonota=Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_nota"));
+                        nonota=Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_nota"));
                         if(!nonota.equals("")){
                             norawatjalan=rs.getString("no_nota");
                         }else if(nonota.equals("")){
-                            nonota=Sequel.cariIsi("select nota_jual from penjualan where nota_jual=?",rs.getString("no_nota"));
+                            nonota=Sequel.cariIsi("select penjualan.nota_jual from penjualan where penjualan.nota_jual=?",rs.getString("no_nota"));
                             if(!nonota.equals("")){
                                 notajual=rs.getString("no_nota");
                             }else if(nonota.equals("")){
-                                nonota=Sequel.cariIsi("select no_deposit from deposit where no_deposit=?",rs.getString("no_nota"));
+                                nonota=Sequel.cariIsi("select deposit.no_deposit from deposit where deposit.no_deposit=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     nodeposit=rs.getString("no_nota");
                                 }else{
-                                    nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                    nonota=Sequel.cariIsi("select pemasukan_lain.no_masuk from pemasukan_lain where pemasukan_lain.no_masuk=?",rs.getString("no_nota"));
                                     if(!nonota.equals("")){
                                         nopemasukanlain=rs.getString("no_nota");
                                     }else{
@@ -846,23 +846,23 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                     notajual="";
                     nopemasukanlain="";
                     nodeposit="";
-                    nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
+                    nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
                     if(!nonota.equals("")){
                         norawatinap=rs.getString("no_nota");
                     }else if(nonota.equals("")){
-                        nonota=Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_nota"));
+                        nonota=Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_nota"));
                         if(!nonota.equals("")){
                             norawatjalan=rs.getString("no_nota");
                         }else if(nonota.equals("")){
-                            nonota=Sequel.cariIsi("select nota_jual from penjualan where nota_jual=?",rs.getString("no_nota"));
+                            nonota=Sequel.cariIsi("select penjualan.nota_jual from penjualan where penjualan.nota_jual=?",rs.getString("no_nota"));
                             if(!nonota.equals("")){
                                 notajual=rs.getString("no_nota");
                             }else if(nonota.equals("")){
-                                nonota=Sequel.cariIsi("select no_deposit from deposit where no_deposit=?",rs.getString("no_nota"));
+                                nonota=Sequel.cariIsi("select deposit.no_deposit from deposit where deposit.no_deposit=?",rs.getString("no_nota"));
                                 if(!nonota.equals("")){
                                     nodeposit=rs.getString("no_nota");
                                 }else{
-                                    nonota=Sequel.cariIsi("select no_masuk from pemasukan_lain where no_masuk=?",rs.getString("no_nota"));
+                                    nonota=Sequel.cariIsi("select pemasukan_lain.no_masuk from pemasukan_lain where pemasukan_lain.no_masuk=?",rs.getString("no_nota"));
                                     if(!nonota.equals("")){
                                         nopemasukanlain=rs.getString("no_nota");
                                     }else{

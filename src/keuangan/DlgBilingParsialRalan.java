@@ -5262,7 +5262,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                 psreg.setString(1,TNoRw.getText());
                 rsreg=psreg.executeQuery();            
                 if(rsreg.next()){
-                    NoNota=Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",TNoRw.getText());
+                    NoNota=Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",TNoRw.getText());
                     if(NoNota.equals("")){
                         tabModeBilling.addRow(new Object[]{"No.Nota",": "+Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_nota,4),signed)),0) from nota_jalan where tanggal='"+Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10)+"' ",Valid.SetTgl(DTPTgl.getSelectedItem()+"").substring(0,10).replaceAll("-","/")+"/PS",4),"",null,null,null,"-"});                
                     }else{

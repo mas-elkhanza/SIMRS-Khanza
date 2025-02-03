@@ -5826,5 +5826,5 @@ public final class akses {
     public static boolean getpenilaian_awal_medis_ranap_neonatus(){return akses.penilaian_awal_medis_ranap_neonatus;}
     public static boolean getpenilaian_derajat_dehidrasi(){return akses.penilaian_derajat_dehidrasi;}
     public static boolean getringkasan_jasa_tindakan_medis(){return akses.ringkasan_jasa_tindakan_medis;}
-    public static boolean getpendapatan_per_akuns(){return akses.pendapatan_per_akun;}
+    public static boolean getpendapatan_per_akun(){return akses.pendapatan_per_akun;}
 }   

@@ -1412,7 +1412,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         
                         if(tampilkan.equals("Belum Bayar")&&Keterangan.equals("Belum Bayar")){
                             tabMode.addRow(new Object[]{
-                                rs.getString("tgl_keluar"),Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_rawat")),
+                                rs.getString("tgl_keluar"),Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_rawat")),
                                 rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),
                                 Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),Valid.SetAngka(Registrasi),
                                 Valid.SetAngka(Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis),
@@ -1422,7 +1422,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             });
                         }else if(tampilkan.equals("Sudah Bayar")&&Keterangan.equals("Sudah Bayar")){
                             tabMode.addRow(new Object[]{
-                                rs.getString("tgl_keluar"),Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_rawat")),
+                                rs.getString("tgl_keluar"),Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_rawat")),
                                 rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),
                                 Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),Valid.SetAngka(Registrasi),
                                 Valid.SetAngka(Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis),
@@ -1432,7 +1432,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             });
                         }else if(tampilkan.equals("Semua")){
                             tabMode.addRow(new Object[]{
-                                rs.getString("tgl_keluar"),Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_rawat")),
+                                rs.getString("tgl_keluar"),Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_rawat")),
                                 rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("kd_kamar")+" "+rs.getString("nm_bangsal"),
                                 Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),Valid.SetAngka(Registrasi),
                                 Valid.SetAngka(Ranap_Dokter+Ranap_Dokter_Paramedis+Ranap_Paramedis+Ralan_Dokter+Ralan_Dokter_Paramedis+Ralan_Paramedis),

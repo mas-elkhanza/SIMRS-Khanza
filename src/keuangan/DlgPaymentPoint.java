@@ -638,9 +638,9 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                         while(rs.next()){                            
                             petugas=rs.getString("petugas")+" "+Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?",rs.getString("petugas"));
                             if(CmbStatus.getSelectedItem().toString().equals("Semua")){
-                                nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
+                                nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
                                 if(nonota.equals("")){
-                                    nonota=Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_nota"));
+                                    nonota=Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_nota"));
                                     if(nonota.equals("")){
                                         nonota=rs.getString("no_nota");
                                     }
@@ -661,9 +661,9 @@ public final class DlgPaymentPoint extends javax.swing.JDialog {
                                     });
                                 }                                    
                             }else if(rsjamshift.getString("shift").equals(CmbStatus.getSelectedItem().toString())){
-                                nonota=Sequel.cariIsi("select no_nota from nota_inap where no_rawat=?",rs.getString("no_nota"));
+                                nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
                                 if(nonota.equals("")){
-                                    nonota=Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_nota"));
+                                    nonota=Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_nota"));
                                     if(nonota.equals("")){
                                         nonota=rs.getString("no_nota");
                                     }

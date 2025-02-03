@@ -62,14 +62,12 @@
                     bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,
                     if(bridging_sep.klsrawat='1','1. Kelas 1',if(bridging_sep.klsrawat='2','2. Kelas 2','3. Kelas 3')) as kelas,
                     if(bridging_sep.lakalantas='0','2. Bukan Kasus Kecelakaan','1. Kasus Kecelakaan') as lakalantas,bridging_sep.user, 
-                    bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.tglpulang from bridging_sep inner join reg_periksa inner join dokter 
-                    on reg_periksa.no_rawat=bridging_sep.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter where 
-                    bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.no_sep like '%".$keyword."%' or
-                    bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.nomr like '%".$keyword."%' or
-                    bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.nama_pasien like '%".$keyword."%' or
-                    bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.no_rawat like '%".$keyword."%' or
-                    bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep.no_kartu like '%".$keyword."%' 
-                    order by bridging_sep.tglsep";
+                    bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu,bridging_sep.tglpulang 
+                    from bridging_sep inner join reg_periksa on reg_periksa.no_rawat=bridging_sep.no_rawat
+                    inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where 
+                    bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and
+                    (bridging_sep.no_sep like '%".$keyword."%' or bridging_sep.nomr like '%".$keyword."%' or bridging_sep.nama_pasien like '%".$keyword."%' or 
+                    bridging_sep.no_rawat like '%".$keyword."%' or bridging_sep.no_kartu like '%".$keyword."%') order by bridging_sep.tglsep";
             $hasil=bukaquery($_sql);
             
             $_sqlinternal = "select bridging_sep_internal.no_sep, bridging_sep_internal.no_rawat,bridging_sep_internal.nomr,bridging_sep_internal.nama_pasien,
@@ -79,14 +77,12 @@
                     bridging_sep_internal.nmdiagnosaawal,bridging_sep_internal.kdpolitujuan,bridging_sep_internal.nmpolitujuan,
                     if(bridging_sep_internal.klsrawat='1','1. Kelas 1',if(bridging_sep_internal.klsrawat='2','2. Kelas 2','3. Kelas 3')) as kelas,
                     if(bridging_sep_internal.lakalantas='0','2. Bukan Kasus Kecelakaan','1. Kasus Kecelakaan') as lakalantas,bridging_sep_internal.user, 
-                    bridging_sep_internal.tanggal_lahir,bridging_sep_internal.peserta,bridging_sep_internal.jkel,bridging_sep_internal.no_kartu,bridging_sep_internal.tglpulang from bridging_sep_internal inner join reg_periksa inner join dokter 
-                    on reg_periksa.no_rawat=bridging_sep_internal.no_rawat and reg_periksa.kd_dokter=dokter.kd_dokter where 
-                    bridging_sep_internal.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep_internal.no_sep like '%".$keyword."%' or
-                    bridging_sep_internal.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep_internal.nomr like '%".$keyword."%' or
-                    bridging_sep_internal.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep_internal.nama_pasien like '%".$keyword."%' or
-                    bridging_sep_internal.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep_internal.no_rawat like '%".$keyword."%' or
-                    bridging_sep_internal.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and bridging_sep_internal.no_kartu like '%".$keyword."%' 
-                    order by bridging_sep_internal.tglsep";
+                    bridging_sep_internal.tanggal_lahir,bridging_sep_internal.peserta,bridging_sep_internal.jkel,bridging_sep_internal.no_kartu,bridging_sep_internal.tglpulang 
+                    from bridging_sep_internal inner join reg_periksa on reg_periksa.no_rawat=bridging_sep_internal.no_rawat
+                    inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where 
+                    bridging_sep_internal.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' and 
+                    (bridging_sep_internal.no_sep like '%".$keyword."%' or bridging_sep_internal.nomr like '%".$keyword."%' or bridging_sep_internal.nama_pasien like '%".$keyword."%' or
+                    bridging_sep_internal.no_rawat like '%".$keyword."%' or bridging_sep_internal.no_kartu like '%".$keyword."%') order by bridging_sep_internal.tglsep";
             $hasilinternal=bukaquery($_sqlinternal);
             
             $jumlah=0;

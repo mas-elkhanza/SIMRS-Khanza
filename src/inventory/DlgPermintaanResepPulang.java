@@ -1066,8 +1066,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     pstampil=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
                         "(databarang.h_beli+(databarang.h_beli*?)) as harga,databarang."+hppfarmasi+" as dasar,sum(gudangbarang.stok) as stok, "+
-                        "databarang.kapasitas from databarang inner join jenis inner join gudangbarang "+
-                        "on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
+                        "databarang.kapasitas from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         "where databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+
                         (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
                         "group by gudangbarang.kode_brng order by databarang.nama_brng");
@@ -1075,9 +1075,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                     pstampil=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
                         "(databarang.h_beli+(databarang.h_beli*?)) as harga,databarang."+hppfarmasi+" as dasar,gudangbarang.stok, "+
-                        "databarang.kapasitas from databarang inner join jenis inner join gudangbarang "+
-                        "on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                        "where  databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+
+                        "databarang.kapasitas from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                        "where databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+
                         (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
                         " order by databarang.nama_brng");
                 }
@@ -1115,8 +1115,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         "databarang.karyawan,databarang."+hppfarmasi+" as dasar,databarang.beliluar,databarang.kelas1," +
                         "databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,databarang.kapasitas,"+
                         "databarang.letak_barang,databarang.utama,databarang.h_beli,sum(gudangbarang.stok) as stok "+
-                        "from databarang inner join jenis inner join gudangbarang "+
-                        "on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
+                        "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         "where  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+
                         (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
                         "group by gudangbarang.kode_brng order by databarang.nama_brng");
@@ -1126,8 +1126,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         "databarang.karyawan,databarang."+hppfarmasi+" as dasar,databarang.beliluar,databarang.kelas1," +
                         "databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,databarang.kapasitas,"+
                         "databarang.letak_barang,databarang.utama,databarang.h_beli,gudangbarang.stok "+
-                        "from databarang inner join jenis inner join gudangbarang "+
-                        "on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
+                        "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                        "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         "where databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+
                         (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
                         "order by databarang.nama_brng");
