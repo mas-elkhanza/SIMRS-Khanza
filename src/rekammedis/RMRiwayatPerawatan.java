@@ -121,6 +121,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private HttpComponentsClientHttpRequestFactory factory;
     private RestTemplate restTemplate;
     private MappingJackson2HttpMessageConverter converter;
+    private CloseableHttpClient httpClient;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -3127,27 +3128,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         post.addHeader("Authorization", "Basic " + base64Creds);
-
-                                        // Validasi format file
-                                        if (!f.getName().toLowerCase().endsWith(".pdf")) {
-                                            System.out.println("File bukan PDF, pastikan file berformat .pdf");
-                                            return;
-                                        }
-                                        
-                                        System.out.println("Nama file: " + f.getName());
-                                        System.out.println("Ukuran file: " + f.length() + " bytes");
-                                        System.out.println("Lokasi file: " + f.getPath());
-                                        
-                                        try (PDDocument filenya = PDDocument.load(f)) {
-                                            System.out.println("File valid PDF");
-                                        } catch (IOException ex) {
-                                            System.out.println("File bukan PDF yang valid.");
-                                            return;
-                                        }
-
-                                        InputStream filepdf = new FileInputStream(f.getPath());
                                         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
-                                            .addBinaryBody("file", filepdf, ContentType.APPLICATION_PDF, f.getName())
+                                            .addBinaryBody("file", f, ContentType.APPLICATION_PDF, f.getName())
                                             .addTextBody("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
                                             .addTextBody("passphrase", Phrase.getText())
                                             .addTextBody("tampilan", "visible")
@@ -3173,13 +3155,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 }
                                             } else {
                                                 System.out.println("Upload gagal, status code: " + response.getCode());
-                                                System.out.println("Error: " + EntityUtils.toString(response.getEntity()));
+                                                System.out.println("Notifikasi : " + EntityUtils.toString(response.getEntity()));
                                             }
                                         } catch (IOException a) {
-                                            System.out.println("Error: " + a);
+                                            System.out.println("Notifikasi : " + a);
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Error: " + e);
+                                        System.out.println("Notifikasi : " + e);
                                     }
                                 }
                             }
@@ -3288,27 +3270,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
                                         base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
                                         post.addHeader("Authorization", "Basic " + base64Creds);
-
-                                        // Validasi format file
-                                        if (!f.getName().toLowerCase().endsWith(".pdf")) {
-                                            System.out.println("File bukan PDF, pastikan file berformat .pdf");
-                                            return;
-                                        }
-                                        
-                                        System.out.println("Nama file: " + f.getName());
-                                        System.out.println("Ukuran file: " + f.length() + " bytes");
-                                        System.out.println("Lokasi file: " + f.getPath());
-                                        
-                                        try (PDDocument filenya = PDDocument.load(f)) {
-                                            System.out.println("File valid PDF");
-                                        } catch (IOException ex) {
-                                            System.out.println("File bukan PDF yang valid.");
-                                            return;
-                                        }
-
-                                        InputStream filepdf = new FileInputStream(f.getPath());
                                         MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
-                                            .addBinaryBody("file", filepdf, ContentType.APPLICATION_PDF, f.getName())
+                                            .addBinaryBody("file", f, ContentType.APPLICATION_PDF, f.getName())
                                             .addTextBody("nik", Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
                                             .addTextBody("passphrase", Phrase.getText())
                                             .addTextBody("tampilan", "visible")
@@ -3331,16 +3294,17 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                         outputStream.write(buffer, 0, bytesRead);
                                                     }
                                                     System.out.println("File respons berhasil disimpan di: " + f.getAbsolutePath());
+                                                    Desktop.getDesktop().browse(f.toURI());
                                                 }
                                             } else {
                                                 System.out.println("Upload gagal, status code: " + response.getCode());
-                                                System.out.println("Error: " + EntityUtils.toString(response.getEntity()));
+                                                System.out.println("Notifikasi : " + EntityUtils.toString(response.getEntity()));
                                             }
                                         } catch (IOException a) {
-                                            System.out.println("Error: " + a);
+                                            System.out.println("Notifikasi : " + a);
                                         }
                                     } catch (Exception e) {
-                                        System.out.println("Error: " + e);
+                                        System.out.println("Notifikasi : " + e);
                                     }
                                 }
                             }
@@ -3494,24 +3458,6 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     HttpPost post = new HttpPost(koneksiDB.URLAPISERTISIGN());
                     post.addHeader("apikey",koneksiDB.APIKEYSERTISIGN());
                     post.addHeader("Accept","application/json");
-
-                    // Validasi format file
-                    if (!f.getName().toLowerCase().endsWith(".pdf")) {
-                        System.out.println("File bukan PDF, pastikan file berformat .pdf");
-                        return;
-                    }
-
-                    System.out.println("Nama file: " + f.getName());
-                    System.out.println("Ukuran file: " + f.length() + " bytes");
-                    System.out.println("Lokasi file: " + f.getPath());
-
-                    try (PDDocument filenya = PDDocument.load(f)) {
-                        System.out.println("File valid PDF");
-                    } catch (IOException ex) {
-                        System.out.println("File bukan PDF yang valid.");
-                        return;
-                    }
-
                     json=Sequel.cariIsi("select dokter.email from dokter where dokter.kd_dokter=?", akses.getkode());
                     MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
                         .addBinaryBody("document", f, ContentType.APPLICATION_PDF, f.getName())
@@ -3522,10 +3468,19 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         .addTextBody("h", "60");
                     HttpEntity entity = entityBuilder.build();
                     post.setEntity(entity);
-
+                    System.out.println("URL Kirim File : "+koneksiDB.URLAPISERTISIGN());
                     try (CloseableHttpResponse response = httpClient.execute(post)) {
                         if (response.getCode() == 200) {
-                            System.out.println("Data: " + EntityUtils.toString(response.getEntity()));
+                            System.out.println("Respon Kirim File : " + EntityUtils.toString(response.getEntity()));
+                            HttpPost post2 = new HttpPost(koneksiDB.URLDOKUMENSERTISIGN());
+                            post2.addHeader("Accept","application/json");
+                            post2.addHeader("apikey",koneksiDB.APIKEYSERTISIGN());
+                            System.out.println("URL Callback File : "+koneksiDB.URLAPISERTISIGN());
+                            try (CloseableHttpResponse response2 = httpClient.execute(post2)) {
+                                System.out.println("Respon Callback: " + EntityUtils.toString(response2.getEntity()));
+                            }catch (Exception a) {
+                                System.out.println("Notifikasi : " + a);
+                            }
                             /*try (InputStream inputStream = response.getEntity().getContent();
                                  FileOutputStream outputStream = new FileOutputStream(f)) {
                                 byte[] buffer = new byte[1024];
@@ -3537,13 +3492,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             }*/
                         } else {
                             System.out.println("Upload gagal, status code: " + response.getCode());
-                            System.out.println("Error: " + EntityUtils.toString(response.getEntity()));
+                            System.out.println("Notifikasi : " + EntityUtils.toString(response.getEntity()));
                         }
-                    } catch (IOException a) {
-                        System.out.println("Error: " + a);
+                    } catch (Exception a) {
+                        System.out.println("Notifikasi : " + a);
                     }
                 } catch (Exception e) {
-                    System.out.println("Error: " + e);
+                    System.out.println("Notifikasi : " + e);
                 }
                 Desktop.getDesktop().browse(f.toURI());
             } catch (Exception e) {

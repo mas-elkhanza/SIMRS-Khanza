@@ -190,4 +190,5 @@
     <entry key="SFTPFILEESIGNFOLDER">bsX283RtohX0NO9hyh+GAIKiafyYwSe7hhw/HWdydQQ=</entry>
     <entry key="URLAPISERTISIGN">https://api-stag.sertisign.id/v2/poa/signing-qr</entry>
     <entry key="APIKEYSERTISIGN">Qvbk11KTaeMu98WE5RITeYdqppEJrrfzN7HisMpfOheYGYPFOLs1CW4idp8VpXV1</entry>
+    <entry key="URLDOKUMENSERTISIGN">https://webhook.site/37cf2f54-fa46-47fa-a551-8bc0ffd19abb</entry>
 </properties>
