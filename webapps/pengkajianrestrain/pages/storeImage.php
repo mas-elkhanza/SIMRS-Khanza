@@ -1,8 +1,8 @@
 <?php
     require_once('../../conf/conf.php');
     $norawat           = validTeks4($_POST["norawat"],20);
-    if(file_exists(host()."/webapps/pengkajianrestrain/pages/upload/".str_replace("/","",$norawat).".jpeg")){
-        @unlink(host()."/webapps/pengkajianrestrain/pages/upload/".str_replace("/","",$norawat).".jpeg");
+    if(file_exists(host()."webapps/pengkajianrestrain/pages/upload/".$norawat.".jpeg")){
+        @unlink(host()."webapps/pengkajianrestrain/pages/upload/".$norawat.".jpeg");
     }
     
     $img                = $_POST["image"];
@@ -11,7 +11,7 @@
     $image_type_aux     = explode("image/", $image_parts[0]);
     $image_type         = $image_type_aux[1];
     $image_base64       = base64_decode($image_parts[1]);
-    $fileName           = str_replace("/","",$norawat).".jpeg";
+    $fileName           = str_replace("/","$norawat", $subject).".jpeg";
     $file               = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
     

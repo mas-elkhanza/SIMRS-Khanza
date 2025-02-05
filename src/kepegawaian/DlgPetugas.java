@@ -63,18 +63,18 @@ public final class DlgPetugas extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(885,674);
 
-        tabMode=new DefaultTableModel(null,new Object[]{
-                "NIP","Nama Petugas","J.K.","Tmp.Lahir","Tgl.Lahir","G.D.","Agama","Stts.Nikah","Alamat","Jabatan","No.Telp","Email"
-            }){
-            @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        Object[] row={"NIP","Nama Petugas","J.K.","Tmp.Lahir","Tgl.Lahir","G.D.","Agama","Stts.Nikah","Alamat","Jabatan","No.Telp"};
+        tabMode=new DefaultTableModel(null,row){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbPetugas.setModel(tabMode);
+
 
         //tbPetugas.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPetugas.getBackground()));
         tbPetugas.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbPetugas.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 11; i++) {
             TableColumn column = tbPetugas.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(100);
@@ -98,8 +98,6 @@ public final class DlgPetugas extends javax.swing.JDialog {
                 column.setPreferredWidth(200);
             }else if(i==10){
                 column.setPreferredWidth(100);
-            }else if(i==11){
-                column.setPreferredWidth(200);
             }
         }
         tbPetugas.setDefaultRenderer(Object.class, new WarnaTable());
@@ -110,7 +108,6 @@ public final class DlgPetugas extends javax.swing.JDialog {
         TTmp.setDocument(new batasInput((byte)20).getKata(TTmp));
         TAlmt.setDocument(new batasInput((byte)60).getKata(TAlmt));
         TTlp.setDocument(new batasInput((byte)13).getOnlyAngka(TTlp));
-        Email.setDocument(new batasInput((byte)70).getKata(Email));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -267,8 +264,6 @@ public final class DlgPetugas extends javax.swing.JDialog {
         KdJbtn = new widget.TextBox();
         btnJabatan = new widget.Button();
         BtnCariPegawai = new widget.Button();
-        jLabel23 = new widget.Label();
-        Email = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         Popup.setName("Popup"); // NOI18N
@@ -686,7 +681,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
         jLabel13.setBounds(0, 102, 95, 23);
 
         DTPLahir.setForeground(new java.awt.Color(50, 70, 50));
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2023" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-11-2022" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -768,7 +763,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTlp);
-        TTlp.setBounds(515, 72, 120, 23);
+        TTlp.setBounds(515, 72, 150, 23);
 
         TNip.setHighlighter(null);
         TNip.setName("TNip"); // NOI18N
@@ -813,21 +808,6 @@ public final class DlgPetugas extends javax.swing.JDialog {
         });
         FormInput.add(BtnCariPegawai);
         BtnCariPegawai.setBounds(302, 12, 28, 23);
-
-        jLabel23.setText("Email :");
-        jLabel23.setName("jLabel23"); // NOI18N
-        FormInput.add(jLabel23);
-        jLabel23.setBounds(631, 72, 50, 23);
-
-        Email.setHighlighter(null);
-        Email.setName("Email"); // NOI18N
-        Email.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                EmailKeyPressed(evt);
-            }
-        });
-        FormInput.add(Email);
-        Email.setBounds(685, 72, 190, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -928,11 +908,12 @@ public final class DlgPetugas extends javax.swing.JDialog {
                     "-","-","-","-","-","-","-","-","-","-","-","0",TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),TAlmt.getText(),"-","1900-01-01","<1",
                     "-","T","-","AKTIF","0","0","0","1900-01-01","0","0","pages/pegawai/photo/","-"
                 });
-                Sequel.menyimpan("petugas","?,?,?,?,?,?,?,?,?,?,?,?,?","NIP",13,new String[]{
+                
+                Sequel.menyimpan("petugas","?,?,?,?,?,?,?,?,?,?,?,?","NIP",12,new String[]{
                     TNip.getText(),TNm.getText(),CmbJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim(),
                     TTmp.getText(),Valid.SetTgl(DTPLahir.getSelectedItem()+""),CMbGd.getSelectedItem().toString(),
                     cmbAgama.getSelectedItem().toString(),CmbStts.getSelectedItem().toString(),
-                    TAlmt.getText(),KdJbtn.getText(),TTlp.getText(),Email.getText(),"1"
+                    TAlmt.getText(),KdJbtn.getText(),TTlp.getText(),"1"
                 });
                 Sequel.Commit();
                 Sequel.AutoComitTrue();
@@ -1062,18 +1043,20 @@ public final class DlgPetugas extends javax.swing.JDialog {
         }else{
             try {
                 koneksi.setAutoCommit(false);
-                Sequel.mengedit(
-                    "pegawai","nik='"+tbPetugas.getValueAt(tbPetugas.getSelectedRow(),0).toString()+"'","nik='"+TNip.getText()+"',nama='"+TNm.getText()+"',"+
-                    "jk='"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',tmp_lahir='"+TTmp.getText()+"',"+
-                    "tgl_lahir='"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"',alamat='"+TAlmt.getText()+"'"
-                );
-                Sequel.mengedit(
-                    "petugas","nip='"+tbPetugas.getValueAt(tbPetugas.getSelectedRow(),0).toString()+"'","nip='"+TNip.getText()+"',nama='"+TNm.getText()+"',"+
-                    "jk='"+CmbJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"',tmp_lahir='"+TTmp.getText()+"',"+
-                    "tgl_lahir='"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"',gol_darah='"+CMbGd.getSelectedItem()+"',agama='"+cmbAgama.getSelectedItem()+"',"+
-                    "stts_nikah='"+CmbStts.getSelectedItem()+"',alamat='"+TAlmt.getText()+"',kd_jbtn='"+KdJbtn.getText()+"',no_telp='"+TTlp.getText()+"',"+
-                    "email='"+Email.getText()+"'"
-                );
+                Sequel.mengedit("pegawai","nik='"+tbPetugas.getValueAt(tbPetugas.getSelectedRow(),0).toString()+"'",
+                    "nik='"+TNip.getText()+"',nama='"+TNm.getText()+"',jk='"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',"+
+                    "tmp_lahir='"+TTmp.getText()+"',tgl_lahir='"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+"',alamat='"+TAlmt.getText()+"'");
+                Sequel.mengedit("petugas","nip='"+tbPetugas.getValueAt(tbPetugas.getSelectedRow(),0).toString()+"'",
+                        "nip='"+TNip.getText()+"',nama='"+TNm.getText()+
+                        "',jk='"+CmbJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+
+                        "',tmp_lahir='"+TTmp.getText()+
+                        "',tgl_lahir='"+Valid.SetTgl(DTPLahir.getSelectedItem()+"")+
+                        "',gol_darah='"+CMbGd.getSelectedItem()+
+                        "',agama='"+cmbAgama.getSelectedItem()+
+                        "',stts_nikah='"+CmbStts.getSelectedItem()+
+                        "',alamat='"+TAlmt.getText()+
+                        "',kd_jbtn='"+KdJbtn.getText()+
+                        "',no_telp='"+TTlp.getText()+"'");
                 koneksi.setAutoCommit(true);
                 if(tabMode.getRowCount()!=0){tampil();}
                 emptTeks();
@@ -1140,7 +1123,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
 
 private void KdJbtnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdJbtnKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){            
-            Sequel.cariIsi("select jabatan.nm_jbtn from jabatan where jabatan.kd_jbtn=?",TJbtn,KdJbtn.getText());
+                Sequel.cariIsi("select nm_jbtn from jabatan where kd_jbtn=?",TJbtn,KdJbtn.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){  
             btnJabatanActionPerformed(null);
         }else{            
@@ -1238,10 +1221,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_MnKartu1ActionPerformed
 
-    private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EmailKeyPressed
-
     /**
     * @param args the command line arguments
     */
@@ -1275,7 +1254,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.ComboBox CmbJk;
     private widget.ComboBox CmbStts;
     private widget.Tanggal DTPLahir;
-    private widget.TextBox Email;
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdJbtn;
     private widget.Label LCount;
@@ -1306,7 +1284,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
-    private widget.Label jLabel23;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
@@ -1324,30 +1301,28 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         try{
             ps=koneksi.prepareStatement(
                     "select petugas.nip,petugas.nama,petugas.jk,petugas.tmp_lahir,petugas.tgl_lahir, "+
-                    "petugas.gol_darah,petugas.agama,petugas.stts_nikah,petugas.alamat,jabatan.nm_jbtn,petugas.no_telp,petugas.email "+
+                    "petugas.gol_darah,petugas.agama,petugas.stts_nikah,petugas.alamat,jabatan.nm_jbtn,petugas.no_telp "+
                     "from petugas inner join jabatan on jabatan.kd_jbtn=petugas.kd_jbtn "+
-                    "where petugas.status='1' and petugas.jk like ? and petugas.gol_darah like ? and petugas.stts_nikah like ? "+
-                    (!TCari.getText().trim().equals("")?"and (petugas.nip like ? or petugas.nama like ? or petugas.tmp_lahir like ? or petugas.tgl_lahir like ? or "+
-                    "petugas.gol_darah like ? or petugas.agama like ? or petugas.alamat like ? or jabatan.nm_jbtn like ?)":"")+" order by petugas.nip");
+                    "where petugas.status='1' and petugas.jk like ? and petugas.gol_darah like ? and petugas.stts_nikah like ? and "+
+                    "(petugas.nip like ? or petugas.nama like ? or petugas.tmp_lahir like ? or petugas.tgl_lahir like ? or "+
+                    "petugas.gol_darah like ? or petugas.agama like ? or petugas.alamat like ? or jabatan.nm_jbtn like ?) order by petugas.nip");
             try {
                 ps.setString(1,"%"+cmbCrJk.getSelectedItem().toString().replaceAll("LAKI-LAKI","L").replaceAll("PEREMPUAN","P").trim()+"%");
                 ps.setString(2,"%"+CmbCrGd.getSelectedItem().toString().trim()+"%");
                 ps.setString(3,"%"+CmbCrStts.getSelectedItem().toString().trim()+"%");
-                if(!TCari.getText().trim().equals("")){
-                    ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    ps.setString(5,"%"+TCari.getText().trim()+"%");
-                    ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,"%"+TCari.getText().trim()+"%");
-                    ps.setString(8,"%"+TCari.getText().trim()+"%");
-                    ps.setString(9,"%"+TCari.getText().trim()+"%");
-                    ps.setString(10,"%"+TCari.getText().trim()+"%");
-                    ps.setString(11,"%"+TCari.getText().trim()+"%");
-                }
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,"%"+TCari.getText().trim()+"%");
+                ps.setString(8,"%"+TCari.getText().trim()+"%");
+                ps.setString(9,"%"+TCari.getText().trim()+"%");
+                ps.setString(10,"%"+TCari.getText().trim()+"%");
+                ps.setString(11,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),
-                        rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getString(12)
+                        rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)
                     });
                 }
             } catch (Exception e) {
@@ -1377,7 +1352,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         CmbStts.setSelectedIndex(0);
         TAlmt.setText("");
         TTlp.setText("");
-        Email.setText("");
         KdJbtn.setText("");
         TJbtn.setText("");
         DTPLahir.setDate(new Date());
@@ -1408,7 +1382,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Sequel.cariIsi("select jabatan.kd_jbtn from jabatan where jabatan.nm_jbtn='"+tbPetugas.getValueAt(row,9).toString()+"'", KdJbtn);
             TJbtn.setText(tbPetugas.getValueAt(row,9).toString());
             TTlp.setText(tbPetugas.getValueAt(row,10).toString());
-            Email.setText(tbPetugas.getValueAt(row,11).toString());
             Valid.SetTgl(DTPLahir,tbPetugas.getValueAt(row,4).toString());
         }
     }

@@ -912,7 +912,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
             if(total>0){
                 tabMode.addRow(new String[]{
-                    "","","JUMLAH :","",""+total,"",""
+                    "","","JUMLAH :","","",""+total,""
                 });
             }
         }catch(Exception e){

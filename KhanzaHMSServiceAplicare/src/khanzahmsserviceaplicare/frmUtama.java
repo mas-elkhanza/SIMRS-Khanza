@@ -12,11 +12,13 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Properties;
 import javax.swing.Timer;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -29,14 +31,12 @@ import org.springframework.http.MediaType;
  */
 public class frmUtama extends javax.swing.JFrame {
     private  Connection koneksi=koneksiDB.condb();
-    private final sekuel Sequel=new sekuel();
-    private String requestJson;
-    private final String URL = "";
-    private final String kodeppk = Sequel.cariIsi("select setting.kode_ppk from setting");
-    private final BPJSApiAplicare api=new BPJSApiAplicare();
+    private  sekuel Sequel=new sekuel();
+    private  String requestJson,URL="",kodeppk=Sequel.cariIsi("select setting.kode_ppk from setting");
+    private  BPJSApiAplicare api=new BPJSApiAplicare();
     private  HttpHeaders headers;
     private  HttpEntity requestEntity;
-    private final  ObjectMapper mapper= new ObjectMapper();
+    private  ObjectMapper mapper= new ObjectMapper();
     private  JsonNode root;
     private  JsonNode nameNode;
     private  PreparedStatement ps;
@@ -163,11 +163,11 @@ public class frmUtama extends javax.swing.JFrame {
                 String jam = nol_jam + Integer.toString(nilai_jam);
                 String menit = nol_menit + Integer.toString(nilai_menit);
                 String detik = nol_detik + Integer.toString(nilai_detik);
-                if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
-                    TeksArea.setText("");
-                }
-                
-                if((nilai_jam%4==0)&&(detik.equals("01")&&menit.equals("01"))){
+                if(menit.equals("01")&&detik.equals("01")){
+                    if(jam.equals("01")&&menit.equals("01")&&detik.equals("01")){
+                        TeksArea.setText("");
+                    }
+                        
                     try {
                         koneksi=koneksiDB.condb();
                         TeksArea.append("Memulai update aplicare\n");

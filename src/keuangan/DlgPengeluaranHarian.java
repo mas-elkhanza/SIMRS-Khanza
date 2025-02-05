@@ -10,7 +10,6 @@
  */
 
 package keuangan;
-import bridging.MandiriCariKodeTransaksiTujuanTransfer;
 import kepegawaian.DlgCariPetugas;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -27,6 +26,7 @@ import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,11 +51,9 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
     private ResultSet rs;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private DlgCariKategoriPengeluaran kategori=new DlgCariKategoriPengeluaran(null,false);
-    private MandiriCariKodeTransaksiTujuanTransfer kodetransaksibank=new MandiriCariKodeTransaksiTujuanTransfer(null, false);
     private double total=0;
     private boolean sukses=true;
-    private String nopengajuanbiaya="",akun="",kontrakun="";
-    private int i=0;
+    private String nopengajuanbiaya="";
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -63,7 +61,8 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
     public DlgPengeluaranHarian(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        DlgBayarMandiri.setSize(562,193);
+        this.setLocation(8,1);
+        setSize(628,674);
 
         Object[] row={"Nomor","Tanggal","Kategori","Petugas","Pengeluaran","Keterangan","Kode","NIP"};
         tabMode=new DefaultTableModel(null,row){
@@ -83,14 +82,14 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         tbResep.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbResep.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) {
             TableColumn column = tbResep.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(90);
             }else if(i==1){
                 column.setPreferredWidth(120);
             }else if(i==2){
-                column.setPreferredWidth(240);
+                column.setPreferredWidth(200);
             }else if(i==3){
                 column.setPreferredWidth(200);
             }else if(i==4){
@@ -109,10 +108,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
 
         Keterangan.setDocument(new batasInput((byte)70).getKata(Keterangan));
         KdPtg.setDocument(new batasInput((byte)20).getKata(KdPtg));
-        Pengeluaran.setDocument(new batasInput((byte)15).getOnlyAngka(Pengeluaran));
-        NoRekening.setDocument(new batasInput((byte)20).getKata(NoRekening));
-        RekeningAtasNama.setDocument(new batasInput((byte)60).getKata(RekeningAtasNama));
-        KotaAtasNamaRekening.setDocument(new batasInput((byte)20).getKata(KotaAtasNamaRekening));
+        Pengeluaran.setDocument(new batasInput((byte)15).getKata(Pengeluaran));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -162,44 +158,6 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        kodetransaksibank.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(kodetransaksibank.getTable().getSelectedRow()!= -1){                   
-                    KodeMetode.setText(kodetransaksibank.getTable().getValueAt(kodetransaksibank.getTable().getSelectedRow(),0).toString());   
-                    MetodePembayaran.setText(kodetransaksibank.getTable().getValueAt(kodetransaksibank.getTable().getSelectedRow(),1).toString());   
-                    BiayaTransaksi.setText(kodetransaksibank.getTable().getValueAt(kodetransaksibank.getTable().getSelectedRow(),2).toString());   
-                    KodeBank.setText(kodetransaksibank.getTable().getValueAt(kodetransaksibank.getTable().getSelectedRow(),3).toString());   
-                    BankTujuan.setText(kodetransaksibank.getTable().getValueAt(kodetransaksibank.getTable().getSelectedRow(),4).toString());   
-                    KodeTransaksi.setText(kodetransaksibank.getTable().getValueAt(kodetransaksibank.getTable().getSelectedRow(),5).toString());                  
-                }                
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        kodetransaksibank.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    kodetransaksibank.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         kategori.getTabel().addKeyListener(new KeyListener() {
             @Override
@@ -251,26 +209,6 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DlgBayarMandiri = new javax.swing.JDialog();
-        internalFrame4 = new widget.InternalFrame();
-        panelBiasa2 = new widget.PanelBiasa();
-        jLabel99 = new widget.Label();
-        BtnKeluarMandiri = new widget.Button();
-        BtnSimpanMandiri = new widget.Button();
-        NoRekening = new widget.TextBox();
-        RekeningAtasNama = new widget.TextBox();
-        KotaAtasNamaRekening = new widget.TextBox();
-        BtnMetode = new widget.Button();
-        jLabel102 = new widget.Label();
-        BiayaTransaksi = new widget.TextBox();
-        KodeMetode = new widget.TextBox();
-        MetodePembayaran = new widget.TextBox();
-        jLabel103 = new widget.Label();
-        KodeBank = new widget.TextBox();
-        BankTujuan = new widget.TextBox();
-        KodeTransaksi = new widget.TextBox();
-        jLabel100 = new widget.Label();
-        jLabel101 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbResep = new widget.Table();
@@ -312,160 +250,14 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         Nomor = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
-        DlgBayarMandiri.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        DlgBayarMandiri.setName("DlgBayarMandiri"); // NOI18N
-        DlgBayarMandiri.setUndecorated(true);
-        DlgBayarMandiri.setResizable(false);
-
-        internalFrame4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Pembayaran Pihak Ke 3 Bank Mandiri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 50))); // NOI18N
-        internalFrame4.setName("internalFrame4"); // NOI18N
-        internalFrame4.setLayout(new java.awt.BorderLayout(1, 1));
-
-        panelBiasa2.setName("panelBiasa2"); // NOI18N
-        panelBiasa2.setLayout(null);
-
-        jLabel99.setText("Kota Bank Tujuan :");
-        jLabel99.setName("jLabel99"); // NOI18N
-        panelBiasa2.add(jLabel99);
-        jLabel99.setBounds(226, 10, 120, 23);
-
-        BtnKeluarMandiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnKeluarMandiri.setMnemonic('U');
-        BtnKeluarMandiri.setText("Batal");
-        BtnKeluarMandiri.setToolTipText("Alt+U");
-        BtnKeluarMandiri.setName("BtnKeluarMandiri"); // NOI18N
-        BtnKeluarMandiri.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnKeluarMandiri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnKeluarMandiriActionPerformed(evt);
-            }
-        });
-        panelBiasa2.add(BtnKeluarMandiri);
-        BtnKeluarMandiri.setBounds(442, 130, 100, 30);
-
-        BtnSimpanMandiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpanMandiri.setMnemonic('S');
-        BtnSimpanMandiri.setText("Simpan");
-        BtnSimpanMandiri.setToolTipText("Alt+S");
-        BtnSimpanMandiri.setName("BtnSimpanMandiri"); // NOI18N
-        BtnSimpanMandiri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanMandiriActionPerformed(evt);
-            }
-        });
-        BtnSimpanMandiri.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpanMandiriKeyPressed(evt);
-            }
-        });
-        panelBiasa2.add(BtnSimpanMandiri);
-        BtnSimpanMandiri.setBounds(10, 130, 100, 30);
-
-        NoRekening.setHighlighter(null);
-        NoRekening.setName("NoRekening"); // NOI18N
-        NoRekening.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRekeningKeyPressed(evt);
-            }
-        });
-        panelBiasa2.add(NoRekening);
-        NoRekening.setBounds(84, 10, 130, 23);
-
-        RekeningAtasNama.setHighlighter(null);
-        RekeningAtasNama.setName("RekeningAtasNama"); // NOI18N
-        RekeningAtasNama.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RekeningAtasNamaKeyPressed(evt);
-            }
-        });
-        panelBiasa2.add(RekeningAtasNama);
-        RekeningAtasNama.setBounds(84, 40, 456, 23);
-
-        KotaAtasNamaRekening.setHighlighter(null);
-        KotaAtasNamaRekening.setName("KotaAtasNamaRekening"); // NOI18N
-        KotaAtasNamaRekening.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KotaAtasNamaRekeningKeyPressed(evt);
-            }
-        });
-        panelBiasa2.add(KotaAtasNamaRekening);
-        KotaAtasNamaRekening.setBounds(350, 10, 190, 23);
-
-        BtnMetode.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnMetode.setMnemonic('1');
-        BtnMetode.setToolTipText("ALt+1");
-        BtnMetode.setName("BtnMetode"); // NOI18N
-        BtnMetode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnMetodeActionPerformed(evt);
-            }
-        });
-        panelBiasa2.add(BtnMetode);
-        BtnMetode.setBounds(512, 70, 28, 23);
-
-        jLabel102.setText("Metode :");
-        jLabel102.setName("jLabel102"); // NOI18N
-        panelBiasa2.add(jLabel102);
-        jLabel102.setBounds(0, 70, 80, 23);
-
-        BiayaTransaksi.setEditable(false);
-        BiayaTransaksi.setHighlighter(null);
-        BiayaTransaksi.setName("BiayaTransaksi"); // NOI18N
-        panelBiasa2.add(BiayaTransaksi);
-        BiayaTransaksi.setBounds(399, 70, 110, 23);
-
-        KodeMetode.setEditable(false);
-        KodeMetode.setHighlighter(null);
-        KodeMetode.setName("KodeMetode"); // NOI18N
-        panelBiasa2.add(KodeMetode);
-        KodeMetode.setBounds(84, 70, 64, 23);
-
-        MetodePembayaran.setEditable(false);
-        MetodePembayaran.setHighlighter(null);
-        MetodePembayaran.setName("MetodePembayaran"); // NOI18N
-        panelBiasa2.add(MetodePembayaran);
-        MetodePembayaran.setBounds(151, 70, 245, 23);
-
-        jLabel103.setText("Bank Tujuan :");
-        jLabel103.setName("jLabel103"); // NOI18N
-        panelBiasa2.add(jLabel103);
-        jLabel103.setBounds(0, 100, 80, 23);
-
-        KodeBank.setEditable(false);
-        KodeBank.setHighlighter(null);
-        KodeBank.setName("KodeBank"); // NOI18N
-        panelBiasa2.add(KodeBank);
-        KodeBank.setBounds(84, 100, 64, 23);
-
-        BankTujuan.setEditable(false);
-        BankTujuan.setHighlighter(null);
-        BankTujuan.setName("BankTujuan"); // NOI18N
-        panelBiasa2.add(BankTujuan);
-        BankTujuan.setBounds(151, 100, 245, 23);
-
-        KodeTransaksi.setEditable(false);
-        KodeTransaksi.setHighlighter(null);
-        KodeTransaksi.setName("KodeTransaksi"); // NOI18N
-        panelBiasa2.add(KodeTransaksi);
-        KodeTransaksi.setBounds(399, 100, 141, 23);
-
-        jLabel100.setText("Atas Nama :");
-        jLabel100.setName("jLabel100"); // NOI18N
-        panelBiasa2.add(jLabel100);
-        jLabel100.setBounds(0, 40, 80, 23);
-
-        jLabel101.setText("No.Rekening :");
-        jLabel101.setName("jLabel101"); // NOI18N
-        panelBiasa2.add(jLabel101);
-        jLabel101.setBounds(0, 10, 80, 23);
-
-        internalFrame4.add(panelBiasa2, java.awt.BorderLayout.CENTER);
-
-        DlgBayarMandiri.getContentPane().add(internalFrame4, java.awt.BorderLayout.CENTER);
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengeluaran Harian ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -631,7 +423,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2020" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -645,7 +437,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2020" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -754,7 +546,6 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(0, 12, 80, 23);
 
-        KdKategori.setEditable(false);
         KdKategori.setHighlighter(null);
         KdKategori.setName("KdKategori"); // NOI18N
         KdKategori.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -789,7 +580,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         btnKategori.setBounds(409, 12, 28, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2024 14:40:39" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-01-2020 09:54:57" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -880,90 +671,59 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
         }else if(Pengeluaran.getText().trim().equals("")||Pengeluaran.getText().trim().equals("0")){
             Valid.textKosong(Pengeluaran,"Pengeluaran");
         }else{
-            akun="";
-            kontrakun="";
-            try {
-                psakun=koneksi.prepareStatement(
-                    "select kategori_pengeluaran_harian.kd_rek,kategori_pengeluaran_harian.kd_rek2 from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?");
+            Sequel.AutoComitFalse();
+            sukses=true;    
+            if(Sequel.menyimpantf2("pengeluaran_harian","?,?,?,?,?,?","Pengeluaran",6,new String[]{
+                Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
+                KdKategori.getText(),Pengeluaran.getText(),KdPtg.getText(),Keterangan.getText()
+            })==true){
                 try {
-                    psakun.setString(1,KdKategori.getText());
-                    rs=psakun.executeQuery();
-                    if(rs.next()){
-                        akun=rs.getString("kd_rek");
-                        kontrakun=rs.getString("kd_rek2");
-                    }else{
-                        akun="";
-                        kontrakun="";
-                    } 
-                } catch (Exception e) {
-                    akun="";
-                    kontrakun="";
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(psakun!=null){
-                        psakun.close();
-                    }
-                }
-            } catch (Exception e) {
-                akun="";
-                kontrakun="";
-                System.out.println("Notif : "+e);
-            }
-            if(kontrakun.equals("")){
-                JOptionPane.showMessageDialog(null,"Terjadi kesalahan akun bayar, silahkan hubungi administrator..!!");
-            }else{
-                if(kontrakun.equals(kategori.Host_to_Host_Bank_Mandiri)){
-                    Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran,6),signed)),0) from pembayaran_pihak_ke3_bankmandiri where left(pembayaran_pihak_ke3_bankmandiri.tgl_pembayaran,10)='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",kategori.kodemcm+"14"+Tanggal.getSelectedItem().toString().substring(0,10).replaceAll("-",""),6,Nomor); 
-                    RekeningAtasNama.setText("");
-                    KotaAtasNamaRekening.setText("");
-                    NoRekening.setText("");
-                    NoRekening.requestFocus();
-                    DlgBayarMandiri.setLocationRelativeTo(internalFrame1);
-                    DlgBayarMandiri.setVisible(true);
-                }else{
-                    Sequel.AutoComitFalse();
-                    sukses=true;    
-                    if(Sequel.menyimpantf2("pengeluaran_harian","?,?,?,?,?,?","Pengeluaran",6,new String[]{
-                        Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                        KdKategori.getText(),Pengeluaran.getText(),KdPtg.getText(),Keterangan.getText()
-                    })==true){
-                        Sequel.queryu("delete from tampjurnal");
-                        if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{akun,"Akun",Pengeluaran.getText(),"0"})==false){
-                            sukses=false;
-                        }
-                        if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{kontrakun,"Kontra","0",Pengeluaran.getText()})==false){
-                            sukses=false;
-                        } 
-                        if(sukses==true){
+                    Sequel.queryu("delete from tampjurnal");
+                    psakun=koneksi.prepareStatement(
+                        "select kd_rek,'Akun',"+
+                        "kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kode_kategori=?");
+                    try {
+                        psakun.setString(1,KdKategori.getText());
+                        rs=psakun.executeQuery();
+                        if(rs.next()){
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),Pengeluaran.getText(),"0"});
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",Pengeluaran.getText()}); 
                             sukses=jur.simpanJurnal(Nomor.getText(),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
-                        }
-                    }else{
+                        } 
+                    } catch (Exception e) {
                         sukses=false;
-                    }   
-
-                    if(sukses==true){
-                        if(!nopengajuanbiaya.equals("")){
-                            Sequel.queryu("update pengajuan_biaya set status='Divalidasi' where no_pengajuan='"+nopengajuanbiaya+"'");
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
                         }
-                        Sequel.Commit();
-                    }else{
-                        sukses=false;
-                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                        Sequel.RollBack();
+                        if(psakun!=null){
+                            psakun.close();
+                        }
                     }
-
-                    Sequel.AutoComitTrue();
-                    if(sukses==true){
-                        tabMode.addRow(new Object[]{
-                            Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdKategori.getText()+" "+NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
-                        });
-                        emptTeks();
-                        hitung();
-                    }
+                } catch (Exception e) {
+                    sukses=false;
+                    System.out.println("Notif : "+e);
                 }
+            }else{
+                sukses=false;
+            }   
+            
+            if(sukses==true){
+                if(!nopengajuanbiaya.equals("")){
+                    Sequel.queryu("update pengajuan_biaya set status='Divalidasi' where no_pengajuan='"+nopengajuanbiaya+"'");
+                }
+                Sequel.Commit();
+            }else{
+                sukses=false;
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                Sequel.RollBack();
+            }
+            
+            Sequel.AutoComitTrue();
+            if(sukses==true){
+                tampil();
+                emptTeks();
             }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -998,39 +758,21 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
             if(tbResep.getSelectedRow()>-1){
                 Sequel.AutoComitFalse();
                 sukses=true;     
-
+                
                 if(Sequel.queryu2tf("delete from pengeluaran_harian where no_keluar=?",1,new String[]{
                     tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()
                 })==true){
                     try {
+                        Sequel.queryu("delete from tampjurnal");
                         psakun=koneksi.prepareStatement(
-                            "select kategori_pengeluaran_harian.kd_rek,kategori_pengeluaran_harian.kd_rek2 from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?");
+                            "select kategori_pengeluaran_harian.kd_rek,'Akun',kategori_pengeluaran_harian.kd_rek2,'Kontra Akun' from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?");
                         try {
                             psakun.setString(1,KdKategori.getText());
                             rs=psakun.executeQuery();
                             if(rs.next()){
-                                total=0;
-                                if(rs.getString("kd_rek2").equals(kategori.Host_to_Host_Bank_Mandiri)){
-                                    total=Sequel.cariIsiAngka("select metode_pembayaran_bankmandiri.biaya_transaksi from metode_pembayaran_bankmandiri inner join pembayaran_pihak_ke3_bankmandiri on pembayaran_pihak_ke3_bankmandiri.kode_metode=metode_pembayaran_bankmandiri.kode_metode where pembayaran_pihak_ke3_bankmandiri.nomor_pembayaran=?",tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
-                                    Sequel.meghapus("pembayaran_pihak_ke3_bankmandiri","nomor_pembayaran",tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
-                                }
-                                Sequel.queryu("delete from tampjurnal");
-                                if(total>0){
-                                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                        kategori.Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",total+""
-                                    })==false){
-                                        sukses=false;
-                                    }
-                                }
-                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek"),"Akun","0",Pengeluaran.getText()})==false){
-                                    sukses=false;
-                                }
-                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek2"),"Kontra Akun",(Valid.SetAngka(Pengeluaran.getText())+total)+"","0"})==false){
-                                    sukses=false;
-                                }
-                                if(sukses==true){
-                                    sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
-                                }
+                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",Pengeluaran.getText()});
+                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),Pengeluaran.getText(),"0"}); 
+                                sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
                             } 
                         } catch (Exception e) {
                             sukses=false;
@@ -1050,7 +792,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                 }else{
                     sukses=false;
                 }               
-
+                
                 if(sukses==true){
                     Sequel.Commit();
                 }else{
@@ -1061,9 +803,8 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
 
                 Sequel.AutoComitTrue();
                 if(sukses==true){
-                    tabMode.removeRow(tbResep.getSelectedRow());
+                    tampil();
                     emptTeks();
-                    hitung();
                 }
             }                
         }
@@ -1216,8 +957,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.pindah(evt,KdPtg,Tanggal);
     }//GEN-LAST:event_KeteranganKeyPressed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        tampil();
+    }//GEN-LAST:event_formWindowOpened
+
     private void KdKategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKategoriKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            Sequel.cariIsi("select kategori_pengeluaran_harian.nama_kategori from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?",NmKategori,KdKategori.getText());
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnKategoriActionPerformed(null);
         }else{            
             Valid.pindah(evt,TCari,KdPtg);
@@ -1240,121 +987,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         // TODO add your handling code here:
     }//GEN-LAST:event_NomorKeyPressed
 
-    private void BtnKeluarMandiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarMandiriActionPerformed
-        NoRekening.setText("");
-        RekeningAtasNama.setText("");
-        KotaAtasNamaRekening.setText("");
-        KodeMetode.setText("");
-        MetodePembayaran.setText("");
-        BiayaTransaksi.setText("0");
-        KodeBank.setText("");
-        BankTujuan.setText("");
-        KodeTransaksi.setText("");
-        DlgBayarMandiri.dispose();
-    }//GEN-LAST:event_BtnKeluarMandiriActionPerformed
-
-    private void BtnSimpanMandiriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanMandiriActionPerformed
-        if(NoRekening.getText().trim().equals("")){
-            Valid.textKosong(NoRekening,"No.Rekening Tujuan");
-        }else if(RekeningAtasNama.getText().trim().equals("")){
-            Valid.textKosong(RekeningAtasNama,"Rekening Atas Nama");
-        }else if(KotaAtasNamaRekening.getText().trim().equals("")){
-            Valid.textKosong(KotaAtasNamaRekening,"Kota Atas Nama Rekening");
-        }else if(KodeMetode.getText().trim().equals("")){
-            Valid.textKosong(KodeMetode,"Kode Metode Pembayaran");
-        }else if(MetodePembayaran.getText().trim().equals("")){
-            Valid.textKosong(MetodePembayaran,"Metode Pembayaran");
-        }else if(BiayaTransaksi.getText().trim().equals("")){
-            Valid.textKosong(BiayaTransaksi,"Biaya Traksasi");
-        }else if(KodeBank.getText().trim().equals("")){
-            Valid.textKosong(KodeBank,"Kode Bank Tujuan");
-        }else if(BankTujuan.getText().trim().equals("")){
-            Valid.textKosong(BankTujuan,"Bank Tujuan");
-        }else{
-            Sequel.AutoComitFalse();
-            sukses=true;    
-            if(Sequel.menyimpantf2("pengeluaran_harian","?,?,?,?,?,?","Pengeluaran",6,new String[]{
-                Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                KdKategori.getText(),Pengeluaran.getText(),KdPtg.getText(),Keterangan.getText()
-            })==true){
-                Sequel.queryu("delete from tampjurnal");
-                if(Valid.SetInteger(BiayaTransaksi.getText())>0){
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        kategori.Akun_Biaya_Mandiri,"BIAYA TRANSAKSI",BiayaTransaksi.getText(),"0"
-                    })==false){
-                        sukses=false;
-                    }
-                }
-                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{akun,"Akun",Pengeluaran.getText(),"0"})==false){
-                    sukses=false;
-                }
-                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{kontrakun,"Kontra","0",(Valid.SetAngka(BiayaTransaksi.getText())+Valid.SetAngka(Pengeluaran.getText()))+""})==false){
-                    sukses=false;
-                } 
-                if(sukses==true){
-                    sukses=jur.simpanJurnal(Nomor.getText(),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
-                }   
-                if(sukses==true){
-                    if(Sequel.menyimpantf("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","No.Bukti", 12,new String[]{
-                            Nomor.getText(),kategori.norekening,NoRekening.getText(),RekeningAtasNama.getText(),KotaAtasNamaRekening.getText(),Pengeluaran.getText(),Nomor.getText(),KodeMetode.getText(),KodeBank.getText(),KodeTransaksi.getText(),"Pengeluaran Harian","Baru"
-                        })==false){
-                        sukses=false;
-                    }
-                }
-            }else{
-                sukses=false;
-            }   
-
-            if(sukses==true){
-                if(!nopengajuanbiaya.equals("")){
-                    Sequel.queryu("update pengajuan_biaya set status='Divalidasi' where no_pengajuan='"+nopengajuanbiaya+"'");
-                }
-                Sequel.Commit();
-            }else{
-                sukses=false;
-                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                Sequel.RollBack();
-            }
-
-            Sequel.AutoComitTrue();
-            if(sukses==true){
-                tabMode.addRow(new Object[]{
-                    Nomor.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdKategori.getText()+" "+NmKategori.getText(),NmPtg.getText(),Valid.SetAngka(Pengeluaran.getText()),Keterangan.getText(),KdKategori.getText(),KdPtg.getText()
-                });
-                DlgBayarMandiri.dispose();
-                emptTeks();
-                hitung();
-            }
-        }
-    }//GEN-LAST:event_BtnSimpanMandiriActionPerformed
-
-    private void BtnSimpanMandiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanMandiriKeyPressed
-
-    }//GEN-LAST:event_BtnSimpanMandiriKeyPressed
-
-    private void BtnMetodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMetodeActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        kodetransaksibank.setCari(BankTujuan.getText());
-        kodetransaksibank.isCek();
-        kodetransaksibank.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        kodetransaksibank.setLocationRelativeTo(internalFrame1);
-        kodetransaksibank.setAlwaysOnTop(false);
-        kodetransaksibank.setVisible(true);
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnMetodeActionPerformed
-
-    private void NoRekeningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRekeningKeyPressed
-        Valid.pindah(evt,BtnKeluarMandiri,KotaAtasNamaRekening);
-    }//GEN-LAST:event_NoRekeningKeyPressed
-
-    private void KotaAtasNamaRekeningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KotaAtasNamaRekeningKeyPressed
-        Valid.pindah(evt,NoRekening,RekeningAtasNama);
-    }//GEN-LAST:event_KotaAtasNamaRekeningKeyPressed
-
-    private void RekeningAtasNamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RekeningAtasNamaKeyPressed
-        Valid.pindah(evt,KotaAtasNamaRekening,BtnMetode);
-    }//GEN-LAST:event_RekeningAtasNamaKeyPressed
-
     /**
     * @param args the command line arguments
     */
@@ -1372,50 +1004,32 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox BankTujuan;
-    private widget.TextBox BiayaTransaksi;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnKeluarMandiri;
-    private widget.Button BtnMetode;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
-    private widget.Button BtnSimpanMandiri;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private javax.swing.JDialog DlgBayarMandiri;
     private widget.PanelBiasa FormInput;
     private widget.TextBox KdKategori;
     private widget.TextBox KdPtg;
     private widget.TextBox Keterangan;
-    private widget.TextBox KodeBank;
-    private widget.TextBox KodeMetode;
-    private widget.TextBox KodeTransaksi;
-    private widget.TextBox KotaAtasNamaRekening;
     private widget.Label LCount;
-    private widget.TextBox MetodePembayaran;
     private widget.TextBox NmKategori;
     private widget.TextBox NmPtg;
-    private widget.TextBox NoRekening;
     private widget.TextBox Nomor;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pengeluaran;
-    private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Tanggal Tanggal;
     private widget.Button btnKategori;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame4;
-    private widget.Label jLabel100;
-    private widget.Label jLabel101;
-    private widget.Label jLabel102;
-    private widget.Label jLabel103;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
@@ -1426,9 +1040,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
-    private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
-    private widget.PanelBiasa panelBiasa2;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.Table tbResep;
@@ -1437,6 +1049,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{     
+            total=0;
             ps=koneksi.prepareStatement(
                     "select pengeluaran_harian.no_keluar,pengeluaran_harian.tanggal, pengeluaran_harian.keterangan, pengeluaran_harian.biaya, pengeluaran_harian.nip, "+
                     "petugas.nama,pengeluaran_harian.kode_kategori,kategori_pengeluaran_harian.nama_kategori "+
@@ -1464,6 +1077,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         rs.getString("nip")+" "+rs.getString("nama"),rs.getDouble("biaya"),rs.getString("keterangan"),
                         rs.getString("kode_kategori"),rs.getString("nip")
                     });
+                    total=total+rs.getDouble("biaya");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -1475,25 +1089,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     ps.close();
                 }
             }
-            hitung();                      
-        }catch(Exception e){
+            if(total>0){
+                tabMode.addRow(new Object[]{"",">> Total Pengeluaran :","","",total,"","",""}); 
+            }        
+            LCount.setText((""+(tabMode.getRowCount()-1)).replaceAll("-1","0"));                        
+        }catch(SQLException e){
             System.out.println("Notifikasi : "+e);
-        }        
-    }
-    
-    public void hitung(){
-        total=0;
-        for(i=0;i<tabMode.getRowCount();i++){
-            if(!tbResep.getValueAt(i,0).toString().equals("")){
-                total=total+Valid.SetAngka(tbResep.getValueAt(i,4).toString());
-            }else{
-                tabMode.removeRow(i);
-                i--;
-            }
-        }
-        LCount.setText(""+tabMode.getRowCount());
-        if(total>0){
-            tabMode.addRow(new Object[]{"",">> Total Pengeluaran :","","",total,"","",""}); 
         }        
     }
 
@@ -1549,7 +1150,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     private void autoNomor() {
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(pengeluaran_harian.no_keluar,3),signed)),0) from pengeluaran_harian where pengeluaran_harian.tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_keluar,3),signed)),0) from pengeluaran_harian where tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
                 "PH"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,Nomor); 
     }
     

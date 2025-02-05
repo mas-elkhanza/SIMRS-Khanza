@@ -12,6 +12,7 @@
 package laporan;
 
 import fungsi.WarnaTable;
+import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -123,6 +124,8 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
 
         Tabel2.setDefaultRenderer(Object.class, new WarnaTable());
         
+        TKd.setDocument(new batasInput((byte)20).getKata(TKd));
+        
         ruang.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -131,7 +134,6 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(ruang.getTable().getSelectedRow()!= -1){   
-                    TKd.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),0).toString());  
                     Kamar.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),1).toString());  
                     Kamar.requestFocus();
                 }                      
@@ -322,12 +324,11 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
 
         internalFrame1.add(panelGlass5, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.setBackground(new java.awt.Color(255, 255, 255));
+        TabRawat.setBackground(new java.awt.Color(250, 255, 245));
         TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.setOpaque(true);
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TabRawatMouseClicked(evt);
@@ -343,6 +344,16 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         Scroll.setOpaque(true);
 
         Tabel1.setName("Tabel1"); // NOI18N
+        Tabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabel1MouseClicked(evt);
+            }
+        });
+        Tabel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tabel1KeyPressed(evt);
+            }
+        });
         Scroll.setViewportView(Tabel1);
 
         internalFrame2.add(Scroll, java.awt.BorderLayout.CENTER);
@@ -472,6 +483,26 @@ public final class DlgHitungALOS extends javax.swing.JDialog {
         }else{Valid.pindah(evt,BtnKeluar,TKd);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
+    private void Tabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabel1MouseClicked
+        if(tabMode.getRowCount()!=0){
+            try {
+                getData();
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+}//GEN-LAST:event_Tabel1MouseClicked
+
+    private void Tabel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tabel1KeyPressed
+        if(tabMode.getRowCount()!=0){
+            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+                try {
+                    getData();
+                } catch (java.lang.NullPointerException e) {
+                }
+            }
+        }
+}//GEN-LAST:event_Tabel1KeyPressed
+
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     if(TabRawat.getSelectedIndex()==0){
         tampil();
@@ -524,7 +555,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }//GEN-LAST:event_BtnSeek6ActionPerformed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
-        TKd.setText("");
         Kamar.setText("");
         if(TabRawat.getSelectedIndex()==0){
             tampil();
@@ -590,10 +620,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps=koneksi.prepareStatement(
                        "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar," +
                        "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,kamar_inap.lama,kamar_inap.stts_pulang "+
-                       "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat "+
-                       "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                       "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                       "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal  " +
+                       "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal " +
+                       "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
+                       "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal  " +
                        "where kamar_inap.tgl_masuk between ? and ? "+(Kamar.getText().equals("")?"":"and bangsal.nm_bangsal=?")+" order by kamar_inap.tgl_masuk");  
             
             try {
@@ -615,7 +644,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     i++;
                 }
                 if(hari>0){
-                    pasien=Sequel.cariIntegerCount("select count(kamar_inap.no_rawat) from kamar_inap where "+(Kamar.getText().equals("")?"":"kamar.kd_bangsal='"+TKd.getText()+"' and ")+"kamar_inap.tgl_masuk between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' group by no_rawat");
+                    pasien=Sequel.cariIntegerCount("select count(no_rawat) from kamar_inap where tgl_masuk between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' group by no_rawat");
                     tabMode.addRow(new Object[]{"","","","Jumlah Lama Dirawat",":","","",hari,""});
                     tabMode.addRow(new Object[]{"","","","Jumlah Pasien Keluar(Hidup+Mati)",":","","",pasien,""});
                     tabMode.addRow(new Object[]{"","","","Perhitungan ALOS ",": "+hari+"/"+pasien,"","",Valid.SetAngka4((hari/pasien)),""});
@@ -644,10 +673,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             ps=koneksi.prepareStatement(
                        "select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,concat(kamar_inap.kd_kamar,' ',bangsal.nm_bangsal) as kamar," +
                        "kamar_inap.tgl_masuk,if(kamar_inap.tgl_keluar='0000-00-00',current_date(),kamar_inap.tgl_keluar) as tgl_keluar,kamar_inap.lama,kamar_inap.stts_pulang "+
-                       "from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat "+
-                       "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                       "inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar "+
-                       "inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal  " +
+                       "from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal " +
+                       "on kamar_inap.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
+                       "and kamar_inap.kd_kamar=kamar.kd_kamar and kamar.kd_bangsal=bangsal.kd_bangsal  " +
                        "where kamar_inap.tgl_keluar between ? and ? "+(Kamar.getText().equals("")?"":"and bangsal.nm_bangsal=?")+" order by kamar_inap.tgl_keluar");  
             
             try {
@@ -669,7 +697,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     i++;
                 }
                 if(hari>0){
-                    pasien=Sequel.cariIntegerCount("select count(kamar_inap.no_rawat) from kamar_inap where "+(Kamar.getText().equals("")?"":"kamar.kd_bangsal='"+TKd.getText()+"' and ")+"kamar_inap.tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' group by no_rawat");
+                    pasien=Sequel.cariIntegerCount("select count(no_rawat) from kamar_inap where tgl_keluar between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' group by no_rawat");
                     tabMode2.addRow(new Object[]{"","","","Jumlah Lama Dirawat",":","","",hari,""});
                     tabMode2.addRow(new Object[]{"","","","Jumlah Pasien Keluar(Hidup+Mati)",":","","",pasien,""});
                     tabMode2.addRow(new Object[]{"","","","Perhitungan ALOS ",": "+hari+"/"+pasien,"","",Valid.SetAngka4((hari/pasien)),""});
@@ -689,4 +717,12 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             System.out.println("Notifikasi : "+e);
         }
     }
+
+    private void getData() {
+        int row=Tabel1.getSelectedRow();
+        if(row!= -1){
+            TKd.setText(tabMode.getValueAt(row,0).toString());
+        }
+    }
+
 }

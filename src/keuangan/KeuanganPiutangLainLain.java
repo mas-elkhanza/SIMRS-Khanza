@@ -807,15 +807,9 @@ public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
                     NominalPinjam.getText()
                 })==true){
                     Sequel.queryu("delete from tampjurnal");                    
-                    if(Sequel.menyimpantf2("tampjurnal","'"+kontraakun+"','"+namakontraakun+"','"+NominalPinjam.getText()+"','0'","Rekening")==false){
-                        sukses=false;
-                    }     
-                    if(Sequel.menyimpantf2("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','0','"+NominalPinjam.getText()+"'","Rekening")==false){
-                        sukses=false;
-                    } 
-                    if(sukses==true){
-                        sukses=jur.simpanJurnal(NoNota.getText(),"U","PIUTANG PERUSAHAAN/LAIN-LAIN"+", OLEH "+akses.getkode());
-                    }                   
+                    Sequel.menyimpan("tampjurnal","'"+kontraakun+"','"+namakontraakun+"','"+NominalPinjam.getText()+"','0'","Rekening");    
+                    Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','0','"+NominalPinjam.getText()+"'","Rekening"); 
+                    sukses=jur.simpanJurnal(NoNota.getText(),"U","PIUTANG PERUSAHAAN/LAIN-LAIN"+", OLEH "+akses.getkode());                   
             }else{
                 sukses=false;
             }  
@@ -871,15 +865,9 @@ public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
                     sukses=false;
                 }
                 Sequel.queryu("delete from tampjurnal");                    
-                if(Sequel.menyimpantf2("tampjurnal","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()+"','0'","Rekening")==false){
-                    sukses=false;
-                }     
-                if(Sequel.menyimpantf2("tampjurnal","'"+kontraakun+"','"+namakontraakun+"','0','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()+"'","Rekening")==false){
-                    sukses=false;
-                } 
-                if(sukses==true){
-                    sukses=jur.simpanJurnal(NoNota.getText(),"U","PEMBATALAN PIUTANG LAIN-LAIN"+", OLEH "+akses.getkode()); 
-                }    
+                Sequel.menyimpan("tampjurnal","'"+tbKamar.getValueAt(tbKamar.getSelectedRow(),6).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),7).toString()+"','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()+"','0'","Rekening");    
+                Sequel.menyimpan("tampjurnal","'"+kontraakun+"','"+namakontraakun+"','0','"+tbKamar.getValueAt(tbKamar.getSelectedRow(),10).toString()+"'","Rekening"); 
+                sukses=jur.simpanJurnal(NoNota.getText(),"U","PEMBATALAN PIUTANG LAIN-LAIN"+", OLEH "+akses.getkode());     
             }else{
                 sukses=false;
             }
@@ -1316,11 +1304,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampilAkunBayar();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
     } 
     

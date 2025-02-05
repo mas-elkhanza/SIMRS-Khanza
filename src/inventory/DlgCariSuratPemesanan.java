@@ -116,7 +116,7 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(pilihan==4){
+                if(akses.getform().equals("DlgCariPemesanan")){
                     if(suplier.getTable().getSelectedRow()!= -1){                   
                         kdsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());                    
                         nmsup.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
@@ -139,11 +139,11 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    if(pilihan==4){
+                if(akses.getform().equals("DlgCariPemesanan")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
                         suplier.dispose();
-                    }
-                }    
+                    }    
+                }
             }
             @Override
             public void keyReleased(KeyEvent e) {}
@@ -181,15 +181,19 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){                   
-                    if(pilihan==4){
-                        kdptg.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
-                        nmptg.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                    }else if(pilihan==5){
-                        Apoteker.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());                        
-                    }else if(pilihan==6){
-                        KabidKeu.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());                        
-                    } 
+                if(akses.getform().equals("DlgCariPemesanan")){
+                    if(pegawai.getTable().getSelectedRow()!= -1){                   
+                        if(pilihan==1){
+                            kdptg.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
+                            nmptg.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                            kdptg.requestFocus();
+                        }else if(pilihan==2){
+                            Apoteker.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());                        
+                        }else if(pilihan==3){
+                            KabidKeu.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());                        
+                        } 
+                    }            
+                    kdptg.requestFocus();
                 }
             }
             @Override
@@ -200,26 +204,7 @@ public class DlgCariSuratPemesanan extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        pegawai.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    if(pilihan==4){
-                        pegawai.dispose();
-                    }else if(pilihan==5){
-                        pegawai.dispose();                      
-                    }else if(pilihan==6){
-                        pegawai.dispose();                      
-                    }
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
+        });        
         
         barang.addWindowListener(new WindowListener() {
             @Override
@@ -957,7 +942,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
         akses.setform("DlgCariPemesanan");
-        pilihan=4;
         suplier.emptTeks();
         suplier.isCek();
         suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -968,7 +952,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
         akses.setform("DlgCariPemesanan");
-        pilihan=4;
+        pilihan=2;
         pegawai.emptTeks();
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
@@ -1099,8 +1083,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         nmsup.setText("");
         kdptg.setText("");
         nmptg.setText("");
-        KdIF.setText("");
-        NmIF.setText("");
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -1350,7 +1332,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_BtnKeluar4ActionPerformed
 
     private void BtnSeek5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek5ActionPerformed
-        pilihan=6;
+        pilihan=3;
         akses.setform("DlgCariPemesanan");
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);
@@ -1359,7 +1341,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_BtnSeek5ActionPerformed
 
     private void BtnSeek6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek6ActionPerformed
-        pilihan=5;
+        pilihan=2;
         akses.setform("DlgCariPemesanan");
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);

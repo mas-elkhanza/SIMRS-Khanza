@@ -401,7 +401,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                 Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
                     if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
+                        Sequel.menyimpan("temporary","'"+i+"','"+
                                     tabMode.getValueAt(r,0).toString()+"','"+
                                     tabMode.getValueAt(r,1).toString()+"','"+
                                     tabMode.getValueAt(r,2).toString()+"','"+
@@ -415,7 +415,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                 Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode2.getRowCount();r++){ 
                     if(!tbBangsal2.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
+                        Sequel.menyimpan("temporary","'"+i+"','"+
                                     tabMode2.getValueAt(r,0).toString()+"','"+
                                     tabMode2.getValueAt(r,1).toString()+"','"+
                                     tabMode2.getValueAt(r,2).toString()+"','"+
@@ -429,7 +429,7 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
                 Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode3.getRowCount();r++){ 
                     if(!tbBangsal3.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
+                        Sequel.menyimpan("temporary","'"+i+"','"+
                                     tabMode3.getValueAt(r,0).toString()+"','"+
                                     tabMode3.getValueAt(r,1).toString()+"','"+
                                     tabMode3.getValueAt(r,2).toString()+"','"+

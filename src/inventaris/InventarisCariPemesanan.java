@@ -974,20 +974,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 sukses=true;
 
                 Sequel.queryu("delete from tampjurnal");
-                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{rs.getString("kd_rek_aset"),"JENIS ASET/INVENTARIS","0",rs.getString("total")})==false){
-                    sukses=false;
-                }    
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    rs.getString("kd_rek_aset"),"JENIS ASET/INVENTARIS","0",rs.getString("total")
+                });    
                 if(rs.getDouble("ppn")>0){
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Barang Aset Inventaris","0",rs.getString("ppn")})==false){
-                        sukses=false;
-                    } 
+                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                        Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Barang Aset Inventaris","0",rs.getString("ppn")
+                    }); 
                 }
-                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS",rs.getString("tagihan"),"0"})==false){
-                    sukses=false;
-                } 
-                if(sukses==true){
-                    sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL PENERIMAAN BARANG ASET/INVENTARIS"+", OLEH "+akses.getkode());
-                }
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS",rs.getString("tagihan"),"0"
+                }); 
+                sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL PENERIMAAN BARANG ASET/INVENTARIS"+", OLEH "+akses.getkode());
 
                 if(sukses==true){
                    Sequel.queryu2("delete from inventaris_pemesanan where no_faktur=?",1,new String[]{rs.getString("no_faktur")});

@@ -16,7 +16,7 @@
             where resume_pasien.no_rawat='$norawat'");
         if($rsqueryresume = mysqli_fetch_array($queryresume)) {
            echo "<div class='block-header'>
-                    <h2><center>RESUME PERAWATAN<br/>NO.$norawat</center></h2>
+                    <h2><center>RESUME PERAWATAN<br>NO.$norawat</center></h2>
                 </div>
                 <div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
@@ -45,7 +45,7 @@
                                         </div>
                                         <div id='collapseOne_4' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingOne_4'>
                                             <div class='panel-body'>
-                                                ".str_replace("\n","<br/>",$rsqueryresume["keluhan_utama"])."
+                                                ".str_replace("\n","<br>",$rsqueryresume["keluhan_utama"])."
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +59,7 @@
                                         </div>
                                         <div id='collapseTwo_4' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingTwo_4'>
                                             <div class='panel-body'>
-                                                ".str_replace("\n","<br/>",$rsqueryresume["jalannya_penyakit"])."
+                                                ".str_replace("\n","<br>",$rsqueryresume["jalannya_penyakit"])."
                                             </div>
                                         </div>
                                     </div>
@@ -73,7 +73,7 @@
                                         </div>
                                         <div id='collapseThree_4' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingThree_4'>
                                             <div class='panel-body'>
-                                                ".str_replace("\n","<br/>",$rsqueryresume["pemeriksaan_penunjang"])."
+                                                ".str_replace("\n","<br>",$rsqueryresume["pemeriksaan_penunjang"])."
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                         </div>
                                         <div id='collapseFour_4' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingFour_4'>
                                             <div class='panel-body'>
-                                                ".str_replace("\n","<br/>",$rsqueryresume["hasil_laborat"])."
+                                                ".str_replace("\n","<br>",$rsqueryresume["hasil_laborat"])."
                                             </div>
                                         </div>
                                     </div>
@@ -145,7 +145,7 @@
                                         </div>
                                         <div id='collapseSix_4' class='panel-collapse collapse' role='tabpanel' aria-labelledby='headingSix_4'>
                                             <div class='panel-body'>
-                                                ".str_replace("\n","<br/>",$rsqueryresume["obat_pulang"])."
+                                                ".str_replace("\n","<br>",$rsqueryresume["obat_pulang"])."
                                             </div>
                                         </div>
                                     </div>

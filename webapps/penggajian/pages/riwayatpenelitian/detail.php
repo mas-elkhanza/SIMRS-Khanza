@@ -20,11 +20,11 @@
             $_sqlnext         	= "SELECT pegawai.id FROM pegawai WHERE pegawai.id>'$id' order by pegawai.id asc limit 1";
             $hasilnext        	= bukaquery($_sqlnext);
             $barisnext        	= mysqli_fetch_row($hasilnext);
-            @$next              = $barisnext[0];
+            $next               = $barisnext[0];
             $_sqlprev         	= "SELECT pegawai.id FROM pegawai WHERE pegawai.id<'$id' order by pegawai.id desc limit 1";
             $hasilprev        	= bukaquery($_sqlprev);
             $barisprev        	= mysqli_fetch_row($hasilprev);
-            @$prev              = $barisprev[0];
+            $prev               = $barisprev[0];
             if(empty($prev)){
                 $prev = $next;
             }
@@ -114,19 +114,10 @@
                 if ((!empty($id))&&(!empty($jenis_penelitian))&&(!empty($judul_penelitian))) {
                     switch($action) {
                         case "TAMBAH":
-                            if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-5))==".jpeg")){
-                                if(($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
-                                    if((@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
-                                        if(Tambah(" riwayat_penelitian "," '$id','$jenis_penelitian','$peranan','$judul_penelitian','$judul_jurnal','$tahun','$biaya_penelitian','$asal_dana','$dokumen'", " Riwayat Penelitian " )){
-                                            move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                                        }
-                                        echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPenelitian&action=TAMBAH&id=$id'>";
-                                    }else{
-                                        echo "Berkas harus JPEG/JPG";
-                                    } 
-                                }else{
-                                    echo "Berkas harus JPEG/JPG";
-                                } 
+                            if(strtolower(substr($dokumen,-3))=="pdf"){
+                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                                Tambah(" riwayat_penelitian "," '$id','$jenis_penelitian','$peranan','$judul_penelitian','$judul_jurnal','$tahun','$biaya_penelitian','$asal_dana','$dokumen'", " Riwayat Penelitian " );
+                                echo"<meta http-equiv='refresh' content='1;URL=?act=InputRiwayatPenelitian&action=TAMBAH&id=$id'>";
                             }else{
                                 echo "Berkas harus pdf";
                             } 

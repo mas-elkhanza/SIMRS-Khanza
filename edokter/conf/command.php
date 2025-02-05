@@ -1,6 +1,6 @@
 <?php
     function title(){
-        $judul ="Aplikasi E-Dokter --)(*!!@#$%";
+        $judul ="Aplikasi Temanku --)(*!!@#$%";
         $judul = preg_replace("[^A-Za-z0-9_\-\./,|]"," ",$judul);
         $judul = str_replace(array('.','-','/',',')," ",$judul);
         $judul = trim($judul);
@@ -8,7 +8,7 @@
     }
 
     function cekSessiAdmin() {
-        if (isset($_SESSION['ses_dokter'])) {
+        if (isset($_SESSION['ses_admin'])) {
             return true;
         } else {
             return false;
@@ -17,7 +17,7 @@
 
     function PasienAktif() {
         if (cekSessiAdmin()) {
-            return $_SESSION['ses_dokter'];
+            return $_SESSION['ses_admin'];
         }
      }
 

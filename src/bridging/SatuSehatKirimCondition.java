@@ -861,7 +861,6 @@ public final class SatuSehatKirimCondition extends javax.swing.JDialog {
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_condition());
-        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_condition());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_condition());
     }
     

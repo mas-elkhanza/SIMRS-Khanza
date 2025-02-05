@@ -1,8 +1,8 @@
 <?php
     require_once('../../conf/conf.php');
     $nopernyataan           = validTeks4($_POST["nopernyataan"],20);
-    if(file_exists(host()."/webapps/pulangaps/pages/upload/".$nopernyataan."SK.jpeg")){
-        @unlink(host()."/webapps/pulangaps/pages/upload/".$nopernyataan."SK.jpeg");
+    if(file_exists(host()."webapps/pulangaps/pages/upload/".$nopernyataan.".jpeg")){
+        @unlink(host()."webapps/pulangaps/pages/upload/".$nopernyataan.".jpeg");
     }
     $img                    = $_POST["image"];
     $folderPath             = "upload/";

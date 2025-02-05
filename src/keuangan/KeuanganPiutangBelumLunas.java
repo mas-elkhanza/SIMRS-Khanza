@@ -961,27 +961,17 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             }    
                             Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"' and nama_bayar='"+nmpenjab.getText()+"'","sisapiutang=sisapiutang-"+(Double.parseDouble(tabMode.getValueAt(i,11).toString())+Double.parseDouble(tabMode.getValueAt(i,12).toString())+Double.parseDouble(tabMode.getValueAt(i,13).toString())));
                             Sequel.queryu("delete from tampjurnal");                    
-                            if(Sequel.menyimpantf2("tampjurnal","'"+kdpenjab.getText()+"','BAYAR PIUTANG','0','"+(Double.parseDouble(tabMode.getValueAt(i,11).toString())+Double.parseDouble(tabMode.getValueAt(i,12).toString())+Double.parseDouble(tabMode.getValueAt(i,13).toString()))+"'","Rekening")==false){
-                                sukses=false;
-                            }    
+                            Sequel.menyimpan("tampjurnal","'"+kdpenjab.getText()+"','BAYAR PIUTANG','0','"+(Double.parseDouble(tabMode.getValueAt(i,11).toString())+Double.parseDouble(tabMode.getValueAt(i,12).toString())+Double.parseDouble(tabMode.getValueAt(i,13).toString()))+"'","Rekening");    
                             if(Double.parseDouble(tabMode.getValueAt(i,11).toString())>0){
-                                if(Sequel.menyimpantf2("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','"+tabMode.getValueAt(i,11).toString()+"','0'","Rekening")==false){
-                                    sukses=false;
-                                } 
+                                Sequel.menyimpan("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','"+tabMode.getValueAt(i,11).toString()+"','0'","Rekening"); 
                             }
                             if(Double.parseDouble(tabMode.getValueAt(i,12).toString())>0){
-                                if(Sequel.menyimpantf2("tampjurnal","'"+Diskon_Piutang+"','DISKON BAYAR','"+tabMode.getValueAt(i,12).toString()+"','0'","Rekening")==false){
-                                    sukses=false;
-                                } 
+                                Sequel.menyimpan("tampjurnal","'"+Diskon_Piutang+"','DISKON BAYAR','"+tabMode.getValueAt(i,12).toString()+"','0'","Rekening");
                             }
                             if(Double.parseDouble(tabMode.getValueAt(i,13).toString())>0){
-                                if(Sequel.menyimpantf2("tampjurnal","'"+Piutang_Tidak_Terbayar+"','PIUTANG TIDAK TERBAYAR','"+tabMode.getValueAt(i,13).toString()+"','0'","Rekening")==false){
-                                    sukses=false;
-                                }  
+                                Sequel.menyimpan("tampjurnal","'"+Piutang_Tidak_Terbayar+"','PIUTANG TIDAK TERBAYAR','"+tabMode.getValueAt(i,13).toString()+"','0'","Rekening"); 
                             }   
-                            if(sukses==true){
-                                sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","BAYAR PIUTANG"+", OLEH "+akses.getkode());  
-                            }                 
+                            sukses=jur.simpanJurnal(tabMode.getValueAt(i,1).toString(),"U","BAYAR PIUTANG"+", OLEH "+akses.getkode());                   
                         }else{
                             sukses=false;
                         }
@@ -997,15 +987,9 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                         if(Sequel.menyimpantf("pemasukan_lain","?,?,?,?,?,?,?","Pemasukan",7,new String[]{
                             nomorpemasukan,Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),status,Double.toString(lebihbayar),akses.getkode().replaceAll("Admin Utama","-"),carabayar,"Pendapatan Lebih Bayar Piutang Pasien"
                         })==true){
-                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Lebih_Bayar_Piutang,"Lebih Bayar Piutang","0",Double.toString(lebihbayar)})==false){
-                                sukses=false;
-                            } 
-                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{koderekening,AkunBayar.getSelectedItem().toString(),Double.toString(lebihbayar),"0"})==false){
-                                sukses=false;
-                            } 
-                            if(sukses==true){
-                                sukses=jur.simpanJurnal(nomorpemasukan,"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
-                            }
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Lebih_Bayar_Piutang,"Lebih Bayar Piutang","0",Double.toString(lebihbayar)});
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{koderekening,AkunBayar.getSelectedItem().toString(),Double.toString(lebihbayar),"0"}); 
+                            sukses=jur.simpanJurnal(nomorpemasukan,"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
                             if(sukses==true){
                                 lebihbayar=0;
                                 carabayar="";
@@ -1435,9 +1419,10 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         this.notagihan=notagihan;
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select akun_piutang.kd_rek,akun_piutang.nama_bayar,akun_bayar.nama_bayar,"+
-                    "penagihan_piutang.kd_pj from penagihan_piutang inner join akun_piutang on penagihan_piutang.kd_pj=akun_piutang.kd_pj "+
-                    "inner join akun_bayar on penagihan_piutang.kd_rek=akun_bayar.kd_rek where penagihan_piutang.no_tagihan=?");
+            ps=koneksi.prepareStatement("select akun_piutang.kd_rek,akun_piutang.nama_bayar,akun_bayar.nama_bayar "+
+                    "from penagihan_piutang inner join akun_piutang on penagihan_piutang.kd_pj=akun_piutang.kd_pj "+
+                    "inner join akun_bayar on penagihan_piutang.kd_rek=akun_bayar.kd_rek "+
+                    "where penagihan_piutang.no_tagihan=?");
             try {
                 ps.setString(1,notagihan);
                 rs=ps.executeQuery();
@@ -1445,7 +1430,6 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     kdpenjab.setText(rs.getString(1));
                     nmpenjab.setText(rs.getString(2));
                     AkunBayar.setSelectedItem(rs.getString(3));
-                    carabayar=rs.getString("kd_pj");
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -1464,8 +1448,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                        "from piutang_pasien inner join pasien inner join reg_periksa inner join penjab inner join detail_piutang_pasien on  "+
                        "piutang_pasien.no_rkm_medis=pasien.no_rkm_medis and piutang_pasien.no_rawat=reg_periksa.no_rawat and "+
                        "reg_periksa.kd_pj=penjab.kd_pj and piutang_pasien.no_rawat=detail_piutang_pasien.no_rawat where "+
-                       "detail_piutang_pasien.sisapiutang>=1 and detail_piutang_pasien.kd_pj='"+carabayar+"' and piutang_pasien.no_rawat in "+
-                       "(select detail_penagihan_piutang.no_rawat from detail_penagihan_piutang where detail_penagihan_piutang.no_tagihan=?) order by piutang_pasien.tgl_piutang");
+                       "detail_piutang_pasien.sisapiutang>=1 and piutang_pasien.no_rawat in (select no_rawat from detail_penagihan_piutang where no_tagihan=?) order by piutang_pasien.tgl_piutang");
             try {
                 ps.setString(1,notagihan);
                 rs=ps.executeQuery();
@@ -1635,11 +1618,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampilAkunBayar();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
     } 
 }

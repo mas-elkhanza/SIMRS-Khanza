@@ -22,7 +22,7 @@
         $keyword   = $_GET['keyword'];
         $keyword   = validTeks($keyword);
         $_sql      = "SELECT pegawai.id,pegawai.nik,pegawai.nama,pegawai.departemen,sum(tindakan.jmlh),sum(tindakan.jm) FROM tindakan right OUTER JOIN pegawai ON tindakan.id=pegawai.id and tindakan.tgl like '%".$tahun."-".$bulan."%'
-		      where pegawai.stts_aktif='AKTIF' and pegawai.jbtn like '%dokter umum%' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen like '%".$keyword."%') group by pegawai.id order by pegawai.id ASC ";
+		      where pegawai.stts_aktif<>'KELUAR' and pegawai.jbtn like '%dokter umum%' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.departemen like '%".$keyword."%') group by pegawai.id order by pegawai.id ASC ";
         $hasil     = bukaquery($_sql);
         $jumlah    = mysqli_num_rows($hasil);
 	$ttljm     = 0;

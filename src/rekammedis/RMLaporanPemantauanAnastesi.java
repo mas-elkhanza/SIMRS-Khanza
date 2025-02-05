@@ -6137,7 +6137,7 @@ public final class RMLaporanPemantauanAnastesi extends javax.swing.JDialog {
 
     private void BtnTambahMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahMasalahActionPerformed
         if(TNoRM.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Pilih terlebih dahulu pasien yang mau dimasukkan data...");
+            JOptionPane.showMessageDialog(null,"Pilih terlebih dahulu pasien yang mau dimasukkan data kelarihannya...");
             Anamnesis.requestFocus();
         }else{
             emptTeksPersalinan();

@@ -26,7 +26,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>SURAT KETERANGAN SAKIT<br/>NO.$nosurat</center></h2>
+                                <h2><center>SURAT KETERANGAN SAKIT<br>NO.$nosurat</center></h2>
                             </div>
                             <div class='body' align='justify'>
                                 Yang bertanda tangan di bawah ini ".$rsquerysuratsakit["nm_dokter"].", dokter pada ".$_SESSION["nama_instansi"]." menerangkan bahwa :<br/><br/>
@@ -64,7 +64,7 @@
                                         <td width='50%' align='center'></td>
                                         <td width='50%' align='center'>".$_SESSION["kabupaten"].", ".$rsquerysuratsakit["tanggalawal"]."<br/>".$_SESSION["nama_instansi"]."<br/>Dokter,<br/><img src='pages/".$PNG_WEB_DIR.basename($filename)."'/><br/>( <u>".$rsquerysuratsakit["nm_dokter"]."</u> )</td>
                                     </tr>
-                                </table><br/>
+                                </table><br>
                                 <center><a href='index.php?act=SuratSakit&hal=Surat' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>

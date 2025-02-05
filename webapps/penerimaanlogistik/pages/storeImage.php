@@ -2,8 +2,8 @@
     require_once('../../conf/conf.php');
     session_start();
     
-    if(file_exists(host()."/webapps/penerimaanlogistik/pages/upload/".$_SESSION["nofaktur"].".jpeg")){
-        @unlink(host()."/webapps/penerimaanlogistik/pages/upload/".$_SESSION["nofaktur"].".jpeg");
+    if(file_exists(host()."webapps/penerimaanlogistik/pages/upload/".$_SESSION["nofaktur"].".jpeg")){
+        @unlink(host()."webapps/penerimaanlogistik/pages/upload/".$_SESSION["nofaktur"].".jpeg");
     }
     
     $img            = $_POST["image"];

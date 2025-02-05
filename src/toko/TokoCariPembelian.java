@@ -29,7 +29,7 @@ public class TokoCariPembelian extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  TokoCariSuplier suplier=new TokoCariSuplier(null,false);
+    public  TokoSuplier suplier=new TokoSuplier(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  TokoBarang barang=new TokoBarang(null,false);
     private PreparedStatement ps,ps2,pscaribeli,pstoko_detail_beli;
@@ -883,27 +883,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                       }
 
                       Sequel.queryu("delete from tampjurnal");
-                      if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                            akunpengadaan,"PEMBELIAN","0",rs.getString("total")
-                      })==false){
-                            sukses=false;
-                      }    
+                      Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                          akunpengadaan,"PEMBELIAN","0",rs.getString("total")
+                      });    
                       if(rs.getDouble("ppn")>0){
-                          if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                                PPN_Masukan,"PPN Masukan Toko","0",rs.getString("ppn")
-                          })==false){
-                                sukses=false;
-                          }  
+                          Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                            PPN_Masukan,"PPN Masukan Toko","0",rs.getString("ppn")
+                          }); 
                       }
-                      if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                            Sequel.cariIsi("select tokopembelian.kd_rek from tokopembelian where tokopembelian.no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
-                      })==false){
-                            sukses=false;
-                      } 
-                      if(sukses==true){
-                            sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","PEMBATALAN PENGADAAN BARANG TOKO"+", OLEH "+akses.getkode());
-                      }
-                      
+                      Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                          Sequel.cariIsi("select tokopembelian.kd_rek from tokopembelian where tokopembelian.no_faktur =?",rs.getString("no_faktur")),"KAS DI TANGAN",rs.getString("tagihan"),"0"
+                      }); 
+                      sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","PEMBATALAN PENGADAAN BARANG TOKO"+", OLEH "+akses.getkode());
                       if(sukses==true){
                            Sequel.queryu2("delete from tokopembelian where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString()});
                            Sequel.Commit();

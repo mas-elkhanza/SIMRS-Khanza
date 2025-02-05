@@ -3,9 +3,6 @@ Options All -Indexes
 <FilesMatch ".(flv|gif|jpg|jpeg|png|ico|swf|pdf)$">
   Header set Cache-Control "max-age=2592000"
 </FilesMatch>
-<FilesMatch "\.(php|ph*|Ph*|PH*|pH*)$">
-    Deny from all
-</FilesMatch>
 RewriteCond %{REQUEST_FILENAME} !-f 
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -720,15 +720,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                    
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{akunaset,"JENIS ASET INVENTARIS",""+sbttl,"0"})==false){
-                        sukses=false;
-                    }
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Kontra_Hibah_Aset,"PENDAPATAN HIBAH","0",""+sbttl})==false){
-                        sukses=false;
-                    } 
-                    if(sukses==true){
-                        sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN HIBAH ASET/INVENTARIS"+", OLEH "+akses.getkode());
-                    }
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunaset,"JENIS ASET INVENTARIS",""+sbttl,"0"});
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Hibah_Aset,"PENDAPATAN HIBAH","0",""+sbttl}); 
+                    sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN HIBAH ASET/INVENTARIS"+", OLEH "+akses.getkode());
                 }
                 
                 if(sukses==true){

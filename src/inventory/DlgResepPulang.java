@@ -45,14 +45,13 @@ public final class DlgResepPulang extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
+    private PreparedStatement ps,psbarang;
     private ResultSet rs;
     public DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
     private double jumlahtotal=0;
     private riwayatobat Trackobat=new riwayatobat();
     private String aktifkanbatch="no",bangsal="",lokasistok="";
     private int i=0;
-    private boolean sukses=true;
 
     /** Creates new form DlgResepObat 
      *@param parent
@@ -583,8 +582,6 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane,"Data billing sudah terverifikasi, data tidak boleh dihapus.\nSilahkan hubungi bagian kasir/keuangan ..!!");
                 TCari.requestFocus();
             }else{
-                Sequel.AutoComitFalse();
-                sukses=true;
                 i=tbResep.getSelectedRow();
                 if(Sequel.queryu2tf("delete from resep_pulang where no_rawat=? and kode_brng=? and no_batch=? and no_faktur=? and tanggal=? and jam=?",6,new String[]{
                     tbResep.getValueAt(i,0).toString(),KdBarang.getText(),tbResep.getValueAt(i,9).toString(),tbResep.getValueAt(i,10).toString(),tbResep.getValueAt(i,1).toString(),tbResep.getValueAt(i,2).toString()
@@ -601,18 +598,6 @@ public final class DlgResepPulang extends javax.swing.JDialog {
                         Sequel.menyimpan("gudangbarang","'"+KdBarang.getText()+"','"+akses.getkdbangsal()+"','"+tbResep.getValueAt(i,5).toString()+"','',''", 
                                      "stok=stok+'"+tbResep.getValueAt(i,5).toString()+"'","kode_brng='"+KdBarang.getText()+"' and kd_bangsal='"+akses.getkdbangsal()+"' and no_batch='' and no_faktur=''");    
                     }
-                }else{
-                    sukses=false;
-                }
-                if(sukses==true){
-                    Sequel.Commit();
-                }else{
-                    sukses=false;
-                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                    Sequel.RollBack();
-                }
-                Sequel.AutoComitTrue();
-                if(sukses==true){
                     tampil();
                 }
             }                
@@ -1000,9 +985,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(tbResep.getSelectedRow()!= -1){
             TNoRw.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString()); 
             TPasien.setText(tbResep.getValueAt(tbResep.getSelectedRow(),3).toString()); 
-            Sequel.cariIsi("select databarang.kode_brng from databarang where concat(databarang.kode_brng,' ',databarang.nama_brng)=?",KdBarang,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
-            Sequel.cariIsi("select databarang.nama_brng from databarang where concat(databarang.kode_brng,' ',databarang.nama_brng)=?",NmBarang,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
-            Sequel.cariIsi("select databarang.kode_sat from databarang where concat(databarang.kode_brng,' ',databarang.nama_brng)=?",Satuan,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
+            Sequel.cariIsi("select kode_brng from databarang where concat(kode_brng,' ',nama_brng)=?",KdBarang,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
+            Sequel.cariIsi("select nama_brng from databarang where concat(kode_brng,' ',nama_brng)=?",NmBarang,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
+            Sequel.cariIsi("select kode_sat from databarang where concat(kode_brng,' ',nama_brng)=?",Satuan,tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
          }
     }
    

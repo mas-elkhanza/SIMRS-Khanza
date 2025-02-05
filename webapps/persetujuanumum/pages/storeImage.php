@@ -3,8 +3,8 @@
     $nosurat           = validTeks4($_POST["nosurat"],20);
     $pengobatan_kepada = validTeks4($_POST["pengobatan_kepada"],20);
     $nilai_kepercayaan = validTeks4($_POST["nilai_kepercayaan"],50);
-    if(file_exists(host()."/webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg")){
-        @unlink(host()."/webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg");
+    if(file_exists(host()."webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg")){
+        @unlink(host()."webapps/persetujuanumum/pages/upload/".$nosurat.".jpeg");
     }
     
     $img                    = $_POST["image"];
@@ -13,7 +13,7 @@
     $image_type_aux         = explode("image/", $image_parts[0]);
     $image_type             = $image_type_aux[1];
     $image_base64           = base64_decode($image_parts[1]);
-    $fileName               = $nosurat.".jpeg";
+    $fileName               = $nosurat."PSU.jpeg";
     $file                   = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
     

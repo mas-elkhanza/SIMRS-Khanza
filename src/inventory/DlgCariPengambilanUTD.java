@@ -407,15 +407,9 @@ public final class DlgCariPengambilanUTD extends javax.swing.JDialog {
                 
             if(sukses==true){
                 Sequel.queryu("delete from tampjurnal");
-                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Utd from set_akun"),"PENGAMBILAN BHP MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)})==false){
-                    sukses=false;
-                }
-                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Utd from set_akun"),"PERSEDIAAN BARANG/OBAT/ALKES/BHP",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"})==false){
-                    sukses=false;
-                } 
-                if(sukses==true){
-                    sukses=jur.simpanJurnal(DTPCari1.getSelectedItem().toString(),"U","PEMBATALAN PENGAMBILAN BHP MEDIS UTD DARI "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5)+", OLEH "+akses.getkode());
-                }
+                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Pengambilan_Utd from set_akun"),"PENGAMBILAN BHP MEDIS UTD","0",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4)});
+                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select Kontra_Pengambilan_Utd from set_akun"),"PERSEDIAAN BARANG/OBAT/ALKES/BHP",""+tbKamar.getValueAt(tbKamar.getSelectedRow(),4),"0"}); 
+                sukses=jur.simpanJurnal(DTPCari1.getSelectedItem().toString(),"U","PEMBATALAN PENGAMBILAN BHP MEDIS UTD DARI "+tbKamar.getValueAt(tbKamar.getSelectedRow(),5)+", OLEH "+akses.getkode());
             }
             
             if(sukses==true){

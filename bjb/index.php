@@ -1,5 +1,4 @@
 <?php
-    header("X-Robots-Tag: noindex", true);
     require_once ('conf.php');
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json");

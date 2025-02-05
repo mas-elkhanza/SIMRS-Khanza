@@ -7,7 +7,7 @@
     $db_username            = "root";
     $db_password            = "";
     $db_name                = "sik";
-    define('URUTNOREG', 'dokter + poli'); // dokter / poli / dokter + poli
+    define('URUTNOREG', 'dokter'); // dokter / poli / dokter + poli
     $month          = date('Y-m');
     $date           = date('Y-m-d');
     $time           = date('H:i:s');
@@ -133,15 +133,6 @@
         $save=str_replace("=/","",$save);
         $save=str_replace("=","",$save);
         $save=str_replace("//","",$save);
-        $save=str_replace("password","",$save);
-        $save=str_replace("submit","",$save);
-        $save=str_replace("input","",$save);
-        $save=str_replace("meta","",$save);
-        $save=str_replace("md5","",$save);
-        $save=str_replace("pass","",$save);
-        $save=str_replace("SESSION","",$save);
-        $save=str_replace("login_shell","",$save);
-        $save=str_replace("value","",$save);
         return $save;
     }
     
@@ -190,15 +181,6 @@
             $save=str_replace("='","",$save);
             $save=str_replace("=/","",$save);
             $save=str_replace("=","",$save);
-            $save=str_replace("password","",$save);
-            $save=str_replace("submit","",$save);
-            $save=str_replace("input","",$save);
-            $save=str_replace("meta","",$save);
-            $save=str_replace("md5","",$save);
-            $save=str_replace("pass","",$save);
-            $save=str_replace("SESSION","",$save);
-            $save=str_replace("login_shell","",$save);
-            $save=str_replace("value","",$save);
         }
         return $save;
     }
@@ -247,15 +229,6 @@
             $save=str_replace("='","",$save);
             $save=str_replace("=/","",$save);
             $save=str_replace("=","",$save);
-            $save=str_replace("password","",$save);
-            $save=str_replace("submit","",$save);
-            $save=str_replace("input","",$save);
-            $save=str_replace("meta","",$save);
-            $save=str_replace("md5","",$save);
-            $save=str_replace("pass","",$save);
-            $save=str_replace("SESSION","",$save);
-            $save=str_replace("login_shell","",$save);
-            $save=str_replace("value","",$save);
         }
         return $save;
     }

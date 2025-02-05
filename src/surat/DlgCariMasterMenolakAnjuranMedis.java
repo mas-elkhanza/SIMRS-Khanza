@@ -426,29 +426,17 @@ public final class DlgCariMasterMenolakAnjuranMedis extends javax.swing.JDialog 
             Valid.tabelKosong(tabMode);
             response = root.path("masterMAM");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
+                for(JsonNode list:response){
+                    if(list.path("NamaPenolakan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("KodePenolakan").asText(),list.path("NamaPenolakan").asText()
                         });
-                    }
-                }else{
-                    for(JsonNode list:response){
-                        if(list.path("NamaPenolakan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                list.path("KodePenolakan").asText(),list.path("NamaPenolakan").asText()
-                            });
-                        }
                     }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

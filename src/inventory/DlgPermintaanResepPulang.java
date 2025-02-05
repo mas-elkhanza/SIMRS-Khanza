@@ -1065,37 +1065,40 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(aktifkanbatch.equals("yes")){
                     pstampil=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
-                        "(databarang.h_beli+(databarang.h_beli*?)) as harga,databarang."+hppfarmasi+" as dasar,sum(gudangbarang.stok) as stok, "+
-                        "databarang.kapasitas from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                        "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
-                        "where databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+
-                        (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
-                        "group by gudangbarang.kode_brng order by databarang.nama_brng");
+                        " (databarang.h_beli+(databarang.h_beli*?)) as harga,databarang."+hppfarmasi+" as dasar,sum(gudangbarang.stok) as stok, "+
+                        " databarang.kapasitas from databarang inner join jenis inner join gudangbarang "+
+                        " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
+                        " where  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                        "  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                        "  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and jenis.nama like ? group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
                     pstampil=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
-                        "(databarang.h_beli+(databarang.h_beli*?)) as harga,databarang."+hppfarmasi+" as dasar,gudangbarang.stok, "+
-                        "databarang.kapasitas from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                        "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
-                        "where databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+
-                        (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
-                        " order by databarang.nama_brng");
+                        " (databarang.h_beli+(databarang.h_beli*?)) as harga,databarang."+hppfarmasi+" as dasar,gudangbarang.stok, "+
+                        " databarang.kapasitas from databarang inner join jenis inner join gudangbarang "+
+                        " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
+                        " where  databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                        "  databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                        "  databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 }
                 
                 try{
                     pstampil.setDouble(1,kenaikan);
                     pstampil.setString(2,bangsal);
-                    if(!TCari.getText().trim().equals("")){
-                        pstampil.setString(3,"%"+TCari.getText().trim()+"%");
-                        pstampil.setString(4,"%"+TCari.getText().trim()+"%");
-                        pstampil.setString(5,"%"+TCari.getText().trim()+"%");
-                    }   
+                    pstampil.setString(3,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(4,bangsal);
+                    pstampil.setString(5,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(6,bangsal);
+                    pstampil.setString(7,"%"+TCari.getText().trim()+"%");
                     rstampil=pstampil.executeQuery();
                     while(rstampil.next()){
-                        tabMode.addRow(new Object[]{
-                           "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                           rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                           Valid.roundUp(rstampil.getDouble("harga"),100),rstampil.getDouble("dasar"),0,""
+                        tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                           rstampil.getString("nama_brng"),
+                           rstampil.getString("nama"),
+                           rstampil.getString("kode_sat"),
+                           rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                           Valid.roundUp(rstampil.getDouble("harga"),100),
+                           rstampil.getDouble("dasar"),0,""
                         });
                     }                  
                 }catch(Exception e){
@@ -1112,83 +1115,107 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(aktifkanbatch.equals("yes")){
                     pstampil=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
-                        "databarang.karyawan,databarang."+hppfarmasi+" as dasar,databarang.beliluar,databarang.kelas1," +
-                        "databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,databarang.kapasitas,"+
-                        "databarang.letak_barang,databarang.utama,databarang.h_beli,sum(gudangbarang.stok) as stok "+
-                        "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                        "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
-                        "where  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+
-                        (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
-                        "group by gudangbarang.kode_brng order by databarang.nama_brng");
+                        " databarang.karyawan,databarang."+hppfarmasi+" as dasar,databarang.beliluar,databarang.kelas1," +
+                        " databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,databarang.kapasitas,"+
+                        " databarang.letak_barang,databarang.utama,databarang.h_beli,sum(gudangbarang.stok) as stok "+
+                        " from databarang inner join jenis inner join gudangbarang "+
+                        " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
+                        " where  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                        "  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                        "  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and jenis.nama like ? group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
                     pstampil=koneksi.prepareStatement(
                         "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
-                        "databarang.karyawan,databarang."+hppfarmasi+" as dasar,databarang.beliluar,databarang.kelas1," +
-                        "databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,databarang.kapasitas,"+
-                        "databarang.letak_barang,databarang.utama,databarang.h_beli,gudangbarang.stok "+
-                        "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                        "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
-                        "where databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+
-                        (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
-                        "order by databarang.nama_brng");
+                        " databarang.karyawan,databarang."+hppfarmasi+" as dasar,databarang.beliluar,databarang.kelas1," +
+                        " databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,databarang.kapasitas,"+
+                        " databarang.letak_barang,databarang.utama,databarang.h_beli,gudangbarang.stok "+
+                        " from databarang inner join jenis inner join gudangbarang "+
+                        " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
+                        " where  databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and databarang.kode_brng like ? or "+
+                        "  databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and databarang.nama_brng like ? or "+
+                        "  databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and jenis.nama like ? order by databarang.nama_brng");
                 }
 
                 try{
                     pstampil.setString(1,bangsal);
-                    if(!TCari.getText().trim().equals("")){
-                        pstampil.setString(2,"%"+TCari.getText().trim()+"%");
-                        pstampil.setString(3,"%"+TCari.getText().trim()+"%");
-                        pstampil.setString(4,"%"+TCari.getText().trim()+"%");
-                    }
+                    pstampil.setString(2,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(3,bangsal);
+                    pstampil.setString(4,"%"+TCari.getText().trim()+"%");
+                    pstampil.setString(5,bangsal);
+                    pstampil.setString(6,"%"+TCari.getText().trim()+"%");
                     rstampil=pstampil.executeQuery();
                     while(rstampil.next()){
                         if(Jeniskelas.getSelectedItem().equals("Kelas 1")){
-                            tabMode.addRow(new Object[]{
-                               "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("kelas1"),100),rstampil.getDouble("dasar"),0,""
+                            tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                               rstampil.getString("nama_brng"),
+                               rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("kelas1"),100),
+                               rstampil.getDouble("dasar"),0,""
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Kelas 2")){
-                            tabMode.addRow(new Object[]{
-                               "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("kelas2"),100),rstampil.getDouble("dasar"),0,""
+                            tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                               rstampil.getString("nama_brng"),
+                               rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("kelas2"),100),
+                               rstampil.getDouble("dasar"),0,""
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Kelas 3")){
-                            tabMode.addRow(new Object[]{
-                               "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("kelas3"),100),rstampil.getDouble("dasar"),0,""
+                            tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                               rstampil.getString("nama_brng"),
+                               rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("kelas3"),100),
+                               rstampil.getDouble("dasar"),0,""
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Utama/BPJS")){
-                            tabMode.addRow(new Object[]{
-                               "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("utama"),100),rstampil.getDouble("dasar"),0,""
+                            tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                               rstampil.getString("nama_brng"),
+                               rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("utama"),100),
+                               rstampil.getDouble("dasar"),0,""
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("VIP")){
-                            tabMode.addRow(new Object[]{
-                               "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("vip"),100),rstampil.getDouble("dasar"),0,""
+                            tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                               rstampil.getString("nama_brng"),
+                               rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("vip"),100),
+                               rstampil.getDouble("dasar"),0,""
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("VVIP")){
-                            tabMode.addRow(new Object[]{
-                               "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("vvip"),100),rstampil.getDouble("dasar"),0,""
+                            tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                               rstampil.getString("nama_brng"),
+                               rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("vvip"),100),
+                               rstampil.getDouble("dasar"),0,""
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Beli Luar")){
-                            tabMode.addRow(new Object[]{
-                               "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("beliluar"),100),rstampil.getDouble("dasar"),0,""
+                            tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                               rstampil.getString("nama_brng"),
+                               rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("beliluar"),100),
+                               rstampil.getDouble("dasar"),0,""
                             });
                         }else if(Jeniskelas.getSelectedItem().equals("Karyawan")){
-                            tabMode.addRow(new Object[]{
-                               "",rstampil.getString("kode_brng"),rstampil.getString("nama_brng"),rstampil.getString("nama"),
-                               rstampil.getString("kode_sat"),rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
-                               Valid.roundUp(rstampil.getDouble("karyawan"),100),rstampil.getDouble("dasar"),0,""
+                            tabMode.addRow(new Object[]{"",rstampil.getString("kode_brng"),
+                               rstampil.getString("nama_brng"),
+                               rstampil.getString("nama"),
+                               rstampil.getString("kode_sat"),
+                               rstampil.getDouble("kapasitas"),rstampil.getDouble("stok"),
+                               Valid.roundUp(rstampil.getDouble("karyawan"),100),
+                               rstampil.getDouble("dasar"),0,""
                             });
                         }
                     }                  
@@ -1216,7 +1243,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     public void setNoRm(String no_rawat,Date tanggal){
         TNoRw.setText(no_rawat);
         Sequel.cariIsi("select concat(pasien.no_rkm_medis,' ',pasien.nm_pasien) from reg_periksa inner join pasien "+
-                    " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? ",TPasien,TNoRw.getText());
+                    " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where no_rawat=? ",TPasien,TNoRw.getText());
         
         DTPBeri.setDate(tanggal);
         KdDokter.setText(Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",no_rawat));
@@ -1235,7 +1262,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(!norawatibu.equals("")){
             kelas=Sequel.cariIsi(
                 "select kamar.kelas from kamar inner join kamar_inap "+
-                "on kamar.kd_kamar=kamar_inap.kd_kamar where kamar_inap.no_rawat=? "+
+                "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
                 "and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norawatibu);
         }else{
             kelas=Sequel.cariIsi(
@@ -1256,7 +1283,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }else if(kelas.equals("Kelas VVIP")){
             Jeniskelas.setSelectedItem("VVIP");
         } 
-        kenaikan=Sequel.cariIsiAngka2("select (set_harga_obat_ranap.hargajual/100) from set_harga_obat_ranap where set_harga_obat_ranap.kd_pj=? and set_harga_obat_ranap.kelas=?",KdPj.getText(),kelas);
+        kenaikan=Sequel.cariIsiAngka2("select (hargajual/100) from  set_harga_obat_ranap where kd_pj=? and kelas=?",KdPj.getText(),kelas);
         TCari.requestFocus();
         bangsal=akses.getkdbangsal();
         ubah=false;
@@ -1302,7 +1329,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     public void emptTeksobat() {
         if(ChkRM.isSelected()==true){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(permintaan_resep_pulang.no_permintaan,4),signed)),0) from permintaan_resep_pulang where permintaan_resep_pulang.tgl_permintaan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' ",
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_permintaan,4),signed)),0) from permintaan_resep_pulang where tgl_permintaan='"+Valid.SetTgl(DTPBeri.getSelectedItem()+"")+"' ",
                 "RP"+DTPBeri.getSelectedItem().toString().substring(6,10)+DTPBeri.getSelectedItem().toString().substring(3,5)+DTPBeri.getSelectedItem().toString().substring(0,2),4,NoResep);        
         } 
     }

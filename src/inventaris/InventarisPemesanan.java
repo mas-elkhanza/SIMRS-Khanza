@@ -874,20 +874,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                    
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{akunaset,"PENERIMAAN ASET INVENTARIS",""+(ttl+meterai),"0"})==false){
-                        sukses=false;
-                    }
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akunaset,"PENERIMAAN ASET INVENTARIS",""+(ttl+meterai),"0"});
                     if(ppn>0){
-                        if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Barang Inventaris",""+ppn,"0"})==false){
-                            sukses=false;
-                        }
+                        Sequel.menyimpan2("tampjurnal","?,?,?,?",4,new String[]{Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Barang Inventaris",""+ppn,"0"});
                     }
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS","0",""+(ttl+ppn+meterai)})==false){
-                        sukses=false;
-                    } 
-                    if(sukses==true){
-                        sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN BARANG ASET/INVENTARIS"+", OLEH "+akses.getkode());
-                    }
+                    Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{Kontra_Penerimaan_AsetInventaris,"HUTANG BARANG ASET/INVENTARIS","0",""+(ttl+ppn+meterai)}); 
+                    sukses=jur.simpanJurnal(NoFaktur.getText(),"U","PENERIMAAN BARANG ASET/INVENTARIS"+", OLEH "+akses.getkode());
                 }
                 
                 if(sukses==true){

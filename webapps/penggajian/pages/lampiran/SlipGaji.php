@@ -46,7 +46,7 @@
                 from pegawai inner join pendidikan inner join stts_kerja inner join kelompok_jabatan inner join resiko_kerja inner join emergency_index
                 inner join jnj_jabatan inner join departemen on pegawai.departemen=departemen.dep_id and pegawai.pendidikan=pendidikan.tingkat and pegawai.stts_kerja=stts_kerja.stts and pegawai.jnj_jabatan=jnj_jabatan.kode
                 and pegawai.kode_kelompok=kelompok_jabatan.kode_kelompok and pegawai.kode_resiko=resiko_kerja.kode_resiko and pegawai.kode_emergency=emergency_index.kode_emergency
-                where pegawai.stts_aktif='AKTIF' and pegawai.id ='".$id."' ";
+                where pegawai.stts_aktif<>'KELUAR' and pegawai.id ='".$id."' ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
         $hasilcari=bukaquery($_sql);
@@ -568,12 +568,7 @@
 				       </tr>
 				       <tr class='isi6'>
 				         <TD width='130px'>Tunjangan Jabatan</TD><td width='3px'>:</td><TD>".formatDuit($tnjjbtn)."</TD>
-				       </tr>
-                                       <TR class='isi6'>
-                                         <TD width='130px'>&nbsp;&nbsp;&nbsp;<i>Upah Pokok</i></TD>
-                                         <td width='3px'>:</td>
-                                         <td width='140px' align=right><i>".formatDuit($gapok+$tnjjbtn)."</i></td>
-                                       </TR>";
+				       </tr>";
                                        echo "<tr class='isi6'>
 						 <td width='130px'>Tunjangan KaSift</td><td width='3px'>:</td><td width='140px'> ".formatDuit($ttlkasift)."</td></tr>";
                                        
@@ -786,8 +781,7 @@
                                             $pajak       = isset($baris25[6])?validangka($baris25[6]):0;
                                             $pribadi     = isset($baris25[7])?validangka($baris25[7]):0;
                                             $lain        = isset($baris25[8])?validangka($baris25[8]):0;
-                                            $ktg         = isset($baris25[9])?$baris25[9]:"Lain-lain";
-                                            $bpjs        = isset($baris25[10])?validangka($baris25[10]):0;
+                                            $bpjs        = isset($baris25[9])?validangka($baris25[9]):0;
 
                                             $ttljamsostek=$ttljamsostek+$jamsostek;
                                             $ttldansos=$ttldansos+$dansos;

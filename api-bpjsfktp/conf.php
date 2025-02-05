@@ -102,8 +102,8 @@
         return $result;
     }
 
-    function noRegPoli($kd_poli,$kd_dokter, $tanggal) {
-        $max    = getOne("select ifnull(MAX(CONVERT(reg_periksa.no_reg,signed)),0)+1 from reg_periksa where reg_periksa.kd_poli='$kd_poli' and reg_periksa.kd_dokter='$kd_dokter' and tgl_registrasi='$tanggal'");
+    function noRegPoli($kd_poli, $tanggal) {
+        $max    = getOne("select ifnull(MAX(CONVERT(no_reg,signed)),0)+1 from reg_periksa where kd_poli='$kd_poli' and tgl_registrasi='$tanggal'");
         $no_reg = sprintf("%03s", $max);
         return $no_reg;
     }
@@ -361,7 +361,7 @@
         
     function cekpasien($nik,$nopeserta){
         $data=array();
-        $data= fetch_array(bukaquery("SELECT pasien.no_rkm_medis, pasien.no_ktp, pasien.no_peserta,pasien.namakeluarga,pasien.alamatpj,pasien.kelurahanpj,pasien.tgl_daftar,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj,pasien.keluarga,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,(TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12)) as bulan,
+        $data= fetch_array(bukaquery("SELECT pasien.no_rkm_medis, pasien.no_ktp, pasien.no_peserta,pasien.namakeluarga,pasien.alamatpj,kelurahanpj,kecamatanpj,kabupatenpj,propinsipj,keluarga,TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) as tahun,(TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12)) as bulan,
                                       TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(pasien.tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, pasien.tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, pasien.tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari FROM pasien where pasien.no_ktp='$nik' and pasien.no_peserta='$nopeserta'"));
         return $data;
     }
@@ -426,15 +426,6 @@
         $save=str_replace("='","",$save);
         $save=str_replace("=/","",$save);
         $save=str_replace("=","",$save);
-        $save=str_replace("password","",$save);
-        $save=str_replace("submit","",$save);
-        $save=str_replace("input","",$save);
-        $save=str_replace("meta","",$save);
-        $save=str_replace("md5","",$save);
-        $save=str_replace("pass","",$save);
-        $save=str_replace("SESSION","",$save);
-        $save=str_replace("login_shell","",$save);
-        $save=str_replace("value","",$save);
         return $save;
     }
     
@@ -478,15 +469,6 @@
         $save=str_replace("='","",$save);
         $save=str_replace("=/","",$save);
         $save=str_replace("=","",$save);
-        $save=str_replace("password","",$save);
-        $save=str_replace("submit","",$save);
-        $save=str_replace("input","",$save);
-        $save=str_replace("meta","",$save);
-        $save=str_replace("md5","",$save);
-        $save=str_replace("pass","",$save);
-        $save=str_replace("SESSION","",$save);
-        $save=str_replace("login_shell","",$save);
-        $save=str_replace("value","",$save);
         return $save;
     }
     
@@ -535,15 +517,6 @@
             $save=str_replace("='","",$save);
             $save=str_replace("=/","",$save);
             $save=str_replace("=","",$save);
-            $save=str_replace("password","",$save);
-            $save=str_replace("submit","",$save);
-            $save=str_replace("input","",$save);
-            $save=str_replace("meta","",$save);
-            $save=str_replace("md5","",$save);
-            $save=str_replace("pass","",$save);
-            $save=str_replace("SESSION","",$save);
-            $save=str_replace("login_shell","",$save);
-            $save=str_replace("value","",$save);
         }
         return $save;
     }
@@ -592,15 +565,6 @@
             $save=str_replace("='","",$save);
             $save=str_replace("=/","",$save);
             $save=str_replace("=","",$save);
-            $save=str_replace("password","",$save);
-            $save=str_replace("submit","",$save);
-            $save=str_replace("input","",$save);
-            $save=str_replace("meta","",$save);
-            $save=str_replace("md5","",$save);
-            $save=str_replace("pass","",$save);
-            $save=str_replace("SESSION","",$save);
-            $save=str_replace("login_shell","",$save);
-            $save=str_replace("value","",$save);
         }
         return $save;
     }

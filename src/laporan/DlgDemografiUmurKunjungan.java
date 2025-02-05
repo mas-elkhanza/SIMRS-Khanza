@@ -37,10 +37,10 @@ public class DlgDemografiUmurKunjungan extends javax.swing.JDialog {
     private DlgKecamatan kecamatan=new DlgKecamatan(null,false);
     private DlgKelurahan kelurahan=new DlgKelurahan(null,false);
     private DlgCariCaraBayar penjab=new DlgCariCaraBayar(null,false);
-    private final sekuel Sequel = new sekuel();
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private String querytambahan,querydokter,querypoli,querycarabayar;
+    private sekuel Sequel = new sekuel();
+    private PreparedStatement ps,ps2,ps3;
+    private ResultSet rs,rs2;
+    private String querytambahan,querydokter,querypoli,querycarabayar,tambahanquery;
     private StringBuilder htmlContent;
     private int hr07l=0,hr07p=0,thk1l=0,thk1p=0,th14l=0,th14p=0,th59l=0,th59p=0,th1014l=0,th1014p=0,
                 th1519l=0,th1519p=0,th2044l=0,th2044p=0,th4554l=0,th4554p=0,th5559l=0,th5559p=0,

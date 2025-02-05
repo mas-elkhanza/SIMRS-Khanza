@@ -33,7 +33,7 @@ public final class KeuanganRingkasanHutangVendorNonMedis extends javax.swing.JDi
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i;
+    private int row=0,i;
     private String tanggaldatang="",tanggaltempo="";
     private double sisahutang=0;
     /** Creates new form DlgLhtBiaya

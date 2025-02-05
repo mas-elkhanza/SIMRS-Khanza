@@ -37,9 +37,9 @@
                 FROM jasa_lain right OUTER JOIN pegawai
                 ON jasa_lain.id=pegawai.id and thn='".$tahun."'
                 and bln='".$bulan."'
-                where pegawai.stts_aktif='AKTIF' and pegawai.nik like '%".$keyword."%' or 
-                pegawai.stts_aktif='AKTIF' and pegawai.nama like '%".$keyword."%' or
-                pegawai.stts_aktif='AKTIF' and pegawai.departemen like '%".$keyword."%' 
+                where  pegawai.stts_aktif<>'KELUAR' and pegawai.nik like '%".$keyword."%' or 
+                pegawai.stts_aktif<>'KELUAR' and pegawai.nama like '%".$keyword."%' or
+                pegawai.stts_aktif<>'KELUAR' and pegawai.departemen like '%".$keyword."%' 
                 group by pegawai.id order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);

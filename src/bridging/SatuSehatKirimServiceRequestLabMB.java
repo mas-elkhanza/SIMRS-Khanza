@@ -595,7 +595,7 @@ public final class SatuSehatKirimServiceRequestLabMB extends javax.swing.JDialog
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"."+tbObat.getValueAt(i,17).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"active\"," +
@@ -696,7 +696,7 @@ public final class SatuSehatKirimServiceRequestLabMB extends javax.swing.JDialog
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/servicerequest/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"."+tbObat.getValueAt(i,17).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,9).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"active\"," +
@@ -928,7 +928,6 @@ public final class SatuSehatKirimServiceRequestLabMB extends javax.swing.JDialog
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_servicerequest_labmb());
-        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_servicerequest_labmb());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_servicerequest_labmb());
     }
     

@@ -1,5 +1,4 @@
 <?php
-    header("X-Robots-Tag: noindex", true);
     session_start();
     require_once('conf/conf.php');
     header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
@@ -19,7 +18,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="robots" content="noindex,nofollow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Edukasi, Konfirmasi & Persetujuan</title>
     <link href="css/login.css" rel="stylesheet" type="text/css" />
@@ -28,7 +26,8 @@
         function PopupCenter(pageURL, title,w,h) {
             var left = (screen.width/2)-(w/2);
             var top = (screen.height/2)-(h/2);
-            var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);        
+            var targetWin = window.open (pageURL, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+            
         }
     </script>
 </head>

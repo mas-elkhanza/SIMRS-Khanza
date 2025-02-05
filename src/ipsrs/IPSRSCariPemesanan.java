@@ -1055,26 +1055,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
                 
                 Sequel.queryu("delete from tampjurnal");
-                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                     Sequel.cariIsi("select set_akun.Penerimaan_NonMedis from set_akun"),"PERSEDIAAN BARANG NON MEDIS","0",rs.getString("total")
-                })==false){
-                    sukses=false;
-                }    
+                });    
                 if(rs.getDouble("ppn")>0){
-                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Barang Non Medis","0",rs.getString("ppn")
-                    })==false){
-                        sukses=false;
-                    }  
+                    }); 
                 }
-                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                     Sequel.cariIsi("select set_akun.Kontra_Penerimaan_NonMedis from set_akun"),"HUTANG BARANG NON MEDIS",rs.getString("tagihan"),"0"
-                })==false){
-                    sukses=false;
-                } 
-                if(sukses==true){
-                    sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
-                }
+                }); 
+                sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG NON MEDIS"+", OLEH "+akses.getkode());
 
                 if(sukses==true){
                    Sequel.queryu2("delete from ipsrspemesanan where no_faktur=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});

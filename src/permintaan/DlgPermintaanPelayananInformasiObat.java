@@ -50,7 +50,7 @@ public class DlgPermintaanPelayananInformasiObat extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0,nilai_detik,bookingbaru=0;
-    private String alarm="",nol_detik,detik,finger="";
+    private String alarm="",nol_detik,detik,sql="",finger="";
     private boolean aktif=false;
     private BackgroundMusic music;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);

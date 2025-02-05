@@ -574,7 +574,7 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"."+tbObat.getValueAt(i,12).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"available\"," +
@@ -650,7 +650,7 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
                                     "\"identifier\": [" +
                                         "{" +
                                             "\"system\": \"http://sys-ids.kemkes.go.id/specimen/"+koneksiDB.IDSATUSEHAT()+"\"," +
-                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"."+tbObat.getValueAt(i,12).toString()+"\"" +
+                                            "\"value\": \""+tbObat.getValueAt(i,5).toString()+"\"" +
                                         "}" +
                                     "]," +
                                     "\"status\": \"available\"," +
@@ -858,7 +858,6 @@ public final class SatuSehatKirimSpecimenLabPK extends javax.swing.JDialog {
 
     public void isCek(){
         BtnKirim.setEnabled(akses.getsatu_sehat_kirim_specimen_lab());
-        BtnUpdate.setEnabled(akses.getsatu_sehat_kirim_specimen_lab());
         BtnPrint.setEnabled(akses.getsatu_sehat_kirim_specimen_lab());
     }
     

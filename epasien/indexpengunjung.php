@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
      <title>EPasien <?=$_SESSION["nama_instansi"];?></title>
-     <meta name="robots" content="noindex,nofollow">
      <meta charset="UTF-8"/>
      <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
      <meta name="description" content=""/>

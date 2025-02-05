@@ -231,8 +231,8 @@ public class DlgPiutang extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgPiutang")){
                     if(form.member.getTable().getSelectedRow()!= -1){                   
-                        kdpasien.setText(form.member.getTable().getValueAt(form.member.getTable().getSelectedRow(),0).toString());
-                        nmpasien.setText(form.member.getTable().getValueAt(form.member.getTable().getSelectedRow(),1).toString());
+                        kdpasien.setText(form.member.getTable().getValueAt(form.member.getTable().getSelectedRow(),1).toString());
+                        nmpasien.setText(form.member.getTable().getValueAt(form.member.getTable().getSelectedRow(),2).toString());
                     }  
                     kdpasien.requestFocus();
                 }
@@ -1396,15 +1396,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG OBAT','"+(ttljual+ongkir-uangmuka)+"','0'","Rekening")==false){
-                        sukses=false;
-                    }    
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','PERSEDIAAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening")==false){
-                        sukses=false;
-                    }
-                    if(sukses==true){
-                        sukses=jur.simpanJurnal(NoNota.getText(),"U","PIUTANG DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode()); 
-                    }  
+                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG OBAT','"+(ttljual+ongkir-uangmuka)+"','0'","Rekening");    
+                    Sequel.menyimpan2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','PERSEDIAAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening"); 
+                    sukses=jur.simpanJurnal(NoNota.getText(),"U","PIUTANG DI "+nmgudang.getText().toUpperCase()+", OLEH "+akses.getkode());   
                 }
                 if(sukses==true){
                     Sequel.Commit();
@@ -1651,7 +1645,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_BtnBrg1ActionPerformed
 
     private void kdpasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpasienKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmpasien,kdpasien.getText());
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmpasien,kdpasien.getText());
             TglJual.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis=?", nmpasien,kdpasien.getText());

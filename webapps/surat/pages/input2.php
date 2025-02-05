@@ -265,26 +265,17 @@
                     $max        = getOne("select ifnull(MAX(CONVERT(RIGHT(no_urut,3),signed)),0)+1 from surat_keluar where tgl_kirim='$tgl_kirim'");
                     $no_urut    = "SK".str_replace("-","",$tgl_kirim).sprintf("%03s", $max);
                     $dokumen    = validTeks(str_replace(" ","_","pages/upload/".$_FILES['dokumen']['name']));
-                    if((strtolower(substr($dokumen,-4))==".jpg")||(strtolower(substr($dokumen,-4))==".pdf")||(strtolower(substr($dokumen,-5))==".jpeg")){
-                        if(($_FILES['dokumen']['type'] == 'application/pdf')||($_FILES['dokumen']['type'] == 'image/jpeg')||($_FILES['dokumen']['type'] == 'image/jpg')){
-                            if((@mime_content_type($_FILES['dokumen']['tmp_name'])== 'application/pdf')||(@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpeg')||(@mime_content_type($_FILES['dokumen']['tmp_name'])== 'image/jpg')){
-                                if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_kirim))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
-                                    switch($action) {
-                                        case "TAMBAH":
-                                            if(Tambah(" surat_keluar "," '$no_urut','$no_surat','$tujuan','$tgl_surat','$perihal','$tgl_kirim','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " )){
-                                                move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
-                                            }
-                                            echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
-                                            break;
-                                    }
-                                }else{
-                                    echo 'Semua field harus isi..!!!';
-                                }
-                            }else{
-                                echo "Berkas harus pdf/JPG";
+                    if((strtolower(substr($dokumen,-3))=="jpg")||(strtolower(substr($dokumen,-3))=="pdf")||(strtolower(substr($dokumen,-4))=="jpeg")){
+                        move_uploaded_file($_FILES['dokumen']['tmp_name'],$dokumen);
+                        if ((!empty($no_urut))&&(!empty($no_surat))&&(!empty($tujuan))&&(!empty($tgl_surat))&&(!empty($perihal))&&(!empty($tgl_kirim))&&(!empty($kd_lemari))&&(!empty($kd_rak))&&(!empty($kd_map))&&(!empty($kd_ruang))&&(!empty($kd_sifat))&&(!empty($lampiran))&&(!empty($tembusan))&&(!empty($tgl_deadline_balas))&&(!empty($kd_balas))&&(!empty($keterangan))&&(!empty($kd_status))&&(!empty($kd_klasifikasi))&&(!empty($dokumen))) {
+                            switch($action) {
+                                case "TAMBAH":
+                                    Tambah(" surat_keluar "," '$no_urut','$no_surat','$tujuan','$tgl_surat','$perihal','$tgl_kirim','$kd_lemari','$kd_rak','$kd_map','$kd_ruang','$kd_sifat','$lampiran','$tembusan','$tgl_deadline_balas','$kd_balas','$keterangan','$kd_status','$kd_klasifikasi','$dokumen'", " Surat Masuk " );
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=Input&action=TAMBAH'>";
+                                    break;
                             }
                         }else{
-                            echo "Berkas harus pdf/JPG";
+                            echo 'Semua field harus isi..!!!';
                         }
                     }else{
                         echo "Berkas harus JPEG/JPG";

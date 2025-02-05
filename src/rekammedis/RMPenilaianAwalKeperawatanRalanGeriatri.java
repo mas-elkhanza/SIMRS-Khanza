@@ -64,7 +64,6 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
-    private String TANGGALMUNDUR="yes";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -539,11 +538,6 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         
-        try {
-            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
-        } catch (Exception e) {
-            TANGGALMUNDUR="yes";
-        }
         
         ChkAccor.setSelected(false);
         isMenu();
@@ -560,7 +554,6 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private void initComponents() {
 
         LoadHTML = new widget.editorpane();
-        TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -833,9 +826,6 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
 
-        TanggalRegistrasi.setHighlighter(null);
-        TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -986,6 +976,11 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
+        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabRawatMouseClicked(evt);
+            }
+        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -1917,7 +1912,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         TotalHasil.setBounds(774, 770, 80, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2024 16:33:03" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2023 15:29:11" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2810,7 +2805,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2824,7 +2819,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-04-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3002,15 +2997,32 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Petugas");
         }else{
-            if(akses.getkode().equals("Admin Utama")){
-                simpan();
-            }else{
-                if(TanggalRegistrasi.getText().equals("")){
-                    TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
-                }
-                if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19))==true){
-                    simpan();
-                }
+            if(Sequel.menyimpantf("penilaian_awal_keperawatan_ralan_geriatri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",80,new String[]{
+                    TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),
+                    Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),BMI.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),AlatBantu.getSelectedItem().toString(),KetBantu.getText(), 
+                    Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),HubunganKeluarga.getSelectedItem().toString(), 
+                    TinggalDengan.getSelectedItem().toString(),KetTinggal.getText(),Ekonomi.getSelectedItem().toString(),StatusBudaya.getSelectedItem().toString(),KetBudaya.getText(),Edukasi.getSelectedItem().toString(), 
+                    KetEdukasi.getText(),ATS.getSelectedItem().toString(),BJM.getSelectedItem().toString(),MSA.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Lapor.getSelectedItem().toString(),KetLapor.getText(), 
+                    SG1.getSelectedItem().toString(),Nilai1.getSelectedItem().toString(),SG2.getSelectedItem().toString(),Nilai2.getSelectedItem().toString(),TotalHasil.getText(),Nyeri.getSelectedItem().toString(),
+                    Provokes.getSelectedItem().toString(),KetProvokes.getText(),Quality.getSelectedItem().toString(),KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),
+                    Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),KemampuanBacaTulis.getSelectedItem().toString(),DibutuhkanPenerjemah.getSelectedItem().toString(), 
+                    KeteranganPenerjamahLainnya.getText(),HambatanPembelajaran.getSelectedItem().toString(),KategoriHambatanPembelajaran.getSelectedItem().toString(),KeteranganHambatanPembelajaran.getText(),HambatanCaraBicara.getSelectedItem().toString(), 
+                    HambatanBahasaIsyarat.getSelectedItem().toString(),KesediaanMenerimaInformasi.getSelectedItem().toString(),KeteranganKesediaanMenerimaInformasi.getText(),CaraBelajarDisukai.getSelectedItem().toString(), 
+                    KehilanganBeratBadan.getSelectedItem().toString(),NilaiKehilanganBeratBadan.getText(),AktifitasFisik.getSelectedItem().toString(),NilaiAktifitasFisik.getText(),Kelelahan.getSelectedItem().toString(), 
+                    NilaiKelelahan.getText(),Kekuatan.getSelectedItem().toString(),NilaiKekuatan.getText(),WaktuBerjalan.getSelectedItem().toString(),NilaiWaktuBerjalan.getText(),TotalNilaiFrailty.getText(),StatusSkorFrailty.getText(),
+                    Rencana.getText(),KdPetugas.getText()
+                })==true){
+                    for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
+                        if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
+                            Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_masalah_geriatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
+                        }
+                    }
+                    for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
+                        if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
+                            Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_rencana_geriatri","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()});
+                        }
+                    }
+                    emptTeks();
             }
         }
     
@@ -3040,9 +3052,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 hapus();
             }else{
                 if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),86).toString())){
-                    if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString(),Sequel.ambiltanggalsekarang())==true){
-                        hapus();
-                    }
+                    hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
                 }
@@ -3078,14 +3088,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     ganti();
                 }else{
                     if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),86).toString())){
-                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString(),Sequel.ambiltanggalsekarang())==true){
-                            if(TanggalRegistrasi.getText().equals("")){
-                                TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
-                            }
-                            if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19))==true){
-                                ganti();
-                            }
-                        }
+                        ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
                     }
@@ -3873,6 +3876,12 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         Valid.pindah(evt,StatusBudaya,Edukasi);
     }//GEN-LAST:event_KetBudayaKeyPressed
 
+    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
+        if(TabRawat.getSelectedIndex()==1){
+            tampil();
+        }
+    }//GEN-LAST:event_TabRawatMouseClicked
+
     private void BtnTambahMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahMasalahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         MasterMasalahKeperawatan form=new MasterMasalahKeperawatan(null,false);
@@ -4348,7 +4357,6 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private widget.TextBox TPasien1;
     private javax.swing.JTabbedPane TabRawat;
     private javax.swing.JTabbedPane TabRencanaKeperawatan;
-    private widget.TextBox TanggalRegistrasi;
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
     private widget.ComboBox TinggalDengan;
@@ -4771,19 +4779,59 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             TotalNilaiFrailty.setText(tbObat.getValueAt(tbObat.getSelectedRow(),83).toString());
             StatusSkorFrailty.setText(tbObat.getValueAt(tbObat.getSelectedRow(),84).toString());
             Rencana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),85).toString());
-            Valid.tabelKosong(tabModeMasalah);
-            Valid.tabelKosong(tabModeRencana);
-            for (i = 0; i < tbMasalahDetail.getRowCount(); i++) {
-                tabModeMasalah.addRow(new Object[]{
-                    true,tbMasalahDetail.getValueAt(i,0).toString(),tbMasalahDetail.getValueAt(i,1).toString()
-                });
-            }
-            for (i = 0; i < tbRencanaDetail.getRowCount(); i++) {
-                tabModeRencana.addRow(new Object[]{
-                    true,tbRencanaDetail.getValueAt(i,0).toString(),tbRencanaDetail.getValueAt(i,1).toString()
-                });
-            }
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            
+            try {
+                Valid.tabelKosong(tabModeMasalah);
+                ps=koneksi.prepareStatement(
+                        "select master_masalah_keperawatan_geriatri.kode_masalah,master_masalah_keperawatan_geriatri.nama_masalah from master_masalah_keperawatan_geriatri "+
+                        "inner join penilaian_awal_keperawatan_ralan_masalah_geriatri on penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah=master_masalah_keperawatan_geriatri.kode_masalah "+
+                        "where penilaian_awal_keperawatan_ralan_masalah_geriatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_masalah_geriatri.kode_masalah");
+                try {
+                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabModeMasalah.addRow(new Object[]{true,rs.getString(1),rs.getString(2)});
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
+            
+            try {
+                Valid.tabelKosong(tabModeRencana);
+                ps=koneksi.prepareStatement(
+                        "select master_rencana_keperawatan_geriatri.kode_rencana,master_rencana_keperawatan_geriatri.rencana_keperawatan from master_rencana_keperawatan_geriatri "+
+                        "inner join penilaian_awal_keperawatan_ralan_rencana_geriatri on penilaian_awal_keperawatan_ralan_rencana_geriatri.kode_rencana=master_rencana_keperawatan_geriatri.kode_rencana "+
+                        "where penilaian_awal_keperawatan_ralan_rencana_geriatri.no_rawat=? order by penilaian_awal_keperawatan_ralan_rencana_geriatri.kode_rencana");
+                try {
+                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabModeRencana.addRow(new Object[]{true,rs.getString(1),rs.getString(2)});
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            }
         }
     }
 
@@ -4791,8 +4839,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         try {
             ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,"+
-                    "pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,reg_periksa.tgl_registrasi, "+
-                    "reg_periksa.jam_reg from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,reg_periksa.tgl_registrasi "+
+                    "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                     "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik "+
                     "where reg_periksa.no_rawat=?");
@@ -4808,7 +4856,6 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     Agama.setText(rs.getString("agama"));
                     Bahasa.setText(rs.getString("nama_bahasa"));
                     CacatFisik.setText(rs.getString("nama_cacat"));
-                    TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -4848,14 +4895,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
-        }  
-        
-        if(TANGGALMUNDUR.equals("no")){
-            if(!akses.getkode().equals("Admin Utama")){
-                TglAsuhan.setEditable(false);
-                TglAsuhan.setEnabled(false);
-            }
-        }
+        }            
     }
 
     public void setTampil(){
@@ -5126,6 +5166,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         })==true){
             TNoRM1.setText("");
             TPasien1.setText("");
+            Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+            Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
             Valid.tabelKosong(tabModeDetailMasalah);
             Valid.tabelKosong(tabModeDetailRencana);
             ChkAccor.setSelected(false);
@@ -5158,117 +5200,21 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 NilaiKelelahan.getText(),Kekuatan.getSelectedItem().toString(),NilaiKekuatan.getText(),WaktuBerjalan.getSelectedItem().toString(),NilaiWaktuBerjalan.getText(),TotalNilaiFrailty.getText(),StatusSkorFrailty.getText(),
                 Rencana.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
              })==true){
-                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
-                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
-                tbObat.setValueAt(TPasien.getText(),tbObat.getSelectedRow(),2);
-                tbObat.setValueAt(Jk.getText(),tbObat.getSelectedRow(),3);
-                tbObat.setValueAt(Agama.getText(),tbObat.getSelectedRow(),4);
-                tbObat.setValueAt(Bahasa.getText(),tbObat.getSelectedRow(),5);
-                tbObat.setValueAt(CacatFisik.getText(),tbObat.getSelectedRow(),6);
-                tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),7);
-                tbObat.setValueAt(Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),8);
-                tbObat.setValueAt(Informasi.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-                tbObat.setValueAt(TD.getText(),tbObat.getSelectedRow(),10);
-                tbObat.setValueAt(Nadi.getText(),tbObat.getSelectedRow(),11);
-                tbObat.setValueAt(RR.getText(),tbObat.getSelectedRow(),12);
-                tbObat.setValueAt(Suhu.getText(),tbObat.getSelectedRow(),13);
-                tbObat.setValueAt(GCS.getText(),tbObat.getSelectedRow(),14);
-                tbObat.setValueAt(BB.getText(),tbObat.getSelectedRow(),15);
-                tbObat.setValueAt(TB.getText(),tbObat.getSelectedRow(),16);
-                tbObat.setValueAt(BMI.getText(),tbObat.getSelectedRow(),17);
-                tbObat.setValueAt(KeluhanUtama.getText(),tbObat.getSelectedRow(),18);
-                tbObat.setValueAt(RPD.getText(),tbObat.getSelectedRow(),19);
-                tbObat.setValueAt(RPK.getText(),tbObat.getSelectedRow(),20);
-                tbObat.setValueAt(RPO.getText(),tbObat.getSelectedRow(),21);
-                tbObat.setValueAt(Alergi.getText(),tbObat.getSelectedRow(),22);
-                tbObat.setValueAt(AlatBantu.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
-                tbObat.setValueAt(KetBantu.getText(),tbObat.getSelectedRow(),24);
-                tbObat.setValueAt(Prothesa.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
-                tbObat.setValueAt(KetProthesa.getText(),tbObat.getSelectedRow(),26);
-                tbObat.setValueAt(ADL.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
-                tbObat.setValueAt(StatusPsiko.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
-                tbObat.setValueAt(KetPsiko.getText(),tbObat.getSelectedRow(),29);
-                tbObat.setValueAt(HubunganKeluarga.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
-                tbObat.setValueAt(TinggalDengan.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
-                tbObat.setValueAt(KetTinggal.getText(),tbObat.getSelectedRow(),32);
-                tbObat.setValueAt(Ekonomi.getSelectedItem().toString(),tbObat.getSelectedRow(),33);
-                tbObat.setValueAt(StatusBudaya.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
-                tbObat.setValueAt(KetBudaya.getText(),tbObat.getSelectedRow(),35);
-                tbObat.setValueAt(Edukasi.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
-                tbObat.setValueAt( KetEdukasi.getText(),tbObat.getSelectedRow(),37);
-                tbObat.setValueAt(ATS.getSelectedItem().toString(),tbObat.getSelectedRow(),38);
-                tbObat.setValueAt(BJM.getSelectedItem().toString(),tbObat.getSelectedRow(),39);
-                tbObat.setValueAt(MSA.getSelectedItem().toString(),tbObat.getSelectedRow(),40);
-                tbObat.setValueAt(Hasil.getSelectedItem().toString(),tbObat.getSelectedRow(),41);
-                tbObat.setValueAt(Lapor.getSelectedItem().toString(),tbObat.getSelectedRow(),42);
-                tbObat.setValueAt(KetLapor.getText(),tbObat.getSelectedRow(),43);
-                tbObat.setValueAt(SG1.getSelectedItem().toString(),tbObat.getSelectedRow(),44);
-                tbObat.setValueAt(Nilai1.getSelectedItem().toString(),tbObat.getSelectedRow(),45);
-                tbObat.setValueAt(SG2.getSelectedItem().toString(),tbObat.getSelectedRow(),46);
-                tbObat.setValueAt(Nilai2.getSelectedItem().toString(),tbObat.getSelectedRow(),47);
-                tbObat.setValueAt(TotalHasil.getText(),tbObat.getSelectedRow(),48);
-                tbObat.setValueAt(Nyeri.getSelectedItem().toString(),tbObat.getSelectedRow(),49);
-                tbObat.setValueAt(Provokes.getSelectedItem().toString(),tbObat.getSelectedRow(),50);
-                tbObat.setValueAt(KetProvokes.getText(),tbObat.getSelectedRow(),51);
-                tbObat.setValueAt(Quality.getSelectedItem().toString(),tbObat.getSelectedRow(),52);
-                tbObat.setValueAt(KetQuality.getText(),tbObat.getSelectedRow(),53);
-                tbObat.setValueAt(Lokasi.getText(),tbObat.getSelectedRow(),54);
-                tbObat.setValueAt(Menyebar.getSelectedItem().toString(),tbObat.getSelectedRow(),55);
-                tbObat.setValueAt(SkalaNyeri.getSelectedItem().toString(),tbObat.getSelectedRow(),56);
-                tbObat.setValueAt(Durasi.getText(),tbObat.getSelectedRow(),57);
-                tbObat.setValueAt(NyeriHilang.getSelectedItem().toString(),tbObat.getSelectedRow(),58);
-                tbObat.setValueAt(KetNyeri.getText(),tbObat.getSelectedRow(),59);
-                tbObat.setValueAt(PadaDokter.getSelectedItem().toString(),tbObat.getSelectedRow(),60);
-                tbObat.setValueAt(KetDokter.getText(),tbObat.getSelectedRow(),61);
-                tbObat.setValueAt(KemampuanBacaTulis.getSelectedItem().toString(),tbObat.getSelectedRow(),62);
-                tbObat.setValueAt(DibutuhkanPenerjemah.getSelectedItem().toString(),tbObat.getSelectedRow(),63);
-                tbObat.setValueAt(KeteranganPenerjamahLainnya.getText(),tbObat.getSelectedRow(),64);
-                tbObat.setValueAt(HambatanPembelajaran.getSelectedItem().toString(),tbObat.getSelectedRow(),65);
-                tbObat.setValueAt(KategoriHambatanPembelajaran.getSelectedItem().toString(),tbObat.getSelectedRow(),66);
-                tbObat.setValueAt(KeteranganHambatanPembelajaran.getText(),tbObat.getSelectedRow(),67);
-                tbObat.setValueAt(HambatanCaraBicara.getSelectedItem().toString(),tbObat.getSelectedRow(),68);
-                tbObat.setValueAt(HambatanBahasaIsyarat.getSelectedItem().toString(),tbObat.getSelectedRow(),69);
-                tbObat.setValueAt(KesediaanMenerimaInformasi.getSelectedItem().toString(),tbObat.getSelectedRow(),70);
-                tbObat.setValueAt(KeteranganKesediaanMenerimaInformasi.getText(),tbObat.getSelectedRow(),71);
-                tbObat.setValueAt(CaraBelajarDisukai.getSelectedItem().toString(),tbObat.getSelectedRow(),72);
-                tbObat.setValueAt(KehilanganBeratBadan.getSelectedItem().toString(),tbObat.getSelectedRow(),73);
-                tbObat.setValueAt(NilaiKehilanganBeratBadan.getText(),tbObat.getSelectedRow(),74);
-                tbObat.setValueAt(AktifitasFisik.getSelectedItem().toString(),tbObat.getSelectedRow(),75);
-                tbObat.setValueAt(NilaiAktifitasFisik.getText(),tbObat.getSelectedRow(),76);
-                tbObat.setValueAt(Kelelahan.getSelectedItem().toString(),tbObat.getSelectedRow(),77);
-                tbObat.setValueAt(NilaiKelelahan.getText(),tbObat.getSelectedRow(),78);
-                tbObat.setValueAt(Kekuatan.getSelectedItem().toString(),tbObat.getSelectedRow(),79);
-                tbObat.setValueAt(NilaiKekuatan.getText(),tbObat.getSelectedRow(),80);
-                tbObat.setValueAt(WaktuBerjalan.getSelectedItem().toString(),tbObat.getSelectedRow(),81);
-                tbObat.setValueAt(NilaiWaktuBerjalan.getText(),tbObat.getSelectedRow(),82);
-                tbObat.setValueAt(TotalNilaiFrailty.getText(),tbObat.getSelectedRow(),83);
-                tbObat.setValueAt(StatusSkorFrailty.getText(),tbObat.getSelectedRow(),84);
-                tbObat.setValueAt(Rencana.getText(),tbObat.getSelectedRow(),85);
-                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),86);
-                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),87);
                 Sequel.meghapus("penilaian_awal_keperawatan_ralan_masalah_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_masalah_geriatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
-                                tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
-                            });
-                        }
+                        Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_masalah_geriatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()});
                     }
                 }
+                Sequel.meghapus("penilaian_awal_keperawatan_ralan_rencana_geriatri","no_rawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_geriatri","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
-                                tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
-                            });
-                        }
+                        Sequel.menyimpan2("penilaian_awal_keperawatan_ralan_rencana_geriatri","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()});
                     }
                 }
+                getMasalah();
+                tampil();
                 DetailRencana.setText(Rencana.getText());
-                TNoRM1.setText(TNoRM.getText());
-                TPasien1.setText(TPasien.getText());
                 emptTeks();
                 TabRawat.setSelectedIndex(1);
         }
@@ -5292,61 +5238,6 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         } catch (Exception e) {
             StatusSkorFrailty.setText("Sehat");
-        }
-    }
-
-    private void simpan() {
-        if(Sequel.menyimpantf("penilaian_awal_keperawatan_ralan_geriatri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",80,new String[]{
-                TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),
-                Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),BMI.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),AlatBantu.getSelectedItem().toString(),KetBantu.getText(), 
-                Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),HubunganKeluarga.getSelectedItem().toString(), 
-                TinggalDengan.getSelectedItem().toString(),KetTinggal.getText(),Ekonomi.getSelectedItem().toString(),StatusBudaya.getSelectedItem().toString(),KetBudaya.getText(),Edukasi.getSelectedItem().toString(), 
-                KetEdukasi.getText(),ATS.getSelectedItem().toString(),BJM.getSelectedItem().toString(),MSA.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Lapor.getSelectedItem().toString(),KetLapor.getText(), 
-                SG1.getSelectedItem().toString(),Nilai1.getSelectedItem().toString(),SG2.getSelectedItem().toString(),Nilai2.getSelectedItem().toString(),TotalHasil.getText(),Nyeri.getSelectedItem().toString(),
-                Provokes.getSelectedItem().toString(),KetProvokes.getText(),Quality.getSelectedItem().toString(),KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),
-                Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),KemampuanBacaTulis.getSelectedItem().toString(),DibutuhkanPenerjemah.getSelectedItem().toString(), 
-                KeteranganPenerjamahLainnya.getText(),HambatanPembelajaran.getSelectedItem().toString(),KategoriHambatanPembelajaran.getSelectedItem().toString(),KeteranganHambatanPembelajaran.getText(),HambatanCaraBicara.getSelectedItem().toString(), 
-                HambatanBahasaIsyarat.getSelectedItem().toString(),KesediaanMenerimaInformasi.getSelectedItem().toString(),KeteranganKesediaanMenerimaInformasi.getText(),CaraBelajarDisukai.getSelectedItem().toString(), 
-                KehilanganBeratBadan.getSelectedItem().toString(),NilaiKehilanganBeratBadan.getText(),AktifitasFisik.getSelectedItem().toString(),NilaiAktifitasFisik.getText(),Kelelahan.getSelectedItem().toString(), 
-                NilaiKelelahan.getText(),Kekuatan.getSelectedItem().toString(),NilaiKekuatan.getText(),WaktuBerjalan.getSelectedItem().toString(),NilaiWaktuBerjalan.getText(),TotalNilaiFrailty.getText(),StatusSkorFrailty.getText(),
-                Rencana.getText(),KdPetugas.getText()
-            })==true){
-                tabMode.addRow(new String[]{
-                    TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),Agama.getText(),Bahasa.getText(),CacatFisik.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
-                    Informasi.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),BMI.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),
-                    AlatBantu.getSelectedItem().toString(),KetBantu.getText(),Prothesa.getSelectedItem().toString(),KetProthesa.getText(),ADL.getSelectedItem().toString(),StatusPsiko.getSelectedItem().toString(),KetPsiko.getText(),
-                    HubunganKeluarga.getSelectedItem().toString(),TinggalDengan.getSelectedItem().toString(),KetTinggal.getText(),Ekonomi.getSelectedItem().toString(),StatusBudaya.getSelectedItem().toString(),KetBudaya.getText(),Edukasi.getSelectedItem().toString(), 
-                    KetEdukasi.getText(),ATS.getSelectedItem().toString(),BJM.getSelectedItem().toString(),MSA.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Lapor.getSelectedItem().toString(),KetLapor.getText(),SG1.getSelectedItem().toString(),
-                    Nilai1.getSelectedItem().toString(),SG2.getSelectedItem().toString(),Nilai2.getSelectedItem().toString(),TotalHasil.getText(),Nyeri.getSelectedItem().toString(),Provokes.getSelectedItem().toString(),KetProvokes.getText(),
-                    Quality.getSelectedItem().toString(),KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),
-                    PadaDokter.getSelectedItem().toString(),KetDokter.getText(),KemampuanBacaTulis.getSelectedItem().toString(),DibutuhkanPenerjemah.getSelectedItem().toString(),KeteranganPenerjamahLainnya.getText(),HambatanPembelajaran.getSelectedItem().toString(),
-                    KategoriHambatanPembelajaran.getSelectedItem().toString(),KeteranganHambatanPembelajaran.getText(),HambatanCaraBicara.getSelectedItem().toString(),HambatanBahasaIsyarat.getSelectedItem().toString(),KesediaanMenerimaInformasi.getSelectedItem().toString(),
-                    KeteranganKesediaanMenerimaInformasi.getText(),CaraBelajarDisukai.getSelectedItem().toString(),KehilanganBeratBadan.getSelectedItem().toString(),NilaiKehilanganBeratBadan.getText(),AktifitasFisik.getSelectedItem().toString(),
-                    NilaiAktifitasFisik.getText(),Kelelahan.getSelectedItem().toString(),NilaiKelelahan.getText(),Kekuatan.getSelectedItem().toString(),NilaiKekuatan.getText(),WaktuBerjalan.getSelectedItem().toString(),NilaiWaktuBerjalan.getText(),
-                    TotalNilaiFrailty.getText(),StatusSkorFrailty.getText(),Rencana.getText(),KdPetugas.getText(),NmPetugas.getText()
-                });
-                for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
-                    if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_masalah_geriatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
-                                tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
-                            });
-                        }
-                    }
-                }
-                for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
-                    if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
-                        if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_geriatri","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
-                                tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
-                            });
-                        }
-                    }
-                }
-                DetailRencana.setText(Rencana.getText());
-                TNoRM1.setText(TNoRM.getText());
-                TPasien1.setText(TPasien.getText());
-                emptTeks();
         }
     }
 }

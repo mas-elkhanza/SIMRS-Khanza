@@ -990,6 +990,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 ps.setString(5,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();  
                 
+                if(aktifkanbatch.equals("yes")){
+                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*databarang."+hppfarmasi+") as aset "+
+                            "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                            "where gudangbarang.kode_brng=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
+                }else{
+                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*databarang."+hppfarmasi+") as aset "+
+                            "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
+                            "where gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
+                }
                 while(rs.next()){
                     totaljual=0;jumlahjual=0;totalbeli=0;jumlahbeli=0;totalpiutang=0;jumlahpiutang=0;
                     totalpesan=0;jumlahpesan=0;jumlahrespulang=0;jumlahhibah=0;totalhibah=0;
@@ -997,16 +1006,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     jumlahpasin=0;stok=0;aset=0;totalrespulang=0;
                     jumlahutd=0;jumlahkeluar=0;totalkeluar=0;totalutd=0;
                     jumlahmutasikeluar=0;totalmutasikeluar=0;jumlahmutasimasuk=0;totalmutasimasuk=0;
-                    
-                    if(aktifkanbatch.equals("yes")){
-                        qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*databarang."+hppfarmasi+") as aset "+
-                                "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
-                                "where gudangbarang.kode_brng=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
-                    }else{
-                        qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*databarang."+hppfarmasi+") as aset "+
-                                "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
-                                "where gudangbarang.kode_brng=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
-                    }
 
                     ps2=koneksi.prepareStatement(qrystok);
                     try {
@@ -1238,8 +1237,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " utd_pengambilan_medis.tanggal between ? and ?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
-                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
                             jumlahutd=rs2.getDouble(1);
@@ -1680,8 +1679,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kd_bangsal_dr=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
-                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1756,7 +1755,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " tanggal between ? and ? and kd_bangsalke=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1780,7 +1779,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " tanggal between ? and ? and kd_bangsaldari=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:01");
+                        ps2.setString(2,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();

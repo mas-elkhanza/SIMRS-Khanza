@@ -34,7 +34,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>SURAT KETERANGAN RAPID TEST<br/>NO.$nosurat</center></h2>
+                                <h2><center>SURAT KETERANGAN RAPID TEST<br>NO.$nosurat</center></h2>
                             </div>
                             <div class='body' align='justify'>
                                 Saya yang bertanda tangan di bawah ini <br/>
@@ -109,7 +109,7 @@
                                     <tr>
                                         <td width='100%' colspan='2'>&nbsp;</td>
                                     </tr>
-                                </table><br/>
+                                </table><br>
                                 Demikian surat keterangan ini dibuat sesuai dengan kondisi sebenarnya dan untuk dipergunakan sebagaimana mestinya. Hasil rapid test tersebut berlaku sejak tanggal ".$rsquerysuratcovid["berlakumulai"]." sampai dengan ".$rsquerysuratcovid["berlakuselsai"].".
                                 <table width='100%' class='table-hover' border='0' align='center' cellpadding='5' cellspacing='5' class='tbl_form'>
                                     <tr>
@@ -123,7 +123,7 @@
                                         <td width='50%' align='center'>Dokter Penanggung Jawab,<br/><img src='pages/".$PNG_WEB_DIR.basename($filename)."'/><br/>( <u>".$rsquerysuratcovid["nm_dokter"]."</u> )</td>
                                         <td width='50%' align='center'>Analis Laboratorium,<br/><img src='pages/".$PNG_WEB_DIR.basename($filename2)."'/><br/>( <u>".$rsquerysuratcovid["nama"]."</u> )</td>
                                     </tr>
-                                </table><br/>
+                                </table><br>
                                 <center><a href='index.php?act=SuratCovid&hal=Surat' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>

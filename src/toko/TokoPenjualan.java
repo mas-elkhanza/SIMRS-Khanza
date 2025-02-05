@@ -1556,21 +1556,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }
         if(sukses==true){
             Sequel.queryu("delete from tampjurnal");                    
-            if(Sequel.menyimpantf2("tampjurnal","'"+Penjualan_Toko+"','PENJUALAN TOKO','0','"+tagihanppn+"'","Rekening")==false){
-                sukses=false;
-            }    
-            if(Sequel.menyimpantf2("tampjurnal","'"+kode_akun_bayar+"','"+AkunBayar.getSelectedItem().toString()+"','"+tagihanppn+"','0'","Rekening")==false){
-                sukses=false;
-            } 
-            if(Sequel.menyimpantf2("tampjurnal","'"+HPP_Barang_Toko+"','HPP Barang Toko','"+ttlhpp+"','0'","Rekening")==false){
-                sukses=false;
-            }    
-            if(Sequel.menyimpantf2("tampjurnal","'"+Persediaan_Barang_Toko+"','Persediaan Barang Toko','0','"+ttlhpp+"'","Rekening")==false){
-                sukses=false;
-            }
-            if(sukses==true){
-                sukses=jur.simpanJurnal(NoNota.getText(),"U","PENJUALAN TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());
-            }   
+            Sequel.menyimpan2("tampjurnal","'"+Penjualan_Toko+"','PENJUALAN TOKO','0','"+tagihanppn+"'","Rekening");    
+            Sequel.menyimpan2("tampjurnal","'"+kode_akun_bayar+"','"+AkunBayar.getSelectedItem().toString()+"','"+tagihanppn+"','0'","Rekening"); 
+            Sequel.menyimpan2("tampjurnal","'"+HPP_Barang_Toko+"','HPP Barang Toko','"+ttlhpp+"','0'","Rekening");    
+            Sequel.menyimpan2("tampjurnal","'"+Persediaan_Barang_Toko+"','Persediaan Barang Toko','0','"+ttlhpp+"'","Rekening");                              
+            sukses=jur.simpanJurnal(NoNota.getText(),"U","PENJUALAN TOKO / MINIMARKET / KOPERASI, OLEH "+akses.getkode());   
         }
     }
     

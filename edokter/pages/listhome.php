@@ -11,7 +11,7 @@
             </div>
             <div class="content">
                 <div class="text">KUNJUNGAN</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_dokter"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date()");?>" data-speed="3000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_admin"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date()");?>" data-speed="3000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -22,7 +22,7 @@
             </div>
             <div class="content">
                 <div class="text">RAWAT JALAN</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_dokter"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_lanjut = 'Ralan'");?>" data-speed="2000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_admin"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_lanjut = 'Ralan'");?>" data-speed="2000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
             </div>
             <div class="content">
                 <div class="text">LANJUT RANAP</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_dokter"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_lanjut = 'Ranap'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_admin"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.status_lanjut = 'Ranap'");?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
             </div>
             <div class="content">
                 <div class="text">BELUM DILAYANI</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_dokter"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Belum'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_admin"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Belum'");?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="content">
                 <div class="text">SUDAH DILAYANI</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_dokter"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Sudah'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_admin"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Sudah'");?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
             </div>
             <div class="content">
                 <div class="text">BATAL</div>
-                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_dokter"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Batal'");?>" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="number count-to" data-from="0" data-to="<?=getOne("SELECT count(reg_periksa.no_rkm_medis) FROM reg_periksa WHERE reg_periksa.kd_dokter='".validTeks4(encrypt_decrypt($_SESSION["ses_admin"],"d"),20)."' and reg_periksa.tgl_registrasi=current_date() AND reg_periksa.stts = 'Batal'");?>" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>

@@ -102,6 +102,7 @@ public final class DlgCariSpesialis extends javax.swing.JDialog {
             });
         }
     }
+    private DlgSpesialis png_jawab=new DlgSpesialis(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -293,7 +294,8 @@ public final class DlgCariSpesialis extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgSpesialis png_jawab=new DlgSpesialis(null,false);
+        
+        //png_jawab.setModal(true);
         png_jawab.emptTeks();
         png_jawab.isCek();
         png_jawab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -420,11 +422,7 @@ public final class DlgCariSpesialis extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

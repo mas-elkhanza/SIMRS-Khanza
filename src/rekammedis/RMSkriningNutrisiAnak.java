@@ -1228,7 +1228,7 @@ public final class RMSkriningNutrisiAnak extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,KetLapor,BtnBatal);
+            //Valid.pindah(evt,cmbSkor3,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1922,7 +1922,7 @@ public final class RMSkriningNutrisiAnak extends javax.swing.JDialog {
         SG4.setSelectedIndex(0);
         Nilai4.setText("0");
         TotalHasil.setText("0");
-        LabelSkrining.setText("Risiko Rendah");
+        LabelSkrining.setText("Status Gizi Normal");
         BB.requestFocus();
     } 
 

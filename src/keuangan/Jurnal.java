@@ -102,25 +102,7 @@ public class Jurnal {
                                             rs.close();
                                         }
                                     }
-                                    if(sukses==true){
-                                        try {
-                                            rs=koneksi.prepareStatement("select sum(detailjurnal.debet),sum(detailjurnal.kredit) from detailjurnal where detailjurnal.no_jurnal='"+nojur+"'").executeQuery();
-                                            while(rs.next()){
-                                                if(rs.getInt(1)!=rs.getInt(2)){
-                                                    sukses=false;
-                                                    System.out.println("Notif : Debet dan Kredit tidak sama");
-                                                }
-                                            }
-                                        } catch (Exception e) {
-                                             sukses=false;
-                                             System.out.println("Notifikasi : "+e);
-                                        } finally{
-                                             if(rs!=null){
-                                                 rs.close();
-                                             }
-                                        }
-                                        Sequel.queryu2("delete from tampjurnal"); 
-                                    }   
+                                    Sequel.queryu2("delete from tampjurnal");    
                                  }            
                             } catch (Exception ex) {
                                 sukses=false;

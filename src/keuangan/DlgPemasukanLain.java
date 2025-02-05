@@ -110,7 +110,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
         Keperluan.setDocument(new batasInput((byte)70).getKata(Keperluan));
         Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         KdPtg.setDocument(new batasInput((byte)20).getKata(KdPtg));
-        pemasukan.setDocument(new batasInput((byte)15).getOnlyAngka(pemasukan));
+        pemasukan.setDocument(new batasInput((byte)15).getKata(pemasukan));
         Nomor.setDocument(new batasInput((byte)17).getKata(Nomor));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -726,15 +726,9 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                         psakun.setString(1,KdKategori.getText());
                         rs=psakun.executeQuery();
                         if(rs.next()){
-                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",pemasukan.getText()})==false){
-                                sukses=false;
-                            }
-                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),pemasukan.getText(),"0"})==false){
-                                sukses=false;
-                            }
-                            if(sukses==true){
-                                sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
-                            }
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),"0",pemasukan.getText()});
+                            Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),pemasukan.getText(),"0"}); 
+                            sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
                         }
                     } catch (Exception e) {
                         sukses=false;
@@ -817,15 +811,9 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                             psakun.setString(1,KdKategori.getText());
                             rs=psakun.executeQuery();
                             if(rs.next()){
-                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),pemasukan.getText(),"0"})==false){
-                                    sukses=false;
-                                } 
-                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",pemasukan.getText()})==false){
-                                    sukses=false;
-                                }
-                                if(sukses==true){
-                                    sukses=jur.simpanJurnal(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
-                                }
+                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(1),rs.getString(2),pemasukan.getText(),"0"});
+                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString(3),rs.getString(4),"0",pemasukan.getText()}); 
+                                sukses=jur.simpanJurnal(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString(),"U","PEMBATALAN PEMASUKAN LAIN-LAIN OLEH "+akses.getkode());
                             } 
                         } catch (Exception e) {
                             sukses=false;

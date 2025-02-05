@@ -35,7 +35,7 @@ public class TokoSuratPemesanan extends javax.swing.JDialog {
     private ResultSet rs;
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-    private TokoCariSuplier suplier=new TokoCariSuplier(null,false);
+    private TokoSuplier suplier=new TokoSuplier(null,false);
     private double meterai=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0;
     private int jml=0,i=0,row=0,index=0,pilihan=1;
     private String[] kodebarang,namabarang,satuanbeli;

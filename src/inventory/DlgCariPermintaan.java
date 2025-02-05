@@ -29,7 +29,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    public  DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+    public  DlgCariBangsal suplier=new DlgCariBangsal(null,false);
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private PreparedStatement ps,ps2;
@@ -94,16 +94,16 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
                 }
             });
         }  
-        bangsal.addWindowListener(new WindowListener() {
+        suplier.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(bangsal.getTable().getSelectedRow()!= -1){                   
-                    KdBangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());                    
-                    NmBangsal.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                if(suplier.getTable().getSelectedRow()!= -1){                   
+                    KdBangsal.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),0).toString());                    
+                    NmBangsal.setText(suplier.getTable().getValueAt(suplier.getTable().getSelectedRow(),1).toString());
                 }  
                 KdBangsal.requestFocus();
             }
@@ -117,13 +117,13 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        bangsal.getTable().addKeyListener(new KeyListener() {
+        suplier.getTable().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    bangsal.dispose();
+                    suplier.dispose();
                 }                
             }
             @Override
@@ -846,7 +846,7 @@ public class DlgCariPermintaan extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        bangsal.dispose();
+        suplier.dispose();
         pegawai.dispose();
         barang.dispose();
         barang.jenis.dispose();
@@ -865,12 +865,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 */
 
     private void btnSuplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuplierActionPerformed
-        bangsal.emptTeks();
-        bangsal.isCek();
-        bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        bangsal.setLocationRelativeTo(internalFrame1);
-        bangsal.setAlwaysOnTop(false);
-        bangsal.setVisible(true);
+        suplier.emptTeks();
+        suplier.isCek();
+        suplier.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        suplier.setLocationRelativeTo(internalFrame1);
+        suplier.setAlwaysOnTop(false);
+        suplier.setVisible(true);
     }//GEN-LAST:event_btnSuplierActionPerformed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
@@ -896,12 +896,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void KdBangsalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdBangsalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            NmBangsal.setText(bangsal.tampil3(KdBangsal.getText()));         
+            NmBangsal.setText(suplier.tampil3(KdBangsal.getText()));         
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            NmBangsal.setText(bangsal.tampil3(KdBangsal.getText()));
+            NmBangsal.setText(suplier.tampil3(KdBangsal.getText()));
             NoPermintaan.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            NmBangsal.setText(bangsal.tampil3(KdBangsal.getText()));
+            NmBangsal.setText(suplier.tampil3(KdBangsal.getText()));
             KdPeg.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnSuplierActionPerformed(null);
@@ -1069,8 +1069,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgMutasiBarang aplikasi=new DlgMutasiBarang(null,false);
                 aplikasi.tampilkanpermintaan=false;
-                aplikasi.isCek();
                 aplikasi.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                aplikasi.isCek();
                 aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 aplikasi.setLocationRelativeTo(internalFrame1);
                 aplikasi.setVisible(true);
@@ -1099,8 +1099,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgPengeluaranApotek aplikasi2=new DlgPengeluaranApotek(null,false);
                 aplikasi2.tampilkanpermintaan=false;
-                aplikasi2.isCek();
                 aplikasi2.tampil(tbDokter.getValueAt(tbDokter.getSelectedRow(),1).toString().trim());
+                aplikasi2.isCek();
                 aplikasi2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 aplikasi2.setLocationRelativeTo(internalFrame1);
                 aplikasi2.setVisible(true);

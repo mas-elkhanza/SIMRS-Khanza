@@ -401,29 +401,17 @@ public final class MasterCariImunisasi extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             response = root.path("master_imunisasi");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
+                for(JsonNode list:response){
+                    if(list.path("KodeImunisasi").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaImunisasi").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                         tabMode.addRow(new Object[]{
                             list.path("KodeImunisasi").asText(),list.path("NamaImunisasi").asText()
-                        }); 
-                    }
-                }else{
-                    for(JsonNode list:response){
-                        if(list.path("KodeImunisasi").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaImunisasi").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
-                            tabMode.addRow(new Object[]{
-                                list.path("KodeImunisasi").asText(),list.path("NamaImunisasi").asText()
-                            });                    
-                        }
+                        });                    
                     }
                 }
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

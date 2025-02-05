@@ -2,8 +2,8 @@
     require_once('../../conf/conf.php');
     $norawat        = validTeks4($_POST["norawat"],20);
     $tanggal_masuk  = validTeks5($_POST["tanggal_masuk"],20);
-    if(file_exists(host()."/webapps/persetujuantransferruang/pages/upload/".str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal_masuk))).".jpeg")){
-        @unlink(host()."/webapps/persetujuantransferruang/pages/upload/".str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal_masuk))).".jpeg");
+    if(file_exists(host()."webapps/persetujuantransferruang/pages/upload/".str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal_masuk))).".jpeg")){
+        @unlink(host()."webapps/persetujuantransferruang/pages/upload/".str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal_masuk))).".jpeg");
     }
     
     $img                    = $_POST["image"];

@@ -210,7 +210,7 @@
                                                     <td width='40%' align='right'><img src='pages/".$PNG_WEB_DIR.basename($filename)."'/></td>
                                                     <td width='60%' align='left'>
                                                         <div class='font-50'>".$rsqueryregistrasi["no_reg"]."</div>
-                                                        <br/>
+                                                        <br>
                                                         <div id='screen' />  Antrian Lagi
                                                     </td>
                                                 </tr>

@@ -436,11 +436,7 @@ public final class DlgCariKategori extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception e) {
-            if(e.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+e);
-            }
+            System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }

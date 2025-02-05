@@ -132,15 +132,15 @@ public final class RMPenilaianPasienTerminal extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));
-        Diagnosa.setDocument(new batasInput((int)500).getKata(Diagnosa));
-        RPS.setDocument(new batasInput((int)500).getKata(RPS));
-        RPD.setDocument(new batasInput((int)500).getKata(RPD));
+        Diagnosa.setDocument(new batasInput((int)100).getKata(Diagnosa));
+        RPS.setDocument(new batasInput((int)300).getKata(RPS));
+        RPD.setDocument(new batasInput((int)100).getKata(RPD));
         TD.setDocument(new batasInput((byte)8).getKata(TD));
         Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
         Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
         RR.setDocument(new batasInput((byte)5).getKata(RR));
         SPO.setDocument(new batasInput((byte)5).getKata(SPO));
-        KebutuhanSpiritual.setDocument(new batasInput((int)500).getKata(KebutuhanSpiritual));
+        KebutuhanSpiritual.setDocument(new batasInput((int)300).getKata(KebutuhanSpiritual));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){

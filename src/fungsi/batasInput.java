@@ -102,14 +102,10 @@ public class batasInput {
                     upp[i]=Character.toUpperCase(upp[i]);
                         boolean isOnlyAngka=Character.isDigit(upp[i]);
                         boolean isOnlyTitik=Character.valueOf(upp[i]).toString().equals(".");
-                        boolean isOnlyStrip=Character.valueOf(upp[i]).toString().equals("-");
                         if(isOnlyAngka==true){
                             upp[c]=upp[i];
                             c++;
                         }else if(isOnlyTitik==true){
-                            upp[c]=upp[i];
-                            c++;
-                        }else if(isOnlyStrip==true){
                             upp[c]=upp[i];
                             c++;
                         }

@@ -35,7 +35,6 @@ import javax.swing.text.html.StyleSheet;
 import simrskhanza.DlgPasien;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
-import simrskhanza.DlgCariPasien;
 
 public class DlgCariPenjualan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
@@ -47,7 +46,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private riwayatobat Trackobat=new riwayatobat();
     private int i=0,no=1;
-    public  DlgCariPasien pasien=new DlgCariPasien(null,false);
+    public  DlgPasien pasien=new DlgPasien(null,false);
     public  DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     public  DlgBarang barang=new DlgBarang(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
@@ -163,9 +162,17 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
             public void windowClosed(WindowEvent e) {
                 if(akses.getform().equals("DlgCariPenjualan")){
                     if(pasien.getTable().getSelectedRow()!= -1){                   
-                        kdmem.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
-                        nmmem.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                    }   
+                        kdmem.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                        nmmem.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),2).toString());
+                    }     
+                    if(pasien.getTable2().getSelectedRow()!= -1){  
+                        kdmem.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),1).toString());
+                        nmmem.setText(pasien.getTable2().getValueAt(pasien.getTable2().getSelectedRow(),2).toString());
+                    }  
+                    if(pasien.getTable3().getSelectedRow()!= -1){  
+                        kdmem.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),1).toString());
+                        nmmem.setText(pasien.getTable3().getValueAt(pasien.getTable3().getSelectedRow(),2).toString());
+                    }  
                     kdmem.requestFocus();
                 }
             }
@@ -180,6 +187,36 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         });
         
         pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgCariPenjualan")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pasien.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        pasien.getTable2().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgCariPenjualan")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        pasien.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
+        
+        pasien.getTable3().addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {}
             @Override
@@ -1302,24 +1339,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     ttlhpp=Sequel.cariIsiAngka("select sum(detailjual.h_beli*detailjual.jumlah) from detailjual where detailjual.nota_jual=?",rs.getString("nota_jual"));
 
                                     Sequel.queryu("delete from tampjurnal");
-                                    if(Sequel.menyimpantf2("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN','"+(ttljual+rs.getDouble("ongkir"))+"','0'","Rekening")==false){
-                                        sukses=false;
-                                    } 
-                                    if(Sequel.menyimpantf2("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','"+(rs.getDouble("ppn"))+"','0'","Rekening")==false){
-                                        sukses=false;
-                                    } 
-                                    if(Sequel.menyimpantf2("tampjurnal","'"+rs.getString("kd_rek")+"','KAS DI TANGAN','0','"+(ttljual+rs.getDouble("ongkir")+rs.getDouble("ppn"))+"'","Rekening")==false){
-                                        sukses=false;
-                                    } 
-                                    if(Sequel.menyimpantf2("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','0','"+ttlhpp+"'","Rekening")==false){
-                                        sukses=false;
-                                    }    
-                                    if(Sequel.menyimpantf2("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','"+ttlhpp+"','0'","Rekening")==false){
-                                        sukses=false;
-                                    }
-                                    if(sukses==true){
-                                        sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","BATAL PENJUALAN DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
-                                    }
+                                    Sequel.menyimpan("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN','"+(ttljual+rs.getDouble("ongkir"))+"','0'","Rekening"); 
+                                    Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','"+(rs.getDouble("ppn"))+"','0'","Rekening"); 
+                                    Sequel.menyimpan("tampjurnal","'"+rs.getString("kd_rek")+"','KAS DI TANGAN','0','"+(ttljual+rs.getDouble("ongkir")+rs.getDouble("ppn"))+"'","Rekening"); 
+                                    Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");    
+                                    Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");                              
+                                    sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","BATAL PENJUALAN DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
                                 }
                                 
                                 if(sukses==true){
@@ -1613,24 +1638,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                          if(sukses==true){
                             ttlhpp=Sequel.cariIsiAngka("select sum(detailjual.h_beli*detailjual.jumlah) from detailjual where detailjual.nota_jual=?",rs.getString("nota_jual"));
                             Sequel.queryu("delete from tampjurnal");
-                            if(Sequel.menyimpantf2("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN OBAT BEBAS','0','"+Double.toString(ttljual-rs.getDouble("ppn"))+"'","Rekening")==false){
-                                sukses=false;
-                            }   
-                            if(Sequel.menyimpantf2("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','0','"+Double.toString(rs.getDouble("ppn"))+"'","Rekening")==false){
-                                sukses=false;
-                            }   
-                            if(Sequel.menyimpantf2("tampjurnal","'"+kdrek+"','KAS DI TANGAN','"+Double.toString(ttljual)+"','0'","Rekening")==false){
-                                sukses=false;
-                            } 
-                            if(Sequel.menyimpantf2("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','"+ttlhpp+"','0'","Rekening")==false){
-                                sukses=false;
-                            }    
-                            if(Sequel.menyimpantf2("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening")==false){
-                                sukses=false;
-                            }
-                            if(sukses==true){
-                                sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","PENJUALAN DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
-                            } 
+                            Sequel.menyimpan("tampjurnal","'"+Penjualan_Obat+"','PENJUALAN OBAT BEBAS','0','"+Double.toString(ttljual-rs.getDouble("ppn"))+"'","Rekening");   
+                            Sequel.menyimpan("tampjurnal","'"+PPN_Keluaran+"','PPN KELUARAN','0','"+Double.toString(rs.getDouble("ppn"))+"'","Rekening");   
+                            Sequel.menyimpan("tampjurnal","'"+kdrek+"','KAS DI TANGAN','"+Double.toString(ttljual)+"','0'","Rekening"); 
+                            Sequel.menyimpan("tampjurnal","'"+HPP_Obat_Jual_Bebas+"','HPP Obat Jual Bebas','"+ttlhpp+"','0'","Rekening");    
+                            Sequel.menyimpan("tampjurnal","'"+Persediaan_Obat_Jual_Bebas+"','Persediaan Obat Jual Bebas','0','"+ttlhpp+"'","Rekening");                              
+                            sukses=jur.simpanJurnal(rs.getString("nota_jual"),"U","PENJUALAN DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode()); 
                          }
 
                          if(sukses==true){

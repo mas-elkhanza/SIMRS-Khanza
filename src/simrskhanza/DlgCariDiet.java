@@ -103,6 +103,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
             });
         }
     }
+    private DlgDiet diet=new DlgDiet(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -294,7 +295,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        DlgDiet diet=new DlgDiet(null,false);
+        //diet.setModal(true);
         diet.emptTeks();
         diet.isCek();
         diet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -421,11 +422,7 @@ public final class DlgCariDiet extends javax.swing.JDialog {
             }
             myObj.close();
         } catch (Exception ex) {
-            if(ex.toString().contains("java.io.FileNotFoundException")){
-                tampil();
-            }else{
-                System.out.println("Notifikasi : "+ex);
-            }
+            System.out.println("Notifikasi : "+ex);
         }
         LCount.setText(""+tabMode.getRowCount());
     } 

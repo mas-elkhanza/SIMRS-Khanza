@@ -60,63 +60,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import simrskhanza.DlgCariBahasa;
-import simrskhanza.DlgCariBahasa;
-import simrskhanza.DlgCariBahasa;
-import simrskhanza.DlgCariCacatFisik;
-import simrskhanza.DlgCariCacatFisik;
-import simrskhanza.DlgCariCacatFisik;
-import simrskhanza.DlgCariCaraBayar;
-import simrskhanza.DlgCariCaraBayar;
-import simrskhanza.DlgCariCaraBayar;
-import simrskhanza.DlgCariPerusahaan;
-import simrskhanza.DlgCariPerusahaan;
-import simrskhanza.DlgCariPerusahaan;
-import simrskhanza.DlgCariSuku;
-import simrskhanza.DlgCariSuku;
-import simrskhanza.DlgCariSuku;
-import simrskhanza.DlgCatatan;
-import simrskhanza.DlgCatatan;
-import simrskhanza.DlgCatatan;
-import simrskhanza.DlgGolonganPolri;
-import simrskhanza.DlgGolonganPolri;
-import simrskhanza.DlgGolonganPolri;
-import simrskhanza.DlgGolonganTNI;
-import simrskhanza.DlgGolonganTNI;
-import simrskhanza.DlgGolonganTNI;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgIKBBayi;
-import simrskhanza.DlgJabatanPolri;
-import simrskhanza.DlgJabatanPolri;
-import simrskhanza.DlgJabatanPolri;
-import simrskhanza.DlgJabatanTNI;
-import simrskhanza.DlgJabatanTNI;
-import simrskhanza.DlgJabatanTNI;
-import simrskhanza.DlgKabupaten;
-import simrskhanza.DlgKabupaten;
-import simrskhanza.DlgKabupaten;
-import simrskhanza.DlgKecamatan;
-import simrskhanza.DlgKecamatan;
-import simrskhanza.DlgKecamatan;
-import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgKelurahan;
-import simrskhanza.DlgPangkatPolri;
-import simrskhanza.DlgPangkatPolri;
-import simrskhanza.DlgPangkatPolri;
-import simrskhanza.DlgPangkatTNI;
-import simrskhanza.DlgPangkatTNI;
-import simrskhanza.DlgPangkatTNI;
-import simrskhanza.DlgPropinsi;
-import simrskhanza.DlgPropinsi;
-import simrskhanza.DlgPropinsi;
-import simrskhanza.DlgSatuanPolri;
-import simrskhanza.DlgSatuanPolri;
-import simrskhanza.DlgSatuanPolri;
-import simrskhanza.DlgSatuanTNI;
-import simrskhanza.DlgSatuanTNI;
-import simrskhanza.DlgSatuanTNI;
 
 
 /**
@@ -160,7 +103,7 @@ public class DlgPasien extends javax.swing.JDialog {
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",
             kabupaten="",pekerjaanpj="",alamatpj="",kelurahanpj="",kecamatanpj="",
             kabupatenpj="",propinsi="",propinsipj="",tampilkantni=Sequel.cariIsi("select set_tni_polri.tampilkan_tni_polri from set_tni_polri");
-    private PreparedStatement ps;
+    private PreparedStatement ps,pscariwilayah,pssetalamat,pskelengkapan;
     private ResultSet rs;
     private Date lahir;
     private LocalDate today=LocalDate.now();
@@ -564,6 +507,11 @@ public class DlgPasien extends javax.swing.JDialog {
                 }
             });
         } 
+        
+        pengurutan=Sequel.cariIsi("select urutan from set_urut_no_rkm_medis");
+        tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
+        bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
+        posisitahun=Sequel.cariIsi("select posisi_tahun_bulan from set_urut_no_rkm_medis");
         
         penjab.addWindowListener(new WindowListener() {
             @Override
@@ -1430,10 +1378,10 @@ public class DlgPasien extends javax.swing.JDialog {
         });
         
         try {
-            ps=koneksi.prepareStatement("select * from set_alamat_pasien");
+            pssetalamat=koneksi.prepareStatement("select * from set_alamat_pasien");
             try {
-                rs=ps.executeQuery();
-                if(rs.next()){
+                rs=pssetalamat.executeQuery();
+                while(rs.next()){
                     Kelurahan.setEditable(rs.getBoolean("kelurahan"));
                     KelurahanPj.setEditable(rs.getBoolean("kelurahan"));
                     Kecamatan.setEditable(rs.getBoolean("kecamatan"));
@@ -1449,36 +1397,15 @@ public class DlgPasien extends javax.swing.JDialog {
                 if(rs!=null){
                     rs.close();
                 }
-                if(ps!=null){
-                    ps.close();
+                if(pssetalamat!=null){
+                    pssetalamat.close();
                 }
             }
             
-            ps=koneksi.prepareStatement("select set_urut_no_rkm_medis.urutan,set_urut_no_rkm_medis.tahun,set_urut_no_rkm_medis.bulan,set_urut_no_rkm_medis.posisi_tahun_bulan from set_urut_no_rkm_medis");
+            pskelengkapan=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
             try {
-                rs=ps.executeQuery();
-                if(rs.next()){
-                    pengurutan=rs.getString("urutan");
-                    tahun=rs.getString("tahun");
-                    bulan=rs.getString("bulan");
-                    posisitahun=rs.getString("posisi_tahun_bulan");
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-
-            
-            ps=koneksi.prepareStatement("select * from set_kelengkapan_data_pasien");
-            try {
-                rs=ps.executeQuery();
-                if(rs.next()){
+                rs=pskelengkapan.executeQuery();
+                while(rs.next()){
                     no_ktp=rs.getString("no_ktp");
                     p_no_ktp=rs.getInt("p_no_ktp");
                     tmp_lahir=rs.getString("tmp_lahir");
@@ -1524,8 +1451,8 @@ public class DlgPasien extends javax.swing.JDialog {
                 if(rs!=null){
                     rs.close();
                 }
-                if(ps!=null){
-                    ps.close();
+                if(pskelengkapan!=null){
+                    pskelengkapan.close();
                 }
             }
         } catch (Exception e) {
@@ -3434,7 +3361,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(4, 102, 95, 23);
 
-        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2024" }));
+        DTPLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2023" }));
         DTPLahir.setDisplayFormat("dd-MM-yyyy");
         DTPLahir.setName("DTPLahir"); // NOI18N
         DTPLahir.setOpaque(false);
@@ -3566,7 +3493,7 @@ public class DlgPasien extends javax.swing.JDialog {
         FormInput.add(TKtp);
         TKtp.setBounds(743, 132, 130, 23);
 
-        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2024" }));
+        DTPDaftar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2023" }));
         DTPDaftar.setDisplayFormat("dd-MM-yyyy");
         DTPDaftar.setName("DTPDaftar"); // NOI18N
         DTPDaftar.setOpaque(false);
@@ -4419,6 +4346,7 @@ public class DlgPasien extends javax.swing.JDialog {
         ChkAlamatPJ.setBounds(845, 252, 28, 23);
 
         CmbKeluarga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "AYAH", "IBU", "ISTRI", "SUAMI", "SAUDARA", "ANAK", "DIRI SENDIRI", "LAIN-LAIN" }));
+        CmbKeluarga.setSelectedIndex(6);
         CmbKeluarga.setName("CmbKeluarga"); // NOI18N
         CmbKeluarga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -9903,15 +9831,15 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
 
                 TTmp.setText(tbPasien2.getValueAt(tbPasien2.getSelectedRow(),5).toString());
                 
-                ps=koneksi.prepareStatement(
+                pscariwilayah=koneksi.prepareStatement(
                         "select pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,pasien.pekerjaanpj,"+
                         "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj from pasien "+
                         "inner join kelurahan inner join kecamatan inner join kabupaten inner join propinsi on pasien.kd_kel=kelurahan.kd_kel "+
                         "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop "+
                         "where pasien.no_rkm_medis=?");
                 try {
-                    ps.setString(1,tbPasien2.getValueAt(tbPasien2.getSelectedRow(),1).toString());
-                    rs=ps.executeQuery();
+                    pscariwilayah.setString(1,tbPasien2.getValueAt(tbPasien2.getSelectedRow(),1).toString());
+                    rs=pscariwilayah.executeQuery();
                     if(rs.next()){
                         Alamat.setText(rs.getString("alamat"));
                         Propinsi.setText(rs.getString("nm_prop"));
@@ -9932,8 +9860,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                         rs.close();
                     }
                     
-                    if(ps != null){
-                        ps.close();
+                    if(pscariwilayah != null){
+                        pscariwilayah.close();
                     }
                 }
                             
@@ -10000,15 +9928,15 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
 
                 TTmp.setText(tbPasien3.getValueAt(tbPasien3.getSelectedRow(),5).toString());
                 
-                ps=koneksi.prepareStatement(
+                pscariwilayah=koneksi.prepareStatement(
                         "select pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,pasien.pekerjaanpj,"+
                         "pasien.alamatpj,pasien.kelurahanpj,pasien.kecamatanpj,pasien.kabupatenpj,pasien.propinsipj from pasien "+
                         "inner join kelurahan inner join kecamatan inner join kabupaten inner join propinsi on pasien.kd_kel=kelurahan.kd_kel "+
                         "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and pasien.kd_prop=propinsi.kd_prop "+
                         "where pasien.no_rkm_medis=?");
                 try {
-                    ps.setString(1,tbPasien3.getValueAt(tbPasien3.getSelectedRow(),1).toString());
-                    rs=ps.executeQuery();
+                    pscariwilayah.setString(1,tbPasien3.getValueAt(tbPasien3.getSelectedRow(),1).toString());
+                    rs=pscariwilayah.executeQuery();
                     if(rs.next()){
                         Alamat.setText(rs.getString("alamat"));
                         Propinsi.setText(rs.getString("nm_prop"));
@@ -10029,8 +9957,8 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
                         rs.close();
                     }
                     
-                    if(ps != null){
-                        ps.close();
+                    if(pscariwilayah != null){
+                        pscariwilayah.close();
                     }
                 }
                             

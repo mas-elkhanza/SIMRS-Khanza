@@ -1242,8 +1242,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " utd_pengambilan_medis.tanggal between ? and ?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,tglopname+" 00:00:01");
-                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                        ps2.setString(2,tglopname);
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
                             jumlahutd=rs2.getDouble(1);
@@ -1338,7 +1338,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " from mutasibarang where mutasibarang.kode_brng=? and mutasibarang.tanggal between ? and ?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,tglopname+" 00:00:01");
+                        ps2.setString(2,tglopname+" 00:00:00");
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1359,7 +1359,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " from mutasibarang where mutasibarang.kode_brng=? and mutasibarang.tanggal between ? and ?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,tglopname+" 00:00:01");
+                        ps2.setString(2,tglopname+" 00:00:00");
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1484,11 +1484,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();         
                 
                 if(aktifkanbatch.equals("yes")){
-                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*"+hppfarmasi+") as aset,databarang."+hppfarmasi+" as harga "+
+                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*"+hppfarmasi+") as aset,gudangbarang."+hppfarmasi+" as harga "+
                             "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>''";
                 }else{
-                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*"+hppfarmasi+") as aset,databarang."+hppfarmasi+" as harga "+
+                    qrystok="select sum(gudangbarang.stok),(sum(gudangbarang.stok)*"+hppfarmasi+") as aset,gudangbarang."+hppfarmasi+" as harga "+
                             "from gudangbarang inner join databarang on gudangbarang.kode_brng=databarang.kode_brng "+
                             "where gudangbarang.kode_brng=? and gudangbarang.kd_bangsal=? and gudangbarang.no_batch='' and gudangbarang.no_faktur=''";
                 }
@@ -1748,8 +1748,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " utd_pengambilan_medis.tanggal between ? and ? and utd_pengambilan_medis.kd_bangsal_dr=?");            
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,tglopname+" 00:00:01");
-                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                        ps2.setString(2,tglopname);
+                        ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+""));
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
                         if(rs2.next()){                    
@@ -1821,7 +1821,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " from mutasibarang where mutasibarang.kode_brng=? and mutasibarang.tanggal between ? and ? and mutasibarang.kd_bangsalke=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,tglopname+" 00:00:01");
+                        ps2.setString(2,tglopname+" 00:00:00");
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();
@@ -1844,7 +1844,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         " from mutasibarang where mutasibarang.kode_brng=? and mutasibarang.tanggal between ? and ? and mutasibarang.kd_bangsaldari=?");
                     try {
                         ps2.setString(1,rs.getString(1));
-                        ps2.setString(2,tglopname+" 00:00:01");
+                        ps2.setString(2,tglopname+" 00:00:00");
                         ps2.setString(3,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
                         ps2.setString(4,lokasi);
                         rs2=ps2.executeQuery();

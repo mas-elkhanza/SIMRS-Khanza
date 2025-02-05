@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c52db87b-fd80-46e2-a7b5-a80d65eadcf0">
+	<property name="ireport.zoom" value="1.2396694214876078"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<parameter name="namars" class="java.lang.String"/>
+	<parameter name="alamatrs" class="java.lang.String"/>
+	<parameter name="kotars" class="java.lang.String"/>
+	<parameter name="propinsirs" class="java.lang.String"/>
+	<parameter name="kontakrs" class="java.lang.String"/>
+	<parameter name="emailrs" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp, pasien.jk,
+pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat, pasien.gol_darah, pasien.pekerjaan,
+pasien.stts_nikah,pasien.agama,pasien.tgl_daftar,pasien.no_tlp,pasien.umur,
+pasien.pnd, pasien.keluarga, pasien.namakeluarga,penjab.png_jawab,pasien.pekerjaanpj,
+concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamatpj from pasien
+inner join kelurahan inner join kecamatan inner join kabupaten
+inner join penjab on pasien.kd_pj=penjab.kd_pj and pasien.kd_kel=kelurahan.kd_kel
+and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
+	</queryString>
+	<field name="no_rkm_medis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_pasien" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_ktp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jk" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tmp_lahir" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_lahir" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_ibu" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gol_darah" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pekerjaan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stts_nikah" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="agama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_daftar" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_tlp" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="umur" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pnd" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keluarga" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="namakeluarga" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="png_jawab" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pekerjaanpj" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamatpj" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="739">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="1" y="717" width="305" height="13" uuid="0cdfb198-670f-4881-ba67-8c22e31a3d72"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[*) Coret yang tidak sesuai]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="399" y="607" width="57" height="13" uuid="88c41d25-c706-4cf0-90d8-5f5f601f5a04"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{kotars}+","]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="451" y="607" width="97" height="13" uuid="cfd0890d-6910-461e-b847-29de95dbe948"/>
+				<textElement>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="626" width="130" height="13" uuid="a4a2267a-c5fd-458e-b97d-d54a58361a86"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanda Tangan dan Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="624" width="151" height="26" uuid="a0e5e80e-b5ed-4b47-8951-75e53a8f0b18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanda Tangan dan Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="697" width="139" height="13" uuid="b2dae355-5d50-4c2f-b92d-c3016d06fb3b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[(wali jika pasien < 18 Tahun)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="423" y="697" width="130" height="13" uuid="00a634dd-f4e8-4de1-8ac5-235436c07e33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[(Saksi)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="5" width="536" height="20" uuid="0e75c41e-41f2-41f1-a03d-aa65568eb463"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[II.  PERSETUJUAN PELEPASAN INFORMASI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="27" width="520" height="50" uuid="73d15d32-c4a1-4888-8095-d73ecb743f5a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya memahami informasi yang ada didalam diri saya, termasuk diagnosis hasil labolatorium dan hasil tes diagnositic yang akan digunakan untuk perawatan medis Rumah Sakit Umum Daerah Mampang Prapatan akan menjamin kerahasiaannya.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="77" width="520" height="27" uuid="abd911e8-6053-4954-ac4e-a1bb3c04af19"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya memberikan wewenang kepada Rumah sakit untuk memberikan informasi tentang dianosis, hasil pelayanan dan pengobatan bila diperlukan untuk memproses klaim asuransi/ perusahaan dan atau lembaga pemerintah.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="193" width="538" height="20" uuid="c1e3b68c-d4fe-48bd-ac0c-5de17420d709"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[III. HAK DAN TANGGUNG JAWAB PASIEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="215" width="519" height="31" uuid="a5011891-e13d-4031-af25-8eef594f89f5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya memiliki hak untuk mengambil bagian dalam keputusan mengenai penyakit saya dan dalam hal perawatan medis dan rencana pengobatan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="246" width="519" height="27" uuid="8a4889e8-9213-454f-a78f-fe9724c44436"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya telah mendapatkan informasi tentang "Hak dan Tanggung Jawab Pasien" di Rumah Sakit Umum Daerah Mampang Prapatan melalui Leaflet dan Benner yang disediakan oleh petugas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="108" width="520" height="27" uuid="5f7dfee6-9263-43e3-ab21-6d76d07bf1c8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya memberi wewenang kepada Rumah Sakit untuk memberikan informasi tentang diagnosis, hasil pelayanan dan pengobatan saya kepada anggota keluarga saya dan kepada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="138" width="519" height="17" uuid="015d9931-2cda-45ae-8c98-d32871b3888c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[1. ......................................................... Hubungan dengan pasien sebagai .........................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="156" width="519" height="17" uuid="b9d6a5c6-782d-42cb-9bb4-ae3ecfaa5216"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[2. ......................................................... Hubungan dengan pasien sebagai .........................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="173" width="519" height="17" uuid="d423e23e-0ac0-4002-aa5a-4780379ad184"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[3. ......................................................... Hubungan dengan pasien sebagai .........................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="278" width="536" height="20" uuid="1c076e0a-bbe4-4ad4-8ee2-f45551d3443d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[IV.  INFORMASI RAWAT INAP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="298" width="517" height="42" uuid="3e106251-663a-4ad1-9b7f-de04f72533d8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya tidak diperkenankan untuk membawa barang-barang berhagra ke ruang rawat inap, jika ada anggota keluarga atau teman harus diminta untuk membawa pulang uang atau perhiasan. Bila tidak ada anggota keluarga, Rumah Sakit menyediakan tempat penitipan barang milik pasien di tempat resmi yang telah disediakan Rumah Sakit.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="342" width="517" height="27" uuid="468d4bff-d376-4a6d-b0ed-7eb5d10648d0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya telah menerima informasi tentang peraturan yang diberlakukan oleh Rumah Sakit dan saya beserta keluarga bersedia untuk memtahuinya, termasuk akan mematuhi jam berkunjug pasien sesuai dengan aturan di Rumah Sakit.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="377" width="536" height="20" uuid="7e46906b-bdfa-4480-8ab0-a717c4172375"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[V.   PRIVASI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="397" width="517" height="42" uuid="e9e83cbd-8d2d-418c-8dbd-40fb4bbd9b53"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya mengijinkan / atidak mengijinkan (coret salah satu) Rumah Sakit memberikan akses bagi : Keluarga dan handai taulan serta orang yang akan menengok saya (sebut nama bila ada pemerintah Khusus yang tidak diijinkan)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="442" width="536" height="20" uuid="0626d119-d7a1-4783-b4b8-86d4775cd751"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[IV.  INFORMASI BIAYA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="462" width="517" height="42" uuid="64c3603f-c708-4946-b6b1-378a2d255c9b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Saya memahami tentang informasi biaya pengobatan atau biaya tindakan yang dijelaskan oleh petugas Rumah Sakit. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="503" width="517" height="27" uuid="d5425052-c969-4aaa-b3da-5e1e57fbc3d9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Perkiraan biaya rawat inap selama 1 hari Rp.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="530" width="536" height="20" uuid="28c448f7-5779-44ef-bf36-b7e5b4f1d0df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[TANDA TANGAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="550" width="536" height="42" uuid="11d8ba6a-d155-45a2-8db8-8e603ce4fb5b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Dengan tanda tangan saya dibawah, saya menyatakan bahwa saya membaca dan memahami item pada persetujuan Umum / General Consent.]]></text>
+			</staticText>
+		</band>
+	</title>
+</jasperReport>

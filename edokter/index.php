@@ -1,5 +1,4 @@
 <?php
-    header("X-Robots-Tag: noindex", true);
     ob_start();
     session_start();
     date_default_timezone_set('Asia/Jakarta');
@@ -26,7 +25,7 @@
         }
     }
     
-    if(!isset($_SESSION["ses_dokter"])){
+    if(!isset($_SESSION["ses_admin"])){
         include_once "./pages/login.php";
     }else{
         include_once "./pages/homeuser.php";

@@ -26,7 +26,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>SURAT KETERANGAN<br/>NO.$nosurat</center></h2>
+                                <h2><center>SURAT KETERANGAN<br>NO.$nosurat</center></h2>
                             </div>
                             <div class='body' align='justify'>
                                 Yang bertanda tangan di bawah ini ".$rsquerysurathamil["nm_dokter"].", dokter di ".$_SESSION["nama_instansi"]." mengingat sumpah jabatan pada waktu menerima jabatannya, menerangkan bahwa :<br/><br/>
@@ -67,7 +67,7 @@
                                         <td width='50%' align='center'></td>
                                         <td width='50%' align='center'>".$_SESSION["kabupaten"].", ".$rsquerysurathamil["tanggalperiksa"]."<br/>".$_SESSION["nama_instansi"]."<br/>Dokter,<br/><img src='pages/".$PNG_WEB_DIR.basename($filename)."'/><br/>( <u>".$rsquerysurathamil["nm_dokter"]."</u> )</td>
                                     </tr>
-                                </table><br/>
+                                </table><br>
                                 <center><a href='index.php?act=SuratHamil&hal=Surat' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>

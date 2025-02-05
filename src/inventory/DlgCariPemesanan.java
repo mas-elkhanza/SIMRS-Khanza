@@ -1,14 +1,3 @@
-/*
-  Dilarang keras memperjualbelikan/mengambil keuntungan dari Software 
-  ini dalam bentuk apapun tanpa seijin pembuat software
-  (Khanza.Soft Media). Bagi yang sengaja membajak softaware ini ta
-  npa ijin, kami sumpahi sial 1000 turunan, miskin sampai 500 turu
-  nan. Selalu mendapat kecelakaan sampai 400 turunan. Anak pertama
-  nya cacat tidak punya kaki sampai 300 turunan. Susah cari jodoh
-  sampai umur 50 tahun sampai 200 turunan. Ya Alloh maafkan kami 
-  karena telah berdoa buruk, semua ini kami lakukan karena kami ti
-  dak pernah rela karya kami dibajak tanpa ijin.
- */
 package inventory;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
@@ -1343,20 +1332,18 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
                          if(sukses==true){
                             Sequel.queryu("delete from tampjurnal");
-                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{Sequel.cariIsi("select set_akun.Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG","0",rs.getString("total")})==false){
-                               sukses=false;
-                            }   
+                            Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                Sequel.cariIsi("select set_akun.Pemesanan_Obat from set_akun"),"PERSEDIAAN BARANG","0",rs.getString("total")
+                            });   
                             if(rs.getDouble("ppn")>0){
-                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Obat","0",rs.getString("ppn")})==false){
-                                    sukses=false;
-                                } 
+                                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                    Sequel.cariIsi("select set_akun.PPN_Masukan from set_akun"),"PPN Masukan Obat","0",rs.getString("ppn")
+                                }); 
                             }
-                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{Sequel.cariIsi("select set_akun.Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"})==false){
-                                sukses=false;
-                            } 
-                            if(sukses==true){
-                                sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase()+", OLEH "+akses.getkode()); 
-                            }
+                            Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                Sequel.cariIsi("select set_akun.Kontra_Pemesanan_Obat from set_akun"),"HUTANG USAHA",rs.getString("tagihan"),"0"
+                            }); 
+                            sukses=jur.simpanJurnal(rs.getString("no_faktur"),"U","BATAL TRANSAKSI PENERIMAAN BARANG DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal=?",rs.getString("kd_bangsal")).toUpperCase()+", OLEH "+akses.getkode()); 
                          }
 
                          if(sukses==true){
@@ -1951,10 +1938,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         BtnPrint.setEnabled(akses.getpemesanan_obat());
         if(akses.getkode().equals("Admin Utama")){
             ppHapus.setEnabled(true);
-            ppUbah.setEnabled(true);
         }else{
             ppHapus.setEnabled(false);
-            ppUbah.setEnabled(false);
         }        
         ppBayar.setEnabled(akses.getbayar_pemesanan_obat());
     }

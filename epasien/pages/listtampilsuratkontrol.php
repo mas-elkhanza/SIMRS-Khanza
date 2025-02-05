@@ -122,12 +122,12 @@
                                             <table width='100%' class='table-hover' border='0' align='center' cellpadding='5' cellspacing='5' class='tbl_form'>
                                                 <tr> 
                                                     <td width='50%' align='center'><img src='pages/".$PNG_WEB_DIR.basename($filename2)."'/></td>
-                                                    <td width='50%' align='center'>".$_SESSION["kabupaten"].", <br/>Dokter<br/><img src='pages/".$PNG_WEB_DIR.basename($filename)."'/><br/> <u>".$rsquerysuratkontrol["nm_dokter"]."</u> </td>
+                                                    <td width='50%' align='center'>".$_SESSION["kabupaten"].", <br>Dokter<br/><img src='pages/".$PNG_WEB_DIR.basename($filename)."'/><br/> <u>".$rsquerysuratkontrol["nm_dokter"]."</u> </td>
                                                 </tr>
                                             </table>
                                         </td>
                                     </tr>
-                                </table><br/>
+                                </table><br>
                                 <center><a href='index.php?act=SuratKontrol&hal=Surat' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
