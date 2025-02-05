@@ -916,13 +916,15 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     }
                         
                     Sequel.queryu("delete from tampjurnal");
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Retur_Beli_Toko from set_akun"),"RETUR BELI TOKO",rs.getString("total"),"0"
-                    });    
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
-                        Sequel.cariIsi("select Kontra_Retur_Beli_Toko from set_akun"),"KONTRA RETUR BELI TOKO","0",rs.getString("total")
-                    }); 
-                    sukses=jur.simpanJurnal(rs.getString("no_retur_beli"),"U","BATAL TRANSAKSI RETUR BELI TOKO"+", OLEH "+akses.getkode());
+                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{Sequel.cariIsi("select Retur_Beli_Toko from set_akun"),"RETUR BELI TOKO",rs.getString("total"),"0"})==false){
+                        sukses=false;
+                    }    
+                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{Sequel.cariIsi("select Kontra_Retur_Beli_Toko from set_akun"),"KONTRA RETUR BELI TOKO","0",rs.getString("total")})==false){
+                        sukses=false;
+                    } 
+                    if(sukses==true){
+                        sukses=jur.simpanJurnal(rs.getString("no_retur_beli"),"U","BATAL TRANSAKSI RETUR BELI TOKO"+", OLEH "+akses.getkode());
+                    }
                     
                     if(sukses==true){
                         Sequel.queryu2("delete from tokoreturbeli where no_retur_beli=?",1,new String[]{tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()});

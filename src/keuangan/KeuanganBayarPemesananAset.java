@@ -996,13 +996,19 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                             sukses=true;
 
                             Sequel.queryu("delete from tampjurnal");
-                            Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA",BesarBayar.getText(),"0"
-                            });                     
-                            Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                            })==false){
+                                sukses=false;
+                            }                     
+                            if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                 koderekening,AkunBayar.getSelectedItem().toString(),"0",BesarBayar.getText()
-                            });    
-                            sukses=jur.simpanJurnal(NoBukti.getText(),"U","BAYAR PELUNASAN BARANG ASET/INVENTARIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode());
+                            })==false){
+                                sukses=false;
+                            }  
+                            if(sukses==true){
+                                sukses=jur.simpanJurnal(NoBukti.getText(),"U","BAYAR PELUNASAN BARANG ASET/INVENTARIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode());
+                            }
 
                             if(sukses==true){
                                 if((sisahutang<=Double.parseDouble(BesarBayar.getText()))||(sisahutang<=-Double.parseDouble(BesarBayar.getText()))){
@@ -1097,17 +1103,25 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
                     }
                     Sequel.queryu("delete from tampjurnal");
                     if(total>0){
-                        Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                        if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                             Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",total+""
-                        });
+                        })==false){
+                            sukses=false;
+                        }
                     }
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         koderekening,AkunBayar.getSelectedItem().toString(),(Valid.SetAngka(BesarBayar.getText())+total)+"","0"
-                    });  
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    })==false){
+                        sukses=false;
+                    }  
+                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA","0",BesarBayar.getText()
-                    }); 
-                    sukses=jur.simpanJurnal(NoBukti.getText(),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode()); 
+                    })==false){
+                        sukses=false;
+                    } 
+                    if(sukses==true){
+                        sukses=jur.simpanJurnal(NoBukti.getText(),"U","BATAL BAYAR PELUNASAN BARANG NON MEDIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode()); 
+                    }
                 }
             }else{
                 sukses=false;
@@ -1420,17 +1434,25 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
                 Sequel.queryu("delete from tampjurnal");
                 if(Valid.SetInteger(BiayaTransaksi.getText())>0){
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         Akun_Biaya_Mandiri,"BIAYA TRANSAKSI",BiayaTransaksi.getText(),"0"
-                    });
+                    })==false){
+                        sukses=false;
+                    }
                 }
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                     Kontra_Penerimaan_AsetInventaris,"HUTANG USAHA",BesarBayar.getText(),"0"
-                });                     
-                Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                })==false){
+                    sukses=false;
+                }                    
+                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                     koderekening,AkunBayar.getSelectedItem().toString(),"0",(Valid.SetAngka(BiayaTransaksi.getText())+Valid.SetAngka(BesarBayar.getText()))+""
-                });    
-                sukses=jur.simpanJurnal(NoBukti.getText(),"U","BAYAR PELUNASAN BARANG ASET/INVENTARIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode());
+                })==false){
+                    sukses=false;
+                }   
+                if(sukses==true){
+                    sukses=jur.simpanJurnal(NoBukti.getText(),"U","BAYAR PELUNASAN BARANG ASET/INVENTARIS NO.FAKTUR "+NoFaktur.getText()+", OLEH "+akses.getkode());
+                }
 
                 if(sukses==true){
                     if((sisahutang<=Double.parseDouble(BesarBayar.getText()))||(sisahutang<=-Double.parseDouble(BesarBayar.getText()))){

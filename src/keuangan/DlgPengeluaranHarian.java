@@ -931,9 +931,15 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                         KdKategori.getText(),Pengeluaran.getText(),KdPtg.getText(),Keterangan.getText()
                     })==true){
                         Sequel.queryu("delete from tampjurnal");
-                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akun,"Akun",Pengeluaran.getText(),"0"});
-                        Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{kontrakun,"Kontra","0",Pengeluaran.getText()}); 
-                        sukses=jur.simpanJurnal(Nomor.getText(),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
+                        if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{akun,"Akun",Pengeluaran.getText(),"0"})==false){
+                            sukses=false;
+                        }
+                        if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{kontrakun,"Kontra","0",Pengeluaran.getText()})==false){
+                            sukses=false;
+                        } 
+                        if(sukses==true){
+                            sukses=jur.simpanJurnal(Nomor.getText(),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
+                        }
                     }else{
                         sukses=false;
                     }   
@@ -1010,13 +1016,21 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                                 }
                                 Sequel.queryu("delete from tampjurnal");
                                 if(total>0){
-                                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                                         kategori.Akun_Biaya_Mandiri,"BIAYA TRANSAKSI","0",total+""
-                                    });
+                                    })==false){
+                                        sukses=false;
+                                    }
                                 }
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek"),"Akun","0",Pengeluaran.getText()});
-                                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek2"),"Kontra Akun",(Valid.SetAngka(Pengeluaran.getText())+total)+"","0"}); 
-                                sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
+                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek"),"Akun","0",Pengeluaran.getText()})==false){
+                                    sukses=false;
+                                }
+                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek2"),"Kontra Akun",(Valid.SetAngka(Pengeluaran.getText())+total)+"","0"})==false){
+                                    sukses=false;
+                                }
+                                if(sukses==true){
+                                    sukses=jur.simpanJurnal(Nomor.getText(),"U","PEMBATALAN PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
+                                }
                             } 
                         } catch (Exception e) {
                             sukses=false;
@@ -1265,13 +1279,21 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             })==true){
                 Sequel.queryu("delete from tampjurnal");
                 if(Valid.SetInteger(BiayaTransaksi.getText())>0){
-                    Sequel.menyimpan("tampjurnal","?,?,?,?","Rekening",4,new String[]{
+                    if(Sequel.menyimpantf2("tampjurnal","?,?,?,?","Rekening",4,new String[]{
                         kategori.Akun_Biaya_Mandiri,"BIAYA TRANSAKSI",BiayaTransaksi.getText(),"0"
-                    });
+                    })==false){
+                        sukses=false;
+                    }
                 }
-                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{akun,"Akun",Pengeluaran.getText(),"0"});
-                Sequel.menyimpan("tampjurnal","?,?,?,?",4,new String[]{kontrakun,"Kontra","0",(Valid.SetAngka(BiayaTransaksi.getText())+Valid.SetAngka(Pengeluaran.getText()))+""}); 
-                sukses=jur.simpanJurnal(Nomor.getText(),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
+                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{akun,"Akun",Pengeluaran.getText(),"0"})==false){
+                    sukses=false;
+                }
+                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{kontrakun,"Kontra","0",(Valid.SetAngka(BiayaTransaksi.getText())+Valid.SetAngka(Pengeluaran.getText()))+""})==false){
+                    sukses=false;
+                } 
+                if(sukses==true){
+                    sukses=jur.simpanJurnal(Nomor.getText(),"U","PENGELUARAN HARIAN"+", OLEH "+akses.getkode());
+                }   
                 if(sukses==true){
                     if(Sequel.menyimpantf("pembayaran_pihak_ke3_bankmandiri","?,now(),?,?,?,?,?,?,?,?,?,?,?","No.Bukti", 12,new String[]{
                             Nomor.getText(),kategori.norekening,NoRekening.getText(),RekeningAtasNama.getText(),KotaAtasNamaRekening.getText(),Pengeluaran.getText(),Nomor.getText(),KodeMetode.getText(),KodeBank.getText(),KodeTransaksi.getText(),"Pengeluaran Harian","Baru"

@@ -1195,7 +1195,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     if(tampilkan.equals("Belum Bayar")&&Keterangan.equals("Belum Bayar")){
                         tabMode.addRow(new Object[] {
                             rs.getString("tgl_registrasi"),
-                            Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
+                            Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_rawat")),
                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                             rs.getString("nm_poli"),
                             Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
@@ -1213,7 +1213,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }else if(tampilkan.equals("Sudah Bayar")&&Keterangan.equals("Sudah Bayar")){
                         tabMode.addRow(new Object[] {
                             rs.getString("tgl_registrasi"),
-                            Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
+                            Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_rawat")),
                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                             rs.getString("nm_poli"),
                             Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),
@@ -1231,7 +1231,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }else if(tampilkan.equals("Semua")){
                         tabMode.addRow(new Object[] {
                             rs.getString("tgl_registrasi"),
-                            Sequel.cariIsi("select no_nota from nota_jalan where no_rawat=?",rs.getString("no_rawat")),
+                            Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_rawat")),
                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                             rs.getString("nm_poli"),
                             Sequel.cariIsi("select perujuk from rujuk_masuk where no_rawat=?",rs.getString("no_rawat")),

@@ -826,9 +826,15 @@ public class DlgDeposit extends javax.swing.JDialog {
                            for(JsonNode list:response){
                                if(list.path("NamaAkun").asText().equals(AkunBayar.getSelectedItem().toString())){
                                     Sequel.queryu("delete from tampjurnal");                    
-                                    Sequel.menyimpan("tampjurnal","'"+list.path("KodeRek").asText()+"','"+AkunBayar.getSelectedItem()+"','"+BesarDeposit.getText()+"','0'","Rekening"); 
-                                    Sequel.menyimpan("tampjurnal","'"+Uang_Muka_Ranap+"','UANG MUKA RANAP','0','"+BesarDeposit.getText()+"'","Rekening");    
-                                    sukses=jur.simpanJurnal(Nomor.getText(),"U","DEPOSIT PASIEN "+TNoRw.getText()+" "+TNoRM.getText()+" "+TPasien.getText()+", OLEH "+akses.getkode()); 
+                                    if(Sequel.menyimpantf2("tampjurnal","'"+list.path("KodeRek").asText()+"','"+AkunBayar.getSelectedItem()+"','"+BesarDeposit.getText()+"','0'","Rekening")==false){
+                                        sukses=false;
+                                    }  
+                                    if(Sequel.menyimpantf2("tampjurnal","'"+Uang_Muka_Ranap+"','UANG MUKA RANAP','0','"+BesarDeposit.getText()+"'","Rekening")==false){
+                                        sukses=false;
+                                    }
+                                    if(sukses==true){
+                                        sukses=jur.simpanJurnal(Nomor.getText(),"U","DEPOSIT PASIEN "+TNoRw.getText()+" "+TNoRM.getText()+" "+TPasien.getText()+", OLEH "+akses.getkode()); 
+                                    }
                                     if(sukses==true){
                                         sukses=Sequel.menyimpantf2("tagihan_sadewa","'"+Nomor.getText()+"','"+TNoRM.getText()+"','"+TPasien.getText().replaceAll("'","")+"','-','"+Valid.SetTgl(DTPTgl.getSelectedItem()+"")+" "+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','Uang Muka','"+BesarDeposit.getText()+"','"+BesarDeposit.getText()+"','Belum','"+akses.getkode()+"'","No.Deposit");
                                     }
@@ -908,9 +914,15 @@ public class DlgDeposit extends javax.swing.JDialog {
                         tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
                     })==true){
                         Sequel.queryu2("delete from tampjurnal"); 
-                        Sequel.menyimpan("tampjurnal","'"+Uang_Muka_Ranap+"','UANG MUKA RANAP','"+BesarDeposit.getText()+"','0'","Rekening");    
-                        Sequel.menyimpan("tampjurnal","'"+tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()+"','"+AkunBayar.getSelectedItem()+"','0','"+BesarDeposit.getText()+"'","Rekening"); 
-                        sukses=jur.simpanJurnal(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),"U","PEMBATALAN DEPOSIT PASIEN "+TNoRw.getText()+" "+TNoRM.getText()+" "+TPasien.getText()+", OLEH "+akses.getkode()); 
+                        if(Sequel.menyimpantf2("tampjurnal","'"+Uang_Muka_Ranap+"','UANG MUKA RANAP','"+BesarDeposit.getText()+"','0'","Rekening")==false){
+                            sukses=false;
+                        }    
+                        if(Sequel.menyimpantf2("tampjurnal","'"+tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()+"','"+AkunBayar.getSelectedItem()+"','0','"+BesarDeposit.getText()+"'","Rekening")==false){
+                            sukses=false;
+                        }  
+                        if(sukses==true){
+                            sukses=jur.simpanJurnal(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),"U","PEMBATALAN DEPOSIT PASIEN "+TNoRw.getText()+" "+TNoRM.getText()+" "+TPasien.getText()+", OLEH "+akses.getkode());
+                        } 
                         if(sukses==true){
                             sukses=Sequel.queryu2tf("delete from tagihan_sadewa where no_nota=?",1,new String[]{tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()}); 
                         }
