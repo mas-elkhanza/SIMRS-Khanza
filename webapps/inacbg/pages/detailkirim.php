@@ -86,7 +86,7 @@
 
             $nosep="";
             if($corona=="BukanCorona"){
-                $nosep=getOne("select no_sep from inacbg_klaim_baru2 where no_rawat='$norawat'");
+                $nosep=getOne("select inacbg_klaim_baru2.no_sep from inacbg_klaim_baru2 where inacbg_klaim_baru2.no_rawat='$norawat'");
                 if(empty($nosep)){
                     $nosep=getOne("select bridging_sep.no_sep from bridging_sep where no_rawat='$norawat' order by MAX(CONVERT(RIGHT(bridging_sep.no_sep,6),signed)) desc limit 1");
                     if(empty($nosep)){
@@ -302,7 +302,7 @@
             <tr class="head">
                 <td width="41%" >Berat Saat Lahir</td><td width="">:</td>
                 <td width="57%">
-                    <input name="birth_weight" class="text" type="text" class="inputbox" value="" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
+                    <input name="birth_weight" class="text" type="text" class="inputbox" value="<?php echo bukaquery("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$no_rkm_medis."'"); ?>" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
