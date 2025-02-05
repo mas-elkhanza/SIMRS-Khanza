@@ -75,18 +75,30 @@
 	<table width='100%' bgcolor='FFFFFF' border='0' align='center' cellpadding='0' cellspacing='0'>
 	     <tr class='head4'>
               <td width='40%'><div align='center'><font size='5'><b>NAMA KAMAR</b></font></div></td>
+			  <td width='20%'><div align='center'><font size='5'><b>KELAS</b></font></div></td>              
               <td width='20%'><div align='center'><font size='5'><b>JUMLAH BED</b></font></div></td>
-              <td width='20%'><div align='center'><font size='5'><b>BED TERISI</b></font></div></td>
-              <td width='20%'><div align='center'><font size='5'><b>BED KOSONG</b></font></div></td>
+              <td width='10%'><div align='center'><font size='5'><b>BED TERISI</b></font></div></td>
+              <td width='10%'><div align='center'><font size='5'><b>BED KOSONG</b></font></div></td>
          </tr>
 
 	<?php  
-		$_sql="Select * From bangsal where status='1' and kd_bangsal in(select kd_bangsal from kamar)" ;  
+		//$_sql="Select * From bangsal where status='1' and kd_bangsal in(select kd_bangsal from kamar)" ;
+		$_sql="Select bangsal.kd_bangsal, bangsal.nm_bangsal, kamar.kelas, bangsal.status From bangsal 
+				left join kamar
+				on bangsal.kd_bangsal = kamar.kd_bangsal
+				where bangsal.status='1' 
+				and kamar.statusdata ='1'
+				and bangsal.kd_bangsal in(select kd_bangsal from kamar)
+				group by kd_bangsal 
+				order by kamar.kelas asc, bangsal.nm_bangsal asc
+				" ;  
+				
 		$hasil=bukaquery($_sql);
 
 		while ($data = mysqli_fetch_array ($hasil)){
-			echo "<tr class='isi7' >
+			echo "<tr class='isi7' >					
 					<td align='left'><font size='5' color='#BB00BB' face='Tahoma'><b>".$data['nm_bangsal']."</b></font></td>
+					<td align='left'><font size='5' color='#BB00BB' face='Tahoma'><b>".$data['kelas']."</b></font></td>
 					<td align='center'>
 					     <font size='6' color='red' face='Tahoma'>
 					      <b>";

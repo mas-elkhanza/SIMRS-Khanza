@@ -90,7 +90,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 	<title>
 		<band height="702">
 			<textField pattern="">
-				<reportElement mode="Transparent" x="37" y="289" width="13" height="108" uuid="92292404-0d5e-4659-9aae-6e396c8346a8"/>
+				<reportElement mode="Transparent" x="40" y="570" width="13" height="108" uuid="92292404-0d5e-4659-9aae-6e396c8346a8"/>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -98,7 +98,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 				<textFieldExpression><![CDATA["No. RM : "+$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="13" y="119" width="13" height="278" uuid="2e6f4053-96c0-4254-812e-510124832fb2"/>
+				<reportElement mode="Transparent" x="16" y="400" width="13" height="278" uuid="2e6f4053-96c0-4254-812e-510124832fb2"/>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -106,7 +106,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 				<textFieldExpression><![CDATA[$F{nm_pasien}+"/"+$F{nm_ibu}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="25" y="256" width="13" height="141" uuid="cf77ccf7-8efd-4890-ac9e-3a9a7e9bfc72"/>
+				<reportElement mode="Transparent" x="28" y="537" width="13" height="141" uuid="cf77ccf7-8efd-4890-ac9e-3a9a7e9bfc72"/>
 				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -114,7 +114,7 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab   where pa
 				<textFieldExpression><![CDATA["Tgl Lahir : "+$F{tgl_lahir}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="0" y="119" width="13" height="278" uuid="86dc0115-0469-4c52-801c-f60e6eac0f0b"/>
+				<reportElement mode="Transparent" x="3" y="400" width="13" height="278" uuid="86dc0115-0469-4c52-801c-f60e6eac0f0b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="72" pageHeight="708" columnWidth="66" leftMargin="3" rightMargin="3" topMargin="3" bottomMargin="3">
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="72" pageHeight="708" columnWidth="66" leftMargin="3" rightMargin="3" topMargin="3" bottomMargin="3" uuid="483ac3f7-b5f2-4839-b7e0-cce41c972f25">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="178"/>
@@ -90,46 +91,52 @@ and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
 	<title>
 		<band height="702">
 			<textField pattern="">
-				<reportElement mode="Transparent" x="47" y="589" width="13" height="108"/>
-				<textElement verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
+				<reportElement mode="Transparent" x="47" y="546" width="13" height="108" uuid="8f488d47-81f9-4b63-a3ee-60f3125a6ac4"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["No. RM : "+$F{no_rkm_medis}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["No. RM : "+$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="23" y="556" width="13" height="141"/>
-				<textElement verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
+				<reportElement mode="Transparent" x="23" y="513" width="13" height="141" uuid="aa7d5621-6000-4b05-b4c8-1590e1921744"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="9" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="35" y="556" width="13" height="141"/>
-				<textElement verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
+				<reportElement mode="Transparent" x="35" y="513" width="13" height="141" uuid="f7cc4b9e-14ab-467f-8f98-dcb3499d434d"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Tgl Lahir : "+$F{tgl_lahir}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Tgl Lahir : "+$F{tgl_lahir}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="10" y="419" width="13" height="278"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
+				<reportElement mode="Transparent" x="10" y="376" width="13" height="278" uuid="5acb1804-b3fb-4159-b5d2-85404979c032"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="9" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{namars}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="35" y="419" width="13" height="123"/>
-				<textElement verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
+				<reportElement mode="Transparent" x="35" y="376" width="13" height="123" uuid="b5f9fa77-33f0-4a55-9d72-1f905b2e8d9e"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Tanggal Dirawat :"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Tanggal Dirawat :"]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement mode="Transparent" x="47" y="419" width="13" height="123"/>
-				<textElement verticalAlignment="Middle" rotation="Left" lineSpacing="Single">
+				<reportElement mode="Transparent" x="47" y="376" width="13" height="123" uuid="970b3249-adeb-4ab7-a1c0-39db1e713bdb"/>
+				<textElement verticalAlignment="Middle" rotation="Left">
 					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{tanggal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{tanggal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

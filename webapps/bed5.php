@@ -20,6 +20,7 @@
     <!-- Meta START -->
     <link rel="icon" href="assets/img/rs.png" type="image/x-icon">
     <meta charset="utf-8" />
+	<meta http-equiv="refresh" content="799" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css"  media="screen,projection"/>
@@ -54,11 +55,11 @@
 <!-- Header START -->
 <header>
 
-<nav class="deep-orange accent-3">
+<nav class="pink accent-3">
     <div class="nav-wrapper">
         <ul class="center hide-on-med-and-down" id="nv">
             <li>
-                <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> Informasi</a>
+                <a href="./" class="ams hide-on-med-and-down"><i class="material-icons md-36">local_hospital</i> Display Informasi</a>
             </li>
             <li class="right" style="margin-right: 10px;">
                 <i class="material-icons">perm_contact_calendar</i>
@@ -103,10 +104,10 @@
     <div class="container-fluid">
         <!-- Row START -->
         <div class="row">
-           <?php $setting=  mysqli_fetch_array(bukaquery("select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting"));
+           <?php $setting=  mysqli_fetch_array(bukaquery("select nama_instansi,alamat_instansi,kabupaten,propinsi,kontak,email,logo from setting"));
             ?>
             <div class="col s8" id="header-instansi">
-                <div class="card deep-orange accent-3 white-text">
+                <div class="card pink accent-3 white-text">
                     <div class="card-content">
                         <div class="left">
                             <img class="logo" src="data:image/jpeg;base64,<?php echo base64_encode($setting['logo']);?>"/>
@@ -138,18 +139,26 @@
 
 <!-- Footer START -->
 <footer class="page-footer">
-    <div class="footer-copyright deep-orange accent-3 white-text">
+    <div class="footer-copyright pink accent-3 white-text">
         <div class="container simple-marquee-container" id="footer">
-            <div class="marquee-sibling">
-              Tarif Kamar Umum
+            <div class="marquee-sibling pink accent-3">
+              Pengumuman
             </div>
-            <marquee class="marquee" scrollamount="4">
+            <marquee class="marquee pink accent-3" scrollamount="10">
                   <?php 
                     $sql ="SELECT kelas, trf_kamar FROM kamar WHERE statusdata='1' GROUP BY kelas";
                     $hasil=bukaquery($sql);
                     while ($data = mysqli_fetch_array ($hasil)){
                   ?>
                    <span class="marquee-content-items">| <?= $data['kelas'];?> Rp <?= number_format($data['trf_kamar'], 0, ".",",");?></span>
+                  <?php } ?>
+				  
+				  <?php 
+                    $sqlA ="SELECT pengumuman FROM pengumuman_epasien";
+                    $hasilA=bukaquery($sqlA);
+                    while ($dataA = mysqli_fetch_array ($hasilA)){
+                  ?>
+                   <span class="marquee-content-items">| <?= $dataA['pengumuman'];?></span>
                   <?php } ?>
             </marquee>
         </div>

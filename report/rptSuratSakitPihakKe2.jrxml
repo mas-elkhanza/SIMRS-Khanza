@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ca8e316-5e4c-4bbe-bad5-394bd0979269">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -8,6 +8,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<parameter name="dokterdpjp" class="java.lang.String"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -23,7 +24,7 @@ tanggalakhir,suratsakitpihak2.lamasakit,suratsakitpihak2.nama2,
  DATE_FORMAT(suratsakitpihak2.tgl_lahir,'%d-%m-%Y')as tgl_lahirpj,(suratsakitpihak2.umur)as umurpj,(suratsakitpihak2.jk)as jkpj,
  (suratsakitpihak2.alamat)as alamatpj,suratsakitpihak2.hubungan,(suratsakitpihak2.pekerjaan)as pekerjaanpj,suratsakitpihak2.instansi,perusahaan_pasien.nama_perusahaan,
  dokter.nm_dokter,pasien.tgl_lahir,
-DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,
+DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,pasien.nm_pasien,pasien.jk, concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,
 pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat
 from suratsakitpihak2 inner join perusahaan_pasien inner join reg_periksa inner join pasien inner join dokter inner join kelurahan inner join kecamatan inner join kabupaten
 on pasien.perusahaan_pasien=perusahaan_pasien.kode_perusahaan and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and 
@@ -265,7 +266,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Umur]]></text>
+				<text><![CDATA[Tgl Lahir]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="32" y="231" width="79" height="14" uuid="f19613f8-9966-420e-943e-23b303fa63e9">
@@ -317,16 +318,6 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement x="122" y="216" width="184" height="14" uuid="cd034c99-6e06-4431-af3a-2282d0113046">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Tahoma" size="10"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{umur}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="74" y="39" width="480" height="12" uuid="74394004-1023-4b3d-905f-83a3eb1ec641"/>
 				<textElement textAlignment="Left">
@@ -539,7 +530,7 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{dokterdpjp}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="382" y="324" width="172" height="20" uuid="74e2bec5-d348-492e-8e42-e5b4d00bd8c2">
@@ -711,6 +702,16 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="122" y="216" width="168" height="14" uuid="64b18ec4-f971-46b2-8c54-7afc0b8bf1d5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_lahir}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<summary>

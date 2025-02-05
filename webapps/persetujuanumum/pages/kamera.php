@@ -65,7 +65,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SIMKES Khanza</title>
+    <title>RS Harapan Sehat Slawi</title>
     <script src="js/jquery.min.js"></script>
     <script src="js/webcam.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
@@ -75,7 +75,7 @@
 </head>
 <body>
     <div class="container">
-        <h5 class="text-dark"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>KETENTUAN RAWAT INAP DAN PERSETUJUAN UMUM (GENERAL CONSENT)<br>NO. <?=$nosurat;?></center></h5>
+        <h5 class="text-dark"><center><button class="btn btn-secondary" onclick="window.location.reload();">Refresh</button><br/><br/>KETENTUAN RAWAT INAP DAN PERSETUJUAN UMUM (GENERAL CONSENT)<br>RS HARAPAN SEHAT SLAWI<br>NO. <?=$nosurat;?></center></h5>
         <h7 class="text-dark"><center>Tanggal <?=$tanggal;?></center></h7><br/>
         <form method="POST" action="pages/storeImage.php" onsubmit="return validasiIsi();" enctype=multipart/form-data>
             <input type="hidden" name="nosurat" value="<?=$nosurat;?>">
@@ -434,7 +434,9 @@
                 <div class="col-md-6">
                     <div id="my_camera"></div>
                     <input type="hidden" name="image" class="image-tag" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" id="TxtIsi1">
-                </div>
+				<div>
+</div>
+				</div>
                 <div class="col-md-6">
                     <div id="results"><h7 class="text-success"><center>Gambar akan diambil jika anda sudah mengeklik ya</center></h7></div>
                     <span id="MsgIsi1" style="color:#CC0000; font-size:10px;"></span>
@@ -446,17 +448,30 @@
                 </div>
             </div>
         </form>
+		
+		<!--SATP&RHF Modif dari sini-->
+		<center><button onclick="switch_camera()" class="btn btn-primary">Ganti Kamera</button></center> <!-- SATP&RHF - Tombol Ganti Kamera -->
     </div>
     
     <script language="JavaScript">
-        Webcam.set({
+	let currentFacingMode = 'user';// SATP&RHF - Default kamera depan
+	
+	function attachCamera() { // SATP&RHF - Fungsi Camera
+        Webcam.reset(); // SATP&RHF - Reset camera
+		Webcam.set({
             width: 490,
             height: 390,
             image_format: 'jpeg',
-            jpeg_quality: 90
+            jpeg_quality: 90,
+			constraints: {facingMode: currentFacingMode} // SATP&RHF - pilihan kamera
         });
-
+	
         Webcam.attach( '#my_camera' );
+	}
+		function switch_camera() { // SATP&RHF - Switch kamera depan atau belakang
+            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+            attachCamera(); // SATP&RHF - setting ulang kamera
+        }
 
         function take_snapshot() {
             Webcam.snap( function(data_uri) {
@@ -464,6 +479,9 @@
                 document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
             } );
         }
+
+        // SATP&RHF - start
+        attachCamera();
     </script>
 </body>
 </html>

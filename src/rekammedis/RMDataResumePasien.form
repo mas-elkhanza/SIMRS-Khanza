@@ -182,7 +182,6 @@
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
                 </LineBorder>
               </Border>
-              <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
               <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -435,7 +434,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="05-02-2025"/>
+                        <StringItem index="0" value="10-01-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -463,7 +462,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="05-02-2025"/>
+                        <StringItem index="0" value="10-01-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -728,7 +727,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="149" y="320" width="520" height="23"/>
+                          <AbsoluteConstraints x="149" y="303" width="520" height="40"/>
                         </Constraint>
                       </Constraints>
                     </Component>

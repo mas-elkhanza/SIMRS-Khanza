@@ -564,23 +564,6 @@ inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kotars}+", "+new SimpleDateFormat("EEEE, dd MMMM yyyy", new java.util.Locale("id")).format($F{berlakumulai})]]></textFieldExpression>
 			</textField>
-			<componentElement>
-				<reportElement x="350" y="639" width="191" height="76" isRemoveLineWhenBlank="true" uuid="7ae8b64e-2d96-4deb-942b-299d9fb5602d">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
-					<jr:codeExpression><![CDATA[$P{finger2}]]></jr:codeExpression>
-				</jr:QRCode>
-			</componentElement>
-			<componentElement>
-				<reportElement x="25" y="639" width="191" height="76" isRemoveLineWhenBlank="true" uuid="59e592d8-df9d-4b8a-81c9-5cbadbc263a6">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
-					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
-				</jr:QRCode>
-			</componentElement>
 			<line>
 				<reportElement x="8" y="738" width="228" height="1" uuid="1145ab89-0d19-4e7b-a3da-30896fa24582">
 					<property name="com.jaspersoft.studio.unit.height" value="cm"/>

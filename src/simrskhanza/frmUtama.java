@@ -1910,7 +1910,6 @@ public class frmUtama extends javax.swing.JFrame {
         panelGlass1.setWarna(new java.awt.Color(255, 255, 200));
         panelGlass1.setLayout(null);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(50, 50, 50));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("ID Admin :");
@@ -1918,7 +1917,6 @@ public class frmUtama extends javax.swing.JFrame {
         panelGlass1.add(jLabel4);
         jLabel4.setBounds(2, 12, 75, 23);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(50, 50, 50));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Password :");
@@ -2090,7 +2088,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28/09/2024" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14/01/2025" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7171,7 +7169,8 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(40, 42));
         internalFrame1.setVerifyInputWhenFocusTarget(false);
-        internalFrame1.setWarnaBawah(new java.awt.Color(250, 175, 185));
+        internalFrame1.setWarnaAtas(new java.awt.Color(255, 204, 204));
+        internalFrame1.setWarnaBawah(new java.awt.Color(255, 153, 153));
         internalFrame1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 2));
 
         BtnMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/menu.png"))); // NOI18N
@@ -7394,7 +7393,6 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.setWarnaAtas(new java.awt.Color(255, 185, 195));
         internalFrame4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 1));
 
-        lblStts.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         lblStts.setForeground(new java.awt.Color(50, 50, 50));
         lblStts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblStts.setText("Status Admin :");
@@ -7412,7 +7410,6 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(1, 21));
         internalFrame4.add(jSeparator1);
 
-        lblUser.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         lblUser.setForeground(new java.awt.Color(50, 50, 50));
         lblUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUser.setText("Log Out");
@@ -7430,7 +7427,6 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator2.setPreferredSize(new java.awt.Dimension(1, 21));
         internalFrame4.add(jSeparator2);
 
-        lblTgl.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         lblTgl.setForeground(new java.awt.Color(50, 50, 50));
         lblTgl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTgl.setText("Tanggal");
@@ -7448,7 +7444,6 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator3.setPreferredSize(new java.awt.Dimension(1, 21));
         internalFrame4.add(jSeparator3);
 
-        LblIP.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         LblIP.setForeground(new java.awt.Color(50, 50, 50));
         LblIP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblIP.setText("Alamat IP");
@@ -7466,7 +7461,6 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator6.setPreferredSize(new java.awt.Dimension(1, 21));
         internalFrame4.add(jSeparator6);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(50, 50, 50));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/file-edit-16x16.png"))); // NOI18N

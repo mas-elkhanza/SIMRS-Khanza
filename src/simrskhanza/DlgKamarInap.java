@@ -37,6 +37,8 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+//tambahan ichsan
+import fungsi.WarnaTableRawatInap;
 import inventory.DlgInputStokPasien;
 import inventory.DlgPenjualan;
 import inventory.DlgPeresepanDokter;
@@ -214,8 +216,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private ResultSet rs,rs2,rssetjam;
     private int i,row=0;
     private double lama=0,persenbayi=0,hargakamar=0;
-    private String gabungkan="",norawatgabung="",kamaryangdigabung="",dokterranap="",bangsal="",diagnosa_akhir="",namakamar="",umur="0",sttsumur="Th",order="order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk";
-
+    private String tgl,finger="",kodedokter="", gabungkan="",norawatgabung="",kamaryangdigabung="",dokterranap="",bangsal="",diagnosa_akhir="",namakamar="",umur="0",sttsumur="Th",order="order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk";
+    //modifikasi ichsan private string penambahan tgl,finger="", namadokter="" 
     /** Creates new form DlgKamarInap
      * @param parent
        @param modal */
@@ -283,7 +285,19 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 column.setPreferredWidth(60);
             }
         }
-        tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
+        //original
+        //tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
+        //pewarnaan
+        //tbKamIn.setDefaultRenderer(Object.class, new WarnaTableRawatInap());
+        try {
+            if(koneksiDB.AKTIFKANWARNARANAP().equals("yes")){
+                tbKamIn.setDefaultRenderer(Object.class, new WarnaTableRawatInap());
+            }else{
+                tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
+            }
+        } catch (Exception e) {
+            tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
+        }
 
         norawat.setDocument(new batasInput((byte)17).getKata(norawat));
         kdkamar.setDocument(new batasInput((byte)15).getKata(kdkamar));
@@ -10661,6 +10675,10 @@ public class DlgKamarInap extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("TanggalAwal",Sequel.cariIsi("select DATE_FORMAT(reg_periksa.tgl_registrasi, '%e %M %Y') from reg_periksa where reg_periksa.no_rawat='"+TNoRwCari.getText()+"'"));
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+            kodedokter = Sequel.cariIsi("SELECT dpjp_ranap.kd_dokter FROM dpjp_ranap WHERE dpjp_ranap.no_rawat = ? LIMIT 1", TNoRwCari.getText());
+            namadokter=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kodedokter);
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",kodedokter);
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+namadokter+"\nID "+(finger.equals("")?kodedokter:finger)+"\n"+Sequel.cariIsi("select DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y') from reg_periksa where reg_periksa.no_rawat=?",TNoRwCari.getText()));
             Valid.MyReportqry("rptSuratSakit2.jasper","report","::[ Surat Sakit ]::",
                 "select reg_periksa.no_rkm_medis,dokter.nm_dokter,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.jk," +
                 " pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.pekerjaan,pasien.alamat" +

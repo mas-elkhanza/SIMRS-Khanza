@@ -1103,7 +1103,7 @@ public class koneksiDB {
             var=""; 
         }
         return var;
-    }
+    }  
     
     public static String CLIENTIDSATUSEHAT(){
         try{
@@ -1509,6 +1509,17 @@ public class koneksiDB {
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var=EnkripsiAES.decrypt(prop.getProperty("KUNCIDOKTERRANAP"));
+        }catch(Exception e){
+            var=""; 
+        }
+        return var;
+    }
+    
+     //TAMBAHAN DARI ICHSAN
+    public static String AKTIFKANWARNARANAP(){
+        try{
+            prop.loadFromXML(new FileInputStream("setting/database.xml"));
+            var=prop.getProperty("AKTIFKANWARNARANAP");
         }catch(Exception e){
             var=""; 
         }

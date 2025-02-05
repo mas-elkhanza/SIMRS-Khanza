@@ -156,15 +156,15 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         PemeriksaanPenunjang.setDocument(new batasInput((int)2000).getKata(PemeriksaanPenunjang));
         HasilLaborat.setDocument(new batasInput((int)2000).getKata(HasilLaborat));
         Obat2an.setDocument(new batasInput((int)2000).getKata(Obat2an));
-        DiagnosaUtama.setDocument(new batasInput((int)80).getKata(DiagnosaUtama));
-        DiagnosaSekunder1.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder1));
-        DiagnosaSekunder2.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder2));
-        DiagnosaSekunder3.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder3));
-        DiagnosaSekunder4.setDocument(new batasInput((int)80).getKata(DiagnosaSekunder4));
-        ProsedurUtama.setDocument(new batasInput((int)80).getKata(ProsedurUtama));
-        ProsedurSekunder1.setDocument(new batasInput((int)80).getKata(ProsedurSekunder1));
-        ProsedurSekunder2.setDocument(new batasInput((int)80).getKata(ProsedurSekunder2));
-        ProsedurSekunder3.setDocument(new batasInput((int)80).getKata(ProsedurSekunder3));
+        DiagnosaUtama.setDocument(new batasInput((int)1000).getKata(DiagnosaUtama));
+        DiagnosaSekunder1.setDocument(new batasInput((int)1000).getKata(DiagnosaSekunder1));
+        DiagnosaSekunder2.setDocument(new batasInput((int)1000).getKata(DiagnosaSekunder2));
+        DiagnosaSekunder3.setDocument(new batasInput((int)1000).getKata(DiagnosaSekunder3));
+        DiagnosaSekunder4.setDocument(new batasInput((int)1000).getKata(DiagnosaSekunder4));
+        ProsedurUtama.setDocument(new batasInput((int)1000).getKata(ProsedurUtama));
+        ProsedurSekunder1.setDocument(new batasInput((int)1000).getKata(ProsedurSekunder1));
+        ProsedurSekunder2.setDocument(new batasInput((int)1000).getKata(ProsedurSekunder2));
+        ProsedurSekunder3.setDocument(new batasInput((int)1000).getKata(ProsedurSekunder3));
         KodeDiagnosaUtama.setDocument(new batasInput((int)10).getKata(KodeDiagnosaUtama));
         KodeDiagnosaSekunder1.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder1));
         KodeDiagnosaSekunder2.setDocument(new batasInput((int)10).getKata(KodeDiagnosaSekunder2));
@@ -724,7 +724,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -738,7 +738,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "31-03-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-12-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -896,7 +896,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
             }
         });
         FormInput.add(DiagnosaUtama);
-        DiagnosaUtama.setBounds(149, 320, 520, 23);
+        DiagnosaUtama.setBounds(149, 303, 520, 40);
 
         jLabel27.setText("Diagnosa Utama :");
         jLabel27.setName("jLabel27"); // NOI18N

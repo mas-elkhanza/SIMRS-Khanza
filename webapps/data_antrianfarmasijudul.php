@@ -36,12 +36,28 @@
                         <td>Panggilan Penyerahan Resep</td><td>:</td>
                         <td>
                         <?php 
-                            $_sql="select * from antriapotek3" ;  
+                            $_sql="select RIGHT(no_resep,4) as no_resep,status,no_rawat from antriapotek3" ;  
                             $hasil=bukaquery($_sql);
                             while ($data = mysqli_fetch_array ($hasil)){
                                 echo $data['no_resep']." ".getOne("select concat(reg_periksa.no_rawat,' ',pasien.nm_pasien) from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'");
                                 if($data['status']=="1"){
-                                    echo "<audio autoplay='true' src='bell2.wav'>";
+                                //echo "<audio autoplay='true' src='bell2.wav'>";
+                                   $_sql2="select antriapotek3.no_resep,antriapotek3.status,antriapotek3.no_rawat,pasien.nm_pasien from antriapotek3 inner join pasien inner join reg_periksa on antriapotek3.no_rawat=reg_periksa.no_rawat and reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='".$data['no_rawat']."'";
+                                   //'".$data['no_rawat']."'";  
+                                   $hasil2=bukaquery($_sql2);
+                                   $data2 = mysqli_fetch_array ($hasil2)
+                                    ?>
+                                    <script type="text/javascript">
+                                    responsiveVoice.speak(
+                                    "Antrian apotek nomor <?= strtolower($data['no_resep']);?>,Atas nama <?= strtolower($data2['nm_pasien']);?>,Silahkan ke loket obat, ",
+                                    "Indonesian Female",
+                                     {
+                                     pitch: 1, 
+                                     rate: 0.9, 
+                                     volume: 1
+                                     }
+                                    );</script>
+                                    <?php
                                     bukaquery2("update antriapotek3 set antriapotek3.status='0'");
                                 }   
                             }

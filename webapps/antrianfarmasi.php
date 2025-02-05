@@ -85,6 +85,7 @@
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script data-pace-options='{ "ajax": false }' src='assets/js/pace.min.js'></script>
     <script type="text/javascript" src="assets/js/marquee.js"></script>
+    <script src='assets/js//responsivevoice.js'></script>
     <script type="text/javascript">
        window.onload = function() { jam(); }
 

@@ -1615,30 +1615,11 @@ public class koneksiDB {
         return var;
     }
     
-    public static String URLAPISERTISIGN(){
+     //TAMBAHAN DARI ICHSAN
+    public static String AKTIFKANWARNARANAP(){
         try{
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("URLAPISERTISIGN");
-        }catch(Exception e){
-            var=""; 
-        }
-        return var;
-    }
-    
-    public static String APIKEYSERTISIGN(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=EnkripsiAES.decrypt(prop.getProperty("APIKEYSERTISIGN"));
-        }catch(Exception e){
-            var=""; 
-        }
-        return var;
-    }
-    
-    public static String URLDOKUMENSERTISIGN(){
-        try{
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var=prop.getProperty("URLDOKUMENSERTISIGN");
+            var=prop.getProperty("AKTIFKANWARNARANAP");
         }catch(Exception e){
             var=""; 
         }

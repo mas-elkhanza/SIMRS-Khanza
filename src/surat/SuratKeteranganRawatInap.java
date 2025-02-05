@@ -43,7 +43,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String tgl;
+    private String tgl,bln_angka="", bln_romawi="",finger="",kodedokter="",namadokter="";;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -796,7 +796,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
                 param.put("TanggalAwal",TanggalAwal.getSelectedItem().toString());
                 param.put("TanggalAkhir",TanggalAkhir.getSelectedItem().toString());
                 param.put("nosakit",NoSurat.getText());
-                param.put("dokter",Sequel.cariIsi("select nm_dokter from dokter inner join dpjp_ranap on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=?",TNoRw.getText()));
+                param.put("dokter",Sequel.cariIsi("select nm_dokter from dokter inner join dpjp_ranap on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? LIMIT 1",TNoRw.getText()));
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
                 param.put("kotars",akses.getkabupatenrs());
@@ -807,6 +807,11 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
                     "on diagnosa_pasien.no_rawat=reg_periksa.no_rawat and diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit "+
                     "where diagnosa_pasien.no_rawat=? and diagnosa_pasien.prioritas='1'",TNoRw.getText()));
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                kodedokter = Sequel.cariIsi("SELECT dpjp_ranap.kd_dokter FROM dpjp_ranap WHERE dpjp_ranap.no_rawat = ? LIMIT 1", TNoRw.getText());
+                namadokter=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kodedokter);
+                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",kodedokter);
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+namadokter+"\nID "+(finger.equals("")?kodedokter:finger)+"\n"+Sequel.cariIsi("select DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y') from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));  
+                
                 Valid.MyReportqry("rptSuratKeteranganRawatInap.jasper","report","::[ Surat Keterangan Rawat Inap ]::",
                               "select DATE_FORMAT(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,perusahaan_pasien.nama_perusahaan,reg_periksa.no_rawat,dokter.nm_dokter,pasien.keluarga,pasien.namakeluarga,pasien.tgl_lahir,pasien.jk," +
                               " pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.pekerjaan,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat" +
