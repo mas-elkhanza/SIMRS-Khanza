@@ -812,7 +812,7 @@ public final class DlgPemasukanLain extends javax.swing.JDialog {
                     try {
                         Sequel.queryu("delete from tampjurnal");
                         psakun=koneksi.prepareStatement(
-                            "select kd_rek,'Akun',kd_rek2,'Kontra Akun' from kategori_pemasukan_lain where kode_kategori=?");
+                            "select kategori_pemasukan_lain.kd_rek,'Akun',kategori_pemasukan_lain.kd_rek2,'Kontra Akun' from kategori_pemasukan_lain where kategori_pemasukan_lain.kode_kategori=?");
                         try{
                             psakun.setString(1,KdKategori.getText());
                             rs=psakun.executeQuery();

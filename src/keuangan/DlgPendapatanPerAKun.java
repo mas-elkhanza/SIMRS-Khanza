@@ -672,7 +672,7 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
             totalbayar=new double[kolom]; 
             
             all=0;
-            ps= koneksi.prepareStatement(
+            ps=koneksi.prepareStatement(
                     "select tagihan_sadewa.no_nota,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar from tagihan_sadewa "+
                     "where tagihan_sadewa.tgl_bayar between ? and ? order by tagihan_sadewa.tgl_bayar,tagihan_sadewa.no_nota");
             try {
