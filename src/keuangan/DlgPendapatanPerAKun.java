@@ -43,7 +43,7 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
     private int i,kolom=0,no=0;
     private String nopemasukanlain="",nonota="",keterangan="",norawatjalan="",norawatinap="",notajual="",carabayar="",nodeposit="";
     private StringBuilder htmlContent;
-    private String[] akunbayar,namabayar;
+    private String[] akunbayar,namabayar,akunpiutang,namapiutang;
     private double[] totalbayar;
 
     /** Creates new form DlgLhtBiaya
@@ -670,6 +670,29 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
             }
             
             totalbayar=new double[kolom]; 
+            
+            /*kolom=0;
+            psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select akun_bayar.kd_rek from akun_bayar group by akun_bayar.kd_rek) order by rekening.nm_rek");
+            try {
+                rsakunpiutang=psakunpiutang.executeQuery();
+                rsakunpiutang.last();
+                akunpiutang=new String[rsakunpiutang.getRow()];
+                rsakunpiutang.beforeFirst();
+                while(rsakunpiutang.next()){
+                    akunpiutang[kolom]=rsakunpiutang.getString("nama_bayar");
+                    kolom++;
+                }
+            } catch (Exception e) {
+                System.out.println("Akun Bayar : "+e);
+            } finally{
+                if(rsakunpiutang!=null){
+                    rsakunpiutang.close();
+                }
+                if(psakunpiutang!=null){
+                    psakunpiutang.close();
+                }
+            }
+            totalpiutang=new double[kolom];   */
             
             all=0;
             ps=koneksi.prepareStatement(

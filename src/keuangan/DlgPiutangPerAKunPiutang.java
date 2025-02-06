@@ -41,7 +41,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
     private ResultSet rs,rsakunpiutang;
     private StringBuilder htmlContent;
     private String[] akunpiutang;
-    private double[] totalbayar;
+    private double[] totalpiutang;
     private int i,kolom=0,no=0;
     private double bayar=0,uangmuka=0,piutang=0;
 
@@ -437,7 +437,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                     psakunpiutang.close();
                 }
             }
-            totalbayar=new double[kolom];            
+            totalpiutang=new double[kolom];            
             htmlContent.append(
                 "</tr>"
             );   
@@ -473,7 +473,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                     for(i=0;i<kolom;i++){
                         bayar=Sequel.cariIsiAngka("select detail_piutang_pasien.totalpiutang from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and detail_piutang_pasien.nama_bayar='"+akunpiutang[i]+"'");
                         htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
-                        totalbayar[i]=totalbayar[i]+bayar;
+                        totalpiutang[i]=totalpiutang[i]+bayar;
                     }
                     htmlContent.append( 
                         "</tr>"
@@ -519,7 +519,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                     for(i=0;i<kolom;i++){
                         bayar=Sequel.cariIsiAngka("select detail_piutang_pasien.totalpiutang from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and detail_piutang_pasien.nama_bayar='"+akunpiutang[i]+"'");
                         htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
-                        totalbayar[i]=totalbayar[i]+bayar;
+                        totalpiutang[i]=totalpiutang[i]+bayar;
                     }
                     htmlContent.append( 
                         "</tr>"
@@ -546,7 +546,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                     "<td valign='middle' align='right'>"+Valid.SetAngka(uangmuka)+"</td>"+
                     "<td valign='middle' align='right'>"+Valid.SetAngka(piutang)+"</td>");
             for(i=0;i<kolom;i++){
-                htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(totalbayar[i])+"</td>"); 
+                htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(totalpiutang[i])+"</td>"); 
             }
             htmlContent.append( 
                 "</tr>"

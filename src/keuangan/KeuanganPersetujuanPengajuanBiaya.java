@@ -913,8 +913,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(tbBangsal.getSelectedRow()!= -1){
             NoPengajuan.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
             Jumlah.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),11).toString());
-            Harga.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString());
-            Total.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),13).toString());
+            Harga.setText(Valid.SetAngka(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),12).toString())+"");
         }
     }
     

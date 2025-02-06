@@ -914,7 +914,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             ps=koneksi.prepareStatement(
                     "select piutang.nota_piutang,piutang.tgl_piutang,piutang.no_rkm_medis,piutang.nm_pasien,piutang.catatan,piutang.ongkir,piutang.uangmuka,piutang.sisapiutang,"+
                     "piutang.tgltempo,(select ifnull(SUM(bayar_piutang.besar_cicilan)+SUM(bayar_piutang.diskon_piutang)+SUM(bayar_piutang.tidak_terbayar),0) from bayar_piutang where bayar_piutang.no_rawat=piutang.nota_piutang) as cicilan  "+
-                    "from piutang "+(TCari.getText().trim().equals("")?"":"where piutang.nota_piutang like ? or petugas.nama like ? or "+
+                    "from piutang "+(TCari.getText().trim().equals("")?"":"where piutang.nota_piutang like ? or piutang.tgl_piutang like ? or "+
                     "piutang.no_rkm_medis like ? or piutang.nm_pasien like ?")+" having piutang.sisapiutang-cicilan>0 order by piutang.tgl_piutang");
             try {
                 if(!TCari.getText().trim().equals("")){
