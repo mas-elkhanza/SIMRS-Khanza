@@ -21,5 +21,6 @@ public class ScrollPane extends JScrollPane {
         //setBackground(new Color(255,235,255));
         setBorder(new LineBorder(new Color(239,244,234)));
         setBackground(new Color(255,255,255));
+        getVerticalScrollBar().setUnitIncrement(20);
     }
 }

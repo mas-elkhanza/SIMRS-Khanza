@@ -3178,7 +3178,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                     PrimerKritis.setSelected(true);
                                 }
                                 
-                                PrimerTanggalTriase.setDate(rs.getDate("tanggaltriase"));
+                                Valid.SetTgl2(PrimerTanggalTriase,rs.getString("tanggaltriase"));
                                 PrimerCatatan.setText(rs.getString("catatan"));
                             }
                         } catch (Exception e) {
@@ -3371,7 +3371,7 @@ public final class RMTriaseIGD extends javax.swing.JDialog {
                                     SekunderZonaHijau.setSelected(true);
                                 }
                                 
-                                SekunderTanggalTriase.setDate(rs.getDate("tanggaltriase"));
+                                Valid.SetTgl2(SekunderTanggalTriase,rs.getString("tanggaltriase"));
                                 SekunderCatatan.setText(rs.getString("catatan"));
                             }
                         } catch (Exception e) {
