@@ -659,7 +659,7 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
                     );
 
                     for(i=0;i<kolompiutang;i++){
-                        bayar=Sequel.cariIsiAngka("select detail_piutang_pasien.totalpiutang from detail_piutang_pasien inner join akun_piutang on detail_piutang_pasien.nama_bayar=akun_piutang.nama_bayar where detail_piutang_pasien.no_rawat='"+rs.getString("no_nota")+"' and akun_piutang.kd_rek='"+akunpiutang[i]+"'");
+                        bayar=Sequel.cariIsiAngka("select detail_piutang_pasien.totalpiutang from detail_piutang_pasien inner join akun_piutang on detail_piutang_pasien.nama_bayar=akun_piutang.nama_bayar where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and akun_piutang.kd_rek='"+akunpiutang[i]+"'");
                         if(bayar>0){
                             htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namapiutang[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
                             all=all+bayar;

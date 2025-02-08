@@ -742,8 +742,8 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                         htmlContent.append( 
                             "</tr>"
                         ); 
-                    }          
-                    no++;                            
+                        no++;
+                    }                                
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -754,9 +754,7 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }                
-        
-            
+            } 
             
             htmlContent.append(                             
                 "<tr class='isi'>"+
@@ -908,8 +906,8 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                         htmlContent.append( 
                             "</tr>"
                         ); 
-                    }          
-                    no++;                            
+                        no++;
+                    }                                
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);

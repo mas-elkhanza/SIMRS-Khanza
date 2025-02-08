@@ -641,6 +641,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                     htmlContent.append( 
                                         "</tr>"
                                     ); 
+                                    no++;
                                 }                                    
                             }else if(rsjamshift.getString("shift").equals(CmbStatus.getSelectedItem().toString())){
                                 norawatinap="";
@@ -711,9 +712,9 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                     htmlContent.append( 
                                         "</tr>"
                                     ); 
+                                    no++;
                                 }                                    
-                            }
-                            no++;                            
+                            }                           
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -900,7 +901,8 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                     }
                                     htmlContent.append( 
                                         "</tr>"
-                                    ); 
+                                    );
+                                    no++;
                                 }                                    
                             }else if(rsjamshift.getString("shift").equals(CmbStatus.getSelectedItem().toString())){
                                 norawatinap="";
@@ -971,9 +973,9 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                     htmlContent.append( 
                                         "</tr>"
                                     ); 
+                                    no++;
                                 }                                    
-                            }
-                            no++;                            
+                            }                    
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);

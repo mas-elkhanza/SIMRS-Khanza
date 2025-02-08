@@ -757,8 +757,8 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
                                 "</td>"+
                             "</tr>"
                         ); 
-                    }          
-                    no++;                            
+                        no++;
+                    }                                
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -935,8 +935,8 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
                                 "</td>"+
                             "</tr>"
                         ); 
-                    }          
-                    no++;                            
+                        no++;
+                    }                                
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
