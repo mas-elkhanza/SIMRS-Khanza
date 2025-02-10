@@ -39,9 +39,10 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
     private final validasi Valid=new validasi();
     private PreparedStatement ps,psakunbayar,psakunpiutang;
     private ResultSet rs,rsakunbayar,rsakunpiutang;
-    private double all=0,bayar=0;
+    private double all=0,bayar=0,piutangobat=0;
     private int i,kolom=0,kolompiutang=0,no=0;
-    private String nopemasukanlain="",nonota="",norawatjalan="",norawatinap="",notajual="",carabayar="",nodeposit="";
+    private String nopemasukanlain="",nonota="",norawatjalan="",norawatinap="",notajual="",carabayar="",nodeposit="",
+                   akunpiutangobat=Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Sequel.cariIsi("select set_akun.Piutang_Obat from set_akun"));
     private StringBuilder htmlContent;
     private String[] akunbayar,namabayar,akunpiutang,namapiutang;
     private double[] totalbayar,totalpiutang;
@@ -685,6 +686,49 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
                 }
             }
             
+            ps=koneksi.prepareStatement(
+                "select piutang.nota_piutang,piutang.tgl_piutang,piutang.nm_pasien,piutang.sisapiutang from piutang "+
+                "where piutang.tgl_piutang between ? and ? "+(!TCari.getText().trim().equals("")?" and (piutang.nota_piutang like ? or pasien.nm_pasien like ?) ":"")+
+                "order by piutang.tgl_piutang,piutang.nota_piutang");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                piutangobat=0;
+                while(rs.next()){
+                    piutangobat=piutangobat+rs.getDouble("sisapiutang");
+                    htmlContent.append(                             
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+no+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("tgl_piutang")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("nota_piutang")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                            "<td valign='middle' align='center'>Piutang Obat</td>"+
+                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("sisapiutang"))+"</td>"+
+                            "<td>"+
+                                "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+akunpiutangobat+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(rs.getDouble("sisapiutang"))+"</td></tr>"+
+                                "</table>"+
+                            "</td>"+
+                        "</tr>"
+                    ); 
+                    no++;                            
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
             for(i=0;i<kolom;i++){
                 if(totalbayar[i]>0){
                     htmlContent.append(                             
@@ -709,12 +753,22 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
                 }  
             }
             
+            if(piutangobat>0){
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' align='center'></td>"+
+                        "<td valign='middle' align='left' colspan='5'>Total "+akunpiutangobat+"</td>"+
+                        "<td valign='middle' align='right'>"+Valid.SetAngka(piutangobat)+"</td>"+
+                    "</tr>"
+                ); 
+            }
+            
             if(all>0){
                 htmlContent.append(                             
                     "<tr class='isi'>"+
                         "<td valign='middle' align='center'></td>"+
                         "<td valign='middle' align='left' colspan='5'><b>Jumlah Total<b></td>"+
-                        "<td valign='middle' align='right'><b>"+Valid.SetAngka(all)+"<b></td>"+
+                        "<td valign='middle' align='right'><b>"+Valid.SetAngka(all+piutangobat)+"<b></td>"+
                     "</tr>"
                 ); 
             }
@@ -733,7 +787,334 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
     
     private void tampil2(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-        
+        try{        
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='head'>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat/No.Nota</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='28%'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis/Cara Bayar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Pembayaran</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='25%'>Akun Bayar</td>"+
+                "</tr>"
+            );   
+            
+            kolom=0;
+            psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select akun_bayar.kd_rek from akun_bayar group by akun_bayar.kd_rek) order by rekening.nm_rek");
+            try {
+                rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                akunbayar=new String[i];
+                namabayar=new String[i];
+                rsakunbayar.beforeFirst();
+                while(rsakunbayar.next()){
+                    akunbayar[kolom]=rsakunbayar.getString("kd_rek");
+                    namabayar[kolom]=rsakunbayar.getString("nm_rek");
+                    kolom++;
+                }
+            } catch (Exception e) {
+                System.out.println("Akun Bayar : "+e);
+            } finally{
+                if(rsakunbayar!=null){
+                    rsakunbayar.close();
+                }
+                if(psakunbayar!=null){
+                    psakunbayar.close();
+                }
+            }
+            
+            totalbayar=new double[kolom]; 
+            
+            kolompiutang=0;
+            psakunpiutang=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select akun_piutang.kd_rek from akun_piutang group by akun_piutang.kd_rek) order by rekening.nm_rek");
+            try {
+                rsakunpiutang=psakunpiutang.executeQuery();
+                rsakunpiutang.last();
+                i=rsakunpiutang.getRow();
+                akunpiutang=new String[i];
+                namapiutang=new String[i];
+                rsakunpiutang.beforeFirst();
+                while(rsakunpiutang.next()){
+                    akunpiutang[kolompiutang]=rsakunpiutang.getString("kd_rek");
+                    namapiutang[kolompiutang]=rsakunpiutang.getString("nm_rek");
+                    kolompiutang++;
+                }
+            } catch (Exception e) {
+                System.out.println("Akun Piutang : "+e);
+            } finally{
+                if(rsakunpiutang!=null){
+                    rsakunpiutang.close();
+                }
+                if(psakunpiutang!=null){
+                    psakunpiutang.close();
+                }
+            }
+            
+            totalpiutang=new double[kolompiutang]; 
+            
+            all=0;
+            ps=koneksi.prepareStatement(
+                    "select tagihan_sadewa.no_nota,date_format(tagihan_sadewa.tgl_bayar,'%Y-%m-%d') as tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar "+
+                    "from tagihan_sadewa where tagihan_sadewa.tgl_bayar between ? and ? order by tagihan_sadewa.tgl_bayar,tagihan_sadewa.no_nota");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                rs=ps.executeQuery();
+                no=1;
+                while(rs.next()){                            
+                    norawatinap="";
+                    norawatjalan="";
+                    notajual="";
+                    carabayar="";
+                    nopemasukanlain="";
+                    nodeposit="";
+                    nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
+                    if(!nonota.equals("")){
+                        norawatinap=rs.getString("no_nota");
+                        carabayar=Sequel.cariIsi("select penjab.png_jawab from penjab inner join reg_periksa on penjab.kd_pj=reg_periksa.kd_pj where reg_periksa.no_rawat=?",rs.getString("no_nota"));
+                    }else if(nonota.equals("")){
+                        nonota=Sequel.cariIsi("select nota_jalan.no_nota from nota_jalan where nota_jalan.no_rawat=?",rs.getString("no_nota"));
+                        if(!nonota.equals("")){
+                            norawatjalan=rs.getString("no_nota");
+                            carabayar=Sequel.cariIsi("select penjab.png_jawab from penjab inner join reg_periksa on penjab.kd_pj=reg_periksa.kd_pj where reg_periksa.no_rawat=?",rs.getString("no_nota"));
+                        }else if(nonota.equals("")){
+                            nonota=Sequel.cariIsi("select penjualan.nota_jual from penjualan where penjualan.nota_jual=?",rs.getString("no_nota"));
+                            if(!nonota.equals("")){
+                                notajual=rs.getString("no_nota");
+                                carabayar="Penjualan Apotek";
+                            }else if(nonota.equals("")){
+                                nonota=Sequel.cariIsi("select deposit.no_deposit from deposit where deposit.no_deposit=?",rs.getString("no_nota"));
+                                if(!nonota.equals("")){
+                                    nodeposit=rs.getString("no_nota");
+                                    carabayar="Deposit Pasien";
+                                }else{
+                                    nonota=Sequel.cariIsi("select pemasukan_lain.no_masuk from pemasukan_lain where pemasukan_lain.no_masuk=?",rs.getString("no_nota"));
+                                    if(!nonota.equals("")){
+                                        nopemasukanlain=rs.getString("no_nota");
+                                        carabayar="Pemasukan Lain-lain";
+                                    }else{
+                                        nopemasukanlain="";
+                                    }
+                                }
+                            }                                             
+                        }
+                    }
+                    
+                    if((rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                        all=all+rs.getDouble("jumlah_bayar");
+                        htmlContent.append(                             
+                            "<tr class='isi'>"+
+                                "<td valign='middle' align='center'>"+no+"</td>"+
+                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
+                                "<td valign='middle' align='center'>"+nonota+"</td>"+
+                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
+                                "<td valign='middle' align='center'>"+carabayar+"</td>"+
+                                "<td valign='middle' align='right'>"+Math.round(rs.getDouble("jumlah_bayar"))+"</td>"+
+                                "<td>"+
+                                    "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        
+                        for(i=0;i<kolom;i++){
+                            bayar=0;
+                            if(!norawatinap.equals("")){
+                                bayar=Sequel.cariIsiAngka("select detail_nota_inap.besar_bayar from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                            }else if(!norawatjalan.equals("")){
+                                bayar=Sequel.cariIsiAngka("select detail_nota_jalan.besar_bayar from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                            }else if(!notajual.equals("")){
+                                bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual inner join akun_bayar on penjualan.nama_bayar=akun_bayar.nama_bayar where penjualan.nota_jual='"+notajual+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                            }else if(!nodeposit.equals("")){
+                                bayar=Sequel.cariIsiAngka("select sum(deposit.besar_deposit) from deposit inner join akun_bayar on deposit.nama_bayar=akun_bayar.nama_bayar where deposit.no_deposit='"+nodeposit+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                            }else if(!nopemasukanlain.equals("")){
+                                bayar=Sequel.cariIsiAngka("select sum(pemasukan_lain.besar) from pemasukan_lain inner join kategori_pemasukan_lain on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori where pemasukan_lain.no_masuk='"+nopemasukanlain+"' and kategori_pemasukan_lain.kd_rek2='"+akunbayar[i]+"'");
+                            }else{
+                                bayar=0;
+                            }
+                            if(bayar>0){
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                            }
+                            totalbayar[i]=totalbayar[i]+bayar;
+                        }
+                        
+                        for(i=0;i<kolompiutang;i++){
+                            bayar=Sequel.cariIsiAngka("select detail_piutang_pasien.totalpiutang from detail_piutang_pasien inner join akun_piutang on detail_piutang_pasien.nama_bayar=akun_piutang.nama_bayar where detail_piutang_pasien.no_rawat='"+rs.getString("no_nota")+"' and akun_piutang.kd_rek='"+akunpiutang[i]+"'");
+                            if(bayar>0){
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namapiutang[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                all=all+bayar;
+                            }
+                            totalpiutang[i]=totalpiutang[i]+bayar;
+                        }
+                        
+                        htmlContent.append( 
+                                    "</table>"+
+                                "</td>"+
+                            "</tr>"
+                        ); 
+                        no++;
+                    }                           
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                "select piutang_pasien.no_rawat,piutang_pasien.tgl_piutang,pasien.nm_pasien,piutang_pasien.totalpiutang from piutang_pasien inner join pasien on piutang_pasien.no_rkm_medis=pasien.no_rkm_medis "+
+                "where piutang_pasien.uangmuka='0' and piutang_pasien.tgl_piutang between ? and ? "+(!TCari.getText().trim().equals("")?" and (piutang_pasien.no_rawat like ? or pasien.nm_pasien like ?) ":"")+
+                "order by piutang_pasien.tgl_piutang,piutang_pasien.no_rawat");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    all=all+rs.getDouble("totalpiutang");
+                    htmlContent.append(                             
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+no+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("tgl_piutang")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("no_rawat")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                            "<td valign='middle' align='center'>Piutang Perawatan</td>"+
+                            "<td valign='middle' align='right'>"+Math.round(rs.getDouble("totalpiutang"))+"</td>"+
+                            "<td>"+
+                                "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                    );
+
+                    for(i=0;i<kolompiutang;i++){
+                        bayar=Sequel.cariIsiAngka("select detail_piutang_pasien.totalpiutang from detail_piutang_pasien inner join akun_piutang on detail_piutang_pasien.nama_bayar=akun_piutang.nama_bayar where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and akun_piutang.kd_rek='"+akunpiutang[i]+"'");
+                        if(bayar>0){
+                            htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namapiutang[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                            all=all+bayar;
+                        }
+                        totalpiutang[i]=totalpiutang[i]+bayar;
+                    }
+
+                    htmlContent.append( 
+                                "</table>"+
+                            "</td>"+
+                        "</tr>"
+                    ); 
+                    no++;                            
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            ps=koneksi.prepareStatement(
+                "select piutang.nota_piutang,piutang.tgl_piutang,piutang.nm_pasien,piutang.sisapiutang from piutang "+
+                "where piutang.tgl_piutang between ? and ? "+(!TCari.getText().trim().equals("")?" and (piutang.nota_piutang like ? or pasien.nm_pasien like ?) ":"")+
+                "order by piutang.tgl_piutang,piutang.nota_piutang");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                piutangobat=0;
+                while(rs.next()){
+                    piutangobat=piutangobat+rs.getDouble("sisapiutang");
+                    htmlContent.append(                             
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+no+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("tgl_piutang")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("nota_piutang")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
+                            "<td valign='middle' align='center'>Piutang Obat</td>"+
+                            "<td valign='middle' align='right'>"+Math.round(rs.getDouble("sisapiutang"))+"</td>"+
+                            "<td>"+
+                                "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+akunpiutangobat+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(rs.getDouble("sisapiutang"))+"</td></tr>"+
+                                "</table>"+
+                            "</td>"+
+                        "</tr>"
+                    ); 
+                    no++;                            
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            for(i=0;i<kolom;i++){
+                if(totalbayar[i]>0){
+                    htmlContent.append(                             
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'></td>"+
+                            "<td valign='middle' align='left' colspan='5'>Total "+namabayar[i]+"</td>"+
+                            "<td valign='middle' align='right'>"+Math.round(totalbayar[i])+"</td>"+
+                        "</tr>"
+                    ); 
+                }  
+            }
+            
+            for(i=0;i<kolompiutang;i++){
+                if(totalpiutang[i]>0){
+                    htmlContent.append(                             
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'></td>"+
+                            "<td valign='middle' align='left' colspan='5'>Total "+namapiutang[i]+"</td>"+
+                            "<td valign='middle' align='right'>"+Math.round(totalpiutang[i])+"</td>"+
+                        "</tr>"
+                    ); 
+                }  
+            }
+            
+            if(piutangobat>0){
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' align='center'></td>"+
+                        "<td valign='middle' align='left' colspan='5'>Total "+akunpiutangobat+"</td>"+
+                        "<td valign='middle' align='right'>"+Math.round(piutangobat)+"</td>"+
+                    "</tr>"
+                ); 
+            }
+            
+            if(all>0){
+                htmlContent.append(                             
+                    "<tr class='isi'>"+
+                        "<td valign='middle' align='center'></td>"+
+                        "<td valign='middle' align='left' colspan='5'><b>Jumlah Total<b></td>"+
+                        "<td valign='middle' align='right'><b>"+Math.round(all+piutangobat)+"<b></td>"+
+                    "</tr>"
+                ); 
+            }
+                         
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }  
 }

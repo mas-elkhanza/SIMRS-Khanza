@@ -1396,10 +1396,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG OBAT','"+(ttljual+ongkir-uangmuka)+"','0'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select set_akun.Piutang_Obat from set_akun")+"','PIUTANG OBAT','"+(ttljual+ongkir-uangmuka)+"','0'","Rekening")==false){
                         sukses=false;
                     }    
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','PERSEDIAAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select set_akun.Kontra_Piutang_Obat from set_akun")+"','PERSEDIAAN','0','"+(ttljual+ongkir-uangmuka)+"'","Rekening")==false){
                         sukses=false;
                     }
                     if(sukses==true){
