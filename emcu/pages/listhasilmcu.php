@@ -7,6 +7,7 @@
     $halaman    = trim(isset($_GET['halaman']))?trim($_GET['halaman']):NULL;
     $nomcuhasil = json_decode(encrypt_decrypt($nomcuhasil,"d"),true); 
     if (isset($nomcuhasil["nomcuhasil"])) {
+        $iyem         = $_GET['iyem'];
         $nomcuhasil   = validTeks($nomcuhasil["nomcuhasil"]);
         $querynorawat = bukaquery("select booking_mcu_perusahaan_berhasil_registrasi.no_rawat from booking_mcu_perusahaan_berhasil_registrasi where booking_mcu_perusahaan_berhasil_registrasi.no_mcu='$nomcuhasil'");
         if($rsquerynorawat = mysqli_fetch_array($querynorawat)) {
@@ -745,7 +746,7 @@
                 echo "          </table>";
             }
                                 
-            echo "              <center><a href='index.php?act=$halaman&iyem=".$_GET['iyem']."' class='btn btn-danger waves-effect'>Kembali</a></center>
+            echo "              <center><a href='index.php?act=$halaman&iyem=".$iyem."' class='btn btn-danger waves-effect'>Kembali</a></center>
                             </div>
                         </div>
                     </div>
@@ -763,7 +764,7 @@
                         </div>
                      </div>
                   </div>";
-            JSRedirect2("index.php?act=$halaman&iyem=".$_GET['iyem'],4);
+            JSRedirect2("index.php?act=$halaman&iyem=".$iyem,4);
         }
     }else{
         echo "<div class='block-header'>
@@ -778,6 +779,6 @@
                     </div>
                  </div>
               </div>";
-        JSRedirect2("index.php?act=$halaman&iyem=".$_GET['iyem'],4);
+        JSRedirect2("index.php?act=$halaman&iyem=".$iyem,4);
     }
 ?>

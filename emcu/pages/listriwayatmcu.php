@@ -48,7 +48,7 @@
                                         <td align='center' valign='middle'>".$rsqueryriwayat["no_rawat"]."</td>
                                         <td align='left' valign='middle'>".$rsqueryriwayat["nm_dokter"]."</td>
                                         <td align='center' valign='middle'>
-                                           <a href='index.php?act=HasilMCU&halaman=RiwayatMCU&iyem=".encrypt_decrypt("{\"nomcuhasil\":\"".$rsqueryriwayat["no_mcu"]."\",\"no_rkm_medis\":\"".$no_rkm_medis."\"}","e")."' class='btn btn-success waves-effect'>Hasil MCU</a>
+                                           <a href='index.php?act=HasilMCU&halaman=RiwayatMCU&iyem=".encrypt_decrypt("{\"nomcuhasil\":\"".$rsqueryriwayat["no_mcu"]."\",\"no_rkm_medis\":\"".$no_rkm_medis."\",\"nm_pasien\":\"".$nm_pasien."\"}","e")."' class='btn btn-success waves-effect'>Hasil MCU</a>
                                         </td>
                                      </tr>";
                            }
