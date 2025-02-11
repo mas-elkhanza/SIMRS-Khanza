@@ -239,7 +239,7 @@ public final class akses {
             surat_pemesanan_dapur=false,pengajuan_barang_dapur=false,dapur_returbeli=false,hibah_dapur=false,ringkasan_penerimaan_dapur=false,ringkasan_pengajuan_dapur=false,
             ringkasan_pemesanan_dapur=false,ringkasan_returbeli_dapur=false,ringkasan_stokkeluar_dapur=false,dapur_stokkeluar_pertanggal=false,sirkulasi_dapur=false,
             sirkulasi_dapur2=false,verifikasi_penerimaan_dapur=false,nilai_penerimaan_vendor_dapur_perbulan=false,ringkasan_hutang_vendor_dapur=false,penilaian_psikologi_klinis=false,
-            penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false,ringkasan_jasa_tindakan_medis=false,pendapatan_per_akun=false;
+            penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false,ringkasan_jasa_tindakan_medis=false,pendapatan_per_akun=false,hasil_pemeriksaan_echo=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1359,6 +1359,7 @@ public final class akses {
                         akses.penilaian_derajat_dehidrasi=true;
                         akses.ringkasan_jasa_tindakan_medis=true;
                         akses.pendapatan_per_akun=true;
+                        akses.hasil_pemeriksaan_echo=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2462,6 +2463,7 @@ public final class akses {
                         akses.penilaian_derajat_dehidrasi=rs2.getBoolean("penilaian_derajat_dehidrasi");
                         akses.ringkasan_jasa_tindakan_medis=rs2.getBoolean("ringkasan_jasa_tindakan_medis");
                         akses.pendapatan_per_akun=rs2.getBoolean("pendapatan_per_akun");
+                        akses.hasil_pemeriksaan_echo=rs2.getBoolean("hasil_pemeriksaan_echo");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3563,6 +3565,7 @@ public final class akses {
                         akses.penilaian_derajat_dehidrasi=false;
                         akses.ringkasan_jasa_tindakan_medis=false;
                         akses.pendapatan_per_akun=false;
+                        akses.hasil_pemeriksaan_echo=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4687,6 +4690,7 @@ public final class akses {
         akses.penilaian_derajat_dehidrasi=false;
         akses.ringkasan_jasa_tindakan_medis=false;
         akses.pendapatan_per_akun=false;
+        akses.hasil_pemeriksaan_echo=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5827,4 +5831,5 @@ public final class akses {
     public static boolean getpenilaian_derajat_dehidrasi(){return akses.penilaian_derajat_dehidrasi;}
     public static boolean getringkasan_jasa_tindakan_medis(){return akses.ringkasan_jasa_tindakan_medis;}
     public static boolean getpendapatan_per_akun(){return akses.pendapatan_per_akun;}
+    public static boolean gethasil_pemeriksaan_echo(){return akses.hasil_pemeriksaan_echo;}
 }   

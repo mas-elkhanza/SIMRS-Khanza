@@ -328,7 +328,27 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try{        
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='head'>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Nota</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='90px'>Uang Muka</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='90px'>Piutang</td>"+
+                "</tr>"
+            );           
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed

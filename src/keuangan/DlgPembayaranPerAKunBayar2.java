@@ -185,6 +185,11 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pembayaran Per Akun Bayar 2 ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -578,6 +583,30 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
             tampil2();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try{        
+            htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='head'>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='27px'>No.</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='110px'>Tanggal</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='100px'>No.Rawat/No.Nota</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='220px'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>"+
+                "</tr>"
+            );           
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        }catch(Exception e){
+            System.out.println("Notifikasi : "+e);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
