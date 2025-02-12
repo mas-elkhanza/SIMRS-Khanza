@@ -4030,10 +4030,10 @@ public final class RMPenilaianAwalMedisHemodialisa extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan());
+        BtnSimpan.setEnabled(akses.getpenilaian_medis_ralan_hemodialisa());
+        BtnHapus.setEnabled(akses.getpenilaian_medis_ralan_hemodialisa());
+        BtnEdit.setEnabled(akses.getpenilaian_medis_ralan_hemodialisa());
+        BtnEdit.setEnabled(akses.getpenilaian_medis_ralan_hemodialisa());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
