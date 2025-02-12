@@ -907,6 +907,7 @@ import rekammedis.RMHasilEndoskopiFaringLaring;
 import rekammedis.RMHasilEndoskopiHidung;
 import rekammedis.RMHasilEndoskopiTelinga;
 import rekammedis.RMHasilPemeriksaanEKG;
+import rekammedis.RMHasilPemeriksaanEcho;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
 import rekammedis.RMHasilPemeriksaanUSGNeonatus;
@@ -22225,6 +22226,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     } 
+    
+    private void btnHasilPemeriksaanECHOActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMHasilPemeriksaanEcho form=new RMHasilPemeriksaanEcho(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -22925,7 +22940,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur,btnSuratPemesananDapur,btnPengajuanBarangDapur,btnReturBarangDapur,btnHibahDapur,btnRingkasanPenerimaanDapur,
             btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur,btnStokKeluarDapurPerTanggal,btnSirkulasiDapur,btnSirkulasiDapur2,
             btnVerifikasiPenerimaanDapur,btnNilaiPenerimaanVendorDapurPerBulan,btnRingkasanHutangVendorBarangDapur,btnPenilaianPsikologiKlinis,btnPenilaianAwalMedisRanapNeonatus,
-            btnPenilaianDerajatDehidrasi,btnRingkasanJasaTindakanPasien,btnPendapatanPerAkun;
+            btnPenilaianDerajatDehidrasi,btnRingkasanJasaTindakanPasien,btnPendapatanPerAkun,btnHasilPemeriksaanECHO;
     
     public void isWall(){
         try{            
@@ -26818,6 +26833,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gethasil_pemeriksaan_ekg()==true){
                 Panelmenu.add(btnHasilPemeriksaanEKG);
+                jmlmenu++;
+            }
+            
+            if(akses.gethasil_pemeriksaan_echo()==true){
+                Panelmenu.add(btnHasilPemeriksaanEcho);
                 jmlmenu++;
             }
             
@@ -32242,6 +32262,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
         if(akses.gethasil_pemeriksaan_ekg()==true){
             Panelmenu.add(btnHasilPemeriksaanEKG);
+            jmlmenu++;
+        }
+        
+        if(akses.gethasil_pemeriksaan_echo()==true){
+            Panelmenu.add(btnHasilPemeriksaanEcho);
             jmlmenu++;
         }
         
@@ -39162,6 +39187,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gethasil_pemeriksaan_echo()==true){
+            if(btnHasilPemeriksaanECHO.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHasilPemeriksaanECHO);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gethasil_endoskopi_faring_laring()==true){
             if(btnHasilEndoskopiFaringLaring.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHasilEndoskopiFaringLaring);
@@ -45788,6 +45820,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilPemeriksaanEKG.setName("btnHasilPemeriksaanEKG"); 
         btnHasilPemeriksaanEKG.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilPemeriksaanEKG.addActionListener(this::btnHasilPemeriksaanEKGActionPerformed);
+        
+        btnHasilPemeriksaanECHO = new widget.ButtonBig();
+        btnHasilPemeriksaanECHO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2104702_beat_health_healthcare_heart_heartbeat_icon.png")));
+        btnHasilPemeriksaanECHO.setText("Hasil Pemeriksaan ECHO");
+        btnHasilPemeriksaanECHO.setIconTextGap(0);
+        btnHasilPemeriksaanECHO.setName("btnHasilPemeriksaanECHO"); 
+        btnHasilPemeriksaanECHO.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHasilPemeriksaanECHO.addActionListener(this::btnHasilPemeriksaanECHOActionPerformed);
         
         btnKirimDietSatuSehat = new widget.ButtonBig();
         btnKirimDietSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
