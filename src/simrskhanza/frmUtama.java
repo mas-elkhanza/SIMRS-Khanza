@@ -26837,7 +26837,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
             
             if(akses.gethasil_pemeriksaan_echo()==true){
-                Panelmenu.add(btnHasilPemeriksaanEcho);
+                Panelmenu.add(btnHasilPemeriksaanECHO);
                 jmlmenu++;
             }
             
@@ -32266,7 +32266,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         }
         
         if(akses.gethasil_pemeriksaan_echo()==true){
-            Panelmenu.add(btnHasilPemeriksaanEcho);
+            Panelmenu.add(btnHasilPemeriksaanECHO);
             jmlmenu++;
         }
         
