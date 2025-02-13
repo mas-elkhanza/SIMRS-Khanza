@@ -50,7 +50,7 @@
                                     if(Tambah(" hasil_pemeriksaan_usg_urologi_gambar "," '$no_rawat','$gambar'", " Gambar USG " )){
                                         move_uploaded_file($_FILES['gambar']['tmp_name'],$gambar);
                                     }
-                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat&tanggal=$tanggal&jam=$jam'>";                              
+                                    echo"<meta http-equiv='refresh' content='1;URL=?act=List&no_rawat=$no_rawat'>";                              
                                 }else if ((empty($no_rawat))||(empty($gambar))){
                                     echo 'Semua field harus isi..!!!';
                                 }

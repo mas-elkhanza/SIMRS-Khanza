@@ -1197,7 +1197,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Nomor.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
             NmKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),2).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString()+" ",""));
             NmPtg.setText(tbResep.getValueAt(tbResep.getSelectedRow(),3).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),8).toString()+" ",""));
-            pemasukan.setText(String.valueOf(tbResep.getValueAt(tbResep.getSelectedRow(),4).toString()));
+            pemasukan.setText(Valid.SetAngka6(Double.parseDouble(tbResep.getValueAt(tbResep.getSelectedRow(),4).toString())));
             Keterangan.setText(tbResep.getValueAt(tbResep.getSelectedRow(),5).toString());
             Keperluan.setText(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString());
             KdKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),7).toString());

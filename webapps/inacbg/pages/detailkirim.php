@@ -302,7 +302,7 @@
             <tr class="head">
                 <td width="41%" >Berat Saat Lahir</td><td width="">:</td>
                 <td width="57%">
-                    <input name="birth_weight" class="text" type="text" class="inputbox" value="<?php echo bukaquery("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$no_rkm_medis."'"); ?>" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
+                    <input name="birth_weight" class="text" type="text" class="inputbox" value="<?php echo getOne("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$no_rkm_medis."'"); ?>" size="5" maxlength="5" pattern="[0-9]{1,5}" title=" 0-9 (Maksimal 5 karakter)" autocomplete="off">
                 </td>
             </tr>
             <tr class="head">
