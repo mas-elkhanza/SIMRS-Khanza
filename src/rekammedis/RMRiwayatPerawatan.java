@@ -46,15 +46,8 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import simrskhanza.DlgCariPasien;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.kernel.pdf.PdfWriter;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.cert.CertificateException;
-import java.security.cert.X509Certificate;
 import java.util.Base64;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -435,6 +428,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkHasilPemeriksaanUSGNeonatus = new widget.CekBox();
         chkHasilPemeriksaanUSGGynecologi = new widget.CekBox();
         chkHasilPemeriksaanEKG = new widget.CekBox();
+        chkHasilPemeriksaanEcho = new widget.CekBox();
         chkHasilPemeriksaanEndoskopiFaringLaring = new widget.CekBox();
         chkHasilPemeriksaanEndoskopiHidung = new widget.CekBox();
         chkHasilPemeriksaanEndoskopiTelinga = new widget.CekBox();
@@ -637,7 +631,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2025 07:33:11" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-02-2025 22:50:31" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -946,7 +940,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3685));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3700));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1761,6 +1755,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkHasilPemeriksaanEKG.setOpaque(false);
         chkHasilPemeriksaanEKG.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkHasilPemeriksaanEKG);
+
+        chkHasilPemeriksaanEcho.setSelected(true);
+        chkHasilPemeriksaanEcho.setText("Hasil Pemeriksaan ECHO");
+        chkHasilPemeriksaanEcho.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkHasilPemeriksaanEcho.setName("chkHasilPemeriksaanEcho"); // NOI18N
+        chkHasilPemeriksaanEcho.setOpaque(false);
+        chkHasilPemeriksaanEcho.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkHasilPemeriksaanEcho);
 
         chkHasilPemeriksaanEndoskopiFaringLaring.setSelected(true);
         chkHasilPemeriksaanEndoskopiFaringLaring.setText("Hasil Pemeriksaan Endoskopi Faring/Laring");
@@ -2783,6 +2785,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningKankerKolorektal.setSelected(true);
             chkAsuhanPsikologiKlinis.setSelected(true);
             chkAsuhanMedisRanapNeonatus.setSelected(true);
+            chkHasilPemeriksaanEcho.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2943,6 +2946,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningKankerKolorektal.setSelected(false);
             chkAsuhanPsikologiKlinis.setSelected(false);
             chkAsuhanMedisRanapNeonatus.setSelected(false);
+            chkHasilPemeriksaanEcho.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3616,6 +3620,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkEdukasiPasienTerintegrasiRawatJalan;
     private widget.CekBox chkFollowUpDBD;
     private widget.CekBox chkHasilPemeriksaanEKG;
+    private widget.CekBox chkHasilPemeriksaanEcho;
     private widget.CekBox chkHasilPemeriksaanEndoskopiFaringLaring;
     private widget.CekBox chkHasilPemeriksaanEndoskopiHidung;
     private widget.CekBox chkHasilPemeriksaanEndoskopiTelinga;
@@ -4271,6 +4276,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanHasilPemeriksaanUSGGynocologi(rs.getString("no_rawat"));
                     //menampilkan hasil pemeriksaan EKG
                     menampilkanHasilPemeriksaanEKG(rs.getString("no_rawat"));
+                    //menampilkan hasil pemeriksaan ECHO
+                    menampilkanHasilPemeriksaanECHO(rs.getString("no_rawat"));
                     //menampilkan hasil Endoskopi Laring Faring
                     menampilkanHasilEndoskopiFaringLaring(rs.getString("no_rawat"));
                     //menampilkan hasil Endoskopi Hidung
@@ -30837,25 +30844,99 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
-    public RestTemplate getRest() throws NoSuchAlgorithmException, KeyManagementException {
-        sslContext = SSLContext.getInstance("SSL");
-        TrustManager[] trustManagers= {
-            new X509TrustManager() {
-                public X509Certificate[] getAcceptedIssuers() {return null;}
-                public void checkServerTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
-                public void checkClientTrusted(X509Certificate[] arg0, String arg1)throws CertificateException {}
+    private void menampilkanHasilPemeriksaanECHO(String norawat) {
+        try {
+            if(chkHasilPemeriksaanEKG.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select hasil_pemeriksaan_echo.tanggal,hasil_pemeriksaan_echo.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_echo.sistolik,hasil_pemeriksaan_echo.diastolic,hasil_pemeriksaan_echo.kontraktilitas,"+
+                            "hasil_pemeriksaan_echo.dimensi_ruang,hasil_pemeriksaan_echo.katup,hasil_pemeriksaan_echo.analisa_segmental,hasil_pemeriksaan_echo.erap,hasil_pemeriksaan_echo.lain_lain,hasil_pemeriksaan_echo.kesimpulan "+
+                            "from hasil_pemeriksaan_echo inner join dokter on hasil_pemeriksaan_echo.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_echo.no_rawat='"+norawat+"' order by hasil_pemeriksaan_echo.tanggal").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Hasil Pemeriksaan ECHO</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            file=Sequel.cariIsi("select hasil_pemeriksaan_echo_gambar.photo from hasil_pemeriksaan_echo_gambar where hasil_pemeriksaan_echo_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='50%' border='0'>Dokter : "+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                            
+                            if(!file.equals("")){
+                                htmlContent.append(
+                                    "<tr>"+
+                                        "<td valign='top'>"+
+                                           "PHOTO ECHO"+  
+                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                              "<tr>"+
+                                                  "<td valign='top' border='0' width='100%' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanecho/"+file+"'><img alt='Gambar EKG' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanecho/"+file+"' width='450' height='450'/></a></td>"+
+                                              "</tr>"+
+                                           "</table>"+
+                                        "</td>"+
+                                    "</tr>"
+                                );
+                            }
+                            
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "HASIL PEMERIKSAAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%'>Fungsi Sistolik LV : "+rs2.getString("sistolik")+"</td>"+
+                                              "<td width='50%'>Fungsi Diastolik LV : "+rs2.getString("diastolic")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%'>Kontaktilitas RV : "+rs2.getString("kontraktilitas")+"</td>"+
+                                              "<td width='50%'>Dimensi Ruang Jantung : "+rs2.getString("dimensi_ruang")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%'>Katup-katup : "+rs2.getString("katup")+"</td>"+
+                                              "<td width='50%'>Analisa Segmental : "+rs2.getString("analisa_segmental")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='50%'>eRAP : "+rs2.getString("erap")+"</td>"+
+                                              "<td width='50%'>Lain-lain : "+rs2.getString("lain_lain")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='2'>Kesimpulan : "+rs2.getString("kesimpulan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            );
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
             }
-        };
-        sslContext.init(null,trustManagers , new SecureRandom());
-        
-        sslFactory = new SSLSocketFactory(sslContext,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        scheme = new Scheme("https",443,sslFactory);
-        factory = new HttpComponentsClientHttpRequestFactory();
-        factory.getHttpClient().getConnectionManager().getSchemeRegistry().register(scheme);
-        restTemplate = new RestTemplate(factory);
-        /*restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        restTemplate.getMessageConverters().add(new ByteArrayHttpMessageConverter());
-        restTemplate.getMessageConverters().add(new ResourceHttpMessageConverter());*/
-        return restTemplate;
+        } catch (Exception e) {
+            System.out.println("Notif Hasil Pemeriksaan ECHO : "+e);
+        }
     }
 }
