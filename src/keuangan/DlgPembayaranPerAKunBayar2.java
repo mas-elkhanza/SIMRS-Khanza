@@ -41,7 +41,7 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
     private ResultSet rs,rsakunbayar;
     private double all=0,bayar=0;
     private int i,kolom=0,no=0;
-    private String shift="",tanggal2="",nopemasukanlain="",nonota="",petugas="",norawatjalan="",norawatinap="",notajual="",nodeposit="";
+    private String status="",tanggal2="",nopemasukanlain="",nonota="",petugas="",norawatjalan="",norawatinap="",notajual="",nodeposit="";
     private StringBuilder htmlContent;
     private String[] akunbayar;
     private double[] totalbayar;
@@ -708,6 +708,7 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                     norawatjalan="";
                     notajual="";
                     nopemasukanlain="";
+                    status="";
                     nodeposit="";
                     nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
                     if(!nonota.equals("")){
@@ -730,12 +731,13 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                                         nopemasukanlain=rs.getString("no_nota");
                                     }else{
                                         nopemasukanlain="";
+                                        status="Transaksi Tidak Ditemukan";
                                     }
                                 }
                             }                                            
                         }
                     }
-                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                    if((status.equals(""))&&(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
                             "<tr class='isi'>"+
@@ -872,6 +874,7 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                     norawatjalan="";
                     notajual="";
                     nopemasukanlain="";
+                    status="";
                     nodeposit="";
                     nonota=Sequel.cariIsi("select nota_inap.no_nota from nota_inap where nota_inap.no_rawat=?",rs.getString("no_nota"));
                     if(!nonota.equals("")){
@@ -894,12 +897,13 @@ public final class DlgPembayaranPerAKunBayar2 extends javax.swing.JDialog {
                                         nopemasukanlain=rs.getString("no_nota");
                                     }else{
                                         nopemasukanlain="";
+                                        status="Transaksi Tidak Ditemukan";
                                     }
                                 }
                             }                                            
                         }
                     }
-                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                    if((status.equals(""))&&(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
                             "<tr class='isi'>"+

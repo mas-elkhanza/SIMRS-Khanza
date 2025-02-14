@@ -592,13 +592,14 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
                                         carabayar="Pemasukan Lain-lain";
                                     }else{
                                         nopemasukanlain="";
+                                        carabayar="Transaksi Tidak Ditemukan";
                                     }
                                 }
                             }                                             
                         }
                     }
                     
-                    if((rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                    if((!carabayar.equals("Transaksi Tidak Ditemukan"))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         htmlContent.append(                             
                             "<tr class='isi'>"+
                                 "<td valign='middle' align='center'>"+no+"</td>"+
@@ -920,13 +921,14 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
                                         carabayar="Pemasukan Lain-lain";
                                     }else{
                                         nopemasukanlain="";
+                                        carabayar="Transaksi Tidak Ditemukan";
                                     }
                                 }
                             }                                             
                         }
                     }
                     
-                    if((rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                    if((!carabayar.equals("Transaksi Tidak Ditemukan"))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         htmlContent.append(                             
                             "<tr class='isi'>"+
                                 "<td valign='middle' align='center'>"+no+"</td>"+

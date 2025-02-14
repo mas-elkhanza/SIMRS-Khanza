@@ -745,12 +745,13 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
                                         carabayar="Pemasukan Lain-lain";
                                     }else{
                                         nopemasukanlain="";
+                                        carabayar="Transaksi Tidak Ditemukan";
                                     }
                                 }
                             }                                             
                         }
                     }
-                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                    if((!carabayar.equals("Transaksi Tidak Ditemukan"))&&(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
                             "<tr class='isi'>"+
@@ -923,12 +924,13 @@ public final class DlgPembayaranPerAKunBayar3 extends javax.swing.JDialog {
                                         carabayar="Pemasukan Lain-lain";
                                     }else{
                                         nopemasukanlain="";
+                                        carabayar="Transaksi Tidak Ditemukan";
                                     }
                                 }
                             }                                             
                         }
                     }
-                    if((petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
+                    if((!carabayar.equals("Transaksi Tidak Ditemukan"))&&(petugas.toLowerCase().trim().contains(User.getText().toLowerCase().trim()))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         all=all+rs.getDouble("jumlah_bayar");
                         htmlContent.append(                             
                             "<tr class='isi'>"+
