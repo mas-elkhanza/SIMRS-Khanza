@@ -473,7 +473,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     " if(resep_obat.tgl_perawatan='0000-00-00','Belum Terlayani','Sudah Terlayani') as status,resep_obat.status as status_asal "+
                     " from resep_obat inner join reg_periksa inner join pasien inner join dokter on resep_obat.no_rawat=reg_periksa.no_rawat  "+
                     " and reg_periksa.no_rkm_medis=pasien.no_rkm_medis and resep_obat.kd_dokter=dokter.kd_dokter where "+
-                    " resep_obat.tgl_peresepan<>'0000-00-00' and pasien.no_rkm_medis=? and "+
+                    " resep_obat.tgl_peresepan<>'0000-00-00' and pasien.no_rkm_medis=? "+
                     (TAMPILKANCOPYRESEPDOKTERLAIN.equals("no")?"and resep_obat.kd_dokter=?":"")+
                     " order by resep_obat.tgl_perawatan,resep_obat.jam desc");
             }
