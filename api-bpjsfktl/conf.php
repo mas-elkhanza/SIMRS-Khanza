@@ -2,7 +2,7 @@
     date_default_timezone_set('Asia/Jakarta');
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
-    define('DB_PASS', '');
+    define('DB_PASS', 'root');
     define('DB_NAME', 'sik');
     $akunbpjs=fetch_array(bukaquery("select kd_pj,aes_decrypt(usere,'nur') as user,aes_decrypt(passworde,'windi') as pass FROM password_asuransi"));
     @define('USERNAME', $akunbpjs['user']);
