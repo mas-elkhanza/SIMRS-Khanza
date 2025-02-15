@@ -2496,7 +2496,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                                     false,rsobat.getDouble("jml"),rsobat.getString("aturan_pakai"),rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                     rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),
                                     rsobat.getString("nama"),rsobat.getString("nama_industri"),rsobat.getDouble("h_beli"),rsobat.getDouble("stok")
-                                 }); 
+                                }); 
                             }         
                         }     
                     }else{
@@ -2505,7 +2505,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                                 false,rsobat.getDouble("jml"),rsobat.getString("aturan_pakai"),rsobat.getString("kode_brng"),rsobat.getString("nama_brng"),
                                 rsobat.getString("kode_sat"),rsobat.getString("letak_barang"),Valid.roundUp(rsobat.getDouble("harga"),100),
                                 rsobat.getString("nama"),rsobat.getString("nama_industri"),rsobat.getDouble("h_beli"),rsobat.getDouble("stok")
-                             }); 
+                            }); 
                         } 
                     }    
                 }catch(Exception e){
@@ -2822,27 +2822,31 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             if(STOKKOSONGRESEP.equals("no")){
                                 qrystokkosong=" and gudangbarang.stok>0 ";
                             }
-                            ps2=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
-                                " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
-                                " resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
-                                " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang inner join resep_dokter_racikan_detail "+
-                                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                                " and industrifarmasi.kode_industri=databarang.kode_industri and resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
-                                " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
-                                " resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? group by gudangbarang.kode_brng order by databarang.nama_brng");
+                            ps2=koneksi.prepareStatement(
+                                "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                                "databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
+                                "resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
+                                "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                "inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                                "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
+                                "where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
+                                "resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? group by gudangbarang.kode_brng order by databarang.nama_brng");
                         }else{
                             qrystokkosong="";
                             if(STOKKOSONGRESEP.equals("no")){
                                 qrystokkosong=" and gudangbarang.stok>0 ";
                             }
-                            ps2=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
-                                " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
-                                " resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
-                                " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang inner join resep_dokter_racikan_detail "+
-                                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                                " and industrifarmasi.kode_industri=databarang.kode_industri and resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
-                                " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
-                                " resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.nama_brng");
+                            ps2=koneksi.prepareStatement(
+                                "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                                "databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
+                                "resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
+                                "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                "inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                                "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
+                                "where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
+                                "resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.nama_brng");
                         }
                         try{ 
                             ps2.setDouble(1,kenaikan);
@@ -2901,15 +2905,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }
                             ps2=koneksi.prepareStatement(
                                 "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
-                                " databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
-                                " databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
-                                " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
-                                " resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
-                                " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang inner join resep_dokter_racikan_detail "+
-                                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                                " and industrifarmasi.kode_industri=databarang.kode_industri and resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
-                                " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
-                                " resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? group by gudangbarang.kode_brng order by databarang.nama_brng");
+                                "databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
+                                "databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
+                                "databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
+                                "resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
+                                "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                "inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                                "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
+                                "where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
+                                "resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? group by gudangbarang.kode_brng order by databarang.nama_brng");
                         }else{
                             qrystokkosong="";
                             if(STOKKOSONGRESEP.equals("no")){
@@ -2917,15 +2922,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }
                             ps2=koneksi.prepareStatement(
                                 "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
-                                " databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
-                                " databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
-                                " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
-                                " resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
-                                " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang inner join resep_dokter_racikan_detail "+
-                                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                                " and industrifarmasi.kode_industri=databarang.kode_industri and resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
-                                " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
-                                " resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.nama_brng");
+                                "databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
+                                "databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
+                                "databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
+                                "resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
+                                "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                "inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                                "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
+                                "where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
+                                "resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.nama_brng");
                         }
                         try{ 
                             ps2.setString(1,bangsal);
@@ -3336,7 +3342,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
                         " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         " inner join resep_dokter on resep_dokter.kode_brng=databarang.kode_brng "+
-                        " where  databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
+                        " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
                         " resep_dokter.no_resep=? group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
                     qrystokkosong="";
@@ -3352,7 +3358,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         " inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
                         " inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         " inner join resep_dokter on resep_dokter.kode_brng=databarang.kode_brng "+
-                        " where  databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
+                        " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
                         " resep_dokter.no_resep=? order by databarang.nama_brng");
                 }
                 
@@ -3570,27 +3576,31 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             if(STOKKOSONGRESEP.equals("no")){
                                 qrystokkosong=" and gudangbarang.stok>0 ";
                             }
-                            ps2=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
-                                " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
-                                " resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
-                                " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang inner join resep_dokter_racikan_detail "+
-                                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                                " and industrifarmasi.kode_industri=databarang.kode_industri and resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
-                                " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
-                                " resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? group by gudangbarang.kode_brng order by databarang.nama_brng");
+                            ps2=koneksi.prepareStatement(
+                                "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                                "databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
+                                "resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
+                                "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                "inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                                "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
+                                "where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
+                                "resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? group by gudangbarang.kode_brng order by databarang.nama_brng");
                         }else{
                             qrystokkosong="";
                             if(STOKKOSONGRESEP.equals("no")){
                                 qrystokkosong=" and gudangbarang.stok>0 ";
                             }
-                            ps2=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
-                                " databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
-                                " resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
-                                " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang inner join resep_dokter_racikan_detail "+
-                                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                                " and industrifarmasi.kode_industri=databarang.kode_industri and resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
-                                " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
-                                " resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.nama_brng");
+                            ps2=koneksi.prepareStatement(
+                                "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,(databarang.h_beli+(databarang.h_beli*?)) as harga,"+
+                                "databarang.letak_barang,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
+                                "resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
+                                "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                "inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                                "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
+                                "where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
+                                "resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.nama_brng");
                         }
                         
                         try{ 
@@ -3649,15 +3659,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }
                             ps2=koneksi.prepareStatement(
                                 "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
-                                " databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
-                                " databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
-                                " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
-                                " resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
-                                " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang inner join resep_dokter_racikan_detail "+
-                                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                                " and industrifarmasi.kode_industri=databarang.kode_industri and resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
-                                " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
-                                " resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? group by gudangbarang.kode_brng order by databarang.nama_brng");
+                                "databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
+                                "databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
+                                "databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,sum(gudangbarang.stok) as stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
+                                "resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
+                                "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                "inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                                "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
+                                "where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? and "+
+                                "resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? group by gudangbarang.kode_brng order by databarang.nama_brng");
                         }else{
                             qrystokkosong="";
                             if(STOKKOSONGRESEP.equals("no")){
@@ -3665,15 +3676,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }
                             ps2=koneksi.prepareStatement(
                                 "select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat,"+
-                                " databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
-                                " databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
-                                " databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
-                                " resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
-                                " from databarang inner join jenis inner join industrifarmasi inner join gudangbarang inner join resep_dokter_racikan_detail "+
-                                " on databarang.kdjns=jenis.kdjns and databarang.kode_brng=gudangbarang.kode_brng "+
-                                " and industrifarmasi.kode_industri=databarang.kode_industri and resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
-                                " where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
-                                " resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.nama_brng");
+                                "databarang.karyawan,databarang.ralan,databarang.beliluar,databarang.kelas1," +
+                                "databarang.kelas2,databarang.kelas3,databarang.vip,databarang.vvip,"+
+                                "databarang.letak_barang,databarang.utama,industrifarmasi.nama_industri,databarang.h_beli,gudangbarang.stok,databarang.kapasitas,resep_dokter_racikan_detail.p1,"+
+                                "resep_dokter_racikan_detail.p2,resep_dokter_racikan_detail.kandungan,resep_dokter_racikan_detail.jml "+
+                                "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
+                                "inner join industrifarmasi on industrifarmasi.kode_industri=databarang.kode_industri "+
+                                "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
+                                "inner join resep_dokter_racikan_detail on resep_dokter_racikan_detail.kode_brng=databarang.kode_brng "+
+                                "where databarang.status='1' "+qrystokkosong+" and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? and "+
+                                "resep_dokter_racikan_detail.no_resep=? and resep_dokter_racikan_detail.no_racik=? order by databarang.nama_brng");
                         }
                         try{ 
                             ps2.setString(1,bangsal);
