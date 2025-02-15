@@ -57,7 +57,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement psresep,pscarikapasitas,psresepasuransi,ps2;
     private ResultSet rsobat,carikapasitas,rs2;
-    private double x=0,y=0,kenaikan=0,ttl=0,ppnobat=0,jumlahracik=0,persenracik=0,kapasitasracik=0;
+    private double y=0,kenaikan=0,ttl=0,ppnobat=0,jumlahracik=0,persenracik=0,kapasitasracik=0;
     private int i=0,z=0,row2=0,r=0;
     private boolean ubah=false,copy=false,sukses=true;
     private boolean[] pilih; 
@@ -272,19 +272,19 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampilcacheresep();
+                        BtnCariActionPerformed(null);
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampilcacheresep();
+                        BtnCariActionPerformed(null);
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampilcacheresep();
+                        BtnCariActionPerformed(null);
                     }
                 }
             });

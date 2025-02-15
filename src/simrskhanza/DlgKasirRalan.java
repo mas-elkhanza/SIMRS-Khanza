@@ -9459,7 +9459,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                             tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),2).toString(),
                             tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),3).toString(),
                             Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString()+"'"),
-                            Sequel.cariIsi("select jam_reg from reg_periksa where no_rawat='"+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString()+"'")
+                            Sequel.cariIsi("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='"+tbKasirRalan2.getValueAt(tbKasirRalan2.getSelectedRow(),10).toString()+"'")
                         );
                         dlgobt.isCek();
                         dlgobt.setDokter(
@@ -11619,7 +11619,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     }//GEN-LAST:event_ppProgramPRBActionPerformed
 
     private void ppTampilkanBelumDiagnosaBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppTampilkanBelumDiagnosaBtnPrintActionPerformed
-        tampildiagnosa=" and reg_periksa.no_rawat not in (select no_rawat from diagnosa_pasien) ";
+        tampildiagnosa=" and reg_periksa.no_rawat not in (select diagnosa_pasien.no_rawat from diagnosa_pasien) ";
         tampilkasir();
     }//GEN-LAST:event_ppTampilkanBelumDiagnosaBtnPrintActionPerformed
 
@@ -11633,7 +11633,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             if(tbKasirRalan.getSelectedRow()!= -1){
                 try {
-                    pskasir=koneksi.prepareStatement("select no_kartu,nama_pasien,tglsep from bridging_sep where no_rawat=?");
+                    pskasir=koneksi.prepareStatement("select bridging_sep.no_kartu,bridging_sep.nama_pasien,bridging_sep.tglsep from bridging_sep where bridging_sep.no_rawat=?");
                     try {
                         pskasir.setString(1,TNoRw.getText());
                         rskasir=pskasir.executeQuery();
@@ -11676,7 +11676,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }else{
             if(tbKasirRalan.getSelectedRow()!= -1){
                 try {
-                    pskasir=koneksi.prepareStatement("select no_kartu,nama_pasien from bridging_sep where no_rawat=?");
+                    pskasir=koneksi.prepareStatement("select bridging_sep.no_kartu,bridging_sep.nama_pasien from bridging_sep where bridging_sep.no_rawat=?");
                     try {
                         pskasir.setString(1,TNoRw.getText());
                         rskasir=pskasir.executeQuery();
