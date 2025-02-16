@@ -3733,6 +3733,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         isPasien();
         BtnCari1ActionPerformed(null);
     }
+    
+    public void setNoRawat(String norawat) {
+        TabRawat.setSelectedIndex(2);
+        NoRawat.setText(norawat);
+        R4.setSelected(true);
+    }
 
     private void isPasien() {
         try{

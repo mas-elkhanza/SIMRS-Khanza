@@ -49,7 +49,10 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+import keuangan.DlgBilingRalan;
+import keuangan.DlgBilingRanap;
 import laporan.DlgDiagnosaPenyakit;
+import rekammedis.RMRiwayatPerawatan;
 
 /**
  *
@@ -65,8 +68,6 @@ public class INACBGHybrid extends javax.swing.JDialog {
     private final JTextField txtURL = new JTextField();
     private final JProgressBar progressBar = new JProgressBar();
     private final validasi Valid=new validasi();
-    private final DlgDiagnosaPenyakit diagnosa=new DlgDiagnosaPenyakit(null,false);
-    private final INACBGPerawatanCorona corona=new INACBGPerawatanCorona(null,false);
     private final Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
@@ -77,44 +78,6 @@ public class INACBGHybrid extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         initComponents2();
-        
-        diagnosa.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                loadURL(URL);
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        corona.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                loadURL(URL);
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
     }
     
     private void initComponents2() {           
@@ -208,6 +171,25 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                     try {
                                         rs=ps.executeQuery();
                                         if(rs.next()){
+                                            DlgDiagnosaPenyakit diagnosa=new DlgDiagnosaPenyakit(null,false);
+                                            diagnosa.addWindowListener(new WindowListener() {
+                                                @Override
+                                                public void windowOpened(WindowEvent e) {}
+                                                @Override
+                                                public void windowClosing(WindowEvent e) {}
+                                                @Override
+                                                public void windowClosed(WindowEvent e) {
+                                                    loadURL(URL);
+                                                }
+                                                @Override
+                                                public void windowIconified(WindowEvent e) {}
+                                                @Override
+                                                public void windowDeiconified(WindowEvent e) {}
+                                                @Override
+                                                public void windowActivated(WindowEvent e) {}
+                                                @Override
+                                                public void windowDeactivated(WindowEvent e) {}
+                                            });
                                             diagnosa.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                             diagnosa.setLocationRelativeTo(internalFrame1);
                                             diagnosa.isCek();
@@ -233,12 +215,144 @@ public class INACBGHybrid extends javax.swing.JDialog {
                                     try {
                                         rs=ps.executeQuery();
                                         if(rs.next()){
+                                            INACBGPerawatanCorona corona=new INACBGPerawatanCorona(null,false);
+                                            corona.addWindowListener(new WindowListener() {
+                                                @Override
+                                                public void windowOpened(WindowEvent e) {}
+                                                @Override
+                                                public void windowClosing(WindowEvent e) {}
+                                                @Override
+                                                public void windowClosed(WindowEvent e) {
+                                                    loadURL(URL);
+                                                }
+                                                @Override
+                                                public void windowIconified(WindowEvent e) {}
+                                                @Override
+                                                public void windowDeiconified(WindowEvent e) {}
+                                                @Override
+                                                public void windowActivated(WindowEvent e) {}
+                                                @Override
+                                                public void windowDeactivated(WindowEvent e) {}
+                                            });
                                             corona.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                             corona.setLocationRelativeTo(internalFrame1);
                                             corona.isCek();
                                             corona.setPasien(rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"));
                                             corona.tampil();
                                             corona.setVisible(true); 
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs!=null){
+                                            rs.close();
+                                        }
+                                        if(ps!=null){
+                                            ps.close();
+                                        }
+                                    }   
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("RiwayatPerawatan")){
+                                    URL=engine.getLocation().replaceAll("RiwayatPerawatan","no");
+                                    ps=koneksi.prepareStatement("select temppanggilnorawat.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien "+
+                                            "from temppanggilnorawat inner join reg_periksa on temppanggilnorawat.no_rawat=reg_periksa.no_rawat "+
+                                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis");
+                                    try {
+                                        rs=ps.executeQuery();
+                                        if(rs.next()){
+                                            RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,false);
+                                            resume.addWindowListener(new WindowListener() {
+                                                @Override
+                                                public void windowOpened(WindowEvent e) {}
+                                                @Override
+                                                public void windowClosing(WindowEvent e) {}
+                                                @Override
+                                                public void windowClosed(WindowEvent e) {
+                                                    loadURL(URL);
+                                                }
+                                                @Override
+                                                public void windowIconified(WindowEvent e) {}
+                                                @Override
+                                                public void windowDeiconified(WindowEvent e) {}
+                                                @Override
+                                                public void windowActivated(WindowEvent e) {}
+                                                @Override
+                                                public void windowDeactivated(WindowEvent e) {}
+                                            });
+                                            resume.setNoRawat(rs.getString("no_rawat"));
+                                            resume.setNoRm(rs.getString("no_rkm_medis"),rs.getString("nm_pasien"));
+                                            resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                            resume.setLocationRelativeTo(internalFrame1);
+                                            resume.setVisible(true);
+                                        }
+                                    } catch (Exception e) {
+                                        System.out.println("Notif : "+e);
+                                    } finally{
+                                        if(rs!=null){
+                                            rs.close();
+                                        }
+                                        if(ps!=null){
+                                            ps.close();
+                                        }
+                                    }   
+                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/","").contains("DataBilling")){
+                                    URL=engine.getLocation().replaceAll("DataBilling","no");
+                                    ps=koneksi.prepareStatement("select temppanggilnorawat.no_rawat,reg_periksa.status_lanjut from temppanggilnorawat inner join reg_periksa on temppanggilnorawat.no_rawat=reg_periksa.no_rawat");
+                                    try {
+                                        rs=ps.executeQuery();
+                                        if(rs.next()){
+                                            if(rs.getString("status_lanjut").equals("Ralan")){
+                                                DlgBilingRalan dlgbil=new DlgBilingRalan(null,false);
+                                                dlgbil.addWindowListener(new WindowListener() {
+                                                    @Override
+                                                    public void windowOpened(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowClosing(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowClosed(WindowEvent e) {
+                                                        loadURL(URL);
+                                                    }
+                                                    @Override
+                                                    public void windowIconified(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowDeiconified(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowActivated(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowDeactivated(WindowEvent e) {}
+                                                });
+                                                dlgbil.TNoRw.setText(rs.getString("no_rawat"));
+                                                dlgbil.isCek();
+                                                dlgbil.isRawat(); 
+                                                dlgbil.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                                dlgbil.setLocationRelativeTo(internalFrame1);
+                                                dlgbil.setVisible(true);
+                                            }else if(rs.getString("status_lanjut").equals("Ranap")){
+                                                DlgBilingRanap billing=new DlgBilingRanap( null,false);
+                                                billing.addWindowListener(new WindowListener() {
+                                                    @Override
+                                                    public void windowOpened(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowClosing(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowClosed(WindowEvent e) {
+                                                        loadURL(URL);
+                                                    }
+                                                    @Override
+                                                    public void windowIconified(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowDeiconified(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowActivated(WindowEvent e) {}
+                                                    @Override
+                                                    public void windowDeactivated(WindowEvent e) {}
+                                                });
+                                                billing.TNoRw.setText(rs.getString("no_rawat"));                   
+                                                billing.isCek();  
+                                                billing.isRawat();          
+                                                billing.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                                billing.setLocationRelativeTo(internalFrame1);
+                                                billing.setVisible(true);
+                                            }
                                         }
                                     } catch (Exception e) {
                                         System.out.println("Notif : "+e);
