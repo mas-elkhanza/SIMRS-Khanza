@@ -21,13 +21,13 @@
             $codernik       = validTeks(isset($_GET['codernik'])?$_GET['codernik']:NULL);
             $carabayar      = validTeks(str_replace("_"," ",isset($_GET['carabayar']))?str_replace("_"," ",$_GET['carabayar']):NULL);
             $statuskirim    = validTeks(str_replace("_"," ",isset($_GET['statuskirim']))?str_replace("_"," ",$_GET['statuskirim']):NULL);
-            $_sql         = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
-                            reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,
-                            pasien.umur,pasien.tgl_lahir,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,
-                            reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab 
-                            from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
-                            on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-                            and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='$norawat' ";
+            $_sql           = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
+                               reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,
+                               pasien.umur,pasien.tgl_lahir,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,
+                               reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab 
+                               from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab 
+                               on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+                               and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='$norawat' ";
             $hasil        = bukaquery($_sql);
             $baris        = mysqli_fetch_array($hasil);
             $no_rkm_medis = $baris["no_rkm_medis"];
@@ -41,7 +41,7 @@
             $tgl_registrasi = $baris["tgl_registrasi"];
             $jam_reg      = $baris["jam_reg"];
             $nm_poli      = $baris["nm_poli"];
-            $nm_dokter2="";
+            $nm_dokter2   ="";
             $a=1;
             $hasildokter=bukaquery("select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='".$baris["no_rawat"]."'");
             while($barisdokter = mysqli_fetch_array($hasildokter)) {
@@ -104,6 +104,19 @@
             $naikkelas=getOne("select bridging_sep.klsnaik from bridging_sep where bridging_sep.no_rawat='$norawat'");
             if(empty($naikkelas)){
                 $naikkelas=getOne("select bridging_sep_internal.klsnaik from bridging_sep_internal where bridging_sep_internal.no_rawat='$norawat'");
+            }
+            
+            $asalrujukan=getOne("select bridging_sep.asal_rujukan from bridging_sep where bridging_sep.no_rawat='$norawat'");
+            if(empty($asalrujukan)){
+                $asalrujukan=getOne("select bridging_sep_internal.asal_rujukan from bridging_sep_internal where bridging_sep_internal.no_rawat='$norawat'");
+            }
+            
+            if($asalrujukan=="1. Faskes 1"){
+                $asalrujukan="<option value='gp'>Rujukan FKTP</option>";
+            }else if($asalrujukan=="2. Faskes 2(RS)"){
+                $asalrujukan="<option value='hosp-trans'>Rujukan FKRTL</option>";
+            }else{
+                $asalrujukan="<option value='other'>Lain-lain</option>";
             }
             
             $upgrade_class_ind="0";
@@ -186,6 +199,26 @@
                 <td width="41%" >No.Kartu</td><td width="">:</td>
                 <td width="57%">
                     <input name="nokartu" class="text" type=text class="inputbox" value="<?php echo getOne("select no_peserta from pasien where no_rkm_medis='$no_rkm_medis'");?>" size="40" maxlength="40" pattern="[A-Z0-9-]{1,40}" title=" A-Z0-9- (Maksimal 40 karakter)" autocomplete="off" required>
+                </td>
+            </tr>
+            
+            <tr class="head">
+                <td width="41%" >Cara Masuk</td><td width="">:</td>
+                <td width="57%">
+                    <select name="cara_masuk" class="text2">
+                       <?php echo $asalrujukan;?>
+                       <option value="gp">Rujukan FKTP</option>
+                       <option value="hosp-trans">Rujukan FKRTL</option>
+                       <option value="mp">Rujukan Spesialis</option>
+                       <option value="outp">Dari Rawat Jalan</option>
+                       <option value="inp">Dari Rawat Inap</option>
+                       <option value="emd">Dari Rawat Darurat</option>
+                       <option value="born">Lahir Di RS</option>
+                       <option value="nursing">Rujukan Panti Jompo</option>
+                       <option value="psych">Rujukan Dari RS Jiwa</option>
+                       <option value="rehab">Rujukan Fasilitas Rehab</option>
+                       <option value="other">Lain-lain</option>
+                    </select> 
                 </td>
             </tr>
             <tr class="head">
@@ -752,6 +785,7 @@
                 $nm_pasien         = validTeks(trim($_POST['nm_pasien']));
                 $keluar            = validTeks(trim($_POST['keluar']));
                 $kelas_rawat       = validTeks(trim($_POST['kelas_rawat']));
+                $cara_masuk        = validTeks(trim($_POST['cara_masuk']));
                 $adl_sub_acute     = validTeks(trim($_POST['adl_sub_acute']));
                 $adl_chronic       = validTeks(trim($_POST['adl_chronic']));
                 $icu_indikator     = validTeks(trim($_POST['icu_indikator']));
@@ -830,7 +864,7 @@
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
                             $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$pemulasaraan_jenazah,$kantong_jenazah, 
                             $peti_jenazah,$plastik_erat,$desinfektan_jenazah,$mobil_jenazah,$desinfektan_mobil_jenazah,
-                            $covid19_status_cd,$nomor_kartu_t,$episodes,$covid19_cc_ind,$sistole,$diastole);
+                            $covid19_status_cd,$nomor_kartu_t,$episodes,$covid19_cc_ind,$sistole,$diastole,$cara_masuk);
                         echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&carabayar=".str_replace(" ","_",$carabayar)."&statuskirim=".str_replace(" ","_",$statuskirim)."'>";
                     }else if ((empty($norawat))||(empty($nosep))||(empty($nokartu))||(empty($nomor_kartu_t))){
                         echo 'Semua field harus isi..!!!';
@@ -845,14 +879,12 @@
                             $tarif_poli_eks,$nama_dokter,getKelasRS(),"3","JKN","#",$codernik,
                             $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
                             $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
-                            $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$sistole,$diastole);
+                            $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$sistole,$diastole,$cara_masuk);
                         echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&carabayar=".str_replace(" ","_",$carabayar)."&statuskirim=".str_replace(" ","_",$statuskirim)."'>";
                     }else if ((empty($norawat))||(empty($nosep))||(empty($nokartu))){
                         echo 'Semua field harus isi..!!!';
                     }
-                }
-                
-                    
+                }   
             }
         ?>         
     </div>

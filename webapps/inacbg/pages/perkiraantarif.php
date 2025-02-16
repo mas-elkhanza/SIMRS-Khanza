@@ -42,6 +42,6 @@
         }
         BuatKlaimBaru($no_peserta,$norawat,$no_rkm_medis,$nm_pasien,$tgl_lahir." 00:00:00", $gender);
         EditUlangKlaim($norawat);
-        UpdateDataKlaim($norawat,$no_peserta,$tgl_registrasi,$tgl_registrasi,"1","Kelas 2","","","","","","","","","","0",$discharge_status,$penyakit,$prosedur,getOne("select biaya_reg from reg_periksa where no_rawat='".$norawat."'"), $nm_dokter,getKelasRS(),"","","#",getOne("select no_ik from inacbg_coder_nik"),$norawat);
+        UpdateDataKlaim($norawat,$no_peserta,$tgl_registrasi,$tgl_registrasi,"1","Kelas 2","","","","","","","","","","0",$discharge_status,$penyakit,$prosedur,getOne("select biaya_reg from reg_periksa where no_rawat='".$norawat."'"), $nm_dokter,getKelasRS(),"","","#",getOne("select no_ik from inacbg_coder_nik"),$norawat,"other");
     }   
 ?>
