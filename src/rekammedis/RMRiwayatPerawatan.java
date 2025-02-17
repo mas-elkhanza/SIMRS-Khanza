@@ -6023,6 +6023,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     JOptionPane.showMessageDialog(null,"Harus dilakukan oleh Dokter Poli yang menangani pasien...!!!!");
                                 }
                             }else if(rs.getString("status_lanjut").equals("Ranap")){
+                                System.out.println("ESign : "+esign+" Sertisign : "+sertisign);
                                 try{
                                     rs3=koneksi.prepareStatement(
                                         "select dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
@@ -6057,6 +6058,20 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "</td>"+
                                             "</tr>"
                                         );    
+                                    }else{
+                                        if(akses.getkode().equals(rs.getString("kd_dokter"))){
+                                            htmlContent.append(
+                                                "<tr class='isi'>"+ 
+                                                   "<td valign='top' width='2%'></td>"+        
+                                                   "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>"+
+                                                   "<td valign='middle' width='1%' align='center'>:</td>"+
+                                                   "<td valign='middle' width='79%' align='center'>Dokter DPJP<br><br><br><br><br><br>#1A<br><br><br><br><br><br>"+rs.getString("nm_dokter")+"</td>"+
+                                                "</tr>"
+                                            );
+                                        }else{
+                                            sertisign=false;
+                                            JOptionPane.showMessageDialog(null,"Harus dilakukan oleh Dokter Poli yang menangani pasien...!!!!");
+                                        }
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Tanda Tangan IGD : "+e);
