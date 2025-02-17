@@ -39,7 +39,6 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private BPJSMapingPoli poli=new BPJSMapingPoli(null,false);
 
     /** Creates new form DlgKamar
      * @param parent
@@ -263,6 +262,7 @@ public final class BPJSCekMappingPoli extends javax.swing.JDialog {
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        BPJSMapingPoli poli=new BPJSMapingPoli(null,false);
         poli.emptTeks();
         poli.isCek();
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
