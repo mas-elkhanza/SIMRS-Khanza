@@ -271,23 +271,23 @@
                                                             $namalokasi = "";
                                                             $kodedokter = "";
                                                             $namadokter = "";
-                                                            if($rsquerycari["status_lanjut"]=="Ralan"){
+                                                            if($rsquery["status_lanjut"]=="Ralan"){
                                                                 $queryralan = bukaquery2("select reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli from reg_periksa 
                                                                                         inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli 
-                                                                                        where reg_periksa.no_rawat='".$rsquerycari["no_rawat"]."'");
+                                                                                        where reg_periksa.no_rawat='".$rsquery["no_rawat"]."'");
                                                                 if($rsqueryralan = mysqli_fetch_array($queryralan)) {
-                                                                    $kodelokasi = $rsqueryralan["kd_poli"];
+                                                                    $kodelokasi = "0001";
                                                                     $namalokasi = $rsqueryralan["nm_poli"];
-                                                                    $kodedokter = $rsqueryralan["kd_dokter"];
+                                                                    $kodedokter = $rsqueryralan["kd_poli"];
                                                                     $namadokter = $rsqueryralan["nm_dokter"];
                                                                 }
-                                                            }else if($rsquerycari["status_lanjut"]=="Ranap"){
+                                                            }else if($rsquery["status_lanjut"]=="Ranap"){
                                                                 $queryranap = bukaquery2("select kamar_inap.kd_kamar,kamar.kelas,bangsal.kd_bangsal,bangsal.nm_bangsal from kamar_inap inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar
-                                                                                          inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat='".$rsquerycari["no_rawat"]."' order by kamar_inap.tgl_masuk desc limit 1");
+                                                                                          inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal where kamar_inap.no_rawat='".$rsquery["no_rawat"]."' order by kamar_inap.tgl_masuk desc limit 1");
                                                                 if($rsqueryranap = mysqli_fetch_array($queryranap)) {
-                                                                    $kodelokasi = $rsqueryranap["kd_bangsal"];
+                                                                    $kodelokasi = "0002";
                                                                     $namalokasi = $rsqueryranap["nm_bangsal"];
-                                                                    $kodedokter = $rsqueryranap["kd_kamar"];
+                                                                    $kodedokter = $rsqueryranap["kd_bangsal"];
                                                                     $namadokter = $rsqueryranap["kelas"];
                                                                 }
                                                             }

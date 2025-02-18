@@ -123,13 +123,13 @@
             if(!empty($naikkelas)){
                 $upgrade_class_ind="1";
                 if($naikkelas=="1"){
-                    $naikkelas="Kelas VVIP";
+                    $naikkelas="vvip";
                 }else if($naikkelas=="2"){
-                    $naikkelas="Kelas VIP";
+                    $naikkelas="vip";
                 }else if($naikkelas=="3"){
-                    $naikkelas="Kelas 1";
+                    $naikkelas="kelas_1";
                 }else if($naikkelas=="4"){
-                    $naikkelas="Kelas 2";
+                    $naikkelas="kelas_2";
                 }else{
                     $naikkelas="";
                 }   
@@ -228,9 +228,15 @@
                         value="<?php if($status_lanjut=="Ralan"){
                                          echo $tgl_registrasi." ".$jam_reg;
                                      }else{
-                                         echo getOne("select concat(kamar_inap.tgl_keluar,' ',kamar_inap.jam_keluar) from kamar_inap where kamar_inap.no_rawat='".$norawat."'order by kamar_inap.tgl_keluar desc limit 1");
+                                         $keluarpasien = getOne("select concat(kamar_inap.tgl_keluar,' ',kamar_inap.jam_keluar) from kamar_inap where kamar_inap.no_rawat='".$norawat."' order by kamar_inap.tgl_keluar desc limit 1");
+                                         if(empty($keluarpasien)){
+                                             $keluarpasien = $tgl_registrasi." ".$jam_reg;
+                                         }else if($keluarpasien=="0000-00-00 00:00:00"){
+                                             $keluarpasien = $tgl_registrasi." ".$jam_reg;
+                                         }
+                                         echo $keluarpasien;
                                      }
-                                ?>" size="15" maxlength="10">
+                                ?>" size="15" maxlength="20">
                 </td>
             </tr>
             <tr class="head">
@@ -778,12 +784,12 @@
             $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
             if (isset($BtnSimpan)) {
                 $norawat           = validTeks(trim($_POST['no_rawat']));
-                $tgl_registrasi    = validTeks(trim($_POST['tgl_registrasi']));
+                $tgl_registrasi    = validTeks3(trim($_POST['tgl_registrasi']));
                 $codernik          = validTeks(trim($_POST['codernik']));
                 $nosep             = validTeks(trim($_POST['nosep']));
                 $nokartu           = validTeks(trim($_POST['nokartu']));
                 $nm_pasien         = validTeks(trim($_POST['nm_pasien']));
-                $keluar            = validTeks(trim($_POST['keluar']));
+                $keluar            = validTeks3(trim($_POST['keluar']));
                 $kelas_rawat       = validTeks(trim($_POST['kelas_rawat']));
                 $cara_masuk        = validTeks(trim($_POST['cara_masuk']));
                 $adl_sub_acute     = validTeks(trim($_POST['adl_sub_acute']));
@@ -873,14 +879,17 @@
                     if ((!empty($norawat))&&(!empty($nosep))&&(!empty($nokartu))) {                        
                         BuatKlaimBaru2($nokartu,$nosep,$no_rkm_medis,$nm_pasien,$tgl_lahir." 00:00:00", $gender,$norawat);
                         EditUlangKlaim($nosep);
-                        UpdateDataKlaim2($nosep,$nokartu,$tgl_registrasi,$keluar,$jnsrawat,$kelas_rawat,$adl_sub_acute,
-                            $adl_chronic,$icu_indikator,$icu_los,$ventilator_hour,$upgrade_class_ind,$upgrade_class_class,
-                            $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure, 
-                            $tarif_poli_eks,$nama_dokter,getKelasRS(),"3","JKN","#",$codernik,
-                            $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
-                            $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
-                            $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$sistole,$diastole,$cara_masuk);
-                        echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&carabayar=".str_replace(" ","_",$carabayar)."&statuskirim=".str_replace(" ","_",$statuskirim)."'>";
+                        if(UpdateDataKlaim2(
+                                $nosep,$nokartu,$tgl_registrasi,$keluar,$jnsrawat,$kelas_rawat,$adl_sub_acute,
+                                $adl_chronic,$icu_indikator,$icu_los,$ventilator_hour,$upgrade_class_ind,$upgrade_class_class,
+                                $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure, 
+                                $tarif_poli_eks,$nama_dokter,getKelasRS(),"3","JKN","#",$codernik,
+                                $prosedur_non_bedah,$prosedur_bedah,$konsultasi,$tenaga_ahli,$keperawatan,$penunjang,
+                                $radiologi,$laboratorium,$pelayanan_darah,$rehabilitasi,$kamar,$rawat_intensif,$obat,
+                                $obat_kronis,$obat_kemoterapi,$alkes,$bmhp,$sewa_alat,$sistole,$diastole,$cara_masuk
+                            )=="Berhasil"){
+                            echo "<meta http-equiv='refresh' content='1;URL=?act=KlaimBaruManual2&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&carabayar=".str_replace(" ","_",$carabayar)."&statuskirim=".str_replace(" ","_",$statuskirim)."'>";
+                        }   
                     }else if ((empty($norawat))||(empty($nosep))||(empty($nokartu))){
                         echo 'Semua field harus isi..!!!';
                     }

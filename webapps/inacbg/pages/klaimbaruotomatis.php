@@ -187,13 +187,13 @@
                             if(!empty($naikkelas)){
                                 $upgrade_class_ind="1";
                                 if($naikkelas=="1"){
-                                    $naikkelas="Kelas VVIP";
+                                    $naikkelas="vvip";
                                 }else if($naikkelas=="2"){
-                                    $naikkelas="Kelas VIP";
+                                    $naikkelas="vip";
                                 }else if($naikkelas=="3"){
-                                    $naikkelas="Kelas 1";
+                                    $naikkelas="kelas_1";
                                 }else if($naikkelas=="4"){
-                                    $naikkelas="Kelas 2";
+                                    $naikkelas="kelas_2";
                                 }else{
                                     $naikkelas="";
                                 }   

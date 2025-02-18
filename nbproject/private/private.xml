@@ -20,11 +20,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/laporan/DlgRL13KetersediaanTempatTidur.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMPenilaianAwalMedisRanapNeonatus.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/inventory/DlgPeresepanDokter.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMRiwayatPerawatan.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/setting/database.xml</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMPenilaianBayiBaruLahir.java</file>
         </group>
     </open-files>
 </project-private>

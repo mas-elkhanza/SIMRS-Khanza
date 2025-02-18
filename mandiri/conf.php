@@ -73,10 +73,10 @@
         $response = array(
             'metadata' => array(
                 'message' => 'Data Sudah Pernah Di Buat Atau Sudah Ada !',
-                'code' => 201
+                'code' => 401
             )
         );
-        http_response_code(201);
+        http_response_code(401);
         $result = mysqli_query($konektor, $sql) or die(mysqli_error($konektor)."".json_encode($response)."");
         mysqli_close($konektor);
         return $result;
@@ -314,10 +314,10 @@
             $response = array(
                 'metadata' => array(
                     'message' => $e->getMessage(),
-                    'code' => 201
+                    'code' => 401
                 )
             );
-            http_response_code(201);
+            http_response_code(401);
             return $response;
         }
     }
