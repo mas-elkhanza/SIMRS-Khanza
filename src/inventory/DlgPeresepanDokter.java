@@ -939,6 +939,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        buatcacheresep();
         BtnCariActionPerformed(evt);
 }//GEN-LAST:event_BtnAllActionPerformed
 

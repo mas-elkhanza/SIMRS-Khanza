@@ -982,6 +982,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        buatcacheberiobat();
         BtnCariActionPerformed(evt);
 }//GEN-LAST:event_BtnAllActionPerformed
 
