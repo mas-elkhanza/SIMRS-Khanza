@@ -36,7 +36,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import keuangan.DlgKamar;
 import org.springframework.http.HttpEntity;

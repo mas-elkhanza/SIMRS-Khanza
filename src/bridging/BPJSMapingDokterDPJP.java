@@ -46,8 +46,6 @@ public final class BPJSMapingDokterDPJP extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;    
     private int i=0;
-    private DlgCariDokter poli=new DlgCariDokter(null,false);
-    private BPJSCekReferensiDokterDPJP polipcare=new BPJSCekReferensiDokterDPJP(null,false);
     
 
     /** Creates new form DlgJnsPerawatanRalan
@@ -107,79 +105,6 @@ public final class BPJSMapingDokterDPJP extends javax.swing.JDialog {
                 }
             });
         }  
-        
-        poli.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(poli.getTable().getSelectedRow()!= -1){                    
-                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                    TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                }
-                kdpoli.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
-        
-        poli.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    poli.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        polipcare.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(polipcare.getTable().getSelectedRow()!= -1){                   
-                    KdPoliPCare.setText(polipcare.getTable().getValueAt(polipcare.getTable().getSelectedRow(),1).toString());
-                    NmPoliPCare.setText(polipcare.getTable().getValueAt(polipcare.getTable().getSelectedRow(),2).toString());
-                    KdPoliPCare.requestFocus();
-                }                  
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        polipcare.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    polipcare.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });  
-    
     }
 
     /** This method is called from within the constructor to
@@ -513,6 +438,42 @@ public final class BPJSMapingDokterDPJP extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPoliRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliRSActionPerformed
+        DlgCariDokter poli=new DlgCariDokter(null,false);
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(poli.getTable().getSelectedRow()!= -1){                    
+                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                    TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                }
+                kdpoli.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        }); 
+        
+        poli.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    poli.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         poli.isCek();        
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
@@ -688,6 +649,43 @@ public final class BPJSMapingDokterDPJP extends javax.swing.JDialog {
 }//GEN-LAST:event_tbJnsPerawatanKeyPressed
 
 private void btnPoliBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliBPJSActionPerformed
+    BPJSCekReferensiDokterDPJP polipcare=new BPJSCekReferensiDokterDPJP(null,false);
+    polipcare.addWindowListener(new WindowListener() {
+        @Override
+        public void windowOpened(WindowEvent e) {}
+        @Override
+        public void windowClosing(WindowEvent e) {}
+        @Override
+        public void windowClosed(WindowEvent e) {
+            if(polipcare.getTable().getSelectedRow()!= -1){                   
+                KdPoliPCare.setText(polipcare.getTable().getValueAt(polipcare.getTable().getSelectedRow(),1).toString());
+                NmPoliPCare.setText(polipcare.getTable().getValueAt(polipcare.getTable().getSelectedRow(),2).toString());
+                KdPoliPCare.requestFocus();
+            }                  
+        }
+        @Override
+        public void windowIconified(WindowEvent e) {}
+        @Override
+        public void windowDeiconified(WindowEvent e) {}
+        @Override
+        public void windowActivated(WindowEvent e) {}
+        @Override
+        public void windowDeactivated(WindowEvent e) {}
+    });
+
+    polipcare.getTable().addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {}
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                polipcare.dispose();
+            }
+        }
+        @Override
+        public void keyReleased(KeyEvent e) {}
+    });  
+    
     polipcare.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     polipcare.setLocationRelativeTo(internalFrame1);
     polipcare.setVisible(true);
