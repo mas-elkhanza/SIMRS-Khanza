@@ -599,9 +599,9 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         panelisi6.setLayout(null);
 
         BtnCloseUrl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnCloseUrl.setMnemonic('U');
-        BtnCloseUrl.setText("Batal");
-        BtnCloseUrl.setToolTipText("Alt+U");
+        BtnCloseUrl.setMnemonic('T');
+        BtnCloseUrl.setText("Tutup");
+        BtnCloseUrl.setToolTipText("Alt+T");
         BtnCloseUrl.setName("BtnCloseUrl"); // NOI18N
         BtnCloseUrl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
