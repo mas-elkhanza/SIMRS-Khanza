@@ -51,7 +51,6 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private int i=0;
-    private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -190,29 +189,6 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
                 }
             });
         }  
-        
-        penyakit.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if( penyakit.getTable().getSelectedRow()!= -1){                   
-                    kdDiagnosa.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
-                    NmDiagnosa.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
-                }  
-                kdDiagnosa.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
         
         ChkInput.setSelected(false);
         isForm();
@@ -460,7 +436,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
 
         DTPReg.setEditable(false);
         DTPReg.setForeground(new java.awt.Color(50, 70, 50));
-        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2023" }));
+        DTPReg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2025" }));
         DTPReg.setDisplayFormat("dd-MM-yyyy");
         DTPReg.setName("DTPReg"); // NOI18N
         DTPReg.setOpaque(false);
@@ -642,7 +618,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -656,7 +632,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -887,6 +863,7 @@ public final class DlgRujukMasuk extends javax.swing.JDialog {
         FormInput.add(NmDiagnosa);
         NmDiagnosa.setBounds(135, 100, 340, 23);
 
+        kdDiagnosa.setEditable(false);
         kdDiagnosa.setHighlighter(null);
         kdDiagnosa.setName("kdDiagnosa"); // NOI18N
         kdDiagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1491,6 +1468,29 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }//GEN-LAST:event_DokterKeyPressed
 
     private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
+        DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
+        penyakit.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if( penyakit.getTable().getSelectedRow()!= -1){                   
+                    kdDiagnosa.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString());
+                    NmDiagnosa.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
+                }  
+                kdDiagnosa.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         penyakit.isCek();
         penyakit.emptTeks();
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1503,9 +1503,7 @@ private void TAlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }//GEN-LAST:event_NmDiagnosaKeyPressed
 
     private void kdDiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdDiagnosaKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_penyakit from penyakit where kd_penyakit=?",NmDiagnosa,kdDiagnosa.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokterActionPerformed(null);
         }else{
             Valid.pindah(evt,TAlamat,JMPerujuk);

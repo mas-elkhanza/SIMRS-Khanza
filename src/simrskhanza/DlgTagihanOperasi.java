@@ -35,7 +35,6 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
     private ResultSet rs,rsset_tarif,rsrekening;
     private DlgCariPetugas petugas=new DlgCariPetugas( null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private MasterCariTemplateLaporanOperasi template=new MasterCariTemplateLaporanOperasi(null,false);
     private String kelas_operasi="Yes",kelas="",cara_bayar_operasi="Yes",kd_pj="",status="";
     private double ttljmdokter=0,ttljmpetugas=0,ttlpendapatan=0,ttlbhp=0;
     private String Suspen_Piutang_Operasi_Ranap="",Operasi_Ranap="",Beban_Jasa_Medik_Dokter_Operasi_Ranap="",Utang_Jasa_Medik_Dokter_Operasi_Ranap="",
@@ -358,32 +357,6 @@ public class DlgTagihanOperasi extends javax.swing.JDialog {
                         nmasistanestesi2.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                         kdasistanestesi2.requestFocus();
                     }               
-                }            
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        template.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(template.getTable().getSelectedRow()!= -1){  
-                    PreOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),2).toString());
-                    PostOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),3).toString());
-                    Jaringan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),4).toString());
-                    DikirimPA.setSelectedItem(template.getTable().getValueAt(template.getTable().getSelectedRow(),5).toString());
-                    Laporan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),6).toString());
-                    Laporan.requestFocus();
                 }            
             }
             @Override
@@ -3034,6 +3007,32 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_btnOperator3KeyPressed
 
     private void btnTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplateActionPerformed
+        MasterCariTemplateLaporanOperasi template=new MasterCariTemplateLaporanOperasi(null,false);
+        template.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(template.getTable().getSelectedRow()!= -1){  
+                    PreOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),2).toString());
+                    PostOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),3).toString());
+                    Jaringan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),4).toString());
+                    DikirimPA.setSelectedItem(template.getTable().getValueAt(template.getTable().getSelectedRow(),5).toString());
+                    Laporan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),6).toString());
+                    Laporan.requestFocus();
+                }            
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         template.emptTeks();
         template.isCek();
         template.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

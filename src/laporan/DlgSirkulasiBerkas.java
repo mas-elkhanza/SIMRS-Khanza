@@ -39,7 +39,6 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
     private ResultSet rs;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private InventarisRuang ruang=new InventarisRuang(null,false); 
 
     /** Creates new form DlgKamarInap
      * @param parent
@@ -112,54 +111,6 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             });
         }  
         
-        pasien.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pasien.getTable().getSelectedRow()!= -1){                   
-                    if(pilihan==1){                           
-                           try {
-                                NoRm.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
-                                NmPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                                Umur.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),14).toString());
-                                Alamat.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),7).toString());
-                                Pekerjaan.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),9).toString());   
-                                PertamaDaftar.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),12).toString());                       
-                           } catch (Exception z) {
-                           }                           
-                           NoRm.requestFocus();
-                    }else if(pilihan==2){
-                        RmCari.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
-                        RmCari.requestFocus();
-                    }
-                } 
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        pasien.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
         petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -183,50 +134,12 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        ruang.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(ruang.getTable().getSelectedRow()!= -1){ 
-                    KdRuang.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),0).toString());                    
-                    NmRuang.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),1).toString());
-                    KdRuang.requestFocus();
-                }                   
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-
-        });
-        
-        ruang.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    ruang.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
         WindowInput.setSize(735,275);
         WindowInput.setLocationRelativeTo(null);         
         
     }
 
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private DlgCariPasien pasien=new DlgCariPasien(null,false);
     private int pilihan=0;
 
     /** This method is called from within the constructor to
@@ -1142,7 +1055,54 @@ public class DlgSirkulasiBerkas extends javax.swing.JDialog {
 }//GEN-LAST:event_tbKamInKeyPressed
 
 private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
-        pilihan=2;
+    pilihan=2;
+    DlgCariPasien pasien=new DlgCariPasien(null,false);
+    pasien.getTable().addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {}
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                pasien.dispose();
+            }
+        }
+        @Override
+        public void keyReleased(KeyEvent e) {}
+    });
+    pasien.addWindowListener(new WindowListener() {
+        @Override
+        public void windowOpened(WindowEvent e) {}
+        @Override
+        public void windowClosing(WindowEvent e) {}
+        @Override
+        public void windowClosed(WindowEvent e) {
+            if(pasien.getTable().getSelectedRow()!= -1){                   
+                if(pilihan==1){                           
+                       try {
+                            NoRm.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
+                            NmPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                            Umur.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),14).toString());
+                            Alamat.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),7).toString());
+                            Pekerjaan.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),9).toString());   
+                            PertamaDaftar.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),12).toString());                       
+                       } catch (Exception z) {
+                       }                           
+                       NoRm.requestFocus();
+                }else if(pilihan==2){
+                    RmCari.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
+                    RmCari.requestFocus();
+                }
+            } 
+        }
+        @Override
+        public void windowIconified(WindowEvent e) {}
+        @Override
+        public void windowDeiconified(WindowEvent e) {}
+        @Override
+        public void windowActivated(WindowEvent e) {}
+        @Override
+        public void windowDeactivated(WindowEvent e) {}
+    });
     pasien.isCek();
     pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     pasien.setLocationRelativeTo(internalFrame1);
@@ -1184,6 +1144,53 @@ private void peminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
 
 private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
     pilihan=1;
+    DlgCariPasien pasien=new DlgCariPasien(null,false);
+    pasien.getTable().addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {}
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                pasien.dispose();
+            }
+        }
+        @Override
+        public void keyReleased(KeyEvent e) {}
+    });
+    pasien.addWindowListener(new WindowListener() {
+        @Override
+        public void windowOpened(WindowEvent e) {}
+        @Override
+        public void windowClosing(WindowEvent e) {}
+        @Override
+        public void windowClosed(WindowEvent e) {
+            if(pasien.getTable().getSelectedRow()!= -1){                   
+                if(pilihan==1){                           
+                       try {
+                            NoRm.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
+                            NmPasien.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                            Umur.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),14).toString());
+                            Alamat.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),7).toString());
+                            Pekerjaan.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),9).toString());   
+                            PertamaDaftar.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),12).toString());                       
+                       } catch (Exception z) {
+                       }                           
+                       NoRm.requestFocus();
+                }else if(pilihan==2){
+                    RmCari.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
+                    RmCari.requestFocus();
+                }
+            } 
+        }
+        @Override
+        public void windowIconified(WindowEvent e) {}
+        @Override
+        public void windowDeiconified(WindowEvent e) {}
+        @Override
+        public void windowActivated(WindowEvent e) {}
+        @Override
+        public void windowDeactivated(WindowEvent e) {}
+    });
     pasien.isCek();
     pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     pasien.setLocationRelativeTo(internalFrame1);
@@ -1238,6 +1245,43 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }//GEN-LAST:event_KdRuangKeyPressed
 
     private void btnRuangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRuangActionPerformed
+        InventarisRuang ruang=new InventarisRuang(null,false); 
+        ruang.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(ruang.getTable().getSelectedRow()!= -1){ 
+                    KdRuang.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),0).toString());                    
+                    NmRuang.setText(ruang.getTable().getValueAt(ruang.getTable().getSelectedRow(),1).toString());
+                    KdRuang.requestFocus();
+                }                   
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+
+        });
+        
+        ruang.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    ruang.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         ruang.isCek();
         ruang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ruang.setLocationRelativeTo(internalFrame1);

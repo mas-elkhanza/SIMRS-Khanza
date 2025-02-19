@@ -17,13 +17,10 @@ import kepegawaian.DlgCariDokter2;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.koneksiDB;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import java.io.FileInputStream;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.Properties;
 
 /**
  *
@@ -32,14 +29,7 @@ import java.util.Properties;
 public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private DlgCariDokter2 dokter2=new DlgCariDokter2(null,false);
-    private DlgCariPoli poli=new DlgCariPoli(null,false);
-    private DlgCariPoli2 poli2=new DlgCariPoli2(null,false);
     private String aktifjadwal="";
-    private Properties prop = new Properties();
     private int lebar=0,tinggi=0;
     /** Creates new form DlgPemberianObat
      * @param parent
@@ -47,101 +37,9 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     public DlgRujukanPoliInternal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {;}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){   
-                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    TDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    kddokter.requestFocus();
-                }                
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-                
-        dokter2.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {;}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dokter2.getTable().getSelectedRow()!= -1){   
-                    kddokter.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),0).toString());
-                    TDokter.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),1).toString());
-                    kddokter.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        poli.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(poli.getTable().getSelectedRow()!= -1){   
-                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                    TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                    kdpoli.requestFocus();                        
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });        
-                
-        poli2.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(poli2.getTable().getSelectedRow()!= -1){  
-                    kdpoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),0).toString());
-                    TPoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),1).toString());
-                    kdpoli.requestFocus();
-                }        
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
         
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            aktifjadwal=prop.getProperty("JADWALDOKTERDIREGISTRASI");
+            aktifjadwal=koneksiDB.JADWALDOKTERDIREGISTRASI();
         } catch (Exception ex) {
             aktifjadwal="";            
         }
@@ -189,7 +87,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Poli Internal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rujukan Poli Internal ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -202,6 +100,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 42, 70, 23);
 
+        kddokter.setEditable(false);
         kddokter.setHighlighter(null);
         kddokter.setName("kddokter"); // NOI18N
         kddokter.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -246,6 +145,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
         FormInput.add(TPoli);
         TPoli.setBounds(518, 42, 180, 23);
 
+        kdpoli.setEditable(false);
         kdpoli.setHighlighter(null);
         kdpoli.setName("kdpoli"); // NOI18N
         kdpoli.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -390,9 +290,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void kddokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kddokterKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            TDokter.setText(dokter.tampil3(kddokter.getText()));
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnDokterActionPerformed(null);
         }
     }//GEN-LAST:event_kddokterKeyPressed
@@ -400,12 +298,58 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
         if(aktifjadwal.equals("aktif")){
             if(akses.getkode().equals("Admin Utama")){
+                DlgCariDokter dokter=new DlgCariDokter(null,false);
+                dokter.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {;}
+                    @Override
+                    public void windowClosing(WindowEvent e) {}
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(dokter.getTable().getSelectedRow()!= -1){   
+                            kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                            TDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                            kddokter.requestFocus();
+                        }                
+                    }
+                    @Override
+                    public void windowIconified(WindowEvent e) {}
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {}
+                    @Override
+                    public void windowActivated(WindowEvent e) {}
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {}
+                });
                 dokter.isCek();
                 dokter.TCari.requestFocus();
                 dokter.setSize(lebar-20,tinggi-20);
                 dokter.setLocationRelativeTo(internalFrame1);
                 dokter.setVisible(true);
             }else{
+                DlgCariDokter2 dokter2=new DlgCariDokter2(null,false);
+                dokter2.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {;}
+                    @Override
+                    public void windowClosing(WindowEvent e) {}
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(dokter2.getTable().getSelectedRow()!= -1){   
+                            kddokter.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),0).toString());
+                            TDokter.setText(dokter2.getTable().getValueAt(dokter2.getTable().getSelectedRow(),1).toString());
+                            kddokter.requestFocus();
+                        }
+                    }
+                    @Override
+                    public void windowIconified(WindowEvent e) {}
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {}
+                    @Override
+                    public void windowActivated(WindowEvent e) {}
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {}
+                });
                 dokter2.setPoli(TPoli.getText());
                 dokter2.isCek();
                 dokter2.tampil();
@@ -415,6 +359,29 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
                 dokter2.setVisible(true);
             }
         }else{
+            DlgCariDokter dokter=new DlgCariDokter(null,false);
+            dokter.addWindowListener(new WindowListener() {
+                @Override
+                public void windowOpened(WindowEvent e) {;}
+                @Override
+                public void windowClosing(WindowEvent e) {}
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(dokter.getTable().getSelectedRow()!= -1){   
+                        kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                        TDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                        kddokter.requestFocus();
+                    }                
+                }
+                @Override
+                public void windowIconified(WindowEvent e) {}
+                @Override
+                public void windowDeiconified(WindowEvent e) {}
+                @Override
+                public void windowActivated(WindowEvent e) {}
+                @Override
+                public void windowDeactivated(WindowEvent e) {}
+            });
             dokter.isCek();
             dokter.TCari.requestFocus();
             dokter.setSize(lebar-20,tinggi-20);
@@ -426,11 +393,57 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     private void BtnUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUnitActionPerformed
         if(aktifjadwal.equals("aktif")){
             if(akses.getkode().equals("Admin Utama")){
+                DlgCariPoli poli=new DlgCariPoli(null,false);
+                poli.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {}
+                    @Override
+                    public void windowClosing(WindowEvent e) {}
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(poli.getTable().getSelectedRow()!= -1){   
+                            kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                            TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                            kdpoli.requestFocus();                        
+                        }
+                    }
+                    @Override
+                    public void windowIconified(WindowEvent e) {}
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {}
+                    @Override
+                    public void windowActivated(WindowEvent e) {}
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {}
+                });  
                 poli.isCek();
                 poli.setSize(lebar-20,tinggi-20);
                 poli.setLocationRelativeTo(internalFrame1);
                 poli.setVisible(true);
             }else{
+                DlgCariPoli2 poli2=new DlgCariPoli2(null,false);
+                poli2.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {}
+                    @Override
+                    public void windowClosing(WindowEvent e) {}
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(poli2.getTable().getSelectedRow()!= -1){  
+                            kdpoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),0).toString());
+                            TPoli.setText(poli2.getTable().getValueAt(poli2.getTable().getSelectedRow(),1).toString());
+                            kdpoli.requestFocus();
+                        }        
+                    }
+                    @Override
+                    public void windowIconified(WindowEvent e) {}
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {}
+                    @Override
+                    public void windowActivated(WindowEvent e) {}
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {}
+                });  
                 poli2.isCek();
                 poli2.tampil();
                 poli2.setSize(lebar-20,tinggi-20);
@@ -438,6 +451,29 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
                 poli2.setVisible(true);
             }
         }else{
+            DlgCariPoli poli=new DlgCariPoli(null,false);
+            poli.addWindowListener(new WindowListener() {
+                @Override
+                public void windowOpened(WindowEvent e) {}
+                @Override
+                public void windowClosing(WindowEvent e) {}
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(poli.getTable().getSelectedRow()!= -1){   
+                        kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                        TPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                        kdpoli.requestFocus();                        
+                    }
+                }
+                @Override
+                public void windowIconified(WindowEvent e) {}
+                @Override
+                public void windowDeiconified(WindowEvent e) {}
+                @Override
+                public void windowActivated(WindowEvent e) {}
+                @Override
+                public void windowDeactivated(WindowEvent e) {}
+            });  
             poli.isCek();
             poli.setSize(lebar-20,tinggi-20);
             poli.setLocationRelativeTo(internalFrame1);
@@ -446,9 +482,7 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnUnitActionPerformed
 
     private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?",TPoli,kdpoli.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnUnitActionPerformed(null);
         }else{
             Valid.pindah(evt,kddokter,TNoRM);
@@ -496,22 +530,15 @@ public class DlgRujukanPoliInternal extends javax.swing.JDialog {
     private widget.panelisi panelGlass8;
     // End of variables declaration//GEN-END:variables
     
-
- 
-
     public void setNoRm(String norw,String norm,String namapasien,int lebar,int tinggi) {
         TNoRw.setText(norw);
         TNoRM.setText(norm);
         TPasien.setText(namapasien);  
         this.lebar=lebar;
         this.tinggi=tinggi;
-    }
-    
+    }  
     
     public void isCek(){
         BtnSimpan.setEnabled(true);
     }
-
-
-
 }

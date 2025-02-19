@@ -40,7 +40,6 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas( null,false);
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private ResultSet rsrekening,rs,rs2;
-    private MasterCariTemplateLaporanOperasi template=new MasterCariTemplateLaporanOperasi(null,false);
     private int pilihan=0;
     private boolean sukses=true;
     private double ttljmdokter=0,ttljmpetugas=0,ttlpendapatan=0,ttlbhp=0;
@@ -127,46 +126,6 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
                 }
             });
         } 
-        
-        member.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgCariTagihanOperasi")){
-                    if(member.getTable().getSelectedRow()!= -1){                   
-                        kdmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),0).toString());
-                        nmmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),1).toString());
-                    }   
-                    kdmem.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        member.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgCariTagihanOperasi")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        member.dispose();
-                    }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         dokter.addWindowListener(new WindowListener() {
             @Override
@@ -302,32 +261,6 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        template.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(template.getTable().getSelectedRow()!= -1){  
-                    PreOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),2).toString());
-                    PostOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),3).toString());
-                    Jaringan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),4).toString());
-                    DikirimPA.setSelectedItem(template.getTable().getValueAt(template.getTable().getSelectedRow(),5).toString());
-                    Laporan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),6).toString());
-                    Laporan.requestFocus();
-                }            
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-           
         try {
             psrekening=koneksi.prepareStatement(
                     "select set_akun_ralan.Suspen_Piutang_Operasi_Ralan,set_akun_ralan.Operasi_Ralan,"+
@@ -404,7 +337,6 @@ public class DlgCariTagihanOperasi extends javax.swing.JDialog {
             System.out.println(e);
         } 
     }
-    private DlgCariPasien member=new DlgCariPasien(null,false);
     private double total=0;
     private int no=0;
 
@@ -1933,6 +1865,46 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnCari5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari5ActionPerformed
         akses.setform("DlgCariTagihanOperasi");
+        DlgCariPasien member=new DlgCariPasien(null,false);
+        member.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgCariTagihanOperasi")){
+                    if(member.getTable().getSelectedRow()!= -1){                   
+                        kdmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),0).toString());
+                        nmmem.setText(member.getTable().getValueAt(member.getTable().getSelectedRow(),1).toString());
+                    }   
+                    kdmem.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        member.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgCariTagihanOperasi")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        member.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         member.emptTeks();
         member.isCek();
         member.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -3207,6 +3179,32 @@ private void MnHapusObatOperasiActionPerformed(java.awt.event.ActionEvent evt) {
     }//GEN-LAST:event_ppBerkasDigitalBtnPrintActionPerformed
 
     private void btnAmbilPhoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilPhoto1ActionPerformed
+        MasterCariTemplateLaporanOperasi template=new MasterCariTemplateLaporanOperasi(null,false);
+        template.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(template.getTable().getSelectedRow()!= -1){  
+                    PreOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),2).toString());
+                    PostOp.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),3).toString());
+                    Jaringan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),4).toString());
+                    DikirimPA.setSelectedItem(template.getTable().getValueAt(template.getTable().getSelectedRow(),5).toString());
+                    Laporan.setText(template.getTable().getValueAt(template.getTable().getSelectedRow(),6).toString());
+                    Laporan.requestFocus();
+                }            
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         template.emptTeks();
         template.isCek();
         template.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

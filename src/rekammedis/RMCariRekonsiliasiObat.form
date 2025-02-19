@@ -130,7 +130,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="05-04-2023 08:53:56"/>
+                        <StringItem index="0" value="19-02-2025 12:07:13"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -175,7 +175,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="05-04-2023 08:53:56"/>
+                        <StringItem index="0" value="19-02-2025 12:07:13"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -209,7 +209,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="05-04-2023 08:53:56"/>
+                        <StringItem index="0" value="19-02-2025 12:07:13"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -473,6 +473,7 @@
             </Component>
             <Component class="widget.TextBox" name="kdmem">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="kdmem" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 23]"/>
@@ -489,6 +490,7 @@
             </Component>
             <Component class="widget.TextBox" name="kdptg">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="kdptg" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 23]"/>

@@ -17,7 +17,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -52,7 +51,6 @@ public class DlgIKBBayi extends javax.swing.JDialog {
     private LocalDate birthday;
     private Period p;
     private long p2;
-    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private DUKCAPILJakartaCekNik cekViaDukcapilJakarta=new DUKCAPILJakartaCekNik();
     private DUKCAPILJakartaPostLahir postlahir=new DUKCAPILJakartaPostLahir();
     private String pengurutan="",bulan="",tahun="",awalantahun="",awalanbulan="",posisitahun="",
@@ -299,34 +297,11 @@ public class DlgIKBBayi extends javax.swing.JDialog {
             });
         } 
         
-        pegawai.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pegawai.getTable().getSelectedRow()!= -1){                   
-                    KdPenolong.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
-                    NmPenolong.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
-                }   
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        pengurutan=Sequel.cariIsi("select urutan from set_urut_no_rkm_medis");
-        tahun=Sequel.cariIsi("select tahun from set_urut_no_rkm_medis");
-        bulan=Sequel.cariIsi("select bulan from set_urut_no_rkm_medis");
-        posisitahun=Sequel.cariIsi("select posisi_tahun_bulan from set_urut_no_rkm_medis");
+        pengurutan=Sequel.cariIsi("select set_urut_no_rkm_medis.urutan from set_urut_no_rkm_medis");
+        tahun=Sequel.cariIsi("select set_urut_no_rkm_medis.tahun from set_urut_no_rkm_medis");
+        bulan=Sequel.cariIsi("select set_urut_no_rkm_medis.bulan from set_urut_no_rkm_medis");
+        posisitahun=Sequel.cariIsi("select set_urut_no_rkm_medis.posisi_tahun_bulan from set_urut_no_rkm_medis");
     }
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private String[] hlm;
     private String jkelcari="",tglcari="";
     /*
     private DlgIbu ibu=new DlgIbu(null,false);
@@ -3236,6 +3211,28 @@ private void MnKartuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_NoSKLKeyPressed
 
     private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenjabActionPerformed
+        DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
+        pegawai.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pegawai.getTable().getSelectedRow()!= -1){                   
+                    KdPenolong.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),0).toString());
+                    NmPenolong.setText(pegawai.tbKamar.getValueAt(pegawai.tbKamar.getSelectedRow(),1).toString());
+                }   
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         pegawai.emptTeks();
         pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         pegawai.setLocationRelativeTo(internalFrame1);

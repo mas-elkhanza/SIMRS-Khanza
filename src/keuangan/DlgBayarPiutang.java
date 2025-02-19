@@ -53,7 +53,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
     private validasi Valid=new validasi();    
     private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
-    private DlgCariPasien pasien=new DlgCariPasien(null,false);
     private double cicilan=0,sisapiutang=0,diskon=0,tidakterbayar=0;
     private PreparedStatement ps;
     private ResultSet rs;
@@ -231,51 +230,6 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                      Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())-Double.parseDouble(DiskonBayar.getText())-Double.parseDouble(TidakTerbayar.getText())));                           
                 }
             }
-        });
-        
-        pasien.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pasien.getTable().getSelectedRow()!= -1){                   
-                    Kdmem.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
-                    Nmmem.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
-                    sisapiutang=Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang_pasien.sisapiutang),0) FROM piutang_pasien where piutang_pasien.no_rkm_medis=?",Kdmem.getText())
-                                +
-                               Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang.sisapiutang),0) FROM piutang where piutang.no_rkm_medis=?",Kdmem.getText())
-                               - 
-                               Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan)+SUM(bayar_piutang.diskon_piutang)+SUM(bayar_piutang.tidak_terbayar),0) FROM bayar_piutang where bayar_piutang.no_rkm_medis=?",Kdmem.getText());
-                   Sisa.setText(Valid.SetAngka(sisapiutang));
-                   if((!Cicilan.getText().equals(""))&&(!DiskonBayar.getText().equals(""))&&(!TidakTerbayar.getText().equals(""))){                           
-                        Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())-Double.parseDouble(DiskonBayar.getText())-Double.parseDouble(TidakTerbayar.getText())));                           
-                   }
-                   Sequel.cariIsi("select reg_periksa.no_rawat from reg_periksa where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc limit 1", NoRawat,Kdmem.getText());
-                }  
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        pasien.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pasien.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
         });
         
         ChkInput.setSelected(false);
@@ -1266,6 +1220,51 @@ private void ppNotaPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt
 }//GEN-LAST:event_ppNotaPiutangBtnPrintActionPerformed
 
 private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
+        DlgCariPasien pasien=new DlgCariPasien(null,false);
+        pasien.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(pasien.getTable().getSelectedRow()!= -1){                   
+                    Kdmem.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),0).toString());
+                    Nmmem.setText(pasien.getTable().getValueAt(pasien.getTable().getSelectedRow(),1).toString());
+                    sisapiutang=Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang_pasien.sisapiutang),0) FROM piutang_pasien where piutang_pasien.no_rkm_medis=?",Kdmem.getText())
+                                +
+                               Sequel.cariIsiAngka("SELECT ifnull(SUM(piutang.sisapiutang),0) FROM piutang where piutang.no_rkm_medis=?",Kdmem.getText())
+                               - 
+                               Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan)+SUM(bayar_piutang.diskon_piutang)+SUM(bayar_piutang.tidak_terbayar),0) FROM bayar_piutang where bayar_piutang.no_rkm_medis=?",Kdmem.getText());
+                   Sisa.setText(Valid.SetAngka(sisapiutang));
+                   if((!Cicilan.getText().equals(""))&&(!DiskonBayar.getText().equals(""))&&(!TidakTerbayar.getText().equals(""))){                           
+                        Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())-Double.parseDouble(DiskonBayar.getText())-Double.parseDouble(TidakTerbayar.getText())));                           
+                   }
+                   Sequel.cariIsi("select reg_periksa.no_rawat from reg_periksa where reg_periksa.no_rkm_medis=? order by reg_periksa.tgl_registrasi desc limit 1", NoRawat,Kdmem.getText());
+                }  
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pasien.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    pasien.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         pasien.emptTeks();
         pasien.isCek();
         pasien.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

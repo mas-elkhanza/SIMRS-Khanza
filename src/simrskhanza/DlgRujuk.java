@@ -50,11 +50,11 @@ public final class DlgRujuk extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private String diagnosa="",diagnosa2="",keluar="",status="",tgl="",sql="";
+    private String diagnosa="",diagnosa2="",keluar="",tgl="",sql="";
     private PreparedStatement psobat,ps;
     private ResultSet rs;
+    private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private int i=0;
-    private DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -166,33 +166,9 @@ public final class DlgRujuk extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        penyakit.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if( penyakit.getTable().getSelectedRow()!= -1){                   
-                    TDiagnosa.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString()+" - "+penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
-                }  
-                TDiagnosa.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
         ChkInput.setSelected(false);
         isForm();
     }
-
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -453,7 +429,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2019" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -467,7 +443,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2019" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -600,7 +576,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         TPasien.setBounds(340, 10, 340, 23);
 
         DTPRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        DTPRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2019" }));
+        DTPRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-02-2025" }));
         DTPRujuk.setDisplayFormat("dd-MM-yyyy");
         DTPRujuk.setName("DTPRujuk"); // NOI18N
         DTPRujuk.setOpaque(false);
@@ -633,6 +609,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
         FormInput.add(jLabel5);
         jLabel5.setBounds(0, 130, 72, 23);
 
+        KdDok.setEditable(false);
         KdDok.setHighlighter(null);
         KdDok.setName("KdDok"); // NOI18N
         KdDok.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1039,9 +1016,7 @@ public final class DlgRujuk extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatMouseClicked
 
 private void KdDokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDokKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            TDokter.setText(dokter.tampil3(KdDok.getText()));
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnDokterActionPerformed(null);
         }else{            
             Valid.pindah(evt,ktrujuk,ambulance);
@@ -1049,6 +1024,7 @@ private void KdDokKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdD
 }//GEN-LAST:event_KdDokKeyPressed
 
 private void btnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterActionPerformed
+        DlgCariDokter dokter=new DlgCariDokter(null,false);
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
@@ -1196,6 +1172,28 @@ private void TDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
     }//GEN-LAST:event_tbObatKeyReleased
 
     private void btnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaActionPerformed
+        DlgCariPenyakit penyakit=new DlgCariPenyakit(null,false);
+        penyakit.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if( penyakit.getTable().getSelectedRow()!= -1){                   
+                    TDiagnosa.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),0).toString()+" - "+penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(),1).toString());
+                }  
+                TDiagnosa.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         penyakit.isCek();
         penyakit.emptTeks();
         penyakit.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);

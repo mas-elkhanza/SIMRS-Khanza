@@ -11,7 +11,6 @@
 
 package simrskhanza;
 
-import inventory.DlgBarang;
 import inventory.DlgCariKonversi;
 import fungsi.WarnaTable2;
 import fungsi.batasInput;
@@ -53,7 +52,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
     private String aktifkanbatch="no",pilihanetiket="",nopermintaan="";
     private boolean sukses=true;
     private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-    private DlgCariAturanPakai aturan=new DlgCariAturanPakai(null,false);
     
     /** Creates new form DlgPenyakit
      * @param parent
@@ -142,28 +140,6 @@ public final class DlgInputResepPulang extends javax.swing.JDialog {
                 }   
                 kdgudang.requestFocus();
                 tampil();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        aturan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(aturan.getTable().getSelectedRow()!= -1){  
-                    tbKamar.setValueAt(aturan.getTable().getValueAt(aturan.getTable().getSelectedRow(),0).toString(),tbKamar.getSelectedRow(),4);
-                }   
-                tbKamar.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -678,6 +654,28 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }else if(evt.getKeyCode()==KeyEvent.VK_RIGHT){
                 i=tbKamar.getSelectedColumn();
                 if(i==4){
+                    DlgCariAturanPakai aturan=new DlgCariAturanPakai(null,false);
+                    aturan.addWindowListener(new WindowListener() {
+                        @Override
+                        public void windowOpened(WindowEvent e) {}
+                        @Override
+                        public void windowClosing(WindowEvent e) {}
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            if(aturan.getTable().getSelectedRow()!= -1){  
+                                tbKamar.setValueAt(aturan.getTable().getValueAt(aturan.getTable().getSelectedRow(),0).toString(),tbKamar.getSelectedRow(),4);
+                            }   
+                            tbKamar.requestFocus();
+                        }
+                        @Override
+                        public void windowIconified(WindowEvent e) {}
+                        @Override
+                        public void windowDeiconified(WindowEvent e) {}
+                        @Override
+                        public void windowActivated(WindowEvent e) {}
+                        @Override
+                        public void windowDeactivated(WindowEvent e) {}
+                    });
                     aturan.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
                     aturan.setLocationRelativeTo(internalFrame1);
                     aturan.setVisible(true);

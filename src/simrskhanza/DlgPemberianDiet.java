@@ -131,91 +131,8 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm();
-        
-        diet.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemberianDiet")){
-                    if(diet.getTable().getSelectedRow()!= -1){  
-                        KdDiet.setText(diet.getTable().getValueAt(diet.getTable().getSelectedRow(),0).toString());
-                        NmDiet.setText(diet.getTable().getValueAt(diet.getTable().getSelectedRow(),01).toString());
-                        KdDiet.requestFocus();                           
-                    }                         
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemberianDiet")){
-                    if(bangsal.getTable().getSelectedRow()!= -1){                          
-                        NmBangsalCari.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                        NmBangsalCari.requestFocus();                           
-                    }                         
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        jamdiet.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgPemberianDiet")){
-                    if(jamdiet.getTable().getSelectedRow()!= -1){  
-                        if(pilih==1){
-                            WaktuDiet.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),0).toString());
-                            JamDiet.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),1).toString());
-                            BtnJam.requestFocus(); 
-                        }else if(pilih==2){
-                            WaktuDiet2.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),0).toString());
-                            JamDiet2.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),1).toString());
-                            BtnJam2.requestFocus(); 
-                        }                             
-                    }                         
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
     }
     
-    private DlgCariDiet diet=new DlgCariDiet(null,false);
-    private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
-    private DlgCariJamDiet jamdiet=new DlgCariJamDiet(null,false);
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -1026,9 +943,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
 }//GEN-LAST:event_tbDataDietKeyPressed
 
 private void KdDietKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdDietKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select diet.nama_diet from diet where diet.kd_diet=? ",NmDiet,KdDiet.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnSeek1ActionPerformed(null);
         }else{
             Valid.pindah(evt,WaktuDiet,BtnSimpan);
@@ -1036,7 +951,32 @@ private void KdDietKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kd
 }//GEN-LAST:event_KdDietKeyPressed
 
 private void BtnSeek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek1ActionPerformed
-        akses.setform("DlgPemberianDiet");        
+        akses.setform("DlgPemberianDiet");  
+        DlgCariDiet diet=new DlgCariDiet(null,false);
+        diet.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgPemberianDiet")){
+                    if(diet.getTable().getSelectedRow()!= -1){  
+                        KdDiet.setText(diet.getTable().getValueAt(diet.getTable().getSelectedRow(),0).toString());
+                        NmDiet.setText(diet.getTable().getValueAt(diet.getTable().getSelectedRow(),01).toString());
+                        KdDiet.requestFocus();                           
+                    }                         
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         diet.emptTeks();
         diet.isCek();
         diet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1054,6 +994,30 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
         akses.setform("DlgPemberianDiet");
+        DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgPemberianDiet")){
+                    if(bangsal.getTable().getSelectedRow()!= -1){                          
+                        NmBangsalCari.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                        NmBangsalCari.requestFocus();                           
+                    }                         
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         bangsal.emptTeks();
         bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1137,6 +1101,37 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void BtnJamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJamActionPerformed
         akses.setform("DlgPemberianDiet");  
         pilih=1;
+        DlgCariJamDiet jamdiet=new DlgCariJamDiet(null,false);
+        jamdiet.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgPemberianDiet")){
+                    if(jamdiet.getTable().getSelectedRow()!= -1){  
+                        if(pilih==1){
+                            WaktuDiet.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),0).toString());
+                            JamDiet.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),1).toString());
+                            BtnJam.requestFocus(); 
+                        }else if(pilih==2){
+                            WaktuDiet2.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),0).toString());
+                            JamDiet2.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),1).toString());
+                            BtnJam2.requestFocus(); 
+                        }                             
+                    }                         
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         jamdiet.emptTeks();
         jamdiet.isCek();
         jamdiet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1151,6 +1146,37 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void BtnJam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJam2ActionPerformed
         akses.setform("DlgPemberianDiet");  
         pilih=2;
+        DlgCariJamDiet jamdiet=new DlgCariJamDiet(null,false);
+        jamdiet.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgPemberianDiet")){
+                    if(jamdiet.getTable().getSelectedRow()!= -1){  
+                        if(pilih==1){
+                            WaktuDiet.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),0).toString());
+                            JamDiet.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),1).toString());
+                            BtnJam.requestFocus(); 
+                        }else if(pilih==2){
+                            WaktuDiet2.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),0).toString());
+                            JamDiet2.setText(jamdiet.getTable().getValueAt(jamdiet.getTable().getSelectedRow(),1).toString());
+                            BtnJam2.requestFocus(); 
+                        }                             
+                    }                         
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         jamdiet.emptTeks();
         jamdiet.isCek();
         jamdiet.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
