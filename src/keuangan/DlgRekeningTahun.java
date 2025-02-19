@@ -50,7 +50,6 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
     private PreparedStatement ps,ps2,ps3;
     private ResultSet rs,rs2;
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private DlgRekening rekening=new DlgRekening(null,false);
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
     private double md = 0,mk = 0,saldoakhir=0;
     private String asalform="";
@@ -129,48 +128,6 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
                 }
             });
         }  
-        
-        rekening.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgRekeningTahun")){
-                    if(rekening.getTabel().getSelectedRow()!= -1){      
-                        Kd.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),0).toString());
-                        Nm.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
-                        Tipe.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString());
-                        Balance.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),5).toString());
-                        Kd.requestFocus();
-                    }                 
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        rekening.getTabel().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgRekeningTahun")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        rekening.dispose();
-                    }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });  
         
         Valid.LoadTahun(Tahun);
     }
@@ -269,6 +226,7 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
         panelisi4.add(label32);
         label32.setBounds(437, 12, 90, 23);
 
+        Kd.setEditable(false);
         Kd.setHighlighter(null);
         Kd.setName("Kd"); // NOI18N
         Kd.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -546,85 +504,14 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            try {
-                ps3=koneksi.prepareStatement("select kd_rek, nm_rek, tipe, balance from rekening where kd_rek=? order by kd_rek");
-                try {
-                    ps3.setString(1,Kd.getText());
-                    rs=ps3.executeQuery();
-                    while(rs.next()){
-                        Kd.setText(rs.getString(1));
-                        Nm.setText(rs.getString(2));
-                        Tipe.setText(rs.getString(3));
-                        Balance.setText(rs.getString(4));
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps3!=null){
-                        ps3.close();
-                    }
-                }
-            } catch (SQLException ex) {
-                    System.out.println("Catatan rekening : "+ex);
-            }           
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            try {
-                ps3=koneksi.prepareStatement("select kd_rek, nm_rek, tipe, balance from rekening where kd_rek=? order by kd_rek");
-                try {
-                    ps3.setString(1,Kd.getText());
-                    rs=ps3.executeQuery();
-                    while(rs.next()){
-                        Kd.setText(rs.getString(1));
-                        Nm.setText(rs.getString(2));
-                        Tipe.setText(rs.getString(3));
-                        Balance.setText(rs.getString(4));
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps3!=null){
-                        ps3.close();
-                    }
-                }
-            } catch (SQLException ex) {
-                    System.out.println("Catatan rekening : "+ex);
-            }
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             BtnKeluar.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            try {
-                ps3=koneksi.prepareStatement("select kd_rek, nm_rek, tipe, balance from rekening where kd_rek=? order by kd_rek");
-                try {
-                    ps3.setString(1,Kd.getText());
-                    rs=ps3.executeQuery();
-                    while(rs.next()){
-                        Kd.setText(rs.getString(1));
-                        Nm.setText(rs.getString(2));
-                        Tipe.setText(rs.getString(3));
-                        Balance.setText(rs.getString(4));
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps3!=null){
-                        ps3.close();
-                    }
-                }
-            } catch (SQLException ex) {
-                    System.out.println("Catatan rekening : "+ex);
-            }
             Tahun.requestFocus(); 
         }else if(evt.getKeyCode()==KeyEvent.VK_DOWN){
             TCari.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnCari7ActionPerformed(null);
         }
 }//GEN-LAST:event_KdKeyPressed
 
@@ -823,6 +710,48 @@ private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyP
 
     private void BtnCari7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari7ActionPerformed
         akses.setform("DlgRekeningTahun");
+        DlgRekening rekening=new DlgRekening(null,false);
+        rekening.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgRekeningTahun")){
+                    if(rekening.getTabel().getSelectedRow()!= -1){      
+                        Kd.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),0).toString());
+                        Nm.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
+                        Tipe.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString());
+                        Balance.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),5).toString());
+                        Kd.requestFocus();
+                    }                 
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        rekening.getTabel().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgRekeningTahun")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        rekening.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });  
         rekening.emptTeks();
         rekening.tampil();
         rekening.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
