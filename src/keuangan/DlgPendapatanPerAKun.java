@@ -492,7 +492,7 @@ public final class DlgPendapatanPerAKun extends javax.swing.JDialog {
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat/No.Nota</td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Nama Pasien</td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Akun Bayar</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Akun Rekening</td>"+
                 "</tr>"
             );   
             

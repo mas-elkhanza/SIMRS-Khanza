@@ -1291,12 +1291,12 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
             }
         });
         FormInput.add(HbsAg);
-        HbsAg.setBounds(429, 120, 90, 23);
+        HbsAg.setBounds(429, 120, 100, 23);
 
         TglLahirIbu1.setHighlighter(null);
         TglLahirIbu1.setName("TglLahirIbu1"); // NOI18N
         FormInput.add(TglLahirIbu1);
-        TglLahirIbu1.setBounds(522, 120, 332, 23);
+        TglLahirIbu1.setBounds(532, 120, 322, 23);
 
         scrollInput.setViewportView(FormInput);
 
