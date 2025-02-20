@@ -46580,7 +46580,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPendapatanPerAkun = new widget.ButtonBig();
         btnPendapatanPerAkun.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); 
-        btnPendapatanPerAkun.setText("Pendapatan Per Akun");
+        btnPendapatanPerAkun.setText("Pendapatan Per Akun Rekening");
         btnPendapatanPerAkun.setIconTextGap(0);
         btnPendapatanPerAkun.setName("btnPendapatanPerAkun");
         btnPendapatanPerAkun.setPreferredSize(new java.awt.Dimension(200, 90));
