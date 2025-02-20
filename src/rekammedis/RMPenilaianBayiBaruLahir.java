@@ -618,6 +618,12 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         TglLahirIbu = new widget.TextBox();
         jLabel15 = new widget.Label();
         NIKIbu = new widget.TextBox();
+        jLabel16 = new widget.Label();
+        jLabel17 = new widget.Label();
+        NmIbu1 = new widget.TextBox();
+        jLabel38 = new widget.Label();
+        HbsAg = new widget.ComboBox();
+        TglLahirIbu1 = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1254,6 +1260,43 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         NIKIbu.setName("NIKIbu"); // NOI18N
         FormInput.add(NIKIbu);
         NIKIbu.setBounds(724, 70, 130, 23);
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("Status Perkawinan Ibu");
+        jLabel16.setName("jLabel16"); // NOI18N
+        FormInput.add(jLabel16);
+        jLabel16.setBounds(44, 120, 120, 23);
+
+        jLabel17.setText(":");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(0, 120, 160, 23);
+
+        NmIbu1.setEditable(false);
+        NmIbu1.setHighlighter(null);
+        NmIbu1.setName("NmIbu1"); // NOI18N
+        FormInput.add(NmIbu1);
+        NmIbu1.setBounds(164, 120, 110, 23);
+
+        jLabel38.setText("Penyakit Yang Diderita Ibu :");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(275, 120, 150, 23);
+
+        HbsAg.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        HbsAg.setName("HbsAg"); // NOI18N
+        HbsAg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HbsAgKeyPressed(evt);
+            }
+        });
+        FormInput.add(HbsAg);
+        HbsAg.setBounds(429, 120, 90, 23);
+
+        TglLahirIbu1.setHighlighter(null);
+        TglLahirIbu1.setName("TglLahirIbu1"); // NOI18N
+        FormInput.add(TglLahirIbu1);
+        TglLahirIbu1.setBounds(522, 120, 332, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1995,6 +2038,10 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         //Valid.pindah(evt,TglAsuhan,G);
     }//GEN-LAST:event_BtnIbuBayiKeyPressed
 
+    private void HbsAgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HbsAgKeyPressed
+        //Valid.pindah(evt,UsiaKehamilan,HIV);
+    }//GEN-LAST:event_HbsAgKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2031,6 +2078,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private javax.swing.JDialog DlgRiwayatPersalinan;
     private widget.PanelBiasa FormInput;
+    private widget.ComboBox HbsAg;
     private widget.ComboBox JK;
     private widget.TextBox JenisPersalinan;
     private widget.TextBox Jk;
@@ -2044,6 +2092,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox NIKIbu;
     private widget.TextBox NmDokter;
     private widget.TextBox NmIbu;
+    private widget.TextBox NmIbu1;
     private widget.TextBox NoRMIbu;
     private widget.TextBox Penolong;
     private widget.TextBox Penyulit;
@@ -2061,6 +2110,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
     private widget.TextBox TglLahirIbu;
+    private widget.TextBox TglLahirIbu1;
     private widget.TextBox UsiaHamil;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
@@ -2080,8 +2130,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel115;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
+    private widget.Label jLabel16;
+    private widget.Label jLabel17;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
+    private widget.Label jLabel38;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel74;
