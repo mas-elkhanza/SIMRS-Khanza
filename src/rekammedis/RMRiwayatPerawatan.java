@@ -30992,148 +30992,211 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         while(rs2.next()){
                             htmlContent.append(
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>No. SEP</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("no_sep")+"</td>"+
-                                    "<td valign='top' width='14%'>No. Rujukan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("no_rujukan")+"</td>"+
+                                    "<td valign='top'>"+
+                                       "INFORMASI SEP"+  
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='14%' border='0'>No.Kartu</td>"+
+                                              "<td width='1%' border='0'>:</td>"+
+                                              "<td width='35%' border='0'>"+rs2.getString("no_kartu")+"</td>"+
+                                              "<td width='14%' border='0'>No. SEP</td>"+
+                                              "<td width='1%' border='0'>:</td>"+
+                                              "<td width='35%' border='0'>"+rs2.getString("no_sep")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='14%' border='0'>Tgl. SEP</td>"+
+                                              "<td width='1%' border='0'>:</td>"+
+                                              "<td width='35%' border='0'>"+rs2.getString("tglsep")+"</td>"+
+                                              "<td width='14%' border='0'>Jenis Pelayanan</td>"+
+                                              "<td width='1%' border='0'>:</td>"+
+                                              "<td width='35%' border='0'>"+rs2.getString("jnspelayanan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Tgl. SEP</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("tglsep")+"</td>"+
-                                    "<td valign='top' width='14%'>Tgl. Rujukan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("tglrujukan")+"</td>"+
+                                    "<td valign='top'>"+
+                                       "KELAS RAWAT"+  
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Hak Kelas Rawat</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("klsrawat")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Naik Kelas</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("klsnaik").replaceAll("1","1. VVIP").replaceAll("2","2. VIP").replaceAll("3","3. Kelas I").replaceAll("4","4. Kelas II").replaceAll("5","5. Kelas III").replaceAll("6","6. ICCU").replaceAll("7","7. ICU").replaceAll("8","8. Diatas Kelas 1")+"</td>"+
+                                            "</tr>"+  
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Pembiayaan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("pembiayaan").replaceAll("1","1. Pribadi").replaceAll("2","2. Pemberi Kerja").replaceAll("2","3. Asuransi Lain")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>P.J.Naik Kelas</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("pjnaikkelas")+"</td>"+
+                                            "</tr>"+                                     
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Diagnosa</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("diagawal")+" "+rs2.getString("nmdiagnosaawal")+"</td>"+
-                                    "<td valign='top' width='14%'>PPK Rujukan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kdppkrujukan")+" "+rs2.getString("nmppkrujukan")+"</td>"+
+                                    "<td valign='top'>"+
+                                       "RUJUKAN"+  
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Asal Rujukan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("asal_rujukan")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Tgl. Rujukan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("tglrujukan")+"</td>"+
+                                            "</tr>"+  
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>No. Rujukan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("no_rujukan")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>PPK Rujukan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("kdppkrujukan")+" "+rs2.getString("nmppkrujukan")+"</td>"+
+                                            "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Jenis Pelayanan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("jnspelayanan")+"</td>"+
-                                    "<td valign='top' width='14%'>Asal Rujukan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("asal_rujukan")+"</td>"+
+                                    "<td valign='top'>"+
+                                       "KETERANGAN SEP"+ 
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Catatan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("catatan")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Diagnosa Awal</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("diagawal")+" "+rs2.getString("nmdiagnosaawal")+"</td>"+
+                                            "</tr>"+  
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Tujuan Kunjungan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("tujuankunjungan").replaceAll("0","0. Normal").replaceAll("1","1. Prosedur").replaceAll("2","2. Konsul Dokter")+"</td>"+
-                                    "<td valign='top' width='14%'>No.SKDP/SPRI</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("noskdp")+"</td>"+
+                                    "<td valign='top'>"+
+                                       "INFORMASI POLI"+  
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Tujuan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("kdpolitujuan")+" "+rs2.getString("nmpolitujuan")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Eksekutif</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("eksekutif")+"</td>"+
+                                            "</tr>"+  
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Dokter DPJP</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kddpjp")+" "+rs2.getString("nmdpdjp")+"</td>"+
-                                    "<td valign='top' width='14%'>DJP Layanan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kddpjplayanan")+" "+rs2.getString("nmdpjplayanan")+"</td>"+
+                                    "<td valign='top'>"+ 
+                                       "KATARAK & COB"+
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>COB</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("cob")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Katarak</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("katarak")+"</td>"+
+                                            "</tr>"+  
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Poli Tujuan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kdpolitujuan")+" "+rs2.getString("nmpolitujuan")+"</td>"+
-                                    "<td valign='top' width='14%'>Jenis Peserta</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("peserta")+"</td>"+
+                                    "<td valign='top'>"+
+                                       "JAMINAN"+  
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Laka Lantas</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("lakalantas").replaceAll("0","0. Bukan KLL").replaceAll("1","1. KLL Bukan KK").replaceAll("2","2. KLL dan KK").replaceAll("3","3. KK")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Tanggal KLL</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("tglkkl")+"</td>"+
+                                            "</tr>"+ 
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Keterangan KLL</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("keterangankkl")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Suplesi</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("suplesi")+" "+rs2.getString("no_sep_suplesi")+"</td>"+
+                                            "</tr>"+ 
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Lokasi KLL</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' colspan='4' border='0'>"+rs2.getString("kdkec")+" "+rs2.getString("nmkec")+", "+rs2.getString("kdkab")+" "+rs2.getString("nmkab")+", "+rs2.getString("kdprop")+" "+rs2.getString("nmprop")+"</td>"+
+                                            "</tr>"+ 
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Eksekutif</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("eksekutif")+"</td>"+
-                                    "<td valign='top' width='14%'>No.Kartu</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("no_kartu")+"</td>"+
+                                    "<td valign='top'>"+
+                                       "SKDP/SPRI"+  
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>No.Surat</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("noskdp")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Dokter DPJP</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("kddpjp")+" "+rs2.getString("nmdpdjp")+"</td>"+
+                                            "</tr>"+  
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Kelas Rawat</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("klsrawat")+"</td>"+
-                                    "<td valign='top' width='14%'>Naik Kelas</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("klsnaik").replaceAll("1","1. VVIP").replaceAll("2","2. VIP").replaceAll("3","3. Kelas I").replaceAll("4","4. Kelas II").replaceAll("5","5. Kelas III").replaceAll("6","6. ICCU").replaceAll("7","7. ICU").replaceAll("8","8. Diatas Kelas 1")+"</td>"+
+                                    "<td valign='top'>"+ 
+                                       "DOKTER YANG MELAYANI"+
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>DPJP Layanan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='85%' border='0'>"+rs2.getString("kddpjplayanan")+" "+rs2.getString("nmdpjplayanan")+"</td>"+
+                                            "</tr>"+  
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>Pembiayaan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("pembiayaan").replaceAll("1","1. Pribadi").replaceAll("2","2. Pemberi Kerja").replaceAll("2","3. Asuransi Lain")+"</td>"+
-                                    "<td valign='top' width='14%'>P.J.Naik Kelas</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("pjnaikkelas")+"</td>"+
+                                    "<td valign='top'>"+
+                                       "INFORMASI PESERTA"+  
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Jenis Peserta</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("peserta")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>No.Telp</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("notelep")+"</td>"+
+                                            "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"+
                                  "<tr>"+
-                                    "<td valign='top' width='14%'>COB</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("cob")+"</td>"+
-                                    "<td valign='top' width='14%'>Katarak</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("katarak")+"</td>"+
-                                 "</tr>"+
-                                 "<tr>"+
-                                    "<td valign='top' width='14%'>No.Telp</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("notelep")+"</td>"+
-                                    "<td valign='top' width='14%'>Catatan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("catatan")+"</td>"+
-                                 "</tr>"+
-                                 "<tr>"+
-                                    "<td valign='top' width='14%'>Laka Lantas</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("lakalantas").replaceAll("0","0. Bukan KLL").replaceAll("1","1. KLL Bukan KK").replaceAll("2","2. KLL dan KK").replaceAll("3","3. KK")+"</td>"+
-                                    "<td valign='top' width='14%'>Tgl.KLL</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("tglkkl")+"</td>"+
-                                 "</tr>"+
-                                 "<tr>"+
-                                    "<td valign='top' width='14%'>Keterangan KKL</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("keterangankkl")+"</td>"+
-                                    "<td valign='top' width='14%'>Suplesi</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("suplesi")+" "+rs2.getString("no_sep_suplesi")+"</td>"+
-                                 "</tr>"+
-                                 "<tr>"+
-                                    "<td valign='top' width='14%'>Propinsi KKL<</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kdprop")+" "+rs2.getString("nmprop")+"</td>"+
-                                    "<td valign='top' width='14%'>Kabupaten KKL</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kdkab")+" "+rs2.getString("nmkab")+"</td>"+
-                                 "</tr>"+
-                                 "<tr>"+
-                                    "<td valign='top' width='14%'>Propinsi KKL</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kdprop")+" "+rs2.getString("nmprop")+"</td>"+
-                                    "<td valign='top' width='14%'>Kabupaten KKL</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kdkec")+" "+rs2.getString("nmkec")+"</td>"+
-                                 "</tr>"+
-                                 "<tr>"+
-                                    "<td valign='top' width='14%'>Kecamatan KLL</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("kdkec")+" "+rs2.getString("nmkec")+"</td>"+
-                                    "<td valign='top' width='14%'>Asesmen Pelayanan</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("asesmenpelayanan").replaceAll("1","1. Poli spesialis tidak tersedia pada hari sebelumnya").replaceAll("2","2. Jam Poli telah berakhir pada hari sebelumnya").replaceAll("3","3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya").replaceAll("4","4. Atas Instruksi RS").replaceAll("5","5. Tujuan Kontrol")+"</td>"+
-                                 "</tr>"+
-                                 "<tr>"+
-                                    "<td valign='top' width='14%'>Flag Prosedur</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("flagprosedur").replaceAll("0","0. Prosedur Tidak Berkelanjutan").replaceAll("1","1. Prosedur dan Terapi Berkelanjutan")+"</td>"+
-                                    "<td valign='top' width='14%'>Penunjang</td>"+
-                                    "<td valign='top' width='1%'>:</td>"+
-                                    "<td valign='top' width='35%'>"+rs2.getString("penunjang").replaceAll("12","12. HEMODIALISA").replaceAll("11","11. MRI").replaceAll("10","10. Lain-Lain").replaceAll("9","9. Farmasi").replaceAll("8","8. USG").replaceAll("7","7. Laboratorium").replaceAll("6","6. Pelayanan Gigi").replaceAll("5","5. Transfusi Darah").replaceAll("4","4. Rehabilitasi Psikososial").replaceAll("3","3. Rehabilitasi Medik").replaceAll("2","2. Kemoterapi").replaceAll("1","1. Radioterapi")+"</td>"+
+                                    "<td valign='top'>"+ 
+                                       "KETERANGAN LAIN"+
+                                       "<table width='100%' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Tujuan Kunjungan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("tujuankunjungan").replaceAll("0","0. Normal").replaceAll("1","1. Prosedur").replaceAll("2","2. Konsul Dokter")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Flag Prosedur</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("flagprosedur").replaceAll("0","0. Prosedur Tidak Berkelanjutan").replaceAll("1","1. Prosedur dan Terapi Berkelanjutan")+"</td>"+
+                                            "</tr>"+ 
+                                            "<tr>"+
+                                               "<td valign='top' width='14%' border='0'>Penunjang</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("penunjang").replaceAll("12","12. HEMODIALISA").replaceAll("11","11. MRI").replaceAll("10","10. Lain-Lain").replaceAll("9","9. Farmasi").replaceAll("8","8. USG").replaceAll("7","7. Laboratorium").replaceAll("6","6. Pelayanan Gigi").replaceAll("5","5. Transfusi Darah").replaceAll("4","4. Rehabilitasi Psikososial").replaceAll("3","3. Rehabilitasi Medik").replaceAll("2","2. Kemoterapi").replaceAll("1","1. Radioterapi")+"</td>"+
+                                               "<td valign='top' width='14%' border='0'>Asesmen Pelayanan</td>"+
+                                               "<td valign='top' width='1%' border='0'>:</td>"+
+                                               "<td valign='top' width='35%' border='0'>"+rs2.getString("asesmenpelayanan").replaceAll("1","1. Poli spesialis tidak tersedia pada hari sebelumnya").replaceAll("2","2. Jam Poli telah berakhir pada hari sebelumnya").replaceAll("3","3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya").replaceAll("4","4. Atas Instruksi RS").replaceAll("5","5. Tujuan Kontrol")+"</td>"+
+                                            "</tr>"+  
+                                       "</table>"+
+                                    "</td>"+
                                  "</tr>"
                             ); 
                         }

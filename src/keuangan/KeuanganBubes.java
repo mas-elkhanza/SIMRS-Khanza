@@ -67,53 +67,11 @@ public class KeuanganBubes extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());  
         
-        rekening.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgBubes")){
-                    if(rekening.getTabel().getSelectedRow()!= -1){      
-                        kdrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
-                        nmrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());                        
-                        kdrek.requestFocus();
-                    }                 
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        rekening.getTabel().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgBubes")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        rekening.dispose();
-                    }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });  
-        
         Valid.LoadTahun(Tahun);
      
     }
     private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
-    private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");    
-
-    private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
+    private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");   
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -190,6 +148,7 @@ public class KeuanganBubes extends javax.swing.JDialog {
         label17.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi4.add(label17);
 
+        kdrek.setEditable(false);
         kdrek.setName("kdrek"); // NOI18N
         kdrek.setPreferredSize(new java.awt.Dimension(140, 23));
         kdrek.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -413,22 +372,55 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void kdrekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdrekKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            kdrek.setText(rekening.getTextField().getText());
-            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek='"+kdrek.getText()+"'",nmrek);
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            kdrek.setText(rekening.getTextField().getText());
-            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek='"+kdrek.getText()+"'",nmrek);
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Tahun.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            kdrek.setText(rekening.getTextField().getText());
-            Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek='"+kdrek.getText()+"'",nmrek);
             BtnKeluar.requestFocus();
         }
     }//GEN-LAST:event_kdrekKeyPressed
 
     private void BtnCari6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCari6ActionPerformed
         akses.setform("DlgBubes");
+        DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
+        rekening.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgBubes")){
+                    if(rekening.getTabel().getSelectedRow()!= -1){      
+                        kdrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
+                        nmrek.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString());                        
+                        kdrek.requestFocus();
+                    }                 
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        rekening.getTabel().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgBubes")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        rekening.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });  
         rekening.emptTeks();
         rekening.isCek();
         rekening.tampil();

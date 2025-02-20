@@ -47,9 +47,8 @@ public final class DlgRekeningTahun extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2,ps3;
+    private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
     private double md = 0,mk = 0,saldoakhir=0;
     private String asalform="";
