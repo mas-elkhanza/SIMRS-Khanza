@@ -41,7 +41,7 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
     private ResultSet rs,rsakunbayar;
     private double all=0,bayar=0;
     private int i,kolom=0,no=0,kolom2=0;
-    private String shift="",tanggal2="",petugas="";
+    private String petugas="";
     private StringBuilder htmlContent;
     private String[] namabayar,akunrekening,namarekening;
     private double[] totalbayar,totalbayar2;
@@ -676,11 +676,13 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             );   
             
             kolom=0;
-            i=Sequel.cariInteger("select count(akun_bayar.nama_bayar) from akun_bayar");
-            namabayar=new String[i];
             psakunbayar=koneksi.prepareStatement("select akun_bayar.nama_bayar from akun_bayar order by akun_bayar.nama_bayar");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                namabayar=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     namabayar[kolom]=rsakunbayar.getString("nama_bayar");
                     kolom++;
@@ -909,12 +911,14 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             } 
             
             kolom2=0;
-            i=Sequel.cariInteger("select count(rekening.kd_rek) from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2)");
-            akunrekening=new String[i];
-            namarekening=new String[i];
             psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2) order by rekening.nm_rek");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                akunrekening=new String[i];
+                namarekening=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     akunrekening[kolom2]=rsakunbayar.getString("kd_rek");
                     namarekening[kolom2]=rsakunbayar.getString("nm_rek");
@@ -1048,11 +1052,13 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             );   
             
             kolom=0;
-            i=Sequel.cariInteger("select count(akun_bayar.nama_bayar) from akun_bayar");
-            namabayar=new String[i];
             psakunbayar=koneksi.prepareStatement("select akun_bayar.nama_bayar from akun_bayar order by akun_bayar.nama_bayar");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                namabayar=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     namabayar[kolom]=rsakunbayar.getString("nama_bayar");
                     kolom++;
@@ -1281,12 +1287,14 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             } 
             
             kolom2=0;
-            i=Sequel.cariInteger("select count(rekening.kd_rek) from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2)");
-            akunrekening=new String[i];
-            namarekening=new String[i];
             psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2) order by rekening.nm_rek");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                akunrekening=new String[i];
+                namarekening=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     akunrekening[kolom2]=rsakunbayar.getString("kd_rek");
                     namarekening[kolom2]=rsakunbayar.getString("nm_rek");

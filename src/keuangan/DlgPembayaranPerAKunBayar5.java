@@ -673,11 +673,13 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
             );   
             
             kolom=0;
-            i=Sequel.cariInteger("select count(akun_bayar.nama_bayar) from akun_bayar");
-            namabayar=new String[i];
             psakunbayar=koneksi.prepareStatement("select akun_bayar.nama_bayar from akun_bayar order by akun_bayar.nama_bayar");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                namabayar=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     namabayar[kolom]=rsakunbayar.getString("nama_bayar");
                     kolom++;
@@ -696,12 +698,14 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
             totalbayar=new double[kolom]; 
             
             kolom2=0;
-            i=Sequel.cariInteger("select count(rekening.kd_rek) from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2)");
-            akunrekening=new String[i];
-            namarekening=new String[i];
             psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2) order by rekening.nm_rek");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                akunrekening=new String[i];
+                namarekening=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     akunrekening[kolom2]=rsakunbayar.getString("kd_rek");
                     namarekening[kolom2]=rsakunbayar.getString("nm_rek");
@@ -1028,11 +1032,13 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
             );   
             
             kolom=0;
-            i=Sequel.cariInteger("select count(akun_bayar.nama_bayar) from akun_bayar");
-            namabayar=new String[i];
             psakunbayar=koneksi.prepareStatement("select akun_bayar.nama_bayar from akun_bayar order by akun_bayar.nama_bayar");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                namabayar=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     namabayar[kolom]=rsakunbayar.getString("nama_bayar");
                     kolom++;
@@ -1050,13 +1056,14 @@ public final class DlgPembayaranPerAKunBayar5 extends javax.swing.JDialog {
             }
             totalbayar=new double[kolom]; 
             
-            kolom2=0;
-            i=Sequel.cariInteger("select count(rekening.kd_rek) from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2)");
-            akunrekening=new String[i];
-            namarekening=new String[i];
             psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2) order by rekening.nm_rek");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                akunrekening=new String[i];
+                namarekening=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     akunrekening[kolom2]=rsakunbayar.getString("kd_rek");
                     namarekening[kolom2]=rsakunbayar.getString("nm_rek");

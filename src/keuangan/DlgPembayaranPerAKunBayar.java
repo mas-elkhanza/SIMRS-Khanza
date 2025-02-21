@@ -90,6 +90,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                     }
                 }
             });
+            
             User.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -558,10 +559,13 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>");
             kolom=0;
-            akunbayar=new String[Sequel.cariInteger("select count(kd_rek) from rekening where kd_rek in (select kd_rek from akun_bayar group by kd_rek)")];
-            psakunbayar=koneksi.prepareStatement("select kd_rek,nm_rek from rekening where kd_rek in (select kd_rek from akun_bayar group by kd_rek) order by nm_rek");
+            psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where (rekening.kd_rek in (select akun_bayar.kd_rek from akun_bayar group by akun_bayar.kd_rek)) or (rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2)) order by rekening.nm_rek");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                akunbayar=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     akunbayar[kolom]=rsakunbayar.getString("kd_rek");
                     kolom++;
@@ -588,9 +592,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                 all=0;
                 no=1;
                 while(rsjamshift.next()){ 
-                    ps= koneksi.prepareStatement(
-                            "select no_nota,tgl_bayar,nama_pasien,jumlah_bayar,petugas from tagihan_sadewa "+
-                            "where tgl_bayar between ? and ? order by tgl_bayar,no_nota");
+                    ps = koneksi.prepareStatement("select tagihan_sadewa.no_nota,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas from tagihan_sadewa where tagihan_sadewa.tgl_bayar between ? and ? order by tagihan_sadewa.tgl_bayar,tagihan_sadewa.no_nota");
                     try {
                         ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_masuk"));                        
                         if(rsjamshift.getString("shift").equals("Malam")){
@@ -650,10 +652,10 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                     for(i=0;i<kolom;i++){
                                         bayar=0;
                                         if(!norawatinap.equals("")){
-                                            bayar=Sequel.cariIsiAngka("select detail_nota_inap.besar_bayar from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else if(!norawatjalan.equals("")){
-                                            bayar=Sequel.cariIsiAngka("select detail_nota_jalan.besar_bayar from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual inner join akun_bayar on penjualan.nama_bayar=akun_bayar.nama_bayar where penjualan.nota_jual='"+notajual+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
@@ -723,10 +725,10 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                     for(i=0;i<kolom;i++){
                                         bayar=0;
                                         if(!norawatinap.equals("")){
-                                            bayar=Sequel.cariIsiAngka("select detail_nota_inap.besar_bayar from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else if(!norawatjalan.equals("")){
-                                            bayar=Sequel.cariIsiAngka("select detail_nota_jalan.besar_bayar from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual inner join akun_bayar on penjualan.nama_bayar=akun_bayar.nama_bayar where penjualan.nota_jual='"+notajual+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
@@ -823,10 +825,13 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='80px'>Pembayaran</td>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' width='130px'>Petugas</td>");
             kolom=0;
-            akunbayar=new String[Sequel.cariInteger("select count(kd_rek) from rekening where kd_rek in (select kd_rek from akun_bayar group by kd_rek)")];
-            psakunbayar=koneksi.prepareStatement("select kd_rek,nm_rek from rekening where kd_rek in (select kd_rek from akun_bayar group by kd_rek) order by nm_rek");
+            psakunbayar=koneksi.prepareStatement("select rekening.kd_rek,rekening.nm_rek from rekening where (rekening.kd_rek in (select akun_bayar.kd_rek from akun_bayar group by akun_bayar.kd_rek)) or (rekening.kd_rek in (select kategori_pemasukan_lain.kd_rek2 from kategori_pemasukan_lain group by kategori_pemasukan_lain.kd_rek2)) order by rekening.nm_rek");
             try {
                 rsakunbayar=psakunbayar.executeQuery();
+                rsakunbayar.last();
+                i=rsakunbayar.getRow();
+                akunbayar=new String[i];
+                rsakunbayar.beforeFirst();
                 while(rsakunbayar.next()){
                     akunbayar[kolom]=rsakunbayar.getString("kd_rek");
                     kolom++;
@@ -853,9 +858,7 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                 all=0;
                 no=1;
                 while(rsjamshift.next()){ 
-                    ps= koneksi.prepareStatement(
-                            "select no_nota,tgl_bayar,nama_pasien,jumlah_bayar,petugas from tagihan_sadewa "+
-                            "where tgl_bayar between ? and ? order by tgl_bayar,no_nota");
+                    ps= koneksi.prepareStatement("select tagihan_sadewa.no_nota,tagihan_sadewa.tgl_bayar,tagihan_sadewa.nama_pasien,tagihan_sadewa.jumlah_bayar,tagihan_sadewa.petugas from tagihan_sadewa where tagihan_sadewa.tgl_bayar between ? and ? order by tagihan_sadewa.tgl_bayar,tagihan_sadewa.no_nota");
                     try {
                         ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" "+rsjamshift.getString("jam_masuk"));                        
                         if(rsjamshift.getString("shift").equals("Malam")){
@@ -915,10 +918,10 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                     for(i=0;i<kolom;i++){
                                         bayar=0;
                                         if(!norawatinap.equals("")){
-                                            bayar=Sequel.cariIsiAngka("select detail_nota_inap.besar_bayar from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Math.round(bayar)+"</td>");
                                         }else if(!norawatjalan.equals("")){
-                                            bayar=Sequel.cariIsiAngka("select detail_nota_jalan.besar_bayar from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Math.round(bayar)+"</td>");
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual inner join akun_bayar on penjualan.nama_bayar=akun_bayar.nama_bayar where penjualan.nota_jual='"+notajual+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
@@ -988,10 +991,10 @@ public final class DlgPembayaranPerAKunBayar extends javax.swing.JDialog {
                                     for(i=0;i<kolom;i++){
                                         bayar=0;
                                         if(!norawatinap.equals("")){
-                                            bayar=Sequel.cariIsiAngka("select detail_nota_inap.besar_bayar from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_inap.besar_bayar) from detail_nota_inap inner join akun_bayar on detail_nota_inap.nama_bayar=akun_bayar.nama_bayar where detail_nota_inap.no_rawat='"+norawatinap+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Math.round(bayar)+"</td>");
                                         }else if(!norawatjalan.equals("")){
-                                            bayar=Sequel.cariIsiAngka("select detail_nota_jalan.besar_bayar from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
+                                            bayar=Sequel.cariIsiAngka("select sum(detail_nota_jalan.besar_bayar) from detail_nota_jalan inner join akun_bayar on detail_nota_jalan.nama_bayar=akun_bayar.nama_bayar where detail_nota_jalan.no_rawat='"+norawatjalan+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");
                                             htmlContent.append("<td valign='middle' align='right'>"+Math.round(bayar)+"</td>");
                                         }else if(!notajual.equals("")){
                                             bayar=Sequel.cariIsiAngka("select (sum(detailjual.total)+penjualan.ongkir+penjualan.ppn) from detailjual inner join penjualan on penjualan.nota_jual=detailjual.nota_jual inner join akun_bayar on penjualan.nama_bayar=akun_bayar.nama_bayar where penjualan.nota_jual='"+notajual+"' and akun_bayar.kd_rek='"+akunbayar[i]+"'");

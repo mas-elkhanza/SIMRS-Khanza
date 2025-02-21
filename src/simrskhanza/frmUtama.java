@@ -758,6 +758,7 @@ import keuangan.DlgLhtBankMandiri;
 import keuangan.DlgLhtBankPapua;
 import keuangan.DlgLhtPembayaranPihakKe3BankMandiri;
 import keuangan.DlgPendapatanPerAKun;
+import keuangan.DlgPendapatanPerAKunClosing;
 import keuangan.DlgRekapBiayaRegistrasi;
 import keuangan.KeuanganBayarPemesananDapur;
 import keuangan.KeuanganHutangDapurBelumLunas;
@@ -22252,6 +22253,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         aplikasi.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }  
+    
+    private void btnPendapatanPerAkunClosingActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPendapatanPerAKunClosing aplikasi=new DlgPendapatanPerAKunClosing(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22952,7 +22964,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnHutangDapur,btnTagihanHutangDapur,btnValidasiTagihanDapur,btnSuratPemesananDapur,btnPengajuanBarangDapur,btnReturBarangDapur,btnHibahDapur,btnRingkasanPenerimaanDapur,
             btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur,btnStokKeluarDapurPerTanggal,btnSirkulasiDapur,btnSirkulasiDapur2,
             btnVerifikasiPenerimaanDapur,btnNilaiPenerimaanVendorDapurPerBulan,btnRingkasanHutangVendorBarangDapur,btnPenilaianPsikologiKlinis,btnPenilaianAwalMedisRanapNeonatus,
-            btnPenilaianDerajatDehidrasi,btnRingkasanJasaTindakanPasien,btnPendapatanPerAkun,btnHasilPemeriksaanECHO,btnRl13KetersediaanKamar;
+            btnPenilaianDerajatDehidrasi,btnRingkasanJasaTindakanPasien,btnPendapatanPerAkun,btnHasilPemeriksaanECHO,btnRl13KetersediaanKamar,btnPendapatanPerAkunClosing;
     
     public void isWall(){
         try{            
@@ -24653,6 +24665,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpendapatan_per_akun()==true){
                 Panelmenu.add(btnPendapatanPerAkun);
+                jmlmenu++;
+            }
+            
+            if(akses.getpendapatan_per_akun_closing()==true){
+                Panelmenu.add(btnPendapatanPerAkunClosing);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==9){ 
@@ -30091,6 +30108,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpendapatan_per_akun()==true){
             Panelmenu.add(btnPendapatanPerAkun);
+            jmlmenu++;
+        }
+        
+        if(akses.getpendapatan_per_akun_closing()==true){
+            Panelmenu.add(btnPendapatanPerAkunClosing);
             jmlmenu++;
         }
 
@@ -36144,6 +36166,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpendapatan_per_akun()==true){
             if(btnPendapatanPerAkun.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPendapatanPerAkun);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpendapatan_per_akun_closing()==true){
+            if(btnPendapatanPerAkunClosing.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPendapatanPerAkunClosing);
                 jmlmenu++;
             }                
         }
@@ -46585,6 +46614,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPendapatanPerAkun.setName("btnPendapatanPerAkun");
         btnPendapatanPerAkun.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPendapatanPerAkun.addActionListener(this::btnPendapatanPerAkunActionPerformed);
+        
+        btnPendapatanPerAkunClosing = new widget.ButtonBig();
+        btnPendapatanPerAkunClosing.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1404046811_money.png"))); 
+        btnPendapatanPerAkunClosing.setText("Pendapatan Per Akun Closing");
+        btnPendapatanPerAkunClosing.setIconTextGap(0);
+        btnPendapatanPerAkunClosing.setName("btnPendapatanPerAkunClosing");
+        btnPendapatanPerAkunClosing.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPendapatanPerAkunClosing.addActionListener(this::btnPendapatanPerAkunClosingActionPerformed);
         
         btnRl13KetersediaanKamar = new widget.ButtonBig();
         btnRl13KetersediaanKamar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); 

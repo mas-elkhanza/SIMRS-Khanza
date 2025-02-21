@@ -491,7 +491,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                             "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("uangmuka"))+"</td>"+
                             "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("totalpiutang"))+"</td>");
                     for(i=0;i<kolom;i++){
-                        bayar=Sequel.cariIsiAngka("select detail_piutang_pasien.totalpiutang from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and detail_piutang_pasien.nama_bayar='"+akunpiutang[i]+"'");
+                        bayar=Sequel.cariIsiAngka("select sum(detail_piutang_pasien.totalpiutang) from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and detail_piutang_pasien.nama_bayar='"+akunpiutang[i]+"'");
                         htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                         totalpiutang[i]=totalpiutang[i]+bayar;
                     }
@@ -537,7 +537,7 @@ public final class DlgPiutangPerAKunPiutang extends javax.swing.JDialog {
                             "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("uangmuka"))+"</td>"+
                             "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("totalpiutang"))+"</td>");
                     for(i=0;i<kolom;i++){
-                        bayar=Sequel.cariIsiAngka("select detail_piutang_pasien.totalpiutang from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and detail_piutang_pasien.nama_bayar='"+akunpiutang[i]+"'");
+                        bayar=Sequel.cariIsiAngka("select sum(detail_piutang_pasien.totalpiutang) from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and detail_piutang_pasien.nama_bayar='"+akunpiutang[i]+"'");
                         htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(bayar)+"</td>");
                         totalpiutang[i]=totalpiutang[i]+bayar;
                     }
