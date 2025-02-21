@@ -36,7 +36,7 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabMode2,tabMode3;
+    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabModeBeriObatGolongan;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -118,6 +118,28 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
             }
         }
         tbBangsal3.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeBeriObatGolongan=new DefaultTableModel(null,new String[]{"No.","Golongan Obat","Jumlah Item Obat","Jumlah Item Obat Yang Tersedia di RS"}){
+              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        };
+        tbBeriObatGolongan.setModel(tabMode);
+        //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
+        tbBeriObatGolongan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbBeriObatGolongan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 4; i++) {
+            TableColumn column = tbBeriObatGolongan.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(35);
+            }else if(i==1){
+                column.setPreferredWidth(200);
+            }else if(i==2){
+                column.setPreferredWidth(200);
+            }else if(i==3){
+                column.setPreferredWidth(300);
+            }
+        }
+        tbBeriObatGolongan.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -198,6 +220,8 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         tbBangsal2 = new widget.Table();
         Scroll3 = new widget.ScrollPane();
         tbBangsal3 = new widget.Table();
+        Scroll1 = new widget.ScrollPane();
+        tbBeriObatGolongan = new widget.Table();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
         Tgl1 = new widget.Tanggal();
@@ -218,12 +242,12 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Kegiatan Farmasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Kegiatan Farmasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         TabRawat.setBackground(new java.awt.Color(255, 255, 253));
-        TabRawat.setForeground(new java.awt.Color(50,50,50));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -258,6 +282,15 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         Scroll3.setViewportView(tbBangsal3);
 
         TabRawat.addTab("Penerimaan Obat Per Kategori", Scroll3);
+
+        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll1.setName("Scroll1"); // NOI18N
+        Scroll1.setOpaque(true);
+
+        tbBeriObatGolongan.setName("tbBeriObatGolongan"); // NOI18N
+        Scroll1.setViewportView(tbBeriObatGolongan);
+
+        TabRawat.addTab("Pemberian Obat Pasien Per Golongan", Scroll1);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -542,6 +575,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.ScrollPane Scroll;
+    private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.TextBox TCari;
@@ -558,6 +592,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     private widget.Table tbBangsal2;
     private widget.Table tbBangsal3;
+    private widget.Table tbBeriObatGolongan;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(){        
