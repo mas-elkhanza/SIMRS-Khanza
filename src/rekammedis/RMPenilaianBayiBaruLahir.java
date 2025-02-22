@@ -645,6 +645,14 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         TglLahirIbu7 = new widget.TextBox();
         jLabel46 = new widget.Label();
         jLabel23 = new widget.Label();
+        NmIbu2 = new widget.TextBox();
+        jLabel24 = new widget.Label();
+        jLabel25 = new widget.Label();
+        jLabel47 = new widget.Label();
+        HbsAg4 = new widget.ComboBox();
+        TglLahirIbu8 = new widget.TextBox();
+        jLabel48 = new widget.Label();
+        TglLahirIbu9 = new widget.TextBox();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1162,13 +1170,13 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator2.setName("jSeparator2"); // NOI18N
         FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 480, 880, 1);
+        jSeparator2.setBounds(0, 410, 880, 1);
 
         jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel115.setText("II. PEMERIKSAAN FISIK");
+        jLabel115.setText("II. RIWAYAT PERSALINAN");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
-        jLabel115.setBounds(10, 480, 180, 23);
+        jLabel115.setBounds(10, 410, 180, 23);
 
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel74.setText("APGAR Score :");
@@ -1444,6 +1452,53 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
         jLabel23.setBounds(0, 380, 179, 23);
+
+        NmIbu2.setEditable(false);
+        NmIbu2.setHighlighter(null);
+        NmIbu2.setName("NmIbu2"); // NOI18N
+        FormInput.add(NmIbu2);
+        NmIbu2.setBounds(135, 430, 180, 23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText("Umur Kehamilan");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(44, 430, 130, 23);
+
+        jLabel25.setText(":");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(0, 430, 131, 23);
+
+        jLabel47.setText("Kehamilan :");
+        jLabel47.setName("jLabel47"); // NOI18N
+        FormInput.add(jLabel47);
+        jLabel47.setBounds(320, 430, 80, 23);
+
+        HbsAg4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tunggal", "Kembar" }));
+        HbsAg4.setName("HbsAg4"); // NOI18N
+        HbsAg4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HbsAg4KeyPressed(evt);
+            }
+        });
+        FormInput.add(HbsAg4);
+        HbsAg4.setBounds(404, 430, 90, 23);
+
+        TglLahirIbu8.setHighlighter(null);
+        TglLahirIbu8.setName("TglLahirIbu8"); // NOI18N
+        FormInput.add(TglLahirIbu8);
+        TglLahirIbu8.setBounds(497, 430, 157, 23);
+
+        jLabel48.setText("Urutan Kehamilan :");
+        jLabel48.setName("jLabel48"); // NOI18N
+        FormInput.add(jLabel48);
+        jLabel48.setBounds(660, 430, 110, 23);
+
+        TglLahirIbu9.setHighlighter(null);
+        TglLahirIbu9.setName("TglLahirIbu9"); // NOI18N
+        FormInput.add(TglLahirIbu9);
+        TglLahirIbu9.setBounds(774, 430, 80, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2201,6 +2256,10 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_HbsAg3KeyPressed
 
+    private void HbsAg4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HbsAg4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HbsAg4KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2241,6 +2300,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.ComboBox HbsAg1;
     private widget.ComboBox HbsAg2;
     private widget.ComboBox HbsAg3;
+    private widget.ComboBox HbsAg4;
     private widget.ComboBox JK;
     private widget.TextBox JenisPersalinan;
     private widget.TextBox Jk;
@@ -2255,6 +2315,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox NmDokter;
     private widget.TextBox NmIbu;
     private widget.TextBox NmIbu1;
+    private widget.TextBox NmIbu2;
     private widget.TextBox NoRMIbu;
     private widget.TextBox Penolong;
     private widget.TextBox Penyulit;
@@ -2279,6 +2340,8 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox TglLahirIbu5;
     private widget.TextBox TglLahirIbu6;
     private widget.TextBox TglLahirIbu7;
+    private widget.TextBox TglLahirIbu8;
+    private widget.TextBox TglLahirIbu9;
     private widget.TextBox UsiaHamil;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
@@ -2306,6 +2369,8 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
+    private widget.Label jLabel24;
+    private widget.Label jLabel25;
     private widget.Label jLabel38;
     private widget.Label jLabel39;
     private widget.Label jLabel40;
@@ -2315,6 +2380,8 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel44;
     private widget.Label jLabel45;
     private widget.Label jLabel46;
+    private widget.Label jLabel47;
+    private widget.Label jLabel48;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel74;

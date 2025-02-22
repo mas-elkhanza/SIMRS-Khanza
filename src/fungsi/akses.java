@@ -240,7 +240,7 @@ public final class akses {
             ringkasan_pemesanan_dapur=false,ringkasan_returbeli_dapur=false,ringkasan_stokkeluar_dapur=false,dapur_stokkeluar_pertanggal=false,sirkulasi_dapur=false,
             sirkulasi_dapur2=false,verifikasi_penerimaan_dapur=false,nilai_penerimaan_vendor_dapur_perbulan=false,ringkasan_hutang_vendor_dapur=false,penilaian_psikologi_klinis=false,
             penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false,ringkasan_jasa_tindakan_medis=false,pendapatan_per_akun=false,hasil_pemeriksaan_echo=false,
-            penilaian_bayi_baru_lahir=false,rl1_3_ketersediaan_kamar=false,pendapatan_per_akun_closing=false;
+            penilaian_bayi_baru_lahir=false,rl1_3_ketersediaan_kamar=false,pendapatan_per_akun_closing=false,pengeluaran_pengeluaran=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1364,6 +1364,7 @@ public final class akses {
                         akses.penilaian_bayi_baru_lahir=true;
                         akses.rl1_3_ketersediaan_kamar=true;
                         akses.pendapatan_per_akun_closing=true;
+                        akses.pengeluaran_pengeluaran=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2471,6 +2472,7 @@ public final class akses {
                         akses.penilaian_bayi_baru_lahir=rs2.getBoolean("penilaian_bayi_baru_lahir");
                         akses.rl1_3_ketersediaan_kamar=rs2.getBoolean("rl1_3_ketersediaan_kamar");
                         akses.pendapatan_per_akun_closing=rs2.getBoolean("pendapatan_per_akun_closing");
+                        akses.pengeluaran_pengeluaran=rs2.getBoolean("pengeluaran_pengeluaran");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3576,6 +3578,7 @@ public final class akses {
                         akses.penilaian_bayi_baru_lahir=false;
                         akses.rl1_3_ketersediaan_kamar=false;
                         akses.pendapatan_per_akun_closing=false;
+                        akses.pengeluaran_pengeluaran=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4704,6 +4707,7 @@ public final class akses {
         akses.penilaian_bayi_baru_lahir=false;
         akses.rl1_3_ketersediaan_kamar=false;
         akses.pendapatan_per_akun_closing=false;
+        akses.pengeluaran_pengeluaran=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5848,4 +5852,5 @@ public final class akses {
     public static boolean getpenilaian_bayi_baru_lahir(){return akses.penilaian_bayi_baru_lahir;}
     public static boolean getrl1_3_ketersediaan_kamar(){return akses.rl1_3_ketersediaan_kamar;}
     public static boolean getpendapatan_per_akun_closing(){return akses.pendapatan_per_akun_closing;}
+    public static boolean getpengeluaran_pengeluaran(){return akses.pengeluaran_pengeluaran;}
 }   
