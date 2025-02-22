@@ -653,6 +653,19 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         TglLahirIbu8 = new widget.TextBox();
         jLabel48 = new widget.Label();
         TglLahirIbu9 = new widget.TextBox();
+        jLabel26 = new widget.Label();
+        jLabel49 = new widget.Label();
+        jLabel27 = new widget.Label();
+        NmIbu3 = new widget.TextBox();
+        jLabel28 = new widget.Label();
+        NmIbu4 = new widget.TextBox();
+        jLabel29 = new widget.Label();
+        jLabel30 = new widget.Label();
+        NmIbu5 = new widget.TextBox();
+        NmIbu6 = new widget.TextBox();
+        jLabel31 = new widget.Label();
+        NmIbu7 = new widget.TextBox();
+        jLabel32 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -683,7 +696,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-02-2025" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-02-2025" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1118,7 +1131,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         label11.setBounds(668, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-02-2025 14:57:21" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-02-2025 10:52:12" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1182,7 +1195,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel74.setText("APGAR Score :");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(44, 510, 182, 23);
+        jLabel74.setBounds(44, 610, 182, 23);
 
         Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         Scroll2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -1204,34 +1217,34 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         Scroll2.setViewportView(tbAPGAR);
 
         FormInput.add(Scroll2);
-        Scroll2.setBounds(77, 530, 777, 127);
+        Scroll2.setBounds(77, 630, 777, 127);
 
         label71.setText("Jumlah Nilai :");
         label71.setName("label71"); // NOI18N
         label71.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label71);
-        label71.setBounds(660, 656, 100, 27);
+        label71.setBounds(660, 756, 100, 27);
 
         N1.setEditable(false);
         N1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N1.setName("N1"); // NOI18N
         FormInput.add(N1);
-        N1.setBounds(764, 656, 29, 27);
+        N1.setBounds(764, 756, 29, 27);
 
         N5.setEditable(false);
         N5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N5.setName("N5"); // NOI18N
         FormInput.add(N5);
-        N5.setBounds(792, 656, 29, 27);
+        N5.setBounds(792, 756, 29, 27);
 
         N10.setEditable(false);
         N10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N10.setName("N10"); // NOI18N
         FormInput.add(N10);
-        N10.setBounds(820, 656, 34, 27);
+        N10.setBounds(820, 756, 34, 27);
 
         jLabel14.setText("Ibu Bayi :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -1500,6 +1513,79 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(TglLahirIbu9);
         TglLahirIbu9.setBounds(774, 430, 80, 23);
 
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("Air Ketuban :");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(310, 460, 90, 23);
+
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel49.setText("Jam");
+        jLabel49.setName("jLabel49"); // NOI18N
+        FormInput.add(jLabel49);
+        jLabel49.setBounds(77, 480, 40, 23);
+
+        jLabel27.setText(":");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(0, 480, 104, 23);
+
+        NmIbu3.setEditable(false);
+        NmIbu3.setHighlighter(null);
+        NmIbu3.setName("NmIbu3"); // NOI18N
+        FormInput.add(NmIbu3);
+        NmIbu3.setBounds(108, 480, 50, 23);
+
+        jLabel28.setText("Menit :");
+        jLabel28.setName("jLabel28"); // NOI18N
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(155, 480, 50, 23);
+
+        NmIbu4.setEditable(false);
+        NmIbu4.setHighlighter(null);
+        NmIbu4.setName("NmIbu4"); // NOI18N
+        FormInput.add(NmIbu4);
+        NmIbu4.setBounds(209, 480, 50, 23);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel29.setText("Ketuban Pecah Sebelum Lahir :");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(44, 460, 180, 23);
+
+        jLabel30.setText("Jumlah :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(335, 480, 50, 23);
+
+        NmIbu5.setEditable(false);
+        NmIbu5.setHighlighter(null);
+        NmIbu5.setName("NmIbu5"); // NOI18N
+        FormInput.add(NmIbu5);
+        NmIbu5.setBounds(389, 480, 120, 23);
+
+        NmIbu6.setEditable(false);
+        NmIbu6.setHighlighter(null);
+        NmIbu6.setName("NmIbu6"); // NOI18N
+        FormInput.add(NmIbu6);
+        NmIbu6.setBounds(569, 480, 120, 23);
+
+        jLabel31.setText("Warna :");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(515, 480, 50, 23);
+
+        NmIbu7.setEditable(false);
+        NmIbu7.setHighlighter(null);
+        NmIbu7.setName("NmIbu7"); // NOI18N
+        FormInput.add(NmIbu7);
+        NmIbu7.setBounds(734, 480, 120, 23);
+
+        jLabel32.setText("Bau :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(680, 480, 50, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1540,7 +1626,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-02-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-02-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1554,7 +1640,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-02-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-02-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2316,6 +2402,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox NmIbu;
     private widget.TextBox NmIbu1;
     private widget.TextBox NmIbu2;
+    private widget.TextBox NmIbu3;
+    private widget.TextBox NmIbu4;
+    private widget.TextBox NmIbu5;
+    private widget.TextBox NmIbu6;
+    private widget.TextBox NmIbu7;
     private widget.TextBox NoRMIbu;
     private widget.TextBox Penolong;
     private widget.TextBox Penyulit;
@@ -2371,6 +2462,13 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel23;
     private widget.Label jLabel24;
     private widget.Label jLabel25;
+    private widget.Label jLabel26;
+    private widget.Label jLabel27;
+    private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
     private widget.Label jLabel38;
     private widget.Label jLabel39;
     private widget.Label jLabel40;
@@ -2382,6 +2480,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel46;
     private widget.Label jLabel47;
     private widget.Label jLabel48;
+    private widget.Label jLabel49;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel74;
