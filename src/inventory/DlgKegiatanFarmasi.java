@@ -36,7 +36,7 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabModeBeriObatGolongan;
+    private final DefaultTableModel tabMode,tabMode2,tabMode3;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -118,28 +118,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
             }
         }
         tbBangsal3.setDefaultRenderer(Object.class, new WarnaTable());
-        
-        tabModeBeriObatGolongan=new DefaultTableModel(null,new String[]{"No.","Golongan Obat","Jumlah Item Obat","Jumlah Item Obat Yang Tersedia di RS"}){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
-        };
-        tbBeriObatGolongan.setModel(tabMode);
-        //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
-        tbBeriObatGolongan.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbBeriObatGolongan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
-        for (i = 0; i < 4; i++) {
-            TableColumn column = tbBeriObatGolongan.getColumnModel().getColumn(i);
-            if(i==0){
-                column.setPreferredWidth(35);
-            }else if(i==1){
-                column.setPreferredWidth(200);
-            }else if(i==2){
-                column.setPreferredWidth(200);
-            }else if(i==3){
-                column.setPreferredWidth(300);
-            }
-        }
-        tbBeriObatGolongan.setDefaultRenderer(Object.class, new WarnaTable());
 
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -220,8 +198,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         tbBangsal2 = new widget.Table();
         Scroll3 = new widget.ScrollPane();
         tbBangsal3 = new widget.Table();
-        Scroll1 = new widget.ScrollPane();
-        tbBeriObatGolongan = new widget.Table();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
         Tgl1 = new widget.Tanggal();
@@ -282,15 +258,6 @@ public final class DlgKegiatanFarmasi extends javax.swing.JDialog {
         Scroll3.setViewportView(tbBangsal3);
 
         TabRawat.addTab("Penerimaan Obat Per Kategori", Scroll3);
-
-        Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        Scroll1.setName("Scroll1"); // NOI18N
-        Scroll1.setOpaque(true);
-
-        tbBeriObatGolongan.setName("tbBeriObatGolongan"); // NOI18N
-        Scroll1.setViewportView(tbBeriObatGolongan);
-
-        TabRawat.addTab("Pemberian Obat Pasien Per Golongan", Scroll1);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -575,7 +542,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.ScrollPane Scroll;
-    private widget.ScrollPane Scroll1;
     private widget.ScrollPane Scroll2;
     private widget.ScrollPane Scroll3;
     private widget.TextBox TCari;
@@ -592,7 +558,6 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     private widget.Table tbBangsal2;
     private widget.Table tbBangsal3;
-    private widget.Table tbBeriObatGolongan;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(){        
