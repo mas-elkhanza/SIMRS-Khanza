@@ -682,6 +682,15 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel52 = new widget.Label();
         jLabel53 = new widget.Label();
         NmIbu10 = new widget.TextBox();
+        jLabel54 = new widget.Label();
+        jLabel56 = new widget.Label();
+        NmIbu11 = new widget.TextBox();
+        jLabel55 = new widget.Label();
+        jLabel57 = new widget.Label();
+        jLabel58 = new widget.Label();
+        TglLahirIbu12 = new widget.TextBox();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel116 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1211,7 +1220,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel74.setText("APGAR Score :");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(44, 610, 182, 23);
+        jLabel74.setBounds(44, 670, 182, 23);
 
         Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         Scroll2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -1233,34 +1242,34 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         Scroll2.setViewportView(tbAPGAR);
 
         FormInput.add(Scroll2);
-        Scroll2.setBounds(77, 630, 777, 127);
+        Scroll2.setBounds(77, 690, 777, 127);
 
         label71.setText("Jumlah Nilai :");
         label71.setName("label71"); // NOI18N
         label71.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label71);
-        label71.setBounds(660, 756, 100, 27);
+        label71.setBounds(660, 816, 100, 27);
 
         N1.setEditable(false);
         N1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N1.setName("N1"); // NOI18N
         FormInput.add(N1);
-        N1.setBounds(764, 756, 29, 27);
+        N1.setBounds(764, 816, 29, 27);
 
         N5.setEditable(false);
         N5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N5.setName("N5"); // NOI18N
         FormInput.add(N5);
-        N5.setBounds(792, 756, 29, 27);
+        N5.setBounds(792, 816, 29, 27);
 
         N10.setEditable(false);
         N10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N10.setName("N10"); // NOI18N
         FormInput.add(N10);
-        N10.setBounds(820, 756, 34, 27);
+        N10.setBounds(820, 816, 34, 27);
 
         jLabel14.setText("Ibu Bayi :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -1677,10 +1686,10 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         NmIbu9.setBounds(762, 540, 60, 23);
 
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel51.setText("menit");
+        jLabel51.setText("gram");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
-        jLabel51.setBounds(824, 540, 40, 23);
+        jLabel51.setBounds(166, 620, 40, 23);
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel52.setText("Obat-obatan Selama Persalinan");
@@ -1698,6 +1707,58 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         NmIbu10.setName("NmIbu10"); // NOI18N
         FormInput.add(NmIbu10);
         NmIbu10.setBounds(210, 570, 644, 23);
+
+        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel54.setText("Placenta :");
+        jLabel54.setName("jLabel54"); // NOI18N
+        FormInput.add(jLabel54);
+        jLabel54.setBounds(44, 600, 180, 23);
+
+        jLabel56.setText(":");
+        jLabel56.setName("jLabel56"); // NOI18N
+        FormInput.add(jLabel56);
+        jLabel56.setBounds(0, 620, 110, 23);
+
+        NmIbu11.setEditable(false);
+        NmIbu11.setHighlighter(null);
+        NmIbu11.setName("NmIbu11"); // NOI18N
+        FormInput.add(NmIbu11);
+        NmIbu11.setBounds(114, 620, 50, 23);
+
+        jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel55.setText("Berat");
+        jLabel55.setName("jLabel55"); // NOI18N
+        FormInput.add(jLabel55);
+        jLabel55.setBounds(77, 620, 50, 23);
+
+        jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel57.setText("menit");
+        jLabel57.setName("jLabel57"); // NOI18N
+        FormInput.add(jLabel57);
+        jLabel57.setBounds(824, 540, 40, 23);
+
+        jLabel58.setText("Kelainan :");
+        jLabel58.setName("jLabel58"); // NOI18N
+        FormInput.add(jLabel58);
+        jLabel58.setBounds(200, 620, 60, 23);
+
+        TglLahirIbu12.setHighlighter(null);
+        TglLahirIbu12.setName("TglLahirIbu12"); // NOI18N
+        FormInput.add(TglLahirIbu12);
+        TglLahirIbu12.setBounds(264, 620, 590, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 650, 880, 1);
+
+        jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel116.setText("III. KEADAAN BAYI");
+        jLabel116.setName("jLabel116"); // NOI18N
+        FormInput.add(jLabel116);
+        jLabel116.setBounds(10, 650, 180, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2525,6 +2586,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox NmIbu;
     private widget.TextBox NmIbu1;
     private widget.TextBox NmIbu10;
+    private widget.TextBox NmIbu11;
     private widget.TextBox NmIbu2;
     private widget.TextBox NmIbu3;
     private widget.TextBox NmIbu4;
@@ -2553,6 +2615,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox TglLahirIbu1;
     private widget.TextBox TglLahirIbu10;
     private widget.TextBox TglLahirIbu11;
+    private widget.TextBox TglLahirIbu12;
     private widget.TextBox TglLahirIbu2;
     private widget.TextBox TglLahirIbu3;
     private widget.TextBox TglLahirIbu4;
@@ -2578,6 +2641,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel113;
     private widget.Label jLabel114;
     private widget.Label jLabel115;
+    private widget.Label jLabel116;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
@@ -2618,6 +2682,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel51;
     private widget.Label jLabel52;
     private widget.Label jLabel53;
+    private widget.Label jLabel54;
+    private widget.Label jLabel55;
+    private widget.Label jLabel56;
+    private widget.Label jLabel57;
+    private widget.Label jLabel58;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel74;
@@ -2626,6 +2695,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel99;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private widget.Label label11;
     private widget.Label label14;
     private widget.Label label71;
