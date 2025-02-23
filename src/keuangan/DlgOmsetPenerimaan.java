@@ -658,7 +658,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReportqry("rptOmsetRalan.jasper","report","::[ Penerimaan Pembayaran Pasien Rawat Jalan ]::",
-                "select DATE_FORMAT(nota_jalan.tanggal,'%d-%m-%Y') as tanggal,nota_jalan.no_nota,nota_jalan.no_rawat,reg_periksa.no_rkm_medis,"+
+                "select DATE_FORMAT(nota_jalan.tanggal,'%Y-%m-%d') as tanggal,nota_jalan.no_nota,nota_jalan.no_rawat,reg_periksa.no_rkm_medis,"+
                 "pasien.nm_pasien,detail_nota_jalan.nama_bayar,detail_nota_jalan.besar_bayar "+
                 "from nota_jalan inner join reg_periksa on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                 "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
@@ -676,7 +676,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReportqry("rptOmsetRanap.jasper","report","::[ Penerimaan Pembayaran Pasien Rawat Inap ]::",
-                "select DATE_FORMAT(nota_inap.tanggal,'%d-%m-%Y') as tanggal,nota_inap.no_nota,nota_inap.no_rawat,reg_periksa.no_rkm_medis,"+
+                "select DATE_FORMAT(nota_inap.tanggal,'%Y-%m-%d') as tanggal,nota_inap.no_nota,nota_inap.no_rawat,reg_periksa.no_rkm_medis,"+
                 "pasien.nm_pasien,detail_nota_inap.nama_bayar,detail_nota_inap.besar_bayar "+
                 "from nota_inap inner join reg_periksa on nota_inap.no_rawat=reg_periksa.no_rawat "+
                 "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
@@ -694,7 +694,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReportqry("rptOmsetPenjualanObat.jasper","report","::[ Penerimaan Penjualan Bebas ]::",
-                "select DATE_FORMAT(penjualan.tgl_jual,'%d-%m-%Y') as tanggal,penjualan.nota_jual,penjualan.jns_jual,penjualan.no_rkm_medis,"+
+                "select DATE_FORMAT(penjualan.tgl_jual,'%Y-%m-%d') as tanggal,penjualan.nota_jual,penjualan.jns_jual,penjualan.no_rkm_medis,"+
                 "penjualan.nm_pasien,penjualan.nama_bayar,round(penjualan.ongkir+penjualan.ppn+sum(detailjual.total)) as total "+
                 "from penjualan inner join detailjual on detailjual.nota_jual=penjualan.nota_jual "+
                 "where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' "+
@@ -711,7 +711,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReportqry("rptOmsetPemasukanLain.jasper","report","::[ Penerimaan Pemasukan Lain-lain ]::",
-                "select DATE_FORMAT(pemasukan_lain.tanggal,'%d-%m-%Y') as tanggal,pemasukan_lain.no_masuk,pemasukan_lain.keterangan,"+
+                "select DATE_FORMAT(pemasukan_lain.tanggal,'%Y-%m-%d') as tanggal,pemasukan_lain.no_masuk,pemasukan_lain.keterangan,"+
                 "pemasukan_lain.keperluan,kategori_pemasukan_lain.nama_kategori,pemasukan_lain.besar "+
                 "from pemasukan_lain inner join kategori_pemasukan_lain on pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori "+
                 "where pemasukan_lain.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59"+"' order by pemasukan_lain.tanggal ",param);
@@ -727,7 +727,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReportqry("rptOmsetDeposit.jasper","report","::[ Penerimaan Deposit Pasien ]::",
-                "select DATE_FORMAT(deposit.tgl_deposit,'%d-%m-%Y') as tanggal,deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.nama_bayar, "+
+                "select DATE_FORMAT(deposit.tgl_deposit,'%Y-%m-%d') as tanggal,deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.nama_bayar, "+
                 "deposit.besar_deposit from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "where deposit.tgl_deposit between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+" 00:00:00"+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+" 23:59:59"+"' order by deposit.tgl_deposit ",param);
         }
@@ -742,7 +742,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReportqry("rptOmsetPiutangDibayar.jasper","report","::[ Penerimaan Pembayaran Piutang ]::",
-                "select DATE_FORMAT(bayar_piutang.tgl_bayar,'%d-%m-%Y') as tanggal,bayar_piutang.no_rawat,bayar_piutang.no_rkm_medis,pasien.nm_pasien,"+
+                "select DATE_FORMAT(bayar_piutang.tgl_bayar,'%Y-%m-%d') as tanggal,bayar_piutang.no_rawat,bayar_piutang.no_rkm_medis,pasien.nm_pasien,"+
                 "rekening.nm_rek,rekening2.nm_rek,bayar_piutang.besar_cicilan "+
                 "from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join rekening on rekening.kd_rek=bayar_piutang.kd_rek "+
@@ -823,7 +823,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             rawatjalan=0;
             ps=koneksi.prepareStatement(
-                    "select DATE_FORMAT(nota_jalan.tanggal,'%d-%m-%Y'),nota_jalan.no_nota,nota_jalan.no_rawat,reg_periksa.no_rkm_medis,"+
+                    "select DATE_FORMAT(nota_jalan.tanggal,'%Y-%m-%d'),nota_jalan.no_nota,nota_jalan.no_rawat,reg_periksa.no_rkm_medis,"+
                     "pasien.nm_pasien,detail_nota_jalan.nama_bayar,detail_nota_jalan.besar_bayar "+
                     "from nota_jalan inner join reg_periksa on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
@@ -854,7 +854,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode2);
             rawatinap=0;
             ps=koneksi.prepareStatement(
-                    "select DATE_FORMAT(nota_inap.tanggal,'%d-%m-%Y'),nota_inap.no_nota,nota_inap.no_rawat,reg_periksa.no_rkm_medis,"+
+                    "select DATE_FORMAT(nota_inap.tanggal,'%Y-%m-%d'),nota_inap.no_nota,nota_inap.no_rawat,reg_periksa.no_rkm_medis,"+
                     "pasien.nm_pasien,detail_nota_inap.nama_bayar,detail_nota_inap.besar_bayar "+
                     "from nota_inap inner join reg_periksa on nota_inap.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
@@ -885,7 +885,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode3);
             jualbebas=0;
             ps=koneksi.prepareStatement(
-                    "select DATE_FORMAT(penjualan.tgl_jual,'%d-%m-%Y'),penjualan.nota_jual,penjualan.jns_jual,penjualan.no_rkm_medis,"+
+                    "select DATE_FORMAT(penjualan.tgl_jual,'%Y-%m-%d'),penjualan.nota_jual,penjualan.jns_jual,penjualan.no_rkm_medis,"+
                     "penjualan.nm_pasien,penjualan.nama_bayar,(penjualan.ongkir+penjualan.ppn+sum(detailjual.total)) "+
                     "from penjualan inner join detailjual on detailjual.nota_jual=penjualan.nota_jual "+
                     "where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between ? and ? "+
@@ -915,7 +915,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode4);
             pemasukanlain=0;
             ps=koneksi.prepareStatement(
-                    "select DATE_FORMAT(pemasukan_lain.tanggal,'%d-%m-%Y'),pemasukan_lain.no_masuk,pemasukan_lain.keterangan,"+
+                    "select DATE_FORMAT(pemasukan_lain.tanggal,'%Y-%m-%d'),pemasukan_lain.no_masuk,pemasukan_lain.keterangan,"+
                     "pemasukan_lain.keperluan,kategori_pemasukan_lain.nama_kategori,pemasukan_lain.besar "+
                     "from pemasukan_lain inner join kategori_pemasukan_lain on pemasukan_lain.kode_kategori=kategori_pemasukan_lain.kode_kategori "+
                     "where pemasukan_lain.tanggal between ? and ? order by pemasukan_lain.tanggal ");
@@ -944,7 +944,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode5);
             deposit=0;
             ps=koneksi.prepareStatement(
-                    "select DATE_FORMAT(deposit.tgl_deposit,'%d-%m-%Y'),deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.nama_bayar, "+
+                    "select DATE_FORMAT(deposit.tgl_deposit,'%Y-%m-%d'),deposit.no_deposit,deposit.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,deposit.nama_bayar, "+
                     "deposit.besar_deposit from deposit inner join reg_periksa on deposit.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "where deposit.tgl_deposit between ? and ? order by deposit.tgl_deposit ");
             try {
@@ -972,7 +972,7 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode6);
             bayarpiutang=0;
             ps=koneksi.prepareStatement(
-                    "select DATE_FORMAT(bayar_piutang.tgl_bayar,'%d-%m-%Y'),bayar_piutang.no_rawat,bayar_piutang.no_rkm_medis,pasien.nm_pasien,"+
+                    "select DATE_FORMAT(bayar_piutang.tgl_bayar,'%Y-%m-%d'),bayar_piutang.no_rawat,bayar_piutang.no_rkm_medis,pasien.nm_pasien,"+
                     "rekening.nm_rek,rekening2.nm_rek,bayar_piutang.besar_cicilan "+
                     "from bayar_piutang inner join pasien on bayar_piutang.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join rekening on rekening.kd_rek=bayar_piutang.kd_rek "+
