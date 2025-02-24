@@ -1007,7 +1007,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         jml=0;
         for(i=0;i<tbDokter.getRowCount();i++){
             if(!tbDokter.getValueAt(i,0).toString().equals("")){
@@ -1068,7 +1068,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         "databarang.kapasitas from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         "where databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+
-                        (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
+                        (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
                         "group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
                     pstampil=koneksi.prepareStatement(
@@ -1077,7 +1077,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         "databarang.kapasitas from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         "where databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+
-                        (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
+                        (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
                         " order by databarang.nama_brng");
                 }
                 
@@ -1117,7 +1117,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         "where  databarang.status='1' and gudangbarang.no_batch<>'' and gudangbarang.no_faktur<>'' and gudangbarang.kd_bangsal=? "+
-                        (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
+                        (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
                         "group by gudangbarang.kode_brng order by databarang.nama_brng");
                 }else{
                     pstampil=koneksi.prepareStatement(
@@ -1128,7 +1128,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                         "from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
                         "inner join gudangbarang on databarang.kode_brng=gudangbarang.kode_brng "+
                         "where databarang.status='1' and gudangbarang.no_batch='' and gudangbarang.no_faktur='' and gudangbarang.kd_bangsal=? "+
-                        (TCari.getText().trim().equals("")?"":"and databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ? ")+
+                        (TCari.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ? or jenis.nama like ?) ")+
                         "order by databarang.nama_brng");
                 }
 
@@ -1216,7 +1216,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         TNoRw.setText(no_rawat);
         Sequel.cariIsi("select concat(pasien.no_rkm_medis,' ',pasien.nm_pasien) from reg_periksa inner join pasien "+
                     " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=? ",TPasien,TNoRw.getText());
-        
+        bangsal=akses.getkdbangsal();
         DTPBeri.setDate(tanggal);
         KdDokter.setText(Sequel.cariIsi("select dpjp_ranap.kd_dokter from dpjp_ranap where dpjp_ranap.no_rawat=?",no_rawat));
         if(KdDokter.getText().equals("")){
@@ -1242,22 +1242,30 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 "on kamar.kd_kamar=kamar_inap.kd_kamar where no_rawat=? "+
                 "and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",TNoRw.getText());
         }                
-        if(kelas.equals("Kelas 1")){
-            Jeniskelas.setSelectedItem("Kelas 1");
-        }else if(kelas.equals("Kelas 2")){
-            Jeniskelas.setSelectedItem("Kelas 2");
-        }else if(kelas.equals("Kelas 3")){
-            Jeniskelas.setSelectedItem("Kelas 3");
-        }else if(kelas.equals("Kelas Utama")){
-            Jeniskelas.setSelectedItem("Utama/BPJS");
-        }else if(kelas.equals("Kelas VIP")){
-            Jeniskelas.setSelectedItem("VIP");
-        }else if(kelas.equals("Kelas VVIP")){
-            Jeniskelas.setSelectedItem("VVIP");
-        } 
+        switch (kelas) {
+            case "Kelas 1":
+                Jeniskelas.setSelectedItem("Kelas 1");
+                break;
+            case "Kelas 2":
+                Jeniskelas.setSelectedItem("Kelas 2");
+                break;
+            case "Kelas 3":
+                Jeniskelas.setSelectedItem("Kelas 3");
+                break;
+            case "Kelas Utama":
+                Jeniskelas.setSelectedItem("Utama/BPJS");
+                break; 
+            case "Kelas VIP":
+                Jeniskelas.setSelectedItem("VIP");
+                break;
+            case "Kelas VVIP":
+                Jeniskelas.setSelectedItem("VVIP");
+                break;
+            default:
+                break;
+        }
         kenaikan=Sequel.cariIsiAngka2("select (set_harga_obat_ranap.hargajual/100) from set_harga_obat_ranap where set_harga_obat_ranap.kd_pj=? and set_harga_obat_ranap.kelas=?",KdPj.getText(),kelas);
         TCari.requestFocus();
-        bangsal=akses.getkdbangsal();
         ubah=false;
     }
 

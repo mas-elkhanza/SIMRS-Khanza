@@ -7027,7 +7027,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 resep.setVisible(true);
                 resep.setNoRm(TNoRw.getText(),DTPTgl.getDate());
                 resep.isCek();
-                resep.tampil();
             }
         }
     }//GEN-LAST:event_BtnPermintaanResepPulangActionPerformed
