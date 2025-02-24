@@ -691,6 +691,36 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         TglLahirIbu12 = new widget.TextBox();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel116 = new widget.Label();
+        jLabel60 = new widget.Label();
+        NmIbu12 = new widget.TextBox();
+        jLabel59 = new widget.Label();
+        jLabel61 = new widget.Label();
+        jLabel62 = new widget.Label();
+        NmIbu13 = new widget.TextBox();
+        jLabel63 = new widget.Label();
+        jLabel64 = new widget.Label();
+        NmIbu14 = new widget.TextBox();
+        jLabel65 = new widget.Label();
+        jLabel66 = new widget.Label();
+        NmIbu15 = new widget.TextBox();
+        jLabel67 = new widget.Label();
+        jLabel68 = new widget.Label();
+        jLabel69 = new widget.Label();
+        HbsAg7 = new widget.ComboBox();
+        jLabel70 = new widget.Label();
+        HbsAg8 = new widget.ComboBox();
+        TglLahirIbu13 = new widget.TextBox();
+        jLabel71 = new widget.Label();
+        NmIbu16 = new widget.TextBox();
+        jLabel72 = new widget.Label();
+        jLabel73 = new widget.Label();
+        jLabel75 = new widget.Label();
+        TglLahirIbu14 = new widget.TextBox();
+        jLabel76 = new widget.Label();
+        jLabel77 = new widget.Label();
+        TglLahirIbu15 = new widget.TextBox();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel117 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1220,7 +1250,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel74.setText("APGAR Score :");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(44, 670, 182, 23);
+        jLabel74.setBounds(44, 700, 182, 23);
 
         Scroll2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         Scroll2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -1242,34 +1272,34 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         Scroll2.setViewportView(tbAPGAR);
 
         FormInput.add(Scroll2);
-        Scroll2.setBounds(77, 690, 777, 127);
+        Scroll2.setBounds(77, 720, 777, 127);
 
         label71.setText("Jumlah Nilai :");
         label71.setName("label71"); // NOI18N
         label71.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label71);
-        label71.setBounds(660, 816, 100, 27);
+        label71.setBounds(660, 846, 100, 27);
 
         N1.setEditable(false);
         N1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N1.setName("N1"); // NOI18N
         FormInput.add(N1);
-        N1.setBounds(764, 816, 29, 27);
+        N1.setBounds(764, 846, 29, 27);
 
         N5.setEditable(false);
         N5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N5.setName("N5"); // NOI18N
         FormInput.add(N5);
-        N5.setBounds(792, 816, 29, 27);
+        N5.setBounds(792, 846, 29, 27);
 
         N10.setEditable(false);
         N10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(150, 150, 150)));
         N10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         N10.setName("N10"); // NOI18N
         FormInput.add(N10);
-        N10.setBounds(820, 816, 34, 27);
+        N10.setBounds(820, 846, 34, 27);
 
         jLabel14.setText("Ibu Bayi :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -1478,18 +1508,18 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         TglLahirIbu7.setHighlighter(null);
         TglLahirIbu7.setName("TglLahirIbu7"); // NOI18N
         FormInput.add(TglLahirIbu7);
-        TglLahirIbu7.setBounds(183, 380, 671, 23);
+        TglLahirIbu7.setBounds(151, 380, 703, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel46.setText("Keterangan Lainnya");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(77, 380, 120, 23);
+        jLabel46.setBounds(44, 380, 120, 23);
 
         jLabel23.setText(":");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(0, 380, 179, 23);
+        jLabel23.setBounds(0, 380, 147, 23);
 
         NmIbu2.setEditable(false);
         NmIbu2.setHighlighter(null);
@@ -1689,7 +1719,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel51.setText("gram");
         jLabel51.setName("jLabel51"); // NOI18N
         FormInput.add(jLabel51);
-        jLabel51.setBounds(166, 620, 40, 23);
+        jLabel51.setBounds(167, 880, 40, 23);
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel52.setText("Obat-obatan Selama Persalinan");
@@ -1752,13 +1782,190 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 650, 880, 1);
+        jSeparator3.setBounds(0, 680, 880, 1);
 
         jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel116.setText("III. KEADAAN BAYI");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
-        jLabel116.setBounds(10, 650, 180, 23);
+        jLabel116.setBounds(10, 680, 180, 23);
+
+        jLabel60.setText(":");
+        jLabel60.setName("jLabel60"); // NOI18N
+        FormInput.add(jLabel60);
+        jLabel60.setBounds(0, 880, 91, 23);
+
+        NmIbu12.setEditable(false);
+        NmIbu12.setHighlighter(null);
+        NmIbu12.setName("NmIbu12"); // NOI18N
+        FormInput.add(NmIbu12);
+        NmIbu12.setBounds(95, 880, 70, 23);
+
+        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel59.setText("BB Lahir");
+        jLabel59.setName("jLabel59"); // NOI18N
+        FormInput.add(jLabel59);
+        jLabel59.setBounds(44, 880, 70, 23);
+
+        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel61.setText("gram");
+        jLabel61.setName("jLabel61"); // NOI18N
+        FormInput.add(jLabel61);
+        jLabel61.setBounds(166, 620, 40, 23);
+
+        jLabel62.setText("Panjang Badan :");
+        jLabel62.setName("jLabel62"); // NOI18N
+        FormInput.add(jLabel62);
+        jLabel62.setBounds(228, 880, 91, 23);
+
+        NmIbu13.setEditable(false);
+        NmIbu13.setHighlighter(null);
+        NmIbu13.setName("NmIbu13"); // NOI18N
+        FormInput.add(NmIbu13);
+        NmIbu13.setBounds(323, 880, 70, 23);
+
+        jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel63.setText("cm");
+        jLabel63.setName("jLabel63"); // NOI18N
+        FormInput.add(jLabel63);
+        jLabel63.setBounds(395, 880, 40, 23);
+
+        jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel64.setText("cm");
+        jLabel64.setName("jLabel64"); // NOI18N
+        FormInput.add(jLabel64);
+        jLabel64.setBounds(635, 880, 40, 23);
+
+        NmIbu14.setEditable(false);
+        NmIbu14.setHighlighter(null);
+        NmIbu14.setName("NmIbu14"); // NOI18N
+        FormInput.add(NmIbu14);
+        NmIbu14.setBounds(563, 880, 70, 23);
+
+        jLabel65.setText("Lingkar Kepala (FO) :");
+        jLabel65.setName("jLabel65"); // NOI18N
+        FormInput.add(jLabel65);
+        jLabel65.setBounds(439, 880, 120, 23);
+
+        jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel66.setText("cm");
+        jLabel66.setName("jLabel66"); // NOI18N
+        FormInput.add(jLabel66);
+        jLabel66.setBounds(839, 880, 40, 23);
+
+        NmIbu15.setEditable(false);
+        NmIbu15.setHighlighter(null);
+        NmIbu15.setName("NmIbu15"); // NOI18N
+        FormInput.add(NmIbu15);
+        NmIbu15.setBounds(767, 880, 70, 23);
+
+        jLabel67.setText("Lingkar Dada :");
+        jLabel67.setName("jLabel67"); // NOI18N
+        FormInput.add(jLabel67);
+        jLabel67.setBounds(672, 880, 91, 23);
+
+        jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel68.setText("Jenis Kelamin");
+        jLabel68.setName("jLabel68"); // NOI18N
+        FormInput.add(jLabel68);
+        jLabel68.setBounds(44, 910, 80, 23);
+
+        jLabel69.setText(":");
+        jLabel69.setName("jLabel69"); // NOI18N
+        FormInput.add(jLabel69);
+        jLabel69.setBounds(0, 910, 118, 23);
+
+        HbsAg7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan", "Ambigious" }));
+        HbsAg7.setName("HbsAg7"); // NOI18N
+        HbsAg7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HbsAg7KeyPressed(evt);
+            }
+        });
+        FormInput.add(HbsAg7);
+        HbsAg7.setBounds(122, 910, 110, 23);
+
+        jLabel70.setText("Resusitasi Saat Lahir :");
+        jLabel70.setName("jLabel70"); // NOI18N
+        FormInput.add(jLabel70);
+        jLabel70.setBounds(245, 910, 130, 23);
+
+        HbsAg8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Rangsang Taktil", "O2", "Ventilasi Dengan Maskre", "Ventilasi Dengan EET", "Lainnya" }));
+        HbsAg8.setName("HbsAg8"); // NOI18N
+        HbsAg8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HbsAg8KeyPressed(evt);
+            }
+        });
+        FormInput.add(HbsAg8);
+        HbsAg8.setBounds(379, 910, 171, 23);
+
+        TglLahirIbu13.setHighlighter(null);
+        TglLahirIbu13.setName("TglLahirIbu13"); // NOI18N
+        FormInput.add(TglLahirIbu13);
+        TglLahirIbu13.setBounds(553, 910, 301, 23);
+
+        jLabel71.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel71.setText("Obat Yang Diberikan Saat Lahir");
+        jLabel71.setName("jLabel71"); // NOI18N
+        FormInput.add(jLabel71);
+        jLabel71.setBounds(44, 940, 180, 23);
+
+        NmIbu16.setEditable(false);
+        NmIbu16.setHighlighter(null);
+        NmIbu16.setName("NmIbu16"); // NOI18N
+        FormInput.add(NmIbu16);
+        NmIbu16.setBounds(208, 940, 646, 23);
+
+        jLabel72.setText(":");
+        jLabel72.setName("jLabel72"); // NOI18N
+        FormInput.add(jLabel72);
+        jLabel72.setBounds(0, 940, 204, 23);
+
+        jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel73.setText("Keterangan Lainnya");
+        jLabel73.setName("jLabel73"); // NOI18N
+        FormInput.add(jLabel73);
+        jLabel73.setBounds(44, 650, 120, 23);
+
+        jLabel75.setText(":");
+        jLabel75.setName("jLabel75"); // NOI18N
+        FormInput.add(jLabel75);
+        jLabel75.setBounds(0, 650, 147, 23);
+
+        TglLahirIbu14.setHighlighter(null);
+        TglLahirIbu14.setName("TglLahirIbu14"); // NOI18N
+        FormInput.add(TglLahirIbu14);
+        TglLahirIbu14.setBounds(151, 650, 703, 23);
+
+        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel76.setText("Keterangan Lainnya");
+        jLabel76.setName("jLabel76"); // NOI18N
+        FormInput.add(jLabel76);
+        jLabel76.setBounds(44, 970, 120, 23);
+
+        jLabel77.setText(":");
+        jLabel77.setName("jLabel77"); // NOI18N
+        FormInput.add(jLabel77);
+        jLabel77.setBounds(0, 970, 147, 23);
+
+        TglLahirIbu15.setHighlighter(null);
+        TglLahirIbu15.setName("TglLahirIbu15"); // NOI18N
+        FormInput.add(TglLahirIbu15);
+        TglLahirIbu15.setBounds(151, 970, 703, 23);
+
+        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator4.setName("jSeparator4"); // NOI18N
+        FormInput.add(jSeparator4);
+        jSeparator4.setBounds(0, 1000, 880, 1);
+
+        jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel117.setText("III. PEMERIKSAAN FISIK");
+        jLabel117.setName("jLabel117"); // NOI18N
+        FormInput.add(jLabel117);
+        jLabel117.setBounds(10, 1000, 180, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2528,6 +2735,14 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_HbsAg6KeyPressed
 
+    private void HbsAg7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HbsAg7KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HbsAg7KeyPressed
+
+    private void HbsAg8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HbsAg8KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HbsAg8KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2571,6 +2786,8 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.ComboBox HbsAg4;
     private widget.ComboBox HbsAg5;
     private widget.ComboBox HbsAg6;
+    private widget.ComboBox HbsAg7;
+    private widget.ComboBox HbsAg8;
     private widget.ComboBox JK;
     private widget.TextBox JenisPersalinan;
     private widget.TextBox Jk;
@@ -2587,6 +2804,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox NmIbu1;
     private widget.TextBox NmIbu10;
     private widget.TextBox NmIbu11;
+    private widget.TextBox NmIbu12;
+    private widget.TextBox NmIbu13;
+    private widget.TextBox NmIbu14;
+    private widget.TextBox NmIbu15;
+    private widget.TextBox NmIbu16;
     private widget.TextBox NmIbu2;
     private widget.TextBox NmIbu3;
     private widget.TextBox NmIbu4;
@@ -2616,6 +2838,9 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox TglLahirIbu10;
     private widget.TextBox TglLahirIbu11;
     private widget.TextBox TglLahirIbu12;
+    private widget.TextBox TglLahirIbu13;
+    private widget.TextBox TglLahirIbu14;
+    private widget.TextBox TglLahirIbu15;
     private widget.TextBox TglLahirIbu2;
     private widget.TextBox TglLahirIbu3;
     private widget.TextBox TglLahirIbu4;
@@ -2642,6 +2867,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel114;
     private widget.Label jLabel115;
     private widget.Label jLabel116;
+    private widget.Label jLabel117;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
@@ -2687,15 +2913,34 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.Label jLabel56;
     private widget.Label jLabel57;
     private widget.Label jLabel58;
+    private widget.Label jLabel59;
     private widget.Label jLabel6;
+    private widget.Label jLabel60;
+    private widget.Label jLabel61;
+    private widget.Label jLabel62;
+    private widget.Label jLabel63;
+    private widget.Label jLabel64;
+    private widget.Label jLabel65;
+    private widget.Label jLabel66;
+    private widget.Label jLabel67;
+    private widget.Label jLabel68;
+    private widget.Label jLabel69;
     private widget.Label jLabel7;
+    private widget.Label jLabel70;
+    private widget.Label jLabel71;
+    private widget.Label jLabel72;
+    private widget.Label jLabel73;
     private widget.Label jLabel74;
+    private widget.Label jLabel75;
+    private widget.Label jLabel76;
+    private widget.Label jLabel77;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private widget.Label jLabel99;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private widget.Label label11;
     private widget.Label label14;
     private widget.Label label71;
