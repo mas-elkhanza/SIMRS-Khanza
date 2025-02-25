@@ -123,7 +123,7 @@
 	<columnHeader>
 		<band height="17" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="48" y="0" width="77" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="52a59e92-03b9-43a0-a663-8eaa541d88f9"/>
+				<reportElement mode="Opaque" x="48" y="0" width="107" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="52a59e92-03b9-43a0-a663-8eaa541d88f9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -131,7 +131,7 @@
 				<text><![CDATA[Nomor Pengeluaran]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="349" y="0" width="127" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="9c64078f-0418-4351-b49d-d16fad3ad9cb"/>
+				<reportElement mode="Opaque" x="360" y="0" width="116" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="9c64078f-0418-4351-b49d-d16fad3ad9cb"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -139,7 +139,7 @@
 				<text><![CDATA[Kategori Pengeluaran]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="125" y="0" width="65" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="ce009160-5c49-4c89-bb70-4bce32b1bb77">
+				<reportElement mode="Opaque" x="155" y="0" width="65" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="ce009160-5c49-4c89-bb70-4bce32b1bb77">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -149,7 +149,7 @@
 				<text><![CDATA[NIP]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="190" y="0" width="159" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="eed93995-28c3-4880-ba35-9eebfb9b4dfe">
+				<reportElement mode="Opaque" x="220" y="0" width="140" height="17" forecolor="#000000" backcolor="#F0F0DC" uuid="eed93995-28c3-4880-ba35-9eebfb9b4dfe">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -201,7 +201,7 @@
 				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="349" y="0" width="127" height="10" uuid="a5b5a75c-a434-4ff5-a31e-867f04423e6b"/>
+				<reportElement positionType="Float" x="360" y="0" width="116" height="10" uuid="a5b5a75c-a434-4ff5-a31e-867f04423e6b"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -217,7 +217,7 @@
 				<textFieldExpression><![CDATA[$F{biaya}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="190" y="0" width="159" height="10" uuid="a6bee39c-fc44-4552-8aa7-1167d6277d0f">
+				<reportElement positionType="Float" x="220" y="0" width="140" height="10" uuid="a6bee39c-fc44-4552-8aa7-1167d6277d0f">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement>
@@ -227,7 +227,7 @@
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="125" y="0" width="65" height="10" uuid="c4fcfefe-da72-462a-9aa4-8e7524f57d52">
+				<reportElement positionType="Float" x="155" y="0" width="65" height="10" uuid="c4fcfefe-da72-462a-9aa4-8e7524f57d52">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -245,7 +245,7 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="48" y="0" width="77" height="10" uuid="3213ab85-617d-499e-85d2-bf4f16677c7a"/>
+				<reportElement positionType="Float" x="48" y="0" width="107" height="10" uuid="3213ab85-617d-499e-85d2-bf4f16677c7a"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -323,7 +323,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Total Deposit :]]></text>
+				<text><![CDATA[Total :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="#,##0">
 				<reportElement x="429" y="0" width="125" height="12" uuid="412e7024-41b7-437b-b906-722bd64db7bc"/>

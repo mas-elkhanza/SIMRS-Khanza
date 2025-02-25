@@ -321,7 +321,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Total Deposit :]]></text>
+				<text><![CDATA[Total :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="#,##0">
 				<reportElement x="429" y="0" width="125" height="12" uuid="412e7024-41b7-437b-b906-722bd64db7bc"/>

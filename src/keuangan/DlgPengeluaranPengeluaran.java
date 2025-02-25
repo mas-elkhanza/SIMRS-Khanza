@@ -738,7 +738,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
             Valid.MyReportqry("rptPengeluaranBayarJMDokter.jasper","report","::[ Pembayaran JM Dokter ]::",
                 "select bayar_jm_dokter.tanggal,bayar_jm_dokter.no_bayar,bayar_jm_dokter.kd_dokter,dokter.nm_dokter,bayar_jm_dokter.nama_bayar, "+
                 "bayar_jm_dokter.besar_bayar from bayar_jm_dokter inner join dokter on bayar_jm_dokter.kd_dokter=dokter.kd_dokter "+
-                "where bayar_jm_dokter.tanggal between ? and ? order by bayar_jm_dokter.tanggal",param);
+                "where bayar_jm_dokter.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by bayar_jm_dokter.tanggal",param);
         }
         
         if(tabModePengeluaranHarian.getRowCount()!=0){

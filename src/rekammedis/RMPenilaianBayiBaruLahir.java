@@ -54,7 +54,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private DlgCariPasien ibubayi=new DlgCariPasien(null,false);
     private StringBuilder htmlContent;
     private String finger="";
     private String TANGGALMUNDUR="yes";
@@ -468,46 +467,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
             public void windowDeactivated(WindowEvent e) {}
         });
         
-        ibubayi.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(ibubayi.getTable().getSelectedRow()!= -1){                   
-                    NoRMIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),0).toString());
-                    NmIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),1).toString());
-                    TglLahirIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),5).toString());
-                    NIKIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),2).toString());
-                    tampilPersalinan();
-                }  
-                BtnIbuBayi.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-            
-        });
-        
-        ibubayi.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    ibubayi.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
@@ -727,7 +686,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jLabel79 = new widget.Label();
         jLabel80 = new widget.Label();
         Kulit = new widget.ComboBox();
-        KondisiKulit = new widget.TextBox();
+        KeteranganKulit = new widget.TextBox();
         jLabel81 = new widget.Label();
         Kepala = new widget.ComboBox();
         KeteranganKepala = new widget.TextBox();
@@ -782,11 +741,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         jSeparator14 = new javax.swing.JSeparator();
         jLabel139 = new widget.Label();
         scrollPane13 = new widget.ScrollPane();
-        Diagnosis = new widget.TextArea();
+        PemeriksaanPenunjang = new widget.TextArea();
         jSeparator15 = new javax.swing.JSeparator();
         jLabel140 = new widget.Label();
         scrollPane14 = new widget.ScrollPane();
-        Diagnosis1 = new widget.TextArea();
+        Diagnosis = new widget.TextArea();
         jSeparator16 = new javax.swing.JSeparator();
         jLabel141 = new widget.Label();
         scrollPane15 = new widget.ScrollPane();
@@ -1462,6 +1421,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
         KeteranganPenyakitIbu.setHighlighter(null);
         KeteranganPenyakitIbu.setName("KeteranganPenyakitIbu"); // NOI18N
+        KeteranganPenyakitIbu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganPenyakitIbuKeyPressed(evt);
+            }
+        });
         FormInput.add(KeteranganPenyakitIbu);
         KeteranganPenyakitIbu.setBounds(532, 120, 322, 23);
 
@@ -1473,6 +1437,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
         ObatSelamaHamil.setHighlighter(null);
         ObatSelamaHamil.setName("ObatSelamaHamil"); // NOI18N
+        ObatSelamaHamil.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ObatSelamaHamilKeyPressed(evt);
+            }
+        });
         FormInput.add(ObatSelamaHamil);
         ObatSelamaHamil.setBounds(257, 150, 597, 23);
 
@@ -1511,6 +1480,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
         KeteranganPerawatanAntenatal.setHighlighter(null);
         KeteranganPerawatanAntenatal.setName("KeteranganPerawatanAntenatal"); // NOI18N
+        KeteranganPerawatanAntenatal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganPerawatanAntenatalKeyPressed(evt);
+            }
+        });
         FormInput.add(KeteranganPerawatanAntenatal);
         KeteranganPerawatanAntenatal.setBounds(273, 320, 200, 23);
 
@@ -1521,6 +1495,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
         KeteranganTerdaftarEkohort.setHighlighter(null);
         KeteranganTerdaftarEkohort.setName("KeteranganTerdaftarEkohort"); // NOI18N
+        KeteranganTerdaftarEkohort.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganTerdaftarEkohortKeyPressed(evt);
+            }
+        });
         FormInput.add(KeteranganTerdaftarEkohort);
         KeteranganTerdaftarEkohort.setBounds(694, 320, 160, 23);
 
@@ -1562,6 +1541,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
         KeteranganPenyulitKehamilan.setHighlighter(null);
         KeteranganPenyulitKehamilan.setName("KeteranganPenyulitKehamilan"); // NOI18N
+        KeteranganPenyulitKehamilan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganPenyulitKehamilanKeyPressed(evt);
+            }
+        });
         FormInput.add(KeteranganPenyulitKehamilan);
         KeteranganPenyulitKehamilan.setBounds(324, 350, 255, 23);
 
@@ -1572,11 +1556,21 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
         AlergiIbu.setHighlighter(null);
         AlergiIbu.setName("AlergiIbu"); // NOI18N
+        AlergiIbu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlergiIbuKeyPressed(evt);
+            }
+        });
         FormInput.add(AlergiIbu);
         AlergiIbu.setBounds(644, 350, 210, 23);
 
         KeteranganRiwayatMaternal.setHighlighter(null);
         KeteranganRiwayatMaternal.setName("KeteranganRiwayatMaternal"); // NOI18N
+        KeteranganRiwayatMaternal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganRiwayatMaternalKeyPressed(evt);
+            }
+        });
         FormInput.add(KeteranganRiwayatMaternal);
         KeteranganRiwayatMaternal.setBounds(151, 380, 703, 23);
 
@@ -1594,6 +1588,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         UmurKehamilan.setEditable(false);
         UmurKehamilan.setHighlighter(null);
         UmurKehamilan.setName("UmurKehamilan"); // NOI18N
+        UmurKehamilan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UmurKehamilanKeyPressed(evt);
+            }
+        });
         FormInput.add(UmurKehamilan);
         UmurKehamilan.setBounds(135, 430, 180, 23);
 
@@ -1625,18 +1624,28 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
         KeteranganKehamilan.setHighlighter(null);
         KeteranganKehamilan.setName("KeteranganKehamilan"); // NOI18N
+        KeteranganKehamilan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKehamilanKeyPressed(evt);
+            }
+        });
         FormInput.add(KeteranganKehamilan);
-        KeteranganKehamilan.setBounds(497, 430, 157, 23);
+        KeteranganKehamilan.setBounds(497, 430, 185, 23);
 
         jLabel48.setText("Urutan Kehamilan :");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(660, 430, 110, 23);
+        jLabel48.setBounds(690, 430, 110, 23);
 
         UrutanKehamilan.setHighlighter(null);
         UrutanKehamilan.setName("UrutanKehamilan"); // NOI18N
+        UrutanKehamilan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                UrutanKehamilanKeyPressed(evt);
+            }
+        });
         FormInput.add(UrutanKehamilan);
-        UrutanKehamilan.setBounds(774, 430, 80, 23);
+        UrutanKehamilan.setBounds(804, 430, 50, 23);
 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel26.setText("Air Ketuban :");
@@ -1652,6 +1661,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         JamKetubanPecah.setEditable(false);
         JamKetubanPecah.setHighlighter(null);
         JamKetubanPecah.setName("JamKetubanPecah"); // NOI18N
+        JamKetubanPecah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JamKetubanPecahKeyPressed(evt);
+            }
+        });
         FormInput.add(JamKetubanPecah);
         JamKetubanPecah.setBounds(108, 480, 50, 23);
 
@@ -1772,18 +1786,18 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         KeteranganIndikasiPersalinanOperatif.setHighlighter(null);
         KeteranganIndikasiPersalinanOperatif.setName("KeteranganIndikasiPersalinanOperatif"); // NOI18N
         FormInput.add(KeteranganIndikasiPersalinanOperatif);
-        KeteranganIndikasiPersalinanOperatif.setBounds(349, 540, 215, 23);
+        KeteranganIndikasiPersalinanOperatif.setBounds(349, 540, 225, 23);
 
         jLabel37.setText("Lama Gawat Janin Sebelum Lahir :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
-        jLabel37.setBounds(571, 540, 187, 23);
+        jLabel37.setBounds(581, 540, 187, 23);
 
         LamaGawatJanin.setEditable(false);
         LamaGawatJanin.setHighlighter(null);
         LamaGawatJanin.setName("LamaGawatJanin"); // NOI18N
         FormInput.add(LamaGawatJanin);
-        LamaGawatJanin.setBounds(762, 540, 60, 23);
+        LamaGawatJanin.setBounds(772, 540, 50, 23);
 
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel51.setText("gram");
@@ -2083,15 +2097,15 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(Kulit);
         Kulit.setBounds(124, 1050, 129, 23);
 
-        KondisiKulit.setFocusTraversalPolicyProvider(true);
-        KondisiKulit.setName("KondisiKulit"); // NOI18N
-        KondisiKulit.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganKulit.setFocusTraversalPolicyProvider(true);
+        KeteranganKulit.setName("KeteranganKulit"); // NOI18N
+        KeteranganKulit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KondisiKulitKeyPressed(evt);
+                KeteranganKulitKeyPressed(evt);
             }
         });
-        FormInput.add(KondisiKulit);
-        KondisiKulit.setBounds(256, 1050, 160, 23);
+        FormInput.add(KeteranganKulit);
+        KeteranganKulit.setBounds(256, 1050, 160, 23);
 
         jLabel81.setText("Kepala :");
         jLabel81.setName("jLabel81"); // NOI18N
@@ -2531,16 +2545,16 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane13.setName("scrollPane13"); // NOI18N
 
-        Diagnosis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Diagnosis.setColumns(20);
-        Diagnosis.setRows(3);
-        Diagnosis.setName("Diagnosis"); // NOI18N
-        Diagnosis.addKeyListener(new java.awt.event.KeyAdapter() {
+        PemeriksaanPenunjang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        PemeriksaanPenunjang.setColumns(20);
+        PemeriksaanPenunjang.setRows(3);
+        PemeriksaanPenunjang.setName("PemeriksaanPenunjang"); // NOI18N
+        PemeriksaanPenunjang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisKeyPressed(evt);
+                PemeriksaanPenunjangKeyPressed(evt);
             }
         });
-        scrollPane13.setViewportView(Diagnosis);
+        scrollPane13.setViewportView(PemeriksaanPenunjang);
 
         FormInput.add(scrollPane13);
         scrollPane13.setBounds(44, 1370, 810, 43);
@@ -2561,16 +2575,16 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
 
-        Diagnosis1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Diagnosis1.setColumns(20);
-        Diagnosis1.setRows(3);
-        Diagnosis1.setName("Diagnosis1"); // NOI18N
-        Diagnosis1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Diagnosis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Diagnosis.setColumns(20);
+        Diagnosis.setRows(3);
+        Diagnosis.setName("Diagnosis"); // NOI18N
+        Diagnosis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Diagnosis1KeyPressed(evt);
+                DiagnosisKeyPressed(evt);
             }
         });
-        scrollPane14.setViewportView(Diagnosis1);
+        scrollPane14.setViewportView(Diagnosis);
 
         FormInput.add(scrollPane14);
         scrollPane14.setBounds(44, 1440, 810, 43);
@@ -3333,6 +3347,47 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     }//GEN-LAST:event_tbAPGARPropertyChange
 
     private void BtnIbuBayiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIbuBayiActionPerformed
+        DlgCariPasien ibubayi=new DlgCariPasien(null,false);
+        ibubayi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(ibubayi.getTable().getSelectedRow()!= -1){                   
+                    NoRMIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),0).toString());
+                    NmIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),1).toString());
+                    TglLahirIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),5).toString());
+                    NIKIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),2).toString());
+                    StatusPerkawinanIbu.setText(ibubayi.getTable().getValueAt(ibubayi.getTable().getSelectedRow(),10).toString());
+                    tampilPersalinan();
+                }  
+                BtnIbuBayi.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+            
+        });
+        
+        ibubayi.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    ibubayi.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         ibubayi.emptTeks();
         ibubayi.isCek();
         ibubayi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -3342,27 +3397,27 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnIbuBayiActionPerformed
 
     private void BtnIbuBayiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnIbuBayiKeyPressed
-        //Valid.pindah(evt,TglAsuhan,G);
+        Valid.pindah(evt,TglAsuhan,PenyakitIbu);
     }//GEN-LAST:event_BtnIbuBayiKeyPressed
 
     private void PenyakitIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyakitIbuKeyPressed
-        //Valid.pindah(evt,UsiaKehamilan,HIV);
+        Valid.pindah(evt,BtnIbuBayi,KeteranganPenyakitIbu);
     }//GEN-LAST:event_PenyakitIbuKeyPressed
 
     private void PerawatanAntenatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerawatanAntenatalKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,ObatSelamaHamil,KeteranganPerawatanAntenatal);
     }//GEN-LAST:event_PerawatanAntenatalKeyPressed
 
     private void TerdaftarEkohortKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TerdaftarEkohortKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganPerawatanAntenatal,KeteranganTerdaftarEkohort);
     }//GEN-LAST:event_TerdaftarEkohortKeyPressed
 
     private void PenyulitKehamilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyulitKehamilanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeteranganTerdaftarEkohort,KeteranganPenyulitKehamilan);
     }//GEN-LAST:event_PenyulitKehamilanKeyPressed
 
     private void KehamilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KehamilanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,UmurKehamilan,KeteranganKehamilan);
     }//GEN-LAST:event_KehamilanKeyPressed
 
     private void MacamPersalinanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MacamPersalinanKeyPressed
@@ -3393,9 +3448,9 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_KulitKeyPressed
 
-    private void KondisiKulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiKulitKeyPressed
+    private void KeteranganKulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKulitKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KondisiKulitKeyPressed
+    }//GEN-LAST:event_KeteranganKulitKeyPressed
 
     private void KepalaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KepalaKeyPressed
         // TODO add your handling code here:
@@ -3529,17 +3584,61 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         //Valid.pindah2(evt,KelainanLainnya,Laborat);
     }//GEN-LAST:event_PemeriksaanLainnyaKeyPressed
 
-    private void DiagnosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKeyPressed
+    private void PemeriksaanPenunjangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanPenunjangKeyPressed
         //Valid.pindah2(evt,Penunjang,Tatalaksana);
-    }//GEN-LAST:event_DiagnosisKeyPressed
+    }//GEN-LAST:event_PemeriksaanPenunjangKeyPressed
 
-    private void Diagnosis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosis1KeyPressed
+    private void DiagnosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Diagnosis1KeyPressed
+    }//GEN-LAST:event_DiagnosisKeyPressed
 
     private void TatalaksanaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TatalaksanaKeyPressed
         //Valid.pindah2(evt,Diagnosis,Edukasi);
     }//GEN-LAST:event_TatalaksanaKeyPressed
+
+    private void KeteranganPenyakitIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPenyakitIbuKeyPressed
+        Valid.pindah(evt,PenyakitIbu,ObatSelamaHamil);
+    }//GEN-LAST:event_KeteranganPenyakitIbuKeyPressed
+
+    private void ObatSelamaHamilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatSelamaHamilKeyPressed
+        Valid.pindah(evt,KeteranganPenyakitIbu,PerawatanAntenatal);
+    }//GEN-LAST:event_ObatSelamaHamilKeyPressed
+
+    private void KeteranganPerawatanAntenatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPerawatanAntenatalKeyPressed
+        Valid.pindah(evt,PerawatanAntenatal,TerdaftarEkohort);
+    }//GEN-LAST:event_KeteranganPerawatanAntenatalKeyPressed
+
+    private void KeteranganTerdaftarEkohortKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganTerdaftarEkohortKeyPressed
+        Valid.pindah(evt,TerdaftarEkohort,PenyulitKehamilan);
+    }//GEN-LAST:event_KeteranganTerdaftarEkohortKeyPressed
+
+    private void KeteranganPenyulitKehamilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPenyulitKehamilanKeyPressed
+        Valid.pindah(evt,PenyulitKehamilan,AlergiIbu);
+    }//GEN-LAST:event_KeteranganPenyulitKehamilanKeyPressed
+
+    private void AlergiIbuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiIbuKeyPressed
+        Valid.pindah(evt,KeteranganPenyulitKehamilan,KeteranganRiwayatMaternal);
+    }//GEN-LAST:event_AlergiIbuKeyPressed
+
+    private void KeteranganRiwayatMaternalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganRiwayatMaternalKeyPressed
+        Valid.pindah(evt,AlergiIbu,UmurKehamilan);
+    }//GEN-LAST:event_KeteranganRiwayatMaternalKeyPressed
+
+    private void UmurKehamilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurKehamilanKeyPressed
+        Valid.pindah(evt,KeteranganRiwayatMaternal,Kehamilan);
+    }//GEN-LAST:event_UmurKehamilanKeyPressed
+
+    private void KeteranganKehamilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKehamilanKeyPressed
+        Valid.pindah(evt,Kehamilan,UrutanKehamilan);
+    }//GEN-LAST:event_KeteranganKehamilanKeyPressed
+
+    private void UrutanKehamilanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UrutanKehamilanKeyPressed
+        Valid.pindah(evt,KeteranganKehamilan,JamKetubanPecah);
+    }//GEN-LAST:event_UrutanKehamilanKeyPressed
+
+    private void JamKetubanPecahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JamKetubanPecahKeyPressed
+        Valid.pindah(evt,UrutanKehamilan,MenitKetubanPecah);
+    }//GEN-LAST:event_JamKetubanPecahKeyPressed
 
     /**
     * @param args the command line arguments
@@ -3584,7 +3683,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.ComboBox Dada;
     private widget.ComboBox DenyutFemoral;
     private widget.TextArea Diagnosis;
-    private widget.TextArea Diagnosis1;
     private javax.swing.JDialog DlgRiwayatPersalinan;
     private widget.ComboBox Extrimitas;
     private widget.PanelBiasa FormInput;
@@ -3614,6 +3712,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox KeteranganKehamilan;
     private widget.TextBox KeteranganKepala;
     private widget.TextBox KeteranganKondisiUmum;
+    private widget.TextBox KeteranganKulit;
     private widget.TextBox KeteranganLeher;
     private widget.TextBox KeteranganMacamPersalinan;
     private widget.TextBox KeteranganMata;
@@ -3630,7 +3729,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox KeteranganTaliPusat;
     private widget.TextBox KeteranganTelinga;
     private widget.TextBox KeteranganTerdaftarEkohort;
-    private widget.TextBox KondisiKulit;
     private widget.ComboBox KondisiUmum;
     private widget.ComboBox Kulit;
     private widget.Label LCount;
@@ -3656,6 +3754,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private widget.TextBox PanjangBadan;
     private widget.ComboBox Paru;
     private widget.TextArea PemeriksaanLainnya;
+    private widget.TextArea PemeriksaanPenunjang;
     private widget.TextBox Penolong;
     private widget.ComboBox PenyakitIbu;
     private widget.TextBox Penyulit;
@@ -3925,6 +4024,86 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         NmIbu.setText("");
         TglLahirIbu.setText("");
         NIKIbu.setText("");
+        StatusPerkawinanIbu.setText("");
+        PenyakitIbu.setSelectedIndex(0);
+        KeteranganPenyakitIbu.setText("");
+        ObatSelamaHamil.setText("");
+        PerawatanAntenatal.setSelectedIndex(0);
+        KeteranganPerawatanAntenatal.setText("");
+        TerdaftarEkohort.setSelectedIndex(0);
+        KeteranganTerdaftarEkohort.setText("");
+        PenyulitKehamilan.setSelectedIndex(0);
+        KeteranganPenyulitKehamilan.setText("");
+        AlergiIbu.setText("");
+        KeteranganRiwayatMaternal.setText("");
+        UmurKehamilan.setText("");
+        Kehamilan.setSelectedIndex(0);
+        KeteranganKehamilan.setText("");
+        UrutanKehamilan.setText("");
+        JamKetubanPecah.setText("");
+        MenitKetubanPecah.setText("");
+        JumlahAirKetuban.setText("");
+        WarnaAirKetuban.setText("");
+        BauAirKetuban.setText("");
+        LetakBayi.setText("");
+        MacamPersalinan.setSelectedIndex(0);
+        KeteranganMacamPersalinan.setText("");
+        IndikasiPersalinanOperatif.setSelectedIndex(0);
+        KeteranganIndikasiPersalinanOperatif.setText("");
+        LamaGawatJanin.setText("");
+        ObatSelamaPersalinan.setText("");
+        BeratPlacenta.setText("");
+        KelainanPlacenta.setText("");
+        KeteranganRiwayatPersalinan.setText("");
+        BBLahir.setText("");
+        PanjangBadan.setText("");
+        LinkarKepala.setText("");
+        LingkarDada.setText("");
+        JenisKelamin.setSelectedIndex(0);
+        ResusitasiLahir.setSelectedIndex(0);
+        KeteranganResusitasiLahir.setText("");
+        ObatSaatLahir.setText("");
+        KeteranganKeadaanBayi.setText("");
+        KondisiUmum.setSelectedIndex(0);
+        KeteranganKondisiUmum.setText("");
+        Kulit.setSelectedIndex(0);
+        KeteranganKulit.setText("");
+        Kepala.setSelectedIndex(0);
+        KeteranganKepala.setText("");
+        Leher.setSelectedIndex(0);
+        KeteranganLeher.setText("");
+        Mata.setSelectedIndex(0);
+        KeteranganMata.setText("");
+        Hidung.setSelectedIndex(0);
+        KeteranganHidung.setText("");
+        Telinga.setSelectedIndex(0);
+        KeteranganTelinga.setText("");
+        Dada.setSelectedIndex(0);
+        KeteranganDada.setText("");
+        Paru.setSelectedIndex(0);
+        KeteranganParu.setText("");
+        Jantung.setSelectedIndex(0);
+        KeteranganJantung.setText("");
+        Perut.setSelectedIndex(0);
+        KeteranganPerut.setText("");
+        TaliPusat.setSelectedIndex(0);
+        KeteranganTaliPusat.setText("");
+        AlatKelamin.setSelectedIndex(0);
+        KeteranganAlatKelamin.setText("");
+        RuasTulangBelakang.setSelectedIndex(0);
+        KeteranganRuasTulangBelakang.setText("");
+        Extrimitas.setSelectedIndex(0);
+        KeteranganExtrimitas.setText("");
+        Anus.setSelectedIndex(0);
+        KeteranganAnus.setText("");
+        Refleks.setSelectedIndex(0);
+        KeteranganRefleks.setText("");
+        DenyutFemoral.setSelectedIndex(0);
+        KeteranganDenyutFemoral.setText("");
+        PemeriksaanLainnya.setText("");
+        PemeriksaanPenunjang.setText("");
+        Diagnosis.setText("");
+        Tatalaksana.setText("");
         Valid.tabelKosong(tabModeRiwayatKehamilan);
         Valid.tabelKosong(tabModeAPGAR);
         tabModeAPGAR.addRow(new Object[]{"Frekuensi Jantung","Tidak Ada","< 100","> 100","","",""});
@@ -4014,9 +4193,9 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ranap_neonatus());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ranap_neonatus());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ranap_neonatus());
+        BtnSimpan.setEnabled(akses.getpenilaian_bayi_baru_lahir());
+        BtnHapus.setEnabled(akses.getpenilaian_bayi_baru_lahir());
+        BtnEdit.setEnabled(akses.getpenilaian_bayi_baru_lahir());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
