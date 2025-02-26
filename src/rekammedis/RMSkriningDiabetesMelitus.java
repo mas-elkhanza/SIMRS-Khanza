@@ -307,6 +307,20 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         TumbangTerlambat4 = new widget.ComboBox();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel103 = new widget.Label();
+        BB = new widget.TextBox();
+        jLabel12 = new widget.Label();
+        jLabel13 = new widget.Label();
+        jLabel15 = new widget.Label();
+        TB = new widget.TextBox();
+        jLabel25 = new widget.Label();
+        jLabel17 = new widget.Label();
+        IMT = new widget.TextBox();
+        KlasifikasiIMT = new widget.TextBox();
+        jLabel20 = new widget.Label();
+        jLabel5 = new widget.Label();
+        jLabel24 = new widget.Label();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel104 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -504,7 +518,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -518,7 +532,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -609,7 +623,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(810, 330));
+        FormInput.setPreferredSize(new java.awt.Dimension(810, 430));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -639,7 +653,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1039,6 +1053,95 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         jLabel103.setName("jLabel103"); // NOI18N
         FormInput.add(jLabel103);
         jLabel103.setBounds(10, 270, 490, 23);
+
+        BB.setFocusTraversalPolicyProvider(true);
+        BB.setName("BB"); // NOI18N
+        BB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BBKeyPressed(evt);
+            }
+        });
+        FormInput.add(BB);
+        BB.setBounds(68, 290, 50, 23);
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("BB ");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(44, 290, 40, 23);
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel13.setText("Kg");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(120, 290, 30, 23);
+
+        jLabel15.setText(":");
+        jLabel15.setName("jLabel15"); // NOI18N
+        FormInput.add(jLabel15);
+        jLabel15.setBounds(150, 290, 50, 23);
+
+        TB.setFocusTraversalPolicyProvider(true);
+        TB.setName("TB"); // NOI18N
+        TB.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TBKeyPressed(evt);
+            }
+        });
+        FormInput.add(TB);
+        TB.setBounds(204, 290, 50, 23);
+
+        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel25.setText("Cm");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(256, 290, 30, 23);
+
+        jLabel17.setText("IMT(BB/TB²) :");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(310, 290, 80, 23);
+
+        IMT.setEditable(false);
+        IMT.setFocusTraversalPolicyProvider(true);
+        IMT.setName("IMT"); // NOI18N
+        FormInput.add(IMT);
+        IMT.setBounds(394, 290, 50, 23);
+
+        KlasifikasiIMT.setEditable(false);
+        KlasifikasiIMT.setFocusTraversalPolicyProvider(true);
+        KlasifikasiIMT.setName("KlasifikasiIMT"); // NOI18N
+        FormInput.add(KlasifikasiIMT);
+        KlasifikasiIMT.setBounds(569, 290, 220, 23);
+
+        jLabel20.setText("Klasifikasi IMT :");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(475, 290, 90, 23);
+
+        jLabel5.setText(":");
+        jLabel5.setName("jLabel5"); // NOI18N
+        FormInput.add(jLabel5);
+        jLabel5.setBounds(0, 290, 64, 23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText("TB");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(181, 290, 50, 23);
+
+        jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator3.setName("jSeparator3"); // NOI18N
+        FormInput.add(jSeparator3);
+        jSeparator3.setBounds(0, 320, 807, 1);
+
+        jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel104.setText("III. PEMERIKSAAN PENUNJANG");
+        jLabel104.setName("jLabel104"); // NOI18N
+        FormInput.add(jLabel104);
+        jLabel104.setBounds(10, 320, 490, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1460,6 +1563,14 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_TumbangTerlambat4KeyPressed
 
+    private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
+        //Valid.pindah(evt,RiwayatSteroid,TB);
+    }//GEN-LAST:event_BBKeyPressed
+
+    private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
+        //Valid.pindah(evt,BB,LP);
+    }//GEN-LAST:event_TBKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1477,6 +1588,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox BB;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1491,9 +1603,11 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox IMT;
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
     private widget.TextBox KdPetugas;
+    private widget.TextBox KlasifikasiIMT;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
@@ -1507,6 +1621,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.ComboBox SaudaraTalasemia3;
     private widget.ComboBox SaudaraTalasemia4;
     private widget.ScrollPane Scroll;
+    private widget.TextBox TB;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1526,11 +1641,20 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.Label jLabel101;
     private widget.Label jLabel102;
     private widget.Label jLabel103;
+    private widget.Label jLabel104;
+    private widget.Label jLabel12;
+    private widget.Label jLabel13;
+    private widget.Label jLabel15;
     private widget.Label jLabel16;
+    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel24;
+    private widget.Label jLabel25;
     private widget.Label jLabel4;
+    private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel78;
@@ -1560,6 +1684,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
