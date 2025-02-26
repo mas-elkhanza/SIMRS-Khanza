@@ -25,10 +25,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Base64;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -56,7 +53,6 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private DlgCariPasien ibubayi=new DlgCariPasien(null,false);
     private StringBuilder htmlContent;
-    private String finger="";
     private String TANGGALMUNDUR="yes";
     
     /** Creates new form DlgRujuk
