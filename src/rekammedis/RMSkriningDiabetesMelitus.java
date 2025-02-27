@@ -201,6 +201,36 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         
+        BB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isBMI();
+            }
+        });
+        
+        TB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isBMI();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isBMI();
+            }
+        });
+        
         try {
             TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
         } catch (Exception e) {
@@ -321,6 +351,25 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         jLabel24 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel104 = new widget.Label();
+        jLabel9 = new widget.Label();
+        BB1 = new widget.TextBox();
+        jLabel14 = new widget.Label();
+        jLabel26 = new widget.Label();
+        jLabel22 = new widget.Label();
+        KlasifikasiIMT1 = new widget.TextBox();
+        jLabel23 = new widget.Label();
+        jLabel10 = new widget.Label();
+        BB2 = new widget.TextBox();
+        jLabel27 = new widget.Label();
+        jLabel28 = new widget.Label();
+        KlasifikasiIMT2 = new widget.TextBox();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel105 = new widget.Label();
+        jLabel11 = new widget.Label();
+        jLabel30 = new widget.Label();
+        KlasifikasiIMT3 = new widget.TextBox();
+        SaudaraTalasemia5 = new widget.ComboBox();
+        jLabel29 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -623,7 +672,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(810, 430));
+        FormInput.setPreferredSize(new java.awt.Dimension(810, 450));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -1143,6 +1192,127 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel104);
         jLabel104.setBounds(10, 320, 490, 23);
 
+        jLabel9.setText(":");
+        jLabel9.setName("jLabel9"); // NOI18N
+        FormInput.add(jLabel9);
+        jLabel9.setBounds(0, 340, 164, 23);
+
+        BB1.setFocusTraversalPolicyProvider(true);
+        BB1.setName("BB1"); // NOI18N
+        BB1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BB1KeyPressed(evt);
+            }
+        });
+        FormInput.add(BB1);
+        BB1.setBounds(168, 340, 85, 23);
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText("Hasil Pemeriksaan GDS");
+        jLabel14.setName("jLabel14"); // NOI18N
+        FormInput.add(jLabel14);
+        jLabel14.setBounds(44, 340, 140, 23);
+
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("mg/dL");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(255, 340, 40, 23);
+
+        jLabel22.setText("Keterangan Hasil Pemeriksaan GDS :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(295, 340, 190, 23);
+
+        KlasifikasiIMT1.setEditable(false);
+        KlasifikasiIMT1.setFocusTraversalPolicyProvider(true);
+        KlasifikasiIMT1.setName("KlasifikasiIMT1"); // NOI18N
+        FormInput.add(KlasifikasiIMT1);
+        KlasifikasiIMT1.setBounds(489, 340, 300, 23);
+
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel23.setText("Hasil Pemeriksaan GDP");
+        jLabel23.setName("jLabel23"); // NOI18N
+        FormInput.add(jLabel23);
+        jLabel23.setBounds(44, 370, 140, 23);
+
+        jLabel10.setText(":");
+        jLabel10.setName("jLabel10"); // NOI18N
+        FormInput.add(jLabel10);
+        jLabel10.setBounds(0, 370, 164, 23);
+
+        BB2.setFocusTraversalPolicyProvider(true);
+        BB2.setName("BB2"); // NOI18N
+        BB2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BB2KeyPressed(evt);
+            }
+        });
+        FormInput.add(BB2);
+        BB2.setBounds(168, 370, 85, 23);
+
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel27.setText("mg/dL");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(255, 370, 40, 23);
+
+        jLabel28.setText("Keterangan Hasil Pemeriksaan GDP :");
+        jLabel28.setName("jLabel28"); // NOI18N
+        FormInput.add(jLabel28);
+        jLabel28.setBounds(295, 370, 190, 23);
+
+        KlasifikasiIMT2.setEditable(false);
+        KlasifikasiIMT2.setFocusTraversalPolicyProvider(true);
+        KlasifikasiIMT2.setName("KlasifikasiIMT2"); // NOI18N
+        FormInput.add(KlasifikasiIMT2);
+        KlasifikasiIMT2.setBounds(489, 370, 300, 23);
+
+        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator4.setName("jSeparator4"); // NOI18N
+        FormInput.add(jSeparator4);
+        jSeparator4.setBounds(0, 400, 807, 1);
+
+        jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel105.setText("IV. INTERPRETASI");
+        jLabel105.setName("jLabel105"); // NOI18N
+        FormInput.add(jLabel105);
+        jLabel105.setBounds(10, 400, 490, 23);
+
+        jLabel11.setText(":");
+        jLabel11.setName("jLabel11"); // NOI18N
+        FormInput.add(jLabel11);
+        jLabel11.setBounds(0, 420, 117, 23);
+
+        jLabel30.setText("Keterangan/Diskripsi Hasil :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(215, 420, 160, 23);
+
+        KlasifikasiIMT3.setEditable(false);
+        KlasifikasiIMT3.setFocusTraversalPolicyProvider(true);
+        KlasifikasiIMT3.setName("KlasifikasiIMT3"); // NOI18N
+        FormInput.add(KlasifikasiIMT3);
+        KlasifikasiIMT3.setBounds(379, 420, 410, 23);
+
+        SaudaraTalasemia5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Suspek" }));
+        SaudaraTalasemia5.setName("SaudaraTalasemia5"); // NOI18N
+        SaudaraTalasemia5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SaudaraTalasemia5KeyPressed(evt);
+            }
+        });
+        FormInput.add(SaudaraTalasemia5);
+        SaudaraTalasemia5.setBounds(121, 420, 90, 23);
+
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel29.setText("Hasil Skrining");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(44, 420, 140, 23);
+
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1571,6 +1741,18 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         //Valid.pindah(evt,BB,LP);
     }//GEN-LAST:event_TBKeyPressed
 
+    private void BB1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BB1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BB1KeyPressed
+
+    private void BB2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BB2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BB2KeyPressed
+
+    private void SaudaraTalasemia5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaudaraTalasemia5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaudaraTalasemia5KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1589,6 +1771,8 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox BB;
+    private widget.TextBox BB1;
+    private widget.TextBox BB2;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1608,6 +1792,9 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.TextBox Jk;
     private widget.TextBox KdPetugas;
     private widget.TextBox KlasifikasiIMT;
+    private widget.TextBox KlasifikasiIMT1;
+    private widget.TextBox KlasifikasiIMT2;
+    private widget.TextBox KlasifikasiIMT3;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
@@ -1620,6 +1807,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.ComboBox SaudaraTalasemia2;
     private widget.ComboBox SaudaraTalasemia3;
     private widget.ComboBox SaudaraTalasemia4;
+    private widget.ComboBox SaudaraTalasemia5;
     private widget.ScrollPane Scroll;
     private widget.TextBox TB;
     private widget.TextBox TCari;
@@ -1637,13 +1825,17 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.ComboBox TumbangTerlambat4;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel10;
     private widget.Label jLabel100;
     private widget.Label jLabel101;
     private widget.Label jLabel102;
     private widget.Label jLabel103;
     private widget.Label jLabel104;
+    private widget.Label jLabel105;
+    private widget.Label jLabel11;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
+    private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
@@ -1651,8 +1843,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
+    private widget.Label jLabel23;
     private widget.Label jLabel24;
     private widget.Label jLabel25;
+    private widget.Label jLabel26;
+    private widget.Label jLabel27;
+    private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
@@ -1670,6 +1869,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.Label jLabel87;
     private widget.Label jLabel88;
     private widget.Label jLabel89;
+    private widget.Label jLabel9;
     private widget.Label jLabel90;
     private widget.Label jLabel91;
     private widget.Label jLabel92;
@@ -1685,6 +1885,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -1974,7 +2175,6 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
         }
     }
-    
 
     private void simpan() {
         /*if(Sequel.menyimpantf("skrining_thalassemia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
@@ -1993,5 +2193,36 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
         } */
+    }
+    
+    private void isBMI(){
+        try {
+            if((!TB.getText().equals(""))&&(!BB.getText().equals(""))){
+                try {
+                    IMT.setText(Valid.SetAngka8(Valid.SetAngka(BB.getText())/((Valid.SetAngka(TB.getText())/100)*(Valid.SetAngka(TB.getText())/100)),1)+"");
+                } catch (Exception e) {
+                    IMT.setText("");
+                }
+                if(Valid.SetAngka(IMT.getText())<18.5){
+                    KlasifikasiIMT.setText("Berat Badan Kurang");
+                }else if((Valid.SetAngka(IMT.getText())>=18.5)&&(Valid.SetAngka(IMT.getText())<=22.9)){
+                    KlasifikasiIMT.setText("Berat Badan Normal");
+                }else if((Valid.SetAngka(IMT.getText())>=23)&&(Valid.SetAngka(IMT.getText())<=24.9)){
+                    KlasifikasiIMT.setText("Kelebihan Berat Badan");
+                }else if((Valid.SetAngka(IMT.getText())>=25)&&(Valid.SetAngka(IMT.getText())<=29.9)){
+                    KlasifikasiIMT.setText("Obesitas I");
+                }else if(Valid.SetAngka(IMT.getText())>=30){
+                    KlasifikasiIMT.setText("Obesitas II");
+                }else{
+                    KlasifikasiIMT.setText("");
+                }
+            }else{
+                IMT.setText("");
+                KlasifikasiIMT.setText("");
+            }
+        } catch (Exception e) {
+            IMT.setText("");
+            KlasifikasiIMT.setText("");
+        }
     }
 }
