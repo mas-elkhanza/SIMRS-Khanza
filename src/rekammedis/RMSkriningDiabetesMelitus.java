@@ -642,7 +642,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 355));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 475));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -2027,9 +2027,9 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>527){
+            if(internalFrame1.getHeight()>647){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,355));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,475));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
