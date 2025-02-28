@@ -1423,7 +1423,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(0, 380, 147, 23);
 
-        UmurKehamilan.setEditable(false);
         UmurKehamilan.setHighlighter(null);
         UmurKehamilan.setName("UmurKehamilan"); // NOI18N
         UmurKehamilan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1496,7 +1495,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel27);
         jLabel27.setBounds(0, 480, 104, 23);
 
-        JamKetubanPecah.setEditable(false);
         JamKetubanPecah.setHighlighter(null);
         JamKetubanPecah.setName("JamKetubanPecah"); // NOI18N
         JamKetubanPecah.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1518,7 +1516,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel28);
         jLabel28.setBounds(155, 480, 50, 23);
 
-        MenitKetubanPecah.setEditable(false);
         MenitKetubanPecah.setHighlighter(null);
         MenitKetubanPecah.setName("MenitKetubanPecah"); // NOI18N
         MenitKetubanPecah.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1540,7 +1537,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel30);
         jLabel30.setBounds(335, 480, 50, 23);
 
-        JumlahAirKetuban.setEditable(false);
         JumlahAirKetuban.setHighlighter(null);
         JumlahAirKetuban.setName("JumlahAirKetuban"); // NOI18N
         JumlahAirKetuban.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1551,7 +1547,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(JumlahAirKetuban);
         JumlahAirKetuban.setBounds(389, 480, 120, 23);
 
-        WarnaAirKetuban.setEditable(false);
         WarnaAirKetuban.setHighlighter(null);
         WarnaAirKetuban.setName("WarnaAirKetuban"); // NOI18N
         WarnaAirKetuban.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1567,7 +1562,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel31);
         jLabel31.setBounds(515, 480, 50, 23);
 
-        BauAirKetuban.setEditable(false);
         BauAirKetuban.setHighlighter(null);
         BauAirKetuban.setName("BauAirKetuban"); // NOI18N
         BauAirKetuban.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1588,7 +1582,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel34);
         jLabel34.setBounds(0, 510, 99, 23);
 
-        LetakBayi.setEditable(false);
         LetakBayi.setHighlighter(null);
         LetakBayi.setName("LetakBayi"); // NOI18N
         LetakBayi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1666,7 +1659,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel37);
         jLabel37.setBounds(581, 540, 187, 23);
 
-        LamaGawatJanin.setEditable(false);
         LamaGawatJanin.setHighlighter(null);
         LamaGawatJanin.setName("LamaGawatJanin"); // NOI18N
         LamaGawatJanin.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1694,7 +1686,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel53);
         jLabel53.setBounds(0, 570, 206, 23);
 
-        ObatSelamaPersalinan.setEditable(false);
         ObatSelamaPersalinan.setHighlighter(null);
         ObatSelamaPersalinan.setName("ObatSelamaPersalinan"); // NOI18N
         ObatSelamaPersalinan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1716,7 +1707,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel56);
         jLabel56.setBounds(0, 620, 110, 23);
 
-        BeratPlacenta.setEditable(false);
         BeratPlacenta.setHighlighter(null);
         BeratPlacenta.setName("BeratPlacenta"); // NOI18N
         BeratPlacenta.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1772,7 +1762,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel60);
         jLabel60.setBounds(0, 880, 91, 23);
 
-        BBLahir.setEditable(false);
         BBLahir.setHighlighter(null);
         BBLahir.setName("BBLahir"); // NOI18N
         BBLahir.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1800,7 +1789,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel62);
         jLabel62.setBounds(228, 880, 91, 23);
 
-        PanjangBadan.setEditable(false);
         PanjangBadan.setHighlighter(null);
         PanjangBadan.setName("PanjangBadan"); // NOI18N
         PanjangBadan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1823,7 +1811,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel64);
         jLabel64.setBounds(635, 880, 40, 23);
 
-        LingkarKepala.setEditable(false);
         LingkarKepala.setHighlighter(null);
         LingkarKepala.setName("LingkarKepala"); // NOI18N
         LingkarKepala.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1845,7 +1832,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel66);
         jLabel66.setBounds(839, 880, 40, 23);
 
-        LingkarDada.setEditable(false);
         LingkarDada.setHighlighter(null);
         LingkarDada.setName("LingkarDada"); // NOI18N
         LingkarDada.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1898,7 +1884,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         FormInput.add(jLabel71);
         jLabel71.setBounds(44, 940, 180, 23);
 
-        ObatSaatLahir.setEditable(false);
         ObatSaatLahir.setHighlighter(null);
         ObatSaatLahir.setName("ObatSaatLahir"); // NOI18N
         ObatSaatLahir.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -3932,7 +3917,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                         "penilaian_bayi_baru_lahir.tanggal between ? and ? order by penilaian_bayi_baru_lahir.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.no_ktp,penilaian_bayi_baru_lahir.no_rkm_medis_ibu,ibupasien.nm_pasien as nama_ibu,ibupasien.stts_nikah as sttsnikahibu,ibupasien.tgl_lahir as lahiribu,ibupasien.no_ktp as ktpibu,"+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_bayi_baru_lahir.no_rkm_medis_ibu,ibupasien.nm_pasien as nama_ibu,ibupasien.stts_nikah as sttsnikahibu,ibupasien.tgl_lahir as lahiribu,ibupasien.no_ktp as ktpibu,"+
                         "penilaian_bayi_baru_lahir.tanggal,penilaian_bayi_baru_lahir.kd_dokter,dokter.nm_dokter,penilaian_bayi_baru_lahir.penyakit_diderita_ibu,penilaian_bayi_baru_lahir.keterangan_penyakit_diderita_ibu,penilaian_bayi_baru_lahir.obat_dikonsumsi_selama_kehamilan,penilaian_bayi_baru_lahir.perawatan_antenatal,penilaian_bayi_baru_lahir.keterangan_perawatan_antenatal,"+
                         "penilaian_bayi_baru_lahir.terdaftar_ekohort,penilaian_bayi_baru_lahir.keterangan_terdaftar_ekohort,penilaian_bayi_baru_lahir.penyulit_kehamilan,penilaian_bayi_baru_lahir.keterangan_penyulit_kehamilan,penilaian_bayi_baru_lahir.alergi,penilaian_bayi_baru_lahir.keterangan_lainnya_riwayat_maternal,penilaian_bayi_baru_lahir.umur_kehamilan,penilaian_bayi_baru_lahir.kehamilan,"+
                         "penilaian_bayi_baru_lahir.keterangan_kehamilan,penilaian_bayi_baru_lahir.urutan_kehamilan,penilaian_bayi_baru_lahir.jam_ketuban_pecah,penilaian_bayi_baru_lahir.menit_ketuban_pecah,penilaian_bayi_baru_lahir.jumlah_air_ketuban,penilaian_bayi_baru_lahir.warna_air_ketuban,penilaian_bayi_baru_lahir.bau_air_ketuban,penilaian_bayi_baru_lahir.letak_bayi,"+
@@ -3968,22 +3953,21 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("no_ktp"),
-                        rs.getString("no_rkm_medis_ibu"),rs.getString("nama_ibu"),rs.getString("lahiribu"),rs.getString("ktpibu"),rs.getString("sttsnikahibu"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("penyakit_diderita_ibu"),rs.getString("keterangan_penyakit_diderita_ibu"),rs.getString("obat_dikonsumsi_selama_kehamilan"),rs.getString("perawatan_antenatal"),rs.getString("keterangan_perawatan_antenatal"),
-                        rs.getString("terdaftar_ekohort"),rs.getString("keterangan_terdaftar_ekohort"),rs.getString("penyulit_kehamilan"),rs.getString("keterangan_penyulit_kehamilan"),rs.getString("alergi"),rs.getString("keterangan_lainnya_riwayat_maternal"),
-                        rs.getString("umur_kehamilan"),rs.getString("kehamilan"),rs.getString("keterangan_kehamilan"),rs.getString("urutan_kehamilan"),rs.getString("jam_ketuban_pecah"),rs.getString("menit_ketuban_pecah"),rs.getString("jumlah_air_ketuban"),
-                        rs.getString("warna_air_ketuban"),rs.getString("bau_air_ketuban"),rs.getString("letak_bayi"),rs.getString("macam_persalinan"),rs.getString("keterangan_macam_persalinan"),rs.getString("indikasi_persalinan_operatif"),
-                        rs.getString("keterangan_indikasi_persalinan_operatif"),rs.getString("lama_gawat_janin"),rs.getString("obat_selama_persalinan"),rs.getString("berat_placenta"),rs.getString("kelainan_placenta"),rs.getString("keterangan_lainnya_riwayat_persalinan"),
-                        rs.getString("f1"),rs.getString("u1"),rs.getString("t1"),rs.getString("r1"),rs.getString("w1"),rs.getString("n1"),rs.getString("f5"),rs.getString("u5"),rs.getString("t5"),rs.getString("r5"),rs.getString("w5"),rs.getString("n5"),
-                        rs.getString("f10"),rs.getString("u10"),rs.getString("t10"),rs.getString("r10"),rs.getString("w10"),rs.getString("n10"),rs.getString("bblahir"),rs.getString("panjang_badan"),rs.getString("lingkar_kepala"),rs.getString("lingkar_dada"),
-                        rs.getString("resusitasi_saat_lahir"),rs.getString("keterangan_resusitasi_saat_lahir"),rs.getString("obat_diberikan_saat_lahir"),rs.getString("keterangan_lainnya_keadaan_bayi"),rs.getString("kondisi_umum"),
-                        rs.getString("keterangan_kondisi_umum"),rs.getString("kulit"),rs.getString("keterangan_kulit"),rs.getString("kepala"),rs.getString("keterangan_kepala"),rs.getString("leher"),rs.getString("keterangan_leher"),rs.getString("mata"),
-                        rs.getString("keterangan_mata"),rs.getString("hidung"),rs.getString("keterangan_hidung"),rs.getString("telinga"),rs.getString("keterangan_telinga"),rs.getString("dada"),rs.getString("keterangan_dada"),rs.getString("paru"),
-                        rs.getString("keterangan_paru"),rs.getString("jantung"),rs.getString("keterangan_jantung"),rs.getString("perut"),rs.getString("keterangan_perut"),rs.getString("tali_pusat"),rs.getString("keterangan_tali_pusat"),
-                        rs.getString("alat_kelamin"),rs.getString("keterangan_alat_kelamin"),rs.getString("ruas_tulang_belakang"),rs.getString("keterangan_ruas_tulang_belakang"),rs.getString("extrimitas"),rs.getString("keterangan_extrimitas"),
-                        rs.getString("anus"),rs.getString("keterangan_anus"),rs.getString("refleks"),rs.getString("keterangan_refleks"),rs.getString("denyut_femoral"),rs.getString("keterangan_denyut_femoral"),rs.getString("pemeriksaan_fisik_lainnya"),
-                        rs.getString("pemeriksaan_penunjang"),rs.getString("diagnosa"),rs.getString("tatalaksana")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("no_rkm_medis_ibu"),rs.getString("nama_ibu"),rs.getString("lahiribu"),
+                        rs.getString("ktpibu"),rs.getString("sttsnikahibu"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("penyakit_diderita_ibu"),rs.getString("keterangan_penyakit_diderita_ibu"),
+                        rs.getString("obat_dikonsumsi_selama_kehamilan"),rs.getString("perawatan_antenatal"),rs.getString("keterangan_perawatan_antenatal"),rs.getString("terdaftar_ekohort"),rs.getString("keterangan_terdaftar_ekohort"),
+                        rs.getString("penyulit_kehamilan"),rs.getString("keterangan_penyulit_kehamilan"),rs.getString("alergi"),rs.getString("keterangan_lainnya_riwayat_maternal"),rs.getString("umur_kehamilan"),rs.getString("kehamilan"),
+                        rs.getString("keterangan_kehamilan"),rs.getString("urutan_kehamilan"),rs.getString("jam_ketuban_pecah"),rs.getString("menit_ketuban_pecah"),rs.getString("jumlah_air_ketuban"),rs.getString("warna_air_ketuban"),
+                        rs.getString("bau_air_ketuban"),rs.getString("letak_bayi"),rs.getString("macam_persalinan"),rs.getString("keterangan_macam_persalinan"),rs.getString("indikasi_persalinan_operatif"),rs.getString("keterangan_indikasi_persalinan_operatif"),
+                        rs.getString("lama_gawat_janin"),rs.getString("obat_selama_persalinan"),rs.getString("berat_placenta"),rs.getString("kelainan_placenta"),rs.getString("keterangan_lainnya_riwayat_persalinan"),rs.getString("f1"),rs.getString("u1"),
+                        rs.getString("t1"),rs.getString("r1"),rs.getString("w1"),rs.getString("n1"),rs.getString("f5"),rs.getString("u5"),rs.getString("t5"),rs.getString("r5"),rs.getString("w5"),rs.getString("n5"),rs.getString("f10"),rs.getString("u10"),
+                        rs.getString("t10"),rs.getString("r10"),rs.getString("w10"),rs.getString("n10"),rs.getString("bblahir"),rs.getString("panjang_badan"),rs.getString("lingkar_kepala"),rs.getString("lingkar_dada"),rs.getString("resusitasi_saat_lahir"),
+                        rs.getString("keterangan_resusitasi_saat_lahir"),rs.getString("obat_diberikan_saat_lahir"),rs.getString("keterangan_lainnya_keadaan_bayi"),rs.getString("kondisi_umum"),rs.getString("keterangan_kondisi_umum"),rs.getString("kulit"),
+                        rs.getString("keterangan_kulit"),rs.getString("kepala"),rs.getString("keterangan_kepala"),rs.getString("leher"),rs.getString("keterangan_leher"),rs.getString("mata"),rs.getString("keterangan_mata"),rs.getString("hidung"),
+                        rs.getString("keterangan_hidung"),rs.getString("telinga"),rs.getString("keterangan_telinga"),rs.getString("dada"),rs.getString("keterangan_dada"),rs.getString("paru"),rs.getString("keterangan_paru"),rs.getString("jantung"),
+                        rs.getString("keterangan_jantung"),rs.getString("perut"),rs.getString("keterangan_perut"),rs.getString("tali_pusat"),rs.getString("keterangan_tali_pusat"),rs.getString("alat_kelamin"),rs.getString("keterangan_alat_kelamin"),
+                        rs.getString("ruas_tulang_belakang"),rs.getString("keterangan_ruas_tulang_belakang"),rs.getString("extrimitas"),rs.getString("keterangan_extrimitas"),rs.getString("anus"),rs.getString("keterangan_anus"),rs.getString("refleks"),
+                        rs.getString("keterangan_refleks"),rs.getString("denyut_femoral"),rs.getString("keterangan_denyut_femoral"),rs.getString("pemeriksaan_fisik_lainnya"),rs.getString("pemeriksaan_penunjang"),rs.getString("diagnosa"),rs.getString("tatalaksana")
                     });
                 }
             } catch (Exception e) {

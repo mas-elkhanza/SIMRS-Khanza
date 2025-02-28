@@ -1608,7 +1608,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="UmurKehamilan">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -1744,7 +1743,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="JamKetubanPecah">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -1784,7 +1782,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="MenitKetubanPecah">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -1824,7 +1821,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="JumlahAirKetuban">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -1841,7 +1837,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="WarnaAirKetuban">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -1869,7 +1864,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="BauAirKetuban">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -1908,7 +1902,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="LetakBayi">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2062,7 +2055,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="LamaGawatJanin">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2114,7 +2106,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="ObatSelamaPersalinan">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2154,7 +2145,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="BeratPlacenta">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2268,7 +2258,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="BBLahir">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2320,7 +2309,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="PanjangBadan">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2361,7 +2349,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="LingkarKepala">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2401,7 +2388,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="LingkarDada">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
@@ -2503,7 +2489,6 @@
                         </Component>
                         <Component class="widget.TextBox" name="ObatSaatLahir">
                           <Properties>
-                            <Property name="editable" type="boolean" value="false"/>
                             <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                               <ComponentRef name="null"/>
                             </Property>
