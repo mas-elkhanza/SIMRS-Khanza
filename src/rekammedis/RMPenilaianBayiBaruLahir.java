@@ -69,11 +69,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
             "Penyulit Kehamilan","Keterangan Penyulit Kehamilan","Alergi","Keterangan Lainnya Riwayat Maternal","Umur Kehamilan","Kehamilan","Keterangan Kehamilan","Urutan Kehamilan","Jam Ketuban Pecah",
             "Menit Ketuban Pecah","Jumlah Air Ketuban","Warna Air Ketuban","Bau Air Ketuban","Letak Bayi","Macam Persalinan","Keterangan Macam Persalinan","Indikasi Persalinan Operatif",
             "Keterangan Indikasi Persalinan Operatif","Lama Gawat Janin","Obat Selama Persalinan","Berat Placenta","Kelainan Placenta","Keterangan Lainnya Riwayat Persalinan","F 1","U 1",
-            "T 1","R 1","W 1","N 1'","F 5","U 5","T 5","R 5","W 5","N 5'","F 10","U 10","B.B.","P.B.","L.K.","L.D.","Resusitasi Lahir","Keterangan Resusitasi Saat Lahir","Obat Diberikan Saat Lahir",
-            "Keterangan Lainnya Keadaan Bayi","Kondisi Umum","Keterangan Kondisi Umum","Kulit","Keterangan Kulit","Kepala","Keterangan Kepala","Leher","Keterangan Leher","Mata","Keterangan Mata",
-            "Hidung","Keterangan Hidung","Telinga","Keterangan Telinga","Dada","Keterangan Dada","Paru","Keterangan Paru","Jantung","Keterangan Jantung","Perut","Keterangan Perut","Tali Pusat",
-            "Keterangan Tali Pusat","Alat Kelamin","Keterangan Alat Kelamin","Ruas Tulang Belakang","Keterangan Ruas Tulang Belakang","Extrimitas","Keterangan Extrimitas","Anus","Keterangan Anus",
-            "Refleks","Keterangan Refleks","Denyut Femoral","Keterangan Denyut Femoral","Pemeriksaan Fisik Lainnya","Pemeriksaan Penunjang","Diagnosa","Tatalaksana"
+            "T 1","R 1","W 1","N 1'","F 5","U 5","T 5","R 5","W 5","N 5'","F 10","U 10","T 10","R 10","W 10","N 10'","B.B.","P.B.","L.K.","L.D.","Resusitasi Lahir","Keterangan Resusitasi Saat Lahir",
+            "Obat Diberikan Saat Lahir","Keterangan Lainnya Keadaan Bayi","Kondisi Umum","Keterangan Kondisi Umum","Kulit","Keterangan Kulit","Kepala","Keterangan Kepala","Leher","Keterangan Leher",
+            "Mata","Keterangan Mata","Hidung","Keterangan Hidung","Telinga","Keterangan Telinga","Dada","Keterangan Dada","Paru","Keterangan Paru","Jantung","Keterangan Jantung","Perut","Keterangan Perut",
+            "Tali Pusat","Keterangan Tali Pusat","Alat Kelamin","Keterangan Alat Kelamin","Ruas Tulang Belakang","Keterangan Ruas Tulang Belakang","Extrimitas","Keterangan Extrimitas","Anus",
+            "Keterangan Anus","Refleks","Keterangan Refleks","Denyut Femoral","Keterangan Denyut Femoral","Pemeriksaan Fisik Lainnya","Pemeriksaan Penunjang","Diagnosa","Tatalaksana"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -161,9 +161,59 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
             }else if(i==37){
                 column.setPreferredWidth(206);
             }else if(i==38){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(100);
             }else if(i==39){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
+            }else if(i==40){
+                column.setPreferredWidth(80);
+            }else if(i==41){
+                column.setPreferredWidth(100);
+            }else if(i==42){
+                column.setPreferredWidth(200);
+            }else if(i==43){
+                column.setPreferredWidth(30);
+            }else if(i==44){
+                column.setPreferredWidth(30);
+            }else if(i==45){
+                column.setPreferredWidth(30);
+            }else if(i==46){
+                column.setPreferredWidth(30);
+            }else if(i==47){
+                column.setPreferredWidth(30);
+            }else if(i==48){
+                column.setPreferredWidth(40);
+            }else if(i==49){
+                column.setPreferredWidth(30);
+            }else if(i==50){
+                column.setPreferredWidth(30);
+            }else if(i==51){
+                column.setPreferredWidth(30);
+            }else if(i==52){
+                column.setPreferredWidth(30);
+            }else if(i==53){
+                column.setPreferredWidth(30);
+            }else if(i==54){
+                column.setPreferredWidth(40);
+            }else if(i==55){
+                column.setPreferredWidth(35);
+            }else if(i==56){
+                column.setPreferredWidth(35);
+            }else if(i==57){
+                column.setPreferredWidth(35);
+            }else if(i==58){
+                column.setPreferredWidth(35);
+            }else if(i==59){
+                column.setPreferredWidth(35);
+            }else if(i==60){
+                column.setPreferredWidth(45);
+            }else if(i==61){
+                column.setPreferredWidth(50);
+            }else if(i==62){
+                column.setPreferredWidth(50);
+            }else if(i==63){
+                column.setPreferredWidth(50);
+            }else if(i==64){
+                column.setPreferredWidth(50);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

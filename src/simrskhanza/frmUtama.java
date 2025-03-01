@@ -46444,7 +46444,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningObesitas.addActionListener(this::btnSkriningObesitasActionPerformed);
         
         btnSkriningDiabetesMelitus = new widget.ButtonBig();
-        btnSkriningDiabetesMelitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2340299_beverage_drink_glass_ice_menu_icon.png"))); 
+        btnSkriningDiabetesMelitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6954606_candy_candy shop_dessert_food and restaurant_sugar_icon.png"))); 
         btnSkriningDiabetesMelitus.setText("Skrining Diabetes Melitus");
         btnSkriningDiabetesMelitus.setIconTextGap(0);
         btnSkriningDiabetesMelitus.setName("btnSkriningDiabetesMelitus"); 

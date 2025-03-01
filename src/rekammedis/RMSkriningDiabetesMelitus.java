@@ -135,9 +135,9 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
             }else if(i==27){
                 column.setPreferredWidth(150);
             }else if(i==28){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(75);
             }else if(i==29){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -271,7 +271,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningThalassemia = new javax.swing.JMenuItem();
+        MnSkriningDiabetes = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -393,19 +393,19 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningThalassemia.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningThalassemia.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningThalassemia.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningThalassemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningThalassemia.setText("Formulir Skrining Thalassemia");
-        MnSkriningThalassemia.setName("MnSkriningThalassemia"); // NOI18N
-        MnSkriningThalassemia.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningThalassemia.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningDiabetes.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningDiabetes.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningDiabetes.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningDiabetes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningDiabetes.setText("Formulir Skrining Diabetes Melitus");
+        MnSkriningDiabetes.setName("MnSkriningDiabetes"); // NOI18N
+        MnSkriningDiabetes.setPreferredSize(new java.awt.Dimension(250, 26));
+        MnSkriningDiabetes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningThalassemiaActionPerformed(evt);
+                MnSkriningDiabetesActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningThalassemia);
+        jPopupMenu1.add(MnSkriningDiabetes);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1504,22 +1504,28 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rutin Menerima Transfusi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Rutin Transfusi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ada Saudara Thalassemia</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tumbuh Kembang Terlambat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anemia</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ikterus</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perut Buncit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gizi Kurang/Buruk</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Facies Cooley</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perawakan Pendek</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hiperpigmentasi Kulit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>HB</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MVC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MCHC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Darah Tepi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tindak Lanjut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 1</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 2</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 3</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 4</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 5</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 6</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 7</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 8</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 9</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 10</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 11</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anamnesis 12</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB(Kg)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB(Cm)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IMT</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kasifikasi IMT</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil GDS</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Hasil GDS</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil GDP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Hasil GDP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan/Diskripsi Hasil Skrining</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1549,11 +1555,17 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2300px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1574,17 +1586,17 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataSkriningThalassemia.html");            
+                File f = new File("DataSkriningDiabetesMelitus.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2300px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING THALASSEMIA<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING DIABETES MELITUS<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1695,7 +1707,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,btnPetugas);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningThalassemiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningThalassemiaActionPerformed
+    private void MnSkriningDiabetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningDiabetesActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1707,16 +1719,17 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningThalasemia.jasper","report","::[ Formulir Skrining Thalassemia ]::",
+            Valid.MyReportqry("rptFormulirSkriningDiabetesMelitus.jasper","report","::[ Formulir Skrining Diabetes Melitus ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_diabetes_melitus.nip,petugas.nama,skrining_diabetes_melitus.tanggal,"+
-                    "skrining_diabetes_melitus.transfusi_darah,skrining_diabetes_melitus.rutin_transfusi,skrining_diabetes_melitus.saudara_thalassemia,skrining_diabetes_melitus.tumbuh_kembang_terlambat,"+
-                    "skrining_diabetes_melitus.anemia,skrining_diabetes_melitus.ikterus,skrining_diabetes_melitus.perut_buncit,skrining_diabetes_melitus.gizi_kurang,skrining_diabetes_melitus.facies_cooley,"+
-                    "skrining_diabetes_melitus.perawakan_pendek,skrining_diabetes_melitus.hiperpigmentasi_kulit,skrining_diabetes_melitus.hemoglobin,skrining_diabetes_melitus.mvc,skrining_diabetes_melitus.mchc,"+
-                    "skrining_diabetes_melitus.darah_tepi,skrining_diabetes_melitus.tindak_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur from skrining_diabetes_melitus inner join reg_periksa "+
-                    "on skrining_diabetes_melitus.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
-                    "on skrining_diabetes_melitus.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "skrining_diabetes_melitus.anamnesis1,skrining_diabetes_melitus.anamnesis2,skrining_diabetes_melitus.anamnesis3,skrining_diabetes_melitus.anamnesis4,skrining_diabetes_melitus.anamnesis5,"+
+                    "skrining_diabetes_melitus.anamnesis6,skrining_diabetes_melitus.anamnesis7,skrining_diabetes_melitus.anamnesis8,skrining_diabetes_melitus.anamnesis9,skrining_diabetes_melitus.anamnesis10,"+
+                    "skrining_diabetes_melitus.anamnesis11,skrining_diabetes_melitus.anamnesis12,skrining_diabetes_melitus.berat_badan,skrining_diabetes_melitus.tinggi_badan,skrining_diabetes_melitus.imt,"+
+                    "skrining_diabetes_melitus.kasifikasi_imt,skrining_diabetes_melitus.hasil_gds,skrining_diabetes_melitus.keterangan_gds,skrining_diabetes_melitus.hasil_gdp,skrining_diabetes_melitus.keterangan_gdp,"+
+                    "skrining_diabetes_melitus.hasil_skrining,skrining_diabetes_melitus.keterangan_skrining from skrining_diabetes_melitus inner join reg_periksa on skrining_diabetes_melitus.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_diabetes_melitus.nip=petugas.nip "+
+                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningThalassemiaActionPerformed
+    }//GEN-LAST:event_MnSkriningDiabetesActionPerformed
 
     private void Anamnesis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis1KeyPressed
         Valid.pindah(evt,btnPetugas,Anamnesis2);
@@ -1868,7 +1881,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningThalassemia;
+    private javax.swing.JMenuItem MnSkriningDiabetes;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -2038,7 +2051,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         HasilGDP.setText("");
         KeteranganGDP.setText("");
         HasilSkrining.setSelectedIndex(0);
-        KeteranganSkrining.setText("");
+        KeteranganSkrining.setText("Tidak dicurigai diabetes mellitus");
         Tanggal.setDate(new Date());
         Anamnesis1.requestFocus();
     } 
