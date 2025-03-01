@@ -32,7 +32,15 @@ public class koneksiDB {
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                 dataSource.setCachePreparedStatements(true);
                 dataSource.setUseCompression(true);
-                dataSource.setAutoReconnect(true);
+                dataSource.setAutoReconnect(true);                      
+                dataSource.setAutoReconnectForPools(true);
+                dataSource.setReconnectAtTxEnd(true);
+                dataSource.setUseServerPrepStmts(true);                 
+                dataSource.setUseLocalSessionState(true);               
+                dataSource.setUseLocalTransactionState(true); 
+                dataSource.setLoginTimeout(10);                         
+                dataSource.setConnectTimeout(10000);                  
+                dataSource.setSocketTimeout(30000);  
                 connection=dataSource.getConnection();       
                 System.out.println("  Koneksi Berhasil. Sorry bro loading, silahkan baca dulu.... \n\n"+
                         "	Software ini adalah Software Menejemen Rumah Sakit/Klinik/\n" +
@@ -62,7 +70,15 @@ public class koneksiDB {
                         dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                         dataSource.setCachePreparedStatements(true);
                         dataSource.setUseCompression(true);
-                        dataSource.setAutoReconnect(true);
+                        dataSource.setAutoReconnect(true);                      
+                        dataSource.setAutoReconnectForPools(true);
+                        dataSource.setReconnectAtTxEnd(true);
+                        dataSource.setUseServerPrepStmts(true);                 
+                        dataSource.setUseLocalSessionState(true);               
+                        dataSource.setUseLocalTransactionState(true); 
+                        dataSource.setLoginTimeout(10);                         
+                        dataSource.setConnectTimeout(10000);                  
+                        dataSource.setSocketTimeout(30000);
                         connection=dataSource.getConnection();  
                     }
                 } catch (Exception ex) {
