@@ -63,9 +63,10 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Rutin Menerima Transfusi","Keluarga Rutin Transfusi","Ada Saudara Thalassemia","Tumbuh Kembang Terlambat",
-            "Anemia","Ikterus","Perut Buncit","Gizi Kurang/Buruk","Facies Cooley","Perawakan Pendek","Hiperpigmentasi Kulit",
-            "HB","MVC","MCHC","Darah Tepi","Tindak Lanjut"
+            "Anamnesis 1","Anamnesis 2","Anamnesis 3","Anamnesis 4","Anamnesis 5","Anamnesis 6","Anamnesis 7",
+            "Anamnesis 8","Anamnesis 9","Anamnesis 10","Anamnesis 11","Anamnesis 12","BB(Kg)","TB(Cm)","IMT",
+            "Kasifikasi IMT","Hasil GDS","Keterangan Hasil GDS","Hasil GDP","Keterangan Hasil GDP","Hasil Skrining",
+            "Keterangan/Diskripsi Hasil Skrining"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -93,38 +94,6 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
-            }else if(i==8){
-                column.setPreferredWidth(135);
-            }else if(i==9){
-                column.setPreferredWidth(130);
-            }else if(i==10){
-                column.setPreferredWidth(135);
-            }else if(i==11){
-                column.setPreferredWidth(150);
-            }else if(i==12){
-                column.setPreferredWidth(50);
-            }else if(i==13){
-                column.setPreferredWidth(50);
-            }else if(i==14){
-                column.setPreferredWidth(70);
-            }else if(i==15){
-                column.setPreferredWidth(100);
-            }else if(i==16){
-                column.setPreferredWidth(80);
-            }else if(i==17){
-                column.setPreferredWidth(103);
-            }else if(i==18){
-                column.setPreferredWidth(115);
-            }else if(i==19){
-                column.setPreferredWidth(60);
-            }else if(i==20){
-                column.setPreferredWidth(50);
-            }else if(i==21){
-                column.setPreferredWidth(50);
-            }else if(i==22){
-                column.setPreferredWidth(80);
-            }else if(i==23){
-                column.setPreferredWidth(300);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -132,6 +101,13 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        TB.setDocument(new batasInput((byte)8).getOnlyAngka(TB));
+        BB.setDocument(new batasInput((byte)6).getOnlyAngka(BB));
+        HasilGDS.setDocument(new batasInput((int)10).getKata(HasilGDS));
+        KeteranganGDS.setDocument(new batasInput((int)50).getKata(KeteranganGDS));
+        HasilGDP.setDocument(new batasInput((int)10).getKata(HasilGDP));
+        KeteranganGDP.setDocument(new batasInput((int)50).getKata(KeteranganGDP));
+        KeteranganSkrining.setDocument(new batasInput((int)60).getKata(KeteranganSkrining));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -297,44 +273,44 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         btnPetugas = new widget.Button();
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
-        TransfusiDarah = new widget.ComboBox();
+        Anamnesis1 = new widget.ComboBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel99 = new widget.Label();
         jLabel78 = new widget.Label();
-        SaudaraTalasemia = new widget.ComboBox();
-        RutinTransfusi = new widget.ComboBox();
-        TumbangTerlambat = new widget.ComboBox();
+        Anamnesis2 = new widget.ComboBox();
+        Anamnesis7 = new widget.ComboBox();
+        Anamnesis8 = new widget.ComboBox();
         jLabel79 = new widget.Label();
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
         jLabel84 = new widget.Label();
         jLabel85 = new widget.Label();
-        SaudaraTalasemia1 = new widget.ComboBox();
+        Anamnesis3 = new widget.ComboBox();
         jLabel86 = new widget.Label();
         jLabel87 = new widget.Label();
-        SaudaraTalasemia2 = new widget.ComboBox();
+        Anamnesis4 = new widget.ComboBox();
         jLabel88 = new widget.Label();
         jLabel89 = new widget.Label();
-        SaudaraTalasemia3 = new widget.ComboBox();
+        Anamnesis5 = new widget.ComboBox();
         jLabel90 = new widget.Label();
         jLabel91 = new widget.Label();
-        SaudaraTalasemia4 = new widget.ComboBox();
+        Anamnesis6 = new widget.ComboBox();
         jLabel80 = new widget.Label();
         jLabel81 = new widget.Label();
         jLabel92 = new widget.Label();
         jLabel93 = new widget.Label();
         jLabel94 = new widget.Label();
         jLabel95 = new widget.Label();
-        TumbangTerlambat1 = new widget.ComboBox();
+        Anamnesis9 = new widget.ComboBox();
         jLabel96 = new widget.Label();
         jLabel97 = new widget.Label();
-        TumbangTerlambat2 = new widget.ComboBox();
+        Anamnesis10 = new widget.ComboBox();
         jLabel98 = new widget.Label();
         jLabel100 = new widget.Label();
-        TumbangTerlambat3 = new widget.ComboBox();
+        Anamnesis11 = new widget.ComboBox();
         jLabel101 = new widget.Label();
         jLabel102 = new widget.Label();
-        TumbangTerlambat4 = new widget.ComboBox();
+        Anamnesis12 = new widget.ComboBox();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel103 = new widget.Label();
         BB = new widget.TextBox();
@@ -352,23 +328,23 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel104 = new widget.Label();
         jLabel9 = new widget.Label();
-        BB1 = new widget.TextBox();
+        HasilGDS = new widget.TextBox();
         jLabel14 = new widget.Label();
         jLabel26 = new widget.Label();
         jLabel22 = new widget.Label();
-        KlasifikasiIMT1 = new widget.TextBox();
+        KeteranganGDS = new widget.TextBox();
         jLabel23 = new widget.Label();
         jLabel10 = new widget.Label();
-        BB2 = new widget.TextBox();
+        HasilGDP = new widget.TextBox();
         jLabel27 = new widget.Label();
         jLabel28 = new widget.Label();
-        KlasifikasiIMT2 = new widget.TextBox();
+        KeteranganGDP = new widget.TextBox();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel105 = new widget.Label();
         jLabel11 = new widget.Label();
         jLabel30 = new widget.Label();
-        KlasifikasiIMT3 = new widget.TextBox();
-        SaudaraTalasemia5 = new widget.ComboBox();
+        KeteranganSkrining = new widget.TextBox();
+        HasilSkrining = new widget.ComboBox();
         jLabel29 = new widget.Label();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -813,15 +789,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        TransfusiDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TransfusiDarah.setName("TransfusiDarah"); // NOI18N
-        TransfusiDarah.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis1.setName("Anamnesis1"); // NOI18N
+        Anamnesis1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TransfusiDarahKeyPressed(evt);
+                Anamnesis1KeyPressed(evt);
             }
         });
-        FormInput.add(TransfusiDarah);
-        TransfusiDarah.setBounds(310, 90, 80, 23);
+        FormInput.add(Anamnesis1);
+        Anamnesis1.setBounds(310, 90, 80, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -842,35 +818,35 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel78);
         jLabel78.setBounds(44, 90, 20, 23);
 
-        SaudaraTalasemia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SaudaraTalasemia.setName("SaudaraTalasemia"); // NOI18N
-        SaudaraTalasemia.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis2.setName("Anamnesis2"); // NOI18N
+        Anamnesis2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaudaraTalasemiaKeyPressed(evt);
+                Anamnesis2KeyPressed(evt);
             }
         });
-        FormInput.add(SaudaraTalasemia);
-        SaudaraTalasemia.setBounds(310, 120, 80, 23);
+        FormInput.add(Anamnesis2);
+        Anamnesis2.setBounds(310, 120, 80, 23);
 
-        RutinTransfusi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        RutinTransfusi.setName("RutinTransfusi"); // NOI18N
-        RutinTransfusi.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis7.setName("Anamnesis7"); // NOI18N
+        Anamnesis7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RutinTransfusiKeyPressed(evt);
+                Anamnesis7KeyPressed(evt);
             }
         });
-        FormInput.add(RutinTransfusi);
-        RutinTransfusi.setBounds(709, 90, 80, 23);
+        FormInput.add(Anamnesis7);
+        Anamnesis7.setBounds(709, 90, 80, 23);
 
-        TumbangTerlambat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TumbangTerlambat.setName("TumbangTerlambat"); // NOI18N
-        TumbangTerlambat.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis8.setName("Anamnesis8"); // NOI18N
+        Anamnesis8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TumbangTerlambatKeyPressed(evt);
+                Anamnesis8KeyPressed(evt);
             }
         });
-        FormInput.add(TumbangTerlambat);
-        TumbangTerlambat.setBounds(709, 120, 80, 23);
+        FormInput.add(Anamnesis8);
+        Anamnesis8.setBounds(709, 120, 80, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel79.setText("Sering Lapar ?");
@@ -902,15 +878,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel85);
         jLabel85.setBounds(62, 150, 230, 23);
 
-        SaudaraTalasemia1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SaudaraTalasemia1.setName("SaudaraTalasemia1"); // NOI18N
-        SaudaraTalasemia1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis3.setName("Anamnesis3"); // NOI18N
+        Anamnesis3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaudaraTalasemia1KeyPressed(evt);
+                Anamnesis3KeyPressed(evt);
             }
         });
-        FormInput.add(SaudaraTalasemia1);
-        SaudaraTalasemia1.setBounds(310, 150, 80, 23);
+        FormInput.add(Anamnesis3);
+        Anamnesis3.setBounds(310, 150, 80, 23);
 
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel86.setText("4.");
@@ -924,15 +900,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel87);
         jLabel87.setBounds(62, 180, 230, 23);
 
-        SaudaraTalasemia2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SaudaraTalasemia2.setName("SaudaraTalasemia2"); // NOI18N
-        SaudaraTalasemia2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis4.setName("Anamnesis4"); // NOI18N
+        Anamnesis4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaudaraTalasemia2KeyPressed(evt);
+                Anamnesis4KeyPressed(evt);
             }
         });
-        FormInput.add(SaudaraTalasemia2);
-        SaudaraTalasemia2.setBounds(310, 180, 80, 23);
+        FormInput.add(Anamnesis4);
+        Anamnesis4.setBounds(310, 180, 80, 23);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel88.setText("5.");
@@ -946,15 +922,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel89);
         jLabel89.setBounds(62, 210, 230, 23);
 
-        SaudaraTalasemia3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SaudaraTalasemia3.setName("SaudaraTalasemia3"); // NOI18N
-        SaudaraTalasemia3.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis5.setName("Anamnesis5"); // NOI18N
+        Anamnesis5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaudaraTalasemia3KeyPressed(evt);
+                Anamnesis5KeyPressed(evt);
             }
         });
-        FormInput.add(SaudaraTalasemia3);
-        SaudaraTalasemia3.setBounds(310, 210, 80, 23);
+        FormInput.add(Anamnesis5);
+        Anamnesis5.setBounds(310, 210, 80, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("Riwayat Keluarga Diabetes Melitus ?");
@@ -968,15 +944,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel91);
         jLabel91.setBounds(44, 240, 20, 23);
 
-        SaudaraTalasemia4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        SaudaraTalasemia4.setName("SaudaraTalasemia4"); // NOI18N
-        SaudaraTalasemia4.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis6.setName("Anamnesis6"); // NOI18N
+        Anamnesis6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaudaraTalasemia4KeyPressed(evt);
+                Anamnesis6KeyPressed(evt);
             }
         });
-        FormInput.add(SaudaraTalasemia4);
-        SaudaraTalasemia4.setBounds(310, 240, 80, 23);
+        FormInput.add(Anamnesis6);
+        Anamnesis6.setBounds(310, 240, 80, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel80.setText("7.");
@@ -1014,15 +990,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel95);
         jLabel95.setBounds(440, 150, 20, 23);
 
-        TumbangTerlambat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TumbangTerlambat1.setName("TumbangTerlambat1"); // NOI18N
-        TumbangTerlambat1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis9.setName("Anamnesis9"); // NOI18N
+        Anamnesis9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TumbangTerlambat1KeyPressed(evt);
+                Anamnesis9KeyPressed(evt);
             }
         });
-        FormInput.add(TumbangTerlambat1);
-        TumbangTerlambat1.setBounds(709, 150, 80, 23);
+        FormInput.add(Anamnesis9);
+        Anamnesis9.setBounds(709, 150, 80, 23);
 
         jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel96.setText("10.");
@@ -1036,15 +1012,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel97);
         jLabel97.setBounds(458, 180, 230, 23);
 
-        TumbangTerlambat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TumbangTerlambat2.setName("TumbangTerlambat2"); // NOI18N
-        TumbangTerlambat2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis10.setName("Anamnesis10"); // NOI18N
+        Anamnesis10.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TumbangTerlambat2KeyPressed(evt);
+                Anamnesis10KeyPressed(evt);
             }
         });
-        FormInput.add(TumbangTerlambat2);
-        TumbangTerlambat2.setBounds(709, 180, 80, 23);
+        FormInput.add(Anamnesis10);
+        Anamnesis10.setBounds(709, 180, 80, 23);
 
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel98.setText("11.");
@@ -1058,15 +1034,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel100);
         jLabel100.setBounds(458, 210, 230, 23);
 
-        TumbangTerlambat3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TumbangTerlambat3.setName("TumbangTerlambat3"); // NOI18N
-        TumbangTerlambat3.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis11.setName("Anamnesis11"); // NOI18N
+        Anamnesis11.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TumbangTerlambat3KeyPressed(evt);
+                Anamnesis11KeyPressed(evt);
             }
         });
-        FormInput.add(TumbangTerlambat3);
-        TumbangTerlambat3.setBounds(709, 210, 80, 23);
+        FormInput.add(Anamnesis11);
+        Anamnesis11.setBounds(709, 210, 80, 23);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("Kurang Makan Buah Dan Sayur ?");
@@ -1080,15 +1056,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel102);
         jLabel102.setBounds(440, 240, 20, 23);
 
-        TumbangTerlambat4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        TumbangTerlambat4.setName("TumbangTerlambat4"); // NOI18N
-        TumbangTerlambat4.addKeyListener(new java.awt.event.KeyAdapter() {
+        Anamnesis12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        Anamnesis12.setName("Anamnesis12"); // NOI18N
+        Anamnesis12.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TumbangTerlambat4KeyPressed(evt);
+                Anamnesis12KeyPressed(evt);
             }
         });
-        FormInput.add(TumbangTerlambat4);
-        TumbangTerlambat4.setBounds(709, 240, 80, 23);
+        FormInput.add(Anamnesis12);
+        Anamnesis12.setBounds(709, 240, 80, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -1197,15 +1173,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(0, 340, 164, 23);
 
-        BB1.setFocusTraversalPolicyProvider(true);
-        BB1.setName("BB1"); // NOI18N
-        BB1.addKeyListener(new java.awt.event.KeyAdapter() {
+        HasilGDS.setFocusTraversalPolicyProvider(true);
+        HasilGDS.setName("HasilGDS"); // NOI18N
+        HasilGDS.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BB1KeyPressed(evt);
+                HasilGDSKeyPressed(evt);
             }
         });
-        FormInput.add(BB1);
-        BB1.setBounds(168, 340, 85, 23);
+        FormInput.add(HasilGDS);
+        HasilGDS.setBounds(168, 340, 85, 23);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Hasil Pemeriksaan GDS");
@@ -1224,11 +1200,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel22);
         jLabel22.setBounds(295, 340, 190, 23);
 
-        KlasifikasiIMT1.setEditable(false);
-        KlasifikasiIMT1.setFocusTraversalPolicyProvider(true);
-        KlasifikasiIMT1.setName("KlasifikasiIMT1"); // NOI18N
-        FormInput.add(KlasifikasiIMT1);
-        KlasifikasiIMT1.setBounds(489, 340, 300, 23);
+        KeteranganGDS.setFocusTraversalPolicyProvider(true);
+        KeteranganGDS.setName("KeteranganGDS"); // NOI18N
+        KeteranganGDS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganGDSKeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganGDS);
+        KeteranganGDS.setBounds(489, 340, 300, 23);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel23.setText("Hasil Pemeriksaan GDP");
@@ -1241,15 +1221,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel10);
         jLabel10.setBounds(0, 370, 164, 23);
 
-        BB2.setFocusTraversalPolicyProvider(true);
-        BB2.setName("BB2"); // NOI18N
-        BB2.addKeyListener(new java.awt.event.KeyAdapter() {
+        HasilGDP.setFocusTraversalPolicyProvider(true);
+        HasilGDP.setName("HasilGDP"); // NOI18N
+        HasilGDP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BB2KeyPressed(evt);
+                HasilGDPKeyPressed(evt);
             }
         });
-        FormInput.add(BB2);
-        BB2.setBounds(168, 370, 85, 23);
+        FormInput.add(HasilGDP);
+        HasilGDP.setBounds(168, 370, 85, 23);
 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel27.setText("mg/dL");
@@ -1262,11 +1242,15 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel28);
         jLabel28.setBounds(295, 370, 190, 23);
 
-        KlasifikasiIMT2.setEditable(false);
-        KlasifikasiIMT2.setFocusTraversalPolicyProvider(true);
-        KlasifikasiIMT2.setName("KlasifikasiIMT2"); // NOI18N
-        FormInput.add(KlasifikasiIMT2);
-        KlasifikasiIMT2.setBounds(489, 370, 300, 23);
+        KeteranganGDP.setFocusTraversalPolicyProvider(true);
+        KeteranganGDP.setName("KeteranganGDP"); // NOI18N
+        KeteranganGDP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganGDPKeyPressed(evt);
+            }
+        });
+        FormInput.add(KeteranganGDP);
+        KeteranganGDP.setBounds(489, 370, 300, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
@@ -1291,21 +1275,25 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         FormInput.add(jLabel30);
         jLabel30.setBounds(215, 420, 160, 23);
 
-        KlasifikasiIMT3.setEditable(false);
-        KlasifikasiIMT3.setFocusTraversalPolicyProvider(true);
-        KlasifikasiIMT3.setName("KlasifikasiIMT3"); // NOI18N
-        FormInput.add(KlasifikasiIMT3);
-        KlasifikasiIMT3.setBounds(379, 420, 410, 23);
-
-        SaudaraTalasemia5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Suspek" }));
-        SaudaraTalasemia5.setName("SaudaraTalasemia5"); // NOI18N
-        SaudaraTalasemia5.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganSkrining.setFocusTraversalPolicyProvider(true);
+        KeteranganSkrining.setName("KeteranganSkrining"); // NOI18N
+        KeteranganSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SaudaraTalasemia5KeyPressed(evt);
+                KeteranganSkriningKeyPressed(evt);
             }
         });
-        FormInput.add(SaudaraTalasemia5);
-        SaudaraTalasemia5.setBounds(121, 420, 90, 23);
+        FormInput.add(KeteranganSkrining);
+        KeteranganSkrining.setBounds(379, 420, 410, 23);
+
+        HasilSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Suspek" }));
+        HasilSkrining.setName("HasilSkrining"); // NOI18N
+        HasilSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HasilSkriningKeyPressed(evt);
+            }
+        });
+        FormInput.add(HasilSkrining);
+        HasilSkrining.setBounds(121, 420, 90, 23);
 
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel29.setText("Hasil Skrining");
@@ -1359,7 +1347,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-           // Valid.pindah(evt,TindakLanjut,BtnBatal);
+           Valid.pindah(evt,KeteranganSkrining,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1671,87 +1659,99 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningThalasemia.jasper","report","::[ Formulir Skrining Thalassemia ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
-                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
-                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
-                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur from skrining_thalassemia inner join reg_periksa "+
-                    "on skrining_thalassemia.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
-                    "on skrining_thalassemia.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_diabetes_melitus.nip,petugas.nama,skrining_diabetes_melitus.tanggal,"+
+                    "skrining_diabetes_melitus.transfusi_darah,skrining_diabetes_melitus.rutin_transfusi,skrining_diabetes_melitus.saudara_thalassemia,skrining_diabetes_melitus.tumbuh_kembang_terlambat,"+
+                    "skrining_diabetes_melitus.anemia,skrining_diabetes_melitus.ikterus,skrining_diabetes_melitus.perut_buncit,skrining_diabetes_melitus.gizi_kurang,skrining_diabetes_melitus.facies_cooley,"+
+                    "skrining_diabetes_melitus.perawakan_pendek,skrining_diabetes_melitus.hiperpigmentasi_kulit,skrining_diabetes_melitus.hemoglobin,skrining_diabetes_melitus.mvc,skrining_diabetes_melitus.mchc,"+
+                    "skrining_diabetes_melitus.darah_tepi,skrining_diabetes_melitus.tindak_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur from skrining_diabetes_melitus inner join reg_periksa "+
+                    "on skrining_diabetes_melitus.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas "+
+                    "on skrining_diabetes_melitus.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningThalassemiaActionPerformed
 
-    private void TransfusiDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TransfusiDarahKeyPressed
-        Valid.pindah(evt,btnPetugas,SaudaraTalasemia);
-    }//GEN-LAST:event_TransfusiDarahKeyPressed
+    private void Anamnesis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis1KeyPressed
+        Valid.pindah(evt,btnPetugas,Anamnesis2);
+    }//GEN-LAST:event_Anamnesis1KeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void SaudaraTalasemiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaudaraTalasemiaKeyPressed
-        Valid.pindah(evt,TransfusiDarah,RutinTransfusi);
-    }//GEN-LAST:event_SaudaraTalasemiaKeyPressed
+    private void Anamnesis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis2KeyPressed
+        Valid.pindah(evt,Anamnesis1,Anamnesis3);
+    }//GEN-LAST:event_Anamnesis2KeyPressed
 
-    private void RutinTransfusiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RutinTransfusiKeyPressed
-        Valid.pindah(evt,SaudaraTalasemia,TumbangTerlambat);
-    }//GEN-LAST:event_RutinTransfusiKeyPressed
+    private void Anamnesis7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis7KeyPressed
+        Valid.pindah(evt,Anamnesis6,Anamnesis8);
+    }//GEN-LAST:event_Anamnesis7KeyPressed
 
-    private void TumbangTerlambatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TumbangTerlambatKeyPressed
-        //Valid.pindah(evt,RutinTransfusi,Anemia);
-    }//GEN-LAST:event_TumbangTerlambatKeyPressed
+    private void Anamnesis8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis8KeyPressed
+        Valid.pindah(evt,Anamnesis7,Anamnesis9);
+    }//GEN-LAST:event_Anamnesis8KeyPressed
 
-    private void SaudaraTalasemia1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaudaraTalasemia1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaudaraTalasemia1KeyPressed
+    private void Anamnesis3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis3KeyPressed
+        Valid.pindah(evt,Anamnesis2,Anamnesis4);
+    }//GEN-LAST:event_Anamnesis3KeyPressed
 
-    private void SaudaraTalasemia2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaudaraTalasemia2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaudaraTalasemia2KeyPressed
+    private void Anamnesis4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis4KeyPressed
+        Valid.pindah(evt,Anamnesis3,Anamnesis5);
+    }//GEN-LAST:event_Anamnesis4KeyPressed
 
-    private void SaudaraTalasemia3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaudaraTalasemia3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaudaraTalasemia3KeyPressed
+    private void Anamnesis5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis5KeyPressed
+        Valid.pindah(evt,Anamnesis4,Anamnesis6);
+    }//GEN-LAST:event_Anamnesis5KeyPressed
 
-    private void SaudaraTalasemia4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaudaraTalasemia4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaudaraTalasemia4KeyPressed
+    private void Anamnesis6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis6KeyPressed
+        Valid.pindah(evt,Anamnesis5,Anamnesis7);
+    }//GEN-LAST:event_Anamnesis6KeyPressed
 
-    private void TumbangTerlambat1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TumbangTerlambat1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TumbangTerlambat1KeyPressed
+    private void Anamnesis9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis9KeyPressed
+        Valid.pindah(evt,Anamnesis8,Anamnesis10);
+    }//GEN-LAST:event_Anamnesis9KeyPressed
 
-    private void TumbangTerlambat2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TumbangTerlambat2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TumbangTerlambat2KeyPressed
+    private void Anamnesis10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis10KeyPressed
+        Valid.pindah(evt,Anamnesis9,Anamnesis11);
+    }//GEN-LAST:event_Anamnesis10KeyPressed
 
-    private void TumbangTerlambat3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TumbangTerlambat3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TumbangTerlambat3KeyPressed
+    private void Anamnesis11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis11KeyPressed
+        Valid.pindah(evt,Anamnesis10,Anamnesis12);
+    }//GEN-LAST:event_Anamnesis11KeyPressed
 
-    private void TumbangTerlambat4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TumbangTerlambat4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TumbangTerlambat4KeyPressed
+    private void Anamnesis12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis12KeyPressed
+        Valid.pindah(evt,Anamnesis11,BB);
+    }//GEN-LAST:event_Anamnesis12KeyPressed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
-        //Valid.pindah(evt,RiwayatSteroid,TB);
+        Valid.pindah(evt,Anamnesis12,TB);
     }//GEN-LAST:event_BBKeyPressed
 
     private void TBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBKeyPressed
-        //Valid.pindah(evt,BB,LP);
+        Valid.pindah(evt,BB,HasilGDS);
     }//GEN-LAST:event_TBKeyPressed
 
-    private void BB1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BB1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BB1KeyPressed
+    private void HasilGDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilGDSKeyPressed
+        Valid.pindah(evt,TB,KeteranganGDS);
+    }//GEN-LAST:event_HasilGDSKeyPressed
 
-    private void BB2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BB2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BB2KeyPressed
+    private void HasilGDPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilGDPKeyPressed
+        Valid.pindah(evt,KeteranganGDS,KeteranganGDP);
+    }//GEN-LAST:event_HasilGDPKeyPressed
 
-    private void SaudaraTalasemia5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaudaraTalasemia5KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaudaraTalasemia5KeyPressed
+    private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
+        Valid.pindah(evt,KeteranganGDP,KeteranganSkrining);
+    }//GEN-LAST:event_HasilSkriningKeyPressed
+
+    private void KeteranganGDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGDSKeyPressed
+        Valid.pindah(evt,HasilGDS,HasilGDP);
+    }//GEN-LAST:event_KeteranganGDSKeyPressed
+
+    private void KeteranganGDPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGDPKeyPressed
+        Valid.pindah(evt,HasilGDP,HasilSkrining);
+    }//GEN-LAST:event_KeteranganGDPKeyPressed
+
+    private void KeteranganSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganSkriningKeyPressed
+        Valid.pindah(evt,HasilSkrining,BtnSimpan);
+    }//GEN-LAST:event_KeteranganSkriningKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1770,9 +1770,19 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox Anamnesis1;
+    private widget.ComboBox Anamnesis10;
+    private widget.ComboBox Anamnesis11;
+    private widget.ComboBox Anamnesis12;
+    private widget.ComboBox Anamnesis2;
+    private widget.ComboBox Anamnesis3;
+    private widget.ComboBox Anamnesis4;
+    private widget.ComboBox Anamnesis5;
+    private widget.ComboBox Anamnesis6;
+    private widget.ComboBox Anamnesis7;
+    private widget.ComboBox Anamnesis8;
+    private widget.ComboBox Anamnesis9;
     private widget.TextBox BB;
-    private widget.TextBox BB1;
-    private widget.TextBox BB2;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1787,27 +1797,23 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox HasilGDP;
+    private widget.TextBox HasilGDS;
+    private widget.ComboBox HasilSkrining;
     private widget.TextBox IMT;
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
     private widget.TextBox KdPetugas;
+    private widget.TextBox KeteranganGDP;
+    private widget.TextBox KeteranganGDS;
+    private widget.TextBox KeteranganSkrining;
     private widget.TextBox KlasifikasiIMT;
-    private widget.TextBox KlasifikasiIMT1;
-    private widget.TextBox KlasifikasiIMT2;
-    private widget.TextBox KlasifikasiIMT3;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningThalassemia;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox RutinTransfusi;
-    private widget.ComboBox SaudaraTalasemia;
-    private widget.ComboBox SaudaraTalasemia1;
-    private widget.ComboBox SaudaraTalasemia2;
-    private widget.ComboBox SaudaraTalasemia3;
-    private widget.ComboBox SaudaraTalasemia4;
-    private widget.ComboBox SaudaraTalasemia5;
     private widget.ScrollPane Scroll;
     private widget.TextBox TB;
     private widget.TextBox TCari;
@@ -1817,12 +1823,6 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
-    private widget.ComboBox TransfusiDarah;
-    private widget.ComboBox TumbangTerlambat;
-    private widget.ComboBox TumbangTerlambat1;
-    private widget.ComboBox TumbangTerlambat2;
-    private widget.ComboBox TumbangTerlambat3;
-    private widget.ComboBox TumbangTerlambat4;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
@@ -1897,24 +1897,26 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
-                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
-                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
-                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_thalassemia.nip=petugas.nip "+
-                    "where skrining_thalassemia.tanggal between ? and ? order by skrining_thalassemia.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_diabetes_melitus.nip,petugas.nama,skrining_diabetes_melitus.tanggal,"+
+                    "skrining_diabetes_melitus.anamnesis1,skrining_diabetes_melitus.anamnesis2,skrining_diabetes_melitus.anamnesis3,skrining_diabetes_melitus.anamnesis4,skrining_diabetes_melitus.anamnesis5,"+
+                    "skrining_diabetes_melitus.anamnesis6,skrining_diabetes_melitus.anamnesis7,skrining_diabetes_melitus.anamnesis8,skrining_diabetes_melitus.anamnesis9,skrining_diabetes_melitus.anamnesis10,"+
+                    "skrining_diabetes_melitus.anamnesis11,skrining_diabetes_melitus.anamnesis12,skrining_diabetes_melitus.berat_badan,skrining_diabetes_melitus.tinggi_badan,skrining_diabetes_melitus.imt,"+
+                    "skrining_diabetes_melitus.kasifikasi_imt,skrining_diabetes_melitus.hasil_gds,skrining_diabetes_melitus.keterangan_gds,skrining_diabetes_melitus.hasil_gdp,skrining_diabetes_melitus.keterangan_gdp,"+
+                    "skrining_diabetes_melitus.hasil_skrining,skrining_diabetes_melitus.keterangan_skrining from skrining_diabetes_melitus inner join reg_periksa on skrining_diabetes_melitus.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_diabetes_melitus.nip=petugas.nip "+
+                    "where skrining_diabetes_melitus.tanggal between ? and ? order by skrining_diabetes_melitus.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_thalassemia.nip,petugas.nama,skrining_thalassemia.tanggal,"+
-                    "skrining_thalassemia.transfusi_darah,skrining_thalassemia.rutin_transfusi,skrining_thalassemia.saudara_thalassemia,skrining_thalassemia.tumbuh_kembang_terlambat,"+
-                    "skrining_thalassemia.anemia,skrining_thalassemia.ikterus,skrining_thalassemia.perut_buncit,skrining_thalassemia.gizi_kurang,skrining_thalassemia.facies_cooley,"+
-                    "skrining_thalassemia.perawakan_pendek,skrining_thalassemia.hiperpigmentasi_kulit,skrining_thalassemia.hemoglobin,skrining_thalassemia.mvc,skrining_thalassemia.mchc,"+
-                    "skrining_thalassemia.darah_tepi,skrining_thalassemia.tindak_lanjut from skrining_thalassemia inner join reg_periksa on skrining_thalassemia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_thalassemia.nip=petugas.nip "+
-                    "where skrining_thalassemia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_thalassemia.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_thalassemia.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_diabetes_melitus.nip,petugas.nama,skrining_diabetes_melitus.tanggal,"+
+                    "skrining_diabetes_melitus.anamnesis1,skrining_diabetes_melitus.anamnesis2,skrining_diabetes_melitus.anamnesis3,skrining_diabetes_melitus.anamnesis4,skrining_diabetes_melitus.anamnesis5,"+
+                    "skrining_diabetes_melitus.anamnesis6,skrining_diabetes_melitus.anamnesis7,skrining_diabetes_melitus.anamnesis8,skrining_diabetes_melitus.anamnesis9,skrining_diabetes_melitus.anamnesis10,"+
+                    "skrining_diabetes_melitus.anamnesis11,skrining_diabetes_melitus.anamnesis12,skrining_diabetes_melitus.berat_badan,skrining_diabetes_melitus.tinggi_badan,skrining_diabetes_melitus.imt,"+
+                    "skrining_diabetes_melitus.kasifikasi_imt,skrining_diabetes_melitus.hasil_gds,skrining_diabetes_melitus.keterangan_gds,skrining_diabetes_melitus.hasil_gdp,skrining_diabetes_melitus.keterangan_gdp,"+
+                    "skrining_diabetes_melitus.hasil_skrining,skrining_diabetes_melitus.keterangan_skrining from skrining_diabetes_melitus inner join reg_periksa on skrining_diabetes_melitus.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_diabetes_melitus.nip=petugas.nip "+
+                    "where skrining_diabetes_melitus.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_diabetes_melitus.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_diabetes_melitus.tanggal ");
             }
                 
             try {
@@ -1935,9 +1937,10 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("transfusi_darah"),rs.getString("rutin_transfusi"),rs.getString("saudara_thalassemia"),rs.getString("tumbuh_kembang_terlambat"),rs.getString("anemia"),rs.getString("ikterus"),
-                        rs.getString("perut_buncit"),rs.getString("gizi_kurang"),rs.getString("facies_cooley"),rs.getString("perawakan_pendek"),rs.getString("hiperpigmentasi_kulit"),rs.getString("hemoglobin"),
-                        rs.getString("mvc"),rs.getString("mchc"),rs.getString("darah_tepi"),rs.getString("tindak_lanjut")
+                        rs.getString("anamnesis1"),rs.getString("anamnesis2"),rs.getString("anamnesis3"),rs.getString("anamnesis4"),rs.getString("anamnesis5"),rs.getString("anamnesis6"),rs.getString("anamnesis7"),
+                        rs.getString("anamnesis8"),rs.getString("anamnesis9"),rs.getString("anamnesis10"),rs.getString("anamnesis11"),rs.getString("anamnesis12"),rs.getString("berat_badan"),rs.getString("tinggi_badan"),
+                        rs.getString("imt"),rs.getString("kasifikasi_imt"),rs.getString("hasil_gds"),rs.getString("keterangan_gds"),rs.getString("hasil_gdp"),rs.getString("keterangan_gdp"),rs.getString("hasil_skrining"),
+                        rs.getString("keterangan_skrining")
                     });
                 }
             } catch (Exception e) {
@@ -1957,12 +1960,30 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        TransfusiDarah.setSelectedIndex(0);
-        SaudaraTalasemia.setSelectedIndex(0);
-        RutinTransfusi.setSelectedIndex(0);
-        TumbangTerlambat.setSelectedIndex(0);
+        Anamnesis1.setSelectedIndex(0);
+        Anamnesis2.setSelectedIndex(0);
+        Anamnesis3.setSelectedIndex(0);
+        Anamnesis4.setSelectedIndex(0);
+        Anamnesis5.setSelectedIndex(0);
+        Anamnesis6.setSelectedIndex(0);
+        Anamnesis7.setSelectedIndex(0);
+        Anamnesis8.setSelectedIndex(0);
+        Anamnesis9.setSelectedIndex(0);
+        Anamnesis10.setSelectedIndex(0);
+        Anamnesis11.setSelectedIndex(0);
+        Anamnesis12.setSelectedIndex(0);
+        BB.setText("");
+        TB.setText("");
+        IMT.setText("");
+        KlasifikasiIMT.setText("");
+        HasilGDS.setText("");
+        KeteranganGDS.setText("");
+        HasilGDP.setText("");
+        KeteranganGDP.setText("");
+        HasilSkrining.setSelectedIndex(0);
+        KeteranganSkrining.setText("");
         Tanggal.setDate(new Date());
-        TransfusiDarah.requestFocus();
+        Anamnesis1.requestFocus();
     } 
 
     private void getData() {
@@ -1975,10 +1996,28 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
-            TransfusiDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            SaudaraTalasemia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            RutinTransfusi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            TumbangTerlambat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Anamnesis1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Anamnesis2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Anamnesis3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Anamnesis4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Anamnesis5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Anamnesis6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Anamnesis7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Anamnesis8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Anamnesis9.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Anamnesis10.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Anamnesis11.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Anamnesis12.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            IMT.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            KlasifikasiIMT.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            HasilGDS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            KeteranganGDS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            HasilGDP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            KeteranganGDP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            HasilSkrining.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            KeteranganSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -2047,10 +2086,10 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_thalassemia());
-        BtnHapus.setEnabled(akses.getskrining_thalassemia());
-        BtnEdit.setEnabled(akses.getskrining_thalassemia());
-        BtnPrint.setEnabled(akses.getskrining_thalassemia()); 
+        BtnSimpan.setEnabled(akses.getskrining_diabetes_melitus());
+        BtnHapus.setEnabled(akses.getskrining_diabetes_melitus());
+        BtnEdit.setEnabled(akses.getskrining_diabetes_melitus());
+        BtnPrint.setEnabled(akses.getskrining_diabetes_melitus()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2128,13 +2167,14 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_thalassemia","no_rawat=?","no_rawat=?,tanggal=?,nip=?,transfusi_darah=?,rutin_transfusi=?,saudara_thalassemia=?,tumbuh_kembang_terlambat=?,anemia=?,"+
-                "ikterus=?,perut_buncit=?,gizi_kurang=?,facies_cooley=?,perawakan_pendek=?,hiperpigmentasi_kulit=?,hemoglobin=?,mvc=?,mchc=?,darah_tepi=?,tindak_lanjut=?",20,new String[]{
+        if(Sequel.mengedittf("skrining_diabetes_melitus","no_rawat=?","no_rawat=?,tanggal=?,nip=?,anamnesis1=?,anamnesis2=?,anamnesis3=?,anamnesis4=?,anamnesis5=?,anamnesis6=?,anamnesis7=?,anamnesis8=?,anamnesis9=?,anamnesis10=?,anamnesis11=?,"+
+                "anamnesis12=?,berat_badan=?,tinggi_badan=?,imt=?,kasifikasi_imt=?,hasil_gds=?,keterangan_gds=?,hasil_gdp=?,keterangan_gdp=?,hasil_skrining=?,keterangan_skrining=?",26,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                KdPetugas.getText(),TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(), 
-                TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(), 
-                GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(), 
-                Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                KdPetugas.getText(),Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(), 
+                Anamnesis4.getSelectedItem().toString(),Anamnesis5.getSelectedItem().toString(),Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(), 
+                Anamnesis8.getSelectedItem().toString(),Anamnesis9.getSelectedItem().toString(),Anamnesis10.getSelectedItem().toString(),Anamnesis11.getSelectedItem().toString(), 
+                Anamnesis12.getSelectedItem().toString(),BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),HasilGDS.getText(),KeteranganGDS.getText(),
+                HasilGDP.getText(),KeteranganGDP.getText(),HasilSkrining.getSelectedItem().toString(),KeteranganSkrining.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2144,28 +2184,34 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(TransfusiDarah.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(RutinTransfusi.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(SaudaraTalasemia.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(TumbangTerlambat.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(Anemia.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(Icterus.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(PerutBuncit.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(GiziKurang.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(FaciesCooley.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(Pendek.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(Hiperpigmentasi.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(Hb.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(MVC.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(MCHC.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(DarahTepi.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(TindakLanjut.getText(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(Anamnesis1.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(Anamnesis2.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(Anamnesis3.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(Anamnesis4.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(Anamnesis5.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(Anamnesis6.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(Anamnesis7.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(Anamnesis8.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(Anamnesis9.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(Anamnesis10.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(Anamnesis11.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(Anamnesis12.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(BB.getText(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(TB.getText(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(IMT.getText(),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt(KlasifikasiIMT.getText(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(HasilGDS.getText(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(KeteranganGDS.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(HasilGDP.getText(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(KeteranganGDP.getText(),tbObat.getSelectedRow(),27);
+               tbObat.setValueAt(HasilSkrining.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
+               tbObat.setValueAt(KeteranganSkrining.getText(),tbObat.getSelectedRow(),29);
                emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_thalassemia where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_diabetes_melitus where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2177,22 +2223,25 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     }
 
     private void simpan() {
-        /*if(Sequel.menyimpantf("skrining_thalassemia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
+        if(Sequel.menyimpantf("skrining_diabetes_melitus","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",25,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            KdPetugas.getText(),TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(), 
-            TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),PerutBuncit.getSelectedItem().toString(), 
-            GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(), 
-            Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText()
+            KdPetugas.getText(),Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(), 
+            Anamnesis4.getSelectedItem().toString(),Anamnesis5.getSelectedItem().toString(),Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(), 
+            Anamnesis8.getSelectedItem().toString(),Anamnesis9.getSelectedItem().toString(),Anamnesis10.getSelectedItem().toString(),Anamnesis11.getSelectedItem().toString(), 
+            Anamnesis12.getSelectedItem().toString(),BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),HasilGDS.getText(),KeteranganGDS.getText(),
+            HasilGDP.getText(),KeteranganGDP.getText(),HasilSkrining.getSelectedItem().toString(),KeteranganSkrining.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(),TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),
-                PerutBuncit.getSelectedItem().toString(),GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(),Hb.getSelectedItem().toString(),
-                MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText()
+                Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(), 
+                Anamnesis4.getSelectedItem().toString(),Anamnesis5.getSelectedItem().toString(),Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(), 
+                Anamnesis8.getSelectedItem().toString(),Anamnesis9.getSelectedItem().toString(),Anamnesis10.getSelectedItem().toString(),Anamnesis11.getSelectedItem().toString(), 
+                Anamnesis12.getSelectedItem().toString(),BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),HasilGDS.getText(),KeteranganGDS.getText(),
+                HasilGDP.getText(),KeteranganGDP.getText(),HasilSkrining.getSelectedItem().toString(),KeteranganSkrining.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } */
+        } 
     }
     
     private void isBMI(){

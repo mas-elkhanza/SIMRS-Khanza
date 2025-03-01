@@ -993,6 +993,7 @@ import rekammedis.RMSKriningRawatJalan;
 import rekammedis.RMSignInSebelumAnastesi;
 import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningAdiksiNikotin;
+import rekammedis.RMSkriningDiabetesMelitus;
 import rekammedis.RMSkriningInstrumenSDQ;
 import rekammedis.RMSkriningKankerKolorektal;
 import rekammedis.RMSkriningKekerasanPadaPerempuan;
@@ -22291,6 +22292,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }
+    
+    private void btnSkriningDiabetesMelitusActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningDiabetesMelitus form=new RMSkriningDiabetesMelitus(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
             
     /**
     * @param args the command line arguments
@@ -22992,7 +23005,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRingkasanPengajuanDapur,btnRingkasanPemesananDapur,btnRingkasanReturBeliDapur,btnRingkasanStokKeluarDapur,btnStokKeluarDapurPerTanggal,btnSirkulasiDapur,btnSirkulasiDapur2,
             btnVerifikasiPenerimaanDapur,btnNilaiPenerimaanVendorDapurPerBulan,btnRingkasanHutangVendorBarangDapur,btnPenilaianPsikologiKlinis,btnPenilaianAwalMedisRanapNeonatus,
             btnPenilaianDerajatDehidrasi,btnRingkasanJasaTindakanPasien,btnPendapatanPerAkun,btnHasilPemeriksaanECHO,btnRl13KetersediaanKamar,btnPendapatanPerAkunClosing,
-            btnPenilaianBayiBaruLahir,btnPengeluaranPengeluaran;
+            btnPenilaianBayiBaruLahir,btnPengeluaranPengeluaran,btnSkriningDiabetesMelitus;
     
     public void isWall(){
         try{            
@@ -27364,6 +27377,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_kanker_kolorektal()==true){
                 Panelmenu.add(btnSkriningKankerKolorektal);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_diabetes_melitus()==true){
+                Panelmenu.add(btnSkriningDiabetesMelitus);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==13){  
@@ -32813,6 +32831,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_kanker_kolorektal()==true){
             Panelmenu.add(btnSkriningKankerKolorektal);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_diabetes_melitus()==true){
+            Panelmenu.add(btnSkriningDiabetesMelitus);
             jmlmenu++;
         }
 
@@ -39846,6 +39869,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getskrining_diabetes_melitus()==true){
+            if(btnSkriningDiabetesMelitus.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningDiabetesMelitus);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getmpp_skrining()==true){
             if(btnSkriningManagerPelayananPasien.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSkriningManagerPelayananPasien);
@@ -46412,6 +46442,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningObesitas.setName("btnSkriningObesitas"); 
         btnSkriningObesitas.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningObesitas.addActionListener(this::btnSkriningObesitasActionPerformed);
+        
+        btnSkriningDiabetesMelitus = new widget.ButtonBig();
+        btnSkriningDiabetesMelitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2340299_beverage_drink_glass_ice_menu_icon.png"))); 
+        btnSkriningDiabetesMelitus.setText("Skrining Diabetes Melitus");
+        btnSkriningDiabetesMelitus.setIconTextGap(0);
+        btnSkriningDiabetesMelitus.setName("btnSkriningDiabetesMelitus"); 
+        btnSkriningDiabetesMelitus.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningDiabetesMelitus.addActionListener(this::btnSkriningDiabetesMelitusActionPerformed);
         
         btnSkriningRisikoKankerPayudara = new widget.ButtonBig();
         btnSkriningRisikoKankerPayudara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6715353_breast_danger_emoji_freak_nipple_icon.png"))); 
