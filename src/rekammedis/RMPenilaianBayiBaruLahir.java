@@ -814,7 +814,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2025" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2025" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1125,11 +1125,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -1249,7 +1244,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         label11.setBounds(668, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2025 05:09:14" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2025 03:45:27" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -2758,7 +2753,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2772,7 +2767,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-02-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2930,8 +2925,8 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString())){
-                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString(),Sequel.ambiltanggalsekarang())==true){
+                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())){
+                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString(),Sequel.ambiltanggalsekarang())==true){
                             if(TanggalRegistrasi.getText().equals("")){
                                 TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
                             }
@@ -2982,36 +2977,44 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIK Bayi</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM IBU</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Ibu</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir Ibu</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIK Ibu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perkawinan Ibu</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>G</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>P</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>A</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hidup</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia Hamil</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>HbsAg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>HIV/AIDS</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Syphilis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Obstetri Ibu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Riwayat Obstetri Ibu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Faktor Risiko Neonatal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Faktor Risiko Neonatal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Persalinan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bersalin Di</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Inisiasi Menyusui Dini</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Persalinan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indikasi/Keterangan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Aterm</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bernafas/Menangis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tonus Otot Baik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cairan Amnion Jernih</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyakit Ibu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Penyakit Diderita Ibu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Obat Dikonsumsi Selama Kehamilan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perawatan Antenatal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Perawatan Antenatal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Terdaftar Ekohort</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Terdaftar Ekohort</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyulit Kehamilan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Penyulit Kehamilan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alergi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Lainnya Riwayat Maternal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur Kehamilan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kehamilan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kehamilan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Urutan Kehamilan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam Ketuban Pecah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Menit Ketuban Pecah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jumlah Air Ketuban</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Warna Air Ketuban</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bau Air Ketuban</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Letak Bayi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Macam Persalinan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Macam Persalinan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Indikasi Persalinan Operatif</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Indikasi Persalinan Operatif</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lama Gawat Janin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Obat Selama Persalinan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berat Placenta</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelainan Placenta</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Lainnya Riwayat Persalinan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>F 1</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>U 1</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>T 1</b></td>"+
@@ -3030,68 +3033,54 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>R 10</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>W 10</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N 10'</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Frekuensi Napas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.F.N</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Retraksi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sianosis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.S</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jalan Masuk Udara</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.J.M</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Grunting</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.G</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ttl.D.S</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Down Score</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi(x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR(x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu(°C)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Saturasi O2(%)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB(gram)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PB(cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>LK(cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>LD(cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keadaan Umum</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Keadaan Umum</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>B.B.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>P.B.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>L.K.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>L.D.</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Resusitasi Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Resusitasi Saat Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Obat Diberikan Saat Lahir</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Lainnya Keadaan Bayi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kondisi Umum</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kondisi Umum</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kulit</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kulit</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kepala</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kepala</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mata</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Mata</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Telinga</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Telinga</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hidung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Hidung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mulut</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Mulut</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tenggorokan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Tenggorokan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Leher</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Leher</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Thorax</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Thorax</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Abdomen</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Abdomen</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Genitalia</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Genitalia</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anus</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Anus</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Muskuloskeletal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Muskuloskeletal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ekstrimitas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Ekstrimitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mata</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Mata</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hidung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Hidung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Telinga</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Telinga</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dada</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Dada</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Paru</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Refleks Primitif</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Refleks Primitif</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelainan Lainnya</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan Regional/Khusus/Tambahan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Laboratorium</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penunjang Lainnya</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosis/Asesmen</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jantung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Jantung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Perut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tali Pusat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Tali Pusat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alat Kelamin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Alat Kelamin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ruas Tulang Belakang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Ruas Tulang Belakang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Extrimitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Extrimitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anus</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Anus</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Refleks</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Refleks</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Denyut Femoral</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Denyut Femoral</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan Fisik Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan Penunjang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tatalaksana</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Edukasi</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -3206,17 +3195,11 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,106).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,107).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,108).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,109).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,110).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,111).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,112).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,113).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,114).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='10000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='9000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -3237,17 +3220,17 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataPenilaianAwalMedisRanapNeonatus.html");            
+                File f = new File("DataPenilaianBayiBaruLahir.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='10000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='9000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL MEDIS RAWAT INAP NEONATUS<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENILAIAN BAYI BARU LAHIR<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -3347,12 +3330,6 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
         Valid.pindah(evt,BtnSimpan,TglAsuhan);
     }//GEN-LAST:event_BtnDokterKeyPressed
-
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
         Valid.pindah2(evt,BtnDokter,BtnIbuBayi);
@@ -4284,36 +4261,113 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
 
     private void getData() {
         if(tbObat.getSelectedRow()!= -1){
-           TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()); 
-           TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()); 
-           TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString()); 
-           TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString()); 
-           Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()); 
-           NoRMIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()); 
-           NmIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()); 
-           TglLahirIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()); 
-           NIKIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()); 
-           KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()); 
-           NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()); 
-           Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString(),0,4); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString(),1,4); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString(),2,4); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString(),3,4); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString(),4,4); 
-           N1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString()); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString(),0,5); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString(),1,5);
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString(),2,5); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString(),3,5); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString(),4,5); 
-           N5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString()); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString(),0,6); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString(),1,6); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString(),2,6); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString(),3,6); 
-           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString(), 4,6);
-           N10.setText(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString()); 
+           TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+           TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
+           TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
+           TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
+           Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+           NoRMIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+           NmIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+           TglLahirIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+           NIKIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+           StatusPerkawinanIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+           PenyakitIbu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+           KeteranganPenyakitIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+           ObatSelamaHamil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+           PerawatanAntenatal.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+           KeteranganPerawatanAntenatal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+           TerdaftarEkohort.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+           KeteranganTerdaftarEkohort.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+           PenyulitKehamilan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+           KeteranganPenyulitKehamilan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+           AlergiIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+           KeteranganRiwayatMaternal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+           UmurKehamilan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+           Kehamilan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+           KeteranganKehamilan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+           UrutanKehamilan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+           JamKetubanPecah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+           MenitKetubanPecah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+           JumlahAirKetuban.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+           WarnaAirKetuban.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+           BauAirKetuban.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+           LetakBayi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+           MacamPersalinan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+           KeteranganMacamPersalinan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+           IndikasiPersalinanOperatif.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+           KeteranganIndikasiPersalinanOperatif.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+           LamaGawatJanin.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+           ObatSelamaPersalinan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
+           BeratPlacenta.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+           KelainanPlacenta.setText(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+           KeteranganRiwayatPersalinan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString(),0,4);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString(),1,4);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString(),2,4);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString(),3,4);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString(),4,4);
+           N1.setText(tbObat.getValueAt(tbObat.getSelectedRow(),48).toString());
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),49).toString(),0,5);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),50).toString(),1,5);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),51).toString(),2,5);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),52).toString(),3,5);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),53).toString(),4,5);
+           N5.setText(tbObat.getValueAt(tbObat.getSelectedRow(),54).toString());
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),55).toString(),0,6);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),56).toString(),1,6);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),57).toString(),2,6);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),58).toString(),3,6);
+           tbAPGAR.setValueAt(tbObat.getValueAt(tbObat.getSelectedRow(),59).toString(),4,6);
+           N10.setText(tbObat.getValueAt(tbObat.getSelectedRow(),60).toString());
+           BBLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),61).toString());
+           PanjangBadan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),62).toString());
+           LingkarKepala.setText(tbObat.getValueAt(tbObat.getSelectedRow(),63).toString());
+           LingkarDada.setText(tbObat.getValueAt(tbObat.getSelectedRow(),64).toString());
+           ResusitasiLahir.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),65).toString());
+           KeteranganResusitasiLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),66).toString());
+           ObatSaatLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),67).toString());
+           KeteranganKeadaanBayi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),68).toString());
+           KondisiUmum.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),69).toString());
+           KeteranganKondisiUmum.setText(tbObat.getValueAt(tbObat.getSelectedRow(),70).toString());
+           Kulit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),71).toString());
+           KeteranganKulit.setText(tbObat.getValueAt(tbObat.getSelectedRow(),72).toString());
+           Kepala.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),73).toString());
+           KeteranganKepala.setText(tbObat.getValueAt(tbObat.getSelectedRow(),74).toString());
+           Leher.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),75).toString());
+           KeteranganLeher.setText(tbObat.getValueAt(tbObat.getSelectedRow(),76).toString());
+           Mata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),77).toString());
+           KeteranganMata.setText(tbObat.getValueAt(tbObat.getSelectedRow(),78).toString());
+           Hidung.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),79).toString());
+           KeteranganHidung.setText(tbObat.getValueAt(tbObat.getSelectedRow(),80).toString());
+           Telinga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),81).toString());
+           KeteranganTelinga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),82).toString());
+           Dada.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),83).toString());
+           KeteranganDada.setText(tbObat.getValueAt(tbObat.getSelectedRow(),84).toString());
+           Paru.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),85).toString());
+           KeteranganParu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),86).toString());
+           Jantung.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),87).toString());
+           KeteranganJantung.setText(tbObat.getValueAt(tbObat.getSelectedRow(),88).toString());
+           Perut.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),89).toString());
+           KeteranganPerut.setText(tbObat.getValueAt(tbObat.getSelectedRow(),90).toString());
+           TaliPusat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),91).toString());
+           KeteranganTaliPusat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),92).toString());
+           AlatKelamin.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),93).toString());
+           KeteranganAlatKelamin.setText(tbObat.getValueAt(tbObat.getSelectedRow(),94).toString());
+           RuasTulangBelakang.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),95).toString());
+           KeteranganRuasTulangBelakang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),96).toString());
+           Extrimitas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),97).toString());
+           KeteranganExtrimitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),98).toString());
+           Anus.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),99).toString());
+           KeteranganAnus.setText(tbObat.getValueAt(tbObat.getSelectedRow(),100).toString());
+           Refleks.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),101).toString());
+           KeteranganRefleks.setText(tbObat.getValueAt(tbObat.getSelectedRow(),102).toString());
+           DenyutFemoral.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),103).toString());
+           KeteranganDenyutFemoral.setText(tbObat.getValueAt(tbObat.getSelectedRow(),104).toString());
+           PemeriksaanLainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),105).toString());
+           PemeriksaanPenunjang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),106).toString());
+           Diagnosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),107).toString());
+           Tatalaksana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),108).toString());
+           Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()); 
         }
     }
 

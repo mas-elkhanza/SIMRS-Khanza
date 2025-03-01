@@ -878,7 +878,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         panelBiasa2.setLayout(null);
 
         TanggalPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-01-2025" }));
+        TanggalPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2025" }));
         TanggalPersalinan.setDisplayFormat("dd-MM-yyyy");
         TanggalPersalinan.setName("TanggalPersalinan"); // NOI18N
         TanggalPersalinan.setOpaque(false);
@@ -1189,11 +1189,6 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
         TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
-        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabRawatMouseClicked(evt);
-            }
-        });
 
         internalFrame2.setBorder(null);
         internalFrame2.setName("internalFrame2"); // NOI18N
@@ -1338,7 +1333,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         label11.setBounds(668, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-01-2025 04:05:29" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2025 13:11:44" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1611,7 +1606,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         label12.setBounds(44, 400, 150, 23);
 
         TglJamPersalinan.setForeground(new java.awt.Color(50, 70, 50));
-        TglJamPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-01-2025 04:05:29" }));
+        TglJamPersalinan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2025 13:11:45" }));
         TglJamPersalinan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglJamPersalinan.setName("TglJamPersalinan"); // NOI18N
         TglJamPersalinan.setOpaque(false);
@@ -2972,7 +2967,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-01-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2986,7 +2981,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-01-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-02-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3565,12 +3560,6 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
     private void HbsAgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HbsAgKeyPressed
         Valid.pindah(evt,UsiaKehamilan,HIV);
     }//GEN-LAST:event_HbsAgKeyPressed
-
-    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
-        if(TabRawat.getSelectedIndex()==1){
-            tampil();
-        }
-    }//GEN-LAST:event_TabRawatMouseClicked
 
     private void TglAsuhanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglAsuhanKeyPressed
         Valid.pindah2(evt,BtnDokter,BtnIbuBayi);
@@ -4543,8 +4532,6 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
            NmIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()); 
            TglLahirIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()); 
            NIKIbu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()); 
-           KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()); 
-           NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()); 
            Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()); 
            G.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()); 
            P.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString()); 
