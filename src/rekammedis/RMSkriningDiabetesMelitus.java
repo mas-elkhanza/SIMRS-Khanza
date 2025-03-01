@@ -76,7 +76,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 30; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -94,6 +94,50 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(80);
+            }else if(i==11){
+                column.setPreferredWidth(80);
+            }else if(i==12){
+                column.setPreferredWidth(80);
+            }else if(i==13){
+                column.setPreferredWidth(80);
+            }else if(i==14){
+                column.setPreferredWidth(80);
+            }else if(i==15){
+                column.setPreferredWidth(80);
+            }else if(i==16){
+                column.setPreferredWidth(80);
+            }else if(i==17){
+                column.setPreferredWidth(80);
+            }else if(i==18){
+                column.setPreferredWidth(80);
+            }else if(i==19){
+                column.setPreferredWidth(80);
+            }else if(i==20){
+                column.setPreferredWidth(50);
+            }else if(i==21){
+                column.setPreferredWidth(50);
+            }else if(i==22){
+                column.setPreferredWidth(50);
+            }else if(i==23){
+                column.setPreferredWidth(100);
+            }else if(i==24){
+                column.setPreferredWidth(70);
+            }else if(i==25){
+                column.setPreferredWidth(150);
+            }else if(i==26){
+                column.setPreferredWidth(70);
+            }else if(i==27){
+                column.setPreferredWidth(150);
+            }else if(i==28){
+                column.setPreferredWidth(70);
+            }else if(i==29){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1287,6 +1331,11 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
 
         HasilSkrining.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Suspek" }));
         HasilSkrining.setName("HasilSkrining"); // NOI18N
+        HasilSkrining.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                HasilSkriningItemStateChanged(evt);
+            }
+        });
         HasilSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 HasilSkriningKeyPressed(evt);
@@ -1752,6 +1801,14 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
     private void KeteranganSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganSkriningKeyPressed
         Valid.pindah(evt,HasilSkrining,BtnSimpan);
     }//GEN-LAST:event_KeteranganSkriningKeyPressed
+
+    private void HasilSkriningItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HasilSkriningItemStateChanged
+        if(HasilSkrining.getSelectedIndex()==0){
+            KeteranganSkrining.setText("Tidak dicurigai diabetes mellitus");
+        }else{
+            KeteranganSkrining.setText("Dicurigai diabetes mellitus");
+        }
+    }//GEN-LAST:event_HasilSkriningItemStateChanged
 
     /**
     * @param args the command line arguments

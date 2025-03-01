@@ -153,12 +153,16 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
             }else if(i==33){
                 column.setPreferredWidth(150);
             }else if(i==34){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(97);
             }else if(i==35){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(157);
             }else if(i==36){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(146);
             }else if(i==37){
+                column.setPreferredWidth(206);
+            }else if(i==38){
+                column.setPreferredWidth(80);
+            }else if(i==39){
                 column.setPreferredWidth(150);
             }
         }
