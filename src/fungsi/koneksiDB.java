@@ -31,6 +31,8 @@ public class koneksiDB {
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                 dataSource.setCachePreparedStatements(true);
+                dataSource.setPreparedStatementCacheSize(500);          
+                dataSource.setPreparedStatementCacheSqlLimit(4096); 
                 dataSource.setUseCompression(true);
                 dataSource.setAutoReconnect(true);                      
                 dataSource.setAutoReconnectForPools(true);
@@ -69,6 +71,8 @@ public class koneksiDB {
                         dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
                         dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                         dataSource.setCachePreparedStatements(true);
+                        dataSource.setPreparedStatementCacheSize(500);          
+                        dataSource.setPreparedStatementCacheSqlLimit(4096); 
                         dataSource.setUseCompression(true);
                         dataSource.setAutoReconnect(true);                      
                         dataSource.setAutoReconnectForPools(true);

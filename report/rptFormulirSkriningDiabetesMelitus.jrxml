@@ -879,7 +879,7 @@
 				<text><![CDATA[Hasil Skrining]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="78" y="503" width="92" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="5875c209-81dd-41d7-9ace-6b4165624698"/>
+				<reportElement mode="Transparent" x="78" y="503" width="72" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="5875c209-81dd-41d7-9ace-6b4165624698"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -887,7 +887,7 @@
 				<textFieldExpression><![CDATA[$F{hasil_skrining}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="170" y="503" width="106" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="3873c46f-109f-4021-8176-22a96aa08d05"/>
+				<reportElement mode="Transparent" x="150" y="503" width="106" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="3873c46f-109f-4021-8176-22a96aa08d05"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -895,7 +895,7 @@
 				<text><![CDATA[Keterangan/Diskripsi Hasil]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="277" y="503" width="5" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="2a451a8a-70d9-4ac8-a31f-6deb3b0f0583">
+				<reportElement mode="Transparent" x="257" y="503" width="5" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="2a451a8a-70d9-4ac8-a31f-6deb3b0f0583">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Top">
@@ -905,7 +905,7 @@
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="282" y="503" width="263" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="bbaf0d25-265c-4618-8b0b-a032efb8b6e5"/>
+				<reportElement mode="Transparent" x="262" y="503" width="283" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="bbaf0d25-265c-4618-8b0b-a032efb8b6e5"/>
 				<textElement verticalAlignment="Top">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>

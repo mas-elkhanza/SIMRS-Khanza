@@ -1817,9 +1817,9 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
 
     private void HasilSkriningItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HasilSkriningItemStateChanged
         if(HasilSkrining.getSelectedIndex()==0){
-            KeteranganSkrining.setText("Tidak dicurigai diabetes mellitus");
+            KeteranganSkrining.setText("Tidak dicurigai diabetes melitus");
         }else{
-            KeteranganSkrining.setText("Dicurigai diabetes mellitus");
+            KeteranganSkrining.setText("Dicurigai diabetes melitus");
         }
     }//GEN-LAST:event_HasilSkriningItemStateChanged
 
@@ -2051,7 +2051,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
         HasilGDP.setText("");
         KeteranganGDP.setText("");
         HasilSkrining.setSelectedIndex(0);
-        KeteranganSkrining.setText("Tidak dicurigai diabetes mellitus");
+        KeteranganSkrining.setText("Tidak dicurigai diabetes melitus");
         Tanggal.setDate(new Date());
         Anamnesis1.requestFocus();
     } 
