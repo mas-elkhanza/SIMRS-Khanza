@@ -259,7 +259,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[F]Ringkasan Stok Keluar Dapur","[F]Stok Keluar Dapur Per Tanggal","[F]Sirkulasi Barang Dapur","[F]Sirkulasi Barang Dapur 2","[F]Verifikasi Penerimaan Dapur",
                 "[F]Nilai Penerimaan Vendor Dapur Per Bulan","[K]Ringkasan Hutang Vendor Dapur","[M]Penilaian Psikologi Klinis","[M]Penilaian Awal Medis Ranap Neonatus","[M]Penilaian Derajat Dehidrasi",
                 "[I]Ringkasan Jasa Tindakan Pasien","[I]Pendapatan Per Akun Rekening","[M]Hasil Pemeriksaan ECHO","[M]Penilaian Bayi Baru Lahir","[J]RL 1.3 Ketersediaan Tempat Tidur",
-                "[I]Pendapatan Per Akun Closing","[K]Pengeluaran-pengeluaran/Kas Keluar","[M]Skrining Diabetes Melitus"
+                "[I]Pendapatan Per Akun Closing","[K]Pengeluaran-pengeluaran/Kas Keluar","[M]Skrining Diabetes Melitus","[M]Laporan Tindakan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -574,7 +574,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1106;i++) {
+        for (i = 0; i < 1107;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3346,6 +3346,9 @@ public class DlgUser extends javax.swing.JDialog {
                 case 1105:
                     column.setPreferredWidth(146);
                     break;
+                case 1106:
+                    column.setPreferredWidth(110);
+                    break;
                 default:
                     column.setPreferredWidth(134);
                     break;
@@ -3828,7 +3831,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false'","User")==true){
+                    "'false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3856,7 +3859,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -5009,7 +5012,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "rl1_3_ketersediaan_kamar='"+tbUser.getValueAt(i,1102).toString()+"',"+
                     "pendapatan_per_akun_closing='"+tbUser.getValueAt(i,1103).toString()+"',"+
                     "pengeluaran_pengeluaran='"+tbUser.getValueAt(i,1104).toString()+"',"+
-                    "skrining_diabetes_melitus='"+tbUser.getValueAt(i,1105).toString()+"'")==true){
+                    "skrining_diabetes_melitus='"+tbUser.getValueAt(i,1105).toString()+"',"+
+                    "laporan_tindakan='"+tbUser.getValueAt(i,1106).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6332,7 +6336,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "rl1_3_ketersediaan_kamar='"+tbUser.getValueAt(barisdicopy,1102).toString()+"',"+
                                         "pendapatan_per_akun_closing='"+tbUser.getValueAt(barisdicopy,1103).toString()+"',"+
                                         "pengeluaran_pengeluaran='"+tbUser.getValueAt(barisdicopy,1104).toString()+"',"+
-                                        "skrining_diabetes_melitus='"+tbUser.getValueAt(barisdicopy,1105).toString()+"'");
+                                        "skrining_diabetes_melitus='"+tbUser.getValueAt(barisdicopy,1105).toString()+"',"+
+                                        "laporan_tindakan='"+tbUser.getValueAt(barisdicopy,1106).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6643,7 +6648,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 "user.ringkasan_pemesanan_dapur,user.ringkasan_returbeli_dapur,user.ringkasan_stokkeluar_dapur,user.dapur_stokkeluar_pertanggal,user.sirkulasi_dapur,"+
                 "user.sirkulasi_dapur2,user.verifikasi_penerimaan_dapur,user.nilai_penerimaan_vendor_dapur_perbulan,user.ringkasan_hutang_vendor_dapur,user.penilaian_psikologi_klinis,"+
                 "user.penilaian_awal_medis_ranap_neonatus,user.penilaian_derajat_dehidrasi,user.ringkasan_jasa_tindakan_medis,user.pendapatan_per_akun,user.hasil_pemeriksaan_echo,"+
-                "user.penilaian_bayi_baru_lahir,user.rl1_3_ketersediaan_kamar,user.pendapatan_per_akun_closing,user.pengeluaran_pengeluaran,user.skrining_diabetes_melitus from user order by AES_DECRYPT(user.id_user,'nur')");
+                "user.penilaian_bayi_baru_lahir,user.rl1_3_ketersediaan_kamar,user.pendapatan_per_akun_closing,user.pengeluaran_pengeluaran,user.skrining_diabetes_melitus,"+
+                "user.laporan_tindakan from user order by AES_DECRYPT(user.id_user,'nur')");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -7761,7 +7767,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                rs.getBoolean("rl1_3_ketersediaan_kamar"),
                                rs.getBoolean("pendapatan_per_akun_closing"),
                                rs.getBoolean("pengeluaran_pengeluaran"),
-                               rs.getBoolean("skrining_diabetes_melitus")
+                               rs.getBoolean("skrining_diabetes_melitus"),
+                               rs.getBoolean("laporan_tindakan")
                             });
                         }   
                     } catch (Exception e) {
@@ -8868,7 +8875,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                            rs.getBoolean("rl1_3_ketersediaan_kamar"),
                            rs.getBoolean("pendapatan_per_akun_closing"),
                            rs.getBoolean("pengeluaran_pengeluaran"),
-                           rs.getBoolean("skrining_diabetes_melitus")
+                           rs.getBoolean("skrining_diabetes_melitus"),
+                           rs.getBoolean("laporan_tindakan")
                         });
                     }                                             
                  }
