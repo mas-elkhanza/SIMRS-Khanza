@@ -98,6 +98,7 @@ import rekammedis.RMHasilPemeriksaanUSGNeonatus;
 import rekammedis.RMHasilPemeriksaanUSGUrologi;
 import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
+import rekammedis.RMLaporanTindakan;
 import rekammedis.RMMonitoringAldrettePascaAnestesi;
 import rekammedis.RMMonitoringBromagePascaAnestesi;
 import rekammedis.RMMonitoringStewardPascaAnestesi;
@@ -8577,6 +8578,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnLaporanTindakanActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMLaporanTindakan form=new RMLaporanTindakan(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -8908,7 +8926,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     // End of variables declaration//GEN-END:variables
     private widget.Button BtnSkorBromagePascaAnestesi,BtnPenilaianPreInduksi,BtnHasilPemeriksaanUSGUrologi,BtnHasilPemeriksaanUSGGynecologi,BtnHasilPemeriksaanEKG,BtnHasilPemeriksaanUSGNeonatus,BtnHasilEndoskopiFaringLaring,BtnHasilEndoskopiHidung,BtnHasilEndoskopiTelinga,
                           BtnAwalKeperawatanNeonatus,BtnPenilaianPasienImunitasRendah,BtnCatatanKeseimbanganCairan,BtnCatatanObservasiCHBP,BtnCatatanObservasiInduksiPersalinan,BtnPermintaanKonsultasiMedik,BtnAwalKeperawatanBayiAnak,BtnCatatanObservasiRestrainNonfarmakologi,
-                          BtnCatatanObservasiVentilator,BtnCatatanAnastesiSedasi,BtnChecklistPemberianFibrinolitik,BtnPenilaianPsikologKlinis,BtnAwalMedisNeonatus,BtnPenilaianDerajatDehidrasi,BtnHasilPemeriksaanECHO,BtnPenilaianBayiBaruLahir;
+                          BtnCatatanObservasiVentilator,BtnCatatanAnastesiSedasi,BtnChecklistPemberianFibrinolitik,BtnPenilaianPsikologKlinis,BtnAwalMedisNeonatus,BtnPenilaianDerajatDehidrasi,BtnHasilPemeriksaanECHO,BtnPenilaianBayiBaruLahir,BtnLaporanTindakan;
     
     public void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -9615,6 +9633,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnPenilaianBayiBaruLahir.setVisible(akses.getpenilaian_bayi_baru_lahir()); 
         if(akses.getpenilaian_bayi_baru_lahir()==true){
+            tinggi=tinggi+24;
+        }
+        BtnLaporanTindakan.setVisible(akses.getlaporan_tindakan());   
+        if(akses.getlaporan_tindakan()==true){
             tinggi=tinggi+24;
         }
         BtnCatatanPersalinan.setVisible(akses.getcatatan_persalinan()); 
@@ -10425,6 +10447,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnPenilaianBayiBaruLahir.setRoundRect(false);
         BtnPenilaianBayiBaruLahir.addActionListener(this::BtnPenilaianBayiBaruLahirActionPerformed);
         
+        BtnLaporanTindakan = new widget.Button();
+        BtnLaporanTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnLaporanTindakan.setText("Laporan Tindakan");
+        BtnLaporanTindakan.setFocusPainted(false);
+        BtnLaporanTindakan.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnLaporanTindakan.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnLaporanTindakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnLaporanTindakan.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnLaporanTindakan.setName("BtnLaporanTindakan"); 
+        BtnLaporanTindakan.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnLaporanTindakan.setRoundRect(false);
+        BtnLaporanTindakan.addActionListener(this::BtnLaporanTindakanActionPerformed);
+        
         TanggalRegistrasi = new widget.TextBox();
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi");
@@ -10488,6 +10523,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnHasilEndoskopiTelinga);
         FormMenu.add(BtnDokumentasiESWL);
         FormMenu.add(BtnCatatanPersalinan);
+        FormMenu.add(BtnLaporanTindakan);
         FormMenu.add(BtnCatatan);
         FormMenu.add(BtnCatatanObservasiRanap);
         FormMenu.add(BtnCatatanObservasiRanapKebidanan);
