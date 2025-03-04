@@ -6021,6 +6021,15 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                               "</td>"+
                                             "</tr>"
                                         );    
+                                    }else{
+                                        htmlContent.append(
+                                            "<tr class='isi'>"+ 
+                                               "<td valign='top' width='2%'></td>"+        
+                                               "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>"+
+                                               "<td valign='middle' width='1%' align='center'>:</td>"+
+                                               "<td valign='middle' width='79%' align='center'>Dokter Poli<br><br><br><br><br><br>#<br><br><br><br><br><br>"+rs.getString("nm_dokter")+"</td>"+
+                                            "</tr>"
+                                        );
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Tanda Tangan IGD : "+e);
