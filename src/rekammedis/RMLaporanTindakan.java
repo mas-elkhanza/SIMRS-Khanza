@@ -256,11 +256,11 @@ public final class RMLaporanTindakan extends javax.swing.JDialog {
         label15 = new widget.Label();
         jSeparator11 = new javax.swing.JSeparator();
         jLabel105 = new widget.Label();
-        jLabel41 = new widget.Label();
         jLabel43 = new widget.Label();
         jLabel29 = new widget.Label();
         DIagnosaPaskaTindakan = new widget.TextBox();
         DiagnosaPraTindakan = new widget.TextBox();
+        jLabel41 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -284,7 +284,7 @@ public final class RMLaporanTindakan extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Psikologi");
+        MnPenilaianMedis.setText("Laporan Tindakan Medis");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
         MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -743,12 +743,6 @@ public final class RMLaporanTindakan extends javax.swing.JDialog {
         FormInput.add(jLabel105);
         jLabel105.setBounds(10, 70, 190, 23);
 
-        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel41.setText("Pra Tindakan ");
-        jLabel41.setName("jLabel41"); // NOI18N
-        FormInput.add(jLabel41);
-        jLabel41.setBounds(44, 90, 110, 23);
-
         jLabel43.setText(":");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
@@ -778,6 +772,12 @@ public final class RMLaporanTindakan extends javax.swing.JDialog {
         });
         FormInput.add(DiagnosaPraTindakan);
         DiagnosaPraTindakan.setBounds(118, 90, 310, 23);
+
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel41.setText("Pra Tindakan ");
+        jLabel41.setName("jLabel41"); // NOI18N
+        FormInput.add(jLabel41);
+        jLabel41.setBounds(44, 90, 110, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1199,14 +1199,20 @@ public final class RMLaporanTindakan extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianPsikolog.jasper","report","::[ Laporan Penilaian Psikologi ]::",
+            Valid.MyReportqry("rptCetakLaporanTindakan.jasper","report","::[ Laporan Tindakan Medis ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,laporan_tindakan.tanggal,"+
-                        "laporan_tindakan.nip,laporan_tindakan.anamnesis,laporan_tindakan.dikirim_dari,laporan_tindakan.tujuan_pemeriksaan,laporan_tindakan.ket_anamnesis,laporan_tindakan.rupa,laporan_tindakan.bentuk_tubuh,laporan_tindakan.tindakan,"+
-                        "laporan_tindakan.pakaian,laporan_tindakan.ekspresi,laporan_tindakan.berbicara,laporan_tindakan.penggunaan_kata,laporan_tindakan.ciri_menyolok,laporan_tindakan.hasil_psikotes,laporan_tindakan.kepribadian,laporan_tindakan.psikodinamika,laporan_tindakan.kesimpulan_psikolog,petugas.nama "+
-                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "laporan_tindakan.nip,petugas.nama,laporan_tindakan.kd_dokter,dokter.nm_dokter,laporan_tindakan.diagnosa_pra_tindakan,laporan_tindakan.diagnosa_pasca_tindakan,"+
+                        "laporan_tindakan.tindakan_medik,laporan_tindakan.uraian,laporan_tindakan.hasil,laporan_tindakan.kesimpulan,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,"+
+                        "propinsi.nm_prop,poliklinik.nm_poli,pasien.alamat from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                        "inner join kelurahan on kelurahan.kd_kel=pasien.kd_kel "+
+                        "inner join kecamatan on kecamatan.kd_kec=pasien.kd_kec "+
+                        "inner join kabupaten on kabupaten.kd_kab=pasien.kd_kab "+
+                        "inner join propinsi on propinsi.kd_prop=pasien.kd_prop "+
+                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli "+
                         "inner join laporan_tindakan on reg_periksa.no_rawat=laporan_tindakan.no_rawat "+
+                        "inner join dokter on laporan_tindakan.kd_dokter=dokter.kd_dokter "+
                         "inner join petugas on laporan_tindakan.nip=petugas.nip where laporan_tindakan.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
