@@ -25,6 +25,7 @@ import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,6 +52,7 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.util.Base64;
 
 
 /**
@@ -66,7 +68,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i=0;    
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private String kodekamar="",namakamar="",tglkeluar="",jamkeluar="",finger="",json;
+    private String kodekamar="",namakamar="",tglkeluar="",jamkeluar="",finger="",json,authStr="",base64Creds="";
     private ObjectMapper mapper= new ObjectMapper();
     private JsonNode root;
     
@@ -77,6 +79,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         WindowURLSertisign.setSize(570,100);
+        WindowPhrase.setSize(320,100);
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Kode Dokter","Dokter Penanggung Jawab","Kode Pengirim","Dokter Pegirim",
@@ -326,6 +329,14 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         URLSertisign = new widget.TextBox();
         BtnDownloadFile = new widget.Button();
         BtnDownloadBukaFile = new widget.Button();
+        WindowPhrase = new javax.swing.JDialog();
+        internalFrame8 = new widget.InternalFrame();
+        jLabel45 = new widget.Label();
+        panelisi5 = new widget.panelisi();
+        BtnClosePhrase = new widget.Button();
+        BtnSimpanTandaTangan = new widget.Button();
+        jLabel46 = new widget.Label();
+        Phrase = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -626,6 +637,65 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         internalFrame9.add(panelisi6, java.awt.BorderLayout.CENTER);
 
         WindowURLSertisign.getContentPane().add(internalFrame9, java.awt.BorderLayout.CENTER);
+
+        WindowPhrase.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowPhrase.setModal(true);
+        WindowPhrase.setName("WindowPhrase"); // NOI18N
+        WindowPhrase.setUndecorated(true);
+        WindowPhrase.setResizable(false);
+
+        internalFrame8.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ E-Sign / Tanda Tangan Elektronik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame8.setName("internalFrame8"); // NOI18N
+        internalFrame8.setLayout(new java.awt.BorderLayout());
+
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel45.setText("%");
+        jLabel45.setName("jLabel45"); // NOI18N
+        internalFrame8.add(jLabel45, java.awt.BorderLayout.CENTER);
+
+        panelisi5.setName("panelisi5"); // NOI18N
+        panelisi5.setPreferredSize(new java.awt.Dimension(100, 44));
+        panelisi5.setLayout(null);
+
+        BtnClosePhrase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnClosePhrase.setMnemonic('U');
+        BtnClosePhrase.setText("Batal");
+        BtnClosePhrase.setToolTipText("Alt+U");
+        BtnClosePhrase.setName("BtnClosePhrase"); // NOI18N
+        BtnClosePhrase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnClosePhraseActionPerformed(evt);
+            }
+        });
+        panelisi5.add(BtnClosePhrase);
+        BtnClosePhrase.setBounds(200, 40, 100, 30);
+
+        BtnSimpanTandaTangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpanTandaTangan.setMnemonic('S');
+        BtnSimpanTandaTangan.setText("Simpan");
+        BtnSimpanTandaTangan.setToolTipText("Alt+S");
+        BtnSimpanTandaTangan.setName("BtnSimpanTandaTangan"); // NOI18N
+        BtnSimpanTandaTangan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanTandaTanganActionPerformed(evt);
+            }
+        });
+        panelisi5.add(BtnSimpanTandaTangan);
+        BtnSimpanTandaTangan.setBounds(10, 40, 100, 30);
+
+        jLabel46.setText("Masukkan Passphrase :");
+        jLabel46.setName("jLabel46"); // NOI18N
+        panelisi5.add(jLabel46);
+        jLabel46.setBounds(0, 10, 130, 23);
+
+        Phrase.setHighlighter(null);
+        Phrase.setName("Phrase"); // NOI18N
+        panelisi5.add(Phrase);
+        Phrase.setBounds(134, 10, 160, 23);
+
+        internalFrame8.add(panelisi5, java.awt.BorderLayout.CENTER);
+
+        WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -2725,56 +2795,9 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokter6ActionPerformed
 
     private void MnLaporanResumeESignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLaporanResumeESignActionPerformed
-        if(tbObat.getSelectedRow()>-1){
-            Map<String, Object> param = new HashMap<>();    
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),3).toString():finger)+"\n"+Valid.SetTgl3(Keluar.getText())); 
-            try {
-                ps=koneksi.prepareStatement("select dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? and dpjp_ranap.kd_dokter<>?");
-                try {
-                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                    ps.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-                    rs=ps.executeQuery();
-                    i=2;
-                    while(rs.next()){
-                       if(i==2){
-                           finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
-                           param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+rs.getString("nm_dokter")+"\nID "+(finger.equals("")?rs.getString("kd_dokter"):finger)+"\n"+Valid.SetTgl3(Keluar.getText()));
-                           param.put("namadokter2",rs.getString("nm_dokter")); 
-                       }
-                       if(i==3){
-                           finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
-                           param.put("finger3","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+rs.getString("nm_dokter")+"\nID "+(finger.equals("")?rs.getString("kd_dokter"):finger)+"\n"+Valid.SetTgl3(Keluar.getText()));
-                           param.put("namadokter3",rs.getString("nm_dokter")); 
-                       }
-                       i++;
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            }
-            param.put("ruang",KdRuang.getText()+" "+NmRuang.getText());
-            param.put("tanggalkeluar",Valid.SetTgl3(Keluar.getText()));
-            param.put("jamkeluar",JamKeluar.getText());
-            Valid.MyReportPDF("rptLaporanResumeRanap.jasper","report","::[ Laporan Resume Pasien ]::",param);
-        }
+        WindowPhrase.setAlwaysOnTop(true);
+        WindowPhrase.setLocationRelativeTo(internalFrame1);
+        WindowPhrase.setVisible(true);
     }//GEN-LAST:event_MnLaporanResumeESignActionPerformed
 
     private void MnLaporanResumeSertisignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLaporanResumeSertisignActionPerformed
@@ -2788,8 +2811,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),3).toString():finger)+"\n"+Valid.SetTgl3(Keluar.getText())); 
+            param.put("finger","#1A"); 
             try {
                 ps=koneksi.prepareStatement("select dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? and dpjp_ranap.kd_dokter<>?");
                 try {
@@ -2911,6 +2933,109 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnDownloadBukaFileActionPerformed
 
+    private void BtnClosePhraseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClosePhraseActionPerformed
+        Phrase.setText("");
+        WindowPhrase.dispose();
+    }//GEN-LAST:event_BtnClosePhraseActionPerformed
+
+    private void BtnSimpanTandaTanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanTandaTanganActionPerformed
+        if(Phrase.getText().equals("")){
+            Valid.textKosong(Phrase,"Phrase");
+        }else{
+            if(tbObat.getSelectedRow()>-1){
+                Map<String, Object> param = new HashMap<>();    
+                param.put("namars",akses.getnamars());
+                param.put("alamatrs",akses.getalamatrs());
+                param.put("kotars",akses.getkabupatenrs());
+                param.put("propinsirs",akses.getpropinsirs());
+                param.put("kontakrs",akses.getkontakrs());
+                param.put("emailrs",akses.getemailrs());   
+                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+                param.put("norawat",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                param.put("finger","#"); 
+                try {
+                    ps=koneksi.prepareStatement("select dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=? and dpjp_ranap.kd_dokter<>?");
+                    try {
+                        ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                        ps.setString(2,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+                        rs=ps.executeQuery();
+                        i=2;
+                        while(rs.next()){
+                           if(i==2){
+                               finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
+                               param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+rs.getString("nm_dokter")+"\nID "+(finger.equals("")?rs.getString("kd_dokter"):finger)+"\n"+Valid.SetTgl3(Keluar.getText()));
+                               param.put("namadokter2",rs.getString("nm_dokter")); 
+                           }
+                           if(i==3){
+                               finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",rs.getString("kd_dokter"));
+                               param.put("finger3","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+rs.getString("nm_dokter")+"\nID "+(finger.equals("")?rs.getString("kd_dokter"):finger)+"\n"+Valid.SetTgl3(Keluar.getText()));
+                               param.put("namadokter3",rs.getString("nm_dokter")); 
+                           }
+                           i++;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notif : "+e);
+                    } finally{
+                        if(rs!=null){
+                            rs.close();
+                        }
+                        if(ps!=null){
+                            ps.close();
+                        }
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                }
+                param.put("ruang",KdRuang.getText()+" "+NmRuang.getText());
+                param.put("tanggalkeluar",Valid.SetTgl3(Keluar.getText()));
+                param.put("jamkeluar",JamKeluar.getText());
+                Valid.MyReportPDF2("rptLaporanResumeRanap2.jasper","report","::[ Laporan Resume Pasien ]::",param);
+                File f = new File("./report/rptLaporanResumeRanap2.pdf");  
+                try {
+                    CloseableHttpClient httpClient = HttpClients.createDefault();
+                    HttpPost post = new HttpPost(koneksiDB.URLAPIESIGN());
+                    authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
+                    base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
+                    post.addHeader("Authorization", "Basic " + base64Creds);
+                    MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
+                    .addBinaryBody("file", f, ContentType.APPLICATION_PDF, f.getName())
+                    .addTextBody("nik",Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode()))
+                    .addTextBody("passphrase", Phrase.getText())
+                    .addTextBody("tampilan", "visible")
+                    .addTextBody("image", "false")
+                    .addTextBody("linkQR", "Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NamaDokter.getText()+"\nID "+KodeDokter.getText()+"\n"+Valid.SetTgl3(Keluar.getText()))
+                    .addTextBody("width", "90")
+                    .addTextBody("height", "90")
+                    .addTextBody("tag_koordinat", "#");
+                    HttpEntity entity = entityBuilder.build();
+                    post.setEntity(entity);
+
+                    try (CloseableHttpResponse response = httpClient.execute(post)) {
+                        System.out.println("Response Status: " + response.getCode());
+                        if (response.getCode() == 200) {
+                            try (InputStream inputStream = response.getEntity().getContent();
+                                FileOutputStream outputStream = new FileOutputStream(f)) {
+                                byte[] buffer = new byte[1024];
+                                int bytesRead;
+                                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                                    outputStream.write(buffer, 0, bytesRead);
+                                }
+                                System.out.println("File respons berhasil disimpan di : " + f.getAbsolutePath());
+                                Desktop.getDesktop().browse(f.toURI());
+                            }
+                        } else {
+                            System.out.println("Notifikasi : " + EntityUtils.toString(response.getEntity()));
+                        }
+                    } catch (IOException a) {
+                        System.out.println("Notifikasi : " + a);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : " + e);
+                }
+            }
+        }
+    }//GEN-LAST:event_BtnSimpanTandaTanganActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2934,6 +3059,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.Button BtnBatal;
     private widget.Button BtnBukaURL;
     private widget.Button BtnCari;
+    private widget.Button BtnClosePhrase;
     private widget.Button BtnCloseUrl;
     private widget.Button BtnDokter;
     private widget.Button BtnDokter1;
@@ -2953,6 +3079,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.Button BtnSimpanTandaTangan;
     private widget.TextBox CaraBayar;
     private widget.ComboBox CaraKeluar;
     private widget.CekBox ChkInput;
@@ -3007,6 +3134,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private javax.swing.JPanel PanelInput;
     private widget.TextArea PemeriksaanFisik;
     private widget.TextArea PemeriksaanRad;
+    private widget.TextBox Phrase;
     private widget.TextBox ProsedurSekunder1;
     private widget.TextBox ProsedurSekunder2;
     private widget.TextBox ProsedurSekunder3;
@@ -3018,8 +3146,10 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.TextBox TPasien;
     private widget.TextArea TindakanSelamaDiRS;
     private widget.TextBox URLSertisign;
+    private javax.swing.JDialog WindowPhrase;
     private javax.swing.JDialog WindowURLSertisign;
     private widget.InternalFrame internalFrame1;
+    private widget.InternalFrame internalFrame8;
     private widget.InternalFrame internalFrame9;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
@@ -3056,6 +3186,8 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.Label jLabel42;
     private widget.Label jLabel43;
     private widget.Label jLabel44;
+    private widget.Label jLabel45;
+    private widget.Label jLabel46;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -3069,6 +3201,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.Label label16;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
+    private widget.panelisi panelisi5;
     private widget.panelisi panelisi6;
     private javax.swing.JMenuItem ppBerkasDigital;
     private widget.ScrollPane scrollInput;
