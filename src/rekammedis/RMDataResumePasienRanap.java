@@ -3004,8 +3004,8 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                     .addTextBody("tampilan", "visible")
                     .addTextBody("image", "false")
                     .addTextBody("linkQR", "Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NamaDokter.getText()+"\nID "+KodeDokter.getText()+"\n"+Valid.SetTgl3(Keluar.getText()))
-                    .addTextBody("width", "90")
-                    .addTextBody("height", "90")
+                    .addTextBody("width", "40")
+                    .addTextBody("height", "40")
                     .addTextBody("tag_koordinat", "#");
                     HttpEntity entity = entityBuilder.build();
                     post.setEntity(entity);
