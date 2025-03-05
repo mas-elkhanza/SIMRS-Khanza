@@ -118,6 +118,7 @@ import rekammedis.RMLaporanTindakan;
 import rekammedis.RMMonitoringAldrettePascaAnestesi;
 import rekammedis.RMMonitoringBromagePascaAnestesi;
 import rekammedis.RMMonitoringStewardPascaAnestesi;
+import rekammedis.RMPelaksanaanInformasiEdukasi;
 import rekammedis.RMPemantauanMEOWS;
 import rekammedis.RMPemantauanPEWS;
 import rekammedis.RMPemantauanEWSD;
@@ -1586,8 +1587,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        MnDataRM.add(MnPenilaianAwal);
-
         MnRMOperasi.setBackground(new java.awt.Color(255, 255, 254));
         MnRMOperasi.setForeground(new java.awt.Color(50, 50, 50));
         MnRMOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1733,8 +1732,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        MnDataRM.add(MnRMOperasi);
-
         MnRMHCU.setBackground(new java.awt.Color(255, 255, 254));
         MnRMHCU.setForeground(new java.awt.Color(50, 50, 50));
         MnRMHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -1809,8 +1806,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         });
         MnRMHCU.add(MnCheckListKriteriaKeluarICU);
 
-        MnDataRM.add(MnRMHCU);
-
         MnUjiFungsiKFR.setBackground(new java.awt.Color(255, 255, 254));
         MnUjiFungsiKFR.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnUjiFungsiKFR.setForeground(new java.awt.Color(50, 50, 50));
@@ -1825,7 +1820,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 MnUjiFungsiKFRActionPerformed(evt);
             }
         });
-        MnDataRM.add(MnUjiFungsiKFR);
 
         MnRMRisikoJatuh.setBackground(new java.awt.Color(255, 255, 254));
         MnRMRisikoJatuh.setForeground(new java.awt.Color(50, 50, 50));
@@ -1964,8 +1958,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnRMRisikoJatuh.add(MnPenilaianRisikoDikubitus);
-
-        MnDataRM.add(MnRMRisikoJatuh);
 
         MnPenilaianLain.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianLain.setForeground(new java.awt.Color(50, 50, 50));
@@ -2142,8 +2134,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        MnDataRM.add(MnPenilaianLain);
-
         MnPemantauanPEWS.setBackground(new java.awt.Color(255, 255, 254));
         MnPemantauanPEWS.setForeground(new java.awt.Color(50, 50, 50));
         MnPemantauanPEWS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2218,8 +2208,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         });
         MnPemantauanPEWS.add(MnPemantauanEWSNeonatus);
 
-        MnDataRM.add(MnPemantauanPEWS);
-
         MnRMFarmasi.setBackground(new java.awt.Color(255, 255, 254));
         MnRMFarmasi.setForeground(new java.awt.Color(50, 50, 50));
         MnRMFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
@@ -2261,8 +2249,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MnRMFarmasi.add(MnRekonsiliasiObat);
-
-        MnDataRM.add(MnRMFarmasi);
 
         MnObservasi.setBackground(new java.awt.Color(255, 255, 254));
         MnObservasi.setForeground(new java.awt.Color(50, 50, 50));
@@ -2439,8 +2425,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
 
-        MnDataRM.add(MnObservasi);
-
         MnDiagnosa.setBackground(new java.awt.Color(255, 255, 254));
         MnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnDiagnosa.setForeground(new java.awt.Color(50, 50, 50));
@@ -2455,7 +2439,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 MnDiagnosaActionPerformed(evt);
             }
         });
-        MnDataRM.add(MnDiagnosa);
 
         MnGizi.setBackground(new java.awt.Color(255, 255, 254));
         MnGizi.setForeground(new java.awt.Color(50, 50, 50));
@@ -2579,8 +2562,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
         });
         MnGizi.add(ppCatatanADIMEGizi);
 
-        MnDataRM.add(MnGizi);
-
         MnTransferAntarRuang.setBackground(new java.awt.Color(255, 255, 254));
         MnTransferAntarRuang.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnTransferAntarRuang.setForeground(new java.awt.Color(50, 50, 50));
@@ -2595,7 +2576,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 MnTransferAntarRuangActionPerformed(evt);
             }
         });
-        MnDataRM.add(MnTransferAntarRuang);
 
         MnPerencanaanPemulangan.setBackground(new java.awt.Color(255, 255, 254));
         MnPerencanaanPemulangan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -2611,7 +2591,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 MnPerencanaanPemulanganActionPerformed(evt);
             }
         });
-        MnDataRM.add(MnPerencanaanPemulangan);
 
         ppResume.setBackground(new java.awt.Color(255, 255, 254));
         ppResume.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -2627,7 +2606,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 ppResumeBtnPrintActionPerformed(evt);
             }
         });
-        MnDataRM.add(ppResume);
 
         ppRiwayat.setBackground(new java.awt.Color(255, 255, 254));
         ppRiwayat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -2643,7 +2621,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 ppRiwayatBtnPrintActionPerformed(evt);
             }
         });
-        MnDataRM.add(ppRiwayat);
 
         jPopupMenu1.add(MnDataRM);
 
@@ -17482,6 +17459,75 @@ public class DlgKamarInap extends javax.swing.JDialog {
         } 
     }
     
+    private void MnPelaksanaanInformasiEdukasiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            if(tbKamIn.getSelectedRow()>-1){
+                if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString().equals("")){
+                    try {
+                        psanak=koneksi.prepareStatement(
+                            "select ranap_gabung.no_rawat2 from ranap_gabung where ranap_gabung.no_rawat=?");            
+                        try {
+                            psanak.setString(1,tbKamIn.getValueAt(tbKamIn.getSelectedRow()-1,0).toString());
+                            rs2=psanak.executeQuery();
+                            if(rs2.next()){
+                                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                RMPelaksanaanInformasiEdukasi form=new RMPelaksanaanInformasiEdukasi(null,false);
+                                form.isCek();
+                                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                                form.setLocationRelativeTo(internalFrame1);
+                                form.emptTeks();
+                                if(R1.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),new Date());
+                                }else if(R2.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),DTPCari2.getDate());
+                                }else if(R3.isSelected()==true){
+                                    form.setNoRm(rs2.getString("no_rawat2"),DTPCari4.getDate());
+                                }
+                                form.tampil();
+                                form.setVisible(true);
+                                this.setCursor(Cursor.getDefaultCursor());
+                            }else{
+                                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
+                                tbKamIn.requestFocus();
+                            }
+                        } catch(Exception ex){
+                            System.out.println("Notifikasi : "+ex);
+                        }finally{
+                              if(rs2 != null){
+                                  rs2.close();
+                              }
+                              if(psanak != null){
+                                  psanak.close();
+                              }
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }else{
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                    RMPelaksanaanInformasiEdukasi form=new RMPelaksanaanInformasiEdukasi(null,false);
+                    form.isCek();
+                    form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    form.setLocationRelativeTo(internalFrame1);
+                    form.emptTeks();
+                    if(R1.isSelected()==true){
+                        form.setNoRm(norawat.getText(),new Date());
+                    }else if(R2.isSelected()==true){
+                        form.setNoRm(norawat.getText(),DTPCari2.getDate());
+                    }else if(R3.isSelected()==true){
+                        form.setNoRm(norawat.getText(),DTPCari4.getDate());
+                    }   
+                    form.tampil();
+                    form.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }
+            }
+        } 
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -17876,8 +17922,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnSkorBromagePascaAnestesi,MnPenilaianPreInduksi,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnBelumTerbitSEP,MnSudahTerbitSEP,MnHasilPemeriksaanUSGNeonatus,MnHasilEndoskopiFaringLaring,
                                   MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,MnPenilaianAwalKeperawatanRanapNeonatus,MnPenilaianPasienImunitasRendah,MnCatatanKeseimbanganCairan,MnCatatanObservasiCHBP,MnCatatanObservasiInduksiPersalinan,MnPermintaanKonsultasiMedik,
                                   MnDataOperasi,MnPenilaianAwalKeperawatanRanapBayiAnak,MnCatatanObservasiRestrainNonFarmakologi,MnCatatanObservasiVentilator,MnCatatanAnastesiSedasi,MnChecklistPemberianFibrinolitik,MnPenilaianPsikologKlinis,MnPenilaianAwalMedisNeonatus,
-                                  MnPenilaianDerajatDehidrasi,MnHasilPemeriksaanECHO,MnPenilaianBayiBaruLahir,MnLaporanTindakan;
-    private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnCatatanObservasi;
+                                  MnPenilaianDerajatDehidrasi,MnHasilPemeriksaanECHO,MnPenilaianBayiBaruLahir,MnLaporanTindakan,MnPelaksanaanInformasiEdukasi;
+    private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnCatatanObservasi,MnEdukasi;
     
     private void tampil() {
         if(R1.isSelected()==true){
@@ -18419,6 +18465,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnPenilaianAwalMedisNeonatus.setEnabled(akses.getpenilaian_awal_medis_ranap_neonatus());
         MnPenilaianBayiBaruLahir.setEnabled(akses.getpenilaian_bayi_baru_lahir());
         MnLaporanTindakan.setEnabled(akses.getlaporan_tindakan());
+        MnPelaksanaanInformasiEdukasi.setEnabled(akses.getpelaksanaan_informasi_edukasi());
         
         if(akses.getkode().equals("Admin Utama")){
             MnFilterDPJP.setEnabled(true);
@@ -18838,6 +18885,18 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnLaporanTindakan.setPreferredSize(new java.awt.Dimension(280, 26));
         MnLaporanTindakan.addActionListener(this::MnLaporanTindakanActionPerformed);
         
+        MnPelaksanaanInformasiEdukasi = new javax.swing.JMenuItem();
+        MnPelaksanaanInformasiEdukasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnPelaksanaanInformasiEdukasi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPelaksanaanInformasiEdukasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnPelaksanaanInformasiEdukasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPelaksanaanInformasiEdukasi.setText("Pelaksanaan Informasi & Edukasi");
+        MnPelaksanaanInformasiEdukasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPelaksanaanInformasiEdukasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPelaksanaanInformasiEdukasi.setName("MnPelaksanaanInformasiEdukasi");
+        MnPelaksanaanInformasiEdukasi.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnPelaksanaanInformasiEdukasi.addActionListener(this::MnPelaksanaanInformasiEdukasiActionPerformed);
+        
         MnHasilUSG = new javax.swing.JMenu();
         MnHasilUSG.setBackground(new java.awt.Color(255, 255, 254));
         MnHasilUSG.setForeground(new java.awt.Color(50, 50, 50));
@@ -18871,6 +18930,17 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanObservasi.setName("MnCatatanObservasi"); 
         MnCatatanObservasi.setPreferredSize(new java.awt.Dimension(230, 26));
         
+        MnEdukasi = new javax.swing.JMenu();
+        MnEdukasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnEdukasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnEdukasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnEdukasi.setText("Edukasi");
+        MnEdukasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnEdukasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnEdukasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnEdukasi.setName("MnEdukasi"); 
+        MnEdukasi.setPreferredSize(new java.awt.Dimension(200, 26));
+        
         MnRMOperasi.add(MnPenilaianPreInduksi);
         MnRMOperasi.add(MnChecklistPreOperasi);
         MnRMOperasi.add(MnSignInSebelumAnestesi);
@@ -18891,28 +18961,32 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanObservasi.add(MnCatatanObservasiInduksiPersalinan);
         MnCatatanObservasi.add(MnCatatanObservasiRestrainNonFarmakologi);
         MnCatatanObservasi.add(MnCatatanObservasiVentilator);
+        
         MnObservasi.add(MnCatatanObservasi);
         MnObservasi.add(MnFollowUpDBD);
         MnObservasi.add(MnCatatanKeperawatan);
         MnObservasi.add(MnCatatanCekGDS);
         MnObservasi.add(MnMonitoringReaksiTranfusi);
         MnObservasi.add(MnHasilUSG);
+        
         MnHasilUSG.add(MnHasilPemeriksaanUSG);
         MnHasilUSG.add(MnHasilPemeriksaanUSGUrologi);
         MnHasilUSG.add(MnHasilPemeriksaanUSGNeonatus);
         MnHasilUSG.add(MnHasilPemeriksaanUSGGynecologi);
+        
         MnObservasi.add(MnHasilPemeriksaanEKG);
         MnObservasi.add(MnHasilPemeriksaanECHO);
         MnObservasi.add(MnHasilEndoskopi);
-        MnHasilEndoskopi.add(MnHasilEndoskopiFaringLaring);
-        MnHasilEndoskopi.add(MnHasilEndoskopiHidung);
-        MnHasilEndoskopi.add(MnHasilEndoskopiTelinga);
         MnObservasi.add(MnDokumentasiTindakanESWL);
         MnObservasi.add(MnPenilaianUlangNyeri);
         MnObservasi.add(MnCatatanPersalinan);
         MnObservasi.add(MnCatatanKeseimbanganCairan);
         MnObservasi.add(MnChecklistPemberianFibrinolitik);
         MnObservasi.add(MnLaporanTindakan);
+        
+        MnHasilEndoskopi.add(MnHasilEndoskopiFaringLaring);
+        MnHasilEndoskopi.add(MnHasilEndoskopiHidung);
+        MnHasilEndoskopi.add(MnHasilEndoskopiTelinga);
         
         MnPenilaianAwal.add(MnPenilaianAwalKeperawatanRanap);
         MnPenilaianAwal.add(MnPenilaianAwalKeperawatanKebidanan);
@@ -18955,6 +19029,25 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnPenilaianLain.add(MnPenilaianPsikologKlinis);
         MnPenilaianLain.add(MnHemodialisa);
         MnPenilaianLain.add(MnPengkajianRestrain);
+        
+        MnEdukasi.add(MnPelaksanaanInformasiEdukasi);
+        
+        MnDataRM.add(MnPenilaianAwal);
+        MnDataRM.add(MnRMOperasi);
+        MnDataRM.add(MnRMHCU);
+        MnDataRM.add(MnUjiFungsiKFR);
+        MnDataRM.add(MnRMRisikoJatuh);
+        MnDataRM.add(MnPenilaianLain);
+        MnDataRM.add(MnPemantauanPEWS);
+        MnDataRM.add(MnRMFarmasi);
+        MnDataRM.add(MnObservasi);
+        MnDataRM.add(MnDiagnosa);
+        MnDataRM.add(MnGizi);
+        MnDataRM.add(MnTransferAntarRuang);
+        MnDataRM.add(MnPerencanaanPemulangan);
+        MnDataRM.add(MnEdukasi);
+        MnDataRM.add(ppResume);
+        MnDataRM.add(ppRiwayat);
         
         MnPermintaan.add(MnPermintaanKonsultasiMedik);
         MnTindakan.add(MnDataOperasi);
