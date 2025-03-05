@@ -106,10 +106,10 @@
                             $statuskirim =str_replace("_"," ",$statuskirim)?str_replace("_"," ",$statuskirim):NULL;
                             if(($statuskirim=="Semua")||($statuskirim==$statusdata)){
                                 echo "<tr class='isi' title='".$baris["no_rawat"].", ".$baris["no_sep"].", ".$baris["tglsep"].", ".$baris["no_kartu"].", ".$baris["nomr"].", ".$baris["nama_pasien"]."'>
-                                        <td valign='top'>Tgl.SEP : ".$baris["tglsep"]."<br>No.SEP : ".$baris["no_sep"]."<br>No.Kartu : ".$baris["no_kartu"]."</td>
-                                        <td valign='top'>No.Rawat : ".$baris["no_rawat"]."<br>No.MR : ".$baris["nomr"]."<br>Nama Pasien : ".$baris["nama_pasien"]."</td>
-                                        <td bgcolor='#FFFFFF' valign='top'>".$baris["nm_dokter"]."<br>Status : ".$baris["jenispelayanan"]."<br>Ruang : ".$baris["nmpolitujuan"]."</td>
-                                        <td valign='top'>";
+                                        <td valign='middle'>Tgl.SEP : ".$baris["tglsep"]."<br>No.SEP : ".$baris["no_sep"]."<br>No.Kartu : ".$baris["no_kartu"]."</td>
+                                        <td valign='middle'>No.Rawat : ".$baris["no_rawat"]."<br>No.MR : ".$baris["nomr"]."<br>Nama Pasien : ".$baris["nama_pasien"]."</td>
+                                        <td bgcolor='#FFFFFF' valign='middle'>".$baris["nm_dokter"]."<br>Status : ".$baris["jenispelayanan"]."<br>Ruang : ".$baris["nmpolitujuan"]."</td>
+                                        <td valign='middle'>";
                                         $penyakit="";
                                         $a=1;
                                         $hasilpenyakit=bukaquery("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat='".$baris["no_rawat"]."' order by diagnosa_pasien.prioritas asc");
@@ -136,7 +136,11 @@
                                         } 
                                         echo $prosedur;
                                  echo  "</td>
-                                        <td valign='top' align='center'><a href='?act=KlaimBaruManual&action=InputDiagnosa&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&statuskirim=$statuskirim'>[Input Diagnosa]</a><br>".$status."</td>
+                                        <td valign='middle' align='center'>
+                                            <a href='?act=KlaimBaruManual&action=RiwayatPerawatan&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&statuskirim=$statuskirim'>[Riwayat Perawatan]</a><br>
+                                            <a href='?act=KlaimBaruManual&action=DataBilling&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&statuskirim=$statuskirim'>[Billing]</a><br>
+                                            <a href='?act=KlaimBaruManual&action=InputDiagnosa&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&statuskirim=$statuskirim'>[Input Diagnosa]</a><br>".$status."
+                                        </td>
                                      </tr>";
                                  $jumlah++;
                             }
@@ -153,10 +157,10 @@
                             $statuskirim =str_replace("_"," ",$statuskirim)?str_replace("_"," ",$statuskirim):NULL;
                             if(($statuskirim=="Semua")||($statuskirim==$statusdata)){
                                 echo "<tr class='isi' title='".$baris["no_rawat"].", ".$baris["no_sep"].", ".$baris["tglsep"].", ".$baris["no_kartu"].", ".$baris["nomr"].", ".$baris["nama_pasien"]."'>
-                                        <td valign='top'>Tgl.SEP : ".$baris["tglsep"]."<br>No.SEP : ".$baris["no_sep"]."<br>No.Kartu : ".$baris["no_kartu"]."</td>
-                                        <td valign='top'>No.Rawat : ".$baris["no_rawat"]."<br>No.MR : ".$baris["nomr"]."<br>Nama Pasien : ".$baris["nama_pasien"]."</td>
-                                        <td bgcolor='#FFFFFF' valign='top'>".$baris["nm_dokter"]."<br>Status : ".$baris["jenispelayanan"]."<br>Ruang : ".$baris["nmpolitujuan"]."</td>
-                                        <td valign='top'>";
+                                        <td valign='middle'>Tgl.SEP : ".$baris["tglsep"]."<br>No.SEP : ".$baris["no_sep"]."<br>No.Kartu : ".$baris["no_kartu"]."</td>
+                                        <td valign='middle'>No.Rawat : ".$baris["no_rawat"]."<br>No.MR : ".$baris["nomr"]."<br>Nama Pasien : ".$baris["nama_pasien"]."</td>
+                                        <td bgcolor='#FFFFFF' valign='middle'>".$baris["nm_dokter"]."<br>Status : ".$baris["jenispelayanan"]."<br>Ruang : ".$baris["nmpolitujuan"]."</td>
+                                        <td valign='middle'>";
                                         $penyakit="";
                                         $a=1;
                                         $hasilpenyakit=bukaquery("select diagnosa_pasien.kd_penyakit from diagnosa_pasien where diagnosa_pasien.no_rawat='".$baris["no_rawat"]."' order by diagnosa_pasien.prioritas asc");
@@ -183,11 +187,11 @@
                                         } 
                                         echo $prosedur;
                                  echo  "</td>
-                                        <td valign='top' align='center'>
+                                        <td valign='middle' align='center'>
                                             <a href='?act=KlaimBaruManual&action=RiwayatPerawatan&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&carabayar=$carabayar&statuskirim=$statuskirim'>[Riwayat Perawatan]</a><br>
                                             <a href='?act=KlaimBaruManual&action=DataBilling&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&carabayar=$carabayar&statuskirim=$statuskirim'>[Billing]</a><br>
                                             <a href='?act=KlaimBaruManual&action=InputDiagnosa&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&statuskirim=$statuskirim'>[Input Diagnosa]</a><br>".$status."
-                                            </td>
+                                        </td>
                                      </tr>";
                                      $jumlah++;
                             }

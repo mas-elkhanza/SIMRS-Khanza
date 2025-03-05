@@ -113,10 +113,16 @@
                                while($inapdrpasien = mysqli_fetch_array($hasil3)) {
                                    if(!empty($inapdrpasien[3])){
                                         echo "<tr class='isi12' padding='0'> 
-                                                 <td padding='0' width='80%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[1]</font></td>   
+                                                 <td padding='0' width='80%'><font color='000000' size='1'  face='Tahoma'>&nbsp;$inapdrpasien[1]</font></td>   
                                                  <td padding='0' width='1%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[4]</font></td>   
                                                  <td padding='0' width='19%' align='right'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[3]</font></td>              
                                              </tr>";                            
+                                   }else{
+                                       echo "<tr class='isi12' padding='0'> 
+                                                 <td padding='0' width='80%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[1]</font></td>   
+                                                 <td padding='0' width='1%'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[4]</font></td>   
+                                                 <td padding='0' width='19%' align='right'><font color='000000' size='1'  face='Tahoma'>$inapdrpasien[3]</font></td>              
+                                             </tr>";   
                                    }
                                }
                            echo"</table>
