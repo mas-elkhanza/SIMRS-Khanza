@@ -63,6 +63,8 @@ import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import org.apache.hc.core5.http.io.entity.StringEntity;
 
 
 
@@ -3215,40 +3217,46 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     File f = new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf");   
                     try {
                         CloseableHttpClient httpClient = HttpClients.createDefault();
-                        HttpPost post = new HttpPost(koneksiDB.URLAPIESIGN());
-                        authStr = koneksiDB.USERNAMEAPIESIGN() + ":" + koneksiDB.PASSAPIESIGN();
-                        base64Creds = Base64.getEncoder().encodeToString(authStr.getBytes());
-                        post.addHeader("Authorization", "Basic " + base64Creds);
-                        kddpjp=Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode());
-                        dpjp=Sequel.cariIsi("select pegawai.nama from pegawai where pegawai.nik=?", akses.getkode());
-                        MultipartEntityBuilder entityBuilder = MultipartEntityBuilder.create()
-                            .addBinaryBody("file", f, ContentType.APPLICATION_PDF, f.getName())
-                            .addTextBody("nik", kddpjp)
-                            .addTextBody("passphrase", Phrase.getText())
-                            .addTextBody("tampilan", "visible")
-                            .addTextBody("image", "false")
-                            .addTextBody("linkQR", "Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+dpjp+"\nID "+kddpjp+"\n"+Tanggal.getSelectedItem().toString())
-                            .addTextBody("width", "90")
-                            .addTextBody("height", "90")
-                            .addTextBody("tag_koordinat", "#");
-                        HttpEntity entity = entityBuilder.build();
-                        post.setEntity(entity);
+                        HttpPost post = new HttpPost(koneksiDB.URLAKSESFILEESIGN());
+                        post.setHeader("Content-Type", "application/json");
+                        post.addHeader("username", koneksiDB.USERNAMEAPIESIGN());
+                        post.addHeader("password", koneksiDB.PASSAPIESIGN());
+                        post.addHeader("url", koneksiDB.URLAPIESIGN());
 
+                        byte[] fileContent = Files.readAllBytes(f.toPath());
+
+                        json="{" +
+                                 "\"file\":\""+Base64.getEncoder().encodeToString(fileContent)+"\"," +
+                                 "\"nik\":\""+Sequel.cariIsi("select pegawai.no_ktp from pegawai where pegawai.nik=?", akses.getkode())+"\"," +
+                                 "\"passphrase\":\""+Phrase.getText()+"\"," +
+                                 "\"tampilan\":\"visible\"," +
+                                 "\"image\":\"false\"," +
+                                 "\"linkQR\":\"Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+". Ditandatangani secara elektronik oleh "+dpjp+" ID "+kddpjp+" Tanggal "+Tanggal.getSelectedItem().toString()+"\"," +
+                                 "\"width\":\"70\"," +
+                                 "\"height\":\"70\"," +
+                                 "\"tag_koordinat\":\"#\"" +
+                              "}";
+
+                        System.out.println("URL Akses file :"+koneksiDB.URLAKSESFILEESIGN());
+                        System.out.println("JSON Dikirim :"+json);
+                        post.setEntity(new StringEntity(json));
                         try (CloseableHttpResponse response = httpClient.execute(post)) {
-                            System.out.println("Response Status: " + response.getCode());
+                            System.out.println("Response Status : " + response.getCode());
+                            json=EntityUtils.toString(response.getEntity());
+                            root = mapper.readTree(json);
                             if (response.getCode() == 200) {
-                                try (InputStream inputStream = response.getEntity().getContent();
-                                     FileOutputStream outputStream = new FileOutputStream(f)) {
-                                    byte[] buffer = new byte[1024];
-                                    int bytesRead;
-                                    while ((bytesRead = inputStream.read(buffer)) != -1) {
-                                        outputStream.write(buffer, 0, bytesRead);
-                                    }
-                                    System.out.println("File respons berhasil disimpan di : " + f.getAbsolutePath());
-                                    Desktop.getDesktop().browse(f.toURI());
+                                try (FileOutputStream fos = new FileOutputStream(new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf"))) {
+                                    byte[] fileBytes = Base64.getDecoder().decode(root.path("response").asText());
+                                    fos.write(fileBytes);
+                                    WindowPhrase.dispose();
+                                    JOptionPane.showMessageDialog(null,"Proses tanda tangan berhasil...");
+                                    Desktop.getDesktop().browse(new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf").toURI());
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null,"Gagal mengkonversi base64 ke file...");
+                                    System.out.println("Notif : " +e);
                                 }
                             } else {
-                                System.out.println("Notifikasi : " + EntityUtils.toString(response.getEntity()));
+                                JOptionPane.showMessageDialog(null,"Code : "+root.path("metadata").path("code").asText()+" Pesan : "+root.path("metadata").path("message").asText());
                             }
                         } catch (IOException a) {
                             System.out.println("Notifikasi : " + a);

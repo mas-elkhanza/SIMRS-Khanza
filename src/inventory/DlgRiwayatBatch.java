@@ -472,27 +472,21 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "data_batch.vip,data_batch.vvip,data_batch.beliluar,data_batch.jualbebas,"+
                     "data_batch.karyawan,data_batch.jumlahbeli,data_batch.sisa from databarang "+
                     "inner join data_batch on data_batch.kode_brng=databarang.kode_brng where "+
-                    "data_batch.tgl_beli between ? and ? and data_batch.no_batch like ? or "+
-                    "data_batch.tgl_beli between ? and ? and data_batch.kode_brng like ? or "+
-                    "data_batch.tgl_beli between ? and ? and databarang.nama_brng like ? or "+
-                    "data_batch.tgl_beli between ? and ? and data_batch.asal like ? or "+
-                    "data_batch.tgl_beli between ? and ? and data_batch.no_faktur like ? order by data_batch.tgl_beli");
+                    "data_batch.tgl_beli between ? and ? "+(!TCari.getText().trim().equals("")?"and "+
+                    "(data_batch.no_batch like ? or data_batch.kode_brng like ? or "+
+                    "databarang.nama_brng like ? or data_batch.asal like ? or "+
+                    "data_batch.no_faktur like ?)":"")+
+                    "order by data_batch.tgl_beli");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText().trim()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText().trim()+"%");
-                ps.setString(13,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(15,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    ps.setString(7,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     htmlContent.append(

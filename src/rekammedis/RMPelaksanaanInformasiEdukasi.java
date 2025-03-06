@@ -213,7 +213,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiIGD = new javax.swing.JMenuItem();
+        MnCetakPelaksanaanEdukasi = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -279,19 +279,19 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanObservasiIGD.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanObservasiIGD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanObservasiIGD.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanObservasiIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanObservasiIGD.setText("Formulir Catatan Observasi Rawat Inap");
-        MnCatatanObservasiIGD.setName("MnCatatanObservasiIGD"); // NOI18N
-        MnCatatanObservasiIGD.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnCatatanObservasiIGD.addActionListener(new java.awt.event.ActionListener() {
+        MnCetakPelaksanaanEdukasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakPelaksanaanEdukasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakPelaksanaanEdukasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakPelaksanaanEdukasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakPelaksanaanEdukasi.setText("Formulir Catatan Observasi Rawat Inap");
+        MnCetakPelaksanaanEdukasi.setName("MnCetakPelaksanaanEdukasi"); // NOI18N
+        MnCetakPelaksanaanEdukasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnCetakPelaksanaanEdukasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanObservasiIGDActionPerformed(evt);
+                MnCetakPelaksanaanEdukasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanObservasiIGD);
+        jPopupMenu1.add(MnCetakPelaksanaanEdukasi);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -1196,7 +1196,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,Materi);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanObservasiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIGDActionPerformed
+    private void MnCetakPelaksanaanEdukasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakPelaksanaanEdukasiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1220,7 +1220,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
                     "inner join pegawai on pelaksanaan_informasi_edukasi.nik=pegawai.nik where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                     "order by pelaksanaan_informasi_edukasi.tanggal,pelaksanaan_informasi_edukasi.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnCatatanObservasiIGDActionPerformed
+    }//GEN-LAST:event_MnCetakPelaksanaanEdukasiActionPerformed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
         Valid.pindah(evt,Materi,Lama);
@@ -1297,7 +1297,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private widget.TextArea Materi;
     private widget.ComboBox Menit;
     private widget.ComboBox Metode;
-    private javax.swing.JMenuItem MnCatatanObservasiIGD;
+    private javax.swing.JMenuItem MnCetakPelaksanaanEdukasi;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
