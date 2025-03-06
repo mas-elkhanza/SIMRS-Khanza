@@ -134,7 +134,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='2%' valign='top'>2.</td><td width='98%'>Pasien Rawat Inap <?=$namars?> hanya dapat ditunggu oleh 1 (satu) orang yang ditunjuk oleh pasien atau keluarga</td>
+                                                        <td width='2%' valign='top'>2.</td><td width='98%'>Pasien Rawat Inap ".$_SESSION["nama_instansi"]." hanya dapat ditunggu oleh 1 (satu) orang yang ditunjuk oleh pasien atau keluarga</td>
                                                     </tr>
                                                     <tr>
                                                         <td width='2%' valign='top'>3.</td><td width='98%'>Anak-anak dibawah usia 12 tahun tidak diperkenankan masuk area ruang perawatan untuk menghindari resiko yang mungkin terjadi karena daya tubuh yang masih rendah</td>
@@ -146,16 +146,16 @@
                                                         <td width='2%' valign='top'>5.</td><td width='98%'>Pasien, penunggu dan pengunjung Pasien Rawat Inap dilarang membawa peralatan tidur, peralatan memasak, peralatan elektronik, senjata tajam, senjata api dan sejenisnya</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='2%' valign='top'>6.</td><td width='98%'>Pengunjung harus ikut menjaga ketenangan, kenyamanan dan keamanan pasien selama berada di lingkungan <?=$namars?></td>
+                                                        <td width='2%' valign='top'>6.</td><td width='98%'>Pengunjung harus ikut menjaga ketenangan, kenyamanan dan keamanan pasien selama berada di lingkungan ".$_SESSION["nama_instansi"]."</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='2%' valign='top'>7.</td><td width='98%'>Pengunjung diwajibkan untuk membuang sampah pada tempat yang telah disediakan oleh <?=$namars?></td>
+                                                        <td width='2%' valign='top'>7.</td><td width='98%'>Pengunjung diwajibkan untuk membuang sampah pada tempat yang telah disediakan oleh ".$_SESSION["nama_instansi"]."</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='2%' valign='top'>8.</td><td width='98%'>Pasien, Penunggu Pasien dan Pengunjung dianjurkan untuk tidak membawa / menyimpan uang dalam jumlah yang besar, perhiasan dan barang berharga lainnya. <?=$namars?> tidak bertanggung jawab untuk segala kerusakan atau kehilangan yang teriadi diseluruh area <?=$namars?></td>
+                                                        <td width='2%' valign='top'>8.</td><td width='98%'>Pasien, Penunggu Pasien dan Pengunjung dianjurkan untuk tidak membawa / menyimpan uang dalam jumlah yang besar, perhiasan dan barang berharga lainnya. ".$_SESSION["nama_instansi"]." tidak bertanggung jawab untuk segala kerusakan atau kehilangan yang teriadi diseluruh area ".$_SESSION["nama_instansi"]."</td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='2%' valign='top'>9.</td><td width='98%'>Pengunjung dilarang merusak dan atau membawa pulang fasilitas atau peralatan milik <?=$namars?>. Segala jenis kerusakan yang timbul akibat dari kelalaian dan atau unsur kesengajaan yang mengakibatkan kerugian bagi pihak <?=$namars?> akan menjadi tanggung jawab pengunjung</td>
+                                                        <td width='2%' valign='top'>9.</td><td width='98%'>Pengunjung dilarang merusak dan atau membawa pulang fasilitas atau peralatan milik ".$_SESSION["nama_instansi"].". Segala jenis kerusakan yang timbul akibat dari kelalaian dan atau unsur kesengajaan yang mengakibatkan kerugian bagi pihak ".$_SESSION["nama_instansi"]." akan menjadi tanggung jawab pengunjung</td>
                                                     </tr>
                                                     <tr>
                                                         <td width='2%' valign='top'>10.</td><td width='98%'>Pengunjung dilarang merokok, minum-minuman keras dan berbuat asusila selama berada dilingkungan</td>
@@ -190,7 +190,7 @@
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td width='2%' valign='top'>5.</td><td width='98%'>Kwitansi pulang dapat diperoleh setelah pasien/keluarganya melunasi seluruh biaya perawatan <?=$namars?>. Pasien dikenakan biaya leges 5% dari total biaya</td>
+                                                        <td width='2%' valign='top'>5.</td><td width='98%'>Kwitansi pulang dapat diperoleh setelah pasien/keluarganya melunasi seluruh biaya perawatan ".$_SESSION["nama_instansi"].". Pasien dikenakan biaya leges 5% dari total biaya</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -266,7 +266,7 @@
                                                 B. Kewajiban Pasien menurut UU No. 29 tahun 2004 pasal 53 adalah sebagai berikut :<br/>
                                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                     <tr>
-                                                        <td width='2%' valign='top'>1.</td><td width='98%'>Mentaati segala peraturan dan tata tertib di <?=$namars?></td>
+                                                        <td width='2%' valign='top'>1.</td><td width='98%'>Mentaati segala peraturan dan tata tertib di ".$_SESSION["nama_instansi"]."</td>
                                                     </tr>
                                                     <tr>
                                                         <td width='2%' valign='top'>2.</td><td width='98%'>Mematuhi segala instruksi Dokter dan Perawat dalam pengobatannya;</td>
@@ -289,37 +289,37 @@
                                     </h7>
                                     <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                         <tr>
-                                            <td width='2%' valign='top'>1.</td><td width='98%'>Saya menyetujui untuk mendapatkan pelayanan kesehatan di <?=$namars?> dan memberikan kuasa kepada setiap dokter dan perawat untuk memberikan asuhan keperawatan, pemeriksaan fisik, prosedur diagnostik rutin, radiologi, pemberian dan atau penyuntikan produk farmasi dan obat-obatan, pemasangan alat kesehatan (kecuali yang membutuhkan persetujuan khusus) dan pengambilan sampel darah untuk pemeriksaan laboratorium atau pemeriksaan patologi. Dan apabila say memutuskan untuk menghentikan pelayanan kesehatan untuk diri saya sendiri, saya memahami dan menyadari bahwa <?=$namars?> tidak bertanggungjawab terhadap sesuatu yang terjadi terhadap diri saya.</td>
+                                            <td width='2%' valign='top'>1.</td><td width='98%'>Saya menyetujui untuk mendapatkan pelayanan kesehatan di ".$_SESSION["nama_instansi"]." dan memberikan kuasa kepada setiap dokter dan perawat untuk memberikan asuhan keperawatan, pemeriksaan fisik, prosedur diagnostik rutin, radiologi, pemberian dan atau penyuntikan produk farmasi dan obat-obatan, pemasangan alat kesehatan (kecuali yang membutuhkan persetujuan khusus) dan pengambilan sampel darah untuk pemeriksaan laboratorium atau pemeriksaan patologi. Dan apabila say memutuskan untuk menghentikan pelayanan kesehatan untuk diri saya sendiri, saya memahami dan menyadari bahwa ".$_SESSION["nama_instansi"]." tidak bertanggungjawab terhadap sesuatu yang terjadi terhadap diri saya.</td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>2.</td><td width='98%'>Saya memberikan kuasa kepada setiap pemberi pelayanan kesehatan yang merawat saya untuk memeriksa dan atau memberitahukan informasi mengenai kesehatan saya kepada pemberi pelayanan kesehatan lainnya yang turut merawat saya selama di <?=$namars?>.</td>
+                                            <td width='2%' valign='top'>2.</td><td width='98%'>Saya memberikan kuasa kepada setiap pemberi pelayanan kesehatan yang merawat saya untuk memeriksa dan atau memberitahukan informasi mengenai kesehatan saya kepada pemberi pelayanan kesehatan lainnya yang turut merawat saya selama di ".$_SESSION["nama_instansi"].".</td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>3.</td><td width='98%'>Saya mengerti bahwa tidak diperbolehkan untuk membawa benda tajam, barang-barang berharga selama mendapatkan pelayanan kesehatan di <?=$namars?> dan saya memahami bahwa <?=$namars?>s tidak bertanggungjawab terhadap segala bentuk kehilangan, kerusakan dan pencurian terhadap barang-barang milik saya dan secara pribadi bertanggungjawab atas barang-barang yang saya miliki.</td>
+                                            <td width='2%' valign='top'>3.</td><td width='98%'>Saya mengerti bahwa tidak diperbolehkan untuk membawa benda tajam, barang-barang berharga selama mendapatkan pelayanan kesehatan di ".$_SESSION["nama_instansi"]." dan saya memahami bahwa ".$_SESSION["nama_instansi"]."s tidak bertanggungjawab terhadap segala bentuk kehilangan, kerusakan dan pencurian terhadap barang-barang milik saya dan secara pribadi bertanggungjawab atas barang-barang yang saya miliki.</td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>4.</td><td width='98%'>Saya mengerti dan memahami bahwa segala kerusakan fasilitas <?=$namars?> yang diakibatkan oleh kelalaian pasien atau penunggu pasien dapat dikenakan sanksi sesuai dengan peraturan yang berlaku di <?=$namars?> dan saya bersedia untuk menerima sanksi tersebut tapa paksaan dari pihak manapun.</td>
+                                            <td width='2%' valign='top'>4.</td><td width='98%'>Saya mengerti dan memahami bahwa segala kerusakan fasilitas ".$_SESSION["nama_instansi"]." yang diakibatkan oleh kelalaian pasien atau penunggu pasien dapat dikenakan sanksi sesuai dengan peraturan yang berlaku di ".$_SESSION["nama_instansi"]." dan saya bersedia untuk menerima sanksi tersebut tapa paksaan dari pihak manapun.</td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>5.</td><td width='98%'>Saya mengerti dan memahami bahwa saya, keluarga atau pihak lainnya tidak diperbolehkan untuk mendokumentasikan dalam bentuk apapun (foto, rekaman video, dan lain-lain) terhadap seluruh proses pelayanan kesehatan yang saya atau keluarga sayajalani di <?=$namars?> tanpa seizin dari pihak <?=$namars?>.</td>
+                                            <td width='2%' valign='top'>5.</td><td width='98%'>Saya mengerti dan memahami bahwa saya, keluarga atau pihak lainnya tidak diperbolehkan untuk mendokumentasikan dalam bentuk apapun (foto, rekaman video, dan lain-lain) terhadap seluruh proses pelayanan kesehatan yang saya atau keluarga sayajalani di ".$_SESSION["nama_instansi"]." tanpa seizin dari pihak ".$_SESSION["nama_instansi"].".</td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>6.</td><td width='98%'>Saya telah menerima informasi tentang peraturan yang diberlakukan oleh <?=$namars?> dan saya beserta keluarga bersedia untuk mematuhi jam berkunjung pasien sesuai dengan peraturan rumah sakit dan anggota keluarga saya yang menunggu saya bersedia untuk memakai tanda pengenal khusus penunggu pasien.</td>
+                                            <td width='2%' valign='top'>6.</td><td width='98%'>Saya telah menerima informasi tentang peraturan yang diberlakukan oleh ".$_SESSION["nama_instansi"]." dan saya beserta keluarga bersedia untuk mematuhi jam berkunjung pasien sesuai dengan peraturan rumah sakit dan anggota keluarga saya yang menunggu saya bersedia untuk memakai tanda pengenal khusus penunggu pasien.</td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>7.</td><td width='98%'>Saya memberikan persetujuan dan kewenangan kepada <?=$namars?> untuk memberikan informasi tentang diagnosis, hasil pelayanan kesehatan dan pengobatan terhadap diri saya apabila diperlukan termasuk hasil medical check up yang saya jalani untuk keperluan penjaminan biaya pelayanan kesehatan terhadap saya kepada pihak luar seperti: perusahaan, asuransi, BPJS, Dinas Kesehatan.</td>
+                                            <td width='2%' valign='top'>7.</td><td width='98%'>Saya memberikan persetujuan dan kewenangan kepada ".$_SESSION["nama_instansi"]." untuk memberikan informasi tentang diagnosis, hasil pelayanan kesehatan dan pengobatan terhadap diri saya apabila diperlukan termasuk hasil medical check up yang saya jalani untuk keperluan penjaminan biaya pelayanan kesehatan terhadap saya kepada pihak luar seperti: perusahaan, asuransi, BPJS, Dinas Kesehatan.</td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>8.</td><td width='98%'>Saya memberikan persetujuan dan kuasa kepada <?=$namars?> untuk memberikan informasi tentang diagnosis, hasil pelayanan kesehatan dan pengobatan kepada <select name='pengobatan_kepada'><option value='Suami'>Suami</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option><option value='Ayah'>Ayah</option><option value='Ibu'>Ibu</option><option value='Saudara'>Saudara</option><option value='Keponakan'>Keponakan</option><option value='Adik'>Adik</option><option value='Kakak'>Kakak</option><option value='Orang Tua'>Orang Tua</option><option value='Diri Sendiri'>Diri Sendiri</option></select></td>
+                                            <td width='2%' valign='top'>8.</td><td width='98%'>Saya memberikan persetujuan dan kuasa kepada ".$_SESSION["nama_instansi"]." untuk memberikan informasi tentang diagnosis, hasil pelayanan kesehatan dan pengobatan kepada <select name='pengobatan_kepada'><option value='Suami'>Suami</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option><option value='Ayah'>Ayah</option><option value='Ibu'>Ibu</option><option value='Saudara'>Saudara</option><option value='Keponakan'>Keponakan</option><option value='Adik'>Adik</option><option value='Kakak'>Kakak</option><option value='Orang Tua'>Orang Tua</option><option value='Diri Sendiri'>Diri Sendiri</option></select></td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>9.</td><td width='98%'>Saya menyatakan bahwa say telah menerima infiormasi tentang adanya tatacara mengajukan keluhan terhadap pelayanan kesehatan terhadap diri say dan say setuju untuk mengikuti tata cara mengajukan keluhan tersebut sesuai dengan prosedur yang ada di <?=$namars?>.</td>
+                                            <td width='2%' valign='top'>9.</td><td width='98%'>Saya menyatakan bahwa say telah menerima infiormasi tentang adanya tatacara mengajukan keluhan terhadap pelayanan kesehatan terhadap diri say dan say setuju untuk mengikuti tata cara mengajukan keluhan tersebut sesuai dengan prosedur yang ada di ".$_SESSION["nama_instansi"].".</td>
                                         </tr>
                                         <tr>
                                             <td width='2%' valign='top'>10.</td><td width='98%'>Melalui dokumen ini saya sampaikan bahwa saya atau keluarga saya memiliki nilai kepercayaan dalam pengobatan atau perawatan yang antara lain adalah <input name='nilai_kepercayaan' type='text' id='TxtIsi1' size='40' maxlength='50' pattern='[a-zA-Z0-9, ./@_-]{1,50}' title=' a-zA-Z0-9, ./@_- (Maksimal 50 karakter)' autocomplete='off'><span id='MsgIsi1' style='color:#CC0000; font-size:10px;'></span></td>
                                         </tr>
                                         <tr>
-                                            <td width='2%' valign='top'>11.</td><td width='98%'>Melalui dokumen ini saya menegaskan kembali bahwa saya mempercayakan kepada semua tenaga kesehatan yang ada di <?=$namars?> untuk memberikan perawatan diagnostik dan terapi kepada saya sebagai pasien rawat inap, rawat jalan, maupun gawat darurat termasuk pemeriksaan penunjang yang dibutuhkan untuk pengobatan dan tindakan.</td>
+                                            <td width='2%' valign='top'>11.</td><td width='98%'>Melalui dokumen ini saya menegaskan kembali bahwa saya mempercayakan kepada semua tenaga kesehatan yang ada di ".$_SESSION["nama_instansi"]." untuk memberikan perawatan diagnostik dan terapi kepada saya sebagai pasien rawat inap, rawat jalan, maupun gawat darurat termasuk pemeriksaan penunjang yang dibutuhkan untuk pengobatan dan tindakan.</td>
                                         </tr>
                                     </table>
                                     <br/>
@@ -375,7 +375,7 @@
                                     </table>
                                     <br/>
                                     <h7>
-                                        Bahwa saya telah membaca, memahami dan mendapatkan penjelasan tentang ketentuan yang berlaku di <?=$namars?>. Demikian pernyataan ini dibuat dalam keadaan penuh kesadaran dan tanpa paksaan dari pihak manapun, untuk digunakan sebagaimana mestinya
+                                        Bahwa saya telah membaca, memahami dan mendapatkan penjelasan tentang ketentuan yang berlaku di ".$_SESSION["nama_instansi"].". Demikian pernyataan ini dibuat dalam keadaan penuh kesadaran dan tanpa paksaan dari pihak manapun, untuk digunakan sebagaimana mestinya
                                     </h7>
                                     <br/>
                                     <br/>

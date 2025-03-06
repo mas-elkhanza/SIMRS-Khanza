@@ -76,41 +76,6 @@
                         </div>
                     </div>
                   </div>";
-            
-            $BtnSimpan=isset($_POST['BtnSimpan'])?$_POST['BtnSimpan']:NULL;
-            if (isset($BtnSimpan)) {
-                $norawat           = validTeks4($_POST["norawat"],20);
-                $tanggal           = validTeks4($_POST["tanggal"],20);
-                if(file_exists("../webapps/persetujuantransferruang/pages/upload/".str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal))).".jpeg")){
-                    @unlink("../webapps/persetujuantransferruang/pages/upload/".str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal))).".jpeg");
-                }
-                $img                    = $_POST["image"];
-                $folderPath             = "../webapps/persetujuantransferruang/pages/upload/";
-                $image_parts            = explode(";base64,", $img);
-                $image_type_aux         = explode("image/", $image_parts[0]);
-                $image_type             = $image_type_aux[1];
-                $image_base64           = base64_decode($image_parts[1]);
-                $fileName               = str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal))).".jpeg";
-                $file                   = $folderPath . $fileName;
-
-                if(file_put_contents($file, $image_base64)){
-                    if(file_exists("../webapps/persetujuantransferruang/pages/upload/".str_replace("/","",$norawat).str_replace(":","",str_replace("-","",str_replace(" ","",$tanggal))).".jpeg")){
-                        if(Tambah3("bukti_persetujuan_transfer_pasien_antar_ruang","'".$norawat."','".$tanggal."','pages/upload/$fileName'")){
-                            JSRedirect2("index.php?act=PersetujuanTransferAntarRuang&hal=Persetujuan",4);
-                        }
-                    }
-                }else{
-                    echo "<div class='row clearfix'>
-                             <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                                <div class='card'>
-                                    <div class='body'>
-                                        <center>Gagal melakukan persetujuan</center>
-                                    </div>
-                                </div>
-                             </div>
-                          </div>";
-                }
-            }
         }else{
             echo "<div class='block-header'>
                         <h2><center>PERSETUJUAN PEMINDAHAN/TRANSFER RUANG PASIEN</center></h2>
