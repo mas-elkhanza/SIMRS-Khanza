@@ -203,7 +203,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             ringkasan_penerimaan_dapur=false,ringkasan_pengajuan_dapur=false,ringkasan_pemesanan_dapur=false,ringkasan_returbeli_dapur=false,ringkasan_stokkeluar_dapur=false,dapur_stokkeluar_pertanggal=false,
             sirkulasi_dapur=false,sirkulasi_dapur2=false,verifikasi_penerimaan_dapur=false,nilai_penerimaan_vendor_dapur_perbulan=false,ringkasan_hutang_vendor_dapur=false,penilaian_psikologi_klinis=false,
             penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false,ringkasan_jasa_tindakan_medis=false,pendapatan_per_akun=false,hasil_pemeriksaan_echo=false,penilaian_bayi_baru_lahir=false,
-            rl1_3_ketersediaan_kamar=false,pendapatan_per_akun_closing=false,pengeluaran_pengeluaran=false,skrining_diabetes_melitus=false,laporan_tindakan=false,pelaksanaan_informasi_edukasi=false;
+            rl1_3_ketersediaan_kamar=false,pendapatan_per_akun_closing=false,pengeluaran_pengeluaran=false,skrining_diabetes_melitus=false,laporan_tindakan=false,pelaksanaan_informasi_edukasi=false,
+            layanan_kedokteran_fisik_rehabilitasi=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -831,6 +832,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         sirkulasi_dapur=false;sirkulasi_dapur2=false;verifikasi_penerimaan_dapur=false;nilai_penerimaan_vendor_dapur_perbulan=false;ringkasan_hutang_vendor_dapur=false;penilaian_psikologi_klinis=false;
         penilaian_awal_medis_ranap_neonatus=false;penilaian_derajat_dehidrasi=false;ringkasan_jasa_tindakan_medis=false;pendapatan_per_akun=false;hasil_pemeriksaan_echo=false;penilaian_bayi_baru_lahir=false;
         rl1_3_ketersediaan_kamar=false;pendapatan_per_akun_closing=false;pengeluaran_pengeluaran=false;skrining_diabetes_melitus=false;laporan_tindakan=false;pelaksanaan_informasi_edukasi=false;
+        layanan_kedokteran_fisik_rehabilitasi=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1076,7 +1078,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.sirkulasi_dapur2,user.verifikasi_penerimaan_dapur,user.nilai_penerimaan_vendor_dapur_perbulan,user.ringkasan_hutang_vendor_dapur,user.penilaian_psikologi_klinis,"+
                 "user.penilaian_awal_medis_ranap_neonatus,user.penilaian_derajat_dehidrasi,user.ringkasan_jasa_tindakan_medis,user.pendapatan_per_akun,user.hasil_pemeriksaan_echo,"+
                 "user.penilaian_bayi_baru_lahir,user.rl1_3_ketersediaan_kamar,user.pendapatan_per_akun_closing,user.pengeluaran_pengeluaran,user.skrining_diabetes_melitus,"+
-                "user.laporan_tindakan,user.pelaksanaan_informasi_edukasi from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.laporan_tindakan,user.pelaksanaan_informasi_edukasi,user.layanan_kedokteran_fisik_rehabilitasi from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1202,7 +1204,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     skrining_instrumen_srq=rs.getBoolean("skrining_instrumen_srq");checklist_pemberian_fibrinolitik=rs.getBoolean("checklist_pemberian_fibrinolitik");skrining_kanker_kolorektal=rs.getBoolean("skrining_kanker_kolorektal");dapur_pemesanan=rs.getBoolean("dapur_pemesanan");bayar_pesan_dapur=rs.getBoolean("bayar_pesan_dapur");hutang_dapur=rs.getBoolean("hutang_dapur");titip_faktur_dapur=rs.getBoolean("titip_faktur_dapur");validasi_tagihan_dapur=rs.getBoolean("validasi_tagihan_dapur");surat_pemesanan_dapur=rs.getBoolean("surat_pemesanan_dapur");pengajuan_barang_dapur=rs.getBoolean("pengajuan_barang_dapur");
                     dapur_returbeli=rs.getBoolean("dapur_returbeli");hibah_dapur=rs.getBoolean("hibah_dapur");ringkasan_penerimaan_dapur=rs.getBoolean("ringkasan_penerimaan_dapur");ringkasan_pengajuan_dapur=rs.getBoolean("ringkasan_pengajuan_dapur");ringkasan_pemesanan_dapur=rs.getBoolean("ringkasan_pemesanan_dapur");ringkasan_returbeli_dapur=rs.getBoolean("ringkasan_returbeli_dapur");ringkasan_stokkeluar_dapur=rs.getBoolean("ringkasan_stokkeluar_dapur");dapur_stokkeluar_pertanggal=rs.getBoolean("dapur_stokkeluar_pertanggal");sirkulasi_dapur=rs.getBoolean("sirkulasi_dapur");sirkulasi_dapur2=rs.getBoolean("sirkulasi_dapur2");
                     verifikasi_penerimaan_dapur=rs.getBoolean("verifikasi_penerimaan_dapur");nilai_penerimaan_vendor_dapur_perbulan=rs.getBoolean("nilai_penerimaan_vendor_dapur_perbulan");ringkasan_hutang_vendor_dapur=rs.getBoolean("ringkasan_hutang_vendor_dapur");penilaian_psikologi_klinis=rs.getBoolean("penilaian_psikologi_klinis");penilaian_awal_medis_ranap_neonatus=rs.getBoolean("penilaian_awal_medis_ranap_neonatus");penilaian_derajat_dehidrasi=rs.getBoolean("penilaian_derajat_dehidrasi");ringkasan_jasa_tindakan_medis=rs.getBoolean("ringkasan_jasa_tindakan_medis");pendapatan_per_akun=rs.getBoolean("pendapatan_per_akun");
-                    hasil_pemeriksaan_echo=rs.getBoolean("hasil_pemeriksaan_echo");penilaian_bayi_baru_lahir=rs.getBoolean("penilaian_bayi_baru_lahir");rl1_3_ketersediaan_kamar=rs.getBoolean("rl1_3_ketersediaan_kamar");pendapatan_per_akun_closing=rs.getBoolean("pendapatan_per_akun_closing");pengeluaran_pengeluaran=rs.getBoolean("pengeluaran_pengeluaran");skrining_diabetes_melitus=rs.getBoolean("skrining_diabetes_melitus");laporan_tindakan=rs.getBoolean("laporan_tindakan");pelaksanaan_informasi_edukasi=rs.getBoolean("pelaksanaan_informasi_edukasi");
+                    hasil_pemeriksaan_echo=rs.getBoolean("hasil_pemeriksaan_echo");penilaian_bayi_baru_lahir=rs.getBoolean("penilaian_bayi_baru_lahir");rl1_3_ketersediaan_kamar=rs.getBoolean("rl1_3_ketersediaan_kamar");pendapatan_per_akun_closing=rs.getBoolean("pendapatan_per_akun_closing");pengeluaran_pengeluaran=rs.getBoolean("pengeluaran_pengeluaran");skrining_diabetes_melitus=rs.getBoolean("skrining_diabetes_melitus");laporan_tindakan=rs.getBoolean("laporan_tindakan");pelaksanaan_informasi_edukasi=rs.getBoolean("pelaksanaan_informasi_edukasi");layanan_kedokteran_fisik_rehabilitasi=rs.getBoolean("layanan_kedokteran_fisik_rehabilitasi");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -4693,6 +4695,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[M]Pelaksanaan Informasi & Edukasi".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[M]Pelaksanaan Informasi & Edukasi",pelaksanaan_informasi_edukasi});
+        }
+        
+        if("[M]Layanan Kedokteran Fisik & Rehabilitasi".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Layanan Kedokteran Fisik & Rehabilitasi",layanan_kedokteran_fisik_rehabilitasi});
         }
         
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -9124,6 +9130,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[M]Pelaksanaan Informasi & Edukasi".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pelaksanaan_informasi_edukasi='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Layanan Kedokteran Fisik & Rehabilitasi".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","layanan_kedokteran_fisik_rehabilitasi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
             if("[N]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
