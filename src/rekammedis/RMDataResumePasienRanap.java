@@ -3030,17 +3030,23 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
                                 JOptionPane.showMessageDialog(null,"Proses tanda tangan berhasil...");
                                 Desktop.getDesktop().browse(new File("Resume"+TNoRw.getText().trim().replaceAll("/","")+"_"+TNoRM.getText().trim().replaceAll(" ","")+"_"+TPasien.getText().trim().replaceAll(" ","")+".pdf").toURI());
                             } catch (Exception e) {
+                                WindowPhrase.dispose();
                                 JOptionPane.showMessageDialog(null,"Gagal mengkonversi base64 ke file...");
                                 System.out.println("Notif : " +e);
                             }
                         } else {
+                            WindowPhrase.dispose();
                             JOptionPane.showMessageDialog(null,"Code : "+root.path("metadata").path("code").asText()+" Pesan : "+root.path("metadata").path("message").asText());
                         }
                     } catch (IOException a) {
                         System.out.println("Notifikasi : " + a);
+                        WindowPhrase.dispose();
+                        JOptionPane.showMessageDialog(null,""+a);
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
+                    WindowPhrase.dispose();
+                    JOptionPane.showMessageDialog(null,""+e);
                 }
             }
         }

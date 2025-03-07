@@ -3238,7 +3238,6 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                               "}";
 
                         System.out.println("URL Akses file :"+koneksiDB.URLAKSESFILEESIGN());
-                        System.out.println("JSON Dikirim :"+json);
                         post.setEntity(new StringEntity(json));
                         try (CloseableHttpResponse response = httpClient.execute(post)) {
                             System.out.println("Response Status : " + response.getCode());
@@ -3252,17 +3251,23 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     JOptionPane.showMessageDialog(null,"Proses tanda tangan berhasil...");
                                     Desktop.getDesktop().browse(new File("RPP"+NoRawat.getText().trim().replaceAll("/","")+".pdf").toURI());
                                 } catch (Exception e) {
+                                    WindowPhrase.dispose();
                                     JOptionPane.showMessageDialog(null,"Gagal mengkonversi base64 ke file...");
                                     System.out.println("Notif : " +e);
                                 }
                             } else {
+                                WindowPhrase.dispose();
                                 JOptionPane.showMessageDialog(null,"Code : "+root.path("metadata").path("code").asText()+" Pesan : "+root.path("metadata").path("message").asText());
                             }
                         } catch (IOException a) {
+                            WindowPhrase.dispose();
                             System.out.println("Notifikasi : " + a);
+                            JOptionPane.showMessageDialog(null,""+a);
                         }
                     } catch (Exception e) {
+                        WindowPhrase.dispose();
                         System.out.println("Notifikasi : " + e);
+                        JOptionPane.showMessageDialog(null,""+e);
                     }
                 }
             } catch (Exception e) {
