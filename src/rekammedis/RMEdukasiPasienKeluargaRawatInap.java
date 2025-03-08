@@ -385,7 +385,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Edukasi Pasien & Keluarga Terintegrasi Rawat Jalan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Edukasi Pasien & Keluarga Terintegrasi Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -559,7 +559,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -573,7 +573,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -674,6 +674,11 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
+        TNoRw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TNoRwActionPerformed(evt);
+            }
+        });
         TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TNoRwKeyPressed(evt);
@@ -694,7 +699,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-03-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1316,7 +1321,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
         }else{
-            if(Sequel.menyimpantf("edukasi_pasien_keluarga_rj","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",28,new String[]{
+            if(Sequel.menyimpantf("edukasi_pasien_keluarga_ri","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",28,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 NIP.getText(),Bicara.getSelectedItem().toString(),KeteranganBicara.getText(),KeteranganBahasa.getText(),Penerjemah.getSelectedItem().toString(),
                 KeteranganPenerjemah.getText(),BahasaIsyarat.getSelectedItem().toString(),CaraBelajar.getSelectedItem().toString(),HambatanBelajar.getSelectedItem().toString(),
@@ -1546,7 +1551,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA EDUKASI PASIEN DAN KELUARGA TERINTEGRASI RAWAT JALAN<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA EDUKASI PASIEN DAN KELUARGA TERINTEGRASI RAWAT INAP<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1685,22 +1690,22 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),33).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),32).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirEdukasiPasienRJ.jasper","report","::[ Formulir Edukasi Pasien & Keluarga Terintegrasi Rawat Jalan ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
-                    "edukasi_pasien_keluarga_rj.bicara,edukasi_pasien_keluarga_rj.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_rj.bahasa_sehari,"+
-                    "edukasi_pasien_keluarga_rj.perlu_penerjemah,edukasi_pasien_keluarga_rj.keterangan_penerjemah,edukasi_pasien_keluarga_rj.bahasa_isyarat,"+
-                    "edukasi_pasien_keluarga_rj.cara_belajar,edukasi_pasien_keluarga_rj.hambatan_belajar,edukasi_pasien_keluarga_rj.keterangan_hambatan_belajar,"+
-                    "edukasi_pasien_keluarga_rj.kemampuan_belajar,edukasi_pasien_keluarga_rj.keterangan_kemampuan_belajar,pasien.pnd,"+
-                    "edukasi_pasien_keluarga_rj.penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keputusan_memilih_layanan,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_rj.keyakinan_terhadap_terapi,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_rj.aspek_keyakinan_dipertimbangkan,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_rj.kesediaan_menerima_informasi,"+
-                    "edukasi_pasien_keluarga_rj.topik_edukasi_penyakit,edukasi_pasien_keluarga_rj.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_rj.topik_edukasi_pengobatan,"+
-                    "edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_rj.nip,petugas.nama,edukasi_pasien_keluarga_rj.keperawatan "+
-                    "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
+            Valid.MyReportqry("rptFormulirEdukasiPasienRI.jasper","report","::[ Formulir Edukasi Pasien & Keluarga Terintegrasi Rawat Inap ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_ri.tanggal,"+
+                    "edukasi_pasien_keluarga_ri.bicara,edukasi_pasien_keluarga_ri.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_ri.bahasa_sehari,"+
+                    "edukasi_pasien_keluarga_ri.perlu_penerjemah,edukasi_pasien_keluarga_ri.keterangan_penerjemah,edukasi_pasien_keluarga_ri.bahasa_isyarat,"+
+                    "edukasi_pasien_keluarga_ri.cara_belajar,edukasi_pasien_keluarga_ri.hambatan_belajar,edukasi_pasien_keluarga_ri.keterangan_hambatan_belajar,"+
+                    "edukasi_pasien_keluarga_ri.kemampuan_belajar,edukasi_pasien_keluarga_ri.keterangan_kemampuan_belajar,pasien.pnd,"+
+                    "edukasi_pasien_keluarga_ri.penyakitnya_merupakan,edukasi_pasien_keluarga_ri.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_ri.keputusan_memilih_layanan,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_ri.keyakinan_terhadap_terapi,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_ri.aspek_keyakinan_dipertimbangkan,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_ri.kesediaan_menerima_informasi,"+
+                    "edukasi_pasien_keluarga_ri.topik_edukasi_penyakit,edukasi_pasien_keluarga_ri.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_ri.topik_edukasi_pengobatan,"+
+                    "edukasi_pasien_keluarga_ri.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_ri.nip,petugas.nama,edukasi_pasien_keluarga_ri.keperawatan "+
+                    "from edukasi_pasien_keluarga_ri inner join reg_periksa on edukasi_pasien_keluarga_ri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                    "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "inner join petugas on edukasi_pasien_keluarga_ri.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnEdukasiPasienKeluargaActionPerformed
 
@@ -1819,6 +1824,10 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
     private void HasilLayanan1keperawatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HasilLayanan1keperawatanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_HasilLayanan1keperawatanActionPerformed
+
+    private void TNoRwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNoRwActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TNoRwActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1952,41 +1961,41 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
         try{
             if(TCari.getText().toString().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
-                    "edukasi_pasien_keluarga_rj.bicara,edukasi_pasien_keluarga_rj.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_rj.bahasa_sehari,"+
-                    "edukasi_pasien_keluarga_rj.perlu_penerjemah,edukasi_pasien_keluarga_rj.keterangan_penerjemah,edukasi_pasien_keluarga_rj.bahasa_isyarat,"+
-                    "edukasi_pasien_keluarga_rj.cara_belajar,edukasi_pasien_keluarga_rj.hambatan_belajar,edukasi_pasien_keluarga_rj.keterangan_hambatan_belajar,"+
-                    "edukasi_pasien_keluarga_rj.kemampuan_belajar,edukasi_pasien_keluarga_rj.keterangan_kemampuan_belajar,pasien.pnd,"+
-                    "edukasi_pasien_keluarga_rj.penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keputusan_memilih_layanan,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_rj.keyakinan_terhadap_terapi,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_rj.aspek_keyakinan_dipertimbangkan,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_rj.kesediaan_menerima_informasi,"+
-                    "edukasi_pasien_keluarga_rj.topik_edukasi_penyakit,edukasi_pasien_keluarga_rj.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_rj.topik_edukasi_pengobatan,"+
-                    "edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_rj.nip,petugas.nama,edukasi_pasien_keluarga_rj.keperawatan "+
-                    "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_ri.tanggal,"+
+                    "edukasi_pasien_keluarga_ri.bicara,edukasi_pasien_keluarga_ri.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_ri.bahasa_sehari,"+
+                    "edukasi_pasien_keluarga_ri.perlu_penerjemah,edukasi_pasien_keluarga_ri.keterangan_penerjemah,edukasi_pasien_keluarga_ri.bahasa_isyarat,"+
+                    "edukasi_pasien_keluarga_ri.cara_belajar,edukasi_pasien_keluarga_ri.hambatan_belajar,edukasi_pasien_keluarga_ri.keterangan_hambatan_belajar,"+
+                    "edukasi_pasien_keluarga_ri.kemampuan_belajar,edukasi_pasien_keluarga_ri.keterangan_kemampuan_belajar,pasien.pnd,"+
+                    "edukasi_pasien_keluarga_ri.penyakitnya_merupakan,edukasi_pasien_keluarga_ri.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_ri.keputusan_memilih_layanan,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_ri.keyakinan_terhadap_terapi,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_ri.aspek_keyakinan_dipertimbangkan,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_ri.kesediaan_menerima_informasi,"+
+                    "edukasi_pasien_keluarga_ri.topik_edukasi_penyakit,edukasi_pasien_keluarga_ri.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_ri.topik_edukasi_pengobatan,"+
+                    "edukasi_pasien_keluarga_ri.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_ri.nip,petugas.nama,edukasi_pasien_keluarga_ri.keperawatan "+
+                    "from edukasi_pasien_keluarga_ri inner join reg_periksa on edukasi_pasien_keluarga_ri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                    "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where "+
-                    "edukasi_pasien_keluarga_rj.tanggal between ? and ? order by edukasi_pasien_keluarga_rj.tanggal");
+                    "inner join petugas on edukasi_pasien_keluarga_ri.nip=petugas.nip where "+
+                    "edukasi_pasien_keluarga_ri.tanggal between ? and ? order by edukasi_pasien_keluarga_ri.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,"+
-                    "edukasi_pasien_keluarga_rj.bicara,edukasi_pasien_keluarga_rj.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_rj.bahasa_sehari,"+
-                    "edukasi_pasien_keluarga_rj.perlu_penerjemah,edukasi_pasien_keluarga_rj.keterangan_penerjemah,edukasi_pasien_keluarga_rj.bahasa_isyarat,"+
-                    "edukasi_pasien_keluarga_rj.cara_belajar,edukasi_pasien_keluarga_rj.hambatan_belajar,edukasi_pasien_keluarga_rj.keterangan_hambatan_belajar,"+
-                    "edukasi_pasien_keluarga_rj.kemampuan_belajar,edukasi_pasien_keluarga_rj.keterangan_kemampuan_belajar,pasien.pnd,"+
-                    "edukasi_pasien_keluarga_rj.penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keputusan_memilih_layanan,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_rj.keyakinan_terhadap_terapi,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_rj.aspek_keyakinan_dipertimbangkan,"+
-                    "edukasi_pasien_keluarga_rj.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_rj.kesediaan_menerima_informasi,"+
-                    "edukasi_pasien_keluarga_rj.topik_edukasi_penyakit,edukasi_pasien_keluarga_rj.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_rj.topik_edukasi_pengobatan,"+
-                    "edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_rj.keperawatan,edukasi_pasien_keluarga_rj.nip,petugas.nama "+
-                    "from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_ri.tanggal,"+
+                    "edukasi_pasien_keluarga_ri.bicara,edukasi_pasien_keluarga_ri.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_ri.bahasa_sehari,"+
+                    "edukasi_pasien_keluarga_ri.perlu_penerjemah,edukasi_pasien_keluarga_ri.keterangan_penerjemah,edukasi_pasien_keluarga_ri.bahasa_isyarat,"+
+                    "edukasi_pasien_keluarga_ri.cara_belajar,edukasi_pasien_keluarga_ri.hambatan_belajar,edukasi_pasien_keluarga_ri.keterangan_hambatan_belajar,"+
+                    "edukasi_pasien_keluarga_ri.kemampuan_belajar,edukasi_pasien_keluarga_ri.keterangan_kemampuan_belajar,pasien.pnd,"+
+                    "edukasi_pasien_keluarga_ri.penyakitnya_merupakan,edukasi_pasien_keluarga_ri.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_ri.keputusan_memilih_layanan,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_ri.keyakinan_terhadap_terapi,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_ri.aspek_keyakinan_dipertimbangkan,"+
+                    "edukasi_pasien_keluarga_ri.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_ri.kesediaan_menerima_informasi,"+
+                    "edukasi_pasien_keluarga_ri.topik_edukasi_penyakit,edukasi_pasien_keluarga_ri.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_ri.topik_edukasi_pengobatan,"+
+                    "edukasi_pasien_keluarga_ri.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_ri.keperawatan,edukasi_pasien_keluarga_ri.nip,petugas.nama "+
+                    "from edukasi_pasien_keluarga_ri inner join reg_periksa on edukasi_pasien_keluarga_ri.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                    "inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip where "+
-                    "edukasi_pasien_keluarga_rj.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or edukasi_pasien_keluarga_rj.nip like ? or petugas.nama like ?) "+
-                    "order by edukasi_pasien_keluarga_rj.tanggal ");
+                    "inner join petugas on edukasi_pasien_keluarga_ri.nip=petugas.nip where "+
+                    "edukasi_pasien_keluarga_ri.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or edukasi_pasien_keluarga_ri.nip like ? or petugas.nama like ?) "+
+                    "order by edukasi_pasien_keluarga_ri.tanggal ");
             }
                 
             try {
@@ -2173,10 +2182,10 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getedukasi_pasien_keluarga_rj());
-        BtnHapus.setEnabled(akses.getedukasi_pasien_keluarga_rj());
-        BtnEdit.setEnabled(akses.getedukasi_pasien_keluarga_rj());
-        BtnPrint.setEnabled(akses.getedukasi_pasien_keluarga_rj()); 
+        BtnSimpan.setEnabled(akses.getedukasi_pasien_keluarga_ri());
+        BtnHapus.setEnabled(akses.getedukasi_pasien_keluarga_ri());
+        BtnEdit.setEnabled(akses.getedukasi_pasien_keluarga_ri());
+        BtnPrint.setEnabled(akses.getedukasi_pasien_keluarga_ri()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2243,7 +2252,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("edukasi_pasien_keluarga_rj","no_rawat=?","no_rawat=?,tanggal=?,nip=?,bicara=?,keterangan_bicara=?,bahasa_sehari=?,perlu_penerjemah=?,"+
+        if(Sequel.mengedittf("edukasi_pasien_keluarga_ri","no_rawat=?","no_rawat=?,tanggal=?,nip=?,bicara=?,keterangan_bicara=?,bahasa_sehari=?,perlu_penerjemah=?,"+
             "keterangan_penerjemah=?,bahasa_isyarat=?,cara_belajar=?,hambatan_belajar=?,keterangan_hambatan_belajar=?,kemampuan_belajar=?,keterangan_kemampuan_belajar=?,"+
             "penyakitnya_merupakan=?,keterangan_penyakitnya_merupakan=?,keputusan_memilih_layanan=?,keterangan_keputusan_memilih_layanan=?,keyakinan_terhadap_terapi=?,"+
             "keterangan_keyakinan_terhadap_terapi=?,aspek_keyakinan_dipertimbangkan=?,keterangan_aspek_keyakinan_dipertimbangkan=?,kesediaan_menerima_informasi=?,"+
@@ -2299,7 +2308,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from edukasi_pasien_keluarga_rj where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from edukasi_pasien_keluarga_ri where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
