@@ -78,7 +78,6 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
             Beban_Jasa_Medik_Paramedis_Tindakan_Ranap="",Utang_Jasa_Medik_Paramedis_Tindakan_Ranap="",Beban_KSO_Tindakan_Ranap="",Utang_KSO_Tindakan_Ranap="",
             Beban_Jasa_Sarana_Tindakan_Ranap="",Utang_Jasa_Sarana_Tindakan_Ranap="",Beban_Jasa_Menejemen_Tindakan_Ranap="",Utang_Jasa_Menejemen_Tindakan_Ranap="",
             HPP_BHP_Tindakan_Ranap="",Persediaan_BHP_Tindakan_Ranap="",norawatibu="",utc="";
-    public DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -248,42 +247,6 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        ktg.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(ktg.getTable().getSelectedRow()!= -1){                   
-                    KdKtg.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),1).toString());
-                    NmKtg.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),2).toString());
-                }     
-                KdKtg.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        ktg.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    ktg.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
         });
         
         TCari.requestFocus();
@@ -1282,6 +1245,42 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }//GEN-LAST:event_NmKtgKeyPressed
 
     private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
+        DlgKtgPerawatan ktg=new DlgKtgPerawatan(null,false);
+        ktg.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(ktg.getTable().getSelectedRow()!= -1){                   
+                    KdKtg.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),1).toString());
+                    NmKtg.setText(ktg.getTable().getValueAt(ktg.getTable().getSelectedRow(),2).toString());
+                }     
+                KdKtg.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        ktg.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    ktg.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         ktg.emptTeks();
         ktg.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         ktg.setLocationRelativeTo(internalFrame1);
@@ -1566,18 +1565,40 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             root = mapper.readTree(myObj);
             response = root.path("tarifranap");
             if(response.isArray()){
-                if(TCari.getText().trim().equals("")){
-                    for(JsonNode list:response){
-                        tabMode.addRow(new Object[]{
-                            false,list.path("Kode").asText(),list.path("NamaPerawatan").asText(),list.path("KategoriPerawatan").asText(),list.path("Tarif").asDouble(),list.path("BagianRS").asDouble(),list.path("BHP").asDouble(),list.path("JMDokter").asDouble(),list.path("JMPerawat").asDouble(),list.path("KSO").asDouble(),list.path("Menejemen").asDouble(),list.path("Kelas").asText()
-                        });
-                    }
-                }else{
-                    for(JsonNode list:response){
-                        if((list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaPerawatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("KategoriPerawatan").asText().toLowerCase().contains(TCari.getText().toLowerCase()))&&list.path("KategoriPerawatan").asText().toLowerCase().contains(NmKtg.getText().toLowerCase())){
+                if(NmKtg.getText().trim().equals("")){
+                    if(TCari.getText().trim().equals("")){
+                        for(JsonNode list:response){
                             tabMode.addRow(new Object[]{
                                 false,list.path("Kode").asText(),list.path("NamaPerawatan").asText(),list.path("KategoriPerawatan").asText(),list.path("Tarif").asDouble(),list.path("BagianRS").asDouble(),list.path("BHP").asDouble(),list.path("JMDokter").asDouble(),list.path("JMPerawat").asDouble(),list.path("KSO").asDouble(),list.path("Menejemen").asDouble(),list.path("Kelas").asText()
                             });
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if(list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaPerawatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("KategoriPerawatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("Kode").asText(),list.path("NamaPerawatan").asText(),list.path("KategoriPerawatan").asText(),list.path("Tarif").asDouble(),list.path("BagianRS").asDouble(),list.path("BHP").asDouble(),list.path("JMDokter").asDouble(),list.path("JMPerawat").asDouble(),list.path("KSO").asDouble(),list.path("Menejemen").asDouble(),list.path("Kelas").asText()
+                                });
+                            }
+                        }
+                    }
+                }else{
+                    if(TCari.getText().trim().equals("")){
+                        for(JsonNode list:response){
+                            if(list.path("KategoriPerawatan").asText().equals(NmKtg.getText())){
+                                tabMode.addRow(new Object[]{
+                                    false,list.path("Kode").asText(),list.path("NamaPerawatan").asText(),list.path("KategoriPerawatan").asText(),list.path("Tarif").asDouble(),list.path("BagianRS").asDouble(),list.path("BHP").asDouble(),list.path("JMDokter").asDouble(),list.path("JMPerawat").asDouble(),list.path("KSO").asDouble(),list.path("Menejemen").asDouble(),list.path("Kelas").asText()
+                                });
+                            }
+                        }
+                    }else{
+                        for(JsonNode list:response){
+                            if(list.path("KategoriPerawatan").asText().equals(NmKtg.getText())){
+                                if(list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaPerawatan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                                    tabMode.addRow(new Object[]{
+                                        false,list.path("Kode").asText(),list.path("NamaPerawatan").asText(),list.path("KategoriPerawatan").asText(),list.path("Tarif").asDouble(),list.path("BagianRS").asDouble(),list.path("BHP").asDouble(),list.path("JMDokter").asDouble(),list.path("JMPerawat").asDouble(),list.path("KSO").asDouble(),list.path("Menejemen").asDouble(),list.path("Kelas").asText()
+                                    });
+                                }
+                            }
                         }
                     }
                 }
