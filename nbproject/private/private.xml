@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="7">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="8">
         <file>
-            <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
-            <bookmark id="2">
+            <url>src/simrskhanza/DlgKamarInap.java</url>
+            <bookmark id="8">
                 <name/>
-                <line>1878</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
-            <url>src/keuangan/DlgPendapatanPerCaraBayar.java</url>
-            <bookmark id="4">
-                <name/>
-                <line>552</line>
+                <line>9143</line>
                 <key/>
             </bookmark>
         </file>
@@ -30,12 +22,32 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>1878</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/keuangan/DlgPendapatanPerCaraBayar.java</url>
+            <bookmark id="4">
+                <name/>
+                <line>552</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/simrskhanza/DlgIGD.java</file>
+            <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/rekammedis/RMSignOutSebelumMenutupLuka.java</file>
+            <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/simrskhanza/DlgKamarInap.java</file>
+            <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/rekammedis/RMEdukasiPasienKeluargaRawatInap.java</file>
             <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/rekammedis/RMEdukasiPasienKeluargaRawatJalan.java</file>
             <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/keuangan/DlgBilingRanap.java</file>
+            <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/simrskhanza/SIMRSKhanza.java</file>
             <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/simrskhanza/DlgReg.java</file>
         </group>
     </open-files>
