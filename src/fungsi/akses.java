@@ -203,7 +203,7 @@ public final class akses {
             rekonsiliasi_obat=false,biaya_pengadaan_dapur=false,rekap_pengadaan_dapur=false,kesling_limbah_b3medis_cair=false,grafik_limbahb3cair_pertanggal=false,
             grafik_limbahb3cair_perbulan=false,rekap_biaya_registrasi=false,konfirmasi_rekonsiliasi_obat=false,satu_sehat_kirim_clinicalimpression=false,
             penilaian_pasien_terminal=false,surat_persetujuan_rawat_inap=false,monitoring_reaksi_tranfusi=false,penilaian_korban_kekerasan=false,
-            penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false,penilaian_pasien_penyakit_menular=false,edukasi_pasien_keluarga_rj=false,edukasi_pasien_keluarga_ri=false,pemantauan_pews_dewasa=false,
+            penilaian_lanjutan_resiko_jatuh_lansia=false,mpp_skrining=false,penilaian_pasien_penyakit_menular=false,edukasi_pasien_keluarga_rj=false,pemantauan_pews_dewasa=false,
             penilaian_tambahan_bunuh_diri=false,bpjs_antrean_pertanggal=false,penilaian_tambahan_perilaku_kekerasan=false,penilaian_tambahan_beresiko_melarikan_diri=false,
             persetujuan_penundaan_pelayanan=false,sisa_diet_pasien=false,penilaian_awal_medis_ralan_bedah_mulut=false,penilaian_pasien_keracunan=false,
             pemantauan_meows_obstetri=false,catatan_adime_gizi=false,pengajuan_biaya=false,penilaian_awal_keperawatan_ralan_geriatri=false,master_masalah_keperawatan_geriatri=false,
@@ -225,7 +225,7 @@ public final class akses {
             master_masalah_keperawatan_neonatus=false,master_rencana_keperawatan_neonatus=false,penilaian_awal_keperawatan_ranap_neonatus=false,
             satu_sehat_kirim_observation_radiologi=false,satu_sehat_kirim_diagnosticreport_radiologi=false,hasil_endoskopi_telinga=false,satu_sehat_mapping_lab=false,
             satu_sehat_kirim_servicerequest_lab=false,satu_sehat_kirim_servicerequest_labmb=false,satu_sehat_kirim_specimen_lab=false,satu_sehat_kirim_specimen_labmb=false,
-            satu_sehat_kirim_observation_lab=false,satu_sehat_kirim_observation_labmb=false;
+            satu_sehat_kirim_observation_lab=false,satu_sehat_kirim_observation_labmb=false,edukasi_pasien_keluarga_ri=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1181,7 +1181,6 @@ public final class akses {
                         akses.mpp_skrining=true;
                         akses.penilaian_pasien_penyakit_menular=true;
                         akses.edukasi_pasien_keluarga_rj=true;
-                        akses.edukasi_pasien_keluarga_ri=true;
                         akses.pemantauan_pews_dewasa=true;
                         akses.penilaian_tambahan_bunuh_diri=true;
                         akses.bpjs_antrean_pertanggal=true;
@@ -1275,6 +1274,7 @@ public final class akses {
                         akses.satu_sehat_kirim_specimen_labmb=true;
                         akses.satu_sehat_kirim_observation_lab=true;
                         akses.satu_sehat_kirim_observation_labmb=true;
+                        akses.edukasi_pasien_keluarga_ri=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2214,7 +2214,6 @@ public final class akses {
                         akses.mpp_skrining=rs2.getBoolean("mpp_skrining");
                         akses.penilaian_pasien_penyakit_menular=rs2.getBoolean("penilaian_pasien_penyakit_menular");
                         akses.edukasi_pasien_keluarga_rj=rs2.getBoolean("edukasi_pasien_keluarga_rj");
-                        akses.edukasi_pasien_keluarga_rj=rs2.getBoolean("edukasi_pasien_keluarga_ri");
                         akses.pemantauan_pews_dewasa=rs2.getBoolean("pemantauan_pews_dewasa");
                         akses.penilaian_tambahan_bunuh_diri=rs2.getBoolean("penilaian_tambahan_bunuh_diri");
                         akses.bpjs_antrean_pertanggal=rs2.getBoolean("bpjs_antrean_pertanggal");
@@ -2308,6 +2307,7 @@ public final class akses {
                         akses.satu_sehat_kirim_specimen_labmb=rs2.getBoolean("satu_sehat_kirim_specimen_labmb");
                         akses.satu_sehat_kirim_observation_lab=rs2.getBoolean("satu_sehat_kirim_observation_lab");
                         akses.satu_sehat_kirim_observation_labmb=rs2.getBoolean("satu_sehat_kirim_observation_labmb");
+                        akses.edukasi_pasien_keluarga_ri=rs2.getBoolean("edukasi_pasien_keluarga_ri");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3245,7 +3245,6 @@ public final class akses {
                         akses.mpp_skrining=false;
                         akses.penilaian_pasien_penyakit_menular=false;
                         akses.edukasi_pasien_keluarga_rj=false;
-                        akses.edukasi_pasien_keluarga_ri=false;
                         akses.pemantauan_pews_dewasa=false;
                         akses.penilaian_tambahan_bunuh_diri=false;
                         akses.bpjs_antrean_pertanggal=false;
@@ -3339,6 +3338,7 @@ public final class akses {
                         akses.satu_sehat_kirim_specimen_labmb=false;
                         akses.satu_sehat_kirim_observation_lab=false;
                         akses.satu_sehat_kirim_observation_labmb=false;
+                        akses.edukasi_pasien_keluarga_ri=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4299,7 +4299,6 @@ public final class akses {
         akses.mpp_skrining=false;
         akses.penilaian_pasien_penyakit_menular=false;
         akses.edukasi_pasien_keluarga_rj=false;
-        akses.edukasi_pasien_keluarga_ri=false;
         akses.pemantauan_pews_dewasa=false;
         akses.penilaian_tambahan_bunuh_diri=false;
         akses.bpjs_antrean_pertanggal=false;
@@ -4393,6 +4392,7 @@ public final class akses {
         akses.satu_sehat_kirim_specimen_labmb=false;
         akses.satu_sehat_kirim_observation_lab=false;
         akses.satu_sehat_kirim_observation_labmb=false;
+        akses.edukasi_pasien_keluarga_ri=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5369,7 +5369,6 @@ public final class akses {
     public static boolean getmpp_skrining(){return akses.mpp_skrining;}
     public static boolean getpenilaian_pasien_penyakit_menular(){return akses.penilaian_pasien_penyakit_menular;}
     public static boolean getedukasi_pasien_keluarga_rj(){return akses.edukasi_pasien_keluarga_rj;}
-    public static boolean getedukasi_pasien_keluarga_ri(){return akses.edukasi_pasien_keluarga_ri;}
     public static boolean getpemantauan_pews_dewasa(){return akses.pemantauan_pews_dewasa;}
     public static boolean getpenilaian_tambahan_bunuh_diri(){return akses.penilaian_tambahan_bunuh_diri;}
     public static boolean getbpjs_antrean_pertanggal(){return akses.bpjs_antrean_pertanggal;}
@@ -5463,6 +5462,7 @@ public final class akses {
     public static boolean getsatu_sehat_kirim_specimen_labmb(){return akses.satu_sehat_kirim_specimen_labmb;}
     public static boolean getsatu_sehat_kirim_observation_lab(){return akses.satu_sehat_kirim_observation_lab;}
     public static boolean getsatu_sehat_kirim_observation_labmb(){return akses.satu_sehat_kirim_observation_labmb;}
+    public static boolean getedukasi_pasien_keluarga_ri(){return akses.edukasi_pasien_keluarga_ri;}
 
 
 }   

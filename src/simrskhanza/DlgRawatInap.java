@@ -124,7 +124,7 @@ import rekammedis.RMSkriningNutrisiDewasa;
 import rekammedis.RMSkriningNutrisiLansia;
 import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
-
+import rekammedis.RMEdukasiPasienKeluargaRawatInap;
 /**
  *
  * @author perpustakaan
@@ -1369,6 +1369,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         BtnInformasiObat = new widget.Button();
         BtnRekonsiliasiObat = new widget.Button();
         BtnTransferAntarRuang = new widget.Button();
+        BtnPasienEdukasiKeluargaRawatInap  = new widget.Button();
         BtnPengkajianRestrain = new widget.Button();
         BtnPenilaianPasienTerminal = new widget.Button();
         BtnPenilaianKorbanKekerasan = new widget.Button();
@@ -4479,7 +4480,21 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 BtnTransferAntarRuangActionPerformed(evt);
             }
         });
-
+        BtnPasienEdukasiKeluargaRawatInap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
+        BtnPasienEdukasiKeluargaRawatInap.setText("Edukasi Pasien dan keluarga RI");
+        BtnPasienEdukasiKeluargaRawatInap.setFocusPainted(false);
+        BtnPasienEdukasiKeluargaRawatInap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnPasienEdukasiKeluargaRawatInap.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnPasienEdukasiKeluargaRawatInap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnPasienEdukasiKeluargaRawatInap.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnPasienEdukasiKeluargaRawatInap.setName(" BtnPasienEdukasiKeluargaRawatInap"); // NOI18N
+        BtnPasienEdukasiKeluargaRawatInap.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnPasienEdukasiKeluargaRawatInap.setRoundRect(false);
+        BtnPasienEdukasiKeluargaRawatInap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+             BtnPasienEdukasiKeluargaRawatInapActionPerformed(evt);
+            }
+        });
         BtnPengkajianRestrain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnPengkajianRestrain.setText("Pengkajian Restrain");
         BtnPengkajianRestrain.setFocusPainted(false);
@@ -7715,7 +7730,25 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnTransferAntarRuangActionPerformed
+    
+   private void BtnPasienEdukasiKeluargaRawatInapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTransferAntarRuangActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{ 
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMEdukasiPasienKeluargaRawatInap form=new RMEdukasiPasienKeluargaRawatInap(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }//GEN-LAST:event_ BtnPasienEdukasiKeluargaRawatInapActionPerformed
 
+    
     private void BtnCatatanCekGDSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanCekGDSActionPerformed
         if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -8683,6 +8716,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Button BtnSkriningNutrisiLansia;
     private widget.Button BtnTimeOutSebelumInsisi;
     private widget.Button BtnTransferAntarRuang;
+    private widget.Button BtnPasienEdukasiKeluargaRawatInap;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkInput1;
@@ -9437,6 +9471,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnTransferAntarRuang.setVisible(akses.gettransfer_pasien_antar_ruang()); 
         if(akses.gettransfer_pasien_antar_ruang()==true){
+            tinggi=tinggi+24;
+        }
+        ///edukasipasiendankeuarga
+        BtnPasienEdukasiKeluargaRawatInap.setVisible(akses.getedukasi_pasien_keluarga_ri()); 
+        if(akses.getedukasi_pasien_keluarga_ri()==true){
             tinggi=tinggi+24;
         }
         BtnCatatanCekGDS.setVisible(akses.getcatatan_cek_gds()); 
@@ -10257,6 +10296,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnInformasiObat);
         FormMenu.add(BtnRekonsiliasiObat);
         FormMenu.add(BtnTransferAntarRuang);
+        FormMenu.add(BtnPasienEdukasiKeluargaRawatInap);
         FormMenu.add(BtnPengkajianRestrain);
         FormMenu.add(BtnPenilaianPasienTerminal);
         FormMenu.add(BtnPenilaianKorbanKekerasan);
