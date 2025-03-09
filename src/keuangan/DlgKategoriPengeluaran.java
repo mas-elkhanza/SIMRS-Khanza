@@ -19,7 +19,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -45,9 +44,8 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps,ps2;
-    private ResultSet rs,rs2;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
+    private PreparedStatement ps;
+    private ResultSet rs;
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
     private String asalform="",akun="",kontrakun="";
     private int pilihan=0;
@@ -153,17 +151,7 @@ public final class DlgKategoriPengeluaran extends javax.swing.JDialog {
             }
             @Override
             public void keyReleased(KeyEvent e) {}
-        });  
-        
-        try {
-            ps=koneksi.prepareStatement(
-                 "select * from kategori_pengeluaran_harian "+
-                 "where kode_kategori like ? or "+
-                 "nama_kategori like ? order by nama_kategori");            
-            ps2=koneksi.prepareStatement("select rekening.nm_rek from rekening where rekening.kd_rek=?");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        }); 
     }
 
 
@@ -858,26 +846,30 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
 
     public void tampil() {
         Valid.tabelKosong(tabMode);
-        try{            
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                akun="";
-                kontrakun="";
-                ps2.setString(1,rs.getString(3));
-                rs2=ps2.executeQuery();
-                if(rs2.next()){
-                    akun=rs2.getString(1);
+        try{    
+            ps=koneksi.prepareStatement(
+                     "select * from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori like ? or "+
+                     "kategori_pengeluaran_harian.nama_kategori like ? order by kategori_pengeluaran_harian.nama_kategori");  
+            try {
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    akun=Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",rs.getString(3));
+                    kontrakun=Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",rs.getString(4));
+                    tabMode.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),akun,kontrakun
+                    });
+                }   
+            } catch (Exception e) {
+                System.out.println(e);
+            }finally{
+                if(rs!=null){
+                    rs.close();
                 }
-                ps2.setString(1,rs.getString(4));
-                rs2=ps2.executeQuery();
-                if(rs2.next()){
-                    kontrakun=rs2.getString(1);
+                if(ps!=null){
+                    ps.close();
                 }
-                tabMode.addRow(new Object[]{
-                    rs.getString(1),rs.getString(2),akun,kontrakun
-                });
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
@@ -903,8 +895,8 @@ private void NmAkunKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Nm
             Nm.setText(tbKamar.getValueAt(row,1).toString());
             NmAkun.setText(tbKamar.getValueAt(row,2).toString());
             NmKontraAKun.setText(tbKamar.getValueAt(row,3).toString());
-            Sequel.cariIsi("select kd_rek from kategori_pengeluaran_harian where kode_kategori=?",KdAkun,tbKamar.getValueAt(row,0).toString());
-            Sequel.cariIsi("select kd_rek2 from kategori_pengeluaran_harian where kode_kategori=?",KdKontraAkun,tbKamar.getValueAt(row,0).toString());
+            Sequel.cariIsi("select kategori_pengeluaran_harian.kd_rek from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?",KdAkun,tbKamar.getValueAt(row,0).toString());
+            Sequel.cariIsi("select kategori_pengeluaran_harian.kd_rek2 from kategori_pengeluaran_harian where kategori_pengeluaran_harian.kode_kategori=?",KdKontraAkun,tbKamar.getValueAt(row,0).toString());
         }
     }
 
