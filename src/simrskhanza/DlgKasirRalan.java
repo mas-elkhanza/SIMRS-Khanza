@@ -16873,6 +16873,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnDataRM.add(MnRMRawatJalan);
         MnDataRM.add(MnRMOperasi);
         MnDataRM.add(MnRMHCU);
+        MnDataRM.add(MnRehabMedik);
         MnDataRM.add(MnRMRisikoJatuh);
         MnDataRM.add(MnPenilaianLain);
         MnDataRM.add(MnRMFarmasi);

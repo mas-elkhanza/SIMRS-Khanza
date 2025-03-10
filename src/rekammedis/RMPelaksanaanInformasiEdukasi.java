@@ -201,8 +201,6 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         ChkAccor.setSelected(false);
         isPhoto();
         
-        
-        
         try {
             TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
         } catch (Exception e) {
