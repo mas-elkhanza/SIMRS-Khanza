@@ -281,6 +281,39 @@ public final class validasi {
         }
     }
     
+    public void autoNomer7(String sql,String strAwal,Integer pnj,javax.swing.JTextField teks){
+        try {
+            ps=connect.prepareStatement(sql);
+            try{   
+                rs=ps.executeQuery();
+                s="1";
+                while(rs.next()){
+                    s=Integer.toString(Integer.parseInt(rs.getString(1))+1);
+                }            
+
+                j=s.length();
+                s1="";
+                for(i = 1;i<=pnj-j;i++){
+                    s1=s1+"0";
+                }
+                teks.setText(s1+s+strAwal);
+             }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+                JOptionPane.showMessageDialog(null,"Maaf, Query tidak bisa dijalankan...!!!!");
+             }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+    }
+    
     public String autoNomer(String tabel,String strAwal,Integer pnj){
         try {
             auto="";

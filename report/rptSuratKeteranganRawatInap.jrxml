@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ca8e316-5e4c-4bbe-bad5-394bd0979269">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -61,9 +61,11 @@
 	<detail>
 		<band height="802" splitType="Stretch">
 			<textField>
-				<reportElement x="74" y="23" width="476" height="14" uuid="4f4b0512-d5d9-425c-81aa-e3f2be8f7ce8"/>
+				<reportElement x="74" y="22" width="480" height="14" uuid="4f4b0512-d5d9-425c-81aa-e3f2be8f7ce8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="8"/>
+					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{alamatrs}]]></textFieldExpression>
@@ -77,7 +79,7 @@
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="72" y="53" width="480" height="17" uuid="e50338a0-4f98-4456-aea0-a1472af7a2cf"/>
+				<reportElement x="74" y="50" width="480" height="17" uuid="e50338a0-4f98-4456-aea0-a1472af7a2cf"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -85,7 +87,7 @@
 				<textFieldExpression><![CDATA[$P{kontakrs}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="340" y="350" width="214" height="27" uuid="05a206ab-f7e8-4703-bb42-1e42c18557f8"/>
+				<reportElement x="335" y="381" width="214" height="27" uuid="05a206ab-f7e8-4703-bb42-1e42c18557f8"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -93,7 +95,7 @@
 				<textFieldExpression><![CDATA[$P{dokter}]]></textFieldExpression>
 			</textField>
 			<image scaleImage="FillFrame" onErrorType="Blank">
-				<reportElement x="0" y="0" width="70" height="70" uuid="142c268b-d926-4b16-8e4c-96100c96f48b"/>
+				<reportElement x="0" y="0" width="65" height="70" uuid="142c268b-d926-4b16-8e4c-96100c96f48b"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
 			<line direction="BottomUp">
@@ -103,7 +105,7 @@
 				</graphicElement>
 			</line>
 			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="340" y="279" width="214" height="21" uuid="851e45c7-7e2a-4c5c-b4cc-9667e15c65c7"/>
+				<reportElement x="335" y="310" width="214" height="21" uuid="851e45c7-7e2a-4c5c-b4cc-9667e15c65c7"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 					<paragraph lineSpacing="Single"/>
@@ -111,15 +113,15 @@
 				<textFieldExpression><![CDATA[$P{kotars}+", "+$P{TanggalAkhir}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="74" y="39" width="480" height="12" uuid="74394004-1023-4b3d-905f-83a3eb1ec641"/>
+				<reportElement x="74" y="36" width="480" height="14" uuid="74394004-1023-4b3d-905f-83a3eb1ec641"/>
 				<textElement textAlignment="Left">
-					<font fontName="Tahoma" size="8"/>
+					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kotars}+", "+$P{propinsirs}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="-1" y="75" width="555" height="17" uuid="4c0fbab1-bfa9-46b0-ae37-d1ff151f3d8d"/>
+				<reportElement x="-1" y="80" width="555" height="17" uuid="4c0fbab1-bfa9-46b0-ae37-d1ff151f3d8d"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12" isBold="true" isUnderline="true"/>
 					<paragraph lineSpacing="Single"/>
@@ -127,25 +129,132 @@
 				<text><![CDATA[SURAT KETERANGAN DIRAWAT]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="3" y="89" width="551" height="22" uuid="05c8850f-f665-42be-b850-6b9c32541e43"/>
+				<reportElement x="-1" y="94" width="557" height="22" uuid="05c8850f-f665-42be-b850-6b9c32541e43"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA["No. "+$P{nosakit}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="3" y="130" width="551" height="149" uuid="3d3b617d-1405-447d-9eba-beca7579446b"/>
-				<textElement>
-					<font fontName="Tahoma" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Yang bertanda tangan dibawah ini "+$P{dokter}+" dokter pada "+$P{namars}+" menyatakan bahwa yang bernama "+$F{nm_pasien}+" benar-benar di rawat di "+$P{namars}+" Tanggal "+$P{TanggalAwal}+" sampai dengan "+$P{TanggalAkhir}]]></textFieldExpression>
-			</textField>
 			<line direction="BottomUp">
-				<reportElement x="340" y="380" width="217" height="1" uuid="f9b33e42-983d-4004-a1b9-3fe7466776d3"/>
+				<reportElement x="335" y="397" width="217" height="1" uuid="f9b33e42-983d-4004-a1b9-3fe7466776d3"/>
 				<graphicElement>
 					<pen lineWidth="1.0" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<staticText>
+				<reportElement x="5" y="130" width="549" height="21" uuid="1591955b-0601-4fcf-aee3-119d94600f61"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[Yang bertanda tangan dibawah ini menerangkan bahwa :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="152" width="70" height="21" uuid="f9961947-80f9-41ea-9aeb-4732c2b5368b"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[Nama]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="173" width="69" height="21" uuid="7b127c2a-bac1-4eb4-bfdd-b65e15393f78"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[Umur]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="195" width="69" height="21" uuid="67d05aa9-a5f9-4b97-aa72-19dc4ceadbb4"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[Pekerjaan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="217" width="70" height="21" uuid="5bb9a33e-e297-4e12-a684-0a786c7bf2a7"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="278" width="550" height="31" uuid="ae7d281d-d0b4-41ce-9911-32f6b6d6758b"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[Demikian surat keterangan ini dibuat dengan sebenarnya untuk dapat digunakan sebagaimana mestinya.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="150" width="11" height="21" uuid="4c2c7d2d-c958-4ec5-bd54-5141fdc54c5e"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="173" width="11" height="21" uuid="4db63b41-93d0-4401-8169-c35be749603d"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="195" width="11" height="21" uuid="60d4e4c0-e547-4a35-a438-0dcf69ee9c17"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="217" width="11" height="21" uuid="355e479b-cf5a-4c41-b514-f62d679a70e5"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="86" y="217" width="389" height="21" uuid="178dcfcc-dec0-4979-b021-9918e6cc2fee"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="150" width="468" height="21" uuid="bfc2ea87-3095-4359-b1f7-002e4fe6d236"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="86" y="173" width="468" height="22" uuid="035b5544-6fec-4729-b4b0-d7f81e397b1c"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{umur}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="196" width="469" height="17" uuid="04f6cf03-e87a-463d-a57d-509f8d96fcaa"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pekerjaan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="239" width="550" height="20" uuid="e483aad5-9400-4ee9-ad44-341d617cbe31"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Benar yang tersebut diatas dirawat di "+$P{namars} +" dari tanggal "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="259" width="550" height="19" uuid="cc3dce5c-1e46-4002-b337-1f577dda6501"/>
+				<textElement>
+					<font fontName="Tahoma" size="12"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TanggalAwal}+" sampai dengan "+$P{TanggalAkhir}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<summary>

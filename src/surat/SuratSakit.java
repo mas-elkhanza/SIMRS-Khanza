@@ -43,7 +43,7 @@ public final class SuratSakit extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String tgl,finger="",kodedokter="",namadokter="";
+    private String tgl,finger="",kodedokter="",namadokter="",bln_angka="",bln_romawi="";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -1192,8 +1192,10 @@ public final class SuratSakit extends javax.swing.JDialog {
         LamaSakit.setText("1 (Satu)");
         TanggalAwal.setDate(new Date());
         TanggalAkhir.setDate(new Date());
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(suratsakit.no_surat,3),signed)),0) from suratsakit where suratsakit.tanggalawal='"+Valid.SetTgl(TanggalAwal.getSelectedItem()+"")+"' ",
-                "SKS"+TanggalAwal.getSelectedItem().toString().substring(6,10)+TanggalAwal.getSelectedItem().toString().substring(3,5)+TanggalAwal.getSelectedItem().toString().substring(0,2),3,NoSurat); 
+   //     Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(suratsakit.no_surat,3),signed)),0) from suratsakit where suratsakit.tanggalawal='"+Valid.SetTgl(TanggalAwal.getSelectedItem()+"")+"' ",
+   //             "SKS"+TanggalAwal.getSelectedItem().toString().substring(6,10)+TanggalAwal.getSelectedItem().toString().substring(3,5)+TanggalAwal.getSelectedItem().toString().substring(0,2),3,NoSurat); 
+        
+        nomorSurat();
         NoSurat.requestFocus();
     }
 
@@ -1249,6 +1251,45 @@ public final class SuratSakit extends javax.swing.JDialog {
         BtnHapus.setEnabled(akses.getsurat_sakit());
         BtnEdit.setEnabled(akses.getsurat_sakit());
     }
+    
+        private void nomorSurat(){
+        bln_angka = "";
+        bln_romawi = "";
+        
+        bln_angka = TanggalAwal.getSelectedItem().toString().substring(3,5);
+        
+        if (bln_angka.equals("01")){
+            bln_romawi ="I";
+        }else if (bln_angka.equals("02")){
+            bln_romawi ="II";
+        }else if (bln_angka.equals("03")){
+            bln_romawi ="III";
+        }else if (bln_angka.equals("04")){
+            bln_romawi ="IV";
+        }else if (bln_angka.equals("05")){
+            bln_romawi ="V";
+        }else if (bln_angka.equals("06")){
+            bln_romawi ="VI";
+        }else if (bln_angka.equals("07")){
+            bln_romawi ="VII";
+        }else if (bln_angka.equals("08")){
+            bln_romawi ="VIII";
+        }else if (bln_angka.equals("09")){
+            bln_romawi ="IX";
+        }else if (bln_angka.equals("10")){
+            bln_romawi ="X";
+        }else if (bln_angka.equals("11")){
+            bln_romawi ="XI";
+        }else if (bln_angka.equals("12")){
+            bln_romawi ="XII";
+        }
+        
+        Valid.autoNomer7("select ifnull(MAX(CONVERT(LEFT(no_surat,3),signed)),0),MONTH(tanggalawal) bln from suratsakit where "
+                + "tanggalawal like '%" + Valid.SetTgl(TanggalAwal.getSelectedItem()+ "").substring(0, 7) + "%' ", "/SKS/RSUBM/" + bln_romawi + "/" + TanggalAwal.getSelectedItem().toString().substring(6,10), 3, NoSurat); 
+                bln_angka = Sequel.cariIsi("SELECT MONTH(tanggalawal) bln FROM suratsakit WHERE tanggalawal like '%" + Valid.SetTgl(TanggalAwal.getSelectedItem() + "").substring(0, 7) + "%'");
+    }
+    
+    
 }
 
 

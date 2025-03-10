@@ -4396,7 +4396,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     //menampilkan diagnosa penyakit
                     menampilkanDiagnosa(rs.getString("no_rawat"));
                     //menampilkan berkas digital
-                    menampilkanBerkasDigital(rs.getString("no_rawat"));
+ //                   menampilkanBerkasDigital(rs.getString("no_rawat"));
                     //menampilkan catatan dokter
                     if(chkCatatanDokter.isSelected()==true){
                         try {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9ca8e316-5e4c-4bbe-bad5-394bd0979269">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -57,11 +57,6 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 	<field name="tgl_lahirpj" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="tgl_lahirpj"/>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_lahirpj"/>
-	</field>
-	<field name="umurpj" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="umur"/>
-		<property name="com.jaspersoft.studio.field.label" value="umurpj"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="suratsakitpihak2"/>
 	</field>
 	<field name="jkpj" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="jk"/>
@@ -122,11 +117,6 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="umur" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.name" value="umur"/>
-		<property name="com.jaspersoft.studio.field.label" value="umur"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="pekerjaan" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="pekerjaan"/>
 		<property name="com.jaspersoft.studio.field.label" value="pekerjaan"/>
@@ -138,6 +128,9 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="umur" class="java.lang.String"/>
+	<field name="umurpj" class="java.lang.String"/>
+	<field name="umurpasien" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -317,16 +310,6 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<pen lineWidth="1.25"/>
 				</graphicElement>
 			</line>
-			<textField>
-				<reportElement x="122" y="216" width="184" height="14" uuid="cd034c99-6e06-4431-af3a-2282d0113046">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement>
-					<font fontName="Tahoma" size="10"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{umur}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="74" y="39" width="480" height="12" uuid="74394004-1023-4b3d-905f-83a3eb1ec641"/>
 				<textElement textAlignment="Left">
@@ -711,6 +694,13 @@ and suratsakitpihak2.no_rawat=reg_periksa.no_rawat and pasien.kd_kec=kecamatan.k
 					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
+			<textField>
+				<reportElement x="123" y="216" width="184" height="14" uuid="abe2f7d1-4fef-4da1-8e5b-a38ba7a0242b"/>
+				<textElement>
+					<font fontName="Tahoma" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{umurpasien}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<summary>
