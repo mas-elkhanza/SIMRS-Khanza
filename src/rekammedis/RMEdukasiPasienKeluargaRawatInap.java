@@ -2252,11 +2252,11 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("edukasi_pasien_keluarga_ri","no_rawat=?","no_rawat=?,tanggal=?,nip=?,bicara=?,keterangan_bicara=?,bahasa_sehari=?,perlu_penerjemah=?,"+
+        if(Sequel.mengedittf("edukasi_pasien_keluarga_ri","no_rawat=?","tanggal=?,nip=?,bicara=?,keterangan_bicara=?,bahasa_sehari=?,perlu_penerjemah=?,"+
             "keterangan_penerjemah=?,bahasa_isyarat=?,cara_belajar=?,hambatan_belajar=?,keterangan_hambatan_belajar=?,kemampuan_belajar=?,keterangan_kemampuan_belajar=?,"+
             "penyakitnya_merupakan=?,keterangan_penyakitnya_merupakan=?,keputusan_memilih_layanan=?,keterangan_keputusan_memilih_layanan=?,keyakinan_terhadap_terapi=?,"+
             "keterangan_keyakinan_terhadap_terapi=?,aspek_keyakinan_dipertimbangkan=?,keterangan_aspek_keyakinan_dipertimbangkan=?,kesediaan_menerima_informasi=?,"+
-            "topik_edukasi_penyakit=?,topik_edukasi_rencana_tindakan=?,topik_edukasi_pengobatan=?,topik_edukasi_hasil_layanan=?,keperawatan=?",28,new String[]{
+            "topik_edukasi_penyakit=?,topik_edukasi_rencana_tindakan=?,topik_edukasi_pengobatan=?,topik_edukasi_hasil_layanan=?,keperawatan=?",29,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             NIP.getText(),Bicara.getSelectedItem().toString(),KeteranganBicara.getText(),KeteranganBahasa.getText(),Penerjemah.getSelectedItem().toString(),
             KeteranganPenerjemah.getText(),BahasaIsyarat.getSelectedItem().toString(),CaraBelajar.getSelectedItem().toString(),HambatanBelajar.getSelectedItem().toString(),
@@ -2266,7 +2266,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
             AspekKeyakinan.getSelectedItem().toString(),KeteranganAspekKeyakinan.getText(),KesediaanInformasi.getSelectedItem().toString(),
             PenyakitYangDiderita.getSelectedItem().toString(),RencanaTindakan.getSelectedItem().toString(),PengobatanProsedur.getSelectedItem().toString(),
             HasilLayanan.getSelectedItem().toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
-            HasilLayanan1keperawatan.getSelectedItem().toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            HasilLayanan1keperawatan.getSelectedItem().toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2303,6 +2303,7 @@ public final class RMEdukasiPasienKeluargaRawatInap extends javax.swing.JDialog 
             tbObat.setValueAt(HasilLayanan1keperawatan.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
             tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),32);
             tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),33);
+            tbObat.setValueAt(jLabel74keperawatan.getText(),tbObat.getSelectedRow(),34);
             emptTeks();
         }
     }
