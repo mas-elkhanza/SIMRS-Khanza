@@ -81,7 +81,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private int i=0,urut=0,w=0,s=0,urutdpjp=0;
     private double biayaperawatan=0;
-    private String kddpjp="",dpjp="",json,dokterrujukan="",polirujukan="",keputusan="",ke1="",ke2="",ke3="",ke4="",ke5="",ke6="",file="",authStr="",base64Creds="";
+    private String kddpjp="",dpjp="",json,dokterrujukan="",polirujukan="",keputusan="",ke1="",ke2="",ke3="",ke4="",ke5="",ke6="",file="";
     private StringBuilder htmlContent;
     private HttpClient http = new HttpClient();
     private GetMethod get;
@@ -382,6 +382,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkLaporanTindakan = new widget.CekBox();
         chkDokumentasiTindakanESWL = new widget.CekBox();
         chkPerencanaanPemulangan = new widget.CekBox();
+        chkLayananKedokteranFisikRehabilitasi = new widget.CekBox();
         chkUjiFungsiKFR = new widget.CekBox();
         chkHemodialisa = new widget.CekBox();
         chkSkriningNutrisiDewasa = new widget.CekBox();
@@ -579,7 +580,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2025 07:57:27" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2025 15:38:15" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -888,7 +889,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3805));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3830));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1783,6 +1784,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPerencanaanPemulangan.setOpaque(false);
         chkPerencanaanPemulangan.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkPerencanaanPemulangan);
+
+        chkLayananKedokteranFisikRehabilitasi.setSelected(true);
+        chkLayananKedokteranFisikRehabilitasi.setText("Layanan Kedokteran Fisik & Rehabilitasi");
+        chkLayananKedokteranFisikRehabilitasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkLayananKedokteranFisikRehabilitasi.setName("chkLayananKedokteranFisikRehabilitasi"); // NOI18N
+        chkLayananKedokteranFisikRehabilitasi.setOpaque(false);
+        chkLayananKedokteranFisikRehabilitasi.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkLayananKedokteranFisikRehabilitasi);
 
         chkUjiFungsiKFR.setSelected(true);
         chkUjiFungsiKFR.setText("Uji Fungsi/Prosedur KFR");
@@ -2818,6 +2827,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningDiabetesMelitus.setSelected(true);
             chkPenilaianBayiBaruLahir.setSelected(true);
             chkLaporanTindakan.setSelected(true);
+            chkLayananKedokteranFisikRehabilitasi.setEnabled(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -2983,6 +2993,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkSkriningDiabetesMelitus.setSelected(false);
             chkPenilaianBayiBaruLahir.setSelected(false);
             chkLaporanTindakan.setSelected(false);
+            chkLayananKedokteranFisikRehabilitasi.setEnabled(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3679,6 +3690,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkKonselingFarmasi;
     private widget.CekBox chkKonsultasiMedik;
     private widget.CekBox chkLaporanTindakan;
+    private widget.CekBox chkLayananKedokteranFisikRehabilitasi;
     private widget.CekBox chkMonitoringGizi;
     private widget.CekBox chkMonitoringReaksiTranfusi;
     private widget.CekBox chkOperasiVK;
@@ -4233,6 +4245,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanMedisRawatJalanParu(rs.getString("no_rawat"));
                     //menampilkan asuhan awal medis rawat jalan kedokteran fisik & rehabilitasi
                     menampilkanAsuhanMedisRawatJalanKedokteranFisikRehabilitasi(rs.getString("no_rawat"));
+                    //menampilkan layanan kedokteran fisik dan rehabilitasi
+                    menampilkanLayananKedokteranFisikRehabilitasi(rs.getString("no_rawat"));
                     //menampilkan uji fungsi KFR
                     menampilkanUjiFungsiKFR(rs.getString("no_rawat"));
                     //menampilkan hemodialisa
@@ -14538,7 +14552,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_pemeriksaan_usg_gambar.photo from hasil_pemeriksaan_usg_gambar where hasil_pemeriksaan_usg_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_pemeriksaan_usg_gambar.photo from hasil_pemeriksaan_usg_gambar where hasil_pemeriksaan_usg_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -24939,7 +24953,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_pemeriksaan_usg_urologi_gambar.photo from hasil_pemeriksaan_usg_urologi_gambar where hasil_pemeriksaan_usg_urologi_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_pemeriksaan_usg_urologi_gambar.photo from hasil_pemeriksaan_usg_urologi_gambar where hasil_pemeriksaan_usg_urologi_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -25035,7 +25049,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_pemeriksaan_usg_gynecologi_gambar.photo from hasil_pemeriksaan_usg_gynecologi_gambar where hasil_pemeriksaan_usg_gynecologi_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_pemeriksaan_usg_gynecologi_gambar.photo from hasil_pemeriksaan_usg_gynecologi_gambar where hasil_pemeriksaan_usg_gynecologi_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -25133,7 +25147,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_pemeriksaan_ekg_gambar.photo from hasil_pemeriksaan_ekg_gambar where hasil_pemeriksaan_ekg_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_pemeriksaan_ekg_gambar.photo from hasil_pemeriksaan_ekg_gambar where hasil_pemeriksaan_ekg_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -25350,7 +25364,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_pemeriksaan_usg_neonatus_gambar.photo from hasil_pemeriksaan_usg_neonatus_gambar where hasil_pemeriksaan_usg_neonatus_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_pemeriksaan_usg_neonatus_gambar.photo from hasil_pemeriksaan_usg_neonatus_gambar where hasil_pemeriksaan_usg_neonatus_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -25450,7 +25464,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_endoskopi_faring_laring_gambar.photo from hasil_endoskopi_faring_laring_gambar where hasil_endoskopi_faring_laring_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_endoskopi_faring_laring_gambar.photo from hasil_endoskopi_faring_laring_gambar where hasil_endoskopi_faring_laring_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -25601,7 +25615,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_endoskopi_hidung_gambar.photo from hasil_endoskopi_hidung_gambar where hasil_endoskopi_hidung_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_endoskopi_hidung_gambar.photo from hasil_endoskopi_hidung_gambar where hasil_endoskopi_hidung_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -25744,7 +25758,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_endoskopi_telinga_gambar.photo from hasil_endoskopi_telinga_gambar where hasil_endoskopi_telinga_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_endoskopi_telinga_gambar.photo from hasil_endoskopi_telinga_gambar where hasil_endoskopi_telinga_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -30952,7 +30966,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select hasil_pemeriksaan_echo_gambar.photo from hasil_pemeriksaan_echo_gambar where hasil_pemeriksaan_echo_gambar.no_rawat='"+rs.getString("no_rawat")+"'");
+                            file=Sequel.cariIsi("select hasil_pemeriksaan_echo_gambar.photo from hasil_pemeriksaan_echo_gambar where hasil_pemeriksaan_echo_gambar.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -31930,6 +31944,106 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "</td>"+
                                  "</tr>"
                             );   
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Laporan Tindakan Medis : "+e);
+        }
+    }
+    
+    private void menampilkanLayananKedokteranFisikRehabilitasi(String norawat) {
+        try {
+            if(chkLayananKedokteranFisikRehabilitasi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select layanan_kedokteran_fisik_rehabilitasi.tanggal,layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,layanan_kedokteran_fisik_rehabilitasi.pendamping,layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping,"+
+                            "layanan_kedokteran_fisik_rehabilitasi.anamnesa,layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi,"+
+                            "layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.anjuran,layanan_kedokteran_fisik_rehabilitasi.evaluasi,layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja,"+
+                            "layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja from layanan_kedokteran_fisik_rehabilitasi inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter "+
+                            "where layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Layanan Kedokteran Fisik & Rehabilitasi</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            file=Sequel.cariIsi("select bukti_layanan_kedokteran_fisik_rehabilitasi.photo from bukti_layanan_kedokteran_fisik_rehabilitasi where bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+norawat+"'");
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN LAYANAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='25%' border='0'>Tanggal Pelayanan : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='40%' border='0'>Dokter SpKFR : "+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                              "<td width='35%' border='0'>Didampingi : "+rs2.getString("pendamping")+(rs2.getString("keterangan_pendamping").equals("")?"":", "+rs2.getString("keterangan_pendamping"))+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "HASIL PENILAIAN/ASESMEN/PEMERIKSAAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='29%'>Anamnesa</td><td width='1%'>:</td><td width='70%'>"+rs2.getString("anamnesa")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='29%'>Pemeriksaan Fisik & Uji Fungsi</td><td width='1%'>:</td><td width='70%'>"+rs2.getString("pemeriksaan_fisik")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='29%'>Diagnosis Medis (ICD - 10)</td><td width='1%'>:</td><td width='70%'>"+rs2.getString("diagnosa_medis")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='29%'>Diagnosis Fungsi (ICD - 10)</td><td width='1%'>:</td><td width='70%'>"+rs2.getString("diagnosa_fungsi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='29%'>Tata Laksana KFR (ICD - 9 CM)</td><td width='1%'>:</td><td width='70%'>"+rs2.getString("tatalaksana")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='29%'>Anjuran</td><td width='1%'>:</td><td width='70%'>"+rs2.getString("anjuran")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='29%'>Evaluasi</td><td width='1%'>:</td><td width='70%'>"+rs2.getString("evaluasi")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='29%'>Suspek Penyakit Akibat Kerja</td><td width='1%'>:</td><td width='70%'>"+rs2.getString("suspek_penyakit_kerja")+(rs2.getString("keterangan_suspek_penyakit_kerja").equals("")?"":", "+rs2.getString("keterangan_suspek_penyakit_kerja"))+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            );   
+                            if(!file.equals("")){
+                                htmlContent.append(
+                                    "<tr>"+
+                                        "<td valign='top'>"+
+                                           "PHOTO BUKTI PELAYANAN"+  
+                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                              "<tr>"+
+                                                  "<td valign='top' border='0' width='100%' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layanankedokteranfisikrehabilitasi/"+file+"'><img alt='Gambar Bukti Pelayanan' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layanankedokteranfisikrehabilitasi/"+file+"' width='450' height='450'/></a></td>"+
+                                              "</tr>"+
+                                           "</table>"+
+                                        "</td>"+
+                                    "</tr>"
+                                );
+                            }
                         }
                         htmlContent.append(
                               "</table>"+
