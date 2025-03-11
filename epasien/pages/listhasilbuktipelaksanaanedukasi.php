@@ -9,7 +9,7 @@
         $norawat          = validTeks3($iyem["norawat"],20);
         $tanggal          = validTeks4($iyem["tanggal"],20);
         $querypersetujuan = bukaquery(
-            "select DATE_FORMAT(pelaksanaan_informasi_edukasi.tanggal,'%d-%m-%Y') as tanggaledukasi,pelaksanaan_informasi_edukasi.keterangan_diberikan_pada,pelaksanaan_informasi_edukasi.diberikan_pada,pelaksanaan_informasi_edukasi.materi_edukasi ".
+            "select DATE_FORMAT(pelaksanaan_informasi_edukasi.tanggal,'%d-%m-%Y %H:%i:%s') as tanggaledukasi,pelaksanaan_informasi_edukasi.keterangan_diberikan_pada,pelaksanaan_informasi_edukasi.diberikan_pada,pelaksanaan_informasi_edukasi.materi_edukasi ".
             "from pelaksanaan_informasi_edukasi where pelaksanaan_informasi_edukasi.tanggal='$tanggal' and pelaksanaan_informasi_edukasi.no_rawat='$norawat'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){

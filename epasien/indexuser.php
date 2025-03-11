@@ -433,6 +433,9 @@
                             <li <?=$subhalaman=="BuktiPelaksanaanEdukasi"?"class='active'":""?>>
                                 <a href="index.php?act=BuktiPelaksanaanEdukasi&hal=Persetujuan">Pelaksanaan Informasi/Edukasi</a>
                             </li>
+                            <li <?=$subhalaman=="BuktiPelayananRehabilitasi"?"class='active'":""?>>
+                                <a href="index.php?act=BuktiPelayananRehabilitasi&hal=Persetujuan">Layanan Kedokteran Fisik</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?=$halaman=="Fasilitas"?"class='active'":""?>>

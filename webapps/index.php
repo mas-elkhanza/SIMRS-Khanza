@@ -126,6 +126,12 @@
                                 </tr>
                                 <tr width='100%' align='center'>
                                     <td width='33%' align='center'>
+                                      <a target=_blank href=layanankedokteranfisikrehabilitasi/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/4082071_healthcare_hospital_medical_icon.png'/><br>
+                                         Bukti Pelayanan Kedokteran Fisik & Rehabilitasi                                               
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               

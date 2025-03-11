@@ -134,8 +134,6 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         Keterangan.setDocument(new batasInput((int)100).getKata(Keterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        PemeriksaanFisik.setDocument(new batasInput((int)600).getKata(PemeriksaanFisik));
-        PemeriksaanPenunjang.setDocument(new batasInput((int)600).getKata(PemeriksaanPenunjang));
         HasilSkrining.setDocument(new batasInput((int)50).getKata(HasilSkrining));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -291,8 +289,6 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         jLabel88 = new widget.Label();
         KarangGigi = new widget.ComboBox();
         GusiBerdarah = new widget.ComboBox();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel100 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel101 = new widget.Label();
         HasilSkrining = new widget.TextBox();
@@ -309,12 +305,9 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         PunyaSariawan = new widget.ComboBox();
         jLabel96 = new widget.Label();
         jLabel97 = new widget.Label();
-        scrollPane12 = new widget.ScrollPane();
-        PemeriksaanFisik = new widget.TextArea();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel102 = new widget.Label();
-        scrollPane13 = new widget.ScrollPane();
-        PemeriksaanPenunjang = new widget.TextArea();
+        jLabel98 = new widget.Label();
+        jLabel103 = new widget.Label();
+        PunyaSariawan1 = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -512,7 +505,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -526,7 +519,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -587,7 +580,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 536));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 466));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -617,7 +610,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(800, 553));
+        FormInput.setPreferredSize(new java.awt.Dimension(800, 403));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -647,7 +640,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -796,7 +789,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         jLabel78.setText("Apakah pernah melakukan pemeriksaan gigi & mulut ?");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(57, 90, 460, 23);
+        jLabel78.setBounds(61, 90, 460, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel79.setText("2.");
@@ -805,12 +798,12 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         jLabel79.setBounds(44, 120, 20, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel80.setText("Berapa jumlah gigi yang sudah tumbuh ?");
+        jLabel80.setText("Apakah sudah ada gigi yang tumbuh ?");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
-        jLabel80.setBounds(57, 120, 370, 23);
+        jLabel80.setBounds(61, 120, 370, 23);
 
-        JumlahGigiTumbuh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<20", ">20" }));
+        JumlahGigiTumbuh.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sudah", "Belum" }));
         JumlahGigiTumbuh.setName("JumlahGigiTumbuh"); // NOI18N
         JumlahGigiTumbuh.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -820,7 +813,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         FormInput.add(JumlahGigiTumbuh);
         JumlahGigiTumbuh.setBounds(709, 120, 80, 23);
 
-        KebersihanGigiMulut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bersih", "Kotor" }));
+        KebersihanGigiMulut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "<20", ">20", "0" }));
         KebersihanGigiMulut.setName("KebersihanGigiMulut"); // NOI18N
         KebersihanGigiMulut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -831,10 +824,10 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         KebersihanGigiMulut.setBounds(709, 150, 80, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("Bagaimana kondisi kebersihan gigi dan mulut ?");
+        jLabel81.setText("Berapa jumlah gigi yang sudah tumbuh ?");
         jLabel81.setName("jLabel81"); // NOI18N
         FormInput.add(jLabel81);
-        jLabel81.setBounds(57, 150, 460, 23);
+        jLabel81.setBounds(61, 150, 460, 23);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel82.setText("3.");
@@ -843,10 +836,10 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         jLabel82.setBounds(44, 150, 20, 23);
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel83.setText("Apakah anak mempunyai gigi berlubang ?");
+        jLabel83.setText("Bagaimana kondisi kebersihan gigi dan mulut ?");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
-        jLabel83.setBounds(57, 180, 240, 23);
+        jLabel83.setBounds(61, 180, 240, 23);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel84.setText("4.");
@@ -855,12 +848,12 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         jLabel84.setBounds(44, 180, 20, 23);
 
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel85.setText("Apakah anak pernah merasakan gusi mudah berdarah ?");
+        jLabel85.setText("Apakah anak mempunyai kebiasaan minum susu botol saat tidur malam ?");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(57, 210, 410, 23);
+        jLabel85.setBounds(61, 210, 410, 23);
 
-        GigiBerlubang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        GigiBerlubang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bersih", "Kotor" }));
         GigiBerlubang.setName("GigiBerlubang"); // NOI18N
         GigiBerlubang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -883,10 +876,10 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         jLabel87.setBounds(44, 270, 20, 23);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel88.setText("Apakah anak mempunyai susunan gigi depan tidak teratur ?");
+        jLabel88.setText("Apakah anak mempunyai kebiasaan menyikat gigi sebelum tidur ?");
         jLabel88.setName("jLabel88"); // NOI18N
         FormInput.add(jLabel88);
-        jLabel88.setBounds(57, 270, 420, 23);
+        jLabel88.setBounds(61, 270, 420, 23);
 
         KarangGigi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KarangGigi.setName("KarangGigi"); // NOI18N
@@ -908,31 +901,18 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         FormInput.add(GusiBerdarah);
         GusiBerdarah.setBounds(709, 210, 80, 23);
 
-        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator2.setName("jSeparator2"); // NOI18N
-        FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 360, 807, 1);
-
-        jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("II. PEMERIKSAAN FISIK");
-        jLabel100.setName("jLabel100"); // NOI18N
-        FormInput.add(jLabel100);
-        jLabel100.setBounds(10, 360, 490, 23);
-
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 500, 807, 1);
+        jSeparator3.setBounds(0, 390, 807, 1);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel101.setText("IV. INTERPRETASI");
+        jLabel101.setText("II. INTERPRETASI");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(10, 500, 200, 23);
+        jLabel101.setBounds(10, 390, 200, 23);
 
         HasilSkrining.setFocusTraversalPolicyProvider(true);
         HasilSkrining.setName("HasilSkrining"); // NOI18N
@@ -942,18 +922,18 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
             }
         });
         FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(121, 520, 195, 23);
+        HasilSkrining.setBounds(121, 410, 195, 23);
 
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel22.setText("Hasil Skrining");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(44, 520, 100, 23);
+        jLabel22.setBounds(44, 410, 100, 23);
 
         jLabel93.setText("Keterangan :");
         jLabel93.setName("jLabel93"); // NOI18N
         FormInput.add(jLabel93);
-        jLabel93.setBounds(320, 520, 75, 23);
+        jLabel93.setBounds(320, 410, 75, 23);
 
         Keterangan.setFocusTraversalPolicyProvider(true);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -963,18 +943,18 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(399, 520, 390, 23);
+        Keterangan.setBounds(399, 410, 390, 23);
 
         jLabel27.setText(":");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(0, 520, 117, 23);
+        jLabel27.setBounds(0, 410, 117, 23);
 
         jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel89.setText("Apakah anak mempunyai karang gigi ?");
+        jLabel89.setText("Apakah anak mempunyai kebiasaan mengemil makanan manis diantara waktu makan ?");
         jLabel89.setName("jLabel89"); // NOI18N
         FormInput.add(jLabel89);
-        jLabel89.setBounds(57, 240, 370, 23);
+        jLabel89.setBounds(61, 240, 470, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("6.");
@@ -993,10 +973,10 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         GigiTidakteratur.setBounds(709, 270, 80, 23);
 
         jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel91.setText("Apakah anak mempunyai kebiasaan menyikat gigi sebelum tidur ?");
+        jLabel91.setText("Apakah anak mempunyai kebiasaan mengemut makanan ?");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
-        jLabel91.setBounds(57, 300, 390, 23);
+        jLabel91.setBounds(61, 300, 390, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel95.setText("8.");
@@ -1025,10 +1005,10 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         PunyaSariawan.setBounds(709, 330, 80, 23);
 
         jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel96.setText("Apakah anak mempunyai sariawan ?");
+        jLabel96.setText("Apakah lidah anak kotor ?");
         jLabel96.setName("jLabel96"); // NOI18N
         FormInput.add(jLabel96);
-        jLabel96.setBounds(57, 330, 330, 23);
+        jLabel96.setBounds(61, 330, 330, 23);
 
         jLabel97.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel97.setText("9.");
@@ -1036,52 +1016,27 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         FormInput.add(jLabel97);
         jLabel97.setBounds(44, 330, 20, 23);
 
-        scrollPane12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane12.setName("scrollPane12"); // NOI18N
+        jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel98.setText("10.");
+        jLabel98.setName("jLabel98"); // NOI18N
+        FormInput.add(jLabel98);
+        jLabel98.setBounds(44, 360, 20, 23);
 
-        PemeriksaanFisik.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        PemeriksaanFisik.setColumns(20);
-        PemeriksaanFisik.setRows(3);
-        PemeriksaanFisik.setName("PemeriksaanFisik"); // NOI18N
-        PemeriksaanFisik.addKeyListener(new java.awt.event.KeyAdapter() {
+        jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel103.setText("Apakah anak mempunyai celah bibir atau langit-langit ?");
+        jLabel103.setName("jLabel103"); // NOI18N
+        FormInput.add(jLabel103);
+        jLabel103.setBounds(61, 360, 330, 23);
+
+        PunyaSariawan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Tidak Ada" }));
+        PunyaSariawan1.setName("PunyaSariawan1"); // NOI18N
+        PunyaSariawan1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PemeriksaanFisikKeyPressed(evt);
+                PunyaSariawan1KeyPressed(evt);
             }
         });
-        scrollPane12.setViewportView(PemeriksaanFisik);
-
-        FormInput.add(scrollPane12);
-        scrollPane12.setBounds(44, 380, 745, 43);
-
-        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator4.setName("jSeparator4"); // NOI18N
-        FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 430, 807, 1);
-
-        jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel102.setText("III. PEMERIKSAAN PENUNJANG");
-        jLabel102.setName("jLabel102"); // NOI18N
-        FormInput.add(jLabel102);
-        jLabel102.setBounds(10, 430, 490, 23);
-
-        scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane13.setName("scrollPane13"); // NOI18N
-
-        PemeriksaanPenunjang.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        PemeriksaanPenunjang.setColumns(20);
-        PemeriksaanPenunjang.setRows(3);
-        PemeriksaanPenunjang.setName("PemeriksaanPenunjang"); // NOI18N
-        PemeriksaanPenunjang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PemeriksaanPenunjangKeyPressed(evt);
-            }
-        });
-        scrollPane13.setViewportView(PemeriksaanPenunjang);
-
-        FormInput.add(scrollPane13);
-        scrollPane13.setBounds(44, 450, 745, 43);
+        FormInput.add(PunyaSariawan1);
+        PunyaSariawan1.setBounds(709, 360, 80, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1447,13 +1402,13 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningKesehatanGigiMulutRemaja.jasper","report","::[ Formulir Skrining Kesehatan Gigi & Mulut Anak Usia Sekolah & Remaja ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_remaja.nip,petugas.nama,skrining_kesehatan_gigi_mulut_remaja.tanggal,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_remaja.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_remaja.kondisi_kebersihan_gigimulut,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_remaja.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_remaja.punya_karang_gigi,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_remaja.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_remaja.punya_sariawan,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_remaja.hasil_skrining,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.keterangan from skrining_kesehatan_gigi_mulut_remaja inner join reg_periksa on skrining_kesehatan_gigi_mulut_remaja.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_remaja.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_balita.nip,petugas.nama,skrining_kesehatan_gigi_mulut_balita.tanggal,"+
+                    "skrining_kesehatan_gigi_mulut_balita.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_balita.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_balita.kondisi_kebersihan_gigimulut,"+
+                    "skrining_kesehatan_gigi_mulut_balita.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_balita.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_balita.punya_karang_gigi,"+
+                    "skrining_kesehatan_gigi_mulut_balita.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_balita.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_balita.punya_sariawan,"+
+                    "skrining_kesehatan_gigi_mulut_balita.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_balita.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_balita.hasil_skrining,"+
+                    "skrining_kesehatan_gigi_mulut_balita.keterangan from skrining_kesehatan_gigi_mulut_balita inner join reg_periksa on skrining_kesehatan_gigi_mulut_balita.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_balita.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningKesehatanGigiMulutRemajaActionPerformed
@@ -1499,20 +1454,16 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     }//GEN-LAST:event_KebiasaanMenyikatGigiKeyPressed
 
     private void PunyaSariawanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PunyaSariawanKeyPressed
-        Valid.pindah(evt,KebiasaanMenyikatGigi,PemeriksaanFisik);
+        //Valid.pindah(evt,KebiasaanMenyikatGigi,PemeriksaanFisik);
     }//GEN-LAST:event_PunyaSariawanKeyPressed
 
-    private void PemeriksaanFisikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanFisikKeyPressed
-        Valid.pindah2(evt,KebiasaanMenyikatGigi,PemeriksaanPenunjang);
-    }//GEN-LAST:event_PemeriksaanFisikKeyPressed
-
-    private void PemeriksaanPenunjangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanPenunjangKeyPressed
-        Valid.pindah2(evt,PemeriksaanFisik,HasilSkrining);
-    }//GEN-LAST:event_PemeriksaanPenunjangKeyPressed
-
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
-        Valid.pindah(evt,PemeriksaanPenunjang,Keterangan);
+        //Valid.pindah(evt,PemeriksaanPenunjang,Keterangan);
     }//GEN-LAST:event_HasilSkriningKeyPressed
+
+    private void PunyaSariawan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PunyaSariawan1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PunyaSariawan1KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1563,10 +1514,9 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     private javax.swing.JMenuItem MnSkriningKesehatanGigiMulutRemaja;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.TextArea PemeriksaanFisik;
-    private widget.TextArea PemeriksaanPenunjang;
     private widget.ComboBox PernahPemeriksaanGigi;
     private widget.ComboBox PunyaSariawan;
+    private widget.ComboBox PunyaSariawan1;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1578,9 +1528,8 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     private widget.Button btnPetugas;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel100;
     private widget.Label jLabel101;
-    private widget.Label jLabel102;
+    private widget.Label jLabel103;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
@@ -1610,18 +1559,15 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     private widget.Label jLabel95;
     private widget.Label jLabel96;
     private widget.Label jLabel97;
+    private widget.Label jLabel98;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
-    private widget.ScrollPane scrollPane12;
-    private widget.ScrollPane scrollPane13;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
     
@@ -1630,26 +1576,26 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_remaja.nip,petugas.nama,skrining_kesehatan_gigi_mulut_remaja.tanggal,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_remaja.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_remaja.kondisi_kebersihan_gigimulut,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_remaja.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_remaja.punya_karang_gigi,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_remaja.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_remaja.punya_sariawan,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_remaja.hasil_skrining,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.keterangan from skrining_kesehatan_gigi_mulut_remaja inner join reg_periksa on skrining_kesehatan_gigi_mulut_remaja.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_remaja.nip=petugas.nip "+
-                    "where skrining_kesehatan_gigi_mulut_remaja.tanggal between ? and ? order by skrining_kesehatan_gigi_mulut_remaja.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_balita.nip,petugas.nama,skrining_kesehatan_gigi_mulut_balita.tanggal,"+
+                    "skrining_kesehatan_gigi_mulut_balita.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_balita.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_balita.kondisi_kebersihan_gigimulut,"+
+                    "skrining_kesehatan_gigi_mulut_balita.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_balita.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_balita.punya_karang_gigi,"+
+                    "skrining_kesehatan_gigi_mulut_balita.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_balita.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_balita.punya_sariawan,"+
+                    "skrining_kesehatan_gigi_mulut_balita.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_balita.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_balita.hasil_skrining,"+
+                    "skrining_kesehatan_gigi_mulut_balita.keterangan from skrining_kesehatan_gigi_mulut_balita inner join reg_periksa on skrining_kesehatan_gigi_mulut_balita.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_balita.nip=petugas.nip "+
+                    "where skrining_kesehatan_gigi_mulut_balita.tanggal between ? and ? order by skrining_kesehatan_gigi_mulut_balita.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_remaja.nip,petugas.nama,skrining_kesehatan_gigi_mulut_remaja.tanggal,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_remaja.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_remaja.kondisi_kebersihan_gigimulut,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_remaja.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_remaja.punya_karang_gigi,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_remaja.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_remaja.punya_sariawan,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_remaja.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_remaja.hasil_skrining,"+
-                    "skrining_kesehatan_gigi_mulut_remaja.keterangan from skrining_kesehatan_gigi_mulut_remaja inner join reg_periksa on skrining_kesehatan_gigi_mulut_remaja.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_remaja.nip=petugas.nip "+
-                    "where skrining_kesehatan_gigi_mulut_remaja.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_kesehatan_gigi_mulut_remaja.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_kesehatan_gigi_mulut_remaja.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_balita.nip,petugas.nama,skrining_kesehatan_gigi_mulut_balita.tanggal,"+
+                    "skrining_kesehatan_gigi_mulut_balita.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_balita.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_balita.kondisi_kebersihan_gigimulut,"+
+                    "skrining_kesehatan_gigi_mulut_balita.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_balita.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_balita.punya_karang_gigi,"+
+                    "skrining_kesehatan_gigi_mulut_balita.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_balita.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_balita.punya_sariawan,"+
+                    "skrining_kesehatan_gigi_mulut_balita.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_balita.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_balita.hasil_skrining,"+
+                    "skrining_kesehatan_gigi_mulut_balita.keterangan from skrining_kesehatan_gigi_mulut_balita inner join reg_periksa on skrining_kesehatan_gigi_mulut_balita.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_balita.nip=petugas.nip "+
+                    "where skrining_kesehatan_gigi_mulut_balita.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_kesehatan_gigi_mulut_balita.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_kesehatan_gigi_mulut_balita.tanggal ");
             }
                 
             try {
@@ -1701,8 +1647,6 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         GigiTidakteratur.setSelectedIndex(0);
         KebiasaanMenyikatGigi.setSelectedIndex(0);
         PunyaSariawan.setSelectedIndex(0);
-        PemeriksaanFisik.setText("");
-        PemeriksaanPenunjang.setText("");
         HasilSkrining.setText("");
         Keterangan.setText("");
         Tanggal.setDate(new Date());
@@ -1728,8 +1672,6 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
             GigiTidakteratur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             KebiasaanMenyikatGigi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
             PunyaSariawan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            PemeriksaanFisik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            PemeriksaanPenunjang.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
@@ -1793,10 +1735,10 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_kesehatan_gigi_mulut_remaja());
-        BtnHapus.setEnabled(akses.getskrining_kesehatan_gigi_mulut_remaja());
-        BtnEdit.setEnabled(akses.getskrining_kesehatan_gigi_mulut_remaja());
-        BtnPrint.setEnabled(akses.getskrining_kesehatan_gigi_mulut_remaja()); 
+        BtnSimpan.setEnabled(akses.getskrining_kesehatan_gigi_mulut_balita());
+        BtnHapus.setEnabled(akses.getskrining_kesehatan_gigi_mulut_balita());
+        BtnEdit.setEnabled(akses.getskrining_kesehatan_gigi_mulut_balita());
+        BtnPrint.setEnabled(akses.getskrining_kesehatan_gigi_mulut_balita()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1874,7 +1816,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_kesehatan_gigi_mulut_remaja","no_rawat=?","no_rawat=?,tanggal=?,pernah_pemeriksaan_gigimulut=?,jumlah_gigi_tumbuh=?,kondisi_kebersihan_gigimulut=?,"+
+        /*if(Sequel.mengedittf("skrining_kesehatan_gigi_mulut_balita","no_rawat=?","no_rawat=?,tanggal=?,pernah_pemeriksaan_gigimulut=?,jumlah_gigi_tumbuh=?,kondisi_kebersihan_gigimulut=?,"+
                 "punya_gigi_berlubang=?,pernah_gusi_berdarah=?,punya_karang_gigi=?,gigi_depan_tidak_teratur=?,menyikat_gigi_sebelum_tidur=?,punya_sariawan=?,pemeriksaan_fisik=?,"+
                 "pemeriksaan_penunjang=?,hasil_skrining=?,keterangan=?,nip=?",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
@@ -1905,11 +1847,11 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
                tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),19);
                tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),20);
                emptTeks();
-        }
+        }*/
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_kesehatan_gigi_mulut_remaja where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_kesehatan_gigi_mulut_balita where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1921,7 +1863,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_kesehatan_gigi_mulut_remaja","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
+        /*if(Sequel.menyimpantf("skrining_kesehatan_gigi_mulut_balita","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             PernahPemeriksaanGigi.getSelectedItem().toString(),JumlahGigiTumbuh.getSelectedItem().toString(),KebersihanGigiMulut.getSelectedItem().toString(), 
             GigiBerlubang.getSelectedItem().toString(),GusiBerdarah.getSelectedItem().toString(),KarangGigi.getSelectedItem().toString(),GigiTidakteratur.getSelectedItem().toString(), 
@@ -1936,6 +1878,6 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } 
+        }*/ 
     }
 }
