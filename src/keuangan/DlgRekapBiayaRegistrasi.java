@@ -12,7 +12,6 @@
 package keuangan;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
@@ -29,8 +28,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
@@ -46,7 +43,6 @@ import simrskhanza.DlgCariPoli;
  */
 public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
     private final Connection koneksi=koneksiDB.condb();
-    private final sekuel Sequel=new sekuel();
     private final validasi Valid=new validasi();
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
@@ -56,9 +52,6 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
     private double totalbiaya=0;
     private int i,baris=0,no=0,sesuai=0,x=0,y=0;
     private String carabayardicari="",diagnosa="",kddiangnosa="",pilihan="";
-    private DlgCariPoli poli=new DlgCariPoli(null,false);
-    private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private DlgCariCaraBayar2 penjab=new DlgCariCaraBayar2(null,false);
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -92,109 +85,6 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
                 }
             });
         }  
-        
-        poli.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(poli.getTable().getSelectedRow()!= -1){
-                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
-                    nmpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
-                }      
-                kdpoli.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {poli.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        penjab.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                try{
-                    no=0;
-                    for(i=0;i<penjab.getTable().getRowCount();i++){
-                        if(penjab.getTable().getValueAt(i,0).toString().equals("true")){
-                            no++;
-                        }
-                    } 
-                    
-                    kodecarabayar=null;
-                    kodecarabayar=new String[no];
-                    carabayar=null;
-                    carabayar=new String[no];
-                    carabayardicari="";
-                    no=0;
-                    for(i=0;i<penjab.getTable().getRowCount();i++){
-                        if(penjab.getTable().getValueAt(i,0).toString().equals("true")){
-                            kodecarabayar[no]=penjab.getTable().getValueAt(i,1).toString();
-                            carabayar[no]=penjab.getTable().getValueAt(i,2).toString();
-                            carabayardicari=penjab.getTable().getValueAt(i,2).toString()+", "+carabayardicari;
-                            no++;
-                        }
-                    } 
-                    nmpenjab.setText(carabayardicari);
-                }catch(Exception ex){
-                    System.out.println("Notif : "+ex);
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {penjab.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(dokter.getTable().getSelectedRow()!= -1){
-                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                    nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                }      
-                kddokter.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });   
-        
-        dokter.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    dokter.dispose();
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         
         LoadHTML.setEditable(true);
         HTMLEditorKit kit = new HTMLEditorKit();
@@ -699,9 +589,7 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?", nmpoli,kdpoli.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             BtnAll.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Tgl2.requestFocus();
@@ -711,6 +599,29 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_kdpoliKeyPressed
 
     private void BtnSeek2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek2ActionPerformed
+        DlgCariPoli poli=new DlgCariPoli(null,false);
+        poli.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(poli.getTable().getSelectedRow()!= -1){
+                    kdpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),0).toString());
+                    nmpoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(),1).toString());
+                }      
+                kdpoli.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {poli.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
         poli.isCek();
         poli.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         poli.setLocationRelativeTo(internalFrame1);
@@ -723,6 +634,50 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSeek2KeyPressed
 
     private void BtnSeek3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek3ActionPerformed
+        DlgCariCaraBayar2 penjab=new DlgCariCaraBayar2(null,false);
+        penjab.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                try{
+                    no=0;
+                    for(i=0;i<penjab.getTable().getRowCount();i++){
+                        if(penjab.getTable().getValueAt(i,0).toString().equals("true")){
+                            no++;
+                        }
+                    } 
+                    
+                    kodecarabayar=null;
+                    kodecarabayar=new String[no];
+                    carabayar=null;
+                    carabayar=new String[no];
+                    carabayardicari="";
+                    no=0;
+                    for(i=0;i<penjab.getTable().getRowCount();i++){
+                        if(penjab.getTable().getValueAt(i,0).toString().equals("true")){
+                            kodecarabayar[no]=penjab.getTable().getValueAt(i,1).toString();
+                            carabayar[no]=penjab.getTable().getValueAt(i,2).toString();
+                            carabayardicari=penjab.getTable().getValueAt(i,2).toString()+", "+carabayardicari;
+                            no++;
+                        }
+                    } 
+                    nmpenjab.setText(carabayardicari);
+                }catch(Exception ex){
+                    System.out.println("Notif : "+ex);
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {penjab.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });  
         penjab.isCek();
         penjab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         penjab.setLocationRelativeTo(internalFrame1);
@@ -739,6 +694,42 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
     }//GEN-LAST:event_kddokterKeyPressed
 
     private void BtnSeek4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeek4ActionPerformed
+        DlgCariDokter dokter=new DlgCariDokter(null,false);
+        dokter.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(dokter.getTable().getSelectedRow()!= -1){
+                    kddokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
+                    nmdokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
+                }      
+                kddokter.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {dokter.emptTeks();}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });   
+        
+        dokter.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    dokter.dispose();
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         dokter.isCek();
         dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dokter.setLocationRelativeTo(internalFrame1);
@@ -803,7 +794,6 @@ public final class DlgRekapBiayaRegistrasi extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         try{        
             htmlContent = new StringBuilder();
-            Sequel.cariInteger("select count(penjab.png_jawab) from penjab where penjab.status='1'");
             htmlContent.append(                             
                 "<tr class='head'>"+
                     "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='27px'>No.</td>"+
