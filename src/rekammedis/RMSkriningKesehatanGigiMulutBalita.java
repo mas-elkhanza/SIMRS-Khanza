@@ -100,7 +100,29 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
             }else if(i==7){
                 column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(158);
+                column.setPreferredWidth(123);
+            }else if(i==9){
+                column.setPreferredWidth(91);
+            }else if(i==10){
+                column.setPreferredWidth(66);
+            }else if(i==11){
+                column.setPreferredWidth(84);
+            }else if(i==12){
+                column.setPreferredWidth(95);
+            }else if(i==13){
+                column.setPreferredWidth(86);
+            }else if(i==14){
+                column.setPreferredWidth(72);
+            }else if(i==15){
+                column.setPreferredWidth(110);
+            }else if(i==16){
+                column.setPreferredWidth(64);
+            }else if(i==17){
+                column.setPreferredWidth(94);
+            }else if(i==18){
+                column.setPreferredWidth(200);
+            }else if(i==19){
+                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -197,7 +219,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningKesehatanGigiMulutRemaja = new javax.swing.JMenuItem();
+        MnSkriningKesehatanGigiMulutBalita = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -286,19 +308,19 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningKesehatanGigiMulutRemaja.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningKesehatanGigiMulutRemaja.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningKesehatanGigiMulutRemaja.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningKesehatanGigiMulutRemaja.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningKesehatanGigiMulutRemaja.setText("Formulir Skrining Kesehatan Ggi & Mulut Usia Remaja");
-        MnSkriningKesehatanGigiMulutRemaja.setName("MnSkriningKesehatanGigiMulutRemaja"); // NOI18N
-        MnSkriningKesehatanGigiMulutRemaja.setPreferredSize(new java.awt.Dimension(320, 26));
-        MnSkriningKesehatanGigiMulutRemaja.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningKesehatanGigiMulutBalita.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningKesehatanGigiMulutBalita.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningKesehatanGigiMulutBalita.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningKesehatanGigiMulutBalita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningKesehatanGigiMulutBalita.setText("Formulir Skrining Kesehatan Ggi & Mulut Balita");
+        MnSkriningKesehatanGigiMulutBalita.setName("MnSkriningKesehatanGigiMulutBalita"); // NOI18N
+        MnSkriningKesehatanGigiMulutBalita.setPreferredSize(new java.awt.Dimension(300, 26));
+        MnSkriningKesehatanGigiMulutBalita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningKesehatanGigiMulutRemajaActionPerformed(evt);
+                MnSkriningKesehatanGigiMulutBalitaActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningKesehatanGigiMulutRemaja);
+        jPopupMenu1.add(MnSkriningKesehatanGigiMulutBalita);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1038,7 +1060,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         FormInput.add(jLabel103);
         jLabel103.setBounds(61, 360, 330, 23);
 
-        CelahBibir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ada", "Tidak Ada" }));
+        CelahBibir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
         CelahBibir.setName("CelahBibir"); // NOI18N
         CelahBibir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1397,7 +1419,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
         //Valid.pindah(evt,Detik,BB);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningKesehatanGigiMulutRemajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningKesehatanGigiMulutRemajaActionPerformed
+    private void MnSkriningKesehatanGigiMulutBalitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningKesehatanGigiMulutBalitaActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1409,17 +1431,17 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningKesehatanGigiMulutRemaja.jasper","report","::[ Formulir Skrining Kesehatan Gigi & Mulut Anak Usia Sekolah & Remaja ]::",
+            Valid.MyReportqry("rptFormulirSkriningKesehatanGigiMulutBalita.jasper","report","::[ Formulir Skrining Kesehatan Gigi & Mulut Balita ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_balita.nip,petugas.nama,skrining_kesehatan_gigi_mulut_balita.tanggal,"+
-                    "skrining_kesehatan_gigi_mulut_balita.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_balita.jumlah_gigi_tumbuh,skrining_kesehatan_gigi_mulut_balita.kondisi_kebersihan_gigimulut,"+
-                    "skrining_kesehatan_gigi_mulut_balita.punya_gigi_berlubang,skrining_kesehatan_gigi_mulut_balita.pernah_gusi_berdarah,skrining_kesehatan_gigi_mulut_balita.punya_karang_gigi,"+
-                    "skrining_kesehatan_gigi_mulut_balita.gigi_depan_tidak_teratur,skrining_kesehatan_gigi_mulut_balita.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_balita.punya_sariawan,"+
-                    "skrining_kesehatan_gigi_mulut_balita.pemeriksaan_fisik,skrining_kesehatan_gigi_mulut_balita.pemeriksaan_penunjang,skrining_kesehatan_gigi_mulut_balita.hasil_skrining,"+
-                    "skrining_kesehatan_gigi_mulut_balita.keterangan from skrining_kesehatan_gigi_mulut_balita inner join reg_periksa on skrining_kesehatan_gigi_mulut_balita.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_kesehatan_gigi_mulut_balita.pernah_pemeriksaan_gigimulut,skrining_kesehatan_gigi_mulut_balita.sudah_tumbuh_gigi,skrining_kesehatan_gigi_mulut_balita.jumlah_gigi_tumbuh,"+
+                    "skrining_kesehatan_gigi_mulut_balita.kondisi_kebersihan_gigimulut,skrining_kesehatan_gigi_mulut_balita.kebiasaan_susu_botol,skrining_kesehatan_gigi_mulut_balita.mengemil_manis,"+
+                    "skrining_kesehatan_gigi_mulut_balita.menyikat_gigi_sebelum_tidur,skrining_kesehatan_gigi_mulut_balita.mengemut_makanan,skrining_kesehatan_gigi_mulut_balita.lidah_kotor,"+
+                    "skrining_kesehatan_gigi_mulut_balita.celah_bibir,skrining_kesehatan_gigi_mulut_balita.hasil_skrining,skrining_kesehatan_gigi_mulut_balita.keterangan from skrining_kesehatan_gigi_mulut_balita "+
+                    "inner join reg_periksa on skrining_kesehatan_gigi_mulut_balita.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_balita.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningKesehatanGigiMulutRemajaActionPerformed
+    }//GEN-LAST:event_MnSkriningKesehatanGigiMulutBalitaActionPerformed
 
     private void PernahPemeriksaanGigiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PernahPemeriksaanGigiKeyPressed
         Valid.pindah(evt,btnPetugas,SudahAdaGigiTumbuh);
@@ -1554,7 +1576,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     private widget.ComboBox MengemutMakanan;
     private widget.ComboBox Menit;
     private widget.ComboBox MenyikatGigi;
-    private javax.swing.JMenuItem MnSkriningKesehatanGigiMulutRemaja;
+    private javax.swing.JMenuItem MnSkriningKesehatanGigiMulutBalita;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PernahPemeriksaanGigi;
