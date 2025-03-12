@@ -241,7 +241,7 @@ public final class akses {
             sirkulasi_dapur2=false,verifikasi_penerimaan_dapur=false,nilai_penerimaan_vendor_dapur_perbulan=false,ringkasan_hutang_vendor_dapur=false,penilaian_psikologi_klinis=false,
             penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false,ringkasan_jasa_tindakan_medis=false,pendapatan_per_akun=false,hasil_pemeriksaan_echo=false,
             penilaian_bayi_baru_lahir=false,rl1_3_ketersediaan_kamar=false,pendapatan_per_akun_closing=false,pengeluaran_pengeluaran=false,skrining_diabetes_melitus=false,
-            laporan_tindakan=false,pelaksanaan_informasi_edukasi=false,layanan_kedokteran_fisik_rehabilitasi=false,skrining_kesehatan_gigi_mulut_balita=false;
+            laporan_tindakan=false,pelaksanaan_informasi_edukasi=false,layanan_kedokteran_fisik_rehabilitasi=false,skrining_kesehatan_gigi_mulut_balita=false,skrining_anemia=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1371,6 +1371,7 @@ public final class akses {
                         akses.pelaksanaan_informasi_edukasi=true;
                         akses.layanan_kedokteran_fisik_rehabilitasi=true;
                         akses.skrining_kesehatan_gigi_mulut_balita=true;
+                        akses.skrining_anemia=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2484,6 +2485,7 @@ public final class akses {
                         akses.pelaksanaan_informasi_edukasi=rs2.getBoolean("pelaksanaan_informasi_edukasi");
                         akses.layanan_kedokteran_fisik_rehabilitasi=rs2.getBoolean("layanan_kedokteran_fisik_rehabilitasi");
                         akses.skrining_kesehatan_gigi_mulut_balita=rs2.getBoolean("skrining_kesehatan_gigi_mulut_balita");
+                        akses.skrining_anemia=rs2.getBoolean("skrining_anemia");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3595,6 +3597,7 @@ public final class akses {
                         akses.pelaksanaan_informasi_edukasi=false;
                         akses.layanan_kedokteran_fisik_rehabilitasi=false;
                         akses.skrining_kesehatan_gigi_mulut_balita=false;
+                        akses.skrining_anemia=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4729,6 +4732,7 @@ public final class akses {
         akses.pelaksanaan_informasi_edukasi=false;
         akses.layanan_kedokteran_fisik_rehabilitasi=false;
         akses.skrining_kesehatan_gigi_mulut_balita=false;
+        akses.skrining_anemia=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5879,4 +5883,5 @@ public final class akses {
     public static boolean getpelaksanaan_informasi_edukasi(){return akses.pelaksanaan_informasi_edukasi;}
     public static boolean getlayanan_kedokteran_fisik_rehabilitasi(){return akses.layanan_kedokteran_fisik_rehabilitasi;}
     public static boolean getskrining_kesehatan_gigi_mulut_balita(){return akses.skrining_kesehatan_gigi_mulut_balita;}
+    public static boolean getskrining_anemia(){return akses.skrining_anemia;}
 }   
