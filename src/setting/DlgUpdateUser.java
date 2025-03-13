@@ -204,7 +204,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             sirkulasi_dapur=false,sirkulasi_dapur2=false,verifikasi_penerimaan_dapur=false,nilai_penerimaan_vendor_dapur_perbulan=false,ringkasan_hutang_vendor_dapur=false,penilaian_psikologi_klinis=false,
             penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false,ringkasan_jasa_tindakan_medis=false,pendapatan_per_akun=false,hasil_pemeriksaan_echo=false,penilaian_bayi_baru_lahir=false,
             rl1_3_ketersediaan_kamar=false,pendapatan_per_akun_closing=false,pengeluaran_pengeluaran=false,skrining_diabetes_melitus=false,laporan_tindakan=false,pelaksanaan_informasi_edukasi=false,
-            layanan_kedokteran_fisik_rehabilitasi=false,skrining_kesehatan_gigi_mulut_balita=false,skrining_anemia=false;
+            layanan_kedokteran_fisik_rehabilitasi=false,skrining_kesehatan_gigi_mulut_balita=false,skrining_anemia=false,layanan_program_kfr=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -832,7 +832,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         sirkulasi_dapur=false;sirkulasi_dapur2=false;verifikasi_penerimaan_dapur=false;nilai_penerimaan_vendor_dapur_perbulan=false;ringkasan_hutang_vendor_dapur=false;penilaian_psikologi_klinis=false;
         penilaian_awal_medis_ranap_neonatus=false;penilaian_derajat_dehidrasi=false;ringkasan_jasa_tindakan_medis=false;pendapatan_per_akun=false;hasil_pemeriksaan_echo=false;penilaian_bayi_baru_lahir=false;
         rl1_3_ketersediaan_kamar=false;pendapatan_per_akun_closing=false;pengeluaran_pengeluaran=false;skrining_diabetes_melitus=false;laporan_tindakan=false;pelaksanaan_informasi_edukasi=false;
-        layanan_kedokteran_fisik_rehabilitasi=false;skrining_kesehatan_gigi_mulut_balita=false;skrining_anemia=false;
+        layanan_kedokteran_fisik_rehabilitasi=false;skrining_kesehatan_gigi_mulut_balita=false;skrining_anemia=false;layanan_program_kfr=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1078,7 +1078,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.sirkulasi_dapur2,user.verifikasi_penerimaan_dapur,user.nilai_penerimaan_vendor_dapur_perbulan,user.ringkasan_hutang_vendor_dapur,user.penilaian_psikologi_klinis,"+
                 "user.penilaian_awal_medis_ranap_neonatus,user.penilaian_derajat_dehidrasi,user.ringkasan_jasa_tindakan_medis,user.pendapatan_per_akun,user.hasil_pemeriksaan_echo,"+
                 "user.penilaian_bayi_baru_lahir,user.rl1_3_ketersediaan_kamar,user.pendapatan_per_akun_closing,user.pengeluaran_pengeluaran,user.skrining_diabetes_melitus,"+
-                "user.laporan_tindakan,user.pelaksanaan_informasi_edukasi,user.layanan_kedokteran_fisik_rehabilitasi,user.skrining_kesehatan_gigi_mulut_balita,user.skrining_anemia from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.laporan_tindakan,user.pelaksanaan_informasi_edukasi,user.layanan_kedokteran_fisik_rehabilitasi,user.skrining_kesehatan_gigi_mulut_balita,user.skrining_anemia,"+
+                "user.layanan_program_kfr from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1205,7 +1206,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     dapur_returbeli=rs.getBoolean("dapur_returbeli");hibah_dapur=rs.getBoolean("hibah_dapur");ringkasan_penerimaan_dapur=rs.getBoolean("ringkasan_penerimaan_dapur");ringkasan_pengajuan_dapur=rs.getBoolean("ringkasan_pengajuan_dapur");ringkasan_pemesanan_dapur=rs.getBoolean("ringkasan_pemesanan_dapur");ringkasan_returbeli_dapur=rs.getBoolean("ringkasan_returbeli_dapur");ringkasan_stokkeluar_dapur=rs.getBoolean("ringkasan_stokkeluar_dapur");dapur_stokkeluar_pertanggal=rs.getBoolean("dapur_stokkeluar_pertanggal");sirkulasi_dapur=rs.getBoolean("sirkulasi_dapur");sirkulasi_dapur2=rs.getBoolean("sirkulasi_dapur2");
                     verifikasi_penerimaan_dapur=rs.getBoolean("verifikasi_penerimaan_dapur");nilai_penerimaan_vendor_dapur_perbulan=rs.getBoolean("nilai_penerimaan_vendor_dapur_perbulan");ringkasan_hutang_vendor_dapur=rs.getBoolean("ringkasan_hutang_vendor_dapur");penilaian_psikologi_klinis=rs.getBoolean("penilaian_psikologi_klinis");penilaian_awal_medis_ranap_neonatus=rs.getBoolean("penilaian_awal_medis_ranap_neonatus");penilaian_derajat_dehidrasi=rs.getBoolean("penilaian_derajat_dehidrasi");ringkasan_jasa_tindakan_medis=rs.getBoolean("ringkasan_jasa_tindakan_medis");pendapatan_per_akun=rs.getBoolean("pendapatan_per_akun");
                     hasil_pemeriksaan_echo=rs.getBoolean("hasil_pemeriksaan_echo");penilaian_bayi_baru_lahir=rs.getBoolean("penilaian_bayi_baru_lahir");rl1_3_ketersediaan_kamar=rs.getBoolean("rl1_3_ketersediaan_kamar");pendapatan_per_akun_closing=rs.getBoolean("pendapatan_per_akun_closing");pengeluaran_pengeluaran=rs.getBoolean("pengeluaran_pengeluaran");skrining_diabetes_melitus=rs.getBoolean("skrining_diabetes_melitus");laporan_tindakan=rs.getBoolean("laporan_tindakan");pelaksanaan_informasi_edukasi=rs.getBoolean("pelaksanaan_informasi_edukasi");layanan_kedokteran_fisik_rehabilitasi=rs.getBoolean("layanan_kedokteran_fisik_rehabilitasi");
-                    skrining_kesehatan_gigi_mulut_balita=rs.getBoolean("skrining_kesehatan_gigi_mulut_balita");skrining_anemia=rs.getBoolean("skrining_anemia");
+                    skrining_kesehatan_gigi_mulut_balita=rs.getBoolean("skrining_kesehatan_gigi_mulut_balita");skrining_anemia=rs.getBoolean("skrining_anemia");layanan_program_kfr=rs.getBoolean("layanan_program_kfr");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -4708,6 +4709,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[M]Skrining Anemia".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[M]Skrining Anemia",skrining_anemia});
+        }
+        
+        if("[M]Layanan Program KFR".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Layanan Program KFR",layanan_program_kfr});
         }
         
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -9151,6 +9156,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[M]Skrining Anemia".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","skrining_anemia='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Layanan Program KFR".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","layanan_program_kfr='"+tbUser.getValueAt(i,2).toString()+"'");
             }
                     
             if("[N]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
