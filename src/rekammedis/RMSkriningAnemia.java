@@ -12,6 +12,7 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -69,11 +70,8 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "BB(Kg)","TB(Cm)","IMT","Kasifikasi IMT","LP(Cm)","Risiko L.P.","Riwayat Kontak TBC","Jenis Kontak TBC",
-            "Pernah Terdiagnosa TBC","Jika Ya Kapan ?","Pernah Berobat TBC","Malnutrisi","Merokok","Riwayat DM","ODHIV",
-            "Lansia > 65 Tahun","Ibu Hamil","Warga Binaan Permasyarakatan (WBP)","Tinggal Di Wilayah Padat Kumuh Miskin",
-            "Abnormalitas TBC","Gejala Batuk","Gejala BB Turun","Gejala Demam","Gejala Berkeringat Malam Hari",
-            "Gejala Penyakit Lain","Kesimpulan Skrining","Keterangan"
+            "Mudah Lelah","Konsumsi Buah Sayur","Konsumsi Protein Hewani","Masalah Pubertas","Risiko IMS",
+            "kekerasan_seksual","sudah_menstruasi","gangguan_menstruasi","tambah_darah","kelainan_darah","keluarga_thalasemia","rambut","kulit","bekas_sutikan","kuku","tanda_klinis","pemeriksaan_hb","kadar_hb","jenis_anemia","hasil_skrining","keterangan`"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -83,7 +81,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 35; i++) {
+        for (i = 0; i < 30; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -101,68 +99,16 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(120);
-            }else if(i==8){
-                column.setPreferredWidth(48);
-            }else if(i==9){
-                column.setPreferredWidth(48);
-            }else if(i==10){
-                column.setPreferredWidth(50);
-            }else if(i==11){
-                column.setPreferredWidth(120);
-            }else if(i==12){
-                column.setPreferredWidth(48);
-            }else if(i==13){
-                column.setPreferredWidth(120);
-            }else if(i==14){
-                column.setPreferredWidth(105);
-            }else if(i==15){
-                column.setPreferredWidth(118);
-            }else if(i==16){
-                column.setPreferredWidth(130);
-            }else if(i==17){
-                column.setPreferredWidth(150);
-            }else if(i==18){
-                column.setPreferredWidth(105);
-            }else if(i==19){
-                column.setPreferredWidth(56);
-            }else if(i==20){
-                column.setPreferredWidth(48);
-            }else if(i==21){
-                column.setPreferredWidth(66);
-            }else if(i==22){
-                column.setPreferredWidth(43);
-            }else if(i==23){
-                column.setPreferredWidth(99);
-            }else if(i==24){
-                column.setPreferredWidth(58);
-            }else if(i==25){
-                column.setPreferredWidth(198);
-            }else if(i==26){
-                column.setPreferredWidth(200);
-            }else if(i==27){
-                column.setPreferredWidth(97);
-            }else if(i==28){
-                column.setPreferredWidth(75);
-            }else if(i==29){
-                column.setPreferredWidth(85);
-            }else if(i==30){
-                column.setPreferredWidth(81);
-            }else if(i==31){
-                column.setPreferredWidth(156);
-            }else if(i==32){
-                column.setPreferredWidth(200);
-            }else if(i==33){
-                column.setPreferredWidth(108);
-            }else if(i==34){
-                column.setPreferredWidth(200);
             }
-            
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        PemeriksaanHB.setDocument(new batasInput((int)8).getKata(PemeriksaanHB));
+        HasilSkrining.setDocument(new batasInput((int)40).getKata(HasilSkrining));
+        Keterangan.setDocument(new batasInput((int)100).getKata(Keterangan));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -356,6 +302,10 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         KadarHemo = new widget.TextBox();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel107 = new widget.Label();
+        jLabel24 = new widget.Label();
+        jLabel27 = new widget.Label();
+        HasilSkrining = new widget.TextBox();
+        jLabel108 = new widget.Label();
         Keterangan = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -556,7 +506,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -570,7 +520,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -691,7 +641,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1186,11 +1136,6 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         JenisAnemia.setEditable(false);
         JenisAnemia.setFocusTraversalPolicyProvider(true);
         JenisAnemia.setName("JenisAnemia"); // NOI18N
-        JenisAnemia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JenisAnemiaKeyPressed(evt);
-            }
-        });
         FormInput.add(JenisAnemia);
         JenisAnemia.setBounds(659, 650, 130, 23);
 
@@ -1208,11 +1153,6 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         KadarHemo.setEditable(false);
         KadarHemo.setFocusTraversalPolicyProvider(true);
         KadarHemo.setName("KadarHemo"); // NOI18N
-        KadarHemo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KadarHemoKeyPressed(evt);
-            }
-        });
         FormInput.add(KadarHemo);
         KadarHemo.setBounds(390, 650, 140, 23);
 
@@ -1224,10 +1164,36 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         jSeparator4.setBounds(0, 680, 807, 1);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel107.setText("IV. KETERANGAN/INTERPRETASI");
+        jLabel107.setText("IV. INTERPRETASI");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
         jLabel107.setBounds(10, 680, 200, 23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText("Hasil Skrining");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(44, 700, 100, 23);
+
+        jLabel27.setText(":");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(0, 700, 117, 23);
+
+        HasilSkrining.setFocusTraversalPolicyProvider(true);
+        HasilSkrining.setName("HasilSkrining"); // NOI18N
+        HasilSkrining.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HasilSkriningKeyPressed(evt);
+            }
+        });
+        FormInput.add(HasilSkrining);
+        HasilSkrining.setBounds(121, 700, 240, 23);
+
+        jLabel108.setText("Keterangan :");
+        jLabel108.setName("jLabel108"); // NOI18N
+        FormInput.add(jLabel108);
+        jLabel108.setBounds(375, 700, 100, 23);
 
         Keterangan.setFocusTraversalPolicyProvider(true);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -1237,7 +1203,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(44, 700, 745, 23);
+        Keterangan.setBounds(479, 700, 310, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1299,14 +1265,14 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-           // Valid.pindah(evt,KetHasilSkrining,BtnBatal);
+           Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        emptTeks();
         ChkInput.setSelected(true);
-        isForm(); 
+        isForm();  
+        emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -1665,84 +1631,80 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void MudahLelahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahLelahKeyPressed
-        //Valid.pindah(evt,Anamnesis6,Anamnesis8);
+        Valid.pindah(evt,btnPetugas,KonsumsiBuahSayur);
     }//GEN-LAST:event_MudahLelahKeyPressed
 
     private void KonsumsiBuahSayurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonsumsiBuahSayurKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MudahLelah,KonsumsiProteinHewani);
     }//GEN-LAST:event_KonsumsiBuahSayurKeyPressed
 
     private void KonsumsiProteinHewaniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonsumsiProteinHewaniKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KonsumsiBuahSayur,MasalahPubertas);
     }//GEN-LAST:event_KonsumsiProteinHewaniKeyPressed
 
     private void MasalahPubertasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MasalahPubertasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KonsumsiProteinHewani,RisikoIMS);
     }//GEN-LAST:event_MasalahPubertasKeyPressed
 
     private void RisikoIMSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoIMSKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MasalahPubertas,KekerasanSeksual);
     }//GEN-LAST:event_RisikoIMSKeyPressed
 
     private void KekerasanSeksualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KekerasanSeksualKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoIMS,SudahMenstruasi);
     }//GEN-LAST:event_KekerasanSeksualKeyPressed
 
     private void SudahMenstruasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SudahMenstruasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KekerasanSeksual,GangguanMenstruasi);
     }//GEN-LAST:event_SudahMenstruasiKeyPressed
 
     private void GangguanMenstruasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GangguanMenstruasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SudahMenstruasi,TambahDarah);
     }//GEN-LAST:event_GangguanMenstruasiKeyPressed
 
     private void TambahDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TambahDarahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,GangguanMenstruasi,KelainanDarah);
     }//GEN-LAST:event_TambahDarahKeyPressed
 
     private void KelainanDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelainanDarahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TambahDarah,KeluargaThalasemia);
     }//GEN-LAST:event_KelainanDarahKeyPressed
 
     private void KeluargaThalasemiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluargaThalasemiaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KelainanDarah,Rambut);
     }//GEN-LAST:event_KeluargaThalasemiaKeyPressed
 
     private void RambutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RambutKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KeluargaThalasemia,Kulit);
     }//GEN-LAST:event_RambutKeyPressed
 
     private void KulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KulitKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Rambut,BekasSuntikan);
     }//GEN-LAST:event_KulitKeyPressed
 
     private void BekasSuntikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BekasSuntikanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kulit,Kuku);
     }//GEN-LAST:event_BekasSuntikanKeyPressed
 
     private void KukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KukuKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BekasSuntikan,TandaKlinis);
     }//GEN-LAST:event_KukuKeyPressed
 
     private void TandaKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaKlinisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kuku,PemeriksaanHB);
     }//GEN-LAST:event_TandaKlinisKeyPressed
 
     private void PemeriksaanHBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanHBKeyPressed
-        //Valid.pindah(evt,TB,KeteranganGDS);
+        Valid.pindah(evt,TandaKlinis,HasilSkrining);
     }//GEN-LAST:event_PemeriksaanHBKeyPressed
 
-    private void JenisAnemiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisAnemiaKeyPressed
-        //Valid.pindah(evt,HasilGDS,HasilGDP);
-    }//GEN-LAST:event_JenisAnemiaKeyPressed
-
-    private void KadarHemoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KadarHemoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KadarHemoKeyPressed
-
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,HasilSkrining,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
+
+    private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
+        Valid.pindah(evt,PemeriksaanHB,Keterangan);
+    }//GEN-LAST:event_HasilSkriningKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1777,6 +1739,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
     private widget.ComboBox GangguanMenstruasi;
+    private widget.TextBox HasilSkrining;
     private widget.ComboBox Jam;
     private widget.TextBox JenisAnemia;
     private widget.TextBox Jk;
@@ -1823,6 +1786,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private widget.Label jLabel105;
     private widget.Label jLabel106;
     private widget.Label jLabel107;
+    private widget.Label jLabel108;
     private widget.Label jLabel14;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
@@ -1830,7 +1794,9 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
+    private widget.Label jLabel24;
     private widget.Label jLabel26;
+    private widget.Label jLabel27;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1947,8 +1913,29 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        
+        MudahLelah.setSelectedIndex(0);
+        KonsumsiBuahSayur.setSelectedIndex(0);
+        KonsumsiProteinHewani.setSelectedIndex(0);
+        MasalahPubertas.setSelectedIndex(0);
+        RisikoIMS.setSelectedIndex(0);
+        KekerasanSeksual.setSelectedIndex(0);
+        SudahMenstruasi.setSelectedIndex(0);
+        GangguanMenstruasi.setSelectedIndex(0);
+        TambahDarah.setSelectedIndex(0);
+        KelainanDarah.setSelectedIndex(0);
+        KeluargaThalasemia.setSelectedIndex(0);
+        Rambut.setSelectedIndex(0);
+        Kulit.setSelectedIndex(0);
+        BekasSuntikan.setSelectedIndex(0);
+        Kuku.setSelectedIndex(0);
+        TandaKlinis.setSelectedIndex(0);
+        PemeriksaanHB.setText("");
+        KadarHemo.setText("");
+        JenisAnemia.setText("");
+        HasilSkrining.setText("");
+        Keterangan.setText("");
         Tanggal.setDate(new Date());
+        MudahLelah.requestFocus();
     } 
 
     private void getData() {
@@ -2188,5 +2175,55 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
         } */
+    }
+    
+    private void isAnemia(){
+        try {
+            if(!PemeriksaanHB.getText().equals("")){
+                if(Valid.SetAngka(PemeriksaanHB.getText())>=12){
+                    KadarHemo.setBackground(Color.GREEN);
+                    KadarHemo.setForeground(Color.WHITE);
+                    KadarHemo.setText(">= 12 g/dl");
+                    JenisAnemia.setBackground(Color.GREEN);
+                    JenisAnemia.setForeground(Color.WHITE);
+                    JenisAnemia.setText("Normal");
+                }else if((Valid.SetAngka(PemeriksaanHB.getText())>=11)&&(Valid.SetAngka(PemeriksaanHB.getText())<=11.9)){
+                    KadarHemo.setBackground(Color.YELLOW);
+                    KadarHemo.setForeground(Color.GREEN);
+                    KadarHemo.setText("11,9 - 11 g/dl'");
+                    JenisAnemia.setBackground(Color.YELLOW);
+                    JenisAnemia.setForeground(Color.GREEN);
+                    JenisAnemia.setText("Ringan");
+                }else if((Valid.SetAngka(PemeriksaanHB.getText())>=8)&&(Valid.SetAngka(PemeriksaanHB.getText())<=10.9)){
+                    KadarHemo.setBackground(Color.ORANGE);
+                    KadarHemo.setForeground(Color.WHITE);
+                    KadarHemo.setText("10.9 - 8 g/dl");
+                    JenisAnemia.setBackground(Color.ORANGE);
+                    JenisAnemia.setForeground(Color.WHITE);
+                    JenisAnemia.setText("Sedang");
+                }else if(Valid.SetAngka(PemeriksaanHB.getText())<8){
+                    KadarHemo.setBackground(Color.RED);
+                    KadarHemo.setForeground(Color.WHITE);
+                    KadarHemo.setText("< 8 g/dl");
+                    JenisAnemia.setBackground(Color.RED);
+                    JenisAnemia.setForeground(Color.WHITE);
+                    JenisAnemia.setText("Berat");
+                }
+            }else{
+                KadarHemo.setBackground(Color.WHITE);
+                KadarHemo.setForeground(new Color(50,50,50));
+                KadarHemo.setText("");
+                JenisAnemia.setBackground(Color.WHITE);
+                JenisAnemia.setForeground(new Color(50,50,50));
+                JenisAnemia.setText("");
+            }
+        } catch (Exception e) {
+            KadarHemo.setBackground(Color.WHITE);
+            KadarHemo.setForeground(new Color(50,50,50));
+            KadarHemo.setText("");
+            JenisAnemia.setBackground(Color.WHITE);
+            JenisAnemia.setForeground(new Color(50,50,50));
+            JenisAnemia.setText("");
+        }
     }
 }
