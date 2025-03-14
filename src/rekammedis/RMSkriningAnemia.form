@@ -1698,6 +1698,7 @@
                     </Component>
                     <Component class="widget.TextBox" name="KeteranganGDS">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="KeteranganGDS" noResource="true"/>
                       </Properties>
@@ -1735,6 +1736,7 @@
                     </Component>
                     <Component class="widget.TextBox" name="KeteranganGDS1">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
                         <Property name="name" type="java.lang.String" value="KeteranganGDS1" noResource="true"/>
                       </Properties>

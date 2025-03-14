@@ -1183,6 +1183,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel22);
         jLabel22.setBounds(555, 650, 100, 23);
 
+        KeteranganGDS.setEditable(false);
         KeteranganGDS.setFocusTraversalPolicyProvider(true);
         KeteranganGDS.setName("KeteranganGDS"); // NOI18N
         KeteranganGDS.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1204,6 +1205,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(266, 650, 120, 23);
 
+        KeteranganGDS1.setEditable(false);
         KeteranganGDS1.setFocusTraversalPolicyProvider(true);
         KeteranganGDS1.setName("KeteranganGDS1"); // NOI18N
         KeteranganGDS1.addKeyListener(new java.awt.event.KeyAdapter() {
