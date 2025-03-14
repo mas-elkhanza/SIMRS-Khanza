@@ -71,7 +71,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
             "Mudah Lelah","Konsumsi Buah Sayur","Konsumsi Protein Hewani","Masalah Pubertas","Risiko IMS",
-            "kekerasan_seksual","sudah_menstruasi","gangguan_menstruasi","tambah_darah","kelainan_darah","keluarga_thalasemia","rambut","kulit","bekas_sutikan","kuku","tanda_klinis","pemeriksaan_hb","kadar_hb","jenis_anemia","hasil_skrining","keterangan`"
+            "Kekerasan Seksual","Sudah Menstruasi","gangguan_menstruasi","tambah_darah","kelainan_darah","keluarga_thalasemia","rambut","kulit","bekas_sutikan","kuku","tanda_klinis","pemeriksaan_hb","kadar_hb","jenis_anemia","hasil_skrining","keterangan`"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };

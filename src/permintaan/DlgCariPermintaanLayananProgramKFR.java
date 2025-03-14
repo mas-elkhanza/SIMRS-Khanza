@@ -10,8 +10,6 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import static java.awt.image.ImageObserver.HEIGHT;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,8 +18,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -31,7 +27,6 @@ import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
-import rekammedis.RMRiwayatPerawatan;
 
 /**
  *
@@ -58,9 +53,8 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","No.Telp","Cara Bayar","Tanggal Konsultasi","Permintaan",
-                "Kode Dokter Konsul","Nama Dokter Konsul","Kode Dokter Dikonsuli","Nama Dokter Dikonsuli","Diagnosa Kerja Konsul",
-                "Uraian Konsultasi","Tanggal Jawaban","Diagnosa Kerja Dikonsuli","Jawaban Konsultasi"
+                "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","Cara Bayar","Tgl.Permintaan",
+                "Anamnesa","Permintaan & Evaluasi/Tata Laksana KFR","Ke"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,7 +64,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 19; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -80,36 +74,6 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }else if(i==3){
                 column.setPreferredWidth(150);
-            }else if(i==4){
-                column.setPreferredWidth(25);
-            }else if(i==5){
-                column.setPreferredWidth(40);
-            }else if(i==6){
-                column.setPreferredWidth(90);
-            }else if(i==7){
-                column.setPreferredWidth(120);
-            }else if(i==8){
-                column.setPreferredWidth(115);
-            }else if(i==9){
-                column.setPreferredWidth(120);
-            }else if(i==10){
-                column.setPreferredWidth(102);
-            }else if(i==11){
-                column.setPreferredWidth(160);
-            }else if(i==12){
-                column.setPreferredWidth(115);
-            }else if(i==13){
-                column.setPreferredWidth(160);
-            }else if(i==14){
-                column.setPreferredWidth(200);
-            }else if(i==15){
-                column.setPreferredWidth(350);
-            }else if(i==16){
-                column.setPreferredWidth(115);
-            }else if(i==17){
-                column.setPreferredWidth(200);
-            }else if(i==18){
-                column.setPreferredWidth(350);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -636,7 +600,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
 
         PanelAccor.setBackground(new java.awt.Color(255, 255, 255));
         PanelAccor.setName("PanelAccor"); // NOI18N
-        PanelAccor.setPreferredSize(new java.awt.Dimension(180, 43));
+        PanelAccor.setPreferredSize(new java.awt.Dimension(190, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout());
 
         ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
@@ -675,7 +639,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         BtnRiwayatPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnRiwayatPasien.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnRiwayatPasien.setName("BtnRiwayatPasien"); // NOI18N
-        BtnRiwayatPasien.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnRiwayatPasien.setPreferredSize(new java.awt.Dimension(170, 23));
         BtnRiwayatPasien.setRoundRect(false);
         BtnRiwayatPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -692,7 +656,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         BtnDokumentasiKonsul2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnDokumentasiKonsul2.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnDokumentasiKonsul2.setName("BtnDokumentasiKonsul2"); // NOI18N
-        BtnDokumentasiKonsul2.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnDokumentasiKonsul2.setPreferredSize(new java.awt.Dimension(170, 23));
         BtnDokumentasiKonsul2.setRoundRect(false);
         BtnDokumentasiKonsul2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -709,7 +673,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         BtnDokumentasiKonsul1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnDokumentasiKonsul1.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnDokumentasiKonsul1.setName("BtnDokumentasiKonsul1"); // NOI18N
-        BtnDokumentasiKonsul1.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnDokumentasiKonsul1.setPreferredSize(new java.awt.Dimension(170, 23));
         BtnDokumentasiKonsul1.setRoundRect(false);
         BtnDokumentasiKonsul1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -726,7 +690,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         BtnJawabanDikonsuli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnJawabanDikonsuli.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnJawabanDikonsuli.setName("BtnJawabanDikonsuli"); // NOI18N
-        BtnJawabanDikonsuli.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnJawabanDikonsuli.setPreferredSize(new java.awt.Dimension(170, 23));
         BtnJawabanDikonsuli.setRoundRect(false);
         BtnJawabanDikonsuli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -743,7 +707,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         BtnDokumentasiKonsul.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnDokumentasiKonsul.setMargin(new java.awt.Insets(1, 1, 1, 1));
         BtnDokumentasiKonsul.setName("BtnDokumentasiKonsul"); // NOI18N
-        BtnDokumentasiKonsul.setPreferredSize(new java.awt.Dimension(160, 23));
+        BtnDokumentasiKonsul.setPreferredSize(new java.awt.Dimension(170, 23));
         BtnDokumentasiKonsul.setRoundRect(false);
         BtnDokumentasiKonsul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1302,7 +1266,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
     private void isMenu(){
         if(ChkAccor.isSelected()==true){
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(180,HEIGHT));
+            PanelAccor.setPreferredSize(new Dimension(190,HEIGHT));
             FormMenu.setVisible(true); 
             ChkAccor.setVisible(true);
         }else if(ChkAccor.isSelected()==false){  
