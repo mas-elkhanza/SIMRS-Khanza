@@ -197,8 +197,6 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
         BtnHapus = new widget.Button();
-        BtnEdit = new widget.Button();
-        BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         panelGlass10 = new widget.panelisi();
         jLabel6 = new widget.Label();
@@ -404,7 +402,7 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('S');
-        BtnSimpan.setText("Simpan");
+        BtnSimpan.setText("Layani");
         BtnSimpan.setToolTipText("Alt+S");
         BtnSimpan.setName("BtnSimpan"); // NOI18N
         BtnSimpan.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -422,10 +420,10 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
 
         BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
         BtnBatal.setMnemonic('B');
-        BtnBatal.setText("Baru");
+        BtnBatal.setText("Selesai Program");
         BtnBatal.setToolTipText("Alt+B");
         BtnBatal.setName("BtnBatal"); // NOI18N
-        BtnBatal.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnBatal.setPreferredSize(new java.awt.Dimension(140, 30));
         BtnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBatalActionPerformed(evt);
@@ -440,10 +438,10 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
 
         BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
         BtnHapus.setMnemonic('H');
-        BtnHapus.setText("Hapus");
+        BtnHapus.setText("Perpanjang Program");
         BtnHapus.setToolTipText("Alt+H");
         BtnHapus.setName("BtnHapus"); // NOI18N
-        BtnHapus.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnHapus.setPreferredSize(new java.awt.Dimension(175, 30));
         BtnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnHapusActionPerformed(evt);
@@ -455,42 +453,6 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
             }
         });
         panelGlass8.add(BtnHapus);
-
-        BtnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/inventaris.png"))); // NOI18N
-        BtnEdit.setMnemonic('G');
-        BtnEdit.setText("Ganti");
-        BtnEdit.setToolTipText("Alt+G");
-        BtnEdit.setName("BtnEdit"); // NOI18N
-        BtnEdit.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEditActionPerformed(evt);
-            }
-        });
-        BtnEdit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnEditKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnEdit);
-
-        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        BtnPrint.setMnemonic('T');
-        BtnPrint.setText("Cetak");
-        BtnPrint.setToolTipText("Alt+T");
-        BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        BtnPrint.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnPrintKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(BtnPrint);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -581,6 +543,7 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
         panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 4, 9));
 
         buttonGroup1.add(R1);
+        R1.setSelected(true);
         R1.setText("Menunggu");
         R1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         R1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -589,12 +552,11 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
         panelCari.add(R1);
 
         buttonGroup1.add(R3);
-        R3.setSelected(true);
-        R3.setText("Dilayani");
+        R3.setText("Sudah Dilayani");
         R3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         R3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         R3.setName("R3"); // NOI18N
-        R3.setPreferredSize(new java.awt.Dimension(95, 23));
+        R3.setPreferredSize(new java.awt.Dimension(115, 23));
         panelCari.add(R3);
 
         buttonGroup1.add(R2);
@@ -690,7 +652,7 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
         FormMenu.add(BtnRiwayatPasien);
 
         BtnJawabanDikonsuli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnJawabanDikonsuli.setText("Jawaban Konsul");
+        BtnJawabanDikonsuli.setText("Detail Permintaan");
         BtnJawabanDikonsuli.setFocusPainted(false);
         BtnJawabanDikonsuli.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnJawabanDikonsuli.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -707,7 +669,7 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
         FormMenu.add(BtnJawabanDikonsuli);
 
         BtnDokumentasiKonsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnDokumentasiKonsul.setText("Dokumentasi Konsul");
+        BtnDokumentasiKonsul.setText("Riwayat Program KFR");
         BtnDokumentasiKonsul.setFocusPainted(false);
         BtnDokumentasiKonsul.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnDokumentasiKonsul.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -789,117 +751,6 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
         }else{Valid.pindah(evt,BtnPrint,TCari);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            try{
-                htmlContent = new StringBuilder();
-                htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Telp</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Bayar</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Konsultasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Permintaan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Konsul</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Konsul</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Dokter Dikonsuli</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Dokter Dikonsuli</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Kerja Konsul</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Uraian Konsultasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal Jawaban</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Kerja Dikonsuli</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jawaban Konsultasi</b></td>"+
-                    "</tr>"
-                );
-                for (i = 0; i < tabMode.getRowCount(); i++) {
-                    htmlContent.append(
-                        "<tr class='isi'>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
-                        "</tr>");
-                }
-                LoadHTML.setText(
-                    "<html>"+
-                      "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                       htmlContent.toString()+
-                      "</table>"+
-                    "</html>"
-                );
-
-                File g = new File("file2.css");            
-                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
-                bg.write(
-                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
-                );
-                bg.close();
-
-                File f = new File("DataKonsultasiMedik.html");            
-                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>"+
-                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA KONSULTASI MEDIK<br><br></font>"+        
-                                    "</td>"+
-                               "</tr>"+
-                            "</table>")
-                );
-                bw.close();                         
-                Desktop.getDesktop().browse(f.toURI());
-
-            }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
-            }
-        }
-        this.setCursor(Cursor.getDefaultCursor());
-}//GEN-LAST:event_BtnPrintActionPerformed
-
-    private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnPrintActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnHapus, BtnKeluar);
-        }
-}//GEN-LAST:event_BtnPrintKeyPressed
-
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             BtnCariActionPerformed(null);
@@ -955,18 +806,6 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
             }
         }
 }//GEN-LAST:event_tbObatKeyPressed
-
-    private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        
-    }//GEN-LAST:event_BtnEditActionPerformed
-
-    private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnEditActionPerformed(null);
-        }else{
-            Valid.pindah(evt, BtnHapus, BtnKeluar);
-        }
-    }//GEN-LAST:event_BtnEditKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
@@ -1085,11 +924,9 @@ public class DlgPermintaanLayananProgramKFR extends javax.swing.JDialog {
     private widget.Button BtnCari;
     private widget.Button BtnCloseIn;
     private widget.Button BtnDokumentasiKonsul;
-    private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnJawabanDikonsuli;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPrint;
     private widget.Button BtnRiwayatPasien;
     private widget.Button BtnSimpan;
     private widget.Button BtnSimpanJawaban;

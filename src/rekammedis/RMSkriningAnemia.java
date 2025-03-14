@@ -302,61 +302,61 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         TglLahir = new widget.TextBox();
         jLabel78 = new widget.Label();
         jLabel79 = new widget.Label();
-        Anamnesis7 = new widget.ComboBox();
+        MudahLelah = new widget.ComboBox();
         jLabel80 = new widget.Label();
         jLabel81 = new widget.Label();
-        Anamnesis8 = new widget.ComboBox();
+        KonsumsiBuahSayur = new widget.ComboBox();
         jLabel82 = new widget.Label();
         jLabel83 = new widget.Label();
-        Anamnesis9 = new widget.ComboBox();
+        KonsumsiProteinHewani = new widget.ComboBox();
         jLabel84 = new widget.Label();
         jLabel85 = new widget.Label();
         jLabel86 = new widget.Label();
-        Anamnesis11 = new widget.ComboBox();
+        MasalahPubertas = new widget.ComboBox();
         jLabel87 = new widget.Label();
-        Anamnesis12 = new widget.ComboBox();
+        RisikoIMS = new widget.ComboBox();
         jLabel88 = new widget.Label();
-        Anamnesis13 = new widget.ComboBox();
+        KekerasanSeksual = new widget.ComboBox();
         jLabel89 = new widget.Label();
-        Anamnesis14 = new widget.ComboBox();
+        SudahMenstruasi = new widget.ComboBox();
         jLabel90 = new widget.Label();
-        Anamnesis15 = new widget.ComboBox();
+        GangguanMenstruasi = new widget.ComboBox();
         jLabel91 = new widget.Label();
         jLabel92 = new widget.Label();
-        Anamnesis10 = new widget.ComboBox();
+        TambahDarah = new widget.ComboBox();
         jLabel93 = new widget.Label();
         jLabel94 = new widget.Label();
-        Anamnesis16 = new widget.ComboBox();
+        KelainanDarah = new widget.ComboBox();
         jLabel95 = new widget.Label();
-        Anamnesis17 = new widget.ComboBox();
+        KeluargaThalasemia = new widget.ComboBox();
         jLabel96 = new widget.Label();
         jLabel97 = new widget.Label();
         jLabel98 = new widget.Label();
         jLabel99 = new widget.Label();
-        Anamnesis18 = new widget.ComboBox();
-        Anamnesis19 = new widget.ComboBox();
+        Rambut = new widget.ComboBox();
+        Kulit = new widget.ComboBox();
         jLabel101 = new widget.Label();
         jLabel102 = new widget.Label();
-        Anamnesis20 = new widget.ComboBox();
+        BekasSuntikan = new widget.ComboBox();
         jLabel103 = new widget.Label();
-        Anamnesis21 = new widget.ComboBox();
+        Kuku = new widget.ComboBox();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel104 = new widget.Label();
         jLabel105 = new widget.Label();
-        Anamnesis22 = new widget.ComboBox();
+        TandaKlinis = new widget.ComboBox();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel106 = new widget.Label();
         jLabel9 = new widget.Label();
-        HasilGDS = new widget.TextBox();
+        PemeriksaanHB = new widget.TextBox();
         jLabel26 = new widget.Label();
         jLabel22 = new widget.Label();
-        KeteranganGDS = new widget.TextBox();
+        JenisAnemia = new widget.TextBox();
         jLabel14 = new widget.Label();
         jLabel23 = new widget.Label();
-        KeteranganGDS1 = new widget.TextBox();
+        KadarHemo = new widget.TextBox();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel107 = new widget.Label();
-        KeteranganGDS2 = new widget.TextBox();
+        Keterangan = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -827,15 +827,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel79);
         jLabel79.setBounds(62, 90, 640, 23);
 
-        Anamnesis7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis7.setName("Anamnesis7"); // NOI18N
-        Anamnesis7.addKeyListener(new java.awt.event.KeyAdapter() {
+        MudahLelah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        MudahLelah.setName("MudahLelah"); // NOI18N
+        MudahLelah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis7KeyPressed(evt);
+                MudahLelahKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis7);
-        Anamnesis7.setBounds(709, 90, 80, 23);
+        FormInput.add(MudahLelah);
+        MudahLelah.setBounds(709, 90, 80, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel80.setText("Apakah Anda mengkonsumsi sayur dan buah setiap hari ?");
@@ -849,15 +849,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel81);
         jLabel81.setBounds(44, 120, 20, 23);
 
-        Anamnesis8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis8.setName("Anamnesis8"); // NOI18N
-        Anamnesis8.addKeyListener(new java.awt.event.KeyAdapter() {
+        KonsumsiBuahSayur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KonsumsiBuahSayur.setName("KonsumsiBuahSayur"); // NOI18N
+        KonsumsiBuahSayur.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis8KeyPressed(evt);
+                KonsumsiBuahSayurKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis8);
-        Anamnesis8.setBounds(709, 120, 80, 23);
+        FormInput.add(KonsumsiBuahSayur);
+        KonsumsiBuahSayur.setBounds(709, 120, 80, 23);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel82.setText("Apakah Anda sering mengkonsumsi protein hewani ?");
@@ -871,15 +871,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel83);
         jLabel83.setBounds(44, 150, 20, 23);
 
-        Anamnesis9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis9.setName("Anamnesis9"); // NOI18N
-        Anamnesis9.addKeyListener(new java.awt.event.KeyAdapter() {
+        KonsumsiProteinHewani.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KonsumsiProteinHewani.setName("KonsumsiProteinHewani"); // NOI18N
+        KonsumsiProteinHewani.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis9KeyPressed(evt);
+                KonsumsiProteinHewaniKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis9);
-        Anamnesis9.setBounds(709, 150, 80, 23);
+        FormInput.add(KonsumsiProteinHewani);
+        KonsumsiProteinHewani.setBounds(709, 150, 80, 23);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel84.setText("4.");
@@ -899,15 +899,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel86);
         jLabel86.setBounds(72, 200, 610, 23);
 
-        Anamnesis11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis11.setName("Anamnesis11"); // NOI18N
-        Anamnesis11.addKeyListener(new java.awt.event.KeyAdapter() {
+        MasalahPubertas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        MasalahPubertas.setName("MasalahPubertas"); // NOI18N
+        MasalahPubertas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis11KeyPressed(evt);
+                MasalahPubertasKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis11);
-        Anamnesis11.setBounds(709, 200, 80, 23);
+        FormInput.add(MasalahPubertas);
+        MasalahPubertas.setBounds(709, 200, 80, 23);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel87.setText("- Risiko IMS");
@@ -915,15 +915,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel87);
         jLabel87.setBounds(72, 230, 610, 23);
 
-        Anamnesis12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis12.setName("Anamnesis12"); // NOI18N
-        Anamnesis12.addKeyListener(new java.awt.event.KeyAdapter() {
+        RisikoIMS.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        RisikoIMS.setName("RisikoIMS"); // NOI18N
+        RisikoIMS.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis12KeyPressed(evt);
+                RisikoIMSKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis12);
-        Anamnesis12.setBounds(709, 230, 80, 23);
+        FormInput.add(RisikoIMS);
+        RisikoIMS.setBounds(709, 230, 80, 23);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel88.setText("- Risiko Kekerasan Seksual");
@@ -931,15 +931,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel88);
         jLabel88.setBounds(72, 260, 610, 23);
 
-        Anamnesis13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis13.setName("Anamnesis13"); // NOI18N
-        Anamnesis13.addKeyListener(new java.awt.event.KeyAdapter() {
+        KekerasanSeksual.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KekerasanSeksual.setName("KekerasanSeksual"); // NOI18N
+        KekerasanSeksual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis13KeyPressed(evt);
+                KekerasanSeksualKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis13);
-        Anamnesis13.setBounds(709, 260, 80, 23);
+        FormInput.add(KekerasanSeksual);
+        KekerasanSeksual.setBounds(709, 260, 80, 23);
 
         jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel89.setText("- Apakah Anda sudah mengalami menstruasi ? (Rematri SMP dan SMA)");
@@ -947,15 +947,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel89);
         jLabel89.setBounds(72, 290, 610, 23);
 
-        Anamnesis14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis14.setName("Anamnesis14"); // NOI18N
-        Anamnesis14.addKeyListener(new java.awt.event.KeyAdapter() {
+        SudahMenstruasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SudahMenstruasi.setName("SudahMenstruasi"); // NOI18N
+        SudahMenstruasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis14KeyPressed(evt);
+                SudahMenstruasiKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis14);
-        Anamnesis14.setBounds(709, 290, 80, 23);
+        FormInput.add(SudahMenstruasi);
+        SudahMenstruasi.setBounds(709, 290, 80, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("- Gangguan Menstruasi");
@@ -963,15 +963,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel90);
         jLabel90.setBounds(72, 320, 610, 23);
 
-        Anamnesis15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis15.setName("Anamnesis15"); // NOI18N
-        Anamnesis15.addKeyListener(new java.awt.event.KeyAdapter() {
+        GangguanMenstruasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        GangguanMenstruasi.setName("GangguanMenstruasi"); // NOI18N
+        GangguanMenstruasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis15KeyPressed(evt);
+                GangguanMenstruasiKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis15);
-        Anamnesis15.setBounds(709, 320, 80, 23);
+        FormInput.add(GangguanMenstruasi);
+        GangguanMenstruasi.setBounds(709, 320, 80, 23);
 
         jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel91.setText("5.");
@@ -985,15 +985,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel92);
         jLabel92.setBounds(62, 350, 640, 23);
 
-        Anamnesis10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis10.setName("Anamnesis10"); // NOI18N
-        Anamnesis10.addKeyListener(new java.awt.event.KeyAdapter() {
+        TambahDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TambahDarah.setName("TambahDarah"); // NOI18N
+        TambahDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis10KeyPressed(evt);
+                TambahDarahKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis10);
-        Anamnesis10.setBounds(709, 350, 80, 23);
+        FormInput.add(TambahDarah);
+        TambahDarah.setBounds(709, 350, 80, 23);
 
         jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel93.setText("6.");
@@ -1007,15 +1007,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel94);
         jLabel94.setBounds(62, 380, 640, 23);
 
-        Anamnesis16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis16.setName("Anamnesis16"); // NOI18N
-        Anamnesis16.addKeyListener(new java.awt.event.KeyAdapter() {
+        KelainanDarah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KelainanDarah.setName("KelainanDarah"); // NOI18N
+        KelainanDarah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis16KeyPressed(evt);
+                KelainanDarahKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis16);
-        Anamnesis16.setBounds(709, 380, 80, 23);
+        FormInput.add(KelainanDarah);
+        KelainanDarah.setBounds(709, 380, 80, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel95.setText("Apakah di keluarga Anda ada yang menderita Thalasemia ?");
@@ -1023,15 +1023,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel95);
         jLabel95.setBounds(62, 410, 640, 23);
 
-        Anamnesis17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis17.setName("Anamnesis17"); // NOI18N
-        Anamnesis17.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeluargaThalasemia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        KeluargaThalasemia.setName("KeluargaThalasemia"); // NOI18N
+        KeluargaThalasemia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis17KeyPressed(evt);
+                KeluargaThalasemiaKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis17);
-        Anamnesis17.setBounds(709, 410, 80, 23);
+        FormInput.add(KeluargaThalasemia);
+        KeluargaThalasemia.setBounds(709, 410, 80, 23);
 
         jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel96.setText("7.");
@@ -1057,25 +1057,25 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel99);
         jLabel99.setBounds(72, 460, 610, 23);
 
-        Anamnesis18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Tidak Sehat" }));
-        Anamnesis18.setName("Anamnesis18"); // NOI18N
-        Anamnesis18.addKeyListener(new java.awt.event.KeyAdapter() {
+        Rambut.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Tidak Sehat" }));
+        Rambut.setName("Rambut"); // NOI18N
+        Rambut.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis18KeyPressed(evt);
+                RambutKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis18);
-        Anamnesis18.setBounds(679, 460, 110, 23);
+        FormInput.add(Rambut);
+        Rambut.setBounds(679, 460, 110, 23);
 
-        Anamnesis19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Tidak Sehat" }));
-        Anamnesis19.setName("Anamnesis19"); // NOI18N
-        Anamnesis19.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Tidak Sehat" }));
+        Kulit.setName("Kulit"); // NOI18N
+        Kulit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis19KeyPressed(evt);
+                KulitKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis19);
-        Anamnesis19.setBounds(679, 490, 110, 23);
+        FormInput.add(Kulit);
+        Kulit.setBounds(679, 490, 110, 23);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("- Kulit");
@@ -1089,15 +1089,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel102);
         jLabel102.setBounds(72, 520, 610, 23);
 
-        Anamnesis20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis20.setName("Anamnesis20"); // NOI18N
-        Anamnesis20.addKeyListener(new java.awt.event.KeyAdapter() {
+        BekasSuntikan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        BekasSuntikan.setName("BekasSuntikan"); // NOI18N
+        BekasSuntikan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis20KeyPressed(evt);
+                BekasSuntikanKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis20);
-        Anamnesis20.setBounds(709, 520, 80, 23);
+        FormInput.add(BekasSuntikan);
+        BekasSuntikan.setBounds(709, 520, 80, 23);
 
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel103.setText("- Kuku");
@@ -1105,15 +1105,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel103);
         jLabel103.setBounds(72, 550, 610, 23);
 
-        Anamnesis21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Tidak Sehat" }));
-        Anamnesis21.setName("Anamnesis21"); // NOI18N
-        Anamnesis21.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kuku.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Tidak Sehat" }));
+        Kuku.setName("Kuku"); // NOI18N
+        Kuku.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis21KeyPressed(evt);
+                KukuKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis21);
-        Anamnesis21.setBounds(679, 550, 110, 23);
+        FormInput.add(Kuku);
+        Kuku.setBounds(679, 550, 110, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -1134,15 +1134,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel105);
         jLabel105.setBounds(44, 600, 640, 23);
 
-        Anamnesis22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis22.setName("Anamnesis22"); // NOI18N
-        Anamnesis22.addKeyListener(new java.awt.event.KeyAdapter() {
+        TandaKlinis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        TandaKlinis.setName("TandaKlinis"); // NOI18N
+        TandaKlinis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis22KeyPressed(evt);
+                TandaKlinisKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis22);
-        Anamnesis22.setBounds(709, 600, 80, 23);
+        FormInput.add(TandaKlinis);
+        TandaKlinis.setBounds(709, 600, 80, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
@@ -1162,15 +1162,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel9);
         jLabel9.setBounds(0, 650, 130, 23);
 
-        HasilGDS.setFocusTraversalPolicyProvider(true);
-        HasilGDS.setName("HasilGDS"); // NOI18N
-        HasilGDS.addKeyListener(new java.awt.event.KeyAdapter() {
+        PemeriksaanHB.setFocusTraversalPolicyProvider(true);
+        PemeriksaanHB.setName("PemeriksaanHB"); // NOI18N
+        PemeriksaanHB.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                HasilGDSKeyPressed(evt);
+                PemeriksaanHBKeyPressed(evt);
             }
         });
-        FormInput.add(HasilGDS);
-        HasilGDS.setBounds(134, 650, 60, 23);
+        FormInput.add(PemeriksaanHB);
+        PemeriksaanHB.setBounds(134, 650, 60, 23);
 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel26.setText("mg/dL");
@@ -1183,16 +1183,16 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel22);
         jLabel22.setBounds(555, 650, 100, 23);
 
-        KeteranganGDS.setEditable(false);
-        KeteranganGDS.setFocusTraversalPolicyProvider(true);
-        KeteranganGDS.setName("KeteranganGDS"); // NOI18N
-        KeteranganGDS.addKeyListener(new java.awt.event.KeyAdapter() {
+        JenisAnemia.setEditable(false);
+        JenisAnemia.setFocusTraversalPolicyProvider(true);
+        JenisAnemia.setName("JenisAnemia"); // NOI18N
+        JenisAnemia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganGDSKeyPressed(evt);
+                JenisAnemiaKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganGDS);
-        KeteranganGDS.setBounds(659, 650, 130, 23);
+        FormInput.add(JenisAnemia);
+        JenisAnemia.setBounds(659, 650, 130, 23);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Pemeriksaan HB");
@@ -1205,16 +1205,16 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel23);
         jLabel23.setBounds(266, 650, 120, 23);
 
-        KeteranganGDS1.setEditable(false);
-        KeteranganGDS1.setFocusTraversalPolicyProvider(true);
-        KeteranganGDS1.setName("KeteranganGDS1"); // NOI18N
-        KeteranganGDS1.addKeyListener(new java.awt.event.KeyAdapter() {
+        KadarHemo.setEditable(false);
+        KadarHemo.setFocusTraversalPolicyProvider(true);
+        KadarHemo.setName("KadarHemo"); // NOI18N
+        KadarHemo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganGDS1KeyPressed(evt);
+                KadarHemoKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganGDS1);
-        KeteranganGDS1.setBounds(390, 650, 140, 23);
+        FormInput.add(KadarHemo);
+        KadarHemo.setBounds(390, 650, 140, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
@@ -1229,15 +1229,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel107);
         jLabel107.setBounds(10, 680, 200, 23);
 
-        KeteranganGDS2.setFocusTraversalPolicyProvider(true);
-        KeteranganGDS2.setName("KeteranganGDS2"); // NOI18N
-        KeteranganGDS2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Keterangan.setFocusTraversalPolicyProvider(true);
+        Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganGDS2KeyPressed(evt);
+                KeteranganKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganGDS2);
-        KeteranganGDS2.setBounds(44, 700, 745, 23);
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(44, 700, 745, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1664,85 +1664,85 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void Anamnesis7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis7KeyPressed
+    private void MudahLelahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MudahLelahKeyPressed
         //Valid.pindah(evt,Anamnesis6,Anamnesis8);
-    }//GEN-LAST:event_Anamnesis7KeyPressed
+    }//GEN-LAST:event_MudahLelahKeyPressed
 
-    private void Anamnesis8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis8KeyPressed
+    private void KonsumsiBuahSayurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonsumsiBuahSayurKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis8KeyPressed
+    }//GEN-LAST:event_KonsumsiBuahSayurKeyPressed
 
-    private void Anamnesis9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis9KeyPressed
+    private void KonsumsiProteinHewaniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KonsumsiProteinHewaniKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis9KeyPressed
+    }//GEN-LAST:event_KonsumsiProteinHewaniKeyPressed
 
-    private void Anamnesis11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis11KeyPressed
+    private void MasalahPubertasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MasalahPubertasKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis11KeyPressed
+    }//GEN-LAST:event_MasalahPubertasKeyPressed
 
-    private void Anamnesis12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis12KeyPressed
+    private void RisikoIMSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoIMSKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis12KeyPressed
+    }//GEN-LAST:event_RisikoIMSKeyPressed
 
-    private void Anamnesis13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis13KeyPressed
+    private void KekerasanSeksualKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KekerasanSeksualKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis13KeyPressed
+    }//GEN-LAST:event_KekerasanSeksualKeyPressed
 
-    private void Anamnesis14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis14KeyPressed
+    private void SudahMenstruasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SudahMenstruasiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis14KeyPressed
+    }//GEN-LAST:event_SudahMenstruasiKeyPressed
 
-    private void Anamnesis15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis15KeyPressed
+    private void GangguanMenstruasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GangguanMenstruasiKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis15KeyPressed
+    }//GEN-LAST:event_GangguanMenstruasiKeyPressed
 
-    private void Anamnesis10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis10KeyPressed
+    private void TambahDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TambahDarahKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis10KeyPressed
+    }//GEN-LAST:event_TambahDarahKeyPressed
 
-    private void Anamnesis16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis16KeyPressed
+    private void KelainanDarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelainanDarahKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis16KeyPressed
+    }//GEN-LAST:event_KelainanDarahKeyPressed
 
-    private void Anamnesis17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis17KeyPressed
+    private void KeluargaThalasemiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluargaThalasemiaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis17KeyPressed
+    }//GEN-LAST:event_KeluargaThalasemiaKeyPressed
 
-    private void Anamnesis18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis18KeyPressed
+    private void RambutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RambutKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis18KeyPressed
+    }//GEN-LAST:event_RambutKeyPressed
 
-    private void Anamnesis19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis19KeyPressed
+    private void KulitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KulitKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis19KeyPressed
+    }//GEN-LAST:event_KulitKeyPressed
 
-    private void Anamnesis20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis20KeyPressed
+    private void BekasSuntikanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BekasSuntikanKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis20KeyPressed
+    }//GEN-LAST:event_BekasSuntikanKeyPressed
 
-    private void Anamnesis21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis21KeyPressed
+    private void KukuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KukuKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis21KeyPressed
+    }//GEN-LAST:event_KukuKeyPressed
 
-    private void Anamnesis22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis22KeyPressed
+    private void TandaKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TandaKlinisKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis22KeyPressed
+    }//GEN-LAST:event_TandaKlinisKeyPressed
 
-    private void HasilGDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilGDSKeyPressed
+    private void PemeriksaanHBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanHBKeyPressed
         //Valid.pindah(evt,TB,KeteranganGDS);
-    }//GEN-LAST:event_HasilGDSKeyPressed
+    }//GEN-LAST:event_PemeriksaanHBKeyPressed
 
-    private void KeteranganGDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGDSKeyPressed
+    private void JenisAnemiaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisAnemiaKeyPressed
         //Valid.pindah(evt,HasilGDS,HasilGDP);
-    }//GEN-LAST:event_KeteranganGDSKeyPressed
+    }//GEN-LAST:event_JenisAnemiaKeyPressed
 
-    private void KeteranganGDS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGDS1KeyPressed
+    private void KadarHemoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KadarHemoKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganGDS1KeyPressed
+    }//GEN-LAST:event_KadarHemoKeyPressed
 
-    private void KeteranganGDS2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganGDS2KeyPressed
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_KeteranganGDS2KeyPressed
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1761,22 +1761,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ComboBox Anamnesis10;
-    private widget.ComboBox Anamnesis11;
-    private widget.ComboBox Anamnesis12;
-    private widget.ComboBox Anamnesis13;
-    private widget.ComboBox Anamnesis14;
-    private widget.ComboBox Anamnesis15;
-    private widget.ComboBox Anamnesis16;
-    private widget.ComboBox Anamnesis17;
-    private widget.ComboBox Anamnesis18;
-    private widget.ComboBox Anamnesis19;
-    private widget.ComboBox Anamnesis20;
-    private widget.ComboBox Anamnesis21;
-    private widget.ComboBox Anamnesis22;
-    private widget.ComboBox Anamnesis7;
-    private widget.ComboBox Anamnesis8;
-    private widget.ComboBox Anamnesis9;
+    private widget.ComboBox BekasSuntikan;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1791,24 +1776,39 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox HasilGDS;
+    private widget.ComboBox GangguanMenstruasi;
     private widget.ComboBox Jam;
+    private widget.TextBox JenisAnemia;
     private widget.TextBox Jk;
+    private widget.TextBox KadarHemo;
     private widget.TextBox KdPetugas;
-    private widget.TextBox KeteranganGDS;
-    private widget.TextBox KeteranganGDS1;
-    private widget.TextBox KeteranganGDS2;
+    private widget.ComboBox KekerasanSeksual;
+    private widget.ComboBox KelainanDarah;
+    private widget.ComboBox KeluargaThalasemia;
+    private widget.TextBox Keterangan;
+    private widget.ComboBox KonsumsiBuahSayur;
+    private widget.ComboBox KonsumsiProteinHewani;
+    private widget.ComboBox Kuku;
+    private widget.ComboBox Kulit;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
+    private widget.ComboBox MasalahPubertas;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningTBC;
+    private widget.ComboBox MudahLelah;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
+    private widget.TextBox PemeriksaanHB;
+    private widget.ComboBox Rambut;
+    private widget.ComboBox RisikoIMS;
     private widget.ScrollPane Scroll;
+    private widget.ComboBox SudahMenstruasi;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
+    private widget.ComboBox TambahDarah;
+    private widget.ComboBox TandaKlinis;
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
