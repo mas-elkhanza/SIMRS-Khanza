@@ -587,7 +587,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         try{   
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
             Valid.tabelKosong(tabMode);
-            psdokter=koneksi.prepareStatement("select kd_dokter,nm_dokter from dokter where  kd_dokter<>'-' and status='1' and kd_dokter like ?");
+            psdokter=koneksi.prepareStatement("select dokter.kd_dokter,dokter.nm_dokter from dokter where dokter.status='1' and dokter.kd_dokter like ?");
             try {
                 psdokter.setString(1,"%"+kddokter.getText()+"%"); 
                 rsdokter=psdokter.executeQuery();

@@ -6603,9 +6603,21 @@ public final class BPJSDataSEP extends javax.swing.JDialog {
             KdDPJP.setText(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),44).toString());
             NmDPJP.setText(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),45).toString());
             TujuanKunjungan.setSelectedItem(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),46).toString());
-            FlagProsedur.setSelectedItem(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),47).toString());
-            Penunjang.setSelectedItem(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),48).toString());
-            AsesmenPoli.setSelectedItem(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),49).toString());
+            if(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),47).toString().equals("")){
+                FlagProsedur.setSelectedIndex(0);
+            }else{
+                FlagProsedur.setSelectedItem(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),47).toString());
+            }   
+            if(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),48).toString().equals("")){
+                Penunjang.setSelectedIndex(0);
+            }else{
+                Penunjang.setSelectedItem(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),48).toString());
+            }
+            if(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),49).toString().equals("")){
+                AsesmenPoli.setSelectedIndex(0);
+            }else{
+                AsesmenPoli.setSelectedItem(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),49).toString());
+            }
             KdDPJPLayanan.setText(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),50).toString());
             NmDPJPLayanan.setText(tbDataSEP.getValueAt(tbDataSEP.getSelectedRow(),51).toString());
             
