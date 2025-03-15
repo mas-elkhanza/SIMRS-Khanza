@@ -2453,7 +2453,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

@@ -71,7 +71,9 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
             "Mudah Lelah","Konsumsi Buah Sayur","Konsumsi Protein Hewani","Masalah Pubertas","Risiko IMS",
-            "Kekerasan Seksual","Sudah Menstruasi","gangguan_menstruasi","tambah_darah","kelainan_darah","keluarga_thalasemia","rambut","kulit","bekas_sutikan","kuku","tanda_klinis","pemeriksaan_hb","kadar_hb","jenis_anemia","hasil_skrining","keterangan`"
+            "Kekerasan Seksual","Sudah Menstruasi","Gangguan Menstruasi","Tablet Tambah Darah","Kelainan Darah",
+            "Keluarga Thalasemia","Kebersihan Rambut","Kebersihan Kulit","Bekas Suntikan Di Kulit","Kebersihan Kuku",
+            "Tanda Klinis Anemia","Pemeriksaan HB","Kadar Hemoglobin","Jenis Anemia","Hasil Skrining","Keterangan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -81,7 +83,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 30; i++) {
+        for (i = 0; i < 29; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -99,6 +101,14 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(120);
+            }else if(i==8){
+                column.setPreferredWidth(70);
+            }else if(i==9){
+                column.setPreferredWidth(110);
+            }else if(i==10){
+                column.setPreferredWidth(130);
+            }else if(i==11){
+                column.setPreferredWidth(100);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -132,6 +142,21 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                 }
             });
         }
+        
+        PemeriksaanHB.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isAnemia();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isAnemia();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isAnemia();
+            }
+        });
         
         petugas.addWindowListener(new WindowListener() {
             @Override
@@ -296,10 +321,8 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         PemeriksaanHB = new widget.TextBox();
         jLabel26 = new widget.Label();
         jLabel22 = new widget.Label();
-        JenisAnemia = new widget.TextBox();
         jLabel14 = new widget.Label();
         jLabel23 = new widget.Label();
-        KadarHemo = new widget.TextBox();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel107 = new widget.Label();
         jLabel24 = new widget.Label();
@@ -307,6 +330,8 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         HasilSkrining = new widget.TextBox();
         jLabel108 = new widget.Label();
         Keterangan = new widget.TextBox();
+        JenisAnemia = new widget.TextBox();
+        KadarHemo = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -1133,12 +1158,6 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(jLabel22);
         jLabel22.setBounds(555, 650, 100, 23);
 
-        JenisAnemia.setEditable(false);
-        JenisAnemia.setFocusTraversalPolicyProvider(true);
-        JenisAnemia.setName("JenisAnemia"); // NOI18N
-        FormInput.add(JenisAnemia);
-        JenisAnemia.setBounds(659, 650, 130, 23);
-
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Pemeriksaan HB");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -1149,12 +1168,6 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
         jLabel23.setBounds(266, 650, 120, 23);
-
-        KadarHemo.setEditable(false);
-        KadarHemo.setFocusTraversalPolicyProvider(true);
-        KadarHemo.setName("KadarHemo"); // NOI18N
-        FormInput.add(KadarHemo);
-        KadarHemo.setBounds(390, 650, 140, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
@@ -1205,6 +1218,20 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         FormInput.add(Keterangan);
         Keterangan.setBounds(479, 700, 310, 23);
 
+        JenisAnemia.setEditable(false);
+        JenisAnemia.setFocusTraversalPolicyProvider(true);
+        JenisAnemia.setName("JenisAnemia"); // NOI18N
+        JenisAnemia.setOpaque(true);
+        FormInput.add(JenisAnemia);
+        JenisAnemia.setBounds(659, 650, 130, 23);
+
+        KadarHemo.setEditable(false);
+        KadarHemo.setFocusTraversalPolicyProvider(true);
+        KadarHemo.setName("KadarHemo"); // NOI18N
+        KadarHemo.setOpaque(true);
+        FormInput.add(KadarHemo);
+        KadarHemo.setBounds(390, 650, 140, 23);
+
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -1229,24 +1256,14 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
-        }else if(BB.getText().trim().equals("")){
-            Valid.textKosong(BB,"Berat Badan");
-        }else if(TB.getText().trim().equals("")){
-            Valid.textKosong(TB,"Tinggi Badan");
-        }else if(IMT.getText().trim().equals("")){
-            Valid.textKosong(IMT,"IMT");
-        }else if(KlasifikasiIMT.getText().trim().equals("")){
-            Valid.textKosong(IMT,"Klasifikasi IMT");
-        }else if(LP.getText().trim().equals("")){
-            Valid.textKosong(LP,"Lingkar Pinggang");
-        }else if(RisikoLP.getText().trim().equals("")){
-            Valid.textKosong(LP,"Gejala Penyakit Lain");
-        }else if(KesimpulanHasilSkrining.getText().trim().equals("")){
-            Valid.textKosong(LP,"Kesimpulan Skrining");
+        }else if(HasilSkrining.getText().trim().equals("")){
+            Valid.textKosong(HasilSkrining,"Hasil Skrining");
+        }else if(Keterangan.getText().trim().equals("")){
+            Valid.textKosong(Keterangan,"Keterangan");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -1258,7 +1275,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                     simpan();
                 }
             } 
-        }*/
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -1308,25 +1325,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
+        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
-        }else if(BB.getText().trim().equals("")){
-            Valid.textKosong(BB,"Berat Badan");
-        }else if(TB.getText().trim().equals("")){
-            Valid.textKosong(TB,"Tinggi Badan");
-        }else if(IMT.getText().trim().equals("")){
-            Valid.textKosong(IMT,"IMT");
-        }else if(KlasifikasiIMT.getText().trim().equals("")){
-            Valid.textKosong(IMT,"Klasifikasi IMT");
-        }else if(LP.getText().trim().equals("")){
-            Valid.textKosong(LP,"Lingkar Pinggang");
-        }else if(RisikoLP.getText().trim().equals("")){
-            Valid.textKosong(LP,"Gejala Penyakit Lain");
-        }else if(KesimpulanHasilSkrining.getText().trim().equals("")){
-            Valid.textKosong(LP,"Kesimpulan Skrining");
-        }else{ 
+        }else if(HasilSkrining.getText().trim().equals("")){
+            Valid.textKosong(HasilSkrining,"Hasil Skrining");
+        }else if(Keterangan.getText().trim().equals("")){
+            Valid.textKosong(Keterangan,"Keterangan");
+        }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
@@ -1347,7 +1354,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
             } 
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -1387,32 +1394,26 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB(Kg)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB(Cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IMT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kasifikasi IMT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>LP(Cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko L.P.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Kontak TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Kontak TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Terdiagnosa TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jika Ya Kapan ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Berobat TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Malnutrisi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merokok</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat DM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ODHIV</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lansia > 65 Tahun</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ibu Hamil</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>WBP (Warga Binaan Permasyarakatan )</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tinggal di wilayah padat kumuh miskin</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Abnormalitas TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Batuk</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala BB Turun</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Demam</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Berkeringat Malam Hari</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Penyakit Lain</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan Skrining</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mudah Lelah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Konsumsi Buah Sayur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Konsumsi Protein Hewani</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Masalah Pubertas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko IMS</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kekerasan Seksual</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sudah Menstruasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Menstruasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tablet Tambah Darah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelainan Darah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Thalasemia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebersihan Rambut</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebersihan Kulit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bekas Suntikan Di Kulit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebersihan Kuku</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanda Klinis Anemia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pemeriksaan HB</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kadar Hemoglobin</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Anemia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
                     "</tr>"
                 );
@@ -1448,12 +1449,6 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+ 
-                            "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1479,7 +1474,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataSkriningTBC.html");            
+                File f = new File("DataSkriningAnemia.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1489,7 +1484,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING TBC<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA SEKRINING ANEMIA<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1613,15 +1608,15 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningTBC.jasper","report","::[ Formulir Skrining TBC ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_tbc.nip,petugas.nama,skrining_tbc.tanggal,"+
-                    "skrining_tbc.berat_badan,skrining_tbc.tinggi_badan,skrining_tbc.imt,skrining_tbc.kasifikasi_imt,skrining_tbc.lingkar_pinggang,skrining_tbc.risiko_lingkar_pinggang,"+
-                    "skrining_tbc.riwayat_kontak_tbc,skrining_tbc.jenis_kontak_tbc,"+
-                    "skrining_tbc.faktor_resiko_pernah_terdiagnosa_tbc,skrining_tbc.keterangan_pernah_terdiagnosa,"+
-                    "skrining_tbc.faktor_resiko_pernah_berobat_tbc,skrining_tbc.faktor_resiko_malnutrisi,skrining_tbc.faktor_resiko_merokok,skrining_tbc.faktor_resiko_riwayat_dm,"+
-                    "skrining_tbc.faktor_resiko_odhiv,skrining_tbc.faktor_resiko_lansia,skrining_tbc.faktor_resiko_ibu_hamil,skrining_tbc.faktor_resiko_wbp,skrining_tbc.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
-                    "skrining_tbc.abnormalitas_tbc,skrining_tbc.gejala_tbc_batuk,skrining_tbc.gejala_tbc_bb_turun,skrining_tbc.gejala_tbc_demam,skrining_tbc.gejala_tbc_berkeringat_malam_hari,skrining_tbc.keterangan_gejala_penyakit_lain,"+
-                    "skrining_tbc.kesimpulan_skrining,skrining_tbc.keterangan_hasil_skrining from skrining_tbc inner join reg_periksa on skrining_tbc.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_tbc.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_anemia.nip,petugas.nama,skrining_anemia.tanggal,"+
+                    "skrining_anemia.berat_badan,skrining_anemia.tinggi_badan,skrining_anemia.imt,skrining_anemia.kasifikasi_imt,skrining_anemia.lingkar_pinggang,skrining_anemia.risiko_lingkar_pinggang,"+
+                    "skrining_anemia.riwayat_kontak_tbc,skrining_anemia.jenis_kontak_tbc,"+
+                    "skrining_anemia.faktor_resiko_pernah_terdiagnosa_tbc,skrining_anemia.keterangan_pernah_terdiagnosa,"+
+                    "skrining_anemia.faktor_resiko_pernah_berobat_tbc,skrining_anemia.faktor_resiko_malnutrisi,skrining_anemia.faktor_resiko_merokok,skrining_anemia.faktor_resiko_riwayat_dm,"+
+                    "skrining_anemia.faktor_resiko_odhiv,skrining_anemia.faktor_resiko_lansia,skrining_anemia.faktor_resiko_ibu_hamil,skrining_anemia.faktor_resiko_wbp,skrining_anemia.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
+                    "skrining_anemia.abnormalitas_tbc,skrining_anemia.gejala_tbc_batuk,skrining_anemia.gejala_tbc_bb_turun,skrining_anemia.gejala_tbc_demam,skrining_anemia.gejala_tbc_berkeringat_malam_hari,skrining_anemia.keterangan_gejala_penyakit_lain,"+
+                    "skrining_anemia.kesimpulan_skrining,skrining_anemia.keterangan_hasil_skrining from skrining_anemia inner join reg_periksa on skrining_anemia.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_anemia.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningTBCActionPerformed
@@ -1841,30 +1836,24 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_tbc.nip,petugas.nama,skrining_tbc.tanggal,"+
-                    "skrining_tbc.berat_badan,skrining_tbc.tinggi_badan,skrining_tbc.imt,skrining_tbc.kasifikasi_imt,skrining_tbc.lingkar_pinggang,skrining_tbc.risiko_lingkar_pinggang,"+
-                    "skrining_tbc.riwayat_kontak_tbc,skrining_tbc.jenis_kontak_tbc,"+
-                    "skrining_tbc.faktor_resiko_pernah_terdiagnosa_tbc,skrining_tbc.keterangan_pernah_terdiagnosa,"+
-                    "skrining_tbc.faktor_resiko_pernah_berobat_tbc,skrining_tbc.faktor_resiko_malnutrisi,skrining_tbc.faktor_resiko_merokok,skrining_tbc.faktor_resiko_riwayat_dm,"+
-                    "skrining_tbc.faktor_resiko_odhiv,skrining_tbc.faktor_resiko_lansia,skrining_tbc.faktor_resiko_ibu_hamil,skrining_tbc.faktor_resiko_wbp,skrining_tbc.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
-                    "skrining_tbc.abnormalitas_tbc,skrining_tbc.gejala_tbc_batuk,skrining_tbc.gejala_tbc_bb_turun,skrining_tbc.gejala_tbc_demam,skrining_tbc.gejala_tbc_berkeringat_malam_hari,skrining_tbc.keterangan_gejala_penyakit_lain,"+
-                    "skrining_tbc.kesimpulan_skrining,skrining_tbc.keterangan_hasil_skrining from skrining_tbc inner join reg_periksa on skrining_tbc.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_tbc.nip=petugas.nip "+
-                    "where skrining_tbc.tanggal between ? and ? order by skrining_tbc.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_anemia.nip,petugas.nama,skrining_anemia.tanggal,"+
+                    "skrining_anemia.mudah_lelah,skrining_anemia.buah_sayur,skrining_anemia.protein_hewani,skrining_anemia.masalah_pubertas,skrining_anemia.risiko_ims,skrining_anemia.kekerasan_seksual,"+
+                    "skrining_anemia.sudah_menstruasi,skrining_anemia.gangguan_menstruasi,skrining_anemia.tambah_darah,skrining_anemia.kelainan_darah,skrining_anemia.keluarga_thalasemia,skrining_anemia.rambut,"+
+                    "skrining_anemia.kulit,skrining_anemia.bekas_sutikan,skrining_anemia.kuku,skrining_anemia.tanda_klinis,skrining_anemia.pemeriksaan_hb,skrining_anemia.kadar_hb,skrining_anemia.jenis_anemia,"+
+                    "skrining_anemia.hasil_skrining,skrining_anemia.keterangan from skrining_anemia inner join reg_periksa on skrining_anemia.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_anemia.nip=petugas.nip "+
+                    "where skrining_anemia.tanggal between ? and ? order by skrining_anemia.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_tbc.nip,petugas.nama,skrining_tbc.tanggal,"+
-                    "skrining_tbc.berat_badan,skrining_tbc.tinggi_badan,skrining_tbc.imt,skrining_tbc.kasifikasi_imt,skrining_tbc.lingkar_pinggang,skrining_tbc.risiko_lingkar_pinggang,"+
-                    "skrining_tbc.riwayat_kontak_tbc,skrining_tbc.jenis_kontak_tbc,"+
-                    "skrining_tbc.faktor_resiko_pernah_terdiagnosa_tbc,skrining_tbc.keterangan_pernah_terdiagnosa,"+
-                    "skrining_tbc.faktor_resiko_pernah_berobat_tbc,skrining_tbc.faktor_resiko_malnutrisi,skrining_tbc.faktor_resiko_merokok,skrining_tbc.faktor_resiko_riwayat_dm,"+
-                    "skrining_tbc.faktor_resiko_odhiv,skrining_tbc.faktor_resiko_lansia,skrining_tbc.faktor_resiko_ibu_hamil,skrining_tbc.faktor_resiko_wbp,skrining_tbc.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
-                    "skrining_tbc.abnormalitas_tbc,skrining_tbc.gejala_tbc_batuk,skrining_tbc.gejala_tbc_bb_turun,skrining_tbc.gejala_tbc_demam,skrining_tbc.gejala_tbc_berkeringat_malam_hari,skrining_tbc.keterangan_gejala_penyakit_lain,"+
-                    "skrining_tbc.kesimpulan_skrining,skrining_tbc.keterangan_hasil_skrining from skrining_tbc inner join reg_periksa on skrining_tbc.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_tbc.nip=petugas.nip "+
-                    "where skrining_tbc.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_tbc.nip like ? or petugas.nama like ? or skrining_tbc.kasifikasi_imt like ? or skrining_tbc.kesimpulan_skrining like ?) "+
-                    "order by skrining_tbc.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_anemia.nip,petugas.nama,skrining_anemia.tanggal,"+
+                    "skrining_anemia.mudah_lelah,skrining_anemia.buah_sayur,skrining_anemia.protein_hewani,skrining_anemia.masalah_pubertas,skrining_anemia.risiko_ims,skrining_anemia.kekerasan_seksual,"+
+                    "skrining_anemia.sudah_menstruasi,skrining_anemia.gangguan_menstruasi,skrining_anemia.tambah_darah,skrining_anemia.kelainan_darah,skrining_anemia.keluarga_thalasemia,skrining_anemia.rambut,"+
+                    "skrining_anemia.kulit,skrining_anemia.bekas_sutikan,skrining_anemia.kuku,skrining_anemia.tanda_klinis,skrining_anemia.pemeriksaan_hb,skrining_anemia.kadar_hb,skrining_anemia.jenis_anemia,"+
+                    "skrining_anemia.hasil_skrining,skrining_anemia.keterangan from skrining_anemia inner join reg_periksa on skrining_anemia.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_anemia.nip=petugas.nip "+
+                    "where skrining_anemia.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_anemia.nip like ? or petugas.nama like ? or skrining_anemia.hasil_skrining like ? or skrining_anemia.keterangan like ?) "+
+                    "order by skrining_anemia.tanggal ");
             }
                 
             try {
@@ -1888,12 +1877,9 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new String[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("berat_badan"),rs.getString("tinggi_badan"),rs.getString("imt"),rs.getString("kasifikasi_imt"),rs.getString("lingkar_pinggang"),rs.getString("risiko_lingkar_pinggang"),
-                        rs.getString("riwayat_kontak_tbc"),rs.getString("jenis_kontak_tbc"),rs.getString("faktor_resiko_pernah_terdiagnosa_tbc"),rs.getString("keterangan_pernah_terdiagnosa"),rs.getString("faktor_resiko_pernah_berobat_tbc"),
-                        rs.getString("faktor_resiko_malnutrisi"),rs.getString("faktor_resiko_merokok"),rs.getString("faktor_resiko_riwayat_dm"),rs.getString("faktor_resiko_odhiv"),rs.getString("faktor_resiko_lansia"),
-                        rs.getString("faktor_resiko_ibu_hamil"),rs.getString("faktor_resiko_wbp"),rs.getString("faktor_resiko_tinggal_diwilayah_padat_kumuh"),rs.getString("abnormalitas_tbc"),rs.getString("gejala_tbc_batuk"),
-                        rs.getString("gejala_tbc_bb_turun"),rs.getString("gejala_tbc_demam"),rs.getString("gejala_tbc_berkeringat_malam_hari"),rs.getString("keterangan_gejala_penyakit_lain"),rs.getString("kesimpulan_skrining"),
-                        rs.getString("keterangan_hasil_skrining"),
+                        rs.getString("mudah_lelah"),rs.getString("buah_sayur"),rs.getString("protein_hewani"),rs.getString("masalah_pubertas"),rs.getString("risiko_ims"),rs.getString("kekerasan_seksual"),rs.getString("sudah_menstruasi"),
+                        rs.getString("gangguan_menstruasi"),rs.getString("tambah_darah"),rs.getString("kelainan_darah"),rs.getString("keluarga_thalasemia"),rs.getString("rambut"),rs.getString("kulit"),rs.getString("bekas_sutikan"),
+                        rs.getString("kuku"),rs.getString("tanda_klinis"),rs.getString("pemeriksaan_hb"),rs.getString("kadar_hb"),rs.getString("jenis_anemia"),rs.getString("hasil_skrining"),rs.getString("keterangan"),
                     });
                 }
             } catch (Exception e) {
@@ -1945,6 +1931,27 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            MudahLelah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            KonsumsiBuahSayur.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            KonsumsiProteinHewani.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            MasalahPubertas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            RisikoIMS.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            KekerasanSeksual.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            SudahMenstruasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            GangguanMenstruasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            TambahDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            KelainanDarah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            KeluargaThalasemia.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Rambut.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Kulit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            BekasSuntikan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Kuku.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            TandaKlinis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            PemeriksaanHB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            KadarHemo.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            JenisAnemia.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
@@ -1997,7 +2004,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -2009,10 +2016,10 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        //BtnSimpan.setEnabled(akses.getskrining_tbc());
-        //BtnHapus.setEnabled(akses.getskrining_tbc());
-        //BtnEdit.setEnabled(akses.getskrining_tbc());
-        //BtnPrint.setEnabled(akses.getskrining_tbc()); 
+        BtnSimpan.setEnabled(akses.getskrining_anemia());
+        BtnHapus.setEnabled(akses.getskrining_anemia());
+        BtnEdit.setEnabled(akses.getskrining_anemia());
+        BtnPrint.setEnabled(akses.getskrining_anemia()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2090,18 +2097,16 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_tbc","no_rawat=?","no_rawat=?,tanggal=?,berat_badan=?,tinggi_badan=?,imt=?,kasifikasi_imt=?,lingkar_pinggang=?,risiko_lingkar_pinggang=?,"+
-                "riwayat_kontak_tbc=?,jenis_kontak_tbc=?,faktor_resiko_pernah_terdiagnosa_tbc=?,keterangan_pernah_terdiagnosa=?,faktor_resiko_pernah_berobat_tbc=?,"+
-                "faktor_resiko_malnutrisi=?,faktor_resiko_merokok=?,faktor_resiko_riwayat_dm=?,faktor_resiko_odhiv=?,faktor_resiko_lansia=?,faktor_resiko_ibu_hamil=?,"+
-                "faktor_resiko_wbp=?,faktor_resiko_tinggal_diwilayah_padat_kumuh=?,abnormalitas_tbc=?,gejala_tbc_batuk=?,gejala_tbc_bb_turun=?,gejala_tbc_demam=?,"+
-                "gejala_tbc_berkeringat_malam_hari=?,keterangan_gejala_penyakit_lain=?,kesimpulan_skrining=?,keterangan_hasil_skrining=?,nip=?",31,new String[]{
+        if(Sequel.mengedittf("skrining_anemia","no_rawat=?","no_rawat=?,tanggal=?,mudah_lelah=?,buah_sayur=?,protein_hewani=?,masalah_pubertas=?,risiko_ims=?,kekerasan_seksual=?,"+
+                "sudah_menstruasi=?,gangguan_menstruasi=?,tambah_darah=?,kelainan_darah=?,keluarga_thalasemia=?,rambut=?,kulit=?,bekas_sutikan=?,kuku=?,tanda_klinis=?,pemeriksaan_hb=?,"+
+                "kadar_hb=?,jenis_anemia=?,hasil_skrining=?,keterangan=?,nip=?",25,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),
-                JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),
-                Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
-                Lansia.getSelectedItem().toString(),Ibuhamil.getSelectedItem().toString(),WargaBinaan.getSelectedItem().toString(),Tingaldiwilayahkumuh.getSelectedItem().toString(),
-                AbnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),BBTurun.getSelectedItem().toString(),Demam.getSelectedItem().toString(),
-                BerkeringatMalam.getSelectedItem().toString(),KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText(),
+                MudahLelah.getSelectedItem().toString(),KonsumsiBuahSayur.getSelectedItem().toString(),KonsumsiProteinHewani.getSelectedItem().toString(),
+                MasalahPubertas.getSelectedItem().toString(),RisikoIMS.getSelectedItem().toString(),KekerasanSeksual.getSelectedItem().toString(),
+                SudahMenstruasi.getSelectedItem().toString(),GangguanMenstruasi.getSelectedItem().toString(),TambahDarah.getSelectedItem().toString(),
+                KelainanDarah.getSelectedItem().toString(),KeluargaThalasemia.getSelectedItem().toString(),Rambut.getSelectedItem().toString(),
+                Kulit.getSelectedItem().toString(),BekasSuntikan.getSelectedItem().toString(),Kuku.getSelectedItem().toString(),TandaKlinis.getSelectedItem().toString(),
+                PemeriksaanHB.getText(),KadarHemo.getText(),JenisAnemia.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -2112,39 +2117,33 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(BB.getText(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(TB.getText(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(IMT.getText(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(KlasifikasiIMT.getText(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(LP.getText(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(RisikoLP.getText(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(RiwayatKontakTBC.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(JenisKontakTBC.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(PernahTerdiagnosaTBC.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(KetPernahTerdiagnosa.getText(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(PernahberobatTBC.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(Malnutrisi.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(Merokok.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(RiwayatDM.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(Odhiv.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(Lansia.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
-               tbObat.setValueAt(Ibuhamil.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(WargaBinaan.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
-               tbObat.setValueAt(Tingaldiwilayahkumuh.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
-               tbObat.setValueAt(AbnormalitasTBC.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
-               tbObat.setValueAt(Batuk.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
-               tbObat.setValueAt(BBTurun.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
-               tbObat.setValueAt(Demam.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
-               tbObat.setValueAt(BerkeringatMalam.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
-               tbObat.setValueAt(KetGejalaPenyakit.getText(),tbObat.getSelectedRow(),32);
-               tbObat.setValueAt(KesimpulanHasilSkrining.getText(),tbObat.getSelectedRow(),33);
-               tbObat.setValueAt(KetHasilSkrining.getText(),tbObat.getSelectedRow(),34);
+               tbObat.setValueAt(MudahLelah.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(KonsumsiBuahSayur.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(KonsumsiProteinHewani.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(MasalahPubertas.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(RisikoIMS.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(KekerasanSeksual.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(SudahMenstruasi.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(GangguanMenstruasi.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(TambahDarah.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(KelainanDarah.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(KeluargaThalasemia.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(Rambut.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(Kulit.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(BekasSuntikan.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(Kuku.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt(TandaKlinis.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(PemeriksaanHB.getText(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(KadarHemo.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(JenisAnemia.getText(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),27);
+               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),28);
                emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_tbc where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_anemia where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2156,37 +2155,36 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     }
     
     private void simpan() {
-        /*if(Sequel.menyimpantf("skrining_tbc","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",30,new String[]{
+        if(Sequel.menyimpantf("skrining_anemia","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",24,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),
-            JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),
-            Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),
-            Lansia.getSelectedItem().toString(),Ibuhamil.getSelectedItem().toString(),WargaBinaan.getSelectedItem().toString(),Tingaldiwilayahkumuh.getSelectedItem().toString(),
-            AbnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),BBTurun.getSelectedItem().toString(),Demam.getSelectedItem().toString(),
-            BerkeringatMalam.getSelectedItem().toString(),KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText(),KdPetugas.getText()
+            MudahLelah.getSelectedItem().toString(),KonsumsiBuahSayur.getSelectedItem().toString(),KonsumsiProteinHewani.getSelectedItem().toString(),
+            MasalahPubertas.getSelectedItem().toString(),RisikoIMS.getSelectedItem().toString(),KekerasanSeksual.getSelectedItem().toString(),
+            SudahMenstruasi.getSelectedItem().toString(),GangguanMenstruasi.getSelectedItem().toString(),TambahDarah.getSelectedItem().toString(),
+            KelainanDarah.getSelectedItem().toString(),KeluargaThalasemia.getSelectedItem().toString(),Rambut.getSelectedItem().toString(),
+            Kulit.getSelectedItem().toString(),BekasSuntikan.getSelectedItem().toString(),Kuku.getSelectedItem().toString(),TandaKlinis.getSelectedItem().toString(),
+            PemeriksaanHB.getText(),KadarHemo.getText(),JenisAnemia.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),
-                PernahberobatTBC.getSelectedItem().toString(),Malnutrisi.getSelectedItem().toString(),Merokok.getSelectedItem().toString(),RiwayatDM.getSelectedItem().toString(),Odhiv.getSelectedItem().toString(),Lansia.getSelectedItem().toString(),Ibuhamil.getSelectedItem().toString(),
-                WargaBinaan.getSelectedItem().toString(),Tingaldiwilayahkumuh.getSelectedItem().toString(),AbnormalitasTBC.getSelectedItem().toString(),Batuk.getSelectedItem().toString(),BBTurun.getSelectedItem().toString(),Demam.getSelectedItem().toString(),BerkeringatMalam.getSelectedItem().toString(),
-                KetGejalaPenyakit.getText(),KesimpulanHasilSkrining.getText(),KetHasilSkrining.getText()
+                MudahLelah.getSelectedItem().toString(),KonsumsiBuahSayur.getSelectedItem().toString(),KonsumsiProteinHewani.getSelectedItem().toString(),MasalahPubertas.getSelectedItem().toString(),RisikoIMS.getSelectedItem().toString(),KekerasanSeksual.getSelectedItem().toString(),
+                SudahMenstruasi.getSelectedItem().toString(),GangguanMenstruasi.getSelectedItem().toString(),TambahDarah.getSelectedItem().toString(),KelainanDarah.getSelectedItem().toString(),KeluargaThalasemia.getSelectedItem().toString(),Rambut.getSelectedItem().toString(),
+                Kulit.getSelectedItem().toString(),BekasSuntikan.getSelectedItem().toString(),Kuku.getSelectedItem().toString(),TandaKlinis.getSelectedItem().toString(),PemeriksaanHB.getText(),KadarHemo.getText(),JenisAnemia.getText(),HasilSkrining.getText(),Keterangan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } */
+        }
     }
     
     private void isAnemia(){
         try {
             if(!PemeriksaanHB.getText().equals("")){
                 if(Valid.SetAngka(PemeriksaanHB.getText())>=12){
-                    KadarHemo.setBackground(Color.GREEN);
-                    KadarHemo.setForeground(Color.WHITE);
                     KadarHemo.setText(">= 12 g/dl");
-                    JenisAnemia.setBackground(Color.GREEN);
-                    JenisAnemia.setForeground(Color.WHITE);
+                    KadarHemo.setBackground(Color.GREEN);
+                    KadarHemo.setForeground(Color.YELLOW);
                     JenisAnemia.setText("Normal");
+                    JenisAnemia.setBackground(Color.GREEN);
+                    JenisAnemia.setForeground(Color.YELLOW);
                 }else if((Valid.SetAngka(PemeriksaanHB.getText())>=11)&&(Valid.SetAngka(PemeriksaanHB.getText())<=11.9)){
                     KadarHemo.setBackground(Color.YELLOW);
                     KadarHemo.setForeground(Color.GREEN);

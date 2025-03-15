@@ -54,7 +54,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","Cara Bayar","Tgl.Permintaan",
-                "Anamnesa","Permintaan & Evaluasi/Tata Laksana KFR","Ke"
+                "Anamnesa","Permintaan & Evaluasi/Tata Laksana KFR","Program Ke"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -369,7 +369,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         panelGlass8.setPreferredSize(new java.awt.Dimension(55, 55));
         panelGlass8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/add-file-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('S');
         BtnSimpan.setText("Layani");
         BtnSimpan.setToolTipText("Alt+S");
@@ -387,7 +387,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnSimpan);
 
-        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
+        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/130.png"))); // NOI18N
         BtnBatal.setMnemonic('B');
         BtnBatal.setText("Selesai Program");
         BtnBatal.setToolTipText("Alt+B");
@@ -405,7 +405,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         });
         panelGlass8.add(BtnBatal);
 
-        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N
+        BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/129.png"))); // NOI18N
         BtnHapus.setMnemonic('H');
         BtnHapus.setText("Perpanjang Program");
         BtnHapus.setToolTipText("Alt+H");

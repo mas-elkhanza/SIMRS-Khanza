@@ -372,7 +372,7 @@
                 <Component class="widget.Button" name="BtnSimpan">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/save-16x16.png"/>
+                      <Image iconType="3" name="/picture/add-file-16x16.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="83"/>
                     <Property name="text" type="java.lang.String" value="Layani"/>
@@ -390,7 +390,7 @@
                 <Component class="widget.Button" name="BtnBatal">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/Cancel-2-16x16.png"/>
+                      <Image iconType="3" name="/picture/130.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="66"/>
                     <Property name="text" type="java.lang.String" value="Selesai Program"/>
@@ -408,7 +408,7 @@
                 <Component class="widget.Button" name="BtnHapus">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/stop_f2.png"/>
+                      <Image iconType="3" name="/picture/129.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="72"/>
                     <Property name="text" type="java.lang.String" value="Perpanjang Program"/>

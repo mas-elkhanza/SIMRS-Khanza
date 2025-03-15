@@ -1397,7 +1397,7 @@ public final class RMCatatanADIMEGizi extends javax.swing.JDialog {
                 ChkInput.setVisible(true);
             }else{
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-172));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }
