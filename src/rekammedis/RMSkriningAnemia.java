@@ -104,11 +104,41 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
             }else if(i==8){
                 column.setPreferredWidth(70);
             }else if(i==9){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(111);
             }else if(i==10){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(131);
             }else if(i==11){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(94);
+            }else if(i==12){
+                column.setPreferredWidth(58);
+            }else if(i==13){
+                column.setPreferredWidth(98);
+            }else if(i==14){
+                column.setPreferredWidth(94);
+            }else if(i==15){
+                column.setPreferredWidth(113);
+            }else if(i==16){
+                column.setPreferredWidth(113);
+            }else if(i==17){
+                column.setPreferredWidth(82);
+            }else if(i==18){
+                column.setPreferredWidth(111);
+            }else if(i==19){
+                column.setPreferredWidth(103);
+            }else if(i==20){
+                column.setPreferredWidth(87);
+            }else if(i==21){
+                column.setPreferredWidth(119);
+            }else if(i==22){
+                column.setPreferredWidth(88);
+            }else if(i==23){
+                column.setPreferredWidth(107);
+            }else if(i==24){
+                column.setPreferredWidth(87);
+            }else if(i==25){
+                column.setPreferredWidth(97);
+            }else if(i==26){
+                column.setPreferredWidth(75);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());

@@ -1,6 +1,6 @@
 package permintaan;
 
-import fungsi.WarnaTable;
+import fungsi.WarnaTable4;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -40,7 +40,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private String finger="",sql="";
+    private String finger="";
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
     private StringBuilder htmlContent;
     
@@ -53,8 +53,8 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Umur","Cara Bayar","Tgl.Permintaan",
-                "Anamnesa","Permintaan & Evaluasi/Tata Laksana KFR","Program Ke"
+                "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Tgl.Lahir","Cara Bayar","Tgl.Permintaan",
+                "Diagnosa Medis","Permintaan & Evaluasi/Tata Laksana KFR","Ke"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -64,19 +64,33 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 11; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(83);
             }else if(i==1){
-                column.setPreferredWidth(105);
+                column.setPreferredWidth(83);
             }else if(i==2){
                 column.setPreferredWidth(70);
             }else if(i==3){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(130);
+            }else if(i==4){
+                column.setPreferredWidth(25);
+            }else if(i==5){
+                column.setPreferredWidth(63);
+            }else if(i==6){
+                column.setPreferredWidth(90);
+            }else if(i==7){
+                column.setPreferredWidth(81);
+            }else if(i==8){
+                column.setPreferredWidth(220);
+            }else if(i==9){
+                column.setPreferredWidth(220);
+            }else if(i==10){
+                column.setPreferredWidth(25);
             }
         }
-        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        tbObat.setDefaultRenderer(Object.class, new WarnaTable4());
 
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -153,6 +167,13 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         JawabanDiagnosaKerja = new widget.TextBox();
         label3 = new widget.Label();
         LoadHTML = new widget.editorpane();
+        Popup = new javax.swing.JPopupMenu();
+        Tinggi100 = new javax.swing.JMenuItem();
+        Tinggi200 = new javax.swing.JMenuItem();
+        Tinggi250 = new javax.swing.JMenuItem();
+        Tinggi300 = new javax.swing.JMenuItem();
+        Tinggi350 = new javax.swing.JMenuItem();
+        Tinggi400 = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -173,9 +194,9 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         panelCari = new widget.panelisi();
         R1 = new widget.RadioButton();
         LCount1 = new widget.Label();
-        R3 = new widget.RadioButton();
-        LCount2 = new widget.Label();
         R2 = new widget.RadioButton();
+        LCount2 = new widget.Label();
+        R3 = new widget.RadioButton();
         DTPCari1 = new widget.Tanggal();
         jLabel25 = new widget.Label();
         DTPCari2 = new widget.Tanggal();
@@ -268,7 +289,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         label1.setBounds(210, 20, 55, 23);
 
         TanggalJawab.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025 18:33:47" }));
+        TanggalJawab.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2025 19:05:37" }));
         TanggalJawab.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalJawab.setName("TanggalJawab"); // NOI18N
         TanggalJawab.setOpaque(false);
@@ -327,6 +348,104 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
 
+        Popup.setName("Popup"); // NOI18N
+
+        Tinggi100.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi100.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi100.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi100.setText("Tinggi Baris 100");
+        Tinggi100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi100.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi100.setName("Tinggi100"); // NOI18N
+        Tinggi100.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi100ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi100);
+
+        Tinggi200.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi200.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi200.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi200.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi200.setText("Tinggi Baris 200");
+        Tinggi200.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi200.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi200.setName("Tinggi200"); // NOI18N
+        Tinggi200.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi200.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi200ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi200);
+
+        Tinggi250.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi250.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi250.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi250.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi250.setText("Tinggi Baris 250");
+        Tinggi250.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi250.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi250.setName("Tinggi250"); // NOI18N
+        Tinggi250.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi250.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi250ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi250);
+
+        Tinggi300.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi300.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi300.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi300.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi300.setText("Tinggi Baris 300");
+        Tinggi300.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi300.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi300.setName("Tinggi300"); // NOI18N
+        Tinggi300.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi300.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi300ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi300);
+
+        Tinggi350.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi350.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi350.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi350.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi350.setText("Tinggi Baris 350");
+        Tinggi350.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi350.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi350.setName("Tinggi350"); // NOI18N
+        Tinggi350.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi350.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi350ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi350);
+
+        Tinggi400.setBackground(new java.awt.Color(255, 255, 254));
+        Tinggi400.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        Tinggi400.setForeground(new java.awt.Color(50, 50, 50));
+        Tinggi400.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        Tinggi400.setText("Tinggi Baris 400");
+        Tinggi400.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Tinggi400.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        Tinggi400.setName("Tinggi400"); // NOI18N
+        Tinggi400.setPreferredSize(new java.awt.Dimension(170, 25));
+        Tinggi400.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tinggi400ActionPerformed(evt);
+            }
+        });
+        Popup.add(Tinggi400);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
@@ -340,12 +459,15 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setComponentPopupMenu(Popup);
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
         tbObat.setAutoCreateRowSorter(true);
-        tbObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbObat.setToolTipText("Silahkan pilih data dengan mengeklik pada table");
+        tbObat.setComponentPopupMenu(Popup);
         tbObat.setName("tbObat"); // NOI18N
+        tbObat.setRowHeight(100);
         tbObat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbObatMouseClicked(evt);
@@ -543,28 +665,28 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         LCount1.setPreferredSize(new java.awt.Dimension(28, 23));
         panelCari.add(LCount1);
 
-        buttonGroup1.add(R3);
-        R3.setText("Sudah Terlayani");
-        R3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        R3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        R3.setName("R3"); // NOI18N
-        R3.setPreferredSize(new java.awt.Dimension(125, 23));
-        panelCari.add(R3);
+        buttonGroup1.add(R2);
+        R2.setText("Sudah Terlayani");
+        R2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        R2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        R2.setName("R2"); // NOI18N
+        R2.setPreferredSize(new java.awt.Dimension(125, 23));
+        panelCari.add(R2);
 
         LCount2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount2.setName("LCount2"); // NOI18N
         LCount2.setPreferredSize(new java.awt.Dimension(28, 23));
         panelCari.add(LCount2);
 
-        buttonGroup1.add(R2);
-        R2.setText("Tgl.Permintaan :");
-        R2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        R2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        R2.setName("R2"); // NOI18N
-        R2.setPreferredSize(new java.awt.Dimension(117, 23));
-        panelCari.add(R2);
+        buttonGroup1.add(R3);
+        R3.setText("Tgl.Permintaan :");
+        R3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        R3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        R3.setName("R3"); // NOI18N
+        R3.setPreferredSize(new java.awt.Dimension(117, 23));
+        panelCari.add(R3);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -582,7 +704,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -843,11 +965,11 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void DTPCari2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari2ItemStateChanged
-        R2.setSelected(true);
+        R3.setSelected(true);
     }//GEN-LAST:event_DTPCari2ItemStateChanged
 
     private void DTPCari1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPCari1ItemStateChanged
-        R2.setSelected(true);
+        R3.setSelected(true);
     }//GEN-LAST:event_DTPCari1ItemStateChanged
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
@@ -1057,6 +1179,30 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnDokumentasiKonsul2ActionPerformed
 
+    private void Tinggi100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi100ActionPerformed
+        tbObat.setRowHeight(100);
+    }//GEN-LAST:event_Tinggi100ActionPerformed
+
+    private void Tinggi200ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi200ActionPerformed
+        tbObat.setRowHeight(200);
+    }//GEN-LAST:event_Tinggi200ActionPerformed
+
+    private void Tinggi250ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi250ActionPerformed
+        tbObat.setRowHeight(250);
+    }//GEN-LAST:event_Tinggi250ActionPerformed
+
+    private void Tinggi300ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi300ActionPerformed
+        tbObat.setRowHeight(300);
+    }//GEN-LAST:event_Tinggi300ActionPerformed
+
+    private void Tinggi350ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi350ActionPerformed
+        tbObat.setRowHeight(350);
+    }//GEN-LAST:event_Tinggi350ActionPerformed
+
+    private void Tinggi400ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tinggi400ActionPerformed
+        tbObat.setRowHeight(400);
+    }//GEN-LAST:event_Tinggi400ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1101,6 +1247,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.TextBox NoPermintaanJawaban;
     private widget.PanelBiasa PanelAccor;
+    private javax.swing.JPopupMenu Popup;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
     private widget.RadioButton R3;
@@ -1108,6 +1255,12 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
     private widget.ScrollPane ScrollMenu;
     private widget.TextBox TCari;
     private widget.Tanggal TanggalJawab;
+    private javax.swing.JMenuItem Tinggi100;
+    private javax.swing.JMenuItem Tinggi200;
+    private javax.swing.JMenuItem Tinggi250;
+    private javax.swing.JMenuItem Tinggi300;
+    private javax.swing.JMenuItem Tinggi350;
+    private javax.swing.JMenuItem Tinggi400;
     private javax.swing.JDialog WindowInput;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
@@ -1131,94 +1284,34 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
     public void tampil() {     
         Valid.tabelKosong(tabMode);
         try{ 
-            sql="";
-            if(akses.getjml2()>=1){
-                sql="(konsultasi_medik.kd_dokter='"+akses.getkode()+"' or konsultasi_medik.kd_dokter_dikonsuli='"+akses.getkode()+"') and ";
+            if(R1.isSelected()==true){
+                /*
+                "No.Permintaan","No.Rawat","No.RM","Nama Pasien","J.K.","Tgl.Lahir","Cara Bayar","Tgl.Permintaan",
+                "Diagnosa Medis","Permintaan & Evaluasi/Tata Laksana KFR","Program Ke"
+                */
+                ps=koneksi.prepareStatement(
+                        "select reg_periksa.no_rawat as nopermintaan,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penjab.png_jawab,layanan_kedokteran_fisik_rehabilitasi.tanggal,"+
+                        "layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.evaluasi "+
+                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat=layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
+                        "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where layanan_kedokteran_fisik_rehabilitasi.status_program='Belum Selesai'");
+                rs=ps.executeQuery();
             }
             
-            if(R1.isSelected()==true){
-               ps=koneksi.prepareStatement(
-                    "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal as tanggalkonsultasi,konsultasi_medik.jenis_permintaan,"+
-                    "konsultasi_medik.kd_dokter,dokterkonsul.nm_dokter as dokterkonsul,konsultasi_medik.kd_dokter_dikonsuli,dokterdikonsuli.nm_dokter as dokterdikonsuli,"+
-                    "konsultasi_medik.diagnosa_kerja as diagnosakerjakonsul,konsultasi_medik.uraian_konsultasi from konsultasi_medik inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
-                    "inner join dokter as dokterkonsul on konsultasi_medik.kd_dokter=dokterkonsul.kd_dokter "+
-                    "inner join dokter as dokterdikonsuli on konsultasi_medik.kd_dokter_dikonsuli=dokterdikonsuli.kd_dokter "+
-                    "where "+sql+"konsultasi_medik.no_permintaan not in (select DISTINCT jawaban_konsultasi_medik.no_permintaan from jawaban_konsultasi_medik) "+
-                    (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                    "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.jenis_permintaan like ?)")+" order by konsultasi_medik.tanggal");
-                try {
-                    if(!TCari.getText().equals("")){
-                        ps.setString(1,"%"+TCari.getText().trim()+"%");
-                        ps.setString(2,"%"+TCari.getText().trim()+"%");
-                        ps.setString(3,"%"+TCari.getText().trim()+"%");
-                        ps.setString(4,"%"+TCari.getText().trim()+"%");
-                        ps.setString(5,"%"+TCari.getText().trim()+"%");
-                        ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    }
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        tabMode.addRow(new String[]{
-                            rs.getString("no_permintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                            rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("tanggalkonsultasi"),rs.getString("jenis_permintaan"),rs.getString("kd_dokter"),rs.getString("dokterkonsul"),
-                            rs.getString("kd_dokter_dikonsuli"),rs.getString("dokterdikonsuli"),rs.getString("diagnosakerjakonsul"),rs.getString("uraian_konsultasi"),"","",""
-                        });
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif Kamar : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+            try {
+                while(rs.next()){
+                    tabMode.addRow(new String[]{
+                        rs.getString("nopermintaan"),"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),
+                        rs.getString("diagnosa_medis"),rs.getString("tatalaksana")+". "+rs.getString("evaluasi"),""                   
+                    });
                 }
-            }else if(R2.isSelected()==true){
-                ps=koneksi.prepareStatement(
-                    "select konsultasi_medik.no_permintaan,konsultasi_medik.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.no_tlp,penjab.png_jawab,konsultasi_medik.tanggal as tanggalkonsultasi,konsultasi_medik.jenis_permintaan,"+
-                    "konsultasi_medik.kd_dokter,dokterkonsul.nm_dokter as dokterkonsul,konsultasi_medik.kd_dokter_dikonsuli,dokterdikonsuli.nm_dokter as dokterdikonsuli,"+
-                    "konsultasi_medik.diagnosa_kerja as diagnosakerjakonsul,konsultasi_medik.uraian_konsultasi,jawaban_konsultasi_medik.tanggal as tanggaljawaban,"+
-                    "jawaban_konsultasi_medik.diagnosa_kerja as diagnosakerjajawaban,jawaban_konsultasi_medik.uraian_jawaban "+
-                    "from konsultasi_medik inner join reg_periksa on konsultasi_medik.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
-                    "inner join dokter as dokterkonsul on konsultasi_medik.kd_dokter=dokterkonsul.kd_dokter "+
-                    "inner join dokter as dokterdikonsuli on konsultasi_medik.kd_dokter_dikonsuli=dokterdikonsuli.kd_dokter "+
-                    "inner join jawaban_konsultasi_medik on jawaban_konsultasi_medik.no_permintaan=konsultasi_medik.no_permintaan "+
-                    "where "+sql+"jawaban_konsultasi_medik.tanggal between ? and ? "+
-                    (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                    "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.jenis_permintaan like ?)")+" order by konsultasi_medik.tanggal");
-                try {
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    if(!TCari.getText().equals("")){
-                        ps.setString(3,"%"+TCari.getText().trim()+"%");
-                        ps.setString(4,"%"+TCari.getText().trim()+"%");
-                        ps.setString(5,"%"+TCari.getText().trim()+"%");
-                        ps.setString(6,"%"+TCari.getText().trim()+"%");
-                        ps.setString(7,"%"+TCari.getText().trim()+"%");
-                        ps.setString(8,"%"+TCari.getText().trim()+"%");
-                    }
-                    rs=ps.executeQuery();
-                    while(rs.next()){
-                        tabMode.addRow(new String[]{
-                            rs.getString("no_permintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                            rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("tanggalkonsultasi"),rs.getString("jenis_permintaan"),rs.getString("kd_dokter"),rs.getString("dokterkonsul"),
-                            rs.getString("kd_dokter_dikonsuli"),rs.getString("dokterdikonsuli"),rs.getString("diagnosakerjakonsul"),rs.getString("uraian_konsultasi"),rs.getString("tanggaljawaban"),
-                            rs.getString("diagnosakerjajawaban"),rs.getString("uraian_jawaban")
-                        });
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif Kamar : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
                 }
             }
         }catch(Exception e){

@@ -1592,7 +1592,6 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
                     ps.close();
                 }
             }
-            
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1749,7 +1748,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("layanan_kedokteran_fisik_rehabilitasi","?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",14,new String[]{
+        if(Sequel.menyimpantf("layanan_kedokteran_fisik_rehabilitasi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum Selesai'","No.Rawat",14,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
                 Pendamping.getSelectedItem().toString(),KeteranganPendamping.getText(),Anamnesa.getText(),PemeriksaanFisik.getText(),DiagnosisMedis.getText(), 
                 DiagnosisFungsi.getText(),TatalaksanaKFR.getText(),Anjuran.getText(),Evaluasi.getText(),SuspekPenyakit.getSelectedItem().toString(), 
