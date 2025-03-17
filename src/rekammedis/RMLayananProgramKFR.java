@@ -58,8 +58,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","Mode",
-            "VT","Pakar","RR","REF/PS","EE","NIP","Nama Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tanggal","No.Permintaan",
+            "Diagnosa","Permintaan Terapi","Program","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -69,7 +69,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 13; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -83,26 +83,6 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                 column.setPreferredWidth(20);
             }else if(i==5){
                 column.setPreferredWidth(65);
-            }else if(i==6){
-                column.setPreferredWidth(65);
-            }else if(i==7){
-                column.setPreferredWidth(60);
-            }else if(i==8){
-                column.setPreferredWidth(120);
-            }else if(i==9){
-                column.setPreferredWidth(65);
-            }else if(i==10){
-                column.setPreferredWidth(120);
-            }else if(i==11){
-                column.setPreferredWidth(65);
-            }else if(i==12){
-                column.setPreferredWidth(50);
-            }else if(i==13){
-                column.setPreferredWidth(55);
-            }else if(i==14){
-                column.setPreferredWidth(90);
-            }else if(i==15){
-                column.setPreferredWidth(160);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -232,6 +212,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         jLabel13 = new widget.Label();
         jLabel14 = new widget.Label();
         Program = new widget.TextBox();
+        jLabel15 = new widget.Label();
+        jLabel17 = new widget.Label();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -663,11 +645,6 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         Diagnosa.setEditable(false);
         Diagnosa.setHighlighter(null);
         Diagnosa.setName("Diagnosa"); // NOI18N
-        Diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosaKeyPressed(evt);
-            }
-        });
         FormInput.add(Diagnosa);
         Diagnosa.setBounds(74, 70, 500, 23);
 
@@ -690,25 +667,21 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         PermintaanTerapi.setColumns(20);
         PermintaanTerapi.setRows(5);
         PermintaanTerapi.setName("PermintaanTerapi"); // NOI18N
-        PermintaanTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PermintaanTerapiKeyPressed(evt);
-            }
-        });
         scrollPane1.setViewportView(PermintaanTerapi);
 
         FormInput.add(scrollPane1);
         scrollPane1.setBounds(119, 100, 670, 53);
 
-        jLabel13.setText("Permintaan Terapi :");
+        jLabel13.setText(":");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
         jLabel13.setBounds(0, 100, 115, 23);
 
-        jLabel14.setText("Program :");
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText("Program");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(0, 160, 70, 23);
+        jLabel14.setBounds(18, 160, 70, 23);
 
         Program.setHighlighter(null);
         Program.setName("Program"); // NOI18N
@@ -718,7 +691,18 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             }
         });
         FormInput.add(Program);
-        Program.setBounds(74, 160, 715, 23);
+        Program.setBounds(70, 160, 719, 23);
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel15.setText("Permintaan Terapi");
+        jLabel15.setName("jLabel15"); // NOI18N
+        FormInput.add(jLabel15);
+        jLabel15.setBounds(18, 100, 115, 23);
+
+        jLabel17.setText(":");
+        jLabel17.setName("jLabel17"); // NOI18N
+        FormInput.add(jLabel17);
+        jLabel17.setBounds(0, 160, 66, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -767,6 +751,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NIP,"Petugas");
+        }else if(Program.getText().trim().equals("")){
+            Valid.textKosong(Program,"Program KFR");
         }else{
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
@@ -893,24 +879,24 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 Valid.MyReportqry("rptDataCatatanObservasiVentilator.jasper","report","::[ Data Catatan Observasi Ventilator ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
-                    "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat,layanan_program_kfr.mode,"+
+                    "layanan_program_kfr.vt,layanan_program_kfr.pakar,layanan_program_kfr.rr,layanan_program_kfr.reefps,layanan_program_kfr.ee,"+
+                    "layanan_program_kfr.nip,petugas.nama from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
-                    "catatan_observasi_ventilator.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat",param);
+                    "inner join petugas on layanan_program_kfr.nip=petugas.nip where "+
+                    "layanan_program_kfr.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat",param);
             }else{
                 Valid.MyReportqry("rptDataCatatanObservasiVentilator.jasper","report","::[ Data Catatan Observasi Ventilator ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
-                    "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat,layanan_program_kfr.mode,"+
+                    "layanan_program_kfr.vt,layanan_program_kfr.pakar,layanan_program_kfr.rr,layanan_program_kfr.reefps,layanan_program_kfr.ee,"+
+                    "layanan_program_kfr.nip,petugas.nama from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
-                    "catatan_observasi_ventilator.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                    "inner join petugas on layanan_program_kfr.nip=petugas.nip where "+
+                    "layanan_program_kfr.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or "+
-                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or catatan_observasi_ventilator.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat ",param);
+                    "pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or layanan_program_kfr.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
+                    "order by layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat ",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1025,7 +1011,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        //Valid.pindah(evt,Detik,Mode);
+        Valid.pindah(evt,Detik,Program);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnCatatanObservasiVentilatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiVentilatorActionPerformed
@@ -1040,25 +1026,17 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptFormulirCatatanObservasiVentilator.jasper","report","::[ Formulir Catatan Observasi Ventilator ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,dokter.nm_dokter,"+
-                    "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat,layanan_program_kfr.mode,dokter.nm_dokter,"+
+                    "layanan_program_kfr.vt,layanan_program_kfr.pakar,layanan_program_kfr.rr,layanan_program_kfr.reefps,layanan_program_kfr.ee,"+
+                    "petugas.nama from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
-                    "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
-                    "order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat",param);
+                    "inner join petugas on layanan_program_kfr.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
+                    "order by layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat",param);
         }
     }//GEN-LAST:event_MnCatatanObservasiVentilatorActionPerformed
 
-    private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DiagnosaKeyPressed
-
-    private void PermintaanTerapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PermintaanTerapiKeyPressed
-        //Valid.pindah2(evt,Hubungan,RPS);
-    }//GEN-LAST:event_PermintaanTerapiKeyPressed
-
     private void ProgramKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProgramKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,btnPetugas,BtnSimpan);
     }//GEN-LAST:event_ProgramKeyPressed
 
     /**
@@ -1118,7 +1096,9 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
+    private widget.Label jLabel15;
     private widget.Label jLabel16;
+    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
@@ -1141,22 +1121,22 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
-                    "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat,layanan_program_kfr.mode,"+
+                    "layanan_program_kfr.vt,layanan_program_kfr.pakar,layanan_program_kfr.rr,layanan_program_kfr.reefps,layanan_program_kfr.ee,"+
+                    "layanan_program_kfr.nip,petugas.nama from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
-                    "catatan_observasi_ventilator.tgl_perawatan between ? and ? order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat");
+                    "inner join petugas on layanan_program_kfr.nip=petugas.nip where "+
+                    "layanan_program_kfr.tgl_perawatan between ? and ? order by layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat,catatan_observasi_ventilator.mode,"+
-                    "catatan_observasi_ventilator.vt,catatan_observasi_ventilator.pakar,catatan_observasi_ventilator.rr,catatan_observasi_ventilator.reefps,catatan_observasi_ventilator.ee,"+
-                    "catatan_observasi_ventilator.nip,petugas.nama from catatan_observasi_ventilator inner join reg_periksa on catatan_observasi_ventilator.no_rawat=reg_periksa.no_rawat "+
+                    "pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat,layanan_program_kfr.mode,"+
+                    "layanan_program_kfr.vt,layanan_program_kfr.pakar,layanan_program_kfr.rr,layanan_program_kfr.reefps,layanan_program_kfr.ee,"+
+                    "layanan_program_kfr.nip,petugas.nama from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_ventilator.nip=petugas.nip where "+
-                    "catatan_observasi_ventilator.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or catatan_observasi_ventilator.nip like ? or petugas.nama like ?) "+
-                    "order by catatan_observasi_ventilator.tgl_perawatan,catatan_observasi_ventilator.jam_rawat ");
+                    "inner join petugas on layanan_program_kfr.nip=petugas.nip where "+
+                    "layanan_program_kfr.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or layanan_program_kfr.nip like ? or petugas.nama like ?) "+
+                    "order by layanan_program_kfr.tgl_perawatan,layanan_program_kfr.jam_rawat ");
             }
                 
             try {
@@ -1200,7 +1180,9 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
+        Program.setText("");
         Tanggal.setDate(new Date());
+        Program.requestFocus();
     } 
 
     private void getData() {
@@ -1275,10 +1257,10 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getcatatan_observasi_ventilator());
-        BtnHapus.setEnabled(akses.getcatatan_observasi_ventilator());
-        BtnEdit.setEnabled(akses.getcatatan_observasi_ventilator());
-        BtnPrint.setEnabled(akses.getcatatan_observasi_ventilator()); 
+        BtnSimpan.setEnabled(akses.getlayanan_program_kfr());
+        BtnHapus.setEnabled(akses.getlayanan_program_kfr());
+        BtnEdit.setEnabled(akses.getlayanan_program_kfr());
+        BtnPrint.setEnabled(akses.getlayanan_program_kfr()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1356,7 +1338,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("catatan_observasi_ventilator","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,mode=?,vt=?,pakar=?,rr=?,reefps=?,ee=?,nip=?",13,new String[]{
+        /*if(Sequel.mengedittf("layanan_program_kfr","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,mode=?,vt=?,pakar=?,rr=?,reefps=?,ee=?,nip=?",13,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),REEFPS.getText(),EE.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
             tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
@@ -1382,7 +1364,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from catatan_observasi_ventilator where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
+        if(Sequel.queryu2tf("delete from layanan_program_kfr where tgl_perawatan=? and jam_rawat=? and no_rawat=?",3,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1394,18 +1376,18 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     }
 
     private void simpan() {
-        /*if(Sequel.menyimpantf("catatan_observasi_ventilator","?,?,?,?,?,?,?,?,?,?","Data",10,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),REEFPS.getText(),EE.getText(),NIP.getText()
+        if(Sequel.menyimpantf("layanan_program_kfr","?,?,?,?,?","Data",5,new String[]{
+            NoPermintaan.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+            NIP.getText(),Program.getText()
         })==true){
             tabMode.addRow(new String[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
-                Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Mode.getSelectedItem().toString(),VT.getText(),Pakar.getText(),RR.getText(),REEFPS.getText(),EE.getText(),NIP.getText(),NamaPetugas.getText()
+                Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                NoPermintaan.getText(),Diagnosa.getText(),PermintaanTerapi.getText(),Program.getText(),NIP.getText(),NamaPetugas.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } */
+        } 
     }
     
     

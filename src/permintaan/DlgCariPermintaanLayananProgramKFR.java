@@ -873,7 +873,6 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),new Date());
-                form.tampil();
                 form.Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
                 form.NoPermintaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 form.PermintaanTerapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
