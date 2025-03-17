@@ -93,11 +93,11 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
             }else if(i==10){
                 column.setPreferredWidth(25);
             }else if(i==11){
-                //column.setMinWidth(0);
-                //column.setMaxWidth(0);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }else if(i==12){
-                //column.setMinWidth(0);
-                //column.setMaxWidth(0);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable4());
