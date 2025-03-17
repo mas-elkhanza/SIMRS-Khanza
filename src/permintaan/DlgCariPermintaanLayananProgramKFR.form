@@ -980,7 +980,7 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnRiwayatPasienActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="widget.Button" name="BtnDokumentasiKonsul2">
+                    <Component class="widget.Button" name="BtnAwalFisioTerapi">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/picture/item.png"/>
@@ -997,17 +997,17 @@
                         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                           <Insets value="[1, 1, 1, 1]"/>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="BtnDokumentasiKonsul2" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="BtnAwalFisioTerapi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[170, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDokumentasiKonsul2ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnAwalFisioTerapiActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="widget.Button" name="BtnDokumentasiKonsul1">
+                    <Component class="widget.Button" name="BtnSOAPTindakan">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/picture/item.png"/>
@@ -1024,14 +1024,14 @@
                         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
                           <Insets value="[1, 1, 1, 1]"/>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="BtnDokumentasiKonsul1" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="BtnSOAPTindakan" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[170, 23]"/>
                         </Property>
                         <Property name="roundRect" type="boolean" value="false"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnDokumentasiKonsul1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnSOAPTindakanActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="widget.Button" name="BtnJawabanDikonsuli">

@@ -138,7 +138,11 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
             }else if(i==25){
                 column.setPreferredWidth(97);
             }else if(i==26){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(73);
+            }else if(i==27){
+                column.setPreferredWidth(150);
+            }else if(i==28){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -252,7 +256,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningTBC = new javax.swing.JMenuItem();
+        MnSkriningAnemia = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -365,19 +369,19 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningTBC.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningTBC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningTBC.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningTBC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningTBC.setText("Formulir Skrining TBC");
-        MnSkriningTBC.setName("MnSkriningTBC"); // NOI18N
-        MnSkriningTBC.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningTBC.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningAnemia.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningAnemia.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningAnemia.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningAnemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningAnemia.setText("Formulir Skrining Anemia");
+        MnSkriningAnemia.setName("MnSkriningAnemia"); // NOI18N
+        MnSkriningAnemia.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningAnemia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningTBCActionPerformed(evt);
+                MnSkriningAnemiaActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningTBC);
+        jPopupMenu1.add(MnSkriningAnemia);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -561,7 +565,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -575,7 +579,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -696,7 +700,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-03-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1625,7 +1629,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
         //Valid.pindah(evt,Detik,BB);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningTBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningTBCActionPerformed
+    private void MnSkriningAnemiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningAnemiaActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1637,19 +1641,16 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningTBC.jasper","report","::[ Formulir Skrining TBC ]::",
+            Valid.MyReportqry("rptFormulirSkriningAnemia.jasper","report","::[ Formulir Skrining Anemia ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_anemia.nip,petugas.nama,skrining_anemia.tanggal,"+
-                    "skrining_anemia.berat_badan,skrining_anemia.tinggi_badan,skrining_anemia.imt,skrining_anemia.kasifikasi_imt,skrining_anemia.lingkar_pinggang,skrining_anemia.risiko_lingkar_pinggang,"+
-                    "skrining_anemia.riwayat_kontak_tbc,skrining_anemia.jenis_kontak_tbc,"+
-                    "skrining_anemia.faktor_resiko_pernah_terdiagnosa_tbc,skrining_anemia.keterangan_pernah_terdiagnosa,"+
-                    "skrining_anemia.faktor_resiko_pernah_berobat_tbc,skrining_anemia.faktor_resiko_malnutrisi,skrining_anemia.faktor_resiko_merokok,skrining_anemia.faktor_resiko_riwayat_dm,"+
-                    "skrining_anemia.faktor_resiko_odhiv,skrining_anemia.faktor_resiko_lansia,skrining_anemia.faktor_resiko_ibu_hamil,skrining_anemia.faktor_resiko_wbp,skrining_anemia.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
-                    "skrining_anemia.abnormalitas_tbc,skrining_anemia.gejala_tbc_batuk,skrining_anemia.gejala_tbc_bb_turun,skrining_anemia.gejala_tbc_demam,skrining_anemia.gejala_tbc_berkeringat_malam_hari,skrining_anemia.keterangan_gejala_penyakit_lain,"+
-                    "skrining_anemia.kesimpulan_skrining,skrining_anemia.keterangan_hasil_skrining from skrining_anemia inner join reg_periksa on skrining_anemia.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_anemia.mudah_lelah,skrining_anemia.buah_sayur,skrining_anemia.protein_hewani,skrining_anemia.masalah_pubertas,skrining_anemia.risiko_ims,skrining_anemia.kekerasan_seksual,"+
+                    "skrining_anemia.sudah_menstruasi,skrining_anemia.gangguan_menstruasi,skrining_anemia.tambah_darah,skrining_anemia.kelainan_darah,skrining_anemia.keluarga_thalasemia,skrining_anemia.rambut,"+
+                    "skrining_anemia.kulit,skrining_anemia.bekas_sutikan,skrining_anemia.kuku,skrining_anemia.tanda_klinis,skrining_anemia.pemeriksaan_hb,skrining_anemia.kadar_hb,skrining_anemia.jenis_anemia,"+
+                    "skrining_anemia.hasil_skrining,skrining_anemia.keterangan from skrining_anemia inner join reg_periksa on skrining_anemia.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_anemia.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningTBCActionPerformed
+    }//GEN-LAST:event_MnSkriningAnemiaActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1782,7 +1783,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private widget.editorpane LoadHTML;
     private widget.ComboBox MasalahPubertas;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningTBC;
+    private javax.swing.JMenuItem MnSkriningAnemia;
     private widget.ComboBox MudahLelah;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
