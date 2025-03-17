@@ -224,14 +224,14 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         jLabel8 = new widget.Label();
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
-        TNoRw1 = new widget.TextBox();
+        Diagnosa = new widget.TextBox();
         jLabel9 = new widget.Label();
-        TglLahir1 = new widget.TextBox();
+        NoPermintaan = new widget.TextBox();
         scrollPane1 = new widget.ScrollPane();
-        KeluhanUtama = new widget.TextArea();
+        PermintaanTerapi = new widget.TextArea();
         jLabel13 = new widget.Label();
         jLabel14 = new widget.Label();
-        TNoRw2 = new widget.TextBox();
+        Program = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -660,39 +660,42 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(0, 70, 70, 23);
 
-        TNoRw1.setHighlighter(null);
-        TNoRw1.setName("TNoRw1"); // NOI18N
-        TNoRw1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Diagnosa.setEditable(false);
+        Diagnosa.setHighlighter(null);
+        Diagnosa.setName("Diagnosa"); // NOI18N
+        Diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRw1KeyPressed(evt);
+                DiagnosaKeyPressed(evt);
             }
         });
-        FormInput.add(TNoRw1);
-        TNoRw1.setBounds(74, 70, 500, 23);
+        FormInput.add(Diagnosa);
+        Diagnosa.setBounds(74, 70, 500, 23);
 
         jLabel9.setText("No.Permintaan :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
         jLabel9.setBounds(565, 70, 100, 23);
 
-        TglLahir1.setHighlighter(null);
-        TglLahir1.setName("TglLahir1"); // NOI18N
-        FormInput.add(TglLahir1);
-        TglLahir1.setBounds(669, 70, 120, 23);
+        NoPermintaan.setEditable(false);
+        NoPermintaan.setHighlighter(null);
+        NoPermintaan.setName("NoPermintaan"); // NOI18N
+        FormInput.add(NoPermintaan);
+        NoPermintaan.setBounds(669, 70, 120, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
 
-        KeluhanUtama.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        KeluhanUtama.setColumns(20);
-        KeluhanUtama.setRows(5);
-        KeluhanUtama.setName("KeluhanUtama"); // NOI18N
-        KeluhanUtama.addKeyListener(new java.awt.event.KeyAdapter() {
+        PermintaanTerapi.setEditable(false);
+        PermintaanTerapi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        PermintaanTerapi.setColumns(20);
+        PermintaanTerapi.setRows(5);
+        PermintaanTerapi.setName("PermintaanTerapi"); // NOI18N
+        PermintaanTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeluhanUtamaKeyPressed(evt);
+                PermintaanTerapiKeyPressed(evt);
             }
         });
-        scrollPane1.setViewportView(KeluhanUtama);
+        scrollPane1.setViewportView(PermintaanTerapi);
 
         FormInput.add(scrollPane1);
         scrollPane1.setBounds(119, 100, 670, 53);
@@ -707,15 +710,15 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         FormInput.add(jLabel14);
         jLabel14.setBounds(0, 160, 70, 23);
 
-        TNoRw2.setHighlighter(null);
-        TNoRw2.setName("TNoRw2"); // NOI18N
-        TNoRw2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Program.setHighlighter(null);
+        Program.setName("Program"); // NOI18N
+        Program.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRw2KeyPressed(evt);
+                ProgramKeyPressed(evt);
             }
         });
-        FormInput.add(TNoRw2);
-        TNoRw2.setBounds(74, 160, 715, 23);
+        FormInput.add(Program);
+        Program.setBounds(74, 160, 715, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1046,17 +1049,17 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnCatatanObservasiVentilatorActionPerformed
 
-    private void TNoRw1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRw1KeyPressed
+    private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TNoRw1KeyPressed
+    }//GEN-LAST:event_DiagnosaKeyPressed
 
-    private void KeluhanUtamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeluhanUtamaKeyPressed
+    private void PermintaanTerapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PermintaanTerapiKeyPressed
         //Valid.pindah2(evt,Hubungan,RPS);
-    }//GEN-LAST:event_KeluhanUtamaKeyPressed
+    }//GEN-LAST:event_PermintaanTerapiKeyPressed
 
-    private void TNoRw2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRw2KeyPressed
+    private void ProgramKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ProgramKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TNoRw2KeyPressed
+    }//GEN-LAST:event_ProgramKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1085,30 +1088,30 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkKejadian;
-    private widget.Tanggal DTPCari1;
+    public widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
+    public widget.TextBox Diagnosa;
     private widget.PanelBiasa FormInput;
     private widget.TextBox JK;
     private widget.ComboBox Jam;
-    private widget.TextArea KeluhanUtama;
     private widget.Label LCount;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnCatatanObservasiVentilator;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
+    public widget.TextBox NoPermintaan;
     private javax.swing.JPanel PanelInput;
+    public widget.TextArea PermintaanTerapi;
+    private widget.TextBox Program;
     private widget.ScrollPane Scroll;
-    private widget.TextBox TCari;
+    public widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
-    private widget.TextBox TNoRw1;
-    private widget.TextBox TNoRw2;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
-    private widget.TextBox TglLahir1;
     private widget.TextBox Umur;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
