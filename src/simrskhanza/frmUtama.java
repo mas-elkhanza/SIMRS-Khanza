@@ -920,6 +920,7 @@ import rekammedis.RMHasilTindakanESWL;
 import rekammedis.RMKonselingFarmasi;
 import rekammedis.RMLaporanTindakan;
 import rekammedis.RMLayananKedokteranFisikRehabilitasi;
+import rekammedis.RMLayananProgramKFR;
 import rekammedis.RMMCU;
 import rekammedis.RMMonitoringAldrettePascaAnestesi;
 import rekammedis.RMMonitoringBromagePascaAnestesi;
@@ -22387,6 +22388,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         DlgHome.dispose();
         this.setCursor(Cursor.getDefaultCursor());
     }  
+    
+    private void btnLayananProgramKFRActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMLayananProgramKFR aplikasi=new RMLayananProgramKFR(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
             
     /**
     * @param args the command line arguments
@@ -23089,7 +23103,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnVerifikasiPenerimaanDapur,btnNilaiPenerimaanVendorDapurPerBulan,btnRingkasanHutangVendorBarangDapur,btnPenilaianPsikologiKlinis,btnPenilaianAwalMedisRanapNeonatus,
             btnPenilaianDerajatDehidrasi,btnRingkasanJasaTindakanPasien,btnPendapatanPerAkun,btnHasilPemeriksaanECHO,btnRl13KetersediaanKamar,btnPendapatanPerAkunClosing,
             btnPenilaianBayiBaruLahir,btnPengeluaranPengeluaran,btnSkriningDiabetesMelitus,btnLaporanTindakan,btnPelaksanaanInformasiEdukasi,btnLayananKedokteranFisikRehabilitasi,
-            btnSkriningKesehatanGigiMulutBalita,btnSkriningAnemia,btnPermintaanLayananProgramKFR;
+            btnSkriningKesehatanGigiMulutBalita,btnSkriningAnemia,btnPermintaanLayananProgramKFR,btnLayananProgramKFR;
     
     public void isWall(){
         try{            
@@ -27337,6 +27351,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlayanan_kedokteran_fisik_rehabilitasi()==true){
                 Panelmenu.add(btnLayananKedokteranFisikRehabilitasi);
+                jmlmenu++;
+            }
+            
+            if(akses.getlayanan_program_kfr()==true){
+                Panelmenu.add(btnLayananProgramKFR);
                 jmlmenu++;
             }
             
@@ -32821,6 +32840,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlayanan_kedokteran_fisik_rehabilitasi()==true){
             Panelmenu.add(btnLayananKedokteranFisikRehabilitasi);
+            jmlmenu++;
+        }
+        
+        if(akses.getlayanan_program_kfr()==true){
+            Panelmenu.add(btnLayananProgramKFR);
             jmlmenu++;
         }
         
@@ -39942,6 +39966,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getlayanan_program_kfr()==true){
+            if(btnLayananProgramKFR.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLayananProgramKFR);
+                jmlmenu++;
+            }                
+        }
                 
         if(akses.getuji_fungsi_kfr()==true){
             if(btnUjiFungsiKFR.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -46972,6 +47003,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLayananKedokteranFisikRehabilitasi.setName("btnLayananKedokteranFisikRehabilitasi");
         btnLayananKedokteranFisikRehabilitasi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLayananKedokteranFisikRehabilitasi.addActionListener(this::btnLayananKedokteranFisikRehabilitasiActionPerformed);
+        
+        btnLayananProgramKFR = new widget.ButtonBig();
+        btnLayananProgramKFR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8960631_crutches_crutch_orthopedic_physiotherapy_rehabilitation_icon.png"))); 
+        btnLayananProgramKFR.setText("Layanan Program KFR");
+        btnLayananProgramKFR.setIconTextGap(0);
+        btnLayananProgramKFR.setName("btnLayananProgramKFR");
+        btnLayananProgramKFR.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLayananProgramKFR.addActionListener(this::btnLayananProgramKFRActionPerformed);
         
         btnPermintaanLayananProgramKFR = new widget.ButtonBig();
         btnPermintaanLayananProgramKFR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/12178185_physiotherapy_physiotherapist_rehabilitation_patient_exercise_icon.png"))); 
