@@ -56,6 +56,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private StringBuilder htmlContent;
     private String TANGGALMUNDUR="yes",pilihan="";
+    public boolean status=false;
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -455,7 +456,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -469,7 +470,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -482,7 +483,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(310, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(320, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -565,7 +566,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -798,6 +799,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         }else if(Program.getText().trim().equals("")){
             Valid.textKosong(Program,"Program KFR");
         }else{
+            status=false;
             if(akses.getkode().equals("Admin Utama")){
                 simpan();
             }else{
@@ -1303,7 +1305,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tanggal,"+
                     "layanan_program_kfr.no_rawat_layanan,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_program_kfr.program,"+
-                    "layanan_program_kfr.nip,petugas.nama from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
+                    "layanan_program_kfr.nip,petugas.nama,layanan_kedokteran_fisik_rehabilitasi.evaluasi from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on layanan_program_kfr.nip=petugas.nip "+
                     "inner join layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=layanan_program_kfr.no_rawat_layanan "+
                     "where layanan_program_kfr.tanggal between ? and ? order by layanan_program_kfr.tanggal");
@@ -1311,7 +1313,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tanggal,"+
                     "layanan_program_kfr.no_rawat_layanan,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_program_kfr.program,"+
-                    "layanan_program_kfr.nip,petugas.nama from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
+                    "layanan_program_kfr.nip,petugas.nama,layanan_kedokteran_fisik_rehabilitasi.evaluasi from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on layanan_program_kfr.nip=petugas.nip "+
                     "inner join layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=layanan_program_kfr.no_rawat_layanan "+
                     "where layanan_program_kfr.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or layanan_program_kfr.nip like ? or petugas.nama like ?) "+
@@ -1335,9 +1337,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
-                        rs.getString("tanggal"),rs.getString("no_rawat_layanan"),rs.getString("diagnosa_medis"),rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),
-                        rs.getString("program"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("no_rawat_layanan"),rs.getString("diagnosa_medis"),
+                        rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),rs.getString("program"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1540,8 +1541,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from layanan_program_kfr where tanggal=? and jam_rawat=? and no_rawat=?",3,new String[]{
-            tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.queryu2tf("delete from layanan_program_kfr where no_rawat=?",1,new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
             LCount.setText(""+tabMode.getRowCount());
@@ -1563,6 +1564,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
+            status=true;
         } 
     }
     
