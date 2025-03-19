@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="17">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="20">
         <file>
             <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
             <bookmark id="2">
@@ -65,9 +65,27 @@
         </file>
         <file>
             <url>src/simrskhanza/DlgKamarInap.java</url>
+            <bookmark id="20">
+                <name/>
+                <line>9127</line>
+                <key/>
+            </bookmark>
             <bookmark id="8">
                 <name/>
                 <line>9143</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/rekammedis/RMEdukasiPasienKeluargaRawatInap.java</url>
+            <bookmark id="19">
+                <name/>
+                <line>1940</line>
+                <key/>
+            </bookmark>
+            <bookmark id="18">
+                <name/>
+                <line>2305</line>
                 <key/>
             </bookmark>
         </file>
@@ -86,6 +104,9 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/simrskhanza/DlgKamarInap.java</file>
+            <file>file:/mnt/01DA6A28A9047A50/01_KHANZA/05_MASTER_KHANZA/SIMRS-KhanzaRSKJ_dev2/src/rekammedis/RMEdukasiPasienKeluargaRawatInap.java</file>
+        </group>
     </open-files>
 </project-private>
