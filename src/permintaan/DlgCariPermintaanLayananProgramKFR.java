@@ -323,7 +323,6 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbObat.setAutoCreateRowSorter(true);
         tbObat.setToolTipText("Silahkan pilih data dengan mengeklik pada table");
         tbObat.setComponentPopupMenu(Popup);
         tbObat.setName("tbObat"); // NOI18N
@@ -561,7 +560,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         });
         panelCari.add(R3);
 
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -579,7 +578,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         jLabel25.setPreferredSize(new java.awt.Dimension(25, 23));
         panelCari.add(jLabel25);
 
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -931,12 +930,12 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                 form.setVisible(true);
                 form.emptTeks();
                 form.setNoRm(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString(),new Date());
-                form.tampil();
                 form.Diagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
                 form.NoPermintaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 form.PermintaanTerapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
                 form.DTPCari1.setDate(Valid.SetTgl2(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
                 form.TCari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                form.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data...!!!!");
@@ -1291,13 +1290,31 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                         "and reg_periksasaatini.no_rawat not in (select layanan_program_kfr.no_rawat from layanan_program_kfr where DATE_FORMAT(layanan_program_kfr.tanggal,'%Y-%m-%d')=current_date()) "+
                         "and layanan_kedokteran_fisik_rehabilitasi.status_program='Belum Selesai' "+(!TCari.getText().trim().equals("")?" and (layanan_kedokteran_fisik_rehabilitasi.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
                         "or layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis like ?) ":""));
-                if(!TCari.getText().trim().equals("")){
-                    ps.setString(1,"%"+TCari.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                }   
-                rs=ps.executeQuery();
+                try {
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(1,"%"+TCari.getText()+"%");
+                        ps.setString(2,"%"+TCari.getText()+"%");
+                        ps.setString(3,"%"+TCari.getText()+"%");
+                        ps.setString(4,"%"+TCari.getText()+"%");
+                    }   
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabMode.addRow(new String[]{
+                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
+                            rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),
+                            Sequel.cariIsi("select (count(layanan_program_kfr.no_rawat_layanan)+1) from layanan_program_kfr where layanan_program_kfr.no_rawat_layanan=?",rs.getString("nopermintaan")),rs.getString("kd_pj"),rs.getString("kd_poli")
+                        });
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
+                }
             }else if(R2.isSelected()==true){
                 ps=koneksi.prepareStatement(
                         "select layanan_kedokteran_fisik_rehabilitasi.no_rawat as nopermintaan,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penjab.png_jawab,layanan_kedokteran_fisik_rehabilitasi.tanggal,reg_periksasaatini.no_rawat,"+
@@ -1307,21 +1324,39 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                         "and reg_periksasaatini.no_rawat in (select layanan_program_kfr.no_rawat from layanan_program_kfr where DATE_FORMAT(layanan_program_kfr.tanggal,'%Y-%m-%d')=current_date()) "+
                         "and layanan_kedokteran_fisik_rehabilitasi.status_program='Belum Selesai' "+(!TCari.getText().trim().equals("")?" and (layanan_kedokteran_fisik_rehabilitasi.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
                         "or layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis like ?) ":""));
-                if(!TCari.getText().trim().equals("")){
-                    ps.setString(1,"%"+TCari.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
+                try {
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(1,"%"+TCari.getText()+"%");
+                        ps.setString(2,"%"+TCari.getText()+"%");
+                        ps.setString(3,"%"+TCari.getText()+"%");
+                        ps.setString(4,"%"+TCari.getText()+"%");
+                    }
+                    rs=ps.executeQuery();
+                    while(rs.next()){
+                        tabMode.addRow(new String[]{
+                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
+                            rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),
+                            Sequel.cariIsi("select count(layanan_program_kfr.no_rawat_layanan) from layanan_program_kfr where layanan_program_kfr.no_rawat_layanan=?",rs.getString("nopermintaan")),rs.getString("kd_pj"),rs.getString("kd_poli")
+                        });
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
                 }
-                rs=ps.executeQuery();
             }else if(R3.isSelected()==true){
                 ps=koneksi.prepareStatement(
-                        "select distinct layanan_kedokteran_fisik_rehabilitasi.no_rawat as nopermintaan,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penjab.png_jawab,layanan_kedokteran_fisik_rehabilitasi.tanggal,layanan_program_kfr.no_rawat,"+
+                        "select layanan_kedokteran_fisik_rehabilitasi.no_rawat as nopermintaan,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penjab.png_jawab,layanan_kedokteran_fisik_rehabilitasi.tanggal,layanan_program_kfr.no_rawat,"+
                         "layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.evaluasi,reg_periksa.kd_pj,reg_periksa.kd_poli from reg_periksa "+
                         "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat=layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
                         "inner join penjab on reg_periksa.kd_pj=penjab.kd_pj inner join layanan_program_kfr on layanan_program_kfr.no_rawat_layanan=layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
                         "where layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? "+(!TCari.getText().trim().equals("")?" and (layanan_kedokteran_fisik_rehabilitasi.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
-                        "or layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis like ?) ":"")+"order by layanan_kedokteran_fisik_rehabilitasi.tanggal");
+                        "or layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis like ?) ":"")+" group by layanan_kedokteran_fisik_rehabilitasi.no_rawat order by layanan_kedokteran_fisik_rehabilitasi.tanggal");
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
                 ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
                 if(!TCari.getText().trim().equals("")){
@@ -1331,24 +1366,23 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                     ps.setString(6,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
-            }
-            
-            try {
-                while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
-                        rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),
-                        Sequel.cariIsi("select count(layanan_program_kfr.no_rawat_layanan) from layanan_program_kfr where layanan_program_kfr.no_rawat_layanan=?",rs.getString("nopermintaan")),rs.getString("kd_pj"),rs.getString("kd_poli")
-                    });
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
+                try {
+                    while(rs.next()){
+                        tabMode.addRow(new String[]{
+                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
+                            rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),
+                            Sequel.cariIsi("select count(layanan_program_kfr.no_rawat_layanan) from layanan_program_kfr where layanan_program_kfr.no_rawat_layanan=?",rs.getString("nopermintaan")),rs.getString("kd_pj"),rs.getString("kd_poli")
+                        });
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notif : "+e);
+                } finally{
+                    if(rs!=null){
+                        rs.close();
+                    }
+                    if(ps!=null){
+                        ps.close();
+                    }
                 }
             }
         }catch(Exception e){

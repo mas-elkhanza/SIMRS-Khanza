@@ -1308,7 +1308,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                     "concat('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layananprogramkfr/',bukti_layanan_program_kfr.photo) as photo,layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,now() as sekarang from layanan_program_kfr "+
                     "inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on layanan_program_kfr.nip=petugas.nip "+
                     "inner join layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=layanan_program_kfr.no_rawat_layanan inner join bukti_layanan_program_kfr on bukti_layanan_program_kfr.no_rawat=layanan_program_kfr.no_rawat "+
-                    "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"' order by layanan_program_kfr.tanggal",param);
+                    "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where layanan_program_kfr.no_rawat_layanan='"+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"' order by layanan_program_kfr.tanggal",param);
         }
     }//GEN-LAST:event_MnCetakLayananProgramKFRActionPerformed
 
@@ -1452,8 +1452,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                     "layanan_program_kfr.nip,petugas.nama,layanan_kedokteran_fisik_rehabilitasi.evaluasi from layanan_program_kfr inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on layanan_program_kfr.nip=petugas.nip "+
                     "inner join layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=layanan_program_kfr.no_rawat_layanan "+
-                    "where layanan_program_kfr.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or layanan_program_kfr.nip like ? or petugas.nama like ?) "+
-                    "order by layanan_program_kfr.tanggal");
+                    "where layanan_program_kfr.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or layanan_program_kfr.nip like ? or "+
+                    "petugas.nama like ? or layanan_program_kfr.no_rawat_layanan like ?) order by layanan_program_kfr.tanggal");
             }
                 
             try {
@@ -1468,6 +1468,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                     ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
