@@ -219,7 +219,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnLayananRehab = new javax.swing.JMenuItem();
         MnLayananProgramKFR = new javax.swing.JMenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
@@ -306,19 +306,19 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianMedis.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Formulir Layanan");
-        MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
+        MnLayananRehab.setBackground(new java.awt.Color(255, 255, 254));
+        MnLayananRehab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLayananRehab.setForeground(new java.awt.Color(50, 50, 50));
+        MnLayananRehab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnLayananRehab.setText("Laporan Formulir Layanan");
+        MnLayananRehab.setName("MnLayananRehab"); // NOI18N
+        MnLayananRehab.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnLayananRehab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianMedisActionPerformed(evt);
+                MnLayananRehabActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianMedis);
+        jPopupMenu1.add(MnLayananRehab);
 
         MnLayananProgramKFR.setBackground(new java.awt.Color(255, 255, 254));
         MnLayananProgramKFR.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -1324,7 +1324,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         Valid.pindah2(evt,Anjuran,SuspekPenyakit);
     }//GEN-LAST:event_EvaluasiKeyPressed
 
-    private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
+    private void MnLayananRehabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLayananRehabActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1348,7 +1348,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
                         "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter inner join bukti_layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
                         "where layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianMedisActionPerformed
+    }//GEN-LAST:event_MnLayananRehabActionPerformed
 
     private void PemeriksaanFisikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanFisikKeyPressed
         Valid.pindah2(evt,Anamnesa,DiagnosisMedis);
@@ -1513,7 +1513,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
     private javax.swing.JMenuItem MnLayananProgramKFR;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private javax.swing.JMenuItem MnLayananRehab;
     private widget.TextBox NmDokter;
     private widget.PanelBiasa PanelAccor;
     private widget.TextArea PemeriksaanFisik;
