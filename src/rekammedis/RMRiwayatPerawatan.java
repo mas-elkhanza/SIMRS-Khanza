@@ -383,6 +383,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkDokumentasiTindakanESWL = new widget.CekBox();
         chkPerencanaanPemulangan = new widget.CekBox();
         chkLayananKedokteranFisikRehabilitasi = new widget.CekBox();
+        chkLayananProgramKFR = new widget.CekBox();
         chkUjiFungsiKFR = new widget.CekBox();
         chkHemodialisa = new widget.CekBox();
         chkSkriningNutrisiDewasa = new widget.CekBox();
@@ -582,7 +583,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-03-2025 15:38:15" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-03-2025 07:34:23" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -891,7 +892,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3875));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 3895));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1794,6 +1795,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkLayananKedokteranFisikRehabilitasi.setOpaque(false);
         chkLayananKedokteranFisikRehabilitasi.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkLayananKedokteranFisikRehabilitasi);
+
+        chkLayananProgramKFR.setSelected(true);
+        chkLayananProgramKFR.setText("Layanan Program KFR");
+        chkLayananProgramKFR.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkLayananProgramKFR.setName("chkLayananProgramKFR"); // NOI18N
+        chkLayananProgramKFR.setOpaque(false);
+        chkLayananProgramKFR.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkLayananProgramKFR);
 
         chkUjiFungsiKFR.setSelected(true);
         chkUjiFungsiKFR.setText("Uji Fungsi/Prosedur KFR");
@@ -2848,6 +2857,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkLayananKedokteranFisikRehabilitasi.setSelected(true);
             chkSkriningGigiMulutBalita.setSelected(true);
             chkSkriningAnemia.setSelected(true);
+            chkLayananProgramKFR.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3016,6 +3026,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkLayananKedokteranFisikRehabilitasi.setSelected(false);
             chkSkriningGigiMulutBalita.setSelected(false);
             chkSkriningAnemia.setSelected(false);
+            chkLayananProgramKFR.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3713,6 +3724,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkKonsultasiMedik;
     private widget.CekBox chkLaporanTindakan;
     private widget.CekBox chkLayananKedokteranFisikRehabilitasi;
+    private widget.CekBox chkLayananProgramKFR;
     private widget.CekBox chkMonitoringGizi;
     private widget.CekBox chkMonitoringReaksiTranfusi;
     private widget.CekBox chkOperasiVK;
@@ -4271,6 +4283,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanMedisRawatJalanKedokteranFisikRehabilitasi(rs.getString("no_rawat"));
                     //menampilkan layanan kedokteran fisik dan rehabilitasi
                     menampilkanLayananKedokteranFisikRehabilitasi(rs.getString("no_rawat"));
+                    //menampilkan layanan program KFR
+                    menampilkanLayananProgramKFR(rs.getString("no_rawat"));
                     //menampilkan uji fungsi KFR
                     menampilkanUjiFungsiKFR(rs.getString("no_rawat"));
                     //menampilkan hemodialisa
@@ -32012,7 +32026,6 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         rs2.beforeFirst();
                         while(rs2.next()){
-                            file=Sequel.cariIsi("select bukti_layanan_kedokteran_fisik_rehabilitasi.photo from bukti_layanan_kedokteran_fisik_rehabilitasi where bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+norawat+"'");
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -32058,20 +32071,6 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "</td>"+
                                  "</tr>"
                             );   
-                            if(!file.equals("")){
-                                htmlContent.append(
-                                    "<tr>"+
-                                        "<td valign='top'>"+
-                                           "PHOTO BUKTI PELAYANAN"+  
-                                           "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
-                                              "<tr>"+
-                                                  "<td valign='top' border='0' width='100%' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layanankedokteranfisikrehabilitasi/"+file+"'><img alt='Gambar Bukti Pelayanan' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layanankedokteranfisikrehabilitasi/"+file+"' width='450' height='450'/></a></td>"+
-                                              "</tr>"+
-                                           "</table>"+
-                                        "</td>"+
-                                    "</tr>"
-                                );
-                            }
                         }
                         htmlContent.append(
                               "</table>"+
@@ -32377,6 +32376,83 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "<tr>"+
                                               "<td width='50%' border='0'>Hasil Skrining : "+rs2.getString("hasil_skrining")+"</td>"+
                                               "<td width='50%' border='0'>Keterangan : "+rs2.getString("keterangan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Skrining Anemia : "+e);
+        }
+    }
+    
+    private void menampilkanLayananProgramKFR(String norawat) {
+        try {
+            if(chkLayananProgramKFR.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select layanan_program_kfr.tanggal,layanan_program_kfr.no_rawat_layanan,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_program_kfr.program,"+
+                            "layanan_program_kfr.nip,petugas.nama,layanan_kedokteran_fisik_rehabilitasi.evaluasi,layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter from layanan_program_kfr "+
+                            "inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on layanan_program_kfr.nip=petugas.nip "+
+                            "inner join layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=layanan_program_kfr.no_rawat_layanan "+
+                            "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where layanan_program_kfr.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Layanan Program Kedokteran Fisik & Rehabilitasi</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        rs2.beforeFirst();
+                        while(rs2.next()){
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PELAYANAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='28%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='36%' border='0'>Terapis : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                              "<td width='36%' border='0'>Dokter KFR : "+rs2.getString("kd_dokter")+" "+rs2.getString("nm_dokter")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "PERMINTAAN & PELAYANAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='25%' border='0'>No.Permintaan</td>"+
+                                              "<td width='75%' border='0'>: "+rs2.getString("no_rawat_layanan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='25%' border='0'>Diagnosa</td>"+
+                                              "<td width='75%' border='0'>: "+rs2.getString("diagnosa_medis")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='25%' border='0'>Permintaan Terapi</td>"+
+                                              "<td width='75%' border='0'>: "+rs2.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs2.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='25%' border='0'>Program</td>"+
+                                              "<td width='75%' border='0'>: "+rs2.getString("program")+"</td>"+
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
