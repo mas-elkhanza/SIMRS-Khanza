@@ -956,7 +956,7 @@ public final class RMPemantauanPEWS extends javax.swing.JDialog {
                     "where pemantauan_pews_anak.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%'  or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' "+
                     "or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' "+
-                    "or pemantauan_pews_anak.parameter_total like '%"+TCari.getText().trim()+"%' or pemantauan_pews_anak.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like ?) "+
+                    "or pemantauan_pews_anak.parameter_total like '%"+TCari.getText().trim()+"%' or pemantauan_pews_anak.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
                     "order by pemantauan_pews_anak.tanggal ",param);
             }  
         }
