@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ab639ded-571e-47e5-8dc1-f63ad2c0538f">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -12,96 +14,134 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[SELECT
-     kamar_inap.`no_rawat`,
-     reg_periksa.`no_rkm_medis`,
-     pasien.`nm_pasien`,
-     concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,
-     pasien.`jk`,
-     penjab.png_jawab,
-     kamar_inap.`kd_kamar`,
-     bangsal.`nm_bangsal`,
-     kamar.`trf_kamar`,
-     ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,
-     ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,
-     kamar_inap.`diagnosa_awal`,
-     kamar_inap.`diagnosa_akhir`,
-     kamar_inap.`tgl_masuk`,
-     kamar_inap.`jam_masuk`,
-     kamar_inap.`tgl_keluar`,
-     kamar_inap.`jam_keluar`,
-     kamar_inap.`ttl_biaya`,
-     kamar_inap.stts_pulang
-FROM
-     `kamar_inap` kamar_inap,
-     `reg_periksa` reg_periksa,
-     `pasien` pasien,
-     `kamar` kamar,
-     `bangsal` bangsal,kelurahan,kecamatan,kabupaten,penjab
-WHERE
-     kamar_inap.no_rawat = reg_periksa.no_rawat
-     and reg_periksa.no_rkm_medis = pasien.no_rkm_medis
-     and kamar_inap.kd_kamar = kamar.kd_kamar
-     and kamar.kd_bangsal = bangsal.kd_bangsal and 
-      pasien.kd_kel=kelurahan.kd_kel
-    and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab 
-    and reg_periksa.kd_pj=penjab.kd_pj
-ORDER BY
-     kamar_inap.no_rawat ASC]]>
+		<![CDATA[select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,
+                                    penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir, 
+                                    kamar_inap.tgl_masuk,kamar_inap.jam_masuk,if(kamar_inap.tgl_keluar='0000-00-00','',kamar_inap.tgl_keluar) as tgl_keluar,
+                                    ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,
+                                    ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,
+                                    if(kamar_inap.jam_keluar='00:00:00','',kamar_inap.jam_keluar) as jam_keluar,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter 
+                                    from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+                                    inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal 
+                                    inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec 
+                                    inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter 
+                                    inner join penjab on reg_periksa.kd_pj=penjab.kd_pj]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rkm_medis"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_pasien" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="alamat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jk"/>
+		<property name="com.jaspersoft.studio.field.label" value="jk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alamat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
+		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="png_jawab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="png_jawab"/>
+		<property name="com.jaspersoft.studio.field.label" value="png_jawab"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="penjab"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kd_kamar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_kamar"/>
+		<property name="com.jaspersoft.studio.field.label" value="kd_kamar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_bangsal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_bangsal"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_bangsal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bangsal"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="trf_kamar" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="trf_kamar"/>
+		<property name="com.jaspersoft.studio.field.label" value="trf_kamar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="perujuk" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dpjp" class="java.lang.String"/>
 	<field name="diagnosa_awal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagnosa_awal"/>
+		<property name="com.jaspersoft.studio.field.label" value="diagnosa_awal"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="diagnosa_akhir" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagnosa_akhir"/>
+		<property name="com.jaspersoft.studio.field.label" value="diagnosa_akhir"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl_masuk" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_masuk"/>
+		<property name="com.jaspersoft.studio.field.label" value="tgl_masuk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam_masuk" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="jam_masuk"/>
+		<property name="com.jaspersoft.studio.field.label" value="jam_masuk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="tgl_keluar" class="java.sql.Date">
+	<field name="tgl_keluar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_keluar"/>
+		<property name="com.jaspersoft.studio.field.label" value="tgl_keluar"/>
+	</field>
+	<field name="perujuk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perujuk"/>
+		<property name="com.jaspersoft.studio.field.label" value="perujuk"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="jam_keluar" class="java.sql.Time">
-		<fieldDescription><![CDATA[]]></fieldDescription>
+	<field name="dpjp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dpjp"/>
+		<property name="com.jaspersoft.studio.field.label" value="dpjp"/>
+	</field>
+	<field name="jam_keluar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jam_keluar"/>
+		<property name="com.jaspersoft.studio.field.label" value="jam_keluar"/>
 	</field>
 	<field name="ttl_biaya" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="ttl_biaya"/>
+		<property name="com.jaspersoft.studio.field.label" value="ttl_biaya"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="stts_pulang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="stts_pulang"/>
+		<property name="com.jaspersoft.studio.field.label" value="stts_pulang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="lama" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="lama"/>
+		<property name="com.jaspersoft.studio.field.label" value="lama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nm_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<background>
@@ -269,9 +309,9 @@ ORDER BY
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="11" splitType="Stretch">
+		<band height="13" splitType="Stretch">
 			<textField isStretchWithOverflow="true">
-				<reportElement x="2" y="0" width="77" height="10" uuid="6b36aa2f-9ef6-44c6-9a09-52979e8930e0"/>
+				<reportElement positionType="Float" x="2" y="0" width="77" height="10" uuid="6b36aa2f-9ef6-44c6-9a09-52979e8930e0"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -279,7 +319,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{no_rawat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="82" y="0" width="52" height="10" uuid="6822e2a4-c0d9-4274-bd66-a5cfef2f4967"/>
+				<reportElement positionType="Float" x="82" y="0" width="52" height="10" uuid="6822e2a4-c0d9-4274-bd66-a5cfef2f4967"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -287,7 +327,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="137" y="0" width="85" height="10" uuid="23bd744d-13a9-4c8e-baa7-5c124003c807"/>
+				<reportElement positionType="Float" x="137" y="0" width="85" height="10" uuid="23bd744d-13a9-4c8e-baa7-5c124003c807"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -295,7 +335,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="494" y="0" width="55" height="10" uuid="579f3e04-8b81-472d-b64a-44b76f341138"/>
+				<reportElement positionType="Float" x="494" y="0" width="55" height="10" uuid="579f3e04-8b81-472d-b64a-44b76f341138"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -303,7 +343,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{tgl_masuk}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement x="732" y="0" width="70" height="10" uuid="5118d5df-c9c6-4b3f-8376-e9cba96006b0"/>
+				<reportElement positionType="Float" x="732" y="0" width="70" height="10" uuid="5118d5df-c9c6-4b3f-8376-e9cba96006b0"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -311,7 +351,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{png_jawab}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="361" y="0" width="75" height="10" uuid="3c840178-ea7a-46c2-b8a8-c63ba866ff51"/>
+				<reportElement positionType="Float" x="361" y="0" width="75" height="10" uuid="3c840178-ea7a-46c2-b8a8-c63ba866ff51"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -319,7 +359,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{kd_kamar}+" "+$F{nm_bangsal}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="436" y="0" width="54" height="10" uuid="a55c299b-6766-4859-96a9-1c7288aa8256"/>
+				<reportElement positionType="Float" x="436" y="0" width="54" height="10" uuid="a55c299b-6766-4859-96a9-1c7288aa8256"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -327,7 +367,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{diagnosa_akhir}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="224" y="0" width="19" height="10" uuid="39b65e4c-53bd-457e-babe-c727277138ba"/>
+				<reportElement positionType="Float" x="224" y="0" width="19" height="10" uuid="39b65e4c-53bd-457e-babe-c727277138ba"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -335,7 +375,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{jk}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="243" y="0" width="116" height="10" uuid="e43f0d61-0b43-4565-b45d-1a0f526d2d4f"/>
+				<reportElement positionType="Float" x="243" y="0" width="116" height="10" uuid="e43f0d61-0b43-4565-b45d-1a0f526d2d4f"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -343,7 +383,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement x="669" y="0" width="62" height="10" uuid="dee5f91c-4417-4fe3-99dc-e01427e2d8bc"/>
+				<reportElement positionType="Float" x="669" y="0" width="62" height="10" uuid="dee5f91c-4417-4fe3-99dc-e01427e2d8bc"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -351,13 +391,19 @@ ORDER BY
 				<textFieldExpression><![CDATA[$F{perujuk}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
-				<reportElement x="549" y="0" width="118" height="10" uuid="e77074e6-2b06-4447-b21a-cb4a516f5d09"/>
+				<reportElement positionType="Float" x="549" y="0" width="118" height="10" uuid="e77074e6-2b06-4447-b21a-cb4a516f5d09"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dpjp}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="12" width="802" height="1" uuid="710f7dd5-52ce-45f2-9313-57888780eb58"/>
+				<graphicElement>
+					<pen lineWidth="0.3"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
