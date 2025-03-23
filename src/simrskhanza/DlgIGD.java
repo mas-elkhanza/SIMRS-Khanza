@@ -12375,8 +12375,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnLaporanTindakan.setEnabled(akses.getlaporan_tindakan());
         MnPelaksanaanInformasiEdukasi.setEnabled(akses.getpelaksanaan_informasi_edukasi());
         MnSkriningAnemia.setEnabled(akses.getskrining_anemia());
-        MnSkriningHipertensi.setEnabled(akses.getsekrining_hipertensi());
-        MnSkriningKesehatanPenglihatan.setEnabled(akses.getsekrining_kesehatan_penglihatan());
+        MnSkriningHipertensi.setEnabled(akses.getskrining_hipertensi());
+        MnSkriningKesehatanPenglihatan.setEnabled(akses.getskrining_kesehatan_penglihatan());
     }
     
     private void isNumber(){

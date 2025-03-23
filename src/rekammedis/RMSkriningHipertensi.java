@@ -192,6 +192,21 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
             }
         });
         
+        Diastole.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isHipertensi();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isHipertensi();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isHipertensi();
+            }
+        });
+        
         petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -547,7 +562,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -561,7 +576,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -682,7 +697,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-03-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -954,7 +969,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         jLabel9.setText(":");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 230, 160, 23);
+        jLabel9.setBounds(0, 230, 100, 23);
 
         Sistole.setFocusTraversalPolicyProvider(true);
         Sistole.setName("Sistole"); // NOI18N
@@ -964,29 +979,29 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Sistole);
-        Sistole.setBounds(164, 230, 55, 23);
+        Sistole.setBounds(104, 230, 55, 23);
 
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel26.setText("mmHg");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(466, 230, 40, 23);
+        jLabel26.setBounds(366, 230, 40, 23);
 
         jLabel22.setText("Klasifikasi Hipertensi :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(505, 230, 130, 23);
+        jLabel22.setBounds(425, 230, 130, 23);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("Tekanan Darah Sistole");
+        jLabel14.setText("TD Sistole");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
         jLabel14.setBounds(44, 230, 140, 23);
 
-        jLabel23.setText("Tekanan Darah Diastole :");
+        jLabel23.setText("TD Diastole :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(265, 230, 140, 23);
+        jLabel23.setBounds(165, 230, 140, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
@@ -1042,7 +1057,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         Klasifikasi.setName("Klasifikasi"); // NOI18N
         Klasifikasi.setOpaque(true);
         FormInput.add(Klasifikasi);
-        Klasifikasi.setBounds(639, 230, 150, 23);
+        Klasifikasi.setBounds(559, 230, 230, 23);
 
         Diastole.setFocusTraversalPolicyProvider(true);
         Diastole.setName("Diastole"); // NOI18N
@@ -1053,7 +1068,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Diastole);
-        Diastole.setBounds(409, 230, 55, 23);
+        Diastole.setBounds(309, 230, 55, 23);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel109.setText("Istirahat Cukup ?");
@@ -1103,7 +1118,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         jLabel28.setText("mmHg");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(221, 230, 40, 23);
+        jLabel28.setBounds(161, 230, 40, 23);
 
         jLabel10.setText(":");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -1995,48 +2010,50 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     
     private void isHipertensi(){
         try {
-            if(!Sistole.getText().equals("")){
-                if(Valid.SetAngka(Sistole.getText())>=12){
-                    Diastole.setText(">= 12 g/dl");
-                    Diastole.setBackground(Color.GREEN);
-                    Diastole.setForeground(Color.YELLOW);
+            if((!Sistole.getText().equals(""))&&(!Diastole.getText().equals(""))){
+                if((Valid.SetAngka(Sistole.getText())<120)&&(Valid.SetAngka(Diastole.getText())<80)){
+                    Klasifikasi.setText("Optimal Normal");
+                    Klasifikasi.setBackground(Color.GREEN);
+                    Klasifikasi.setForeground(Color.YELLOW);
+                }else if(((Valid.SetAngka(Sistole.getText())>=120)&&(Valid.SetAngka(Sistole.getText())<130))&&((Valid.SetAngka(Diastole.getText())>=80)&&(Valid.SetAngka(Diastole.getText())<85))){
                     Klasifikasi.setText("Normal");
                     Klasifikasi.setBackground(Color.GREEN);
                     Klasifikasi.setForeground(Color.YELLOW);
-                }else if((Valid.SetAngka(Sistole.getText())>=11)&&(Valid.SetAngka(Sistole.getText())<=11.9)){
-                    Diastole.setBackground(Color.YELLOW);
-                    Diastole.setForeground(Color.GREEN);
-                    Diastole.setText("11,9 - 11 g/dl'");
+                }else if(((Valid.SetAngka(Sistole.getText())>=130)&&(Valid.SetAngka(Sistole.getText())<=139))&&((Valid.SetAngka(Diastole.getText())>=85)&&(Valid.SetAngka(Diastole.getText())<=89))){
+                    Klasifikasi.setText("Tinggi");
                     Klasifikasi.setBackground(Color.YELLOW);
                     Klasifikasi.setForeground(Color.GREEN);
-                    Klasifikasi.setText("Ringan");
-                }else if((Valid.SetAngka(Sistole.getText())>=8)&&(Valid.SetAngka(Sistole.getText())<=10.9)){
-                    Diastole.setBackground(Color.ORANGE);
-                    Diastole.setForeground(Color.WHITE);
-                    Diastole.setText("10.9 - 8 g/dl");
+                }else if(((Valid.SetAngka(Sistole.getText())>=140)&&(Valid.SetAngka(Sistole.getText())<=149))&&((Valid.SetAngka(Diastole.getText())>=90)&&(Valid.SetAngka(Diastole.getText())<=94))){
+                    Klasifikasi.setText("Sub-group : Perbatasan");
                     Klasifikasi.setBackground(Color.ORANGE);
                     Klasifikasi.setForeground(Color.WHITE);
-                    Klasifikasi.setText("Sedang");
-                }else if(Valid.SetAngka(Sistole.getText())<8){
-                    Diastole.setBackground(Color.RED);
-                    Diastole.setForeground(Color.WHITE);
-                    Diastole.setText("< 8 g/dl");
+                }else if(((Valid.SetAngka(Sistole.getText())>=140)&&(Valid.SetAngka(Sistole.getText())<=159))&&((Valid.SetAngka(Diastole.getText())>=90)&&(Valid.SetAngka(Diastole.getText())<=99))){
+                    Klasifikasi.setText("Tingkat 1 (Hipertensi Ringan)");
+                    Klasifikasi.setBackground(Color.ORANGE);
+                    Klasifikasi.setForeground(Color.WHITE);
+                }else if(((Valid.SetAngka(Sistole.getText())>=160)&&(Valid.SetAngka(Sistole.getText())<=179))&&((Valid.SetAngka(Diastole.getText())>=100)&&(Valid.SetAngka(Diastole.getText())<=109))){
+                    Klasifikasi.setText("Tingkat 2 (Hipertensi Sedang)");
                     Klasifikasi.setBackground(Color.RED);
                     Klasifikasi.setForeground(Color.WHITE);
-                    Klasifikasi.setText("Berat");
+                }else if((Valid.SetAngka(Sistole.getText())>=180)&&(Valid.SetAngka(Diastole.getText())>=110)){
+                    Klasifikasi.setText("Tingkat 3 (Hipertensi Berat)");
+                    Klasifikasi.setBackground(Color.BLUE);
+                    Klasifikasi.setForeground(Color.WHITE);
+                }else if(((Valid.SetAngka(Sistole.getText())>=140)&&(Valid.SetAngka(Sistole.getText())<=149))&&(Valid.SetAngka(Diastole.getText())<90)){
+                    Klasifikasi.setText("Hipertensi Sistol Tensolasi");
+                    Klasifikasi.setBackground(Color.ORANGE);
+                    Klasifikasi.setForeground(Color.WHITE);
+                }else{
+                    Klasifikasi.setBackground(Color.WHITE);
+                    Klasifikasi.setForeground(new Color(50,50,50));
+                    Klasifikasi.setText("Tidak Diketahui");
                 }
             }else{
-                Diastole.setBackground(Color.WHITE);
-                Diastole.setForeground(new Color(50,50,50));
-                Diastole.setText("");
                 Klasifikasi.setBackground(Color.WHITE);
                 Klasifikasi.setForeground(new Color(50,50,50));
                 Klasifikasi.setText("");
             }
         } catch (Exception e) {
-            Diastole.setBackground(Color.WHITE);
-            Diastole.setForeground(new Color(50,50,50));
-            Diastole.setText("");
             Klasifikasi.setBackground(Color.WHITE);
             Klasifikasi.setForeground(new Color(50,50,50));
             Klasifikasi.setText("");

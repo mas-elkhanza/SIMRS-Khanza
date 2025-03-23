@@ -16624,8 +16624,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSkriningKesehatanGigiMulutRemaja.setEnabled(akses.getskrining_kesehatan_gigi_mulut_remaja());
         MnSkriningKesehatanGigiMulutBalita.setEnabled(akses.getskrining_kesehatan_gigi_mulut_balita());
         MnSkriningAnemia.setEnabled(akses.getskrining_anemia());
-        MnSkriningHipertensi.setEnabled(akses.getsekrining_hipertensi());
-        MnSkriningKesehatanPenglihatan.setEnabled(akses.getsekrining_kesehatan_penglihatan());
+        MnSkriningHipertensi.setEnabled(akses.getskrining_hipertensi());
+        MnSkriningKesehatanPenglihatan.setEnabled(akses.getskrining_kesehatan_penglihatan());
         MnSkriningTBC.setEnabled(akses.getskrining_tbc());
         MnSkriningPUMA.setEnabled(akses.getskrining_puma());
         MnSkriningAdiksiNikotin.setEnabled(akses.getskrining_adiksi_nikotin());

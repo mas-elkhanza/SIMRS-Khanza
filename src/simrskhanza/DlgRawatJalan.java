@@ -11122,12 +11122,12 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.getskrining_anemia()==true){
             tinggi=tinggi+24;
         }
-        BtnSkriningHipertensi.setVisible(akses.getsekrining_hipertensi());   
-        if(akses.getsekrining_hipertensi()==true){
+        BtnSkriningHipertensi.setVisible(akses.getskrining_hipertensi());   
+        if(akses.getskrining_hipertensi()==true){
             tinggi=tinggi+24;
         }
-        BtnSkriningKesehatanPenglihatan.setVisible(akses.getsekrining_kesehatan_penglihatan());   
-        if(akses.getsekrining_kesehatan_penglihatan()==true){
+        BtnSkriningKesehatanPenglihatan.setVisible(akses.getskrining_kesehatan_penglihatan());   
+        if(akses.getskrining_kesehatan_penglihatan()==true){
             tinggi=tinggi+24;
         }
         BtnSkriningTBC.setVisible(akses.getskrining_tbc());   

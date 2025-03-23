@@ -936,7 +936,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(jLabel88);
         jLabel88.setBounds(72, 240, 90, 23);
 
-        ButaWarnaKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        ButaWarnaKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         ButaWarnaKiri.setName("ButaWarnaKiri"); // NOI18N
         FormInput.add(ButaWarnaKiri);
         ButaWarnaKiri.setBounds(170, 240, 80, 23);
@@ -947,7 +947,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(jLabel89);
         jLabel89.setBounds(72, 270, 90, 23);
 
-        ButaWarnaKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        ButaWarnaKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         ButaWarnaKanan.setName("ButaWarnaKanan"); // NOI18N
         ButaWarnaKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -969,7 +969,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(jLabel83);
         jLabel83.setBounds(44, 300, 20, 23);
 
-        Kacamata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kacamata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Kacamata.setName("Kacamata"); // NOI18N
         Kacamata.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1002,7 +1002,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(jLabel90);
         jLabel90.setBounds(600, 160, 90, 23);
 
-        RefraksiKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        RefraksiKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RefraksiKiri.setName("RefraksiKiri"); // NOI18N
         RefraksiKiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1018,7 +1018,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(jLabel91);
         jLabel91.setBounds(600, 190, 90, 23);
 
-        RefraksiKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        RefraksiKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RefraksiKanan.setName("RefraksiKanan"); // NOI18N
         RefraksiKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1034,7 +1034,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(jLabel92);
         jLabel92.setBounds(600, 220, 90, 23);
 
-        RujukRefraksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        RujukRefraksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RujukRefraksi.setName("RujukRefraksi"); // NOI18N
         RujukRefraksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1112,7 +1112,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(jLabel101);
         jLabel101.setBounds(600, 300, 90, 23);
 
-        KatarakKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        KatarakKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KatarakKiri.setName("KatarakKiri"); // NOI18N
         KatarakKiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1122,7 +1122,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(KatarakKiri);
         KatarakKiri.setBounds(709, 270, 80, 23);
 
-        KatarakKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        KatarakKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         KatarakKanan.setName("KatarakKanan"); // NOI18N
         KatarakKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1138,7 +1138,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
         FormInput.add(jLabel102);
         jLabel102.setBounds(600, 330, 90, 23);
 
-        RujukKatarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        RujukKatarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         RujukKatarak.setName("RujukKatarak"); // NOI18N
         RujukKatarak.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

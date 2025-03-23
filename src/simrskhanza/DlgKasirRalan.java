@@ -15675,8 +15675,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnPelaksanaanInformasiEdukasi.setEnabled(akses.getpelaksanaan_informasi_edukasi());
         MnLayananKedokteranFisikRehabilitasi.setEnabled(akses.getlayanan_kedokteran_fisik_rehabilitasi());
         MnSkriningAnemia.setEnabled(akses.getskrining_anemia());
-        MnSkriningHipertensi.setEnabled(akses.getsekrining_hipertensi());
-        MnSkriningKesehatanPenglihatan.setEnabled(akses.getsekrining_kesehatan_penglihatan());
+        MnSkriningHipertensi.setEnabled(akses.getskrining_hipertensi());
+        MnSkriningKesehatanPenglihatan.setEnabled(akses.getskrining_kesehatan_penglihatan());
         
         if(akses.getkode().equals("Admin Utama")){
             MnHapusData.setEnabled(true);
