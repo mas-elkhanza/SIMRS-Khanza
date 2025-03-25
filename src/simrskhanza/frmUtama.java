@@ -46793,7 +46793,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningHipertensi.addActionListener(this::btnSkriningHipertensiActionPerformed);
         
         btnSkriningKesehatanPenglihatan = new widget.ButtonBig();
-        btnSkriningKesehatanPenglihatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6217237_avoid_eye_hand_not_touch_icon.png"))); 
+        btnSkriningKesehatanPenglihatan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3069196_eye_glasses_office_vision_icon.png"))); 
         btnSkriningKesehatanPenglihatan.setText("Skrining Kesehatan Penglihatan");
         btnSkriningKesehatanPenglihatan.setIconTextGap(0);
         btnSkriningKesehatanPenglihatan.setName("btnSkriningKesehatanPenglihatan"); 

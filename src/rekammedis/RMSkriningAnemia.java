@@ -257,7 +257,6 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSkriningAnemia = new javax.swing.JMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1802,7 +1801,6 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
     private widget.Button btnPetugas;
-    private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
     private widget.Label jLabel101;
