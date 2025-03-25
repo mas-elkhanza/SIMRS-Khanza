@@ -58,7 +58,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
     private StringBuilder htmlContent;
-    private String TANGGALMUNDUR="yes";
+    private String TANGGALMUNDUR="yes",pilihan="";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -115,13 +115,13 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
             }else if(i==14){
                 column.setPreferredWidth(85);
             }else if(i==15){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(110);
             }else if(i==16){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(58);
             }else if(i==17){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(65);
             }else if(i==18){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(145);
             }else if(i==19){
                 column.setPreferredWidth(150);
             }else if(i==20){
@@ -255,7 +255,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningAnemia = new javax.swing.JMenuItem();
+        MnSkriningHipertensi = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -349,19 +349,19 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningAnemia.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningAnemia.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningAnemia.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningAnemia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningAnemia.setText("Formulir Skrining Anemia");
-        MnSkriningAnemia.setName("MnSkriningAnemia"); // NOI18N
-        MnSkriningAnemia.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningAnemia.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningHipertensi.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningHipertensi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningHipertensi.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningHipertensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningHipertensi.setText("Formulir Skrining Hipertensi");
+        MnSkriningHipertensi.setName("MnSkriningHipertensi"); // NOI18N
+        MnSkriningHipertensi.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningHipertensi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningAnemiaActionPerformed(evt);
+                MnSkriningHipertensiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningAnemia);
+        jPopupMenu1.add(MnSkriningHipertensi);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1263,66 +1263,6 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                htmlContent = new StringBuilder();
-                htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pribadi Hipertensi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Hipertensi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Merokok</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alkohol/Merokok Di Keluarga</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Makan Asin</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Fisik Setiap Hari</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Istirahat Cukup</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kurang Buah & Sayur</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Sistole</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Diastole</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Klasifikasi Hipertensi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
-                    "</tr>"
-                );
-                for (i = 0; i < tabMode.getRowCount(); i++) {
-                    htmlContent.append(
-                        "<tr class='isi'>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
-                        "</tr>");
-                }
-                LoadHTML.setText(
-                    "<html>"+
-                      "<table width='1800px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                       htmlContent.toString()+
-                      "</table>"+
-                    "</html>"
-                );
-
                 File g = new File("file2.css");            
                 BufferedWriter bg = new BufferedWriter(new FileWriter(g));
                 bg.write(
@@ -1338,24 +1278,186 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataSkriningHipertensi.html");            
-                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='1800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>"+
-                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING HIPERTENSI<br><br></font>"+        
-                                    "</td>"+
-                               "</tr>"+
-                            "</table>")
-                );
-                bw.close();                         
-                Desktop.getDesktop().browse(f.toURI());
+                File f;            
+                BufferedWriter bw;
+                
+                pilihan =(String) JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                switch (pilihan) {
+                    case "Laporan 1 (HTML)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pribadi Hipertensi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Hipertensi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Merokok</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alkohol/Merokok Di Keluarga</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Makan Asin</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Fisik Setiap Hari</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Istirahat Cukup</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kurang Buah & Sayur</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Sistole</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Diastole</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Klasifikasi Hipertensi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
+                                "</tr>"
+                            );
+                            for (i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                                    "</tr>");
+                            }
+                            LoadHTML.setText(
+                                "<html>"+
+                                  "<table width='1800px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                   htmlContent.toString()+
+                                  "</table>"+
+                                "</html>"
+                            );
 
+                            f = new File("DataSkriningHipertensi.html");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                        "<table width='1800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DATA SEKRINING HIPERTENSI<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>")
+                            );
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 2 (WPS)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "<tr class='isi'>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pribadi Hipertensi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Hipertensi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Merokok</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alkohol/Merokok Di Keluarga</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Makan Asin</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Fisik Setiap Hari</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Istirahat Cukup</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kurang Buah & Sayur</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Sistole</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Diastole</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Klasifikasi Hipertensi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
+                                "</tr>"
+                            );
+                            for (i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append(
+                                    "<tr class='isi'>"+
+                                       "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                                    "</tr>");
+                            }
+                            LoadHTML.setText(
+                                "<html>"+
+                                  "<table width='1800px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                   htmlContent.toString()+
+                                  "</table>"+
+                                "</html>"
+                            );
+
+                            f = new File("DataSkriningHipertensi.wps");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                        "<table width='1800px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DATA SEKRINING HIPERTENSI<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>")
+                            );
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 3 (CSV)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Petugas\";\"Nama Petugas\";\"Tanggal\";\"Pribadi Hipertensi\";\"Keluarga Hipertensi\";\"Riwayat Merokok\";\"Alkohol/Merokok Di Keluarga\";\"Makan Asin\";\"Fisik Setiap Hari\";\"Istirahat Cukup\";\"Kurang Buah & Sayur\";\"TD Sistole\";\"TD Diastole\";\"Klasifikasi Hipertensi\";\"Hasil Skrining\";\"Keterangan\"\n"
+                            ); 
+                            for (i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append(
+                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\";\""+tbObat.getValueAt(i,20).toString()+"\"\n"
+                                );
+                            }
+                            f = new File("DataSkriningHipertensi.csv");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(htmlContent.toString());
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break; 
+                }   
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }
@@ -1459,7 +1561,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
         //Valid.pindah(evt,Detik,BB);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningAnemiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningAnemiaActionPerformed
+    private void MnSkriningHipertensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningHipertensiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1471,16 +1573,15 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningAnemia.jasper","report","::[ Formulir Skrining Anemia ]::",
+            Valid.MyReportqry("rptFormulirSkriningHipertensi.jasper","report","::[ Formulir Skrining Hipertensi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_hipertensi.nip,petugas.nama,skrining_hipertensi.tanggal,"+
-                    "skrining_hipertensi.mudah_lelah,skrining_hipertensi.buah_sayur,skrining_hipertensi.protein_hewani,skrining_hipertensi.masalah_pubertas,skrining_hipertensi.risiko_ims,skrining_hipertensi.kekerasan_seksual,"+
-                    "skrining_hipertensi.sudah_menstruasi,skrining_hipertensi.gangguan_menstruasi,skrining_hipertensi.tambah_darah,skrining_hipertensi.kelainan_darah,skrining_hipertensi.keluarga_thalasemia,skrining_hipertensi.rambut,"+
-                    "skrining_hipertensi.kulit,skrining_hipertensi.bekas_sutikan,skrining_hipertensi.kuku,skrining_hipertensi.tanda_klinis,skrining_hipertensi.pemeriksaan_hb,skrining_hipertensi.kadar_hb,skrining_hipertensi.jenis_anemia,"+
-                    "skrining_hipertensi.hasil_skrining,skrining_hipertensi.keterangan from skrining_hipertensi inner join reg_periksa on skrining_hipertensi.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_hipertensi.nip=petugas.nip "+
-                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "skrining_hipertensi.anamnesis1,skrining_hipertensi.anamnesis2,skrining_hipertensi.anamnesis3,skrining_hipertensi.anamnesis4,skrining_hipertensi.anamnesis5,"+
+                    "skrining_hipertensi.anamnesis6,skrining_hipertensi.anamnesis7,skrining_hipertensi.anamnesis8,skrining_hipertensi.sistole,skrining_hipertensi.diastole,"+
+                    "skrining_hipertensi.klasifikasi_hipertensi,skrining_hipertensi.hasil_skrining,skrining_hipertensi.keterangan from skrining_hipertensi "+
+                    "inner join reg_periksa on skrining_hipertensi.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on skrining_hipertensi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningAnemiaActionPerformed
+    }//GEN-LAST:event_MnSkriningHipertensiActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1583,7 +1684,7 @@ public final class RMSkriningHipertensi extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningAnemia;
+    private javax.swing.JMenuItem MnSkriningHipertensi;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
