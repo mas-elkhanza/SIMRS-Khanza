@@ -233,7 +233,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         BtnClosePhrase = new widget.Button();
         BtnSimpanTandaTangan = new widget.Button();
         jLabel39 = new widget.Label();
-        Phrase = new widget.TextBox();
+        Phrase = new widget.PasswordBox();
         Tanggal = new widget.Tanggal();
         WindowURLSertisign = new javax.swing.JDialog();
         internalFrame9 = new widget.InternalFrame();
@@ -575,7 +575,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         panelisi5.add(jLabel39);
         jLabel39.setBounds(0, 10, 130, 23);
 
-        Phrase.setHighlighter(null);
+        Phrase.setText("passwordBox1");
         Phrase.setName("Phrase"); // NOI18N
         panelisi5.add(Phrase);
         Phrase.setBounds(134, 10, 160, 23);
@@ -3628,7 +3628,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private javax.swing.JPanel PanelInput;
     private widget.TextBox Pekerjaan;
     private widget.TextBox Pendidikan;
-    private widget.TextBox Phrase;
+    private widget.PasswordBox Phrase;
     private widget.RadioButton R1;
     private widget.RadioButton R2;
     private widget.RadioButton R3;
