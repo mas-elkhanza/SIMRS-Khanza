@@ -242,7 +242,7 @@ public final class akses {
             penilaian_awal_medis_ranap_neonatus=false,penilaian_derajat_dehidrasi=false,ringkasan_jasa_tindakan_medis=false,pendapatan_per_akun=false,hasil_pemeriksaan_echo=false,
             penilaian_bayi_baru_lahir=false,rl1_3_ketersediaan_kamar=false,pendapatan_per_akun_closing=false,pengeluaran_pengeluaran=false,skrining_diabetes_melitus=false,
             laporan_tindakan=false,pelaksanaan_informasi_edukasi=false,layanan_kedokteran_fisik_rehabilitasi=false,skrining_kesehatan_gigi_mulut_balita=false,skrining_anemia=false,
-            layanan_program_kfr=false,skrining_hipertensi=false,skrining_kesehatan_penglihatan=false,catatan_observasi_hemodialisa=false;
+            layanan_program_kfr=false,skrining_hipertensi=false,skrining_kesehatan_penglihatan=false,catatan_observasi_hemodialisa=false,skrining_kesehatan_gigi_mulut_dewasa=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1377,6 +1377,7 @@ public final class akses {
                         akses.skrining_hipertensi=true;
                         akses.skrining_kesehatan_penglihatan=true;
                         akses.catatan_observasi_hemodialisa=true;
+                        akses.skrining_kesehatan_gigi_mulut_dewasa=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2495,6 +2496,7 @@ public final class akses {
                         akses.skrining_hipertensi=rs2.getBoolean("skrining_hipertensi");
                         akses.skrining_kesehatan_penglihatan=rs2.getBoolean("skrining_kesehatan_penglihatan");
                         akses.catatan_observasi_hemodialisa=rs2.getBoolean("catatan_observasi_hemodialisa");
+                        akses.skrining_kesehatan_gigi_mulut_dewasa=rs2.getBoolean("skrining_kesehatan_gigi_mulut_dewasa");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         akses.kode="";                  
                         akses.penyakit= false;
@@ -3611,6 +3613,7 @@ public final class akses {
                         akses.skrining_hipertensi=false;
                         akses.skrining_kesehatan_penglihatan=false;
                         akses.catatan_observasi_hemodialisa=false;
+                        akses.skrining_kesehatan_gigi_mulut_dewasa=false;
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -4750,6 +4753,7 @@ public final class akses {
         akses.skrining_hipertensi=false;
         akses.skrining_kesehatan_penglihatan=false;
         akses.catatan_observasi_hemodialisa=false;
+        akses.skrining_kesehatan_gigi_mulut_dewasa=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -5905,4 +5909,5 @@ public final class akses {
     public static boolean getskrining_hipertensi(){return akses.skrining_hipertensi;}
     public static boolean getskrining_kesehatan_penglihatan(){return akses.skrining_kesehatan_penglihatan;}
     public static boolean getcatatan_observasi_hemodialisa(){return akses.catatan_observasi_hemodialisa;}
+    public static boolean getskrining_kesehatan_gigi_mulut_dewasa(){return akses.skrining_kesehatan_gigi_mulut_dewasa;}
 }   
