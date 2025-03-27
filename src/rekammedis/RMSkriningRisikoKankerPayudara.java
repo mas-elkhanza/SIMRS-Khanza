@@ -3944,7 +3944,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("faktor_risiko_awal1"),rs.getString("nilai_risiko_awal1"),rs.getString("faktor_risiko_awal2"),
                         rs.getString("nilai_risiko_awal2"),rs.getString("faktor_risiko_awal3"),rs.getString("nilai_risiko_awal3"),rs.getString("faktor_risiko_awal4"),rs.getString("nilai_risiko_awal4"),
@@ -4468,7 +4468,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
             KecurigaanKeganasan7.getSelectedItem().toString(),NilaiKecurigaanKeganasan7.getText(),KecurigaanKeganasan8.getSelectedItem().toString(),NilaiKecurigaanKeganasan8.getText(),TotalHasil.getText(),HasilPemeriksaanSadanis.getSelectedItem().toString(), 
             TindakLanjutSadanis.getSelectedItem().toString(),HasilSkrining.getSelectedItem().toString(),Keterangan.getText(),KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 FaktorAwal1.getSelectedItem().toString(),NilaiFaktorAwal1.getText(),FaktorAwal2.getSelectedItem().toString(),NilaiFaktorAwal2.getText(),FaktorAwal3.getSelectedItem().toString(),NilaiFaktorAwal3.getText(),
                 FaktorAwal4.getSelectedItem().toString(),NilaiFaktorAwal4.getText(),FaktorAwal5.getSelectedItem().toString(),NilaiFaktorAwal5.getText(),FaktorAwal6.getSelectedItem().toString(),NilaiFaktorAwal6.getText(),

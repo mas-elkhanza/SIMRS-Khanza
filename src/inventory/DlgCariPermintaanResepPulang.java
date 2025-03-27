@@ -334,11 +334,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }                
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_permintaan"),rs.getString("tgl_permintaan"),rs.getString("jam"),rs.getString("no_rawat"),
                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("kd_dokter")
                     });  
-                    tabMode.addRow(new String[]{"","Jumlah","Satuan","Aturan Pakai","Kode Obat","Nama Obat","",""});                
+                    tabMode.addRow(new Object[]{"","Jumlah","Satuan","Aturan Pakai","Kode Obat","Nama Obat","",""});                
                     ps2=koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng,detail_permintaan_resep_pulang.jml,"+
                         "databarang.kode_sat,detail_permintaan_resep_pulang.dosis "+
                         "from detail_permintaan_resep_pulang inner join databarang on "+
@@ -347,7 +347,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,rs.getString("no_permintaan"));
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",rs2.getString("jml"),rs2.getString("kode_sat"),rs2.getString("dosis"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),"",""
                             });
                         }

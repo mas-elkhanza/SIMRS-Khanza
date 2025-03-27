@@ -18037,7 +18037,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umur")+")",
                         rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
                         rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")),rs.getString("diagnosa_awal"),
@@ -18054,7 +18054,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                         psanak.setString(1,rs.getString(1));
                         rs2=psanak.executeQuery();
                         if(rs2.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien")+" ("+rs2.getString("umur")+")",
                                 rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
                                 rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")*(persenbayi/100)),"",

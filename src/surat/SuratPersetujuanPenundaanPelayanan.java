@@ -1113,7 +1113,7 @@ public final class SuratPersetujuanPenundaanPelayanan extends javax.swing.JDialo
                     DokterPengirim.getText(),PelayananDilakukan.getText(),PenundaanPelayananKarena.getSelectedItem().toString(),KeteranganPenundaanPelayananKarena.getText(),
                     AlternatifDiberikan.getSelectedItem().toString(),KeteranganAlternatifDiberikan.getText(),NIP.getText(),KodeDokter.getText()
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),Jk.getText(),LahirPasien.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),AlamatPj.getText(),NoTelpPJ.getText(),Hubungan.getSelectedItem().toString(),PoliRuangan.getText(),DokterPengirim.getText(),PelayananDilakukan.getText(), 
                     PenundaanPelayananKarena.getSelectedItem().toString(),KeteranganPenundaanPelayananKarena.getText(),AlternatifDiberikan.getSelectedItem().toString(),KeteranganAlternatifDiberikan.getText(),NIP.getText(),
@@ -1732,7 +1732,7 @@ public final class SuratPersetujuanPenundaanPelayanan extends javax.swing.JDialo
                   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("nama_pj"),rs.getString("umur_pj"),rs.getString("no_ktppj"),

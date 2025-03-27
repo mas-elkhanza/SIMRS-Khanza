@@ -369,7 +369,7 @@ public final class MandiriCariBankTujuanTransfer extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
                     iyem=iyem+"{\"KodeBank\":\""+rs.getString(1)+"\",\"NamaBank\":\""+rs.getString(2)+"\"},";
                 }
             } catch (Exception e) {

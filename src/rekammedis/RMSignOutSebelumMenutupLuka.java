@@ -1709,7 +1709,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("sncn"),rs.getString("tindakan"),rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),
                         rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("verbal_tindakan"),rs.getString("verbal_kelengkapan_kasa"),

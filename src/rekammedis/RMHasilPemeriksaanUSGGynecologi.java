@@ -1536,7 +1536,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("uterus"),rs.getString("parametrium"),rs.getString("ovarium"),rs.getString("doppler"),rs.getString("kesimpulan")
                     });
@@ -1764,7 +1764,7 @@ public final class RMHasilPemeriksaanUSGGynecologi extends javax.swing.JDialog {
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
                 DiagnosaKlinis.getText(),KirimanDari.getText(),Uterus.getText(),Parametrium.getText(),Ovarium.getText(),Doppler.getText(),Kesimpulan.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     KirimanDari.getText(),DiagnosaKlinis.getText(),Uterus.getText(),Parametrium.getText(),Ovarium.getText(),Doppler.getText(),Kesimpulan.getText()
                 });

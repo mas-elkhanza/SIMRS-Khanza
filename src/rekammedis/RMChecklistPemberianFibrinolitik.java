@@ -2310,7 +2310,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("kontra_indikasi1"),rs.getString("keterangan_kontra_indikasi1"),rs.getString("kontra_indikasi2"),rs.getString("keterangan_kontra_indikasi2"),rs.getString("kontra_indikasi3"),
                         rs.getString("keterangan_kontra_indikasi3"),rs.getString("kontra_indikasi4"),rs.getString("keterangan_kontra_indikasi4"),rs.getString("kontra_indikasi5"),rs.getString("keterangan_kontra_indikasi5"),
@@ -2665,7 +2665,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
             RisikoTinggi3.getSelectedItem().toString(),KeteranganRisikoTinggi3.getText(),RisikoTinggi4.getSelectedItem().toString(),KeteranganRisikoTinggi4.getText(),
             RisikoTinggi5.getSelectedItem().toString(),KeteranganRisikoTinggi5.getText(),Kesimpulan.getText(),EkgPreStrep.getText(),EkgPostStrep.getText(),CekTroponin.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 KontraIndikasi1.getSelectedItem().toString(),KeteranganKontraIndikasi1.getText(),KontraIndikasi2.getSelectedItem().toString(),KeteranganKontraIndikasi2.getText(),
                 KontraIndikasi3.getSelectedItem().toString(),KeteranganKontraIndikasi3.getText(),KontraIndikasi4.getSelectedItem().toString(),KeteranganKontraIndikasi4.getText(),

@@ -1305,7 +1305,7 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
                 ps.setString(12,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),
                         rs.getString(4),rs.getString(5),rs.getString(6),
                         rs.getString(7),rs.getString(8),rs.getString(9),

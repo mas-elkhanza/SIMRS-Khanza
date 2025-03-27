@@ -1456,7 +1456,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("skrining_bb"),rs.getString("skrining_tb"),rs.getString("alergi"),
@@ -1772,7 +1772,7 @@ public final class RMDataSkriningGiziLanjut extends javax.swing.JDialog {
             BB.getText(),TB.getText(),Alergi.getText(),cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),
             cmbSkor3.getSelectedItem().toString(),Skor3.getText(),TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 BB.getText(),TB.getText(),Alergi.getText(),cmbSkor1.getSelectedItem().toString(),Skor1.getText(),cmbSkor2.getSelectedItem().toString(),Skor2.getText(),cmbSkor3.getSelectedItem().toString(),Skor3.getText(),
                 TotalSkor.getText(),ParameterSkor.getText(),KdPetugas.getText(),NmPetugas.getText(),TglLahir.getText()

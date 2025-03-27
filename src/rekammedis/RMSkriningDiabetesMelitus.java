@@ -2005,7 +2005,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("anamnesis1"),rs.getString("anamnesis2"),rs.getString("anamnesis3"),rs.getString("anamnesis4"),rs.getString("anamnesis5"),rs.getString("anamnesis6"),rs.getString("anamnesis7"),
                         rs.getString("anamnesis8"),rs.getString("anamnesis9"),rs.getString("anamnesis10"),rs.getString("anamnesis11"),rs.getString("anamnesis12"),rs.getString("berat_badan"),rs.getString("tinggi_badan"),
@@ -2301,7 +2301,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
             Anamnesis12.getSelectedItem().toString(),BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),HasilGDS.getText(),KeteranganGDS.getText(),
             HasilGDP.getText(),KeteranganGDP.getText(),HasilSkrining.getSelectedItem().toString(),KeteranganSkrining.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(), 
                 Anamnesis4.getSelectedItem().toString(),Anamnesis5.getSelectedItem().toString(),Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(), 

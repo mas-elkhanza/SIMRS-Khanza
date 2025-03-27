@@ -1029,7 +1029,7 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                     setelah_kontak_dengan_lingkungan_pasien=Double.parseDouble(rs.getString("setelah_kontak_dengan_lingkungan_pasien").replaceAll("Ya","1").replaceAll("Tidak","0"));
                     ttlsetelah_kontak_dengan_lingkungan_pasien=ttlsetelah_kontak_dengan_lingkungan_pasien+setelah_kontak_dengan_lingkungan_pasien;
                     ttlpenilaian=ttlpenilaian+(((sebelum_menyentuh_pasien+sebelum_tehnik_aseptik+setelah_terpapar_cairan_tubuh_pasien+setelah_kontak_dengan_pasien+setelah_kontak_dengan_lingkungan_pasien)/5)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("nik"),rs.getString("nama"),rs.getString("sebelum_menyentuh_pasien"),rs.getString("sebelum_tehnik_aseptik"),
                         rs.getString("setelah_terpapar_cairan_tubuh_pasien"),rs.getString("setelah_kontak_dengan_pasien"),rs.getString("setelah_kontak_dengan_lingkungan_pasien"),
                         Math.round(((sebelum_menyentuh_pasien+sebelum_tehnik_aseptik+setelah_terpapar_cairan_tubuh_pasien+setelah_kontak_dengan_pasien+setelah_kontak_dengan_lingkungan_pasien)/5)*100)+" %"
@@ -1038,17 +1038,17 @@ public final class DlgAuditCuciTanganMedis extends javax.swing.JDialog {
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlsebelum_menyentuh_pasien,""+ttlsebelum_tehnik_aseptik,""+ttlsetelah_terpapar_cairan_tubuh_pasien,
                         ""+ttlsetelah_kontak_dengan_pasien,""+ttlsetelah_kontak_dengan_lingkungan_pasien,""+(ttlsebelum_menyentuh_pasien+ttlsebelum_tehnik_aseptik+
                         ttlsetelah_terpapar_cairan_tubuh_pasien+ttlsetelah_kontak_dengan_pasien+ttlsetelah_kontak_dengan_lingkungan_pasien)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":",""+(i-ttlsebelum_menyentuh_pasien),""+(i-ttlsebelum_tehnik_aseptik),""+(i-ttlsetelah_terpapar_cairan_tubuh_pasien),
                         ""+(i-ttlsetelah_kontak_dengan_pasien),""+(i-ttlsetelah_kontak_dengan_lingkungan_pasien),""+((i-ttlsebelum_menyentuh_pasien)+(i-ttlsebelum_tehnik_aseptik)+
                         (i-ttlsetelah_terpapar_cairan_tubuh_pasien)+(i-ttlsetelah_kontak_dengan_pasien)+(i-ttlsetelah_kontak_dengan_lingkungan_pasien))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":",Math.round((ttlsebelum_menyentuh_pasien/i)*100)+" %",Math.round((ttlsebelum_tehnik_aseptik/i)*100)+" %",Math.round((ttlsetelah_terpapar_cairan_tubuh_pasien/i)*100)+" %",
                         Math.round((ttlsetelah_kontak_dengan_pasien/i)*100)+" %",Math.round((ttlsetelah_kontak_dengan_lingkungan_pasien/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });

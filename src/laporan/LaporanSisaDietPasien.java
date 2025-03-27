@@ -758,7 +758,7 @@ public class LaporanSisaDietPasien extends javax.swing.JDialog {
         }else{
             if(Sequel.menyimpantf("sisa_diet_pasien","'"+TNoRw.getText()+"','"+Kamar.getText()+"','"+Valid.SetTgl(Tanggal.getText())+"',"+
                     "'"+WaktuDiet.getText()+"','"+Karbo.getText()+"','"+Hewani.getText()+"','"+Nabati.getText()+"','"+Sayur.getText()+"','"+Buah.getText()+"'","data")==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TPasien.getText(),Ruang.getText(),Valid.SetTgl(Tanggal.getText()+""),WaktuDiet.getText(),JamDiet.getText(),Karbo.getText(),Hewani.getText(),Nabati.getText(),Sayur.getText(),Buah.getText(),Kamar.getText()
                 });
                 emptTeks();
@@ -1084,7 +1084,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),rs.getString("kamar"),rs.getString("tanggal"),
                         rs.getString("waktu"),rs.getString("jam"),rs.getString("karbohidrat"),rs.getString("hewani"),rs.getString("nabati"),rs.getString("sayur"),
                         rs.getString("buah"),rs.getString("kd_kamar")
@@ -1123,7 +1123,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }
         LCount.setText(""+tabMode.getRowCount());
         if(tabMode.getRowCount()>0){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 "","Rata-rata Persentase Sisa Makanan","","","","",(karbo/x)+"",(hewani/x)+"",(nabati/x)+"",(sayur/x)+"",(buah/x)+"",""
             });
         }

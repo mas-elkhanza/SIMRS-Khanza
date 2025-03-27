@@ -3264,7 +3264,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 MudahBerkeringat.getSelectedItem().toString(),BuluBerdiriGejalaOtonom.getSelectedItem().toString(),SakitKepala.getSelectedItem().toString(),GelisahWawancara.getSelectedItem().toString(),NapasPendekWawancara.getSelectedItem().toString(),JariGemetar.getSelectedItem().toString(),
                 KerutKening.getSelectedItem().toString(),MukaTegang.getSelectedItem().toString(),TonusMeningkat.getSelectedItem().toString(),TidakTenang.getSelectedItem().toString(),MukaMerahWawancara.getSelectedItem().toString(),TotalSkor.getText(),KeteranganSkor.getText(),KodePetugas.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Cemas.getSelectedItem().toString(),FirasatBuruk.getSelectedItem().toString(),TakutPikiranSendiri.getSelectedItem().toString(),MudahTersinggung.getSelectedItem().toString(),
                     MerasaTegang.getSelectedItem().toString(),Lesu.getSelectedItem().toString(),TakBisaIstirahatTenang.getSelectedItem().toString(),MudahTerkejut.getSelectedItem().toString(),MudahMenangis.getSelectedItem().toString(),Gemetar.getSelectedItem().toString(),Gelisah.getSelectedItem().toString(),
                     TakutPadaGelap.getSelectedItem().toString(),TakutPadaOrangAsing.getSelectedItem().toString(),TakutPadaKerumunanBanyakOrang.getSelectedItem().toString(),TakutPadaBinatangBesar.getSelectedItem().toString(),TakutPadaKeramaianLaluLintas.getSelectedItem().toString(),
@@ -4838,7 +4838,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("cemas"),rs.getString("firasat_buruk"),rs.getString("takut_pikiran_sendiri"),
                         rs.getString("mudah_tersinggung"),rs.getString("merasa_tegang"),rs.getString("lesu"),rs.getString("tak_bisa_istirahat_tenang"),

@@ -2266,7 +2266,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
                         });
                     }
                 }
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     Kd.getText(),KdDokter.getText(),NmDokter.getText(),Subjek.getText(),Objek.getText(),Plan.getText(),Instruksi.getText(),Evaluasi.getText()
                 });
                 emptTeks();
@@ -4779,7 +4779,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         });
                     }
                 }
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),KdDokter.getText(),NmDokter.getText(),Subjek.getText(),Objek.getText(),Asesmen.getText(),Plan.getText(),Instruksi.getText(),Evaluasi.getText()
                 });
                 tabMode.removeRow(tbDokter.getSelectedRow());

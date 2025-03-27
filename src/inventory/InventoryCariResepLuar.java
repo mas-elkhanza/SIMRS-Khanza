@@ -1076,12 +1076,12 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                 ps.setString(7,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_resep"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),
                         rs.getString("no_rawat")+" "+rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
                         rs.getString("nm_dokter")
                     });
-                    tabMode.addRow(new String[]{"","Jumlah","Nama Obat","Aturan Pakai"});                
+                    tabMode.addRow(new Object[]{"","Jumlah","Nama Obat","Aturan Pakai"});                
                     ps2=koneksi.prepareStatement(
                         "select databarang.kode_brng,databarang.nama_brng,resep_luar_obat.jml,kodesatuan.satuan,"+
                         "resep_luar_obat.aturan_pakai from resep_luar_obat inner join databarang on resep_luar_obat.kode_brng=databarang.kode_brng "+
@@ -1090,7 +1090,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                         ps2.setString(1,rs.getString("no_resep"));
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",rs2.getString("jml")+" "+rs2.getString("satuan"),rs2.getString("nama_brng"),rs2.getString("aturan_pakai")
                             });
                         }
@@ -1116,7 +1116,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                         psracikan.setString(1,rs.getString("no_resep"));
                         rsracikan=psracikan.executeQuery();
                         while(rsracikan.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",rsracikan.getString("jml_dr")+" "+rsracikan.getString("metode"),rsracikan.getString("no_racik")+". "+rsracikan.getString("nama_racik")+", Keterangan : "+rsracikan.getString("keterangan"),rsracikan.getString("aturan_pakai")
                             });
                             
@@ -1130,7 +1130,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                                 ps2.setString(2,rsracikan.getString("no_racik"));
                                 rs2=ps2.executeQuery();
                                 while(rs2.next()){
-                                    tabMode.addRow(new String[]{
+                                    tabMode.addRow(new Object[]{
                                         "","   "+rs2.getString("jml")+" "+rs2.getString("satuan"),"   "+rs2.getString("nama_brng"),""
                                     });
                                 }                                
@@ -1183,7 +1183,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                 ps2.setString(1,NoResepUbah3.getText());
                 rs2=ps2.executeQuery();
                 while(rs2.next()){
-                    tabmodeUbahRacikan.addRow(new String[]{
+                    tabmodeUbahRacikan.addRow(new Object[]{
                         rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("jml"),rs2.getString("aturan_pakai")
                     });
                 }
@@ -1211,7 +1211,7 @@ public final class InventoryCariResepLuar extends javax.swing.JDialog {
                 ps2.setString(1,NoResepUbah4.getText());
                 rs2=ps2.executeQuery();
                 while(rs2.next()){
-                    tabmodeUbahRacikan2.addRow(new String[]{
+                    tabmodeUbahRacikan2.addRow(new Object[]{
                         rs2.getString("no_racik"),rs2.getString("nama_racik"),rs2.getString("aturan_pakai")
                     });
                 }

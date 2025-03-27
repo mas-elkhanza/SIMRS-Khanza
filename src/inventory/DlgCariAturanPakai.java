@@ -383,7 +383,7 @@ public final class DlgCariAturanPakai extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1)});
+                    tabMode.addRow(new Object[]{rs.getString(1)});
                     iyem=iyem+"{\"AturanPakai\":\""+rs.getString(1)+"\"},";
                 }
             } catch (Exception e) {

@@ -886,7 +886,7 @@ public final class RMPenilaianPreOperasi extends javax.swing.JDialog {
                     RingkasanKlinik.getText(),PemeriksaanFisik.getText(),PemeriksaanDiagnostik.getText(),DiagnosaPreOperasi.getText(),RencanaTindakanBedah.getText(), 
                     HalYangDipersiapkan.getText(),TerapiPreOp.getText()
                 })==true){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                         RingkasanKlinik.getText(),PemeriksaanFisik.getText(),PemeriksaanDiagnostik.getText(),DiagnosaPreOperasi.getText(),RencanaTindakanBedah.getText(),HalYangDipersiapkan.getText(),TerapiPreOp.getText()
                     });
@@ -1347,7 +1347,7 @@ public final class RMPenilaianPreOperasi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("ringkasan_klinik"),rs.getString("pemeriksaan_fisik"),rs.getString("pemeriksaan_diagnostik"),rs.getString("diagnosa_pre_operasi"),rs.getString("rencana_tindakan_bedah"),rs.getString("hal_hal_yang_perludi_persiapkan"),
                         rs.getString("terapi_pre_operasi")

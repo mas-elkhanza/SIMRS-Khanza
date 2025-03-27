@@ -1108,7 +1108,7 @@ public final class RMDataCatatanKeperawatanRanap extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("jam"),rs.getString("uraian"),rs.getString("nip"),
@@ -1324,7 +1324,7 @@ public final class RMDataCatatanKeperawatanRanap extends javax.swing.JDialog {
         if(Sequel.menyimpantf("catatan_keperawatan_ranap","?,?,?,?,?","Data",5,new String[]{
             Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),TNoRw.getText(),Uraian.getText(),NIP.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                 Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Uraian.getText(),NIP.getText(),NamaPetugas.getText()
             });

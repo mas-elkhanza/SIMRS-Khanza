@@ -779,7 +779,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         ps.setString(3,"%"+PenyakitCari.getText()+"%");
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("nama"),rs.getString("harga"),"","0","0","0",
                                 rs.getString("kd_penyakit"),rs.getString("nm_penyakit"),rs.getString("ciri_ciri"),rs.getString("keterangan"),rs.getString("nm_kategori"),
                                 rs.getString("ciri_umum"),rs.getString("referensi"),rs.getString("dasar"),rs.getString("stok"),rs.getString("no_batch"),rs.getString("no_faktur")
@@ -790,7 +790,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         ps.setString(2,"%"+PenyakitCari.getText()+"%");
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("nama"),rs.getString("ralan"),"","0","0","0",
                                 rs.getString("kd_penyakit"),rs.getString("nm_penyakit"),rs.getString("ciri_ciri"),rs.getString("keterangan"),rs.getString("nm_kategori"),
                                 rs.getString("ciri_umum"),rs.getString("referensi"),rs.getString("dasar"),rs.getString("stok"),rs.getString("no_batch"),rs.getString("no_faktur")
@@ -859,7 +859,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         ps.setString(3,"%"+PenyakitCari.getText()+"%");
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("nama"),rs.getString("harga"),"","0","0","0",
                                 rs.getString("kd_penyakit"),rs.getString("nm_penyakit"),rs.getString("ciri_ciri"),rs.getString("keterangan"),rs.getString("nm_kategori"),
                                 rs.getString("ciri_umum"),rs.getString("referensi"),rs.getString("dasar"),rs.getString("stok"),"",""
@@ -870,7 +870,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                         ps.setString(2,"%"+PenyakitCari.getText()+"%");
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("nama"),rs.getString("ralan"),"","0","0","0",
                                 rs.getString("kd_penyakit"),rs.getString("nm_penyakit"),rs.getString("ciri_ciri"),rs.getString("keterangan"),rs.getString("nm_kategori"),
                                 rs.getString("ciri_umum"),rs.getString("referensi"),rs.getString("dasar"),rs.getString("stok"),"",""

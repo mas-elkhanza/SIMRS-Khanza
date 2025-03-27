@@ -760,7 +760,7 @@ public final class SatuSehatMapingObatAlkes extends javax.swing.JDialog {
                 FormSystem.getText(),FormDisplay.getText(),NumoratorCode.getText(),NemeratorSystem.getText(),DenominatorCode.getText(),
                 DenominatorSystem.getText(),RouteCode.getText(),RouteSystem.getText(),RouteDisplay.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     KFACode.getText(),KFASystem.getText(),KodeBarang.getText(),NamaBarang.getText(),KFADisplay.getText(),FormCode.getText(),
                     FormSystem.getText(),FormDisplay.getText(),NumoratorCode.getText(),NemeratorSystem.getText(),DenominatorCode.getText(),
                     DenominatorSystem.getText(),RouteCode.getText(),RouteSystem.getText(),RouteDisplay.getText()

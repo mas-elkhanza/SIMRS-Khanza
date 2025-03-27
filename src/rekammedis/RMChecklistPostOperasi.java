@@ -2086,7 +2086,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("sncn"),rs.getString("tindakan"),rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),
                         rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("keadaan_umum"),rs.getString("pemeriksaan_penunjang_rontgen"),
@@ -2358,7 +2358,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
             WarnaUrine.getSelectedItem().toString(),JumlahUrine.getText(),AreaLukaOperasi.getText(),Drain.getSelectedItem().toString(),JumlahDrain.getText(),LetakDrain.getText(),
             WarnaDrain.getText(),JaringanPA.getSelectedItem().toString(),KdPetugasOK.getText(),KdPetugasAnest.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                 SNCN.getText(),Tindakan.getText(),KodeDokterBedah.getText(),NamaDokterBedah.getText(),KodeDokterAnestesi.getText(),NamaDokterAnestesi.getText(),KeadaanUmum.getSelectedItem().toString(),
                 Radiologi.getSelectedItem().toString(),KeteranganRadiologi.getText(),EKG.getSelectedItem().toString(),KeteranganEKG.getText(),USG.getSelectedItem().toString(),KeteranganUSG.getText(),

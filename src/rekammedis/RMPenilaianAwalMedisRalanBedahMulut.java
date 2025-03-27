@@ -2706,7 +2706,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpk"),rs.getString("alergi"),rs.getString("keadaan"),rs.getString("kesadaran"),
                         rs.getString("nyeri"),rs.getString("td"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("bb"),rs.getString("tb"),rs.getString("status_nutrisi"),rs.getString("kulit"),
@@ -2986,7 +2986,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
                 KeteranganDada.getText(),Perut.getSelectedItem().toString(),KeteranganPerut.getText(),Ekstremitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),Wajah.getText(),IntraOral.getText(),GigiGeligi.getText(),
                 Laborat.getText(),Radiologi.getText(),Penunjang.getText(),AsesmenKerja.getText(),AsesmenBanding.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                     Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPK.getText(),Alergi.getText(),Keadaan.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),Nyeri.getSelectedItem().toString(),
                     TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),BB.getText(),TB.getText(),StatusNutrisi.getText(),Kulit.getSelectedItem().toString(),KeteranganKulit.getText(),Kepala.getSelectedItem().toString(),KeteranganKepala.getText(),

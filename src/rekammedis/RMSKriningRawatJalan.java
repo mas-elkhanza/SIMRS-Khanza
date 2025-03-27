@@ -1463,7 +1463,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ps.setString(27,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("jam"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),
                         rs.getString("nm_ibu"),rs.getString("jk"),rs.getString("geriatri"),rs.getString("kesadaran"),rs.getString("pernapasan"),
                         rs.getString("nyeri_dada"),rs.getString("skala_nyeri"),rs.getString("keputusan"),rs.getString("nip"),rs.getString("nama")

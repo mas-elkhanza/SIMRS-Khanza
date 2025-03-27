@@ -544,7 +544,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                     ps.setString(6,"%"+TCari.getText().trim()+"%");
                     rs=ps.executeQuery();
                     while(rs.next()){
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                             rs.getString("no_ktp"),rs.getString("umur"),
                             rs.getString("jk"),rs.getString("tmp_lahir"),
@@ -606,7 +606,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                         kdpenyakit=Sequel.cariIsi("select kd_penyakit from diagnosa_pasien where no_rawat=? and status='Ralan' and prioritas='1'",rs.getString("no_rawat"));
                         namapenyakit=Sequel.cariIsi("select nm_penyakit from penyakit where kd_penyakit=?",kdpenyakit);
                         
-                        tabModeRegistrasi.addRow(new String[]{
+                        tabModeRegistrasi.addRow(new Object[]{
                             i+"",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),rs.getString("jam_reg"),
                             rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                             rs.getString("kd_poli")+" "+rs.getString("nm_poli"),rs.getString("png_jawab"),kdpenyakit+" "+namapenyakit
@@ -621,7 +621,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                             rs2=ps2.executeQuery();
                             while(rs2.next()){                            
                                 i++;
-                                tabModeRegistrasi.addRow(new String[]{
+                                tabModeRegistrasi.addRow(new Object[]{
                                     i+"",rs.getString("no_rawat"),rs.getString("tgl_registrasi"),"",
                                     rs2.getString("kd_dokter"),rs2.getString("nm_dokter"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                                     rs2.getString("kd_poli")+" "+rs2.getString("nm_poli"),rs.getString("png_jawab"),kdpenyakit+" "+namapenyakit
@@ -662,7 +662,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                             rs2=ps2.executeQuery();
                             while(rs2.next()){                            
                                 i++;       
-                                tabModeRegistrasi.addRow(new String[]{
+                                tabModeRegistrasi.addRow(new Object[]{
                                     i+"",rs.getString("no_rawat"),rs2.getString("tgl_masuk"),rs2.getString("jam_masuk"),
                                     kddpjp,dpjp,rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                                     rs2.getString("kd_kamar")+" "+rs2.getString("nm_bangsal"),rs.getString("png_jawab"),kdpenyakit+" "+namapenyakit

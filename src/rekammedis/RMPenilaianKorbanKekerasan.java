@@ -1834,7 +1834,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("informasi"),rs.getString("hubungan_dengan_pasien"),rs.getString("jumlah_saudara"),rs.getString("kondisi_keluaga"),rs.getString("hubungan_orang_terdekat"),
                         rs.getString("kekerasan_yang_dialami"),rs.getString("tempat_kejadian"),rs.getString("lama_kekerasan"),rs.getString("periode_kekerasan"),rs.getString("seberapa_sering_mengalami"),

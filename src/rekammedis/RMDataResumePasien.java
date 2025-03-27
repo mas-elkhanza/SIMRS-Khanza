@@ -1242,7 +1242,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                     ProsedurUtama.getText(),KodeProsedurUtama.getText(),ProsedurSekunder1.getText(),KodeProsedurSekunder1.getText(),ProsedurSekunder2.getText(), 
                     KodeProsedurSekunder2.getText(),ProsedurSekunder3.getText(),KodeProsedurSekunder3.getText(),Kondisi.getSelectedItem().toString(),Obat2an.getText()
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     Tanggal.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),KodeDokter.getText(),NamaDokter.getText(),Kondisi.getSelectedItem().toString(),
                     Keluhan.getText(),JalannyaPenyakit.getText(),PemeriksaanPenunjang.getText(),HasilLaborat.getText(),DiagnosaUtama.getText(),KodeDiagnosaUtama.getText(),
                     DiagnosaSekunder1.getText(),KodeDiagnosaSekunder1.getText(),DiagnosaSekunder2.getText(),KodeDiagnosaSekunder2.getText(),DiagnosaSekunder3.getText(),
@@ -2192,7 +2192,7 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tgl_registrasi"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("kondisi_pulang"),rs.getString("keluhan_utama"),
                         rs.getString("jalannya_penyakit"),rs.getString("pemeriksaan_penunjang"),rs.getString("hasil_laborat"),rs.getString("diagnosa_utama"),

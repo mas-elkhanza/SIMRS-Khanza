@@ -372,7 +372,7 @@ public final class DlgCariSpesialis extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
                     iyem=iyem+"{\"KodeSpesialis\":\""+rs.getString(1)+"\",\"NamaSpesialis\":\""+rs.getString(2)+"\"},";
                 }
             } catch (Exception e) {

@@ -1762,7 +1762,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("kebiasaan_makan_manis"),rs.getString("aktifitas_fisik_setiap_hari"),rs.getString("istirahat_cukup"),rs.getString("risiko_merokok"),rs.getString("riwayat_minum_alkohol_merokok_keluarga"),
                         rs.getString("riwayat_penggunaan_obat_steroid"),rs.getString("berat_badan"),rs.getString("tinggi_badan"),rs.getString("imt"),rs.getString("kasifikasi_imt"),rs.getString("lingkar_pinggang"),
@@ -2172,7 +2172,7 @@ public final class RMSkriningObesitas extends javax.swing.JDialog {
             RisikoMerokok.getSelectedItem().toString(),RiwayatKeluarga.getSelectedItem().toString(),RiwayatSteroid.getSelectedItem().toString(),BB.getText(), 
             TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),StatusObesitas.getText(),Keterangan.getText(),KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 KebiasaanMakanManis.getSelectedItem().toString(),AktifitasFisik.getSelectedItem().toString(),IstirahatCukup.getSelectedItem().toString(),RisikoMerokok.getSelectedItem().toString(),RiwayatKeluarga.getSelectedItem().toString(),
                 RiwayatSteroid.getSelectedItem().toString(),BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),StatusObesitas.getText(),Keterangan.getText()

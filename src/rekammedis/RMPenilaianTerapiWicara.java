@@ -2123,7 +2123,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
                     KemampuanIramaKelancaran.getSelectedItem().toString(),KemampuanMenelan.getText(),Pernapasan.getText(),Pendengaran.getText(),Penglihatan.getText(),Kinesek.getText(),Bicara.getText(),Tulisan.getText(), 
                     Mimik.getText(),Gesture.getText(),PenunjangMedis.getText(),TujuanTerapiWicara.getText(),ProgramTerapiWicara.getText(),Edukasi.getText(),TindakLanjut.getText(),KdPetugas.getText()
                 })==true){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                         DiagnosaTerapiWicara.getText(),DiagnosaMedis.getText(),Anamnesa.getText(),Suhu.getText(),RR.getText(),Nadi.getText(),TD.getText(),KontakMata.getText(),Atensi.getText(),Perilaku.getText(),BicaraSpontan.getText(),
                         PemahamanBahasa.getText(),Pengujaran.getText(),Membaca.getText(),Penamaan.getText(),LipAnatomis.getText(),TongueAnatomis.getText(),HardPalateAnatomis.getText(),SoftPalateAnatomis.getText(),UvulaAnatomis.getText(),
@@ -3063,7 +3063,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("diagnosa_terapi_wicara"),rs.getString("diagnosa_medis"),rs.getString("anamnesa"),rs.getString("suhu"),
                         rs.getString("rr"),rs.getString("nadi"),rs.getString("td"),rs.getString("perilaku_adaptif_kontak_mata"),rs.getString("perilaku_adaptif_atensi"),

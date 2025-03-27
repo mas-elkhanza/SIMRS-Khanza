@@ -769,7 +769,7 @@ private void BtnSatuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 ps.setString(3,"%"+TCari.getText()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode2.addRow(new String[]{
+                    tabMode2.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),
                         rs.getString(3),rs.getString(4)
                     });

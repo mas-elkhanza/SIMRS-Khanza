@@ -1243,7 +1243,7 @@ private void tgl_permintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_permintaan"),rs.getString("no_inventaris"),rs.getString("kode_barang"),rs.getString("nama_barang"),
                         rs.getString("nama_merk"),rs.getString("thn_produksi"),rs.getString("nama_kategori"),rs.getString("nama_jenis"),
                         rs.getString("nama_ruang"),rs.getString("nik"),rs.getString("nama"),rs.getString("departemen"),

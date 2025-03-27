@@ -4125,7 +4125,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("no_rkm_medis_ibu"),rs.getString("nama_ibu"),rs.getString("lahiribu"),
                         rs.getString("ktpibu"),rs.getString("sttsnikahibu"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("penyakit_diderita_ibu"),rs.getString("keterangan_penyakit_diderita_ibu"),
                         rs.getString("obat_dikonsumsi_selama_kehamilan"),rs.getString("perawatan_antenatal"),rs.getString("keterangan_perawatan_antenatal"),rs.getString("terdaftar_ekohort"),rs.getString("keterangan_terdaftar_ekohort"),
@@ -4650,7 +4650,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
-                    tabModeRiwayatKehamilan.addRow(new String[]{
+                    tabModeRiwayatKehamilan.addRow(new Object[]{
                         i+"",rs.getString("tgl_thn"),rs.getString("tempat_persalinan"),rs.getString("usia_hamil"),rs.getString("jenis_persalinan"),
                         rs.getString("penolong"),rs.getString("penyulit"),rs.getString("jk"),rs.getString("bbpb"),rs.getString("keadaan")
                     });
@@ -4684,7 +4684,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                 Perut.getSelectedItem().toString(),KeteranganPerut.getText(),TaliPusat.getSelectedItem().toString(),KeteranganTaliPusat.getText(),AlatKelamin.getSelectedItem().toString(),KeteranganAlatKelamin.getText(),RuasTulangBelakang.getSelectedItem().toString(),KeteranganRuasTulangBelakang.getText(),Extrimitas.getSelectedItem().toString(), 
                 KeteranganExtrimitas.getText(),Anus.getSelectedItem().toString(),KeteranganAnus.getText(),Refleks.getSelectedItem().toString(),KeteranganRefleks.getText(),DenyutFemoral.getSelectedItem().toString(),KeteranganDenyutFemoral.getText(),PemeriksaanLainnya.getText(),PemeriksaanPenunjang.getText(),Diagnosis.getText(),Tatalaksana.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),NoRMIbu.getText(),NmIbu.getText(),TglLahirIbu.getText(),NIKIbu.getText(),StatusPerkawinanIbu.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                     PenyakitIbu.getSelectedItem().toString(),KeteranganPenyakitIbu.getText(),ObatSelamaHamil.getText(),PerawatanAntenatal.getSelectedItem().toString(),KeteranganPerawatanAntenatal.getText(),TerdaftarEkohort.getSelectedItem().toString(),KeteranganTerdaftarEkohort.getText(),PenyulitKehamilan.getSelectedItem().toString(),
                     KeteranganPenyulitKehamilan.getText(),AlergiIbu.getText(),KeteranganRiwayatMaternal.getText(),UmurKehamilan.getText(),Kehamilan.getSelectedItem().toString(),KeteranganKehamilan.getText(),UrutanKehamilan.getText(),JamKetubanPecah.getText(),MenitKetubanPecah.getText(),JumlahAirKetuban.getText(),WarnaAirKetuban.getText(),

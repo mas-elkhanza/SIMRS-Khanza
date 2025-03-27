@@ -1440,7 +1440,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 i=1;
                 total=0;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_pengajuan"),rs.getString("tanggal"),rs.getString("nik"),rs.getString("namapengaju"),rs.getString("bidang"),
                         rs.getString("departemen"),rs.getString("urgensi"),rs.getString("latar_belakang"),rs.getString("nama_barang"),rs.getString("spesifikasi"),
                         rs.getString("jumlah"),Valid.SetAngka(rs.getDouble("harga")),Valid.SetAngka(rs.getDouble("total")),rs.getString("keterangan"),

@@ -453,10 +453,10 @@ public class GrafikLajuHAIsHAPPerRuang extends javax.swing.JDialog {
                 total=0;
                 while(rs.next()){
                     total=total+rs.getDouble(4);
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
                 }
                 if(tabMode.getRowCount()>0){
-                    tabMode.addRow(new String[]{"Jumlah : ","","",total+"","100 %"});
+                    tabMode.addRow(new Object[]{"Jumlah : ","","",total+"","100 %"});
                     for(i=0;i<tbBangsal.getRowCount();i++){ 
                         tbBangsal.setValueAt(Valid.SetAngka6((Double.parseDouble(tbBangsal.getValueAt(i,3).toString())/total)*100)+" %",i,4);
                     }

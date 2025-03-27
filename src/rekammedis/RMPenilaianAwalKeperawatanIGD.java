@@ -4059,7 +4059,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("agama"),rs.getString("nama_bahasa"),rs.getString("nama_cacat"),
                         rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("keluhan_utama"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("status_kehamilan"),rs.getString("gravida"),
                         rs.getString("para"),rs.getString("abortus"),rs.getString("hpht"),rs.getString("tekanan"),rs.getString("pupil"),rs.getString("neurosensorik"),rs.getString("integumen"),rs.getString("turgor"),
@@ -4695,7 +4695,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_igd_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
+                            tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -4705,7 +4705,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_igd","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
+                            tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -4749,7 +4749,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),
                 KetDokter.getText(),ATS.getSelectedItem().toString(),BJM.getSelectedItem().toString(),MSA.getSelectedItem().toString(),Hasil.getSelectedItem().toString(),Lapor.getSelectedItem().toString(),KetLapor.getText(),Rencana.getText(),KdPetugas.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),Agama.getText(),Bahasa.getText(),CacatFisik.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),
                     KeluhanUtama.getText(),RPD.getText(),RPO.getText(),StatusKehamilan.getSelectedItem().toString(),Gravida.getText(),Para.getText(),Abortus.getText(),HPHT.getText(),Tekanan.getSelectedItem().toString(),Pupil.getSelectedItem().toString(),Neurosensorik.getSelectedItem().toString(),
                     Integumen.getSelectedItem().toString(),Turgor.getSelectedItem().toString(),Edema.getSelectedItem().toString(),Mukosa.getSelectedItem().toString(),Perdarahan.getSelectedItem().toString(),JumlahPerdarahan.getText(),WarnaPerdarahan.getText(),Intoksikasi.getSelectedItem().toString(),
@@ -4766,7 +4766,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_igd_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
+                            tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -4776,7 +4776,7 @@ public final class RMPenilaianAwalKeperawatanIGD extends javax.swing.JDialog {
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_igd","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
+                            tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
                         }

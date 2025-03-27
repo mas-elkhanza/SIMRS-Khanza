@@ -5502,7 +5502,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("agama"),rs.getString("nama_bahasa"),rs.getString("nama_cacat"),
                         rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("keluhan_utama"),rs.getString("rkd_sakit_sejak"),rs.getString("rkd_keluhan"),
                         rs.getString("rkd_berobat"),rs.getString("rkd_hasil_pengobatan"),rs.getString("fp_putus_obat"),rs.getString("ket_putus_obat"),
@@ -6329,7 +6329,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_masalah_psikiatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
+                            tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -6339,7 +6339,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_psikiatri","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
+                            tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -6368,7 +6368,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 KKPembelajaran.getSelectedItem().toString(),KetKKPembelajaran.getSelectedItem().toString(),KetKKPembelajaranLainnya.getText(),KKPenerjamah.getSelectedItem().toString(),KetKKPenerjamahLainnya.getText(),KKBahasaIsyarat.getSelectedItem().toString(),KKKebutuhanEdukasi.getSelectedItem().toString(),KetKKKebutuhanEdukasi.getText(),
                 Rencana.getText(),KdPetugas.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),Agama.getText(),Bahasa.getText(),CacatFisik.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),KeluhanUtama.getText(),RKDSakitSejak.getText(),RKDKeluhan.getText(),RKDBerobat.getSelectedItem().toString(),
                     RKDHasilPengobatan.getSelectedItem().toString(),FPPutusObat.getSelectedItem().toString(),KetPutusObat.getText(),KetMasalahEkonomi.getText(),FPMasalahFisik.getSelectedItem().toString(),FPMasalahFisik.getSelectedItem().toString(),KetMasalahFisik.getText(),FPMasalahPsikososial.getSelectedItem().toString(),KetMasalahPsikososial.getText(),RHKeluarga.getSelectedItem().toString(),KetRHKeluarga.getText(),
                     ResikoBunuhDiri.getSelectedItem().toString(),RBDIde.getSelectedItem().toString(),KetRBDIde.getText(),RBDRencana.getSelectedItem().toString(),KetRBDRencana.getText(),RBDAlat.getSelectedItem().toString(),KetRBDAlat.getText(),RBDPercobaan.getSelectedItem().toString(),KetRBDPercobaan.getText(),RBDKeinginan.getSelectedItem().toString(),KetRBDKeinginan.getText(),RPOPenggunaan.getSelectedItem().toString(),
@@ -6384,7 +6384,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_masalah_psikiatri","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
+                            tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -6394,7 +6394,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_psikiatri","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
+                            tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
                         }

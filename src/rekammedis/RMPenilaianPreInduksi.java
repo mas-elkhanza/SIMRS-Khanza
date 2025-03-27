@@ -1766,7 +1766,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
                     TeknikRegionalLokasi.getText(),TeknikRegionalJenisJarum.getText(),TeknikRegionalKateter.getSelectedItem().toString(),TeknikRegionalKateterFiksasi.getText(),
                     TeknikRegionalObatobatan.getText(),TeknikRegionalKomplikasi.getText(),TeknikRegionalHasil.getText()
                 })==true){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                         TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),EKG.getText(),Lainlain.getText(),Asesmen.getSelectedItem().toString(),Perencanaan.getText(),InfusPerifier.getText(),CVC.getText(),PosisiInfus.getSelectedItem().toString(),
                         Premedikasi.getSelectedItem().toString(),KeteranganPremedikasi.getText(),InfusInduksi.getSelectedItem().toString(),KeteranganInfusInduksi.getText(),FaceMaskNo.getText(),NasopharingNo.getText(),ETTNo.getText(),ETTJenis.getText(),
@@ -2560,7 +2560,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("tensi"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),rs.getString("ekg"),rs.getString("lain_lain"),rs.getString("asesmen"),rs.getString("perencanaan"),rs.getString("infus_perifier"),
                         rs.getString("cvc"),rs.getString("posisi"),rs.getString("premedikasi"),rs.getString("premedikasi_keterangan"),rs.getString("induksi"),rs.getString("induksi_keterangan"),rs.getString("face_mask_no"),

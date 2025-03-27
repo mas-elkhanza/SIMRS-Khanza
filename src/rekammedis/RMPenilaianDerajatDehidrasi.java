@@ -1475,7 +1475,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("penilaian1"),rs.getString("penilaian_nilai1"),rs.getString("penilaian2"),rs.getString("penilaian_nilai2"),
                         rs.getString("penilaian3"),rs.getString("penilaian_nilai3"),rs.getString("penilaian4"),rs.getString("penilaian_nilai4"),
@@ -1763,7 +1763,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
             Skala5.getSelectedItem().toString(),Nilai5.getText(),Skala6.getSelectedItem().toString(),Nilai6.getText(),
             NilaiTotal.getText(),HasilPenilaian.getText(),KdDokter.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Skala1.getSelectedItem().toString(),Nilai1.getText(),Skala2.getSelectedItem().toString(),Nilai2.getText(),Skala3.getSelectedItem().toString(),Nilai3.getText(),
                 Skala4.getSelectedItem().toString(),Nilai4.getText(),Skala5.getSelectedItem().toString(),Nilai5.getText(),Skala6.getSelectedItem().toString(),Nilai6.getText(),

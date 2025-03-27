@@ -416,7 +416,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ttlokt=ttlokt+okt;
                     ttlnov=ttlnov+nov;
                     ttldes=ttldes+des;
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         i+"",rs.getString("penyebab_kecelakaan"),jan+"",feb+"",mar+"",apr+"",mei+"",
                         jun+"",jul+"",agu+"",sep+"",okt+"",nov+"",des+"",(jan+feb+mar+apr+
                         mei+jun+jul+agu+sep+okt+nov+des)+""
@@ -425,7 +425,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     i++;
                 }
                 if(i>1){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Jumlah :",ttljan+"",ttlfeb+"",ttlmar+"",ttlapr+"",ttlmei+"",
                         ttljun+"",ttljul+"",ttlagu+"",ttlsep+"",ttlokt+"",ttlnov+"",ttldes+"",
                         (ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+""

@@ -1924,7 +1924,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nik"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("kondisi_masuk"),rs.getString("keterangan_kondisi_masuk"),rs.getString("anamnesis"),rs.getString("diagnosa_medis"),rs.getString("asal_masuk"),rs.getString("riwayat_immuno_telinga"),
                         rs.getString("riwayat_immuno_sinus"),rs.getString("riwayat_immuno_antibiotik"),rs.getString("riwayat_immuno_pneumonia"),rs.getString("riwayat_immuno_abses"),rs.getString("riwayat_immuno_sariawan"),

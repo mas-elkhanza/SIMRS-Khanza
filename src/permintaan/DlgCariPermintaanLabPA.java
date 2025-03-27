@@ -2314,7 +2314,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                     itempermintaan=itempermintaan.substring(0,itempermintaan.length()-2);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("noorder"),rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+
                         rs.getString("nm_pasien"),rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),
                         rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("tgl_hasil"),
@@ -2389,7 +2389,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode2.addRow(new String[]{
+                    tabMode2.addRow(new Object[]{
                         rs.getString("noorder"),rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
                         rs.getString("nm_perawatan"),rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),rs.getString("tgl_sampel"),
                         rs.getString("jam_sampel"),rs.getString("tgl_hasil"),rs.getString("jam_hasil"),rs.getString("dokter_perujuk"),
@@ -2610,7 +2610,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                         }
                     }
                     itempermintaan=itempermintaan.substring(0,itempermintaan.length()-2);
-                    tabMode3.addRow(new String[]{
+                    tabMode3.addRow(new Object[]{
                         rs.getString("noorder"),rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+
                         rs.getString("nm_pasien"),rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),
                         rs.getString("tgl_sampel"),rs.getString("jam_sampel"),rs.getString("tgl_hasil"),
@@ -2717,7 +2717,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode4.addRow(new String[]{
+                    tabMode4.addRow(new Object[]{
                         rs.getString("noorder"),rs.getString("no_rawat"),rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
                         rs.getString("nm_perawatan"),rs.getString("tgl_permintaan"),rs.getString("jam_permintaan"),rs.getString("tgl_sampel"),rs.getString("jam_sampel"),
                         rs.getString("tgl_hasil"),rs.getString("jam_hasil"),rs.getString("dokter_perujuk"),rs.getString("nm_dokter"),

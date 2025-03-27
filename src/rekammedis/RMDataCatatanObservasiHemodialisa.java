@@ -59,8 +59,8 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","GCS (E,V,M)",
-            "TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu(°C)","SpO2(%)","NIP","Nama Petugas"
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","QB","QD",
+            "Arteri","Vena","TMP","UFR","Tensi","Nadi","Suhu","SpO2","Tindakan","UFG","NIP", "Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,7 +70,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -90,20 +90,6 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
                 column.setPreferredWidth(60);
             }else if(i==8){
                 column.setPreferredWidth(65);
-            }else if(i==9){
-                column.setPreferredWidth(65);
-            }else if(i==10){
-                column.setPreferredWidth(65);
-            }else if(i==11){
-                column.setPreferredWidth(65);
-            }else if(i==12){
-                column.setPreferredWidth(50);
-            }else if(i==13){
-                column.setPreferredWidth(55);
-            }else if(i==14){
-                column.setPreferredWidth(90);
-            }else if(i==15){
-                column.setPreferredWidth(160);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -232,21 +218,28 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         TglLahir = new widget.TextBox();
         jLabel12 = new widget.Label();
         GCS = new widget.TextBox();
-        jLabel17 = new widget.Label();
         HR = new widget.TextBox();
         jLabel20 = new widget.Label();
         jLabel22 = new widget.Label();
         Suhu = new widget.TextBox();
         jLabel23 = new widget.Label();
         TD = new widget.TextBox();
-        jLabel26 = new widget.Label();
-        jLabel27 = new widget.Label();
-        jLabel25 = new widget.Label();
         RR = new widget.TextBox();
         jLabel28 = new widget.Label();
         jLabel29 = new widget.Label();
         SPO = new widget.TextBox();
-        jLabel35 = new widget.Label();
+        jLabel13 = new widget.Label();
+        GCS1 = new widget.TextBox();
+        jLabel24 = new widget.Label();
+        TD1 = new widget.TextBox();
+        jLabel25 = new widget.Label();
+        HR1 = new widget.TextBox();
+        jLabel30 = new widget.Label();
+        RR1 = new widget.TextBox();
+        jLabel26 = new widget.Label();
+        Suhu1 = new widget.TextBox();
+        jLabel31 = new widget.Label();
+        SPO1 = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -278,7 +271,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Catatan Observasi Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Catatan Observasi Hemodialisa ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -444,7 +437,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -458,7 +451,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -519,7 +512,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 124));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 154));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
@@ -530,7 +523,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         jLabel4.setText("No.Rawat :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 10, 80, 23);
+        jLabel4.setBounds(0, 10, 70, 23);
 
         TNoRw.setHighlighter(null);
         TNoRw.setName("TNoRw"); // NOI18N
@@ -540,7 +533,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(TNoRw);
-        TNoRw.setBounds(84, 10, 136, 23);
+        TNoRw.setBounds(74, 10, 136, 23);
 
         TPasien.setEditable(false);
         TPasien.setHighlighter(null);
@@ -551,10 +544,10 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(TPasien);
-        TPasien.setBounds(336, 10, 285, 23);
+        TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-10-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -564,7 +557,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(Tanggal);
-        Tanggal.setBounds(84, 40, 90, 23);
+        Tanggal.setBounds(74, 40, 90, 23);
 
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
@@ -575,13 +568,13 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(TNoRM);
-        TNoRM.setBounds(222, 10, 112, 23);
+        TNoRM.setBounds(212, 10, 112, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel16);
-        jLabel16.setBounds(0, 40, 80, 23);
+        jLabel16.setBounds(0, 40, 70, 23);
 
         Jam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         Jam.setName("Jam"); // NOI18N
@@ -591,7 +584,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(Jam);
-        Jam.setBounds(178, 40, 62, 23);
+        Jam.setBounds(168, 40, 62, 23);
 
         Menit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Menit.setName("Menit"); // NOI18N
@@ -601,7 +594,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(Menit);
-        Menit.setBounds(243, 40, 62, 23);
+        Menit.setBounds(233, 40, 62, 23);
 
         Detik.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" }));
         Detik.setName("Detik"); // NOI18N
@@ -611,7 +604,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(Detik);
-        Detik.setBounds(308, 40, 62, 23);
+        Detik.setBounds(298, 40, 62, 23);
 
         ChkKejadian.setBorder(null);
         ChkKejadian.setSelected(true);
@@ -620,7 +613,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         ChkKejadian.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkKejadian.setName("ChkKejadian"); // NOI18N
         FormInput.add(ChkKejadian);
-        ChkKejadian.setBounds(373, 40, 23, 23);
+        ChkKejadian.setBounds(363, 40, 23, 23);
 
         jLabel18.setText("Petugas :");
         jLabel18.setName("jLabel18"); // NOI18N
@@ -670,10 +663,10 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         FormInput.add(TglLahir);
         TglLahir.setBounds(689, 10, 100, 23);
 
-        jLabel12.setText("GCS (E,V,M) :");
+        jLabel12.setText("QB :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(0, 70, 80, 23);
+        jLabel12.setBounds(0, 70, 70, 23);
 
         GCS.setFocusTraversalPolicyProvider(true);
         GCS.setName("GCS"); // NOI18N
@@ -683,13 +676,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(GCS);
-        GCS.setBounds(84, 70, 50, 23);
-
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel17.setText("x/menit");
-        jLabel17.setName("jLabel17"); // NOI18N
-        FormInput.add(jLabel17);
-        jLabel17.setBounds(382, 70, 50, 23);
+        GCS.setBounds(74, 70, 70, 23);
 
         HR.setFocusTraversalPolicyProvider(true);
         HR.setName("HR"); // NOI18N
@@ -699,17 +686,17 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(HR);
-        HR.setBounds(339, 70, 40, 23);
+        HR.setBounds(307, 70, 55, 23);
 
-        jLabel20.setText("HR :");
+        jLabel20.setText("Arteri :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(295, 70, 40, 23);
+        jLabel20.setBounds(250, 70, 53, 23);
 
-        jLabel22.setText("Suhu :");
+        jLabel22.setText("TMP :");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(570, 70, 40, 23);
+        jLabel22.setBounds(472, 70, 40, 23);
 
         Suhu.setFocusTraversalPolicyProvider(true);
         Suhu.setName("Suhu"); // NOI18N
@@ -719,12 +706,12 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(Suhu);
-        Suhu.setBounds(614, 70, 40, 23);
+        Suhu.setBounds(516, 70, 55, 23);
 
-        jLabel23.setText("TD :");
+        jLabel23.setText("QD :");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(138, 70, 40, 23);
+        jLabel23.setBounds(145, 70, 40, 23);
 
         TD.setFocusTraversalPolicyProvider(true);
         TD.setName("TD"); // NOI18N
@@ -734,25 +721,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(TD);
-        TD.setBounds(182, 70, 70, 23);
-
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel26.setText("°C");
-        jLabel26.setName("jLabel26"); // NOI18N
-        FormInput.add(jLabel26);
-        jLabel26.setBounds(657, 70, 30, 23);
-
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel27.setText("mmHg");
-        jLabel27.setName("jLabel27"); // NOI18N
-        FormInput.add(jLabel27);
-        jLabel27.setBounds(255, 70, 40, 23);
-
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel25.setText("x/menit");
-        jLabel25.setName("jLabel25"); // NOI18N
-        FormInput.add(jLabel25);
-        jLabel25.setBounds(517, 70, 50, 23);
+        TD.setBounds(189, 70, 60, 23);
 
         RR.setFocusTraversalPolicyProvider(true);
         RR.setName("RR"); // NOI18N
@@ -762,17 +731,17 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(RR);
-        RR.setBounds(474, 70, 40, 23);
+        RR.setBounds(415, 70, 55, 23);
 
-        jLabel28.setText("RR :");
+        jLabel28.setText("Vena :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(430, 70, 40, 23);
+        jLabel28.setBounds(361, 70, 50, 23);
 
-        jLabel29.setText("SpO2 :");
+        jLabel29.setText("UFR :");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(686, 70, 40, 23);
+        jLabel29.setBounds(575, 70, 40, 23);
 
         SPO.setFocusTraversalPolicyProvider(true);
         SPO.setName("SPO"); // NOI18N
@@ -782,13 +751,97 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(SPO);
-        SPO.setBounds(730, 70, 40, 23);
+        SPO.setBounds(619, 70, 55, 23);
 
-        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel35.setText("%");
-        jLabel35.setName("jLabel35"); // NOI18N
-        FormInput.add(jLabel35);
-        jLabel35.setBounds(773, 70, 30, 23);
+        jLabel13.setText("Tensi :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(675, 70, 50, 23);
+
+        GCS1.setFocusTraversalPolicyProvider(true);
+        GCS1.setName("GCS1"); // NOI18N
+        GCS1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GCS1KeyPressed(evt);
+            }
+        });
+        FormInput.add(GCS1);
+        GCS1.setBounds(729, 70, 60, 23);
+
+        jLabel24.setText("Nadi :");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(0, 100, 70, 23);
+
+        TD1.setFocusTraversalPolicyProvider(true);
+        TD1.setName("TD1"); // NOI18N
+        TD1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TD1KeyPressed(evt);
+            }
+        });
+        FormInput.add(TD1);
+        TD1.setBounds(74, 100, 55, 23);
+
+        jLabel25.setText("Suhu :");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(235, 100, 100, 23);
+
+        HR1.setFocusTraversalPolicyProvider(true);
+        HR1.setName("HR1"); // NOI18N
+        HR1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                HR1KeyPressed(evt);
+            }
+        });
+        FormInput.add(HR1);
+        HR1.setBounds(339, 100, 55, 23);
+
+        jLabel30.setText("SpO2 :");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(380, 100, 90, 23);
+
+        RR1.setFocusTraversalPolicyProvider(true);
+        RR1.setName("RR1"); // NOI18N
+        RR1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RR1KeyPressed(evt);
+            }
+        });
+        FormInput.add(RR1);
+        RR1.setBounds(474, 100, 55, 23);
+
+        jLabel26.setText("Tindakan :");
+        jLabel26.setName("jLabel26"); // NOI18N
+        FormInput.add(jLabel26);
+        jLabel26.setBounds(550, 100, 60, 23);
+
+        Suhu1.setFocusTraversalPolicyProvider(true);
+        Suhu1.setName("Suhu1"); // NOI18N
+        Suhu1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Suhu1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Suhu1);
+        Suhu1.setBounds(614, 100, 40, 23);
+
+        jLabel31.setText("UFG :");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(686, 100, 40, 23);
+
+        SPO1.setFocusTraversalPolicyProvider(true);
+        SPO1.setName("SPO1"); // NOI18N
+        SPO1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SPO1KeyPressed(evt);
+            }
+        });
+        FormInput.add(SPO1);
+        SPO1.setBounds(730, 100, 60, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1148,6 +1201,30 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         Valid.pindah(evt,Suhu,BtnSimpan);
     }//GEN-LAST:event_SPOKeyPressed
 
+    private void GCS1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCS1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GCS1KeyPressed
+
+    private void TD1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TD1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TD1KeyPressed
+
+    private void HR1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HR1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HR1KeyPressed
+
+    private void RR1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RR1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RR1KeyPressed
+
+    private void Suhu1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Suhu1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Suhu1KeyPressed
+
+    private void SPO1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SPO1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SPO1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1180,7 +1257,9 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
     private widget.TextBox GCS;
+    private widget.TextBox GCS1;
     private widget.TextBox HR;
+    private widget.TextBox HR1;
     private widget.TextBox JK;
     private widget.ComboBox Jam;
     private widget.Label LCount;
@@ -1190,11 +1269,15 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.TextBox RR;
+    private widget.TextBox RR1;
     private widget.TextBox SPO;
+    private widget.TextBox SPO1;
     private widget.ScrollPane Scroll;
     private widget.TextBox Suhu;
+    private widget.TextBox Suhu1;
     private widget.TextBox TCari;
     private widget.TextBox TD;
+    private widget.TextBox TD1;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
@@ -1205,20 +1288,21 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel12;
+    private widget.Label jLabel13;
     private widget.Label jLabel16;
-    private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel23;
+    private widget.Label jLabel24;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
-    private widget.Label jLabel27;
     private widget.Label jLabel28;
     private widget.Label jLabel29;
-    private widget.Label jLabel35;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1270,7 +1354,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("gcs"),rs.getString("td"),
@@ -1505,7 +1589,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),NIP.getText(),NamaPetugas.getText()

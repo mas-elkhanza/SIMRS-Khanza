@@ -394,7 +394,7 @@ public final class DlgCariIndustriFarmasi extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     //"Kode I.F.","Industri Farmasi","Alamat Industri Farmasi","Kota","No.Telp"
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("kode_industri"),rs.getString("nama_industri"),rs.getString("alamat"),rs.getString("kota"),rs.getString("no_telp")
                     });
                     iyem=iyem+"{\"KodeIF\":\""+rs.getString("kode_industri")+"\",\"NamaIF\":\""+rs.getString("nama_industri")+"\",\"Alamat\":\""+rs.getString("alamat")+"\",\"Kota\":\""+rs.getString("kota")+"\",\"NoTelp\":\""+rs.getString("no_telp")+"\"},";

@@ -614,7 +614,7 @@ public final class DlgBulanan2 extends javax.swing.JDialog {
             ps.setString(21,"%"+ThnCari.getSelectedItem()+"-"+BlnCari.getSelectedItem()+"%");
             rs=ps.executeQuery();            
             while(rs.next()){
-                tabMode.addRow(new String[]{rs.getString(2),
+                tabMode.addRow(new Object[]{rs.getString(2),
                                rs.getString(3),
                                rs.getString(4),
                                rs.getString(5),

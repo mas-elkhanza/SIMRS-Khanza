@@ -444,9 +444,9 @@ public class GrafikPerbaikanInventarisPerPelaksanaStatus extends javax.swing.JDi
                 total=0;
                 while(rs.next()){
                     total=total+rs.getDouble(3);
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
                 }
-                tabMode.addRow(new String[]{"Jumlah : ","",total+"","100 %"});
+                tabMode.addRow(new Object[]{"Jumlah : ","",total+"","100 %"});
                 for(i=0;i<tbBangsal.getRowCount();i++){ 
                     tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,2).toString())/total)*100)+" %",i,3);
                 }

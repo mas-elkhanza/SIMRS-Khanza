@@ -1224,7 +1224,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("obat"),rs.getString("cairan"),
@@ -1460,7 +1460,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Obat.getText(),
             Cairan.getText(),Dosis.getText(),HIS.getText(),DJJ.getText(),Keterangan.getText(),NIP.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Obat.getText(),Cairan.getText(),Dosis.getText(),HIS.getText(),DJJ.getText(),Keterangan.getText(),NIP.getText(),NamaPetugas.getText()

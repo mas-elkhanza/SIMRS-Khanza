@@ -371,7 +371,7 @@ public final class MasterCariImunisasi extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
                     iyem=iyem+"{\"KodeImunisasi\":\""+rs.getString(1)+"\",\"NamaImunisasi\":\""+rs.getString(2)+"\"},";
                 }
             } catch (Exception e) {

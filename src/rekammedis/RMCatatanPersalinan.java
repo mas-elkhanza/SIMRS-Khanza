@@ -2508,7 +2508,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
                         rs.getString("mulai"),rs.getString("selesai"),rs.getString("catatan"),rs.getString("waktu_persalinan_kala_1"),rs.getString("waktu_persalinan_kala_2"),rs.getString("waktu_persalinan_kala_3"),rs.getString("waktu_persalinan_jumlah"),
                         rs.getString("perineum"),rs.getString("jahitan_luar_1"),rs.getString("jahitan_luar_2"),rs.getString("jahitan_dalam_1"),rs.getString("jahitan_dalam_2"),rs.getString("anak"),rs.getString("status_lahir"),rs.getString("apgar_score"),
@@ -2792,7 +2792,7 @@ public final class RMCatatanPersalinan extends javax.swing.JDialog {
                 DarahKeluarJumlah.getText(),KondisiUmum.getText(),TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),KontraksiUterus.getText(),
                 Perdarahan.getText(),Pengobatan.getText()
             })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),NIP.getText(),
                 NmPetugas.getText(),Valid.SetTgl(WaktuMulai.getSelectedItem()+"")+" "+WaktuMulai.getSelectedItem().toString().substring(11,19),
                 Valid.SetTgl(WaktuSelesai.getSelectedItem()+"")+" "+WaktuSelesai.getSelectedItem().toString().substring(11,19),Catatan.getText(),

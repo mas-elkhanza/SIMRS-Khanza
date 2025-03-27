@@ -388,7 +388,7 @@ public final class DlgCariJenis extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
                     iyem=iyem+"{\"KodeJenis\":\""+rs.getString(1)+"\",\"NamaJenis\":\""+rs.getString(2)+"\",\"Keterangan\":\""+rs.getString(3)+"\"},";
                 }
             } catch (Exception e) {

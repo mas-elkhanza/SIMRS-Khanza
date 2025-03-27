@@ -3452,7 +3452,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("pernyataansdq1"),rs.getString("nilai_sdq1"),rs.getString("pernyataansdq2"),rs.getString("nilai_sdq2"),rs.getString("pernyataansdq3"),rs.getString("nilai_sdq3"),rs.getString("pernyataansdq4"),
                         rs.getString("nilai_sdq4"),rs.getString("pernyataansdq5"),rs.getString("nilai_sdq5"),rs.getString("pernyataansdq6"),rs.getString("nilai_sdq6"),rs.getString("pernyataansdq7"),rs.getString("nilai_sdq7"),
@@ -4008,7 +4008,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
             SDQ25.getSelectedItem().toString(),NilaiSDQ25.getText(),TotalNilai.getText(),KesimpulanSkorE.getText(),NilaiKesimpulanSkorE.getText(),KesimpulanSkorC.getText(),NilaiKesimpulanSkorC.getText(),KesimpulanSkorH.getText(),
             NilaiKesimpulanSkorH.getText(),KesimpulanSkorP.getText(),NilaiKesimpulanSkorP.getText(),KesimpulanSkorPr.getText(),NilaiKesimpulanSkorPr.getText(),KesimpulanKesulitan.getText(),NilaiKesimpulanKesulitan.getText(),Keterangan.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),NIP.getText(),NamaPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 SDQ1.getSelectedItem().toString(),NilaiSDQ1.getText(),SDQ2.getSelectedItem().toString(),NilaiSDQ2.getText(),SDQ3.getSelectedItem().toString(),NilaiSDQ3.getText(),SDQ4.getSelectedItem().toString(),NilaiSDQ4.getText(), 
                 SDQ5.getSelectedItem().toString(),NilaiSDQ5.getText(),SDQ6.getSelectedItem().toString(),NilaiSDQ6.getText(),SDQ7.getSelectedItem().toString(),NilaiSDQ7.getText(),SDQ8.getSelectedItem().toString(),NilaiSDQ8.getText(), 

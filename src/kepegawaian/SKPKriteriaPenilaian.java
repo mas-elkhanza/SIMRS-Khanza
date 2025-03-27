@@ -510,7 +510,7 @@ public final class SKPKriteriaPenilaian extends javax.swing.JDialog {
             if(Sequel.menyimpantf("skp_kriteria_penilaian","?,?,?","Kode",3,new String[]{
                     Kode.getText(),Kriteria.getText(),KdKategori.getText()
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     Kode.getText(),Kriteria.getText(),KdKategori.getText(),NmKategori.getText(),Sasaran.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());

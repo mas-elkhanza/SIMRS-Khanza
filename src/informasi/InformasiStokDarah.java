@@ -318,7 +318,7 @@ public final class InformasiStokDarah extends javax.swing.JDialog {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
                     });
                 }

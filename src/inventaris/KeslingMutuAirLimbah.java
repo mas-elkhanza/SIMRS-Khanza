@@ -1010,7 +1010,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 i=1;
                 total=0;ph=0;suhu=0;tds=0;ec=0;salt=0;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         i+"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10)
                     });
                     total=total+rs.getDouble(5);
@@ -1032,7 +1032,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 }
             }
             if(total>0){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     "","","JUMLAH :","","",""+total,""+(ph/(i-1)),""+(suhu/(i-1)),""+(tds/(i-1)),""+(ec/(i-1)),""+(salt/(i-1))
                 });
             }

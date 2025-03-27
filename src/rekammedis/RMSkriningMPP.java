@@ -1241,7 +1241,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
                     TNoRw.getText(),Valid.SetTgl(TglSkrining.getSelectedItem()+""), param1, param2, param3, param4, param5, param6, param7,
                     param8, param9, param10, param11, param12, param13, param14, param15, param16,KdPetugas.getText()
                 })==true){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),JK.getText().substring(0,1),TglLahir.getText(),AlamatLengkap.getText(),Valid.SetTgl(TglSkrining.getSelectedItem()+""),
                         param1,param2,param3,param4,param5,param6,param7,param8,param9,param10,param11,param12,param13,param14,param15,param16,KdPetugas.getText(),NmPetugas.getText()
                     });
@@ -1746,7 +1746,7 @@ public final class RMSkriningMPP extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("alamat"),
                         rs.getString("tanggal"),rs.getString("param1"),rs.getString("param2"),rs.getString("param3"),rs.getString("param4"),rs.getString("param5"),
                         rs.getString("param6"),rs.getString("param7"),rs.getString("param8"),rs.getString("param9"),rs.getString("param10"),rs.getString("param11"),

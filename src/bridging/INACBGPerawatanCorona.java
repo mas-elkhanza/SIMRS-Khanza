@@ -1185,7 +1185,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){    
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_registrasi"),rs.getString("pemulasaraan_jenazah"),
                         rs.getString("kantong_jenazah"),rs.getString("peti_jenazah"),rs.getString("plastik_erat"),rs.getString("desinfektan_jenazah"),
                         rs.getString("mobil_jenazah"),rs.getString("desinfektan_mobil_jenazah"),rs.getString("covid19_status_cd"),rs.getString("nomor_kartu_t"),

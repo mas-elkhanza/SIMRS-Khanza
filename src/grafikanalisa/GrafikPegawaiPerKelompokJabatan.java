@@ -542,10 +542,10 @@ public class GrafikPegawaiPerKelompokJabatan extends javax.swing.JDialog {
                     jmlp=Sequel.cariInteger("select count(pegawai.kode_kelompok) from pegawai where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and pegawai.kode_kelompok=?",rs.getString(1));
                     totall=totall+jmll;
                     totalp=totalp+jmlp;
-                    tabMode.addRow(new String[]{rs.getString(3)+" ("+rs.getString(1)+")",rs.getString(2),"",jmll+"","",jmlp+"",""});
+                    tabMode.addRow(new Object[]{rs.getString(3)+" ("+rs.getString(1)+")",rs.getString(2),"",jmll+"","",jmlp+"",""});
                 }
                 if(tabMode.getRowCount()>0){
-                    tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %",totall+"","100 %",totalp+"","100 %"});
+                    tabMode.addRow(new Object[]{"Jumlah : ",total+"","100 %",totall+"","100 %",totalp+"","100 %"});
                     for(i=0;i<tbBangsal.getRowCount();i++){ 
                         tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
                         tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,3).toString())/totall)*100)+" %",i,4);

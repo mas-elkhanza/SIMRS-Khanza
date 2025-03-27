@@ -347,7 +347,7 @@ public final class SatuSehatCariOrganisasi extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
                     iyem=iyem+"{\"KodeDepartemen\":\""+rs.getString(1)+"\",\"NamaDepartemen\":\""+rs.getString(2)+"\",\"IdOrganisasi\":\""+rs.getString(3)+"\"},";
                 }
             } catch (Exception e) {

@@ -1544,7 +1544,7 @@ public final class RMMonitoringStewardPascaAnestesi extends javax.swing.JDialog 
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("penilaian_skala1"),rs.getString("penilaian_nilai1"),rs.getString("penilaian_skala2"),rs.getString("penilaian_nilai2"),rs.getString("penilaian_skala3"),rs.getString("penilaian_nilai3"),
                         rs.getString("penilaian_totalnilai"),rs.getString("keluar"),rs.getString("instruksi"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama")
@@ -1810,7 +1810,7 @@ public final class RMMonitoringStewardPascaAnestesi extends javax.swing.JDialog 
             SkalaKriteria1.getSelectedItem().toString(),NilaiKriteria1.getText(),SkalaKriteria2.getSelectedItem().toString(),NilaiKriteria2.getText(),SkalaKriteria3.getSelectedItem().toString(),NilaiKriteria3.getText(),
             NilaiKriteriaTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NIP.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 SkalaKriteria1.getSelectedItem().toString(),NilaiKriteria1.getText(),SkalaKriteria2.getSelectedItem().toString(),NilaiKriteria2.getText(),SkalaKriteria3.getSelectedItem().toString(),NilaiKriteria3.getText(),
                 NilaiKriteriaTotal.getText(),Keluar.getText(),Instruksi.getText(),KdDokter.getText(),NmDokter.getText(),NIP.getText(),NamaPetugas.getText()

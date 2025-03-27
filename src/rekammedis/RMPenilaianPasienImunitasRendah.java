@@ -951,7 +951,7 @@ public final class RMPenilaianPasienImunitasRendah extends javax.swing.JDialog {
                     MengetahuiKondisi.getSelectedItem().toString(),KebutuhanRuangRawat.getSelectedItem().toString(),KeluhanYangDirasakan.getText(),RiwayatPenyakitKeluarga.getText(),RiwayatAlergi.getText(),RiwayatVaksin.getText(),
                     RiwayatPengobatan.getText(),DiagnosaUtama.getText(),DiagnosaTambahan.getText()
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                     Anamnesis.getSelectedItem().toString(),Hubungan.getText(),MengetahuiKondisi.getSelectedItem().toString(),KebutuhanRuangRawat.getSelectedItem().toString(),KeluhanYangDirasakan.getText(),RiwayatPenyakitKeluarga.getText(),
                     RiwayatAlergi.getText(),RiwayatVaksin.getText(),RiwayatPengobatan.getText(),DiagnosaUtama.getText(),DiagnosaTambahan.getText()
@@ -1449,7 +1449,7 @@ public final class RMPenilaianPasienImunitasRendah extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("pasien_mengetahui_kondisi_penyakitnya"),rs.getString("kebutuhan_ruang_perawatan"),rs.getString("riwayat_penyakit_keluhan"),
                         rs.getString("riwayat_penyakit_keluarga"),rs.getString("riwayat_alergi"),rs.getString("riwayat_vaksinasi"),rs.getString("riwayat_pengobatan"),rs.getString("diagnosa_utama"),rs.getString("diagnosa_tambahan")

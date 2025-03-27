@@ -542,12 +542,12 @@ public class GrafikPegawaiPerJenjangJabatan extends javax.swing.JDialog {
                         "on jnj_jabatan.kode=pegawai.jnj_jabatan where pegawai.jk='Wanita' and (pegawai.stts_aktif='AKTIF' or pegawai.stts_aktif='CUTI') and jnj_jabatan.kode=?",rs.getString(1));
                     totall=totall+jmll;
                     totalp=totalp+jmlp;
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),"",jmll+"","",jmlp+"",""
                     });
                 }
                 if(tabMode.getRowCount()>0){
-                    tabMode.addRow(new String[]{"Jumlah : ",total+"","100 %",totall+"","100 %",totalp+"","100 %"});
+                    tabMode.addRow(new Object[]{"Jumlah : ",total+"","100 %",totall+"","100 %",totalp+"","100 %"});
                     for(i=0;i<tbBangsal.getRowCount();i++){ 
                         tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,1).toString())/total)*100)+" %",i,2);
                         tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,3).toString())/totall)*100)+" %",i,4);

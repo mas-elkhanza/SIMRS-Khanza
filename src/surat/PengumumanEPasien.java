@@ -553,7 +553,7 @@ public final class PengumumanEPasien extends javax.swing.JDialog {
             if(Sequel.menyimpantf("pengumuman_epasien","?,?,?","Data",3,new String[]{
                     KdPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Pengumuman.getText()
                 })==true){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         (tabMode.getRowCount()+1)+"",KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Pengumuman.getText()
                     });
                     LCount.setText(""+tabMode.getRowCount());
@@ -830,7 +830,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         i+"",rs.getString(1),rs.getString(2),rs.getString(3),
                         rs.getString(4)
                     });

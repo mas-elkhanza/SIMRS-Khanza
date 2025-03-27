@@ -343,7 +343,7 @@ public final class DlgCariDepartemen extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
                     iyem=iyem+"{\"KodeDepartemen\":\""+rs.getString(1)+"\",\"NamaDepartemen\":\""+rs.getString(2)+"\"},";
                 }
             } catch (Exception e) {

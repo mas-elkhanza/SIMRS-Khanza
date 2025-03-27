@@ -740,7 +740,7 @@ public final class SuratKeteranganSehat extends javax.swing.JDialog {
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(TanggalSurat.getSelectedItem()+""),Bb.getText(),Tb.getText(),Tensi.getText(),Suhu.getText(),CmbButaWarna.getSelectedItem()+"",
                     Keperluan.getText(),CmbKesimpulan.getSelectedItem()+""
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Valid.SetTgl(TanggalSurat.getSelectedItem()+""),Bb.getText(),Tb.getText(),Tensi.getText(),Suhu.getText(),CmbButaWarna.getSelectedItem().toString(),Keperluan.getText(),CmbKesimpulan.getSelectedItem().toString()
                 });
                 LCount.setText(""+tabMode.getRowCount());
@@ -1154,7 +1154,7 @@ public final class SuratKeteranganSehat extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),
                         rs.getString(4),rs.getString(5),rs.getString(6),
                         rs.getString(7),rs.getString(8),rs.getString(9),

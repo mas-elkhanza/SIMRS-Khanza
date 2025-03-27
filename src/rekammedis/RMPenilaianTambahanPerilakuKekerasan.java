@@ -1608,7 +1608,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
                 SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(),FaktorDinamis8.getSelectedItem().toString(),SkorDinamis8.getText(),FaktorDinamis9.getSelectedItem().toString(),
                 SkorDinamis9.getText(),TotalDinamis.getText(),FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                     FaktorStatik1.getSelectedItem().toString(),SkorStatik1.getText(),FaktorStatik2.getSelectedItem().toString(),SkorStatik2.getText(),FaktorStatik3.getSelectedItem().toString(),SkorStatik3.getText(),
                     FaktorStatik4.getSelectedItem().toString(),SkorStatik4.getText(),FaktorStatik5.getSelectedItem().toString(),SkorStatik5.getText(),FaktorStatik6.getSelectedItem().toString(),SkorStatik6.getText(), 
@@ -2474,7 +2474,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("statik_insiden_kekerasan_baru_ini"),rs.getString("statik_skorinsiden_kekerasan_baru_ini"),rs.getString("statik_riwayat_penggunaan_senjata"),rs.getString("statik_skorriwayat_penggunaan_senjata"),
                         rs.getString("statik_laki_laki"),rs.getString("statik_skorlaki_laki"),rs.getString("statik_usia_dibawah_35"),rs.getString("statik_skorusia_dibawah_35"),rs.getString("statik_riwayat_kriminal"),

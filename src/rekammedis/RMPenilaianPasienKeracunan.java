@@ -2058,7 +2058,7 @@ public final class RMPenilaianPasienKeracunan extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("tempat_kejadian"),rs.getString("keterangan_tempat_kejadian"),rs.getString("keluhan"),rs.getString("riwayat_penyakit_sekarang"),rs.getString("hamil"),
                         rs.getString("menyusui"),rs.getString("penyebab"),rs.getString("nama_bahan"),rs.getString("jumlah_bahan"),rs.getString("tipe_pemaparan"),rs.getString("keterangan_tipe_pemaparan"),rs.getString("tipe_kejadian"),

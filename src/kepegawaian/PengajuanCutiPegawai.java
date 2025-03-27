@@ -1146,7 +1146,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 rs=ps.executeQuery();
                 i=0;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_pengajuan"),rs.getString("tanggal"),rs.getString("tanggal_awal"),rs.getString("tanggal_akhir"),
                         rs.getString("urgensi"),rs.getString("alamat"),rs.getString("jumlah"),rs.getString("kepentingan"),rs.getString("nik_pj"),
                         rs.getString("nama"),rs.getString("status")

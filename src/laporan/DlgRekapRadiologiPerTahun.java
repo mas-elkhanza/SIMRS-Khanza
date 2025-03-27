@@ -417,14 +417,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ttlokt=ttlokt+okt;
                     ttlnov=ttlnov+nov;
                     ttldes=ttldes+des;
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         i+"",rs.getString("kd_jenis_prw")+" "+rs.getString("nm_perawatan"),jan+"",feb+"",mar+"",apr+"",mei+"",jun+"",jul+"",agu+"",
                         sep+"",okt+"",nov+"",des+"",(jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des)+""
                     });
                     i++;
                 }
                 if(i>1){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Jumlah :",ttljan+"",ttlfeb+"",ttlmar+"",ttlapr+"",ttlmei+"",
                         ttljun+"",ttljul+"",ttlagu+"",ttlsep+"",ttlokt+"",ttlnov+"",ttldes+"",
                         (ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes)+""

@@ -1704,7 +1704,7 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("transfusi_darah"),rs.getString("rutin_transfusi"),rs.getString("saudara_thalassemia"),rs.getString("tumbuh_kembang_terlambat"),rs.getString("anemia"),rs.getString("ikterus"),
                         rs.getString("perut_buncit"),rs.getString("gizi_kurang"),rs.getString("facies_cooley"),rs.getString("perawakan_pendek"),rs.getString("hiperpigmentasi_kulit"),rs.getString("hemoglobin"),
@@ -1980,7 +1980,7 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
             GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(), 
             Hb.getSelectedItem().toString(),MVC.getSelectedItem().toString(),MCHC.getSelectedItem().toString(),DarahTepi.getSelectedItem().toString(),TindakLanjut.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 TransfusiDarah.getSelectedItem().toString(),RutinTransfusi.getSelectedItem().toString(),SaudaraTalasemia.getSelectedItem().toString(),TumbangTerlambat.getSelectedItem().toString(),Anemia.getSelectedItem().toString(),Icterus.getSelectedItem().toString(),
                 PerutBuncit.getSelectedItem().toString(),GiziKurang.getSelectedItem().toString(),FaciesCooley.getSelectedItem().toString(),Pendek.getSelectedItem().toString(),Hiperpigmentasi.getSelectedItem().toString(),Hb.getSelectedItem().toString(),

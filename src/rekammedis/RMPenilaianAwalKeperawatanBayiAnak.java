@@ -5071,7 +5071,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("agama"),rs.getString("nama_bahasa"),rs.getString("nama_cacat"),
                         rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),rs.getString("gcs"),
                         rs.getString("bb"),rs.getString("tb"),rs.getString("lp"),rs.getString("lk"),rs.getString("ld"),rs.getString("keluhan_utama"),rs.getString("rpd"),rs.getString("rpk"),
@@ -5897,7 +5897,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_bayi_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
+                            tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -5906,7 +5906,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_anak","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
+                            tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -5941,7 +5941,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 NilaiMenangis.getText(),SkalaBersuara.getSelectedItem().toString(),NilaiBersuara.getText(),SkalaNyeri.getText(),Nyeri.getSelectedItem().toString(),Lokasi.getText(),Durasi.getText(),Frekuensi.getText(),
                 NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),Rencana.getText(),KdPetugas.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),Agama.getText(),Bahasa.getText(),CacatFisik.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),
                     TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),LP.getText(),LK.getText(),LD.getText(),KeluhanUtama.getText(),RPD.getText(),RPK.getText(),RPO.getText(),Alergi.getText(),Anakke.getText(),DariSaudara.getText(),CaraKelahiran.getSelectedItem().toString(),
                     KetCaraKelahiran.getText(),UmurKelahiran.getSelectedItem().toString(),KelainanBawaan.getSelectedItem().toString(),KetKelainanBawaan.getText(),UsiaTengkurap.getText(),UsiaDuduk.getText(),UsiaBerdiri.getText(),UsiaGigi.getText(),UsiaBerjalan.getText(),UsiaBicara.getText(),UsiaMembaca.getText(),
@@ -5959,7 +5959,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_bayi_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
+                            tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -5968,7 +5968,7 @@ public final class RMPenilaianAwalKeperawatanBayiAnak extends javax.swing.JDialo
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ralan_rencana_anak","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
+                            tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
                         }

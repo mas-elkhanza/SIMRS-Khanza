@@ -1572,7 +1572,7 @@ public final class RMHasilTindakanESWL extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
                         rs.getString("mulai"),rs.getString("selesai"),rs.getString("diagnosa"),rs.getString("tindakan"),rs.getString("obat_analgesik"),rs.getString("obat_lain"),rs.getString("uraian_tindakan"),rs.getString("uraian_tindakan_focus"),
                         rs.getString("uraian_tindakan_rate"),rs.getString("uraian_tindakan_power"),rs.getString("uraian_tindakan_shock"),rs.getString("diintegrasi"),rs.getString("kekurangan"),rs.getString("anjungan")
@@ -1757,7 +1757,7 @@ public final class RMHasilTindakanESWL extends javax.swing.JDialog {
                 NIP.getText(),Diagnosa.getText(),Tindakan.getText(),ObatAnastesi.getText(),ObatLainLain.getText(),UraianTindakan.getText(), 
                 Focus.getText(),Rate.getText(),Power.getText(),Shock.getText(),Diintegrasi.getText(),Kekurangan.getText(),Anjungan.getText()
             })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),NIP.getText(),
                 NmPetugas.getText(),Valid.SetTgl(WaktuMulai.getSelectedItem()+"")+" "+WaktuMulai.getSelectedItem().toString().substring(11,19),
                 Valid.SetTgl(WaktuSelesai.getSelectedItem()+"")+" "+WaktuSelesai.getSelectedItem().toString().substring(11,19),Diagnosa.getText(),

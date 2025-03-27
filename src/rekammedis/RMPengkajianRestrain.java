@@ -1815,7 +1815,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("gcs"),rs.getString("refleka_cahaya_ka"),rs.getString("refleka_cahaya_ki"),
                         rs.getString("ukuran_pupil_ka"),rs.getString("ukuran_pupil_ki"),rs.getString("td"),rs.getString("suhu"),rs.getString("rr"),rs.getString("nadi"),
@@ -2085,7 +2085,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
                 RestrainNonFarmakologi.getSelectedItem().toString(),KeteranganNonRestrainFarmakologi.getText(),RestrainFarmakologi.getText(), 
                 SudahDijelaskan.getSelectedItem().toString(),Keluarga.getText()
             })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                 GCS.getText(),ReflekaCahayaKanan.getText(),ReflekaCahayaKiri.getText(),UkuranPupilKanan.getText(),UkuranPupilKiri.getText(),TD.getText(),Suhu.getText(),RR.getText(),Nadi.getText(),
                 HasilObservasi.getSelectedItem().toString(),PertimbanganKlinis.getSelectedItem().toString(),RestrainNonFarmakologi.getSelectedItem().toString(),KeteranganNonRestrainFarmakologi.getText(),

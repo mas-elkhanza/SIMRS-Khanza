@@ -442,13 +442,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();
                 while(rs.next()){
                     total=total+rs.getDouble("total");
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("kd_obat"),rs.getString("nm_obat"),
                         rs.getString("satuan"),Valid.SetAngka(rs.getDouble("hargasatuan")),rs.getString("jumlah"),Valid.SetAngka(rs.getDouble("total"))
                     });
                 }
                 if(total>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         ">> Total BHP","","","","","","","","",Valid.SetAngka(total)
                     });
                 }

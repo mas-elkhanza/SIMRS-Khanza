@@ -2615,7 +2615,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("pernyataansrq1"),rs.getString("nilai_srq1"),rs.getString("pernyataansrq2"),rs.getString("nilai_srq2"),rs.getString("pernyataansrq3"),rs.getString("nilai_srq3"),rs.getString("pernyataansrq4"),
                         rs.getString("nilai_srq4"),rs.getString("pernyataansrq5"),rs.getString("nilai_srq5"),rs.getString("pernyataansrq6"),rs.getString("nilai_srq6"),rs.getString("pernyataansrq7"),rs.getString("nilai_srq7"),
@@ -2970,7 +2970,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
             SRQ17.getSelectedItem().toString(),NilaiSRQ17.getText(),SRQ18.getSelectedItem().toString(),NilaiSRQ18.getText(),SRQ19.getSelectedItem().toString(),NilaiSRQ19.getText(),SRQ20.getSelectedItem().toString(),NilaiSRQ20.getText(),
             TotalNilai.getText(),Kesimpulan.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 SRQ1.getSelectedItem().toString(),NilaiSRQ1.getText(),SRQ2.getSelectedItem().toString(),NilaiSRQ2.getText(),SRQ3.getSelectedItem().toString(),NilaiSRQ3.getText(),SRQ4.getSelectedItem().toString(),NilaiSRQ4.getText(), 
                 SRQ5.getSelectedItem().toString(),NilaiSRQ5.getText(),SRQ6.getSelectedItem().toString(),NilaiSRQ6.getText(),SRQ7.getSelectedItem().toString(),NilaiSRQ7.getText(),SRQ8.getSelectedItem().toString(),NilaiSRQ8.getText(), 

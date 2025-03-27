@@ -15392,7 +15392,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 
                 rskasir=pskasir.executeQuery();
                 while(rskasir.next()){
-                    tabModekasir.addRow(new String[] {
+                    tabModekasir.addRow(new Object[] {
                         rskasir.getString(5),rskasir.getString(6),rskasir.getString(7),rskasir.getString(8)+" ("+rskasir.getString("umur")+")",
                         rskasir.getString(9),rskasir.getString(10),rskasir.getString(11),rskasir.getString(12),Valid.SetAngka(rskasir.getDouble(13)),
                         rskasir.getString("png_jawab"),rskasir.getString(14),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
@@ -15455,7 +15455,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                 }
                 rskasir=pskasir.executeQuery();
                 while(rskasir.next()){
-                    tabModekasir2.addRow(new String[] {
+                    tabModekasir2.addRow(new Object[] {
                         rskasir.getString("kd_dokter"),rskasir.getString("nm_dokter"),
                         rskasir.getString("no_rkm_medis"),rskasir.getString("nm_pasien")+" ("+rskasir.getString("umur")+")",
                         rskasir.getString("nm_poli"),rskasir.getString("p_jawab"),rskasir.getString("almt_pj"),rskasir.getString("hubunganpj"),

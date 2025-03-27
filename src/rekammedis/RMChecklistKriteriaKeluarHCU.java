@@ -1442,7 +1442,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("kriteria1"),rs.getString("kriteria2"),rs.getString("kriteria3"),rs.getString("kriteria4"),
                         rs.getString("kriteria5"),rs.getString("kriteria6"),rs.getString("kriteria7"),rs.getString("kriteria8"),rs.getString("kriteria9"),
@@ -1631,7 +1631,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
             Kriteria6.getSelectedItem().toString(),Kriteria7.getSelectedItem().toString(),Kriteria8.getSelectedItem().toString(),Kriteria9.getSelectedItem().toString(),
             Kriteria10.getSelectedItem().toString(),Kriteria11.getSelectedItem().toString(),Kriteria12.getSelectedItem().toString(),KodePetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                 Kriteria1.getSelectedItem().toString(),Kriteria2.getSelectedItem().toString(),Kriteria3.getSelectedItem().toString(),Kriteria4.getSelectedItem().toString(),Kriteria5.getSelectedItem().toString(),
                 Kriteria6.getSelectedItem().toString(),Kriteria7.getSelectedItem().toString(),Kriteria8.getSelectedItem().toString(),Kriteria9.getSelectedItem().toString(),Kriteria10.getSelectedItem().toString(),

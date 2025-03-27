@@ -920,7 +920,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
                 SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
                 SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),NilaiResikoTotal.getText(),Status.getText(),NIP.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                     SkalaResiko1.getSelectedItem().toString(),NilaiResiko1.getText(),SkalaResiko2.getSelectedItem().toString(),NilaiResiko2.getText(),
                     SkalaResiko3.getSelectedItem().toString(),NilaiResiko3.getText(),SkalaResiko4.getSelectedItem().toString(),NilaiResiko4.getText(), 
@@ -1410,7 +1410,7 @@ public final class RMPenilaianRisikoDekubitus extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("kondisi_fisik"),rs.getString("kondisi_fisik_nilai"),rs.getString("status_mental"),rs.getString("status_mental_nilai"),rs.getString("aktifitas"),
                         rs.getString("aktifitas_nilai"),rs.getString("mobilitas"),rs.getString("mobilitas_nilai"),rs.getString("inkontinensia"),rs.getString("inkontinensia_nilai"),

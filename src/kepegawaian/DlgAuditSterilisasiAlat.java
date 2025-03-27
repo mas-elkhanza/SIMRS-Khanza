@@ -1238,7 +1238,7 @@ public final class DlgAuditSterilisasiAlat extends javax.swing.JDialog {
                     ttlpenilaian=ttlpenilaian+(((audit1+audit2+audit3+
                             audit4+audit5+audit6+audit7+
                             audit8+audit9+audit10+audit11)/11)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("audit1"),rs.getString("audit2"),
                         rs.getString("audit3"),rs.getString("audit4"),rs.getString("audit5"),
                         rs.getString("audit6"),rs.getString("audit7"),rs.getString("audit8"),
@@ -1250,21 +1250,21 @@ public final class DlgAuditSterilisasiAlat extends javax.swing.JDialog {
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlaudit1,""+ttlaudit2,""+ttlaudit3,
                         ""+ttlaudit4,""+ttlaudit5,""+ttlaudit6,""+ttlaudit7,
                         ""+ttlaudit8,""+ttlaudit9,""+ttlaudit10,""+ttlaudit11,
                         ""+(ttlaudit1+ttlaudit2+ttlaudit3+ttlaudit4+ttlaudit5+ttlaudit6+
                         ttlaudit7+ttlaudit8+ttlaudit9+ttlaudit10+ttlaudit11)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":",""+(i-ttlaudit1),""+(i-ttlaudit2),""+(i-ttlaudit3),
                         ""+(i-ttlaudit4),""+(i-ttlaudit5),""+(i-ttlaudit6),""+(i-ttlaudit7),
                         ""+(i-ttlaudit8),""+(i-ttlaudit9),""+(i-ttlaudit10),""+(i-ttlaudit11),
                         ""+((i-ttlaudit1)+(i-ttlaudit2)+(i-ttlaudit3)+(i-ttlaudit4)+(i-ttlaudit5)+(i-ttlaudit6)+
                         (i-ttlaudit7)+(i-ttlaudit8)+(i-ttlaudit9)+(i-ttlaudit10)+(i-ttlaudit11))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":",Math.round((ttlaudit1/i)*100)+" %",Math.round((ttlaudit2/i)*100)+" %",Math.round((ttlaudit3/i)*100)+" %",
                         Math.round((ttlaudit4/i)*100)+" %",Math.round((ttlaudit5/i)*100)+" %",Math.round((ttlaudit6/i)*100)+" %",
                         Math.round((ttlaudit7/i)*100)+" %",Math.round((ttlaudit8/i)*100)+" %",Math.round((ttlaudit9/i)*100)+" %",

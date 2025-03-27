@@ -2843,7 +2843,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 psobat.setString(1,no_resep);
                 rsobat=psobat.executeQuery();
                 while(rsobat.next()){
-                    tabModeObatRacikan.addRow(new String[]{
+                    tabModeObatRacikan.addRow(new Object[]{
                         rsobat.getString("no_racik"),rsobat.getString("nama_racik"),rsobat.getString("kd_racik"),
                         rsobat.getString("metode"),rsobat.getString("jml_dr"),rsobat.getString("aturan_pakai"),
                         rsobat.getString("keterangan")

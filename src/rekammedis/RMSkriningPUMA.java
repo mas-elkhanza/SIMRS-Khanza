@@ -1847,7 +1847,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("jk"),rs.getString("nilai_jk"),rs.getString("usia"),
                         rs.getString("nilai_usia"),rs.getString("pernah_merokok"),rs.getString("nilai_pernah_merokok"),rs.getString("jumlah_rokok_perhari"),rs.getString("lama_merokok"),
@@ -2151,7 +2151,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
             JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),skorNafas.getText(),Dahak.getSelectedItem().toString(),skordahak.getText(),
             Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(),TotalHasil.getText(),Tindakan.getText(),KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 JK.getSelectedItem().toString(),skorJk.getText(),Usia.getSelectedItem().toString(),skorUsia.getText(),PernahMerokok.getSelectedItem().toString(),skorPernahMerokok.getText(),JumlahRokok.getText(),LamaMerokok.getText(),NafasPendek.getSelectedItem().toString(),
                 skorNafas.getText(),Dahak.getSelectedItem().toString(),skordahak.getText(),Batuk.getSelectedItem().toString(),skorBatuk.getText(),Spirometri.getSelectedItem().toString(),skorSpirometri.getText(),TotalHasil.getText(),Tindakan.getText()

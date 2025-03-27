@@ -905,7 +905,7 @@ public final class SuratPernyataanPasienUmum extends javax.swing.JDialog {
                     TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),JKPJ.getSelectedItem().toString().substring(0,1),
                     AlamatPj.getText(),Hubungan.getSelectedItem().toString(),NoTelp.getText(),NIP.getText()
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),
                     Hubungan.getSelectedItem().toString(),JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),NoKTP.getText(),
@@ -1397,7 +1397,7 @@ public final class SuratPernyataanPasienUmum extends javax.swing.JDialog {
                   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("nama_pj"),rs.getString("tempat_lahirpj"),rs.getString("lahirpj"),

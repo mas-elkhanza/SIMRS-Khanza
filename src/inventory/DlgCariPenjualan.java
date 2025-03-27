@@ -1799,12 +1799,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ttltuslah=0;
                 ttldisc=0;
                 while(rs.next()){                    
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),
                         rs.getString(5)+", "+rs.getString(6),rs.getString(7),rs.getString(8),
                         df2.format(rs.getDouble(12)),rs.getString(10),"","","","","",df2.format(rs.getDouble(9)),rs.getString(13)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","No.Batch","No.Nota","Barang","Satuan","Harga(Rp)","Jml","Subtotal(Rp)","Ptg(%)","Potongan(Rp)","Tambahan(Rp)","Embalase(Rp)","Tuslah(Rp)","Total","Aturan Pakai"
                     });
                     ttlppn=ttlppn+rs.getDouble(12);
@@ -1843,7 +1843,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ttltuslah=ttltuslah+rs2.getDouble(12);
                             ttljual=ttljual+rs2.getDouble(14);
                             subttljual=subttljual+rs2.getDouble(14);
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",no+". "+rs2.getString("no_batch"),rs2.getString("no_faktur"),rs2.getString("kode_brng")+", "+rs2.getString("nama_brng"),
                                 rs2.getString("satuan"),df2.format(rs2.getDouble("h_jual")),
                                 rs2.getString("jumlah"),df2.format(rs2.getDouble("subtotal")),df2.format(rs2.getDouble("dis")),
@@ -1853,7 +1853,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             });
                             no++;
                         }                        
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             "","Status : ",rs.getString("status"),"","Total :","","",df2.format(subttlall),"",df2.format(subttldisc),df2.format(subttltambahan),df2.format(subttlembalase),df2.format(subttltuslah),df2.format(subttljual),""
                         });                
                     } catch (Exception e) {

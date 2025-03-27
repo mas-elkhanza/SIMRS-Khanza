@@ -814,7 +814,7 @@ public class MasterTemplatePersetujuanPenolakanTindakan extends javax.swing.JDia
                 Kd.getText(),Diagnosa.getText(),TindakanKedokteran.getText(),IndikasiTindakan.getText(),TataCara.getText(),Tujuan.getText(),
                 Risiko.getText(),Komplikasi.getText(),Prognosis.getText(),AlternatifResiko.getText(),LainLain.getText(),Biaya.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     Kd.getText(),Diagnosa.getText(),TindakanKedokteran.getText(),IndikasiTindakan.getText(),TataCara.getText(),Tujuan.getText(),
                     Risiko.getText(),Komplikasi.getText(),Prognosis.getText(),AlternatifResiko.getText(),LainLain.getText(),Biaya.getText()
                 });

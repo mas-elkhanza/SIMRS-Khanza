@@ -458,7 +458,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 rs=ps.executeQuery();
                 i=0;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_permintaan"),rs.getString("tgl_permintaan")+" "+rs.getString("jam"),
                         rs.getString("nm_bangsal"),rs.getString("status"),
                         rs.getString("no_rawat")+" "+rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien")+" ("+rs.getString("png_jawab")+")",
@@ -480,7 +480,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         ps2.setString(1,rs.getString("no_permintaan"));
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "","",rs2.getString("jml")+" "+rs2.getString("kode_sat"),rs2.getString("kode_brng"),rs2.getString("nama_brng"),
                                 "00 : "+rs2.getString("jam00").replaceAll("true","✓").replaceAll("false","✕")+"  "+
                                 "01 : "+rs2.getString("jam01").replaceAll("true","✓").replaceAll("false","✕")+"  "+

@@ -1820,7 +1820,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("kondisi_hidung_kanan"),rs.getString("kondisi_hidung_kiri"),rs.getString("kavum_nasi_kanan"),rs.getString("kavum_nasi_kiri"),
                         rs.getString("konka_inferior_kanan"),rs.getString("konka_inferior_kiri"),rs.getString("meatus_medius_kanan"),rs.getString("meatus_medius_kiri"),rs.getString("septum_kanan"),rs.getString("septum_kiri"),
@@ -2089,7 +2089,7 @@ public final class RMHasilEndoskopiHidung extends javax.swing.JDialog {
                 SeptumKanan.getSelectedItem().toString(),SeptumKiri.getSelectedItem().toString(),NasofaringKanan.getSelectedItem().toString(),
                 NasofaringKiri.getSelectedItem().toString(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     KirimanDari.getText(),DiagnosaKlinis.getText(),HidungKanan.getSelectedItem().toString(),HidungKiri.getSelectedItem().toString(),
                     KavumNasiKanan.getSelectedItem().toString(),KavumNasiKiri.getSelectedItem().toString(),KonkaInferiorKanan.getSelectedItem().toString(),

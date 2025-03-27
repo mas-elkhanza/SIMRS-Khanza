@@ -623,7 +623,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         }
                     }
                     
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         i+"",rs.getString("nama"),itempengadaan+"",itemtersedia+""
                     });
                     i++;
@@ -638,7 +638,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.close();
                 }
             }    
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 "","Total : ",jmlitempengadaan+"",jmlitemtersedia+""
             });
             this.setCursor(Cursor.getDefaultCursor());
@@ -709,7 +709,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         }
                     }
                     
-                    tabMode2.addRow(new String[]{
+                    tabMode2.addRow(new Object[]{
                         i+"",rs.getString("nama"),itempengadaan+"",itemtersedia+""
                     });
                     i++;
@@ -724,7 +724,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.close();
                 }
             }    
-            tabMode2.addRow(new String[]{
+            tabMode2.addRow(new Object[]{
                 "","Total : ",jmlitempengadaan+"",jmlitemtersedia+""
             });
             this.setCursor(Cursor.getDefaultCursor());
@@ -796,7 +796,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         }
                     }
                     
-                    tabMode3.addRow(new String[]{
+                    tabMode3.addRow(new Object[]{
                         i+"",rs.getString("nama"),itempengadaan+"",itemtersedia+""
                     });
                     i++;
@@ -811,7 +811,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.close();
                 }
             }    
-            tabMode3.addRow(new String[]{
+            tabMode3.addRow(new Object[]{
                 "","Total : ",jmlitempengadaan+"",jmlitemtersedia+""
             });
             this.setCursor(Cursor.getDefaultCursor());

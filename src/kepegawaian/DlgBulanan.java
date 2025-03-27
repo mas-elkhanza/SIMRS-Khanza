@@ -1227,7 +1227,7 @@ public final class DlgBulanan extends javax.swing.JDialog {
             rs.beforeFirst();            
             i=0;            
             while(rs.next()){
-                tabMode.addRow(new String[]{rs.getString(2),
+                tabMode.addRow(new Object[]{rs.getString(2),
                                rs.getString(3),
                                rs.getString(4),
                                rs.getString(5),

@@ -1121,7 +1121,7 @@ public final class DlgAuditBundleVAP extends javax.swing.JDialog {
                     penggunaan_apd_sesuai=Double.parseDouble(rs.getString("penggunaan_apd_sesuai").replaceAll("Ya","1").replaceAll("Tidak","0"));
                     ttlpenggunaan_apd_sesuai=ttlpenggunaan_apd_sesuai+penggunaan_apd_sesuai;
                     ttlpenilaian=ttlpenilaian+(((posisi_kepala+pengkajian_setiap_hari+hand_hygiene+oral_hygiene+suction_manajemen_sekresi+profilaksis_peptic_ulcer+dvt_profiklasisi+penggunaan_apd_sesuai)/8)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("posisi_kepala"),rs.getString("pengkajian_setiap_hari"),
                         rs.getString("hand_hygiene"),rs.getString("oral_hygiene"),rs.getString("suction_manajemen_sekresi"),rs.getString("profilaksis_peptic_ulcer"),rs.getString("dvt_profiklasisi"),rs.getString("penggunaan_apd_sesuai"),
                         Math.round(((posisi_kepala+pengkajian_setiap_hari+hand_hygiene+oral_hygiene+suction_manajemen_sekresi+profilaksis_peptic_ulcer+dvt_profiklasisi+penggunaan_apd_sesuai)/8)*100)+" %"
@@ -1130,14 +1130,14 @@ public final class DlgAuditBundleVAP extends javax.swing.JDialog {
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlposisi_kepala,""+ttlpengkajian_setiap_hari,""+ttlhand_hygiene,""+ttloral_hygiene,""+ttlsuction_manajemen_sekresi,""+ttlprofilaksis_peptic_ulcer,""+ttldvt_profiklasisi,""+ttlpenggunaan_apd_sesuai,""+(posisi_kepala+pengkajian_setiap_hari+hand_hygiene+oral_hygiene+suction_manajemen_sekresi+profilaksis_peptic_ulcer+dvt_profiklasisi+penggunaan_apd_sesuai)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":",""+(i-ttlposisi_kepala),""+(i-ttlpengkajian_setiap_hari),""+(i-ttlhand_hygiene),""+(i-ttloral_hygiene),""+(i-ttlsuction_manajemen_sekresi),""+(i-ttlprofilaksis_peptic_ulcer),""+(i-ttldvt_profiklasisi),""+(i-ttlpenggunaan_apd_sesuai),""+((i-ttlposisi_kepala)+
                         (i-ttlpengkajian_setiap_hari)+(i-ttlhand_hygiene)+(i-ttloral_hygiene)+(i-ttlsuction_manajemen_sekresi)+(i-ttlprofilaksis_peptic_ulcer)+(i-ttldvt_profiklasisi)+(i-ttlpenggunaan_apd_sesuai))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":",Math.round((ttlposisi_kepala/i)*100)+" %",Math.round((ttlpengkajian_setiap_hari/i)*100)+" %",Math.round((ttlhand_hygiene/i)*100)+" %",
                         Math.round((ttloral_hygiene/i)*100)+" %",Math.round((ttlsuction_manajemen_sekresi/i)*100)+" %",Math.round((ttlprofilaksis_peptic_ulcer/i)*100)+" %",Math.round((ttldvt_profiklasisi/i)*100)+" %",Math.round((ttlpenggunaan_apd_sesuai/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });

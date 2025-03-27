@@ -569,7 +569,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 total=0;
                 while(rs.next()){
                     total=total+rs.getDouble(13);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),rs.getString(5),df2.format(rs.getDouble(6)),
                         df2.format(rs.getDouble(7)),df2.format(rs.getDouble(8)),df2.format(rs.getDouble(9)),df2.format(rs.getDouble(10)),
                         df2.format(rs.getDouble(11)),df2.format(rs.getDouble(12)),df2.format(rs.getDouble(13))

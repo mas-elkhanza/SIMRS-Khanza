@@ -1009,7 +1009,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
                     Hubungan.getSelectedItem().toString(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),JKPJ.getSelectedItem().toString().substring(0,1),
                     NoTelp.getText(),KodePenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),KodePetugas.getText()
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     NoPernyataan.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
                     Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KodePenolakan.getText(),
                     NamaPenolakan.getText(),AlasanPenolakan.getText(),RisikoPenolakan.getText(),NamaPJ.getText(),UmurPJ.getText(),NoKTP.getText(),
@@ -1585,7 +1585,7 @@ public final class SuratPenolakanAnjuranMedis extends javax.swing.JDialog {
                   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("kode_penolakan"),rs.getString("nama_penolakan"),rs.getString("alasan_penolakan"),

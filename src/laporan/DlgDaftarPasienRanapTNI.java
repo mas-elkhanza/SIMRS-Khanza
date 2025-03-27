@@ -782,7 +782,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         }
                     }
                     
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("png_jawab"),rs.getString("tgl_registrasi"),tglkeluar,
                         kamar,harirawat,rs.getString("nama_pangkat"),rs.getString("nama_satuan"),rs.getString("nama_golongan"),rs.getString("nama_jabatan")
                     });

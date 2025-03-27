@@ -994,7 +994,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
                     KelasDipilih.getSelectedItem().toString(),Hubungan.getSelectedItem().toString(),HakKelas.getSelectedItem().toString(),
                     NamaKeluarga.getText(),Pembiayaan.getText(),NIP.getText()
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),PendidikanPJ.getSelectedItem().toString(),
                     AlamatPj.getText(),NoTelp.getText(),RuangDipilih.getText(),KelasDipilih.getSelectedItem().toString(),Hubungan.getSelectedItem().toString(),
@@ -1568,7 +1568,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
                   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("nama_pj"),rs.getString("no_ktppj"),rs.getString("pendidikan_pj"),

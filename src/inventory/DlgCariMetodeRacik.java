@@ -392,7 +392,7 @@ public final class DlgCariMetodeRacik extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{i+"",rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new Object[]{i+"",rs.getString(1),rs.getString(2)});
                     iyem=iyem+"{\"KodeRacik\":\""+rs.getString(1)+"\",\"NamaRacik\":\""+rs.getString(2)+"\"},";
                     i++;
                 }
