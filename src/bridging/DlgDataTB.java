@@ -3104,7 +3104,7 @@ public final class DlgDataTB extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){   
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("umur")+"Th",rs.getString("no_peserta"),rs.getString("no_ktp"),rs.getString("alamat"),rs.getString("id_kelurahan"),
                         rs.getString("nm_kel"),rs.getString("id_kecamatan"),rs.getString("nm_kec"),rs.getString("kd_kabupaten"),rs.getString("nm_kab"),
                         rs.getString("id_propinsi"),rs.getString("nm_prop"),rs.getString("id_periode_laporan"),rs.getString("tanggal_buat_laporan"),

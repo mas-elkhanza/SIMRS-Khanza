@@ -2616,7 +2616,7 @@ public final class RMSkriningSRQ extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("pernyataansrq1"),rs.getString("nilai_srq1"),rs.getString("pernyataansrq2"),rs.getString("nilai_srq2"),rs.getString("pernyataansrq3"),rs.getString("nilai_srq3"),rs.getString("pernyataansrq4"),
                         rs.getString("nilai_srq4"),rs.getString("pernyataansrq5"),rs.getString("nilai_srq5"),rs.getString("pernyataansrq6"),rs.getString("nilai_srq6"),rs.getString("pernyataansrq7"),rs.getString("nilai_srq7"),
                         rs.getString("pernyataansrq8"),rs.getString("nilai_srq8"),rs.getString("pernyataansrq9"),rs.getString("nilai_srq9"),rs.getString("pernyataansrq10"),rs.getString("nilai_srq10"),rs.getString("pernyataansrq11"),

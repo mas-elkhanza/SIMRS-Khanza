@@ -3945,7 +3945,7 @@ public final class RMSkriningRisikoKankerPayudara extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("faktor_risiko_awal1"),rs.getString("nilai_risiko_awal1"),rs.getString("faktor_risiko_awal2"),
                         rs.getString("nilai_risiko_awal2"),rs.getString("faktor_risiko_awal3"),rs.getString("nilai_risiko_awal3"),rs.getString("faktor_risiko_awal4"),rs.getString("nilai_risiko_awal4"),
                         rs.getString("faktor_risiko_awal5"),rs.getString("nilai_risiko_awal5"),rs.getString("faktor_risiko_awal6"),rs.getString("nilai_risiko_awal6"),rs.getString("faktor_risiko_awal7"),

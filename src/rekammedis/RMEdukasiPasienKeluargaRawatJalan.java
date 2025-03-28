@@ -2089,7 +2089,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("bicara"),rs.getString("keterangan_bicara"),rs.getString("nama_bahasa"),rs.getString("bahasa_sehari"),rs.getString("perlu_penerjemah"),
                         rs.getString("keterangan_penerjemah"),rs.getString("bahasa_isyarat"),rs.getString("cara_belajar"),rs.getString("hambatan_belajar"),
                         rs.getString("keterangan_hambatan_belajar"),rs.getString("kemampuan_belajar"),rs.getString("keterangan_kemampuan_belajar"),rs.getString("pnd"),

@@ -2202,7 +2202,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("statik_hidup_sendiri"),rs.getString("statik_skorhidup_sendiri"),rs.getString("statik_upaya_suicide"),rs.getString("statik_skorupaya_suicide"),
                         rs.getString("statik_keluarga_suicide"),rs.getString("statik_skorkeluarga_suicide"),rs.getString("statik_diagnosa_gangguan_jiwa"),
                         rs.getString("statik_skordiagnosa_gangguan_jiwa"),rs.getString("statik_disabilitas_berat"),rs.getString("statik_skordisabilitas_berat"),

@@ -452,7 +452,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 while(rs.next()){
                     total=total+rs.getDouble("besar_bayar");
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("alamat"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("alamat"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("umurdaftar"),rs.getString("tgl_registrasi"),rs.getString("no_nota"),Valid.SetAngka(rs.getDouble("besar_bayar")),rs.getString("no_rawat"),
                         rs.getString("no_id"),rs.getString("status_lanjut"),rs.getString("tgl_closing"),rs.getString("status_bayar"),rs.getString("pembatalan"),
                         rs.getString("dibatalkan_oleh"),Valid.SetAngka(rs.getDouble("besar_batal")),rs.getString("kasir"),rs.getString("tambahan1"),rs.getString("tambahan2"),

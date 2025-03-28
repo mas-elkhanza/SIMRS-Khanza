@@ -1590,7 +1590,7 @@ public final class RMPenilaianPasienPenyakitMenular extends javax.swing.JDialog 
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("pasien_mengetahui_kondisi_penyakitnya"),rs.getString("penyakit_sama_serumah"),rs.getString("riwayat_kontak"),rs.getString("keterangan_riwayat_kontak"),
                         rs.getString("transmisi_penularan_penyakit"),rs.getString("keterangan_transmisi_penularan_penyakit"),rs.getString("kebutuhan_ruang_rawat"),rs.getString("keluhan_yang_dirasakan_saat_ini"),
                         rs.getString("riwayat_penyakit_keluarga"),rs.getString("riwayat_alergi"),rs.getString("riwayat_vaksinasi"),rs.getString("riwayat_pengobatan"),rs.getString("diagnosa_utama"),rs.getString("diagnosa_tambahan")

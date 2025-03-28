@@ -2561,7 +2561,7 @@ public final class RMPenilaianPreInduksi extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("tensi"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),rs.getString("ekg"),rs.getString("lain_lain"),rs.getString("asesmen"),rs.getString("perencanaan"),rs.getString("infus_perifier"),
                         rs.getString("cvc"),rs.getString("posisi"),rs.getString("premedikasi"),rs.getString("premedikasi_keterangan"),rs.getString("induksi"),rs.getString("induksi_keterangan"),rs.getString("face_mask_no"),
                         rs.getString("nasopharing_no"),rs.getString("ett_no"),rs.getString("ett_jenis"),rs.getString("ett_viksasi"),rs.getString("lma_no"),rs.getString("lma_jenis"),rs.getString("tracheostomi"),rs.getString("bronchoscopi_fiberoptik"),

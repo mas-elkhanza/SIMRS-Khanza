@@ -1848,7 +1848,7 @@ public final class RMSkriningPUMA extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("jk"),rs.getString("nilai_jk"),rs.getString("usia"),
                         rs.getString("nilai_usia"),rs.getString("pernah_merokok"),rs.getString("nilai_pernah_merokok"),rs.getString("jumlah_rokok_perhari"),rs.getString("lama_merokok"),
                         rs.getString("napas_pendek"),rs.getString("nilai_napas_pendek"),rs.getString("punya_dahak"),rs.getString("nilai_punya_dahak"),rs.getString("biasa_batuk"),

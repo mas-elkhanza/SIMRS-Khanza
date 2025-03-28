@@ -4382,7 +4382,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("no_ktp"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("no_ktp"),
                         rs.getString("no_rkm_medis_ibu"),rs.getString("nama_ibu"),rs.getString("lahiribu"),rs.getString("ktpibu"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("g"),rs.getString("p"),rs.getString("a"),
                         rs.getString("hidup"),rs.getString("usiahamil"),rs.getString("hbsag"),rs.getString("hiv"),rs.getString("syphilis"),rs.getString("riwayat_obstetri_ibu"),rs.getString("keterangan_riwayat_obstetri_ibu"),
                         rs.getString("faktor_risiko_neonatal"),rs.getString("keterangan_faktor_risiko_neonatal"),rs.getString("tanggal_persalinan"),rs.getString("bersalin_di"),rs.getString("inisiasi_menyusui"),rs.getString("jenis_persalinan"),

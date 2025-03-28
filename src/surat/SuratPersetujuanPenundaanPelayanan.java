@@ -1734,7 +1734,7 @@ public final class SuratPersetujuanPenundaanPelayanan extends javax.swing.JDialo
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("nama_pj"),rs.getString("umur_pj"),rs.getString("no_ktppj"),
                         rs.getString("alamatpj"),rs.getString("no_telppj"),rs.getString("hubungan"),rs.getString("ruang"),
                         rs.getString("dokter_pengirim"),rs.getString("pelayanan_dilakukan"),rs.getString("ditunda_karena"),

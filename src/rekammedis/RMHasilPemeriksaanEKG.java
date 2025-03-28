@@ -1627,7 +1627,7 @@ public final class RMHasilPemeriksaanEKG extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("irama"),rs.getString("laju_jantung"),rs.getString("gelombangp"),rs.getString("intervalpr"),
                         rs.getString("axis"),rs.getString("kompleksqrs"),rs.getString("segmenst"),rs.getString("gelombangt"),rs.getString("kesimpulan")
                     });

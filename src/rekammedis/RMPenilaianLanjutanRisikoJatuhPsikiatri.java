@@ -1634,7 +1634,7 @@ public final class RMPenilaianLanjutanRisikoJatuhPsikiatri extends javax.swing.J
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("penilaian_jatuhedmonson_skala1"),rs.getString("penilaian_jatuhedmonson_nilai1"),rs.getString("penilaian_jatuhedmonson_skala2"),rs.getString("penilaian_jatuhedmonson_nilai2"),
                         rs.getString("penilaian_jatuhedmonson_skala3"),rs.getString("penilaian_jatuhedmonson_nilai3"),rs.getString("penilaian_jatuhedmonson_skala4"),rs.getString("penilaian_jatuhedmonson_nilai4"),
                         rs.getString("penilaian_jatuhedmonson_skala5"),rs.getString("penilaian_jatuhedmonson_nilai5"),rs.getString("penilaian_jatuhedmonson_skala6"),rs.getString("penilaian_jatuhedmonson_nilai6"),

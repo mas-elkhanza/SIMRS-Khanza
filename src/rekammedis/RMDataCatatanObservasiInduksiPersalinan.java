@@ -1226,7 +1226,7 @@ public final class RMDataCatatanObservasiInduksiPersalinan extends javax.swing.J
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("obat"),rs.getString("cairan"),
                         rs.getString("dosis"),rs.getString("his"),rs.getString("djj"),rs.getString("keterangan"),
                         rs.getString("nip"),rs.getString("nama")

@@ -9462,7 +9462,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
                         rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("asal_pasien"),rs.getString("cara_masuk"),rs.getString("diperoleh_dari"),rs.getString("hubungan_dengan_pasien"),rs.getString("keluhan_utama"),
                         rs.getString("prenatal_g"),rs.getString("prenatal_p"),rs.getString("prenatal_a"),rs.getString("prenatal_uk"),rs.getString("prenatal_riwayat_penyakit_ibu"),rs.getString("prenatal_riwayat_penyakit_ibu_keterangan"),
                         rs.getString("prenatal_riwayat_pengobatan_ibu_selama_hamil"),rs.getString("prenatal_pernah_dirawat"),rs.getString("prenatal_pernah_dirawat_keterangan"),rs.getString("prenatal_status_gizi_ibu"),rs.getString("intranatal_g"),

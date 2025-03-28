@@ -1573,7 +1573,7 @@ public final class RMHasilTindakanESWL extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("nip"),rs.getString("nama"),
                         rs.getString("mulai"),rs.getString("selesai"),rs.getString("diagnosa"),rs.getString("tindakan"),rs.getString("obat_analgesik"),rs.getString("obat_lain"),rs.getString("uraian_tindakan"),rs.getString("uraian_tindakan_focus"),
                         rs.getString("uraian_tindakan_rate"),rs.getString("uraian_tindakan_power"),rs.getString("uraian_tindakan_shock"),rs.getString("diintegrasi"),rs.getString("kekurangan"),rs.getString("anjungan")
                     });

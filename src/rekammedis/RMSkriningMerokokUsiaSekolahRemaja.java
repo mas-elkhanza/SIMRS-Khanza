@@ -2270,7 +2270,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("kelas"),rs.getString("kd_sekolah"),rs.getString("nm_sekolah"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("apakah_anda_merokok"),rs.getString("jumlah_batang_rokok"),
                         rs.getString("jumlah_batang_rokok_hariminggu"),rs.getString("jenis_rokok_yang_digunakan"),rs.getString("jenis_rokok_yang_digunakan_keterangan"),

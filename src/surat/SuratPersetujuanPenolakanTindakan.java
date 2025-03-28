@@ -2454,7 +2454,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_pernyataan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_pernyataan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("diagnosa"),rs.getBoolean("diagnosa_konfirmasi"),rs.getString("tindakan"),rs.getBoolean("tindakan_konfirmasi"),rs.getString("indikasi_tindakan"),
                         rs.getBoolean("indikasi_tindakan_konfirmasi"),rs.getString("tata_cara"),rs.getBoolean("tata_cara_konfirmasi"),rs.getString("tujuan"),rs.getBoolean("tujuan_konfirmasi"),
                         rs.getString("risiko"),rs.getBoolean("risiko_konfirmasi"),rs.getString("komplikasi"),rs.getBoolean("komplikasi_konfirmasi"),rs.getString("prognosis"),rs.getBoolean("prognosis_konfirmasi"),

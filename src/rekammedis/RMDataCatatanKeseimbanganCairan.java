@@ -1374,7 +1374,7 @@ public final class RMDataCatatanKeseimbanganCairan extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("infus"),rs.getString("tranfusi"),
                         rs.getString("minum"),rs.getString("urine"),rs.getString("drain"),rs.getString("ngt"),rs.getString("iwl"),
                         rs.getString("keseimbangan"),rs.getString("keterangan"),rs.getString("nip"),rs.getString("nama")

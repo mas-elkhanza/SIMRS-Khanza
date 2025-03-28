@@ -2418,7 +2418,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("statik_riwayat_melarikan_diri"),rs.getString("statik_skorriwayat_melarikan_diri"),rs.getString("statik_riwayat_penolakan_pengobatan"),
                         rs.getString("statik_skorriwayat_penolakan_pengobatan"),rs.getString("statik_usia_dibawah_35"),rs.getString("statik_skorusia_dibawah_35"),rs.getString("statik_laki_laki"),
                         rs.getString("statik_skorlaki_laki"),rs.getString("statik_diagnosis_skizofrenia"),rs.getString("statik_skordiagnosis_skizofrenia"),rs.getString("statik_belum_menikah"),

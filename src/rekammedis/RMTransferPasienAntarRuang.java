@@ -2373,7 +2373,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal_masuk"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal_masuk"),
                         rs.getString("tanggal_pindah"),rs.getString("indikasi_pindah_ruang"),rs.getString("keterangan_indikasi_pindah_ruang"),rs.getString("asal_ruang"),rs.getString("ruang_selanjutnya"),
                         rs.getString("metode_pemindahan_pasien"),rs.getString("diagnosa_utama"),rs.getString("diagnosa_sekunder"),rs.getString("prosedur_yang_sudah_dilakukan"),rs.getString("obat_yang_telah_diberikan"),
                         rs.getString("pemeriksaan_penunjang_yang_dilakukan"),rs.getString("peralatan_yang_menyertai"),rs.getString("keterangan_peralatan_yang_menyertai"),rs.getString("pasien_keluarga_menyetujui"),

@@ -1300,7 +1300,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
-                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
+                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
                             rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),
                             Sequel.cariIsi("select (count(layanan_program_kfr.no_rawat_layanan)+1) from layanan_program_kfr where layanan_program_kfr.no_rawat_layanan=?",rs.getString("nopermintaan")),rs.getString("kd_pj"),rs.getString("kd_poli")
                         });
@@ -1334,7 +1334,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                     rs=ps.executeQuery();
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
-                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
+                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
                             rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),
                             Sequel.cariIsi("select count(layanan_program_kfr.no_rawat_layanan) from layanan_program_kfr where layanan_program_kfr.no_rawat_layanan=?",rs.getString("nopermintaan")),rs.getString("kd_pj"),rs.getString("kd_poli")
                         });
@@ -1369,7 +1369,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
                 try {
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
-                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
+                            rs.getString("nopermintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),rs.getString("png_jawab"),rs.getString("tanggal"),rs.getString("diagnosa_medis"),
                             rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")+". "+rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; "),
                             Sequel.cariIsi("select count(layanan_program_kfr.no_rawat_layanan) from layanan_program_kfr where layanan_program_kfr.no_rawat_layanan=?",rs.getString("nopermintaan")),rs.getString("kd_pj"),rs.getString("kd_poli")
                         });

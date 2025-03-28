@@ -1653,7 +1653,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("keluhan_utama"),rs.getString("rpd"),rs.getString("rps"),rs.getString("anamnesa_general"),rs.getString("tanda_vital"),rs.getString("pemeriksaan_penunjang"),rs.getString("spesialisasi"),
                         rs.getString("keterangan_spesialisasi"),rs.getString("pemeriksaan_okupasi_terapi"),rs.getString("aset"),rs.getString("limitasi"),rs.getString("diagnosa_terapi_okupasi"),rs.getString("rencana_intervensi")                     
                     });

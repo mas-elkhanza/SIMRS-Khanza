@@ -1905,7 +1905,7 @@ public final class RMSkriningAnemia extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("mudah_lelah"),rs.getString("buah_sayur"),rs.getString("protein_hewani"),rs.getString("masalah_pubertas"),rs.getString("risiko_ims"),rs.getString("kekerasan_seksual"),rs.getString("sudah_menstruasi"),
                         rs.getString("gangguan_menstruasi"),rs.getString("tambah_darah"),rs.getString("kelainan_darah"),rs.getString("keluarga_thalasemia"),rs.getString("rambut"),rs.getString("kulit"),rs.getString("bekas_sutikan"),
                         rs.getString("kuku"),rs.getString("tanda_klinis"),rs.getString("pemeriksaan_hb"),rs.getString("kadar_hb"),rs.getString("jenis_anemia"),rs.getString("hasil_skrining"),rs.getString("keterangan"),

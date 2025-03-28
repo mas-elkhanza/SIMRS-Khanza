@@ -3578,7 +3578,7 @@ public final class RMMCU extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("informasi"),rs.getString("rps"),rs.getString("rpk"),rs.getString("rpd"),rs.getString("alergi"),
                         rs.getString("keadaan"),rs.getString("kesadaran"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("tb"),
                         rs.getString("bb"),rs.getString("suhu"),rs.getString("submandibula"),rs.getString("axilla"),rs.getString("supraklavikula"),

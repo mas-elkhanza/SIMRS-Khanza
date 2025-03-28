@@ -1519,7 +1519,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("nik"),rs.getString("nama"),rs.getString("materi_edukasi"),
                         rs.getString("keterangan"),rs.getString("lama_edukasi"),rs.getString("status"),rs.getString("diberikan_pada"),
                         rs.getString("keterangan_diberikan_pada"),rs.getString("metode_edukasi"),rs.getString("hasil_verifikasi")

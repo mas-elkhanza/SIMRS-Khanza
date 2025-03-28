@@ -1888,7 +1888,7 @@ public final class RMSkriningRisikoKankerParu extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("jenis_kelamin"),rs.getString("nilai_jenis_kelamin"),rs.getString("umur"),rs.getString("nilai_umur"),
                         rs.getString("pernah_kanker"),rs.getString("nilai_pernah_kanker"),rs.getString("ada_keluarga_kanker"),rs.getString("nilai_ada_keluarga_kanker"),rs.getString("riwayat_rokok"),
                         rs.getString("nilai_riwayat_rokok"),rs.getString("riwayat_bekerja_mengandung_karsinogen"),rs.getString("nilai_riwayat_bekerja_mengandung_karsinogen"),

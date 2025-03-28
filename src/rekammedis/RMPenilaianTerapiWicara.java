@@ -3064,7 +3064,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("diagnosa_terapi_wicara"),rs.getString("diagnosa_medis"),rs.getString("anamnesa"),rs.getString("suhu"),
                         rs.getString("rr"),rs.getString("nadi"),rs.getString("td"),rs.getString("perilaku_adaptif_kontak_mata"),rs.getString("perilaku_adaptif_atensi"),
                         rs.getString("perilaku_adaptif_perilaku"),rs.getString("kemampuan_bahasa_bicara_spontan"),rs.getString("kemampuan_bahasa_pemahaman_bahasa"),

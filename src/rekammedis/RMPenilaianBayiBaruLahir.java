@@ -4126,7 +4126,7 @@ public final class RMPenilaianBayiBaruLahir extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("no_rkm_medis_ibu"),rs.getString("nama_ibu"),rs.getString("lahiribu"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("no_rkm_medis_ibu"),rs.getString("nama_ibu"),rs.getString("lahiribu"),
                         rs.getString("ktpibu"),rs.getString("sttsnikahibu"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("penyakit_diderita_ibu"),rs.getString("keterangan_penyakit_diderita_ibu"),
                         rs.getString("obat_dikonsumsi_selama_kehamilan"),rs.getString("perawatan_antenatal"),rs.getString("keterangan_perawatan_antenatal"),rs.getString("terdaftar_ekohort"),rs.getString("keterangan_terdaftar_ekohort"),
                         rs.getString("penyulit_kehamilan"),rs.getString("keterangan_penyulit_kehamilan"),rs.getString("alergi"),rs.getString("keterangan_lainnya_riwayat_maternal"),rs.getString("umur_kehamilan"),rs.getString("kehamilan"),

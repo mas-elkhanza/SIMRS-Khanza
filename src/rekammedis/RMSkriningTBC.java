@@ -2310,7 +2310,7 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("berat_badan"),rs.getString("tinggi_badan"),rs.getString("imt"),rs.getString("kasifikasi_imt"),rs.getString("lingkar_pinggang"),rs.getString("risiko_lingkar_pinggang"),
                         rs.getString("riwayat_kontak_tbc"),rs.getString("jenis_kontak_tbc"),rs.getString("faktor_resiko_pernah_terdiagnosa_tbc"),rs.getString("keterangan_pernah_terdiagnosa"),rs.getString("faktor_resiko_pernah_berobat_tbc"),
                         rs.getString("faktor_resiko_malnutrisi"),rs.getString("faktor_resiko_merokok"),rs.getString("faktor_resiko_riwayat_dm"),rs.getString("faktor_resiko_odhiv"),rs.getString("faktor_resiko_lansia"),

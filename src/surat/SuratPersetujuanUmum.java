@@ -1346,7 +1346,7 @@ public final class SuratPersetujuanUmum extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("pengobatan_kepada"),rs.getString("nilai_kepercayaan"),rs.getString("nama_pj"),
                         rs.getString("umur_pj"),rs.getString("no_ktppj"),rs.getString("jkpj"),rs.getString("no_telp"),rs.getString("bertindak_atas"),
                         rs.getString("nip"),rs.getString("nama") 

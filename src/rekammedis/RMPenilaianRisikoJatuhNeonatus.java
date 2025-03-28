@@ -1849,7 +1849,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("intervensi1"),rs.getString("intervensi2"),rs.getString("intervensi3"),rs.getString("intervensi4"),rs.getString("intervensi5"),rs.getString("intervensi6"),
                         rs.getString("intervensi7"),rs.getString("intervensi8"),rs.getString("intervensi9"),rs.getString("edukasi1"),rs.getString("edukasi2"),rs.getString("edukasi3"),
                         rs.getString("edukasi4"),rs.getString("edukasi5"),rs.getString("sasaran1"),rs.getString("sasaran2"),rs.getString("sasaran3"),rs.getString("sasaran4"),

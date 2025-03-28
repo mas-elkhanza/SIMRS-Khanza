@@ -7953,7 +7953,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
                         rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("ket_informasi"),rs.getString("tiba_diruang_rawat"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpk"),
                         rs.getString("rpo"),rs.getString("alergi"),rs.getString("tumbuh_kembang_tengkurap"),rs.getString("tumbuh_kembang_duduk"),rs.getString("tumbuh_kembang_berdiri"),rs.getString("tumbuh_kembang_gigi_pertama"),rs.getString("tumbuh_kembang_berjalan"),
                         rs.getString("tumbuh_kembang_bicara"),rs.getString("tumbuh_kembang_membaca"),rs.getString("tumbuh_kembang_menulis"),rs.getString("tumbuh_kembang_gangguan_emosi"),rs.getString("persalinan_anakke"),rs.getString("persalinan_darisaudara"),

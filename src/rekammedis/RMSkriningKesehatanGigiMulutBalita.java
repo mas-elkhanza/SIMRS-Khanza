@@ -1679,7 +1679,7 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("pernah_pemeriksaan_gigimulut"),rs.getString("sudah_tumbuh_gigi"),rs.getString("jumlah_gigi_tumbuh"),rs.getString("kondisi_kebersihan_gigimulut"),rs.getString("kebiasaan_susu_botol"),
                         rs.getString("mengemil_manis"),rs.getString("menyikat_gigi_sebelum_tidur"),rs.getString("mengemut_makanan"),rs.getString("lidah_kotor"),rs.getString("celah_bibir"),rs.getString("hasil_skrining"),
                         rs.getString("keterangan")

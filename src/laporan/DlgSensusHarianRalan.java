@@ -1124,7 +1124,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                         rujukan++;
                     }
                     tabmode.addRow(new Object[]{
-                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),
+                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_registrasi"),rs.getString("nm_poli"),rs.getString("nm_dokter"),
                         rs.getString("jk"),perujuk,rs.getString("umur"),rs.getString("png_jawab"),
                         rs.getString("nm_kec")+", "+rs.getString("nm_kab"),
@@ -1232,7 +1232,7 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                         rujukan++;
                     }
                     tabmode2.addRow(new Object[]{
-                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),
+                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_registrasi"),rs.getString("nm_poli"),rs.getString("nm_dokter"),
                         rs.getString("jk"),perujuk,rs.getString("umur"),rs.getString("png_jawab"),
                         rs.getString("nm_kec")+", "+rs.getString("nm_kab"),

@@ -2456,7 +2456,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("prioritas1_1"),rs.getString("prioritas1_2"),rs.getString("prioritas1_3"),rs.getString("prioritas1_4"),
                         rs.getString("prioritas1_5"),rs.getString("prioritas1_6"),rs.getString("prioritas2_1"),rs.getString("prioritas2_2"),rs.getString("prioritas2_3"),
                         rs.getString("prioritas2_4"),rs.getString("prioritas2_5"),rs.getString("prioritas2_6"),rs.getString("prioritas2_7"),rs.getString("prioritas2_8"),

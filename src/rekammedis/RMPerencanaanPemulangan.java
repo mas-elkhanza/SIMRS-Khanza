@@ -2204,7 +2204,7 @@ public final class RMPerencanaanPemulangan extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"),
                         rs.getString("rencana_pulang"),rs.getString("diagnosa_medis"),rs.getString("alasan_masuk"),rs.getString("pengaruh_ri_pasien_dan_keluarga"),rs.getString("keterangan_pengaruh_ri_pasien_dan_keluarga"),
                         rs.getString("pengaruh_ri_pekerjaan_sekolah"),rs.getString("keterangan_pengaruh_ri_pekerjaan_sekolah"),rs.getString("pengaruh_ri_keuangan"),rs.getString("keterangan_pengaruh_ri_keuangan"),
                         rs.getString("antisipasi_masalah_saat_pulang"),rs.getString("keterangan_antisipasi_masalah_saat_pulang"),rs.getString("bantuan_diperlukan_dalam"),rs.getString("keterangan_bantuan_diperlukan_dalam"),

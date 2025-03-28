@@ -1848,7 +1848,7 @@ public final class RMSkriningKesehatanPenglihatan extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("mata_luar"),rs.getString("tajam_kiri"),rs.getString("tajam_kanan"),rs.getString("buta_warna_kiri"),rs.getString("buta_warna_kanan"),rs.getString("kacamata"),rs.getString("visus_kiri"),
                         rs.getString("visus_kanan"),rs.getString("refraksi_kiri"),rs.getString("refraksi_kanan"),rs.getString("rujuk_refraksi"),rs.getString("katarak_kiri"),rs.getString("katarak_kanan"),
                         rs.getString("rujuk_katarak"),rs.getString("hasil_skrining"),rs.getString("keterangan"),

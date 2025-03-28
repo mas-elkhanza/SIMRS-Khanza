@@ -1399,7 +1399,7 @@ public final class SuratPernyataanPasienUmum extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("nama_pj"),rs.getString("tempat_lahirpj"),rs.getString("lahirpj"),
                         rs.getString("hubungan"),rs.getString("jkpj"),rs.getString("no_telp"),rs.getString("no_ktppj"),
                         rs.getString("alamatpj"),rs.getString("nip"),rs.getString("nama") 

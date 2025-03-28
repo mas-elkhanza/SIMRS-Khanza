@@ -1705,7 +1705,7 @@ public final class RMSkriningTalasemia extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("transfusi_darah"),rs.getString("rutin_transfusi"),rs.getString("saudara_thalassemia"),rs.getString("tumbuh_kembang_terlambat"),rs.getString("anemia"),rs.getString("ikterus"),
                         rs.getString("perut_buncit"),rs.getString("gizi_kurang"),rs.getString("facies_cooley"),rs.getString("perawakan_pendek"),rs.getString("hiperpigmentasi_kulit"),rs.getString("hemoglobin"),
                         rs.getString("mvc"),rs.getString("mchc"),rs.getString("darah_tepi"),rs.getString("tindak_lanjut")

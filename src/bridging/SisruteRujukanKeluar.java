@@ -3303,7 +3303,7 @@ public final class SisruteRujukanKeluar extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rujuk"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),
                         rs.getString("no_ktp"),rs.getString("no_peserta"),rs.getString("nm_pasien"),
-                        rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("tmp_lahir"),
+                        rs.getString("jk"),rs.getDate("tgl_lahir"),rs.getString("tmp_lahir"),
                         rs.getString("alamat"),rs.getString("no_tlp"),rs.getString("jns_rujukan"),
                         rs.getString("tgl_rujuk"),rs.getString("kd_faskes_tujuan"),rs.getString("nm_faskes_tujuan"),
                         rs.getString("kd_alasan"),rs.getString("alasan_rujuk"),rs.getString("alasan_lainnya"),

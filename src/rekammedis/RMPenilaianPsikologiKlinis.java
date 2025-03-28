@@ -2928,7 +2928,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("dikirim_dari"),rs.getString("tujuan_pemeriksaan"),rs.getString("anamnesis"),rs.getString("ket_anamnesis"),rs.getString("keluhan_utama"),rs.getString("riwayat_penyakit"),
                         rs.getString("riwayat_keluhan"),rs.getString("permasalahan_saat_ini"),rs.getString("permasalahan_alasan"),rs.getString("permasalahan_ekspektasi"),rs.getString("riwayat_hidup_singkat"),
                         rs.getString("kondisi_psikologis_penampilan"),rs.getString("kondisi_psikologis_ekspresi_wajah"),rs.getString("kondisi_psikologis_suasana_hati"),rs.getString("kondisi_psikologis_tingkah_laku"),

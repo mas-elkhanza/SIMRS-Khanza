@@ -1824,7 +1824,7 @@ public final class RMHasilPemeriksaanUSG extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("hta"),rs.getString("jenis_prestasi"),rs.getString("kantong_gestasi"),rs.getString("ukuran_bokongkepala"),
                         rs.getString("diameter_biparietal"),rs.getString("panjang_femur"),rs.getString("lingkar_abdomen"),rs.getString("tafsiran_berat_janin"),rs.getString("usia_kehamilan"),
                         rs.getString("plasenta_berimplatansi"),rs.getString("derajat_maturitas"),rs.getString("jumlah_air_ketuban"),rs.getString("peluang_sex"),rs.getString("indek_cairan_ketuban"),

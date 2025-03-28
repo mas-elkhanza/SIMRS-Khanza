@@ -373,6 +373,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
                 JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep ..!!");
+            }else if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),8).toString().equals("Sudah Terlayani")){
+                JOptionPane.showMessageDialog(rootPane,"Resep sudah terlayani, silahkan konfirmasi bagian farmasi ..!!");
             }else {
                 jmlparsial=0;
                 if(aktifkanparsial.equals("yes")){
@@ -407,6 +409,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString().equals("")){
                 JOptionPane.showMessageDialog(rootPane,"Silahkan pilih No.Resep..!!");
+            }else if(tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),8).toString().equals("Sudah Terlayani")){
+                JOptionPane.showMessageDialog(rootPane,"Resep sudah terlayani, silahkan konfirmasi bagian farmasi ..!!");
             }else {
                 Sequel.meghapus("resep_obat","no_resep",tbPemisahan.getValueAt(tbPemisahan.getSelectedRow(),0).toString()); 
                 tampil();               

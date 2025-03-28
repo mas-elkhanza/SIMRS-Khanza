@@ -4839,7 +4839,7 @@ public final class RMPenilaianLevelKecemasanRanapAnak extends javax.swing.JDialo
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("cemas"),rs.getString("firasat_buruk"),rs.getString("takut_pikiran_sendiri"),
                         rs.getString("mudah_tersinggung"),rs.getString("merasa_tegang"),rs.getString("lesu"),rs.getString("tak_bisa_istirahat_tenang"),
                         rs.getString("mudah_terkejut"),rs.getString("mudah_menangis"),rs.getString("gemetar"),rs.getString("gelisah"),

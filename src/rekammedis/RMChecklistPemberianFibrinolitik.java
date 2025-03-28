@@ -2311,7 +2311,7 @@ public final class RMChecklistPemberianFibrinolitik extends javax.swing.JDialog 
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("kontra_indikasi1"),rs.getString("keterangan_kontra_indikasi1"),rs.getString("kontra_indikasi2"),rs.getString("keterangan_kontra_indikasi2"),rs.getString("kontra_indikasi3"),
                         rs.getString("keterangan_kontra_indikasi3"),rs.getString("kontra_indikasi4"),rs.getString("keterangan_kontra_indikasi4"),rs.getString("kontra_indikasi5"),rs.getString("keterangan_kontra_indikasi5"),
                         rs.getString("kontra_indikasi6"),rs.getString("keterangan_kontra_indikasi6"),rs.getString("kontra_indikasi7"),rs.getString("keterangan_kontra_indikasi7"),rs.getString("kontra_indikasi8"),

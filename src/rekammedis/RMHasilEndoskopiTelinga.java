@@ -2194,7 +2194,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("bentuk_liang_telinga_kanan"),rs.getString("bentuk_liang_telinga_kiri"),rs.getString("kondisi_liang_telinga_kanan"),
                         rs.getString("keterangan_kondisi_liang_telinga_kanan"),rs.getString("kondisi_liang_telinga_kiri"),rs.getString("keterangan_kondisi_liang_telinga_kiri"),rs.getString("membran_timpani_intak_kanan"),
                         rs.getString("membran_timpani_intak_kiri"),rs.getString("membran_timpani_perforasi_kanan"),rs.getString("keterangan_membran_timpani_perforasi_kanan"),rs.getString("membran_timpani_perforasi_kiri"),

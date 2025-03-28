@@ -2006,7 +2006,7 @@ public final class RMSkriningDiabetesMelitus extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("anamnesis1"),rs.getString("anamnesis2"),rs.getString("anamnesis3"),rs.getString("anamnesis4"),rs.getString("anamnesis5"),rs.getString("anamnesis6"),rs.getString("anamnesis7"),
                         rs.getString("anamnesis8"),rs.getString("anamnesis9"),rs.getString("anamnesis10"),rs.getString("anamnesis11"),rs.getString("anamnesis12"),rs.getString("berat_badan"),rs.getString("tinggi_badan"),
                         rs.getString("imt"),rs.getString("kasifikasi_imt"),rs.getString("hasil_gds"),rs.getString("keterangan_gds"),rs.getString("hasil_gdp"),rs.getString("keterangan_gdp"),rs.getString("hasil_skrining"),

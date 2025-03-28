@@ -1450,7 +1450,7 @@ public final class RMPenilaianPasienImunitasRendah extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("pasien_mengetahui_kondisi_penyakitnya"),rs.getString("kebutuhan_ruang_perawatan"),rs.getString("riwayat_penyakit_keluhan"),
                         rs.getString("riwayat_penyakit_keluarga"),rs.getString("riwayat_alergi"),rs.getString("riwayat_vaksinasi"),rs.getString("riwayat_pengobatan"),rs.getString("diagnosa_utama"),rs.getString("diagnosa_tambahan")
                     });

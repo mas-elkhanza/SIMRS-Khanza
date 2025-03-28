@@ -1427,7 +1427,7 @@ public final class RMLaporanTindakan extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("diagnosa_pra_tindakan"),rs.getString("diagnosa_pasca_tindakan"),rs.getString("tindakan_medik"),
                         rs.getString("uraian"),rs.getString("hasil"),rs.getString("kesimpulan")                     
                     });

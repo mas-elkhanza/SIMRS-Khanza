@@ -3286,7 +3286,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("nip_perawat_anestesi"),rs.getString("petugasanestesi"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("nip_perawat_anestesi"),rs.getString("petugasanestesi"),
                         rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),rs.getString("nip_perawat_ok"),rs.getString("petugasbedah"),rs.getString("tanggal"),rs.getString("diagnosa_pre_bedah"),rs.getString("tindakan_jenis_pembedahan"),rs.getString("diagnosa_pasca_bedah"),rs.getString("pre_induksi_jam"),
                         rs.getString("pre_induksi_kesadaran"),rs.getString("pre_induksi_td"),rs.getString("pre_induksi_nadi"),rs.getString("pre_induksi_rr"),rs.getString("pre_induksi_suhu"),rs.getString("pre_induksi_o2"),rs.getString("pre_induksi_tb"),rs.getString("pre_induksi_bb"),rs.getString("gol_darah"),
                         rs.getString("pre_induksi_rhesus"),rs.getString("pre_induksi_hb"),rs.getString("pre_induksi_ht"),rs.getString("pre_induksi_leko"),rs.getString("pre_induksi_trombo"),rs.getString("pre_induksi_btct"),rs.getString("pre_induksi_gds"),rs.getString("pre_induksi_lainlain"),

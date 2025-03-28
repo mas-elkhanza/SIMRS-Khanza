@@ -1476,7 +1476,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("penilaian1"),rs.getString("penilaian_nilai1"),rs.getString("penilaian2"),rs.getString("penilaian_nilai2"),
                         rs.getString("penilaian3"),rs.getString("penilaian_nilai3"),rs.getString("penilaian4"),rs.getString("penilaian_nilai4"),
                         rs.getString("penilaian5"),rs.getString("penilaian_nilai5"),rs.getString("penilaian6"),rs.getString("penilaian_nilai6"),

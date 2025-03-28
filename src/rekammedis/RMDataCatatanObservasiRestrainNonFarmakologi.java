@@ -1350,7 +1350,7 @@ public final class RMDataCatatanObservasiRestrainNonFarmakologi extends javax.sw
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("tangan_kiri"),rs.getString("tangan_kanan"),
                         rs.getString("badan"),rs.getString("kaki_kiri"),rs.getString("kaki_kanan"),rs.getString("edema"),
                         rs.getString("iritasi"),rs.getString("sirkulasi"),rs.getString("kondisi_keterangan"),rs.getString("nip"),

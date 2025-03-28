@@ -1443,7 +1443,7 @@ public final class RMChecklistKriteriaKeluarHCU extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("kriteria1"),rs.getString("kriteria2"),rs.getString("kriteria3"),rs.getString("kriteria4"),
                         rs.getString("kriteria5"),rs.getString("kriteria6"),rs.getString("kriteria7"),rs.getString("kriteria8"),rs.getString("kriteria9"),
                         rs.getString("kriteria10"),rs.getString("kriteria11"),rs.getString("kriteria12"),rs.getString("nik"),rs.getString("nama")

@@ -3536,7 +3536,7 @@ public final class RMPenilaianAwalMedisIGDPsikiatri extends javax.swing.JDialog 
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("gejala_menyertai"),rs.getString("faktor_pencetus"),rs.getString("riwayat_penyakit_dahulu"),
                         rs.getString("keterangan_riwayat_penyakit_dahulu"),rs.getString("riwayat_kehamilan"),rs.getString("riwayat_sosial"),rs.getString("keterangan_riwayat_sosial"),rs.getString("riwayat_pekerjaan"),
                         rs.getString("keterangan_riwayat_pekerjaan"),rs.getString("riwayat_obat_diminum"),rs.getString("faktor_kepribadian_premorbid"),rs.getString("faktor_keturunan"),rs.getString("keterangan_faktor_keturunan"),

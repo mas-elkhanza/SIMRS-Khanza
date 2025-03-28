@@ -2475,7 +2475,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("statik_insiden_kekerasan_baru_ini"),rs.getString("statik_skorinsiden_kekerasan_baru_ini"),rs.getString("statik_riwayat_penggunaan_senjata"),rs.getString("statik_skorriwayat_penggunaan_senjata"),
                         rs.getString("statik_laki_laki"),rs.getString("statik_skorlaki_laki"),rs.getString("statik_usia_dibawah_35"),rs.getString("statik_skorusia_dibawah_35"),rs.getString("statik_riwayat_kriminal"),
                         rs.getString("statik_skorriwayat_kriminal"),rs.getString("statik_ide_kekerasan"),rs.getString("statik_skoride_kekerasan"),rs.getString("statik_kekerasan_anak_anak"),rs.getString("statik_skorkekerasan_anak_anak"),

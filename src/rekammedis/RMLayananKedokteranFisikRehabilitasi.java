@@ -1613,7 +1613,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
                         rs.getString("tanggal"),rs.getString("pendamping"),rs.getString("keterangan_pendamping"),rs.getString("anamnesa"),rs.getString("pemeriksaan_fisik"),rs.getString("diagnosa_medis"),rs.getString("diagnosa_fungsi"),
                         rs.getString("tatalaksana"),rs.getString("anjuran"),rs.getString("evaluasi"),rs.getString("suspek_penyakit_kerja"),rs.getString("keterangan_suspek_penyakit_kerja")                     
                     });

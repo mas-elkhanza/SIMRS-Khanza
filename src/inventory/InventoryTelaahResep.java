@@ -1621,7 +1621,7 @@ public final class InventoryTelaahResep extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_resep"),rs.getString("tgl_perawatan"),rs.getString("jam"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),
-                        rs.getString("nm_pasien"),rs.getString("umur"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),
+                        rs.getString("nm_pasien"),rs.getString("umur"),rs.getString("jk"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),
                         rs.getString("nm_dokter"),rs.getString("status").replace("r","R"),rs.getString("resep_identifikasi_pasien"),rs.getString("resep_ket_identifikasi_pasien"),
                         rs.getString("resep_tepat_obat"),rs.getString("resep_ket_tepat_obat"),rs.getString("resep_tepat_dosis"),rs.getString("resep_ket_tepat_dosis"),
                         rs.getString("resep_tepat_cara_pemberian"),rs.getString("resep_ket_tepat_cara_pemberian"),rs.getString("resep_tepat_waktu_pemberian"),
