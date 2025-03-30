@@ -12,7 +12,6 @@ import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
@@ -70,9 +69,9 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Pribadi Hipertensi","Keluarga Hipertensi","Riwayat Merokok","Alkohol/Merokok Di Keluarga",
-            "Makan Asin","Fisik Setiap Hari","Istirahat Cukup","Kurang Buah & Sayur","TD Sistole","TD Diastole",
-            "Klasifikasi Hipertensi","Hasil Skrining","Keterangan"
+            "Riwayat Penyakit Keluarga","Riwayat Penyakit Diri Sendiri","Merokok","Kurang Aktifitas Fisik",
+            "Gula Berlebihan","Garam Berlebihan","Lemak Berlebihan","Kurang Buah & Sayur","Konsumsi Alkohol",
+            "Hasil Pemeriksaan IVA","Hasil Skrining","Keterangan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -82,7 +81,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 21; i++) {
+        for (i = 0; i < 20; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -100,32 +99,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(120);
-            }else if(i==8){
-                column.setPreferredWidth(95);
-            }else if(i==9){
-                column.setPreferredWidth(104);
-            }else if(i==10){
-                column.setPreferredWidth(90);
-            }else if(i==11){
-                column.setPreferredWidth(147);
-            }else if(i==12){
-                column.setPreferredWidth(64);
-            }else if(i==13){
-                column.setPreferredWidth(87);
-            }else if(i==14){
-                column.setPreferredWidth(85);
-            }else if(i==15){
-                column.setPreferredWidth(110);
-            }else if(i==16){
-                column.setPreferredWidth(58);
-            }else if(i==17){
-                column.setPreferredWidth(65);
-            }else if(i==18){
-                column.setPreferredWidth(145);
-            }else if(i==19){
-                column.setPreferredWidth(150);
-            }else if(i==20){
-                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -302,14 +275,14 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         jLabel10 = new widget.Label();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel101 = new widget.Label();
-        Anamnesis9 = new widget.ComboBox();
+        RiwayatPenyakitKeluarga = new widget.ComboBox();
         jLabel84 = new widget.Label();
         jLabel11 = new widget.Label();
-        Anamnesis10 = new widget.ComboBox();
+        RiwayatPenyakitSendiri = new widget.ComboBox();
         jLabel85 = new widget.Label();
         jLabel86 = new widget.Label();
         jLabel12 = new widget.Label();
-        Anamnesis11 = new widget.ComboBox();
+        HasilPemeriksaanIVA = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -989,15 +962,15 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         FormInput.add(jLabel101);
         jLabel101.setBounds(10, 120, 490, 23);
 
-        Anamnesis9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kanker", "Benjolan Abnormal Pada Payudara", "-" }));
-        Anamnesis9.setName("Anamnesis9"); // NOI18N
-        Anamnesis9.addKeyListener(new java.awt.event.KeyAdapter() {
+        RiwayatPenyakitKeluarga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kanker", "Benjolan Abnormal Pada Payudara", "-" }));
+        RiwayatPenyakitKeluarga.setName("RiwayatPenyakitKeluarga"); // NOI18N
+        RiwayatPenyakitKeluarga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis9KeyPressed(evt);
+                RiwayatPenyakitKeluargaKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis9);
-        Anamnesis9.setBounds(97, 90, 240, 23);
+        FormInput.add(RiwayatPenyakitKeluarga);
+        RiwayatPenyakitKeluarga.setBounds(97, 90, 240, 23);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel84.setText("Keluarga");
@@ -1010,15 +983,15 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         FormInput.add(jLabel11);
         jLabel11.setBounds(0, 90, 94, 23);
 
-        Anamnesis10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kanker", "Benjolan Abnormal Pada Payudara", "-" }));
-        Anamnesis10.setName("Anamnesis10"); // NOI18N
-        Anamnesis10.addKeyListener(new java.awt.event.KeyAdapter() {
+        RiwayatPenyakitSendiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kanker", "Benjolan Abnormal Pada Payudara", "-" }));
+        RiwayatPenyakitSendiri.setName("RiwayatPenyakitSendiri"); // NOI18N
+        RiwayatPenyakitSendiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis10KeyPressed(evt);
+                RiwayatPenyakitSendiriKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis10);
-        Anamnesis10.setBounds(550, 90, 240, 23);
+        FormInput.add(RiwayatPenyakitSendiri);
+        RiwayatPenyakitSendiri.setBounds(550, 90, 240, 23);
 
         jLabel85.setText("Diri Sendiri :");
         jLabel85.setName("jLabel85"); // NOI18N
@@ -1036,15 +1009,15 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         FormInput.add(jLabel12);
         jLabel12.setBounds(0, 280, 161, 23);
 
-        Anamnesis11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Curiga Kanker" }));
-        Anamnesis11.setName("Anamnesis11"); // NOI18N
-        Anamnesis11.addKeyListener(new java.awt.event.KeyAdapter() {
+        HasilPemeriksaanIVA.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Curiga Kanker" }));
+        HasilPemeriksaanIVA.setName("HasilPemeriksaanIVA"); // NOI18N
+        HasilPemeriksaanIVA.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis11KeyPressed(evt);
+                HasilPemeriksaanIVAKeyPressed(evt);
             }
         });
-        FormInput.add(Anamnesis11);
-        Anamnesis11.setBounds(165, 280, 130, 23);
+        FormInput.add(HasilPemeriksaanIVA);
+        HasilPemeriksaanIVA.setBounds(165, 280, 130, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1229,20 +1202,18 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pribadi Hipertensi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Hipertensi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Merokok</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alkohol/Merokok Di Keluarga</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Makan Asin</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Fisik Setiap Hari</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Istirahat Cukup</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Keluarga</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Diri Sendiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merokok</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kurang Aktifitas Fisik</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gula Berlebihan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Garam Berlebihan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lemak Berlebihan</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kurang Buah & Sayur</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Sistole</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Diastole</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Klasifikasi Hipertensi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Konsumsi Alkohol</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pemeriksaan IVA</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
-                                "</tr>"
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"
                             );
                             for (i = 0; i < tabMode.getRowCount(); i++) {
                                 htmlContent.append(
@@ -1267,7 +1238,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                                         "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
                                     "</tr>");
                             }
                             LoadHTML.setText(
@@ -1278,7 +1248,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                                 "</html>"
                             );
 
-                            f = new File("DataSkriningHipertensi.html");            
+                            f = new File("DataSkriningRisikoKankerServiks.html");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1288,7 +1258,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA SEKRINING HIPERTENSI<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA SEKRINING RISIKO KANKER SERVIKS<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -1308,20 +1278,18 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pribadi Hipertensi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Hipertensi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Merokok</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alkohol/Merokok Di Keluarga</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Makan Asin</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Fisik Setiap Hari</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Istirahat Cukup</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Keluarga</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Diri Sendiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merokok</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kurang Aktifitas Fisik</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gula Berlebihan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Garam Berlebihan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lemak Berlebihan</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kurang Buah & Sayur</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Sistole</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Diastole</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Klasifikasi Hipertensi</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Konsumsi Alkohol</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pemeriksaan IVA</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
-                                "</tr>"
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"
                             );
                             for (i = 0; i < tabMode.getRowCount(); i++) {
                                 htmlContent.append(
@@ -1346,7 +1314,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                                         "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
                                     "</tr>");
                             }
                             LoadHTML.setText(
@@ -1357,7 +1324,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                                 "</html>"
                             );
 
-                            f = new File("DataSkriningHipertensi.wps");            
+                            f = new File("DataSkriningRisikoKankerServiks.wps");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1367,7 +1334,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA SEKRINING HIPERTENSI<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA SEKRINING RISIKO KANKER SERVIKS<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -1378,14 +1345,14 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Petugas\";\"Nama Petugas\";\"Tanggal\";\"Pribadi Hipertensi\";\"Keluarga Hipertensi\";\"Riwayat Merokok\";\"Alkohol/Merokok Di Keluarga\";\"Makan Asin\";\"Fisik Setiap Hari\";\"Istirahat Cukup\";\"Kurang Buah & Sayur\";\"TD Sistole\";\"TD Diastole\";\"Klasifikasi Hipertensi\";\"Hasil Skrining\";\"Keterangan\"\n"
+                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Petugas\";\"Nama Petugas\";\"Tanggal\";\"Riwayat Penyakit Keluarga\";\"Riwayat Penyakit Diri Sendiri\";\"Merokok\";\"Kurang Aktifitas Fisik\";\"Gula Berlebihan\";\"Garam Berlebihan\";\"Lemak Berlebihan\";\"Kurang Buah & Sayur\";\"Konsumsi Alkohol\";\"Hasil Pemeriksaan IVA\";\"Hasil Skrining\";\"Keterangan\"\n"
                             ); 
                             for (i = 0; i < tabMode.getRowCount(); i++) {
                                 htmlContent.append(
-                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\";\""+tbObat.getValueAt(i,20).toString()+"\"\n"
+                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\"\n"
                                 );
                             }
-                            f = new File("DataSkriningHipertensi.csv");            
+                            f = new File("DataSkriningRisikoKankerServiks.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
                             bw.close();                         
@@ -1508,12 +1475,12 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningHipertensi.jasper","report","::[ Formulir Skrining Hipertensi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_hipertensi.nip,petugas.nama,skrining_hipertensi.tanggal,"+
-                    "skrining_hipertensi.anamnesis1,skrining_hipertensi.anamnesis2,skrining_hipertensi.anamnesis3,skrining_hipertensi.anamnesis4,skrining_hipertensi.anamnesis5,"+
-                    "skrining_hipertensi.anamnesis6,skrining_hipertensi.anamnesis7,skrining_hipertensi.anamnesis8,skrining_hipertensi.sistole,skrining_hipertensi.diastole,"+
-                    "skrining_hipertensi.klasifikasi_hipertensi,skrining_hipertensi.hasil_skrining,skrining_hipertensi.keterangan from skrining_hipertensi "+
-                    "inner join reg_periksa on skrining_hipertensi.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_hipertensi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_risiko_kanker_serviks.nip,petugas.nama,skrining_risiko_kanker_serviks.tanggal,"+
+                    "skrining_risiko_kanker_serviks.anamnesis1,skrining_risiko_kanker_serviks.anamnesis2,skrining_risiko_kanker_serviks.anamnesis3,skrining_risiko_kanker_serviks.anamnesis4,skrining_risiko_kanker_serviks.anamnesis5,"+
+                    "skrining_risiko_kanker_serviks.anamnesis6,skrining_risiko_kanker_serviks.anamnesis7,skrining_risiko_kanker_serviks.anamnesis8,skrining_risiko_kanker_serviks.sistole,skrining_risiko_kanker_serviks.diastole,"+
+                    "skrining_risiko_kanker_serviks.klasifikasi_hipertensi,skrining_risiko_kanker_serviks.hasil_skrining,skrining_risiko_kanker_serviks.keterangan from skrining_risiko_kanker_serviks "+
+                    "inner join reg_periksa on skrining_risiko_kanker_serviks.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on skrining_risiko_kanker_serviks.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningHipertensiActionPerformed
 
@@ -1557,17 +1524,17 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         //Valid.pindah(evt,Anamnesis6,Anamnesis8);
     }//GEN-LAST:event_Anamnesis7KeyPressed
 
-    private void Anamnesis9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis9KeyPressed
+    private void RiwayatPenyakitKeluargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitKeluargaKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis9KeyPressed
+    }//GEN-LAST:event_RiwayatPenyakitKeluargaKeyPressed
 
-    private void Anamnesis10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis10KeyPressed
+    private void RiwayatPenyakitSendiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatPenyakitSendiriKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis10KeyPressed
+    }//GEN-LAST:event_RiwayatPenyakitSendiriKeyPressed
 
-    private void Anamnesis11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis11KeyPressed
+    private void HasilPemeriksaanIVAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilPemeriksaanIVAKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Anamnesis11KeyPressed
+    }//GEN-LAST:event_HasilPemeriksaanIVAKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1587,15 +1554,12 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox Anamnesis1;
-    private widget.ComboBox Anamnesis10;
-    private widget.ComboBox Anamnesis11;
     private widget.ComboBox Anamnesis2;
     private widget.ComboBox Anamnesis3;
     private widget.ComboBox Anamnesis4;
     private widget.ComboBox Anamnesis5;
     private widget.ComboBox Anamnesis6;
     private widget.ComboBox Anamnesis7;
-    private widget.ComboBox Anamnesis9;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1610,6 +1574,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
     private widget.PanelBiasa FormInput;
+    private widget.ComboBox HasilPemeriksaanIVA;
     private widget.TextBox HasilSkrining;
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
@@ -1621,6 +1586,8 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private javax.swing.JMenuItem MnSkriningHipertensi;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
+    private widget.ComboBox RiwayatPenyakitKeluarga;
+    private widget.ComboBox RiwayatPenyakitSendiri;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -1681,22 +1648,22 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_hipertensi.nip,petugas.nama,skrining_hipertensi.tanggal,"+
-                    "skrining_hipertensi.anamnesis1,skrining_hipertensi.anamnesis2,skrining_hipertensi.anamnesis3,skrining_hipertensi.anamnesis4,skrining_hipertensi.anamnesis5,"+
-                    "skrining_hipertensi.anamnesis6,skrining_hipertensi.anamnesis7,skrining_hipertensi.anamnesis8,skrining_hipertensi.sistole,skrining_hipertensi.diastole,"+
-                    "skrining_hipertensi.klasifikasi_hipertensi,skrining_hipertensi.hasil_skrining,skrining_hipertensi.keterangan from skrining_hipertensi "+
-                    "inner join reg_periksa on skrining_hipertensi.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_hipertensi.nip=petugas.nip where skrining_hipertensi.tanggal between ? and ? order by skrining_hipertensi.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_risiko_kanker_serviks.nip,petugas.nama,skrining_risiko_kanker_serviks.tanggal,"+
+                    "skrining_risiko_kanker_serviks.riwayat_penyakit_keluarga,skrining_risiko_kanker_serviks.riwayat_penyakit_sendiri,skrining_risiko_kanker_serviks.risiko_merokok,skrining_risiko_kanker_serviks.risiko_kurang_fisik,"+
+                    "skrining_risiko_kanker_serviks.risiko_gula_berlebihan,skrining_risiko_kanker_serviks.risiko_garam_berlebihan,skrining_risiko_kanker_serviks.risiko_lemak_berlebihan,skrining_risiko_kanker_serviks.risiko_kurang_buah_sayur,"+
+                    "skrining_risiko_kanker_serviks.risiko_alkohol,skrining_risiko_kanker_serviks.hasil_iva,skrining_risiko_kanker_serviks.hasil_skrining,skrining_risiko_kanker_serviks.keterangan from skrining_risiko_kanker_serviks "+
+                    "inner join reg_periksa on skrining_risiko_kanker_serviks.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on skrining_risiko_kanker_serviks.nip=petugas.nip where skrining_risiko_kanker_serviks.tanggal between ? and ? order by skrining_risiko_kanker_serviks.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_hipertensi.nip,petugas.nama,skrining_hipertensi.tanggal,"+
-                    "skrining_hipertensi.anamnesis1,skrining_hipertensi.anamnesis2,skrining_hipertensi.anamnesis3,skrining_hipertensi.anamnesis4,skrining_hipertensi.anamnesis5,"+
-                    "skrining_hipertensi.anamnesis6,skrining_hipertensi.anamnesis7,skrining_hipertensi.anamnesis8,skrining_hipertensi.sistole,skrining_hipertensi.diastole,"+
-                    "skrining_hipertensi.klasifikasi_hipertensi,skrining_hipertensi.hasil_skrining,skrining_hipertensi.keterangan from skrining_hipertensi "+
-                    "inner join reg_periksa on skrining_hipertensi.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on skrining_hipertensi.nip=petugas.nip where skrining_hipertensi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_hipertensi.nip like ? or petugas.nama like ? or skrining_hipertensi.hasil_skrining like ? or skrining_hipertensi.keterangan like ?) "+
-                    "order by skrining_hipertensi.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_risiko_kanker_serviks.nip,petugas.nama,skrining_risiko_kanker_serviks.tanggal,"+
+                    "skrining_risiko_kanker_serviks.riwayat_penyakit_keluarga,skrining_risiko_kanker_serviks.riwayat_penyakit_sendiri,skrining_risiko_kanker_serviks.risiko_merokok,skrining_risiko_kanker_serviks.risiko_kurang_fisik,"+
+                    "skrining_risiko_kanker_serviks.risiko_gula_berlebihan,skrining_risiko_kanker_serviks.risiko_garam_berlebihan,skrining_risiko_kanker_serviks.risiko_lemak_berlebihan,skrining_risiko_kanker_serviks.risiko_kurang_buah_sayur,"+
+                    "skrining_risiko_kanker_serviks.risiko_alkohol,skrining_risiko_kanker_serviks.hasil_iva,skrining_risiko_kanker_serviks.hasil_skrining,skrining_risiko_kanker_serviks.keterangan from skrining_risiko_kanker_serviks "+
+                    "inner join reg_periksa on skrining_risiko_kanker_serviks.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on skrining_risiko_kanker_serviks.nip=petugas.nip where skrining_risiko_kanker_serviks.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_risiko_kanker_serviks.nip like ? or petugas.nama like ? or skrining_risiko_kanker_serviks.hasil_skrining like ? or skrining_risiko_kanker_serviks.keterangan like ?) "+
+                    "order by skrining_risiko_kanker_serviks.tanggal ");
             }
                 
             try {
@@ -1720,8 +1687,9 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("anamnesis1"),rs.getString("anamnesis2"),rs.getString("anamnesis3"),rs.getString("anamnesis4"),rs.getString("anamnesis5"),rs.getString("anamnesis6"),rs.getString("anamnesis7"),
-                        rs.getString("anamnesis8"),rs.getString("sistole"),rs.getString("diastole"),rs.getString("klasifikasi_hipertensi"),rs.getString("hasil_skrining"),rs.getString("keterangan"),
+                        rs.getString("riwayat_penyakit_keluarga"),rs.getString("riwayat_penyakit_sendiri"),rs.getString("risiko_merokok"),rs.getString("risiko_kurang_fisik"),rs.getString("risiko_gula_berlebihan"),
+                        rs.getString("risiko_garam_berlebihan"),rs.getString("risiko_lemak_berlebihan"),rs.getString("risiko_kurang_buah_sayur"),rs.getString("risiko_alkohol"),rs.getString("hasil_iva"),
+                        rs.getString("hasil_skrining"),rs.getString("keterangan"),
                     });
                 }
             } catch (Exception e) {
@@ -1761,15 +1729,18 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Anamnesis1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Anamnesis2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Anamnesis3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Anamnesis4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Anamnesis5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Anamnesis6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Anamnesis7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            RiwayatPenyakitKeluarga.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            RiwayatPenyakitSendiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Anamnesis1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Anamnesis2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Anamnesis3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Anamnesis4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Anamnesis5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Anamnesis6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Anamnesis7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            HasilPemeriksaanIVA.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
@@ -1841,10 +1812,10 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_hipertensi());
-        BtnHapus.setEnabled(akses.getskrining_hipertensi());
-        BtnEdit.setEnabled(akses.getskrining_hipertensi());
-        BtnPrint.setEnabled(akses.getskrining_hipertensi()); 
+        BtnSimpan.setEnabled(akses.getskrining_risiko_kanker_serviks());
+        BtnHapus.setEnabled(akses.getskrining_risiko_kanker_serviks());
+        BtnEdit.setEnabled(akses.getskrining_risiko_kanker_serviks());
+        BtnPrint.setEnabled(akses.getskrining_risiko_kanker_serviks()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -1922,13 +1893,13 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_hipertensi","no_rawat=?","no_rawat=?,tanggal=?,anamnesis1=?,anamnesis2=?,anamnesis3=?,anamnesis4=?,anamnesis5=?,anamnesis6=?,"+
-                "anamnesis7=?,anamnesis8=?,"+"sistole=?,diastole=?,klasifikasi_hipertensi=?,hasil_skrining=?,keterangan=?,nip=?",17,new String[]{
+        if(Sequel.mengedittf("skrining_risiko_kanker_serviks","no_rawat=?","no_rawat=?,tanggal=?,riwayat_penyakit_keluarga=?,riwayat_penyakit_sendiri=?,risiko_merokok=?,risiko_kurang_fisik=?,"+
+                "risiko_gula_berlebihan=?,risiko_garam_berlebihan=?,risiko_lemak_berlebihan=?,risiko_kurang_buah_sayur=?,risiko_alkohol=?,hasil_iva=?,hasil_skrining=?,keterangan=?,nip=?",16,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(),Anamnesis4.getSelectedItem().toString(),
-                Anamnesis5.getSelectedItem().toString(),Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(),Anamnesis8.getSelectedItem().toString(),
-                Sistole.getText(),Diastole.getText(),Klasifikasi.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                RiwayatPenyakitKeluarga.getSelectedItem().toString(),RiwayatPenyakitSendiri.getSelectedItem().toString(),Anamnesis1.getSelectedItem().toString(),
+                Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(),Anamnesis4.getSelectedItem().toString(),Anamnesis5.getSelectedItem().toString(),
+                Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(),HasilPemeriksaanIVA.getSelectedItem().toString(),HasilSkrining.getText(),
+                Keterangan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1938,25 +1909,24 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(Anamnesis1.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(Anamnesis2.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(Anamnesis3.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(Anamnesis4.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(Anamnesis5.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(Anamnesis6.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(Anamnesis7.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(Anamnesis8.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(Sistole.getText(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(Diastole.getText(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(Klasifikasi.getText(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(RiwayatPenyakitKeluarga.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(RiwayatPenyakitSendiri.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(Anamnesis1.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(Anamnesis2.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(Anamnesis3.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(Anamnesis4.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(Anamnesis5.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(Anamnesis6.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(Anamnesis7.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(HasilPemeriksaanIVA.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),19);
                emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_hipertensi where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_risiko_kanker_serviks where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1968,20 +1938,23 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     }
     
     private void simpan() {
-        /*if(Sequel.menyimpantf("skrining_hipertensi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
+        if(Sequel.menyimpantf("skrining_risiko_kanker_serviks","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(),Anamnesis4.getSelectedItem().toString(),
-            Anamnesis5.getSelectedItem().toString(),Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(),Anamnesis8.getSelectedItem().toString(),
-            Sistole.getText(),Diastole.getText(),Klasifikasi.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText()
+            RiwayatPenyakitKeluarga.getSelectedItem().toString(),RiwayatPenyakitSendiri.getSelectedItem().toString(),Anamnesis1.getSelectedItem().toString(),
+            Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(),Anamnesis4.getSelectedItem().toString(),Anamnesis5.getSelectedItem().toString(),
+            Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(),HasilPemeriksaanIVA.getSelectedItem().toString(),
+            HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(),Anamnesis4.getSelectedItem().toString(),Anamnesis5.getSelectedItem().toString(),Anamnesis6.getSelectedItem().toString(),
-                Anamnesis7.getSelectedItem().toString(),Anamnesis8.getSelectedItem().toString(),Sistole.getText(),Diastole.getText(),Klasifikasi.getText(),HasilSkrining.getText(),Keterangan.getText(),HasilSkrining.getText(),Keterangan.getText()
+                RiwayatPenyakitKeluarga.getSelectedItem().toString(),RiwayatPenyakitSendiri.getSelectedItem().toString(),Anamnesis1.getSelectedItem().toString(),
+                Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(),Anamnesis4.getSelectedItem().toString(),Anamnesis5.getSelectedItem().toString(),
+                Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(),HasilPemeriksaanIVA.getSelectedItem().toString(),
+                HasilSkrining.getText(),Keterangan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        }*/
+        }
     }
     
 }
