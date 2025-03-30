@@ -67,7 +67,7 @@ public final class RMDataCatatanCairanHemodialisa extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","Minum","Infus",
+            "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tanggal","Jam","Minum","Infus",
             "Transfusi","Sisa Priming","Wash Out","Urine","Pendarahan","Muntah","Keterangan","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -1037,8 +1037,8 @@ public final class RMDataCatatanCairanHemodialisa extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>JK</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Obser</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam Obser</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Minum</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Infus</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Transfusi</b></td>"+
@@ -1112,8 +1112,8 @@ public final class RMDataCatatanCairanHemodialisa extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>JK</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Obser</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam Obser</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Minum</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Infus</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Transfusi</b></td>"+
@@ -1180,7 +1180,7 @@ public final class RMDataCatatanCairanHemodialisa extends javax.swing.JDialog {
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"No.Rawat\";\"No.R.M.\";\"Nama Pasien\";\"Umur\";\"JK\";\"Tgl.Lahir\";\"Tgl.Obser\";\"Jam Obser\";\"Minum\";\"Infus\";\"Transfusi\";\"Sisa Priming\";\"Wash Out\";\"Urine\";\"Pendarahan\";\"Muntah\";\"Keterangan\";\"NIP\";\"Nama Petugas\"\n"
+                                "\"No.Rawat\";\"No.R.M.\";\"Nama Pasien\";\"Umur\";\"JK\";\"Tgl.Lahir\";\"Tanggal\";\"Jam\";\"Minum\";\"Infus\";\"Transfusi\";\"Sisa Priming\";\"Wash Out\";\"Urine\";\"Pendarahan\";\"Muntah\";\"Keterangan\";\"NIP\";\"Nama Petugas\"\n"
                             ); 
                             for (i = 0; i < tabMode.getRowCount(); i++) {
                                 htmlContent.append(
@@ -1330,12 +1330,12 @@ public final class RMDataCatatanCairanHemodialisa extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptFormulirCatatanCairanHemodialisa.jasper","report","::[ Formulir Catatan Cairan Hemodialisa ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
-                    "pasien.jk,pasien.tgl_lahir,catatan_cairan_hemodialisa.tgl_perawatan,catatan_cairan_hemodialisa.jam_rawat,catatan_cairan_hemodialisa.qb,catatan_cairan_hemodialisa.qd,"+
-                    "catatan_cairan_hemodialisa.tekanan_arteri,catatan_cairan_hemodialisa.tekanan_vena,catatan_cairan_hemodialisa.tmp,catatan_cairan_hemodialisa.ufr,catatan_cairan_hemodialisa.tensi,"+
-                    "catatan_cairan_hemodialisa.nadi,catatan_cairan_hemodialisa.suhu,catatan_cairan_hemodialisa.spo2,catatan_cairan_hemodialisa.tindakan,catatan_cairan_hemodialisa.ufg,"+
+                    "pasien.jk,pasien.tgl_lahir,catatan_cairan_hemodialisa.tgl_perawatan,catatan_cairan_hemodialisa.jam_rawat,catatan_cairan_hemodialisa.minum,"+
+                    "catatan_cairan_hemodialisa.infus,catatan_cairan_hemodialisa.tranfusi,catatan_cairan_hemodialisa.sisa_priming,catatan_cairan_hemodialisa.wash_out,"+
+                    "catatan_cairan_hemodialisa.urine,catatan_cairan_hemodialisa.pendarahan,catatan_cairan_hemodialisa.muntah,catatan_cairan_hemodialisa.keterangan,"+
                     "catatan_cairan_hemodialisa.nip,petugas.nama from catatan_cairan_hemodialisa inner join reg_periksa on catatan_cairan_hemodialisa.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on catatan_cairan_hemodialisa.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
-                    "order by catatan_cairan_hemodialisa.tgl_perawatan,catatan_cairan_hemodialisa.jam_rawat",param);
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on catatan_cairan_hemodialisa.nip=petugas.nip "+
+                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by catatan_cairan_hemodialisa.tgl_perawatan,catatan_cairan_hemodialisa.jam_rawat",param);
         }
     }//GEN-LAST:event_MnCatatanCairanHemodialisaActionPerformed
 
