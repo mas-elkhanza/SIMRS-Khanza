@@ -133,8 +133,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        Sistole.setDocument(new batasInput((int)3).getKata(Sistole));
-        Diastole.setDocument(new batasInput((int)3).getKata(Diastole));
         HasilSkrining.setDocument(new batasInput((int)40).getKata(HasilSkrining));
         Keterangan.setDocument(new batasInput((int)100).getKata(Keterangan));
         
@@ -160,36 +158,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                 }
             });
         }
-        
-        Sistole.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                isHipertensi();
-            }
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                isHipertensi();
-            }
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                isHipertensi();
-            }
-        });
-        
-        Diastole.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                isHipertensi();
-            }
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                isHipertensi();
-            }
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                isHipertensi();
-            }
-        });
         
         petugas.addWindowListener(new WindowListener() {
             @Override
@@ -323,29 +291,25 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         jLabel96 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel106 = new widget.Label();
-        jLabel9 = new widget.Label();
-        Sistole = new widget.TextBox();
-        jLabel26 = new widget.Label();
-        jLabel22 = new widget.Label();
-        jLabel14 = new widget.Label();
-        jLabel23 = new widget.Label();
-        jSeparator4 = new javax.swing.JSeparator();
-        jLabel107 = new widget.Label();
         jLabel24 = new widget.Label();
         jLabel27 = new widget.Label();
         HasilSkrining = new widget.TextBox();
-        jLabel108 = new widget.Label();
         Keterangan = new widget.TextBox();
-        Klasifikasi = new widget.TextBox();
-        Diastole = new widget.TextBox();
+        jLabel108 = new widget.Label();
         jLabel109 = new widget.Label();
         jLabel110 = new widget.Label();
         Anamnesis7 = new widget.ComboBox();
-        jLabel111 = new widget.Label();
-        jLabel112 = new widget.Label();
-        Anamnesis8 = new widget.ComboBox();
-        jLabel28 = new widget.Label();
         jLabel10 = new widget.Label();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel101 = new widget.Label();
+        Anamnesis9 = new widget.ComboBox();
+        jLabel84 = new widget.Label();
+        jLabel11 = new widget.Label();
+        Anamnesis10 = new widget.ComboBox();
+        jLabel85 = new widget.Label();
+        jLabel86 = new widget.Label();
+        jLabel12 = new widget.Label();
+        Anamnesis11 = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -545,7 +509,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -559,7 +523,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -620,7 +584,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 336));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 366));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -650,7 +614,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 313));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 343));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -680,7 +644,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-03-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -789,7 +753,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("I. ANAMNESIS");
+        jLabel100.setText("I. RIWAYAT PENYAKIT");
         jLabel100.setName("jLabel100"); // NOI18N
         FormInput.add(jLabel100);
         jLabel100.setBounds(10, 70, 490, 23);
@@ -808,13 +772,13 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         jLabel78.setText("1.");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(44, 90, 20, 23);
+        jLabel78.setBounds(44, 140, 20, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel79.setText("Riwayat Pribadi Hipertensi ?");
+        jLabel79.setText("Merokok ?");
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
-        jLabel79.setBounds(62, 90, 250, 23);
+        jLabel79.setBounds(62, 140, 250, 23);
 
         Anamnesis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Anamnesis1.setName("Anamnesis1"); // NOI18N
@@ -824,19 +788,19 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(Anamnesis1);
-        Anamnesis1.setBounds(319, 90, 80, 23);
+        Anamnesis1.setBounds(319, 140, 80, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel80.setText("Riwayat Keluarga Tekanan Darah Tinggi ?");
+        jLabel80.setText("Kurang Aktifitas Fisik ?");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
-        jLabel80.setBounds(62, 120, 250, 23);
+        jLabel80.setBounds(62, 170, 250, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel81.setText("2.");
         jLabel81.setName("jLabel81"); // NOI18N
         FormInput.add(jLabel81);
-        jLabel81.setBounds(44, 120, 20, 23);
+        jLabel81.setBounds(44, 170, 20, 23);
 
         Anamnesis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Anamnesis2.setName("Anamnesis2"); // NOI18N
@@ -846,19 +810,19 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(Anamnesis2);
-        Anamnesis2.setBounds(319, 120, 80, 23);
+        Anamnesis2.setBounds(319, 170, 80, 23);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel82.setText("Riwayat Merokok ?");
+        jLabel82.setText("Gula Berlebihan ?");
         jLabel82.setName("jLabel82"); // NOI18N
         FormInput.add(jLabel82);
-        jLabel82.setBounds(62, 150, 250, 23);
+        jLabel82.setBounds(62, 200, 250, 23);
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel83.setText("3.");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
-        jLabel83.setBounds(44, 150, 20, 23);
+        jLabel83.setBounds(44, 200, 20, 23);
 
         Anamnesis3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Anamnesis3.setName("Anamnesis3"); // NOI18N
@@ -868,19 +832,19 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(Anamnesis3);
-        Anamnesis3.setBounds(319, 150, 80, 23);
+        Anamnesis3.setBounds(319, 200, 80, 23);
 
         jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel91.setText("4.");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
-        jLabel91.setBounds(44, 180, 20, 23);
+        jLabel91.setBounds(44, 230, 20, 23);
 
         jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel92.setText("Riwayat Minum Alkohol / Merokok Di Keluarga ?");
+        jLabel92.setText("Garam Berlebihan ?");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(62, 180, 250, 23);
+        jLabel92.setBounds(62, 230, 250, 23);
 
         Anamnesis4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Anamnesis4.setName("Anamnesis4"); // NOI18N
@@ -890,19 +854,19 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(Anamnesis4);
-        Anamnesis4.setBounds(319, 180, 80, 23);
+        Anamnesis4.setBounds(319, 230, 80, 23);
 
         jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel93.setText("5.");
         jLabel93.setName("jLabel93"); // NOI18N
         FormInput.add(jLabel93);
-        jLabel93.setBounds(500, 90, 20, 23);
+        jLabel93.setBounds(500, 140, 20, 23);
 
         jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel94.setText("Kebiasaan Makan Asin ?");
+        jLabel94.setText("Lemak Berlebihan ?");
         jLabel94.setName("jLabel94"); // NOI18N
         FormInput.add(jLabel94);
-        jLabel94.setBounds(518, 90, 180, 23);
+        jLabel94.setBounds(518, 140, 180, 23);
 
         Anamnesis5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Anamnesis5.setName("Anamnesis5"); // NOI18N
@@ -912,13 +876,13 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(Anamnesis5);
-        Anamnesis5.setBounds(709, 90, 80, 23);
+        Anamnesis5.setBounds(709, 140, 80, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel95.setText("Aktifitas Fisik Setiap Hari ?");
+        jLabel95.setText("Kurang Makan Buah Dan Sayur ?");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
-        jLabel95.setBounds(518, 120, 180, 23);
+        jLabel95.setBounds(518, 170, 180, 23);
 
         Anamnesis6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Anamnesis6.setName("Anamnesis6"); // NOI18N
@@ -928,82 +892,31 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(Anamnesis6);
-        Anamnesis6.setBounds(709, 120, 80, 23);
+        Anamnesis6.setBounds(709, 170, 80, 23);
 
         jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel96.setText("6.");
         jLabel96.setName("jLabel96"); // NOI18N
         FormInput.add(jLabel96);
-        jLabel96.setBounds(500, 120, 20, 23);
+        jLabel96.setBounds(500, 170, 20, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 210, 807, 1);
+        jSeparator3.setBounds(0, 260, 807, 1);
 
         jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel106.setText("II. PEMERIKSAAN FISIK / KLASIFIKASI HIPERTENSI MENURUT WHO-ISHWG");
+        jLabel106.setText("III. PEMERIKSAAN IVA & INTERPRETASI");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
-        jLabel106.setBounds(10, 210, 490, 23);
+        jLabel106.setBounds(10, 260, 490, 23);
 
-        jLabel9.setText(":");
-        jLabel9.setName("jLabel9"); // NOI18N
-        FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 230, 100, 23);
-
-        Sistole.setFocusTraversalPolicyProvider(true);
-        Sistole.setName("Sistole"); // NOI18N
-        Sistole.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SistoleKeyPressed(evt);
-            }
-        });
-        FormInput.add(Sistole);
-        Sistole.setBounds(104, 230, 55, 23);
-
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel26.setText("mmHg");
-        jLabel26.setName("jLabel26"); // NOI18N
-        FormInput.add(jLabel26);
-        jLabel26.setBounds(366, 230, 40, 23);
-
-        jLabel22.setText("Klasifikasi Hipertensi :");
-        jLabel22.setName("jLabel22"); // NOI18N
-        FormInput.add(jLabel22);
-        jLabel22.setBounds(425, 230, 130, 23);
-
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("TD Sistole");
-        jLabel14.setName("jLabel14"); // NOI18N
-        FormInput.add(jLabel14);
-        jLabel14.setBounds(44, 230, 140, 23);
-
-        jLabel23.setText("TD Diastole :");
-        jLabel23.setName("jLabel23"); // NOI18N
-        FormInput.add(jLabel23);
-        jLabel23.setBounds(215, 230, 90, 23);
-
-        jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator4.setName("jSeparator4"); // NOI18N
-        FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 260, 807, 1);
-
-        jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel107.setText("III. INTERPRETASI");
-        jLabel107.setName("jLabel107"); // NOI18N
-        FormInput.add(jLabel107);
-        jLabel107.setBounds(10, 260, 200, 23);
-
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel24.setText("Hasil Skrining");
+        jLabel24.setText("Hasil Skrining :");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(44, 280, 100, 23);
+        jLabel24.setBounds(335, 280, 100, 23);
 
         jLabel27.setText(":");
         jLabel27.setName("jLabel27"); // NOI18N
@@ -1018,12 +931,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(121, 280, 240, 23);
-
-        jLabel108.setText("Keterangan :");
-        jLabel108.setName("jLabel108"); // NOI18N
-        FormInput.add(jLabel108);
-        jLabel108.setBounds(375, 280, 100, 23);
+        HasilSkrining.setBounds(439, 280, 350, 23);
 
         Keterangan.setFocusTraversalPolicyProvider(true);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -1033,37 +941,25 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(479, 280, 310, 23);
+        Keterangan.setBounds(111, 310, 678, 23);
 
-        Klasifikasi.setEditable(false);
-        Klasifikasi.setFocusTraversalPolicyProvider(true);
-        Klasifikasi.setName("Klasifikasi"); // NOI18N
-        Klasifikasi.setOpaque(true);
-        FormInput.add(Klasifikasi);
-        Klasifikasi.setBounds(559, 230, 230, 23);
-
-        Diastole.setFocusTraversalPolicyProvider(true);
-        Diastole.setName("Diastole"); // NOI18N
-        Diastole.setOpaque(true);
-        Diastole.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiastoleKeyPressed(evt);
-            }
-        });
-        FormInput.add(Diastole);
-        Diastole.setBounds(309, 230, 55, 23);
+        jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel108.setText("Keterangan");
+        jLabel108.setName("jLabel108"); // NOI18N
+        FormInput.add(jLabel108);
+        jLabel108.setBounds(44, 310, 100, 23);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("Istirahat Cukup ?");
+        jLabel109.setText("Konsumsi Alkohol ?");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(518, 150, 180, 23);
+        jLabel109.setBounds(518, 200, 180, 23);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel110.setText("7.");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
-        jLabel110.setBounds(500, 150, 20, 23);
+        jLabel110.setBounds(500, 200, 20, 23);
 
         Anamnesis7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         Anamnesis7.setName("Anamnesis7"); // NOI18N
@@ -1073,40 +969,82 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             }
         });
         FormInput.add(Anamnesis7);
-        Anamnesis7.setBounds(709, 150, 80, 23);
-
-        jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel111.setText("Kurang Makan Buah Dan Sayur ?");
-        jLabel111.setName("jLabel111"); // NOI18N
-        FormInput.add(jLabel111);
-        jLabel111.setBounds(518, 180, 180, 23);
-
-        jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel112.setText("8.");
-        jLabel112.setName("jLabel112"); // NOI18N
-        FormInput.add(jLabel112);
-        jLabel112.setBounds(500, 180, 20, 23);
-
-        Anamnesis8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Anamnesis8.setName("Anamnesis8"); // NOI18N
-        Anamnesis8.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Anamnesis8KeyPressed(evt);
-            }
-        });
-        FormInput.add(Anamnesis8);
-        Anamnesis8.setBounds(709, 180, 80, 23);
-
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel28.setText("mmHg");
-        jLabel28.setName("jLabel28"); // NOI18N
-        FormInput.add(jLabel28);
-        jLabel28.setBounds(161, 230, 40, 23);
+        Anamnesis7.setBounds(709, 200, 80, 23);
 
         jLabel10.setText(":");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(0, 280, 117, 23);
+        jLabel10.setBounds(0, 310, 107, 23);
+
+        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        FormInput.add(jSeparator2);
+        jSeparator2.setBounds(0, 120, 807, 1);
+
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel101.setText("II. FAKTOR RISIKO");
+        jLabel101.setName("jLabel101"); // NOI18N
+        FormInput.add(jLabel101);
+        jLabel101.setBounds(10, 120, 490, 23);
+
+        Anamnesis9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kanker", "Benjolan Abnormal Pada Payudara", "-" }));
+        Anamnesis9.setName("Anamnesis9"); // NOI18N
+        Anamnesis9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Anamnesis9KeyPressed(evt);
+            }
+        });
+        FormInput.add(Anamnesis9);
+        Anamnesis9.setBounds(97, 90, 240, 23);
+
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel84.setText("Keluarga");
+        jLabel84.setName("jLabel84"); // NOI18N
+        FormInput.add(jLabel84);
+        jLabel84.setBounds(44, 90, 170, 23);
+
+        jLabel11.setText(":");
+        jLabel11.setName("jLabel11"); // NOI18N
+        FormInput.add(jLabel11);
+        jLabel11.setBounds(0, 90, 94, 23);
+
+        Anamnesis10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kanker", "Benjolan Abnormal Pada Payudara", "-" }));
+        Anamnesis10.setName("Anamnesis10"); // NOI18N
+        Anamnesis10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Anamnesis10KeyPressed(evt);
+            }
+        });
+        FormInput.add(Anamnesis10);
+        Anamnesis10.setBounds(550, 90, 240, 23);
+
+        jLabel85.setText("Diri Sendiri :");
+        jLabel85.setName("jLabel85"); // NOI18N
+        FormInput.add(jLabel85);
+        jLabel85.setBounds(406, 90, 140, 23);
+
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel86.setText("Hasil Pemeriksaan IVA");
+        jLabel86.setName("jLabel86"); // NOI18N
+        FormInput.add(jLabel86);
+        jLabel86.setBounds(44, 280, 170, 23);
+
+        jLabel12.setText(":");
+        jLabel12.setName("jLabel12"); // NOI18N
+        FormInput.add(jLabel12);
+        jLabel12.setBounds(0, 280, 161, 23);
+
+        Anamnesis11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Positif", "Negatif", "Curiga Kanker" }));
+        Anamnesis11.setName("Anamnesis11"); // NOI18N
+        Anamnesis11.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Anamnesis11KeyPressed(evt);
+            }
+        });
+        FormInput.add(Anamnesis11);
+        Anamnesis11.setBounds(165, 280, 130, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1136,10 +1074,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"pasien");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
-        }else if(Diastole.getText().trim().equals("")){
-            Valid.textKosong(Diastole,"Diastole");
-        }else if(Sistole.getText().trim().equals("")){
-            Valid.textKosong(Sistole,"Sistole");
         }else if(HasilSkrining.getText().trim().equals("")){
             Valid.textKosong(HasilSkrining,"Hasil Skrining");
         }else if(Keterangan.getText().trim().equals("")){
@@ -1611,29 +1545,29 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         Valid.pindah(evt,Anamnesis5,Anamnesis7);
     }//GEN-LAST:event_Anamnesis6KeyPressed
 
-    private void SistoleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistoleKeyPressed
-        Valid.pindah(evt,Anamnesis8,Diastole);
-    }//GEN-LAST:event_SistoleKeyPressed
-
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
         Valid.pindah(evt,HasilSkrining,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
-        Valid.pindah(evt,Diastole,Keterangan);
+        //Valid.pindah(evt,Diastole,Keterangan);
     }//GEN-LAST:event_HasilSkriningKeyPressed
 
     private void Anamnesis7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis7KeyPressed
-        Valid.pindah(evt,Anamnesis6,Anamnesis8);
+        //Valid.pindah(evt,Anamnesis6,Anamnesis8);
     }//GEN-LAST:event_Anamnesis7KeyPressed
 
-    private void Anamnesis8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis8KeyPressed
-        Valid.pindah(evt,Anamnesis7,HasilSkrining);
-    }//GEN-LAST:event_Anamnesis8KeyPressed
+    private void Anamnesis9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis9KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Anamnesis9KeyPressed
 
-    private void DiastoleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiastoleKeyPressed
-        Valid.pindah(evt,Sistole,HasilSkrining);
-    }//GEN-LAST:event_DiastoleKeyPressed
+    private void Anamnesis10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis10KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Anamnesis10KeyPressed
+
+    private void Anamnesis11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Anamnesis11KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Anamnesis11KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1653,13 +1587,15 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox Anamnesis1;
+    private widget.ComboBox Anamnesis10;
+    private widget.ComboBox Anamnesis11;
     private widget.ComboBox Anamnesis2;
     private widget.ComboBox Anamnesis3;
     private widget.ComboBox Anamnesis4;
     private widget.ComboBox Anamnesis5;
     private widget.ComboBox Anamnesis6;
     private widget.ComboBox Anamnesis7;
-    private widget.ComboBox Anamnesis8;
+    private widget.ComboBox Anamnesis9;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1673,14 +1609,12 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
-    private widget.TextBox Diastole;
     private widget.PanelBiasa FormInput;
     private widget.TextBox HasilSkrining;
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
     private widget.TextBox KdPetugas;
     private widget.TextBox Keterangan;
-    private widget.TextBox Klasifikasi;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
@@ -1688,7 +1622,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
-    private widget.TextBox Sistole;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1700,24 +1633,19 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel100;
+    private widget.Label jLabel101;
     private widget.Label jLabel106;
-    private widget.Label jLabel107;
     private widget.Label jLabel108;
     private widget.Label jLabel109;
+    private widget.Label jLabel11;
     private widget.Label jLabel110;
-    private widget.Label jLabel111;
-    private widget.Label jLabel112;
-    private widget.Label jLabel14;
+    private widget.Label jLabel12;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
-    private widget.Label jLabel22;
-    private widget.Label jLabel23;
     private widget.Label jLabel24;
-    private widget.Label jLabel26;
     private widget.Label jLabel27;
-    private widget.Label jLabel28;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
@@ -1728,7 +1656,9 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private widget.Label jLabel81;
     private widget.Label jLabel82;
     private widget.Label jLabel83;
-    private widget.Label jLabel9;
+    private widget.Label jLabel84;
+    private widget.Label jLabel85;
+    private widget.Label jLabel86;
     private widget.Label jLabel91;
     private widget.Label jLabel92;
     private widget.Label jLabel93;
@@ -1738,8 +1668,8 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -1818,10 +1748,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         Anamnesis5.setSelectedIndex(0);
         Anamnesis6.setSelectedIndex(0);
         Anamnesis7.setSelectedIndex(0);
-        Anamnesis8.setSelectedIndex(0);
-        Sistole.setText("");
-        Diastole.setText("");
-        Klasifikasi.setText("");
         HasilSkrining.setText("");
         Keterangan.setText("");
         Tanggal.setDate(new Date());
@@ -1842,10 +1768,6 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             Anamnesis5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             Anamnesis6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             Anamnesis7.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Anamnesis8.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Sistole.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Diastole.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Klasifikasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
             Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
@@ -1899,9 +1821,9 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>508){
+            if(internalFrame1.getHeight()>538){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,336));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,366));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -2000,7 +1922,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_hipertensi","no_rawat=?","no_rawat=?,tanggal=?,anamnesis1=?,anamnesis2=?,anamnesis3=?,anamnesis4=?,anamnesis5=?,anamnesis6=?,"+
+        /*if(Sequel.mengedittf("skrining_hipertensi","no_rawat=?","no_rawat=?,tanggal=?,anamnesis1=?,anamnesis2=?,anamnesis3=?,anamnesis4=?,anamnesis5=?,anamnesis6=?,"+
                 "anamnesis7=?,anamnesis8=?,"+"sistole=?,diastole=?,klasifikasi_hipertensi=?,hasil_skrining=?,keterangan=?,nip=?",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(),Anamnesis4.getSelectedItem().toString(),
@@ -2030,7 +1952,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),19);
                tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),20);
                emptTeks();
-        }
+        }*/
     }
 
     private void hapus() {
@@ -2046,7 +1968,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     }
     
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_hipertensi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
+        /*if(Sequel.menyimpantf("skrining_hipertensi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             Anamnesis1.getSelectedItem().toString(),Anamnesis2.getSelectedItem().toString(),Anamnesis3.getSelectedItem().toString(),Anamnesis4.getSelectedItem().toString(),
             Anamnesis5.getSelectedItem().toString(),Anamnesis6.getSelectedItem().toString(),Anamnesis7.getSelectedItem().toString(),Anamnesis8.getSelectedItem().toString(),
@@ -2059,59 +1981,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        }
+        }*/
     }
     
-    private void isHipertensi(){
-        if((!Sistole.getText().equals(""))&&(!Diastole.getText().equals(""))){
-            try {
-                if((Valid.SetAngka(Sistole.getText())<120)&&(Valid.SetAngka(Diastole.getText())<80)){
-                    Klasifikasi.setText("Optimal Normal");
-                    Klasifikasi.setBackground(Color.GREEN);
-                    Klasifikasi.setForeground(Color.YELLOW);
-                }else if(((Valid.SetAngka(Sistole.getText())>=120)&&(Valid.SetAngka(Sistole.getText())<130))&&((Valid.SetAngka(Diastole.getText())>=80)&&(Valid.SetAngka(Diastole.getText())<85))){
-                    Klasifikasi.setText("Normal");
-                    Klasifikasi.setBackground(Color.GREEN);
-                    Klasifikasi.setForeground(Color.YELLOW);
-                }else if(((Valid.SetAngka(Sistole.getText())>=130)&&(Valid.SetAngka(Sistole.getText())<=139))&&((Valid.SetAngka(Diastole.getText())>=85)&&(Valid.SetAngka(Diastole.getText())<=89))){
-                    Klasifikasi.setText("Tinggi");
-                    Klasifikasi.setBackground(Color.YELLOW);
-                    Klasifikasi.setForeground(Color.GREEN);
-                }else if(((Valid.SetAngka(Sistole.getText())>=140)&&(Valid.SetAngka(Sistole.getText())<=149))&&((Valid.SetAngka(Diastole.getText())>=90)&&(Valid.SetAngka(Diastole.getText())<=94))){
-                    Klasifikasi.setText("Sub-group : Perbatasan");
-                    Klasifikasi.setBackground(Color.ORANGE);
-                    Klasifikasi.setForeground(Color.WHITE);
-                }else if(((Valid.SetAngka(Sistole.getText())>=140)&&(Valid.SetAngka(Sistole.getText())<=159))&&((Valid.SetAngka(Diastole.getText())>=90)&&(Valid.SetAngka(Diastole.getText())<=99))){
-                    Klasifikasi.setText("Tingkat 1 (Hipertensi Ringan)");
-                    Klasifikasi.setBackground(Color.ORANGE);
-                    Klasifikasi.setForeground(Color.WHITE);
-                }else if(((Valid.SetAngka(Sistole.getText())>=160)&&(Valid.SetAngka(Sistole.getText())<=179))&&((Valid.SetAngka(Diastole.getText())>=100)&&(Valid.SetAngka(Diastole.getText())<=109))){
-                    Klasifikasi.setText("Tingkat 2 (Hipertensi Sedang)");
-                    Klasifikasi.setBackground(Color.RED);
-                    Klasifikasi.setForeground(Color.WHITE);
-                }else if((Valid.SetAngka(Sistole.getText())>=180)&&(Valid.SetAngka(Diastole.getText())>=110)){
-                    Klasifikasi.setText("Tingkat 3 (Hipertensi Berat)");
-                    Klasifikasi.setBackground(Color.BLUE);
-                    Klasifikasi.setForeground(Color.WHITE);
-                }else if(((Valid.SetAngka(Sistole.getText())>=140)&&(Valid.SetAngka(Sistole.getText())<=149))&&(Valid.SetAngka(Diastole.getText())<90)){
-                    Klasifikasi.setText("Hipertensi Sistol Tensolasi");
-                    Klasifikasi.setBackground(Color.ORANGE);
-                    Klasifikasi.setForeground(Color.WHITE);
-                }else{
-                    Klasifikasi.setBackground(Color.WHITE);
-                    Klasifikasi.setForeground(new Color(50,50,50));
-                    Klasifikasi.setText("Tidak Diketahui");
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-                Klasifikasi.setBackground(Color.WHITE);
-                Klasifikasi.setForeground(new Color(50,50,50));
-                Klasifikasi.setText("");
-            }
-        }else{
-            Klasifikasi.setBackground(Color.WHITE);
-            Klasifikasi.setForeground(new Color(50,50,50));
-            Klasifikasi.setText("");
-        } 
-    }
 }
