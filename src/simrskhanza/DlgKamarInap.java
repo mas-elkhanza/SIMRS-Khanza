@@ -2315,7 +2315,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnFollowUpDBD.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnFollowUpDBD.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnFollowUpDBD.setName("MnFollowUpDBD"); // NOI18N
-        MnFollowUpDBD.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnFollowUpDBD.setPreferredSize(new java.awt.Dimension(200, 26));
         MnFollowUpDBD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnFollowUpDBDActionPerformed(evt);
@@ -2330,7 +2330,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanKeperawatan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCatatanKeperawatan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCatatanKeperawatan.setName("MnCatatanKeperawatan"); // NOI18N
-        MnCatatanKeperawatan.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnCatatanKeperawatan.setPreferredSize(new java.awt.Dimension(200, 26));
         MnCatatanKeperawatan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCatatanKeperawatanActionPerformed(evt);
@@ -2345,7 +2345,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanCekGDS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCatatanCekGDS.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCatatanCekGDS.setName("MnCatatanCekGDS"); // NOI18N
-        MnCatatanCekGDS.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnCatatanCekGDS.setPreferredSize(new java.awt.Dimension(200, 26));
         MnCatatanCekGDS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCatatanCekGDSActionPerformed(evt);
@@ -2360,7 +2360,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnMonitoringReaksiTranfusi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnMonitoringReaksiTranfusi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnMonitoringReaksiTranfusi.setName("MnMonitoringReaksiTranfusi"); // NOI18N
-        MnMonitoringReaksiTranfusi.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnMonitoringReaksiTranfusi.setPreferredSize(new java.awt.Dimension(200, 26));
         MnMonitoringReaksiTranfusi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnMonitoringReaksiTranfusiActionPerformed(evt);
@@ -2390,7 +2390,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnDokumentasiTindakanESWL.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnDokumentasiTindakanESWL.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnDokumentasiTindakanESWL.setName("MnDokumentasiTindakanESWL"); // NOI18N
-        MnDokumentasiTindakanESWL.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnDokumentasiTindakanESWL.setPreferredSize(new java.awt.Dimension(200, 26));
         MnDokumentasiTindakanESWL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnDokumentasiTindakanESWLActionPerformed(evt);
@@ -2405,7 +2405,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnPenilaianUlangNyeri.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPenilaianUlangNyeri.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPenilaianUlangNyeri.setName("MnPenilaianUlangNyeri"); // NOI18N
-        MnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(200, 26));
         MnPenilaianUlangNyeri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnPenilaianUlangNyeriActionPerformed(evt);
@@ -2420,7 +2420,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanPersalinan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCatatanPersalinan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCatatanPersalinan.setName("MnCatatanPersalinan"); // NOI18N
-        MnCatatanPersalinan.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnCatatanPersalinan.setPreferredSize(new java.awt.Dimension(200, 26));
         MnCatatanPersalinan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnCatatanPersalinanActionPerformed(evt);
@@ -18880,7 +18880,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanKeseimbanganCairan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCatatanKeseimbanganCairan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCatatanKeseimbanganCairan.setName("MnCatatanKeseimbanganCairan");
-        MnCatatanKeseimbanganCairan.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnCatatanKeseimbanganCairan.setPreferredSize(new java.awt.Dimension(200, 26));
         MnCatatanKeseimbanganCairan.addActionListener(this::MnCatatanKeseimbanganCairanActionPerformed);
         
         MnCatatanObservasiCHBP = new javax.swing.JMenuItem();
@@ -18960,11 +18960,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanCairanHemodialisa.setFont(new java.awt.Font("Tahoma", 0, 11));
         MnCatatanCairanHemodialisa.setForeground(new java.awt.Color(50, 50, 50));
         MnCatatanCairanHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
-        MnCatatanCairanHemodialisa.setText("Cairan Hemodialisa");
+        MnCatatanCairanHemodialisa.setText("Catatan Cairan Hemodialisa");
         MnCatatanCairanHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCatatanCairanHemodialisa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCatatanCairanHemodialisa.setName("MnCatatanCairanHemodialisa");
-        MnCatatanCairanHemodialisa.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnCatatanCairanHemodialisa.setPreferredSize(new java.awt.Dimension(200, 26));
         MnCatatanCairanHemodialisa.addActionListener(this::MnCatatanCairanHemodialisaActionPerformed);
         
         MnChecklistPemberianFibrinolitik = new javax.swing.JMenuItem();
@@ -18976,7 +18976,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnChecklistPemberianFibrinolitik.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnChecklistPemberianFibrinolitik.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnChecklistPemberianFibrinolitik.setName("MnChecklistPemberianFibrinolitik");
-        MnChecklistPemberianFibrinolitik.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnChecklistPemberianFibrinolitik.setPreferredSize(new java.awt.Dimension(230, 26));
         MnChecklistPemberianFibrinolitik.addActionListener(this::MnChecklistPemberianFibrinolitikActionPerformed);
         
         MnPermintaanKonsultasiMedik = new javax.swing.JMenuItem();
@@ -19048,7 +19048,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnLaporanTindakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnLaporanTindakan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnLaporanTindakan.setName("MnLaporanTindakan");
-        MnLaporanTindakan.setPreferredSize(new java.awt.Dimension(280, 26));
+        MnLaporanTindakan.setPreferredSize(new java.awt.Dimension(200, 26));
         MnLaporanTindakan.addActionListener(this::MnLaporanTindakanActionPerformed);
         
         MnPelaksanaanInformasiEdukasi = new javax.swing.JMenuItem();
@@ -19072,7 +19072,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnHasilUSG.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHasilUSG.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHasilUSG.setName("MnHasilUSG"); 
-        MnHasilUSG.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnHasilUSG.setPreferredSize(new java.awt.Dimension(200, 26));
         
         MnHasilEndoskopi = new javax.swing.JMenu();
         MnHasilEndoskopi.setBackground(new java.awt.Color(255, 255, 254));
@@ -19083,7 +19083,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnHasilEndoskopi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnHasilEndoskopi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnHasilEndoskopi.setName("MnHasilEndoskopi"); 
-        MnHasilEndoskopi.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnHasilEndoskopi.setPreferredSize(new java.awt.Dimension(200, 26));
         
         MnCatatanObservasi = new javax.swing.JMenu();
         MnCatatanObservasi.setBackground(new java.awt.Color(255, 255, 254));
@@ -19094,7 +19094,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
         MnCatatanObservasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnCatatanObservasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnCatatanObservasi.setName("MnCatatanObservasi"); 
-        MnCatatanObservasi.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnCatatanObservasi.setPreferredSize(new java.awt.Dimension(200, 26));
         
         MnEdukasi = new javax.swing.JMenu();
         MnEdukasi.setBackground(new java.awt.Color(255, 255, 254));
