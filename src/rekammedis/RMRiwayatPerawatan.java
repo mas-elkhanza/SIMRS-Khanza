@@ -402,6 +402,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningKesehatanPenglihatan = new widget.CekBox();
         chkSkriningRisikoKankerPayudara = new widget.CekBox();
         chkSkriningRisikoKankerParu = new widget.CekBox();
+        chkSkriningRisikoKankerServiks = new widget.CekBox();
         chkSkriningGigiMulutRemaja = new widget.CekBox();
         chkSkriningGigiMulutBalita = new widget.CekBox();
         chkSkriningGigiMulutDewasa = new widget.CekBox();
@@ -588,7 +589,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-03-2025 08:46:43" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-04-2025 05:25:29" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -897,7 +898,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4005));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4030));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1953,6 +1954,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningRisikoKankerParu.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSkriningRisikoKankerParu);
 
+        chkSkriningRisikoKankerServiks.setSelected(true);
+        chkSkriningRisikoKankerServiks.setText("Skrining Risiko Kanker Serviks");
+        chkSkriningRisikoKankerServiks.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkSkriningRisikoKankerServiks.setName("chkSkriningRisikoKankerServiks"); // NOI18N
+        chkSkriningRisikoKankerServiks.setOpaque(false);
+        chkSkriningRisikoKankerServiks.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkSkriningRisikoKankerServiks);
+
         chkSkriningGigiMulutRemaja.setSelected(true);
         chkSkriningGigiMulutRemaja.setText("Skrining Kesehatan Gigi & Mulut Usia Remaja");
         chkSkriningGigiMulutRemaja.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2908,6 +2917,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanObservasiHemodialisa.setSelected(true);
             chkSkriningGigiMulutDewasa.setSelected(true);
             chkCatatanCairanHemodialisa.setSelected(true);
+            chkSkriningRisikoKankerServiks.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3082,6 +3092,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkCatatanObservasiHemodialisa.setSelected(false);
             chkSkriningGigiMulutDewasa.setSelected(false);
             chkCatatanCairanHemodialisa.setSelected(false);
+            chkSkriningRisikoKankerServiks.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3845,6 +3856,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkSkriningPUMA;
     private widget.CekBox chkSkriningRisikoKankerParu;
     private widget.CekBox chkSkriningRisikoKankerPayudara;
+    private widget.CekBox chkSkriningRisikoKankerServiks;
     private widget.CekBox chkSkriningTBC;
     private widget.CekBox chkSkriningThalasemia;
     private widget.CekBox chkTambahanBiaya;
@@ -4497,6 +4509,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanSkriningRisikoKankerPayudara(rs.getString("no_rawat"));
                     //menampilkan skrining risiko kanker paru
                     menampilkanSkriningRisikoKankerParu(rs.getString("no_rawat"));
+                    //menampilkan skrining risiko kanker serviks
+                    menampilkanSkriningRisikoKankerServiks(rs.getString("no_rawat"));
                     //menampilkan skrining kesehatan gigi mulut
                     menampilkanSkriningKesehatanGigiMulutRemaja(rs.getString("no_rawat"));
                     //menampilkan skrining kesehatan gigi balita
@@ -4556,9 +4570,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top' width='51%' bgcolor='#FFFAF8'>Catatan</td>"+
                                          "</tr>"
                                 );
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -4568,7 +4581,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top'>"+rs2.getString("catatan").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                          "</tr>");                                        
                                     w++;
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                       "</table>"+
                                     "</td>"+
@@ -4619,9 +4632,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -4633,7 +4645,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("biaya_rawat");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -4665,9 +4677,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -4679,7 +4690,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("biaya_rawat");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -4713,9 +4724,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -4728,7 +4738,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("biaya_rawat");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -4762,9 +4772,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='20%' bgcolor='#FFFAF8'>Dokter</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -4776,7 +4785,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("biaya_rawat");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -4810,9 +4819,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='20%' bgcolor='#FFFAF8'>Paramedis</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -4824,7 +4832,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("biaya_rawat");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }      
@@ -4859,9 +4867,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='17%' bgcolor='#FFFAF8'>Paramedis</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -4874,7 +4881,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("biaya_rawat");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -4909,9 +4916,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Status</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -4924,7 +4930,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("ttl_biaya");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -4971,9 +4977,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Anastesi</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5056,7 +5061,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("total");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5076,9 +5081,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 htmlContent.append(  
                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                     "<tr><td valign='top' colspan='3'>Laporan Operasi :</td></tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' width='4%' align='center'>"+w+"</td>"+
@@ -5116,7 +5120,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top' width='75%'>:&nbsp;"+rs2.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                          "</tr>"); 
                                     w++;
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5160,9 +5164,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5175,7 +5178,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("biaya");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5200,9 +5203,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
                                       "<td valign='top' width='81%' bgcolor='#FFFAF8'>Hasil Pemeriksaan</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5210,7 +5212,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top'>"+rs2.getString("hasil").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                          "</tr>"); 
                                     w++;
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5235,9 +5237,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='15%' bgcolor='#FFFAF8'>Tanggal</td>"+
                                       "<td valign='top' width='81%' bgcolor='#FFFAF8'>Gambar Radiologi</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr height='"+internalFrame2.getHeight()+"px'>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5245,7 +5246,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top' align='center'><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs2.getString("lokasi_gambar")+"'><img alt='Gambar Radiologi' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/radiologi/"+rs2.getString("lokasi_gambar")+"' width='99%'/></a></td>"+
                                          "</tr>"); 
                                     w++;
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5466,9 +5467,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='17%' bgcolor='#FFFAF8'>Petugas</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5538,7 +5538,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         }
                                     }
                                     w++;
-                                }
+                                }while(rs2.next());
 
                                 htmlContent.append(
                                   "</table>");
@@ -5574,9 +5574,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='16%' bgcolor='#FFFAF8'>Aturan Pakai</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5589,7 +5588,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("total");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5618,9 +5617,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5631,7 +5629,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("total");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5664,9 +5662,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5678,7 +5675,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("total");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5711,9 +5708,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Jumlah</td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5725,7 +5721,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("total");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5753,9 +5749,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='1%' bgcolor='#FFFAF8'></td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5765,7 +5760,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("besar_biaya");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5793,9 +5788,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                       "<td valign='top' width='1%' bgcolor='#FFFAF8'></td>"+
                                       "<td valign='top' width='10%' bgcolor='#FFFAF8'>Biaya</td>"+
                                     "</tr>");
-                                rs2.beforeFirst();
                                 w=1;
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+w+"</td>"+
@@ -5805,7 +5799,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "</tr>"); 
                                     w++;
                                     biayaperawatan=biayaperawatan+rs2.getDouble("besar_pengurangan");
-                                }
+                                }while(rs2.next());
                                 htmlContent.append(
                                   "</table>");
                             }                                
@@ -5852,8 +5846,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top' width='20%' bgcolor='#FFFAF8'>Kondisi Pulang</td>"+
                                          "</tr>"
                                 );
-                                rs2.beforeFirst();
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top'>"+rs.getString("status_lanjut")+"</td>"+
@@ -5909,9 +5902,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "<tr>"+
                                             "<td valign='top' colspan='4'>Obat-obatan waktu pulang/nasihat :<br>"+rs2.getString("obat_pulang").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                          "</tr>"
-                                    );                                        
-                                    w++;
-                                }
+                                    );  
+                                }while(rs2.next());
                                 htmlContent.append(
                                       "</table>"+
                                     "</td>"+
@@ -5953,8 +5945,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top' width='13%' bgcolor='#FFFAF8'>Tgl.Kontrol</td>"+
                                          "</tr>"
                                 );
-                                rs2.beforeFirst();
-                                while(rs2.next()){
+                                do{
                                     htmlContent.append(
                                          "<tr>"+
                                             "<td valign='top' align='center'>"+rs.getString("status_lanjut")+"</td>"+
@@ -6040,9 +6031,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "<tr>"+
                                             "<td valign='top' colspan='7'>Obat-obatan Waktu Pulang :<br>"+rs2.getString("obat_pulang").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                          "</tr>"
-                                    );                                        
-                                    w++;
-                                }
+                                    );
+                                }while(rs2.next());
                                 htmlContent.append(
                                       "</table>"+
                                     "</td>"+
@@ -6362,9 +6352,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Instruksi</td>"+
                                         "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Evaluasi</td>"+
                                     "</tr>");
-                            rs2.beforeFirst();
-                            while(rs2.next()){
-                                 htmlContent.append(                             
+                            do{
+                                htmlContent.append(                             
                                     "<tr class='isi'>"+
                                         "<td align='center'>"+rs2.getString("tgl_perawatan")+"<br>"+rs2.getString("jam_rawat")+"</td>"+
                                         "<td align='center'>"+rs2.getString("nip")+"<br>"+rs2.getString("nama")+"</td>"+
@@ -6388,7 +6377,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td align='left'>"+rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                     "</tr>"
                                  );
-                            } 
+                            }while(rs2.next());
                         }       
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -6422,9 +6411,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Instruksi</td>"+
                                         "<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Evaluasi</td>"+
                                     "</tr>");
-                            rs2.beforeFirst();
-                            while(rs2.next()){
-                                 htmlContent.append(                             
+                            do{
+                                htmlContent.append(                             
                                     "<tr class='isi'>"+
                                         "<td align='center'>"+rs2.getString("tgl_perawatan")+"<br>"+rs2.getString("jam_rawat")+"</td>"+
                                         "<td align='center'>"+rs2.getString("nip")+"<br>"+rs2.getString("nama")+"</td>"+
@@ -6446,8 +6434,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td align='left'>"+rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                         "<td align='left'>"+rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")+"</td>"+
                                     "</tr>"
-                                 ); 
-                            } 
+                                 );
+                            }while(rs2.next());
                         }       
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -7520,8 +7508,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -7738,8 +7725,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );  
-                        }
+                            );
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -7783,8 +7770,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -8014,8 +8000,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );  
-                        }
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -8063,8 +8049,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -8366,8 +8351,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );  
-                        }
+                            );
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -8414,8 +8399,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -8633,8 +8617,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );     
-                        }
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -8685,8 +8669,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -9060,7 +9043,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "</td>"+
                                  "</tr>"
                             ); 
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -9117,8 +9100,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -9422,8 +9404,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );   
-                        }
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -9494,8 +9476,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -9802,8 +9783,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );   
-                        }
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -9846,8 +9827,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -10013,8 +9993,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );   
-                        }
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -10054,8 +10034,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -10170,8 +10149,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>"); 
-                        }
+                                 "</tr>"
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -10214,8 +10194,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -10338,8 +10317,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>"); 
-                        }
+                                 "</tr>"
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -10384,8 +10364,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -10516,8 +10495,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>"); 
-                        }
+                                 "</tr>"
+                            );
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -10560,8 +10540,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -10685,8 +10664,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>"); 
-                        }
+                                 "</tr>"
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -10727,8 +10707,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -10845,8 +10824,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>"); 
-                        }
+                                 "</tr>"
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -10883,8 +10863,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -10926,8 +10905,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>"); 
-                        }
+                                 "</tr>"
+                            ); 
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -10964,12 +10944,11 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                  "<tr align='center'><td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='51%' bgcolor='#FFFAF8'>Nama Penyakit</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append("<tr><td valign='top' align='center'>"+w+"</td><td valign='top'>"+rs2.getString("kd_penyakit")+"</td><td valign='top'>"+rs2.getString("nm_penyakit")+"</td><td valign='top'>"+rs2.getString("status")+"</td></tr>");                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -11001,12 +10980,11 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                  "<tr align='center'><td valign='top' width='4%' bgcolor='#FFFAF8'>No.</td><td valign='top' width='24%' bgcolor='#FFFAF8'>Kode</td><td valign='top' width='51%' bgcolor='#FFFAF8'>Nama Prosedur</td><td valign='top' width='23%' bgcolor='#FFFAF8'>Status</td></tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append("<tr><td valign='top' align='center'>"+w+"</td><td valign='top'>"+rs2.getString("kode")+"</td><td valign='top'>"+rs2.getString("deskripsi_panjang")+"</td><td valign='top'>"+rs2.getString("status")+"</td></tr>");                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -11051,9 +11029,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' width='41%' bgcolor='#FFFAF8'>Nama Penyakit</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
@@ -11081,9 +11058,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "HCV : "+rs2.getString("hcv")+", "+
                                         "Lain-Lain : "+rs2.getString("lain")+
                                     "</td>"+
-                                 "</tr>");                                        
+                                 "</tr>"
+                            );                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -11128,9 +11106,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' width='27%' bgcolor='#FFFAF8' colspan='3'>Profesi/Jabatan/Departemen</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
@@ -11238,7 +11215,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                      "</tr>");
                             }
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -11291,9 +11268,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' width='7%' bgcolor='#FFFAF8'>Feto</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
@@ -11313,7 +11289,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top'>"+rs2.getString("arah")+"</td>"+
                                     "<td valign='top'>"+rs2.getString("ketuban")+"</td>"+
                                     "<td valign='top'>"+rs2.getString("feto")+"</td>"+
-                                 "</tr>"); 
+                                 "</tr>"
+                            ); 
                             if(!rs2.getString("vulva").equals("")){
                                 htmlContent.append(
                                      "<tr>"+
@@ -11321,7 +11298,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td valign='top' align='center'></td>"+
                                         "<td valign='top' colspan='2'>Vulva</td>"+
                                         "<td valign='top' colspan='13'> : "+rs2.getString("vulva")+"</td>"+
-                                     "</tr>");
+                                     "</tr>"
+                                );
                             }
 
                             if(!rs2.getString("portio").equals("")){
@@ -11331,7 +11309,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td valign='top' align='center'></td>"+
                                         "<td valign='top' colspan='2'>Portio</td>"+
                                         "<td valign='top' colspan='13'> : "+rs2.getString("portio")+"</td>"+
-                                     "</tr>");
+                                     "</tr>"
+                                );
                             }
 
                             if(!rs2.getString("pembukaan").equals("")){
@@ -11341,7 +11320,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td valign='top' align='center'></td>"+
                                         "<td valign='top' colspan='2'>Pembukaan</td>"+
                                         "<td valign='top' colspan='13'> : "+rs2.getString("pembukaan")+"</td>"+
-                                     "</tr>");
+                                     "</tr>"
+                                );
                             }
 
                             if(!rs2.getString("penurunan").equals("")){
@@ -11351,7 +11331,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td valign='top' align='center'></td>"+
                                         "<td valign='top' colspan='2'>Penurunan</td>"+
                                         "<td valign='top' colspan='13'> : "+rs2.getString("penurunan")+"</td>"+
-                                     "</tr>");
+                                     "</tr>"
+                                );
                             }
 
                             if(!rs2.getString("denominator").equals("")){
@@ -11361,11 +11342,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                         "<td valign='top' align='center'></td>"+
                                         "<td valign='top' colspan='2'>Denominator</td>"+
                                         "<td valign='top' colspan='13'> : "+rs2.getString("denominator")+"</td>"+
-                                     "</tr>");
+                                     "</tr>"
+                                );
                             }
 
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -11404,9 +11386,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' width='81%' bgcolor='#FFFAF8'>Pemeriksaan</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
@@ -11467,9 +11448,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "</tr>"+ 
                                         "</table>"+
                                     "</td>"+
-                                 "</tr>");                                                                                     
+                                 "</tr>"
+                            );                                                                                     
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -11893,9 +11875,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' bgcolor='#FFFAF8'>Keterangan</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
@@ -11912,7 +11893,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                  "</tr>");                                        
                             w++;
-                        }
+                        }while(rs2.next());
+                        
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -33080,6 +33062,128 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Skrining Kesehatan Gigi & Mulut Usia Dewasa : "+e);
+        }
+    }
+    
+    private void menampilkanSkriningRisikoKankerServiks(String norawat) {
+        try {
+            if(chkSkriningRisikoKankerServiks.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select skrining_risiko_kanker_serviks.nip,petugas.nama,skrining_risiko_kanker_serviks.tanggal,skrining_risiko_kanker_serviks.riwayat_penyakit_keluarga,skrining_risiko_kanker_serviks.riwayat_penyakit_sendiri,skrining_risiko_kanker_serviks.risiko_merokok,skrining_risiko_kanker_serviks.risiko_kurang_fisik,"+
+                            "skrining_risiko_kanker_serviks.risiko_gula_berlebihan,skrining_risiko_kanker_serviks.risiko_garam_berlebihan,skrining_risiko_kanker_serviks.risiko_lemak_berlebihan,skrining_risiko_kanker_serviks.risiko_kurang_buah_sayur,skrining_risiko_kanker_serviks.risiko_alkohol,skrining_risiko_kanker_serviks.hasil_iva,"+
+                            "skrining_risiko_kanker_serviks.hasil_skrining,skrining_risiko_kanker_serviks.keterangan from skrining_risiko_kanker_serviks inner join petugas on skrining_risiko_kanker_serviks.nip=petugas.nip where skrining_risiko_kanker_serviks.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append(
+                          "<tr class='isi'>"+ 
+                            "<td valign='top' width='2%'></td>"+        
+                            "<td valign='top' width='18%'>Skrining Risiko Kanker Serviks</td>"+
+                            "<td valign='top' width='1%' align='center'>:</td>"+
+                            "<td valign='top' width='79%'>"+
+                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        );
+                        do{
+                            htmlContent.append(
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "YANG MELAKUKAN PENGKAJIAN"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='30%' border='0'>Tanggal : "+rs2.getString("tanggal")+"</td>"+
+                                              "<td width='70%' border='0'>Petugas : "+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+             
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. RIWAYAT PENYAKIT"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%'>Keluarga : "+rs2.getString("riwayat_penyakit_keluarga")+"</td>"+
+                                              "<td width='50%'>Diri Sendiri : "+rs2.getString("riwayat_penyakit_sendiri")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "I. ANAMNESIS"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td valign='top' width='4%' bgcolor='#FFFAF8' align='center'>No.</td>"+
+                                              "<td valign='top' width='72%' bgcolor='#FFFAF8' align='center'>Pertanyaan</td>"+
+                                              "<td valign='top' width='24%' bgcolor='#FFFAF8' align='center'>Jawaban</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>1.</td>"+
+                                              "<td>Merokok ?</td>"+
+                                              "<td align='center'>"+rs2.getString("risiko_merokok")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>2.</td>"+
+                                              "<td>Kurang Aktifitas Fisik ?</td>"+
+                                              "<td align='center'>"+rs2.getString("risiko_kurang_fisik")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>3.</td>"+
+                                              "<td>Gula Berlebihan ?</td>"+
+                                              "<td align='center'>"+rs2.getString("risiko_gula_berlebihan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>4.</td>"+
+                                              "<td>Garam Berlebihan ?</td>"+
+                                              "<td align='center'>"+rs2.getString("risiko_garam_berlebihan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>5.</td>"+
+                                              "<td>Lemak Berlebihan ?</td>"+
+                                              "<td align='center'>"+rs2.getString("risiko_lemak_berlebihan")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>6.</td>"+
+                                              "<td>Kurang Makan Buah Dan Sayur ?</td>"+
+                                              "<td align='center'>"+rs2.getString("risiko_kurang_buah_sayur")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td align='center'>7.</td>"+
+                                              "<td>Konsumsi Alkohol ?</td>"+
+                                              "<td align='center'>"+rs2.getString("risiko_alkohol")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"+
+                                 "<tr>"+
+                                    "<td valign='top'>"+
+                                       "III. PEMERIKSAAN IVA & INTERPRETASI"+  
+                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>"+
+                                          "<tr>"+
+                                              "<td width='50%'>Hasil Pemeriksaan IVA : "+rs2.getString("hasil_iva")+"</td>"+
+                                              "<td width='50%'>Hasil Skrining : "+rs2.getString("hasil_skrining")+"</td>"+
+                                          "</tr>"+
+                                          "<tr>"+
+                                              "<td width='100%' colspan='2'>Keterangan : "+rs2.getString("keterangan")+"</td>"+
+                                          "</tr>"+
+                                       "</table>"+
+                                    "</td>"+
+                                 "</tr>"
+                            ); 
+                        }while(rs2.next());
+                        htmlContent.append(
+                              "</table>"+
+                            "</td>"+
+                          "</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Skrining Risiko Kanker Serviks : "+e);
         }
     }
 }

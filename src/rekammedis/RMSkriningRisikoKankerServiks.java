@@ -99,6 +99,30 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(120);
+            }else if(i==8){
+                column.setPreferredWidth(170);
+            }else if(i==9){
+                column.setPreferredWidth(170);
+            }else if(i==10){
+                column.setPreferredWidth(50);
+            }else if(i==11){
+                column.setPreferredWidth(112);
+            }else if(i==12){
+                column.setPreferredWidth(85);
+            }else if(i==13){
+                column.setPreferredWidth(95);
+            }else if(i==14){
+                column.setPreferredWidth(94);
+            }else if(i==15){
+                column.setPreferredWidth(109);
+            }else if(i==16){
+                column.setPreferredWidth(93);
+            }else if(i==17){
+                column.setPreferredWidth(118);
+            }else if(i==18){
+                column.setPreferredWidth(150);
+            }else if(i==19){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -196,7 +220,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningHipertensi = new javax.swing.JMenuItem();
+        MnSkriningRisikoKanker = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -286,19 +310,19 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningHipertensi.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningHipertensi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningHipertensi.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningHipertensi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningHipertensi.setText("Formulir Skrining Hipertensi");
-        MnSkriningHipertensi.setName("MnSkriningHipertensi"); // NOI18N
-        MnSkriningHipertensi.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningHipertensi.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningRisikoKanker.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningRisikoKanker.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningRisikoKanker.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningRisikoKanker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningRisikoKanker.setText("Formulir Skrining Risiko Kanker Serviks");
+        MnSkriningRisikoKanker.setName("MnSkriningRisikoKanker"); // NOI18N
+        MnSkriningRisikoKanker.setPreferredSize(new java.awt.Dimension(240, 26));
+        MnSkriningRisikoKanker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningHipertensiActionPerformed(evt);
+                MnSkriningRisikoKankerActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningHipertensi);
+        jPopupMenu1.add(MnSkriningRisikoKanker);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1462,7 +1486,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
         //Valid.pindah(evt,Detik,BB);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningHipertensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningHipertensiActionPerformed
+    private void MnSkriningRisikoKankerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningRisikoKankerActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1474,15 +1498,15 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningHipertensi.jasper","report","::[ Formulir Skrining Hipertensi ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_risiko_kanker_serviks.nip,petugas.nama,skrining_risiko_kanker_serviks.tanggal,"+
-                    "skrining_risiko_kanker_serviks.anamnesis1,skrining_risiko_kanker_serviks.anamnesis2,skrining_risiko_kanker_serviks.anamnesis3,skrining_risiko_kanker_serviks.anamnesis4,skrining_risiko_kanker_serviks.anamnesis5,"+
-                    "skrining_risiko_kanker_serviks.anamnesis6,skrining_risiko_kanker_serviks.anamnesis7,skrining_risiko_kanker_serviks.anamnesis8,skrining_risiko_kanker_serviks.sistole,skrining_risiko_kanker_serviks.diastole,"+
-                    "skrining_risiko_kanker_serviks.klasifikasi_hipertensi,skrining_risiko_kanker_serviks.hasil_skrining,skrining_risiko_kanker_serviks.keterangan from skrining_risiko_kanker_serviks "+
+            Valid.MyReportqry("rptFormulirSkriningRisikoKankerServiks.jasper","report","::[ Formulir Skrining Risiko Kanker Serviks ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_risiko_kanker_serviks.nip,petugas.nama,skrining_risiko_kanker_serviks.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
+                    "skrining_risiko_kanker_serviks.riwayat_penyakit_keluarga,skrining_risiko_kanker_serviks.riwayat_penyakit_sendiri,skrining_risiko_kanker_serviks.risiko_merokok,skrining_risiko_kanker_serviks.risiko_kurang_fisik,"+
+                    "skrining_risiko_kanker_serviks.risiko_gula_berlebihan,skrining_risiko_kanker_serviks.risiko_garam_berlebihan,skrining_risiko_kanker_serviks.risiko_lemak_berlebihan,skrining_risiko_kanker_serviks.risiko_kurang_buah_sayur,"+
+                    "skrining_risiko_kanker_serviks.risiko_alkohol,skrining_risiko_kanker_serviks.hasil_iva,skrining_risiko_kanker_serviks.hasil_skrining,skrining_risiko_kanker_serviks.keterangan from skrining_risiko_kanker_serviks "+
                     "inner join reg_periksa on skrining_risiko_kanker_serviks.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on skrining_risiko_kanker_serviks.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningHipertensiActionPerformed
+    }//GEN-LAST:event_MnSkriningRisikoKankerActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1583,7 +1607,7 @@ public final class RMSkriningRisikoKankerServiks extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningHipertensi;
+    private javax.swing.JMenuItem MnSkriningRisikoKanker;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox RiwayatPenyakitKeluarga;
