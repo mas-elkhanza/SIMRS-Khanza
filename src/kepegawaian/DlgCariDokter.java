@@ -506,11 +506,10 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/dokter.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("dokter");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("KodeDokter").asText().toLowerCase().equals(kode)){
+                    if(list.path("KodeDokter").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("NamaDokter").asText();
                     }
                 }

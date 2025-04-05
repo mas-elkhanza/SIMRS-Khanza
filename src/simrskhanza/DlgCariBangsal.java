@@ -470,11 +470,10 @@ public final class DlgCariBangsal extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/bangsal.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("bangsal");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("KodeKamar").asText().toLowerCase().equals(kode)){
+                    if(list.path("KodeKamar").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("NamaKamar").asText();
                     }
                 }

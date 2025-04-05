@@ -220,7 +220,6 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnSkriningKesehatanGigiMulutBalita = new javax.swing.JMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -1590,7 +1589,6 @@ public final class RMSkriningKesehatanGigiMulutBalita extends javax.swing.JDialo
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
     private widget.Button btnPetugas;
-    private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel101;
     private widget.Label jLabel103;

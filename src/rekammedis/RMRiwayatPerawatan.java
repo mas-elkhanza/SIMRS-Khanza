@@ -15643,9 +15643,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='middle' bgcolor='#FFFAF8'>Sirkulasi</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center' rowspan='3'>"+w+"</td>"+
@@ -15663,7 +15662,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>"
                             );                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -15709,9 +15708,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' bgcolor='#FFFAF8'>EE</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
@@ -15725,7 +15723,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top'>"+rs2.getString("nip")+" "+rs2.getString("nama")+"</td>"+
                                  "</tr>");                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -15761,9 +15759,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='middle' width='23%' bgcolor='#FFFAF8'>Petugas</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center' valign='top'>"+w+"</td>"+
@@ -15773,7 +15770,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>"
                             );                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -15812,8 +15809,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -15868,7 +15864,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "</td>"+
                                  "</tr>"
                             ); 
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -15905,8 +15901,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -15981,7 +15976,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "</td>"+
                                  "</tr>"
                             ); 
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -16017,8 +16012,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -16085,7 +16079,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "</td>"+
                                  "</tr>"
                             ); 
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -16124,9 +16118,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' width='15%' bgcolor='#FFFAF8'>Ahli Gizi</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' rowspan='2'>"+rs2.getString("tanggal")+"</td>"+
@@ -16153,7 +16146,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center'>"+rs2.getString("skor_total")+"</td>"+
                                  "</tr>");                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -16193,9 +16186,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' width='96%' bgcolor='#FFFAF8'>Penilaian Gizi</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
@@ -16259,9 +16251,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           "</tr>"+
                                        "</table>"+
                                     "</td>"+
-                                 "</tr>");                                        
+                                 "</tr>"
+                            );                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -16299,9 +16292,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' width='20%' bgcolor='#FFFAF8'>Petugas</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' align='center'>"+w+"</td>"+
@@ -16311,7 +16303,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top'>"+rs2.getString("nama")+"</td>"+
                                  "</tr>");                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+
@@ -16349,9 +16341,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' width='20%' bgcolor='#FFFAF8'>Petugas</td>"+
                                  "</tr>"
                         );
-                        rs2.beforeFirst();
                         w=1;
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top' rowspan='6' align='center'>"+w+"</td>"+
@@ -16376,7 +16367,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>"
                             );                                        
                             w++;
-                        }
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+

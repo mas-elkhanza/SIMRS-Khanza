@@ -486,11 +486,10 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/pegawai.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("pegawai");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
+                    if(list.path("NIP").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("Nama").asText();
                     }
                 }
@@ -554,7 +553,6 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/pegawai.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("pegawai");
             if(response.isArray()){
                 for(JsonNode list:response){

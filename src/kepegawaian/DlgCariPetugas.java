@@ -483,11 +483,10 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
         try {
             myObj = new FileReader("./cache/petugas.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("petugas");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
+                    if(list.path("NIP").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("NamaPetugas").asText();
                     }
                 }
