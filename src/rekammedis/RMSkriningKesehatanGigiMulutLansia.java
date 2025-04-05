@@ -55,7 +55,6 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
     private ResultSet rs;
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private StringBuilder htmlContent;
     private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
@@ -1089,6 +1088,7 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
 
                 File f;            
                 BufferedWriter bw;
+                StringBuilder htmlContent;
                 
                 String pilihan =(String) JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
                 switch (pilihan) {

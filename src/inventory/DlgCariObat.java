@@ -2302,37 +2302,21 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 }
             }    
 
-            pilih=null;
             pilih=new boolean[z]; 
-            jumlah=null;
             jumlah=new double[z];
-            harga=null;
             harga=new double[z];
-            eb=null;
             eb=new double[z];
-            ts=null;
             ts=new double[z];
-            stok=null;
             stok=new double[z];
-            kodebarang=null;
             kodebarang=new String[z];
-            namabarang=null;
             namabarang=new String[z];
-            kodesatuan=null;
             kodesatuan=new String[z];
-            letakbarang=null;
             letakbarang=new String[z];
-            namajenis=null;
             namajenis=new String[z];                   
-            aturan=null;
             aturan=new String[z];           
-            industri=null;
             industri=new String[z];         
-            beli=null;
             beli=new double[z]; 
-            kategori=null;
             kategori=new String[z];
-            golongan=null;
             golongan=new String[z];
             nobatch=new String[z];
             nofaktur=new String[z];
@@ -3543,41 +3527,23 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 }
             }    
 
-            pilih=null;
             pilih=new boolean[z]; 
-            jumlah=null;
             jumlah=new double[z];
-            harga=null;
             harga=new double[z];
-            eb=null;
             eb=new double[z];
-            ts=null;
             ts=new double[z];
-            stok=null;
             stok=new double[z];
-            kodebarang=null;
             kodebarang=new String[z];
-            namabarang=null;
             namabarang=new String[z];
-            kodesatuan=null;
             kodesatuan=new String[z];
-            letakbarang=null;
             letakbarang=new String[z];
-            no=null;
             no=new String[z];
-            namajenis=null;
             namajenis=new String[z];        
-            industri=null;
             industri=new String[z];         
-            beli=null;
             beli=new double[z]; 
-            kategori=null;
             kategori=new String[z];
-            golongan=null;
             golongan=new String[z];        
-            kapasitas=null;
             kapasitas=new double[z];   
-            kandungan=null;
             kandungan=new double[z];
             nobatch=new String[z];
             nofaktur=new String[z];
