@@ -55,9 +55,8 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
     private ResultSet rs;
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private String finger="";
     private StringBuilder htmlContent;
-    private String TANGGALMUNDUR="yes",pilihan="";
+    private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
      * @param modal */
@@ -101,15 +100,15 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
             }else if(i==8){
                 column.setPreferredWidth(95);
             }else if(i==9){
-                column.setPreferredWidth(107);
+                column.setPreferredWidth(97);
             }else if(i==10){
-                column.setPreferredWidth(84);
+                column.setPreferredWidth(54);
             }else if(i==11){
-                column.setPreferredWidth(101);
+                column.setPreferredWidth(130);
             }else if(i==12){
                 column.setPreferredWidth(100);
             }else if(i==13){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(117);
             }else if(i==14){
                 column.setPreferredWidth(200);
             }else if(i==15){
@@ -290,7 +289,7 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
         MnSkriningKesehatanGigiMulutLansia.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSkriningKesehatanGigiMulutLansia.setForeground(new java.awt.Color(50, 50, 50));
         MnSkriningKesehatanGigiMulutLansia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningKesehatanGigiMulutLansia.setText("Formulir Skrining Kesehatan Ggi & Mulut Lansia");
+        MnSkriningKesehatanGigiMulutLansia.setText("Formulir Skrining Kesehatan Gigi & Mulut Lansia");
         MnSkriningKesehatanGigiMulutLansia.setName("MnSkriningKesehatanGigiMulutLansia"); // NOI18N
         MnSkriningKesehatanGigiMulutLansia.setPreferredSize(new java.awt.Dimension(300, 26));
         MnSkriningKesehatanGigiMulutLansia.addActionListener(new java.awt.event.ActionListener() {
@@ -1091,7 +1090,7 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
                 File f;            
                 BufferedWriter bw;
                 
-                pilihan =(String) JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                String pilihan =(String) JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
                 switch (pilihan) {
                     case "Laporan 1 (HTML)":
                             htmlContent = new StringBuilder();
@@ -1131,6 +1130,7 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
                                         "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
                                     "</tr>");
@@ -1199,6 +1199,7 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
                                         "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
+                                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
                                     "</tr>");
@@ -1338,15 +1339,15 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
     }//GEN-LAST:event_DetikKeyPressed
 
     private void KdPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPetugasKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             NmPetugas.setText(petugas.tampil3(KdPetugas.getText()));
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             Detik.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Alergi.requestFocus();
+            RutinKontrol.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPetugasActionPerformed(null);
-        }*/
+        }
     }//GEN-LAST:event_KdPetugasKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
@@ -1358,7 +1359,7 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        //Valid.pindah(evt,Detik,BB);
+        Valid.pindah(evt,Detik,RutinKontrol);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnSkriningKesehatanGigiMulutLansiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningKesehatanGigiMulutLansiaActionPerformed
@@ -1371,15 +1372,14 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+            String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningKesehatanGigiMulutLansia.jasper","report","::[ Formulir Skrining Kesehatan Gigi & Mulut Lansia ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_gigi_mulut_lansia.nip,petugas.nama,skrining_kesehatan_gigi_mulut_lansia.tanggal,"+
                     "skrining_kesehatan_gigi_mulut_lansia.kontrol_gigi,skrining_kesehatan_gigi_mulut_lansia.pola_makan,skrining_kesehatan_gigi_mulut_lansia.sikat_gigi,skrining_kesehatan_gigi_mulut_lansia.gigi_palsu,"+
-                    "skrining_kesehatan_gigi_mulut_lansia.hasil_skrining,skrining_kesehatan_gigi_mulut_lansia.keterangan from skrining_kesehatan_gigi_mulut_lansia "+
-                    "inner join reg_periksa on skrining_kesehatan_gigi_mulut_lansia.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_gigi_mulut_lansia.nip=petugas.nip "+
-                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "skrining_kesehatan_gigi_mulut_lansia.gigi_berfungsi,skrining_kesehatan_gigi_mulut_lansia.mukosa_mulut,skrining_kesehatan_gigi_mulut_lansia.hasil_skrining,skrining_kesehatan_gigi_mulut_lansia.keterangan "+
+                    "from skrining_kesehatan_gigi_mulut_lansia inner join reg_periksa on skrining_kesehatan_gigi_mulut_lansia.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on skrining_kesehatan_gigi_mulut_lansia.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningKesehatanGigiMulutLansiaActionPerformed
 
@@ -1652,9 +1652,9 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>518){
+            if(internalFrame1.getHeight()>538){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,326));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,346));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
