@@ -2,18 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="4">
         <file>
-            <url>src/keuangan/DlgPendapatanPerCaraBayar.java</url>
-            <bookmark id="4">
-                <name/>
-                <line>552</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
             <bookmark id="2">
                 <name/>
                 <line>1965</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/keuangan/DlgPendapatanPerCaraBayar.java</url>
+            <bookmark id="4">
+                <name/>
+                <line>552</line>
                 <key/>
             </bookmark>
         </file>
@@ -23,6 +23,7 @@
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/simrskhanza/frmUtama.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/fungsi/akses.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMRiwayatPerawatan.java</file>
+            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMSkriningKesehatanGigiMulutLansia.java</file>
         </group>
     </open-files>
 </project-private>

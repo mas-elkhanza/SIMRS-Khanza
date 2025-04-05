@@ -335,6 +335,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanObservasiHemodialisa = new widget.CekBox();
         chkFollowUpDBD = new widget.CekBox();
         chkCatatanKeseimbanganCairan = new widget.CekBox();
+        chkCatatanCairanHemodialisa = new widget.CekBox();
         chkCatatanCekGDS = new widget.CekBox();
         chkPenilaianUlangNyeri = new widget.CekBox();
         chkCatatanKeperawatanRalan = new widget.CekBox();
@@ -446,7 +447,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkResepPulang = new widget.CekBox();
         chkTambahanBiaya = new widget.CekBox();
         chkPotonganBiaya = new widget.CekBox();
-        chkCatatanCairanHemodialisa = new widget.CekBox();
         Scroll4 = new widget.ScrollPane();
         LoadHTMLPembelian = new widget.editorpane();
         Scroll5 = new widget.ScrollPane();
@@ -1419,6 +1419,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkCatatanKeseimbanganCairan.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkCatatanKeseimbanganCairan);
 
+        chkCatatanCairanHemodialisa.setSelected(true);
+        chkCatatanCairanHemodialisa.setText("Catatan Cairan Hemodialisa");
+        chkCatatanCairanHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkCatatanCairanHemodialisa.setName("chkCatatanCairanHemodialisa"); // NOI18N
+        chkCatatanCairanHemodialisa.setOpaque(false);
+        chkCatatanCairanHemodialisa.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkCatatanCairanHemodialisa);
+
         chkCatatanCekGDS.setSelected(true);
         chkCatatanCekGDS.setText("Catatan Cek GDS");
         chkCatatanCekGDS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -2306,14 +2314,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkPotonganBiaya.setOpaque(false);
         chkPotonganBiaya.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkPotonganBiaya);
-
-        chkCatatanCairanHemodialisa.setSelected(true);
-        chkCatatanCairanHemodialisa.setText("Catatan Cairan Hemodialisa");
-        chkCatatanCairanHemodialisa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        chkCatatanCairanHemodialisa.setName("chkCatatanCairanHemodialisa"); // NOI18N
-        chkCatatanCairanHemodialisa.setOpaque(false);
-        chkCatatanCairanHemodialisa.setPreferredSize(new java.awt.Dimension(245, 22));
-        FormMenu.add(chkCatatanCairanHemodialisa);
 
         ScrollMenu.setViewportView(FormMenu);
 
