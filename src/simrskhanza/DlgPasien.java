@@ -92,12 +92,11 @@ public class DlgPasien extends javax.swing.JDialog {
     public  YaskiReferensiKabupaten kabupatenref=new YaskiReferensiKabupaten(null,false);
     public  YaskiReferensiKecamatan kecamatanref=new YaskiReferensiKecamatan(null,false);
     public  YaskiReferensiKelurahan kelurahanref=new YaskiReferensiKelurahan(null,false);
-    private int pilih=0,z=0,j=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
+    private int pilih=0,z=0,p_no_ktp=0,p_tmp_lahir=0,p_nm_ibu=0,p_alamat=0,
             p_pekerjaan=0,p_no_tlp=0,p_umur=0,p_namakeluarga=0,p_no_peserta=0,
             p_kelurahan=0,p_kecamatan=0,p_kabupaten=0,p_pekerjaanpj=0,
             p_alamatpj=0,p_kelurahanpj=0,p_kecamatanpj=0,p_kabupatenpj=0,
             p_propinsi=0,p_propinsipj=0;
-    private double x=0,i=0;
     private String kdkel="",kdkec="",kdkab="",kdprop="",pengurutan="",asalform="",bulan="",tahun="",awalantahun="",awalanbulan="",posisitahun="",
             no_ktp="",tmp_lahir="",nm_ibu="",alamat="",pekerjaan="",no_tlp="",
             umur="",namakeluarga="",no_peserta="",kelurahan="",kecamatan="",
