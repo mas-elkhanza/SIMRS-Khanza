@@ -98,6 +98,32 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(120);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(95);
+            }else if(i==10){
+                column.setPreferredWidth(90);
+            }else if(i==11){
+                column.setPreferredWidth(145);
+            }else if(i==12){
+                column.setPreferredWidth(160);
+            }else if(i==13){
+                column.setPreferredWidth(118);
+            }else if(i==14){
+                column.setPreferredWidth(131);
+            }else if(i==15){
+                column.setPreferredWidth(63);
+            }else if(i==16){
+                column.setPreferredWidth(77);
+            }else if(i==17){
+                column.setPreferredWidth(74);
+            }else if(i==18){
+                column.setPreferredWidth(121);
+            }else if(i==19){
+                column.setPreferredWidth(136);
+            }else if(i==20){
+                column.setPreferredWidth(133);
             }else if(i==21){
                 column.setPreferredWidth(150);
             }else if(i==22){
@@ -1249,20 +1275,19 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mata Luar</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tajam Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tajam Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Buta Warna Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Buta Warna Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kacamata</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Visus Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Visus Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Refraksi Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Refraksi Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Refraksi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Katarak Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Katarak Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Katarak</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Curiga Tuli Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Curiga Tuli Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Curiga Tuli</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penurunan Pendengaran Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penurunan Pendengaran Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mendengar Bisikan Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mendengar Bisikan Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Congek Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Congek Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Congek</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sumbatan Serumen Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sumbatan Serumen Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Sumbatan Serumen</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
                                 "</tr>"
@@ -1293,7 +1318,6 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                                         "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
                                         "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
                                     "</tr>");
                             }
                             LoadHTML.setText(
@@ -1304,7 +1328,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                                 "</html>"
                             );
 
-                            f = new File("DataSkriningKesehatanPenglihatan.html");            
+                            f = new File("DataSkriningIndraPendengaran.html");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1314,7 +1338,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA SEKRINING KESEHATAN PENGLIHATAN<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA SEKRINING INDRA PENDENGARAN<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -1334,20 +1358,19 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mata Luar</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tajam Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tajam Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Buta Warna Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Buta Warna Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kacamata</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Visus Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Visus Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Refraksi Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Refraksi Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Refraksi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Katarak Kiri</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Katarak Kanan</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Katarak</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Curiga Tuli Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Curiga Tuli Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Curiga Tuli</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penurunan Pendengaran Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penurunan Pendengaran Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mendengar Bisikan Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mendengar Bisikan Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Congek Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Congek Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Congek</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sumbatan Serumen Kiri</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sumbatan Serumen Kanan</b></td>"+
+                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rujuk Sumbatan Serumen</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
                                     "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
                                 "</tr>"
@@ -1378,7 +1401,6 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                                         "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
                                         "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
                                         "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
                                     "</tr>");
                             }
                             LoadHTML.setText(
@@ -1389,7 +1411,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                                 "</html>"
                             );
 
-                            f = new File("DataSkriningKesehatanPenglihatan.wps");            
+                            f = new File("DataSkriningIndraPendengaran.wps");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1399,7 +1421,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA SEKRINING KESEHATAN PENGLIHATAN<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA SEKRINING INDRA PENDENGARAN<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -1410,14 +1432,14 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Petugas\";\"Nama Petugas\";\"Tanggal\";\"Mata Luar\";\"Tajam Kiri\";\"Tajam Kanan\";\"Buta Warna Kiri\";\"Buta Warna Kanan\";\"Kacamata\";\"Visus Kiri\";\"Visus Kanan\";\"Refraksi Kiri\";\"Refraksi Kanan\";\"Rujuk Refraksi\";\"Katarak Kiri\";\"Katarak Kanan\";\"Rujuk Katarak\";\"Hasil Skrining\";\"Keterangan\"\n"
+                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Petugas\";\"Nama Petugas\";\"Tanggal\";\"Curiga Tuli Kiri\";\"Curiga Tuli Kanan\";\"Rujuk Curiga Tuli\";\"Penurunan Pendengaran Kiri\";\"Penurunan Pendengaran Kanan\";\"Mendengar Bisikan Kiri\";\"Mendengar Bisikan Kanan\";\"Congek Kiri\";\"Congek Kanan\";\"Rujuk Congek\";\"Sumbatan Serumen Kiri\";\"Sumbatan Serumen Kanan\";\"Rujuk Sumbatan Serumen\";\"Hasil Skrining\";\"Keterangan\"\n"
                             ); 
                             for (i = 0; i < tabMode.getRowCount(); i++) {
                                 htmlContent.append(
-                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\";\""+tbObat.getValueAt(i,20).toString()+"\";\""+tbObat.getValueAt(i,21).toString()+"\";\""+tbObat.getValueAt(i,22).toString()+"\";\""+tbObat.getValueAt(i,23).toString()+"\"\n"
+                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\";\""+tbObat.getValueAt(i,16).toString()+"\";\""+tbObat.getValueAt(i,17).toString()+"\";\""+tbObat.getValueAt(i,18).toString()+"\";\""+tbObat.getValueAt(i,19).toString()+"\";\""+tbObat.getValueAt(i,20).toString()+"\";\""+tbObat.getValueAt(i,21).toString()+"\";\""+tbObat.getValueAt(i,22).toString()+"\"\n"
                                 );
                             }
-                            f = new File("DataSkriningHipertensi.csv");            
+                            f = new File("DataSkriningIndraPendengaran.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
                             bw.close();                         
@@ -1524,7 +1546,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        //Valid.pindah(evt,Detik,BB);
+        Valid.pindah(evt,Detik,CurigaTuliTelingaKiri);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void MnSkriningPenglihatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningPenglihatanActionPerformed
@@ -1560,59 +1582,59 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
-        //Valid.pindah(evt,RujukKatarak,Keterangan);
+        Valid.pindah(evt,SumbatanSerumenTelingaRujuk,Keterangan);
     }//GEN-LAST:event_HasilSkriningKeyPressed
 
     private void CurigaTuliTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CurigaTuliTelingaKiriKeyPressed
-        //Valid.pindah(evt,MataLuar,TajamKanan);
+        Valid.pindah(evt,btnPetugas,CurigaTuliTelingaKanan);
     }//GEN-LAST:event_CurigaTuliTelingaKiriKeyPressed
 
     private void CurigaTuliTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CurigaTuliTelingaKananKeyPressed
-        //Valid.pindah(evt,TajamKiri,ButaWarnaKiri);
+        Valid.pindah(evt,CurigaTuliTelingaKiri,CurigaTuliTelingaRujuk);
     }//GEN-LAST:event_CurigaTuliTelingaKananKeyPressed
 
     private void CongekTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CongekTelingaKiriKeyPressed
-        //Valid.pindah(evt,VisusKanan,RefraksiKanan);
+        Valid.pindah(evt,MendengarBisikanTelingaKanan,CongekTelingaKanan);
     }//GEN-LAST:event_CongekTelingaKiriKeyPressed
 
     private void CongekTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CongekTelingaKananKeyPressed
-        //Valid.pindah(evt,RefraksiKiri,RujukRefraksi);
+        Valid.pindah(evt,CongekTelingaKiri,CongekTelingaRujuk);
     }//GEN-LAST:event_CongekTelingaKananKeyPressed
 
     private void CurigaTuliTelingaRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CurigaTuliTelingaRujukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CurigaTuliTelingaKanan,PenurunanPendengaranTelingaKiri);
     }//GEN-LAST:event_CurigaTuliTelingaRujukKeyPressed
 
     private void SumbatanSerumenTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SumbatanSerumenTelingaKiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CongekTelingaRujuk,SumbatanSerumenTelingaKanan);
     }//GEN-LAST:event_SumbatanSerumenTelingaKiriKeyPressed
 
     private void SumbatanSerumenTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SumbatanSerumenTelingaKananKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SumbatanSerumenTelingaKiri,SumbatanSerumenTelingaRujuk);
     }//GEN-LAST:event_SumbatanSerumenTelingaKananKeyPressed
 
     private void SumbatanSerumenTelingaRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SumbatanSerumenTelingaRujukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SumbatanSerumenTelingaKanan,HasilSkrining);
     }//GEN-LAST:event_SumbatanSerumenTelingaRujukKeyPressed
 
     private void CongekTelingaRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CongekTelingaRujukKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CongekTelingaKanan,SumbatanSerumenTelingaKiri);
     }//GEN-LAST:event_CongekTelingaRujukKeyPressed
 
     private void PenurunanPendengaranTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenurunanPendengaranTelingaKiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,CurigaTuliTelingaRujuk,PenurunanPendengaranTelingaKanan);
     }//GEN-LAST:event_PenurunanPendengaranTelingaKiriKeyPressed
 
     private void PenurunanPendengaranTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenurunanPendengaranTelingaKananKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PenurunanPendengaranTelingaKiri,MendengarBisikanTelingaKiri);
     }//GEN-LAST:event_PenurunanPendengaranTelingaKananKeyPressed
 
     private void MendengarBisikanTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MendengarBisikanTelingaKiriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PenurunanPendengaranTelingaKanan,MendengarBisikanTelingaKanan);
     }//GEN-LAST:event_MendengarBisikanTelingaKiriKeyPressed
 
     private void MendengarBisikanTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MendengarBisikanTelingaKananKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,MendengarBisikanTelingaKiri,CongekTelingaKiri);
     }//GEN-LAST:event_MendengarBisikanTelingaKananKeyPressed
 
     /**
