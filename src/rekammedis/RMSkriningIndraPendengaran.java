@@ -67,9 +67,10 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "Mata Luar","Tajam Kiri","Tajam Kanan","Buta Warna Kiri","Buta Warna Kanan","Kacamata","Visus Kiri",
-            "Visus Kanan","Refraksi Kiri","Refraksi Kanan","Rujuk Refraksi","Katarak Kiri","Katarak Kanan",
-            "Rujuk Katarak","Hasil Skrining","Keterangan"
+            "Curiga Tuli Kiri","Curiga Tuli Kanan","Rujuk Curiga Tuli","Penurunan Pendengaran Kiri",
+            "Penurunan Pendengaran Kanan","Mendengar Bisikan Kiri","Mendengar Bisikan Kanan","Congek Kiri",
+            "Congek Kanan","Rujuk Congek","Sumbatan Serumen Kiri","Sumbatan Serumen Kanan","Rujuk Sumbatan Serumen",
+            "Hasil Skrining","Keterangan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -79,7 +80,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 23; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -97,37 +98,9 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(120);
-            }else if(i==8){
-                column.setPreferredWidth(57);
-            }else if(i==9){
-                column.setPreferredWidth(167);
-            }else if(i==10){
-                column.setPreferredWidth(167);
-            }else if(i==11){
-                column.setPreferredWidth(84);
-            }else if(i==12){
-                column.setPreferredWidth(99);
-            }else if(i==13){
-                column.setPreferredWidth(57);
-            }else if(i==14){
-                column.setPreferredWidth(167);
-            }else if(i==15){
-                column.setPreferredWidth(167);
-            }else if(i==16){
-                column.setPreferredWidth(68);
-            }else if(i==17){
-                column.setPreferredWidth(82);
-            }else if(i==18){
-                column.setPreferredWidth(79);
-            }else if(i==19){
-                column.setPreferredWidth(64);
-            }else if(i==20){
-                column.setPreferredWidth(78);
             }else if(i==21){
-                column.setPreferredWidth(76);
-            }else if(i==22){
                 column.setPreferredWidth(150);
-            }else if(i==23){
+            }else if(i==22){
                 column.setPreferredWidth(150);
             }
         }
@@ -276,10 +249,6 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         TglLahir = new widget.TextBox();
         jLabel78 = new widget.Label();
         jLabel79 = new widget.Label();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel104 = new widget.Label();
-        jLabel105 = new widget.Label();
-        MataLuar = new widget.ComboBox();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel107 = new widget.Label();
         jLabel24 = new widget.Label();
@@ -288,41 +257,39 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         jLabel108 = new widget.Label();
         Keterangan = new widget.TextBox();
         jLabel86 = new widget.Label();
-        TajamKiri = new widget.ComboBox();
-        TajamKanan = new widget.ComboBox();
+        CurigaTuliTelingaKiri = new widget.ComboBox();
+        CurigaTuliTelingaKanan = new widget.ComboBox();
         jLabel87 = new widget.Label();
-        jLabel80 = new widget.Label();
-        jLabel81 = new widget.Label();
-        jLabel88 = new widget.Label();
-        ButaWarnaKiri = new widget.ComboBox();
-        jLabel89 = new widget.Label();
-        ButaWarnaKanan = new widget.ComboBox();
-        jLabel82 = new widget.Label();
-        jLabel83 = new widget.Label();
-        Kacamata = new widget.ComboBox();
-        jLabel109 = new widget.Label();
         jLabel84 = new widget.Label();
         jLabel85 = new widget.Label();
         jLabel90 = new widget.Label();
-        RefraksiKiri = new widget.ComboBox();
+        CongekTelingaKiri = new widget.ComboBox();
         jLabel91 = new widget.Label();
-        RefraksiKanan = new widget.ComboBox();
+        CongekTelingaKanan = new widget.ComboBox();
+        jLabel88 = new widget.Label();
+        CurigaTuliTelingaRujuk = new widget.ComboBox();
+        jLabel80 = new widget.Label();
+        jLabel81 = new widget.Label();
+        jLabel89 = new widget.Label();
+        SumbatanSerumenTelingaKiri = new widget.ComboBox();
         jLabel92 = new widget.Label();
-        RujukRefraksi = new widget.ComboBox();
+        SumbatanSerumenTelingaKanan = new widget.ComboBox();
         jLabel93 = new widget.Label();
+        SumbatanSerumenTelingaRujuk = new widget.ComboBox();
         jLabel94 = new widget.Label();
+        CongekTelingaRujuk = new widget.ComboBox();
+        jLabel82 = new widget.Label();
+        jLabel83 = new widget.Label();
         jLabel95 = new widget.Label();
+        PenurunanPendengaranTelingaKiri = new widget.ComboBox();
         jLabel96 = new widget.Label();
-        VisusKiri = new widget.ComboBox();
-        VisusKanan = new widget.ComboBox();
+        PenurunanPendengaranTelingaKanan = new widget.ComboBox();
         jLabel97 = new widget.Label();
         jLabel98 = new widget.Label();
         jLabel99 = new widget.Label();
+        MendengarBisikanTelingaKiri = new widget.ComboBox();
         jLabel101 = new widget.Label();
-        KatarakKiri = new widget.ComboBox();
-        KatarakKanan = new widget.ComboBox();
-        jLabel102 = new widget.Label();
-        RujukKatarak = new widget.ComboBox();
+        MendengarBisikanTelingaKanan = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -522,7 +489,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -536,7 +503,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -597,7 +564,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 486));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 436));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -627,7 +594,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 463));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 413));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -657,7 +624,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-04-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-04-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -766,7 +733,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel100.setText("I. PEMERIKSAAN FISIK");
+        jLabel100.setText("I. PEMERIKSAAN/ANAMNESA");
         jLabel100.setName("jLabel100"); // NOI18N
         FormInput.add(jLabel100);
         jLabel100.setBounds(10, 70, 490, 23);
@@ -785,66 +752,37 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         jLabel78.setText("1.");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(44, 140, 20, 23);
+        jLabel78.setBounds(44, 90, 20, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel79.setText("Tajam Penglihatan");
+        jLabel79.setText("Curiga Tuli Kongentia");
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
-        jLabel79.setBounds(62, 140, 250, 23);
-
-        jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
-        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
-        jSeparator2.setName("jSeparator2"); // NOI18N
-        FormInput.add(jSeparator2);
-        jSeparator2.setBounds(0, 120, 807, 1);
-
-        jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel104.setText("II. PEMERIKSAAN PENUNJANG");
-        jLabel104.setName("jLabel104"); // NOI18N
-        FormInput.add(jLabel104);
-        jLabel104.setBounds(10, 120, 370, 23);
-
-        jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel105.setText("Hasil Pemeriksaan Mata Luar");
-        jLabel105.setName("jLabel105"); // NOI18N
-        FormInput.add(jLabel105);
-        jLabel105.setBounds(44, 90, 170, 23);
-
-        MataLuar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Sehat" }));
-        MataLuar.setName("MataLuar"); // NOI18N
-        MataLuar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MataLuarKeyPressed(evt);
-            }
-        });
-        FormInput.add(MataLuar);
-        MataLuar.setBounds(196, 90, 110, 23);
+        jLabel79.setBounds(62, 90, 250, 23);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 410, 807, 1);
+        jSeparator4.setBounds(0, 360, 807, 1);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("III. INTERPRETASI");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
-        jLabel107.setBounds(10, 410, 200, 23);
+        jLabel107.setBounds(10, 360, 200, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel24.setText("Hasil Skrining");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(44, 430, 100, 23);
+        jLabel24.setBounds(44, 380, 100, 23);
 
         jLabel27.setText(":");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(0, 430, 117, 23);
+        jLabel27.setBounds(0, 380, 117, 23);
 
         HasilSkrining.setFocusTraversalPolicyProvider(true);
         HasilSkrining.setName("HasilSkrining"); // NOI18N
@@ -854,12 +792,12 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
             }
         });
         FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(121, 430, 240, 23);
+        HasilSkrining.setBounds(121, 380, 240, 23);
 
         jLabel108.setText("Keterangan :");
         jLabel108.setName("jLabel108"); // NOI18N
         FormInput.add(jLabel108);
-        jLabel108.setBounds(375, 430, 100, 23);
+        jLabel108.setBounds(375, 380, 100, 23);
 
         Keterangan.setFocusTraversalPolicyProvider(true);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -869,269 +807,263 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(479, 430, 310, 23);
+        Keterangan.setBounds(479, 380, 310, 23);
 
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel86.setText("- Mata Kiri");
+        jLabel86.setText("- Telinga Kiri");
         jLabel86.setName("jLabel86"); // NOI18N
         FormInput.add(jLabel86);
-        jLabel86.setBounds(72, 160, 90, 23);
+        jLabel86.setBounds(72, 110, 100, 23);
 
-        TajamKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal (6/6 - 6/18)", "Kelainan Refraksi (< 6/18 - 6/60)", "Low Vision (6/60 - 3/60)", "Kebutaan (< 3/60)" }));
-        TajamKiri.setName("TajamKiri"); // NOI18N
-        TajamKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+        CurigaTuliTelingaKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CurigaTuliTelingaKiri.setName("CurigaTuliTelingaKiri"); // NOI18N
+        CurigaTuliTelingaKiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TajamKiriKeyPressed(evt);
+                CurigaTuliTelingaKiriKeyPressed(evt);
             }
         });
-        FormInput.add(TajamKiri);
-        TajamKiri.setBounds(170, 160, 220, 23);
+        FormInput.add(CurigaTuliTelingaKiri);
+        CurigaTuliTelingaKiri.setBounds(190, 110, 80, 23);
 
-        TajamKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal (6/6 - 6/18)", "Kelainan Refraksi (< 6/18 - 6/60)", "Low Vision (6/60 - 3/60)", "Kebutaan (< 3/60)" }));
-        TajamKanan.setName("TajamKanan"); // NOI18N
-        TajamKanan.addKeyListener(new java.awt.event.KeyAdapter() {
+        CurigaTuliTelingaKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CurigaTuliTelingaKanan.setName("CurigaTuliTelingaKanan"); // NOI18N
+        CurigaTuliTelingaKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TajamKananKeyPressed(evt);
+                CurigaTuliTelingaKananKeyPressed(evt);
             }
         });
-        FormInput.add(TajamKanan);
-        TajamKanan.setBounds(170, 190, 220, 23);
+        FormInput.add(CurigaTuliTelingaKanan);
+        CurigaTuliTelingaKanan.setBounds(190, 140, 80, 23);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel87.setText("- Mata Kanan");
+        jLabel87.setText("- Telinga Kanan");
         jLabel87.setName("jLabel87"); // NOI18N
         FormInput.add(jLabel87);
-        jLabel87.setBounds(72, 190, 90, 23);
-
-        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel80.setText("Buta Warna");
-        jLabel80.setName("jLabel80"); // NOI18N
-        FormInput.add(jLabel80);
-        jLabel80.setBounds(62, 220, 280, 23);
-
-        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("2.");
-        jLabel81.setName("jLabel81"); // NOI18N
-        FormInput.add(jLabel81);
-        jLabel81.setBounds(44, 220, 20, 23);
-
-        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel88.setText("- Mata Kiri");
-        jLabel88.setName("jLabel88"); // NOI18N
-        FormInput.add(jLabel88);
-        jLabel88.setBounds(72, 240, 90, 23);
-
-        ButaWarnaKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        ButaWarnaKiri.setName("ButaWarnaKiri"); // NOI18N
-        FormInput.add(ButaWarnaKiri);
-        ButaWarnaKiri.setBounds(170, 240, 80, 23);
-
-        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel89.setText("- Mata Kanan");
-        jLabel89.setName("jLabel89"); // NOI18N
-        FormInput.add(jLabel89);
-        jLabel89.setBounds(72, 270, 90, 23);
-
-        ButaWarnaKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        ButaWarnaKanan.setName("ButaWarnaKanan"); // NOI18N
-        ButaWarnaKanan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ButaWarnaKananKeyPressed(evt);
-            }
-        });
-        FormInput.add(ButaWarnaKanan);
-        ButaWarnaKanan.setBounds(170, 270, 80, 23);
-
-        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel82.setText("Kacamata");
-        jLabel82.setName("jLabel82"); // NOI18N
-        FormInput.add(jLabel82);
-        jLabel82.setBounds(62, 300, 100, 23);
-
-        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel83.setText("3.");
-        jLabel83.setName("jLabel83"); // NOI18N
-        FormInput.add(jLabel83);
-        jLabel83.setBounds(44, 300, 20, 23);
-
-        Kacamata.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        Kacamata.setName("Kacamata"); // NOI18N
-        Kacamata.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KacamataKeyPressed(evt);
-            }
-        });
-        FormInput.add(Kacamata);
-        Kacamata.setBounds(170, 300, 80, 23);
-
-        jLabel109.setText(":");
-        jLabel109.setName("jLabel109"); // NOI18N
-        FormInput.add(jLabel109);
-        jLabel109.setBounds(0, 90, 192, 23);
+        jLabel87.setBounds(72, 140, 110, 23);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel84.setText("Gangguan Refraksi");
+        jLabel84.setText("OMSK/Congek");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
-        jLabel84.setBounds(580, 140, 230, 23);
+        jLabel84.setBounds(580, 90, 230, 23);
 
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel85.setText("5.");
+        jLabel85.setText("4.");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(562, 140, 20, 23);
+        jLabel85.setBounds(562, 90, 20, 23);
 
         jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel90.setText("- Mata Kiri");
+        jLabel90.setText("- Telinga Kiri");
         jLabel90.setName("jLabel90"); // NOI18N
         FormInput.add(jLabel90);
-        jLabel90.setBounds(590, 160, 90, 23);
+        jLabel90.setBounds(590, 110, 90, 23);
 
-        RefraksiKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        RefraksiKiri.setName("RefraksiKiri"); // NOI18N
-        RefraksiKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+        CongekTelingaKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CongekTelingaKiri.setName("CongekTelingaKiri"); // NOI18N
+        CongekTelingaKiri.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RefraksiKiriKeyPressed(evt);
+                CongekTelingaKiriKeyPressed(evt);
             }
         });
-        FormInput.add(RefraksiKiri);
-        RefraksiKiri.setBounds(709, 160, 80, 23);
+        FormInput.add(CongekTelingaKiri);
+        CongekTelingaKiri.setBounds(709, 110, 80, 23);
 
         jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel91.setText("- Mata Kanan");
+        jLabel91.setText("- Telinga Kanan");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
-        jLabel91.setBounds(590, 190, 90, 23);
+        jLabel91.setBounds(590, 140, 90, 23);
 
-        RefraksiKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        RefraksiKanan.setName("RefraksiKanan"); // NOI18N
-        RefraksiKanan.addKeyListener(new java.awt.event.KeyAdapter() {
+        CongekTelingaKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CongekTelingaKanan.setName("CongekTelingaKanan"); // NOI18N
+        CongekTelingaKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RefraksiKananKeyPressed(evt);
+                CongekTelingaKananKeyPressed(evt);
             }
         });
-        FormInput.add(RefraksiKanan);
-        RefraksiKanan.setBounds(709, 190, 80, 23);
+        FormInput.add(CongekTelingaKanan);
+        CongekTelingaKanan.setBounds(709, 140, 80, 23);
+
+        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel88.setText("- Rujuk Spesialis");
+        jLabel88.setName("jLabel88"); // NOI18N
+        FormInput.add(jLabel88);
+        jLabel88.setBounds(72, 170, 110, 23);
+
+        CurigaTuliTelingaRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CurigaTuliTelingaRujuk.setName("CurigaTuliTelingaRujuk"); // NOI18N
+        CurigaTuliTelingaRujuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CurigaTuliTelingaRujukKeyPressed(evt);
+            }
+        });
+        FormInput.add(CurigaTuliTelingaRujuk);
+        CurigaTuliTelingaRujuk.setBounds(190, 170, 80, 23);
+
+        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel80.setText("Sumbatan Serumen");
+        jLabel80.setName("jLabel80"); // NOI18N
+        FormInput.add(jLabel80);
+        jLabel80.setBounds(580, 200, 250, 23);
+
+        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel81.setText("5.");
+        jLabel81.setName("jLabel81"); // NOI18N
+        FormInput.add(jLabel81);
+        jLabel81.setBounds(562, 200, 20, 23);
+
+        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel89.setText("- Telinga Kiri");
+        jLabel89.setName("jLabel89"); // NOI18N
+        FormInput.add(jLabel89);
+        jLabel89.setBounds(590, 220, 100, 23);
+
+        SumbatanSerumenTelingaKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SumbatanSerumenTelingaKiri.setName("SumbatanSerumenTelingaKiri"); // NOI18N
+        SumbatanSerumenTelingaKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SumbatanSerumenTelingaKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(SumbatanSerumenTelingaKiri);
+        SumbatanSerumenTelingaKiri.setBounds(709, 220, 80, 23);
 
         jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel92.setText("- Rujuk Spesialis");
+        jLabel92.setText("- Telinga Kanan");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(590, 220, 90, 23);
+        jLabel92.setBounds(590, 250, 110, 23);
 
-        RujukRefraksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        RujukRefraksi.setName("RujukRefraksi"); // NOI18N
-        RujukRefraksi.addKeyListener(new java.awt.event.KeyAdapter() {
+        SumbatanSerumenTelingaKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SumbatanSerumenTelingaKanan.setName("SumbatanSerumenTelingaKanan"); // NOI18N
+        SumbatanSerumenTelingaKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                RujukRefraksiKeyPressed(evt);
+                SumbatanSerumenTelingaKananKeyPressed(evt);
             }
         });
-        FormInput.add(RujukRefraksi);
-        RujukRefraksi.setBounds(709, 220, 80, 23);
+        FormInput.add(SumbatanSerumenTelingaKanan);
+        SumbatanSerumenTelingaKanan.setBounds(709, 250, 80, 23);
 
         jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel93.setText("Nilai Visus");
+        jLabel93.setText("- Rujuk Spesialis");
         jLabel93.setName("jLabel93"); // NOI18N
         FormInput.add(jLabel93);
-        jLabel93.setBounds(62, 330, 170, 23);
+        jLabel93.setBounds(590, 280, 110, 23);
+
+        SumbatanSerumenTelingaRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SumbatanSerumenTelingaRujuk.setName("SumbatanSerumenTelingaRujuk"); // NOI18N
+        SumbatanSerumenTelingaRujuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SumbatanSerumenTelingaRujukKeyPressed(evt);
+            }
+        });
+        FormInput.add(SumbatanSerumenTelingaRujuk);
+        SumbatanSerumenTelingaRujuk.setBounds(709, 280, 80, 23);
 
         jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel94.setText("4.");
+        jLabel94.setText("- Rujuk Spesialis");
         jLabel94.setName("jLabel94"); // NOI18N
         FormInput.add(jLabel94);
-        jLabel94.setBounds(44, 330, 20, 23);
+        jLabel94.setBounds(590, 170, 90, 23);
+
+        CongekTelingaRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        CongekTelingaRujuk.setName("CongekTelingaRujuk"); // NOI18N
+        CongekTelingaRujuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CongekTelingaRujukKeyPressed(evt);
+            }
+        });
+        FormInput.add(CongekTelingaRujuk);
+        CongekTelingaRujuk.setBounds(709, 170, 80, 23);
+
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel82.setText("Penurunan Pendengaran Karena Usia Lanjut (Presbikusis)");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(62, 200, 340, 23);
+
+        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel83.setText("2.");
+        jLabel83.setName("jLabel83"); // NOI18N
+        FormInput.add(jLabel83);
+        jLabel83.setBounds(44, 200, 20, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel95.setText("- Mata Kanan");
+        jLabel95.setText("- Telinga Kiri");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
-        jLabel95.setBounds(72, 380, 90, 23);
+        jLabel95.setBounds(72, 220, 100, 23);
+
+        PenurunanPendengaranTelingaKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        PenurunanPendengaranTelingaKiri.setName("PenurunanPendengaranTelingaKiri"); // NOI18N
+        PenurunanPendengaranTelingaKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PenurunanPendengaranTelingaKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(PenurunanPendengaranTelingaKiri);
+        PenurunanPendengaranTelingaKiri.setBounds(190, 220, 80, 23);
 
         jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel96.setText("- Mata Kiri");
+        jLabel96.setText("- Telinga Kanan");
         jLabel96.setName("jLabel96"); // NOI18N
         FormInput.add(jLabel96);
-        jLabel96.setBounds(72, 350, 90, 23);
+        jLabel96.setBounds(72, 250, 110, 23);
 
-        VisusKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal (6/6 - 6/18)", "Kelainan Refraksi (< 6/18 - 6/60)", "Low Vision (6/60 - 3/60)", "Kebutaan (< 3/60)" }));
-        VisusKiri.setName("VisusKiri"); // NOI18N
-        VisusKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+        PenurunanPendengaranTelingaKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        PenurunanPendengaranTelingaKanan.setName("PenurunanPendengaranTelingaKanan"); // NOI18N
+        PenurunanPendengaranTelingaKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                VisusKiriKeyPressed(evt);
+                PenurunanPendengaranTelingaKananKeyPressed(evt);
             }
         });
-        FormInput.add(VisusKiri);
-        VisusKiri.setBounds(170, 350, 220, 23);
-
-        VisusKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal (6/6 - 6/18)", "Kelainan Refraksi (< 6/18 - 6/60)", "Low Vision (6/60 - 3/60)", "Kebutaan (< 3/60)" }));
-        VisusKanan.setName("VisusKanan"); // NOI18N
-        VisusKanan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                VisusKananKeyPressed(evt);
-            }
-        });
-        FormInput.add(VisusKanan);
-        VisusKanan.setBounds(170, 380, 220, 23);
+        FormInput.add(PenurunanPendengaranTelingaKanan);
+        PenurunanPendengaranTelingaKanan.setBounds(190, 250, 80, 23);
 
         jLabel97.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel97.setText("Katarak");
+        jLabel97.setText("3.");
         jLabel97.setName("jLabel97"); // NOI18N
         FormInput.add(jLabel97);
-        jLabel97.setBounds(580, 250, 170, 23);
+        jLabel97.setBounds(44, 280, 20, 23);
 
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel98.setText("6.");
+        jLabel98.setText("Mendengar Bisikan Saat TES BISIK");
         jLabel98.setName("jLabel98"); // NOI18N
         FormInput.add(jLabel98);
-        jLabel98.setBounds(562, 250, 20, 23);
+        jLabel98.setBounds(62, 280, 340, 23);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel99.setText("- Mata Kiri");
+        jLabel99.setText("- Telinga Kiri");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
-        jLabel99.setBounds(590, 270, 90, 23);
+        jLabel99.setBounds(72, 300, 100, 23);
+
+        MendengarBisikanTelingaKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Gangguan Pendengaran" }));
+        MendengarBisikanTelingaKiri.setName("MendengarBisikanTelingaKiri"); // NOI18N
+        MendengarBisikanTelingaKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MendengarBisikanTelingaKiriKeyPressed(evt);
+            }
+        });
+        FormInput.add(MendengarBisikanTelingaKiri);
+        MendengarBisikanTelingaKiri.setBounds(190, 300, 170, 23);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel101.setText("- Mata Kanan");
+        jLabel101.setText("- Telinga Kanan");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(590, 300, 90, 23);
+        jLabel101.setBounds(72, 330, 110, 23);
 
-        KatarakKiri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        KatarakKiri.setName("KatarakKiri"); // NOI18N
-        KatarakKiri.addKeyListener(new java.awt.event.KeyAdapter() {
+        MendengarBisikanTelingaKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Gangguan Pendengaran" }));
+        MendengarBisikanTelingaKanan.setName("MendengarBisikanTelingaKanan"); // NOI18N
+        MendengarBisikanTelingaKanan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KatarakKiriKeyPressed(evt);
+                MendengarBisikanTelingaKananKeyPressed(evt);
             }
         });
-        FormInput.add(KatarakKiri);
-        KatarakKiri.setBounds(709, 270, 80, 23);
-
-        KatarakKanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        KatarakKanan.setName("KatarakKanan"); // NOI18N
-        KatarakKanan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KatarakKananKeyPressed(evt);
-            }
-        });
-        FormInput.add(KatarakKanan);
-        KatarakKanan.setBounds(709, 300, 80, 23);
-
-        jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel102.setText("- Rujuk Spesialis");
-        jLabel102.setName("jLabel102"); // NOI18N
-        FormInput.add(jLabel102);
-        jLabel102.setBounds(590, 330, 90, 23);
-
-        RujukKatarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
-        RujukKatarak.setName("RujukKatarak"); // NOI18N
-        RujukKatarak.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RujukKatarakKeyPressed(evt);
-            }
-        });
-        FormInput.add(RujukKatarak);
-        RujukKatarak.setBounds(709, 330, 80, 23);
+        FormInput.add(MendengarBisikanTelingaKanan);
+        MendengarBisikanTelingaKanan.setBounds(190, 330, 170, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1608,13 +1540,13 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
             String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningKesehatanPenglihatan.jasper","report","::[ Formulir Skrining Kesehatan Penglihatan ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_penglihatan.nip,petugas.nama,skrining_kesehatan_penglihatan.tanggal,"+
-                    "skrining_kesehatan_penglihatan.mata_luar,skrining_kesehatan_penglihatan.tajam_kiri,skrining_kesehatan_penglihatan.tajam_kanan,skrining_kesehatan_penglihatan.buta_warna_kiri,"+
-                    "skrining_kesehatan_penglihatan.buta_warna_kanan,skrining_kesehatan_penglihatan.kacamata,skrining_kesehatan_penglihatan.visus_kiri,skrining_kesehatan_penglihatan.visus_kanan,"+
-                    "skrining_kesehatan_penglihatan.refraksi_kiri,skrining_kesehatan_penglihatan.refraksi_kanan,skrining_kesehatan_penglihatan.rujuk_refraksi,skrining_kesehatan_penglihatan.katarak_kiri,"+
-                    "skrining_kesehatan_penglihatan.katarak_kanan,skrining_kesehatan_penglihatan.rujuk_katarak,skrining_kesehatan_penglihatan.hasil_skrining,skrining_kesehatan_penglihatan.keterangan "+
-                    "from skrining_kesehatan_penglihatan inner join reg_periksa on skrining_kesehatan_penglihatan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_penglihatan.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_indra_pendengaran.nip,petugas.nama,skrining_indra_pendengaran.tanggal,"+
+                    "skrining_indra_pendengaran.mata_luar,skrining_indra_pendengaran.tajam_kiri,skrining_indra_pendengaran.tajam_kanan,skrining_indra_pendengaran.buta_warna_kiri,"+
+                    "skrining_indra_pendengaran.buta_warna_kanan,skrining_indra_pendengaran.kacamata,skrining_indra_pendengaran.visus_kiri,skrining_indra_pendengaran.visus_kanan,"+
+                    "skrining_indra_pendengaran.refraksi_kiri,skrining_indra_pendengaran.refraksi_kanan,skrining_indra_pendengaran.rujuk_refraksi,skrining_indra_pendengaran.katarak_kiri,"+
+                    "skrining_indra_pendengaran.katarak_kanan,skrining_indra_pendengaran.rujuk_katarak,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
+                    "from skrining_indra_pendengaran inner join reg_periksa on skrining_indra_pendengaran.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_indra_pendengaran.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningPenglihatanActionPerformed
@@ -1623,65 +1555,65 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void MataLuarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MataLuarKeyPressed
-        Valid.pindah(evt,btnPetugas,TajamKiri);
-    }//GEN-LAST:event_MataLuarKeyPressed
-
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
         Valid.pindah(evt,HasilSkrining,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void HasilSkriningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HasilSkriningKeyPressed
-        Valid.pindah(evt,RujukKatarak,Keterangan);
+        //Valid.pindah(evt,RujukKatarak,Keterangan);
     }//GEN-LAST:event_HasilSkriningKeyPressed
 
-    private void TajamKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TajamKiriKeyPressed
-        Valid.pindah(evt,MataLuar,TajamKanan);
-    }//GEN-LAST:event_TajamKiriKeyPressed
+    private void CurigaTuliTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CurigaTuliTelingaKiriKeyPressed
+        //Valid.pindah(evt,MataLuar,TajamKanan);
+    }//GEN-LAST:event_CurigaTuliTelingaKiriKeyPressed
 
-    private void TajamKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TajamKananKeyPressed
-        Valid.pindah(evt,TajamKiri,ButaWarnaKiri);
-    }//GEN-LAST:event_TajamKananKeyPressed
+    private void CurigaTuliTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CurigaTuliTelingaKananKeyPressed
+        //Valid.pindah(evt,TajamKiri,ButaWarnaKiri);
+    }//GEN-LAST:event_CurigaTuliTelingaKananKeyPressed
 
-    private void ButaWarnaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ButaWarnaKananKeyPressed
-        Valid.pindah(evt,ButaWarnaKiri,Kacamata);
-    }//GEN-LAST:event_ButaWarnaKananKeyPressed
+    private void CongekTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CongekTelingaKiriKeyPressed
+        //Valid.pindah(evt,VisusKanan,RefraksiKanan);
+    }//GEN-LAST:event_CongekTelingaKiriKeyPressed
 
-    private void KacamataKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KacamataKeyPressed
-        Valid.pindah(evt,ButaWarnaKanan,VisusKiri);
-    }//GEN-LAST:event_KacamataKeyPressed
+    private void CongekTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CongekTelingaKananKeyPressed
+        //Valid.pindah(evt,RefraksiKiri,RujukRefraksi);
+    }//GEN-LAST:event_CongekTelingaKananKeyPressed
 
-    private void VisusKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VisusKiriKeyPressed
-        Valid.pindah(evt,Kacamata,VisusKanan);
-    }//GEN-LAST:event_VisusKiriKeyPressed
+    private void CurigaTuliTelingaRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CurigaTuliTelingaRujukKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CurigaTuliTelingaRujukKeyPressed
 
-    private void VisusKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VisusKananKeyPressed
-        Valid.pindah(evt,VisusKiri,RefraksiKiri);
-    }//GEN-LAST:event_VisusKananKeyPressed
+    private void SumbatanSerumenTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SumbatanSerumenTelingaKiriKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SumbatanSerumenTelingaKiriKeyPressed
 
-    private void RefraksiKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RefraksiKiriKeyPressed
-        Valid.pindah(evt,VisusKanan,RefraksiKanan);
-    }//GEN-LAST:event_RefraksiKiriKeyPressed
+    private void SumbatanSerumenTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SumbatanSerumenTelingaKananKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SumbatanSerumenTelingaKananKeyPressed
 
-    private void RefraksiKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RefraksiKananKeyPressed
-        Valid.pindah(evt,RefraksiKiri,RujukRefraksi);
-    }//GEN-LAST:event_RefraksiKananKeyPressed
+    private void SumbatanSerumenTelingaRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SumbatanSerumenTelingaRujukKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SumbatanSerumenTelingaRujukKeyPressed
 
-    private void RujukRefraksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RujukRefraksiKeyPressed
-        Valid.pindah(evt,RefraksiKanan,KatarakKiri);
-    }//GEN-LAST:event_RujukRefraksiKeyPressed
+    private void CongekTelingaRujukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CongekTelingaRujukKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CongekTelingaRujukKeyPressed
 
-    private void KatarakKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KatarakKiriKeyPressed
-        Valid.pindah(evt,RujukRefraksi,KatarakKanan);
-    }//GEN-LAST:event_KatarakKiriKeyPressed
+    private void PenurunanPendengaranTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenurunanPendengaranTelingaKiriKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PenurunanPendengaranTelingaKiriKeyPressed
 
-    private void KatarakKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KatarakKananKeyPressed
-        Valid.pindah(evt,KatarakKiri,RujukKatarak);
-    }//GEN-LAST:event_KatarakKananKeyPressed
+    private void PenurunanPendengaranTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenurunanPendengaranTelingaKananKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PenurunanPendengaranTelingaKananKeyPressed
 
-    private void RujukKatarakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RujukKatarakKeyPressed
-        Valid.pindah(evt,KatarakKanan,HasilSkrining);
-    }//GEN-LAST:event_RujukKatarakKeyPressed
+    private void MendengarBisikanTelingaKiriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MendengarBisikanTelingaKiriKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MendengarBisikanTelingaKiriKeyPressed
+
+    private void MendengarBisikanTelingaKananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MendengarBisikanTelingaKananKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MendengarBisikanTelingaKananKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1708,10 +1640,14 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
-    private widget.ComboBox ButaWarnaKanan;
-    private widget.ComboBox ButaWarnaKiri;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkKejadian;
+    private widget.ComboBox CongekTelingaKanan;
+    private widget.ComboBox CongekTelingaKiri;
+    private widget.ComboBox CongekTelingaRujuk;
+    private widget.ComboBox CurigaTuliTelingaKanan;
+    private widget.ComboBox CurigaTuliTelingaKiri;
+    private widget.ComboBox CurigaTuliTelingaRujuk;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
@@ -1719,44 +1655,35 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     private widget.TextBox HasilSkrining;
     private widget.ComboBox Jam;
     private widget.TextBox Jk;
-    private widget.ComboBox Kacamata;
-    private widget.ComboBox KatarakKanan;
-    private widget.ComboBox KatarakKiri;
     private widget.TextBox KdPetugas;
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private widget.ComboBox MataLuar;
+    private widget.ComboBox MendengarBisikanTelingaKanan;
+    private widget.ComboBox MendengarBisikanTelingaKiri;
     private widget.ComboBox Menit;
     private javax.swing.JMenuItem MnSkriningPenglihatan;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox RefraksiKanan;
-    private widget.ComboBox RefraksiKiri;
-    private widget.ComboBox RujukKatarak;
-    private widget.ComboBox RujukRefraksi;
+    private widget.ComboBox PenurunanPendengaranTelingaKanan;
+    private widget.ComboBox PenurunanPendengaranTelingaKiri;
     private widget.ScrollPane Scroll;
+    private widget.ComboBox SumbatanSerumenTelingaKanan;
+    private widget.ComboBox SumbatanSerumenTelingaKiri;
+    private widget.ComboBox SumbatanSerumenTelingaRujuk;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private widget.ComboBox TajamKanan;
-    private widget.ComboBox TajamKiri;
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
-    private widget.ComboBox VisusKanan;
-    private widget.ComboBox VisusKiri;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel100;
     private widget.Label jLabel101;
-    private widget.Label jLabel102;
-    private widget.Label jLabel104;
-    private widget.Label jLabel105;
     private widget.Label jLabel107;
     private widget.Label jLabel108;
-    private widget.Label jLabel109;
     private widget.Label jLabel16;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
@@ -1792,7 +1719,6 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1805,26 +1731,26 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_penglihatan.nip,petugas.nama,skrining_kesehatan_penglihatan.tanggal,"+
-                    "skrining_kesehatan_penglihatan.mata_luar,skrining_kesehatan_penglihatan.tajam_kiri,skrining_kesehatan_penglihatan.tajam_kanan,skrining_kesehatan_penglihatan.buta_warna_kiri,"+
-                    "skrining_kesehatan_penglihatan.buta_warna_kanan,skrining_kesehatan_penglihatan.kacamata,skrining_kesehatan_penglihatan.visus_kiri,skrining_kesehatan_penglihatan.visus_kanan,"+
-                    "skrining_kesehatan_penglihatan.refraksi_kiri,skrining_kesehatan_penglihatan.refraksi_kanan,skrining_kesehatan_penglihatan.rujuk_refraksi,skrining_kesehatan_penglihatan.katarak_kiri,"+
-                    "skrining_kesehatan_penglihatan.katarak_kanan,skrining_kesehatan_penglihatan.rujuk_katarak,skrining_kesehatan_penglihatan.hasil_skrining,skrining_kesehatan_penglihatan.keterangan "+
-                    "from skrining_kesehatan_penglihatan inner join reg_periksa on skrining_kesehatan_penglihatan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_penglihatan.nip=petugas.nip "+
-                    "where skrining_kesehatan_penglihatan.tanggal between ? and ? order by skrining_kesehatan_penglihatan.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_indra_pendengaran.nip,petugas.nama,skrining_indra_pendengaran.tanggal,"+
+                    "skrining_indra_pendengaran.mata_luar,skrining_indra_pendengaran.tajam_kiri,skrining_indra_pendengaran.tajam_kanan,skrining_indra_pendengaran.buta_warna_kiri,"+
+                    "skrining_indra_pendengaran.buta_warna_kanan,skrining_indra_pendengaran.kacamata,skrining_indra_pendengaran.visus_kiri,skrining_indra_pendengaran.visus_kanan,"+
+                    "skrining_indra_pendengaran.refraksi_kiri,skrining_indra_pendengaran.refraksi_kanan,skrining_indra_pendengaran.rujuk_refraksi,skrining_indra_pendengaran.katarak_kiri,"+
+                    "skrining_indra_pendengaran.katarak_kanan,skrining_indra_pendengaran.rujuk_katarak,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
+                    "from skrining_indra_pendengaran inner join reg_periksa on skrining_indra_pendengaran.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_indra_pendengaran.nip=petugas.nip "+
+                    "where skrining_indra_pendengaran.tanggal between ? and ? order by skrining_indra_pendengaran.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_kesehatan_penglihatan.nip,petugas.nama,skrining_kesehatan_penglihatan.tanggal,"+
-                    "skrining_kesehatan_penglihatan.mata_luar,skrining_kesehatan_penglihatan.tajam_kiri,skrining_kesehatan_penglihatan.tajam_kanan,skrining_kesehatan_penglihatan.buta_warna_kiri,"+
-                    "skrining_kesehatan_penglihatan.buta_warna_kanan,skrining_kesehatan_penglihatan.kacamata,skrining_kesehatan_penglihatan.visus_kiri,skrining_kesehatan_penglihatan.visus_kanan,"+
-                    "skrining_kesehatan_penglihatan.refraksi_kiri,skrining_kesehatan_penglihatan.refraksi_kanan,skrining_kesehatan_penglihatan.rujuk_refraksi,skrining_kesehatan_penglihatan.katarak_kiri,"+
-                    "skrining_kesehatan_penglihatan.katarak_kanan,skrining_kesehatan_penglihatan.rujuk_katarak,skrining_kesehatan_penglihatan.hasil_skrining,skrining_kesehatan_penglihatan.keterangan "+
-                    "from skrining_kesehatan_penglihatan inner join reg_periksa on skrining_kesehatan_penglihatan.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kesehatan_penglihatan.nip=petugas.nip "+
-                    "where skrining_kesehatan_penglihatan.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_kesehatan_penglihatan.nip like ? or petugas.nama like ? or skrining_kesehatan_penglihatan.hasil_skrining like ? or skrining_kesehatan_penglihatan.keterangan like ?) "+
-                    "order by skrining_kesehatan_penglihatan.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_indra_pendengaran.nip,petugas.nama,skrining_indra_pendengaran.tanggal,"+
+                    "skrining_indra_pendengaran.mata_luar,skrining_indra_pendengaran.tajam_kiri,skrining_indra_pendengaran.tajam_kanan,skrining_indra_pendengaran.buta_warna_kiri,"+
+                    "skrining_indra_pendengaran.buta_warna_kanan,skrining_indra_pendengaran.kacamata,skrining_indra_pendengaran.visus_kiri,skrining_indra_pendengaran.visus_kanan,"+
+                    "skrining_indra_pendengaran.refraksi_kiri,skrining_indra_pendengaran.refraksi_kanan,skrining_indra_pendengaran.rujuk_refraksi,skrining_indra_pendengaran.katarak_kiri,"+
+                    "skrining_indra_pendengaran.katarak_kanan,skrining_indra_pendengaran.rujuk_katarak,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
+                    "from skrining_indra_pendengaran inner join reg_periksa on skrining_indra_pendengaran.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_indra_pendengaran.nip=petugas.nip "+
+                    "where skrining_indra_pendengaran.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_indra_pendengaran.nip like ? or petugas.nama like ? or skrining_indra_pendengaran.hasil_skrining like ? or skrining_indra_pendengaran.keterangan like ?) "+
+                    "order by skrining_indra_pendengaran.tanggal ");
             }
                 
             try {
@@ -1870,22 +1796,22 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        MataLuar.setSelectedIndex(0);
-        TajamKiri.setSelectedIndex(0);
-        TajamKanan.setSelectedIndex(0);
-        ButaWarnaKiri.setSelectedIndex(0);
-        ButaWarnaKanan.setSelectedIndex(0);
-        VisusKiri.setSelectedIndex(0);
-        VisusKanan.setSelectedIndex(0);
-        RefraksiKiri.setSelectedIndex(0);
-        RefraksiKanan.setSelectedIndex(0);
-        RujukRefraksi.setSelectedIndex(0);
-        KatarakKiri.setSelectedIndex(0);
-        KatarakKanan.setSelectedIndex(0);
-        RujukKatarak.setSelectedIndex(0);
+        CurigaTuliTelingaKiri.setSelectedIndex(0);
+        CurigaTuliTelingaKanan.setSelectedIndex(0);
+        CurigaTuliTelingaRujuk.setSelectedIndex(0);
+        PenurunanPendengaranTelingaKiri.setSelectedIndex(0);
+        PenurunanPendengaranTelingaKanan.setSelectedIndex(0);
+        MendengarBisikanTelingaKiri.setSelectedIndex(0);
+        MendengarBisikanTelingaKanan.setSelectedIndex(0);
+        CongekTelingaKiri.setSelectedIndex(0);
+        CongekTelingaKanan.setSelectedIndex(0);
+        CongekTelingaRujuk.setSelectedIndex(0);
+        SumbatanSerumenTelingaKiri.setSelectedIndex(0);
+        SumbatanSerumenTelingaKanan.setSelectedIndex(0);
+        SumbatanSerumenTelingaRujuk.setSelectedIndex(0);
         HasilSkrining.setText("");
         Keterangan.setText("");
-        MataLuar.requestFocus();
+        CurigaTuliTelingaKiri.requestFocus();
     } 
 
     private void getData() {
@@ -1895,22 +1821,21 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            MataLuar.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            TajamKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            TajamKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            ButaWarnaKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            ButaWarnaKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Kacamata.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            VisusKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            VisusKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            RefraksiKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            RefraksiKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            RujukRefraksi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            KatarakKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            KatarakKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            RujukKatarak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            CurigaTuliTelingaKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            CurigaTuliTelingaKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            CurigaTuliTelingaRujuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            PenurunanPendengaranTelingaKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            PenurunanPendengaranTelingaKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            MendengarBisikanTelingaKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            MendengarBisikanTelingaKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            CongekTelingaKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            CongekTelingaKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            CongekTelingaRujuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            SumbatanSerumenTelingaKiri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            SumbatanSerumenTelingaKanan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            SumbatanSerumenTelingaRujuk.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(11,13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(14,15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
@@ -1962,9 +1887,9 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>658){
+            if(internalFrame1.getHeight()>608){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,486));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,436));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -1982,10 +1907,10 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_kesehatan_penglihatan());
-        BtnHapus.setEnabled(akses.getskrining_kesehatan_penglihatan());
-        BtnEdit.setEnabled(akses.getskrining_kesehatan_penglihatan());
-        BtnPrint.setEnabled(akses.getskrining_kesehatan_penglihatan()); 
+        BtnSimpan.setEnabled(akses.getskrining_indra_pendengaran());
+        BtnHapus.setEnabled(akses.getskrining_indra_pendengaran());
+        BtnEdit.setEnabled(akses.getskrining_indra_pendengaran());
+        BtnPrint.setEnabled(akses.getskrining_indra_pendengaran()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2063,7 +1988,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_kesehatan_penglihatan","no_rawat=?","no_rawat=?,tanggal=?,mata_luar=?,tajam_kiri=?,tajam_kanan=?,buta_warna_kiri=?,buta_warna_kanan=?,kacamata=?,"+
+        /*if(Sequel.mengedittf("skrining_indra_pendengaran","no_rawat=?","no_rawat=?,tanggal=?,mata_luar=?,tajam_kiri=?,tajam_kanan=?,buta_warna_kiri=?,buta_warna_kanan=?,kacamata=?,"+
                 "visus_kiri=?,visus_kanan=?,refraksi_kiri=?,refraksi_kanan=?,rujuk_refraksi=?,katarak_kiri=?,katarak_kanan=?,rujuk_katarak=?,hasil_skrining=?,keterangan=?,nip=?",20,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 MataLuar.getSelectedItem().toString(),TajamKiri.getSelectedItem().toString(),TajamKanan.getSelectedItem().toString(),ButaWarnaKiri.getSelectedItem().toString(), 
@@ -2097,11 +2022,11 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),22);
                tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),23);
                emptTeks();
-        }
+        }*/
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_kesehatan_penglihatan where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_indra_pendengaran where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2113,7 +2038,7 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     }
     
     private void simpan() {
-        if(Sequel.menyimpantf("skrining_kesehatan_penglihatan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
+        /*if(Sequel.menyimpantf("skrining_indra_pendengaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             MataLuar.getSelectedItem().toString(),TajamKiri.getSelectedItem().toString(),TajamKanan.getSelectedItem().toString(),ButaWarnaKiri.getSelectedItem().toString(), 
             ButaWarnaKanan.getSelectedItem().toString(),Kacamata.getSelectedItem().toString(),VisusKiri.getSelectedItem().toString(),VisusKanan.getSelectedItem().toString(), 
@@ -2128,6 +2053,6 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        }
+        }*/
     }
 }
