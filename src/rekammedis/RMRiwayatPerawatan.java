@@ -25423,8 +25423,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "<td valign='top' width='79%'>"+
                               "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
-                        rs2.beforeFirst();
-                        while(rs2.next()){
+                        do{
                             htmlContent.append(
                                  "<tr>"+
                                     "<td valign='top'>"+
@@ -25499,8 +25498,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "</table>"+
                                     "</td>"+
                                  "</tr>"
-                            );   
-                        }
+                            );
+                        }while(rs2.next());
                         htmlContent.append(
                               "</table>"+
                             "</td>"+

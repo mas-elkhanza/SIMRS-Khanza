@@ -1541,10 +1541,10 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningKesehatanPenglihatan.jasper","report","::[ Formulir Skrining Kesehatan Penglihatan ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_indra_pendengaran.nip,petugas.nama,skrining_indra_pendengaran.tanggal,"+
-                    "skrining_indra_pendengaran.mata_luar,skrining_indra_pendengaran.tajam_kiri,skrining_indra_pendengaran.tajam_kanan,skrining_indra_pendengaran.buta_warna_kiri,"+
-                    "skrining_indra_pendengaran.buta_warna_kanan,skrining_indra_pendengaran.kacamata,skrining_indra_pendengaran.visus_kiri,skrining_indra_pendengaran.visus_kanan,"+
-                    "skrining_indra_pendengaran.refraksi_kiri,skrining_indra_pendengaran.refraksi_kanan,skrining_indra_pendengaran.rujuk_refraksi,skrining_indra_pendengaran.katarak_kiri,"+
-                    "skrining_indra_pendengaran.katarak_kanan,skrining_indra_pendengaran.rujuk_katarak,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
+                    "skrining_indra_pendengaran.curiga_tuli_telinga_kiri,skrining_indra_pendengaran.curiga_tuli_telinga_kanan,skrining_indra_pendengaran.curiga_tuli_telinga_rujuk,skrining_indra_pendengaran.penurunan_pendengaran_telinga_kiri,"+
+                    "skrining_indra_pendengaran.penurunan_pendengaran_telinga_kanan,skrining_indra_pendengaran.mendengar_bisikan_telinga_kiri,skrining_indra_pendengaran.mendengar_bisikan_telinga_kanan,skrining_indra_pendengaran.congek_telinga_kiri,"+
+                    "skrining_indra_pendengaran.congek_telinga_kanan,skrining_indra_pendengaran.congek_telinga_rujuk,skrining_indra_pendengaran.sumbatan_serumen_telinga_kiri,skrining_indra_pendengaran.sumbatan_serumen_telinga_kanan,"+
+                    "skrining_indra_pendengaran.sumbatan_serumen_telinga_rujuk,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
                     "from skrining_indra_pendengaran inner join reg_periksa on skrining_indra_pendengaran.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_indra_pendengaran.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
@@ -1732,20 +1732,20 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_indra_pendengaran.nip,petugas.nama,skrining_indra_pendengaran.tanggal,"+
-                    "skrining_indra_pendengaran.mata_luar,skrining_indra_pendengaran.tajam_kiri,skrining_indra_pendengaran.tajam_kanan,skrining_indra_pendengaran.buta_warna_kiri,"+
-                    "skrining_indra_pendengaran.buta_warna_kanan,skrining_indra_pendengaran.kacamata,skrining_indra_pendengaran.visus_kiri,skrining_indra_pendengaran.visus_kanan,"+
-                    "skrining_indra_pendengaran.refraksi_kiri,skrining_indra_pendengaran.refraksi_kanan,skrining_indra_pendengaran.rujuk_refraksi,skrining_indra_pendengaran.katarak_kiri,"+
-                    "skrining_indra_pendengaran.katarak_kanan,skrining_indra_pendengaran.rujuk_katarak,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
+                    "skrining_indra_pendengaran.curiga_tuli_telinga_kiri,skrining_indra_pendengaran.curiga_tuli_telinga_kanan,skrining_indra_pendengaran.curiga_tuli_telinga_rujuk,skrining_indra_pendengaran.penurunan_pendengaran_telinga_kiri,"+
+                    "skrining_indra_pendengaran.penurunan_pendengaran_telinga_kanan,skrining_indra_pendengaran.mendengar_bisikan_telinga_kiri,skrining_indra_pendengaran.mendengar_bisikan_telinga_kanan,skrining_indra_pendengaran.congek_telinga_kiri,"+
+                    "skrining_indra_pendengaran.congek_telinga_kanan,skrining_indra_pendengaran.congek_telinga_rujuk,skrining_indra_pendengaran.sumbatan_serumen_telinga_kiri,skrining_indra_pendengaran.sumbatan_serumen_telinga_kanan,"+
+                    "skrining_indra_pendengaran.sumbatan_serumen_telinga_rujuk,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
                     "from skrining_indra_pendengaran inner join reg_periksa on skrining_indra_pendengaran.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_indra_pendengaran.nip=petugas.nip "+
                     "where skrining_indra_pendengaran.tanggal between ? and ? order by skrining_indra_pendengaran.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_indra_pendengaran.nip,petugas.nama,skrining_indra_pendengaran.tanggal,"+
-                    "skrining_indra_pendengaran.mata_luar,skrining_indra_pendengaran.tajam_kiri,skrining_indra_pendengaran.tajam_kanan,skrining_indra_pendengaran.buta_warna_kiri,"+
-                    "skrining_indra_pendengaran.buta_warna_kanan,skrining_indra_pendengaran.kacamata,skrining_indra_pendengaran.visus_kiri,skrining_indra_pendengaran.visus_kanan,"+
-                    "skrining_indra_pendengaran.refraksi_kiri,skrining_indra_pendengaran.refraksi_kanan,skrining_indra_pendengaran.rujuk_refraksi,skrining_indra_pendengaran.katarak_kiri,"+
-                    "skrining_indra_pendengaran.katarak_kanan,skrining_indra_pendengaran.rujuk_katarak,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
+                    "skrining_indra_pendengaran.curiga_tuli_telinga_kiri,skrining_indra_pendengaran.curiga_tuli_telinga_kanan,skrining_indra_pendengaran.curiga_tuli_telinga_rujuk,skrining_indra_pendengaran.penurunan_pendengaran_telinga_kiri,"+
+                    "skrining_indra_pendengaran.penurunan_pendengaran_telinga_kanan,skrining_indra_pendengaran.mendengar_bisikan_telinga_kiri,skrining_indra_pendengaran.mendengar_bisikan_telinga_kanan,skrining_indra_pendengaran.congek_telinga_kiri,"+
+                    "skrining_indra_pendengaran.congek_telinga_kanan,skrining_indra_pendengaran.congek_telinga_rujuk,skrining_indra_pendengaran.sumbatan_serumen_telinga_kiri,skrining_indra_pendengaran.sumbatan_serumen_telinga_kanan,"+
+                    "skrining_indra_pendengaran.sumbatan_serumen_telinga_rujuk,skrining_indra_pendengaran.hasil_skrining,skrining_indra_pendengaran.keterangan "+
                     "from skrining_indra_pendengaran inner join reg_periksa on skrining_indra_pendengaran.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_indra_pendengaran.nip=petugas.nip "+
                     "where skrining_indra_pendengaran.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
@@ -1774,9 +1774,9 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("mata_luar"),rs.getString("tajam_kiri"),rs.getString("tajam_kanan"),rs.getString("buta_warna_kiri"),rs.getString("buta_warna_kanan"),rs.getString("kacamata"),rs.getString("visus_kiri"),
-                        rs.getString("visus_kanan"),rs.getString("refraksi_kiri"),rs.getString("refraksi_kanan"),rs.getString("rujuk_refraksi"),rs.getString("katarak_kiri"),rs.getString("katarak_kanan"),
-                        rs.getString("rujuk_katarak"),rs.getString("hasil_skrining"),rs.getString("keterangan"),
+                        rs.getString("curiga_tuli_telinga_kiri"),rs.getString("curiga_tuli_telinga_kanan"),rs.getString("curiga_tuli_telinga_rujuk"),rs.getString("penurunan_pendengaran_telinga_kiri"),rs.getString("penurunan_pendengaran_telinga_kanan"),rs.getString("mendengar_bisikan_telinga_kiri"),rs.getString("mendengar_bisikan_telinga_kanan"),
+                        rs.getString("congek_telinga_kiri"),rs.getString("congek_telinga_kanan"),rs.getString("congek_telinga_rujuk"),rs.getString("sumbatan_serumen_telinga_kiri"),rs.getString("sumbatan_serumen_telinga_kanan"),rs.getString("sumbatan_serumen_telinga_rujuk"),
+                        rs.getString("hasil_skrining"),rs.getString("keterangan"),
                     });
                 }
             } catch (Exception e) {
@@ -1988,13 +1988,14 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_indra_pendengaran","no_rawat=?","no_rawat=?,tanggal=?,mata_luar=?,tajam_kiri=?,tajam_kanan=?,buta_warna_kiri=?,buta_warna_kanan=?,kacamata=?,"+
-                "visus_kiri=?,visus_kanan=?,refraksi_kiri=?,refraksi_kanan=?,rujuk_refraksi=?,katarak_kiri=?,katarak_kanan=?,rujuk_katarak=?,hasil_skrining=?,keterangan=?,nip=?",20,new String[]{
+        if(Sequel.mengedittf("skrining_indra_pendengaran","no_rawat=?","no_rawat=?,tanggal=?,curiga_tuli_telinga_kiri=?,curiga_tuli_telinga_kanan=?,curiga_tuli_telinga_rujuk=?,penurunan_pendengaran_telinga_kiri=?,penurunan_pendengaran_telinga_kanan=?,mendengar_bisikan_telinga_kiri=?,"+
+                "mendengar_bisikan_telinga_kanan=?,congek_telinga_kiri=?,congek_telinga_kanan=?,congek_telinga_rujuk=?,sumbatan_serumen_telinga_kiri=?,sumbatan_serumen_telinga_kanan=?,sumbatan_serumen_telinga_rujuk=?,hasil_skrining=?,keterangan=?,nip=?",19,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                MataLuar.getSelectedItem().toString(),TajamKiri.getSelectedItem().toString(),TajamKanan.getSelectedItem().toString(),ButaWarnaKiri.getSelectedItem().toString(), 
-                ButaWarnaKanan.getSelectedItem().toString(),Kacamata.getSelectedItem().toString(),VisusKiri.getSelectedItem().toString(),VisusKanan.getSelectedItem().toString(), 
-                RefraksiKiri.getSelectedItem().toString(),RefraksiKanan.getSelectedItem().toString(),RujukRefraksi.getSelectedItem().toString(),KatarakKiri.getSelectedItem().toString(), 
-                KatarakKanan.getSelectedItem().toString(),RujukKatarak.getSelectedItem().toString(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText(),
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
+                CurigaTuliTelingaKiri.getSelectedItem().toString(),CurigaTuliTelingaKanan.getSelectedItem().toString(),CurigaTuliTelingaRujuk.getSelectedItem().toString(),PenurunanPendengaranTelingaKiri.getSelectedItem().toString(), 
+                PenurunanPendengaranTelingaKanan.getSelectedItem().toString(),MendengarBisikanTelingaKiri.getSelectedItem().toString(),MendengarBisikanTelingaKanan.getSelectedItem().toString(),CongekTelingaKiri.getSelectedItem().toString(), 
+                CongekTelingaKanan.getSelectedItem().toString(),CongekTelingaRujuk.getSelectedItem().toString(),SumbatanSerumenTelingaKiri.getSelectedItem().toString(),SumbatanSerumenTelingaKanan.getSelectedItem().toString(), 
+                SumbatanSerumenTelingaRujuk.getSelectedItem().toString(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText(),
                 tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -2005,24 +2006,23 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(MataLuar.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(TajamKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(TajamKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(ButaWarnaKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(ButaWarnaKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(Kacamata.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(VisusKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(VisusKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(RefraksiKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(RefraksiKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(RujukRefraksi.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(KatarakKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(KatarakKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(RujukKatarak.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(CurigaTuliTelingaKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(CurigaTuliTelingaKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(CurigaTuliTelingaRujuk.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(PenurunanPendengaranTelingaKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt(PenurunanPendengaranTelingaKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt(MendengarBisikanTelingaKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt(MendengarBisikanTelingaKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt(CongekTelingaKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(CongekTelingaKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(CongekTelingaRujuk.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(SumbatanSerumenTelingaKiri.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(SumbatanSerumenTelingaKanan.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(SumbatanSerumenTelingaRujuk.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),22);
                emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
@@ -2038,21 +2038,22 @@ public final class RMSkriningIndraPendengaran extends javax.swing.JDialog {
     }
     
     private void simpan() {
-        /*if(Sequel.menyimpantf("skrining_indra_pendengaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",19,new String[]{
+        if(Sequel.menyimpantf("skrining_indra_pendengaran","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",18,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            MataLuar.getSelectedItem().toString(),TajamKiri.getSelectedItem().toString(),TajamKanan.getSelectedItem().toString(),ButaWarnaKiri.getSelectedItem().toString(), 
-            ButaWarnaKanan.getSelectedItem().toString(),Kacamata.getSelectedItem().toString(),VisusKiri.getSelectedItem().toString(),VisusKanan.getSelectedItem().toString(), 
-            RefraksiKiri.getSelectedItem().toString(),RefraksiKanan.getSelectedItem().toString(),RujukRefraksi.getSelectedItem().toString(),KatarakKiri.getSelectedItem().toString(), 
-            KatarakKanan.getSelectedItem().toString(),RujukKatarak.getSelectedItem().toString(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText()
+            CurigaTuliTelingaKiri.getSelectedItem().toString(),CurigaTuliTelingaKanan.getSelectedItem().toString(),CurigaTuliTelingaRujuk.getSelectedItem().toString(),PenurunanPendengaranTelingaKiri.getSelectedItem().toString(), 
+            PenurunanPendengaranTelingaKanan.getSelectedItem().toString(),MendengarBisikanTelingaKiri.getSelectedItem().toString(),MendengarBisikanTelingaKanan.getSelectedItem().toString(),CongekTelingaKiri.getSelectedItem().toString(), 
+            CongekTelingaKanan.getSelectedItem().toString(),CongekTelingaRujuk.getSelectedItem().toString(),SumbatanSerumenTelingaKiri.getSelectedItem().toString(),SumbatanSerumenTelingaKanan.getSelectedItem().toString(), 
+            SumbatanSerumenTelingaRujuk.getSelectedItem().toString(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                MataLuar.getSelectedItem().toString(),TajamKiri.getSelectedItem().toString(),TajamKanan.getSelectedItem().toString(),ButaWarnaKiri.getSelectedItem().toString(),ButaWarnaKanan.getSelectedItem().toString(),Kacamata.getSelectedItem().toString(),
-                VisusKiri.getSelectedItem().toString(),VisusKanan.getSelectedItem().toString(),RefraksiKiri.getSelectedItem().toString(),RefraksiKanan.getSelectedItem().toString(),RujukRefraksi.getSelectedItem().toString(),KatarakKiri.getSelectedItem().toString(), 
-                KatarakKanan.getSelectedItem().toString(),RujukKatarak.getSelectedItem().toString(),HasilSkrining.getText(),Keterangan.getText()
+                CurigaTuliTelingaKiri.getSelectedItem().toString(),CurigaTuliTelingaKanan.getSelectedItem().toString(),CurigaTuliTelingaRujuk.getSelectedItem().toString(),PenurunanPendengaranTelingaKiri.getSelectedItem().toString(), 
+                PenurunanPendengaranTelingaKanan.getSelectedItem().toString(),MendengarBisikanTelingaKiri.getSelectedItem().toString(),MendengarBisikanTelingaKanan.getSelectedItem().toString(),CongekTelingaKiri.getSelectedItem().toString(), 
+                CongekTelingaKanan.getSelectedItem().toString(),CongekTelingaRujuk.getSelectedItem().toString(),SumbatanSerumenTelingaKiri.getSelectedItem().toString(),SumbatanSerumenTelingaKanan.getSelectedItem().toString(), 
+                SumbatanSerumenTelingaRujuk.getSelectedItem().toString(),HasilSkrining.getText(),Keterangan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        }*/
+        }
     }
 }
