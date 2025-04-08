@@ -42,7 +42,6 @@ public final class DlgCariTemplateLaborat extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -332,7 +331,7 @@ public final class DlgCariTemplateLaborat extends javax.swing.JDialog {
             file=new File("./cache/templatelaborat.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                     "SELECT template_laboratorium.kd_jenis_prw,jns_perawatan_lab.nm_perawatan,template_laboratorium.id_template,template_laboratorium.Pemeriksaan,template_laboratorium.satuan "+
                     "FROM template_laboratorium inner join jns_perawatan_lab on jns_perawatan_lab.kd_jenis_prw=template_laboratorium.kd_jenis_prw where jns_perawatan_lab.status='1' "+
@@ -341,7 +340,7 @@ public final class DlgCariTemplateLaborat extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
-                    iyem=iyem+"{\"IDPeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2)+"\",\"IDTemplate\":\""+rs.getString(3)+"\",\"DetailPemeriksaan\":\""+rs.getString(4)+"\",\"Satuan\":\""+rs.getString(5)+"\"},";
+                    iyembuilder.append("{\"IDPeriksa\":\"").append(rs.getString(1)).append("\",\"NamaPemeriksaan\":\"").append(rs.getString(2)).append("\",\"IDTemplate\":\"").append(rs.getString(3)).append("\",\"DetailPemeriksaan\":\"").append(rs.getString(4)).append("\",\"Satuan\":\"").append(rs.getString(5)).append("\"},");
                 }
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
@@ -355,10 +354,14 @@ public final class DlgCariTemplateLaborat extends javax.swing.JDialog {
                 }
             }
 
-            fileWriter.write("{\"template\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"template\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

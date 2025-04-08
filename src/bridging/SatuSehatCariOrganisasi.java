@@ -42,7 +42,6 @@ public final class SatuSehatCariOrganisasi extends javax.swing.JDialog {
     private PreparedStatement ps;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -339,7 +338,7 @@ public final class SatuSehatCariOrganisasi extends javax.swing.JDialog {
             file=new File("./cache/satu_sehat_mapping_departemen.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                    "select satu_sehat_mapping_departemen.dep_id,departemen.nama,satu_sehat_mapping_departemen.id_organisasi_satusehat "+
                    "from satu_sehat_mapping_departemen inner join departemen on satu_sehat_mapping_departemen.dep_id=departemen.dep_id "+
@@ -348,7 +347,7 @@ public final class SatuSehatCariOrganisasi extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
-                    iyem=iyem+"{\"KodeDepartemen\":\""+rs.getString(1)+"\",\"NamaDepartemen\":\""+rs.getString(2)+"\",\"IdOrganisasi\":\""+rs.getString(3)+"\"},";
+                    iyembuilder.append("{\"KodeDepartemen\":\"").append(rs.getString(1)).append("\",\"NamaDepartemen\":\"").append(rs.getString(2)).append("\",\"IdOrganisasi\":\"").append(rs.getString(3)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -360,10 +359,15 @@ public final class SatuSehatCariOrganisasi extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"satu_sehat_mapping_departemen\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"satu_sehat_mapping_departemen\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

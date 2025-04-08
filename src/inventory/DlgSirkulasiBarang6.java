@@ -980,7 +980,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         "</body>"+                   
                                      "</html>"
                             );
-
+                            htmlContent=null;
                             bw.close();                         
                             Desktop.getDesktop().browse(f.toURI());
                         break;
@@ -1094,7 +1094,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         "</body>"+                   
                                      "</html>"
                             );
-
+                            htmlContent=null;
                             bw.close();                         
                             Desktop.getDesktop().browse(f.toURI());
                         break;
@@ -1112,7 +1112,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             f = new File("SirkulasiObat.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
-
+                            htmlContent=null;
                             bw.close();                         
                             Desktop.getDesktop().browse(f.toURI());
                         break; 

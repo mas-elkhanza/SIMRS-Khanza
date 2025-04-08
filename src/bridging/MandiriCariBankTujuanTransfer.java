@@ -44,7 +44,6 @@ public final class MandiriCariBankTujuanTransfer extends javax.swing.JDialog {
     private PreparedStatement ps;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -364,13 +363,13 @@ public final class MandiriCariBankTujuanTransfer extends javax.swing.JDialog {
             file=new File("./cache/mandiribanktujuantransfer.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select * from bank_tujuan_transfer_bankmandiri order by bank_tujuan_transfer_bankmandiri.kode_bank ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-                    iyem=iyem+"{\"KodeBank\":\""+rs.getString(1)+"\",\"NamaBank\":\""+rs.getString(2)+"\"},";
+                    iyembuilder.append("{\"KodeBank\":\""+rs.getString(1)+"\",\"NamaBank\":\""+rs.getString(2)+"\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -382,10 +381,15 @@ public final class MandiriCariBankTujuanTransfer extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"mandiribanktujuantransfer\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"mandiribanktujuantransfer\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

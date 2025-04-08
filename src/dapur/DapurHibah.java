@@ -43,7 +43,6 @@ public class DapurHibah extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -895,7 +894,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             file=new File("./cache/hibahdapur.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                     "select dapurbarang.kode_brng, dapurbarang.nama_brng,dapurbarang.kode_sat,dapurbarang.harga "+
                     " from dapurbarang where dapurbarang.status='1' order by dapurbarang.nama_brng");
@@ -903,7 +902,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),rs.getDouble(4),0});
-                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Harga\":\""+rs.getString(4)+"\"},";
+                    iyembuilder.append("{\"KodeBarang\":\"").append(rs.getString(1)).append("\",\"NamaBarang\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"Satuan\":\"").append(rs.getString(3)).append("\",\"Harga\":\"").append(rs.getString(4)).append("\"},");
                 }   
             }catch(Exception e){
                 System.out.println(e);
@@ -914,11 +913,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(ps!=null){
                     ps.close();
                 }
-            }             
-            fileWriter.write("{\"hibahdapur\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            }   
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"hibahdapur\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;  
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -963,6 +967,12 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             for(i=0;i<jml;i++){
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],harga[i],subtotal[i]});
             }
+            kodebarang=null;
+            namabarang=null;
+            satuan=null;
+            harga=null;
+            jumlah=null;
+            subtotal=null;
             
             myObj = new FileReader("./cache/hibahdapur.iyem");
             root = mapper.readTree(myObj);

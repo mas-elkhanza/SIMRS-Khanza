@@ -1280,6 +1280,7 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
             this.setCursor(Cursor.getDefaultCursor());             
         }catch(SQLException e){
             System.out.println("Catatan  "+e);

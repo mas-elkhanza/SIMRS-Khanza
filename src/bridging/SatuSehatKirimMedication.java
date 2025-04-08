@@ -450,6 +450,7 @@ public final class SatuSehatKirimMedication extends javax.swing.JDialog {
                       "</table>"+
                     "</html>"
                 );
+                htmlContent=null;
 
                 File g = new File("file2.css");            
                 BufferedWriter bg = new BufferedWriter(new FileWriter(g));
