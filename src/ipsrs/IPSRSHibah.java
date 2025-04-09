@@ -45,7 +45,6 @@ public class IPSRSHibah extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -965,6 +964,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             for(i=0;i<jml;i++){
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],harga[i],subtotal[i]});
             }
+            
+            kodebarang=null;
+            namabarang=null;
+            satuan=null;
+            harga=null;
+            jumlah=null;
+            subtotal=null;
             
             myObj = new FileReader("./cache/hibahipsrs.iyem");
             root = mapper.readTree(myObj);

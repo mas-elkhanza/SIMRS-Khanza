@@ -101,6 +101,7 @@ import permintaan.DlgPermintaanRadiologi;
 import permintaan.DlgPermintaanRanap;
 import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMCatatanAnastesiSedasi;
+import rekammedis.RMCatatanPengkajianPaskaOperasi;
 import rekammedis.RMCatatanPersalinan;
 import rekammedis.RMChecklistKriteriaMasukHCU;
 import rekammedis.RMChecklistKriteriaMasukICU;
@@ -15771,6 +15772,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnCatatanPengkajianPaskaOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianPreOpActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMCatatanPengkajianPaskaOperasi form=new RMCatatanPengkajianPaskaOperasi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16209,7 +16232,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             MnPenilaianPasienImunitasRendah,MnCatatanKeseimbanganCairan,MnCatatanObservasiCHBP,MnCatatanObservasiInduksiPersalinan,MnPermintaanKonsultasiMedik,MnDataOperasi,MnDataKonsultasiMedik,MnSkriningMerokokUsiaSekolahRemaja,MnSkriningKekerasanPadaWanita,MnSkriningObesitas,
             MnSkriningRisikoKankerPayudara,MnSkriningRisikoKankerParu,MnSkriningKesehatanGigiMulutRemaja,MnSkriningTBC,MnCatatanAnastesiSedasi,MnSkriningPUMA,MnSkriningAdiksiNikotin,MnSkriningThalassemia,MnSkriningInstrumenSDQ,MnSkriningInstrumenSRQ,MnChecklistPemberianFibrinolitik,
             MnSkriningKankerKolorektal,MnPenilaianPsikologKlinis,MnPenilaianDerajatDehidrasi,MnHasilPemeriksaanECHO,MnPenilaianBayiBaruLahir,MnSkriningDiabetesMelitus,MnLaporanTindakan,MnPelaksanaanInformasiEdukasi,MnLayananKedokteranFisikRehabilitasi,MnSkriningKesehatanGigiMulutBalita,
-            MnSkriningAnemia,MnSkriningHipertensi,MnSkriningKesehatanPenglihatan,MnCatatanObservasiHemodialisa,MnSkriningKesehatanGigiMulutDewasa,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran;
+            MnSkriningAnemia,MnSkriningHipertensi,MnSkriningKesehatanPenglihatan,MnCatatanObservasiHemodialisa,MnSkriningKesehatanGigiMulutDewasa,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,
+            MnCatatanPengkajianPaskaOperasi;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik;
     
     private void tampil() {
@@ -16692,6 +16716,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianBayiBaruLahir.setEnabled(akses.getpenilaian_bayi_baru_lahir());
         MnPenilaianDerajatDehidrasi.setEnabled(akses.getpenilaian_derajat_dehidrasi());
         MnPenilaianPreOp.setEnabled(akses.getpenilaian_pre_operasi());
+        MnCatatanPengkajianPaskaOperasi.setEnabled(akses.getcatatan_pengkajian_paska_operasi());
         MnPenilaianPreAnastesi.setEnabled(akses.getpenilaian_pre_anestesi());
         MnCatatanAnastesiSedasi.setEnabled(akses.getcatatan_anestesi_sedasi());
         MnPersetujuanPenolakanTindakan.setEnabled(akses.getpersetujuan_penolakan_tindakan());
@@ -17814,6 +17839,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianDerajatDehidrasi.setPreferredSize(new java.awt.Dimension(260, 26));
         MnPenilaianDerajatDehidrasi.addActionListener(this::MnPenilaianDerajatDehidrasiActionPerformed);
         
+        MnCatatanPengkajianPaskaOperasi = new javax.swing.JMenuItem();
+        MnCatatanPengkajianPaskaOperasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanPengkajianPaskaOperasi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnCatatanPengkajianPaskaOperasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanPengkajianPaskaOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnCatatanPengkajianPaskaOperasi.setText("Catatan Pengkajian Paska Operasi");
+        MnCatatanPengkajianPaskaOperasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCatatanPengkajianPaskaOperasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCatatanPengkajianPaskaOperasi.setName("MnCatatanPengkajianPaskaOperasi");
+        MnCatatanPengkajianPaskaOperasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnCatatanPengkajianPaskaOperasi.addActionListener(this::MnCatatanPengkajianPaskaOperasiActionPerformed);
+        
         MnHasilUSG = new javax.swing.JMenu();
         MnHasilUSG.setBackground(new java.awt.Color(255, 255, 254));
         MnHasilUSG.setForeground(new java.awt.Color(50, 50, 50));
@@ -17881,6 +17918,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnRMOperasi.add(MnSkorAldrettePascaAnestesi);
         MnRMOperasi.add(MnSkorStewardPascaAnestesi);
         MnRMOperasi.add(MnSkorBromagePascaAnestesi);
+        MnRMOperasi.add(MnCatatanPengkajianPaskaOperasi);
         
         MnRMRisikoJatuh.add(MnPenilaianRisikoJatuhDewasa);
         MnRMRisikoJatuh.add(MnPenilaianRisikoJatuhAnak);

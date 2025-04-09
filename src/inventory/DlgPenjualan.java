@@ -52,7 +52,6 @@ public class DlgPenjualan extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -2609,6 +2608,27 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         for(i=0;i<jml;i++){            
             tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],kategori[i],satuan[i],harga[i],subtotal[i],diskon[i],besardiskon[i],tambahan[i],embalase[i],tuslah[i],aturanpakai[i],totaljual[i],stok[i],hbeli[i],nobatch[i],nofaktur[i],kadaluarsa[i]});
         }
+        
+        kodebarang=null;
+        namabarang=null;
+        kategori=null;
+        satuan=null;
+        harga=null;
+        jumlah=null;
+        subtotal=null;
+        diskon=null;
+        besardiskon=null;
+        tambahan=null;
+        embalase=null;
+        tuslah=null;
+        aturanpakai=null;
+        totaljual=null;
+        stok=null;
+        hbeli=null;
+        nobatch=null;
+        nofaktur=null;
+        kadaluarsa=null;
+        
         try{
             ps=koneksi.prepareStatement(
                 "select databarang.kode_brng, databarang.nama_brng,jenis.nama,gudangbarang.stok, "+
@@ -2778,6 +2798,27 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         for(i=0;i<jml;i++){            
             tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],kategori[i],satuan[i],harga[i],subtotal[i],diskon[i],besardiskon[i],tambahan[i],embalase[i],tuslah[i],aturanpakai[i],totaljual[i],stok[i],hbeli[i],nobatch[i],nofaktur[i],kadaluarsa[i]});
         }
+        
+        kodebarang=null;
+        namabarang=null;
+        kategori=null;
+        satuan=null;
+        harga=null;
+        jumlah=null;
+        subtotal=null;
+        diskon=null;
+        besardiskon=null;
+        tambahan=null;
+        embalase=null;
+        tuslah=null;
+        aturanpakai=null;
+        totaljual=null;
+        stok=null;
+        hbeli=null;
+        nobatch=null;
+        nofaktur=null;
+        kadaluarsa=null;
+        
         try{
             ps=koneksi.prepareStatement(
                 "select data_batch.kode_brng, databarang.nama_brng,jenis.nama, "+
@@ -3026,6 +3067,28 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 });
             }
             
+            no=null;
+            kodebarang=null;
+            namabarang=null;
+            kategori=null;
+            satuan=null;
+            harga=null;
+            jumlah=null;
+            subtotal=null;
+            diskon=null;
+            besardiskon=null;
+            tambahan=null;
+            embalase=null;
+            tuslah=null;
+            totaljual=null;
+            stok=null;
+            hbeli=null;
+            nobatch=null;
+            nofaktur=null;
+            kadaluarsa=null;
+            kps=null;
+            kandungan=null;
+            
             ps=koneksi.prepareStatement(
                 "select databarang.kode_brng, databarang.nama_brng,jenis.nama,gudangbarang.stok, "+
                 " databarang.kode_sat, databarang.jualbebas, databarang.karyawan,"+
@@ -3265,6 +3328,28 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     nobatch[i],nofaktur[i],kadaluarsa[i]
                 });
             }
+            
+            no=null;
+            kodebarang=null;
+            namabarang=null;
+            kategori=null;
+            satuan=null;
+            harga=null;
+            jumlah=null;
+            subtotal=null;
+            diskon=null;
+            besardiskon=null;
+            tambahan=null;
+            embalase=null;
+            tuslah=null;
+            totaljual=null;
+            stok=null;
+            hbeli=null;
+            nobatch=null;
+            nofaktur=null;
+            kadaluarsa=null;
+            kps=null;
+            kandungan=null;
             
             ps=koneksi.prepareStatement(
                 "select data_batch.kode_brng, databarang.nama_brng,jenis.nama,gudangbarang.stok, "+
@@ -4274,14 +4359,14 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
              file=new File("./cache/akunbayar.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
-             iyem="";
+             StringBuilder iyembuilder = new StringBuilder();
              ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                     iyembuilder.append("{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},");
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -4294,10 +4379,14 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                  } 
              }
 
-             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
-             fileWriter.flush();
+             if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"akunbayar\":["+iyembuilder+"]}");
+                fileWriter.flush();
+             }
+            
              fileWriter.close();
-             iyem=null;
+             iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

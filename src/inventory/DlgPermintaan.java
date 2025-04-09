@@ -41,7 +41,7 @@ public class DlgPermintaan extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem,DEPOAKTIFOBAT="";
+    private String DEPOAKTIFOBAT="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -931,7 +931,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             file=new File("./cache/permintaanobat.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                 "select databarang.kode_brng,databarang.nama_brng,databarang.kode_sat,jenis.nama,"+
                 "kategori_barang.nama as kategori,golongan_barang.nama as golongan "+
@@ -942,7 +942,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"JenisObat\":\""+rs.getString(4)+"\",\"Kategori\":\""+rs.getString(5)+"\",\"Golongan\":\""+rs.getString(6)+"\"},";
+                    iyembuilder.append("{\"KodeBarang\":\"").append(rs.getString(1)).append("\",\"NamaBarang\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"Satuan\":\"").append(rs.getString(3)).append("\",\"JenisObat\":\"").append(rs.getString(4)).append("\",\"Kategori\":\"").append(rs.getString(5)).append("\",\"Golongan\":\"").append(rs.getString(6)).append("\"},");
                 } 
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -954,10 +954,15 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                     ps.close();
                 }
             }       
-            fileWriter.write("{\"permintaanobat\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaanobat\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null; 
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -974,22 +979,15 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }
             }
 
-            kodebarang=null;
             kodebarang=new String[jml];
-            namabarang=null;
             namabarang=new String[jml];
-            satuan=null;
             satuan=new String[jml];
-            jumlah=null;
             jumlah=new String[jml];
-            jenis=null;
             jenis=new String[jml];
-            kategori=null;
             kategori=new String[jml];
-            golongan=null;
             golongan=new String[jml];
-            keterangan=null;
             keterangan=new String[jml];
+            
             index=0;        
             for(i=0;i<row;i++){
                 if(!tbDokter.getValueAt(i,0).toString().equals("")){
@@ -1008,6 +1006,15 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             for(i=0;i<jml;i++){
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],jenis[i],kategori[i],golongan[i],keterangan[i]});
             }
+            
+            kodebarang=null;
+            namabarang=null;
+            satuan=null;
+            jumlah=null;
+            jenis=null;
+            kategori=null;
+            golongan=null;
+            keterangan=null;
             
             myObj = new FileReader("./cache/permintaanobat.iyem");
             root = mapper.readTree(myObj);
