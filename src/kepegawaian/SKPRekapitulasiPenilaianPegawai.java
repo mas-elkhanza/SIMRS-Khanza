@@ -31,7 +31,6 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -43,7 +42,6 @@ public class SKPRekapitulasiPenilaianPegawai extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private sekuel Sequel=new sekuel();
     private int jml=0,i=0,row=0,index=0;
     private String[] KodeKriteria,Kriteria;
     private Boolean[] Ya,Tidak;

@@ -43,7 +43,6 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     public String Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="",akun="",kontraakun="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
@@ -331,7 +330,7 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
             file=new File("./cache/kategoripengeluaran.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                      "select kategori_pengeluaran_harian.kode_kategori,kategori_pengeluaran_harian.nama_kategori,akun1.nm_rek as akun1,akun2.nm_rek as akun2 "+
                      "from kategori_pengeluaran_harian inner join rekening as akun1 on kategori_pengeluaran_harian.kd_rek=akun1.kd_rek "+
@@ -342,7 +341,7 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)
                     });
-                    iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"Kategori\":\""+rs.getString(2)+"\",\"AkunRekening\":\""+rs.getString(3)+"\",\"KontraAkun\":\""+rs.getString(4)+"\"},";
+                    iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"Kategori\":\"").append(rs.getString(2)).append("\",\"AkunRekening\":\"").append(rs.getString(3)).append("\",\"KontraAkun\":\"").append(rs.getString(4)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -355,10 +354,14 @@ public final class DlgCariKategoriPengeluaran extends javax.swing.JDialog {
                 }
             }
             
-            fileWriter.write("{\"kategoripengeluaran\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"kategoripengeluaran\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
