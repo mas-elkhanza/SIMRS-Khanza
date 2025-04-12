@@ -63,7 +63,7 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
     private boolean sukses=false;
     private File file;
     private FileWriter fileWriter;
-    private String iyem,Bayar_Pemesanan_Obat=Sequel.cariIsi("select set_akun.Bayar_Pemesanan_Obat from set_akun"),Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="";
+    private String Bayar_Pemesanan_Obat=Sequel.cariIsi("select set_akun.Bayar_Pemesanan_Obat from set_akun"),Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1576,28 +1576,28 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Valid.tabelKosong(tabMode);
         try{           
             ps=koneksi.prepareStatement(
-                    "select bayar_pemesanan.tgl_bayar,pemesanan.tgl_faktur,pemesanan.tgl_pesan,"+
-                    "pemesanan.tgl_tempo, bayar_pemesanan.no_faktur,"+
-                    "datasuplier.nama_suplier,bayar_pemesanan.nama_bayar,bayar_pemesanan.no_bukti,"+
-                    "bayar_pemesanan.besar_bayar,bayar_pemesanan.keterangan,"+
-                    "bayar_pemesanan.nip,petugas.nama from bayar_pemesanan inner join petugas "+
-                    "inner join pemesanan inner join datasuplier on bayar_pemesanan.nip=petugas.nip "+
-                    "and bayar_pemesanan.no_faktur=pemesanan.no_faktur "+
-                    "and pemesanan.kode_suplier=datasuplier.kode_suplier where "+
-                    "bayar_pemesanan.tgl_bayar between ? and ? and datasuplier.nama_suplier like ? and "+
-                    "(bayar_pemesanan.no_faktur like ? or datasuplier.nama_suplier like ? or bayar_pemesanan.nama_bayar like ? or "+
-                    "bayar_pemesanan.no_bukti like ? or bayar_pemesanan.keterangan like ? or petugas.nama like ?) "+
-                    "order by bayar_pemesanan.tgl_bayar");
+                    "select bayar_pemesanan.tgl_bayar,pemesanan.tgl_faktur,pemesanan.tgl_pesan,pemesanan.tgl_tempo, bayar_pemesanan.no_faktur,"+
+                    "datasuplier.nama_suplier,bayar_pemesanan.nama_bayar,bayar_pemesanan.no_bukti,bayar_pemesanan.besar_bayar,bayar_pemesanan.keterangan,"+
+                    "bayar_pemesanan.nip,petugas.nama from bayar_pemesanan inner join petugas on bayar_pemesanan.nip=petugas.nip "+
+                    "inner join pemesanan on bayar_pemesanan.no_faktur=pemesanan.no_faktur "+
+                    "inner join datasuplier on pemesanan.kode_suplier=datasuplier.kode_suplier "+
+                    "where bayar_pemesanan.tgl_bayar between ? and ? and datasuplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (bayar_pemesanan.no_faktur like ? or datasuplier.nama_suplier like ? or "+
+                    "bayar_pemesanan.nama_bayar like ? or bayar_pemesanan.no_bukti like ? or bayar_pemesanan.keterangan like ? or "+
+                    "petugas.nama like ?)")+"order by bayar_pemesanan.tgl_bayar");
             try {            
                 ps.setString(1,Valid.SetTgl(TglCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglCari2.getSelectedItem()+""));
                 ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText()+"%");
-                ps.setString(5,"%"+TCari.getText()+"%");
-                ps.setString(6,"%"+TCari.getText()+"%");
-                ps.setString(7,"%"+TCari.getText()+"%");
-                ps.setString(8,"%"+TCari.getText()+"%");
-                ps.setString(9,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 total=0;
                 while(rs.next()){                
@@ -1698,14 +1698,14 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
              file=new File("./cache/akunbayarhutang.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
-             iyem="";
+             StringBuilder iyembuilder = new StringBuilder();
              ps=koneksi.prepareStatement("select * from akun_bayar_hutang order by akun_bayar_hutang.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\"},";
+                     iyembuilder.append("{\"NamaAkun\":\"").append(rs.getString(1).replaceAll("\"","")).append("\",\"KodeRek\":\"").append(rs.getString(2)).append("\"},");
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1718,10 +1718,14 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                  } 
              }
 
-             fileWriter.write("{\"akunbayarhutang\":["+iyem.substring(0,iyem.length()-1)+"]}");
-             fileWriter.flush();
+             if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"akunbayarhutang\":["+iyembuilder+"]}");
+                fileWriter.flush();
+             }
+            
              fileWriter.close();
-             iyem=null;
+             iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

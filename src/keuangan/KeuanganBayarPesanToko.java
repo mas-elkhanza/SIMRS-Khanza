@@ -63,7 +63,6 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private boolean sukses=false;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1595,56 +1594,35 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{           
             ps=koneksi.prepareStatement(
-                    "select toko_bayar_pemesanan.tgl_bayar,tokopemesanan.tgl_faktur,tokopemesanan.tgl_pesan,"+
-                    "tokopemesanan.tgl_tempo, toko_bayar_pemesanan.no_faktur,"+
-                    "tokosuplier.nama_suplier,toko_bayar_pemesanan.nama_bayar,toko_bayar_pemesanan.no_bukti,"+
-                    "toko_bayar_pemesanan.besar_bayar,toko_bayar_pemesanan.keterangan,"+
-                    "toko_bayar_pemesanan.nip,petugas.nama from toko_bayar_pemesanan inner join petugas "+
-                    "inner join tokopemesanan inner join tokosuplier on toko_bayar_pemesanan.nip=petugas.nip "+
-                    "and toko_bayar_pemesanan.no_faktur=tokopemesanan.no_faktur "+
-                    "and tokopemesanan.kode_suplier=tokosuplier.kode_suplier where "+
-                    "toko_bayar_pemesanan.tgl_bayar between ? and ? and tokosuplier.nama_suplier like ? and toko_bayar_pemesanan.no_faktur like ? or "+
-                    "toko_bayar_pemesanan.tgl_bayar between ? and ? and tokosuplier.nama_suplier like ? and tokosuplier.nama_suplier like ? or "+
-                    "toko_bayar_pemesanan.tgl_bayar between ? and ? and tokosuplier.nama_suplier like ? and toko_bayar_pemesanan.nama_bayar like ? or "+
-                    "toko_bayar_pemesanan.tgl_bayar between ? and ? and tokosuplier.nama_suplier like ? and toko_bayar_pemesanan.no_bukti like ? or "+
-                    "toko_bayar_pemesanan.tgl_bayar between ? and ? and tokosuplier.nama_suplier like ? and toko_bayar_pemesanan.keterangan like ? or "+
-                    "toko_bayar_pemesanan.tgl_bayar between ? and ? and tokosuplier.nama_suplier like ? and petugas.nama like ? "+
-                    " order by toko_bayar_pemesanan.tgl_bayar");
+                    "select toko_bayar_pemesanan.tgl_bayar,tokopemesanan.tgl_faktur,tokopemesanan.tgl_pesan,tokopemesanan.tgl_tempo, toko_bayar_pemesanan.no_faktur,"+
+                    "tokosuplier.nama_suplier,toko_bayar_pemesanan.nama_bayar,toko_bayar_pemesanan.no_bukti,toko_bayar_pemesanan.besar_bayar,toko_bayar_pemesanan.keterangan,"+
+                    "toko_bayar_pemesanan.nip,petugas.nama from toko_bayar_pemesanan inner join petugas on toko_bayar_pemesanan.nip=petugas.nip "+
+                    "inner join tokopemesanan on toko_bayar_pemesanan.no_faktur=tokopemesanan.no_faktur "+
+                    "inner join tokosuplier on tokopemesanan.kode_suplier=tokosuplier.kode_suplier "+
+                    "where toko_bayar_pemesanan.tgl_bayar between ? and ? and tokosuplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (toko_bayar_pemesanan.no_faktur like ? or tokosuplier.nama_suplier like ? or "+
+                    "toko_bayar_pemesanan.nama_bayar like ? or toko_bayar_pemesanan.no_bukti like ? or toko_bayar_pemesanan.keterangan like ? or "+
+                    "petugas.nama like ?) ")+"order by toko_bayar_pemesanan.tgl_bayar");
             try {            
                 ps.setString(1,Valid.SetTgl(TglCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglCari2.getSelectedItem()+""));
                 ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText()+"%");
-                ps.setString(5,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(6,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(7,"%"+nmsup.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText()+"%");
-                ps.setString(9,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(11,"%"+nmsup.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText()+"%");
-                ps.setString(13,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+nmsup.getText().trim()+"%");
-                ps.setString(16,"%"+TCari.getText()+"%");
-                ps.setString(17,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(18,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(19,"%"+nmsup.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText()+"%");
-                ps.setString(21,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(23,"%"+nmsup.getText().trim()+"%");
-                ps.setString(24,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
                 rs=ps.executeQuery();
                 total=0;
                 while(rs.next()){                
                     total=total+rs.getDouble("besar_bayar");
                     tabMode.addRow(new Object[]{
-                        rs.getString("tgl_bayar"),rs.getString("tgl_faktur"),rs.getString("tgl_pesan"),
-                        rs.getString("tgl_tempo"),rs.getString("no_faktur"),rs.getString("nama_suplier"),rs.getString("nama_bayar"),
-                        rs.getString("no_bukti"),rs.getDouble("besar_bayar"),rs.getString("keterangan"),
-                        rs.getString("nip")+" "+rs.getString("nama"),rs.getString("nip"),rs.getString("nama")}
-                    );
+                        rs.getString("tgl_bayar"),rs.getString("tgl_faktur"),rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),rs.getString("no_faktur"),rs.getString("nama_suplier"),rs.getString("nama_bayar"),
+                        rs.getString("no_bukti"),rs.getDouble("besar_bayar"),rs.getString("keterangan"),rs.getString("nip")+" "+rs.getString("nama"),rs.getString("nip"),rs.getString("nama")
+                    });
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -1725,14 +1703,14 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
              file=new File("./cache/akunbayarhutang.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
-             iyem="";
+             StringBuilder iyembuilder = new StringBuilder();
              ps=koneksi.prepareStatement("select * from akun_bayar_hutang order by akun_bayar_hutang.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\"},";
+                     iyembuilder.append("{\"NamaAkun\":\"").append(rs.getString(1).replaceAll("\"","")).append("\",\"KodeRek\":\"").append(rs.getString(2)).append("\"},");
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1745,10 +1723,14 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
                  } 
              }
 
-             fileWriter.write("{\"akunbayarhutang\":["+iyem.substring(0,iyem.length()-1)+"]}");
-             fileWriter.flush();
+             if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"akunbayarhutang\":["+iyembuilder+"]}");
+                fileWriter.flush();
+             }
+            
              fileWriter.close();
-             iyem=null;
+             iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
