@@ -62,7 +62,6 @@ public final class DlgPermintaanRadiologi extends javax.swing.JDialog {
             norawatibu="",aktifkanparsial="no",finger="";
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1010,14 +1009,14 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             file=new File("./cache/permintaanradiologi.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem=""; 
+            StringBuilder iyembuilder = new StringBuilder();
         
             pspemeriksaan=koneksi.prepareStatement(
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.kd_pj,jns_perawatan_radiologi.kelas from jns_perawatan_radiologi where jns_perawatan_radiologi.status='1' order by jns_perawatan_radiologi.kd_jenis_prw");
             try {
                 rs=pspemeriksaan.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KodePJ\":\""+rs.getString(3)+"\",\"Kelas\":\""+rs.getString(4)+"\"},";
+                    iyembuilder.append("{\"KodePeriksa\":\"").append(rs.getString(1)).append("\",\"NamaPemeriksaan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"KodePJ\":\"").append(rs.getString(3)).append("\",\"Kelas\":\"").append(rs.getString(4)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -1029,10 +1028,15 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     pspemeriksaan.close();
                 }
             }
-            fileWriter.write("{\"permintaanradiologi\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaanradiologi\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi 2 : "+e);
         }
@@ -1064,7 +1068,11 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.tabelKosong(tabMode);
             for(i=0;i<jml;i++){                
                 tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i]});
-            }    
+            }  
+            
+            pilih=null;
+            kode=null;
+            nama=null;
         
             myObj = new FileReader("./cache/permintaanradiologi.iyem");
             root = mapper.readTree(myObj);
