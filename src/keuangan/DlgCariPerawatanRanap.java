@@ -87,7 +87,6 @@ public final class DlgCariPerawatanRanap extends javax.swing.JDialog {
     private ApiPcare api=new ApiPcare();
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private FileReader myObj;
     
     /** Creates new form DlgPenyakit
@@ -1355,7 +1354,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             file=new File("./cache/tarifranap.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             if(aktifpcare.equals("yes")){
                 sql="select jns_perawatan_inap.kd_jenis_prw,jns_perawatan_inap.nm_perawatan,kategori_perawatan.nm_kategori,"+
                    "jns_perawatan_inap.total_byrdr,jns_perawatan_inap.total_byrpr,jns_perawatan_inap.total_byrdrpr,jns_perawatan_inap.bhp,jns_perawatan_inap.material,jns_perawatan_inap.kso,jns_perawatan_inap.menejemen," +
@@ -1426,7 +1425,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
                                     rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrdr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
+                                iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"NamaPerawatan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"KategoriPerawatan\":\"").append(rs.getString(3)).append("\",\"Tarif\":\"").append(rs.getString("total_byrdr")).append("\",\"BagianRS\":\"").append(rs.getString("material")).append("\",\"BHP\":\"").append(rs.getString("bhp")).append("\",\"JMDokter\":\"").append(rs.getString("tarif_tindakandr")).append("\",\"JMPerawat\":\"").append(rs.getString("tarif_tindakanpr")).append("\",\"KSO\":\"").append(rs.getString("kso")).append("\",\"Menejemen\":\"").append(rs.getString("menejemen")).append("\",\"Kelas\":\"").append(rs.getString("kelas")).append("\"},");
                             }                        
                         }   
                         break;
@@ -1440,7 +1439,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
                                     rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrpr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
+                                iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"NamaPerawatan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"KategoriPerawatan\":\"").append(rs.getString(3)).append("\",\"Tarif\":\"").append(rs.getString("total_byrpr")).append("\",\"BagianRS\":\"").append(rs.getString("material")).append("\",\"BHP\":\"").append(rs.getString("bhp")).append("\",\"JMDokter\":\"").append(rs.getString("tarif_tindakandr")).append("\",\"JMPerawat\":\"").append(rs.getString("tarif_tindakanpr")).append("\",\"KSO\":\"").append(rs.getString("kso")).append("\",\"Menejemen\":\"").append(rs.getString("menejemen")).append("\",\"Kelas\":\"").append(rs.getString("kelas")).append("\"},");
                             }                            
                         }   
                         break;
@@ -1454,7 +1453,7 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                                     rs.getDouble("tarif_tindakanpr"),rs.getDouble("kso"),
                                     rs.getDouble("menejemen"),rs.getString("kelas")
                                 });
-                                iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaPerawatan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"KategoriPerawatan\":\""+rs.getString(3)+"\",\"Tarif\":\""+rs.getString("total_byrdrpr")+"\",\"BagianRS\":\""+rs.getString("material")+"\",\"BHP\":\""+rs.getString("bhp")+"\",\"JMDokter\":\""+rs.getString("tarif_tindakandr")+"\",\"JMPerawat\":\""+rs.getString("tarif_tindakanpr")+"\",\"KSO\":\""+rs.getString("kso")+"\",\"Menejemen\":\""+rs.getString("menejemen")+"\",\"Kelas\":\""+rs.getString("kelas")+"\"},";
+                                iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"NamaPerawatan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"KategoriPerawatan\":\"").append(rs.getString(3)).append("\",\"Tarif\":\"").append(rs.getString("total_byrdrpr")).append("\",\"BagianRS\":\"").append(rs.getString("material")).append("\",\"BHP\":\"").append(rs.getString("bhp")).append("\",\"JMDokter\":\"").append(rs.getString("tarif_tindakandr")).append("\",\"JMPerawat\":\"").append(rs.getString("tarif_tindakanpr")).append("\",\"KSO\":\"").append(rs.getString("kso")).append("\",\"Menejemen\":\"").append(rs.getString("menejemen")).append("\",\"Kelas\":\"").append(rs.getString("kelas")).append("\"},");
                             }                        
                         }   
                         break;
@@ -1490,10 +1489,15 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pscari8.close();
                 }
             }
-            fileWriter.write("{\"tarifranap\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"tarifranap\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1548,6 +1552,19 @@ private void ppPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     pilih[i],kode[i],nama[i],kategori[i],totaltnd[i],bagianrs[i],bhp[i],jmdokter[i],jmperawat[i],kso[i],menejemen[i],kelastarif[i]
                 });
             }
+            
+            pilih=null;
+            kode=null;
+            nama=null; 
+            kelastarif=null;
+            kategori=null;
+            totaltnd=null;  
+            bagianrs=null;
+            bhp=null;
+            jmdokter=null;
+            jmperawat=null;
+            kso=null;
+            menejemen=null;
             
             myObj = new FileReader("./cache/tarifranap.iyem");
             root = mapper.readTree(myObj);
