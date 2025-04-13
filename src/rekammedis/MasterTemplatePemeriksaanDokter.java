@@ -49,7 +49,7 @@ public class MasterTemplatePemeriksaanDokter extends javax.swing.JDialog {
     private WarnaTable2 warna3=new WarnaTable2();
     private File file;
     private FileWriter fileWriter;
-    private String iyem,la="",ld="",pa="",pd="",noracik="";
+    private String la="",ld="",pa="",pd="",noracik="";
     private double jumlahracik=0,persenracik=0,kapasitasracik=0;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
@@ -3040,19 +3040,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
-            ciripny=null;
             ciripny=new String[jml];
-            keterangan=null;
             keterangan=new String[jml];
-            kategori=null;
             kategori=new String[jml];
-            cirium=null;
             cirium=new String[jml];
 
             index=0; 
@@ -3072,7 +3065,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.tabelKosong(tabModeDiagnosa);
             for(i=0;i<jml;i++){
                 tabModeDiagnosa.addRow(new Object[] {pilih[i],kode[i],nama[i],ciripny[i],keterangan[i],kategori[i],cirium[i]});
-            }       
+            }    
+            
+            pilih=null;
+            kode=null;
+            nama=null;
+            ciripny=null;
+            keterangan=null;
+            kategori=null;
+            cirium=null;
 
             ps=koneksi.prepareStatement("select penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
                     "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum from kategori_penyakit inner join penyakit "+
@@ -3116,13 +3117,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode2=null;
             kode2=new String[jml];
-            panjang=null;
             panjang=new String[jml];
-            pendek=null;
             pendek=new String[jml];
 
             index=0; 
@@ -3140,6 +3137,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             for(i=0;i<jml;i++){
                 tabModeProsedur.addRow(new Object[] {pilih[i],kode2[i],panjang[i],pendek[i]});
             }
+            
+            pilih=null;
+            kode2=null;
+            panjang=null;
+            pendek=null;
             
             ps=koneksi.prepareStatement("select * from icd9 where icd9.kode like ? or icd9.deskripsi_panjang like ? or icd9.deskripsi_pendek like ? order by icd9.kode");
             try{
@@ -3172,14 +3174,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             file=new File("./cache/permintaanradiologi.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem=""; 
+            StringBuilder iyembuilder = new StringBuilder();
         
             ps=koneksi.prepareStatement(
                     "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan from jns_perawatan_radiologi where jns_perawatan_radiologi.status='1' and (jns_perawatan_radiologi.kelas='-' or jns_perawatan_radiologi.kelas='Rawat Jalan') order by jns_perawatan_radiologi.kd_jenis_prw");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\"},";
+                    iyembuilder.append("{\"KodePeriksa\":\"").append(rs.getString(1)).append("\",\"NamaPemeriksaan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -3191,10 +3193,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }
-            fileWriter.write("{\"permintaanradiologi\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaanradiologi\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi 2 : "+e);
         }
@@ -3209,11 +3215,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
             
             index=0; 
@@ -3231,6 +3234,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 tabModeRadiologi.addRow(new Object[] {pilih[i],kode[i],nama[i]});
             }    
         
+            pilih=null;
+            kode=null;
+            nama=null;
+            
             myObj = new FileReader("./cache/permintaanradiologi.iyem");
             root = mapper.readTree(myObj);
             response = root.path("permintaanradiologi");
@@ -3254,14 +3261,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             file=new File("./cache/permintaanpk.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem=""; 
+            StringBuilder iyembuilder = new StringBuilder();
         
             ps=koneksi.prepareStatement(
                     "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from jns_perawatan_lab where jns_perawatan_lab.status='1' and jns_perawatan_lab.kategori='PK' and (jns_perawatan_lab.kelas='-' or jns_perawatan_lab.kelas='Rawat Jalan') order by jns_perawatan_lab.kd_jenis_prw");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\"},";
+                    iyembuilder.append("{\"KodePeriksa\":\"").append(rs.getString(1)).append("\",\"NamaPemeriksaan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -3273,10 +3280,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }
-            fileWriter.write("{\"permintaanpk\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaanpk\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi 2 : "+e);
         }
@@ -3291,11 +3303,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
             
             index=0; 
@@ -3313,6 +3322,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 tabModePK.addRow(new Object[] {pilih[i],kode[i],nama[i]});
             }    
         
+            pilih=null;
+            kode=null;
+            nama=null;
+            
             myObj = new FileReader("./cache/permintaanpk.iyem");
             root = mapper.readTree(myObj);
             response = root.path("permintaanpk");
@@ -3340,17 +3353,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
             
-            pilih=null;
             pilih=new boolean[jml];
-            nama=null;
             nama=new String[jml];
-            satuan=null;
             satuan=new String[jml];
-            nilairujukan=null;
             nilairujukan=new String[jml];
-            kode=null;
             kode=new String[jml];
-            kode2=null;
             kode2=new String[jml];
             
             index=0; 
@@ -3373,6 +3380,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     pilih[i],nama[i],satuan[i],nilairujukan[i],kode[i],kode2[i]
                 });
             }  
+            
+            pilih=null;
+            nama=null;
+            satuan=null;
+            nilairujukan=null;
+            kode=null;
+            kode2=null;
             
             for(i=0;i<tbPermintaanPK.getRowCount();i++){ 
                 if(tbPermintaanPK.getValueAt(i,0).toString().equals("true")){
@@ -3422,14 +3436,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             file=new File("./cache/permintaanpa.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem=""; 
+            StringBuilder iyembuilder = new StringBuilder();
         
             ps=koneksi.prepareStatement(
                     "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from jns_perawatan_lab where jns_perawatan_lab.status='1' and jns_perawatan_lab.kategori='PA' and (jns_perawatan_lab.kelas='-' or jns_perawatan_lab.kelas='Rawat Jalan') order by jns_perawatan_lab.kd_jenis_prw");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\"},";
+                    iyembuilder.append("{\"KodePeriksa\":\"").append(rs.getString(1)).append("\",\"NamaPemeriksaan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -3441,10 +3455,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }
-            fileWriter.write("{\"permintaanpa\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaanpa\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi 2 : "+e);
         }
@@ -3459,11 +3478,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
             
             index=0; 
@@ -3481,6 +3497,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 tabModePA.addRow(new Object[] {pilih[i],kode[i],nama[i]});
             }    
         
+            pilih=null;
+            kode=null;
+            nama=null;
+            
             myObj = new FileReader("./cache/permintaanpa.iyem");
             root = mapper.readTree(myObj);
             response = root.path("permintaanpa");
@@ -3504,14 +3524,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             file=new File("./cache/permintaanmb.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem=""; 
+            StringBuilder iyembuilder = new StringBuilder();
         
             ps=koneksi.prepareStatement(
                     "select jns_perawatan_lab.kd_jenis_prw,jns_perawatan_lab.nm_perawatan from jns_perawatan_lab where jns_perawatan_lab.status='1' and jns_perawatan_lab.kategori='MB' and (jns_perawatan_lab.kelas='-' or jns_perawatan_lab.kelas='Rawat Jalan') order by jns_perawatan_lab.kd_jenis_prw");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\"},";
+                    iyembuilder.append("{\"KodePeriksa\":\"").append(rs.getString(1)).append("\",\"NamaPemeriksaan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -3523,10 +3543,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }
-            fileWriter.write("{\"permintaanmb\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaanmb\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi 2 : "+e);
         }
@@ -3541,11 +3566,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
             
             index=0; 
@@ -3561,8 +3583,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.tabelKosong(tabModeMB);
             for(i=0;i<jml;i++){                
                 tabModeMB.addRow(new Object[] {pilih[i],kode[i],nama[i]});
-            }    
-        
+            } 
+            
+            pilih=null;
+            kode=null;
+            nama=null;
+            
             myObj = new FileReader("./cache/permintaanmb.iyem");
             root = mapper.readTree(myObj);
             response = root.path("permintaanmb");
@@ -3590,17 +3616,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
             
-            pilih=null;
             pilih=new boolean[jml];
-            nama=null;
             nama=new String[jml];
-            satuan=null;
             satuan=new String[jml];
-            nilairujukan=null;
             nilairujukan=new String[jml];
-            kode=null;
             kode=new String[jml];
-            kode2=null;
             kode2=new String[jml];
             
             index=0; 
@@ -3623,6 +3643,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     pilih[i],nama[i],satuan[i],nilairujukan[i],kode[i],kode2[i]
                 });
             }  
+            
+            pilih=null;
+            nama=null;
+            satuan=null;
+            nilairujukan=null;
+            kode=null;
+            kode2=null;
             
             for(i=0;i<tbPermintaanMB.getRowCount();i++){ 
                 if(tbPermintaanMB.getValueAt(i,0).toString().equals("true")){
@@ -3673,7 +3700,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             file=new File("./cache/permintaanobatnonracikan.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem=""; 
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                     "select databarang.kode_brng,databarang.nama_brng,kodesatuan.satuan,databarang.letak_barang,jenis.nama,industrifarmasi.nama_industri,databarang.kapasitas "+
                     "from databarang inner join kodesatuan on kodesatuan.kode_sat=databarang.kode_sat inner join jenis on databarang.kdjns=jenis.kdjns "+
@@ -3681,7 +3708,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Komposisi\":\""+rs.getString(4)+"\",\"JenisObat\":\""+rs.getString(5)+"\",\"Industri\":\""+rs.getString(6)+"\",\"Kapasitas\":\""+rs.getString(7)+"\"},";
+                    iyembuilder.append("{\"KodeBarang\":\"").append(rs.getString(1)).append("\",\"NamaBarang\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"Satuan\":\"").append(rs.getString(3)).append("\",\"Komposisi\":\"").append(rs.getString(4)).append("\",\"JenisObat\":\"").append(rs.getString(5)).append("\",\"Industri\":\"").append(rs.getString(6)).append("\",\"Kapasitas\":\"").append(rs.getString(7)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -3693,10 +3720,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }
-            fileWriter.write("{\"permintaanobatnonracikan\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaanobatnonracikan\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi 2 : "+e);
         }
@@ -3711,25 +3743,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
             
-            pilih=null;
             pilih=new boolean[jml];
-            jumlah=null;
             jumlah=new double[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
-            satuan=null;
             satuan=new String[jml];
-            cirium=null;
             cirium=new String[jml];
-            kategori=null;
             kategori=new String[jml];
-            keterangan=null;
             keterangan=new String[jml];
-            ciripny=null;
             ciripny=new String[jml];
-            kps=null;
             kps=new double[jml];
             
             index=0; 
@@ -3762,7 +3784,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             for(i=0;i<jml;i++){                
                 tabModeObatUmum.addRow(new Object[] {pilih[i],jumlah[i],kode[i],nama[i],satuan[i],cirium[i],kategori[i],keterangan[i],ciripny[i],kps[i]});
             }    
-        
+            
+            pilih=null;
+            jumlah=null;
+            kode=null;
+            nama=null;
+            satuan=null;
+            cirium=null;
+            kategori=null;
+            keterangan=null;
+            ciripny=null;
+            kps=null;
+            
             myObj = new FileReader("./cache/permintaanobatnonracikan.iyem");
             root = mapper.readTree(myObj);
             response = root.path("permintaanobatnonracikan");
@@ -3791,29 +3824,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             } 
 
-            no=null;
             no=new String[jml]; 
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
-            satuan=null;
             satuan=new String[jml];
-            kategori=null;
             kategori=new String[jml];
-            kps=null;
             kps=new double[jml];
-            p1=null;
             p1=new double[jml];
-            p2=null;
             p2=new double[jml];
-            keterangan=null;
             keterangan=new String[jml];
-            jumlah=null;
             jumlah=new double[jml];
-            cirium=null;
             cirium=new String[jml];
-            ciripny=null;
             ciripny=new String[jml];
 
             index=0;        
@@ -3858,6 +3879,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 });
             }
             
+            no=null;
+            kode=null;
+            nama=null;
+            satuan=null;
+            kategori=null;
+            kps=null;
+            p1=null;
+            p2=null;
+            keterangan=null;
+            jumlah=null;
+            cirium=null;
+            ciripny=null;
+            
             myObj = new FileReader("./cache/permintaanobatnonracikan.iyem");
             root = mapper.readTree(myObj);
             response = root.path("permintaanobatnonracikan");
@@ -3883,7 +3917,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             file=new File("./cache/permintaantindakan.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem=""; 
+            StringBuilder iyembuilder = new StringBuilder();
         
             ps=koneksi.prepareStatement(
                     "select jns_perawatan.kd_jenis_prw,jns_perawatan.nm_perawatan,kategori_perawatan.nm_kategori from jns_perawatan inner join kategori_perawatan "+
@@ -3891,7 +3925,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodePeriksa\":\""+rs.getString(1)+"\",\"NamaPemeriksaan\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Kategori\":\""+rs.getString(3).replaceAll("\"","")+"\"},";
+                    iyembuilder.append("{\"KodePeriksa\":\"").append(rs.getString(1)).append("\",\"NamaPemeriksaan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"Kategori\":\"").append(rs.getString(3).replaceAll("\"","")).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi 1 : "+e);
@@ -3903,10 +3937,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.close();
                 }
             }
-            fileWriter.write("{\"permintaantindakan\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaantindakan\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi 2 : "+e);
         }
@@ -3921,13 +3959,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
-            kategori=null;
             kategori=new String[jml];
             
             index=0; 
@@ -3944,7 +3978,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.tabelKosong(TabModeTindakan);
             for(i=0;i<jml;i++){                
                 TabModeTindakan.addRow(new Object[] {pilih[i],kode[i],nama[i],kategori[i]});
-            }    
+            }  
+            
+            pilih=null;
+            kode=null;
+            nama=null;
+            kategori=null;
         
             myObj = new FileReader("./cache/permintaantindakan.iyem");
             root = mapper.readTree(myObj);
@@ -3986,35 +4025,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 try {
                     htmlContent = new StringBuilder();
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='left' width='100%'>"+
-                                "Subjek : "+tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString()+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='left' width='100%'>"+
-                                "Objek : "+tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString()+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='left' width='100%'>"+
-                                "Asesmen : "+tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString()+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='left' width='100%'>"+
-                                "Plan : "+tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString()+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='left' width='100%'>"+
-                                "Instruksi : "+tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString()+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='left' width='100%'>"+
-                                "Evaluasi : "+tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString()+
-                            "</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='left' width='100%'>").append(
+                                "Subjek : ").append(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString()).append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='left' width='100%'>").append(
+                                "Objek : ").append(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString()).append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='left' width='100%'>").append(
+                                "Asesmen : ").append(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString()).append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='left' width='100%'>").append(
+                                "Plan : ").append(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString()).append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='left' width='100%'>").append(
+                                "Instruksi : ").append(tabMode.getValueAt(tbDokter.getSelectedRow(),7).toString()).append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='left' width='100%'>").append(
+                                "Evaluasi : ").append(tabMode.getValueAt(tbDokter.getSelectedRow(),8).toString()).append(
+                            "</td>").append(
                         "</tr>"
                     ); 
                     
@@ -4029,31 +4068,30 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Diagnosa : "+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Penyakit</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80%'>Nama Penyakit</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Diagnosa : ").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Penyakit</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80%'>Nama Penyakit</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(tabModeDiagnosa);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("kd_penyakit")+"</td>"+
-                                                "<td>"+rs.getString("nm_penyakit")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("kd_penyakit")).append("</td>").append(
+                                                "<td>").append(rs.getString("nm_penyakit")).append("</td>").append(
                                             "</tr>"
                                 );
                                 tabModeDiagnosa.addRow(new Object[]{
                                     true,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
                                 });
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
 
@@ -4078,31 +4116,30 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Prosedur : "+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Prosedur</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80%'>Nama Prosedur</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Prosedur : ").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Prosedur</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80%'>Nama Prosedur</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(tabModeProsedur);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("kode")+"</td>"+
-                                                "<td>"+rs.getString("deskripsi_panjang")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("kode")).append("</td>").append(
+                                                "<td>").append(rs.getString("deskripsi_panjang")).append("</td>").append(
                                             "</tr>"
                                 );
                                 tabModeProsedur.addRow(new Object[]{
                                     true,rs.getString(1),rs.getString(2),rs.getString(3)
                                 });
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
 
@@ -4127,34 +4164,32 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Permintaan Radiologi : "+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Periksa</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80%'>Nama Pemeriksaan</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Permintaan Radiologi : ").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Periksa</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='80%'>Nama Pemeriksaan</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(tabModeRadiologi);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("kd_jenis_prw")+"</td>"+
-                                                "<td>"+rs.getString("nm_perawatan")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("kd_jenis_prw")).append("</td>").append(
+                                                "<td>").append(rs.getString("nm_perawatan")).append("</td>").append(
                                             "</tr>"
                                 );
                                 tabModeRadiologi.addRow(new Object[]{
                                     true,rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")
                                 });
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
-
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -4176,22 +4211,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Permintaan Laborat Patologi Klinis : "+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Kode Periksa</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%'>Nama Pemeriksaan</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Permintaan Laborat Patologi Klinis : ").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Kode Periksa</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%'>Nama Pemeriksaan</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(tabModePK);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("kd_jenis_prw")+"</td>"+
-                                                "<td>"+rs.getString("nm_perawatan")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("kd_jenis_prw")).append("</td>").append(
+                                                "<td>").append(rs.getString("nm_perawatan")).append("</td>").append(
                                             "</tr>"
                                 );
                                 tabModePK.addRow(new Object[]{
@@ -4208,18 +4242,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     if(rs2.next()){
                                         Valid.tabelKosong(tabModeDetailPK);
                                         htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center' width='15%'></td>"+
-                                                "<td width='85%'>"+
-                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                        "<tr class='isi'>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Pemeriksaan</td>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Satuan</td>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Nilai Rujukan</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center' width='15%'></td>").append(
+                                                "<td width='85%'>").append(
+                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                                        "<tr class='isi'>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Pemeriksaan</td>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Satuan</td>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Nilai Rujukan</td>").append(
                                                         "</tr>"
                                         );
-                                        rs2.beforeFirst();
-                                        while(rs2.next()){
+                                        do{
                                             la="";ld="";pa="";pd="";
                                             if(!rs2.getString("nilai_rujukan_ld").equals("")){
                                                 ld="LD : "+rs2.getString("nilai_rujukan_ld");
@@ -4234,19 +4267,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 pa=" PA : "+rs2.getString("nilai_rujukan_pa");
                                             }
                                             htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                            "<td>"+rs2.getString("Pemeriksaan")+"</td>"+
-                                                            "<td align='center'>"+rs2.getString("satuan")+"</td>"+
-                                                            "<td>"+ld+la+pd+pa+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                            "<td>").append(rs2.getString("Pemeriksaan")).append("</td>").append(
+                                                            "<td align='center'>").append(rs2.getString("satuan")).append("</td>").append(
+                                                            "<td>").append(ld).append(la).append(pd).append(pa).append("</td>").append(
                                                         "</tr>"
                                             );
                                             tabModeDetailPK.addRow(new Object[]{
                                                 true,"   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
                                             });
-                                        }
+                                        }while(rs2.next());
                                         htmlContent.append(
-                                                    "</table>"+
-                                                "</td>"+
+                                                    "</table>").append(
+                                                "</td>").append(
                                             "</tr>"
                                         );
                                     }
@@ -4260,10 +4293,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps2.close();
                                     }
                                 }
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
                         }
@@ -4287,31 +4320,30 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Permintaan Laborat Patologi Anatomi :"+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Kode Periksa</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%'>Nama Pemeriksaan</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Permintaan Laborat Patologi Anatomi :").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Kode Periksa</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%'>Nama Pemeriksaan</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(tabModePA);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("kd_jenis_prw")+"</td>"+
-                                                "<td>"+rs.getString("nm_perawatan")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("kd_jenis_prw")).append("</td>").append(
+                                                "<td>").append(rs.getString("nm_perawatan")).append("</td>").append(
                                             "</tr>"
                                 );
                                 tabModePA.addRow(new Object[]{
                                     true,rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan")
                                 });
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
                         }
@@ -4335,22 +4367,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Permintaan Laborat Mikrobiologi & Bio Molekuler : "+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Kode Periksa</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%'>Nama Pemeriksaan</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Permintaan Laborat Mikrobiologi & Bio Molekuler : ").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='15%'>Kode Periksa</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='85%'>Nama Pemeriksaan</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(tabModeMB);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("kd_jenis_prw")+"</td>"+
-                                                "<td>"+rs.getString("nm_perawatan")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("kd_jenis_prw")).append("</td>").append(
+                                                "<td>").append(rs.getString("nm_perawatan")).append("</td>").append(
                                             "</tr>"
                                 );
                                 tabModeMB.addRow(new Object[]{
@@ -4366,19 +4397,18 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs2=ps2.executeQuery();
                                     if(rs2.next()){
                                         htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center' width='15%'></td>"+
-                                                "<td width='85%'>"+
-                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                        "<tr class='isi'>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Pemeriksaan</td>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Satuan</td>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Nilai Rujukan</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center' width='15%'></td>").append(
+                                                "<td width='85%'>").append(
+                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                                        "<tr class='isi'>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Pemeriksaan</td>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Satuan</td>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='40%'>Nilai Rujukan</td>").append(
                                                         "</tr>"
                                         );
                                         Valid.tabelKosong(tabModeDetailMB);
-                                        rs2.beforeFirst();
-                                        while(rs2.next()){
+                                        do{
                                             la="";ld="";pa="";pd="";
                                             if(!rs2.getString("nilai_rujukan_ld").equals("")){
                                                 ld="LD : "+rs2.getString("nilai_rujukan_ld");
@@ -4393,19 +4423,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 pa=" PA : "+rs2.getString("nilai_rujukan_pa");
                                             }
                                             htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                            "<td>"+rs2.getString("Pemeriksaan")+"</td>"+
-                                                            "<td align='center'>"+rs2.getString("satuan")+"</td>"+
-                                                            "<td>"+ld+la+pd+pa+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                            "<td>").append(rs2.getString("Pemeriksaan")).append("</td>").append(
+                                                            "<td align='center'>").append(rs2.getString("satuan")).append("</td>").append(
+                                                            "<td>").append(ld).append(la).append(pd).append(pa).append("</td>").append(
                                                         "</tr>"
                                             );
                                             tabModeDetailMB.addRow(new Object[]{
                                                 true,"   "+rs2.getString("Pemeriksaan"),rs2.getString("satuan"),ld+la+pd+pa,rs2.getString("id_template"),rs.getString("kd_jenis_prw")
                                             });
-                                        }
+                                        }while(rs2.next());
                                         htmlContent.append(
-                                                    "</table>"+
-                                                "</td>"+
+                                                    "</table>").append(
+                                                "</td>").append(
                                             "</tr>"
                                         );
                                     }
@@ -4419,10 +4449,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps2.close();
                                     }
                                 }
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
                         }
@@ -4446,37 +4476,36 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Obat Non Racikan : "+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Jumlah</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Kode Barang</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45%'>Nama Barang</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Satuan</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30%'>Aturan Pakai</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Obat Non Racikan : ").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Jumlah</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Kode Barang</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='45%'>Nama Barang</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Satuan</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30%'>Aturan Pakai</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(tabModeObatUmum);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("jml")+"</td>"+
-                                                "<td align='center'>"+rs.getString("kode_brng")+"</td>"+
-                                                "<td>"+rs.getString("nama_brng")+"</td>"+
-                                                "<td align='center'>"+rs.getString("satuan")+"</td>"+
-                                                "<td>"+rs.getString("aturan_pakai")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("jml")).append("</td>").append(
+                                                "<td align='center'>").append(rs.getString("kode_brng")).append("</td>").append(
+                                                "<td>").append(rs.getString("nama_brng")).append("</td>").append(
+                                                "<td align='center'>").append(rs.getString("satuan")).append("</td>").append(
+                                                "<td>").append(rs.getString("aturan_pakai")).append("</td>").append(
                                             "</tr>"
                                 );
                                 tabModeObatUmum.addRow(new Object[]{
                                     false,rs.getString("jml"),rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("satuan"),rs.getString("letak_barang"),rs.getString("nama"),rs.getString("aturan_pakai"),rs.getString("nama_industri"),rs.getDouble("kapasitas")
                                 });
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
 
@@ -4501,30 +4530,29 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Obat Racikan : "+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>No.</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='33%'>Nama Racikan</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Metode Racik</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Jml.Racik</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25%'>Aturan Pakai</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='22%'>Keterangan</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Obat Racikan : ").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>No.</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='33%'>Nama Racikan</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='11%'>Metode Racik</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='6%'>Jml.Racik</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='25%'>Aturan Pakai</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='22%'>Keterangan</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(tabModeObatRacikan);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("no_racik")+"</td>"+
-                                                "<td>"+rs.getString("nama_racik")+"</td>"+
-                                                "<td align='center'>"+rs.getString("nm_racik")+"</td>"+
-                                                "<td align='center'>"+rs.getString("jml_dr")+"</td>"+
-                                                "<td>"+rs.getString("aturan_pakai")+"</td>"+
-                                                "<td>"+rs.getString("keterangan")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("no_racik")).append("</td>").append(
+                                                "<td>").append(rs.getString("nama_racik")).append("</td>").append(
+                                                "<td align='center'>").append(rs.getString("nm_racik")).append("</td>").append(
+                                                "<td align='center'>").append(rs.getString("jml_dr")).append("</td>").append(
+                                                "<td>").append(rs.getString("aturan_pakai")).append("</td>").append(
+                                                "<td>").append(rs.getString("keterangan")).append("</td>").append(
                                             "</tr>"
                                 );
                                 tabModeObatRacikan.addRow(new Object[]{
@@ -4542,26 +4570,25 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     rs2=ps2.executeQuery();
                                     if(rs2.next()){
                                         htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center' width='15%'></td>"+
-                                                "<td width='85%' colspan='5'>"+
-                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                                        "<tr class='isi'>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Jumlah</td>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Satuan</td>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Obat</td>"+
-                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>Nama Obat</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center' width='15%'></td>").append(
+                                                "<td width='85%' colspan='5'>").append(
+                                                    "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                                        "<tr class='isi'>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='10%'>Jumlah</td>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Satuan</td>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode Obat</td>").append(
+                                                            "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>Nama Obat</td>").append(
                                                         "</tr>"
                                         );
                                         Valid.tabelKosong(tabModeDetailObatRacikan);
-                                        rs2.beforeFirst();
-                                        while(rs2.next()){
+                                        do{
                                             htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                            "<td align='center'>"+rs2.getString("jml")+"</td>"+
-                                                            "<td align='center'>"+rs2.getString("satuan")+"</td>"+
-                                                            "<td align='center'>"+rs2.getString("kode_brng")+"</td>"+
-                                                            "<td align='left'>"+rs2.getString("nama_brng")+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                            "<td align='center'>").append(rs2.getString("jml")).append("</td>").append(
+                                                            "<td align='center'>").append(rs2.getString("satuan")).append("</td>").append(
+                                                            "<td align='center'>").append(rs2.getString("kode_brng")).append("</td>").append(
+                                                            "<td align='left'>").append(rs2.getString("nama_brng")).append("</td>").append(
                                                         "</tr>"
                                             );
                                             tabModeDetailObatRacikan.addRow(new Object[]{
@@ -4569,10 +4596,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 rs2.getString("nama"),rs2.getDouble("kapasitas"),rs2.getDouble("p1"),"/",rs2.getDouble("p2"),rs2.getString("kandungan"),
                                                 rs2.getDouble("jml"),rs2.getString("nama_industri"),rs2.getString("letak_barang")
                                             });
-                                        }
+                                        }while(rs2.next());
                                         htmlContent.append(
-                                                    "</table>"+
-                                                "</td>"+
+                                                    "</table>").append(
+                                                "</td>").append(
                                             "</tr>"
                                         );
                                     }
@@ -4586,10 +4613,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         ps2.close();
                                     }
                                 }
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
                         }
@@ -4613,33 +4640,32 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs=ps.executeQuery();
                         if(rs.next()){
                             htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='left' width='100%'>"+
-                                        "Tindakan : "+
-                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                            "<tr class='isi'>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>Nama Perawatan/Tindakan</td>"+
-                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30%'>Kategori</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='left' width='100%'>").append(
+                                        "Tindakan : ").append(
+                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                            "<tr class='isi'>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='20%'>Kode</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>Nama Perawatan/Tindakan</td>").append(
+                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='30%'>Kategori</td>").append(
                                             "</tr>"
                             );
                             Valid.tabelKosong(TabModeTindakan);
-                            rs.beforeFirst();
-                            while(rs.next()){
+                            do{
                                 htmlContent.append(
-                                            "<tr class='isi'>"+
-                                                "<td align='center'>"+rs.getString("kd_jenis_prw")+"</td>"+
-                                                "<td>"+rs.getString("nm_perawatan")+"</td>"+
-                                                "<td align='center'>"+rs.getString("nm_kategori")+"</td>"+
+                                            "<tr class='isi'>").append(
+                                                "<td align='center'>").append(rs.getString("kd_jenis_prw")).append("</td>").append(
+                                                "<td>").append(rs.getString("nm_perawatan")).append("</td>").append(
+                                                "<td align='center'>").append(rs.getString("nm_kategori")).append("</td>").append(
                                             "</tr>"
                                 );
                                 TabModeTindakan.addRow(new Object[]{
                                     true,rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("nm_kategori")
                                 });
-                            }
+                            }while(rs.next());
                             htmlContent.append( 
-                                        "</table>"+
-                                    "</td>"+
+                                        "</table>").append(
+                                    "</td>").append(
                                 "</tr>"
                             ); 
 
