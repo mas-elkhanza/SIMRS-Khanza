@@ -1097,14 +1097,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                              jmlbiaya=0;jmlembalase=0;jmltotal=0;jmltuslah=0;
                              while(rsobat.next()){
                                  if(a==1){
-                                    tabMode.addRow(new String[]{
+                                    tabMode.addRow(new Object[]{
                                         i+"",rsreg.getString("tgl_registrasi"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
                                         rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
                                         Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
                                     });
                                     i++; 
                                  }else{
-                                    tabMode.addRow(new String[]{
+                                    tabMode.addRow(new Object[]{
                                         "","","","",rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
                                         Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
                                     }); 
@@ -1120,7 +1120,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                  a++;
                              }
                              if(jmltotal>0){
-                                 tabMode.addRow(new String[]{
+                                 tabMode.addRow(new Object[]{
                                     "","","","","","Subtotal :",Valid.SetAngka(jmlbiaya),Valid.SetAngka(jmlembalase),Valid.SetAngka(jmltuslah),Valid.SetAngka(jmltotal)
                                  });
                              }
@@ -1273,14 +1273,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                  jmlbiaya=0;jmlembalase=0;jmltotal=0;jmltuslah=0;
                                  while(rsobat.next()){
                                      if(a==1){
-                                        tabMode2.addRow(new String[]{
+                                        tabMode2.addRow(new Object[]{
                                             i+"",rsreg.getString("tgl_registrasi"),rsreg.getString("no_rkm_medis"),rsreg.getString("nm_pasien"),
                                             rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
                                             Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
                                         });
                                         i++; 
                                      }else{
-                                        tabMode2.addRow(new String[]{
+                                        tabMode2.addRow(new Object[]{
                                             "","","","",rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
                                             Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
                                         }); 
@@ -1296,7 +1296,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                      a++;
                                  }
                                  if(jmltotal>0){
-                                     tabMode2.addRow(new String[]{
+                                     tabMode2.addRow(new Object[]{
                                         "","","","","","Subtotal :",Valid.SetAngka(jmlbiaya),Valid.SetAngka(jmlembalase),Valid.SetAngka(jmltuslah),Valid.SetAngka(jmltotal)
                                      });
                                  }
@@ -1361,14 +1361,14 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                  jmlbiaya=0;jmlembalase=0;jmltotal=0;jmltuslah=0;
                                  while(rsobat.next()){
                                      if(a==1){
-                                        tabMode2.addRow(new String[]{
+                                        tabMode2.addRow(new Object[]{
                                             i+"",rskamar.getString("tgl_keluar"),rskamar.getString("no_rkm_medis"),rskamar.getString("nm_pasien"),
                                             rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
                                             Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
                                         });
                                         i++; 
                                      }else{
-                                        tabMode2.addRow(new String[]{
+                                        tabMode2.addRow(new Object[]{
                                             "","","","",rsobat.getString(3),rsobat.getString(1)+" "+rsobat.getString(2),Valid.SetAngka(rsobat.getDouble(4)),
                                             Valid.SetAngka(rsobat.getDouble(5)),Valid.SetAngka(rsobat.getDouble(6)),Valid.SetAngka(rsobat.getDouble(7))
                                         }); 
@@ -1384,7 +1384,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                      a++;
                                  }
                                  if(jmltotal>0){
-                                     tabMode2.addRow(new String[]{
+                                     tabMode2.addRow(new Object[]{
                                         "","","","","","Subtotal :",Valid.SetAngka(jmlbiaya),Valid.SetAngka(jmlembalase),Valid.SetAngka(jmltuslah),Valid.SetAngka(jmltotal)
                                      });
                                  }

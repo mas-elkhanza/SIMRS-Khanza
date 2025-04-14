@@ -1125,8 +1125,8 @@ private void EmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Ema
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_anggota"),rs.getString("nama_anggota"),rs.getString("tmp_lahir"),rs.getString("tgl_lahir"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_anggota"),rs.getString("nama_anggota"),rs.getString("tmp_lahir"),rs.getDate("tgl_lahir"),
                         rs.getString("j_kel"),rs.getString("alamat"),rs.getString("no_telp"),rs.getString("email"),rs.getString("tgl_gabung"),
                         rs.getString("masa_berlaku"),rs.getString("jenis_anggota"),rs.getString("nomer_id")
                     });

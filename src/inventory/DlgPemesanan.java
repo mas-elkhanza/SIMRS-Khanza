@@ -55,7 +55,6 @@ public class DlgPemesanan extends javax.swing.JDialog {
             pakaippn=Sequel.cariIsi("select set_harga_obat.ppn from set_harga_obat");
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1530,7 +1529,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             file=new File("./cache/penerimaanobat.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,databarang.kode_sat, databarang.h_beli, "+
                 " ifnull(date_format(databarang.expire,'%d-%m-%Y'),'00-00-0000'),databarang.kode_satbesar,databarang.isi, "+
                 " (databarang.h_beli*databarang.isi) as hargabesar from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
@@ -1538,7 +1537,7 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"SatuanBeli\":\""+rs.getString(6)+"\",\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Kadaluwarsa\":\""+rs.getString(5)+"\",\"Harga\":\""+rs.getString(8)+"\",\"Isi\":\""+rs.getString(7)+"\"},";
+                    iyembuilder.append("{\"SatuanBeli\":\"").append(rs.getString(6)).append("\",\"KodeBarang\":\"").append(rs.getString(1)).append("\",\"NamaBarang\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"Satuan\":\"").append(rs.getString(3)).append("\",\"Kadaluwarsa\":\"").append(rs.getString(5)).append("\",\"Harga\":\"").append(rs.getString(8)).append("\",\"Isi\":\"").append(rs.getString(7)).append("\"},");
                 }                                           
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -1550,10 +1549,15 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     ps.close();
                 }
             }   
-            fileWriter.write("{\"penerimaanobat\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"penerimaanobat\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;          
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        
@@ -1573,31 +1577,6 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                 }            
             }
 
-            kodebarang=null;
-            namabarang=null;
-            satuan=null;
-            satuanbeli=null;
-            kadaluwarsa=null;
-            nobatch=null;
-            harga=null;
-            jumlah=null;
-            subtotal=null;
-            diskon=null;
-            besardiskon=null;
-            jmltotal=null;
-            jmlstok=null;
-            hpp=null;
-            ralan=null;
-            kelas1=null;
-            kelas2=null;
-            kelas3=null;
-            utama=null;
-            vip=null;
-            vvip=null;
-            beliluar=null;
-            jualbebas=null;
-            karyawan=null;
-            ganti=null;
             kodebarang=new String[jml];
             namabarang=new String[jml];
             satuan=new String[jml];
@@ -1672,6 +1651,32 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                     jmlstok[i],nobatch[i],ralan[i],kelas1[i],kelas2[i],kelas3[i],utama[i],vip[i],vvip[i],beliluar[i],jualbebas[i],karyawan[i],hpp[i],isi[i],jmlbesar[i],dasar[i]
                 });
             }
+            
+            kodebarang=null;
+            namabarang=null;
+            satuan=null;
+            satuanbeli=null;
+            kadaluwarsa=null;
+            nobatch=null;
+            harga=null;
+            jumlah=null;
+            subtotal=null;
+            diskon=null;
+            besardiskon=null;
+            jmltotal=null;
+            jmlstok=null;
+            hpp=null;
+            ralan=null;
+            kelas1=null;
+            kelas2=null;
+            kelas3=null;
+            utama=null;
+            vip=null;
+            vvip=null;
+            beliluar=null;
+            jualbebas=null;
+            karyawan=null;
+            ganti=null;
             
             myObj = new FileReader("./cache/penerimaanobat.iyem");
             root = mapper.readTree(myObj);

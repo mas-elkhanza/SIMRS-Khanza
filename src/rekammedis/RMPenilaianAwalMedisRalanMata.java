@@ -2989,8 +2989,8 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),
                         rs.getString("status"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),rs.getString("nyeri"),rs.getString("bb"),
                         rs.getString("visuskanan"),rs.getString("visuskiri"),rs.getString("cckanan"),rs.getString("cckiri"),rs.getString("palkanan"),rs.getString("palkiri"),rs.getString("conkanan"),rs.getString("conkiri"),
@@ -3304,7 +3304,7 @@ public final class RMPenilaianAwalMedisRalanMata extends javax.swing.JDialog {
                 Lensakanan.getText(),Lensakiri.getText(),Funduskanan.getText(),Funduskiri.getText(),Papilkanan.getText(),Papilkiri.getText(),Retinakanan.getText(),Retinakiri.getText(),Makulakanan.getText(),Makulakiri.getText(),TIOkanan.getText(),TIOkiri.getText(),MBOkanan.getText(),MBOkiri.getText(),
                 Laborat.getText(),Radiologi.getText(),Penunjang.getText(),TesPenglihatan.getText(),PemeriksaanLain.getText(),Diagnosis.getText(),DiagnosisBdg.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                     Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),StatusNutrisi.getText(),TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),Nyeri.getText(),BB.getText(),Visuskanan.getText(),Visuskiri.getText(),
                     CCkanan.getText(),CCkiri.getText(),Palkanan.getText(),Palkiri.getText(),Conkanan.getText(),Conkiri.getText(),Corneakanan.getText(),Corneakiri.getText(),COAkanan.getText(),COAkiri.getText(),Pupilkanan.getText(),Pupilkiri.getText(),Lensakanan.getText(),Lensakiri.getText(),Funduskanan.getText(),

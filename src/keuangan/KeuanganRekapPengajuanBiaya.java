@@ -414,7 +414,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ttljmljanditolak=0;ttljmlfebditolak=0;ttljmlmarditolak=0;ttljmlaprditolak=0;ttljmlmeiditolak=0;ttljmljunditolak=0;ttljmljulditolak=0;ttljmlaguditolak=0;ttljmlsepditolak=0;ttljmloktditolak=0;ttljmlnovditolak=0;ttljmldesditolak=0;
                 ttljmljandivalidasi=0;ttljmlfebdivalidasi=0;ttljmlmardivalidasi=0;ttljmlaprdivalidasi=0;ttljmlmeidivalidasi=0;ttljmljundivalidasi=0;ttljmljuldivalidasi=0;ttljmlagudivalidasi=0;ttljmlsepdivalidasi=0;ttljmloktdivalidasi=0;ttljmlnovdivalidasi=0;ttljmldesdivalidasi=0;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{i+"",rs.getString("nama"),"","","","","","","","","","","","",""});
+                    tabMode.addRow(new Object[]{i+"",rs.getString("nama"),"","","","","","","","","","","","",""});
                     jan=Sequel.cariInteger("select sum(pengajuan_biaya.total) as total from pengajuan_biaya inner join pegawai inner join departemen on pengajuan_biaya.nik=pegawai.nik and pegawai.departemen=departemen.dep_id  where departemen.dep_id=? and tanggal like ?",rs.getString("dep_id"),"%"+ThnCari.getSelectedItem()+"-01%");
                     feb=Sequel.cariInteger("select sum(pengajuan_biaya.total) as total from pengajuan_biaya inner join pegawai inner join departemen on pengajuan_biaya.nik=pegawai.nik and pegawai.departemen=departemen.dep_id  where departemen.dep_id=? and tanggal like ?",rs.getString("dep_id"),"%"+ThnCari.getSelectedItem()+"-02%");
                     mar=Sequel.cariInteger("select sum(pengajuan_biaya.total) as total from pengajuan_biaya inner join pegawai inner join departemen on pengajuan_biaya.nik=pegawai.nik and pegawai.departemen=departemen.dep_id  where departemen.dep_id=? and tanggal like ?",rs.getString("dep_id"),"%"+ThnCari.getSelectedItem()+"-03%");
@@ -466,7 +466,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ttljmlnov=ttljmlnov+jmlnov;
                     ttljmldes=ttljmldes+jmldes;
                     
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","  Pengajuan",jmljan+"("+Valid.SetAngka(jan)+")",jmlfeb+"("+Valid.SetAngka(feb)+")",jmlmar+"("+Valid.SetAngka(mar)+")",jmlapr+"("+Valid.SetAngka(apr)+")",jmlmei+"("+Valid.SetAngka(mei)+")",jmljun+"("+Valid.SetAngka(jun)+")",jmljul+"("+Valid.SetAngka(jul)+")",jmlagu+"("+Valid.SetAngka(agu)+")",jmlsep+"("+Valid.SetAngka(sep)+")",jmlokt+"("+Valid.SetAngka(okt)+")",jmlnov+"("+Valid.SetAngka(nov)+")",jmldes+"("+Valid.SetAngka(des)+")",
                         (jmljan+jmlfeb+jmlmar+jmlapr+jmlmei+jmljun+jmljul+jmlagu+jmlsep+jmlokt+jmlnov+jmldes)+"("+Valid.SetAngka((jan+feb+mar+apr+mei+jun+jul+agu+sep+okt+nov+des))+")"
                     });
@@ -522,7 +522,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ttljmlnovproses=ttljmlnovproses+jmlnovproses;
                     ttljmldesproses=ttljmldesproses+jmldesproses;
                     
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","  Proses",jmljanproses+"("+Valid.SetAngka(janproses)+")",jmlfebproses+"("+Valid.SetAngka(febproses)+")",jmlmarproses+"("+Valid.SetAngka(marproses)+")",jmlaprproses+"("+Valid.SetAngka(aprproses)+")",jmlmeiproses+"("+Valid.SetAngka(meiproses)+")",jmljunproses+"("+Valid.SetAngka(junproses)+")",jmljulproses+"("+Valid.SetAngka(julproses)+")",jmlaguproses+"("+Valid.SetAngka(aguproses)+")",jmlsepproses+"("+Valid.SetAngka(sepproses)+")",jmloktproses+"("+Valid.SetAngka(oktproses)+")",jmlnovproses+"("+Valid.SetAngka(novproses)+")",jmldesproses+"("+Valid.SetAngka(desproses)+")",
                         (jmljanproses+jmlfebproses+jmlmarproses+jmlaprproses+jmlmeiproses+jmljunproses+jmljulproses+jmlaguproses+jmlsepproses+jmloktproses+jmlnovproses+jmldesproses)+"("+Valid.SetAngka((janproses+febproses+marproses+aprproses+meiproses+junproses+julproses+aguproses+sepproses+oktproses+novproses+desproses))+")"
                     });
@@ -578,7 +578,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ttljmlnovdisetujui=ttljmlnovdisetujui+jmlnovdisetujui;
                     ttljmldesdisetujui=ttljmldesdisetujui+jmldesdisetujui;
                     
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","  Disetujui",jmljandisetujui+"("+Valid.SetAngka(jandisetujui)+")",jmlfebdisetujui+"("+Valid.SetAngka(febdisetujui)+")",jmlmardisetujui+"("+Valid.SetAngka(mardisetujui)+")",jmlaprdisetujui+"("+Valid.SetAngka(aprdisetujui)+")",jmlmeidisetujui+"("+Valid.SetAngka(meidisetujui)+")",jmljundisetujui+"("+Valid.SetAngka(jundisetujui)+")",jmljuldisetujui+"("+Valid.SetAngka(juldisetujui)+")",jmlagudisetujui+"("+Valid.SetAngka(agudisetujui)+")",jmlsepdisetujui+"("+Valid.SetAngka(sepdisetujui)+")",jmloktdisetujui+"("+Valid.SetAngka(oktdisetujui)+")",jmlnovdisetujui+"("+Valid.SetAngka(novdisetujui)+")",jmldesdisetujui+"("+Valid.SetAngka(desdisetujui)+")",
                         (jmljandisetujui+jmlfebdisetujui+jmlmardisetujui+jmlaprdisetujui+jmlmeidisetujui+jmljundisetujui+jmljuldisetujui+jmlagudisetujui+jmlsepdisetujui+jmloktdisetujui+jmlnovdisetujui+jmldesdisetujui)+"("+Valid.SetAngka((jandisetujui+febdisetujui+mardisetujui+aprdisetujui+meidisetujui+jundisetujui+juldisetujui+agudisetujui+sepdisetujui+oktdisetujui+novdisetujui+desdisetujui))+")"
                     });
@@ -634,7 +634,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ttljmlnovdivalidasi=ttljmlnovdivalidasi+jmlnovdivalidasi;
                     ttljmldesdivalidasi=ttljmldesdivalidasi+jmldesdivalidasi;
                     
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","  Divalidasi",jmljandivalidasi+"("+Valid.SetAngka(jandivalidasi)+")",jmlfebdivalidasi+"("+Valid.SetAngka(febdivalidasi)+")",jmlmardivalidasi+"("+Valid.SetAngka(mardivalidasi)+")",jmlaprdivalidasi+"("+Valid.SetAngka(aprdivalidasi)+")",jmlmeidivalidasi+"("+Valid.SetAngka(meidivalidasi)+")",jmljundivalidasi+"("+Valid.SetAngka(jundivalidasi)+")",jmljuldivalidasi+"("+Valid.SetAngka(juldivalidasi)+")",jmlagudivalidasi+"("+Valid.SetAngka(agudivalidasi)+")",jmlsepdivalidasi+"("+Valid.SetAngka(sepdivalidasi)+")",jmloktdivalidasi+"("+Valid.SetAngka(oktdivalidasi)+")",jmlnovdivalidasi+"("+Valid.SetAngka(novdivalidasi)+")",jmldesdivalidasi+"("+Valid.SetAngka(desdivalidasi)+")",
                         (jmljandivalidasi+jmlfebdivalidasi+jmlmardivalidasi+jmlaprdivalidasi+jmlmeidivalidasi+jmljundivalidasi+jmljuldivalidasi+jmlagudivalidasi+jmlsepdivalidasi+jmloktdivalidasi+jmlnovdivalidasi+jmldesdivalidasi)+"("+Valid.SetAngka((jandivalidasi+febdivalidasi+mardivalidasi+aprdivalidasi+meidivalidasi+jundivalidasi+juldivalidasi+agudivalidasi+sepdivalidasi+oktdivalidasi+novdivalidasi+desdivalidasi))+")"
                     });
@@ -690,7 +690,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ttljmlnovditolak=ttljmlnovditolak+jmlnovditolak;
                     ttljmldesditolak=ttljmldesditolak+jmldesditolak;
                     
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","  Ditolak",jmljanditolak+"("+Valid.SetAngka(janditolak)+")",jmlfebditolak+"("+Valid.SetAngka(febditolak)+")",jmlmarditolak+"("+Valid.SetAngka(marditolak)+")",jmlaprditolak+"("+Valid.SetAngka(aprditolak)+")",jmlmeiditolak+"("+Valid.SetAngka(meiditolak)+")",jmljunditolak+"("+Valid.SetAngka(junditolak)+")",jmljulditolak+"("+Valid.SetAngka(julditolak)+")",jmlaguditolak+"("+Valid.SetAngka(aguditolak)+")",jmlsepditolak+"("+Valid.SetAngka(sepditolak)+")",jmloktditolak+"("+Valid.SetAngka(oktditolak)+")",jmlnovditolak+"("+Valid.SetAngka(novditolak)+")",jmldesditolak+"("+Valid.SetAngka(desditolak)+")",
                         (jmljanditolak+jmlfebditolak+jmlmarditolak+jmlaprditolak+jmlmeiditolak+jmljunditolak+jmljulditolak+jmlaguditolak+jmlsepditolak+jmloktditolak+jmlnovditolak+jmldesditolak)+"("+Valid.SetAngka((janditolak+febditolak+marditolak+aprditolak+meiditolak+junditolak+julditolak+aguditolak+sepditolak+oktditolak+novditolak+desditolak))+")"
                     });
@@ -698,28 +698,28 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     i++;
                 }
                 if(i>1){
-                    tabMode.addRow(new String[]{"","","","","","","","","","","","","","",""});
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{"","","","","","","","","","","","","","",""});
+                    tabMode.addRow(new Object[]{
                         "","Jumlah Pengajuan",ttljmljan+"("+Valid.SetAngka(ttljan)+")",ttljmlfeb+"("+Valid.SetAngka(ttlfeb)+")",ttljmlmar+"("+Valid.SetAngka(ttlmar)+")",ttljmlapr+"("+Valid.SetAngka(ttlapr)+")",ttljmlmei+"("+Valid.SetAngka(ttlmei)+")",ttljmljun+"("+Valid.SetAngka(ttljun)+")",
                         ttljmljul+"("+Valid.SetAngka(ttljul)+")",ttljmlagu+"("+Valid.SetAngka(ttlagu)+")",ttljmlsep+"("+Valid.SetAngka(ttlsep)+")",ttljmlokt+"("+Valid.SetAngka(ttlokt)+")",ttljmlnov+"("+Valid.SetAngka(ttlnov)+")",ttljmldes+"("+Valid.SetAngka(ttldes)+")",
                         (ttljmljan+ttljmlfeb+ttljmlmar+ttljmlapr+ttljmlmei+ttljmljun+ttljmljul+ttljmlagu+ttljmlsep+ttljmlokt+ttljmlnov+ttljmldes)+"("+Valid.SetAngka((ttljan+ttlfeb+ttlmar+ttlapr+ttlmei+ttljun+ttljul+ttlagu+ttlsep+ttlokt+ttlnov+ttldes))+")"
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Jumlah Proses",ttljmljanproses+"("+Valid.SetAngka(ttljanproses)+")",ttljmlfebproses+"("+Valid.SetAngka(ttlfebproses)+")",ttljmlmarproses+"("+Valid.SetAngka(ttlmarproses)+")",ttljmlaprproses+"("+Valid.SetAngka(ttlaprproses)+")",ttljmlmeiproses+"("+Valid.SetAngka(ttlmeiproses)+")",ttljmljunproses+"("+Valid.SetAngka(ttljunproses)+")",
                         ttljmljulproses+"("+Valid.SetAngka(ttljulproses)+")",ttljmlaguproses+"("+Valid.SetAngka(ttlaguproses)+")",ttljmlsepproses+"("+Valid.SetAngka(ttlsepproses)+")",ttljmloktproses+"("+Valid.SetAngka(ttloktproses)+")",ttljmlnovproses+"("+Valid.SetAngka(ttlnovproses)+")",ttljmldesproses+"("+Valid.SetAngka(ttldesproses)+")",
                         (ttljmljanproses+ttljmlfebproses+ttljmlmarproses+ttljmlaprproses+ttljmlmeiproses+ttljmljunproses+ttljmljulproses+ttljmlaguproses+ttljmlsepproses+ttljmloktproses+ttljmlnovproses+ttljmldesproses)+"("+Valid.SetAngka((ttljanproses+ttlfebproses+ttlmarproses+ttlaprproses+ttlmeiproses+ttljunproses+ttljulproses+ttlaguproses+ttlsepproses+ttloktproses+ttlnovproses+ttldesproses))+")"
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Jumlah Disetujui",ttljmljandisetujui+"("+Valid.SetAngka(ttljandisetujui)+")",ttljmlfebdisetujui+"("+Valid.SetAngka(ttlfebdisetujui)+")",ttljmlmardisetujui+"("+Valid.SetAngka(ttlmardisetujui)+")",ttljmlaprdisetujui+"("+Valid.SetAngka(ttlaprdisetujui)+")",ttljmlmeidisetujui+"("+Valid.SetAngka(ttlmeidisetujui)+")",ttljmljundisetujui+"("+Valid.SetAngka(ttljundisetujui)+")",
                         ttljmljuldisetujui+"("+Valid.SetAngka(ttljuldisetujui)+")",ttljmlagudisetujui+"("+Valid.SetAngka(ttlagudisetujui)+")",ttljmlsepdisetujui+"("+Valid.SetAngka(ttlsepdisetujui)+")",ttljmloktdisetujui+"("+Valid.SetAngka(ttloktdisetujui)+")",ttljmlnovdisetujui+"("+Valid.SetAngka(ttlnovdisetujui)+")",ttljmldesdisetujui+"("+Valid.SetAngka(ttldesdisetujui)+")",
                         (ttljmljandisetujui+ttljmlfebdisetujui+ttljmlmardisetujui+ttljmlaprdisetujui+ttljmlmeidisetujui+ttljmljundisetujui+ttljmljuldisetujui+ttljmlagudisetujui+ttljmlsepdisetujui+ttljmloktdisetujui+ttljmlnovdisetujui+ttljmldesdisetujui)+"("+Valid.SetAngka((ttljandisetujui+ttlfebdisetujui+ttlmardisetujui+ttlaprdisetujui+ttlmeidisetujui+ttljundisetujui+ttljuldisetujui+ttlagudisetujui+ttlsepdisetujui+ttloktdisetujui+ttlnovdisetujui+ttldesdisetujui))+")"
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Jumlah Divalidasi",ttljmljandivalidasi+"("+Valid.SetAngka(ttljandivalidasi)+")",ttljmlfebdivalidasi+"("+Valid.SetAngka(ttlfebdivalidasi)+")",ttljmlmardivalidasi+"("+Valid.SetAngka(ttlmardivalidasi)+")",ttljmlaprdivalidasi+"("+Valid.SetAngka(ttlaprdivalidasi)+")",ttljmlmeidivalidasi+"("+Valid.SetAngka(ttlmeidivalidasi)+")",ttljmljundivalidasi+"("+Valid.SetAngka(ttljundivalidasi)+")",
                         ttljmljuldivalidasi+"("+Valid.SetAngka(ttljuldivalidasi)+")",ttljmlagudivalidasi+"("+Valid.SetAngka(ttlagudivalidasi)+")",ttljmlsepdivalidasi+"("+Valid.SetAngka(ttlsepdivalidasi)+")",ttljmloktdivalidasi+"("+Valid.SetAngka(ttloktdivalidasi)+")",ttljmlnovdivalidasi+"("+Valid.SetAngka(ttlnovdivalidasi)+")",ttljmldesdivalidasi+"("+Valid.SetAngka(ttldesdivalidasi)+")",
                         (ttljmljandivalidasi+ttljmlfebdivalidasi+ttljmlmardivalidasi+ttljmlaprdivalidasi+ttljmlmeidivalidasi+ttljmljundivalidasi+ttljmljuldivalidasi+ttljmlagudivalidasi+ttljmlsepdivalidasi+ttljmloktdivalidasi+ttljmlnovdivalidasi+ttljmldesdivalidasi)+"("+Valid.SetAngka((ttljandivalidasi+ttlfebdivalidasi+ttlmardivalidasi+ttlaprdivalidasi+ttlmeidivalidasi+ttljundivalidasi+ttljuldivalidasi+ttlagudivalidasi+ttlsepdivalidasi+ttloktdivalidasi+ttlnovdivalidasi+ttldesdivalidasi))+")"
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Jumlah Ditolak",ttljmljanditolak+"("+Valid.SetAngka(ttljanditolak)+")",ttljmlfebditolak+"("+Valid.SetAngka(ttlfebditolak)+")",ttljmlmarditolak+"("+Valid.SetAngka(ttlmarditolak)+")",ttljmlaprditolak+"("+Valid.SetAngka(ttlaprditolak)+")",ttljmlmeiditolak+"("+Valid.SetAngka(ttlmeiditolak)+")",ttljmljunditolak+"("+Valid.SetAngka(ttljunditolak)+")",
                         ttljmljulditolak+"("+Valid.SetAngka(ttljulditolak)+")",ttljmlaguditolak+"("+Valid.SetAngka(ttlaguditolak)+")",ttljmlsepditolak+"("+Valid.SetAngka(ttlsepditolak)+")",ttljmloktditolak+"("+Valid.SetAngka(ttloktditolak)+")",ttljmlnovditolak+"("+Valid.SetAngka(ttlnovditolak)+")",ttljmldesditolak+"("+Valid.SetAngka(ttldesditolak)+")",
                         (ttljmljanditolak+ttljmlfebditolak+ttljmlmarditolak+ttljmlaprditolak+ttljmlmeiditolak+ttljmljunditolak+ttljmljulditolak+ttljmlaguditolak+ttljmlsepditolak+ttljmloktditolak+ttljmlnovditolak+ttljmldesditolak)+"("+Valid.SetAngka((ttljanditolak+ttlfebditolak+ttlmarditolak+ttlaprditolak+ttlmeiditolak+ttljunditolak+ttljulditolak+ttlaguditolak+ttlsepditolak+ttloktditolak+ttlnovditolak+ttldesditolak))+")"

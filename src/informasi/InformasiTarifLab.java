@@ -305,7 +305,7 @@ public final class InformasiTarifLab extends javax.swing.JDialog {
                 ps.setString(4,"%"+TCari.getText().trim()+"%");  
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),Valid.SetAngka(rs.getDouble(3)),rs.getString(4)
                     });
                     ps2=koneksi.prepareStatement(
@@ -315,7 +315,7 @@ public final class InformasiTarifLab extends javax.swing.JDialog {
                         ps2.setString(1,rs.getString(1));
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "","   "+rs2.getString(1),Valid.SetAngka(rs2.getDouble(2)),rs.getString(4)
                             });
                         }

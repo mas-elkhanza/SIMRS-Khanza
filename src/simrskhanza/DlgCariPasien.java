@@ -653,7 +653,7 @@ private void CarialamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("jk"),rs.getString("tmp_lahir"),rs.getString("tgl_lahir"),rs.getString("nm_ibu"),
+                        rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("no_ktp"),rs.getString("jk"),rs.getString("tmp_lahir"),rs.getDate("tgl_lahir"),rs.getString("nm_ibu"),
                         rs.getString("alamat")+", "+rs.getString("nm_kel")+", "+rs.getString("nm_kec")+", "+rs.getString("nm_kab")+", "+rs.getString("nm_prop"),rs.getString("gol_darah"),rs.getString("pekerjaan"),
                         rs.getString("stts_nikah"),rs.getString("agama"),rs.getString("tgl_daftar"),rs.getString("no_tlp"),rs.getString("umur"),rs.getString("pnd"),rs.getString("keluarga"),
                         rs.getString("namakeluarga"),rs.getString("png_jawab"),rs.getString("no_peserta"),"Klik Kanan, Tampilkan Banyak Daftar",rs.getString("pekerjaanpj"),

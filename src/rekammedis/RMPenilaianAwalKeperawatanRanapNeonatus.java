@@ -1810,7 +1810,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         CaraMasuk.setBounds(79, 100, 105, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2024 13:01:26" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-10-2024 13:10:06" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -3613,7 +3613,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel137);
         jLabel137.setBounds(458, 930, 110, 23);
 
-        GDIbu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A +", "A -", "B +", "B -", "AB +", "AB -", "O +", "O -" }));
+        GDIbu.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A +", "A -", "B +", "B -", "AB +", "AB -", "O +", "O -", "-" }));
         GDIbu.setName("GDIbu"); // NOI18N
         GDIbu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -3628,7 +3628,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         FormInput.add(jLabel138);
         jLabel138.setBounds(645, 930, 130, 23);
 
-        GDAyah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A +", "A -", "B +", "B -", "AB +", "AB -", "O +", "O -" }));
+        GDAyah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "A +", "A -", "B +", "B -", "AB +", "AB -", "O +", "O -", "-" }));
         GDAyah.setName("GDAyah"); // NOI18N
         GDAyah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -5824,7 +5824,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         label29.setBounds(630, 2600, 130, 23);
 
         TanggalPulang.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2024" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-10-2024" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -5994,7 +5994,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2024" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-10-2024" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -6008,7 +6008,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2024" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-10-2024" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -9461,8 +9461,8 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip1"),rs.getString("pengkaji1"),rs.getString("nip2"),rs.getString("pengkaji2"),
                         rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),rs.getString("asal_pasien"),rs.getString("cara_masuk"),rs.getString("diperoleh_dari"),rs.getString("hubungan_dengan_pasien"),rs.getString("keluhan_utama"),
                         rs.getString("prenatal_g"),rs.getString("prenatal_p"),rs.getString("prenatal_a"),rs.getString("prenatal_uk"),rs.getString("prenatal_riwayat_penyakit_ibu"),rs.getString("prenatal_riwayat_penyakit_ibu_keterangan"),
                         rs.getString("prenatal_riwayat_pengobatan_ibu_selama_hamil"),rs.getString("prenatal_pernah_dirawat"),rs.getString("prenatal_pernah_dirawat_keterangan"),rs.getString("prenatal_status_gizi_ibu"),rs.getString("intranatal_g"),
@@ -10463,7 +10463,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_neonatus_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
+                            tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -10472,7 +10472,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_neonatus_rencana","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
+                            tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -10722,7 +10722,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 SkalaResiko5.getSelectedItem().toString(),NilaiResiko5.getText(),SkalaResiko6.getSelectedItem().toString(),NilaiResiko6.getText(),SkalaResiko7.getSelectedItem().toString(),NilaiResiko7.getText(),NilaiResikoTotal.getText(),KeteranganTingkatRisiko.getText(),SkalaNIPS1.getSelectedItem().toString(),NilaiNIPS1.getText(),SkalaNIPS2.getSelectedItem().toString(),NilaiNIPS2.getText(),SkalaNIPS3.getSelectedItem().toString(),NilaiNIPS3.getText(),SkalaNIPS4.getSelectedItem().toString(),NilaiNIPS4.getText(),SkalaNIPS5.getSelectedItem().toString(),NilaiNIPS5.getText(),TotalNIPS.getText(),
                 KeteranganPenilaianNyeri.getText(),InformasiPerencanaanPulang.getSelectedItem().toString(),LamaRatarata.getText(),Valid.SetTgl(TanggalPulang.getSelectedItem()+""),KondisiPulang.getText(),PerawatanLanjutan.getText(),CaraTransportasiPulang.getSelectedItem().toString(),TransportasiYangDigunakan.getSelectedItem().toString(),Rencana.getText(),KdPetugas.getText(),KdPetugas2.getText(),KdDPJP.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText().substring(0,1),KdPetugas.getText(),NmPetugas.getText(),KdPetugas2.getText(),NmPetugas2.getText(),KdDPJP.getText(),NmDPJP.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),AsalPasien.getSelectedItem().toString(),CaraMasuk.getSelectedItem().toString(),DiperolehDari.getText(),HubunganDenganPasien.getText(),KeluhanUtama.getText(),PrenatalG.getText(),PrenatalP.getText(),PrenatalA.getText(),PrenatalUK.getText(),RiwayatPenyakitIbu.getSelectedItem().toString(),
                     KeteranganRiwayatPenyakitIbu.getText(),RiwayatPengobatanIbu.getText(),PernahDirawat.getSelectedItem().toString(),KeteranganPernahDirawat.getText(),StatusGiziIbu.getSelectedItem().toString(),IntranatalG.getText(),IntranatalP.getText(),IntranatalA.getText(),KondisiSaatLahir.getText(),CaraPersalinan.getSelectedItem().toString(),KeteranganCaraPersalinan.getText(),ApgarScore.getText(),IntranatalLetak.getText(),TaliPusat.getSelectedItem().toString(),Ketuban.getSelectedItem().toString(),AntoBB.getText(),AntoPB.getText(),AntoLK.getText(),AntoLD.getText(),AntoLP.getText(),RisikoInfeksiMayor.getSelectedItem().toString(),
                     KeteranganRisikoInfeksiMayor.getText(),RisikoInfeksiMinor.getSelectedItem().toString(),KeteranganRisikoInfeksiMinor.getText(),Nutrisi.getSelectedItem().toString(),KeteranganNutrisi.getText(),NutrisiFrekuensi.getText(),NutrisiKali.getText(),EliminasiBAK.getSelectedItem().toString(),KeteranganEliminasiBAK.getText(),EliminasiBAB.getSelectedItem().toString(),KeteranganEliminasiBAB.getText(),AlergiObat.getSelectedItem().toString(),KeteranganAlergiObat.getText(),ReaksiAlergiObat.getText(),AlergiMakanan.getSelectedItem().toString(),KeteranganAlergiMakanan.getText(),ReaksiAlergiMakanan.getText(),
@@ -10744,7 +10744,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 for (i = 0; i < tbMasalahKeperawatan.getRowCount(); i++) {
                     if(tbMasalahKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_neonatus_masalah","?,?",2,new String[]{TNoRw.getText(),tbMasalahKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailMasalah.addRow(new String[]{
+                            tabModeDetailMasalah.addRow(new Object[]{
                                 tbMasalahKeperawatan.getValueAt(i,1).toString(),tbMasalahKeperawatan.getValueAt(i,2).toString()
                             });
                         }
@@ -10753,7 +10753,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
                 for (i = 0; i < tbRencanaKeperawatan.getRowCount(); i++) {
                     if(tbRencanaKeperawatan.getValueAt(i,0).toString().equals("true")){
                         if(Sequel.menyimpantf2("penilaian_awal_keperawatan_ranap_neonatus_rencana","?,?",2,new String[]{TNoRw.getText(),tbRencanaKeperawatan.getValueAt(i,1).toString()})==true){
-                            tabModeDetailRencana.addRow(new String[]{
+                            tabModeDetailRencana.addRow(new Object[]{
                                 tbRencanaKeperawatan.getValueAt(i,1).toString(),tbRencanaKeperawatan.getValueAt(i,2).toString()
                             });
                         }

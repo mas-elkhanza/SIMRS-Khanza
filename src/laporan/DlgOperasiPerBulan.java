@@ -385,7 +385,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         i+"",rs.getString(1),
                         Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-01' and paket_operasi.nm_perawatan=? ",rs.getString(1)),
                         Sequel.cariIsi("select count(paket_operasi.nm_perawatan) from operasi inner join paket_operasi on paket_operasi.kode_paket=operasi.kode_paket where left(operasi.tgl_operasi,7)='"+ThnCari.getSelectedItem()+"-02' and paket_operasi.nm_perawatan=? ",rs.getString(1)),

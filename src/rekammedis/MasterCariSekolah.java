@@ -17,7 +17,6 @@ import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -44,7 +43,6 @@ public final class MasterCariSekolah extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -366,13 +364,13 @@ public final class MasterCariSekolah extends javax.swing.JDialog {
             file=new File("./cache/master_sekolah.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select master_sekolah.kd_sekolah, master_sekolah.nm_sekolah from master_sekolah order by master_sekolah.nm_sekolah");   
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
-                    iyem=iyem+"{\"KodeSekolah\":\""+rs.getString(1)+"\",\"NamaSekolah\":\""+rs.getString(2)+"\"},";
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+                    iyembuilder.append("{\"KodeSekolah\":\"").append(rs.getString(1)).append("\",\"NamaSekolah\":\"").append(rs.getString(2)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -384,10 +382,14 @@ public final class MasterCariSekolah extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"master_sekolah\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"master_sekolah\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }  

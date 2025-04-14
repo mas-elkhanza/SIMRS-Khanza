@@ -546,7 +546,7 @@ public final class SatuSehatMapingOrganisasi extends javax.swing.JDialog {
                     if(Sequel.menyimpantf("satu_sehat_mapping_departemen","?,?","Kode Departemen",2,new String[]{
                             KodeDepartemen.getText(),response.asText()
                         })==true){
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             KodeDepartemen.getText(),NamaDepartemen.getText(),response.asText()
                         });
                         emptTeks();

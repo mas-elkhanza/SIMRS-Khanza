@@ -48,7 +48,7 @@ public class DapurPemesanan extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem,Penerimaan_Dapur="",PPN_Masukan="",Kontra_Penerimaan_Dapur="";
+    private String Penerimaan_Dapur="",PPN_Masukan="",Kontra_Penerimaan_Dapur="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1180,7 +1180,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             file=new File("./cache/penerimaandapur.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                     "select dapurbarang.kode_brng, dapurbarang.nama_brng,dapurbarang.kode_sat,dapurbarang.harga "+
                     " from dapurbarang where dapurbarang.status='1' order by dapurbarang.nama_brng");
@@ -1188,7 +1188,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),false,rs.getDouble(4),0,0,0,0});
-                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"HrgBeli\":\""+rs.getString(4)+"\"},";
+                    iyembuilder.append("{\"KodeBarang\":\"").append(rs.getString(1)).append("\",\"NamaBarang\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"Satuan\":\"").append(rs.getString(3)).append("\",\"HrgBeli\":\"").append(rs.getString(4)).append("\"},");
                 }   
             }catch(Exception e){
                 System.out.println(e);
@@ -1199,11 +1199,16 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 if(ps!=null){
                     ps.close();
                 }
-            }             
-            fileWriter.write("{\"penerimaandapur\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            }       
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"penerimaandapur\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;  
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1256,6 +1261,16 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             for(i=0;i<jml;i++){
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],ganti[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i]});
             }
+            kodebarang=null;
+            namabarang=null;
+            satuan=null;
+            harga=null;
+            jumlah=null;
+            subtotal=null;
+            diskon=null;
+            besardiskon=null;
+            jmltotal=null;
+            ganti=null;
             
             myObj = new FileReader("./cache/penerimaandapur.iyem");
             root = mapper.readTree(myObj);
@@ -1415,7 +1430,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                      fileWriter.write("{\"Penerimaan_Dapur\":\""+Penerimaan_Dapur+"\",\"PPN_Masukan\":\""+PPN_Masukan+"\",\"Kontra_Penerimaan_Dapur\":\""+Kontra_Penerimaan_Dapur+"\"}");
                      fileWriter.flush();
                      fileWriter.close();
-                     iyem=null;
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);

@@ -980,7 +980,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         "</body>"+                   
                                      "</html>"
                             );
-
+                            htmlContent=null;
                             bw.close();                         
                             Desktop.getDesktop().browse(f.toURI());
                         break;
@@ -1094,7 +1094,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         "</body>"+                   
                                      "</html>"
                             );
-
+                            htmlContent=null;
                             bw.close();                         
                             Desktop.getDesktop().browse(f.toURI());
                         break;
@@ -1112,7 +1112,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             f = new File("SirkulasiObat.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
-
+                            htmlContent=null;
                             bw.close();                         
                             Desktop.getDesktop().browse(f.toURI());
                         break; 
@@ -1934,7 +1934,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     
                                 if((jumlahbeli>0)||(jumlahpesan>0)||(jumlahjual>0)||(jumlahpasin>0)||(jumlahpiutang>0)||(jumlahhibah>0)||(jumlahmutasimasuk>0)||(jumlahmutasikeluar>0)||
                                     (jumlahutd>0)||(jumlahkeluar>0)||(jumlahretbeli>0)||(jumlahretjual>0)||(jumlahretpiut>0)||(stokawal>0)||(stokakhir>0)||(jumlahrespulang>0)){
-                                    tabMode.addRow(new String[]{
+                                    tabMode.addRow(new Object[]{
                                         rs.getString("kode_brng"),rs2.getString("no_batch"),rs2.getString("no_faktur"),rs.getString("nama_brng"),rs.getString("satuan"),
                                         tglopname,Valid.SetAngka(stokawal),Valid.SetAngka(totalstokawal),Valid.SetAngka(jumlahbeli),Valid.SetAngka(totalbeli),
                                         Valid.SetAngka(jumlahpesan),Valid.SetAngka(totalpesan),Valid.SetAngka(jumlahjual),Valid.SetAngka(totaljual),

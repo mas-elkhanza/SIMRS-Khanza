@@ -1502,11 +1502,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3)+", "+rs.getString(4),rs.getString(5)+", "+rs.getString(6),rs.getString(7),rs.getString(8),df2.format(rs.getDouble(9)),df2.format(rs.getDouble(10)),df2.format(rs.getDouble(11)),"",""
                     });
                     
-                    tabMode.addRow(new String[]{"","No.Batch","No.Faktur","Piutang di "+rs.getString(13),"Satuan","Harga","Jml","Subtotal","Disk(%)","Diskon(Rp)","Total"});
+                    tabMode.addRow(new Object[]{"","No.Batch","No.Faktur","Piutang di "+rs.getString(13),"Satuan","Harga","Jml","Subtotal","Disk(%)","Diskon(Rp)","Total"});
 
                     subttlall=0;
                     subttldisc=0;
@@ -1533,7 +1533,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             subttldisc=subttldisc+rs2.getDouble(9);
                             ttljual=ttljual+rs2.getDouble(10);
                             subttljual=subttljual+rs2.getDouble(10);
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",no+". "+rs2.getString("no_batch"),rs2.getString("no_faktur"),rs2.getString("kode_brng")+" "+rs2.getString("nama_brng")+" "+rs2.getString("aturan_pakai"),
                                 rs2.getString("satuan"),df2.format(rs2.getDouble("h_jual")),rs2.getString("jumlah"),df2.format(rs2.getDouble("subtotal")),
                                 rs2.getString("dis"),df2.format(rs2.getDouble("bsr_dis")),df2.format(rs2.getDouble("total"))
@@ -1559,9 +1559,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         telat=Sequel.cariIsiAngka("select TO_DAYS('"+rs.getString(12)+"')-TO_DAYS(current_date()) as day");                                                
                         status="Belum Lunas"+(telat<0?", Telat Bayar":"");
                     }
-                    tabMode.addRow(new String[]{"","Total",":","","",""," ",df2.format(subttlall),"",df2.format(subttldisc),df2.format(subttljual)});    
-                    tabMode.addRow(new String[]{"","Jatuh Tempo",": "+rs.getString(12),"Cicilan+Diskon Bayar+Tidak Terbayar",":","","","","","",df2.format(cicilan)});  
-                    tabMode.addRow(new String[]{"","Status",": "+status,"Sisa Piutang",":","","","","","",df2.format(sisapiutang)}); 
+                    tabMode.addRow(new Object[]{"","Total",":","","",""," ",df2.format(subttlall),"",df2.format(subttldisc),df2.format(subttljual)});    
+                    tabMode.addRow(new Object[]{"","Jatuh Tempo",": "+rs.getString(12),"Cicilan+Diskon Bayar+Tidak Terbayar",":","","","","","",df2.format(cicilan)});  
+                    tabMode.addRow(new Object[]{"","Status",": "+status,"Sisa Piutang",":","","","","","",df2.format(sisapiutang)}); 
                 }  
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

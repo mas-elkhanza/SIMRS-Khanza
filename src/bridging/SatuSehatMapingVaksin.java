@@ -670,7 +670,7 @@ public final class SatuSehatMapingVaksin extends javax.swing.JDialog {
                 KodeBarang.getText(),VaksinCode.getText(),VaksinSystem.getText(),VaksinDisplay.getText(),RouteCode.getText(),
                 RouteSystem.getText(),RouteDisplay.getText(),DoseCode.getText(),DoseSystem.getText(),DoseUnit.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     VaksinCode.getText(),VaksinSystem.getText(),KodeBarang.getText(),NamaBarang.getText(),VaksinDisplay.getText(),
                     RouteCode.getText(),RouteSystem.getText(),RouteDisplay.getText(),DoseCode.getText(),DoseSystem.getText(),
                     DoseUnit.getText()

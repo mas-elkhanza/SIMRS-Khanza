@@ -335,7 +335,7 @@ public final class InformasiKamar extends javax.swing.JDialog {
                 ps.setString(6,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),
+                    tabMode.addRow(new Object[]{rs.getString(1),
                                    rs.getString(2),
                                    rs.getString(3),
                                    rs.getString(4),

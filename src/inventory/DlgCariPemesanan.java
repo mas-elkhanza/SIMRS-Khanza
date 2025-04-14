@@ -1935,6 +1935,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         }

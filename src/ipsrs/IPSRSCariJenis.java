@@ -39,7 +39,6 @@ import javax.swing.table.TableColumn;
  */
 public final class IPSRSCariJenis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     public IPSRSJenis nm_jenis=new IPSRSJenis(null,false);
     private PreparedStatement ps;
@@ -47,7 +46,6 @@ public final class IPSRSCariJenis extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -383,14 +381,14 @@ public final class IPSRSCariJenis extends javax.swing.JDialog {
             file=new File("./cache/jenisipsrs.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             
             ps=koneksi.prepareStatement("select * from ipsrsjenisbarang order by ipsrsjenisbarang.nm_jenis ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
-                    iyem=iyem+"{\"KodeJenis\":\""+rs.getString(1)+"\",\"NamaJenis\":\""+rs.getString(2)+"\"},";
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+                    iyembuilder.append("{\"KodeJenis\":\"").append(rs.getString(1)).append("\",\"NamaJenis\":\"").append(rs.getString(2)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -403,10 +401,14 @@ public final class IPSRSCariJenis extends javax.swing.JDialog {
                 }
             }   
                 
-            fileWriter.write("{\"jenisipsrs\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"jenisipsrs\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

@@ -335,7 +335,7 @@ public final class SatuSehatReferensiPraktisi extends javax.swing.JDialog {
             for(JsonNode list:response){
                 responsename=list.path("resource").path("name");
                 for(JsonNode list2:responsename){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                       list.path("resource").path("id").asText(),list2.path("text").asText()
                     }); 
                 }
@@ -356,7 +356,7 @@ public final class SatuSehatReferensiPraktisi extends javax.swing.JDialog {
                 root = mapper.readTree(json);
                 response = root.path("name");
                 for(JsonNode list:response){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                       TCari.getText(),list.path("text").asText()
                     }); 
                 }

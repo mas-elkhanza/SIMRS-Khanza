@@ -2485,8 +2485,8 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),rs.getString("kondisi_umum"),
                         rs.getString("td"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("rr"),rs.getString("tulang_belakang"),rs.getString("kepala"),rs.getString("keterangan_kepala"),rs.getString("thoraks"),
                         rs.getString("keterangan_thoraks"),rs.getString("abdomen"),rs.getString("keterangan_abdomen"),rs.getString("ekstremitas"),rs.getString("keterangan_ekstremitas"),rs.getString("Integument_kebersihan"),
@@ -2766,7 +2766,7 @@ public final class RMPenilaianAwalMedisRalanGeriatri extends javax.swing.JDialog
                 RisikoJatuh.getSelectedItem().toString(),Nutrisi.getSelectedItem().toString(),Lainnya.getText(),Lab.getText(),Rad.getText(),PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),
                 Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                     Anamnesis.getSelectedItem().toString(),Hubungan.getText(),KeluhanUtama.getText(),RPS.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),KondisiUmum.getText(),TD.getText(),Nadi.getText(),Suhu.getText(),RR.getText(),
                     PosturTulang.getSelectedItem().toString(),Kepala.getSelectedItem().toString(),KeteranganKepala.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),

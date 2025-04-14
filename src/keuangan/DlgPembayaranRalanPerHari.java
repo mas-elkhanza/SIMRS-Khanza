@@ -812,7 +812,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         }
                     }
 
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rstanggal.getString(1),Valid.SetAngka(Laborat),Valid.SetAngka(Radiologi),Valid.SetAngka(Obat),
                         Valid.SetAngka(Ralan_Dokter+Ralan_Paramedis+Ralan_Dokter_Paramedis),Valid.SetAngka(Operasi),Valid.SetAngka(Tambahan),
                         Valid.SetAngka(Potongan),Valid.SetAngka(Registrasi),
@@ -830,7 +830,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }
             }   
                     
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                     ">> Total  :",Valid.SetAngka(ttlLaborat),Valid.SetAngka(ttlRadiologi),Valid.SetAngka(ttlObat),
                     Valid.SetAngka(ttlRalan_Dokter+ttlRalan_Paramedis),Valid.SetAngka(ttlOperasi),Valid.SetAngka(ttlTambahan),
                     Valid.SetAngka(ttlPotongan),Valid.SetAngka(ttlRegistrasi),Valid.SetAngka(Total)

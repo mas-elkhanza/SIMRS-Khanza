@@ -1773,8 +1773,8 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("menggambarkan_hubungan"),rs.getString("skor_menggambarkan_hubungan"),rs.getString("berdebat_dengan_pasangan"),
                         rs.getString("skor_berdebat_dengan_pasangan"),rs.getString("pertengkaran_membuat_sedih"),rs.getString("skor_pertengkaran_membuat_sedih"),rs.getString("pertengkaran_menghasilkan_pukulan"),
                         rs.getString("skor_pertengkaran_menghasilkan_pukulan"),rs.getString("pernah_merasa_takut_dengan_pasangan"),rs.getString("skor_pernah_merasa_takut_dengan_pasangan"),
@@ -2074,7 +2074,7 @@ public final class RMSkriningKekerasanPadaPerempuan extends javax.swing.JDialog 
             PertanyaanLanjutan5.getSelectedItem().toString(),NilaiPertanyaanLanjutan5.getText(),PertanyaanLanjutan6.getSelectedItem().toString(),NilaiPertanyaanLanjutan6.getText(), 
             TotalHasil.getText(),HasilSkrining.getText(),KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 PertanyaanAwal1.getSelectedItem().toString(),NilaiPertanyaanAwal1.getText(),PertanyaanAwal2.getSelectedItem().toString(),NilaiPertanyaanAwal2.getText(),PertanyaanLanjutan1.getSelectedItem().toString(),NilaiPertanyaanLanjutan1.getText(),
                 PertanyaanLanjutan2.getSelectedItem().toString(),NilaiPertanyaanLanjutan2.getText(),PertanyaanLanjutan3.getSelectedItem().toString(),NilaiPertanyaanLanjutan3.getText(),PertanyaanLanjutan4.getSelectedItem().toString(),NilaiPertanyaanLanjutan4.getText(), 

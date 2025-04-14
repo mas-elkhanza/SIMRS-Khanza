@@ -46,7 +46,7 @@ public class InventarisHibah extends javax.swing.JDialog {
     private String akunaset="";
     private File file;
     private FileWriter fileWriter;
-    private String iyem,Kontra_Hibah_Aset=Sequel.cariIsi("select Kontra_Hibah_Aset from set_akun");
+    private String Kontra_Hibah_Aset=Sequel.cariIsi("select Kontra_Hibah_Aset from set_akun");
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -924,6 +924,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],produsen[i],merk[i],kategori[i],jenis[i],harga[i],subtotal[i]});
         }
         
+        kodebarang=null;
+        namabarang=null;
+        produsen=null;
+        merk=null;
+        kategori=null;
+        jenis=null;
+        harga=null;
+        jumlah=null;
+        subtotal=null;
+        
         try{
             try {
                 myObj = new FileReader("./cache/akunaset.iyem");
@@ -1034,14 +1044,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
              file=new File("./cache/akunaset.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
-             iyem="";
+             StringBuilder iyembuilder = new StringBuilder();
              ps=koneksi.prepareStatement("select rekening.nm_rek,akun_aset_inventaris.kd_rek from akun_aset_inventaris inner join rekening on akun_aset_inventaris.kd_rek=rekening.kd_rek group by rekening.nm_rek order by rekening.nm_rek");
              try{
                  rs=ps.executeQuery();
                  AkunAset.removeAllItems();
                  while(rs.next()){    
                      AkunAset.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\"},";
+                     iyembuilder.append("{\"NamaAkun\":\"").append(rs.getString(1).replaceAll("\"","")).append("\",\"KodeRek\":\"").append(rs.getString(2)).append("\"},");
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1054,10 +1064,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                  } 
              }
 
-             fileWriter.write("{\"akunaset\":["+iyem.substring(0,iyem.length()-1)+"]}");
-             fileWriter.flush();
+             if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"akunaset\":["+iyembuilder+"]}");
+                fileWriter.flush();
+             }
+            
              fileWriter.close();
-             iyem=null;
+             iyembuilder=null;
         } catch (Exception e) {
             if(e.toString().contains("begin")){
                 System.out.println("Notifikasi Akun Aset : Data tidak ditemukan..!!");

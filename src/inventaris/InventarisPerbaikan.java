@@ -1185,14 +1185,14 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
                 total=0;
                 while(rs.next()){
                     total=total+rs.getDouble("biaya");
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_permintaan"),rs.getString("no_inventaris"),rs.getString("kode_barang"),rs.getString("nama_barang"),
                         rs.getString("nama_ruang"),rs.getString("nip"),rs.getString("nama"),rs.getString("uraian_kegiatan"),rs.getString("tanggal"),
                         rs.getString("pelaksana"),Valid.SetAngka(rs.getDouble("biaya")),rs.getString("keterangan"),rs.getString("status")
                     });
                 }
                 if(total>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","","","","","","","Total Biaya : ","","",Valid.SetAngka(total),"",""
                     });
                 }

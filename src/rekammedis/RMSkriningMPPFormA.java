@@ -2058,8 +2058,8 @@ public final class RMSkriningMPPFormA extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),rs.getString("alamat"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),rs.getString("alamat"),rs.getString("tanggal"),
                         rs.getString("kamar")+" "+rs.getString("ruang"),rs.getString("tgl_masuk")+" "+rs.getString("jam_masuk"),rs.getString("kd_dokter"),rs.getString("dpjp"),rs.getString("kd_konsulan"),
                         rs.getString("konsulan"),rs.getString("diagnosis"),rs.getString("kelompok"),rs.getString("assesmen"),rs.getString("identifikasi"),rs.getString("rencana"),rs.getString("nip"),
                         rs.getString("nama")

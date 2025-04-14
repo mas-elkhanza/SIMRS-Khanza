@@ -1061,7 +1061,7 @@ public final class DlgAuditPembuanganBendaTajam extends javax.swing.JDialog {
                     ttlsaftey_box_tertutup_setelah_digunakan=ttlsaftey_box_tertutup_setelah_digunakan+saftey_box_tertutup_setelah_digunakan;
                     ttlpenilaian=ttlpenilaian+(((setiap_injeksi_needle_langsung_dimasukkan_safety_box+setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box+setiap_benda_tajam_jarum_dimasukkan_safety_box+
                             safety_box_tigaperempat_diganti+safety_box_keadaan_bersih+saftey_box_tertutup_setelah_digunakan)/6)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("setiap_injeksi_needle_langsung_dimasukkan_safety_box"),rs.getString("setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box"),
                         rs.getString("setiap_benda_tajam_jarum_dimasukkan_safety_box"),rs.getString("safety_box_tigaperempat_diganti"),rs.getString("safety_box_keadaan_bersih"),
                         rs.getString("saftey_box_tertutup_setelah_digunakan"),Math.round(((setiap_injeksi_needle_langsung_dimasukkan_safety_box+setiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box+
@@ -1071,17 +1071,17 @@ public final class DlgAuditPembuanganBendaTajam extends javax.swing.JDialog {
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlsetiap_injeksi_needle_langsung_dimasukkan_safety_box,""+ttlsetiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box,""+ttlsetiap_benda_tajam_jarum_dimasukkan_safety_box,
                         ""+ttlsafety_box_tigaperempat_diganti,""+ttlsafety_box_keadaan_bersih,""+ttlsaftey_box_tertutup_setelah_digunakan,""+(ttlsetiap_injeksi_needle_langsung_dimasukkan_safety_box+
                         ttlsetiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box+ttlsetiap_benda_tajam_jarum_dimasukkan_safety_box+ttlsafety_box_tigaperempat_diganti+ttlsafety_box_keadaan_bersih+ttlsaftey_box_tertutup_setelah_digunakan)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":",""+(i-ttlsetiap_injeksi_needle_langsung_dimasukkan_safety_box),""+(i-ttlsetiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box),""+(i-ttlsetiap_benda_tajam_jarum_dimasukkan_safety_box),
                         ""+(i-ttlsafety_box_tigaperempat_diganti),""+(i-ttlsafety_box_keadaan_bersih),""+(i-ttlsaftey_box_tertutup_setelah_digunakan),""+((i-ttlsetiap_injeksi_needle_langsung_dimasukkan_safety_box)+
                         (i-ttlsetiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box)+(i-ttlsetiap_benda_tajam_jarum_dimasukkan_safety_box)+(i-ttlsafety_box_tigaperempat_diganti)+(i-ttlsafety_box_keadaan_bersih)+(i-ttlsaftey_box_tertutup_setelah_digunakan))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":",Math.round((ttlsetiap_injeksi_needle_langsung_dimasukkan_safety_box/i)*100)+" %",Math.round((ttlsetiap_pemasangan_iv_canula_langsung_dimasukkan_safety_box/i)*100)+" %",Math.round((ttlsetiap_benda_tajam_jarum_dimasukkan_safety_box/i)*100)+" %",
                         Math.round((ttlsafety_box_tigaperempat_diganti/i)*100)+" %",Math.round((ttlsafety_box_keadaan_bersih/i)*100)+" %",Math.round((ttlsaftey_box_tertutup_setelah_digunakan/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });

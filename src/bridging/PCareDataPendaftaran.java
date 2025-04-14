@@ -6310,7 +6310,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps.setString(10,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("tglDaftar"),rs.getString("no_rkm_medis"),
                         rs.getString("nm_pasien"),rs.getString("kdProviderPeserta"),rs.getString("noKartu"),
                         rs.getString("kdPoli"),rs.getString("nmPoli"),rs.getString("keluhan"),
@@ -6373,7 +6373,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps.setString(12,"%"+TCari1.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode2.addRow(new String[]{
+                    tabMode2.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("noKunjungan"),rs.getString("tglDaftar"),
                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("noKartu"),
                         rs.getString("kdPoli"),rs.getString("nmPoli"),rs.getString("keluhan"),
@@ -6444,7 +6444,7 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 ps.setString(12,"%"+TCari2.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode3.addRow(new String[]{
+                    tabMode3.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("noKunjungan"),rs.getString("tglDaftar"),
                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("noKartu"),
                         rs.getString("kdPoli"),rs.getString("nmPoli"),rs.getString("keluhan"),

@@ -494,7 +494,7 @@ public class DlgSatuanPolri extends javax.swing.JDialog {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

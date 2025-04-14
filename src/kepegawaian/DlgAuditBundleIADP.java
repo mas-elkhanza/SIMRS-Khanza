@@ -1026,7 +1026,7 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
                     perawatan_rutin=Double.parseDouble(rs.getString("perawatan_rutin").replaceAll("Ya","1").replaceAll("Tidak","0"));
                     ttlperawatan_rutin=ttlperawatan_rutin+perawatan_rutin;
                     ttlpenilaian=ttlpenilaian+(((handhygiene+apd+skin_antiseptik+lokasi_iv+perawatan_rutin)/5)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("nik"),rs.getString("nama"),rs.getString("handhygiene"),rs.getString("apd"),
                         rs.getString("skin_antiseptik"),rs.getString("lokasi_iv"),rs.getString("perawatan_rutin"),
                         Math.round(((handhygiene+apd+skin_antiseptik+lokasi_iv+perawatan_rutin)/5)*100)+" %"
@@ -1035,17 +1035,17 @@ public final class DlgAuditBundleIADP extends javax.swing.JDialog {
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlhandhygiene,""+ttlapd,""+ttlskin_antiseptik,
                         ""+ttllokasi_iv,""+ttlperawatan_rutin,""+(ttlhandhygiene+ttlapd+
                         ttlskin_antiseptik+ttllokasi_iv+ttlperawatan_rutin)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":",""+(i-ttlhandhygiene),""+(i-ttlapd),""+(i-ttlskin_antiseptik),
                         ""+(i-ttllokasi_iv),""+(i-ttlperawatan_rutin),""+((i-ttlhandhygiene)+(i-ttlapd)+
                         (i-ttlskin_antiseptik)+(i-ttllokasi_iv)+(i-ttlperawatan_rutin))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":",Math.round((ttlhandhygiene/i)*100)+" %",Math.round((ttlapd/i)*100)+" %",Math.round((ttlskin_antiseptik/i)*100)+" %",
                         Math.round((ttllokasi_iv/i)*100)+" %",Math.round((ttlperawatan_rutin/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });

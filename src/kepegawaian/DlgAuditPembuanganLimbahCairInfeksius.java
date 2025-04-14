@@ -1076,7 +1076,7 @@ public final class DlgAuditPembuanganLimbahCairInfeksius extends javax.swing.JDi
                     ttlaudit6=ttlaudit6+audit6;
                     ttlpenilaian=ttlpenilaian+(((audit1+audit2+audit3+
                             audit4+audit5+audit6)/6)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),
                         rs.getString("nama_ruang"),rs.getString("audit1"),rs.getString("audit2"),
                         rs.getString("audit3"),rs.getString("audit4"),rs.getString("audit5"),
@@ -1087,17 +1087,17 @@ public final class DlgAuditPembuanganLimbahCairInfeksius extends javax.swing.JDi
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlaudit1,""+ttlaudit2,""+ttlaudit3,
                         ""+ttlaudit4,""+ttlaudit5,""+ttlaudit6,""+(ttlaudit1+ttlaudit2+
                         ttlaudit3+ttlaudit4+ttlaudit5+ttlaudit6)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":",""+(i-ttlaudit1),""+(i-ttlaudit2),""+(i-ttlaudit3),
                         ""+(i-ttlaudit4),""+(i-ttlaudit5),""+(i-ttlaudit6),""+((i-ttlaudit1)+(i-ttlaudit2)+
                         (i-ttlaudit3)+(i-ttlaudit4)+(i-ttlaudit5)+(i-ttlaudit6))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":",Math.round((ttlaudit1/i)*100)+" %",Math.round((ttlaudit2/i)*100)+" %",Math.round((ttlaudit3/i)*100)+" %",
                         Math.round((ttlaudit4/i)*100)+" %",Math.round((ttlaudit5/i)*100)+" %",Math.round((ttlaudit6/i)*100)+" %",
                         Math.round(ttlpenilaian/i)+" %"

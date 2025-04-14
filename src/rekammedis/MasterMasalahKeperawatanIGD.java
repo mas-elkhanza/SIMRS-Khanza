@@ -395,7 +395,7 @@ public class MasterMasalahKeperawatanIGD extends javax.swing.JDialog {
             Valid.textKosong(TNm,"Masalah");
         }else{
             if(Sequel.menyimpantf("master_masalah_keperawatan_igd","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode")==true){
-                tabMode.addRow(new String[]{TKd.getText(),TNm.getText()});
+                tabMode.addRow(new Object[]{TKd.getText(),TNm.getText()});
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
             }
@@ -603,7 +603,7 @@ public class MasterMasalahKeperawatanIGD extends javax.swing.JDialog {
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

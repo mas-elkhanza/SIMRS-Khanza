@@ -5620,7 +5620,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("agama"),rs.getString("nama_bahasa"),rs.getString("nama_cacat"),
                         rs.getString("tgl_lahir"),rs.getString("tanggal"),rs.getString("informasi"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("suhu"),
                         rs.getString("gcs"),rs.getString("bb"),rs.getString("tb"),rs.getString("lila"),rs.getString("bmi"),rs.getString("tfu"),rs.getString("tbj"),rs.getString("letak"),
@@ -5907,7 +5907,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),123).toString());
             Valid.tabelKosong(tabModeRiwayatKehamilan);
             for (i = 0; i < tbRiwayatKehamilan2.getRowCount(); i++) {
-                tabModeRiwayatKehamilan.addRow(new String[]{
+                tabModeRiwayatKehamilan.addRow(new Object[]{
                     tbRiwayatKehamilan2.getValueAt(i,0).toString(),tbRiwayatKehamilan2.getValueAt(i,1).toString(),tbRiwayatKehamilan2.getValueAt(i,2).toString(),
                     tbRiwayatKehamilan2.getValueAt(i,3).toString(),tbRiwayatKehamilan2.getValueAt(i,4).toString(),tbRiwayatKehamilan2.getValueAt(i,5).toString(),
                     tbRiwayatKehamilan2.getValueAt(i,6).toString(),tbRiwayatKehamilan2.getValueAt(i,7).toString(),tbRiwayatKehamilan2.getValueAt(i,8).toString(),
@@ -6025,7 +6025,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                     rs=ps.executeQuery();
                     i=1;
                     while(rs.next()){
-                        tabModeRiwayatKehamilan2.addRow(new String[]{
+                        tabModeRiwayatKehamilan2.addRow(new Object[]{
                             i+"",rs.getString("tgl_thn"),rs.getString("tempat_persalinan"),rs.getString("usia_hamil"),rs.getString("jenis_persalinan"),
                             rs.getString("penolong"),rs.getString("penyulit"),rs.getString("jk"),rs.getString("bbpb"),rs.getString("keadaan")
                         });
@@ -6079,7 +6079,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
-                    tabModeRiwayatKehamilan.addRow(new String[]{
+                    tabModeRiwayatKehamilan.addRow(new Object[]{
                         i+"",rs.getString("tgl_thn"),rs.getString("tempat_persalinan"),rs.getString("usia_hamil"),rs.getString("jenis_persalinan"),
                         rs.getString("penolong"),rs.getString("penyulit"),rs.getString("jk"),rs.getString("bbpb"),rs.getString("keadaan")
                     });
@@ -6257,7 +6257,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),125);
                 Valid.tabelKosong(tabModeRiwayatKehamilan2);
                 for (i = 0; i < tbRiwayatKehamilan.getRowCount(); i++) {
-                    tabModeRiwayatKehamilan2.addRow(new String[]{
+                    tabModeRiwayatKehamilan2.addRow(new Object[]{
                         tbRiwayatKehamilan.getValueAt(i,0).toString(),tbRiwayatKehamilan.getValueAt(i,1).toString(),tbRiwayatKehamilan.getValueAt(i,2).toString(),
                         tbRiwayatKehamilan.getValueAt(i,3).toString(),tbRiwayatKehamilan.getValueAt(i,4).toString(),tbRiwayatKehamilan.getValueAt(i,5).toString(),
                         tbRiwayatKehamilan.getValueAt(i,6).toString(),tbRiwayatKehamilan.getValueAt(i,7).toString(),tbRiwayatKehamilan.getValueAt(i,8).toString(),
@@ -6287,7 +6287,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 KetProvokes.getText(),Quality.getSelectedItem().toString(),KetQuality.getText(),Lokasi.getText(),Menyebar.getSelectedItem().toString(),SkalaNyeri.getSelectedItem().toString(),Durasi.getText(),NyeriHilang.getSelectedItem().toString(),KetNyeri.getText(),PadaDokter.getSelectedItem().toString(),KetDokter.getText(),Masalah.getText(), 
                 Tindakan.getText(),KdPetugas.getText()
             })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),Agama.getText(),Bahasa.getText(),CacatFisik.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),
                 TD.getText(),Nadi.getText(),RR.getText(),Suhu.getText(),GCS.getText(),BB.getText(),TB.getText(),LILA.getText(),BMI.getText(),TFU.getText(),TBJ.getText(),Letak.getText(),Presentasi.getText(),Penurunan.getText(),Kontraksi.getText(),Kekuatan.getText(),Lamanya.getText(),BJJ.getText(),
                 KeteranganBJJ.getSelectedItem().toString(),Portio.getText(),PembukaanServiks.getText(),Ketuban.getText(),Hodge.getText(),Inspekulo.getSelectedItem().toString(),KeteranganInspekulo.getText(),CTG.getSelectedItem().toString(),KeteranganCTG.getText(),USG.getSelectedItem().toString(),
@@ -6305,7 +6305,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             LCount.setText(""+tabMode.getRowCount());
             Valid.tabelKosong(tabModeRiwayatKehamilan2);
             for (i = 0; i < tbRiwayatKehamilan.getRowCount(); i++) {
-                tabModeRiwayatKehamilan2.addRow(new String[]{
+                tabModeRiwayatKehamilan2.addRow(new Object[]{
                     tbRiwayatKehamilan.getValueAt(i,0).toString(),tbRiwayatKehamilan.getValueAt(i,1).toString(),tbRiwayatKehamilan.getValueAt(i,2).toString(),
                     tbRiwayatKehamilan.getValueAt(i,3).toString(),tbRiwayatKehamilan.getValueAt(i,4).toString(),tbRiwayatKehamilan.getValueAt(i,5).toString(),
                     tbRiwayatKehamilan.getValueAt(i,6).toString(),tbRiwayatKehamilan.getValueAt(i,7).toString(),tbRiwayatKehamilan.getValueAt(i,8).toString(),

@@ -2,4 +2,5 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <entry key="ACTIVATED_FEATURES">#org.netbeans.modules.profiler.v2.features.SQLFeature@</entry>
+<entry key="org.netbeans.modules.profiler.v2.features.SQLFeature_SETTINGS_FLAG">true</entry>
 </properties>

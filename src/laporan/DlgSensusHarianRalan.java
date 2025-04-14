@@ -1123,8 +1123,8 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                     if(perujuk.equals("")){
                         rujukan++;
                     }
-                    tabmode.addRow(new String[]{
-                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),
+                    tabmode.addRow(new Object[]{
+                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_registrasi"),rs.getString("nm_poli"),rs.getString("nm_dokter"),
                         rs.getString("jk"),perujuk,rs.getString("umur"),rs.getString("png_jawab"),
                         rs.getString("nm_kec")+", "+rs.getString("nm_kab"),
@@ -1148,13 +1148,13 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 }
             }
             if((jkl>0)||(jkp>0)||(pengunjungbaru>0)||(pengunjunglama>0)||(statuspolibaru>0)||(statuspolilama>0)||(rujukan>0)){
-                tabmode.addRow(new String[]{
+                tabmode.addRow(new Object[]{
                     "","","","","","","","","","","","","","","","","","","","",""
                 }); 
-                tabmode.addRow(new String[]{
+                tabmode.addRow(new Object[]{
                     "","","Laki-Laki",": "+jkl,"","Pengunjung Baru",": "+pengunjungbaru,"","Jenis Kunjungan Baru",": "+statuspolibaru,"","Rujukan",": "+rujukan,"","","","","","","",""
                 });  
-                tabmode.addRow(new String[]{
+                tabmode.addRow(new Object[]{
                     "","","Perempuan",": "+jkp,"","Pengunjung Lama",": "+pengunjunglama,"","Jenis Kunjungan Lama",": "+statuspolilama,"","","","","","","","","","",""
                 });
             }                
@@ -1231,8 +1231,8 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                     if(perujuk.equals("")){
                         rujukan++;
                     }
-                    tabmode2.addRow(new String[]{
-                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),
+                    tabmode2.addRow(new Object[]{
+                        i+"",rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_registrasi"),rs.getString("nm_poli"),rs.getString("nm_dokter"),
                         rs.getString("jk"),perujuk,rs.getString("umur"),rs.getString("png_jawab"),
                         rs.getString("nm_kec")+", "+rs.getString("nm_kab"),
@@ -1256,13 +1256,13 @@ public final class DlgSensusHarianRalan extends javax.swing.JDialog {
                 }
             }
             if((jkl>0)||(jkp>0)||(pengunjungbaru>0)||(pengunjunglama>0)||(statuspolibaru>0)||(statuspolilama>0)||(rujukan>0)){
-                tabmode2.addRow(new String[]{
+                tabmode2.addRow(new Object[]{
                     "","","","","","","","","","","","","","","","","","","","",""
                 });  
-                tabmode2.addRow(new String[]{
+                tabmode2.addRow(new Object[]{
                     "","","Laki-Laki",": "+jkl,"","Pengunjung Baru",": "+pengunjungbaru,"","Jenis Kunjungan Baru",": "+statuspolibaru,"","Rujukan",": "+rujukan,"","","","","","","",""
                 });  
-                tabmode2.addRow(new String[]{
+                tabmode2.addRow(new Object[]{
                     "","","Perempuan",": "+jkp,"","Pengunjung Lama",": "+pengunjunglama,"","Jenis Kunjungan Lama",": "+statuspolilama,"","","","","","","","","","",""
                 }); 
             }                

@@ -1426,8 +1426,8 @@ public final class RMLaporanTindakan extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("diagnosa_pra_tindakan"),rs.getString("diagnosa_pasca_tindakan"),rs.getString("tindakan_medik"),
                         rs.getString("uraian"),rs.getString("hasil"),rs.getString("kesimpulan")                     
                     });
@@ -1593,7 +1593,7 @@ public final class RMLaporanTindakan extends javax.swing.JDialog {
                 KdDokter.getText(),KdPetugas.getText(),DiagnosaPraTindakan.getText(),DIagnosaPaskaTindakan.getText(),TindakanMedis.getText(), 
                 UraianTindakan.getText(),HasilTindakan.getText(),Kesimpulan.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),
                     KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                     DiagnosaPraTindakan.getText(),DIagnosaPaskaTindakan.getText(),TindakanMedis.getText(),UraianTindakan.getText(),HasilTindakan.getText(),

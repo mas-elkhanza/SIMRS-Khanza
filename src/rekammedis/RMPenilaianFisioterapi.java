@@ -1687,7 +1687,7 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
                     PemeriksaanInte.getText(),PengukuranMuscu.getText(),PengukuranNeuro.getText(),PengukuranCardio.getText(),PengukuranInte.getText(),Penunjang.getText(),Diagnosis.getText(),Rencana.getText(),
                     KdPetugas.getText()
                 })==true){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                         Informasi.getSelectedItem().toString(),KeluhanUtama.getText(),RiwayatPenyakitSekarang.getText(),RiwayatPenyakitDahulu.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),NyeriTekan.getText(),
                         NyeriGerak.getText(),NyeriDiam.getText(),Palpasi.getText(),LuasGerakSendi.getText(),KekuatanOtot.getText(),Statis.getText(),Dinamis.getText(),Kognitif.getText(),Auskultasi.getText(),AlatBantu.getSelectedItem().toString(),
@@ -2463,8 +2463,8 @@ public final class RMPenilaianFisioterapi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("informasi"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpd"),
                         rs.getString("td"),rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),rs.getString("nyeri_tekan"),rs.getString("nyeri_gerak"),
                         rs.getString("nyeri_diam"),rs.getString("palpasi"),rs.getString("luas_gerak_sendi"),rs.getString("kekuatan_otot"),rs.getString("statis"),

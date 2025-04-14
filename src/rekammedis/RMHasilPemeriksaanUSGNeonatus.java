@@ -1570,8 +1570,8 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("ventrikal_sinistra"),rs.getString("ventrikal_dextra"),rs.getString("kesan"),rs.getString("kesimpulan"),
                         rs.getString("saran")
                     });
@@ -1800,7 +1800,7 @@ public final class RMHasilPemeriksaanUSGNeonatus extends javax.swing.JDialog {
                 DiagnosaKlinis.getText(),KirimanDari.getText(),VentrikalSinistra.getText(),VentrikelDextra.getText(),Kesan.getText(),Kesimpulan.getText(),
                 Saran.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     KirimanDari.getText(),DiagnosaKlinis.getText(),VentrikalSinistra.getText(),VentrikelDextra.getText(),Kesan.getText(),Kesimpulan.getText(),Saran.getText()
                 });

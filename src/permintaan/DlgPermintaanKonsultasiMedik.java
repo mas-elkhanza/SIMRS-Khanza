@@ -1730,7 +1730,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                     rs=ps.executeQuery();
                     while(rs.next()){
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             rs.getString("no_permintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                             rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("tanggalkonsultasi"),rs.getString("jenis_permintaan"),rs.getString("kd_dokter"),rs.getString("dokterkonsul"),
                             rs.getString("kd_dokter_dikonsuli"),rs.getString("dokterdikonsuli"),rs.getString("diagnosakerjakonsul"),rs.getString("uraian_konsultasi"),"","",""
@@ -1774,7 +1774,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     }
                     rs=ps.executeQuery();
                     while(rs.next()){
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             rs.getString("no_permintaan"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
                             rs.getString("no_tlp"),rs.getString("png_jawab"),rs.getString("tanggalkonsultasi"),rs.getString("jenis_permintaan"),rs.getString("kd_dokter"),rs.getString("dokterkonsul"),
                             rs.getString("kd_dokter_dikonsuli"),rs.getString("dokterdikonsuli"),rs.getString("diagnosakerjakonsul"),rs.getString("uraian_konsultasi"),rs.getString("tanggaljawaban"),

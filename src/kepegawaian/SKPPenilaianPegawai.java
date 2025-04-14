@@ -52,7 +52,6 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -961,7 +960,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             file=new File("./cache/skppenilaianpegawai.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                 "select skp_kriteria_penilaian.kode_kriteria,skp_kriteria_penilaian.nama_kriteria,skp_kategori_penilaian.nama_kategori,skp_kategori_penilaian.sasaran "+
                 "from skp_kriteria_penilaian inner join skp_kategori_penilaian on skp_kategori_penilaian.kode_kategori=skp_kriteria_penilaian.kode_kategori "+
@@ -969,7 +968,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodeKriteria\":\""+rs.getString(1)+"\",\"Kriteria\":\""+rs.getString(2)+"\",\"Kategori\":\""+rs.getString(3)+"\",\"Sasaran\":\""+rs.getString(4)+"\"},";
+                    iyembuilder.append("{\"KodeKriteria\":\"").append(rs.getString(1)).append("\",\"Kriteria\":\"").append(rs.getString(2)).append("\",\"Kategori\":\"").append(rs.getString(3)).append("\",\"Sasaran\":\"").append(rs.getString(4)).append("\"},");
                 } 
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -980,11 +979,16 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 if(ps!=null){
                     ps.close();
                 }
-            }       
-            fileWriter.write("{\"skppenilaianpegawai\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            }     
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"skppenilaianpegawai\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null; 
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -1001,13 +1005,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }
             }
 
-            KodeKriteria=null;
             KodeKriteria=new String[jml];
-            Kriteria=null;
             Kriteria=new String[jml];
-            Ya=null;
             Ya=new Boolean[jml];
-            Tidak=null;
             Tidak=new Boolean[jml];
             index=0;        
             for(i=0;i<row;i++){
@@ -1031,6 +1031,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             for(i=0;i<jml;i++){
                 tabMode.addRow(new Object[]{KodeKriteria[i],Kriteria[i],Ya[i],Tidak[i]});
             }
+            KodeKriteria=null;
+            Kriteria=null;
+            Ya=null;
+            Tidak=null;
             
             myObj = new FileReader("./cache/skppenilaianpegawai.iyem");
             root = mapper.readTree(myObj);
@@ -1060,8 +1064,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             System.out.println("Notifikasi : "+e);
         }
     }
-
-    
     
     public void isCek(){
         autoNomor();

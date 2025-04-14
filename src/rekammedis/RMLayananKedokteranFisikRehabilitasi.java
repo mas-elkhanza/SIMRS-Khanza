@@ -219,7 +219,8 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 
         LoadHTML = new widget.editorpane();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnPenilaianMedis = new javax.swing.JMenuItem();
+        MnLayananRehab = new javax.swing.JMenuItem();
+        MnLayananProgramKFR = new javax.swing.JMenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -305,19 +306,33 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnPenilaianMedis.setBackground(new java.awt.Color(255, 255, 254));
-        MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
-        MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Formulir Layanan");
-        MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
-        MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(220, 26));
-        MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
+        MnLayananRehab.setBackground(new java.awt.Color(255, 255, 254));
+        MnLayananRehab.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLayananRehab.setForeground(new java.awt.Color(50, 50, 50));
+        MnLayananRehab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnLayananRehab.setText("Laporan Formulir Layanan");
+        MnLayananRehab.setName("MnLayananRehab"); // NOI18N
+        MnLayananRehab.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnLayananRehab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnPenilaianMedisActionPerformed(evt);
+                MnLayananRehabActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnPenilaianMedis);
+        jPopupMenu1.add(MnLayananRehab);
+
+        MnLayananProgramKFR.setBackground(new java.awt.Color(255, 255, 254));
+        MnLayananProgramKFR.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLayananProgramKFR.setForeground(new java.awt.Color(50, 50, 50));
+        MnLayananProgramKFR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnLayananProgramKFR.setText("Riwayat Program KFR");
+        MnLayananProgramKFR.setName("MnLayananProgramKFR"); // NOI18N
+        MnLayananProgramKFR.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnLayananProgramKFR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnLayananProgramKFRActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnLayananProgramKFR);
 
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
@@ -636,7 +651,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         jLabel11.setBounds(740, 10, 30, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-03-2025 18:49:27" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2025 19:08:25" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -857,7 +872,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -871,7 +886,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-03-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1309,7 +1324,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         Valid.pindah2(evt,Anjuran,SuspekPenyakit);
     }//GEN-LAST:event_EvaluasiKeyPressed
 
-    private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
+    private void MnLayananRehabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLayananRehabActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1333,7 +1348,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
                         "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter inner join bukti_layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
                         "where layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnPenilaianMedisActionPerformed
+    }//GEN-LAST:event_MnLayananRehabActionPerformed
 
     private void PemeriksaanFisikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanFisikKeyPressed
         Valid.pindah2(evt,Anamnesa,DiagnosisMedis);
@@ -1432,6 +1447,26 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
+    private void MnLayananProgramKFRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLayananProgramKFRActionPerformed
+        if(tbObat.getSelectedRow()>-1){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptFormulirLayananProgramKFR.jasper","report","::[ Formulir Layanan Program KFR ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tanggal,layanan_program_kfr.no_rawat_layanan,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,"+
+                    "replace(replace(replace(layanan_kedokteran_fisik_rehabilitasi.tatalaksana,'\t',''),'\n','; '),'\r','; ') as tatalaksana,layanan_program_kfr.program,layanan_program_kfr.nip,petugas.nama,replace(replace(replace(layanan_kedokteran_fisik_rehabilitasi.evaluasi,'\t',''),'\n','; '),'\r','; ') as evaluasi,"+
+                    "concat('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layananprogramkfr/',bukti_layanan_program_kfr.photo) as photo,layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,now() as sekarang from layanan_program_kfr "+
+                    "inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on layanan_program_kfr.nip=petugas.nip "+
+                    "inner join layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=layanan_program_kfr.no_rawat_layanan inner join bukti_layanan_program_kfr on bukti_layanan_program_kfr.no_rawat=layanan_program_kfr.no_rawat "+
+                    "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by layanan_program_kfr.tanggal",param);
+        }
+    }//GEN-LAST:event_MnLayananProgramKFRActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1477,7 +1512,8 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
-    private javax.swing.JMenuItem MnPenilaianMedis;
+    private javax.swing.JMenuItem MnLayananProgramKFR;
+    private javax.swing.JMenuItem MnLayananRehab;
     private widget.TextBox NmDokter;
     private widget.PanelBiasa PanelAccor;
     private widget.TextArea PemeriksaanFisik;
@@ -1576,8 +1612,8 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
                         rs.getString("tanggal"),rs.getString("pendamping"),rs.getString("keterangan_pendamping"),rs.getString("anamnesa"),rs.getString("pemeriksaan_fisik"),rs.getString("diagnosa_medis"),rs.getString("diagnosa_fungsi"),
                         rs.getString("tatalaksana"),rs.getString("anjuran"),rs.getString("evaluasi"),rs.getString("suspek_penyakit_kerja"),rs.getString("keterangan_suspek_penyakit_kerja")                     
                     });
@@ -1754,7 +1790,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
                 DiagnosisFungsi.getText(),TatalaksanaKFR.getText(),Anjuran.getText(),Evaluasi.getText(),SuspekPenyakit.getSelectedItem().toString(), 
                 KeteranganSuspekPenyakit.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),
                     Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Pendamping.getSelectedItem().toString(),
                     KeteranganPendamping.getText(),Anamnesa.getText(),PemeriksaanFisik.getText(),DiagnosisMedis.getText(),DiagnosisFungsi.getText(),TatalaksanaKFR.getText(),

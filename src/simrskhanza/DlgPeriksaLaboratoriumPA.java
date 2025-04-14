@@ -1687,27 +1687,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
-            total=null;
             total=new double[jml];
-            bagian_rs=null;
             bagian_rs=new double[jml];
-            bhp=null;
             bhp=new double[jml];
-            tarif_perujuk=null;
             tarif_perujuk=new double[jml];
-            tarif_tindakan_dokter=null;
             tarif_tindakan_dokter=new double[jml];
-            tarif_tindakan_petugas=null;
             tarif_tindakan_petugas=new double[jml];
-            kso=null;
             kso=new double[jml];
-            menejemen=null;
             menejemen=new double[jml];
 
             index=0; 

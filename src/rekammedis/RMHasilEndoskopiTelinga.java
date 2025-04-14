@@ -2193,8 +2193,8 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("bentuk_liang_telinga_kanan"),rs.getString("bentuk_liang_telinga_kiri"),rs.getString("kondisi_liang_telinga_kanan"),
                         rs.getString("keterangan_kondisi_liang_telinga_kanan"),rs.getString("kondisi_liang_telinga_kiri"),rs.getString("keterangan_kondisi_liang_telinga_kiri"),rs.getString("membran_timpani_intak_kanan"),
                         rs.getString("membran_timpani_intak_kiri"),rs.getString("membran_timpani_perforasi_kanan"),rs.getString("keterangan_membran_timpani_perforasi_kanan"),rs.getString("membran_timpani_perforasi_kiri"),
@@ -2504,7 +2504,7 @@ public final class RMHasilEndoskopiTelinga extends javax.swing.JDialog {
                 OsikelKiri.getText(),IsthmusKanan.getText(),IsthmusKiri.getText(),AnteriorKanan.getText(),AnteriorKiri.getText(),PosteriorKanan.getText(),
                 PosteriorKiri.getText(),LainlainKanan.getText(),LainlainKiri.getText(),Kesimpulan.getText(),Anjuran.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     KirimanDari.getText(),DiagnosaKlinis.getText(),TelingaKanan.getSelectedItem().toString(),TelingaKiri.getSelectedItem().toString(),
                     LiangTelingaKanan.getSelectedItem().toString(),KeteranganLiangKanan.getText(),LiangTelingaKiri.getSelectedItem().toString(),KeteranganLiangKiri.getText(),

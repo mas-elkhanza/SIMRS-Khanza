@@ -1181,13 +1181,13 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 rs=ps.executeQuery();
                 ttl=0;
                 while(rs.next()){     
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_keluar"),rs.getString("tanggal"),
                         rs.getString("keterangan"),
                         rs.getString("kd_bangsal")+", "+rs.getString("nm_bangsal"),
                         rs.getString("nip")+", "+rs.getString("nama"),"","",""
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","No.Batch & Faktur","Barang","Jenis","Satuan","Harga","Jml","Total"
                     });
                     ps2=koneksi.prepareStatement(
@@ -1208,17 +1208,17 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         while(rs2.next()){
                             subttl=subttl+rs2.getDouble("total");
                             ttl=ttl+rs2.getDouble("total");
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",no+". B "+rs2.getString("no_batch")+", F "+rs2.getString("no_faktur"),rs2.getString("kode_brng")+", "+rs2.getString("nama_brng"),
                                 rs2.getString("nama"),rs2.getString("kode_sat"),df2.format(rs2.getDouble("harga_beli")),
                                 df2.format(rs2.getDouble("jumlah")),df2.format(rs2.getDouble("total"))
                             });
                             no++;
                         }   
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             "","Sub Total :","","","","","",df2.format(subttl)
                         }); 
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             "","","","","","","",""
                         }); 
                     } catch (Exception e) {
@@ -1296,7 +1296,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 rs=ps.executeQuery();
                 ttl=0;
                 while(rs.next()){     
-                    tabMode2.addRow(new String[]{
+                    tabMode2.addRow(new Object[]{
                         rs.getString("no_keluar"),rs.getString("tanggal"),rs.getString("keterangan"),
                         rs.getString("kd_bangsal")+", "+rs.getString("nm_bangsal"),rs.getString("nip")+", "+rs.getString("nama"),
                         rs.getString("kode_brng"),rs.getString("nama_brng"),rs.getString("namajenis"),rs.getString("kode_sat"),

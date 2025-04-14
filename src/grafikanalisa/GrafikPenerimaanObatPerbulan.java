@@ -443,9 +443,9 @@ public class GrafikPenerimaanObatPerbulan extends javax.swing.JDialog {
                 total=0;
                 while(rs.next()){
                     total=total+rs.getDouble(2);
-                    tabMode.addRow(new String[]{rs.getString(1),Valid.SetAngka(rs.getDouble(2)),"",rs.getString(2)});
+                    tabMode.addRow(new Object[]{rs.getString(1),Valid.SetAngka(rs.getDouble(2)),"",rs.getString(2)});
                 }
-                tabMode.addRow(new String[]{"Total : ",Valid.SetAngka(total)+"","100 %",total+""});
+                tabMode.addRow(new Object[]{"Total : ",Valid.SetAngka(total)+"","100 %",total+""});
                 for(i=0;i<tbBangsal.getRowCount();i++){ 
                     tbBangsal.setValueAt(Math.round((Double.parseDouble(tbBangsal.getValueAt(i,3).toString())/total)*100)+" %",i,2);
                 }

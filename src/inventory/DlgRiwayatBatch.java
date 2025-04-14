@@ -886,6 +886,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         } 
@@ -1012,6 +1013,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         } catch (Exception e) {
             System.out.println("Notif : "+e);
         } 

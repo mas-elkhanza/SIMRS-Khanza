@@ -30,7 +30,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
@@ -51,7 +50,6 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     private String hari="",poli="";
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -399,7 +397,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
             file=new File("./cache/dokter2.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                 "select dokter.kd_dokter,dokter.nm_dokter,dokter.jk,dokter.tmp_lahir,dokter.tgl_lahir,dokter.gol_drh,dokter.agama,dokter.almt_tgl,dokter.no_telp, "+
                 "dokter.stts_nikah,spesialis.nm_sps,dokter.alumni,dokter.no_ijn_praktek,jadwal.kuota from dokter inner join spesialis on dokter.kd_sps=spesialis.kd_sps "+
@@ -425,14 +423,14 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
                 ps.setString(2,poli);
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),
                         rs.getString(4),rs.getString(5),rs.getString(6),
                         rs.getString(7),rs.getString(8),rs.getString(9),
                         rs.getString(10),rs.getString(11),rs.getString(12),
                         rs.getString(13),rs.getString(14)
                     });
-                    iyem=iyem+"{\"KodeDokter\":\""+rs.getString(1)+"\",\"NamaDokter\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4).replaceAll("\"","")+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"AlamatTinggal\":\""+rs.getString(8).replaceAll("\"","")+"\",\"NoTelp\":\""+rs.getString(9)+"\",\"SttsNikah\":\""+rs.getString(10)+"\",\"Spesialis\":\""+rs.getString(11)+"\",\"Alumni\":\""+rs.getString(12).replaceAll("\"","")+"\",\"NoIjinPraktek\":\""+rs.getString(13)+"\",\"Kuota\":\""+rs.getString(14)+"\"},";
+                    iyembuilder.append("{\"KodeDokter\":\"").append(rs.getString(1)).append("\",\"NamaDokter\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"JK\":\"").append(rs.getString(3)).append("\",\"TmpLahir\":\"").append(rs.getString(4).replaceAll("\"","")).append("\",\"TglLahir\":\"").append(rs.getString(5)).append("\",\"GD\":\"").append(rs.getString(6)).append("\",\"Agama\":\"").append(rs.getString(7)).append("\",\"AlamatTinggal\":\"").append(rs.getString(8).replaceAll("\"","")).append("\",\"NoTelp\":\"").append(rs.getString(9)).append("\",\"SttsNikah\":\"").append(rs.getString(10)).append("\",\"Spesialis\":\"").append(rs.getString(11)).append("\",\"Alumni\":\"").append(rs.getString(12).replaceAll("\"","")).append("\",\"NoIjinPraktek\":\"").append(rs.getString(13)).append("\",\"Kuota\":\"").append(rs.getString(14)).append("\"},");
                 }
             }catch(SQLException e){
                 System.out.println("Notifikasi : "+e);
@@ -445,10 +443,14 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"dokter\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"dokter\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

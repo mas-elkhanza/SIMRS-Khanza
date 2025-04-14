@@ -2088,8 +2088,8 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                 
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("bicara"),rs.getString("keterangan_bicara"),rs.getString("nama_bahasa"),rs.getString("bahasa_sehari"),rs.getString("perlu_penerjemah"),
                         rs.getString("keterangan_penerjemah"),rs.getString("bahasa_isyarat"),rs.getString("cara_belajar"),rs.getString("hambatan_belajar"),
                         rs.getString("keterangan_hambatan_belajar"),rs.getString("kemampuan_belajar"),rs.getString("keterangan_kemampuan_belajar"),rs.getString("pnd"),
@@ -2412,7 +2412,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             PenyakitYangDiderita.getSelectedItem().toString(),RencanaTindakan.getSelectedItem().toString(),PengobatanProsedur.getSelectedItem().toString(),
             HasilLayanan.getSelectedItem().toString()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText().substring(0,1),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Bicara.getSelectedItem().toString(),KeteranganBicara.getText(),Bahasa.getText(),KeteranganBahasa.getText(),Penerjemah.getSelectedItem().toString(),KeteranganPenerjemah.getText(),BahasaIsyarat.getSelectedItem().toString(),
                 CaraBelajar.getSelectedItem().toString(),HambatanBelajar.getSelectedItem().toString(),KeteranganHambatanBelajar.getText(),KemampuanBelajar.getSelectedItem().toString(),KeteranganKemampuanBelajar.getText(),

@@ -1231,7 +1231,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                 Sasaran1.getSelectedItem().toString(),Sasaran2.getSelectedItem().toString(),Sasaran3.getSelectedItem().toString(),Sasaran4.getSelectedItem().toString(),Evaluasi1.getSelectedItem().toString(),
                 Evaluasi2.getSelectedItem().toString(),Evaluasi3.getSelectedItem().toString(),KodePetugas.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                     Intervensi1.getSelectedItem().toString(),Intervensi2.getSelectedItem().toString(),Intervensi3.getSelectedItem().toString(),Intervensi4.getSelectedItem().toString(),Intervensi5.getSelectedItem().toString(),
                     Intervensi6.getSelectedItem().toString(),Intervensi7.getSelectedItem().toString(),Intervensi8.getSelectedItem().toString(),Intervensi9.getSelectedItem().toString(),
@@ -1848,8 +1848,8 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("intervensi1"),rs.getString("intervensi2"),rs.getString("intervensi3"),rs.getString("intervensi4"),rs.getString("intervensi5"),rs.getString("intervensi6"),
                         rs.getString("intervensi7"),rs.getString("intervensi8"),rs.getString("intervensi9"),rs.getString("edukasi1"),rs.getString("edukasi2"),rs.getString("edukasi3"),
                         rs.getString("edukasi4"),rs.getString("edukasi5"),rs.getString("sasaran1"),rs.getString("sasaran2"),rs.getString("sasaran3"),rs.getString("sasaran4"),

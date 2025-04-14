@@ -1953,8 +1953,8 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("kardiologi1"),rs.getString("kardiologi2"),rs.getString("kardiologi3"),rs.getString("kardiologi4"),
                         rs.getString("kardiologi5"),rs.getString("kardiologi6"),rs.getString("pernapasan1"),rs.getString("pernapasan2"),rs.getString("pernapasan3"),
                         rs.getString("syaraf1"),rs.getString("syaraf2"),rs.getString("syaraf3"),rs.getString("syaraf4"),rs.getString("pencernaan1"),
@@ -2178,7 +2178,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
             Pembedahan1.getSelectedItem().toString(),Pembedahan2.getSelectedItem().toString(),Hematologi1.getSelectedItem().toString(),Hematologi2.getSelectedItem().toString(),
             Infeksi.getSelectedItem().toString(),KodePetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                 Kardiologi1.getSelectedItem().toString(),Kardiologi2.getSelectedItem().toString(),Kardiologi3.getSelectedItem().toString(),Kardiologi4.getSelectedItem().toString(),
                 Kardiologi5.getSelectedItem().toString(),Kardiologi6.getSelectedItem().toString(),Pernapasan1.getSelectedItem().toString(),Pernapasan2.getSelectedItem().toString(),

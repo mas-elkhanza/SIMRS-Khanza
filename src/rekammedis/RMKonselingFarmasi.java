@@ -1270,8 +1270,8 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("diagnosa"),rs.getString("riwayat_alergi"),
                         rs.getString("pernah_datang"),rs.getString("obat_pemakaian"),rs.getString("keluhan"),rs.getString("tindak_lanjut")
                     });
@@ -1501,7 +1501,7 @@ public final class RMKonselingFarmasi extends javax.swing.JDialog {
             Diagnosa.getText(),ObatPemakaian.getText(),Alergi.getText(),Keluhan.getText(),PernahKonseling.getSelectedItem().toString(),TindakLanjut.getText(),
             KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),KdPetugas.getText(),NmPetugas.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Diagnosa.getText(),Alergi.getText(),PernahKonseling.getSelectedItem().toString(),ObatPemakaian.getText(),Keluhan.getText(),

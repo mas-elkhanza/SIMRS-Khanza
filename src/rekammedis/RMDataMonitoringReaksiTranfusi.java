@@ -1499,9 +1499,9 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("produk_darah"),rs.getString("no_kantong"),
                         rs.getString("lokasi_insersi"),rs.getString("td"),rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),
                         rs.getString("jenis_reaksi_alergi"),rs.getString("keterangan"),rs.getString("nip"),rs.getString("nama")
@@ -1746,7 +1746,7 @@ public final class RMDataMonitoringReaksiTranfusi extends javax.swing.JDialog {
             JenisDarah.getText(),NoKantong.getText(),LokasiInsersi.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),Alergi.getText(), 
             Keterangan.getText(),NIP.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 JenisDarah.getText(),NoKantong.getText(),LokasiInsersi.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),Alergi.getText(), 

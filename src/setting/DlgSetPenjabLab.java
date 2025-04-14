@@ -534,7 +534,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
             if(Sequel.menyimpantf("set_pjlab","?,?,?,?,?,?","Penanggung Jawab",6,new String[]{
                 kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText(),kddokter6.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TDokter.getText(),TDokter2.getText(),TDokter3.getText(),TDokter4.getText(),TDokter5.getText(),TDokter6.getText(),
                     kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText(),kddokter6.getText()
                 });
@@ -602,7 +602,7 @@ public class DlgSetPenjabLab extends javax.swing.JDialog {
             if(Sequel.menyimpantf("set_pjlab","?,?,?,?,?,?","Penanggung Jawab",6,new String[]{
                 kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText(),kddokter6.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TDokter.getText(),TDokter2.getText(),TDokter3.getText(),TDokter4.getText(),TDokter5.getText(),TDokter6.getText(),
                     kddokter.getText(),kddokter2.getText(),kddokter3.getText(),kddokter4.getText(),kddokter5.getText(),kddokter6.getText()
                 });

@@ -1379,10 +1379,10 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
-                        rs.getString("tgl_perawatan"),rs.getString("jam_rawat"),rs.getString("gcs"),rs.getString("td"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
+                        rs.getDate("tgl_perawatan"),rs.getTime("jam_rawat"),rs.getString("gcs"),rs.getString("td"),
                         rs.getString("hr"),rs.getString("rr"),rs.getString("suhu"),rs.getString("spo2"),rs.getString("tfu"),
                         rs.getString("kontraksi"),rs.getString("perdarahan"),rs.getString("keterangan"),rs.getString("nip"),rs.getString("nama")
                     });
@@ -1627,7 +1627,7 @@ public final class RMDataCatatanObservasiRanapPostPartum extends javax.swing.JDi
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),GCS.getText(),
             TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),TFU.getText(),Kontraksi.getText(),Perdarahan.getText(),Keterangan.getText(),NIP.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 GCS.getText(),TD.getText(),HR.getText(),RR.getText(),Suhu.getText(),SPO.getText(),TFU.getText(),Kontraksi.getText(),Perdarahan.getText(),

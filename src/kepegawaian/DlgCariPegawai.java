@@ -32,7 +32,6 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -390,7 +389,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             file=new File("./cache/pegawai.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select pegawai.nik,pegawai.nama,pegawai.jk,pegawai.jbtn,pegawai.jnj_jabatan,pegawai.departemen,pegawai.bidang,pegawai.stts_wp,pegawai.stts_kerja,"+
                  "pegawai.npwp,pegawai.pendidikan,pegawai.tmp_lahir,pegawai.tgl_lahir,pegawai.alamat,pegawai.kota,pegawai.mulai_kerja,pegawai.ms_kerja,"+
                  "pegawai.indexins,pegawai.bpd,pegawai.rekening,pegawai.stts_aktif,pegawai.wajibmasuk,pegawai.mulai_kontrak,pegawai.no_ktp from pegawai "+
@@ -403,11 +402,7 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
                        rs.getString(11),rs.getString(12),rs.getString(13),rs.getString(14),rs.getString(15),rs.getString(16),rs.getString(17),rs.getString(18),rs.getString(19),rs.getString(20),
                        rs.getString(21),rs.getString(22),rs.getString(23),rs.getString(24)
                     });
-                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"Nama\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"Jabatan\":\""+rs.getString(4)+"\",\"KodeJenjang\":\""+rs.getString(5)+"\","+
-                               "\"Departemen\":\""+rs.getString(6)+"\",\"Bidang\":\""+rs.getString(7)+"\",\"Status\":\""+rs.getString(8)+"\",\"StatusKaryawan\":\""+rs.getString(9)+"\",\"NPWP\":\""+rs.getString(10)+"\","+
-                               "\"Pendidikan\":\""+rs.getString(11)+"\",\"TmpLahir\":\""+rs.getString(12)+"\",\"TglLahir\":\""+rs.getString(13)+"\",\"Alamat\":\""+rs.getString(14).replaceAll("\"","")+"\",\"Kota\":\""+rs.getString(15).replaceAll("\"","")+"\","+
-                               "\"MulaiKerja\":\""+rs.getString(16)+"\",\"KodeMsKerja\":\""+rs.getString(17)+"\",\"KodeIndex\":\""+rs.getString(18)+"\",\"BPD\":\""+rs.getString(19)+"\",\"Rekening\":\""+rs.getString(20)+"\","+
-                               "\"SttsAktif\":\""+rs.getString(21)+"\",\"WajibMasuk\":\""+rs.getString(22)+"\",\"MulaiKontrak\":\""+rs.getString(23)+"\",\"NoKTP\":\""+rs.getString(24)+"\"},";
+                    iyembuilder.append("{\"NIP\":\"").append(rs.getString(1)).append("\",\"Nama\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"JK\":\"").append(rs.getString(3)).append("\",\"Jabatan\":\"").append(rs.getString(4)).append("\",\"KodeJenjang\":\"").append(rs.getString(5)).append("\",\"Departemen\":\"").append(rs.getString(6)).append("\",\"Bidang\":\"").append(rs.getString(7)).append("\",\"Status\":\"").append(rs.getString(8)).append("\",\"StatusKaryawan\":\"").append(rs.getString(9)).append("\",\"NPWP\":\"").append(rs.getString(10)).append("\",\"Pendidikan\":\"").append(rs.getString(11)).append("\",\"TmpLahir\":\"").append(rs.getString(12)).append("\",\"TglLahir\":\"").append(rs.getString(13)).append("\",\"Alamat\":\"").append(rs.getString(14).replaceAll("\"","")).append("\",\"Kota\":\"").append(rs.getString(15).replaceAll("\"","")).append("\",\"MulaiKerja\":\"").append(rs.getString(16)).append("\",\"KodeMsKerja\":\"").append(rs.getString(17)).append("\",\"KodeIndex\":\"").append(rs.getString(18)).append("\",\"BPD\":\"").append(rs.getString(19)).append("\",\"Rekening\":\"").append(rs.getString(20)).append("\",\"SttsAktif\":\"").append(rs.getString(21)).append("\",\"WajibMasuk\":\"").append(rs.getString(22)).append("\",\"MulaiKontrak\":\"").append(rs.getString(23)).append("\",\"NoKTP\":\"").append(rs.getString(24)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Note : "+e);
@@ -419,10 +414,15 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
                     ps.close();
                 }
             }  
-            fileWriter.write("{\"pegawai\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"pegawai\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -482,15 +482,14 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             }
         }
         
-        iyem="";
+        String iyem="";
         try {
             myObj = new FileReader("./cache/pegawai.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("pegawai");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
+                    if(list.path("NIP").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("Nama").asText();
                     }
                 }
@@ -516,11 +515,10 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             }
         }
         
-        iyem="";
+        String iyem="";
         try {
             myObj = new FileReader("./cache/pegawai.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("pegawai");
             if(response.isArray()){
                 for(JsonNode list:response){
@@ -550,11 +548,10 @@ public final class DlgCariPegawai extends javax.swing.JDialog {
             }
         }
         
-        iyem="";
+        String iyem="";
         try {
             myObj = new FileReader("./cache/pegawai.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("pegawai");
             if(response.isArray()){
                 for(JsonNode list:response){

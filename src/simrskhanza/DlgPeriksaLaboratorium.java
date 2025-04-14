@@ -1593,37 +1593,21 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             }
             
-            pilih2=null;
             pilih2=new boolean[jml2];
-            pemeriksaan2=null;
             pemeriksaan2=new String[jml2];
-            hasil2=null;
             hasil2=new String[jml2];
-            satuan2=null;
             satuan2=new String[jml2];
-            nilai_rujukan2=null;
             nilai_rujukan2=new String[jml2];
-            keterangan2=null;
             keterangan2=new String[jml2];
-            idtemplate2=null;
             idtemplate2=new String[jml2];
-            biaya_item2=null;
             biaya_item2=new double[jml2];
-            bagian_rs2=null;
             bagian_rs2=new double[jml2];
-            bhp2=null;
             bhp2=new double[jml2];
-            bagian_perujuk2=null;
             bagian_perujuk2=new double[jml2];
-            bagian_dokter2=null;
             bagian_dokter2=new double[jml2];
-            bagian_laborat2=null;
             bagian_laborat2=new double[jml2];
-            kso2=null;
             kso2=new double[jml2];
-            menejemen2=null;
             menejemen2=new double[jml2];
-            kode=null;
             kode=new String[jml2];
             
             index2=0; 
@@ -2647,27 +2631,16 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml];
-            kode=null;
             kode=new String[jml];
-            nama=null;
             nama=new String[jml];
-            total=null;
             total=new double[jml];
-            bagian_rs=null;
             bagian_rs=new double[jml];
-            bhp=null;
             bhp=new double[jml];
-            tarif_perujuk=null;
             tarif_perujuk=new double[jml];
-            tarif_tindakan_dokter=null;
             tarif_tindakan_dokter=new double[jml];
-            tarif_tindakan_petugas=null;
             tarif_tindakan_petugas=new double[jml];
-            kso=null;
             kso=new double[jml];
-            menejemen=null;
             menejemen=new double[jml];
 
             index=0; 

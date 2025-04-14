@@ -2068,7 +2068,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){    
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_pengenal"),rs.getString("no_rkm_medis"),rs.getString("nama_lengkap"),rs.getString("inisial"),rs.getString("kode_jk"),rs.getString("nama_jk"),
                         rs.getString("tgl_lahir"),rs.getString("email"),rs.getString("notelp"),rs.getString("tgl_lapor"),rs.getString("tgl_masuk"),rs.getString("tgl_keluar"),
                         rs.getString("kode_kewarganegaraan"),rs.getString("nama_kewarganegaraan"),rs.getString("kode_penularan"),rs.getString("sumber_penularan"),rs.getString("kd_kelurahan"),

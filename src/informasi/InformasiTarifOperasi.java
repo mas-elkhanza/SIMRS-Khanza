@@ -322,7 +322,7 @@ public final class InformasiTarifOperasi extends javax.swing.JDialog {
                 pstampil.setString(3,"%"+TCari.getText()+"%");
                 rs=pstampil.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString("kode_paket"),
+                    tabMode.addRow(new Object[]{rs.getString("kode_paket"),
                                    rs.getString("nm_perawatan"),
                                    Valid.SetAngka(rs.getDouble("jumlah")),
                                    rs.getString("png_jawab")

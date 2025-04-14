@@ -2269,8 +2269,8 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("kelas"),rs.getString("kd_sekolah"),rs.getString("nm_sekolah"),
                         rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("apakah_anda_merokok"),rs.getString("jumlah_batang_rokok"),
                         rs.getString("jumlah_batang_rokok_hariminggu"),rs.getString("jenis_rokok_yang_digunakan"),rs.getString("jenis_rokok_yang_digunakan_keterangan"),
@@ -2589,7 +2589,7 @@ public final class RMSkriningMerokokUsiaSekolahRemaja extends javax.swing.JDialo
             YangPalingSeringMerokokDiSekolah.getSelectedItem().toString(),KeteranganYangPalingSeringMerokokDiSekolah.getText(),AnggotaKeluargaMerokok.getSelectedItem().toString(), 
             TemanDekatMerokok.getSelectedItem().toString(),DilakukanPemeriksaanCO.getSelectedItem().toString(),HasilPemeriksaanCO.getText(),KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),Umur.getText(),Kelas.getSelectedItem().toString(),KdAsalSekolah.getText(),NmAsalSekolah.getText(),KdPetugas.getText(),
                 NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),ApakahAndaMerokok.getSelectedItem().toString(),
                 JumlahRokok.getText(),SatuanRokok.getSelectedItem().toString(),JenisRokokDigunakan.getSelectedItem().toString(),KeteranganJenisRokokDigunakan.getText(),UsiaMulaiMerokok.getText(),

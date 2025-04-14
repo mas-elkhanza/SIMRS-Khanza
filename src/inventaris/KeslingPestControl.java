@@ -858,7 +858,7 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 rs=ps.executeQuery();
                 i=1;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         i+"",rs.getString(1),rs.getString(2),rs.getString(3),
                         rs.getString(4),rs.getString(5)
                     });

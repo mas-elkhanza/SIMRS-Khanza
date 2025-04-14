@@ -1814,8 +1814,8 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
                         rs.getString("kiriman_dari"),rs.getString("diagnosa_klinis"),rs.getString("faring_uvula"),rs.getString("faring_arkus_faring"),rs.getString("faring_dinding_posterior"),rs.getString("faring_tonsil"),
                         rs.getString("laring_tonsil_lingual"),rs.getString("laring_valekula"),rs.getString("laring_sinus_piriformis"),rs.getString("laring_epiglotis"),rs.getString("laring_arytenoid"),
                         rs.getString("laring_plika_ventrikularis"),rs.getString("laring_pita_suara"),rs.getString("laring_rima_vocalis"),rs.getString("laring_lainlain"),rs.getString("kesan"),rs.getString("saran")
@@ -2080,7 +2080,7 @@ public final class RMHasilEndoskopiFaringLaring extends javax.swing.JDialog {
                 TonsilLingual.getText(),Valekula.getText(),SinusPiriformis.getText(),Epiglitos.getText(),Arytenoid.getText(),PlikaVentrikulais.getText(),
                 PitaSuara.getText(),RimaVocalis.getText(),Lainlain.getText(),Kesan.getText(),Saran.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
                     KirimanDari.getText(),DiagnosaKlinis.getText(),Uvula.getText(),ArkusFaring.getText(),DindingPosterior.getText(),Tonsil.getText(),TonsilLingual.getText(),Valekula.getText(),SinusPiriformis.getText(),
                     Epiglitos.getText(),Arytenoid.getText(),PlikaVentrikulais.getText(),PitaSuara.getText(),RimaVocalis.getText(),Lainlain.getText(),Kesan.getText(),Saran.getText()

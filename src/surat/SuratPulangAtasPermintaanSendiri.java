@@ -955,7 +955,7 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
                     Valid.SetTgl(TglLahir.getSelectedItem()+""),UmurPJ.getText(),JKPJ.getSelectedItem().toString().substring(0,1),
                     AlamatPj.getText(),Hubungan.getSelectedItem().toString(),SaksiKeluarga.getText(),NIP.getText()
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),Pilihan.getText(),NamaPihak2.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),
                     UmurPJ.getText(),JKPJ.getSelectedItem().toString().substring(0,1),AlamatPj.getText(),Hubungan.getSelectedItem().toString(),SaksiKeluarga.getText(),
@@ -1465,9 +1465,9 @@ public final class SuratPulangAtasPermintaanSendiri extends javax.swing.JDialog 
                   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                        rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tgl_pulang"),rs.getString("rs_pilihan"),rs.getString("nama_pj"),rs.getString("lahir"),
                         rs.getString("umur"),rs.getString("jkpj"),rs.getString("alamat"),rs.getString("hubungan"),
                         rs.getString("saksi_keluarga"),rs.getString("nip"),rs.getString("nama") 

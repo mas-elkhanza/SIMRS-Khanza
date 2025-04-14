@@ -307,7 +307,7 @@ public final class InformasiTarifRadiologi extends javax.swing.JDialog {
                 ps.setString(4,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){                
-                    tabMode.addRow(new String[]{rs.getString(1),
+                    tabMode.addRow(new Object[]{rs.getString(1),
                                    rs.getString(2),
                                    Valid.SetAngka(rs.getDouble(3)),
                                    rs.getString(4)});

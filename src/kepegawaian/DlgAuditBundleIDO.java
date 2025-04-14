@@ -993,7 +993,7 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
                     sugar=Double.parseDouble(rs.getString("sugar").replaceAll("Ya","1").replaceAll("Tidak","0"));
                     ttlsugar=ttlsugar+sugar;
                     ttlpenilaian=ttlpenilaian+(((pencukuran_rambut+antibiotik+temperature+sugar)/4)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("pencukuran_rambut"),rs.getString("antibiotik"),
                         rs.getString("temperature"),rs.getString("sugar"),Math.round(((pencukuran_rambut+antibiotik+temperature+sugar)/4)*100)+" %"
                     });
@@ -1001,14 +1001,14 @@ public final class DlgAuditBundleIDO extends javax.swing.JDialog {
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlpencukuran_rambut,""+ttlantibiotik,""+ttltemperature,""+ttlsugar,""+(ttlpencukuran_rambut+ttlantibiotik+ttltemperature+ttlsugar)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":",""+(i-ttlpencukuran_rambut),""+(i-ttlantibiotik),""+(i-ttltemperature),""+(i-ttlsugar),""+((i-ttlpencukuran_rambut)+
                         (i-ttlantibiotik)+(i-ttltemperature)+(i-ttlsugar))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":",Math.round((ttlpencukuran_rambut/i)*100)+" %",Math.round((ttlantibiotik/i)*100)+" %",Math.round((ttltemperature/i)*100)+" %",
                         Math.round((ttlsugar/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });

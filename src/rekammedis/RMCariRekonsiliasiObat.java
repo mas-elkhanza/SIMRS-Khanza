@@ -1049,11 +1049,11 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rekonsiliasi"),rs.getString("no_rawat")+" "+rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien")+" ("+rs.getString("jk")+") ("+rs.getString("umurdaftar")+rs.getString("sttsumur")+")",
                         rs.getString("tanggal_wawancara"),rs.getString("rekonsiliasi_obat_saat"),rs.getString("alergi_obat"),rs.getString("dampak_alergi"),rs.getString("manifestasi_alergi"),rs.getString("nip")+" "+rs.getString("nama")
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Nama Obat","Dosis Obat","Frekuensi","Cara Pemberian","Pemberian Terakhir","Tindak Lanjut","Perubahan Aturan Pakai"
                     });
                     ps2=koneksi.prepareStatement("select * from rekonsiliasi_obat_detail_obat where rekonsiliasi_obat_detail_obat.no_rekonsiliasi=?");
@@ -1061,7 +1061,7 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         ps2.setString(1,rs.getString("no_rekonsiliasi"));
                         rs2=ps2.executeQuery();
                         while(rs2.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",rs2.getString("nama_obat"),rs2.getString("dosis_obat"),rs2.getString("frekuensi"),rs2.getString("cara_pemberian"),rs2.getString("waktu_pemberian_terakhir"),rs2.getString("tindak_lanjut"),rs2.getString("perubahan_aturan_pakai")
                             });
                         }
@@ -1083,16 +1083,16 @@ private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         ps3.setString(1,rs.getString("no_rekonsiliasi"));
                         rs3=ps3.executeQuery();
                         if(rs3.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "","Diterima Farmasi : "+rs3.getString("diterima_farmasi"),"","","","","",""
                             });
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "","Dikonfirmasi Apoteker : "+rs3.getString("dikonfirmasi_apoteker"),"","","","","",""
                             });
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "","Petugas Farmasi/Apoteker : "+rs3.getString("nip")+" "+rs3.getString("nama"),"","","","","",""
                             });
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "","Kembali Ke Pasien : "+rs3.getString("diserahkan_pasien"),"","","","","",""
                             });
                         }

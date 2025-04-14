@@ -73,7 +73,7 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private String signa1="1",signa2="1",kdObatSK="",requestJson="",nokunjungan="",URL="",otorisasi,sql="",no_batchcari="", tgl_kadaluarsacari="", 
                    no_fakturcari="",aktifkanbatch="no",aktifpcare="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",
                    Persediaan_Obat_Rawat_Inap="",hppfarmasi="",bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1"),
-                   VALIDASIULANGBERIOBAT="",DEPOAKTIFOBAT="",utc="",iyem="";
+                   VALIDASIULANGBERIOBAT="",DEPOAKTIFOBAT="",utc="";
     private WarnaTable2 warna=new WarnaTable2();
     private DlgCariBangsal caribangsal=new DlgCariBangsal(null,false);
     private WarnaTable2 warna2=new WarnaTable2();
@@ -2000,7 +2000,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             file=new File("./cache/beriobatranap.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             if(kenaikan>0){
                 if(aktifkanbatch.equals("yes")){
                     if(aktifpcare.equals("yes")){
@@ -2031,7 +2031,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         psobat.setString(2,kdgudang.getText());
                         rsobat=psobat.executeQuery();
                         while(rsobat.next()){
-                            iyem=iyem+"{\"KodeBarang\":\""+rsobat.getString("kode_brng")+"\",\"NamaBarang\":\""+rsobat.getString("nama_brng").replaceAll("\"","")+"\",\"Satuan\":\""+rsobat.getString("kode_sat")+"\",\"Kandungan\":\""+rsobat.getString("letak_barang")+"\",\"HargaKaryawan\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaBeliLuar\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaKelas1\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaKelas2\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaKelas3\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaVIP\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaVVIP\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaUtama\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"Jenis\":\""+rsobat.getString("nama")+"\",\"Kategori\":\""+rsobat.getString("kategori")+"\",\"Golongan\":\""+rsobat.getString("golongan")+"\",\"IndustriFarmasi\":\""+rsobat.getString("nama_industri")+"\",\"HargaBeli\":\""+rsobat.getDouble("h_beli")+"\",\"Stok\":\""+rsobat.getDouble("stok")+"\",\"Kapasitas\":\""+rsobat.getDouble("kapasitas")+"\",\"NoBatch\":\""+rsobat.getString("no_batch")+"\",\"NoFaktur\":\""+rsobat.getString("no_faktur")+"\",\"Kadaluarsa\":\""+rsobat.getString("tgl_kadaluarsa")+"\"},";
+                            iyembuilder.append("{\"KodeBarang\":\"").append(rsobat.getString("kode_brng")).append("\",\"NamaBarang\":\"").append(rsobat.getString("nama_brng").replaceAll("\"","")).append("\",\"Satuan\":\"").append(rsobat.getString("kode_sat")).append("\",\"Kandungan\":\"").append(rsobat.getString("letak_barang")).append("\",\"HargaKaryawan\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaBeliLuar\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas1\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas2\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas3\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaVIP\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaVVIP\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaUtama\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"Jenis\":\"").append(rsobat.getString("nama")).append("\",\"Kategori\":\"").append(rsobat.getString("kategori")).append("\",\"Golongan\":\"").append(rsobat.getString("golongan")).append("\",\"IndustriFarmasi\":\"").append(rsobat.getString("nama_industri")).append("\",\"HargaBeli\":\"").append(rsobat.getDouble("h_beli")).append("\",\"Stok\":\"").append(rsobat.getDouble("stok")).append("\",\"Kapasitas\":\"").append(rsobat.getDouble("kapasitas")).append("\",\"NoBatch\":\"").append(rsobat.getString("no_batch")).append("\",\"NoFaktur\":\"").append(rsobat.getString("no_faktur")).append("\",\"Kadaluarsa\":\"").append(rsobat.getString("tgl_kadaluarsa")).append("\"},");
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -2068,7 +2068,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         psobat.setString(2,kdgudang.getText());
                         rsobat=psobat.executeQuery();
                         while(rsobat.next()){
-                            iyem=iyem+"{\"KodeBarang\":\""+rsobat.getString("kode_brng")+"\",\"NamaBarang\":\""+rsobat.getString("nama_brng").replaceAll("\"","")+"\",\"Satuan\":\""+rsobat.getString("kode_sat")+"\",\"Kandungan\":\""+rsobat.getString("letak_barang")+"\",\"HargaKaryawan\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaBeliLuar\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaKelas1\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaKelas2\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaKelas3\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaVIP\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaVVIP\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"HargaUtama\":\""+Valid.roundUp(rsobat.getDouble("harga"),100)+"\",\"Jenis\":\""+rsobat.getString("nama")+"\",\"Kategori\":\""+rsobat.getString("kategori")+"\",\"Golongan\":\""+rsobat.getString("golongan")+"\",\"IndustriFarmasi\":\""+rsobat.getString("nama_industri")+"\",\"HargaBeli\":\""+rsobat.getDouble("h_beli")+"\",\"Stok\":\""+rsobat.getDouble("stok")+"\",\"Kapasitas\":\""+rsobat.getDouble("kapasitas")+"\",\"NoBatch\":\"\",\"NoFaktur\":\"\",\"Kadaluarsa\":\"\"},";         
+                            iyembuilder.append("{\"KodeBarang\":\"").append(rsobat.getString("kode_brng")).append("\",\"NamaBarang\":\"").append(rsobat.getString("nama_brng").replaceAll("\"","")).append("\",\"Satuan\":\"").append(rsobat.getString("kode_sat")).append("\",\"Kandungan\":\"").append(rsobat.getString("letak_barang")).append("\",\"HargaKaryawan\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaBeliLuar\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas1\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas2\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaKelas3\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaVIP\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaVVIP\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"HargaUtama\":\"").append(Valid.roundUp(rsobat.getDouble("harga"),100)).append("\",\"Jenis\":\"").append(rsobat.getString("nama")).append("\",\"Kategori\":\"").append(rsobat.getString("kategori")).append("\",\"Golongan\":\"").append(rsobat.getString("golongan")).append("\",\"IndustriFarmasi\":\"").append(rsobat.getString("nama_industri")).append("\",\"HargaBeli\":\"").append(rsobat.getDouble("h_beli")).append("\",\"Stok\":\"").append(rsobat.getDouble("stok")).append("\",\"Kapasitas\":\"").append(rsobat.getDouble("kapasitas")).append("\",\"NoBatch\":\"\",\"NoFaktur\":\"\",\"Kadaluarsa\":\"\"},");         
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -2112,7 +2112,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         psobat.setString(1,kdgudang.getText());
                         rsobat=psobat.executeQuery();
                         while(rsobat.next()){
-                            iyem=iyem+"{\"KodeBarang\":\""+rsobat.getString("kode_brng")+"\",\"NamaBarang\":\""+rsobat.getString("nama_brng").replaceAll("\"","")+"\",\"Satuan\":\""+rsobat.getString("kode_sat")+"\",\"Kandungan\":\""+rsobat.getString("letak_barang")+"\",\"HargaKaryawan\":\""+Valid.roundUp(rsobat.getDouble("karyawan"),100)+"\",\"HargaBeliLuar\":\""+Valid.roundUp(rsobat.getDouble("beliluar"),100)+"\",\"HargaKelas1\":\""+Valid.roundUp(rsobat.getDouble("kelas1"),100)+"\",\"HargaKelas2\":\""+Valid.roundUp(rsobat.getDouble("kelas2"),100)+"\",\"HargaKelas3\":\""+Valid.roundUp(rsobat.getDouble("kelas3"),100)+"\",\"HargaVIP\":\""+Valid.roundUp(rsobat.getDouble("vip"),100)+"\",\"HargaVVIP\":\""+Valid.roundUp(rsobat.getDouble("vvip"),100)+"\",\"HargaUtama\":\""+Valid.roundUp(rsobat.getDouble("utama"),100)+"\",\"Jenis\":\""+rsobat.getString("nama")+"\",\"Kategori\":\""+rsobat.getString("kategori")+"\",\"Golongan\":\""+rsobat.getString("golongan")+"\",\"IndustriFarmasi\":\""+rsobat.getString("nama_industri")+"\",\"HargaBeli\":\""+rsobat.getDouble("h_beli")+"\",\"Stok\":\""+rsobat.getDouble("stok")+"\",\"Kapasitas\":\""+rsobat.getDouble("kapasitas")+"\",\"NoBatch\":\""+rsobat.getString("no_batch")+"\",\"NoFaktur\":\""+rsobat.getString("no_faktur")+"\",\"Kadaluarsa\":\""+rsobat.getString("tgl_kadaluarsa")+"\"},";
+                            iyembuilder.append("{\"KodeBarang\":\"").append(rsobat.getString("kode_brng")).append("\",\"NamaBarang\":\"").append(rsobat.getString("nama_brng").replaceAll("\"","")).append("\",\"Satuan\":\"").append(rsobat.getString("kode_sat")).append("\",\"Kandungan\":\"").append(rsobat.getString("letak_barang")).append("\",\"HargaKaryawan\":\"").append(Valid.roundUp(rsobat.getDouble("karyawan"),100)).append("\",\"HargaBeliLuar\":\"").append(Valid.roundUp(rsobat.getDouble("beliluar"),100)).append("\",\"HargaKelas1\":\"").append(Valid.roundUp(rsobat.getDouble("kelas1"),100)).append("\",\"HargaKelas2\":\"").append(Valid.roundUp(rsobat.getDouble("kelas2"),100)).append("\",\"HargaKelas3\":\"").append(Valid.roundUp(rsobat.getDouble("kelas3"),100)).append("\",\"HargaVIP\":\"").append(Valid.roundUp(rsobat.getDouble("vip"),100)).append("\",\"HargaVVIP\":\"").append(Valid.roundUp(rsobat.getDouble("vvip"),100)).append("\",\"HargaUtama\":\"").append(Valid.roundUp(rsobat.getDouble("utama"),100)).append("\",\"Jenis\":\"").append(rsobat.getString("nama")).append("\",\"Kategori\":\"").append(rsobat.getString("kategori")).append("\",\"Golongan\":\"").append(rsobat.getString("golongan")).append("\",\"IndustriFarmasi\":\"").append(rsobat.getString("nama_industri")).append("\",\"HargaBeli\":\"").append(rsobat.getDouble("h_beli")).append("\",\"Stok\":\"").append(rsobat.getDouble("stok")).append("\",\"Kapasitas\":\"").append(rsobat.getDouble("kapasitas")).append("\",\"NoBatch\":\"").append(rsobat.getString("no_batch")).append("\",\"NoFaktur\":\"").append(rsobat.getString("no_faktur")).append("\",\"Kadaluarsa\":\"").append(rsobat.getString("tgl_kadaluarsa")).append("\"},");
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -2150,7 +2150,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                         psobat.setString(1,kdgudang.getText());
                         rsobat=psobat.executeQuery();
                         while(rsobat.next()){
-                            iyem=iyem+"{\"KodeBarang\":\""+rsobat.getString("kode_brng")+"\",\"NamaBarang\":\""+rsobat.getString("nama_brng").replaceAll("\"","")+"\",\"Satuan\":\""+rsobat.getString("kode_sat")+"\",\"Kandungan\":\""+rsobat.getString("letak_barang")+"\",\"HargaKaryawan\":\""+Valid.roundUp(rsobat.getDouble("karyawan"),100)+"\",\"HargaBeliLuar\":\""+Valid.roundUp(rsobat.getDouble("beliluar"),100)+"\",\"HargaKelas1\":\""+Valid.roundUp(rsobat.getDouble("kelas1"),100)+"\",\"HargaKelas2\":\""+Valid.roundUp(rsobat.getDouble("kelas2"),100)+"\",\"HargaKelas3\":\""+Valid.roundUp(rsobat.getDouble("kelas3"),100)+"\",\"HargaVIP\":\""+Valid.roundUp(rsobat.getDouble("vip"),100)+"\",\"HargaVVIP\":\""+Valid.roundUp(rsobat.getDouble("vvip"),100)+"\",\"HargaUtama\":\""+Valid.roundUp(rsobat.getDouble("utama"),100)+"\",\"Jenis\":\""+rsobat.getString("nama")+"\",\"Kategori\":\""+rsobat.getString("kategori")+"\",\"Golongan\":\""+rsobat.getString("golongan")+"\",\"IndustriFarmasi\":\""+rsobat.getString("nama_industri")+"\",\"HargaBeli\":\""+rsobat.getDouble("h_beli")+"\",\"Stok\":\""+rsobat.getDouble("stok")+"\",\"Kapasitas\":\""+rsobat.getDouble("kapasitas")+"\",\"NoBatch\":\"\",\"NoFaktur\":\"\",\"Kadaluarsa\":\"\"},";
+                            iyembuilder.append("{\"KodeBarang\":\"").append(rsobat.getString("kode_brng")).append("\",\"NamaBarang\":\"").append(rsobat.getString("nama_brng").replaceAll("\"","")).append("\",\"Satuan\":\"").append(rsobat.getString("kode_sat")).append("\",\"Kandungan\":\"").append(rsobat.getString("letak_barang")).append("\",\"HargaKaryawan\":\"").append(Valid.roundUp(rsobat.getDouble("karyawan"),100)).append("\",\"HargaBeliLuar\":\"").append(Valid.roundUp(rsobat.getDouble("beliluar"),100)).append("\",\"HargaKelas1\":\"").append(Valid.roundUp(rsobat.getDouble("kelas1"),100)).append("\",\"HargaKelas2\":\"").append(Valid.roundUp(rsobat.getDouble("kelas2"),100)).append("\",\"HargaKelas3\":\"").append(Valid.roundUp(rsobat.getDouble("kelas3"),100)).append("\",\"HargaVIP\":\"").append(Valid.roundUp(rsobat.getDouble("vip"),100)).append("\",\"HargaVVIP\":\"").append(Valid.roundUp(rsobat.getDouble("vvip"),100)).append("\",\"HargaUtama\":\"").append(Valid.roundUp(rsobat.getDouble("utama"),100)).append("\",\"Jenis\":\"").append(rsobat.getString("nama")).append("\",\"Kategori\":\"").append(rsobat.getString("kategori")).append("\",\"Golongan\":\"").append(rsobat.getString("golongan")).append("\",\"IndustriFarmasi\":\"").append(rsobat.getString("nama_industri")).append("\",\"HargaBeli\":\"").append(rsobat.getDouble("h_beli")).append("\",\"Stok\":\"").append(rsobat.getDouble("stok")).append("\",\"Kapasitas\":\"").append(rsobat.getDouble("kapasitas")).append("\",\"NoBatch\":\"\",\"NoFaktur\":\"\",\"Kadaluarsa\":\"\"},");
                         }
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
@@ -2164,10 +2164,15 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     }
                 }
             }
-            fileWriter.write("{\"beriobatranap\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"beriobatranap\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null; 
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -2182,37 +2187,21 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml]; 
-            jumlah=null;
             jumlah=new double[jml];
-            eb=null;
             eb=new double[jml];
-            ts=null;
             ts=new double[jml];
-            stok=null;
             stok=new double[jml];
-            harga=null;
             harga=new double[jml];
-            kodebarang=null;
             kodebarang=new String[jml];
-            namabarang=null;
             namabarang=new String[jml];
-            kodesatuan=null;
             kodesatuan=new String[jml];
-            letakbarang=null;
             letakbarang=new String[jml];
-            namajenis=null;                
             namajenis=new String[jml];        
-            industri=null;                
             industri=new String[jml];  
-            beli=null;
             beli=new double[jml];
-            aturan=null;
             aturan=new String[jml];
-            kategori=null;
             kategori=new String[jml];
-            golongan=null;
             golongan=new String[jml];
             nobatch=new String[jml];
             nofaktur=new String[jml];
@@ -2280,6 +2269,26 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                    beli[i],aturan[i],kategori[i],golongan[i],nobatch[i],nofaktur[i],kadaluarsa[i]
                 });
             }
+            
+            pilih=null;
+            jumlah=null;
+            eb=null;
+            ts=null;
+            stok=null;
+            harga=null;
+            kodebarang=null;
+            namabarang=null;
+            kodesatuan=null;
+            letakbarang=null;
+            namajenis=null;        
+            industri=null; 
+            beli=null;
+            aturan=null;
+            kategori=null;
+            golongan=null;
+            nobatch=null;
+            nofaktur=null;
+            kadaluarsa=null;
             
             myObj = new FileReader("./cache/beriobatranap.iyem");
             root = mapper.readTree(myObj);
@@ -2904,41 +2913,23 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
             }    
 
-            pilih=null;
             pilih=new boolean[z]; 
-            jumlah=null;
             jumlah=new double[z];
-            harga=null;
             harga=new double[z];
-            eb=null;
             eb=new double[z];
-            ts=null;
             ts=new double[z];
-            stok=null;
             stok=new double[z];
-            kodebarang=null;
             kodebarang=new String[z];
-            namabarang=null;
             namabarang=new String[z];
-            kodesatuan=null;
             kodesatuan=new String[z];
-            letakbarang=null;
             letakbarang=new String[z];
-            no=null;
             no=new String[z];
-            namajenis=null;
             namajenis=new String[z];        
-            industri=null;
             industri=new String[z];         
-            beli=null;
             beli=new double[z]; 
-            kategori=null;
             kategori=new String[z];
-            golongan=null;
             golongan=new String[z];        
-            kapasitas=null;
             kapasitas=new double[z];   
-            kandungan=null;
             kandungan=new double[z];
             nobatch=new String[z];
             nofaktur=new String[z];
@@ -3014,6 +3005,28 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                     ts[i],industri[i],kategori[i],golongan[i],nobatch[i],nofaktur[i],kadaluarsa[i]
                 });
             }
+            
+            pilih=null;
+            jumlah=null;
+            harga=null;
+            eb=null;
+            ts=null;
+            stok=null;
+            kodebarang=null;
+            namabarang=null;
+            kodesatuan=null;
+            letakbarang=null;
+            no=null;
+            namajenis=null;       
+            industri=null;         
+            beli=null; 
+            kategori=null;
+            golongan=null;       
+            kapasitas=null;  
+            kandungan=null;
+            nobatch=null;
+            nofaktur=null;
+            kadaluarsa=null;
             
             myObj = new FileReader("./cache/beriobatranap.iyem");
             root = mapper.readTree(myObj);
@@ -3614,7 +3627,7 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 psobat.setString(1,no_resep);
                 rsobat=psobat.executeQuery();
                 while(rsobat.next()){
-                    tabModeObatRacikan.addRow(new String[]{
+                    tabModeObatRacikan.addRow(new Object[]{
                         rsobat.getString("no_racik"),rsobat.getString("nama_racik"),rsobat.getString("kd_racik"),
                         rsobat.getString("metode"),rsobat.getString("jml_dr"),rsobat.getString("aturan_pakai"),
                         rsobat.getString("keterangan")

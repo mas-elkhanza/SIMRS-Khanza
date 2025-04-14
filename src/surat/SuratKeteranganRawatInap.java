@@ -573,7 +573,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
             if(Sequel.menyimpantf("surat_keterangan_rawat_inap","?,?,?,?","No.Surat",4,new String[]{
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+"")
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Valid.SetTgl(TanggalAwal.getSelectedItem()+""),Valid.SetTgl(TanggalAkhir.getSelectedItem()+"")
                 });
                 LCount.setText(""+tabMode.getRowCount());
@@ -903,7 +903,7 @@ public final class SuratKeteranganRawatInap extends javax.swing.JDialog {
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),
                         rs.getString(4),rs.getString(5),rs.getString(6)
                         

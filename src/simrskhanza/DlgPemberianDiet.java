@@ -758,7 +758,7 @@ public class DlgPemberianDiet extends javax.swing.JDialog {
                         Valid.SetTgl(DTPTgl.getSelectedItem()+"")+"','"+
                         WaktuDiet.getText()+"','"+
                         KdDiet.getText()+"'","data")==true){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         TNoRw.getText(),TPasien.getText(),Ruang.getText(),Valid.SetTgl(DTPTgl.getSelectedItem()+""),WaktuDiet.getText(),JamDiet.getText(),NmDiet.getText(),"-",Kamar.getText(),KdDiet.getText()
                     });
                     LCount.setText(""+tabMode.getRowCount());
@@ -1320,7 +1320,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2)+" "+rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),
                         Sequel.cariIsi("select kamar_inap.diagnosa_awal from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc",rs.getString(1)),
                         rs.getString("kd_kamar"),rs.getString("kd_diet")
@@ -1368,7 +1368,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 rs=ps2.executeQuery();
                 i=1;
                 while(rs.next()){
-                     tabMode2.addRow(new String[]{i+"",rs.getString(1),rs.getString(2)});i++;                   
+                     tabMode2.addRow(new Object[]{i+"",rs.getString(1),rs.getString(2)});i++;                   
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

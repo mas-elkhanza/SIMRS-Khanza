@@ -439,7 +439,7 @@ public final class SKPKategoriPenilaian extends javax.swing.JDialog {
             if(Sequel.menyimpantf("skp_kategori_penilaian","?,?,?","Kode",3,new String[]{
                     Kode.getText(),Kategori.getText(),Sasaran.getSelectedItem().toString().substring(0,1)
                 })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     Kode.getText(),Kategori.getText(),Sasaran.getSelectedItem().toString()
                 });
                 LCount.setText(""+tabMode.getRowCount());

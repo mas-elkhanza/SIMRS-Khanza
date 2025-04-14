@@ -1902,7 +1902,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                             rs2.beforeFirst();
                             while(rs2.next()){
-                                tabMode.addRow(new String[]{
+                                tabMode.addRow(new Object[]{
                                     "","","","","","",i+". "+rs2.getString("nama_brng")+" ("+rs2.getString("jml")+" "+rs2.getString("kode_sat")+" X "+Valid.SetAngka(rs2.getDouble("harga"))+") = "+Valid.SetAngka(rs2.getDouble("total")),"","","","",""
                                 });
                                 i++;
@@ -1930,7 +1930,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                             rs2.beforeFirst();
                             while(rs2.next()){
-                                tabMode.addRow(new String[]{
+                                tabMode.addRow(new Object[]{
                                    "","","","","","",i+". "+rs2.getString("nama_brng")+" ("+rs2.getString("jml")+" "+rs2.getString("kode_sat")+" X "+Valid.SetAngka(rs2.getDouble("harga"))+") = "+Valid.SetAngka(rs2.getDouble("total")),"","","","",""
                                 });                       
                                 i++;
@@ -1958,7 +1958,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                             rs2.beforeFirst();                         
                             while(rs2.next()){
-                                tabMode.addRow(new String[]{
+                                tabMode.addRow(new Object[]{
                                     "","","","","","",i+". "+rs2.getString("nama_brng")+" ("+rs2.getString("jml")+" "+rs2.getString("kode_sat")+" X "+Valid.SetAngka(rs2.getDouble("harga"))+") = "+Valid.SetAngka(rs2.getDouble("total")),"","","","",""
                                 });                       
                                 i++;
@@ -1986,7 +1986,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                             rs2.beforeFirst();
                             while(rs2.next()){
-                                tabMode.addRow(new String[]{
+                                tabMode.addRow(new Object[]{
                                     "","","","","","",i+". "+rs2.getString("nama_brng")+" ("+rs2.getString("jml")+" "+rs2.getString("kode_sat")+" X "+Valid.SetAngka(rs2.getDouble("harga"))+") = "+Valid.SetAngka(rs2.getDouble("total")),"","","","",""
                                 });                       
                                 i++;

@@ -63,7 +63,7 @@ public final class KeuanganBayarPemesananAset extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem,Kontra_Penerimaan_AsetInventaris=Sequel.cariIsi("select set_akun.Kontra_Penerimaan_AsetInventaris from set_akun"),Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="";
+    private String Kontra_Penerimaan_AsetInventaris=Sequel.cariIsi("select set_akun.Kontra_Penerimaan_AsetInventaris from set_akun"),Host_to_Host_Bank_Mandiri="",Akun_Biaya_Mandiri="",kodemcm="",norekening="";
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1593,56 +1593,37 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         Valid.tabelKosong(tabMode);
         try{           
             ps=koneksi.prepareStatement(
-                    "select bayar_pemesanan_inventaris.tgl_bayar,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tgl_pesan,"+
-                    "inventaris_pemesanan.tgl_tempo, bayar_pemesanan_inventaris.no_faktur,"+
-                    "inventaris_suplier.nama_suplier,bayar_pemesanan_inventaris.nama_bayar,bayar_pemesanan_inventaris.no_bukti,"+
-                    "bayar_pemesanan_inventaris.besar_bayar,bayar_pemesanan_inventaris.keterangan,"+
-                    "bayar_pemesanan_inventaris.nip,petugas.nama from bayar_pemesanan_inventaris inner join petugas "+
-                    "inner join inventaris_pemesanan inner join inventaris_suplier on bayar_pemesanan_inventaris.nip=petugas.nip "+
-                    "and bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur "+
-                    "and inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier where "+
-                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and inventaris_suplier.nama_suplier like ? and bayar_pemesanan_inventaris.no_faktur like ? or "+
-                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and inventaris_suplier.nama_suplier like ? and inventaris_suplier.nama_suplier like ? or "+
-                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and inventaris_suplier.nama_suplier like ? and bayar_pemesanan_inventaris.nama_bayar like ? or "+
-                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and inventaris_suplier.nama_suplier like ? and bayar_pemesanan_inventaris.no_bukti like ? or "+
-                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and inventaris_suplier.nama_suplier like ? and bayar_pemesanan_inventaris.keterangan like ? or "+
-                    "bayar_pemesanan_inventaris.tgl_bayar between ? and ? and inventaris_suplier.nama_suplier like ? and petugas.nama like ? "+
+                    "select bayar_pemesanan_inventaris.tgl_bayar,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tgl_pesan,inventaris_pemesanan.tgl_tempo, bayar_pemesanan_inventaris.no_faktur,"+
+                    "inventaris_suplier.nama_suplier,bayar_pemesanan_inventaris.nama_bayar,bayar_pemesanan_inventaris.no_bukti,bayar_pemesanan_inventaris.besar_bayar,bayar_pemesanan_inventaris.keterangan,"+
+                    "bayar_pemesanan_inventaris.nip,petugas.nama from bayar_pemesanan_inventaris inner join petugas on bayar_pemesanan_inventaris.nip=petugas.nip "+
+                    "inner join inventaris_pemesanan on bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur "+
+                    "inner join inventaris_suplier on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
+                    "where bayar_pemesanan_inventaris.tgl_bayar between ? and ? and inventaris_suplier.nama_suplier like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (bayar_pemesanan_inventaris.no_faktur like ? or inventaris_suplier.nama_suplier like ? or bayar_pemesanan_inventaris.nama_bayar like ? or "+
+                    "bayar_pemesanan_inventaris.no_bukti like ? or bayar_pemesanan_inventaris.keterangan like ? or petugas.nama like ?) ")+
                     " order by bayar_pemesanan_inventaris.tgl_bayar");
             try {            
                 ps.setString(1,Valid.SetTgl(TglCari1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(TglCari2.getSelectedItem()+""));
                 ps.setString(3,"%"+nmsup.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText()+"%");
-                ps.setString(5,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(6,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(7,"%"+nmsup.getText().trim()+"%");
-                ps.setString(8,"%"+TCari.getText()+"%");
-                ps.setString(9,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(10,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(11,"%"+nmsup.getText().trim()+"%");
-                ps.setString(12,"%"+TCari.getText()+"%");
-                ps.setString(13,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(14,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(15,"%"+nmsup.getText().trim()+"%");
-                ps.setString(16,"%"+TCari.getText()+"%");
-                ps.setString(17,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(18,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(19,"%"+nmsup.getText().trim()+"%");
-                ps.setString(20,"%"+TCari.getText()+"%");
-                ps.setString(21,Valid.SetTgl(TglCari1.getSelectedItem()+""));
-                ps.setString(22,Valid.SetTgl(TglCari2.getSelectedItem()+""));
-                ps.setString(23,"%"+nmsup.getText().trim()+"%");
-                ps.setString(24,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                    ps.setString(8,"%"+TCari.getText()+"%");
+                    ps.setString(9,"%"+TCari.getText()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 total=0;
                 while(rs.next()){                
                     total=total+rs.getDouble("besar_bayar");
                     tabMode.addRow(new Object[]{
-                        rs.getString("tgl_bayar"),rs.getString("tgl_faktur"),rs.getString("tgl_pesan"),
-                        rs.getString("tgl_tempo"),rs.getString("no_faktur"),rs.getString("nama_suplier"),rs.getString("nama_bayar"),
-                        rs.getString("no_bukti"),rs.getDouble("besar_bayar"),rs.getString("keterangan"),
-                        rs.getString("nip")+" "+rs.getString("nama"),rs.getString("nip"),rs.getString("nama")}
-                    );
+                        rs.getString("tgl_bayar"),rs.getString("tgl_faktur"),rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),rs.getString("no_faktur"),
+                        rs.getString("nama_suplier"),rs.getString("nama_bayar"),rs.getString("no_bukti"),rs.getDouble("besar_bayar"),rs.getString("keterangan"),
+                        rs.getString("nip")+" "+rs.getString("nama"),rs.getString("nip"),rs.getString("nama")
+                    });
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -1724,14 +1705,14 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
              file=new File("./cache/akunbayarhutang.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
-             iyem="";
+             StringBuilder iyembuilder = new StringBuilder();
              ps=koneksi.prepareStatement("select * from akun_bayar_hutang order by akun_bayar_hutang.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\"},";
+                     iyembuilder.append("{\"NamaAkun\":\"").append(rs.getString(1).replaceAll("\"","")).append("\",\"KodeRek\":\"").append(rs.getString(2)).append("\"},");
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1744,10 +1725,14 @@ private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                  } 
              }
 
-             fileWriter.write("{\"akunbayarhutang\":["+iyem.substring(0,iyem.length()-1)+"]}");
-             fileWriter.flush();
+             if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"akunbayarhutang\":["+iyembuilder+"]}");
+                fileWriter.flush();
+             }
+            
              fileWriter.close();
-             iyem=null;
+             iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

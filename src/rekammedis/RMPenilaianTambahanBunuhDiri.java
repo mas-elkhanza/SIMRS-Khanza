@@ -1438,7 +1438,7 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
                 FaktorDinamis5.getSelectedItem().toString(),SkorDinamis5.getText(),FaktorDinamis6.getSelectedItem().toString(),SkorDinamis6.getText(),FaktorDinamis7.getSelectedItem().toString(),SkorDinamis7.getText(), 
                 TotalDinamis.getText(),FaktorPencegahan.getText(),SkorTotal.getText(),Level.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                     FaktorStatik1.getSelectedItem().toString(),SkorStatik1.getText(),FaktorStatik2.getSelectedItem().toString(),SkorStatik2.getText(),FaktorStatik3.getSelectedItem().toString(),SkorStatik3.getText(),
                     FaktorStatik4.getSelectedItem().toString(),SkorStatik4.getText(),FaktorStatik5.getSelectedItem().toString(),SkorStatik5.getText(),FaktorStatik6.getSelectedItem().toString(),SkorStatik6.getText(), 
@@ -2201,8 +2201,8 @@ public final class RMPenilaianTambahanBunuhDiri extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("tanggal"),
                         rs.getString("statik_hidup_sendiri"),rs.getString("statik_skorhidup_sendiri"),rs.getString("statik_upaya_suicide"),rs.getString("statik_skorupaya_suicide"),
                         rs.getString("statik_keluarga_suicide"),rs.getString("statik_skorkeluarga_suicide"),rs.getString("statik_diagnosa_gangguan_jiwa"),
                         rs.getString("statik_skordiagnosa_gangguan_jiwa"),rs.getString("statik_disabilitas_berat"),rs.getString("statik_skordisabilitas_berat"),

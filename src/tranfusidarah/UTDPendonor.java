@@ -1575,7 +1575,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_pendonor"),rs.getString("nama"),rs.getString("no_ktp"),rs.getString("jk"),
-                        rs.getString("tmp_lahir"),rs.getString("tgl_lahir"),rs.getString("alamat"),rs.getString("kd_kel"),
+                        rs.getString("tmp_lahir"),rs.getDate("tgl_lahir"),rs.getString("alamat"),rs.getString("kd_kel"),
                         rs.getString("nm_kel"),rs.getString("kd_kec"),rs.getString("nm_kec"),rs.getString("kd_kab"),
                         rs.getString("nm_kab"),rs.getString("kd_prop"),rs.getString("nm_prop"),rs.getString("golongan_darah"),
                         rs.getString("resus"),rs.getString("no_telp")

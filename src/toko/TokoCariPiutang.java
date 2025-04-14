@@ -1250,11 +1250,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 ttlongkir=0;
                 ttlcicilan=0;
                 while(rs.next()){        
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tgl_piutang"),rs.getString("nota_piutang"),rs.getString("nip")+", "+rs.getString("nama"),
                         rs.getString("no_member")+" "+rs.getString("nm_member"),rs.getString("catatan"),rs.getString("jns_jual"),rs.getString("tgltempo")
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Kode Barang","Nama Barang","Jml & Satuan & Harga(Rp)","Sub Total(Rp)","Ptg(%) Potongan(Rp)","Total(Rp)"
                     });
                     ttluangmuka=ttluangmuka+rs.getDouble("uangmuka");
@@ -1284,7 +1284,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ttldisc=ttldisc+rs2.getDouble("bsr_dis");
                             subttlpiutang=subttlpiutang+rs2.getDouble("total");
                             ttlpiutang=ttlpiutang+rs2.getDouble("total");
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",no+". "+rs2.getString("kode_brng"),rs2.getString("nama_brng"),rs2.getString("jumlah")+" "+rs2.getString("satuan")+" x "+df2.format(rs2.getDouble("h_jual")),
                                 df2.format(rs2.getDouble("subtotal")),"("+df2.format(rs2.getDouble("dis"))+" %) "+df2.format(rs2.getDouble("bsr_dis")),df2.format(rs2.getDouble("total"))
                             });
@@ -1300,16 +1300,16 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ps2.close();
                         }
                     }
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Total",":","",df2.format(subttlall),df2.format(subttldisc),df2.format(subttlpiutang)
                     });
                     if(rs.getDouble("ongkir")>0){
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             "","Ongkir",":","","","",df2.format(rs.getDouble("ongkir"))
                         });
                     }   
                     if(rs.getDouble("uangmuka")>0){
-                        tabMode.addRow(new String[]{
+                        tabMode.addRow(new Object[]{
                             "","Uang Muka",":","","","",df2.format(rs.getDouble("uangmuka"))
                         });
                     }
@@ -1323,8 +1323,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         telat=Sequel.cariIsiAngka("select TO_DAYS('"+rs.getString("tgltempo")+"')-TO_DAYS(current_date()) as day");                                                
                         status="Belum Lunas"+Sequel.cariIsi("select if("+telat+" < 0,', Telat Bayar','')");
                     }
-                    tabMode.addRow(new String[]{"","Status",": "+status,"","","Cicilan :",df2.format(cicilan)}); 
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{"","Status",": "+status,"","","Cicilan :",df2.format(cicilan)}); 
+                    tabMode.addRow(new Object[]{
                         "","Sisa Piutang",": ","","","",df2.format(sisapiutang)
                     });    
                 }    

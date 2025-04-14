@@ -132,6 +132,12 @@
                                       </a>
                                     </td>
                                     <td width='33%' align='center'>
+                                      <a target=_blank href=layananprogramkfr/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/8960631_crutches_crutch_orthopedic_physiotherapy_rehabilitation_icon.png'/><br>
+                                         Bukti Pelayanan Program KFR                                            
+                                      </a>
+                                    </td>
+                                    <td width='33%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               

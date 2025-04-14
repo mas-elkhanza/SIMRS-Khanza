@@ -792,7 +792,7 @@ private void R3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event
                    "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
                    "where  "+key+" order by bangsal.nm_bangsal,kamar_inap.tgl_masuk,kamar_inap.jam_masuk").executeQuery();
             while(rs.next()){
-                tabMode.addRow(new String[]{rs.getString(1),
+                tabMode.addRow(new Object[]{rs.getString(1),
                                rs.getString(2),
                                rs.getString(3),
                                rs.getString(4),

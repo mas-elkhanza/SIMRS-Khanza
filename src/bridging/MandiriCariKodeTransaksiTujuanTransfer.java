@@ -44,7 +44,6 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
     private PreparedStatement ps;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -367,7 +366,7 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
             file=new File("./cache/kodetransaksitujuantransfer.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement(
                    "select kodetransaksi_tujuan_transfer_bankmandiri.kode_metode,metode_pembayaran_bankmandiri.nama_metode,metode_pembayaran_bankmandiri.biaya_transaksi,"+
                    "kodetransaksi_tujuan_transfer_bankmandiri.kode_bank,bank_tujuan_transfer_bankmandiri.nama_bank,kodetransaksi_tujuan_transfer_bankmandiri.kode_transaksi "+
@@ -377,8 +376,8 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
-                    iyem=iyem+"{\"KodeMetode\":\""+rs.getString(1)+"\",\"MetodePembayaran\":\""+rs.getString(2)+"\",\"BiayaTransaksi\":\""+rs.getString(3)+"\",\"KodeBank\":\""+rs.getString(4)+"\",\"NamaBank\":\""+rs.getString(5)+"\",\"KodeTransaksi\":\""+rs.getString(6)+"\"},";
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
+                    iyembuilder.append("{\"KodeMetode\":\"").append(rs.getString(1)).append("\",\"MetodePembayaran\":\"").append(rs.getString(2)).append("\",\"BiayaTransaksi\":\"").append(rs.getString(3)).append("\",\"KodeBank\":\"").append(rs.getString(4)).append("\",\"NamaBank\":\"").append(rs.getString(5)).append("\",\"KodeTransaksi\":\"").append(rs.getString(6)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -390,10 +389,14 @@ public final class MandiriCariKodeTransaksiTujuanTransfer extends javax.swing.JD
                     ps.close();
                 }
             }
-            fileWriter.write("{\"kodetransaksitujuantransfer\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"kodetransaksitujuantransfer\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

@@ -44,7 +44,6 @@ public final class DlgCariJenis extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -382,14 +381,13 @@ public final class DlgCariJenis extends javax.swing.JDialog {
             file=new File("./cache/jenisobat.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
-            
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select * from jenis order by jenis.nama ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1),rs.getString(2),rs.getString(3)});
-                    iyem=iyem+"{\"KodeJenis\":\""+rs.getString(1)+"\",\"NamaJenis\":\""+rs.getString(2)+"\",\"Keterangan\":\""+rs.getString(3)+"\"},";
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                    iyembuilder.append("{\"KodeJenis\":\"").append(rs.getString(1)).append("\",\"NamaJenis\":\"").append(rs.getString(2)).append("\",\"Keterangan\":\"").append(rs.getString(3)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -401,11 +399,15 @@ public final class DlgCariJenis extends javax.swing.JDialog {
                     ps.close();
                 }
             }   
-                
-            fileWriter.write("{\"jenisobat\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+               
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"jenisobat\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

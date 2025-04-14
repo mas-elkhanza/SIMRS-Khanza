@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="555e9ad3-222f-4bfc-873e-1acdf26f19f3">
 	<property name="ireport.zoom" value="3.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -16,113 +16,129 @@
 	<parameter name="emailrs" class="java.lang.String"/>
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
-		<![CDATA[select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,
-pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,
-penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,pasien.agama,
-kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,
-kamar_inap.tgl_masuk,kamar_inap.jam_masuk,
-ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,
-ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter 
-from kamar_inap inner join reg_periksa inner join pasien inner join kamar inner join bangsal inner join kelurahan inner join kecamatan inner join kabupaten inner join dokter inner join penjab 
-on kamar_inap.no_rawat=reg_periksa.no_rawat 
-and reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-and reg_periksa.kd_dokter=dokter.kd_dokter
-and reg_periksa.kd_pj=penjab.kd_pj
-and kamar_inap.kd_kamar=kamar.kd_kamar
-and kamar.kd_bangsal=bangsal.kd_bangsal and pasien.kd_kel=kelurahan.kd_kel 
-and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab]]>
+		<![CDATA[select kamar_inap.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,
+                                    penjab.png_jawab,kamar_inap.kd_kamar,bangsal.nm_bangsal,kamar_inap.trf_kamar,kamar_inap.diagnosa_awal,kamar_inap.diagnosa_akhir,pasien.agama, 
+                                    kamar_inap.tgl_masuk,kamar_inap.jam_masuk,
+                                    ifnull((select perujuk from rujuk_masuk where rujuk_masuk.no_rawat=reg_periksa.no_rawat),'') as perujuk,
+                                    ifnull((select dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat=kamar_inap.no_rawat limit 1),'') as dpjp,
+                                    kamar_inap.ttl_biaya,kamar_inap.stts_pulang, lama,dokter.nm_dokter 
+                                    from kamar_inap inner join reg_periksa on kamar_inap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
+                                    inner join kamar on kamar_inap.kd_kamar=kamar.kd_kamar inner join bangsal on kamar.kd_bangsal=bangsal.kd_bangsal 
+                                    inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec 
+                                    inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter 
+                                    inner join penjab on reg_periksa.kd_pj=penjab.kd_pj]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jk"/>
 		<property name="com.jaspersoft.studio.field.label" value="jk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="alamat" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
 		<property name="com.jaspersoft.studio.field.label" value="alamat"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="png_jawab" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="png_jawab"/>
 		<property name="com.jaspersoft.studio.field.label" value="png_jawab"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="penjab"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="kd_kamar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kd_kamar"/>
 		<property name="com.jaspersoft.studio.field.label" value="kd_kamar"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_bangsal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_bangsal"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_bangsal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="bangsal"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="trf_kamar" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="trf_kamar"/>
 		<property name="com.jaspersoft.studio.field.label" value="trf_kamar"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="agama" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="agama"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
-	</field>
 	<field name="diagnosa_awal" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagnosa_awal"/>
 		<property name="com.jaspersoft.studio.field.label" value="diagnosa_awal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="diagnosa_akhir" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="diagnosa_akhir"/>
 		<property name="com.jaspersoft.studio.field.label" value="diagnosa_akhir"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="agama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="agama"/>
+		<property name="com.jaspersoft.studio.field.label" value="agama"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
+	</field>
 	<field name="tgl_masuk" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_masuk"/>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_masuk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jam_masuk" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="jam_masuk"/>
 		<property name="com.jaspersoft.studio.field.label" value="jam_masuk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="perujuk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="perujuk"/>
 		<property name="com.jaspersoft.studio.field.label" value="perujuk"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="dpjp" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dpjp"/>
 		<property name="com.jaspersoft.studio.field.label" value="dpjp"/>
 	</field>
 	<field name="ttl_biaya" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="ttl_biaya"/>
 		<property name="com.jaspersoft.studio.field.label" value="ttl_biaya"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="stts_pulang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="stts_pulang"/>
 		<property name="com.jaspersoft.studio.field.label" value="stts_pulang"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="lama" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="lama"/>
 		<property name="com.jaspersoft.studio.field.label" value="lama"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="kamar_inap"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_dokter" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_dokter"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_dokter"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="dokter"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>

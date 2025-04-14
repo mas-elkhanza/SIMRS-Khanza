@@ -1134,7 +1134,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),
                         rs.getString("tanggal"),rs.getString("monitoring"),rs.getString("evaluasi"),
@@ -1351,7 +1351,7 @@ public final class RMDataMonitoringAsuhanGizi extends javax.swing.JDialog {
         if(Sequel.menyimpantf("monitoring_asuhan_gizi","?,?,?,?,?","Data",5,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Monitoring.getText(),Evaluasi.getText(),KdPetugas.getText()
         })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 Monitoring.getText(),Evaluasi.getText(),KdPetugas.getText(),NmPetugas.getText()
             });

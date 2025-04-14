@@ -1090,7 +1090,7 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
                     sepatu=Double.parseDouble(rs.getString("sepatu").replaceAll("Ya","1").replaceAll("Tidak","0"));
                     ttlsepatu=ttlsepatu+sepatu;
                     ttlpenilaian=ttlpenilaian+(((topi+masker+kacamata+sarungtangan+apron+sepatu)/6)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("tindakan"),rs.getString("nik"),rs.getString("nama"),rs.getString("jbtn"),rs.getString("topi"),
                         rs.getString("masker"),rs.getString("kacamata"),rs.getString("sarungtangan"),rs.getString("apron"),rs.getString("sepatu"),
                         Math.round(((topi+masker+kacamata+sarungtangan+apron+sepatu)/6)*100)+" %"
@@ -1099,15 +1099,15 @@ public final class DlgAuditKepatuhanAPD extends javax.swing.JDialog {
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":","","",""+ttltopi,""+ttlmasker,""+ttlkacamata,""+ttlsarungtangan,""+ttlapron,""+ttlsepatu,
                         ""+(ttltopi+ttlmasker+ttlkacamata+ttlsarungtangan+ttlapron+ttlsepatu)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":","","",""+(i-ttltopi),""+(i-ttlmasker),""+(i-ttlkacamata),""+(i-ttlsarungtangan),""+(i-ttlapron),""+(i-ttlsepatu),
                         ""+((i-ttltopi)+(i-ttlmasker)+(i-ttlkacamata)+(i-ttlsarungtangan)+(i-ttlapron)+(i-ttlsepatu))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":","","",Math.round((ttltopi/i)*100)+" %",Math.round((ttlmasker/i)*100)+" %",Math.round((ttlkacamata/i)*100)+" %",
                         Math.round((ttlsarungtangan/i)*100)+" %",Math.round((ttlapron/i)*100)+" %",Math.round((ttlsepatu/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });

@@ -436,6 +436,9 @@
                             <li <?=$subhalaman=="BuktiPelayananRehabilitasi"?"class='active'":""?>>
                                 <a href="index.php?act=BuktiPelayananRehabilitasi&hal=Persetujuan">Layanan Kedokteran Fisik</a>
                             </li>
+                            <li <?=$subhalaman=="BuktiPelayananProgramKFR"?"class='active'":""?>>
+                                <a href="index.php?act=BuktiPelayananProgramKFR&hal=Persetujuan">Layanan Program KFR</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?=$halaman=="Fasilitas"?"class='active'":""?>>

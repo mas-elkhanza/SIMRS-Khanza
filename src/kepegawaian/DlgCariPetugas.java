@@ -35,7 +35,6 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -390,7 +389,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             file=new File("./cache/petugas.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select petugas.nip,petugas.nama,petugas.jk,petugas.tmp_lahir,petugas.tgl_lahir, "+
                     "petugas.gol_darah,petugas.agama,petugas.stts_nikah,petugas.alamat,jabatan.nm_jbtn,petugas.no_telp "+
                     "from petugas inner join jabatan on jabatan.kd_jbtn=petugas.kd_jbtn "+
@@ -401,7 +400,7 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)
                     });
-                    iyem=iyem+"{\"NIP\":\""+rs.getString(1)+"\",\"NamaPetugas\":\""+rs.getString(2).replaceAll("\"","")+"\",\"JK\":\""+rs.getString(3)+"\",\"TmpLahir\":\""+rs.getString(4).replaceAll("\"","")+"\",\"TglLahir\":\""+rs.getString(5)+"\",\"GD\":\""+rs.getString(6)+"\",\"Agama\":\""+rs.getString(7)+"\",\"SttsNikah\":\""+rs.getString(8)+"\",\"Alamat\":\""+rs.getString(9).replaceAll("\"","")+"\",\"Jabatan\":\""+rs.getString(10)+"\",\"NoTelp\":\""+rs.getString(11)+"\"},";
+                    iyembuilder.append("{\"NIP\":\"").append(rs.getString(1)).append("\",\"NamaPetugas\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"JK\":\"").append(rs.getString(3)).append("\",\"TmpLahir\":\"").append(rs.getString(4).replaceAll("\"","")).append("\",\"TglLahir\":\"").append(rs.getString(5)).append("\",\"GD\":\"").append(rs.getString(6)).append("\",\"Agama\":\"").append(rs.getString(7)).append("\",\"SttsNikah\":\"").append(rs.getString(8)).append("\",\"Alamat\":\"").append(rs.getString(9).replaceAll("\"","")).append("\",\"Jabatan\":\"").append(rs.getString(10)).append("\",\"NoTelp\":\"").append(rs.getString(11)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -413,10 +412,15 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"petugas\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"petugas\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;   
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -479,15 +483,14 @@ public final class DlgCariPetugas extends javax.swing.JDialog {
             }
         }
         
-        iyem="";
+        String iyem="";
         try {
             myObj = new FileReader("./cache/petugas.iyem");
             root = mapper.readTree(myObj);
-            Valid.tabelKosong(tabMode);
             response = root.path("petugas");
             if(response.isArray()){
                 for(JsonNode list:response){
-                    if(list.path("NIP").asText().toLowerCase().equals(kode)){
+                    if(list.path("NIP").asText().equalsIgnoreCase(kode)){
                         iyem=list.path("NamaPetugas").asText();
                     }
                 }

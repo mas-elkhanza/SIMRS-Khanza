@@ -11,7 +11,6 @@ import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
@@ -27,18 +26,15 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 import kepegawaian.DlgCariPegawai;
 
 public class DapurPermintaan extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Jurnal jur=new Jurnal();
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private Dimension screen=Toolkit.getDefaultToolkit().getScreenSize();
     private int jml=0,i=0,row=0,index=0;
     private String[] jumlah,kodebarang,namabarang,satuan,jenis,keterangan;
     private WarnaTable2 warna=new WarnaTable2();
@@ -48,7 +44,6 @@ public class DapurPermintaan extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -780,7 +775,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             file=new File("./cache/permintaandapur.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             
             ps=koneksi.prepareStatement(
                 "select dapurbarang.kode_brng,dapurbarang.nama_brng,dapurbarang.kode_sat,dapurbarang.jenis from dapurbarang where dapurbarang.status='1' order by dapurbarang.nama_brng");
@@ -791,7 +786,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                         "",rs.getString(1),rs.getString(2),rs.getString(3),
                         rs.getString(4),""
                     });
-                    iyem=iyem+"{\"KodeBarang\":\""+rs.getString(1)+"\",\"NamaBarang\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Satuan\":\""+rs.getString(3)+"\",\"Jenis\":\""+rs.getString(4)+"\"},";
+                    iyembuilder.append("{\"KodeBarang\":\"").append(rs.getString(1)).append("\",\"NamaBarang\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"Satuan\":\"").append(rs.getString(3)).append("\",\"Jenis\":\"").append(rs.getString(4)).append("\"},");
                 } 
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -802,11 +797,16 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 if(ps!=null){
                     ps.close();
                 }
-            }      
-            fileWriter.write("{\"permintaandapur\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            }     
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"permintaandapur\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;          
+            iyembuilder=null; 
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -823,17 +823,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 }
             }
 
-            kodebarang=null;
             kodebarang=new String[jml];
-            namabarang=null;
             namabarang=new String[jml];
-            satuan=null;
             satuan=new String[jml];
-            jumlah=null;
             jumlah=new String[jml];
-            jenis=null;
             jenis=new String[jml];
-            keterangan=null;
             keterangan=new String[jml];
             index=0;        
             for(i=0;i<row;i++){
@@ -851,6 +845,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             for(i=0;i<jml;i++){
                 tabMode.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],satuan[i],jenis[i],keterangan[i]});
             }
+            kodebarang=null;
+            namabarang=null;
+            satuan=null;
+            jumlah=null;
+            jenis=null;
+            keterangan=null;
             
             myObj = new FileReader("./cache/permintaandapur.iyem");
             root = mapper.readTree(myObj);

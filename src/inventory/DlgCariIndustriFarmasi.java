@@ -44,7 +44,6 @@ public final class DlgCariIndustriFarmasi extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -387,17 +386,17 @@ public final class DlgCariIndustriFarmasi extends javax.swing.JDialog {
             file=new File("./cache/industrifarmasi.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             
             ps=koneksi.prepareStatement("select * from industrifarmasi order by industrifarmasi.nama_industri ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     //"Kode I.F.","Industri Farmasi","Alamat Industri Farmasi","Kota","No.Telp"
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("kode_industri"),rs.getString("nama_industri"),rs.getString("alamat"),rs.getString("kota"),rs.getString("no_telp")
                     });
-                    iyem=iyem+"{\"KodeIF\":\""+rs.getString("kode_industri")+"\",\"NamaIF\":\""+rs.getString("nama_industri")+"\",\"Alamat\":\""+rs.getString("alamat")+"\",\"Kota\":\""+rs.getString("kota")+"\",\"NoTelp\":\""+rs.getString("no_telp")+"\"},";
+                    iyembuilder.append("{\"KodeIF\":\"").append(rs.getString("kode_industri")).append("\",\"NamaIF\":\"").append(rs.getString("nama_industri")).append("\",\"Alamat\":\"").append(rs.getString("alamat")).append("\",\"Kota\":\"").append(rs.getString("kota")).append("\",\"NoTelp\":\"").append(rs.getString("no_telp")).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -410,10 +409,14 @@ public final class DlgCariIndustriFarmasi extends javax.swing.JDialog {
                 }
             }   
                 
-            fileWriter.write("{\"industrifarmasi\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"industrifarmasi\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

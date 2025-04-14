@@ -44,7 +44,6 @@ public final class DlgCariSKPKategoriPenilaian extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -379,7 +378,7 @@ public final class DlgCariSKPKategoriPenilaian extends javax.swing.JDialog {
             file=new File("./cache/skpkategoripenilaian.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select * from skp_kategori_penilaian order by skp_kategori_penilaian.sasaran");
             try {
                 rs=ps.executeQuery();
@@ -392,7 +391,7 @@ public final class DlgCariSKPKategoriPenilaian extends javax.swing.JDialog {
                         replaceAll("5","5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan").
                         replaceAll("6","6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh")
                     });
-                    iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"Kategori\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Sasaran\":\""+rs.getString(3).replaceAll("\"","").replaceAll("1","1. Mengidentifikasi Pasien Dengan Benar").replaceAll("2","2. Meningkatkan Komunikasi Yang Efektif").replaceAll("3","3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai").replaceAll("4","4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar").replaceAll("5","5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan").replaceAll("6","6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh")+"\"},";
+                    iyembuilder.append("{\"Kode\":\""+rs.getString(1)+"\",\"Kategori\":\""+rs.getString(2).replaceAll("\"","")+"\",\"Sasaran\":\""+rs.getString(3).replaceAll("\"","").replaceAll("1","1. Mengidentifikasi Pasien Dengan Benar").replaceAll("2","2. Meningkatkan Komunikasi Yang Efektif").replaceAll("3","3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai").replaceAll("4","4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar").replaceAll("5","5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan").replaceAll("6","6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh")+"\"},");
                 }
             } catch (Exception e) {
                 System.out.println(e);
@@ -403,11 +402,16 @@ public final class DlgCariSKPKategoriPenilaian extends javax.swing.JDialog {
                 if(ps!=null){
                     ps.close();
                 }
-            }    
-            fileWriter.write("{\"skp_kategori_penilaian\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            }   
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"skp_kategori_penilaian\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

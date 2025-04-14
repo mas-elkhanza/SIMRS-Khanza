@@ -3577,8 +3577,8 @@ public final class RMMCU extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getString("tgl_lahir"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getString("tanggal"),rs.getString("informasi"),rs.getString("rps"),rs.getString("rpk"),rs.getString("rpd"),rs.getString("alergi"),
                         rs.getString("keadaan"),rs.getString("kesadaran"),rs.getString("td"),rs.getString("nadi"),rs.getString("rr"),rs.getString("tb"),
                         rs.getString("bb"),rs.getString("suhu"),rs.getString("submandibula"),rs.getString("axilla"),rs.getString("supraklavikula"),
@@ -3970,7 +3970,7 @@ public final class RMMCU extends javax.swing.JDialog {
                 ExtremitasBawah.getSelectedItem().toString(),KetExtremitasBawah.getText(),PemeriksaanLaboratorium.getText(),RongsenThorax.getText(),EKG.getText(),Spirometri.getText(),Audiometri.getText(),Treadmill.getText(),Lainlain.getText(),
                 Merokok.getText(),Alkohol.getText(),Kesimpulan.getText(),Anjuran.getText()
             })==true){
-            tabMode.addRow(new String[]{
+            tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Jk.getText(),TglLahir.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Informasi.getSelectedItem().toString(),RiwayatPenyakitSekarang.getText(),
                 RiwayatPenyakitKeluarga.getText(),RiwayatPenyakitDahulu.getText(),RiwayatAlergiMakanan.getText(),KeadaanUmum.getSelectedItem().toString(),Kesadaran.getSelectedItem().toString(),TD.getText(),Nadi.getText(),RR.getText(),TinggiBadan.getText(),BeratBadan.getText(),
                 Suhu.getText(),Submandibula.getSelectedItem().toString(),Axila.getSelectedItem().toString(),Supraklavikula.getSelectedItem().toString(),Leher.getSelectedItem().toString(),Inguinal.getSelectedItem().toString(),Oedema.getSelectedItem().toString(),

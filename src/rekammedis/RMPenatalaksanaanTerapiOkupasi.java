@@ -1652,8 +1652,8 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                 }   
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
+                    tabMode.addRow(new Object[]{
+                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
                         rs.getString("keluhan_utama"),rs.getString("rpd"),rs.getString("rps"),rs.getString("anamnesa_general"),rs.getString("tanda_vital"),rs.getString("pemeriksaan_penunjang"),rs.getString("spesialisasi"),
                         rs.getString("keterangan_spesialisasi"),rs.getString("pemeriksaan_okupasi_terapi"),rs.getString("aset"),rs.getString("limitasi"),rs.getString("diagnosa_terapi_okupasi"),rs.getString("rencana_intervensi")                     
                     });
@@ -1833,7 +1833,7 @@ public final class RMPenatalaksanaanTerapiOkupasi extends javax.swing.JDialog {
                 RPD.getText(),RPS.getText(),AnamnesaUmum.getText(),TandaVital.getText(),PemeriksaanPenunjang.getText(),Spesialisasi.getSelectedItem().toString(),
                 KeteranganSpesialisasi.getText(),PemeriksaanOkupasiTerapi.getText(),Aset.getText(),Limitasi.getText(),DiagnosaOkupasi.getText(),RencanaIntervensi.getText()
             })==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),
                     KeluhanUtama.getText(),RPD.getText(),RPS.getText(),AnamnesaUmum.getText(),TandaVital.getText(),PemeriksaanPenunjang.getText(),Spesialisasi.getSelectedItem().toString(),KeteranganSpesialisasi.getText(),PemeriksaanOkupasiTerapi.getText(),
                     Aset.getText(),Limitasi.getText(),DiagnosaOkupasi.getText(),RencanaIntervensi.getText()

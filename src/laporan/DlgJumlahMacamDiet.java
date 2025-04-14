@@ -513,7 +513,7 @@ public class DlgJumlahMacamDiet extends javax.swing.JDialog {
                     jmlh29=jmlh28+h28;
                     jmlh30=jmlh30+h30;
                     jmlh31=jmlh31+h31;    
-                    tabMode.addRow(new String[]{                        
+                    tabMode.addRow(new Object[]{                        
                         i+"",rs.getString("nama_diet"),h1+"",h2+"",h3+"",h4+"",h5+"",h6+"",h7+"",h8+"",h9+"",h10+"",
                         h11+"",h12+"",h13+"",h14+"",h15+"",h16+"",h17+"",h18+"",h19+"",h20+"",
                         h21+"",h22+"",h23+"",h24+"",h25+"",h26+"",h27+"",h28+"",h29+"",h30+"",h31+"",
@@ -523,7 +523,7 @@ public class DlgJumlahMacamDiet extends javax.swing.JDialog {
                     i++;                 
                 }
                 if(i>1){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Total : ",jmlh1+"",jmlh2+"",jmlh3+"",jmlh4+"",jmlh5+"",jmlh6+"",jmlh7+"",jmlh8+"",jmlh9+"",jmlh10+"",
                         jmlh11+"",jmlh12+"",jmlh13+"",jmlh14+"",jmlh15+"",jmlh16+"",jmlh17+"",jmlh18+"",jmlh19+"",jmlh20+"",
                         jmlh21+"",jmlh22+"",jmlh23+"",jmlh24+"",jmlh25+"",jmlh26+"",jmlh27+"",jmlh28+"",jmlh29+"",jmlh30+"",jmlh31+"",

@@ -388,7 +388,7 @@ public final class DlgJabatan extends javax.swing.JDialog {
             Valid.textKosong(TNm,"nama jabatan");
         }else{
             if(Sequel.menyimpantf("jabatan","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode Jabatan")==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     TKd.getText(),TNm.getText()
                 });
                 emptTeks();
@@ -588,7 +588,7 @@ public final class DlgJabatan extends javax.swing.JDialog {
                 ps.setString(2,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString(1),rs.getString(2)
                     });
                 }

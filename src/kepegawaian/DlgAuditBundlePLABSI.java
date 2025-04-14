@@ -1186,7 +1186,7 @@ if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
                     ttlset_infus_setiap_72jam=ttlset_infus_setiap_72jam+set_infus_setiap_72jam;
                     
                     ttlpenilaian=ttlpenilaian+(((sebelum_melakukan_hand_hygiene+menggunakan_apd_lengkap+lokasi_pemasangan_sesuai+alat_yang_digunakan_steril+pembersihan_kulit+setelah_melakukan_hand_hygiene+perawatan_dressing_infus+spoit_yang_digunakan_disposible+memberi_tanggal_dan_jam_pemasangan_infus+set_infus_setiap_72jam)/10)*100);
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("id_ruang"),rs.getString("nama_ruang"),rs.getString("sebelum_melakukan_hand_hygiene"),rs.getString("menggunakan_apd_lengkap"),
                         rs.getString("lokasi_pemasangan_sesuai"),rs.getString("alat_yang_digunakan_steril"),rs.getString("pembersihan_kulit"),rs.getString("setelah_melakukan_hand_hygiene"),rs.getString("perawatan_dressing_infus"),rs.getString("spoit_yang_digunakan_disposible"),rs.getString("memberi_tanggal_dan_jam_pemasangan_infus"),rs.getString("set_infus_setiap_72jam"),
                         Math.round(((sebelum_melakukan_hand_hygiene+menggunakan_apd_lengkap+lokasi_pemasangan_sesuai+alat_yang_digunakan_steril+pembersihan_kulit+setelah_melakukan_hand_hygiene+perawatan_dressing_infus+spoit_yang_digunakan_disposible+memberi_tanggal_dan_jam_pemasangan_infus+set_infus_setiap_72jam)/10)*100)+" %"
@@ -1195,14 +1195,14 @@ if(KdRuang.getText().trim().equals("")||NmRuang.getText().trim().equals("")){
                 }
                 i=i-1;
                 if(i>0){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Ya",":",""+ttlsebelum_melakukan_hand_hygiene,""+ttlmenggunakan_apd_lengkap,""+ttllokasi_pemasangan_sesuai,""+ttlalat_yang_digunakan_steril,""+ttlpembersihan_kulit,""+ttlsetelah_melakukan_hand_hygiene,""+ttlperawatan_dressing_infus,""+ttlspoit_yang_digunakan_disposible,""+ttlmemberi_tanggal_dan_jam_pemasangan_infus,""+ttlset_infus_setiap_72jam,""+(sebelum_melakukan_hand_hygiene+menggunakan_apd_lengkap+lokasi_pemasangan_sesuai+alat_yang_digunakan_steril+pembersihan_kulit+setelah_melakukan_hand_hygiene+perawatan_dressing_infus+spoit_yang_digunakan_disposible+memberi_tanggal_dan_jam_pemasangan_infus+set_infus_setiap_72jam)
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Tidak",":",""+(i-ttlsebelum_melakukan_hand_hygiene),""+(i-ttlmenggunakan_apd_lengkap),""+(i-ttllokasi_pemasangan_sesuai),""+(i-ttlalat_yang_digunakan_steril),""+(i-ttlpembersihan_kulit),""+(i-ttlsetelah_melakukan_hand_hygiene),""+(i-ttlperawatan_dressing_infus),""+(i-ttlspoit_yang_digunakan_disposible),""+(i-ttlmemberi_tanggal_dan_jam_pemasangan_infus),""+(i-ttlset_infus_setiap_72jam),""+((i-ttlsebelum_melakukan_hand_hygiene)+
                         (i-ttlmenggunakan_apd_lengkap)+(i-ttllokasi_pemasangan_sesuai)+(i-ttlalat_yang_digunakan_steril)+(i-ttlpembersihan_kulit)+(i-ttlsetelah_melakukan_hand_hygiene)+(i-ttlperawatan_dressing_infus)+(i-ttlspoit_yang_digunakan_disposible)+(i-ttlmemberi_tanggal_dan_jam_pemasangan_infus)+(i-ttlset_infus_setiap_72jam))
                     });
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         "","Rata-rata",":",Math.round((ttlsebelum_melakukan_hand_hygiene/i)*100)+" %",Math.round((ttlmenggunakan_apd_lengkap/i)*100)+" %",Math.round((ttllokasi_pemasangan_sesuai/i)*100)+" %",
                         Math.round((ttlalat_yang_digunakan_steril/i)*100)+" %",Math.round((ttlpembersihan_kulit/i)*100)+" %",Math.round((ttlsetelah_melakukan_hand_hygiene/i)*100)+" %",Math.round((ttlperawatan_dressing_infus/i)*100)+" %",Math.round((ttlspoit_yang_digunakan_disposible/i)*100)+" %",Math.round((ttlmemberi_tanggal_dan_jam_pemasangan_infus/i)*100)+" %",Math.round((ttlset_infus_setiap_72jam/i)*100)+" %",Math.round(ttlpenilaian/i)+" %"
                     });

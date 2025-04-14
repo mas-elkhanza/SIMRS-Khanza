@@ -327,7 +327,7 @@ public class DlgAturanPakai extends javax.swing.JDialog {
             Valid.textKosong(Nama,"Kabupaten");
         }else{
             if(Sequel.menyimpantf("master_aturan_pakai","'"+Nama.getText()+"'","Aturan Pakai")==true){
-                tabMode.addRow(new String[]{
+                tabMode.addRow(new Object[]{
                     Nama.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
@@ -505,7 +505,7 @@ public class DlgAturanPakai extends javax.swing.JDialog {
                 ps.setString(1,"%"+TCari.getText().trim()+"%");
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new String[]{rs.getString(1)});
+                    tabMode.addRow(new Object[]{rs.getString(1)});
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);

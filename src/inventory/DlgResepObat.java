@@ -2342,12 +2342,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 rs=ps.executeQuery();
                 jumlahtotal=0;
                 while(rs.next()){
-                    tabMode.addRow(new String[]{
+                    tabMode.addRow(new Object[]{
                         rs.getString("no_resep"),rs.getString("tgl_perawatan")+" "+rs.getString("jam"),
                         rs.getString("no_rawat")+" "+rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
                         rs.getString("nm_dokter")
                     });
-                    tabMode.addRow(new String[]{"","Nama Obat","Jumlah x Harga + Embalase + Tuslah = Total","Aturan Pakai"});                
+                    tabMode.addRow(new Object[]{"","Nama Obat","Jumlah x Harga + Embalase + Tuslah = Total","Aturan Pakai"});                
                     ps2=koneksi.prepareStatement("select databarang.kode_brng,databarang.nama_brng,detail_pemberian_obat.jml,"+
                         "detail_pemberian_obat.biaya_obat,detail_pemberian_obat.embalase,detail_pemberian_obat.tuslah,detail_pemberian_obat.total from "+
                         "detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng "+
@@ -2365,7 +2365,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         rs2=ps2.executeQuery();
                         total=0;
                         while(rs2.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",rs2.getString("nama_brng"),rs2.getString("jml")+"  x  "+Valid.SetAngka(rs2.getDouble("biaya_obat"))+
                                 " + "+Valid.SetAngka(rs2.getDouble("embalase"))+" + "+Valid.SetAngka(rs2.getDouble("tuslah"))+" = "+Valid.SetAngka(rs2.getDouble("total")),
                                 Sequel.cariIsi("select aturan_pakai.aturan from aturan_pakai where aturan_pakai.tgl_perawatan='"+rs.getString("tgl_perawatan")+"' and "+
@@ -2399,7 +2399,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         psracikan.setString(3,rs.getString("no_rawat"));
                         rsracikan=psracikan.executeQuery();
                         while(rsracikan.next()){
-                            tabMode.addRow(new String[]{
+                            tabMode.addRow(new Object[]{
                                 "",rsracikan.getString("no_racik")+". "+rsracikan.getString("nama_racik"),
                                 rsracikan.getString("jml_dr")+" "+rsracikan.getString("metode")+", Keterangan : "+rsracikan.getString("keterangan"),
                                 rsracikan.getString("aturan_pakai")
@@ -2424,7 +2424,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                 rs2=ps2.executeQuery();
                                 total=0;
                                 while(rs2.next()){
-                                    tabMode.addRow(new String[]{
+                                    tabMode.addRow(new Object[]{
                                         "","   "+rs2.getString("nama_brng"),rs2.getString("jml")+"  x  "+Valid.SetAngka(rs2.getDouble("biaya_obat"))+
                                         " + "+Valid.SetAngka(rs2.getDouble("embalase"))+" + "+Valid.SetAngka(rs2.getDouble("tuslah"))+" = "+Valid.SetAngka(rs2.getDouble("total")),
                                         ""
@@ -2454,12 +2454,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         }
                     }
                     if(total>0){
-                        tabMode.addRow(new String[]{"","","Total Biaya Resep = "+ Valid.SetAngka(total),""}); 
+                        tabMode.addRow(new Object[]{"","","Total Biaya Resep = "+ Valid.SetAngka(total),""}); 
                     }
                 }                
                 rs.last();
                 if(rs.getRow()>0){
-                    tabMode.addRow(new String[]{">>","Jumlah Total Biaya Resep",Valid.SetAngka(jumlahtotal),""}); 
+                    tabMode.addRow(new Object[]{">>","Jumlah Total Biaya Resep",Valid.SetAngka(jumlahtotal),""}); 
                 }
                 LCount.setText(""+rs.getRow());
             } catch(Exception ex){
@@ -2588,7 +2588,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ps2.setString(6,TNoRw.getText());
                 rs2=ps2.executeQuery();
                 while(rs2.next()){
-                    tabmodeUbahRacikan.addRow(new String[]{
+                    tabmodeUbahRacikan.addRow(new Object[]{
                         rs2.getString("tgl_perawatan"),rs2.getString("jam"),rs2.getString("no_rawat"),
                         rs2.getString("kode_brng"),rs2.getString("nama_brng"),
                         Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs2.getString("tgl_perawatan")+"' and "+
@@ -2625,7 +2625,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 ps2.setString(3,TNoRw.getText());
                 rs2=ps2.executeQuery();
                 while(rs2.next()){
-                    tabmodeUbahRacikan2.addRow(new String[]{
+                    tabmodeUbahRacikan2.addRow(new Object[]{
                         rs2.getString("tgl_perawatan"),rs2.getString("jam"),rs2.getString("no_rawat"),
                         rs2.getString("no_racik"),rs2.getString("nama_racik"),rs2.getString("aturan_pakai")
                     });
