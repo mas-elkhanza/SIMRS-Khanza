@@ -694,7 +694,7 @@
                                     </tr>";
                 $w=1;
                 while($rsquerygambarradiologi= mysqli_fetch_array($querygambarradiologi)){
-                    $src = 'data: '.@mime_content_type("http://".host()."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]));
+                    $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/radiologi/".$rsquerygambarradiologi["lokasi_gambar"]));
                     echo "          <tr>
                                         <td valign='top' align='center'>".$w."</td>
                                         <td valign='top'>".$rsquerygambarradiologi["tgl_periksa"]." ".$rsquerygambarradiologi["jam"]."</td>

@@ -76,7 +76,7 @@
                 "select hasil_pemeriksaan_echo_gambar.photo from hasil_pemeriksaan_echo_gambar where hasil_pemeriksaan_echo_gambar.no_rawat='".$norawat."'"
             );
             if($rsquerygambarecho= mysqli_fetch_array($querygambarecho)){
-                $src = 'data: '.@mime_content_type("http://".host()."/webapps/hasilpemeriksaanecho/".$rsquerygambarecho["photo"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/hasilpemeriksaanecho/".$rsquerygambarecho["photo"]));
+                $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/hasilpemeriksaanecho/".$rsquerygambarecho["photo"]));
                 echo "              <tr>
                                         <td valign='middle' colspan='3'><img alt='Gambar USG' src='$src' width='100%' height='500px'/></td>
                                     </tr>";

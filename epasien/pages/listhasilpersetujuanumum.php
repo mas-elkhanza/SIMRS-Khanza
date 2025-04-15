@@ -15,7 +15,7 @@
             "inner join reg_periksa on surat_persetujuan_umum.no_rawat=reg_periksa.no_rawat where surat_persetujuan_umum.no_surat='".$nopersetujuan."'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
-            @$src = 'data: '.@mime_content_type("http://".host()."/webapps/persetujuanumum/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuanumum/".$photo));
+            @$src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/persetujuanumum/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>

@@ -41,16 +41,15 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
     private PreparedStatement ps,ps2,psstok,psdarah;
     private ResultSet rs,rs2,rsstok,rsdarah;
     private boolean[] pilihan;
-    private String[] kodebarang,namabarang,kategori,satuan,jumlah,stokasal,hbeli,total,
+    private String[] kodebarang,namabarang,satuan,jumlah,stokasal,hbeli,total,
             nokantung,komponen,gd,resus,aftap,kadaluarsa,asaldarah,satatus,js,bhp,kso,menejemen;
-    private double[] harga,biaya;
+    private double[] biaya;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private WarnaTable2 warna=new WarnaTable2();
     private UTDCariPenyerahanDarah carijual=new UTDCariPenyerahanDarah(null,false);
     private boolean sukses=false;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -65,11 +64,11 @@ public class UTDPenyerahanDarah extends javax.swing.JDialog {
 
         warna.kolom=0;
         
-        Object[] row={
+        tabMode=new DefaultTableModel(null,new Object[]{
             "P","No.Kantung","Komponen","G.D.","Rhesus","Aftap","Kadaluarsa",
             "Asal Darah","Status","Jasa Sarana","Paket BHP",
-            "KSO","Manajemen","Biaya"};
-        tabMode=new DefaultTableModel(null,row){
+            "KSO","Manajemen","Biaya"
+        }){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -1803,21 +1802,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }
             }
 
-            pilihan=null;
-            nokantung=null; 
-            komponen=null;
-            gd=null;
-            resus=null;
-            aftap=null;
-            kadaluarsa=null;
-            asaldarah=null;
-            satatus=null;
-            js=null;
-            bhp=null;
-            kso=null;
-            menejemen=null;
-            biaya=null;
-            
             pilihan=new boolean[jml];
             nokantung=new String[jml];
             komponen=new String[jml];
@@ -1864,30 +1848,38 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 });
             }
             
+            pilihan=null;
+            nokantung=null; 
+            komponen=null;
+            gd=null;
+            resus=null;
+            aftap=null;
+            kadaluarsa=null;
+            asaldarah=null;
+            satatus=null;
+            js=null;
+            bhp=null;
+            kso=null;
+            menejemen=null;
+            biaya=null;
+            
             psdarah=koneksi.prepareStatement(
-                    "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,"+
-                    "utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
-                    "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,"+
-                    "utd_stok_darah.asal_darah,utd_stok_darah.status,"+
-                    "utd_komponen_darah.jasa_sarana,utd_komponen_darah.paket_bhp,"+
-                    "utd_komponen_darah.kso,utd_komponen_darah.manajemen,"+
-                    "utd_komponen_darah.total "+
-                    "from utd_komponen_darah inner join utd_stok_darah "+
+                    "select utd_stok_darah.no_kantong,utd_komponen_darah.nama as darah,utd_stok_darah.golongan_darah,utd_stok_darah.resus,"+
+                    "utd_stok_darah.tanggal_aftap,utd_stok_darah.tanggal_kadaluarsa,utd_stok_darah.asal_darah,utd_stok_darah.status,"+
+                    "utd_komponen_darah.jasa_sarana,utd_komponen_darah.paket_bhp,utd_komponen_darah.kso,utd_komponen_darah.manajemen,"+
+                    "utd_komponen_darah.total from utd_komponen_darah inner join utd_stok_darah "+
                     "on utd_stok_darah.kode_komponen=utd_komponen_darah.kode where "+
-                    "utd_stok_darah.status='Ada' and utd_stok_darah.golongan_darah=? and utd_stok_darah.resus=? and utd_stok_darah.no_kantong like ? or "+
-                    "utd_stok_darah.status='Ada' and utd_stok_darah.golongan_darah=? and utd_stok_darah.resus=? and utd_komponen_darah.nama like ? or "+
-                    "utd_stok_darah.status='Ada' and utd_stok_darah.golongan_darah=? and utd_stok_darah.resus=? and utd_stok_darah.asal_darah like ? "+
+                    "utd_stok_darah.status='Ada' and utd_stok_darah.golongan_darah=? and utd_stok_darah.resus=? "+
+                    (TCari.getText().trim().equals("")?"":"and (utd_stok_darah.no_kantong like ? or utd_komponen_darah.nama like ? or utd_stok_darah.asal_darah like ?) ")+
                     "order by utd_stok_darah.tanggal_kadaluarsa ");
             try {
                 psdarah.setString(1,CmbCariGd.getSelectedItem().toString());
                 psdarah.setString(2,CmbCariResus.getSelectedItem().toString());
-                psdarah.setString(3,"%"+TCari.getText().trim()+"%");
-                psdarah.setString(4,CmbCariGd.getSelectedItem().toString());
-                psdarah.setString(5,CmbCariResus.getSelectedItem().toString());
-                psdarah.setString(6,"%"+TCari.getText().trim()+"%");
-                psdarah.setString(7,CmbCariGd.getSelectedItem().toString());
-                psdarah.setString(8,CmbCariResus.getSelectedItem().toString());
-                psdarah.setString(9,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    psdarah.setString(3,"%"+TCari.getText().trim()+"%");
+                    psdarah.setString(4,"%"+TCari.getText().trim()+"%");
+                    psdarah.setString(5,"%"+TCari.getText().trim()+"%");
+                }
                 rsdarah=psdarah.executeQuery();
                 while(rsdarah.next()){
                     tabMode.addRow(new Object[]{
@@ -1926,14 +1918,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             } 
         }
         
-        kodebarang=null;
-        namabarang=null;
-        satuan=null;
-        hbeli=null;
-        total=null;
-        jumlah=null;
-        stokasal=null;
-        
         kodebarang=new String[jml];
         namabarang=new String[jml];
         satuan=new String[jml];
@@ -1962,14 +1946,23 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             tabModeMedis.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],hbeli[i],total[i],satuan[i],stokasal[i]});
         }
         
+        kodebarang=null;
+        namabarang=null;
+        satuan=null;
+        hbeli=null;
+        total=null;
+        jumlah=null;
+        stokasal=null;
+        
         try{
-            ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,utd_stok_medis.hargaterakhir,databarang.kode_sat, "+
-                " utd_stok_medis.stok from databarang inner join utd_stok_medis on databarang.kode_brng=utd_stok_medis.kode_brng "+
-                " where databarang.status='1' and databarang.kode_brng like ? or "+
-                " databarang.status='1' and databarang.nama_brng like ? order by databarang.nama_brng");
+            ps=koneksi.prepareStatement(
+                "select databarang.kode_brng, databarang.nama_brng,utd_stok_medis.hargaterakhir,databarang.kode_sat,utd_stok_medis.stok from databarang inner join utd_stok_medis on databarang.kode_brng=utd_stok_medis.kode_brng "+
+                "where databarang.status='1' "+(TCariMedis.getText().trim().equals("")?"":"and (databarang.kode_brng like ? or databarang.nama_brng like ?) ")+" order by databarang.nama_brng");
             try {
-                ps.setString(1,"%"+TCariMedis.getText().trim()+"%");
-                ps.setString(2,"%"+TCariMedis.getText().trim()+"%");
+                if(!TCariMedis.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCariMedis.getText().trim()+"%");
+                    ps.setString(2,"%"+TCariMedis.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){                
                     tabModeMedis.addRow(new Object[]{"",rs.getString(1),rs.getString(2),rs.getString(3),0,rs.getString(4),rs.getString(5)});
@@ -2002,14 +1995,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             } 
         }
         
-        kodebarang=null;
-        namabarang=null;
-        satuan=null;
-        hbeli=null;
-        total=null;
-        jumlah=null;
-        stokasal=null;
-        
         kodebarang=new String[jml];
         namabarang=new String[jml];
         satuan=new String[jml];
@@ -2037,6 +2022,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         for(i=0;i<jml;i++){
             tabModeNonMedis.addRow(new Object[]{jumlah[i],kodebarang[i],namabarang[i],hbeli[i],total[i],satuan[i],stokasal[i]});
         }
+        
+        kodebarang=null;
+        namabarang=null;
+        satuan=null;
+        hbeli=null;
+        total=null;
+        jumlah=null;
+        stokasal=null;
         
         try{
             ps2=koneksi.prepareStatement("select ipsrsbarang.kode_brng, ipsrsbarang.nama_brng,utd_stok_penunjang.hargaterakhir,ipsrsbarang.kode_sat, "+
@@ -2140,14 +2133,14 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
              file=new File("./cache/akunbayar.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
-             iyem="";
+             StringBuilder iyembuilder = new StringBuilder();
              ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                     iyembuilder.append("{\"NamaAkun\":\"").append(rs.getString(1).replaceAll("\"","")).append("\",\"KodeRek\":\"").append(rs.getString(2)).append("\",\"PPN\":\"").append(rs.getDouble(3)).append("\"},");
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -2159,11 +2152,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                      ps.close();
                  } 
              }
-
-             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
-             fileWriter.flush();
+             
+             if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"akunbayar\":["+iyembuilder+"]}");
+                fileWriter.flush();
+             }
+            
              fileWriter.close();
-             iyem=null;
+             iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

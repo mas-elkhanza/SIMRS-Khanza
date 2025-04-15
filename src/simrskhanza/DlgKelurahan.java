@@ -44,7 +44,6 @@ public class DlgKelurahan extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -498,13 +497,13 @@ public class DlgKelurahan extends javax.swing.JDialog {
             file=new File("./cache/masterkelurahan.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select kelurahan.nm_kel,kelurahan.kd_kel from kelurahan");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){                
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-                    iyem=iyem+"{\"NamaKel\":\""+rs.getString(1)+"\",\"KodeKel\":\""+rs.getString(2)+"\"},";
+                    iyembuilder.append("{\"NamaKel\":\"").append(rs.getString(1)).append("\",\"KodeKel\":\"").append(rs.getString(2)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -516,10 +515,14 @@ public class DlgKelurahan extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"masterkelurahan\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"masterkelurahan\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -586,7 +589,7 @@ public class DlgKelurahan extends javax.swing.JDialog {
             }
         }
         
-        iyem="";
+        String iyem="";
         try {
             myObj = new FileReader("./cache/masterkelurahan.iyem");
             root = mapper.readTree(myObj);

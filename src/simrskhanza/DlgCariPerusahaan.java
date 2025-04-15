@@ -44,7 +44,6 @@ public final class DlgCariPerusahaan extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -385,13 +384,13 @@ public final class DlgCariPerusahaan extends javax.swing.JDialog {
             file=new File("./cache/perusahaan.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select kode_perusahaan,nama_perusahaan,alamat,kota,no_telp from perusahaan_pasien order by nama_perusahaan");
             try{           
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
-                    iyem=iyem+"{\"Kode\":\""+rs.getString(1)+"\",\"NamaInstansi\":\""+rs.getString(2)+"\",\"AlamatInstansi\":\""+rs.getString(3)+"\",\"Kota\":\""+rs.getString(4)+"\",\"NoTelp\":\""+rs.getString(5)+"\"},";
+                    iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"NamaInstansi\":\"").append(rs.getString(2)).append("\",\"AlamatInstansi\":\"").append(rs.getString(3)).append("\",\"Kota\":\"").append(rs.getString(4)).append("\",\"NoTelp\":\"").append(rs.getString(5)).append("\"},");
                 }
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
@@ -405,10 +404,14 @@ public final class DlgCariPerusahaan extends javax.swing.JDialog {
                 }
             }
 
-            fileWriter.write("{\"perusahaan\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"perusahaan\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

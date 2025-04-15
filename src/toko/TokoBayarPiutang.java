@@ -61,7 +61,6 @@ public final class TokoBayarPiutang extends javax.swing.JDialog {
     private boolean sukses=true;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -1148,25 +1147,18 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             ps=koneksi.prepareStatement(
                     "select toko_bayar_piutang.tgl_bayar, toko_bayar_piutang.no_member,tokomember.nama, toko_bayar_piutang.besar_cicilan,"+
                     "toko_bayar_piutang.catatan, toko_bayar_piutang.nota_piutang,toko_bayar_piutang.kd_rek,toko_bayar_piutang.kd_rek_kontra from toko_bayar_piutang "+
-                    "inner join tokomember on toko_bayar_piutang.no_member=tokomember.no_member where "+
-                    "toko_bayar_piutang.tgl_bayar between ? and ? and toko_bayar_piutang.nota_piutang like ? or "+
-                    "toko_bayar_piutang.tgl_bayar between ? and ? and toko_bayar_piutang.no_member like ? or "+
-                    "toko_bayar_piutang.tgl_bayar between ? and ? and tokomember.nama like ? or "+
-                    "toko_bayar_piutang.tgl_bayar between ? and ? and toko_bayar_piutang.tgl_bayar like ? "+
+                    "inner join tokomember on toko_bayar_piutang.no_member=tokomember.no_member where toko_bayar_piutang.tgl_bayar between ? and ? "+
+                    (TCari.getText().trim().equals("")?"":"and (toko_bayar_piutang.nota_piutang like ? or toko_bayar_piutang.no_member like ? or tokomember.nama like ?) ")+
                     "order by toko_bayar_piutang.tgl_bayar,toko_bayar_piutang.no_member");
             try {
                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText()+"%");
-                ps.setString(4,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(5,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(6,"%"+TCari.getText()+"%");
-                ps.setString(7,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(8,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(9,"%"+TCari.getText()+"%");
-                ps.setString(10,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(11,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(12,"%"+TCari.getText()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 total=0;
                 while(rs.next()){                
@@ -1261,14 +1253,14 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              file=new File("./cache/akunbayar.iyem");
              file.createNewFile();
              fileWriter = new FileWriter(file);
-             iyem="";
+             StringBuilder iyembuilder = new StringBuilder();
              ps=koneksi.prepareStatement("select * from akun_bayar order by akun_bayar.nama_bayar");
              try{
                  rs=ps.executeQuery();
                  AkunBayar.removeAllItems();
                  while(rs.next()){    
                      AkunBayar.addItem(rs.getString(1).replaceAll("\"",""));
-                     iyem=iyem+"{\"NamaAkun\":\""+rs.getString(1).replaceAll("\"","")+"\",\"KodeRek\":\""+rs.getString(2)+"\",\"PPN\":\""+rs.getDouble(3)+"\"},";
+                     iyembuilder.append("{\"NamaAkun\":\"").append(rs.getString(1).replaceAll("\"","")).append("\",\"KodeRek\":\"").append(rs.getString(2)).append("\",\"PPN\":\"").append(rs.getDouble(3)).append("\"},");
                  }
              }catch (Exception e) {
                  System.out.println("Notifikasi : "+e);
@@ -1280,11 +1272,15 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                      ps.close();
                  } 
              }
-
-             fileWriter.write("{\"akunbayar\":["+iyem.substring(0,iyem.length()-1)+"]}");
-             fileWriter.flush();
+             
+             if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"akunbayar\":["+iyembuilder+"]}");
+                fileWriter.flush();
+             }
+            
              fileWriter.close();
-             iyem=null;
+             iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

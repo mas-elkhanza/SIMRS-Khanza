@@ -93,7 +93,7 @@
                                 "detail_periksa_labpa_gambar.tgl_periksa='".$tglperiksa."' and detail_periksa_labpa_gambar.jam='".$jam."' order by detail_periksa_labpa_gambar.tgl_periksa,detail_periksa_labpa_gambar.jam"
                             );
                             if($rsquerygambarlabpa = mysqli_fetch_array($querygambarlabpa)){
-                                $src = 'data: '.@mime_content_type("http://".host()."/webapps/labpa/".$rsquerygambarlabpa["photo"]).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/labpa/".$rsquerygambarlabpa["photo"]));
+                                $src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/labpa/".$rsquerygambarlabpa["photo"]));
                                 echo "<tr>
                                          <td valign='top' align='center'></td>
                                          <td valign='top' align='center' bgcolor='#FCFCFC' colspan='3'>Gambar Patologi Anatomi</td>

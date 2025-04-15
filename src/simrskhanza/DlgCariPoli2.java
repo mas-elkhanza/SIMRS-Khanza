@@ -46,10 +46,8 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
     private ResultSet rs;
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
-    private String hari="";
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -373,7 +371,8 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
             file=new File("./cache/poli2.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
+            String hari="";
             ps=koneksi.prepareStatement(
                     "select poliklinik.kd_poli,poliklinik.nm_poli,poliklinik.registrasi,poliklinik.registrasilama "+
                     "from poliklinik inner join jadwal inner join dokter on poliklinik.kd_poli=jadwal.kd_poli "+
@@ -409,7 +408,7 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                 rs=ps.executeQuery(); 
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
-                    iyem=iyem+"{\"KodeUnit\":\""+rs.getString(1)+"\",\"NamaUnit\":\""+rs.getString(2)+"\",\"RegistrasiBaru\":\""+rs.getString(3)+"\",\"RegistrasiLama\":\""+rs.getString(4)+"\"},";
+                    iyembuilder.append("{\"KodeUnit\":\""+rs.getString(1)+"\",\"NamaUnit\":\""+rs.getString(2)+"\",\"RegistrasiBaru\":\""+rs.getString(3)+"\",\"RegistrasiLama\":\""+rs.getString(4)+"\"},");
                 }  
             }catch(Exception ex){
                 System.out.println(ex);
@@ -421,10 +420,15 @@ public final class DlgCariPoli2 extends javax.swing.JDialog {
                     ps.close();
                 }
             }  
-            fileWriter.write("{\"poli\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"poli\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
+            hari=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }

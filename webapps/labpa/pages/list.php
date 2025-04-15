@@ -13,7 +13,7 @@
                 $action             = isset($_GET['action'])?$_GET['action']:NULL;
                 $no_rawat           = validTeks4((isset($_GET['no_rawat'])?$_GET['no_rawat']:NULL),20);
                 $tanggal            = validTeks4((isset($_GET['tanggal'])?$_GET['tanggal']:NULL),14);
-                $jam                = validTeks4((isset($_GET['jam'])?$_GET['jam']:NULL),14);
+                $jam                = validTeks5((isset($_GET['jam'])?$_GET['jam']:NULL),14);
                 $kd_jenis_prw       = validTeks4((isset($_GET['kd_jenis_prw'])?$_GET['kd_jenis_prw']:NULL),20);
                 $no_rm              = getOne("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='$no_rawat'");
                 $nama_pasien        = getOne("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='$no_rm'");

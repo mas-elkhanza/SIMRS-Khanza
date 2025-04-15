@@ -44,7 +44,6 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -367,13 +366,13 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
             file=new File("./cache/jabatan.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select jabatan.kd_jbtn, jabatan.nm_jbtn from jabatan order by jabatan.nm_jbtn");   
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-                    iyem=iyem+"{\"KodeJabatan\":\""+rs.getString(1)+"\",\"NamaJabatan\":\""+rs.getString(2)+"\"},";
+                    iyembuilder.append("{\"KodeJabatan\":\"").append(rs.getString(1)).append("\",\"NamaJabatan\":\"").append(rs.getString(2)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -385,10 +384,15 @@ public final class DlgCariJabatan extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-            fileWriter.write("{\"jabatan\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"jabatan\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }  

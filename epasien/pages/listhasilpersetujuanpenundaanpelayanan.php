@@ -15,7 +15,7 @@
             "from persetujuan_penundaan_pelayanan where persetujuan_penundaan_pelayanan.no_surat='".$nopersetujuan."'"
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
-            @$src = 'data: '.@mime_content_type("http://".host()."/webapps/penundaanpelayanan/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/penundaanpelayanan/".$photo));
+            @$src = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/penundaanpelayanan/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>

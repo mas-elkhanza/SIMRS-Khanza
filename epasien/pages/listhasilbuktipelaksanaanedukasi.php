@@ -14,7 +14,7 @@
         );
         if($rsquerypersetujuan= mysqli_fetch_array($querypersetujuan)){
             $photo = getOne("select bukti_pelaksanaan_informasi_edukasi.photo from bukti_pelaksanaan_informasi_edukasi where bukti_pelaksanaan_informasi_edukasi.no_rawat='".$norawat."' and bukti_pelaksanaan_informasi_edukasi.tanggal='".$tanggal."'");
-            @$src   = 'data: '.@mime_content_type("http://".host()."/webapps/pelaksanaanedukasi/".$photo).';base64,'.base64_encode(file_get_contents("http://".host()."/webapps/pelaksanaanedukasi/".$photo));
+            @$src   = 'data: image/jpeg;base64,'.base64_encode(file_get_contents("http://".host()."/webapps/pelaksanaanedukasi/".$photo));
             echo "<div class='row clearfix'>
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
