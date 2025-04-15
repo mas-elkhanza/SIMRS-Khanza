@@ -26,14 +26,10 @@ public class DlgSisaStok extends javax.swing.JDialog {
     private final sekuel Sequel=new sekuel();
     private PreparedStatement ps;
     private ResultSet rs;
-    private StringBuilder htmlContent;
     private String[] posisigudang;
     private int i=0,kolom=0,no=0;
     private double total=0,stok=0,totalaset=0;
     private String qrystok="",aktifkanbatch="no",hppfarmasi="";
-    private DlgCariJenis jenis = new DlgCariJenis(null, false);
-    private DlgCariKategori kategori = new DlgCariKategori(null, false);
-    private DlgCariGolongan golongan = new DlgCariGolongan(null, false);
     
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -84,111 +80,6 @@ public class DlgSisaStok extends javax.swing.JDialog {
                 }
             });
         } 
-        
-        jenis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (jenis.getTable().getSelectedRow() != -1) {
-                    nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
-                }
-                TCari.requestFocus();
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
-        });
-        
-        golongan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (golongan.getTable().getSelectedRow() != -1) {
-                    nmgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 1).toString());
-                }
-                
-                TCari.requestFocus();
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-                golongan.emptTeks();
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
-        });
-        
-        kategori.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (kategori.getTable().getSelectedRow() != -1) {
-                    nmkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 1).toString());
-                }
-                TCari.requestFocus();
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-                kategori.emptTeks();
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
-        });
         
         try {
             hppfarmasi=koneksiDB.HPPFARMASI();
@@ -525,6 +416,40 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnJenisActionPerformed
+        DlgCariJenis jenis = new DlgCariJenis(null, false);
+        jenis.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (jenis.getTable().getSelectedRow() != -1) {
+                    nmjns.setText(jenis.getTable().getValueAt(jenis.getTable().getSelectedRow(), 1).toString());
+                }
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
         jenis.isCek();
         jenis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         jenis.setLocationRelativeTo(internalFrame1);
@@ -533,6 +458,41 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnJenisActionPerformed
 
     private void BtnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKategoriActionPerformed
+        DlgCariKategori kategori = new DlgCariKategori(null, false);
+        kategori.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (kategori.getTable().getSelectedRow() != -1) {
+                    nmkategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(), 1).toString());
+                }
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                kategori.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
         kategori.isCek();
         kategori.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         kategori.setLocationRelativeTo(internalFrame1);
@@ -541,6 +501,42 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnKategoriActionPerformed
 
     private void BtnGolonganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGolonganActionPerformed
+        DlgCariGolongan golongan = new DlgCariGolongan(null, false);
+        golongan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (golongan.getTable().getSelectedRow() != -1) {
+                    nmgolongan.setText(golongan.getTable().getValueAt(golongan.getTable().getSelectedRow(), 1).toString());
+                }
+                
+                TCari.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                golongan.emptTeks();
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
         golongan.isCek();
         golongan.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         golongan.setLocationRelativeTo(internalFrame1);
@@ -592,30 +588,30 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void prosesCari() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            i=Sequel.cariInteger("select count(nm_bangsal) from bangsal where status='1' and kd_bangsal<>'-' ");
+            i=Sequel.cariInteger("select count(bangsal.nm_bangsal) from bangsal where bangsal.status='1' and bangsal.kd_bangsal<>'-' ");
             posisigudang=new String[i];
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='27px'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='70px'>Kode Barang</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='150px'>Nama Barang</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>Satuan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='75px'>Harga Satuan</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='"+(i+2)+"'>Sisa Stok</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='27px'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='70px'>Kode Barang</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='150px'>Nama Barang</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='50px'>Satuan</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2' width='75px'>Harga Satuan</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='").append((i+2)).append("'>Sisa Stok</td>").append(
                 "</tr>"
             );
             
             htmlContent.append(                             
                 "<tr class='isi'>");
             kolom=0;
-            ps=koneksi.prepareStatement("select kd_bangsal,nm_bangsal from bangsal where status='1' and kd_bangsal<>'-' ");
+            ps=koneksi.prepareStatement("select bangsal.kd_bangsal,bangsal.nm_bangsal from bangsal where bangsal.status='1' and bangsal.kd_bangsal<>'-' ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     posisigudang[kolom]=rs.getString("kd_bangsal");
                     kolom++;
-                    htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>"+rs.getString("nm_bangsal")+"</td>");
+                    htmlContent.append("<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>").append(rs.getString("nm_bangsal")).append("</td>");
                 }
             } catch (Exception e) {
                 System.out.println("Akun Bayar : "+e);
@@ -628,8 +624,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 }
             }         
             htmlContent.append(
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>Total</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>Nilai Aset</td>"+
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75px'>Total</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='85px'>Nilai Aset</td>").append(
                 "</tr>"
             );  
             
@@ -647,41 +643,45 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     "inner join jenis on databarang.kdjns=jenis.kdjns "+
                     "inner join golongan_barang on databarang.kode_golongan=golongan_barang.kode "+
                     "inner join kategori_barang on databarang.kode_kategori=kategori_barang.kode where "+
-                    "jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? and (kode_brng like ? or nama_brng like ?) order by kode_brng");
+                    "jenis.nama like ? and kategori_barang.nama like ? and golongan_barang.nama like ? "+
+                    (TCari.getText().trim().equals("")?"":"and (kode_brng like ? or nama_brng like ?)")+
+                    " order by kode_brng");
             try {
                 ps.setString(1,"%"+nmjns.getText().trim()+"%");
                 ps.setString(2,"%"+nmkategori.getText().trim()+"%");
                 ps.setString(3,"%"+nmgolongan.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     total=0;
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+no+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("kode_brng")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nama_brng")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("kode_sat")+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("dasar"))+"</td>");
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                            "<td valign='middle' align='left'>").append(rs.getString("kode_brng")).append("</td>").append(
+                            "<td valign='middle' align='left'>").append(rs.getString("nama_brng")).append("</td>").append(
+                            "<td valign='middle' align='left'>").append(rs.getString("kode_sat")).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("dasar"))).append("</td>");
                     for(i=0;i<kolom;i++){
                         stok=Sequel.cariIsiAngka2(qrystok,rs.getString("kode_brng"),posisigudang[i]);
-                        htmlContent.append("<td valign='middle' align='right'>"+Valid.SetAngka(stok)+"</td>");
+                        htmlContent.append("<td valign='middle' align='right'>").append(Valid.SetAngka(stok)).append("</td>");
                         total=total+stok;
                     }
                     totalaset=totalaset+(rs.getDouble("dasar")*total);
                     htmlContent.append( 
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(total)+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(rs.getDouble("dasar")*total)+"</td>"+
+                            "<td valign='middle' align='right'>").append(Valid.SetAngka(total)).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Valid.SetAngka(rs.getDouble("dasar")*total)).append("</td>").append(
                         "</tr>"
                     );     
                     no++;  
                 }
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='left' colspan='"+(kolom+5)+"'>Total Nilai Aset Obat, Alkes & BHP Medis</td>"+
-                        "<td valign='middle' align='right'>"+Valid.SetAngka(totalaset)+"</td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' align='center'></td>").append(
+                        "<td valign='middle' align='left' colspan='").append((kolom+5)).append("'>Total Nilai Aset Obat, Alkes & BHP Medis</td>").append(
+                        "<td valign='middle' align='right'>").append(Valid.SetAngka(totalaset)).append("</td>").append(
                     "</tr>"
                 ); 
             } catch (Exception e) {

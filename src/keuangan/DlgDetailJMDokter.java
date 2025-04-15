@@ -941,6 +941,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     htmlContent.toString()+
                                 "</table>"
                     );
+                    htmlContent=null;
                     bw.close();                         
                     Desktop.getDesktop().browse(f.toURI());
                 } catch (Exception e) {
@@ -977,6 +978,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     htmlContent.toString()+
                                 "</table>"
                     );
+                    htmlContent=null;
                     bw.close();                         
                     Desktop.getDesktop().browse(f.toURI());
                 } catch (Exception e) {
@@ -1097,6 +1099,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     htmlContent.toString()+
                                 "</table>"
                     );
+                    htmlContent=null;
                     bw.close();                         
                     Desktop.getDesktop().browse(f.toURI());
                 } catch (Exception e) {
@@ -1133,6 +1136,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     htmlContent.toString()+
                                 "</table>"
                     );
+                    htmlContent=null;
                     bw.close();                         
                     Desktop.getDesktop().browse(f.toURI());
                 } catch (Exception e) {
@@ -2827,26 +2831,26 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ttluangrs=0;
                 while(rs.next()){
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left' colspan='13'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>No.</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Ruang</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nama Tindakan</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Tarif</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Biaya</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Paket BHP/Obat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.M.Dokter</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.S.Rmh Skt</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left' colspan='13'>").append(i).append(". ").append(rs.getString("nm_dokter")).append("</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>No.</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'>Nama Pasien</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Ruang</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nama Tindakan</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Tarif</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Biaya</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Paket BHP/Obat</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.M.Dokter</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.S.Rmh Skt</td>").append(
                                     "</tr>"
                     );
                     c=1;
@@ -2887,39 +2891,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -2983,39 +2987,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -3086,39 +3090,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Rad)"+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bagian_rs"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bagian_rs"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Rad)"+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bagian_rs"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bagian_rs"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -3186,39 +3190,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Rad)"+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_perujuk"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_perujuk"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Rad)"+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_perujuk"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_perujuk"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -3316,39 +3320,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
                                             if(a==1){
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'>"+c+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Lab)"+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("total_byr")+biayaitem))+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("total")+detailtotal))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("bhp")+detailbhp))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("bagian_rs")+detailrs))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("total_byr")+biayaitem))).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("total")+detailtotal))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("bhp")+detailbhp))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("bagian_rs")+detailrs))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                                 c++;
                                             }else{
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'></td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Lab)"+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("total_byr")+biayaitem))+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("total")+detailtotal))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("bhp")+detailbhp))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("bagian_rs")+detailrs))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'></td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("total_byr")+biayaitem))).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("total")+detailtotal))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("bhp")+detailbhp))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("bagian_rs")+detailrs))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                             }                           
@@ -3454,39 +3458,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
                                             if(a==1){
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'>"+c+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Lab)"+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("total_byr")+biayaitem))+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("total")+detailtotal))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("bhp")+detailbhp))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("tarif_perujuk")+detailjm))+"</td>"+
-                                                         "<td valign='middle' align='right'>0</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("total_byr")+biayaitem))).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("total")+detailtotal))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("bhp")+detailbhp))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("tarif_perujuk")+detailjm))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>0</td>").append(
                                                     "</tr>"
                                                 );
                                                 c++;
                                             }else{
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'></td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Lab)"+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("total_byr")+biayaitem))+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("total")+detailtotal))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("bhp")+detailbhp))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("tarif_perujuk")+detailjm))+"</td>"+
-                                                         "<td valign='middle' align='right'>0</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'></td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("total_byr")+biayaitem))).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("total")+detailtotal))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("bhp")+detailbhp))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("tarif_perujuk")+detailjm))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>0</td>").append(
                                                     "</tr>"
                                                 );
                                             }                           
@@ -3576,39 +3580,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 1)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bagian_rs"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 1)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bagian_rs"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 1)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bagian_rs"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 1)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bagian_rs"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -3674,39 +3678,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 2)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator2"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 2)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator2"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 2)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator2"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 2)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator2"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -3772,39 +3776,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 3)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator3"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 3)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator3"))).append("</td>").append(
                                                     "<td valign='middle' align='right'>0</td>"+
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 3)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator3"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 3)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator3"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -3870,39 +3874,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anak)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayadokter_anak"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anak)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayadokter_anak"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anak)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayadokter_anak"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anak)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayadokter_anak"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -3968,39 +3972,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayadokter_anestesi"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anestesi)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayadokter_anestesi"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayadokter_anestesi"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anestesi)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayadokter_anestesi"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -4066,39 +4070,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biaya_dokter_pjanak"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Pj Anak)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biaya_dokter_pjanak"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biaya_dokter_pjanak"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Pj Anak)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biaya_dokter_pjanak"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -4164,39 +4168,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Umum)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biaya_dokter_umum"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Umum)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biaya_dokter_umum"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             ); 
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Umum)</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biaya_dokter_umum"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Umum)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biaya_dokter_umum"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -4346,39 +4350,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );   
                                                 }                           
@@ -4526,39 +4530,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );  
                                                 }                           
@@ -4659,39 +4663,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                 }                           
@@ -4740,39 +4744,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                     if(a==1){
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                         c++;
                                                     }else{
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'></td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'></td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                     }                           
@@ -4877,39 +4881,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                 }                           
@@ -4958,39 +4962,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                     if(a==1){
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                             "</tr>"
                                                         );
                                                         c++;
                                                     }else{
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("total"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("bhp"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("material"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("total"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("material"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                     }                           
@@ -5032,19 +5036,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     
                 if(i>0){
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left' colspan='8' width='72%'>Total :</td>"+
-                                         "<td valign='middle' align='center' width='2%'>"+Valid.SetAngka(ttljml)+"</td>"+
-                                         "<td valign='middle' align='right' width='7%'>"+Valid.SetAngka(ttlbiaya)+"</td>"+
-                                         "<td valign='middle' align='right' width='7%'>"+Valid.SetAngka(ttlbhp)+"</td>"+
-                                         "<td valign='middle' align='right' width='6%'>"+Valid.SetAngka(ttljm)+"</td>"+
-                                         "<td valign='middle' align='right' width='6%'>"+Valid.SetAngka(ttluangrs)+"</td>"+
-                                    "</tr>"+
-                                "</table>"+
-                            "</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left' colspan='8' width='72%'>Total :</td>").append(
+                                         "<td valign='middle' align='center' width='2%'>").append(Valid.SetAngka(ttljml)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='7%'>").append(Valid.SetAngka(ttlbiaya)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='7%'>").append(Valid.SetAngka(ttlbhp)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='6%'>").append(Valid.SetAngka(ttljm)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='6%'>").append(Valid.SetAngka(ttluangrs)).append("</td>").append(
+                                    "</tr>").append(
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     );  
                 }
@@ -5054,6 +5058,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+                htmlContent=null;
            } catch (Exception e) {
                System.out.println("Notifikasi ps : "+e);
            } finally{
@@ -5084,26 +5089,26 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ttluangrs=0;
                 while(rs.next()){
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left' colspan='13'>"+i+". "+rs.getString("nm_dokter")+"</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>No.</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Ruang</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nama Tindakan</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Tarif</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Biaya</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Paket BHP/Obat</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.M.Dokter</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.S.Rmh Skt</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left' colspan='13'>").append(i).append(". ").append(rs.getString("nm_dokter")).append("</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>No.</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='13%'>Nama Pasien</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='11%'>Ruang</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='17%'>Nama Tindakan</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>Tarif</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Biaya</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='7%'>Paket BHP/Obat</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.M.Dokter</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='6%'>J.S.Rmh Skt</td>").append(
                                     "</tr>"
                     );
                     c=1;
@@ -5144,39 +5149,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -5240,39 +5245,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -5343,39 +5348,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Rad)"+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bagian_rs"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakan_dokter"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bagian_rs"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Rad)"+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bagian_rs"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakan_dokter"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bagian_rs"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -5443,39 +5448,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Rad)"+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_perujuk"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_perujuk"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Rad)"+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_perujuk"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_perujuk"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -5573,39 +5578,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
                                             if(a==1){
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'>"+c+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Lab)"+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("total_byr")+biayaitem))+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("total")+detailtotal))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("bhp")+detailbhp))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("bagian_rs")+detailrs))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("total_byr")+biayaitem))).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("total")+detailtotal))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("bhp")+detailbhp))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("bagian_rs")+detailrs))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                                 c++;
                                             }else{
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'></td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Lab)"+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("total_byr")+biayaitem))+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("total")+detailtotal))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("bhp")+detailbhp))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("bagian_rs")+detailrs))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'></td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("total_byr")+biayaitem))).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("total")+detailtotal))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("bhp")+detailbhp))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("bagian_rs")+detailrs))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                             }                           
@@ -5711,39 +5716,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
                                             if(a==1){
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'>"+c+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Lab)"+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("total_byr")+biayaitem))+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("total")+detailtotal))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("bhp")+detailbhp))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("tarif_perujuk")+detailjm))+"</td>"+
-                                                         "<td valign='middle' align='right'>0</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("total_byr")+biayaitem))).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("total")+detailtotal))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("bhp")+detailbhp))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("tarif_perujuk")+detailjm))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>0</td>").append(
                                                     "</tr>"
                                                 );
                                                 c++;
                                             }else{
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'></td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Lab)"+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("total_byr")+biayaitem))+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("total")+detailtotal))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("bhp")+detailbhp))+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("tarif_perujuk")+detailjm))+"</td>"+
-                                                         "<td valign='middle' align='right'>0</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'></td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("total_byr")+biayaitem))).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("total")+detailtotal))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("bhp")+detailbhp))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("tarif_perujuk")+detailjm))).append("</td>").append(
+                                                         "<td valign='middle' align='right'>0</td>").append(
                                                     "</tr>"
                                                 );
                                             }                           
@@ -5833,39 +5838,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 1)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator1"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bagian_rs"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 1)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator1"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bagian_rs"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 1)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator1"))+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bagian_rs"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 1)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator1"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bagian_rs"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -5931,39 +5936,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 2)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator2"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 2)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator2"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 2)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator2"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 2)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator2"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -6029,39 +6034,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 3)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator3"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 3)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator3"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 3)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator3"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 3)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator3"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -6127,39 +6132,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anak)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayadokter_anak"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anak)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayadokter_anak"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anak)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayadokter_anak"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anak)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayadokter_anak"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -6225,39 +6230,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayadokter_anestesi"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anestesi)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayadokter_anestesi"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayadokter_anestesi"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anestesi)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayadokter_anestesi"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -6323,39 +6328,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biaya_dokter_pjanak"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Pj Anak)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biaya_dokter_pjanak"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biaya_dokter_pjanak"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Pj Anak)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biaya_dokter_pjanak"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -6421,39 +6426,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Umum)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biaya_dokter_umum"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Umum)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biaya_dokter_umum"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             ); 
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Umum)</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byr"))+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biaya_dokter_umum"))+"</td>"+
-                                                    "<td valign='middle' align='right'>0</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Umum)</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byr"))).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biaya_dokter_umum"))).append("</td>").append(
+                                                    "<td valign='middle' align='right'>0</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -6603,39 +6608,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );   
                                                 }                           
@@ -6783,39 +6788,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );  
                                                 }                           
@@ -6916,39 +6921,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                 }                           
@@ -6997,39 +7002,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                     if(a==1){
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                         c++;
                                                     }else{
                                                         htmlContent.append(
                                                             "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'></td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                                 "<td valign='middle' align='left'></td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                     }                           
@@ -7134,39 +7139,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                 }                           
@@ -7215,39 +7220,39 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                     if(a==1){
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                             "</tr>"
                                                         );
                                                         c++;
                                                     }else{
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total_byrdr"))+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("total"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("bhp"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("material"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total_byrdr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("total"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("bhp"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("material"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                     }                           
@@ -7280,8 +7285,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }  
                     
                     htmlContent.append(
-                                "</table><br>"+
-                            "</td>"+
+                                "</table><br>").append(
+                            "</td>").append(
                         "</tr>"
                     );
                     i++;
@@ -7289,19 +7294,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     
                 if(i>0){
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left' colspan='8' width='72%'>Total :</td>"+
-                                         "<td valign='middle' align='center' width='2%'>"+Math.round(ttljml)+"</td>"+
-                                         "<td valign='middle' align='right' width='7%'>"+Math.round(ttlbiaya)+"</td>"+
-                                         "<td valign='middle' align='right' width='7%'>"+Math.round(ttlbhp)+"</td>"+
-                                         "<td valign='middle' align='right' width='6%'>"+Math.round(ttljm)+"</td>"+
-                                         "<td valign='middle' align='right' width='6%'>"+Math.round(ttluangrs)+"</td>"+
-                                    "</tr>"+
-                                "</table>"+
-                            "</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left' colspan='8' width='72%'>Total :</td>").append(
+                                         "<td valign='middle' align='center' width='2%'>").append(Math.round(ttljml)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='7%'>").append(Math.round(ttlbiaya)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='7%'>").append(Math.round(ttlbhp)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='6%'>").append(Math.round(ttljm)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='6%'>").append(Math.round(ttluangrs)).append("</td>").append(
+                                    "</tr>").append(
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     );  
                 }
@@ -7311,6 +7316,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+                htmlContent=null;
            } catch (Exception e) {
                System.out.println("Notifikasi ps : "+e);
            } finally{
@@ -7341,33 +7347,33 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ttluangrs=0;
                 while(rs.next()){
                     htmlContent.append(
-                        "<tr class='isi2'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='left' width='15%'>Nama</td>"+
-                                         "<td valign='middle' align='left' width='85%'>: "+rs.getString("nm_dokter")+"</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='left' width='15%'>Bulan</td>"+
-                                         "<td valign='middle' align='left' width='85%'>: "+Tgl1.getSelectedItem().toString().substring(3,10)+"</td>"+
-                                    "</tr>"+
-                                "</table>"+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='14%'>Ruang</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Nama Tindakan</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>J.M.Dokter</td>"+
+                        "<tr class='isi2'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='left' width='15%'>Nama</td>").append(
+                                         "<td valign='middle' align='left' width='85%'>: ").append(rs.getString("nm_dokter")).append("</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='left' width='15%'>Bulan</td>").append(
+                                         "<td valign='middle' align='left' width='85%'>: ").append(Tgl1.getSelectedItem().toString().substring(3,10)).append("</td>").append(
+                                    "</tr>").append(
+                                "</table>").append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Nama Pasien</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='14%'>Ruang</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Nama Tindakan</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>J.M.Dokter</td>").append(
                                     "</tr>"
                     );
                     c=1;
@@ -7408,31 +7414,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -7496,31 +7502,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -7591,31 +7597,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Rad)"+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Rad)"+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakan_dokter"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -7683,31 +7689,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Rad)"+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_perujuk"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_perujuk"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Rad)"+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_perujuk"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_perujuk"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -7805,31 +7811,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
                                             if(a==1){
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'>"+c+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Lab)"+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                                 c++;
                                             }else{
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'></td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Lab)"+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'></td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                             }                           
@@ -7935,31 +7941,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
                                             if(a==1){
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'>"+c+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Lab)"+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("tarif_perujuk")+detailjm))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("tarif_perujuk")+detailjm))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                                 c++;
                                             }else{
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'></td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Lab)"+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Valid.SetAngka((rstindakan.getDouble("tarif_perujuk")+detailjm))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'></td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Valid.SetAngka((rstindakan.getDouble("tarif_perujuk")+detailjm))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                             }                           
@@ -8049,31 +8055,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 1)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 1)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 1)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 1)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator1"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -8139,31 +8145,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 2)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator2"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 2)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator2"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 2)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator2"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 2)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator2"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -8229,31 +8235,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 3)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator3"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 3)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator3"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 3)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayaoperator3"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 3)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayaoperator3"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -8319,31 +8325,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anak)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayadokter_anak"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anak)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayadokter_anak"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anak)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayadokter_anak"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anak)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayadokter_anak"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -8409,31 +8415,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayadokter_anestesi"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anestesi)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayadokter_anestesi"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biayadokter_anestesi"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anestesi)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biayadokter_anestesi"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -8499,31 +8505,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biaya_dokter_pjanak"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Pj Anak)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biaya_dokter_pjanak"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biaya_dokter_pjanak"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Pj Anak)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biaya_dokter_pjanak"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -8589,31 +8595,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Umum)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biaya_dokter_umum"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Umum)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biaya_dokter_umum"))).append("</td>").append(
                                                "</tr>"
                                             ); 
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Umum)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("biaya_dokter_umum"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Umum)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("biaya_dokter_umum"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -8763,31 +8769,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );   
                                                 }                           
@@ -8935,31 +8941,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );  
                                                 }                           
@@ -9060,31 +9066,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                 }                           
@@ -9133,31 +9139,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                     if(a==1){
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                         c++;
                                                     }else{
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'></td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'></td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                     }                           
@@ -9262,31 +9268,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                 }                           
@@ -9335,31 +9341,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                     if(a==1){
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                             "</tr>"
                                                         );
                                                         c++;
                                                     }else{
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Valid.SetAngka(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                     }                           
@@ -9392,8 +9398,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }  
                     
                     htmlContent.append(
-                                "</table>"+
-                            "</td>"+
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     );
                     i++;
@@ -9401,42 +9407,42 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     
                 if(i>0){
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left' colspan='11' width='88%'>Total :</td>"+
-                                         "<td valign='middle' align='center' width='2%'>"+Valid.SetAngka(ttljml)+"</td>"+
-                                         "<td valign='middle' align='right' width='10%'>"+Valid.SetAngka(ttluangrs)+"</td>"+
-                                    "</tr>"+
-                                "</table>"+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi2'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>Yang Menerima</td>"+
-                                         "<td valign='middle' border='none' align='center' colspan='7' width='50%'>Pengelola</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>"+
-                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>"+
-                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>"+
-                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>"+nmdokter.getText()+"</td>"+
-                                         "<td valign='middle' align='center' colspan='7' width='50%'>______________________</td>"+
-                                    "</tr>"+
-                                "</table>"+
-                            "</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left' colspan='11' width='88%'>Total :</td>").append(
+                                         "<td valign='middle' align='center' width='2%'>").append(Valid.SetAngka(ttljml)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='10%'>").append(Valid.SetAngka(ttluangrs)).append("</td>").append(
+                                    "</tr>").append(
+                                "</table>").append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi2'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>Yang Menerima</td>").append(
+                                         "<td valign='middle' border='none' align='center' colspan='7' width='50%'>Pengelola</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>").append(
+                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>").append(
+                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>").append(
+                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>").append(nmdokter.getText()).append("</td>").append(
+                                         "<td valign='middle' align='center' colspan='7' width='50%'>______________________</td>").append(
+                                    "</tr>").append(
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     );  
                 }
@@ -9470,33 +9476,33 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 ttluangrs=0;
                 while(rs.next()){
                     htmlContent.append(
-                        "<tr class='isi2'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='left' width='15%'>Nama</td>"+
-                                         "<td valign='middle' align='left' width='85%'>: "+rs.getString("nm_dokter")+"</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='left' width='15%'>Bulan</td>"+
-                                         "<td valign='middle' align='left' width='85%'>: "+Tgl1.getSelectedItem().toString().substring(3,10)+"</td>"+
-                                    "</tr>"+
-                                "</table>"+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Nama Pasien</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='14%'>Ruang</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Nama Tindakan</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>"+
-                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>J.M.Dokter</td>"+
+                        "<tr class='isi2'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='left' width='15%'>Nama</td>").append(
+                                         "<td valign='middle' align='left' width='85%'>: ").append(rs.getString("nm_dokter")).append("</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='left' width='15%'>Bulan</td>").append(
+                                         "<td valign='middle' align='left' width='85%'>: ").append(Tgl1.getSelectedItem().toString().substring(3,10)).append("</td>").append(
+                                    "</tr>").append(
+                                "</table>").append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>Tanggal</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No.RM</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='18%'>Nama Pasien</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='14%'>Ruang</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='8%'>Jenis Bayar</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Nama Tindakan</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='2%'>Jml</td>").append(
+                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>J.M.Dokter</td>").append(
                                     "</tr>"
                     );
                     c=1;
@@ -9537,31 +9543,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -9625,31 +9631,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_registrasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_registrasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -9720,31 +9726,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Rad)"+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakan_dokter"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Rad)"+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakan_dokter"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakan_dokter"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -9812,31 +9818,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Rad)"+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_perujuk"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_perujuk"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Rad)"+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_perujuk"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Rad)").append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_perujuk"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -9934,31 +9940,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
                                             if(a==1){
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'>"+c+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Lab)"+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                                 c++;
                                             }else{
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'></td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (P.J. Lab)"+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'></td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (P.J. Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("tarif_tindakan_dokter")+detailjm))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                             }                           
@@ -10064,31 +10070,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                             ttlbhp=ttlbhp+rstindakan.getDouble("bhp")+detailbhp;
                                             if(a==1){
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'>"+c+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Lab)"+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("tarif_perujuk")+detailjm))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("tarif_perujuk")+detailjm))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                                 c++;
                                             }else{
                                                 htmlContent.append(
-                                                    "<tr class='isi'>"+
-                                                         "<td valign='middle' align='left'></td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("tgl_periksa")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                         "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Perujuk Lab)"+"</td>"+
-                                                         "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                         "<td valign='middle' align='right'>"+Math.round((rstindakan.getDouble("tarif_perujuk")+detailjm))+"</td>"+
+                                                    "<tr class='isi'>").append(
+                                                         "<td valign='middle' align='left'></td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("tgl_periksa")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                         "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Perujuk Lab)").append("</td>").append(
+                                                         "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                         "<td valign='middle' align='right'>").append(Math.round((rstindakan.getDouble("tarif_perujuk")+detailjm))).append("</td>").append(
                                                     "</tr>"
                                                 );
                                             }                           
@@ -10178,31 +10184,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 1)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator1"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 1)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator1"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 1)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator1"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 1)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator1"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -10268,31 +10274,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 2)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator2"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 2)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator2"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 2)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator2"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 2)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator2"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -10358,31 +10364,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 3)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator3"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 3)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator3"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Operator 3)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayaoperator3"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Operator 3)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayaoperator3"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -10448,31 +10454,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anak)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayadokter_anak"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anak)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayadokter_anak"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anak)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayadokter_anak"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anak)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayadokter_anak"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -10538,31 +10544,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayadokter_anestesi"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anestesi)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayadokter_anestesi"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Anestesi)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biayadokter_anestesi"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Anestesi)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biayadokter_anestesi"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -10628,31 +10634,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biaya_dokter_pjanak"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Pj Anak)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biaya_dokter_pjanak"))).append("</td>").append(
                                                "</tr>"
                                             );
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Pj Anak)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biaya_dokter_pjanak"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Pj Anak)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biaya_dokter_pjanak"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -10718,31 +10724,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                         ttluangrs=ttluangrs+rstindakan.getDouble("bagian_rs");
                                         if(a==1){
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'>"+c+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Umum)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biaya_dokter_umum"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Umum)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biaya_dokter_umum"))).append("</td>").append(
                                                "</tr>"
                                             ); 
                                             c++;
                                         }else{
                                             htmlContent.append(
-                                               "<tr class='isi'>"+
-                                                    "<td valign='middle' align='left'></td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("tgl_operasi")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("no_rkm_medis")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_pasien")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rspasien.getString("nm_poli")+"</td>"+
-                                                    "<td valign='middle' align='center'>"+rspasien.getString("png_jawab")+"</td>"+
-                                                    "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+" (Dokter Umum)</td>"+
-                                                    "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                    "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("biaya_dokter_umum"))+"</td>"+
+                                               "<tr class='isi'>").append(
+                                                    "<td valign='middle' align='left'></td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("tgl_operasi")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("no_rkm_medis")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_pasien")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rspasien.getString("nm_poli")).append("</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rspasien.getString("png_jawab")).append("</td>").append(
+                                                    "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append(" (Dokter Umum)</td>").append(
+                                                    "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                    "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("biaya_dokter_umum"))).append("</td>").append(
                                                "</tr>"
                                             );
                                         }                           
@@ -10892,31 +10898,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );   
                                                 }                           
@@ -11064,31 +11070,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );  
                                                 }                           
@@ -11189,31 +11195,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     ); 
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                 }                           
@@ -11262,31 +11268,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                     if(a==1){
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                         c++;
                                                     }else{
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'></td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'></td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                     }                           
@@ -11391,31 +11397,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                 ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                 if(a==1){
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'>"+c+"</td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                     c++;
                                                 }else{
                                                     htmlContent.append(
-                                                        "<tr class='isi'>"+
-                                                             "<td valign='middle' align='left'></td>"+
-                                                             "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                             "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                             "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                             "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                             "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                             "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                             "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                             "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                        "<tr class='isi'>").append(
+                                                             "<td valign='middle' align='left'></td>").append(
+                                                             "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                             "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                             "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                             "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                         "</tr>"
                                                     );
                                                 }                           
@@ -11464,31 +11470,31 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                                     ttlbhp=ttlbhp+rstindakan.getDouble("bhp");
                                                     if(a==1){
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                             "</tr>"
                                                         );
                                                         c++;
                                                     }else{
                                                         htmlContent.append(
-                                                            "<tr class='isi'>"+
-                                                                 "<td valign='middle' align='left'>"+c+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+tanggal+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+norm+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+pasien+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+kamar+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+penjab+"</td>"+
-                                                                 "<td valign='middle' align='left'>"+rstindakan.getString("nm_perawatan")+"</td>"+
-                                                                 "<td valign='middle' align='center'>"+rstindakan.getDouble("jml")+"</td>"+
-                                                                 "<td valign='middle' align='right'>"+Math.round(rstindakan.getDouble("tarif_tindakandr"))+"</td>"+
+                                                            "<tr class='isi'>").append(
+                                                                 "<td valign='middle' align='left'>").append(c).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(tanggal).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(norm).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(pasien).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(kamar).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(penjab).append("</td>").append(
+                                                                 "<td valign='middle' align='left'>").append(rstindakan.getString("nm_perawatan")).append("</td>").append(
+                                                                 "<td valign='middle' align='center'>").append(rstindakan.getDouble("jml")).append("</td>").append(
+                                                                 "<td valign='middle' align='right'>").append(Math.round(rstindakan.getDouble("tarif_tindakandr"))).append("</td>").append(
                                                             "</tr>"
                                                         ); 
                                                     }                           
@@ -11521,8 +11527,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     }  
                     
                     htmlContent.append(
-                                "</table>"+
-                            "</td>"+
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     );
                     i++;
@@ -11530,42 +11536,42 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     
                 if(i>0){
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'>"+
-                                         "<td valign='middle' align='left' colspan='11' width='88%'>Total :</td>"+
-                                         "<td valign='middle' align='center' width='2%'>"+Math.round(ttljml)+"</td>"+
-                                         "<td valign='middle' align='right' width='10%'>"+Math.round(ttluangrs)+"</td>"+
-                                    "</tr>"+
-                                "</table>"+
-                            "</td>"+
-                        "</tr>"+
-                        "<tr class='isi2'>"+
-                            "<td valign='top' align='center'>"+
-                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>Yang Menerima</td>"+
-                                         "<td valign='middle' border='none' align='center' colspan='7' width='50%'>Pengelola</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>"+
-                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>"+
-                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>"+
-                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>"+
-                                    "</tr>"+
-                                    "<tr class='isi2'>"+
-                                         "<td valign='middle' align='center' colspan='6' width='50%'>"+nmdokter.getText()+"</td>"+
-                                         "<td valign='middle' align='center' colspan='7' width='50%'>______________________</td>"+
-                                    "</tr>"+
-                                "</table>"+
-                            "</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'>").append(
+                                         "<td valign='middle' align='left' colspan='11' width='88%'>Total :</td>").append(
+                                         "<td valign='middle' align='center' width='2%'>").append(Math.round(ttljml)).append("</td>").append(
+                                         "<td valign='middle' align='right' width='10%'>").append(Math.round(ttluangrs)).append("</td>").append(
+                                    "</tr>").append(
+                                "</table>").append(
+                            "</td>").append(
+                        "</tr>").append(
+                        "<tr class='isi2'>").append(
+                            "<td valign='top' align='center'>").append(
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>Yang Menerima</td>").append(
+                                         "<td valign='middle' border='none' align='center' colspan='7' width='50%'>Pengelola</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>").append(
+                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>").append(
+                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>&nbsp;</td>").append(
+                                         "<td valign='middle' align='center' colspan='7' width='50%'>&nbsp;</td>").append(
+                                    "</tr>").append(
+                                    "<tr class='isi2'>").append(
+                                         "<td valign='middle' align='center' colspan='6' width='50%'>").append(nmdokter.getText()).append("</td>").append(
+                                         "<td valign='middle' align='center' colspan='7' width='50%'>______________________</td>").append(
+                                    "</tr>").append(
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     );  
                 }
