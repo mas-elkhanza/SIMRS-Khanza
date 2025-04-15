@@ -56,10 +56,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
     private boolean[] pilih; 
     private String[] kode,masalah;
     private String masalahkeperawatangeriatri="",finger=""; 
-    private StringBuilder htmlContent;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -3184,21 +3182,21 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                         ps.setString(7,"%"+TCari.getText()+"%");
                     }   
                     rs=ps.executeQuery();
-                    htmlContent = new StringBuilder();
+                    StringBuilder htmlContent = new StringBuilder();
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PASIEN & PETUGAS</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>I. KEADAAN UMUM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>II. STATUS NUTRISI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>III. RIWAYAT KESEHATAN</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IV. FUNGSIONAL</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>V. RIWAYAT PSIKO-SOSIAL SPIRITUAL DAN BUDAYA</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VI. PENILAIAN RESIKO JATUH</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VII. SKRINING GIZI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VIII. PENILAIAN TINGKAT NYERI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IX. KEBUTUHAN KOMUNIKASI DAN EDUKASI</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>X. FRAILTY PHENOTYPE</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MASALAH & RENCANA KEPERAWATAN</b></td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PASIEN & PETUGAS</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>I. KEADAAN UMUM</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>II. STATUS NUTRISI</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>III. RIWAYAT KESEHATAN</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IV. FUNGSIONAL</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>V. RIWAYAT PSIKO-SOSIAL SPIRITUAL DAN BUDAYA</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VI. PENILAIAN RESIKO JATUH</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VII. SKRINING GIZI</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VIII. PENILAIAN TINGKAT NYERI</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IX. KEBUTUHAN KOMUNIKASI DAN EDUKASI</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>X. FRAILTY PHENOTYPE</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MASALAH & RENCANA KEPERAWATAN</b></td>").append(
                         "</tr>"
                     );
                     while(rs.next()){
@@ -3224,277 +3222,277 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                             }
                         }
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>No.Rawat</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>No.R.M.</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Nama Pasien</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>J.K.</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("jk")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Agama</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("agama")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Bahasa</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("nama_bahasa")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Tgl.Lahir</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("nama_cacat")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Cacat Fisik</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Petugas</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("nip")+" "+rs.getString("nama")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Tgl.Asuhan</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("tanggal")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Informasi</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("informasi")+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>TD</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("td")+"mmHg</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Nadi</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("nadi")+"x/menit</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>RR</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("rr")+"x/menit</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Suhu</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("suhu")+"°C</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>GCS</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("gcs")+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>BB</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("bb")+"Kg</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>TB</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("tb")+"cm</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>BMI</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("bmi")+"Kg/m²</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Keluhan Utama</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("keluhan_utama")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>RPD</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("rpd")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>RPK</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("rpk")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>RPO</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("rpo")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='32%' valign='top'>Alergi</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>"+rs.getString("alergi")+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Alat Bantu</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("alat_bantu")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Alat Bantu</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_bantu")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Prothesa</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("prothesa")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Prothesa</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_pro")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>ADL</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("adl")+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Status Psikologis</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("status_psiko")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ket. Psikologi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_psiko")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Hubungan pasien dengan anggota keluarga</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("hub_keluarga")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Tinggal dengan</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("tinggal_dengan")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ket. Tinggal</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_tinggal")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ekonomi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ekonomi")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Kepercayaan / Budaya / Nilai-nilai khusus yang perlu diperhatikan</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("budaya")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ket. Budaya</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_budaya")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Edukasi diberikan kepada </td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("edukasi")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Ket. Edukasi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_edukasi")+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Tidak seimbang/sempoyongan/limbung</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("berjalan_a")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Jalan dengan menggunakan alat bantu (kruk, tripot, kursi roda, orang lain)</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("berjalan_b")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Menopang saat akan duduk, tampak memegang pinggiran kursi atau meja/benda lain sebagai penopang</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("berjalan_c")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Hasil</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("hasil")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Dilaporan ke dokter?</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("lapor")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Jam Lapor</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>"+rs.getString("ket_lapor")+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>1. Apakah ada penurunan berat badanyang tidak diinginkan selama enam bulan terakhir?</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'>"+rs.getString("sg1")+"</td><td width='10%' valign='top'>"+rs.getString("nilai1")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>2. Apakah nafsu makan berkurang karena tidak nafsu makan?</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'>"+rs.getString("sg2")+"</td><td width='10%' valign='top'>"+rs.getString("nilai2")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='64%' valign='top'>Total Skor</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'></td><td width='10%' valign='top'>"+rs.getString("total_hasil")+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Tingkat Nyeri</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("nyeri")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Provokes</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("provokes")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Provokes</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_provokes")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Kualitas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("quality")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Kualitas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_quality")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Lokas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("lokasi")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Menyebar</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("menyebar")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Skala Nyeri</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("skala_nyeri")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Durasi</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("durasi")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Nyeri Hilang</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("nyeri_hilang")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Ket. Hilang Nyeri</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_nyeri")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Lapor Ke Dokter</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("pada_dokter")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Jam Lapor</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>"+rs.getString("ket_dokter")+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Kemampuan Baca & Tulis</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_kemampuan_bacatulis")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Dibutuhkan Penerjamah</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_kebutuhan_penerjemah")+(rs.getString("edukasi_keterangan_kebutuhan_penerjemah").equals("")?"":", "+rs.getString("edukasi_keterangan_kebutuhan_penerjemah"))+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Hambatan Dalam Pembelajaran</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_hambatan")+(rs.getString("edukasi_hambatan").equals("Ya")?", "+rs.getString("edukasi_hambatan_kategori"):"")+(rs.getString("edukasi_keterangan_hambatan").equals("")?"":", Lainya : "+rs.getString("edukasi_keterangan_hambatan"))+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Hambatan Cara Bicara</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_cara_bicara")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Hambatan Bahasa Isyarat</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_bahasa_isyarat")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Cara Belajar Yang Disukai</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_metode_belajar")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='34%' valign='top'>Kesediaan Menerima Informasi</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>"+rs.getString("edukasi_menerima_informasi")+(rs.getString("edukasi_keterangan_menerima_informasi").equals("")?"":", "+rs.getString("edukasi_keterangan_menerima_informasi"))+"</td>"+
-                                        "</tr>"+
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>1. Kehilangan Berat Badan Yang Tidak Diinginkan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_berat_badan")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_berat_badan_nilai")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>2. Aktifitas Fisik</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_aktifitas_fisik")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_aktifitas_fisik_nilai")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>3. Kelelahan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_kelelahan")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_kelelahan_nilai")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>4. Kekuatan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_kekuatan")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_kekuatan_nilai")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>5. Waktu Berjalan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_waktu_berjalan")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_waktu_berjalan_nilai")+"</td>"+
-                                        "</tr>"+
-                                        "<tr class='isi2'>"+
-                                            "<td width='44%' valign='top'>Status Skor Frailty Phenotype</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>"+rs.getString("fraily_phenotype_status")+"</td><td width='10%' valign='top'>"+rs.getString("fraily_phenotype_nilai_total")+"</td>"+
-                                        "</tr>"+              
-                                    "</table>"+
-                                "</td>"+
-                                "<td valign='top' cellpadding='0' cellspacing='0'>"+
-                                    "Masalah Keperawatan : "+masalahkeperawatangeriatri+"<br><br>"+
-                                    "Rencana Keperawatan : "+rs.getString("rencana")+
-                                "</td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>No.Rawat</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("no_rawat")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>No.R.M.</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("no_rkm_medis")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Nama Pasien</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("nm_pasien")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>J.K.</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("jk")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Agama</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("agama")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Bahasa</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("nama_bahasa")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Tgl.Lahir</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("nama_cacat")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Cacat Fisik</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("tgl_lahir")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Petugas</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("nip")).append(" ").append(rs.getString("nama")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Tgl.Asuhan</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("tanggal")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Informasi</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("informasi")).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>TD</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("td")).append("mmHg</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Nadi</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("nadi")).append("x/menit</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>RR</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("rr")).append("x/menit</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Suhu</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("suhu")).append("°C</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>GCS</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("gcs")).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>BB</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("bb")).append("Kg</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>TB</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("tb")).append("cm</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>BMI</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("bmi")).append("Kg/m²</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Keluhan Utama</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("keluhan_utama")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>RPD</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("rpd")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>RPK</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("rpk")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>RPO</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("rpo")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='32%' valign='top'>Alergi</td><td valign='top'>:&nbsp;</td><td width='67%' valign='top'>").append(rs.getString("alergi")).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Alat Bantu</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("alat_bantu")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Ket. Alat Bantu</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("ket_bantu")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Prothesa</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("prothesa")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Ket. Prothesa</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("ket_pro")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>ADL</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("adl")).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Status Psikologis</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("status_psiko")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Ket. Psikologi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("ket_psiko")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Hubungan pasien dengan anggota keluarga</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("hub_keluarga")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Tinggal dengan</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("tinggal_dengan")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Ket. Tinggal</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("ket_tinggal")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Ekonomi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("ekonomi")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Kepercayaan / Budaya / Nilai-nilai khusus yang perlu diperhatikan</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("budaya")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Ket. Budaya</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("ket_budaya")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Edukasi diberikan kepada </td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("edukasi")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Ket. Edukasi</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("ket_edukasi")).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Tidak seimbang/sempoyongan/limbung</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("berjalan_a")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Jalan dengan menggunakan alat bantu (kruk, tripot, kursi roda, orang lain)</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("berjalan_b")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Menopang saat akan duduk, tampak memegang pinggiran kursi atau meja/benda lain sebagai penopang</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("berjalan_c")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Hasil</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("hasil")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Dilaporan ke dokter?</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("lapor")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Jam Lapor</td><td valign='top'>:&nbsp;</td><td width='35%' valign='top'>").append(rs.getString("ket_lapor")).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>1. Apakah ada penurunan berat badanyang tidak diinginkan selama enam bulan terakhir?</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'>").append(rs.getString("sg1")).append("</td><td width='10%' valign='top'>").append(rs.getString("nilai1")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>2. Apakah nafsu makan berkurang karena tidak nafsu makan?</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'>").append(rs.getString("sg2")).append("</td><td width='10%' valign='top'>").append(rs.getString("nilai2")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='64%' valign='top'>Total Skor</td><td valign='top'>:&nbsp;</td><td width='25%' valign='top'></td><td width='10%' valign='top'>").append(rs.getString("total_hasil")).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Tingkat Nyeri</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("nyeri")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Provokes</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("provokes")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Ket. Provokes</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("ket_provokes")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Kualitas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("quality")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Ket. Kualitas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("ket_quality")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Lokas</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("lokasi")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Menyebar</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("menyebar")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Skala Nyeri</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("skala_nyeri")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Durasi</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("durasi")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Nyeri Hilang</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("nyeri_hilang")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Ket. Hilang Nyeri</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("ket_nyeri")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Lapor Ke Dokter</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("pada_dokter")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Jam Lapor</td><td valign='top'>:&nbsp;</td><td width='55%' valign='top'>").append(rs.getString("ket_dokter")).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Kemampuan Baca & Tulis</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("edukasi_kemampuan_bacatulis")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Dibutuhkan Penerjamah</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("edukasi_kebutuhan_penerjemah")).append((rs.getString("edukasi_keterangan_kebutuhan_penerjemah").equals("")?"":", "+rs.getString("edukasi_keterangan_kebutuhan_penerjemah"))).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Hambatan Dalam Pembelajaran</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("edukasi_hambatan")).append((rs.getString("edukasi_hambatan").equals("Ya")?", "+rs.getString("edukasi_hambatan_kategori"):"")).append((rs.getString("edukasi_keterangan_hambatan").equals("")?"":", Lainya : "+rs.getString("edukasi_keterangan_hambatan"))).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Hambatan Cara Bicara</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("edukasi_cara_bicara")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Hambatan Bahasa Isyarat</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("edukasi_bahasa_isyarat")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Cara Belajar Yang Disukai</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("edukasi_metode_belajar")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='34%' valign='top'>Kesediaan Menerima Informasi</td><td valign='top'>:&nbsp;</td><td width='65%' valign='top'>").append(rs.getString("edukasi_menerima_informasi")).append((rs.getString("edukasi_keterangan_menerima_informasi").equals("")?"":", "+rs.getString("edukasi_keterangan_menerima_informasi"))).append("</td>").append(
+                                        "</tr>").append(
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "<table width='100%' border='0' cellpadding='0' cellspacing='0'align='center'>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>1. Kehilangan Berat Badan Yang Tidak Diinginkan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>").append(rs.getString("fraily_phenotype_berat_badan")).append("</td><td width='10%' valign='top'>").append(rs.getString("fraily_phenotype_berat_badan_nilai")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>2. Aktifitas Fisik</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>").append(rs.getString("fraily_phenotype_aktifitas_fisik")).append("</td><td width='10%' valign='top'>").append(rs.getString("fraily_phenotype_aktifitas_fisik_nilai")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>3. Kelelahan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>").append(rs.getString("fraily_phenotype_kelelahan")).append("</td><td width='10%' valign='top'>").append(rs.getString("fraily_phenotype_kelelahan_nilai")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>4. Kekuatan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>").append(rs.getString("fraily_phenotype_kekuatan")).append("</td><td width='10%' valign='top'>").append(rs.getString("fraily_phenotype_kekuatan_nilai")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>5. Waktu Berjalan</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>").append(rs.getString("fraily_phenotype_waktu_berjalan")).append("</td><td width='10%' valign='top'>").append(rs.getString("fraily_phenotype_waktu_berjalan_nilai")).append("</td>").append(
+                                        "</tr>").append(
+                                        "<tr class='isi2'>").append(
+                                            "<td width='44%' valign='top'>Status Skor Frailty Phenotype</td><td valign='top'>:&nbsp;</td><td width='45%' valign='top'>").append(rs.getString("fraily_phenotype_status")).append("</td><td width='10%' valign='top'>").append(rs.getString("fraily_phenotype_nilai_total")).append("</td>").append(
+                                        "</tr>").append(              
+                                    "</table>").append(
+                                "</td>").append(
+                                "<td valign='top' cellpadding='0' cellspacing='0'>").append(
+                                    "Masalah Keperawatan : ").append(masalahkeperawatangeriatri).append("<br><br>").append(
+                                    "Rencana Keperawatan : ").append(rs.getString("rencana")).append(
+                                "</td>").append(
                             "</tr>"
                         );
                     }
@@ -3505,6 +3503,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                           "</table>"+
                         "</html>"
                     );
+                    htmlContent=null;
 
                     File g = new File("file2.css");            
                     BufferedWriter bg = new BufferedWriter(new FileWriter(g));
@@ -4868,13 +4867,13 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             file=new File("./cache/masalahkeperawatangeriatri.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select * from master_masalah_keperawatan_geriatri order by master_masalah_keperawatan_geriatri.kode_masalah");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabModeMasalah.addRow(new Object[]{false,rs.getString(1),rs.getString(2)});
-                    iyem=iyem+"{\"KodeMasalah\":\""+rs.getString(1)+"\",\"NamaMasalah\":\""+rs.getString(2)+"\"},";
+                    iyembuilder.append("{\"KodeMasalah\":\"").append(rs.getString(1)).append("\",\"NamaMasalah\":\"").append(rs.getString(2)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -4886,10 +4885,15 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     ps.close();
                 }
             }
-            fileWriter.write("{\"masalahkeperawatangeriatri\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"masalahkeperawatangeriatri\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -4904,11 +4908,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml]; 
-            kode=null;
             kode=new String[jml];
-            masalah=null;
             masalah=new String[jml];
 
             index=0;        
@@ -4928,6 +4929,10 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     pilih[i],kode[i],masalah[i]
                 });
             }
+            
+            pilih=null;
+            kode=null;
+            masalah=null;
             
             myObj = new FileReader("./cache/masalahkeperawatangeriatri.iyem");
             root = mapper.readTree(myObj);
@@ -4952,12 +4957,12 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             file=new File("./cache/rencanakeperawatangeriatri.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
-            iyem="";
+            StringBuilder iyembuilder = new StringBuilder();
             ps=koneksi.prepareStatement("select * from master_rencana_keperawatan_geriatri order by master_rencana_keperawatan_geriatri.kode_rencana");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyem=iyem+"{\"KodeMasalah\":\""+rs.getString(1)+"\",\"KodeRencana\":\""+rs.getString(2)+"\",\"NamaRencana\":\""+rs.getString(3)+"\"},";
+                    iyembuilder.append("{\"KodeMasalah\":\"").append(rs.getString(1)).append("\",\"KodeRencana\":\"").append(rs.getString(2)).append("\",\"NamaRencana\":\"").append(rs.getString(3)).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -4969,10 +4974,15 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     ps.close();
                 }
             }
-            fileWriter.write("{\"rencanakeperawatangeriatri\":["+iyem.substring(0,iyem.length()-1)+"]}");
-            fileWriter.flush();
+            
+            if (iyembuilder.length() > 0) {
+                iyembuilder.setLength(iyembuilder.length() - 1);
+                fileWriter.write("{\"rencanakeperawatangeriatri\":["+iyembuilder+"]}");
+                fileWriter.flush();
+            }
+            
             fileWriter.close();
-            iyem=null;
+            iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -4987,11 +4997,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 }
             }
 
-            pilih=null;
             pilih=new boolean[jml]; 
-            kode=null;
             kode=new String[jml];
-            masalah=null;
             masalah=new String[jml];
 
             index=0;        
@@ -5011,6 +5018,10 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                     pilih[i],kode[i],masalah[i]
                 });
             }
+            
+            pilih=null;
+            kode=null;
+            masalah=null;
 
             myObj = new FileReader("./cache/rencanakeperawatangeriatri.iyem");
             root = mapper.readTree(myObj);
