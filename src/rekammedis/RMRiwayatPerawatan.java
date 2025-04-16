@@ -5774,6 +5774,20 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         }
                     }
                     
+                    //ppn obat di billing
+                    double ppnobat=Sequel.cariIsiAngka("select billing.totalbiaya from billing where billing.nm_perawatan='PPN Obat' and billing.status='Obat' and billing.no_rawat=?",rs.getString("no_rawat"));
+                    if(ppnobat>0){
+                        biayaperawatan=biayaperawatan+ppnobat;
+                        htmlContent.append(  
+                                  "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                      "<tr>").append(
+                                        "<td valign='top' width='89%'>PPN Obat</td>").append(
+                                        "<td valign='top' width='1%' align='right'>:</td>").append(
+                                        "<td valign='top' width='10%' align='right'>").append(Valid.SetAngka(ppnobat)).append("</td>").append(
+                                      "</tr>").append(
+                                  "</table>");
+                    }
+                    
                     //menampilkan tambahan biaya
                     if(chkTambahanBiaya.isSelected()==true){
                         try{
