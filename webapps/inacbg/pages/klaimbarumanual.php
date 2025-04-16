@@ -25,9 +25,9 @@
         <div style="width: 100%; height: 85%; overflow: auto;">
         <?php
             $BtnCari  = isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
-            $keyword  = isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
-            $keyword  = validTeks4($keyword,20);
-            if (isset($BtnCari)) {      
+            if (isset($BtnCari)) {  
+                    $keyword        =isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
+                    $keyword        = validTeks4($keyword,20);
                     $tahunawal      = validTeks4(trim($_POST['tahunawal']),4);
                     $bulanawal      = validTeks4(trim($_POST['bulanawal']),2);
                     $tanggalawal    = validTeks4(trim($_POST['tanggalawal']),2);

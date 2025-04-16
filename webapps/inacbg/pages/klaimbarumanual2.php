@@ -25,9 +25,9 @@
         <div style="width: 100%; height: 85%; overflow: auto;">
         <?php
             $BtnCari  =isset($_POST['BtnCari'])?$_POST['BtnCari']:NULL;
-            $keyword  =isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
-            $keyword  = validTeks4($keyword,20);
-            if (isset($BtnCari)) {      
+            if (isset($BtnCari)) {    
+                    $keyword        =isset($_POST['keyword'])?trim($_POST['keyword']):NULL;
+                    $keyword        = validTeks4($keyword,20);
                     $tahunawal      = validTeks4(trim($_POST['tahunawal']),4);
                     $bulanawal      = validTeks4(trim($_POST['bulanawal']),2);
                     $tanggalawal    = validTeks4(trim($_POST['tanggalawal']),2);
@@ -86,10 +86,10 @@
 
                             $carabayar =str_replace(" ","_",$carabayar)?str_replace(" ","_",$carabayar):NULL;
                             $statuskirim =str_replace(" ","_",$statuskirim)?str_replace(" ","_",$statuskirim):NULL;
-                            $status="<a href='?act=DetailKirim&corona=$aksi&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar&statuskirim=$statuskirim'>[Kirim]</a>";
+                            $status="<a href='?act=DetailKirim&corona=$aksi&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&carabayar=$carabayar&statuskirim=$statuskirim'>[Kirim]</a>";
                             $statusdata="Belum Terkirim";
                             if(getOne("select count(inacbg_klaim_baru2.no_rawat) from inacbg_klaim_baru2 where inacbg_klaim_baru2.no_rawat='".$baris["no_rawat"]."'")>0){
-                                $status="<a href='?act=DetailKirim&corona=$aksi&norawat=".$baris["no_rawat"]."&codernik=$codernik&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&carabayar=$carabayar&statuskirim=$statuskirim'>[Kirim Ulang]</a>";
+                                $status="<a href='?act=DetailKirim&corona=$aksi&norawat=".$baris["no_rawat"]."&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&keyword=$keyword&carabayar=$carabayar&statuskirim=$statuskirim'>[Kirim Ulang]</a>";
                                 $statusdata="Sudah Terkirim";
                             }
                             $carabayar =str_replace("_"," ",$carabayar)?str_replace("_"," ",$carabayar):NULL;
