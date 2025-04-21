@@ -198,7 +198,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
     }
 
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
-    private InventarisKoleksi inventaris=new InventarisKoleksi(null,false);
+    private InventarisBarangCSSD inventaris=new InventarisBarangCSSD(null,false);
     private int pilihan=0;
 
     /** This method is called from within the constructor to
@@ -242,6 +242,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
         BtnIn = new widget.Button();
+        BtnIn1 = new widget.Button();
         BtnOut = new widget.Button();
         BtnHapus = new widget.Button();
         BtnPrint = new widget.Button();
@@ -259,6 +260,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         panelCari = new widget.panelisi();
         jLabel17 = new widget.Label();
         StatusCari = new widget.ComboBox();
+        jLabel7 = new widget.Label();
         ChkTanggal = new widget.CekBox();
         TglPinjam1 = new widget.Tanggal();
         jLabel22 = new widget.Label();
@@ -271,7 +273,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         WindowInput.setUndecorated(true);
         WindowInput.setResizable(false);
 
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaki Peminjaman & Pengembalian Inventaris ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Transaksi Sirkulasi Barang CSSD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
         internalFrame2.setName("internalFrame2"); // NOI18N
         internalFrame2.setLayout(null);
 
@@ -367,12 +369,12 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         internalFrame2.add(peminjam);
         peminjam.setBounds(103, 115, 240, 23);
 
-        LblTgl.setText("Tgl.Pinjam :");
+        LblTgl.setText("Tanggal :");
         LblTgl.setName("LblTgl"); // NOI18N
         internalFrame2.add(LblTgl);
         LblTgl.setBounds(367, 85, 80, 23);
 
-        label7.setText("Peminjam :");
+        label7.setText("Keterangan :");
         label7.setName("label7"); // NOI18N
         internalFrame2.add(label7);
         label7.setBounds(0, 115, 100, 23);
@@ -472,7 +474,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         internalFrame2.add(tgl);
         tgl.setBounds(450, 85, 120, 23);
 
-        LblTgl1.setText("Telp.Peminjam :");
+        LblTgl1.setText("No.Sirkulasi :");
         LblTgl1.setName("LblTgl1"); // NOI18N
         internalFrame2.add(LblTgl1);
         LblTgl1.setBounds(357, 115, 90, 23);
@@ -538,6 +540,24 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
             }
         });
         panelGlass10.add(BtnIn);
+
+        BtnIn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/edittrash.png"))); // NOI18N
+        BtnIn1.setMnemonic('M');
+        BtnIn1.setText("Steril");
+        BtnIn1.setToolTipText("Alt+M");
+        BtnIn1.setName("BtnIn1"); // NOI18N
+        BtnIn1.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnIn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnIn1ActionPerformed(evt);
+            }
+        });
+        BtnIn1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnIn1KeyPressed(evt);
+            }
+        });
+        panelGlass10.add(BtnIn1);
 
         BtnOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/36.png"))); // NOI18N
         BtnOut.setMnemonic('K');
@@ -666,7 +686,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         panelGlass11.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(305, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -715,22 +735,26 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         panelCari.setPreferredSize(new java.awt.Dimension(44, 43));
         panelCari.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 3, 9));
 
-        jLabel17.setText("Stts.Pinjam :");
+        jLabel17.setText("Status Barang :");
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(77, 23));
+        jLabel17.setPreferredSize(new java.awt.Dimension(88, 23));
         panelCari.add(jLabel17);
 
-        StatusCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Masih Dipinjam", "Sudah Kembali" }));
+        StatusCari.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Masuk Ke Bagian CSSD", "Sudah Dilakukan Steril", "Sudah Kembali Ke Ruangan" }));
         StatusCari.setName("StatusCari"); // NOI18N
-        StatusCari.setPreferredSize(new java.awt.Dimension(175, 23));
+        StatusCari.setPreferredSize(new java.awt.Dimension(225, 23));
         panelCari.add(StatusCari);
 
+        jLabel7.setName("jLabel7"); // NOI18N
+        jLabel7.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelCari.add(jLabel7);
+
         ChkTanggal.setSelected(true);
-        ChkTanggal.setText("Tgl.Pinjam :");
+        ChkTanggal.setText("Tgl.Diambil :");
         ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkTanggal.setName("ChkTanggal"); // NOI18N
-        ChkTanggal.setPreferredSize(new java.awt.Dimension(135, 23));
+        ChkTanggal.setPreferredSize(new java.awt.Dimension(100, 23));
         panelCari.add(ChkTanggal);
 
         TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2025" }));
@@ -1195,6 +1219,14 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
         }
     }//GEN-LAST:event_tbKamInKeyReleased
 
+    private void BtnIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnIn1ActionPerformed
+
+    private void BtnIn1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnIn1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnIn1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1218,6 +1250,7 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
     private widget.Button BtnCloseIn;
     private widget.Button BtnHapus;
     private widget.Button BtnIn;
+    private widget.Button BtnIn1;
     private widget.Button BtnKeluar;
     private widget.Button BtnOut;
     private widget.Button BtnPrint;
@@ -1246,6 +1279,7 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
     private widget.Label jLabel21;
     private widget.Label jLabel22;
     private widget.Label jLabel6;
+    private widget.Label jLabel7;
     private widget.TextBox jenis;
     private widget.Label label1;
     private widget.Label label10;
