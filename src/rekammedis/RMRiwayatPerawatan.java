@@ -5284,7 +5284,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                          "<tr height='").append(internalFrame2.getHeight()).append("px'>").append(
                                             "<td valign='top' align='center'>").append(w).append("</td>").append(
                                             "<td valign='top'>").append(rs2.getString("tgl_periksa")).append(" ").append(rs2.getString("jam")).append("</td>").append(
-                                            "<td valign='top' align='center'><a href='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/radiologi/").append(rs2.getString("lokasi_gambar")).append("'><img alt='Gambar Radiologi' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/radiologi/").append(rs2.getString("lokasi_gambar")).append("' width='99%'/></a></td>").append(
+                                            "<td valign='top' align='center'><a href='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/radiologi/").append(rs2.getString("lokasi_gambar")).append("'><img alt='Gambar Radiologi' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/radiologi/").append(rs2.getString("lokasi_gambar")).append("' width='450' height='450'/></a></td>").append(
                                          "</tr>"); 
                                     w++;
                                 }while(rs2.next());

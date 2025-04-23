@@ -399,11 +399,19 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.tabelKosong(tabMode);
             response = root.path("suplierinventaris");
             if(response.isArray()){
-                for(JsonNode list:response){
-                    if(list.path("KodeSupplier").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaSupplier").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kota").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                if(TCari.getText().trim().equals("")){
+                    for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
                             list.path("KodeSupplier").asText(),list.path("NamaSupplier").asText(),list.path("AlamatSupplier").asText(),list.path("Kota").asText(),list.path("NoTelp").asText(),list.path("NamaBank").asText(),list.path("NoRekening").asText()
                         });
+                    }
+                }else{
+                    for(JsonNode list:response){
+                        if(list.path("KodeSupplier").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaSupplier").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kota").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            tabMode.addRow(new Object[]{
+                                list.path("KodeSupplier").asText(),list.path("NamaSupplier").asText(),list.path("AlamatSupplier").asText(),list.path("Kota").asText(),list.path("NoTelp").asText(),list.path("NamaBank").asText(),list.path("NoRekening").asText()
+                            });
+                        }
                     }
                 }
             }
