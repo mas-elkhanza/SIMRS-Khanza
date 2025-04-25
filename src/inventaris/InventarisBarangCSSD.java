@@ -709,17 +709,21 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang,"+
-                    "inventaris_ruang.nama_ruang,cssd_barang.jenis_barang from inventaris inner join inventaris_barang "+
-                    "inner join inventaris_ruang inner join cssd_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
-                    "and inventaris.id_ruang=inventaris_ruang.id_ruang and inventaris.no_inventaris=cssd_barang.no_inventaris where "+
-                    "inventaris.no_inventaris like ? or inventaris_barang.nama_barang like ? or inventaris_ruang.nama_ruang like ? or "+
-                    "cssd_barang.jenis_barang like ? order by cssd_barang.jenis_barang");
+                    "select inventaris.no_inventaris,inventaris_barang.kode_barang,inventaris_barang.nama_barang,"+
+                    "inventaris_ruang.nama_ruang,cssd_barang.jenis_barang "+
+                    "from inventaris inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
+                    "inner join inventaris_ruang on inventaris.id_ruang=inventaris_ruang.id_ruang "+
+                    "inner join cssd_barang on inventaris.no_inventaris=cssd_barang.no_inventaris "+
+                    (TCari.getText().trim().equals("")?"":"where inventaris.no_inventaris like ? or "+
+                    "inventaris_barang.nama_barang like ? or inventaris_ruang.nama_ruang like ? or "+
+                    "cssd_barang.jenis_barang like ? ")+"order by cssd_barang.jenis_barang");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});

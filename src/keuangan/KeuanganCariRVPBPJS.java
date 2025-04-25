@@ -34,7 +34,6 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int row=0,i;
-    private String koderekening="";
     private Jurnal jur=new Jurnal();
     private String Piutang_BPJS_RVP="",Kerugian_Klaim_BPJS_RVP="",Lebih_Bayar_Klaim_BPJS_RVP="",Tindakan_Ralan="",Beban_Jasa_Medik_Dokter_Tindakan_Ralan="",
                    Utang_Jasa_Medik_Dokter_Tindakan_Ralan="",Beban_Jasa_Medik_Paramedis_Tindakan_Ralan="",Utang_Jasa_Medik_Paramedis_Tindakan_Ralan="",
@@ -869,7 +868,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                 sukses=false;
                             } 
                         }
-                        if(Sequel.menyimpantf("tampjurnal","'"+tabMode.getValueAt(i,82).toString()+"','Akun Bayar','0','"+tabMode.getValueAt(i,10).toString()+"'","kredit=kredit+'"+tabMode.getValueAt(i,82).toString()+"'","kd_rek='"+koderekening+"'")==false){
+                        if(Sequel.menyimpantf("tampjurnal","'"+tabMode.getValueAt(i,82).toString()+"','Akun Bayar','0','"+tabMode.getValueAt(i,10).toString()+"'","kredit=kredit+'"+tabMode.getValueAt(i,10).toString()+"'","kd_rek='"+tabMode.getValueAt(i,82).toString()+"'")==false){
                             sukses=false;
                         } 
                         if(sukses==true){
@@ -1971,10 +1970,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                                     }
                                 }
                                 
-                                if(Sequel.menyimpantf("tampjurnal","'"+tabMode.getValueAt(i,83).toString()+"','PIUTANG BPJS','"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,8).toString()))+"','0'","debet=debet+'"+((Valid.SetAngka(tabMode.getValueAt(i,11).toString())/100) *Valid.SetAngka(tabMode.getValueAt(i,8).toString()))+"'","kd_rek='"+tabMode.getValueAt(i,83).toString()+"'")==false){
+                                if(Sequel.menyimpantf("tampjurnal","'"+tabMode.getValueAt(i,83).toString()+"','PIUTANG BPJS','"+tabMode.getValueAt(i,10).toString()+"','0'","debet=debet+'"+tabMode.getValueAt(i,10).toString()+"'","kd_rek='"+tabMode.getValueAt(i,83).toString()+"'")==false){
                                     sukses=false;
                                 }     
-                                if(Sequel.menyimpantf("tampjurnal","'"+tabMode.getValueAt(i,82).toString()+"','Akun Bayar','0','"+tabMode.getValueAt(i,10).toString()+"'","kredit=kredit+'"+tabMode.getValueAt(i,82).toString()+"'","kd_rek='"+koderekening+"'")==false){
+                                if(Sequel.menyimpantf("tampjurnal","'"+tabMode.getValueAt(i,82).toString()+"','Akun Bayar','0','"+tabMode.getValueAt(i,10).toString()+"'","kredit=kredit+'"+tabMode.getValueAt(i,10).toString()+"'","kd_rek='"+tabMode.getValueAt(i,82).toString()+"'")==false){
                                     sukses=false;
                                 } 
                                 if(sukses==true){

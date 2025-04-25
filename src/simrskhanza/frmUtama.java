@@ -47437,7 +47437,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnCatatanPengkajianPaskaOperasi.addActionListener(this::btnCatatanPengkajianPaskaOperasiActionPerformed);
         
         btnSirkulasiInventarisCSSD = new widget.ButtonBig();
-        btnSirkulasiInventarisCSSD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5958343_disease_epidemic_infection_microscope virus_research_icon.png"))); 
+        btnSirkulasiInventarisCSSD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1360487125_system-restart-panel.png"))); 
         btnSirkulasiInventarisCSSD.setText("Sirkulasi CSSD");
         btnSirkulasiInventarisCSSD.setIconTextGap(0);
         btnSirkulasiInventarisCSSD.setName("btnSirkulasiInventarisCSSD");
