@@ -167,6 +167,7 @@ import rekammedis.RMSignOutSebelumMenutupLuka;
 import rekammedis.RMSkriningAdiksiNikotin;
 import rekammedis.RMSkriningAnemia;
 import rekammedis.RMSkriningDiabetesMelitus;
+import rekammedis.RMSkriningFrailtySyndrome;
 import rekammedis.RMSkriningHipertensi;
 import rekammedis.RMSkriningIndraPendengaran;
 import rekammedis.RMSkriningInstrumenSDQ;
@@ -10094,6 +10095,24 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnSkriningFrailtySyndromeActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMSkriningFrailtySyndrome form=new RMSkriningFrailtySyndrome(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.tampil();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -10452,7 +10471,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnChecklistPemberianFibrinolitik,BtnSkriningKankerKolorektal,BtnPenilaianPsikologKlinis,BtnPenilaianDerajatDehidrasi,BtnHasilPemeriksaanECHO,BtnPenilaianBayiBaruLahir,BtnSkriningDiabetesMelitus,
                           BtnLaporanTindakan,BtnPelaksanaanInformasiEdukasi,BtnLayananKedokteranFisikRehabilitasi,BtnSkriningKesehatanGigiMulutBalita,BtnSkriningAnemia,BtnSkriningHipertensi,BtnSkriningKesehatanPenglihatan,
                           BtnCatatanObservasiHemodialisa,BtnSkriningKesehatanGigiMulutDewasa,BtnSkriningRisikoKankerServiks,BtnCatatanCairanHemodialisa,BtnSkriningKesehatanGigiMulutLansia,BtnSkriningIndraPendengaran,
-                          BtnCatatanPengkajianPaskaOperasi;   
+                          BtnCatatanPengkajianPaskaOperasi,BtnSkriningFrailtySyndrome;   
     
     private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -11293,6 +11312,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnSkriningIndraPendengaran.setVisible(akses.getskrining_indra_pendengaran());   
         if(akses.getskrining_indra_pendengaran()==true){
+            tinggi=tinggi+24;
+        }
+        BtnSkriningFrailtySyndrome.setVisible(akses.getskrining_frailty_syndrome());   
+        if(akses.getskrining_frailty_syndrome()==true){
             tinggi=tinggi+24;
         }
         BtnSkriningTBC.setVisible(akses.getskrining_tbc());   
@@ -13120,6 +13143,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnSkriningIndraPendengaran.setRoundRect(false);
         BtnSkriningIndraPendengaran.addActionListener(this::BtnSkriningIndraPendengaranActionPerformed);
         
+        BtnSkriningFrailtySyndrome = new widget.Button();
+        BtnSkriningFrailtySyndrome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnSkriningFrailtySyndrome.setText("Skrining Frailty Syndrome");
+        BtnSkriningFrailtySyndrome.setFocusPainted(false);
+        BtnSkriningFrailtySyndrome.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnSkriningFrailtySyndrome.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnSkriningFrailtySyndrome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnSkriningFrailtySyndrome.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnSkriningFrailtySyndrome.setName("BtnSkriningFrailtySyndrome"); 
+        BtnSkriningFrailtySyndrome.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnSkriningFrailtySyndrome.setRoundRect(false);
+        BtnSkriningFrailtySyndrome.addActionListener(this::BtnSkriningFrailtySyndromeActionPerformed);
+        
         BtnSkriningTBC = new widget.Button();
         BtnSkriningTBC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
         BtnSkriningTBC.setText("Skrining TBC");
@@ -13389,6 +13425,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnSkriningHipertensi);
         FormMenu.add(BtnSkriningKesehatanPenglihatan);
         FormMenu.add(BtnSkriningIndraPendengaran);
+        FormMenu.add(BtnSkriningFrailtySyndrome);
         FormMenu.add(BtnSkriningNutrisiDewasa);
         FormMenu.add(BtnSkriningNutrisiLansia);
         FormMenu.add(BtnSkriningNutrisiAnak);

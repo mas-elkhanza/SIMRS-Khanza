@@ -322,6 +322,29 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal9 = new widget.CekBox();
         ChkTanggal10 = new widget.CekBox();
         ChkTanggal11 = new widget.CekBox();
+        jLabel82 = new widget.Label();
+        JenisKelamin2 = new widget.ComboBox();
+        NilaiJenisKelamin3 = new widget.TextBox();
+        jLabel83 = new widget.Label();
+        jLabel84 = new widget.Label();
+        jLabel86 = new widget.Label();
+        jLabel87 = new widget.Label();
+        jLabel88 = new widget.Label();
+        jSeparator35 = new javax.swing.JSeparator();
+        jLabel89 = new widget.Label();
+        jSeparator36 = new javax.swing.JSeparator();
+        jSeparator37 = new javax.swing.JSeparator();
+        jLabel95 = new widget.Label();
+        jSeparator38 = new javax.swing.JSeparator();
+        jLabel85 = new widget.Label();
+        jLabel90 = new widget.Label();
+        jLabel91 = new widget.Label();
+        jLabel96 = new widget.Label();
+        jLabel97 = new widget.Label();
+        jLabel98 = new widget.Label();
+        JenisKelamin3 = new widget.ComboBox();
+        jLabel100 = new widget.Label();
+        NilaiJenisKelamin4 = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -519,7 +542,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -533,7 +556,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -594,7 +617,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 436));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 500));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -654,7 +677,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-04-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-04-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -773,36 +796,36 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             }
         });
         FormInput.add(JenisKelamin);
-        JenisKelamin.setBounds(615, 95, 80, 23);
+        JenisKelamin.setBounds(615, 105, 80, 23);
 
         jLabel92.setText("Nilai :");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(690, 95, 50, 23);
+        jLabel92.setBounds(690, 105, 50, 23);
 
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(670, 380, 70, 23);
+        jLabel73.setBounds(670, 445, 70, 23);
 
         TotalHasil.setEditable(false);
         TotalHasil.setText("0");
         TotalHasil.setFocusTraversalPolicyProvider(true);
         TotalHasil.setName("TotalHasil"); // NOI18N
         FormInput.add(TotalHasil);
-        TotalHasil.setBounds(744, 380, 45, 23);
+        TotalHasil.setBounds(744, 445, 45, 23);
 
         NilaiJenisKelamin.setEditable(false);
         NilaiJenisKelamin.setText("0");
         NilaiJenisKelamin.setFocusTraversalPolicyProvider(true);
         NilaiJenisKelamin.setName("NilaiJenisKelamin"); // NOI18N
         FormInput.add(NilaiJenisKelamin);
-        NilaiJenisKelamin.setBounds(744, 95, 45, 23);
+        NilaiJenisKelamin.setBounds(744, 105, 45, 23);
 
         jLabel148.setText("Hasil Skrining :");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
-        jLabel148.setBounds(436, 380, 90, 23);
+        jLabel148.setBounds(436, 445, 90, 23);
 
         HasilSkrining.setEditable(false);
         HasilSkrining.setFocusTraversalPolicyProvider(true);
@@ -813,7 +836,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             }
         });
         FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(530, 380, 120, 23);
+        HasilSkrining.setBounds(530, 445, 120, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -832,31 +855,31 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         jLabel75.setText("1.");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(44, 95, 20, 23);
+        jLabel75.setBounds(44, 90, 20, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 360, 807, 1);
+        jSeparator3.setBounds(0, 415, 807, 1);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("II. INTERPRETASI");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(10, 360, 200, 23);
+        jLabel101.setBounds(10, 415, 200, 23);
 
         jLabel149.setText(":");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(0, 380, 107, 23);
+        jLabel149.setBounds(0, 445, 107, 23);
 
         jLabel150.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel150.setText("Keterangan");
         jLabel150.setName("jLabel150"); // NOI18N
         FormInput.add(jLabel150);
-        jLabel150.setBounds(44, 380, 90, 23);
+        jLabel150.setBounds(44, 445, 90, 23);
 
         Keterangan.setFocusTraversalPolicyProvider(true);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -866,31 +889,33 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(111, 380, 310, 23);
+        Keterangan.setBounds(111, 445, 310, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel77.setText("R = Resistensi. Dengan usaha sendiri tanpa bantuan alat berjalan, apakah Anda mengalami kesulitan ");
+        jLabel77.setText("R = Resistensi");
+        jLabel77.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel77.setName("jLabel77"); // NOI18N
         FormInput.add(jLabel77);
-        jLabel77.setBounds(57, 89, 540, 23);
+        jLabel77.setBounds(57, 90, 100, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("untuk naik 10 anak tangga dan tanpa istirahat diantaranya ?  ");
+        jLabel78.setText("Dengan usaha sendiri tanpa bantuan alat berjalan, apakah Anda mengalami kesulitan untuk ");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(57, 101, 450, 23);
+        jLabel78.setBounds(57, 105, 530, 23);
 
         jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel76.setText("2.");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(44, 125, 20, 23);
+        jLabel76.setBounds(44, 145, 20, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel79.setText("A = Aktivitas 1. Seberapa sering dalam 4 minggu Anda merasa kelelahan ?");
+        jLabel79.setText("A = Aktivitas 1");
+        jLabel79.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
-        jLabel79.setBounds(57, 125, 450, 23);
+        jLabel79.setBounds(57, 145, 140, 23);
 
         JenisKelamin1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sepanjang Waktu", "Sebagian Besar Waktu", "Kadang-kadang", "Jarang" }));
         JenisKelamin1.setName("JenisKelamin1"); // NOI18N
@@ -905,43 +930,44 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             }
         });
         FormInput.add(JenisKelamin1);
-        JenisKelamin1.setBounds(535, 125, 160, 23);
+        JenisKelamin1.setBounds(535, 160, 160, 23);
 
         jLabel93.setText("Nilai :");
         jLabel93.setName("jLabel93"); // NOI18N
         FormInput.add(jLabel93);
-        jLabel93.setBounds(690, 125, 50, 23);
+        jLabel93.setBounds(690, 160, 50, 23);
 
         NilaiJenisKelamin1.setEditable(false);
         NilaiJenisKelamin1.setText("0");
         NilaiJenisKelamin1.setFocusTraversalPolicyProvider(true);
         NilaiJenisKelamin1.setName("NilaiJenisKelamin1"); // NOI18N
         FormInput.add(NilaiJenisKelamin1);
-        NilaiJenisKelamin1.setBounds(744, 125, 45, 23);
+        NilaiJenisKelamin1.setBounds(744, 160, 45, 23);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel80.setText("3.");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
-        jLabel80.setBounds(44, 154, 20, 57);
+        jLabel80.setBounds(44, 190, 20, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("P = Penyakit lebih dari 5. Apakah dokter pernah mengatakan kepada Anda tentang penyakit Anda (11 penyakit utama) ?");
+        jLabel81.setText("P = Penyakit Lebih Dari 5");
+        jLabel81.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel81.setName("jLabel81"); // NOI18N
         FormInput.add(jLabel81);
-        jLabel81.setBounds(57, 154, 640, 23);
+        jLabel81.setBounds(57, 190, 160, 23);
 
         jLabel94.setText("Nilai :");
         jLabel94.setName("jLabel94"); // NOI18N
         FormInput.add(jLabel94);
-        jLabel94.setBounds(690, 169, 50, 23);
+        jLabel94.setBounds(690, 210, 50, 23);
 
         NilaiJenisKelamin2.setEditable(false);
         NilaiJenisKelamin2.setText("0");
         NilaiJenisKelamin2.setFocusTraversalPolicyProvider(true);
         NilaiJenisKelamin2.setName("NilaiJenisKelamin2"); // NOI18N
         FormInput.add(NilaiJenisKelamin2);
-        NilaiJenisKelamin2.setBounds(744, 169, 45, 23);
+        NilaiJenisKelamin2.setBounds(744, 210, 50, 23);
 
         ChkTanggal.setText("Tidak Pernah");
         ChkTanggal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -949,7 +975,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal.setName("ChkTanggal"); // NOI18N
         ChkTanggal.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal);
-        ChkTanggal.setBounds(57, 169, 95, 23);
+        ChkTanggal.setBounds(57, 223, 95, 23);
 
         ChkTanggal1.setText("Diabetes");
         ChkTanggal1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -957,7 +983,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal1.setName("ChkTanggal1"); // NOI18N
         ChkTanggal1.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal1);
-        ChkTanggal1.setBounds(157, 169, 73, 23);
+        ChkTanggal1.setBounds(612, 243, 73, 23);
 
         ChkTanggal2.setText("Kanker (Selain Kanker Kulit Kecil)");
         ChkTanggal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -965,7 +991,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal2.setName("ChkTanggal2"); // NOI18N
         ChkTanggal2.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal2);
-        ChkTanggal2.setBounds(235, 169, 190, 23);
+        ChkTanggal2.setBounds(155, 223, 190, 23);
 
         ChkTanggal3.setText("Hipertensi");
         ChkTanggal3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -973,7 +999,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal3.setName("ChkTanggal3"); // NOI18N
         ChkTanggal3.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal3);
-        ChkTanggal3.setBounds(430, 169, 80, 23);
+        ChkTanggal3.setBounds(529, 243, 80, 23);
 
         ChkTanggal4.setText("Penyakit Paru Kronis");
         ChkTanggal4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -981,7 +1007,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal4.setName("ChkTanggal4"); // NOI18N
         ChkTanggal4.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal4);
-        ChkTanggal4.setBounds(552, 188, 130, 23);
+        ChkTanggal4.setBounds(396, 243, 130, 23);
 
         ChkTanggal5.setText("Serangan Jantung");
         ChkTanggal5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -989,7 +1015,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal5.setName("ChkTanggal5"); // NOI18N
         ChkTanggal5.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal5);
-        ChkTanggal5.setBounds(57, 188, 120, 23);
+        ChkTanggal5.setBounds(57, 243, 120, 23);
 
         ChkTanggal6.setText("Gagal Jantung Kongestif");
         ChkTanggal6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -997,7 +1023,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal6.setName("ChkTanggal6"); // NOI18N
         ChkTanggal6.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal6);
-        ChkTanggal6.setBounds(182, 188, 150, 23);
+        ChkTanggal6.setBounds(348, 223, 150, 23);
 
         ChkTanggal7.setText("Nyeri Dada");
         ChkTanggal7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1005,7 +1031,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal7.setName("ChkTanggal7"); // NOI18N
         ChkTanggal7.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal7);
-        ChkTanggal7.setBounds(622, 169, 84, 23);
+        ChkTanggal7.setBounds(604, 223, 84, 23);
 
         ChkTanggal8.setText("Asma");
         ChkTanggal8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1013,7 +1039,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal8.setName("ChkTanggal8"); // NOI18N
         ChkTanggal8.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal8);
-        ChkTanggal8.setBounds(402, 188, 56, 23);
+        ChkTanggal8.setBounds(245, 243, 59, 23);
 
         ChkTanggal9.setText("Nyeri Sendi");
         ChkTanggal9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1021,7 +1047,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal9.setName("ChkTanggal9"); // NOI18N
         ChkTanggal9.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal9);
-        ChkTanggal9.setBounds(463, 188, 84, 23);
+        ChkTanggal9.setBounds(307, 243, 86, 23);
 
         ChkTanggal10.setText("Penyakit Ginjal");
         ChkTanggal10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1029,7 +1055,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal10.setName("ChkTanggal10"); // NOI18N
         ChkTanggal10.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal10);
-        ChkTanggal10.setBounds(516, 169, 100, 23);
+        ChkTanggal10.setBounds(501, 223, 100, 23);
 
         ChkTanggal11.setText("Stroke");
         ChkTanggal11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1037,7 +1063,171 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkTanggal11.setName("ChkTanggal11"); // NOI18N
         ChkTanggal11.setPreferredSize(new java.awt.Dimension(100, 23));
         FormInput.add(ChkTanggal11);
-        ChkTanggal11.setBounds(337, 188, 60, 23);
+        ChkTanggal11.setBounds(180, 243, 62, 23);
+
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel82.setText("4.");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(44, 270, 20, 23);
+
+        JenisKelamin2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JenisKelamin2.setName("JenisKelamin2"); // NOI18N
+        JenisKelamin2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JenisKelamin2ItemStateChanged(evt);
+            }
+        });
+        JenisKelamin2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JenisKelamin2KeyPressed(evt);
+            }
+        });
+        FormInput.add(JenisKelamin2);
+        JenisKelamin2.setBounds(615, 285, 80, 23);
+
+        NilaiJenisKelamin3.setEditable(false);
+        NilaiJenisKelamin3.setText("0");
+        NilaiJenisKelamin3.setFocusTraversalPolicyProvider(true);
+        NilaiJenisKelamin3.setName("NilaiJenisKelamin3"); // NOI18N
+        FormInput.add(NilaiJenisKelamin3);
+        NilaiJenisKelamin3.setBounds(744, 285, 45, 23);
+
+        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel83.setText("U = Usaha Berjalan");
+        jLabel83.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel83.setName("jLabel83"); // NOI18N
+        FormInput.add(jLabel83);
+        jLabel83.setBounds(57, 270, 130, 23);
+
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel84.setText("kira-kira sejauh 100 sampai 200 meter ?");
+        jLabel84.setName("jLabel84"); // NOI18N
+        FormInput.add(jLabel84);
+        jLabel84.setBounds(57, 300, 450, 23);
+
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel86.setText("Seberapa sering dalam 4 minggu Anda merasa kelelahan ?");
+        jLabel86.setName("jLabel86"); // NOI18N
+        FormInput.add(jLabel86);
+        jLabel86.setBounds(57, 160, 360, 23);
+
+        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel87.setText("Apakah dokter pernah mengatakan kepada Anda tentang penyakit Anda (11 penyakit utama) ?");
+        jLabel87.setName("jLabel87"); // NOI18N
+        FormInput.add(jLabel87);
+        jLabel87.setBounds(57, 205, 490, 23);
+
+        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel88.setText("Dengan usaha sendiri tanpa bantuan alat berjalan, apakah Anda mengalami kesulitan berjalan");
+        jLabel88.setName("jLabel88"); // NOI18N
+        FormInput.add(jLabel88);
+        jLabel88.setBounds(57, 285, 540, 23);
+
+        jSeparator35.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator35.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator35.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator35.setName("jSeparator35"); // NOI18N
+        FormInput.add(jSeparator35);
+        jSeparator35.setBounds(44, 145, 745, 1);
+
+        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel89.setText("naik 10 anak tangga dan tanpa istirahat diantaranya ? ");
+        jLabel89.setName("jLabel89"); // NOI18N
+        FormInput.add(jLabel89);
+        jLabel89.setBounds(57, 120, 530, 23);
+
+        jSeparator36.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator36.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator36.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator36.setName("jSeparator36"); // NOI18N
+        FormInput.add(jSeparator36);
+        jSeparator36.setBounds(44, 190, 745, 1);
+
+        jSeparator37.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator37.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator37.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator37.setName("jSeparator37"); // NOI18N
+        FormInput.add(jSeparator37);
+        jSeparator37.setBounds(44, 270, 745, 1);
+
+        jLabel95.setText("Nilai :");
+        jLabel95.setName("jLabel95"); // NOI18N
+        FormInput.add(jLabel95);
+        jLabel95.setBounds(690, 285, 50, 23);
+
+        jSeparator38.setBackground(new java.awt.Color(239, 244, 234));
+        jSeparator38.setForeground(new java.awt.Color(239, 244, 234));
+        jSeparator38.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
+        jSeparator38.setName("jSeparator38"); // NOI18N
+        FormInput.add(jSeparator38);
+        jSeparator38.setBounds(44, 325, 745, 1);
+
+        jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel85.setText("5.");
+        jLabel85.setName("jLabel85"); // NOI18N
+        FormInput.add(jLabel85);
+        jLabel85.setBounds(44, 325, 20, 23);
+
+        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel90.setText("H = Hilangnya Berat Badan");
+        jLabel90.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(57, 325, 240, 23);
+
+        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel91.setText("- Berapa berat badan Anda dengan mengenakan baju tanpa alas kaki saat ini ?");
+        jLabel91.setName("jLabel91"); // NOI18N
+        FormInput.add(jLabel91);
+        jLabel91.setBounds(57, 340, 540, 23);
+
+        jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel96.setText("- Satu tahun yang lalu, berapa berat badan Anda dengan mengenakan baju tanpa alas kaki ?");
+        jLabel96.setName("jLabel96"); // NOI18N
+        FormInput.add(jLabel96);
+        jLabel96.setBounds(57, 355, 540, 23);
+
+        jLabel97.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel97.setText("Keterangan perhitungan berat badan dalam persen : [(berat badan 1 tahun yang lalu - berat badan sekarang)/ ");
+        jLabel97.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel97.setName("jLabel97"); // NOI18N
+        FormInput.add(jLabel97);
+        jLabel97.setBounds(57, 370, 670, 23);
+
+        jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel98.setText("berat badan satu tahun lalu)] x 100 %");
+        jLabel98.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
+        jLabel98.setName("jLabel98"); // NOI18N
+        FormInput.add(jLabel98);
+        jLabel98.setBounds(57, 385, 670, 23);
+
+        JenisKelamin3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">= 5%", "< 5%" }));
+        JenisKelamin3.setName("JenisKelamin3"); // NOI18N
+        JenisKelamin3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JenisKelamin3ItemStateChanged(evt);
+            }
+        });
+        JenisKelamin3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JenisKelamin3KeyPressed(evt);
+            }
+        });
+        FormInput.add(JenisKelamin3);
+        JenisKelamin3.setBounds(605, 340, 90, 23);
+
+        jLabel100.setText("Nilai :");
+        jLabel100.setName("jLabel100"); // NOI18N
+        FormInput.add(jLabel100);
+        jLabel100.setBounds(690, 340, 50, 23);
+
+        NilaiJenisKelamin4.setEditable(false);
+        NilaiJenisKelamin4.setText("0");
+        NilaiJenisKelamin4.setFocusTraversalPolicyProvider(true);
+        NilaiJenisKelamin4.setName("NilaiJenisKelamin4"); // NOI18N
+        FormInput.add(NilaiJenisKelamin4);
+        NilaiJenisKelamin4.setBounds(744, 340, 45, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1449,6 +1639,22 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_JenisKelamin1KeyPressed
 
+    private void JenisKelamin2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisKelamin2ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JenisKelamin2ItemStateChanged
+
+    private void JenisKelamin2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisKelamin2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JenisKelamin2KeyPressed
+
+    private void JenisKelamin3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JenisKelamin3ItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JenisKelamin3ItemStateChanged
+
+    private void JenisKelamin3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisKelamin3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JenisKelamin3KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1496,6 +1702,8 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private widget.ComboBox Jam;
     private widget.ComboBox JenisKelamin;
     private widget.ComboBox JenisKelamin1;
+    private widget.ComboBox JenisKelamin2;
+    private widget.ComboBox JenisKelamin3;
     private widget.TextBox KdPetugas;
     private widget.TextBox Keterangan;
     private widget.Label LCount;
@@ -1505,6 +1713,8 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private widget.TextBox NilaiJenisKelamin;
     private widget.TextBox NilaiJenisKelamin1;
     private widget.TextBox NilaiJenisKelamin2;
+    private widget.TextBox NilaiJenisKelamin3;
+    private widget.TextBox NilaiJenisKelamin4;
     private widget.TextBox NmPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -1520,6 +1730,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private widget.Button btnPetugas;
     private javax.swing.ButtonGroup buttonGroup1;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel100;
     private widget.Label jLabel101;
     private widget.Label jLabel148;
     private widget.Label jLabel149;
@@ -1540,14 +1751,32 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private widget.Label jLabel80;
     private widget.Label jLabel81;
+    private widget.Label jLabel82;
+    private widget.Label jLabel83;
+    private widget.Label jLabel84;
+    private widget.Label jLabel85;
+    private widget.Label jLabel86;
+    private widget.Label jLabel87;
+    private widget.Label jLabel88;
+    private widget.Label jLabel89;
+    private widget.Label jLabel90;
+    private widget.Label jLabel91;
     private widget.Label jLabel92;
     private widget.Label jLabel93;
     private widget.Label jLabel94;
+    private widget.Label jLabel95;
+    private widget.Label jLabel96;
+    private widget.Label jLabel97;
+    private widget.Label jLabel98;
     private widget.Label jLabel99;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator35;
+    private javax.swing.JSeparator jSeparator36;
+    private javax.swing.JSeparator jSeparator37;
+    private javax.swing.JSeparator jSeparator38;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
@@ -1704,7 +1933,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>608){
+            if(internalFrame1.getHeight()>672){
                 ChkInput.setVisible(false);
                 PanelInput.setPreferredSize(new Dimension(WIDTH,436));
                 FormInput.setVisible(true);      

@@ -1269,45 +1269,26 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
             if(!InventarisCari.getText().equals("")){
                 inventariscari="inventaris_barang.nama_barang='"+InventarisCari.getText()+"' and ";
             }
-            System.out.println("select inventaris_peminjaman.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
-                       "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,inventaris_kategori.nama_kategori,"+
-                       "inventaris_jenis.nama_jenis,inventaris_peminjaman.peminjam,inventaris_peminjaman.tlp,inventaris_peminjaman.tgl_pinjam,"+
-                       "inventaris_peminjaman.tgl_kembali,petugas.nama "+
-                       "from inventaris_peminjaman inner join inventaris on inventaris_peminjaman.no_inventaris=inventaris.no_inventaris "+
-                       "inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
-                       "inner join inventaris_produsen on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen "+
-                       "inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
-                       "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
-                       "inner join inventaris_jenis on inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
-                       "inner join petugas on petugas.nip=inventaris_peminjaman.nip where "+
-                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' "+tglcari+
-                       (TCari.getText().trim().equals("")?"":" and (inventaris_peminjaman.no_inventaris like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' or inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' or inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' or inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' or inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_peminjaman.peminjam like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_peminjaman.tlp like '%"+TCari.getText().trim()+"%') ")+" order by inventaris_peminjaman.tgl_pinjam");
             ps=koneksi.prepareStatement(
-                    "select inventaris_peminjaman.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
-                       "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,inventaris_kategori.nama_kategori,"+
-                       "inventaris_jenis.nama_jenis,inventaris_peminjaman.peminjam,inventaris_peminjaman.tlp,inventaris_peminjaman.tgl_pinjam,"+
-                       "inventaris_peminjaman.tgl_kembali,petugas.nama "+
-                       "from inventaris_peminjaman inner join inventaris on inventaris_peminjaman.no_inventaris=inventaris.no_inventaris "+
-                       "inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
-                       "inner join inventaris_produsen on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen "+
-                       "inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
-                       "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
-                       "inner join inventaris_jenis on inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
-                       "inner join petugas on petugas.nip=inventaris_peminjaman.nip where "+
-                       inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' "+tglcari+
-                       (TCari.getText().trim().equals("")?"":" and (inventaris_peminjaman.no_inventaris like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' or inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' or inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' or inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' or inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_peminjaman.peminjam like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                       "inventaris_peminjaman.tlp like '%"+TCari.getText().trim()+"%') ")+" order by inventaris_peminjaman.tgl_pinjam");
+                   "select inventaris_peminjaman.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
+                   "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,inventaris_kategori.nama_kategori,"+
+                   "inventaris_jenis.nama_jenis,inventaris_peminjaman.peminjam,inventaris_peminjaman.tlp,inventaris_peminjaman.tgl_pinjam,"+
+                   "inventaris_peminjaman.tgl_kembali,petugas.nama "+
+                   "from inventaris_peminjaman inner join inventaris on inventaris_peminjaman.no_inventaris=inventaris.no_inventaris "+
+                   "inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
+                   "inner join inventaris_produsen on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen "+
+                   "inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
+                   "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
+                   "inner join inventaris_jenis on inventaris_barang.id_jenis=inventaris_jenis.id_jenis "+
+                   "inner join petugas on petugas.nip=inventaris_peminjaman.nip where "+
+                   inventariscari+" inventaris_peminjaman.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' "+tglcari+
+                   (TCari.getText().trim().equals("")?"":" and (inventaris_peminjaman.no_inventaris like '%"+TCari.getText().trim()+"%' or "+
+                   "inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' or inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' or "+
+                   "inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' or inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' or "+
+                   "inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' or inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' or "+
+                   "inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' or inventaris_jenis.nama_jenis like '%"+TCari.getText().trim()+"%' or "+
+                   "inventaris_peminjaman.peminjam like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                   "inventaris_peminjaman.tlp like '%"+TCari.getText().trim()+"%') ")+" order by inventaris_peminjaman.tgl_pinjam");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
