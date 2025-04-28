@@ -1716,7 +1716,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penjab on reg_periksa.kd_pj=penjab.kd_pj  "+
                     "inner join dokter as dokterkonsul on konsultasi_medik.kd_dokter=dokterkonsul.kd_dokter "+
                     "inner join dokter as dokterdikonsuli on konsultasi_medik.kd_dokter_dikonsuli=dokterdikonsuli.kd_dokter "+
-                    "where "+sql+"konsultasi_medik.no_permintaan not in (select DISTINCT jawaban_konsultasi_medik.no_permintaan from jawaban_konsultasi_medik) "+
+                    "where "+sql+"konsultasi_medik.no_permintaan not in (select jawaban_konsultasi_medik.no_permintaan from jawaban_konsultasi_medik) "+
                     (TCari.getText().equals("")?"":"and (konsultasi_medik.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? "+
                     "or penjab.png_jawab like ? or konsultasi_medik.no_permintaan like ? or konsultasi_medik.jenis_permintaan like ?)")+" order by konsultasi_medik.tanggal");
                 try {

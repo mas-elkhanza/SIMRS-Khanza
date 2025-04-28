@@ -1176,20 +1176,48 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            inventariscari="";
-            tglcari="";
-            ps=koneksi.prepareStatement(
-                   "select inventaris_ambil_cssd.no_sirkulasi,inventaris_ambil_cssd.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
-                   "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,cssd_barang.jenis_barang,inventaris_ambil_cssd.keterangan_ambil,inventaris_ambil_cssd.tgl_ambil,"+
-                   "inventaris_ambil_cssd.nip,petugas.nama "+
-                   "from inventaris_ambil_cssd inner join cssd_barang on inventaris_ambil_cssd.no_inventaris=cssd_barang.no_inventaris "+
-                   "inner join inventaris on cssd_barang.no_inventaris=inventaris.no_inventaris "+
-                   "inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
-                   "inner join inventaris_produsen on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen "+
-                   "inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
-                   "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
-                   "inner join petugas on petugas.nip=inventaris_ambil_cssd.nip order by inventaris_ambil_cssd.tgl_ambil");
+            if(R1.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                       "select inventaris_ambil_cssd.no_sirkulasi,inventaris_ambil_cssd.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
+                       "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,cssd_barang.jenis_barang,inventaris_ambil_cssd.keterangan_ambil,inventaris_ambil_cssd.tgl_ambil,"+
+                       "inventaris_ambil_cssd.nip,petugas.nama from inventaris_ambil_cssd inner join cssd_barang on inventaris_ambil_cssd.no_inventaris=cssd_barang.no_inventaris "+
+                       "inner join inventaris on cssd_barang.no_inventaris=inventaris.no_inventaris inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
+                       "inner join inventaris_produsen on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
+                       "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori inner join petugas on petugas.nip=inventaris_ambil_cssd.nip "+
+                       "where inventaris_ambil_cssd.no_sirkulasi not in (select inventaris_kembali_cssd.no_sirkulasi from inventaris_kembali_cssd) "+
+                       (TCari.getText().trim().equals("")?"":" and (inventaris_ambil_cssd.no_sirkulasi like ? or inventaris_ambil_cssd.no_inventaris like ? or "+
+                       "inventaris.kode_barang like ? or inventaris_barang.nama_barang like ?) ")+"order by inventaris_ambil_cssd.tgl_ambil");
+            }else if(R2.isSelected()==true){
+                ps=koneksi.prepareStatement(
+                       "select inventaris_ambil_cssd.no_sirkulasi,inventaris_ambil_cssd.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
+                       "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,cssd_barang.jenis_barang,inventaris_ambil_cssd.keterangan_ambil,inventaris_ambil_cssd.tgl_ambil,"+
+                       "inventaris_ambil_cssd.nip,petugas.nama from inventaris_ambil_cssd inner join cssd_barang on inventaris_ambil_cssd.no_inventaris=cssd_barang.no_inventaris "+
+                       "inner join inventaris on cssd_barang.no_inventaris=inventaris.no_inventaris inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
+                       "inner join inventaris_produsen on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
+                       "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori inner join petugas on petugas.nip=inventaris_ambil_cssd.nip "+
+                       "where inventaris_ambil_cssd.tgl_ambil between ? and ? "+
+                       (TCari.getText().trim().equals("")?"":" and (inventaris_ambil_cssd.no_sirkulasi like ? or inventaris_ambil_cssd.no_inventaris like ? or "+
+                       "inventaris.kode_barang like ? or inventaris_barang.nama_barang like ?) ")+"order by inventaris_ambil_cssd.tgl_ambil");
+            }
+                
             try {
+                if(R1.isSelected()==true){
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(1,"%"+TCari.getText().trim()+"%");
+                        ps.setString(2,"%"+TCari.getText().trim()+"%");
+                        ps.setString(3,"%"+TCari.getText().trim()+"%");
+                        ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    }
+                }else if(R2.isSelected()==true){
+                    ps.setString(1,Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+" 00:00:00");
+                    ps.setString(2,Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+" 23:59:59");
+                    if(!TCari.getText().trim().equals("")){
+                        ps.setString(3,"%"+TCari.getText().trim()+"%");
+                        ps.setString(4,"%"+TCari.getText().trim()+"%");
+                        ps.setString(5,"%"+TCari.getText().trim()+"%");
+                        ps.setString(6,"%"+TCari.getText().trim()+"%");
+                    }
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{

@@ -349,7 +349,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="26-04-2025"/>
+                        <StringItem index="0" value="29-04-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -377,7 +377,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="26-04-2025"/>
+                        <StringItem index="0" value="29-04-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -451,7 +451,7 @@
             <Property name="name" type="java.lang.String" value="PanelInput" noResource="true"/>
             <Property name="opaque" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[192, 500]"/>
+              <Dimension value="[192, 490]"/>
             </Property>
           </Properties>
           <Constraints>
@@ -585,7 +585,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="26-04-2025"/>
+                            <StringItem index="0" value="29-04-2025"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -920,19 +920,19 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="JenisKelamin">
+                    <Component class="widget.ComboBox" name="Resistensi">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
-                            <StringItem index="0" value="Ya"/>
-                            <StringItem index="1" value="Tidak"/>
+                            <StringItem index="0" value="Tidak"/>
+                            <StringItem index="1" value="Ya"/>
                           </StringArray>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="JenisKelamin" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Resistensi" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JenisKelaminItemStateChanged"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JenisKelaminKeyPressed"/>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="ResistensiItemStateChanged"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ResistensiKeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -958,7 +958,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="670" y="445" width="70" height="23"/>
+                          <AbsoluteConstraints x="670" y="435" width="70" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -971,16 +971,16 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="744" y="445" width="45" height="23"/>
+                          <AbsoluteConstraints x="744" y="435" width="45" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="NilaiJenisKelamin">
+                    <Component class="widget.TextBox" name="NilaiResistensi">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="NilaiJenisKelamin" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="NilaiResistensi" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -995,7 +995,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="436" y="445" width="90" height="23"/>
+                          <AbsoluteConstraints x="436" y="435" width="90" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1010,7 +1010,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="530" y="445" width="120" height="23"/>
+                          <AbsoluteConstraints x="530" y="435" width="120" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1103,7 +1103,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="0" y="445" width="107" height="23"/>
+                          <AbsoluteConstraints x="0" y="435" width="107" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1115,7 +1115,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="44" y="445" width="90" height="23"/>
+                          <AbsoluteConstraints x="44" y="435" width="90" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1129,7 +1129,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="111" y="445" width="310" height="23"/>
+                          <AbsoluteConstraints x="111" y="435" width="310" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1187,21 +1187,21 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="JenisKelamin1">
+                    <Component class="widget.ComboBox" name="Aktivitas">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
-                            <StringItem index="0" value="Sepanjang Waktu"/>
-                            <StringItem index="1" value="Sebagian Besar Waktu"/>
-                            <StringItem index="2" value="Kadang-kadang"/>
-                            <StringItem index="3" value="Jarang"/>
+                            <StringItem index="0" value="Jarang"/>
+                            <StringItem index="1" value="Kadang-kadang"/>
+                            <StringItem index="2" value="Sebagian Besar Waktu"/>
+                            <StringItem index="3" value="Sepanjang Waktu"/>
                           </StringArray>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="JenisKelamin1" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Aktivitas" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JenisKelamin1ItemStateChanged"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JenisKelamin1KeyPressed"/>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="AktivitasItemStateChanged"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AktivitasKeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1220,12 +1220,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="NilaiJenisKelamin1">
+                    <Component class="widget.TextBox" name="NilaiAktivitas">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="NilaiJenisKelamin1" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="NilaiAktivitas" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1271,12 +1271,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="NilaiJenisKelamin2">
+                    <Component class="widget.TextBox" name="NilaiPenyakit">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="NilaiJenisKelamin2" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="NilaiPenyakit" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1284,28 +1284,31 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal">
+                    <Component class="widget.CekBox" name="ChkTidakPernah">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Tidak Pernah"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkTidakPernah" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ChkTidakPernahActionPerformed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="57" y="223" width="95" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal1">
+                    <Component class="widget.CekBox" name="ChkDiabetes">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Diabetes"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal1" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkDiabetes" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1316,12 +1319,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal2">
+                    <Component class="widget.CekBox" name="ChkKanker">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Kanker (Selain Kanker Kulit Kecil)"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal2" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkKanker" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1332,12 +1335,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal3">
+                    <Component class="widget.CekBox" name="ChkHipertensi">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Hipertensi"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal3" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkHipertensi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1348,12 +1351,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal4">
+                    <Component class="widget.CekBox" name="ChkPenyakitKronis">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Penyakit Paru Kronis"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal4" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkPenyakitKronis" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1364,12 +1367,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal5">
+                    <Component class="widget.CekBox" name="ChkSeranganJantung">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Serangan Jantung"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal5" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkSeranganJantung" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1380,12 +1383,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal6">
+                    <Component class="widget.CekBox" name="ChkGagalJantung">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Gagal Jantung Kongestif"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal6" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkGagalJantung" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1396,12 +1399,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal7">
+                    <Component class="widget.CekBox" name="ChkNyeriDada">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Nyeri Dada"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal7" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkNyeriDada" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1412,12 +1415,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal8">
+                    <Component class="widget.CekBox" name="ChkAsma">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Asma"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal8" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkAsma" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1428,12 +1431,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal9">
+                    <Component class="widget.CekBox" name="ChkNyeriSendi">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Nyeri Sendi"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal9" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkNyeriSendi" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1444,12 +1447,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal10">
+                    <Component class="widget.CekBox" name="ChkPenyakitGinjal">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Penyakit Ginjal"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal10" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkPenyakitGinjal" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1460,12 +1463,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.CekBox" name="ChkTanggal11">
+                    <Component class="widget.CekBox" name="ChkStroke">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Stroke"/>
                         <Property name="horizontalAlignment" type="int" value="2"/>
                         <Property name="horizontalTextPosition" type="int" value="4"/>
-                        <Property name="name" type="java.lang.String" value="ChkTanggal11" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="ChkStroke" noResource="true"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 23]"/>
                         </Property>
@@ -1488,7 +1491,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="JenisKelamin2">
+                    <Component class="widget.ComboBox" name="UsahaBerjalan">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1496,11 +1499,11 @@
                             <StringItem index="1" value="Tidak"/>
                           </StringArray>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="JenisKelamin2" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="UsahaBerjalan" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JenisKelamin2ItemStateChanged"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JenisKelamin2KeyPressed"/>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="UsahaBerjalanItemStateChanged"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="UsahaBerjalanKeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1508,12 +1511,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="NilaiJenisKelamin3">
+                    <Component class="widget.TextBox" name="NilaiUsahaBerjalan">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="NilaiJenisKelamin3" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="NilaiUsahaBerjalan" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1780,19 +1783,19 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="JenisKelamin3">
+                    <Component class="widget.ComboBox" name="BeratBadan">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
-                            <StringItem index="0" value="&gt;= 5%"/>
-                            <StringItem index="1" value="&lt; 5%"/>
+                            <StringItem index="0" value="&lt; 5%"/>
+                            <StringItem index="1" value="&gt;= 5%"/>
                           </StringArray>
                         </Property>
-                        <Property name="name" type="java.lang.String" value="JenisKelamin3" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="BeratBadan" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JenisKelamin3ItemStateChanged"/>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JenisKelamin3KeyPressed"/>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="BeratBadanItemStateChanged"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BeratBadanKeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1811,12 +1814,12 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.TextBox" name="NilaiJenisKelamin4">
+                    <Component class="widget.TextBox" name="NilaiBeratBadan">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" value="0"/>
                         <Property name="focusTraversalPolicyProvider" type="boolean" value="true"/>
-                        <Property name="name" type="java.lang.String" value="NilaiJenisKelamin4" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="NilaiBeratBadan" noResource="true"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

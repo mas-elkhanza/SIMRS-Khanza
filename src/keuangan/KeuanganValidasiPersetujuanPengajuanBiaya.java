@@ -520,7 +520,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             DlgPengeluaranHarian form=new DlgPengeluaranHarian(null,false);
             form.isCek();
             form.emptTeks();
-            form.setPengajuan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),"Validasi pengajuan No."+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+" tanggal "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString()+" oleh "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),3).toString()+" NIP "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),2).toString(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(),13).toString());
+            form.setPengajuan(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString(),"Validasi pengajuan No."+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+" tanggal "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString()+" oleh "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),3).toString()+" NIP "+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),2).toString(),Valid.SetAngka2(Double.parseDouble(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),13).toString())));
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.setVisible(true);
