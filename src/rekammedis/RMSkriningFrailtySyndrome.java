@@ -69,10 +69,9 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Umur","Kode Petugas","Nama Petugas","Tanggal",
-            "Jenis Kelamin","N.A.1","Usia/Umur","N.A.2","Pernah Didiagnosis Kanker","N.A.3",
-            "Ada Keluarga Kanker","N.A.4","Riwayat Merokok","N.A.5","Riwayat Bekerja Karsinogenik","N.A.6",
-            "Lingkungan Tinggal Berpolusi","N.A.7","Rumah Tidak Sehat","N.A.8","Pernah Paru Kronis","N.A.9",
-            "Total Skor","Hasil Skrining","Keterangan"
+            "Resistensi","N.R.","Aktivitas","N.A.","Tidak Pernah","Kanker","Gagal Jantung","Ginjal","Nyeri Dada",
+            "Serangan Jantung","Stroke","Asma","Nyeri Sendi","Paru Kronis","Hipertensi","Diabetes","N.P.",
+            "Usaha Berjalan","N.U.","Berat Badan","N.B.","N.Total","Hasil Skrining","Keterangan"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -82,7 +81,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 29; i++) {
+        for (i = 0; i < 8; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -100,54 +99,12 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
-            }else if(i==8){
-                column.setPreferredWidth(75);
-            }else if(i==9){
-                column.setPreferredWidth(45);
-            }else if(i==10){
-                column.setPreferredWidth(78);
-            }else if(i==11){
-                column.setPreferredWidth(45);
-            }else if(i==12){
-                column.setPreferredWidth(165);
-            }else if(i==13){
-                column.setPreferredWidth(45);
-            }else if(i==14){
-                column.setPreferredWidth(115);
-            }else if(i==15){
-                column.setPreferredWidth(45);
-            }else if(i==16){
-                column.setPreferredWidth(210);
-            }else if(i==17){
-                column.setPreferredWidth(45);
-            }else if(i==18){
-                column.setPreferredWidth(152);
-            }else if(i==19){
-                column.setPreferredWidth(45);
-            }else if(i==20){
-                column.setPreferredWidth(155);
-            }else if(i==21){
-                column.setPreferredWidth(45);
-            }else if(i==22){
-                column.setPreferredWidth(121);
-            }else if(i==23){
-                column.setPreferredWidth(45);
-            }else if(i==24){
-                column.setPreferredWidth(195);
-            }else if(i==25){
-                column.setPreferredWidth(45);
-            }else if(i==26){
-                column.setPreferredWidth(60);
-            }else if(i==27){
-                column.setPreferredWidth(80);
-            }else if(i==28){
-                column.setPreferredWidth(200);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
+        Keterangan.setDocument(new batasInput((byte)40).getKata(Keterangan));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -314,7 +271,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkDiabetes = new widget.CekBox();
         ChkKanker = new widget.CekBox();
         ChkHipertensi = new widget.CekBox();
-        ChkPenyakitKronis = new widget.CekBox();
+        ChkPenyakitParuKronis = new widget.CekBox();
         ChkSeranganJantung = new widget.CekBox();
         ChkGagalJantung = new widget.CekBox();
         ChkNyeriDada = new widget.CekBox();
@@ -825,7 +782,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         jLabel148.setText("Hasil Skrining :");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
-        jLabel148.setBounds(436, 435, 90, 23);
+        jLabel148.setBounds(336, 435, 90, 23);
 
         HasilSkrining.setEditable(false);
         HasilSkrining.setFocusTraversalPolicyProvider(true);
@@ -836,7 +793,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             }
         });
         FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(530, 435, 120, 23);
+        HasilSkrining.setBounds(430, 435, 220, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -889,7 +846,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(111, 435, 310, 23);
+        Keterangan.setBounds(111, 435, 205, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel77.setText("R = Resistensi");
@@ -987,6 +944,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkDiabetes.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkDiabetes.setName("ChkDiabetes"); // NOI18N
         ChkDiabetes.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkDiabetes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkDiabetesActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkDiabetes);
         ChkDiabetes.setBounds(612, 243, 73, 23);
 
@@ -995,6 +957,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkKanker.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkKanker.setName("ChkKanker"); // NOI18N
         ChkKanker.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkKanker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkKankerActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkKanker);
         ChkKanker.setBounds(155, 223, 190, 23);
 
@@ -1003,22 +970,37 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkHipertensi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkHipertensi.setName("ChkHipertensi"); // NOI18N
         ChkHipertensi.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkHipertensi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkHipertensiActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkHipertensi);
         ChkHipertensi.setBounds(529, 243, 80, 23);
 
-        ChkPenyakitKronis.setText("Penyakit Paru Kronis");
-        ChkPenyakitKronis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ChkPenyakitKronis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ChkPenyakitKronis.setName("ChkPenyakitKronis"); // NOI18N
-        ChkPenyakitKronis.setPreferredSize(new java.awt.Dimension(100, 23));
-        FormInput.add(ChkPenyakitKronis);
-        ChkPenyakitKronis.setBounds(396, 243, 130, 23);
+        ChkPenyakitParuKronis.setText("Penyakit Paru Kronis");
+        ChkPenyakitParuKronis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ChkPenyakitParuKronis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ChkPenyakitParuKronis.setName("ChkPenyakitParuKronis"); // NOI18N
+        ChkPenyakitParuKronis.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkPenyakitParuKronis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkPenyakitParuKronisActionPerformed(evt);
+            }
+        });
+        FormInput.add(ChkPenyakitParuKronis);
+        ChkPenyakitParuKronis.setBounds(396, 243, 130, 23);
 
         ChkSeranganJantung.setText("Serangan Jantung");
         ChkSeranganJantung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         ChkSeranganJantung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkSeranganJantung.setName("ChkSeranganJantung"); // NOI18N
         ChkSeranganJantung.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkSeranganJantung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkSeranganJantungActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkSeranganJantung);
         ChkSeranganJantung.setBounds(57, 243, 120, 23);
 
@@ -1027,6 +1009,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkGagalJantung.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkGagalJantung.setName("ChkGagalJantung"); // NOI18N
         ChkGagalJantung.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkGagalJantung.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkGagalJantungActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkGagalJantung);
         ChkGagalJantung.setBounds(348, 223, 150, 23);
 
@@ -1035,6 +1022,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkNyeriDada.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkNyeriDada.setName("ChkNyeriDada"); // NOI18N
         ChkNyeriDada.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkNyeriDada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkNyeriDadaActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkNyeriDada);
         ChkNyeriDada.setBounds(604, 223, 84, 23);
 
@@ -1043,6 +1035,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkAsma.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkAsma.setName("ChkAsma"); // NOI18N
         ChkAsma.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkAsma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkAsmaActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkAsma);
         ChkAsma.setBounds(245, 243, 59, 23);
 
@@ -1051,6 +1048,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkNyeriSendi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkNyeriSendi.setName("ChkNyeriSendi"); // NOI18N
         ChkNyeriSendi.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkNyeriSendi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkNyeriSendiActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkNyeriSendi);
         ChkNyeriSendi.setBounds(307, 243, 86, 23);
 
@@ -1059,6 +1061,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkPenyakitGinjal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkPenyakitGinjal.setName("ChkPenyakitGinjal"); // NOI18N
         ChkPenyakitGinjal.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkPenyakitGinjal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkPenyakitGinjalActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkPenyakitGinjal);
         ChkPenyakitGinjal.setBounds(501, 223, 100, 23);
 
@@ -1067,6 +1074,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         ChkStroke.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         ChkStroke.setName("ChkStroke"); // NOI18N
         ChkStroke.setPreferredSize(new java.awt.Dimension(100, 23));
+        ChkStroke.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkStrokeActionPerformed(evt);
+            }
+        });
         FormInput.add(ChkStroke);
         ChkStroke.setBounds(180, 243, 62, 23);
 
@@ -1076,7 +1088,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         FormInput.add(jLabel82);
         jLabel82.setBounds(44, 270, 20, 23);
 
-        UsahaBerjalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        UsahaBerjalan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         UsahaBerjalan.setName("UsahaBerjalan"); // NOI18N
         UsahaBerjalan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1598,15 +1610,15 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningRisikoKankerParu.jasper","report","::[ Formulir Skrining Risiko Kanker Paru ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.jenis_kelamin,skrining_risiko_kanker_paru.nilai_jenis_kelamin,skrining_risiko_kanker_paru.umur,"+
-                    "skrining_risiko_kanker_paru.nilai_umur,skrining_risiko_kanker_paru.pernah_kanker,skrining_risiko_kanker_paru.nilai_pernah_kanker,skrining_risiko_kanker_paru.ada_keluarga_kanker,"+
-                    "skrining_risiko_kanker_paru.nilai_ada_keluarga_kanker,skrining_risiko_kanker_paru.riwayat_rokok,skrining_risiko_kanker_paru.nilai_riwayat_rokok,skrining_risiko_kanker_paru.riwayat_bekerja_mengandung_karsinogen,"+
-                    "skrining_risiko_kanker_paru.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_risiko_kanker_paru.lingkungan_tinggal_polusi_tinggi,skrining_risiko_kanker_paru.nilai_lingkungan_tinggal_polusi_tinggi,"+
-                    "skrining_risiko_kanker_paru.lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.nilai_lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.pernah_paru_kronik,"+
-                    "skrining_risiko_kanker_paru.nilai_pernah_paru_kronik,skrining_risiko_kanker_paru.total_skor,skrining_risiko_kanker_paru.hasil_skrining,skrining_risiko_kanker_paru.keterangan "+
-                    "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_frailty_syndrome.nip,"+
+                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.jenis_kelamin,skrining_frailty_syndrome.nilai_jenis_kelamin,skrining_frailty_syndrome.umur,"+
+                    "skrining_frailty_syndrome.nilai_umur,skrining_frailty_syndrome.pernah_kanker,skrining_frailty_syndrome.nilai_pernah_kanker,skrining_frailty_syndrome.ada_keluarga_kanker,"+
+                    "skrining_frailty_syndrome.nilai_ada_keluarga_kanker,skrining_frailty_syndrome.riwayat_rokok,skrining_frailty_syndrome.nilai_riwayat_rokok,skrining_frailty_syndrome.riwayat_bekerja_mengandung_karsinogen,"+
+                    "skrining_frailty_syndrome.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_frailty_syndrome.lingkungan_tinggal_polusi_tinggi,skrining_frailty_syndrome.nilai_lingkungan_tinggal_polusi_tinggi,"+
+                    "skrining_frailty_syndrome.lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.nilai_lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.pernah_paru_kronik,"+
+                    "skrining_frailty_syndrome.nilai_pernah_paru_kronik,skrining_frailty_syndrome.total_skor,skrining_frailty_syndrome.hasil_skrining,skrining_frailty_syndrome.keterangan "+
+                    "from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_frailty_syndrome.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningRisikoKankerParuActionPerformed
@@ -1621,7 +1633,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     }//GEN-LAST:event_ResistensiItemStateChanged
 
     private void ResistensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ResistensiKeyPressed
-        //Valid.pindah(evt,TCari,Usia);
+        Valid.pindah(evt,TCari,Aktivitas);
     }//GEN-LAST:event_ResistensiKeyPressed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
@@ -1633,41 +1645,52 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     }//GEN-LAST:event_HasilSkriningKeyPressed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        //Valid.pindah(evt,PernahParu,BtnSimpan);
+        Valid.pindah(evt,BeratBadan,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void AktivitasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_AktivitasItemStateChanged
-        if((Aktivitas.getSelectedIndex()==1)||(Aktivitas.getSelectedIndex()==2)){
-            NilaiResistensi.setText("0");
+        if((Aktivitas.getSelectedIndex()==0)||(Aktivitas.getSelectedIndex()==1)){
+            NilaiAktivitas.setText("0");
         }else{
-            NilaiResistensi.setText("1");
+            NilaiAktivitas.setText("1");
         }
         isTotal();
     }//GEN-LAST:event_AktivitasItemStateChanged
 
     private void AktivitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AktivitasKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Resistensi,UsahaBerjalan);
     }//GEN-LAST:event_AktivitasKeyPressed
 
     private void UsahaBerjalanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_UsahaBerjalanItemStateChanged
-        // TODO add your handling code here:
+        if(UsahaBerjalan.getSelectedIndex()==0){
+            NilaiUsahaBerjalan.setText("0");
+        }else{
+            NilaiUsahaBerjalan.setText("1");
+        }
+        isTotal();
     }//GEN-LAST:event_UsahaBerjalanItemStateChanged
 
     private void UsahaBerjalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UsahaBerjalanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Aktivitas,BeratBadan);
     }//GEN-LAST:event_UsahaBerjalanKeyPressed
 
     private void BeratBadanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_BeratBadanItemStateChanged
-        // TODO add your handling code here:
+        if(BeratBadan.getSelectedIndex()==0){
+            NilaiBeratBadan.setText("0");
+        }else{
+            NilaiBeratBadan.setText("1");
+        }
+        isTotal();
     }//GEN-LAST:event_BeratBadanItemStateChanged
 
     private void BeratBadanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BeratBadanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,UsahaBerjalan,Keterangan);
     }//GEN-LAST:event_BeratBadanKeyPressed
 
     private void ChkTidakPernahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkTidakPernahActionPerformed
         if(ChkTidakPernah.isSelected()==true){
             NilaiPenyakit.setText("0");
+            isTotal();
             ChkKanker.setSelected(false);
             ChkGagalJantung.setSelected(false);
             ChkPenyakitGinjal.setSelected(false);
@@ -1676,11 +1699,55 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             ChkStroke.setSelected(false);
             ChkAsma.setSelected(false);
             ChkNyeriSendi.setSelected(false);
-            ChkPenyakitKronis.setSelected(false);
+            ChkPenyakitParuKronis.setSelected(false);
             ChkHipertensi.setSelected(false);
             ChkDiabetes.setSelected(false);
         }
     }//GEN-LAST:event_ChkTidakPernahActionPerformed
+
+    private void ChkKankerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkKankerActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkKankerActionPerformed
+
+    private void ChkGagalJantungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkGagalJantungActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkGagalJantungActionPerformed
+
+    private void ChkPenyakitGinjalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkPenyakitGinjalActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkPenyakitGinjalActionPerformed
+
+    private void ChkNyeriDadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkNyeriDadaActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkNyeriDadaActionPerformed
+
+    private void ChkSeranganJantungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkSeranganJantungActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkSeranganJantungActionPerformed
+
+    private void ChkStrokeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkStrokeActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkStrokeActionPerformed
+
+    private void ChkAsmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAsmaActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkAsmaActionPerformed
+
+    private void ChkNyeriSendiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkNyeriSendiActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkNyeriSendiActionPerformed
+
+    private void ChkPenyakitParuKronisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkPenyakitParuKronisActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkPenyakitParuKronisActionPerformed
+
+    private void ChkHipertensiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkHipertensiActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkHipertensiActionPerformed
+
+    private void ChkDiabetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkDiabetesActionPerformed
+        isPenyakit();
+    }//GEN-LAST:event_ChkDiabetesActionPerformed
 
     /**
     * @param args the command line arguments
@@ -1719,7 +1786,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private widget.CekBox ChkNyeriDada;
     private widget.CekBox ChkNyeriSendi;
     private widget.CekBox ChkPenyakitGinjal;
-    private widget.CekBox ChkPenyakitKronis;
+    private widget.CekBox ChkPenyakitParuKronis;
     private widget.CekBox ChkSeranganJantung;
     private widget.CekBox ChkStroke;
     private widget.CekBox ChkTidakPernah;
@@ -1815,30 +1882,30 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.jenis_kelamin,skrining_risiko_kanker_paru.nilai_jenis_kelamin,skrining_risiko_kanker_paru.umur,"+
-                    "skrining_risiko_kanker_paru.nilai_umur,skrining_risiko_kanker_paru.pernah_kanker,skrining_risiko_kanker_paru.nilai_pernah_kanker,skrining_risiko_kanker_paru.ada_keluarga_kanker,"+
-                    "skrining_risiko_kanker_paru.nilai_ada_keluarga_kanker,skrining_risiko_kanker_paru.riwayat_rokok,skrining_risiko_kanker_paru.nilai_riwayat_rokok,skrining_risiko_kanker_paru.riwayat_bekerja_mengandung_karsinogen,"+
-                    "skrining_risiko_kanker_paru.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_risiko_kanker_paru.lingkungan_tinggal_polusi_tinggi,skrining_risiko_kanker_paru.nilai_lingkungan_tinggal_polusi_tinggi,"+
-                    "skrining_risiko_kanker_paru.lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.nilai_lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.pernah_paru_kronik,"+
-                    "skrining_risiko_kanker_paru.nilai_pernah_paru_kronik,skrining_risiko_kanker_paru.total_skor,skrining_risiko_kanker_paru.hasil_skrining,skrining_risiko_kanker_paru.keterangan "+
-                    "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
-                    "where skrining_risiko_kanker_paru.tanggal between ? and ? order by skrining_risiko_kanker_paru.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_frailty_syndrome.nip,"+
+                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.jenis_kelamin,skrining_frailty_syndrome.nilai_jenis_kelamin,skrining_frailty_syndrome.umur,"+
+                    "skrining_frailty_syndrome.nilai_umur,skrining_frailty_syndrome.pernah_kanker,skrining_frailty_syndrome.nilai_pernah_kanker,skrining_frailty_syndrome.ada_keluarga_kanker,"+
+                    "skrining_frailty_syndrome.nilai_ada_keluarga_kanker,skrining_frailty_syndrome.riwayat_rokok,skrining_frailty_syndrome.nilai_riwayat_rokok,skrining_frailty_syndrome.riwayat_bekerja_mengandung_karsinogen,"+
+                    "skrining_frailty_syndrome.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_frailty_syndrome.lingkungan_tinggal_polusi_tinggi,skrining_frailty_syndrome.nilai_lingkungan_tinggal_polusi_tinggi,"+
+                    "skrining_frailty_syndrome.lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.nilai_lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.pernah_paru_kronik,"+
+                    "skrining_frailty_syndrome.nilai_pernah_paru_kronik,skrining_frailty_syndrome.total_skor,skrining_frailty_syndrome.hasil_skrining,skrining_frailty_syndrome.keterangan "+
+                    "from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_frailty_syndrome.nip=petugas.nip "+
+                    "where skrining_frailty_syndrome.tanggal between ? and ? order by skrining_frailty_syndrome.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_risiko_kanker_paru.nip,"+
-                    "petugas.nama,skrining_risiko_kanker_paru.tanggal,skrining_risiko_kanker_paru.jenis_kelamin,skrining_risiko_kanker_paru.nilai_jenis_kelamin,skrining_risiko_kanker_paru.umur,"+
-                    "skrining_risiko_kanker_paru.nilai_umur,skrining_risiko_kanker_paru.pernah_kanker,skrining_risiko_kanker_paru.nilai_pernah_kanker,skrining_risiko_kanker_paru.ada_keluarga_kanker,"+
-                    "skrining_risiko_kanker_paru.nilai_ada_keluarga_kanker,skrining_risiko_kanker_paru.riwayat_rokok,skrining_risiko_kanker_paru.nilai_riwayat_rokok,skrining_risiko_kanker_paru.riwayat_bekerja_mengandung_karsinogen,"+
-                    "skrining_risiko_kanker_paru.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_risiko_kanker_paru.lingkungan_tinggal_polusi_tinggi,skrining_risiko_kanker_paru.nilai_lingkungan_tinggal_polusi_tinggi,"+
-                    "skrining_risiko_kanker_paru.lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.nilai_lingkungan_rumah_tidak_sehat,skrining_risiko_kanker_paru.pernah_paru_kronik,"+
-                    "skrining_risiko_kanker_paru.nilai_pernah_paru_kronik,skrining_risiko_kanker_paru.total_skor,skrining_risiko_kanker_paru.hasil_skrining,skrining_risiko_kanker_paru.keterangan "+
-                    "from skrining_risiko_kanker_paru inner join reg_periksa on skrining_risiko_kanker_paru.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_risiko_kanker_paru.nip=petugas.nip "+
-                    "where skrining_risiko_kanker_paru.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_risiko_kanker_paru.nip like ? or petugas.nama like ?) "+
-                    "order by skrining_risiko_kanker_paru.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_frailty_syndrome.nip,"+
+                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.jenis_kelamin,skrining_frailty_syndrome.nilai_jenis_kelamin,skrining_frailty_syndrome.umur,"+
+                    "skrining_frailty_syndrome.nilai_umur,skrining_frailty_syndrome.pernah_kanker,skrining_frailty_syndrome.nilai_pernah_kanker,skrining_frailty_syndrome.ada_keluarga_kanker,"+
+                    "skrining_frailty_syndrome.nilai_ada_keluarga_kanker,skrining_frailty_syndrome.riwayat_rokok,skrining_frailty_syndrome.nilai_riwayat_rokok,skrining_frailty_syndrome.riwayat_bekerja_mengandung_karsinogen,"+
+                    "skrining_frailty_syndrome.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_frailty_syndrome.lingkungan_tinggal_polusi_tinggi,skrining_frailty_syndrome.nilai_lingkungan_tinggal_polusi_tinggi,"+
+                    "skrining_frailty_syndrome.lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.nilai_lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.pernah_paru_kronik,"+
+                    "skrining_frailty_syndrome.nilai_pernah_paru_kronik,skrining_frailty_syndrome.total_skor,skrining_frailty_syndrome.hasil_skrining,skrining_frailty_syndrome.keterangan "+
+                    "from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_frailty_syndrome.nip=petugas.nip "+
+                    "where skrining_frailty_syndrome.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_frailty_syndrome.nip like ? or petugas.nama like ?) "+
+                    "order by skrining_frailty_syndrome.tanggal ");
             }
                 
             try {
@@ -1885,10 +1952,30 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     
     public void emptTeks() {
         Tanggal.setDate(new Date());
-        Resistensi.setSelectedIndex(1);
-        NilaiResistensi.setText("1");
-        TotalHasil.setText("9");
-        HasilSkrining.setText("Risiko Ringan");
+        Resistensi.setSelectedIndex(0);
+        Aktivitas.setSelectedIndex(0);
+        UsahaBerjalan.setSelectedIndex(0);
+        BeratBadan.setSelectedIndex(0);
+        NilaiResistensi.setText("0");
+        NilaiAktivitas.setText("0");
+        NilaiPenyakit.setText("0");
+        NilaiUsahaBerjalan.setText("0");
+        NilaiBeratBadan.setText("0");
+        ChkTidakPernah.setSelected(false);
+        ChkKanker.setSelected(false);
+        ChkGagalJantung.setSelected(false);
+        ChkPenyakitGinjal.setSelected(false);
+        ChkNyeriDada.setSelected(false);
+        ChkSeranganJantung.setSelected(false);
+        ChkStroke.setSelected(false);
+        ChkAsma.setSelected(false);
+        ChkNyeriSendi.setSelected(false);
+        ChkPenyakitParuKronis.setSelected(false);
+        ChkHipertensi.setSelected(false);
+        ChkDiabetes.setSelected(false);
+        TotalHasil.setText("0");
+        HasilSkrining.setText("Segar & Tidak Rapuh");
+        Keterangan.setText("");
         Resistensi.requestFocus();
     } 
 
@@ -1980,10 +2067,10 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getskrining_risiko_kanker_paru());
-        BtnHapus.setEnabled(akses.getskrining_risiko_kanker_paru());
-        BtnEdit.setEnabled(akses.getskrining_risiko_kanker_paru());
-        BtnPrint.setEnabled(akses.getskrining_risiko_kanker_paru()); 
+        BtnSimpan.setEnabled(akses.getskrining_frailty_syndrome());
+        BtnHapus.setEnabled(akses.getskrining_frailty_syndrome());
+        BtnEdit.setEnabled(akses.getskrining_frailty_syndrome());
+        BtnPrint.setEnabled(akses.getskrining_frailty_syndrome()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2061,7 +2148,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_risiko_kanker_paru","no_rawat=?","no_rawat=?,tanggal=?,jenis_kelamin=?,nilai_jenis_kelamin=?,umur=?,nilai_umur=?,pernah_kanker=?,nilai_pernah_kanker=?,"+
+        /*if(Sequel.mengedittf("skrining_frailty_syndrome","no_rawat=?","no_rawat=?,tanggal=?,jenis_kelamin=?,nilai_jenis_kelamin=?,umur=?,nilai_umur=?,pernah_kanker=?,nilai_pernah_kanker=?,"+
                 "ada_keluarga_kanker=?,nilai_ada_keluarga_kanker=?,riwayat_rokok=?,nilai_riwayat_rokok=?,riwayat_bekerja_mengandung_karsinogen=?,nilai_riwayat_bekerja_mengandung_karsinogen=?,"+
                 "lingkungan_tinggal_polusi_tinggi=?,nilai_lingkungan_tinggal_polusi_tinggi=?,lingkungan_rumah_tidak_sehat=?,nilai_lingkungan_rumah_tidak_sehat=?,pernah_paru_kronik=?,"+
                 "nilai_pernah_paru_kronik=?,total_skor=?,hasil_skrining=?,keterangan=?,nip=?",25,new String[]{
@@ -2107,7 +2194,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_risiko_kanker_paru where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_frailty_syndrome where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2134,31 +2221,66 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     }
     
     private void isPenyakit() {
+        ChkTidakPernah.setSelected(false);
         i=0;
         if(ChkKanker.isSelected()==true){
             i++;
         }
-        
+        if(ChkGagalJantung.isSelected()==true){
+            i++;
+        }
+        if(ChkPenyakitGinjal.isSelected()==true){
+            i++;
+        }
+        if(ChkNyeriDada.isSelected()==true){
+            i++;
+        }
+        if(ChkSeranganJantung.isSelected()==true){
+            i++;
+        }
+        if(ChkStroke.isSelected()==true){
+            i++;
+        }
+        if(ChkAsma.isSelected()==true){
+            i++;
+        }
+        if(ChkNyeriSendi.isSelected()==true){
+            i++;
+        }
+        if(ChkPenyakitParuKronis.isSelected()==true){
+            i++;
+        }
+        if(ChkHipertensi.isSelected()==true){
+            i++;
+        }
+        if(ChkDiabetes.isSelected()==true){
+            i++;
+        }
+        if(i>4){
+            NilaiPenyakit.setText("1");
+        }else{
+            NilaiPenyakit.setText("0");
+        }
+        isTotal();
     }
 
     private void simpan() {
-        /*if(Sequel.menyimpantf("skrining_risiko_kanker_paru","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",24,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            JenisKelamin.getSelectedItem().toString(),NilaiJenisKelamin.getText(),Usia.getSelectedItem().toString(),NilaiUsia.getText(), 
-            PernahMenderitaKanker.getSelectedItem().toString(),NilaiPernahMenderitaKanker.getText(),KeluargaKanker.getSelectedItem().toString(),NilaiKeluargaKanker.getText(), 
-            RiwayatMerokok.getSelectedItem().toString(),NilaiRiwayatMerokok.getText(),RiwayatBekerja.getSelectedItem().toString(),NilaiRiwayatBekerja.getText(), 
-            LingkunganTinggal.getSelectedItem().toString(),NilaiLingkunganTinggal.getText(),DalamRumah.getSelectedItem().toString(),NilaiDalamRumah.getText(), 
-            PernahParu.getSelectedItem().toString(),NilaiPernahParu.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText()
+        if(Sequel.menyimpantf("skrining_frailty_syndrome","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",27,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Resistensi.getSelectedItem().toString(),NilaiResistensi.getText(),Aktivitas.getSelectedItem().toString(),NilaiAktivitas.getText(),
+            (ChkTidakPernah.isSelected()==true?"Ya":"Tidak"),(ChkKanker.isSelected()==true?"Ya":"Tidak"),(ChkGagalJantung.isSelected()==true?"Ya":"Tidak"),(ChkPenyakitGinjal.isSelected()==true?"Ya":"Tidak"),(ChkNyeriDada.isSelected()==true?"Ya":"Tidak"),(ChkSeranganJantung.isSelected()==true?"Ya":"Tidak"), 
+            (ChkStroke.isSelected()==true?"Ya":"Tidak"),(ChkAsma.isSelected()==true?"Ya":"Tidak"),(ChkNyeriSendi.isSelected()==true?"Ya":"Tidak"),(ChkPenyakitParuKronis.isSelected()==true?"Ya":"Tidak"),(ChkHipertensi.isSelected()==true?"Ya":"Tidak"),(ChkDiabetes.isSelected()==true?"Ya":"Tidak"),
+            NilaiPenyakit.getText(),UsahaBerjalan.getSelectedItem().toString(),NilaiUsahaBerjalan.getText(),BeratBadan.getSelectedItem().toString(),NilaiBeratBadan.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText()
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Umur.getText(),KdPetugas.getText(),NmPetugas.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-                JenisKelamin.getSelectedItem().toString(),NilaiJenisKelamin.getText(),Usia.getSelectedItem().toString(),NilaiUsia.getText(),PernahMenderitaKanker.getSelectedItem().toString(),NilaiPernahMenderitaKanker.getText(),KeluargaKanker.getSelectedItem().toString(),
-                NilaiKeluargaKanker.getText(),RiwayatMerokok.getSelectedItem().toString(),NilaiRiwayatMerokok.getText(),RiwayatBekerja.getSelectedItem().toString(),NilaiRiwayatBekerja.getText(),LingkunganTinggal.getSelectedItem().toString(),NilaiLingkunganTinggal.getText(),
-                DalamRumah.getSelectedItem().toString(),NilaiDalamRumah.getText(),PernahParu.getSelectedItem().toString(),NilaiPernahParu.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText()
+                Resistensi.getSelectedItem().toString(),NilaiResistensi.getText(),Aktivitas.getSelectedItem().toString(),NilaiAktivitas.getText(),
+                (ChkTidakPernah.isSelected()==true?"Ya":"Tidak"),(ChkKanker.isSelected()==true?"Ya":"Tidak"),(ChkGagalJantung.isSelected()==true?"Ya":"Tidak"),(ChkPenyakitGinjal.isSelected()==true?"Ya":"Tidak"),(ChkNyeriDada.isSelected()==true?"Ya":"Tidak"),(ChkSeranganJantung.isSelected()==true?"Ya":"Tidak"), 
+                (ChkStroke.isSelected()==true?"Ya":"Tidak"),(ChkAsma.isSelected()==true?"Ya":"Tidak"),(ChkNyeriSendi.isSelected()==true?"Ya":"Tidak"),(ChkPenyakitParuKronis.isSelected()==true?"Ya":"Tidak"),(ChkHipertensi.isSelected()==true?"Ya":"Tidak"),(ChkDiabetes.isSelected()==true?"Ya":"Tidak"),
+                NilaiPenyakit.getText(),UsahaBerjalan.getSelectedItem().toString(),NilaiUsahaBerjalan.getText(),BeratBadan.getSelectedItem().toString(),NilaiBeratBadan.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } */
+        } 
     }
     
 }

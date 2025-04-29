@@ -134,10 +134,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="status">
+            <Component class="widget.TextBox" name="Status">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="name" type="java.lang.String" value="status" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="Status" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -145,10 +145,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="merk">
+            <Component class="widget.TextBox" name="Merk">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="name" type="java.lang.String" value="merk" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="Merk" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -226,10 +226,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="jenis">
+            <Component class="widget.TextBox" name="Jenis">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="name" type="java.lang.String" value="jenis" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="Jenis" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
