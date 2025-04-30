@@ -32,14 +32,11 @@ public class koneksiDB {
             if (connection == null || connection.isClosed()) {
                 try (FileInputStream fis = new FileInputStream("setting/database.xml")) {
                     prop.loadFromXML(fis);
-                    dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true&connectTimeout=5000&socketTimeout=10000");
+                    dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
                     dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
                     dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
-                    dataSource.setCachePreparedStatements(true);
-                    dataSource.setPreparedStatementCacheSize(250);
-                    dataSource.setPreparedStatementCacheSqlLimit(2048);
-                    dataSource.setUseCompression(true);
                     dataSource.setAutoReconnectForPools(true);
+                    dataSource.setUseCompression(true);
                     dataSource.setUseServerPrepStmts(true);
                     dataSource.setUseLocalSessionState(true);
                     dataSource.setUseLocalTransactionState(true);

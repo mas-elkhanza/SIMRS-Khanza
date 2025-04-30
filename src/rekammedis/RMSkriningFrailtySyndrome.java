@@ -2168,24 +2168,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               tbObat.setValueAt(JenisKelamin.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-               tbObat.setValueAt(NilaiJenisKelamin.getText(),tbObat.getSelectedRow(),9);
-               tbObat.setValueAt(Usia.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-               tbObat.setValueAt(NilaiUsia.getText(),tbObat.getSelectedRow(),11);
-               tbObat.setValueAt(PernahMenderitaKanker.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-               tbObat.setValueAt(NilaiPernahMenderitaKanker.getText(),tbObat.getSelectedRow(),13);
-               tbObat.setValueAt(KeluargaKanker.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(NilaiKeluargaKanker.getText(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(RiwayatMerokok.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(NilaiRiwayatMerokok.getText(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(RiwayatBekerja.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(NilaiRiwayatBekerja.getText(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(LingkunganTinggal.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(NilaiLingkunganTinggal.getText(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(DalamRumah.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(NilaiDalamRumah.getText(),tbObat.getSelectedRow(),23);
-               tbObat.setValueAt(PernahParu.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(NilaiPernahParu.getText(),tbObat.getSelectedRow(),25);
+               
                tbObat.setValueAt(TotalHasil.getText(),tbObat.getSelectedRow(),26);
                tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),27);
                tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),28);

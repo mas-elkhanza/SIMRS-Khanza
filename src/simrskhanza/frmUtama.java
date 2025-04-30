@@ -23287,7 +23287,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 }
             }                 
         }catch(Exception e){
-            System.out.println("Notifikasi : Silahkan Set Aplikasi "+e);
+            System.out.println("Notifikasi : Silahkan hubungi administrator ");
         }
     }
 
