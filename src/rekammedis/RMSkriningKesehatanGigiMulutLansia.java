@@ -1094,46 +1094,43 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
                 switch (pilihan) {
                     case "Laporan 1 (HTML)":
                             htmlContent = new StringBuilder();
-                            htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rutin Kontrol Gigi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pola Makan Sehat</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sikat Gigi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Membersihkan Gigi Palsu</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gigi Berfungsi Baik</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluhan Mukosa Mulut</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
-                                "</tr>"
-                            );
+                            htmlContent.append("<tr class='isi'>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rutin Kontrol Gigi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pola Makan Sehat</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sikat Gigi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Membersihkan Gigi Palsu</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gigi Berfungsi Baik</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluhan Mukosa Mulut</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>").
+                                        append("</tr>");
                             for (i = 0; i < tabMode.getRowCount(); i++) {
-                                htmlContent.append(
-                                    "<tr class='isi'>"+
-                                       "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                                    "</tr>");
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,12).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,13).toString()).append("</td>").
+                                                append( "<td valign='top'>").append(tbObat.getValueAt(i,14).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,15).toString()).append("</td>").
+                                            append("</tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
@@ -1163,46 +1160,43 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
                         break;
                     case "Laporan 2 (WPS)":
                             htmlContent = new StringBuilder();
-                            htmlContent.append(                             
-                                "<tr class='isi'>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rutin Kontrol Gigi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pola Makan Sehat</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sikat Gigi</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Membersihkan Gigi Palsu</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gigi Berfungsi Baik</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluhan Mukosa Mulut</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
-                                    "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
-                                "</tr>"
-                            );
+                            htmlContent.append("<tr class='isi'>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rutin Kontrol Gigi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pola Makan Sehat</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sikat Gigi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Membersihkan Gigi Palsu</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gigi Berfungsi Baik</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluhan Mukosa Mulut</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>").
+                                        append("</tr>");
                             for (i = 0; i < tabMode.getRowCount(); i++) {
-                                htmlContent.append(
-                                    "<tr class='isi'>"+
-                                       "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                                        "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                                    "</tr>");
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,12).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,13).toString()).append("</td>").
+                                                append( "<td valign='top'>").append(tbObat.getValueAt(i,14).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,15).toString()).append("</td>").
+                                            append("</tr>");
                             }
                             LoadHTML.setText(
                                 "<html>"+
@@ -1236,9 +1230,7 @@ public final class RMSkriningKesehatanGigiMulutLansia extends javax.swing.JDialo
                                 "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Petugas\";\"Nama Petugas\";\"Tanggal\";\"Rutin Kontrol Gigi\";\"Pola Makan Sehat\";\"Sikat Gigi\";\"Membersihkan Gigi Palsu\";\"Gigi Berfungsi Baik\";\"Keluhan Mukosa Mulut\";\"Hasil Skrining\";\"Keterangan\"\n"
                             ); 
                             for (i = 0; i < tabMode.getRowCount(); i++) {
-                                htmlContent.append(
-                                    "\""+tbObat.getValueAt(i,0).toString()+"\";\""+tbObat.getValueAt(i,1).toString()+"\";\""+tbObat.getValueAt(i,2).toString()+"\";\""+tbObat.getValueAt(i,3).toString()+"\";\""+tbObat.getValueAt(i,4).toString()+"\";\""+tbObat.getValueAt(i,5).toString()+"\";\""+tbObat.getValueAt(i,6).toString()+"\";\""+tbObat.getValueAt(i,7).toString()+"\";\""+tbObat.getValueAt(i,8).toString()+"\";\""+tbObat.getValueAt(i,9).toString()+"\";\""+tbObat.getValueAt(i,10).toString()+"\";\""+tbObat.getValueAt(i,11).toString()+"\";\""+tbObat.getValueAt(i,12).toString()+"\";\""+tbObat.getValueAt(i,13).toString()+"\";\""+tbObat.getValueAt(i,14).toString()+"\";\""+tbObat.getValueAt(i,15).toString()+"\"\n"
-                                );
+                                htmlContent.append("\"").append(tbObat.getValueAt(i,0).toString()).append("\";\"").append(tbObat.getValueAt(i,1).toString()).append("\";\"").append(tbObat.getValueAt(i,2).toString()).append("\";\"").append(tbObat.getValueAt(i,3).toString()).append("\";\"").append(tbObat.getValueAt(i,4).toString()).append("\";\"").append(tbObat.getValueAt(i,5).toString()).append("\";\"").append(tbObat.getValueAt(i,6).toString()).append("\";\"").append(tbObat.getValueAt(i,7).toString()).append("\";\"").append(tbObat.getValueAt(i,8).toString()).append("\";\"").append(tbObat.getValueAt(i,9).toString()).append("\";\"").append(tbObat.getValueAt(i,10).toString()).append("\";\"").append(tbObat.getValueAt(i,11).toString()).append("\";\"").append(tbObat.getValueAt(i,12).toString()).append("\";\"").append(tbObat.getValueAt(i,13).toString()).append("\";\"").append(tbObat.getValueAt(i,14).toString()).append("\";\"").append(tbObat.getValueAt(i,15).toString()).append("\"\n");
                             }
                             f = new File("DataSkriningKesehatanGigiMulutLansia.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            

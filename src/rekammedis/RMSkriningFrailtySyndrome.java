@@ -56,7 +56,6 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private int i=0;    
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private String finger="";
-    private StringBuilder htmlContent;
     private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
@@ -81,7 +80,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 32; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -99,6 +98,54 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(115);
+            }else if(i==8){
+                column.setPreferredWidth(60);
+            }else if(i==9){
+                column.setPreferredWidth(30);
+            }else if(i==10){
+                column.setPreferredWidth(115);
+            }else if(i==11){
+                column.setPreferredWidth(30);
+            }else if(i==12){
+                column.setPreferredWidth(72);
+            }else if(i==13){
+                column.setPreferredWidth(45);
+            }else if(i==14){
+                column.setPreferredWidth(80);
+            }else if(i==15){
+                column.setPreferredWidth(40);
+            }else if(i==16){
+                column.setPreferredWidth(65);
+            }else if(i==17){
+                column.setPreferredWidth(96);
+            }else if(i==18){
+                column.setPreferredWidth(40);
+            }else if(i==19){
+                column.setPreferredWidth(40);
+            }else if(i==20){
+                column.setPreferredWidth(65);
+            }else if(i==21){
+                column.setPreferredWidth(65);
+            }else if(i==22){
+                column.setPreferredWidth(62);
+            }else if(i==23){
+                column.setPreferredWidth(57);
+            }else if(i==24){
+                column.setPreferredWidth(30);
+            }else if(i==25){
+                column.setPreferredWidth(85);
+            }else if(i==26){
+                column.setPreferredWidth(30);
+            }else if(i==27){
+                column.setPreferredWidth(67);
+            }else if(i==28){
+                column.setPreferredWidth(30);
+            }else if(i==29){
+                column.setPreferredWidth(45);
+            }else if(i==30){
+                column.setPreferredWidth(150);
+            }else if(i==31){
+                column.setPreferredWidth(150);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -194,7 +241,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningRisikoKankerParu = new javax.swing.JMenuItem();
+        MnSkriningFrailtySyndrome = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Umur = new widget.TextBox();
@@ -305,19 +352,19 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningRisikoKankerParu.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningRisikoKankerParu.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningRisikoKankerParu.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningRisikoKankerParu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningRisikoKankerParu.setText("Formulir Skrining Risiko Kanker Paru");
-        MnSkriningRisikoKankerParu.setName("MnSkriningRisikoKankerParu"); // NOI18N
-        MnSkriningRisikoKankerParu.setPreferredSize(new java.awt.Dimension(280, 26));
-        MnSkriningRisikoKankerParu.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningFrailtySyndrome.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningFrailtySyndrome.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningFrailtySyndrome.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningFrailtySyndrome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningFrailtySyndrome.setText("Formulir Skrining Frailty Syndrome");
+        MnSkriningFrailtySyndrome.setName("MnSkriningFrailtySyndrome"); // NOI18N
+        MnSkriningFrailtySyndrome.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnSkriningFrailtySyndrome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningRisikoKankerParuActionPerformed(evt);
+                MnSkriningFrailtySyndromeActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningRisikoKankerParu);
+        jPopupMenu1.add(MnSkriningFrailtySyndrome);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -499,7 +546,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -513,7 +560,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -574,7 +621,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 490));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 485));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -634,7 +681,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -763,14 +810,14 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         jLabel73.setText("Total Skor :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(670, 435, 70, 23);
+        jLabel73.setBounds(670, 430, 70, 23);
 
         TotalHasil.setEditable(false);
         TotalHasil.setText("0");
         TotalHasil.setFocusTraversalPolicyProvider(true);
         TotalHasil.setName("TotalHasil"); // NOI18N
         FormInput.add(TotalHasil);
-        TotalHasil.setBounds(744, 435, 45, 23);
+        TotalHasil.setBounds(744, 430, 45, 23);
 
         NilaiResistensi.setEditable(false);
         NilaiResistensi.setText("0");
@@ -782,7 +829,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         jLabel148.setText("Hasil Skrining :");
         jLabel148.setName("jLabel148"); // NOI18N
         FormInput.add(jLabel148);
-        jLabel148.setBounds(336, 435, 90, 23);
+        jLabel148.setBounds(336, 430, 90, 23);
 
         HasilSkrining.setEditable(false);
         HasilSkrining.setFocusTraversalPolicyProvider(true);
@@ -793,7 +840,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             }
         });
         FormInput.add(HasilSkrining);
-        HasilSkrining.setBounds(430, 435, 220, 23);
+        HasilSkrining.setBounds(430, 430, 220, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -819,24 +866,24 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 415, 807, 1);
+        jSeparator3.setBounds(0, 410, 807, 1);
 
         jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel101.setText("II. INTERPRETASI");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(10, 415, 200, 23);
+        jLabel101.setBounds(10, 410, 200, 23);
 
         jLabel149.setText(":");
         jLabel149.setName("jLabel149"); // NOI18N
         FormInput.add(jLabel149);
-        jLabel149.setBounds(0, 435, 107, 23);
+        jLabel149.setBounds(0, 430, 107, 23);
 
         jLabel150.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel150.setText("Keterangan");
         jLabel150.setName("jLabel150"); // NOI18N
         FormInput.add(jLabel150);
-        jLabel150.setBounds(44, 435, 90, 23);
+        jLabel150.setBounds(44, 430, 90, 23);
 
         Keterangan.setFocusTraversalPolicyProvider(true);
         Keterangan.setName("Keterangan"); // NOI18N
@@ -846,7 +893,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             }
         });
         FormInput.add(Keterangan);
-        Keterangan.setBounds(111, 435, 205, 23);
+        Keterangan.setBounds(111, 430, 205, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel77.setText("R = Resistensi");
@@ -1389,82 +1436,6 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                htmlContent = new StringBuilder();
-                htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Kelamin</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.1</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia/Umur</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.2</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Didiagnosis Kanker</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ada Keluarga Kanker</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.4</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Merokok</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.5</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Bekerja Karsinogenik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.6</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lingkungan Tinggal Berpolusi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rumah Tidak Sehat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.8</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Paru Kronis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.9</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
-                    "</tr>"
-                );
-                for (i = 0; i < tabMode.getRowCount(); i++) {
-                    htmlContent.append(
-                        "<tr class='isi'>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
-                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
-                        "</tr>");
-                }
-                LoadHTML.setText(
-                    "<html>"+
-                      "<table width='2600px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                       htmlContent.toString()+
-                      "</table>"+
-                    "</html>"
-                );
-
                 File g = new File("file2.css");            
                 BufferedWriter bg = new BufferedWriter(new FileWriter(g));
                 bg.write(
@@ -1480,24 +1451,223 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataSkriningRisikoKankerParu.html");            
-                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2600px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>"+
-                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING RISIKO KANKER PARU<br><br></font>"+        
-                                    "</td>"+
-                               "</tr>"+
-                            "</table>")
-                );
-                bw.close();                         
-                Desktop.getDesktop().browse(f.toURI());
-
+                File f;            
+                BufferedWriter bw;
+                StringBuilder htmlContent;
+                
+                String pilihan =(String) JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                switch (pilihan) {
+                    case "Laporan 1 (HTML)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append("<tr class='isi'>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Resistensi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Aktivitas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Pernah</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kanker</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Dada</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Serangan Jantung</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stroke</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asma</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Sendi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Paru Kronis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hipertensi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diabetes</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usaha Berjalan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.U.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berat Badan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.B.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.Total</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>").
+                                        append("</tr>");
+                            for (i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,12).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,13).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,14).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,15).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,16).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,17).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,18).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,19).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,20).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,21).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,22).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,23).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,24).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,25).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,26).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,27).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,28).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,29).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,30).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,31).toString()).append("</td>").
+                                            append("</tr>");
+                            }
+                            LoadHTML.setText(
+                                "<html>"+
+                                  "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                   htmlContent.toString()+
+                                  "</table>"+
+                                "</html>"
+                            );
+                            
+                            f = new File("DataSkriningFrailtySyndrome.html");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DATA SEKRINING FRAILTY SYNDROME<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>")
+                            );
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 2 (WPS)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append("<tr class='isi'>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Resistensi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.R.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Aktivitas</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.A.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Pernah</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kanker</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Dada</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Serangan Jantung</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Stroke</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asma</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Sendi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Paru Kronis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hipertensi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diabetes</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usaha Berjalan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.U.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berat Badan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.B.</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.Total</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>").
+                                        append("</tr>");
+                            for (i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,12).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,13).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,14).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,15).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,16).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,17).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,18).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,19).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,20).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,21).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,22).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,23).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,24).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,25).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,26).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,27).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,28).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,29).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,30).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbObat.getValueAt(i,31).toString()).append("</td>").
+                                            append("</tr>");
+                            }
+                            LoadHTML.setText(
+                                "<html>"+
+                                  "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                   htmlContent.toString()+
+                                  "</table>"+
+                                "</html>"
+                            );
+                            
+                            f = new File("DataSkriningFrailtySyndrome.wps");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DATA SEKRINING FRAILTY SYNDROME<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>")
+                            );
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 3 (CSV)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"Umur\";\"Kode Petugas\";\"Nama Petugas\";\"Tanggal\";\"Resistensi\";\"N.R.\";\"Aktivitas\";\"N.A.\";\"Tidak Pernah\";\"Kanker\";\"Gagal Jantung\";\"Ginjal\";\"Nyeri Dada\";\"Serangan Jantung\";\"Stroke\";\"Asma\";\"Nyeri Sendi\";\"Paru Kronis\";\"Hipertensi\";\"Diabetes\";\"N.P.\";\"Usaha Berjalan\";\"N.U.\";\"Berat Badan\";\"N.B.\";\"N.Total\";\"Hasil Skrining\";\"Keterangan\"\n"
+                            ); 
+                            for (i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append("\"").append(tbObat.getValueAt(i,0).toString()).append("\";\"").append(tbObat.getValueAt(i,1).toString()).append("\";\"").append(tbObat.getValueAt(i,2).toString()).append("\";\"").append(tbObat.getValueAt(i,3).toString()).append("\";\"").append(tbObat.getValueAt(i,4).toString()).append("\";\"").append(tbObat.getValueAt(i,5).toString()).append("\";\"").append(tbObat.getValueAt(i,6).toString()).append("\";\"").append(tbObat.getValueAt(i,7).toString()).append("\";\"").append(tbObat.getValueAt(i,8).toString()).append("\";\"").append(tbObat.getValueAt(i,9).toString()).append("\";\"").append(tbObat.getValueAt(i,10).toString()).append("\";\"").append(tbObat.getValueAt(i,11).toString()).append("\";\"").append(tbObat.getValueAt(i,12).toString()).append("\";\"").append(tbObat.getValueAt(i,13).toString()).append("\";\"").append(tbObat.getValueAt(i,14).toString()).append("\";\"").append(tbObat.getValueAt(i,15).toString()).append(tbObat.getValueAt(i,16).toString()).append("\";\"").append(tbObat.getValueAt(i,17).toString()).append("\";\"").append(tbObat.getValueAt(i,18).toString()).append("\";\"").append(tbObat.getValueAt(i,19).toString()).append("\";\"").append(tbObat.getValueAt(i,20).toString()).append(tbObat.getValueAt(i,21).toString()).append("\";\"").append(tbObat.getValueAt(i,22).toString()).append("\";\"").append(tbObat.getValueAt(i,23).toString()).append("\";\"").append(tbObat.getValueAt(i,24).toString()).append("\";\"").append(tbObat.getValueAt(i,25).toString()).append("\";\"").append(tbObat.getValueAt(i,26).toString()).append("\";\"").append(tbObat.getValueAt(i,27).toString()).append("\";\"").append(tbObat.getValueAt(i,28).toString()).append("\";\"").append(tbObat.getValueAt(i,29).toString()).append("\";\"").append(tbObat.getValueAt(i,30).toString()).append("\";\"").append(tbObat.getValueAt(i,31).toString()).append("\"\n");
+                            }
+                            f = new File("DataSkriningFrailtySyndrome.csv");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(htmlContent.toString());
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break; 
+                }   
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }
@@ -1597,7 +1767,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
         Valid.pindah(evt,TCari,Resistensi);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningRisikoKankerParuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningRisikoKankerParuActionPerformed
+    private void MnSkriningFrailtySyndromeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningFrailtySyndromeActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1609,19 +1779,19 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningRisikoKankerParu.jasper","report","::[ Formulir Skrining Risiko Kanker Paru ]::",
+            Valid.MyReportqry("rptFormulirSkriningFrailtySyndrome.jasper","report","::[ Formulir Skrining Frailty Syndrome ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_frailty_syndrome.nip,"+
-                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.jenis_kelamin,skrining_frailty_syndrome.nilai_jenis_kelamin,skrining_frailty_syndrome.umur,"+
-                    "skrining_frailty_syndrome.nilai_umur,skrining_frailty_syndrome.pernah_kanker,skrining_frailty_syndrome.nilai_pernah_kanker,skrining_frailty_syndrome.ada_keluarga_kanker,"+
-                    "skrining_frailty_syndrome.nilai_ada_keluarga_kanker,skrining_frailty_syndrome.riwayat_rokok,skrining_frailty_syndrome.nilai_riwayat_rokok,skrining_frailty_syndrome.riwayat_bekerja_mengandung_karsinogen,"+
-                    "skrining_frailty_syndrome.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_frailty_syndrome.lingkungan_tinggal_polusi_tinggi,skrining_frailty_syndrome.nilai_lingkungan_tinggal_polusi_tinggi,"+
-                    "skrining_frailty_syndrome.lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.nilai_lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.pernah_paru_kronik,"+
-                    "skrining_frailty_syndrome.nilai_pernah_paru_kronik,skrining_frailty_syndrome.total_skor,skrining_frailty_syndrome.hasil_skrining,skrining_frailty_syndrome.keterangan "+
-                    "from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
+                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.resistensi,skrining_frailty_syndrome.nilai_resistensi,skrining_frailty_syndrome.aktivitas,"+
+                    "skrining_frailty_syndrome.nilai_aktivitas,skrining_frailty_syndrome.penyakit_tidak_pernah,skrining_frailty_syndrome.penyakit_kanker,skrining_frailty_syndrome.penyakit_gagal_jantung,"+
+                    "skrining_frailty_syndrome.penyakit_ginjal,skrining_frailty_syndrome.penyakit_nyeri_dada,skrining_frailty_syndrome.penyakit_serangan_jantung,skrining_frailty_syndrome.penyakit_stroke,"+
+                    "skrining_frailty_syndrome.penyakit_asma,skrining_frailty_syndrome.penyakit_nyeri_sendi,skrining_frailty_syndrome.penyakit_paru_kronis,skrining_frailty_syndrome.penyakit_hipertensi,"+
+                    "skrining_frailty_syndrome.penyakit_diabetes,skrining_frailty_syndrome.nilai_penyakit,skrining_frailty_syndrome.usaha_berjalan,skrining_frailty_syndrome.nilai_usaha_berjalan,"+
+                    "skrining_frailty_syndrome.berat_badan,skrining_frailty_syndrome.nilai_berat_badan,skrining_frailty_syndrome.nilai_total,skrining_frailty_syndrome.hasil_skrining,"+
+                    "skrining_frailty_syndrome.keterangan from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_frailty_syndrome.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningRisikoKankerParuActionPerformed
+    }//GEN-LAST:event_MnSkriningFrailtySyndromeActionPerformed
 
     private void ResistensiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ResistensiItemStateChanged
         if(Resistensi.getSelectedIndex()==0){
@@ -1801,7 +1971,7 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningRisikoKankerParu;
+    private javax.swing.JMenuItem MnSkriningFrailtySyndrome;
     private widget.TextBox NilaiAktivitas;
     private widget.TextBox NilaiBeratBadan;
     private widget.TextBox NilaiPenyakit;
@@ -1883,25 +2053,25 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_frailty_syndrome.nip,"+
-                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.jenis_kelamin,skrining_frailty_syndrome.nilai_jenis_kelamin,skrining_frailty_syndrome.umur,"+
-                    "skrining_frailty_syndrome.nilai_umur,skrining_frailty_syndrome.pernah_kanker,skrining_frailty_syndrome.nilai_pernah_kanker,skrining_frailty_syndrome.ada_keluarga_kanker,"+
-                    "skrining_frailty_syndrome.nilai_ada_keluarga_kanker,skrining_frailty_syndrome.riwayat_rokok,skrining_frailty_syndrome.nilai_riwayat_rokok,skrining_frailty_syndrome.riwayat_bekerja_mengandung_karsinogen,"+
-                    "skrining_frailty_syndrome.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_frailty_syndrome.lingkungan_tinggal_polusi_tinggi,skrining_frailty_syndrome.nilai_lingkungan_tinggal_polusi_tinggi,"+
-                    "skrining_frailty_syndrome.lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.nilai_lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.pernah_paru_kronik,"+
-                    "skrining_frailty_syndrome.nilai_pernah_paru_kronik,skrining_frailty_syndrome.total_skor,skrining_frailty_syndrome.hasil_skrining,skrining_frailty_syndrome.keterangan "+
-                    "from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
+                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.resistensi,skrining_frailty_syndrome.nilai_resistensi,skrining_frailty_syndrome.aktivitas,"+
+                    "skrining_frailty_syndrome.nilai_aktivitas,skrining_frailty_syndrome.penyakit_tidak_pernah,skrining_frailty_syndrome.penyakit_kanker,skrining_frailty_syndrome.penyakit_gagal_jantung,"+
+                    "skrining_frailty_syndrome.penyakit_ginjal,skrining_frailty_syndrome.penyakit_nyeri_dada,skrining_frailty_syndrome.penyakit_serangan_jantung,skrining_frailty_syndrome.penyakit_stroke,"+
+                    "skrining_frailty_syndrome.penyakit_asma,skrining_frailty_syndrome.penyakit_nyeri_sendi,skrining_frailty_syndrome.penyakit_paru_kronis,skrining_frailty_syndrome.penyakit_hipertensi,"+
+                    "skrining_frailty_syndrome.penyakit_diabetes,skrining_frailty_syndrome.nilai_penyakit,skrining_frailty_syndrome.usaha_berjalan,skrining_frailty_syndrome.nilai_usaha_berjalan,"+
+                    "skrining_frailty_syndrome.berat_badan,skrining_frailty_syndrome.nilai_berat_badan,skrining_frailty_syndrome.nilai_total,skrining_frailty_syndrome.hasil_skrining,"+
+                    "skrining_frailty_syndrome.keterangan from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_frailty_syndrome.nip=petugas.nip "+
                     "where skrining_frailty_syndrome.tanggal between ? and ? order by skrining_frailty_syndrome.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_frailty_syndrome.nip,"+
-                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.jenis_kelamin,skrining_frailty_syndrome.nilai_jenis_kelamin,skrining_frailty_syndrome.umur,"+
-                    "skrining_frailty_syndrome.nilai_umur,skrining_frailty_syndrome.pernah_kanker,skrining_frailty_syndrome.nilai_pernah_kanker,skrining_frailty_syndrome.ada_keluarga_kanker,"+
-                    "skrining_frailty_syndrome.nilai_ada_keluarga_kanker,skrining_frailty_syndrome.riwayat_rokok,skrining_frailty_syndrome.nilai_riwayat_rokok,skrining_frailty_syndrome.riwayat_bekerja_mengandung_karsinogen,"+
-                    "skrining_frailty_syndrome.nilai_riwayat_bekerja_mengandung_karsinogen,skrining_frailty_syndrome.lingkungan_tinggal_polusi_tinggi,skrining_frailty_syndrome.nilai_lingkungan_tinggal_polusi_tinggi,"+
-                    "skrining_frailty_syndrome.lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.nilai_lingkungan_rumah_tidak_sehat,skrining_frailty_syndrome.pernah_paru_kronik,"+
-                    "skrining_frailty_syndrome.nilai_pernah_paru_kronik,skrining_frailty_syndrome.total_skor,skrining_frailty_syndrome.hasil_skrining,skrining_frailty_syndrome.keterangan "+
-                    "from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
+                    "petugas.nama,skrining_frailty_syndrome.tanggal,skrining_frailty_syndrome.resistensi,skrining_frailty_syndrome.nilai_resistensi,skrining_frailty_syndrome.aktivitas,"+
+                    "skrining_frailty_syndrome.nilai_aktivitas,skrining_frailty_syndrome.penyakit_tidak_pernah,skrining_frailty_syndrome.penyakit_kanker,skrining_frailty_syndrome.penyakit_gagal_jantung,"+
+                    "skrining_frailty_syndrome.penyakit_ginjal,skrining_frailty_syndrome.penyakit_nyeri_dada,skrining_frailty_syndrome.penyakit_serangan_jantung,skrining_frailty_syndrome.penyakit_stroke,"+
+                    "skrining_frailty_syndrome.penyakit_asma,skrining_frailty_syndrome.penyakit_nyeri_sendi,skrining_frailty_syndrome.penyakit_paru_kronis,skrining_frailty_syndrome.penyakit_hipertensi,"+
+                    "skrining_frailty_syndrome.penyakit_diabetes,skrining_frailty_syndrome.nilai_penyakit,skrining_frailty_syndrome.usaha_berjalan,skrining_frailty_syndrome.nilai_usaha_berjalan,"+
+                    "skrining_frailty_syndrome.berat_badan,skrining_frailty_syndrome.nilai_berat_badan,skrining_frailty_syndrome.nilai_total,skrining_frailty_syndrome.hasil_skrining,"+
+                    "skrining_frailty_syndrome.keterangan from skrining_frailty_syndrome inner join reg_periksa on skrining_frailty_syndrome.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_frailty_syndrome.nip=petugas.nip "+
                     "where skrining_frailty_syndrome.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or skrining_frailty_syndrome.nip like ? or petugas.nama like ?) "+
@@ -1926,12 +2096,11 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),
-                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("jenis_kelamin"),rs.getString("nilai_jenis_kelamin"),rs.getString("umur"),rs.getString("nilai_umur"),
-                        rs.getString("pernah_kanker"),rs.getString("nilai_pernah_kanker"),rs.getString("ada_keluarga_kanker"),rs.getString("nilai_ada_keluarga_kanker"),rs.getString("riwayat_rokok"),
-                        rs.getString("nilai_riwayat_rokok"),rs.getString("riwayat_bekerja_mengandung_karsinogen"),rs.getString("nilai_riwayat_bekerja_mengandung_karsinogen"),
-                        rs.getString("lingkungan_tinggal_polusi_tinggi"),rs.getString("nilai_lingkungan_tinggal_polusi_tinggi"),rs.getString("lingkungan_rumah_tidak_sehat"),
-                        rs.getString("nilai_lingkungan_rumah_tidak_sehat"),rs.getString("pernah_paru_kronik"),rs.getString("nilai_pernah_paru_kronik"),rs.getString("total_skor"),
-                        rs.getString("hasil_skrining"),rs.getString("keterangan")
+                        rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),rs.getString("resistensi"),rs.getString("nilai_resistensi"),rs.getString("aktivitas"),rs.getString("nilai_aktivitas"),
+                        rs.getString("penyakit_tidak_pernah"),rs.getString("penyakit_kanker"),rs.getString("penyakit_gagal_jantung"),rs.getString("penyakit_ginjal"),rs.getString("penyakit_nyeri_dada"),
+                        rs.getString("penyakit_serangan_jantung"),rs.getString("penyakit_stroke"),rs.getString("penyakit_asma"),rs.getString("penyakit_nyeri_sendi"),rs.getString("penyakit_paru_kronis"),
+                        rs.getString("penyakit_hipertensi"),rs.getString("penyakit_diabetes"),rs.getString("nilai_penyakit"),rs.getString("usaha_berjalan"),rs.getString("nilai_usaha_berjalan"),
+                        rs.getString("berat_badan"),rs.getString("nilai_berat_badan"),rs.getString("nilai_total"),rs.getString("hasil_skrining"),rs.getString("keterangan")
                     });
                 }
             } catch (Exception e) {
@@ -1991,9 +2160,76 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString().substring(17,19));
             Resistensi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
             NilaiResistensi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
-            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            Aktivitas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            NilaiAktivitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString().equals("Ya")){
+                ChkTidakPernah.setSelected(true);
+            }else{
+                ChkTidakPernah.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString().equals("Ya")){
+                ChkKanker.setSelected(true);
+            }else{
+                ChkKanker.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString().equals("Ya")){
+                ChkGagalJantung.setSelected(true);
+            }else{
+                ChkGagalJantung.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString().equals("Ya")){
+                ChkPenyakitGinjal.setSelected(true);
+            }else{
+                ChkPenyakitGinjal.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString().equals("Ya")){
+                ChkNyeriDada.setSelected(true);
+            }else{
+                ChkNyeriDada.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString().equals("Ya")){
+                ChkSeranganJantung.setSelected(true);
+            }else{
+                ChkSeranganJantung.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString().equals("Ya")){
+                ChkStroke.setSelected(true);
+            }else{
+                ChkStroke.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString().equals("Ya")){
+                ChkAsma.setSelected(true);
+            }else{
+                ChkAsma.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString().equals("Ya")){
+                ChkNyeriSendi.setSelected(true);
+            }else{
+                ChkNyeriSendi.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString().equals("Ya")){
+                ChkPenyakitParuKronis.setSelected(true);
+            }else{
+                ChkPenyakitParuKronis.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString().equals("Ya")){
+                ChkHipertensi.setSelected(true);
+            }else{
+                ChkHipertensi.setSelected(false); 
+            }
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString().equals("Ya")){
+                ChkDiabetes.setSelected(true);
+            }else{
+                ChkDiabetes.setSelected(false); 
+            }
+            NilaiPenyakit.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            UsahaBerjalan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            NilaiUsahaBerjalan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            BeratBadan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            NilaiBeratBadan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            TotalHasil.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            HasilSkrining.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());  
         }
     }
@@ -2047,9 +2283,9 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     
     private void isForm(){
         if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>662){
+            if(internalFrame1.getHeight()>657){
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,490));
+                PanelInput.setPreferredSize(new Dimension(WIDTH,485));
                 FormInput.setVisible(true);      
                 ChkInput.setVisible(true);
             }else{
@@ -2148,17 +2384,13 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_frailty_syndrome","no_rawat=?","no_rawat=?,tanggal=?,jenis_kelamin=?,nilai_jenis_kelamin=?,umur=?,nilai_umur=?,pernah_kanker=?,nilai_pernah_kanker=?,"+
-                "ada_keluarga_kanker=?,nilai_ada_keluarga_kanker=?,riwayat_rokok=?,nilai_riwayat_rokok=?,riwayat_bekerja_mengandung_karsinogen=?,nilai_riwayat_bekerja_mengandung_karsinogen=?,"+
-                "lingkungan_tinggal_polusi_tinggi=?,nilai_lingkungan_tinggal_polusi_tinggi=?,lingkungan_rumah_tidak_sehat=?,nilai_lingkungan_rumah_tidak_sehat=?,pernah_paru_kronik=?,"+
-                "nilai_pernah_paru_kronik=?,total_skor=?,hasil_skrining=?,keterangan=?,nip=?",25,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
-            JenisKelamin.getSelectedItem().toString(),NilaiJenisKelamin.getText(),Usia.getSelectedItem().toString(),NilaiUsia.getText(), 
-            PernahMenderitaKanker.getSelectedItem().toString(),NilaiPernahMenderitaKanker.getText(),KeluargaKanker.getSelectedItem().toString(),NilaiKeluargaKanker.getText(), 
-            RiwayatMerokok.getSelectedItem().toString(),NilaiRiwayatMerokok.getText(),RiwayatBekerja.getSelectedItem().toString(),NilaiRiwayatBekerja.getText(), 
-            LingkunganTinggal.getSelectedItem().toString(),NilaiLingkunganTinggal.getText(),DalamRumah.getSelectedItem().toString(),NilaiDalamRumah.getText(), 
-            PernahParu.getSelectedItem().toString(),NilaiPernahParu.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText(),
-            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("skrining_frailty_syndrome","no_rawat=?","no_rawat=?,tanggal=?,resistensi=?,nilai_resistensi=?,aktivitas=?,nilai_aktivitas=?,penyakit_tidak_pernah=?,penyakit_kanker=?,"+
+                "penyakit_gagal_jantung=?,penyakit_ginjal=?,penyakit_nyeri_dada=?,penyakit_serangan_jantung=?,penyakit_stroke=?,penyakit_asma=?,penyakit_nyeri_sendi=?,penyakit_paru_kronis=?,penyakit_hipertensi=?,"+
+                "penyakit_diabetes=?,nilai_penyakit=?,usaha_berjalan=?,nilai_usaha_berjalan=?,berat_badan=?,nilai_berat_badan=?,nilai_total=?,hasil_skrining=?,keterangan=?,nip=?",28,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),Resistensi.getSelectedItem().toString(),NilaiResistensi.getText(),Aktivitas.getSelectedItem().toString(),NilaiAktivitas.getText(),
+                (ChkTidakPernah.isSelected()==true?"Ya":"Tidak"),(ChkKanker.isSelected()==true?"Ya":"Tidak"),(ChkGagalJantung.isSelected()==true?"Ya":"Tidak"),(ChkPenyakitGinjal.isSelected()==true?"Ya":"Tidak"),(ChkNyeriDada.isSelected()==true?"Ya":"Tidak"),(ChkSeranganJantung.isSelected()==true?"Ya":"Tidak"), 
+                (ChkStroke.isSelected()==true?"Ya":"Tidak"),(ChkAsma.isSelected()==true?"Ya":"Tidak"),(ChkNyeriSendi.isSelected()==true?"Ya":"Tidak"),(ChkPenyakitParuKronis.isSelected()==true?"Ya":"Tidak"),(ChkHipertensi.isSelected()==true?"Ya":"Tidak"),(ChkDiabetes.isSelected()==true?"Ya":"Tidak"),
+                NilaiPenyakit.getText(),UsahaBerjalan.getSelectedItem().toString(),NilaiUsahaBerjalan.getText(),BeratBadan.getSelectedItem().toString(),NilaiBeratBadan.getText(),TotalHasil.getText(),HasilSkrining.getText(),Keterangan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2168,12 +2400,32 @@ public final class RMSkriningFrailtySyndrome extends javax.swing.JDialog {
                tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),5);
                tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),6);
                tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),tbObat.getSelectedRow(),7);
-               
-               tbObat.setValueAt(TotalHasil.getText(),tbObat.getSelectedRow(),26);
-               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),27);
-               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),28);
+               tbObat.setValueAt(Resistensi.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+               tbObat.setValueAt(NilaiResistensi.getText(),tbObat.getSelectedRow(),9);
+               tbObat.setValueAt(Aktivitas.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+               tbObat.setValueAt(NilaiAktivitas.getText(),tbObat.getSelectedRow(),11);
+               tbObat.setValueAt((ChkTidakPernah.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),12);
+               tbObat.setValueAt((ChkKanker.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),13);
+               tbObat.setValueAt((ChkGagalJantung.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),14);
+               tbObat.setValueAt((ChkPenyakitGinjal.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt((ChkNyeriDada.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt((ChkSeranganJantung.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt((ChkStroke.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt((ChkAsma.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt((ChkNyeriSendi.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt((ChkPenyakitParuKronis.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt((ChkHipertensi.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt((ChkDiabetes.isSelected()==true?"Ya":"Tidak"),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(NilaiPenyakit.getText(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(UsahaBerjalan.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(NilaiUsahaBerjalan.getText(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(BeratBadan.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+               tbObat.setValueAt(NilaiBeratBadan.getText(),tbObat.getSelectedRow(),28);
+               tbObat.setValueAt(TotalHasil.getText(),tbObat.getSelectedRow(),29);
+               tbObat.setValueAt(HasilSkrining.getText(),tbObat.getSelectedRow(),30);
+               tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),31);
                emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {
