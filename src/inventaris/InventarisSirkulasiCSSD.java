@@ -8,11 +8,15 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,6 +27,9 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.text.Document;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 /**
@@ -57,7 +64,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         };
         tbKamIn.setModel(tabMode);
 
-        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+        //tbKamIn.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamIn.getBackground()));
         tbKamIn.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamIn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
@@ -165,6 +172,23 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
             });
         }
         
+        HTMLEditorKit kit = new HTMLEditorKit();
+        LoadHTML.setEditable(true);
+        LoadHTML.setEditorKit(kit);
+        StyleSheet styleSheet = kit.getStyleSheet();
+        styleSheet.addRule(
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+        );
+        Document doc = kit.createDefaultDocument();
+        LoadHTML.setDocument(doc);
     }
 
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
@@ -207,6 +231,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         TOut = new widget.TextBox();
         TIn = new widget.TextBox();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         PanelCariUtama = new javax.swing.JPanel();
         panelGlass10 = new widget.panelisi();
@@ -424,7 +449,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         label12.setBounds(362, 55, 60, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025 08:43:09" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025 13:00:36" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -448,21 +473,14 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         TOut.setForeground(new java.awt.Color(255, 255, 255));
         TOut.setHighlighter(null);
         TOut.setName("TOut"); // NOI18N
-        TOut.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TOutKeyPressed(evt);
-            }
-        });
 
         TIn.setEditable(false);
         TIn.setForeground(new java.awt.Color(255, 255, 255));
         TIn.setHighlighter(null);
         TIn.setName("TIn"); // NOI18N
-        TIn.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TInKeyPressed(evt);
-            }
-        });
+
+        LoadHTML.setBorder(null);
+        LoadHTML.setName("LoadHTML"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -743,6 +761,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         NoSirkulasi.setEditable(true);
         btnInv.setEnabled(true);
         emptTeks();
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(inventaris_ambil_cssd.no_sirkulasi,3),signed)),0) from inventaris_ambil_cssd where DATE_FORMAT(inventaris_ambil_cssd.tgl_ambil, '%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ","AC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSirkulasi);
         WindowInput.setAlwaysOnTop(false);
         WindowInput.setVisible(true);
 }//GEN-LAST:event_BtnInActionPerformed
@@ -751,7 +770,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnInActionPerformed(null);
         }else{
-            Valid.pindah(evt,TCari,BtnOut);
+            Valid.pindah(evt,TCari,BtnSteril);
         }
 }//GEN-LAST:event_BtnInKeyPressed
 
@@ -786,7 +805,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnOutActionPerformed(null);
         }else{
-            Valid.pindah(evt,BtnIn,BtnHapus);
+            Valid.pindah(evt,BtnSteril,BtnHapus);
         }
 }//GEN-LAST:event_BtnOutKeyPressed
 
@@ -796,19 +815,13 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
             NoInventaris.requestFocus();
         }else if(nama_barang.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
-        }else if(TOut.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Data sirkulasi dengan No.Inventaris "+NoInventaris.getText()+" belum kembali. Data belum bisa anda hapus...!!!!");
         }else if(!(nama_barang.getText().trim().equals(""))){
-            try{
-                Sequel.queryu("delete from inventaris_ambil_cssd where peminjam='"+Keterangan.getText()+"' and no_inventaris='"+NoInventaris.getText()+"' and tgl_pinjam='"+TIn.getText()+"'");
-                tampil();
-            }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih terlebih dulu data yang mau anda hapus...\n Klik data pada table untuk memilih data...!!!!");
+            if(Sequel.meghapustf("inventaris_ambil_cssd","no_sirkulasi",NoSirkulasi.getText())==true){
+                Sequel.queryu("update inventaris set status_barang='Ada' where no_inventaris='"+NoInventaris.getText()+"'");
+                tabMode.removeRow(tbKamIn.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
             }
         }
-
-        emptTeks();
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -837,58 +850,198 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-                /*inventariscari="";
-                tglcari="";
-                
-                if(ChkTanggal.isSelected()==true){
-                    tglcari=" inventaris_ambil_cssd.tgl_pinjam between '"+Valid.SetTgl(TglPinjam1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPinjam2.getSelectedItem()+"")+"' and ";
-                }
-                
-                Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptSirkulasiInventaris.jasper","report","::[ Data Sirkulasi Inventaris ]::","select inventaris_ambil_cssd.no_inventaris,"+
-                           "inventaris.kode_barang,"+
-                           "inventaris_barang.nama_barang,"+
-                           "inventaris_produsen.nama_produsen,"+
-                           "inventaris_merk.nama_merk,"+
-                           "inventaris_barang.thn_produksi, "+
-                           "inventaris_barang.isbn,"+
-                           "inventaris_kategori.nama_kategori,"+
-                           "cssd_barang.jenis_barang,"+
-                           "inventaris_ambil_cssd.peminjam,"+
-                           "inventaris_ambil_cssd.tlp,"+
-                           "inventaris_ambil_cssd.tgl_pinjam,"+
-                           "inventaris_ambil_cssd.tgl_kembali,"+
-                           "petugas.nama "+
-                           "from inventaris_ambil_cssd inner join inventaris inner join inventaris_barang inner join inventaris_produsen "+
-                           "inner join inventaris_merk inner join inventaris_kategori inner join cssd_barang inner join petugas "+
-                           "on inventaris_ambil_cssd.no_inventaris=inventaris.no_inventaris "+
-                           "and inventaris_barang.kode_barang=inventaris.kode_barang "+
-                           "and inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen "+
-                           "and inventaris_barang.id_merk=inventaris_merk.id_merk "+
-                           "and inventaris_barang.id_kategori=inventaris_kategori.id_kategori "+
-                           "and inventaris_barang.id_jenis=cssd_barang.id_jenis "+
-                           "and petugas.nip=inventaris_ambil_cssd.nip "+
-                           "where "+inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_ambil_cssd.no_inventaris like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.kode_barang like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.nama_barang like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_produsen.nama_produsen like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_merk.nama_merk like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.thn_produksi like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_barang.isbn like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_kategori.nama_kategori like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" cssd_barang.jenis_barang like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_ambil_cssd.peminjam like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                           inventariscari+" inventaris_ambil_cssd.status_pinjam like '%"+StatusCari.getSelectedItem().toString().replaceAll("Semua","")+"%' and "+tglcari+" inventaris_ambil_cssd.tlp like '%"+TCari.getText().trim()+"%' "+
-                           " order by inventaris_ambil_cssd.tgl_pinjam",param);*/
+            try{
+                File g = new File("file2.css");            
+                BufferedWriter bg = new BufferedWriter(new FileWriter(g));
+                bg.write(
+                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
+                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
+                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
+                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
+                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
+                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
+                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                );
+                bg.close();
 
+                File f;            
+                BufferedWriter bw;
+                StringBuilder htmlContent;
+                
+                String pilihan =(String) JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (CSV)"},"Laporan 1 (HTML)");
+                switch (pilihan) {
+                    case "Laporan 1 (HTML)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append("<tr class='isi'>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Sirkulasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Inventaris</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Barang</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Barang</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Produsen</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Type/Merk</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Thn.Produksi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ISBN</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Barang</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Diambil</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Pengambil</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Pengambil</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Ambil</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Sterilisasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Penyeteril</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Penyeteril</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Starilisasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kembali</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Pengembali</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Pengembali</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Kembali</b></td>").
+                                        append("</tr>");
+                            for (int i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,12).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,13).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,14).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,15).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,16).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,17).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,18).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,19).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,20).toString()).append("</td>").
+                                            append("</tr>");
+                            }
+                            LoadHTML.setText(
+                                "<html>"+
+                                  "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                   htmlContent.toString()+
+                                  "</table>"+
+                                "</html>"
+                            );
+                            
+                            f = new File("DataSirkulasiCSSD.html");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DATA SIRKULASI CSSD<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>")
+                            );
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 2 (WPS)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append("<tr class='isi'>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Sirkulasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Inventaris</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Barang</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Barang</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Produsen</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Type/Merk</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Thn.Produksi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ISBN</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Barang</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Diambil</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Pengambil</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Pengambil</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Ambil</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Sterilisasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Penyeteril</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Penyeteril</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Starilisasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Kembali</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Pengembali</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Petugas Pengembali</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl & Jam Kembali</b></td>").
+                                        append("</tr>");
+                            for (int i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append("<tr class='isi'>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,12).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,13).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,14).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,15).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,16).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,17).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,18).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,19).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbKamIn.getValueAt(i,20).toString()).append("</td>").
+                                            append("</tr>");
+                            }
+                            LoadHTML.setText(
+                                "<html>"+
+                                  "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                                   htmlContent.toString()+
+                                  "</table>"+
+                                "</html>"
+                            );
+                            
+                            f = new File("DataSirkulasiCSSD.wps");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
+                                        "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                        "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                            "<tr class='isi2'>"+
+                                                "<td valign='top' align='center'>"+
+                                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                                    "<font size='2' face='Tahoma'>DATA SIRKULASI CSSD<br><br></font>"+        
+                                                "</td>"+
+                                           "</tr>"+
+                                        "</table>")
+                            );
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break;
+                    case "Laporan 3 (CSV)":
+                            htmlContent = new StringBuilder();
+                            htmlContent.append(                             
+                                "\"No.Sirkulasi\";\"No.Inventaris\";\"Kode Barang\";\"Nama Barang\";\"Produsen\";\"Type/Merk\";\"Thn.Produksi\";\"ISBN\";\"Jenis Barang\";\"Keterangan Diambil\";\"NIP Pengambil\";\"Petugas Pengambil\";\"Tgl & Jam Ambil\";\"Keterangan Sterilisasi\";\"NIP Penyeteril\";\"Petugas Penyeteril\";\"Tgl & Jam Starilisasi\";\"Keterangan Kembali\";\"NIP Pengembali\";\"Petugas Pengembali\";\"Tgl & Jam Kembali\"\n"
+                            ); 
+                            for (int i = 0; i < tabMode.getRowCount(); i++) {
+                                htmlContent.append("\"").append(tbKamIn.getValueAt(i,0).toString()).append("\";\"").append(tbKamIn.getValueAt(i,1).toString()).append("\";\"").append(tbKamIn.getValueAt(i,2).toString()).append("\";\"").append(tbKamIn.getValueAt(i,3).toString()).append("\";\"").append(tbKamIn.getValueAt(i,4).toString()).append("\";\"").append(tbKamIn.getValueAt(i,5).toString()).append("\";\"").append(tbKamIn.getValueAt(i,6).toString()).append("\";\"").append(tbKamIn.getValueAt(i,7).toString()).append("\";\"").append(tbKamIn.getValueAt(i,8).toString()).append("\";\"").append(tbKamIn.getValueAt(i,9).toString()).append("\";\"").append(tbKamIn.getValueAt(i,10).toString()).append("\";\"").append(tbKamIn.getValueAt(i,11).toString()).append("\";\"").append(tbKamIn.getValueAt(i,12).toString()).append("\";\"").append(tbKamIn.getValueAt(i,13).toString()).append("\";\"").append(tbKamIn.getValueAt(i,14).toString()).append("\";\"").append(tbKamIn.getValueAt(i,15).toString()).append(tbKamIn.getValueAt(i,16).toString()).append("\";\"").append(tbKamIn.getValueAt(i,17).toString()).append("\";\"").append(tbKamIn.getValueAt(i,18).toString()).append("\";\"").append(tbKamIn.getValueAt(i,19).toString()).append("\";\"").append(tbKamIn.getValueAt(i,20).toString()).append("\"\n");
+                            }
+                            f = new File("DataSirkulasiCSSD.csv");            
+                            bw = new BufferedWriter(new FileWriter(f));            
+                            bw.write(htmlContent.toString());
+                            bw.close();                         
+                            Desktop.getDesktop().browse(f.toURI());
+                        break; 
+                }   
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -925,7 +1078,6 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        //ChkTanggal.setSelected(false);
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -936,10 +1088,6 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
             Valid.pindah(evt, BtnCari, BtnIn);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
-
-    private void DTPTglKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPTglKeyPressed
-     // Valid.pindah(evt,kdkamar,cmbJam);
-}//GEN-LAST:event_DTPTglKeyPressed
 
     private void BtnCloseInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseInActionPerformed
         WindowInput.dispose();
@@ -977,14 +1125,13 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
                     tbKamIn.setValueAt(NIP.getText(),tbKamIn.getSelectedRow(),14);
                     tbKamIn.setValueAt(NamaPetugas.getText(),tbKamIn.getSelectedRow(),15);
                     tbKamIn.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbKamIn.getSelectedRow(),16);
-                    emptTeks(); 
                     WindowInput.dispose();
                 }
             }else if(aksi.equals("kembali")){
                 if(Sequel.menyimpantf("inventaris_kembali_cssd","'"+Keterangan.getText()+"','"+NoSirkulasi.getText()+"','"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19)+"','"+NIP.getText()+"'","No.Sirkulasi")==true){
                     tabMode.removeRow(tbKamIn.getSelectedRow());
+                    LCount.setText(""+tabMode.getRowCount());
                     Sequel.queryu("update inventaris set status_barang='Ada' where no_inventaris='"+NoInventaris.getText()+"'");
-                    emptTeks(); 
                     WindowInput.dispose();
                 }
             }
@@ -992,13 +1139,17 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        //Valid.pindah(evt,cmbDtk,BtnBatal);
+        Valid.pindah(evt,btnPtg,BtnBatal);
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        if(NoInventaris.isEditable()==true){
+        if(aksi.equals("ambil")){
             emptTeks();
-        }else if(NoInventaris.isEditable()==false){
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(inventaris_ambil_cssd.no_sirkulasi,3),signed)),0) from inventaris_ambil_cssd where DATE_FORMAT(inventaris_ambil_cssd.tgl_ambil, '%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ","AC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSirkulasi);
+        }else if(aksi.equals("steril")){
+            emptTeks();
+            WindowInput.dispose();
+        }else if(aksi.equals("kembali")){
             emptTeks();
             WindowInput.dispose();
         }
@@ -1010,25 +1161,13 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         }else{Valid.pindah(evt, BtnSimpan, BtnCloseIn);}
     }//GEN-LAST:event_BtnBatalKeyPressed
 
-    private void TInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TInKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TInKeyPressed
-
-    private void DTPTglItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DTPTglItemStateChanged
-        
-    }//GEN-LAST:event_DTPTglItemStateChanged
-
     private void TglPinjam1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPinjam1KeyPressed
-        //Valid.pindah(evt,InventarisCari,TglPinjam2);
+        Valid.pindah(evt,TCari,TglPinjam2);
 }//GEN-LAST:event_TglPinjam1KeyPressed
 
     private void TglPinjam2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPinjam2KeyPressed
-        //Valid.pindah(evt,TglPinjam1,InventarisCari);
+        Valid.pindah(evt,TglPinjam1,TCari);
 }//GEN-LAST:event_TglPinjam2KeyPressed
-
-    private void TOutKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TOutKeyPressed
-        // TODO add your handling code here:
-}//GEN-LAST:event_TOutKeyPressed
 
     private void tbKamInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamInMouseClicked
         if(tabMode.getRowCount()!=0){
@@ -1065,7 +1204,7 @@ private void NoInventarisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:ev
 }//GEN-LAST:event_NoInventarisKeyPressed
 
 private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        Valid.pindah(evt,NoInventaris,NoSirkulasi);
+        Valid.pindah(evt,NoSirkulasi,btnPtg);
 }//GEN-LAST:event_KeteranganKeyPressed
 
 private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvActionPerformed
@@ -1082,7 +1221,7 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 nama_barang.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),1).toString()+", "+inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),2).toString());
                 Merk.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),4).toString());
                 Jenis.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),8).toString());
-                Status.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),12).toString());                        
+                Sequel.cariIsi("select inventaris.status_barang from inventaris where inventaris.no_inventaris='"+NoInventaris.getText()+"'",Status);                       
                 NoInventaris.requestFocus();
             }                
         }
@@ -1138,11 +1277,11 @@ private void btnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
 }//GEN-LAST:event_btnPtgActionPerformed
 
 private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-    //Valid.pindah(evt,InventarisCari,TglPinjam2);
+    Valid.pindah(evt,btnInv,NoSirkulasi);
 }//GEN-LAST:event_TanggalKeyPressed
 
 private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoSirkulasiKeyPressed
-    Valid.pindah(evt,Keterangan,NIP);
+    Valid.pindah(evt,Tanggal,Keterangan);
 }//GEN-LAST:event_NoSirkulasiKeyPressed
 
     private void tbKamInKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamInKeyReleased
@@ -1184,7 +1323,11 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     }//GEN-LAST:event_BtnSterilActionPerformed
 
     private void BtnSterilKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSterilKeyPressed
-        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            BtnSterilActionPerformed(null);
+        }else{
+            Valid.pindah(evt,BtnIn,BtnOut);
+        }
     }//GEN-LAST:event_BtnSterilKeyPressed
 
     /**
@@ -1220,6 +1363,7 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private widget.Label LCount;
     private widget.Label LblTgl;
     private widget.Label LblTgl1;
+    private widget.editorpane LoadHTML;
     private widget.TextBox Merk;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
@@ -1364,8 +1508,6 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
         Keterangan.setText("");
         NoSirkulasi.setText("");
         Tanggal.setDate(new Date());
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(inventaris_ambil_cssd.no_sirkulasi,3),signed)),0) from inventaris_ambil_cssd where DATE_FORMAT(inventaris_ambil_cssd.tgl_ambil, '%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                         "AC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSirkulasi);
         NoInventaris.requestFocus();
     }
 

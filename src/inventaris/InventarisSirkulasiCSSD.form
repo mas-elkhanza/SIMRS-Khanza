@@ -349,7 +349,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="03-05-2025 08:43:09"/>
+                    <StringItem index="0" value="03-05-2025 13:00:36"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -394,9 +394,6 @@
         </Property>
         <Property name="name" type="java.lang.String" value="TOut" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TOutKeyPressed"/>
-      </Events>
     </Component>
     <Component class="widget.TextBox" name="TIn">
       <Properties>
@@ -409,11 +406,16 @@
         </Property>
         <Property name="name" type="java.lang.String" value="TIn" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TInKeyPressed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+    <Component class="widget.editorpane" name="LoadHTML">
+      <Properties>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="LoadHTML" noResource="true"/>
+      </Properties>
     </Component>
   </NonVisualComponents>
   <Properties>
