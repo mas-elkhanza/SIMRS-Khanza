@@ -18,8 +18,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -63,17 +61,57 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         tbKamIn.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamIn.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 21; i++) {
             TableColumn column = tbKamIn.getColumnModel().getColumn(i);
             if(i==0){
+                column.setPreferredWidth(87);
+            }else if(i==1){
+                column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(90);
+            }else if(i==3){
+                column.setPreferredWidth(160);
+            }else if(i==4){
                 column.setPreferredWidth(100);
+            }else if(i==5){
+                column.setPreferredWidth(100);
+            }else if(i==6){
+                column.setPreferredWidth(70);
+            }else if(i==7){
+                column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(100);
+            }else if(i==9){
+                column.setPreferredWidth(150);
+            }else if(i==10){
+                column.setPreferredWidth(90);
+            }else if(i==11){
+                column.setPreferredWidth(150);
+            }else if(i==12){
+                column.setPreferredWidth(115);
+            }else if(i==13){
+                column.setPreferredWidth(150);
+            }else if(i==14){
+                column.setPreferredWidth(90);
+            }else if(i==15){
+                column.setPreferredWidth(150);
+            }else if(i==16){
+                column.setPreferredWidth(115);
+            }else if(i==17){
+                column.setPreferredWidth(150);
+            }else if(i==18){
+                column.setPreferredWidth(90);
+            }else if(i==19){
+                column.setPreferredWidth(150);
+            }else if(i==20){
+                column.setPreferredWidth(115);
             }
         }
         tbKamIn.setDefaultRenderer(Object.class, new WarnaTable());
 
         Keterangan.setDocument(new batasInput((byte)50).getKata(Keterangan));
         NoSirkulasi.setDocument(new batasInput((byte)13).getKata(NoSirkulasi));
-        nip.setDocument(new batasInput((byte)20).getKata(nip));
+        NIP.setDocument(new batasInput((byte)20).getKata(NIP));
         NoInventaris.setDocument(new batasInput((byte)30).getKata(NoInventaris));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
      
@@ -89,10 +127,10 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if(petugas.getTable().getSelectedRow()!= -1){                   
-                    nip.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    nama_petugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    NIP.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                 }   
-                nip.requestFocus();
+                NIP.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}
@@ -159,9 +197,9 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         label11 = new widget.Label();
         NoSirkulasi = new widget.TextBox();
         label6 = new widget.Label();
-        nip = new widget.TextBox();
+        NIP = new widget.TextBox();
         label8 = new widget.Label();
-        nama_petugas = new widget.TextBox();
+        NamaPetugas = new widget.TextBox();
         btnPtg = new widget.Button();
         label12 = new widget.Label();
         Tanggal = new widget.Tanggal();
@@ -347,24 +385,24 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         internalFrame2.add(label6);
         label6.setBounds(0, 85, 100, 23);
 
-        nip.setName("nip"); // NOI18N
-        nip.addKeyListener(new java.awt.event.KeyAdapter() {
+        NIP.setName("NIP"); // NOI18N
+        NIP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                nipKeyPressed(evt);
+                NIPKeyPressed(evt);
             }
         });
-        internalFrame2.add(nip);
-        nip.setBounds(103, 145, 130, 23);
+        internalFrame2.add(NIP);
+        NIP.setBounds(103, 145, 130, 23);
 
         label8.setText("Petugas :");
         label8.setName("label8"); // NOI18N
         internalFrame2.add(label8);
         label8.setBounds(0, 145, 100, 23);
 
-        nama_petugas.setEditable(false);
-        nama_petugas.setName("nama_petugas"); // NOI18N
-        internalFrame2.add(nama_petugas);
-        nama_petugas.setBounds(235, 145, 450, 23);
+        NamaPetugas.setEditable(false);
+        NamaPetugas.setName("NamaPetugas"); // NOI18N
+        internalFrame2.add(NamaPetugas);
+        NamaPetugas.setBounds(235, 145, 450, 23);
 
         btnPtg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPtg.setMnemonic('3');
@@ -386,7 +424,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         label12.setBounds(362, 55, 60, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2025 03:55:36" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025 08:43:09" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -590,7 +628,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass11.add(R2);
 
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2025" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -608,7 +646,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass11.add(jLabel22);
 
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-04-2025" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
@@ -722,19 +760,25 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Maaf, Tabel kosong. Tidak ada data yang bisa Anda edit..!!!!");
             BtnIn.requestFocus();
         }else if(Merk.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data inventaris_ambil_cssd yang akan dikembalikan dengan menklik data pada tabel...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data barang inventaris CSSD yang akan diseterilisasi dengan menklik data pada tabel...!!!");
             tbKamIn.requestFocus();
         }else if(! TOut.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, Inventaris sudah dikembalikan pada tanggal "+TOut.getText()+"...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, barang inventaris CSSD sudah dikembalikan pada tanggal "+TOut.getText()+"...!!!");
             tbKamIn.requestFocus();
         }else if((! Merk.getText().trim().equals(""))&&(TOut.getText().trim().equals(""))){
-            NoInventaris.setEditable(false);
-            Sequel.cariIsi("select inventaris.status_barang from inventaris where inventaris.no_inventaris='"+NoInventaris.getText()+"'",Status);
-            Keterangan.setEditable(false);
-            NoSirkulasi.setEditable(false);
-            btnInv.setEnabled(false);
-            WindowInput.setAlwaysOnTop(false);
-            WindowInput.setVisible(true);
+            if(tbKamIn.getSelectedRow()>-1){
+                if(!tbKamIn.getValueAt(tbKamIn.getSelectedRow(),16).toString().equals("")){
+                    aksi="kembali";
+                    NoInventaris.setEditable(false);
+                    Sequel.cariIsi("select inventaris.status_barang from inventaris where inventaris.no_inventaris='"+NoInventaris.getText()+"'",Status);
+                    NoSirkulasi.setEditable(false);
+                    btnInv.setEnabled(false);
+                    WindowInput.setAlwaysOnTop(false);
+                    WindowInput.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, barang inventaris CSSD belum dilakukan sterilisasi..!!!");
+                }
+            }
         }
 }//GEN-LAST:event_BtnOutActionPerformed
 
@@ -912,20 +956,36 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
             Valid.textKosong(NoInventaris,"Inventaris");
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Peminjam");
-        }else if(nip.getText().trim().equals("")||nama_petugas.getText().trim().equals("")){
-            Valid.textKosong(nip,"Petugas");
+        }else if(NIP.getText().trim().equals("")||NamaPetugas.getText().trim().equals("")){
+            Valid.textKosong(NIP,"Petugas");
         }else {
             if(aksi.equals("ambil")){
                 if(!Status.getText().trim().equals("Ada")){
                     JOptionPane.showMessageDialog(null,"Maaf, Barang "+Status.getText()+"...!!!");
                     NoInventaris.requestFocus();
                 }else if(Status.getText().trim().equals("Ada")){
-                    if(Sequel.menyimpantf("inventaris_ambil_cssd","'"+Keterangan.getText()+"','"+NoSirkulasi.getText()+"','"+NoInventaris.getText()+"','"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19)+"','"+nip.getText()+"'","No.Sirkulasi")==true){
+                    if(Sequel.menyimpantf("inventaris_ambil_cssd","'"+Keterangan.getText()+"','"+NoSirkulasi.getText()+"','"+NoInventaris.getText()+"','"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19)+"','"+NIP.getText()+"'","No.Sirkulasi")==true){
                         Sequel.queryu("update inventaris set status_barang='Dipinjam' where no_inventaris='"+NoInventaris.getText()+"'");
                         NoInventaris.requestFocus();  
                         emptTeks();
                         tampil();
                     }   
+                }
+            }else if(aksi.equals("steril")){
+                if(Sequel.menyimpantf("inventaris_sterilisasi_cssd","'"+Keterangan.getText()+"','"+NoSirkulasi.getText()+"','"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19)+"','"+NIP.getText()+"'","No.Sirkulasi")==true){
+                    tbKamIn.setValueAt(Keterangan.getText(),tbKamIn.getSelectedRow(),13);
+                    tbKamIn.setValueAt(NIP.getText(),tbKamIn.getSelectedRow(),14);
+                    tbKamIn.setValueAt(NamaPetugas.getText(),tbKamIn.getSelectedRow(),15);
+                    tbKamIn.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbKamIn.getSelectedRow(),16);
+                    emptTeks(); 
+                    WindowInput.dispose();
+                }
+            }else if(aksi.equals("kembali")){
+                if(Sequel.menyimpantf("inventaris_kembali_cssd","'"+Keterangan.getText()+"','"+NoSirkulasi.getText()+"','"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19)+"','"+NIP.getText()+"'","No.Sirkulasi")==true){
+                    tabMode.removeRow(tbKamIn.getSelectedRow());
+                    Sequel.queryu("update inventaris set status_barang='Ada' where no_inventaris='"+NoInventaris.getText()+"'");
+                    emptTeks(); 
+                    WindowInput.dispose();
                 }
             }
         }
@@ -1055,19 +1115,19 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     inventaris.setVisible(true);        
 }//GEN-LAST:event_btnInvActionPerformed
 
-private void nipKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nipKeyPressed
+private void NIPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NIPKeyPressed
    if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-        nama_petugas.setText(petugas.tampil3(nip.getText()));
+        NamaPetugas.setText(petugas.tampil3(NIP.getText()));
     }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-        nama_petugas.setText(petugas.tampil3(nip.getText()));
+        NamaPetugas.setText(petugas.tampil3(NIP.getText()));
         NoSirkulasi.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-        nama_petugas.setText(petugas.tampil3(nip.getText()));
+        NamaPetugas.setText(petugas.tampil3(NIP.getText()));
         BtnSimpan.requestFocus();
     }else if(evt.getKeyCode()==KeyEvent.VK_UP){
         btnPtgActionPerformed(null);
     }
-}//GEN-LAST:event_nipKeyPressed
+}//GEN-LAST:event_NIPKeyPressed
 
 private void btnPtgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPtgActionPerformed
     petugas.isCek();
@@ -1082,7 +1142,7 @@ private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T
 }//GEN-LAST:event_TanggalKeyPressed
 
 private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoSirkulasiKeyPressed
-    Valid.pindah(evt,Keterangan,nip);
+    Valid.pindah(evt,Keterangan,NIP);
 }//GEN-LAST:event_NoSirkulasiKeyPressed
 
     private void tbKamInKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamInKeyReleased
@@ -1104,16 +1164,22 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data barang inventaris CSSD yang akan diseterilisasi dengan menklik data pada tabel...!!!");
             tbKamIn.requestFocus();
         }else if(! TOut.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(null,"Maaf, barang CSSD sudah dikembalikan pada tanggal "+TOut.getText()+"...!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, barang inventaris CSSD sudah dikembalikan pada tanggal "+TOut.getText()+"...!!!");
             tbKamIn.requestFocus();
         }else if((! Merk.getText().trim().equals(""))&&(TOut.getText().trim().equals(""))){
-            NoInventaris.setEditable(false);
-            Sequel.cariIsi("select inventaris.status_barang from inventaris where inventaris.no_inventaris='"+NoInventaris.getText()+"'",Status);
-            Keterangan.setEditable(false);
-            NoSirkulasi.setEditable(false);
-            btnInv.setEnabled(false);
-            WindowInput.setAlwaysOnTop(false);
-            WindowInput.setVisible(true);
+            if(tbKamIn.getSelectedRow()>-1){
+                if(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),16).toString().equals("")){
+                    aksi="steril";
+                    NoInventaris.setEditable(false);
+                    Sequel.cariIsi("select inventaris.status_barang from inventaris where inventaris.no_inventaris='"+NoInventaris.getText()+"'",Status);
+                    NoSirkulasi.setEditable(false);
+                    btnInv.setEnabled(false);
+                    WindowInput.setAlwaysOnTop(false);
+                    WindowInput.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null,"Maaf, sudah dilakukan sterilisasi pada tanggal "+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),16).toString()+"...!!!");
+                }
+            }
         }
     }//GEN-LAST:event_BtnSterilActionPerformed
 
@@ -1155,6 +1221,8 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private widget.Label LblTgl;
     private widget.Label LblTgl1;
     private widget.TextBox Merk;
+    private widget.TextBox NIP;
+    private widget.TextBox NamaPetugas;
     private widget.TextBox NoInventaris;
     private widget.TextBox NoSirkulasi;
     private javax.swing.JPanel PanelCariUtama;
@@ -1185,8 +1253,6 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private widget.Label label7;
     private widget.Label label8;
     private widget.TextBox nama_barang;
-    private widget.TextBox nama_petugas;
-    private widget.TextBox nip;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass11;
     private widget.Table tbKamIn;
@@ -1203,7 +1269,7 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
                 ps=koneksi.prepareStatement(
                        "select inventaris_ambil_cssd.no_sirkulasi,inventaris_ambil_cssd.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
                        "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,cssd_barang.jenis_barang,inventaris_ambil_cssd.keterangan_ambil,inventaris_ambil_cssd.tgl_ambil,"+
-                       "inventaris_ambil_cssd.nip as nippengambil,petugasambil.nama as namapengambil,inventaris_sterilisasi_cssd.keterangan_strerilisasi,inventaris_sterilisasi_cssd.tgl_sterilisasi,"+
+                       "inventaris_ambil_cssd.nip as nippengambil,petugasambil.nama as namapengambil,inventaris_sterilisasi_cssd.keterangan_strerilisasi,ifnull(inventaris_sterilisasi_cssd.tgl_sterilisasi,'') as tgl_sterilisasi,"+
                        "inventaris_sterilisasi_cssd.nip as nippenyeteril,petugaspenyeteril.nama as namapenyeteril from inventaris_ambil_cssd inner join cssd_barang on inventaris_ambil_cssd.no_inventaris=cssd_barang.no_inventaris "+
                        "inner join inventaris on cssd_barang.no_inventaris=inventaris.no_inventaris inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
                        "inner join inventaris_produsen on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
@@ -1242,12 +1308,14 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
                 ps=koneksi.prepareStatement(
                        "select inventaris_ambil_cssd.no_sirkulasi,inventaris_ambil_cssd.no_inventaris,inventaris.kode_barang,inventaris_barang.nama_barang,inventaris_produsen.nama_produsen,"+
                        "inventaris_merk.nama_merk,inventaris_barang.thn_produksi,inventaris_barang.isbn,cssd_barang.jenis_barang,inventaris_ambil_cssd.keterangan_ambil,inventaris_ambil_cssd.tgl_ambil,"+
-                       "inventaris_ambil_cssd.nip as nippengambil,petugasambil.nama as namapengambil,inventaris_sterilisasi_cssd.keterangan_strerilisasi,inventaris_sterilisasi_cssd.tgl_sterilisasi,"+
-                       "inventaris_sterilisasi_cssd.nip as nippenyeteril,petugaspenyeteril.nama as namapenyeteril from inventaris_ambil_cssd inner join cssd_barang on inventaris_ambil_cssd.no_inventaris=cssd_barang.no_inventaris "+
+                       "inventaris_ambil_cssd.nip as nippengambil,petugasambil.nama as namapengambil,inventaris_sterilisasi_cssd.keterangan_strerilisasi,ifnull(inventaris_sterilisasi_cssd.tgl_sterilisasi,'') as tgl_sterilisasi,"+
+                       "inventaris_sterilisasi_cssd.nip as nippenyeteril,petugaspenyeteril.nama as namapenyeteril,inventaris_kembali_cssd.keterangan_kembali,ifnull(inventaris_kembali_cssd.tgl_kembali,'') as tgl_kembali,"+
+                       "inventaris_kembali_cssd.nip as nippengembali,petugaspengembali.nama as namapengembali from inventaris_ambil_cssd inner join cssd_barang on inventaris_ambil_cssd.no_inventaris=cssd_barang.no_inventaris "+
                        "inner join inventaris on cssd_barang.no_inventaris=inventaris.no_inventaris inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
                        "inner join inventaris_produsen on inventaris_barang.kode_produsen=inventaris_produsen.kode_produsen inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
-                       "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori left join petugas as petugasambil on petugasambil.nip=inventaris_ambil_cssd.nip "+
-                       "left join inventaris_sterilisasi_cssd on inventaris_sterilisasi_cssd.no_sirkulasi=inventaris_ambil_cssd.no_sirkulasi inner join petugas as petugaspenyeteril on petugaspenyeteril.nip=inventaris_sterilisasi_cssd.nip "+
+                       "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori inner join petugas as petugasambil on petugasambil.nip=inventaris_ambil_cssd.nip "+
+                       "left join inventaris_sterilisasi_cssd on inventaris_sterilisasi_cssd.no_sirkulasi=inventaris_ambil_cssd.no_sirkulasi left join petugas as petugaspenyeteril on petugaspenyeteril.nip=inventaris_sterilisasi_cssd.nip "+
+                       "left join inventaris_kembali_cssd on inventaris_kembali_cssd.no_sirkulasi=inventaris_ambil_cssd.no_sirkulasi left join petugas as petugaspengembali on petugaspengembali.nip=inventaris_kembali_cssd.nip "+
                        "where inventaris_ambil_cssd.tgl_ambil between ? and ? "+
                        (TCari.getText().trim().equals("")?"":" and (inventaris_ambil_cssd.no_sirkulasi like ? or inventaris_ambil_cssd.no_inventaris like ? or "+
                        "inventaris.kode_barang like ? or inventaris_barang.nama_barang like ?) ")+"order by inventaris_ambil_cssd.tgl_ambil");
@@ -1265,7 +1333,9 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
                         tabMode.addRow(new Object[]{
                             rs.getString("no_sirkulasi"),rs.getString("no_inventaris"),rs.getString("kode_barang"),rs.getString("nama_barang"),rs.getString("nama_produsen"),
                             rs.getString("nama_merk"),rs.getString("thn_produksi").substring(0,4),rs.getString("isbn"),rs.getString("jenis_barang"),rs.getString("keterangan_ambil"),
-                            rs.getString("nippengambil"),rs.getString("namapengambil"),rs.getString("tgl_ambil")
+                            rs.getString("nippengambil"),rs.getString("namapengambil"),rs.getString("tgl_ambil"),rs.getString("keterangan_strerilisasi"),rs.getString("nippenyeteril"),
+                            rs.getString("namapenyeteril"),rs.getString("tgl_sterilisasi"),rs.getString("keterangan_kembali"),rs.getString("nippengembali"),rs.getString("namapengembali"),
+                            rs.getString("tgl_kembali")
                         });
                     }
                 } catch (Exception e) {
@@ -1294,9 +1364,9 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
         Keterangan.setText("");
         NoSirkulasi.setText("");
         Tanggal.setDate(new Date());
-        NoInventaris.requestFocus();
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(inventaris_ambil_cssd.no_sirkulasi,3),signed)),0) from inventaris_ambil_cssd where DATE_FORMAT(inventaris_ambil_cssd.tgl_ambil, '%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "AC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSirkulasi);
+                         "AC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSirkulasi);
+        NoInventaris.requestFocus();
     }
 
     private void getData() {
@@ -1316,14 +1386,14 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     
     public void isCek(){
         if(akses.getjml2()>=1){
-            nip.setEditable(false);
+            NIP.setEditable(false);
             btnPtg.setEnabled(false);
             BtnSimpan.setEnabled(akses.getsirkulasi_cssd());
             BtnIn.setEnabled(akses.getsirkulasi_cssd());
             BtnOut.setEnabled(akses.getsirkulasi_cssd());
             BtnSteril.setEnabled(akses.getsirkulasi_cssd());
-            nip.setText(akses.getkode());
-            nama_petugas.setText(petugas.tampil3(nip.getText()));
+            NIP.setText(akses.getkode());
+            NamaPetugas.setText(petugas.tampil3(NIP.getText()));
         } 
     }
     

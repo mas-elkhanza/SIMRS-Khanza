@@ -579,7 +579,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel17">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nadi :"/>
+                            <Property name="text" type="java.lang.String" value="HR/Nadi :"/>
                             <Property name="name" type="java.lang.String" value="jLabel17" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -690,7 +690,7 @@
                         </Component>
                         <Component class="widget.Label" name="jLabel26">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="RR :"/>
+                            <Property name="text" type="java.lang.String" value="RR/Nafas :"/>
                             <Property name="name" type="java.lang.String" value="jLabel26" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -748,7 +748,7 @@
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="1">
-                                <StringItem index="0" value="23-04-2024 20:52:58"/>
+                                <StringItem index="0" value="03-05-2025 08:08:52"/>
                               </StringArray>
                             </Property>
                             <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1153,7 +1153,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="652" y="530" width="100" height="23"/>
+                              <AbsoluteConstraints x="636" y="530" width="100" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1209,7 +1209,7 @@
                         <Component class="widget.Label" name="jLabel62">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="D. RONGSEN THORAX"/>
+                            <Property name="text" type="java.lang.String" value="D. RONTGEN THORAX"/>
                             <Property name="name" type="java.lang.String" value="jLabel62" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1427,9 +1427,10 @@
                         <Component class="widget.ComboBox" name="Submandibula">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="2">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Tidak Membesar"/>
                                 <StringItem index="1" value="Membesar"/>
+                                <StringItem index="2" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="Submandibula" noResource="true"/>
@@ -1466,9 +1467,10 @@
                         <Component class="widget.ComboBox" name="Leher">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="2">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Tidak Membesar"/>
                                 <StringItem index="1" value="Membesar"/>
+                                <StringItem index="2" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="Leher" noResource="true"/>
@@ -1485,9 +1487,10 @@
                         <Component class="widget.ComboBox" name="Axila">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="2">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Tidak Membesar"/>
                                 <StringItem index="1" value="Membesar"/>
+                                <StringItem index="2" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="Axila" noResource="true"/>
@@ -1504,9 +1507,10 @@
                         <Component class="widget.ComboBox" name="Inguinal">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="2">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Tidak Membesar"/>
                                 <StringItem index="1" value="Membesar"/>
+                                <StringItem index="2" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="Inguinal" noResource="true"/>
@@ -1523,9 +1527,10 @@
                         <Component class="widget.ComboBox" name="Supraklavikula">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="2">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Tidak Membesar"/>
                                 <StringItem index="1" value="Membesar"/>
+                                <StringItem index="2" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="Supraklavikula" noResource="true"/>
@@ -1542,9 +1547,10 @@
                         <Component class="widget.ComboBox" name="Oedema">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="2">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Tidak Ada"/>
                                 <StringItem index="1" value="Ada"/>
+                                <StringItem index="2" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="Oedema" noResource="true"/>
@@ -1561,9 +1567,10 @@
                         <Component class="widget.ComboBox" name="NyeriTekanSinusFrontalis">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="2">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Tidak Ada"/>
                                 <StringItem index="1" value="Ada"/>
+                                <StringItem index="2" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="NyeriTekanSinusFrontalis" noResource="true"/>
@@ -1580,9 +1587,10 @@
                         <Component class="widget.ComboBox" name="NyeriTekananSinusMaxilaris">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="2">
+                              <StringArray count="3">
                                 <StringItem index="0" value="Tidak Ada"/>
                                 <StringItem index="1" value="Ada"/>
+                                <StringItem index="2" value="-"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="NyeriTekananSinusMaxilaris" noResource="true"/>
@@ -1736,10 +1744,12 @@
                         <Component class="widget.ComboBox" name="LubangTelinga">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="3">
-                                <StringItem index="0" value="Lapang"/>
-                                <StringItem index="1" value="Sempit"/>
-                                <StringItem index="2" value="Serumen Prop"/>
+                              <StringArray count="5">
+                                <StringItem index="0" value="Normal"/>
+                                <StringItem index="1" value="Tidak Normal"/>
+                                <StringItem index="2" value="Lapang"/>
+                                <StringItem index="3" value="Sempit"/>
+                                <StringItem index="4" value="Serumen Prop"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="LubangTelinga" noResource="true"/>
@@ -1771,7 +1781,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="350" y="580" width="90" height="23"/>
+                              <AbsoluteConstraints x="330" y="580" width="90" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1790,7 +1800,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="306" y="530" width="114" height="23"/>
+                              <AbsoluteConstraints x="311" y="530" width="114" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1801,7 +1811,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="259" y="530" width="43" height="23"/>
+                              <AbsoluteConstraints x="264" y="530" width="43" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1820,18 +1830,18 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="548" y="530" width="105" height="23"/>
+                              <AbsoluteConstraints x="527" y="530" width="105" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
                         <Component class="widget.Label" name="jLabel65">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Selaput Pendengaran :"/>
+                            <Property name="text" type="java.lang.String" value="Selaput Dengar :"/>
                             <Property name="name" type="java.lang.String" value="jLabel65" noResource="true"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="420" y="530" width="124" height="23"/>
+                              <AbsoluteConstraints x="420" y="530" width="103" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1839,8 +1849,8 @@
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="2">
-                                <StringItem index="0" value="Tidak Ada"/>
-                                <StringItem index="1" value="Ada"/>
+                                <StringItem index="0" value="Normal"/>
+                                <StringItem index="1" value="Tidak Normal"/>
                               </StringArray>
                             </Property>
                             <Property name="name" type="java.lang.String" value="NyeriMastoideus" noResource="true"/>
@@ -1850,7 +1860,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="756" y="530" width="98" height="23"/>
+                              <AbsoluteConstraints x="740" y="530" width="114" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1923,7 +1933,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="444" y="580" width="100" height="23"/>
+                              <AbsoluteConstraints x="424" y="580" width="100" height="23"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3547,6 +3557,36 @@
                             </Component>
                           </SubComponents>
                         </Container>
+                        <Component class="widget.Label" name="jLabel111">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Sinus :"/>
+                            <Property name="name" type="java.lang.String" value="jLabel111" noResource="true"/>
+                          </Properties>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="532" y="580" width="100" height="23"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                        <Component class="widget.ComboBox" name="NyeriMastoideus1">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                              <StringArray count="2">
+                                <StringItem index="0" value="Normal"/>
+                                <StringItem index="1" value="Tidak Normal"/>
+                              </StringArray>
+                            </Property>
+                            <Property name="name" type="java.lang.String" value="NyeriMastoideus1" noResource="true"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NyeriMastoideus1KeyPressed"/>
+                          </Events>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                              <AbsoluteConstraints x="636" y="580" width="114" height="23"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -3639,7 +3679,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="23-04-2024"/>
+                            <StringItem index="0" value="03-05-2025"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -3667,7 +3707,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="23-04-2024"/>
+                            <StringItem index="0" value="03-05-2025"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>

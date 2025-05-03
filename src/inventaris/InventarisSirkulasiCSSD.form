@@ -272,12 +272,12 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="nip">
+            <Component class="widget.TextBox" name="NIP">
               <Properties>
-                <Property name="name" type="java.lang.String" value="nip" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="NIP" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nipKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NIPKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -296,10 +296,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="nama_petugas">
+            <Component class="widget.TextBox" name="NamaPetugas">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="name" type="java.lang.String" value="nama_petugas" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="NamaPetugas" noResource="true"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -349,7 +349,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="29-04-2025 03:55:36"/>
+                    <StringItem index="0" value="03-05-2025 08:43:09"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -689,7 +689,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="29-04-2025"/>
+                        <StringItem index="0" value="03-05-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -717,7 +717,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="29-04-2025"/>
+                        <StringItem index="0" value="03-05-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
