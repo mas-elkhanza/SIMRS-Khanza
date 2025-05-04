@@ -74,21 +74,21 @@ public final class DlgPelayananCSSD extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(110);
             }else if(i==3){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==4){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(170);
             }else if(i==5){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(115);
             }else if(i==6){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(115);
             }else if(i==7){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(115);
             }else if(i==8){
-                column.setPreferredWidth(103);
+                column.setPreferredWidth(90);
             }else if(i==9){
-                column.setPreferredWidth(109);
+                column.setPreferredWidth(90);
             }else if(i==10){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(95);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -323,10 +323,10 @@ public final class DlgPelayananCSSD extends javax.swing.JDialog {
             param.put("satujam",""+satujam);  
             param.put("lebihsatujam",""+lebihsatujam);  
             
-            Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
 
             for(int i=0;i<tabMode.getRowCount();i++){  
-                Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                     ""+i,tabMode.getValueAt(i,0).toString(),tabMode.getValueAt(i,1).toString(),tabMode.getValueAt(i,2).toString(),
                     tabMode.getValueAt(i,3).toString(),tabMode.getValueAt(i,4).toString(),tabMode.getValueAt(i,5).toString(),
                     tabMode.getValueAt(i,6).toString(),tabMode.getValueAt(i,7).toString(),tabMode.getValueAt(i,8).toString(),
@@ -334,7 +334,7 @@ public final class DlgPelayananCSSD extends javax.swing.JDialog {
                     "","","","","","","","","","","","","","","","",akses.getalamatip()
                 });
             }
-            Valid.MyReportqry("rptPelayananApotek.jasper","report","::[ Laporan Data Pelayanan Apotek ]::","select * from temporary_resep where temporary_resep.temp37='"+akses.getalamatip()+"' order by temporary_resep.no",param);
+            Valid.MyReportqry("rptPelayananCSSD.jasper","report","::[ Laporan Data Pelayanan CSSD ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -343,7 +343,7 @@ public final class DlgPelayananCSSD extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnPrintActionPerformed(null);
         }else{
-            //Valid.pindah(evt, BtnHapus, BtnAll);
+            Valid.pindah(evt, TCari, BtnAll);
         }
 }//GEN-LAST:event_BtnPrintKeyPressed
 
