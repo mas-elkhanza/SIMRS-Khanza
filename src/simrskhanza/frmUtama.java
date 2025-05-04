@@ -796,6 +796,7 @@ import laporan.DlgLamaPelayananPasien;
 import laporan.DlgLaporanPenyakitPolri;
 import laporan.DlgLaporanPenyakitTNI;
 import laporan.DlgOperasiPerBulan;
+import laporan.DlgPelayananCSSD;
 import laporan.DlgPelayananLabMB;
 import laporan.DlgPelayananLabPA;
 import laporan.DlgPelayananOperasi;
@@ -22549,6 +22550,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnLamaPelayananCSSDActionPerformed(java.awt.event.ActionEvent evt) {                                                       
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgPelayananCSSD aplikasi=new DlgPelayananCSSD(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    } 
+    
     /**
     * @param args the command line arguments
     */
@@ -23252,7 +23264,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPenilaianBayiBaruLahir,btnPengeluaranPengeluaran,btnSkriningDiabetesMelitus,btnLaporanTindakan,btnPelaksanaanInformasiEdukasi,btnLayananKedokteranFisikRehabilitasi,
             btnSkriningKesehatanGigiMulutBalita,btnSkriningAnemia,btnPermintaanLayananProgramKFR,btnLayananProgramKFR,btnSkriningHipertensi,btnSkriningKesehatanPenglihatan,
             btnCatatanObservasiHemodialisa,btnSkriningKesehatanGigiMulutDewasa,btnSkriningRisikoKankerServiks,btnCatatanCairanHemodialisa,btnSkriningKesehatanGigiMulutLansia,
-            btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome;
+            btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD;
     
     public void isWall(){
         try{            
@@ -25183,6 +25195,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getlama_operasi()==true){  
                 Panelmenu.add(btnLamaOperasi);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getlama_pelayanan_cssd()==true){  
+                Panelmenu.add(btnLamaPelayananCSSD);                 
                 jmlmenu++;
             }
             
@@ -30730,6 +30747,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getlama_operasi()==true){  
             Panelmenu.add(btnLamaOperasi);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getlama_pelayanan_cssd()==true){  
+            Panelmenu.add(btnLamaPelayananCSSD);                 
             jmlmenu++;
         }
         
@@ -36987,6 +37009,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getlama_operasi()==true){  
             if(btnLamaOperasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLamaOperasi);                 
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getlama_pelayanan_cssd()==true){  
+            if(btnLamaPelayananCSSD.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLamaPelayananCSSD);                 
                 jmlmenu++;
             }                
         }
@@ -43819,6 +43848,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLamaPelayananPoli.setName("btnLamaPelayananPoli"); 
         btnLamaPelayananPoli.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLamaPelayananPoli.addActionListener(this::btnLamaPelayananPoliActionPerformed);
+        
+        btnLamaPelayananCSSD = new widget.ButtonBig();
+        btnLamaPelayananCSSD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/Gnome-X-Office-Address-Book-48.png"))); 
+        btnLamaPelayananCSSD.setText("Lama Pelayanan CSSD");
+        btnLamaPelayananCSSD.setIconTextGap(0);
+        btnLamaPelayananCSSD.setName("btnLamaPelayananCSSD"); 
+        btnLamaPelayananCSSD.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLamaPelayananCSSD.addActionListener(this::btnLamaPelayananCSSDActionPerformed);
         
         btnHemodialisa = new widget.ButtonBig();
         btnHemodialisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/iconfinder_32_Disease_infected_infection_kidney_6088186.png"))); 
