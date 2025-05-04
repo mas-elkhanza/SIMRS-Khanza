@@ -103,6 +103,7 @@ import rekammedis.RMDataCatatanCairanHemodialisa;
 import rekammedis.RMDataCatatanCekGDS;
 import rekammedis.RMDataCatatanKeperawatanRalan;
 import rekammedis.RMDataCatatanKeseimbanganCairan;
+import rekammedis.RMDataCatatanObservasiBayi;
 import rekammedis.RMDataCatatanObservasiCHBP;
 import rekammedis.RMDataCatatanObservasiHemodialisa;
 import rekammedis.RMDataCatatanObservasiIGD;
@@ -11850,6 +11851,29 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnCatatanObservasiBayiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMDataCatatanObservasiBayi form=new RMDataCatatanObservasiBayi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @data args the command line arguments
     */
@@ -12181,7 +12205,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                   MnSkriningKankerKolorektal,MnPenilaianPsikologKlinis,MnPenilaianDerajatDehidrasi,MnHasilPemeriksaanECHO,MnPenilaianBayiBaruLahir,MnSkriningDiabetesMelitus,MnLaporanTindakan,
                                   MnPelaksanaanInformasiEdukasi,MnSkriningAnemia,MnSkriningHipertensi,MnSkriningKesehatanPenglihatan,MnCatatanObservasiHemodialisa,MnSkriningKesehatanGigiMulutDewasa,
                                   MnSkriningKesehatanGigiMulutBalita,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,MnCatatanPengkajianPaskaOperasi,
-                                  MnSkriningFrailtySyndrome;
+                                  MnSkriningFrailtySyndrome,MnCatatanObservasiBayi;
     private javax.swing.JMenu MnRMSkrining,MnEdukasi,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut;
     
     private void tampil() {
@@ -12620,6 +12644,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSkriningRisikoKankerServiks.setEnabled(akses.getskrining_risiko_kanker_serviks());
         MnCatatanPengkajianPaskaOperasi.setEnabled(akses.getcatatan_pengkajian_paska_operasi());
         MnSkriningFrailtySyndrome.setEnabled(akses.getskrining_frailty_syndrome());
+        MnCatatanObservasiBayi.setEnabled(akses.getcatatan_observasi_bayi());
     }
     
     private void isNumber(){
@@ -13314,6 +13339,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnSkriningFrailtySyndrome.setPreferredSize(new java.awt.Dimension(150, 26));
         MnSkriningFrailtySyndrome.addActionListener(this::MnSkriningFrailtySyndromeActionPerformed);
         
+        MnCatatanObservasiBayi = new javax.swing.JMenuItem();
+        MnCatatanObservasiBayi.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanObservasiBayi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnCatatanObservasiBayi.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanObservasiBayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnCatatanObservasiBayi.setText("Observasi Bayi");
+        MnCatatanObservasiBayi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCatatanObservasiBayi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCatatanObservasiBayi.setName("MnCatatanObservasiBayi");
+        MnCatatanObservasiBayi.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnCatatanObservasiBayi.addActionListener(this::MnCatatanObservasiBayiActionPerformed);
+        
         MnRMSkriningRisikoKanker = new javax.swing.JMenu();
         MnRMSkriningRisikoKanker.setBackground(new java.awt.Color(255, 255, 254));
         MnRMSkriningRisikoKanker.setForeground(new java.awt.Color(50, 50, 50));
@@ -13418,6 +13455,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnRMCatatanMonitoring.add(MnCatatanObservasiIGD);
         MnRMCatatanMonitoring.add(MnCatatanObservasiCHBP);
         MnRMCatatanMonitoring.add(MnCatatanObservasiInduksiPersalinan);
+        MnRMCatatanMonitoring.add(MnCatatanObservasiBayi);
         MnRMCatatanMonitoring.add(MnCatatanObservasiHemodialisa);
         MnRMCatatanMonitoring.add(MnCatatanCairanHemodialisa);
         MnRMCatatanMonitoring.add(MnChecklistPemberianFibrinolitik);

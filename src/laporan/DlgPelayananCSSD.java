@@ -490,15 +490,19 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 "inner join inventaris_kategori on inventaris_barang.id_kategori=inventaris_kategori.id_kategori inner join petugas as petugasambil on petugasambil.nip=inventaris_ambil_cssd.nip "+
                 "inner join inventaris_sterilisasi_cssd on inventaris_sterilisasi_cssd.no_sirkulasi=inventaris_ambil_cssd.no_sirkulasi inner join petugas as petugaspenyeteril on petugaspenyeteril.nip=inventaris_sterilisasi_cssd.nip "+
                 "inner join inventaris_kembali_cssd on inventaris_kembali_cssd.no_sirkulasi=inventaris_ambil_cssd.no_sirkulasi inner join petugas as petugaspengembali on petugaspengembali.nip=inventaris_kembali_cssd.nip "+
-                "where inventaris_ambil_cssd.tgl_ambil between ? and ? and (inventaris_ambil_cssd.no_sirkulasi like ? or inventaris_ambil_cssd.no_inventaris like ? or inventaris.kode_barang like ? or inventaris_barang.nama_barang like ?)  "+
+                "where inventaris_ambil_cssd.tgl_ambil between ? and ? "+
+                (TCari.getText().trim().equals("")?"":"and (inventaris_ambil_cssd.no_sirkulasi like ? or inventaris_ambil_cssd.no_inventaris like ? or inventaris.kode_barang like ? or inventaris_barang.nama_barang like ?) ")+
                 "order by inventaris_ambil_cssd.tgl_ambil");
             try {
-                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+"")+" 23:59:59");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{

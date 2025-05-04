@@ -1116,6 +1116,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
                         Sequel.queryu("update inventaris set status_barang='Dipinjam' where no_inventaris='"+NoInventaris.getText()+"'");
                         NoInventaris.requestFocus();  
                         emptTeks();
+                        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(inventaris_ambil_cssd.no_sirkulasi,3),signed)),0) from inventaris_ambil_cssd where DATE_FORMAT(inventaris_ambil_cssd.tgl_ambil, '%Y-%m-%d')='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ","AC"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSirkulasi);
                         tampil();
                     }   
                 }
