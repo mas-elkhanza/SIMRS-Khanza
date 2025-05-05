@@ -345,6 +345,36 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         
+        IMT.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isLP();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isLP();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isLP();
+            }
+        });
+        
+        LP.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                isLP();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                isLP();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                isLP();
+            }
+        });
+        
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
@@ -621,6 +651,11 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel113 = new widget.Label();
         NyeriKtok1 = new widget.ComboBox();
         jLabel114 = new widget.Label();
+        jLabel115 = new widget.Label();
+        LP = new widget.TextBox();
+        jLabel116 = new widget.Label();
+        RisikoLP = new widget.TextBox();
+        jLabel117 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -2427,7 +2462,7 @@ public final class RMMCU extends javax.swing.JDialog {
         KlasifikasiIMT.setFocusTraversalPolicyProvider(true);
         KlasifikasiIMT.setName("KlasifikasiIMT"); // NOI18N
         FormInput.add(KlasifikasiIMT);
-        KlasifikasiIMT.setBounds(131, 280, 180, 23);
+        KlasifikasiIMT.setBounds(131, 280, 170, 23);
 
         jLabel42.setText(":");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -2441,10 +2476,10 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel112.setBounds(44, 170, 205, 23);
 
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText("BMI Ideal : 18.5 – 22.99 (KLASIFIKASI WHO ASIA PASIFIK, 2020)");
+        jLabel14.setText("BMI Ideal : 18.5 – 22.99");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(340, 280, 490, 23);
+        jLabel14.setBounds(335, 280, 140, 23);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel113.setText("2. Rambut");
@@ -2466,6 +2501,38 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
         jLabel114.setBounds(399, 1060, 80, 23);
+
+        jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel115.setText("cm");
+        jLabel115.setName("jLabel115"); // NOI18N
+        FormInput.add(jLabel115);
+        jLabel115.setBounds(562, 280, 30, 23);
+
+        LP.setFocusTraversalPolicyProvider(true);
+        LP.setName("LP"); // NOI18N
+        LP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LPKeyPressed(evt);
+            }
+        });
+        FormInput.add(LP);
+        LP.setBounds(509, 280, 50, 23);
+
+        jLabel116.setText("LP :");
+        jLabel116.setName("jLabel116"); // NOI18N
+        FormInput.add(jLabel116);
+        jLabel116.setBounds(455, 280, 50, 23);
+
+        RisikoLP.setEditable(false);
+        RisikoLP.setFocusTraversalPolicyProvider(true);
+        RisikoLP.setName("RisikoLP"); // NOI18N
+        FormInput.add(RisikoLP);
+        RisikoLP.setBounds(714, 280, 140, 23);
+
+        jLabel117.setText("Risiko Berdasar LP :");
+        jLabel117.setName("jLabel117"); // NOI18N
+        FormInput.add(jLabel117);
+        jLabel117.setBounds(600, 280, 110, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3501,6 +3568,10 @@ public final class RMMCU extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_NyeriKtok1KeyPressed
 
+    private void LPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LPKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LPKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3570,6 +3641,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.ComboBox Konjungtiva;
     private widget.ComboBox Kulit;
     private widget.Label LCount;
+    private widget.TextBox LP;
     private widget.TextArea Lainlain;
     private widget.ComboBox Leher;
     private widget.ComboBox Lensa;
@@ -3596,6 +3668,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.ComboBox PerkusiDada;
     private widget.ComboBox Pupil;
     private widget.TextBox RR;
+    private widget.TextBox RisikoLP;
     private widget.TextBox RiwayatAlergiMakanan;
     private widget.TextArea RiwayatPenyakitDahulu;
     private widget.TextArea RiwayatPenyakitKeluarga;
@@ -3643,6 +3716,9 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.Label jLabel112;
     private widget.Label jLabel113;
     private widget.Label jLabel114;
+    private widget.Label jLabel115;
+    private widget.Label jLabel116;
+    private widget.Label jLabel117;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
@@ -4032,7 +4108,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-laki','Perempuan') as jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
                     "reg_periksa.jam_reg from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
@@ -4270,6 +4346,88 @@ public final class RMMCU extends javax.swing.JDialog {
         } catch (Exception e) {
             IMT.setText("");
             KlasifikasiIMT.setText("");
+        }
+    }
+    
+    private void isLP(){
+        try {
+            if((!LP.getText().equals(""))&&(!Jk.getText().equals(""))&&(!KlasifikasiIMT.getText().equals(""))){
+                if(Jk.getText().equals("Laki-laki")){
+                    if(KlasifikasiIMT.getText().equals("Berat Badan Kurang")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Rendah");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Cukup");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Berat Badan Normal")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Cukup");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Meningkat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Kelebihan Berat Badan")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Meningkat");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Moderat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Obesitas I")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Moderat");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Berat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Obesitas II")){
+                        if(Valid.SetAngka(LP.getText())<90){
+                            RisikoLP.setText("Berat");
+                        }else if(Valid.SetAngka(LP.getText())>=90){
+                            RisikoLP.setText("Sangat");
+                        }
+                    }else{
+                        RisikoLP.setText("");
+                    }
+                }else if(Jk.getText().equals("Perempuan")){
+                    if(KlasifikasiIMT.getText().equals("Berat Badan Kurang")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Rendah");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Cukup");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Berat Badan Normal")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Cukup");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Meningkat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Kelebihan Berat Badan")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Meningkat");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Moderat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Obesitas I")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Moderat");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Berat");
+                        }
+                    }else if(KlasifikasiIMT.getText().equals("Obesitas II")){
+                        if(Valid.SetAngka(LP.getText())<80){
+                            RisikoLP.setText("Berat");
+                        }else if(Valid.SetAngka(LP.getText())>=80){
+                            RisikoLP.setText("Sangat");
+                        }
+                    }else{
+                        RisikoLP.setText("");
+                    }
+                }else{
+                    RisikoLP.setText("");
+                }
+            }else{
+                RisikoLP.setText("");
+            }
+        } catch (Exception e) {
+            RisikoLP.setText("");
         }
     }
 }

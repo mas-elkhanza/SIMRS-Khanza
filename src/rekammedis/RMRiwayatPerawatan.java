@@ -15621,28 +15621,28 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             append("<td valign='top' align='center' rowspan='9'>").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").
                                         append("</tr>").
                                         append("<tr>").
-                                            append("<td valign='top' align='left' colspan='2'>NCH</td><td valign='top' align='left' colspan='4'>: ").append(rs2.getString("nch")).append("</td>").
+                                            append("<td valign='top' align='left' colspan='1'>NCH</td><td valign='top' align='left' colspan='5'>: ").append(rs2.getString("nch")).append("</td>").
                                         append("</tr>").
                                         append("<tr>").
-                                            append("<td valign='top' align='left' colspan='2'>Ikterik</td><td valign='top' align='left' colspan='4'>: ").append(rs2.getString("ikterik_status")).append("</td>").
+                                            append("<td valign='top' align='left' colspan='1'>Ikterik</td><td valign='top' align='left' colspan='5'>: ").append(rs2.getString("ikterik_status")).append("</td>").
                                         append("</tr>").
                                         append("<tr>").
-                                            append("<td valign='top' align='left' colspan='2'>Retraksi Dada</td><td valign='top' align='left' colspan='4'>: ").append(rs2.getString("retraksi_dada")).append("</td>").
+                                            append("<td valign='top' align='left' colspan='1'>Retraksi Dada</td><td valign='top' align='left' colspan='5'>: ").append(rs2.getString("retraksi_dada")).append("</td>").
                                         append("</tr>").
                                         append("<tr>").
-                                            append("<td valign='top' align='left' colspan='2'>OGT Residu</td><td valign='top' align='left' colspan='4'>: ").append(rs2.getString("ogt_residu")).append("</td>").
+                                            append("<td valign='top' align='left' colspan='1'>OGT Residu</td><td valign='top' align='left' colspan='5'>: ").append(rs2.getString("ogt_residu")).append("</td>").
                                         append("</tr>").
                                         append("<tr>").
-                                            append("<td valign='top' align='left' colspan='2'>ASI</td><td valign='top' align='left' colspan='4'>: ").append(rs2.getString("asi_jumlah")).append("</td>").
+                                            append("<td valign='top' align='left' colspan='1'>ASI</td><td valign='top' align='left' colspan='5'>: ").append(rs2.getString("asi_jumlah")).append("</td>").
                                         append("</tr>").
                                         append("<tr>").
-                                            append("<td valign='top' align='left' colspan='2'>PASI</td><td valign='top' align='left' colspan='4'>: ").append(rs2.getString("pasi_jumlah")).append("</td>").
+                                            append("<td valign='top' align='left' colspan='1'>PASI</td><td valign='top' align='left' colspan='5'>: ").append(rs2.getString("pasi_jumlah")).append("</td>").
                                         append("</tr>").
                                         append("<tr>").
-                                            append("<td valign='top' align='left' colspan='2'>BAK</td><td valign='top' align='left' colspan='4'>: ").append(rs2.getString("bak_status")).append("</td>").
+                                            append("<td valign='top' align='left' colspan='1'>BAK</td><td valign='top' align='left' colspan='5'>: ").append(rs2.getString("bak_status")).append("</td>").
                                         append("</tr>").
                                         append("<tr>").
-                                            append("<td valign='top' align='left' colspan='2'>BAB</td><td valign='top' align='left' colspan='4'>: ").append(rs2.getString("bab_status")).append("</td>").
+                                            append("<td valign='top' align='left' colspan='1'>BAB</td><td valign='top' align='left' colspan='5'>: ").append(rs2.getString("bab_status")).append("</td>").
                                         append("<tr>");                                        
                             w++;
                         }while(rs2.next());
