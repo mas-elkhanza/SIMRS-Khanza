@@ -619,6 +619,8 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel112 = new widget.Label();
         jLabel14 = new widget.Label();
         jLabel113 = new widget.Label();
+        NyeriKtok1 = new widget.ComboBox();
+        jLabel114 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -1222,7 +1224,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel43.setText("Kulit :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(429, 1040, 60, 23);
+        jLabel43.setBounds(612, 1040, 60, 23);
 
         jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel59.setText("C. PEMERIKSAAN LABORATORIUM (TERLAMPIR)");
@@ -2020,7 +2022,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(NyeriKtok);
-        NyeriKtok.setBounds(291, 1060, 110, 23);
+        NyeriKtok.setBounds(291, 1060, 100, 23);
 
         ExtremitasAtas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
         ExtremitasAtas.setName("ExtremitasAtas"); // NOI18N
@@ -2068,7 +2070,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kulit);
-        Kulit.setBounds(553, 1060, 118, 23);
+        Kulit.setBounds(736, 1060, 118, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -2238,7 +2240,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel106.setText("Kondisi Kulit :");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
-        jLabel106.setBounds(459, 1060, 90, 23);
+        jLabel106.setBounds(642, 1060, 90, 23);
 
         jSeparator15.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator15.setForeground(new java.awt.Color(239, 244, 234));
@@ -2425,7 +2427,7 @@ public final class RMMCU extends javax.swing.JDialog {
         KlasifikasiIMT.setFocusTraversalPolicyProvider(true);
         KlasifikasiIMT.setName("KlasifikasiIMT"); // NOI18N
         FormInput.add(KlasifikasiIMT);
-        KlasifikasiIMT.setBounds(131, 280, 220, 23);
+        KlasifikasiIMT.setBounds(131, 280, 180, 23);
 
         jLabel42.setText(":");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -2442,13 +2444,28 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel14.setText("BMI Ideal : 18.5 – 22.99 (KLASIFIKASI WHO ASIA PASIFIK, 2020)");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(380, 280, 450, 23);
+        jLabel14.setBounds(340, 280, 490, 23);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel113.setText("2. Rambut");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
         jLabel113.setBounds(70, 460, 150, 23);
+
+        NyeriKtok1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        NyeriKtok1.setName("NyeriKtok1"); // NOI18N
+        NyeriKtok1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriKtok1KeyPressed(evt);
+            }
+        });
+        FormInput.add(NyeriKtok1);
+        NyeriKtok1.setBounds(483, 1060, 100, 23);
+
+        jLabel114.setText("Scoliosis :");
+        jLabel114.setName("jLabel114"); // NOI18N
+        FormInput.add(jLabel114);
+        jLabel114.setBounds(399, 1060, 80, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3480,6 +3497,10 @@ public final class RMMCU extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnDokter2ActionPerformed
 
+    private void NyeriKtok1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKtok1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NyeriKtok1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3562,6 +3583,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private widget.ComboBox NyeriKtok;
+    private widget.ComboBox NyeriKtok1;
     private widget.ComboBox NyeriMastoideus;
     private widget.ComboBox NyeriMastoideus1;
     private widget.ComboBox NyeriTekanSinusFrontalis;
@@ -3620,6 +3642,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.Label jLabel111;
     private widget.Label jLabel112;
     private widget.Label jLabel113;
+    private widget.Label jLabel114;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
     private widget.Label jLabel14;
