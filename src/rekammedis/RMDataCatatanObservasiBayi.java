@@ -60,7 +60,7 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","GCS (E,V,M)",
-            "TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu(°C)","SpO2(%)","NCH","Ikterik","Retraksi","OGT Residu",
+            "TD(mmHg)","HR(x/menit)","RR(x/menit)","Suhu(°C)","SpO2(%)","NCH","Ikterik","Retraksi Dada","OGT Residu",
             "ASI","PASI","BAK","BAB","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -101,6 +101,22 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
                 column.setPreferredWidth(50);
             }else if(i==13){
                 column.setPreferredWidth(55);
+            }else if(i==14){
+                column.setPreferredWidth(150);
+            }else if(i==15){
+                column.setPreferredWidth(100);
+            }else if(i==16){
+                column.setPreferredWidth(100);
+            }else if(i==17){
+                column.setPreferredWidth(100);
+            }else if(i==18){
+                column.setPreferredWidth(100);
+            }else if(i==19){
+                column.setPreferredWidth(100);
+            }else if(i==20){
+                column.setPreferredWidth(100);
+            }else if(i==21){
+                column.setPreferredWidth(100);
             }else if(i==22){
                 column.setPreferredWidth(90);
             }else if(i==23){
@@ -116,6 +132,14 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
         HR.setDocument(new batasInput((byte)5).getKata(HR));
         RR.setDocument(new batasInput((byte)5).getKata(RR));
         Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
+        SPO.setDocument(new batasInput((byte)3).getKata(SPO));
+        NCH.setDocument(new batasInput((byte)70).getKata(NCH));
+        IkterikStatus.setDocument(new batasInput((byte)30).getKata(IkterikStatus));
+        RetraksiDada.setDocument(new batasInput((byte)30).getKata(RetraksiDada));
+        OGTResidu.setDocument(new batasInput((byte)30).getKata(OGTResidu));
+        AsiJumlah.setDocument(new batasInput((byte)30).getKata(AsiJumlah));
+        PasiJumlah.setDocument(new batasInput((byte)30).getKata(PasiJumlah));
+        BakStatus.setDocument(new batasInput((byte)30).getKata(BakStatus));
         SPO.setDocument(new batasInput((byte)3).getKata(SPO));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
@@ -187,7 +211,7 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCatatanObservasiIGD = new javax.swing.JMenuItem();
+        MnCatatanObservasiIBayi = new javax.swing.JMenuItem();
         JK = new widget.TextBox();
         Umur = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -268,19 +292,19 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCatatanObservasiIGD.setBackground(new java.awt.Color(255, 255, 254));
-        MnCatatanObservasiIGD.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCatatanObservasiIGD.setForeground(new java.awt.Color(50, 50, 50));
-        MnCatatanObservasiIGD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCatatanObservasiIGD.setText("Formulir Catatan Observasi Rawat Inap");
-        MnCatatanObservasiIGD.setName("MnCatatanObservasiIGD"); // NOI18N
-        MnCatatanObservasiIGD.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnCatatanObservasiIGD.addActionListener(new java.awt.event.ActionListener() {
+        MnCatatanObservasiIBayi.setBackground(new java.awt.Color(255, 255, 254));
+        MnCatatanObservasiIBayi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCatatanObservasiIBayi.setForeground(new java.awt.Color(50, 50, 50));
+        MnCatatanObservasiIBayi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCatatanObservasiIBayi.setText("Formulir Catatan Observasi Bayi");
+        MnCatatanObservasiIBayi.setName("MnCatatanObservasiIBayi"); // NOI18N
+        MnCatatanObservasiIBayi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnCatatanObservasiIBayi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCatatanObservasiIGDActionPerformed(evt);
+                MnCatatanObservasiIBayiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCatatanObservasiIGD);
+        jPopupMenu1.add(MnCatatanObservasiIBayi);
 
         JK.setHighlighter(null);
         JK.setName("JK"); // NOI18N
@@ -984,14 +1008,14 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,SPO,BtnBatal);
+            Valid.pindah(evt,BabStatus,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        emptTeks();
         ChkInput.setSelected(true);
         isForm(); 
+        emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -1090,19 +1114,23 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataCatatanObservasiRanap.jasper","report","::[ Data Catatan Observasi Rawat Inap ]::",
+                Valid.MyReportqry("rptDataCatatanObservasiBayi.jasper","report","::[ Data Catatan Observasi Rawat Bayi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_bayi.tgl_perawatan,catatan_observasi_bayi.jam_rawat,catatan_observasi_bayi.gcs,"+
                     "catatan_observasi_bayi.td,catatan_observasi_bayi.hr,catatan_observasi_bayi.rr,catatan_observasi_bayi.suhu,catatan_observasi_bayi.spo2,"+
+                    "catatan_observasi_bayi.nch,catatan_observasi_bayi.ikterik_status,catatan_observasi_bayi.retraksi_dada,catatan_observasi_bayi.ogt_residu,"+
+                    "catatan_observasi_bayi.asi_jumlah,catatan_observasi_bayi.pasi_jumlah,catatan_observasi_bayi.bak_status,catatan_observasi_bayi.bab_status,"+
                     "catatan_observasi_bayi.nip,petugas.nama from catatan_observasi_bayi inner join reg_periksa on catatan_observasi_bayi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_bayi.nip=petugas.nip where "+
                     "catatan_observasi_bayi.tgl_perawatan between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by catatan_observasi_bayi.tgl_perawatan,catatan_observasi_bayi.jam_rawat",param);
             }else{
-                Valid.MyReportqry("rptDataCatatanObservasiRanap.jasper","report","::[ Data Catatan Observasi Rawat Inap ]::",
+                Valid.MyReportqry("rptDataCatatanObservasiBayi.jasper","report","::[ Data Catatan Observasi Rawat Bayi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_bayi.tgl_perawatan,catatan_observasi_bayi.jam_rawat,catatan_observasi_bayi.gcs,"+
                     "catatan_observasi_bayi.td,catatan_observasi_bayi.hr,catatan_observasi_bayi.rr,catatan_observasi_bayi.suhu,catatan_observasi_bayi.spo2,"+
+                    "catatan_observasi_bayi.nch,catatan_observasi_bayi.ikterik_status,catatan_observasi_bayi.retraksi_dada,catatan_observasi_bayi.ogt_residu,"+
+                    "catatan_observasi_bayi.asi_jumlah,catatan_observasi_bayi.pasi_jumlah,catatan_observasi_bayi.bak_status,catatan_observasi_bayi.bab_status,"+
                     "catatan_observasi_bayi.nip,petugas.nama from catatan_observasi_bayi inner join reg_periksa on catatan_observasi_bayi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join petugas on catatan_observasi_bayi.nip=petugas.nip where "+
@@ -1227,7 +1255,7 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
         Valid.pindah(evt,Detik,GCS);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnCatatanObservasiIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIGDActionPerformed
+    private void MnCatatanObservasiIBayiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiIBayiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1242,16 +1270,18 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
             }
             param.put("dpjp",dpjp);   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirCatatanObservasiRanap.jasper","report","::[ Formulir Catatan Observasi Rawat Inap ]::",
+            Valid.MyReportqry("rptFormulirCatatanObservasiBayi.jasper","report","::[ Formulir Catatan Observasi Bayi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_bayi.tgl_perawatan,catatan_observasi_bayi.jam_rawat,catatan_observasi_bayi.gcs,"+
                     "catatan_observasi_bayi.td,catatan_observasi_bayi.hr,catatan_observasi_bayi.rr,catatan_observasi_bayi.suhu,catatan_observasi_bayi.spo2,"+
-                    "petugas.nama from catatan_observasi_bayi inner join reg_periksa on catatan_observasi_bayi.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on catatan_observasi_bayi.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
+                    "catatan_observasi_bayi.nch,catatan_observasi_bayi.ikterik_status,catatan_observasi_bayi.retraksi_dada,catatan_observasi_bayi.ogt_residu,"+
+                    "catatan_observasi_bayi.asi_jumlah,catatan_observasi_bayi.pasi_jumlah,catatan_observasi_bayi.bak_status,catatan_observasi_bayi.bab_status,"+
+                    "catatan_observasi_bayi.nip,petugas.nama from catatan_observasi_bayi inner join reg_periksa on catatan_observasi_bayi.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on catatan_observasi_bayi.nip=petugas.nip "+
+                    "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                     "order by catatan_observasi_bayi.tgl_perawatan,catatan_observasi_bayi.jam_rawat",param);
         }
-    }//GEN-LAST:event_MnCatatanObservasiIGDActionPerformed
+    }//GEN-LAST:event_MnCatatanObservasiIBayiActionPerformed
 
     private void GCSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GCSKeyPressed
         Valid.pindah(evt,btnPetugas,TD);
@@ -1274,39 +1304,39 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
     }//GEN-LAST:event_RRKeyPressed
 
     private void SPOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SPOKeyPressed
-        Valid.pindah(evt,Suhu,BtnSimpan);
+        Valid.pindah(evt,Suhu,NCH);
     }//GEN-LAST:event_SPOKeyPressed
 
     private void RetraksiDadaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RetraksiDadaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,IkterikStatus,OGTResidu);
     }//GEN-LAST:event_RetraksiDadaKeyPressed
 
     private void OGTResiduKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_OGTResiduKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RetraksiDada,AsiJumlah);
     }//GEN-LAST:event_OGTResiduKeyPressed
 
     private void NCHKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NCHKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,SPO,IkterikStatus);
     }//GEN-LAST:event_NCHKeyPressed
 
     private void AsiJumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AsiJumlahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,OGTResidu,PasiJumlah);
     }//GEN-LAST:event_AsiJumlahKeyPressed
 
     private void PasiJumlahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PasiJumlahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AsiJumlah,BakStatus);
     }//GEN-LAST:event_PasiJumlahKeyPressed
 
     private void IkterikStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IkterikStatusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,NCH,RetraksiDada);
     }//GEN-LAST:event_IkterikStatusKeyPressed
 
     private void BabStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BabStatusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,BakStatus,BtnSimpan);
     }//GEN-LAST:event_BabStatusKeyPressed
 
     private void BakStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BakStatusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PasiJumlah,BabStatus);
     }//GEN-LAST:event_BakStatusKeyPressed
 
     /**
@@ -1350,7 +1380,7 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
     private widget.ComboBox Jam;
     private widget.Label LCount;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnCatatanObservasiIGD;
+    private javax.swing.JMenuItem MnCatatanObservasiIBayi;
     private widget.TextBox NCH;
     private widget.TextBox NIP;
     private widget.TextBox NamaPetugas;
@@ -1484,6 +1514,14 @@ public final class RMDataCatatanObservasiBayi extends javax.swing.JDialog {
         RR.setText("");
         Suhu.setText("");
         SPO.setText("");
+        NCH.setText("");
+        IkterikStatus.setText("");
+        RetraksiDada.setText("");
+        OGTResidu.setText("");
+        AsiJumlah.setText("");
+        PasiJumlah.setText("");
+        BakStatus.setText("");
+        BabStatus.setText("");
         Tanggal.setDate(new Date());
         GCS.requestFocus();
     } 
