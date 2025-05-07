@@ -24,6 +24,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -42,8 +43,7 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
     private double nilairalancash=0,nilaimcucash=0,nilairanapcash=0,nilairalanpenjamin=0,nilaimcupenjamin=0,nilairanappenjamin=0,
                 ttlnilairalancash=0,ttlnilaimcucash=0,ttlnilairanapcash=0,ttlnilairalanpenjamin=0,ttlnilaimcupenjamin=0,ttlnilairanappenjamin=0;
     private int i,jmlralan=0,jmlmcu=0,jmlranap=0,ttlralan=0,ttlmcu=0,ttlranap=0;
-    private StringBuilder htmlContent;
-
+    
     /** Creates new form DlgLhtBiaya
      * @param parent
      * @param modal */
@@ -354,32 +354,56 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {            
-            File g = new File("pendapatanpercarabayar.css");            
+            File g = new File("fileakunbayar.css");            
             BufferedWriter bg = new BufferedWriter(new FileWriter(g));
             bg.write(
                 ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                 ".isi2 td{font: 8.5px tahoma;height:12px;background: #ffffff;color:#323232;}"+
+                ".head td{border-right: 1px solid #777777;font: 8.5px tahoma;height:10px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
                 ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                ".isi4 td{font: 11px tahoma;height:12px;background: #ffffff;color:#323232;}"
             );
             bg.close();
             
-            File f = new File("PendapatanPerCaraBayar.html");            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"pendapatanpercarabayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                            "<tr class='isi2'>"+
-                                "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>PENDAPATAN PER CARA BAYAR<br>TANGGAL "+Tgl1.getSelectedItem()+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem()+"<br><br></font>"+        
-                                "</td>"+
-                           "</tr>"+
-                        "</table>")
-            );
-            bw.close();                         
-            Desktop.getDesktop().browse(f.toURI());
+            BufferedWriter bw;
+            File f;
+            
+            String pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (XLS)"},"Laporan 1 (HTML)");
+            switch (pilihan) {
+                case "Laporan 1 (HTML)":
+                    f = new File("PendapatanPerCaraBayar.html");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi2'>"+
+                                        "<td valign='top' align='center'>"+
+                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                            "<font size='2' face='Tahoma'>PENDAPATAN PER CARA BAYAR<br>TANGGAL "+Tgl1.getSelectedItem()+"<br><br></font>"+        
+                                        "</td>"+
+                                   "</tr>"+
+                                "</table>")
+                    );
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 2 (WPS)":
+                    f = new File("PendapatanPerCaraBayar.wps");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText());
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 3 (XLS)":
+                    f= new File("PendapatanPerCaraBayar.xls");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText());
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+
+            }
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }     
@@ -467,28 +491,28 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
     }//GEN-LAST:event_CmbDetik2KeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        htmlContent = new StringBuilder();
+        StringBuilder htmlContent = new StringBuilder();
         htmlContent.append(                             
-            "<tr class='isi'>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px' rowspan='3'>NO.</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px' rowspan='3'>CARA BAYAR</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='600px' colspan='6'>TRANSAKSI</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='380px' colspan='2'>TOTAL</td>"+
-            "</tr>"+
-            "<tr class='isi'>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT JALAN</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>MCU</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT INAP</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>CASH</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>PENJAMIN</td>"+
-            "</tr>"+
-            "<tr class='isi'>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
-                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
+            "<tr class='isi'>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px' rowspan='3'>NO.</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px' rowspan='3'>CARA BAYAR</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='600px' colspan='6'>TRANSAKSI</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='380px' colspan='2'>TOTAL</td>").append(
+            "</tr>").append(
+            "<tr class='isi'>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT JALAN</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>MCU</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT INAP</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>CASH</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>PENJAMIN</td>").append(
+            "</tr>").append(
+            "<tr class='isi'>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>").append(
+                "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>").append(
             "</tr>"
         ); 
         LoadHTML.setText(
@@ -497,6 +521,7 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+        htmlContent=null;
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -545,28 +570,28 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
     private void tampil(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         try{        
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px' rowspan='3'>NO.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px' rowspan='3'>CARA BAYAR</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='600px' colspan='6'>TRANSAKSI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='380px' colspan='2'>TOTAL</td>"+
-                "</tr>"+
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT JALAN</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>MCU</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT INAP</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>CASH</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>PENJAMIN</td>"+
-                "</tr>"+
-                "<tr class='isi'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>"+
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30px' rowspan='3'>NO.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='300px' rowspan='3'>CARA BAYAR</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='600px' colspan='6'>TRANSAKSI</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='380px' colspan='2'>TOTAL</td>").append(
+                "</tr>").append(
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT JALAN</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>MCU</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' colspan='2'>RAWAT INAP</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>CASH</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' rowspan='2'>PENJAMIN</td>").append(
+                "</tr>").append(
+                "<tr class='isi'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='150px'>NILAI</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='50px'>QTY</td>").append(
                 "</tr>"
             );   
             
@@ -605,17 +630,17 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
                     ttlnilairanappenjamin=ttlnilairanappenjamin+nilairanappenjamin;
                     
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td>"+i+"</td>"+
-                            "<td>"+rs.getString("png_jawab")+"</td>"+
-                            "<td align='right'>"+Valid.SetAngka(nilairalancash+nilairalanpenjamin)+"</td>"+
-                            "<td align='center'>"+jmlralan+"</td>"+
-                            "<td align='right'>"+Valid.SetAngka(nilaimcucash+nilaimcupenjamin)+"</td>"+
-                            "<td align='center'>"+jmlmcu+"</td>"+
-                            "<td align='right'>"+Valid.SetAngka(nilairanapcash+nilairanappenjamin)+"</td>"+
-                            "<td align='center'>"+jmlranap+"</td>"+
-                            "<td align='right'>"+Valid.SetAngka(nilairalancash+nilaimcucash+nilairanapcash)+"</td>"+
-                            "<td align='right'>"+Valid.SetAngka(nilairalanpenjamin+nilaimcupenjamin+nilairanappenjamin)+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td>").append(i).append("</td>").append(
+                            "<td>").append(rs.getString("png_jawab")).append("</td>").append(
+                            "<td align='right'>").append(Valid.SetAngka(nilairalancash+nilairalanpenjamin)).append("</td>").append(
+                            "<td align='center'>").append(jmlralan).append("</td>").append(
+                            "<td align='right'>").append(Valid.SetAngka(nilaimcucash+nilaimcupenjamin)).append("</td>").append(
+                            "<td align='center'>").append(jmlmcu).append("</td>").append(
+                            "<td align='right'>").append(Valid.SetAngka(nilairanapcash+nilairanappenjamin)).append("</td>").append(
+                            "<td align='center'>").append(jmlranap).append("</td>").append(
+                            "<td align='right'>").append(Valid.SetAngka(nilairalancash+nilaimcucash+nilairanapcash)).append("</td>").append(
+                            "<td align='right'>").append(Valid.SetAngka(nilairalanpenjamin+nilaimcupenjamin+nilairanappenjamin)).append("</td>").append(
                         "</tr>"
                     );   
                     i++;
@@ -632,17 +657,17 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
             }
             
             htmlContent.append(     
-                "<tr class='isi'>"+
-                    "<td></td>"+
-                    "<td>TOTAL :</td>"+
-                    "<td align='right'>"+Valid.SetAngka(ttlnilairalancash+ttlnilairalanpenjamin)+"</td>"+
-                    "<td align='center'>"+ttlralan+"</td>"+
-                    "<td align='right'>"+Valid.SetAngka(ttlnilaimcucash+ttlnilaimcupenjamin)+"</td>"+
-                    "<td align='center'>"+ttlmcu+"</td>"+
-                    "<td align='right'>"+Valid.SetAngka(ttlnilairanapcash+ttlnilairanappenjamin)+"</td>"+
-                    "<td align='center'>"+ttlranap+"</td>"+
-                    "<td align='right'>"+Valid.SetAngka(ttlnilairalancash+ttlnilaimcucash+ttlnilairanapcash)+"</td>"+
-                    "<td align='right'>"+Valid.SetAngka(ttlnilairalanpenjamin+ttlnilaimcupenjamin+ttlnilairanappenjamin)+"</td>"+
+                "<tr class='isi'>").append(
+                    "<td></td>").append(
+                    "<td>TOTAL :</td>").append(
+                    "<td align='right'>").append(Valid.SetAngka(ttlnilairalancash+ttlnilairalanpenjamin)).append("</td>").append(
+                    "<td align='center'>").append(ttlralan).append("</td>").append(
+                    "<td align='right'>").append(Valid.SetAngka(ttlnilaimcucash+ttlnilaimcupenjamin)).append("</td>").append(
+                    "<td align='center'>").append(ttlmcu).append("</td>").append(
+                    "<td align='right'>").append(Valid.SetAngka(ttlnilairanapcash+ttlnilairanappenjamin)).append("</td>").append(
+                    "<td align='center'>").append(ttlranap).append("</td>").append(
+                    "<td align='right'>").append(Valid.SetAngka(ttlnilairalancash+ttlnilaimcucash+ttlnilairanapcash)).append("</td>").append(
+                    "<td align='right'>").append(Valid.SetAngka(ttlnilairalanpenjamin+ttlnilaimcupenjamin+ttlnilairanappenjamin)).append("</td>").append(
                 "</tr>"
             ); 
             LoadHTML.setText(
@@ -651,6 +676,7 @@ public final class DlgPendapatanPerCaraBayar extends javax.swing.JDialog {
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

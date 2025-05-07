@@ -24,6 +24,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -458,22 +459,45 @@ public final class DlgPembayaranPerAKunBayar4 extends javax.swing.JDialog {
             );
             bg.close();
             
-            File f = new File("PembayaranPerAkunBayar.html");            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                            "<tr class='isi2'>"+
-                                "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>PEMBAYARAN PER AKUN BAYAR<br>TANGGAL "+Tgl1.getSelectedItem()+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+" "+CmbJam2.getSelectedItem()+":"+CmbMenit2.getSelectedItem()+":"+CmbDetik2.getSelectedItem()+"<br><br></font>"+        
-                                "</td>"+
-                           "</tr>"+
-                        "</table>")
-            );
-            bw.close();                         
-            Desktop.getDesktop().browse(f.toURI());
+            BufferedWriter bw;
+            File f;
+            
+            String pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (XLS)"},"Laporan 1 (HTML)");
+            switch (pilihan) {
+                case "Laporan 1 (HTML)":
+                    f = new File("PembayaranPerAkunBayar.html");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi2'>"+
+                                        "<td valign='top' align='center'>"+
+                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                            "<font size='2' face='Tahoma'>PEMBAYARAN PER AKUN BAYAR<br>TANGGAL "+Tgl1.getSelectedItem()+"<br><br></font>"+        
+                                        "</td>"+
+                                   "</tr>"+
+                                "</table>")
+                    );
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 2 (WPS)":
+                    f = new File("PembayaranPerAkunBayar.wps");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText());
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 3 (XLS)":
+                    f= new File("PembayaranPerAkunBayar.xls");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText());
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+
+            }
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }     

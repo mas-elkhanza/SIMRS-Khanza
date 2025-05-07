@@ -24,6 +24,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -43,7 +44,6 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
     private int i,kolom=0,kolom2=0,kolompiutang=0,no=0;
     private String nonota="",norawatjalan="",norawatinap="",notajual="",carabayar="",nodeposit="",
                    akunpiutangobat=Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Sequel.cariIsi("select set_akun.Piutang_Obat from set_akun"));
-    private StringBuilder htmlContent;
     private String[] namabayar,namapiutang,akunrekening,namarekening;
     private double[] totalbayar,totalpiutang,totalbayar2;
 
@@ -322,22 +322,45 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             );
             bg.close();
             
-            File f = new File("PendapatanPerAkun.html");            
-            BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-            bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                            "<tr class='isi2'>"+
-                                "<td valign='top' align='center'>"+
-                                    "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                    akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                    akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                    "<font size='2' face='Tahoma'>Pendapatan Per Akun Closing<br>TANGGAL "+Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem()+"<br><br></font>"+        
-                                "</td>"+
-                           "</tr>"+
-                        "</table>")
-            );
-            bw.close();                         
-            Desktop.getDesktop().browse(f.toURI());
+            BufferedWriter bw;
+            File f;
+            
+            String pilihan = (String)JOptionPane.showInputDialog(null,"Silahkan pilih laporan..!","Pilihan Cetak",JOptionPane.QUESTION_MESSAGE,null,new Object[]{"Laporan 1 (HTML)","Laporan 2 (WPS)","Laporan 3 (XLS)"},"Laporan 1 (HTML)");
+            switch (pilihan) {
+                case "Laporan 1 (HTML)":
+                    f = new File("PendapatanPerAkunClosing.html");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText().replaceAll("<head>","<head><link href=\"fileakunbayar.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                                "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                                    "<tr class='isi2'>"+
+                                        "<td valign='top' align='center'>"+
+                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
+                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
+                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
+                                            "<font size='2' face='Tahoma'>PENDAPATAN PER AKUN CLOSING<br>TANGGAL "+Tgl1.getSelectedItem()+"<br><br></font>"+        
+                                        "</td>"+
+                                   "</tr>"+
+                                "</table>")
+                    );
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 2 (WPS)":
+                    f = new File("PendapatanPerAkunClosing.wps");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText());
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+                case "Laporan 3 (XLS)":
+                    f= new File("PendapatanPerAkunClosing.xls");            
+                    bw = new BufferedWriter(new FileWriter(f));            
+                    bw.write(LoadHTML.getText());
+                    bw.close();                         
+                    Desktop.getDesktop().browse(f.toURI());
+                    break;
+
+            }
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }     
@@ -422,15 +445,15 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try{        
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat/No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Akun Bayar</td>"+
+                "<tr class='head'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Tanggal</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat/No.Nota</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Nama Pasien</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis/Cara Bayar</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Akun Bayar</td>").append(
                 "</tr>"
             );           
             LoadHTML.setText(
@@ -439,6 +462,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -484,15 +508,15 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
     private void tampil(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         try{        
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat/No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Akun Closing</td>"+
+                "<tr class='head'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Tanggal</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat/No.Nota</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Nama Pasien</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis/Cara Bayar</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Akun Closing</td>").append(
                 "</tr>"
             );   
             
@@ -617,13 +641,13 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                     
                     if((!carabayar.equals("Transaksi Tidak Ditemukan"))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+nonota+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>"+carabayar+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(nonota).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(carabayar).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
                         
@@ -641,7 +665,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                                 bayar=0;
                             }
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                             }
                             all=all+bayar;
                             totalbayar[i]=totalbayar[i]+bayar;
@@ -650,15 +674,15 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                         for(i=0;i<kolompiutang;i++){
                             bayar=Sequel.cariIsiAngka("select sum(detail_piutang_pasien.totalpiutang) from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_nota")+"' and detail_piutang_pasien.nama_bayar='"+namapiutang[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namapiutang[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namapiutang[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                             }
                             all=all+bayar;
                             totalpiutang[i]=totalpiutang[i]+bayar;
                         }
                         
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -687,25 +711,25 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                 while(rs.next()){                            
                     if((rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+nonota+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>Pemasukan Lain-lain</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(nonota).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Pemasukan Lain-lain</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom2;i++){
                             bayar=Sequel.cariIsiAngka("select sum(pemasukan_lain.besar) from pemasukan_lain inner join kategori_pemasukan_lain on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori where pemasukan_lain.no_masuk='"+rs.getString("no_nota")+"' and kategori_pemasukan_lain.kd_rek2='"+akunrekening[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namarekening[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namarekening[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                             }
                             all=all+bayar;
                             totalbayar2[i]=totalbayar2[i]+bayar;
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -736,28 +760,28 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+no+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tgl_piutang")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("no_rawat")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td valign='middle' align='center'>Piutang Perawatan</td>"+
-                            "<td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("tgl_piutang")).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("no_rawat")).append("</td>").append(
+                            "<td valign='middle' align='left'>").append(rs.getString("nm_pasien")).append("</td>").append(
+                            "<td valign='middle' align='center'>Piutang Perawatan</td>").append(
+                            "<td>").append(
                                 "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                     );
 
                     for(i=0;i<kolompiutang;i++){
                         bayar=Sequel.cariIsiAngka("select sum(detail_piutang_pasien.totalpiutang) from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and detail_piutang_pasien.nama_bayar='"+namapiutang[i]+"'");
                         if(bayar>0){
-                            htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namapiutang[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(bayar)+"</td></tr>");
+                            htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namapiutang[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(bayar)).append("</td></tr>");
                         }
                         all=all+bayar;
                         totalpiutang[i]=totalpiutang[i]+bayar;
                     }
 
                     htmlContent.append( 
-                                "</table>"+
-                            "</td>"+
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     ); 
                     no++;                            
@@ -789,17 +813,17 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                 while(rs.next()){
                     piutangobat=piutangobat+rs.getDouble("sisapiutang");
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+no+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tgl_piutang")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("nota_piutang")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td valign='middle' align='center'>Piutang Obat</td>"+
-                            "<td>"+
-                                "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+akunpiutangobat+"</td><td valign='middle' width='30%' align='right' border='0'>"+Valid.SetAngka(rs.getDouble("sisapiutang"))+"</td></tr>"+
-                                "</table>"+
-                            "</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("tgl_piutang")).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("nota_piutang")).append("</td>").append(
+                            "<td valign='middle' align='left'>").append(rs.getString("nm_pasien")).append("</td>").append(
+                            "<td valign='middle' align='center'>Piutang Obat</td>").append(
+                            "<td>").append(
+                                "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(akunpiutangobat).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Valid.SetAngka(rs.getDouble("sisapiutang"))).append("</td></tr>").append(
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     ); 
                     no++;                            
@@ -818,10 +842,10 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             for(i=0;i<kolom;i++){
                 if(totalbayar[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='4'>Total "+namabayar[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(totalbayar[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='4'>Total ").append(namabayar[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Valid.SetAngka(totalbayar[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -830,10 +854,10 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             for(i=0;i<kolom2;i++){
                 if(totalbayar2[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='4'>Total "+namarekening[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(totalbayar2[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='4'>Total ").append(namarekening[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Valid.SetAngka(totalbayar2[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -842,10 +866,10 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             for(i=0;i<kolompiutang;i++){
                 if(totalpiutang[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='4'>Total "+namapiutang[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Valid.SetAngka(totalpiutang[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='4'>Total ").append(namapiutang[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Valid.SetAngka(totalpiutang[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -853,20 +877,20 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             
             if(piutangobat>0){
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='left' colspan='4'>Total "+akunpiutangobat+"</td>"+
-                        "<td valign='middle' align='right'>"+Valid.SetAngka(piutangobat)+"</td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' align='center'></td>").append(
+                        "<td valign='middle' align='left' colspan='4'>Total ").append(akunpiutangobat).append("</td>").append(
+                        "<td valign='middle' align='right'>").append(Valid.SetAngka(piutangobat)).append("</td>").append(
                     "</tr>"
                 ); 
             }
             
             if(all>0){
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='left' colspan='4'><b>Jumlah Total<b></td>"+
-                        "<td valign='middle' align='right'><b>"+Valid.SetAngka(all+piutangobat)+"<b></td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' align='center'></td>").append(
+                        "<td valign='middle' align='left' colspan='4'><b>Jumlah Total<b></td>").append(
+                        "<td valign='middle' align='right'><b>").append(Valid.SetAngka(all+piutangobat)).append("<b></td>").append(
                     "</tr>"
                 ); 
             }
@@ -877,6 +901,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
@@ -886,15 +911,15 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
     private void tampil2(){
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
         try{        
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(                             
-                "<tr class='head'>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Tanggal</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat/No.Nota</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Nama Pasien</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis/Cara Bayar</td>"+
-                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Akun Closing</td>"+
+                "<tr class='head'>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='3%'>No.</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='9%'>Tanggal</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='10%'>No.Rawat/No.Nota</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='33%'>Nama Pasien</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='15%'>Jenis/Cara Bayar</td>").append(
+                    "<td valign='middle' bgcolor='#FFFAFA' align='center' width='30%'>Akun Closing</td>").append(
                 "</tr>"
             );   
             
@@ -1019,13 +1044,13 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                     
                     if((!carabayar.equals("Transaksi Tidak Ditemukan"))&&(rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+nonota+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>"+carabayar+"</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(nonota).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(carabayar).append("</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                         );
                         
@@ -1043,7 +1068,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                                 bayar=0;
                             }
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namabayar[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namabayar[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                             }
                             all=all+bayar;
                             totalbayar[i]=totalbayar[i]+bayar;
@@ -1052,15 +1077,15 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                         for(i=0;i<kolompiutang;i++){
                             bayar=Sequel.cariIsiAngka("select sum(detail_piutang_pasien.totalpiutang) from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_nota")+"' and detail_piutang_pasien.nama_bayar='"+namapiutang[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namapiutang[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namapiutang[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                             }
                             all=all+bayar;
                             totalpiutang[i]=totalpiutang[i]+bayar;
                         }
                         
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -1089,25 +1114,25 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                 while(rs.next()){                            
                     if((rs.getString("nama_pasien").toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())||nonota.toLowerCase().trim().contains(TCari.getText().toLowerCase().trim()))){
                         htmlContent.append(                             
-                            "<tr class='isi'>"+
-                                "<td valign='middle' align='center'>"+no+"</td>"+
-                                "<td valign='middle' align='center'>"+rs.getString("tgl_bayar")+"</td>"+
-                                "<td valign='middle' align='center'>"+nonota+"</td>"+
-                                "<td valign='middle' align='left'>"+rs.getString("nama_pasien")+"</td>"+
-                                "<td valign='middle' align='center'>Pemasukan Lain-lain</td>"+
-                                "<td>"+
+                            "<tr class='isi'>").append(
+                                "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(rs.getString("tgl_bayar")).append("</td>").append(
+                                "<td valign='middle' align='center'>").append(nonota).append("</td>").append(
+                                "<td valign='middle' align='left'>").append(rs.getString("nama_pasien")).append("</td>").append(
+                                "<td valign='middle' align='center'>Pemasukan Lain-lain</td>").append(
+                                "<td>").append(
                                     "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         for(i=0;i<kolom2;i++){
                             bayar=Sequel.cariIsiAngka("select sum(pemasukan_lain.besar) from pemasukan_lain inner join kategori_pemasukan_lain on kategori_pemasukan_lain.kode_kategori=pemasukan_lain.kode_kategori where pemasukan_lain.no_masuk='"+rs.getString("no_nota")+"' and kategori_pemasukan_lain.kd_rek2='"+akunrekening[i]+"'");
                             if(bayar>0){
-                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namarekening[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                                htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namarekening[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                             }
                             all=all+bayar;
                             totalbayar2[i]=totalbayar2[i]+bayar;
                         }
                         htmlContent.append( 
-                                    "</table>"+
-                                "</td>"+
+                                    "</table>").append(
+                                "</td>").append(
                             "</tr>"
                         ); 
                         no++;
@@ -1138,28 +1163,28 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+no+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tgl_piutang")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("no_rawat")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td valign='middle' align='center'>Piutang Perawatan</td>"+
-                            "<td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("tgl_piutang")).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("no_rawat")).append("</td>").append(
+                            "<td valign='middle' align='left'>").append(rs.getString("nm_pasien")).append("</td>").append(
+                            "<td valign='middle' align='center'>Piutang Perawatan</td>").append(
+                            "<td>").append(
                                 "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"
                     );
 
                     for(i=0;i<kolompiutang;i++){
                         bayar=Sequel.cariIsiAngka("select sum(detail_piutang_pasien.totalpiutang) from detail_piutang_pasien where detail_piutang_pasien.no_rawat='"+rs.getString("no_rawat")+"' and detail_piutang_pasien.nama_bayar='"+namapiutang[i]+"'");
                         if(bayar>0){
-                            htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+namapiutang[i]+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(bayar)+"</td></tr>");
+                            htmlContent.append("<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(namapiutang[i]).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(bayar)).append("</td></tr>");
                         }
                         all=all+bayar;
                         totalpiutang[i]=totalpiutang[i]+bayar;
                     }
 
                     htmlContent.append( 
-                                "</table>"+
-                            "</td>"+
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     ); 
                     no++;                            
@@ -1191,17 +1216,17 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                 while(rs.next()){
                     piutangobat=piutangobat+rs.getDouble("sisapiutang");
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'>"+no+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("tgl_piutang")+"</td>"+
-                            "<td valign='middle' align='center'>"+rs.getString("nota_piutang")+"</td>"+
-                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+"</td>"+
-                            "<td valign='middle' align='center'>Piutang Obat</td>"+
-                            "<td>"+
-                                "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>"+akunpiutangobat+"</td><td valign='middle' width='30%' align='right' border='0'>"+Math.round(rs.getDouble("sisapiutang"))+"</td></tr>"+
-                                "</table>"+
-                            "</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'>").append(no).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("tgl_piutang")).append("</td>").append(
+                            "<td valign='middle' align='center'>").append(rs.getString("nota_piutang")).append("</td>").append(
+                            "<td valign='middle' align='left'>").append(rs.getString("nm_pasien")).append("</td>").append(
+                            "<td valign='middle' align='center'>Piutang Obat</td>").append(
+                            "<td>").append(
+                                "<table width='100%' border='0' align='left' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
+                                    "<tr class='isi'><td valign='middle' width='70%' align='left' border='0'>").append(akunpiutangobat).append("</td><td valign='middle' width='30%' align='right' border='0'>").append(Math.round(rs.getDouble("sisapiutang"))).append("</td></tr>").append(
+                                "</table>").append(
+                            "</td>").append(
                         "</tr>"
                     ); 
                     no++;                            
@@ -1220,10 +1245,10 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             for(i=0;i<kolom;i++){
                 if(totalbayar[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='4'>Total "+namabayar[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Math.round(totalbayar[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='4'>Total ").append(namabayar[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Math.round(totalbayar[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -1232,10 +1257,10 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             for(i=0;i<kolom2;i++){
                 if(totalbayar2[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='4'>Total "+namarekening[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Math.round(totalbayar2[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='4'>Total ").append(namarekening[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Math.round(totalbayar2[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -1244,10 +1269,10 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             for(i=0;i<kolompiutang;i++){
                 if(totalpiutang[i]>0){
                     htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' align='center'></td>"+
-                            "<td valign='middle' align='left' colspan='4'>Total "+namapiutang[i]+"</td>"+
-                            "<td valign='middle' align='right'>"+Math.round(totalpiutang[i])+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='middle' align='center'></td>").append(
+                            "<td valign='middle' align='left' colspan='4'>Total ").append(namapiutang[i]).append("</td>").append(
+                            "<td valign='middle' align='right'>").append(Math.round(totalpiutang[i])).append("</td>").append(
                         "</tr>"
                     ); 
                 }  
@@ -1255,20 +1280,20 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
             
             if(piutangobat>0){
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='left' colspan='4'>Total "+akunpiutangobat+"</td>"+
-                        "<td valign='middle' align='right'>"+Math.round(piutangobat)+"</td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' align='center'></td>").append(
+                        "<td valign='middle' align='left' colspan='4'>Total ").append(akunpiutangobat).append("</td>").append(
+                        "<td valign='middle' align='right'>").append(Math.round(piutangobat)).append("</td>").append(
                     "</tr>"
                 ); 
             }
             
             if(all>0){
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' align='center'></td>"+
-                        "<td valign='middle' align='left' colspan='4'><b>Jumlah Total<b></td>"+
-                        "<td valign='middle' align='right'><b>"+Math.round(all+piutangobat)+"<b></td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' align='center'></td>").append(
+                        "<td valign='middle' align='left' colspan='4'><b>Jumlah Total<b></td>").append(
+                        "<td valign='middle' align='right'><b>").append(Math.round(all+piutangobat)).append("<b></td>").append(
                     "</tr>"
                 ); 
             }
@@ -1279,6 +1304,7 @@ public final class DlgPendapatanPerAKunClosing extends javax.swing.JDialog {
                        htmlContent.toString()+
                       "</table>"+
                     "</html>");
+            htmlContent=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }

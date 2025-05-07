@@ -463,17 +463,12 @@ public final class RMMCU extends javax.swing.JDialog {
         TB = new widget.TextBox();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new widget.Label();
-        jLabel30 = new widget.Label();
-        jLabel31 = new widget.Label();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel54 = new widget.Label();
-        jLabel29 = new widget.Label();
-        jLabel32 = new widget.Label();
         jLabel33 = new widget.Label();
         jLabel34 = new widget.Label();
         jLabel35 = new widget.Label();
         jLabel37 = new widget.Label();
-        jLabel38 = new widget.Label();
         jLabel39 = new widget.Label();
         jLabel55 = new widget.Label();
         jLabel50 = new widget.Label();
@@ -533,13 +528,13 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel65 = new widget.Label();
         NyeriMastoideus = new widget.ComboBox();
         jLabel46 = new widget.Label();
-        jLabel66 = new widget.Label();
         SeptumNasi = new widget.ComboBox();
+        jLabel31 = new widget.Label();
         jLabel67 = new widget.Label();
         LubangHidung = new widget.ComboBox();
         jLabel68 = new widget.Label();
+        jLabel29 = new widget.Label();
         jLabel69 = new widget.Label();
-        jLabel70 = new widget.Label();
         jLabel71 = new widget.Label();
         jLabel72 = new widget.Label();
         jLabel73 = new widget.Label();
@@ -555,6 +550,7 @@ public final class RMMCU extends javax.swing.JDialog {
         KelenjarGondok = new widget.ComboBox();
         jLabel77 = new widget.Label();
         jLabel78 = new widget.Label();
+        jLabel66 = new widget.Label();
         jLabel79 = new widget.Label();
         jLabel80 = new widget.Label();
         jLabel81 = new widget.Label();
@@ -567,7 +563,9 @@ public final class RMMCU extends javax.swing.JDialog {
         BunyiTambahan = new widget.ComboBox();
         PerkusiDada = new widget.ComboBox();
         jLabel44 = new widget.Label();
+        jLabel70 = new widget.Label();
         jLabel85 = new widget.Label();
+        jLabel38 = new widget.Label();
         jLabel86 = new widget.Label();
         jLabel87 = new widget.Label();
         jLabel88 = new widget.Label();
@@ -613,6 +611,8 @@ public final class RMMCU extends javax.swing.JDialog {
         Merokok = new widget.TextBox();
         Alkohol = new widget.TextBox();
         jSeparator7 = new javax.swing.JSeparator();
+        jLabel32 = new widget.Label();
+        jLabel30 = new widget.Label();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
@@ -648,7 +648,6 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel42 = new widget.Label();
         jLabel112 = new widget.Label();
         jLabel14 = new widget.Label();
-        jLabel113 = new widget.Label();
         NyeriKtok1 = new widget.ComboBox();
         jLabel114 = new widget.Label();
         jLabel115 = new widget.Label();
@@ -656,6 +655,31 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel116 = new widget.Label();
         RisikoLP = new widget.TextBox();
         jLabel117 = new widget.Label();
+        jLabel118 = new widget.Label();
+        KlasifikasiIMT1 = new widget.TextBox();
+        jLabel113 = new widget.Label();
+        jLabel119 = new widget.Label();
+        TestButaWarna1 = new widget.ComboBox();
+        jLabel120 = new widget.Label();
+        KlasifikasiIMT2 = new widget.TextBox();
+        jLabel122 = new widget.Label();
+        jLabel123 = new widget.Label();
+        jLabel124 = new widget.Label();
+        jLabel125 = new widget.Label();
+        jLabel126 = new widget.Label();
+        jLabel127 = new widget.Label();
+        jLabel121 = new widget.Label();
+        jLabel128 = new widget.Label();
+        jLabel129 = new widget.Label();
+        jLabel130 = new widget.Label();
+        jLabel131 = new widget.Label();
+        jLabel132 = new widget.Label();
+        jLabel133 = new widget.Label();
+        NyeriMastoideus2 = new widget.ComboBox();
+        NyeriMastoideus3 = new widget.ComboBox();
+        jLabel134 = new widget.Label();
+        jLabel135 = new widget.Label();
+        jLabel136 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -853,7 +877,7 @@ public final class RMMCU extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 1913));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 2013));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -950,7 +974,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel12.setText("Berat Badan :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(420, 250, 80, 23);
+        jLabel12.setBounds(407, 250, 80, 23);
 
         BB.setFocusTraversalPolicyProvider(true);
         BB.setName("BB"); // NOI18N
@@ -960,7 +984,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(BB);
-        BB.setBounds(504, 250, 50, 23);
+        BB.setBounds(491, 250, 50, 23);
 
         jLabel15.setText("Kesadaran :");
         jLabel15.setName("jLabel15"); // NOI18N
@@ -991,7 +1015,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel18.setText("Suhu :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(595, 250, 40, 23);
+        jLabel18.setBounds(588, 250, 40, 23);
 
         Suhu.setFocusTraversalPolicyProvider(true);
         Suhu.setName("Suhu"); // NOI18N
@@ -1001,7 +1025,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Suhu);
-        Suhu.setBounds(639, 250, 50, 23);
+        Suhu.setBounds(632, 250, 50, 23);
 
         jLabel22.setText("TD :");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -1022,7 +1046,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel20.setText("°C");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(692, 250, 30, 23);
+        jLabel20.setBounds(685, 250, 30, 23);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel23.setText("mmHg");
@@ -1034,7 +1058,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel25.setText("x/menit");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(184, 250, 50, 23);
+        jLabel25.setBounds(154, 250, 50, 23);
 
         RR.setFocusTraversalPolicyProvider(true);
         RR.setName("RR"); // NOI18N
@@ -1044,12 +1068,13 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(RR);
-        RR.setBounds(131, 250, 50, 23);
+        RR.setBounds(101, 250, 50, 23);
 
-        jLabel26.setText("RR/Nafas :");
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("RR/Nafas");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(0, 250, 127, 23);
+        jLabel26.setBounds(44, 250, 70, 23);
 
         jLabel36.setText("Informasi didapat dari :");
         jLabel36.setName("jLabel36"); // NOI18N
@@ -1073,7 +1098,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel53.setBounds(10, 70, 180, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025 08:08:52" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2025 10:47:13" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1088,7 +1113,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel28.setText("Tinggi Badan :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(247, 250, 80, 23);
+        jLabel28.setBounds(225, 250, 80, 23);
 
         TB.setFocusTraversalPolicyProvider(true);
         TB.setName("TB"); // NOI18N
@@ -1098,7 +1123,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(TB);
-        TB.setBounds(331, 250, 50, 23);
+        TB.setBounds(309, 250, 50, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1110,17 +1135,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel9.setText("Sklera :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(268, 550, 57, 23);
-
-        jLabel30.setText("Palpebra  :");
-        jLabel30.setName("jLabel30"); // NOI18N
-        FormInput.add(jLabel30);
-        jLabel30.setBounds(0, 550, 158, 23);
-
-        jLabel31.setText("Konjungtiva :");
-        jLabel31.setName("jLabel31"); // NOI18N
-        FormInput.add(jLabel31);
-        jLabel31.setBounds(0, 580, 158, 23);
+        jLabel9.setBounds(251, 510, 57, 23);
 
         jSeparator2.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator2.setForeground(new java.awt.Color(239, 244, 234));
@@ -1134,16 +1149,6 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel54.setName("jLabel54"); // NOI18N
         FormInput.add(jLabel54);
         jLabel54.setBounds(10, 200, 180, 23);
-
-        jLabel29.setText("Submandibula :");
-        jLabel29.setName("jLabel29"); // NOI18N
-        FormInput.add(jLabel29);
-        jLabel29.setBounds(0, 330, 170, 23);
-
-        jLabel32.setText("Leher :");
-        jLabel32.setName("jLabel32"); // NOI18N
-        FormInput.add(jLabel32);
-        jLabel32.setBounds(0, 360, 170, 23);
 
         jLabel33.setText("Supraklavikula :");
         jLabel33.setName("jLabel33"); // NOI18N
@@ -1159,22 +1164,17 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel35.setText("Axilla :");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(371, 330, 60, 23);
+        jLabel35.setBounds(356, 330, 60, 23);
 
         jLabel37.setText("Inguinal :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
-        jLabel37.setBounds(371, 360, 60, 23);
-
-        jLabel38.setText("Oedema :");
-        jLabel38.setName("jLabel38"); // NOI18N
-        FormInput.add(jLabel38);
-        jLabel38.setBounds(0, 430, 142, 23);
+        jLabel37.setBounds(356, 360, 60, 23);
 
         jLabel39.setText("Nyeri Tekan Sinus Frontalis :");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(271, 430, 170, 23);
+        jLabel39.setBounds(264, 430, 170, 23);
 
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel55.setText("Riwayat Penyakit Sekarang :");
@@ -1234,43 +1234,43 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel41.setText("2. Mata");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
-        jLabel41.setBounds(70, 530, 150, 23);
+        jLabel41.setBounds(64, 490, 150, 23);
 
         jLabel47.setText("Cornea :");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(446, 550, 50, 23);
+        jLabel47.setBounds(437, 510, 50, 23);
 
         jLabel48.setText("Lensa :");
         jLabel48.setName("jLabel48"); // NOI18N
         FormInput.add(jLabel48);
-        jLabel48.setBounds(268, 580, 57, 23);
+        jLabel48.setBounds(265, 540, 57, 23);
 
         jLabel49.setText("Pupil :");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(446, 580, 50, 23);
+        jLabel49.setBounds(441, 540, 50, 23);
 
         jLabel58.setText("Buta Warna :");
         jLabel58.setName("jLabel58"); // NOI18N
         FormInput.add(jLabel58);
-        jLabel58.setBounds(625, 550, 80, 23);
+        jLabel58.setBounds(625, 510, 80, 23);
 
         jLabel43.setText("Kulit :");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(612, 1040, 60, 23);
+        jLabel43.setBounds(612, 1140, 60, 23);
 
         jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel59.setText("C. PEMERIKSAAN LABORATORIUM (TERLAMPIR)");
         jLabel59.setName("jLabel59"); // NOI18N
         FormInput.add(jLabel59);
-        jLabel59.setBounds(10, 1140, 280, 23);
+        jLabel59.setBounds(10, 1240, 280, 23);
 
         jLabel60.setText("Proc. Mastoideus :");
         jLabel60.setName("jLabel60"); // NOI18N
         FormInput.add(jLabel60);
-        jLabel60.setBounds(636, 630, 100, 23);
+        jLabel60.setBounds(636, 620, 100, 23);
 
         scrollPane10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane10.setName("scrollPane10"); // NOI18N
@@ -1288,19 +1288,19 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane10.setViewportView(PemeriksaanLaboratorium);
 
         FormInput.add(scrollPane10);
-        scrollPane10.setBounds(44, 1160, 810, 53);
+        scrollPane10.setBounds(44, 1260, 810, 53);
 
         jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel61.setText("E. EKG");
         jLabel61.setName("jLabel61"); // NOI18N
         FormInput.add(jLabel61);
-        jLabel61.setBounds(10, 1300, 182, 23);
+        jLabel61.setBounds(10, 1400, 182, 23);
 
         jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel62.setText("D. RONTGEN THORAX");
         jLabel62.setName("jLabel62"); // NOI18N
         FormInput.add(jLabel62);
-        jLabel62.setBounds(10, 1220, 182, 23);
+        jLabel62.setBounds(10, 1320, 182, 23);
 
         scrollPane11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane11.setName("scrollPane11"); // NOI18N
@@ -1318,7 +1318,7 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane11.setViewportView(RongsenThorax);
 
         FormInput.add(scrollPane11);
-        scrollPane11.setBounds(44, 1240, 810, 53);
+        scrollPane11.setBounds(44, 1340, 810, 53);
 
         scrollPane12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane12.setName("scrollPane12"); // NOI18N
@@ -1336,12 +1336,12 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane12.setViewportView(EKG);
 
         FormInput.add(scrollPane12);
-        scrollPane12.setBounds(44, 1320, 810, 53);
+        scrollPane12.setBounds(44, 1420, 810, 53);
 
-        jLabel101.setText("Merokok :");
+        jLabel101.setText(":");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(0, 1720, 91, 23);
+        jLabel101.setBounds(0, 1820, 91, 23);
 
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
@@ -1359,13 +1359,13 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane14.setViewportView(Kesimpulan);
 
         FormInput.add(scrollPane14);
-        scrollPane14.setBounds(44, 1770, 810, 53);
+        scrollPane14.setBounds(44, 1870, 810, 53);
 
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel102.setText("K. KESIMPULAN");
         jLabel102.setName("jLabel102"); // NOI18N
         FormInput.add(jLabel102);
-        jLabel102.setBounds(10, 1750, 190, 23);
+        jLabel102.setBounds(10, 1850, 190, 23);
 
         scrollPane15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane15.setName("scrollPane15"); // NOI18N
@@ -1383,19 +1383,19 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane15.setViewportView(Anjuran);
 
         FormInput.add(scrollPane15);
-        scrollPane15.setBounds(44, 1850, 810, 53);
+        scrollPane15.setBounds(44, 1950, 810, 53);
 
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel103.setText("L. ANJURAN");
         jLabel103.setName("jLabel103"); // NOI18N
         FormInput.add(jLabel103);
-        jLabel103.setBounds(10, 1830, 330, 23);
+        jLabel103.setBounds(10, 1930, 330, 23);
 
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel104.setText("J. RIWAYAT MEROKOK DAN KONSUMSI ALKOHOL");
         jLabel104.setName("jLabel104"); // NOI18N
         FormInput.add(jLabel104);
-        jLabel104.setBounds(10, 1700, 340, 23);
+        jLabel104.setBounds(10, 1800, 340, 23);
 
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel45.setText("Kepala :");
@@ -1411,7 +1411,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Submandibula);
-        Submandibula.setBounds(174, 330, 130, 23);
+        Submandibula.setBounds(144, 330, 130, 23);
 
         Kesadaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Composmentis", "Apatis", "Somnolen" }));
         Kesadaran.setName("Kesadaran"); // NOI18N
@@ -1431,7 +1431,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Leher);
-        Leher.setBounds(174, 360, 130, 23);
+        Leher.setBounds(103, 360, 130, 23);
 
         Axila.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar", "-" }));
         Axila.setName("Axila"); // NOI18N
@@ -1441,7 +1441,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Axila);
-        Axila.setBounds(435, 330, 130, 23);
+        Axila.setBounds(420, 330, 130, 23);
 
         Inguinal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar", "-" }));
         Inguinal.setName("Inguinal"); // NOI18N
@@ -1451,7 +1451,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Inguinal);
-        Inguinal.setBounds(435, 360, 130, 23);
+        Inguinal.setBounds(420, 360, 130, 23);
 
         Supraklavikula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar", "-" }));
         Supraklavikula.setName("Supraklavikula"); // NOI18N
@@ -1471,7 +1471,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Oedema);
-        Oedema.setBounds(146, 430, 105, 23);
+        Oedema.setBounds(136, 430, 105, 23);
 
         NyeriTekanSinusFrontalis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada", "-" }));
         NyeriTekanSinusFrontalis.setName("NyeriTekanSinusFrontalis"); // NOI18N
@@ -1481,7 +1481,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(NyeriTekanSinusFrontalis);
-        NyeriTekanSinusFrontalis.setBounds(445, 430, 105, 23);
+        NyeriTekanSinusFrontalis.setBounds(438, 430, 105, 23);
 
         NyeriTekananSinusMaxilaris.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada", "-" }));
         NyeriTekananSinusMaxilaris.setName("NyeriTekananSinusMaxilaris"); // NOI18N
@@ -1493,7 +1493,7 @@ public final class RMMCU extends javax.swing.JDialog {
         FormInput.add(NyeriTekananSinusMaxilaris);
         NyeriTekananSinusMaxilaris.setBounds(749, 430, 105, 23);
 
-        Palpebra.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Oedem", "Ptosis" }));
+        Palpebra.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Oedem", "Ptosis", "-" }));
         Palpebra.setName("Palpebra"); // NOI18N
         Palpebra.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1501,9 +1501,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Palpebra);
-        Palpebra.setBounds(162, 550, 100, 23);
+        Palpebra.setBounds(138, 510, 100, 23);
 
-        Sklera.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Ikterik" }));
+        Sklera.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Ikterik", "-" }));
         Sklera.setName("Sklera"); // NOI18N
         Sklera.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1511,9 +1511,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Sklera);
-        Sklera.setBounds(329, 550, 100, 23);
+        Sklera.setBounds(312, 510, 100, 23);
 
-        TestButaWarna.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Buta Warna Partial", "Buta Warna Total" }));
+        TestButaWarna.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Buta Warna Partial", "Buta Warna Total", "-" }));
         TestButaWarna.setName("TestButaWarna"); // NOI18N
         TestButaWarna.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1521,9 +1521,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(TestButaWarna);
-        TestButaWarna.setBounds(709, 550, 145, 23);
+        TestButaWarna.setBounds(709, 510, 145, 23);
 
-        Konjungtiva.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Anemis", "Hiperemis" }));
+        Konjungtiva.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Anemis", "Hiperemis", "-" }));
         Konjungtiva.setName("Konjungtiva"); // NOI18N
         Konjungtiva.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1531,9 +1531,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Konjungtiva);
-        Konjungtiva.setBounds(162, 580, 100, 23);
+        Konjungtiva.setBounds(152, 540, 100, 23);
 
-        Lensa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jernih", "Keruh", "Kacamata" }));
+        Lensa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jernih", "Keruh", "Kacamata", "-" }));
         Lensa.setName("Lensa"); // NOI18N
         Lensa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1541,9 +1541,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Lensa);
-        Lensa.setBounds(329, 580, 100, 23);
+        Lensa.setBounds(326, 540, 100, 23);
 
-        Cornea.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
+        Cornea.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "-" }));
         Cornea.setName("Cornea"); // NOI18N
         Cornea.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1551,9 +1551,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Cornea);
-        Cornea.setBounds(500, 550, 115, 23);
+        Cornea.setBounds(491, 510, 115, 23);
 
-        Pupil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isokor", "Anisokor" }));
+        Pupil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Isokor", "Anisokor", "-" }));
         Pupil.setName("Pupil"); // NOI18N
         Pupil.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1561,9 +1561,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Pupil);
-        Pupil.setBounds(500, 580, 115, 23);
+        Pupil.setBounds(495, 540, 115, 23);
 
-        LubangTelinga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "Lapang", "Sempit", "Serumen Prop" }));
+        LubangTelinga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "Lapang", "Sempit", "Serumen Prop", "-" }));
         LubangTelinga.setName("LubangTelinga"); // NOI18N
         LubangTelinga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1571,19 +1571,19 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(LubangTelinga);
-        LubangTelinga.setBounds(140, 630, 118, 23);
+        LubangTelinga.setBounds(130, 620, 118, 23);
 
         jLabel105.setText("Alkohol :");
         jLabel105.setName("jLabel105"); // NOI18N
         FormInput.add(jLabel105);
-        jLabel105.setBounds(456, 1720, 50, 23);
+        jLabel105.setBounds(456, 1820, 50, 23);
 
         jLabel63.setText("Lubang Hidung :");
         jLabel63.setName("jLabel63"); // NOI18N
         FormInput.add(jLabel63);
-        jLabel63.setBounds(330, 680, 90, 23);
+        jLabel63.setBounds(330, 670, 90, 23);
 
-        DaunTelinga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
+        DaunTelinga.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "-" }));
         DaunTelinga.setName("DaunTelinga"); // NOI18N
         DaunTelinga.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1591,14 +1591,14 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(DaunTelinga);
-        DaunTelinga.setBounds(311, 630, 114, 23);
+        DaunTelinga.setBounds(304, 620, 114, 23);
 
         jLabel64.setText("Daun :");
         jLabel64.setName("jLabel64"); // NOI18N
         FormInput.add(jLabel64);
-        jLabel64.setBounds(264, 630, 43, 23);
+        jLabel64.setBounds(257, 620, 43, 23);
 
-        SelaputPendengaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Intak", "Tidak Intak" }));
+        SelaputPendengaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Intak", "Tidak Intak", "-" }));
         SelaputPendengaran.setName("SelaputPendengaran"); // NOI18N
         SelaputPendengaran.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1606,14 +1606,14 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(SelaputPendengaran);
-        SelaputPendengaran.setBounds(527, 630, 105, 23);
+        SelaputPendengaran.setBounds(524, 620, 105, 23);
 
         jLabel65.setText("Selaput Dengar :");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
-        jLabel65.setBounds(420, 630, 103, 23);
+        jLabel65.setBounds(417, 620, 103, 23);
 
-        NyeriMastoideus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
+        NyeriMastoideus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "-" }));
         NyeriMastoideus.setName("NyeriMastoideus"); // NOI18N
         NyeriMastoideus.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1621,20 +1621,15 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(NyeriMastoideus);
-        NyeriMastoideus.setBounds(740, 630, 114, 23);
+        NyeriMastoideus.setBounds(740, 620, 114, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel46.setText("3. Telinga");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(70, 610, 150, 23);
+        jLabel46.setBounds(64, 600, 150, 23);
 
-        jLabel66.setText("Lubang :");
-        jLabel66.setName("jLabel66"); // NOI18N
-        FormInput.add(jLabel66);
-        jLabel66.setBounds(0, 630, 136, 23);
-
-        SeptumNasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Deviasi" }));
+        SeptumNasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Deviasi", "-" }));
         SeptumNasi.setName("SeptumNasi"); // NOI18N
         SeptumNasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1642,14 +1637,20 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(SeptumNasi);
-        SeptumNasi.setBounds(166, 680, 100, 23);
+        SeptumNasi.setBounds(156, 670, 100, 23);
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel31.setText("Konjungtiva");
+        jLabel31.setName("jLabel31"); // NOI18N
+        FormInput.add(jLabel31);
+        jLabel31.setBounds(84, 540, 70, 23);
 
         jLabel67.setText("Tonsil :");
         jLabel67.setName("jLabel67"); // NOI18N
         FormInput.add(jLabel67);
-        jLabel67.setBounds(710, 730, 60, 23);
+        jLabel67.setBounds(456, 750, 60, 23);
 
-        LubangHidung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lapang", "Rhinore", "Epistaksis" }));
+        LubangHidung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lapang", "Rhinore", "Epistaksis", "-" }));
         LubangHidung.setName("LubangHidung"); // NOI18N
         LubangHidung.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1657,40 +1658,43 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(LubangHidung);
-        LubangHidung.setBounds(424, 680, 100, 23);
+        LubangHidung.setBounds(424, 670, 100, 23);
 
         jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel68.setText("4. Hidung");
         jLabel68.setName("jLabel68"); // NOI18N
         FormInput.add(jLabel68);
-        jLabel68.setBounds(70, 660, 150, 23);
+        jLabel68.setBounds(64, 650, 150, 23);
 
-        jLabel69.setText("Septum Nasi :");
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel29.setText("Submandibula");
+        jLabel29.setName("jLabel29"); // NOI18N
+        FormInput.add(jLabel29);
+        jLabel29.setBounds(64, 330, 100, 23);
+
+        jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel69.setText("Septum Nasi");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(0, 680, 162, 23);
-
-        jLabel70.setText("Bibir :");
-        jLabel70.setName("jLabel70"); // NOI18N
-        FormInput.add(jLabel70);
-        jLabel70.setBounds(0, 730, 123, 23);
+        jLabel69.setBounds(84, 670, 162, 23);
 
         jLabel71.setText("Caries  :");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
-        jLabel71.setBounds(220, 730, 63, 23);
+        jLabel71.setBounds(689, 720, 63, 23);
 
-        jLabel72.setText("Lidah  :");
+        jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel72.setText("Lidah");
         jLabel72.setName("jLabel72"); // NOI18N
         FormInput.add(jLabel72);
-        jLabel72.setBounds(398, 730, 50, 23);
+        jLabel72.setBounds(84, 750, 50, 23);
 
         jLabel73.setText("Kelenjar Gondok :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(381, 780, 120, 23);
+        jLabel73.setBounds(381, 800, 120, 23);
 
-        Bibir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lembab", "Kering" }));
+        Bibir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lembab", "Kering", "-" }));
         Bibir.setName("Bibir"); // NOI18N
         Bibir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1698,9 +1702,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Bibir);
-        Bibir.setBounds(127, 730, 88, 23);
+        Bibir.setBounds(118, 720, 88, 23);
 
-        Caries.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        Caries.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada", "-" }));
         Caries.setName("Caries"); // NOI18N
         Caries.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1708,9 +1712,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Caries);
-        Caries.setBounds(287, 730, 98, 23);
+        Caries.setBounds(756, 720, 98, 23);
 
-        Lidah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bersih", "Kotor", "Tremor" }));
+        Lidah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bersih", "Kotor", "Tremor", "-" }));
         Lidah.setName("Lidah"); // NOI18N
         Lidah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1718,9 +1722,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Lidah);
-        Lidah.setBounds(452, 730, 85, 23);
+        Lidah.setBounds(121, 750, 85, 23);
 
-        Faring.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Hiperemis" }));
+        Faring.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Hiperemis", "-" }));
         Faring.setName("Faring"); // NOI18N
         Faring.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1728,9 +1732,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Faring);
-        Faring.setBounds(610, 730, 100, 23);
+        Faring.setBounds(316, 750, 100, 23);
 
-        Tonsil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "T1-T1", "T2-T2", "T3-T3", "T4-T4", "T0-T0" }));
+        Tonsil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "T1-T1", "T2-T2", "T3-T3", "T4-T4", "T0-T0", "-" }));
         Tonsil.setName("Tonsil"); // NOI18N
         Tonsil.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1738,25 +1742,25 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tonsil);
-        Tonsil.setBounds(774, 730, 80, 23);
+        Tonsil.setBounds(520, 750, 80, 23);
 
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel74.setText("5. Mulut");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(70, 710, 150, 23);
+        jLabel74.setBounds(64, 700, 150, 23);
 
-        jLabel75.setText("Faring  :");
+        jLabel75.setText("Faring :");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(546, 730, 60, 23);
+        jLabel75.setBounds(252, 750, 60, 23);
 
         jLabel76.setText("Bunyi Tambahan :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(381, 880, 110, 23);
+        jLabel76.setBounds(381, 900, 110, 23);
 
-        KelenjarLimfe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
+        KelenjarLimfe.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar", "-" }));
         KelenjarLimfe.setName("KelenjarLimfe"); // NOI18N
         KelenjarLimfe.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1764,9 +1768,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(KelenjarLimfe);
-        KelenjarLimfe.setBounds(175, 780, 140, 23);
+        KelenjarLimfe.setBounds(165, 800, 140, 23);
 
-        KelenjarGondok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
+        KelenjarGondok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar", "-" }));
         KelenjarGondok.setName("KelenjarGondok"); // NOI18N
         KelenjarGondok.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1774,50 +1778,58 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(KelenjarGondok);
-        KelenjarGondok.setBounds(505, 780, 140, 23);
+        KelenjarGondok.setBounds(505, 800, 140, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel77.setText("1. Muka");
         jLabel77.setName("jLabel77"); // NOI18N
         FormInput.add(jLabel77);
-        jLabel77.setBounds(70, 410, 150, 23);
+        jLabel77.setBounds(64, 410, 150, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel78.setText("6. Leher");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(70, 760, 150, 23);
+        jLabel78.setBounds(64, 780, 150, 23);
+
+        jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel66.setText("Lubang");
+        jLabel66.setName("jLabel66"); // NOI18N
+        FormInput.add(jLabel66);
+        jLabel66.setBounds(84, 620, 136, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel79.setText("Dada :");
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
-        jLabel79.setBounds(44, 810, 76, 23);
+        jLabel79.setBounds(44, 830, 76, 23);
 
-        jLabel80.setText("Kelenjar Limfe :");
+        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel80.setText("Kelenjar Limfe");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
-        jLabel80.setBounds(0, 780, 171, 23);
+        jLabel80.setBounds(84, 800, 171, 23);
 
         jLabel81.setText("Bunyi Jantung :");
         jLabel81.setName("jLabel81"); // NOI18N
         FormInput.add(jLabel81);
-        jLabel81.setBounds(381, 930, 110, 23);
+        jLabel81.setBounds(381, 1030, 110, 23);
 
         jLabel82.setText("Vocal Fremitus :");
         jLabel82.setName("jLabel82"); // NOI18N
         FormInput.add(jLabel82);
-        jLabel82.setBounds(381, 850, 110, 23);
+        jLabel82.setBounds(381, 870, 110, 23);
 
         jLabel83.setText("Perkusi :");
         jLabel83.setName("jLabel83"); // NOI18N
         FormInput.add(jLabel83);
-        jLabel83.setBounds(652, 850, 100, 23);
+        jLabel83.setBounds(652, 870, 100, 23);
 
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel84.setText("Bunyi Napas :");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
-        jLabel84.setBounds(0, 880, 169, 23);
+        jLabel84.setBounds(84, 900, 169, 23);
 
         GerakanDada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Simetris", "Tidak Simetris" }));
         GerakanDada.setName("GerakanDada"); // NOI18N
@@ -1827,7 +1839,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(GerakanDada);
-        GerakanDada.setBounds(173, 850, 129, 23);
+        GerakanDada.setBounds(173, 870, 129, 23);
 
         BunyiNapas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vesikuler", "Bronkhial", "Trakeal" }));
         BunyiNapas.setName("BunyiNapas"); // NOI18N
@@ -1837,7 +1849,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(BunyiNapas);
-        BunyiNapas.setBounds(173, 880, 129, 23);
+        BunyiNapas.setBounds(173, 900, 129, 23);
 
         VocalFremitus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sama", "Tidak Sama" }));
         VocalFremitus.setName("VocalFremitus"); // NOI18N
@@ -1847,9 +1859,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(VocalFremitus);
-        VocalFremitus.setBounds(495, 850, 116, 23);
+        VocalFremitus.setBounds(495, 870, 116, 23);
 
-        BunyiTambahan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Wheezing", "Tronkhi" }));
+        BunyiTambahan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Wheezing", "Ronchi" }));
         BunyiTambahan.setName("BunyiTambahan"); // NOI18N
         BunyiTambahan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1857,7 +1869,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(BunyiTambahan);
-        BunyiTambahan.setBounds(495, 880, 116, 23);
+        BunyiTambahan.setBounds(495, 900, 116, 23);
 
         PerkusiDada.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sonor", "Pekak" }));
         PerkusiDada.setName("PerkusiDada"); // NOI18N
@@ -1867,97 +1879,115 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(PerkusiDada);
-        PerkusiDada.setBounds(756, 850, 98, 23);
+        PerkusiDada.setBounds(756, 870, 98, 23);
 
         jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel44.setText("1. Paru");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(70, 830, 100, 23);
+        jLabel44.setBounds(64, 850, 100, 23);
 
+        jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel70.setText("Bibir");
+        jLabel70.setName("jLabel70"); // NOI18N
+        FormInput.add(jLabel70);
+        jLabel70.setBounds(84, 720, 80, 23);
+
+        jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel85.setText("Gerakan Dada :");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(0, 850, 169, 23);
+        jLabel85.setBounds(84, 870, 169, 23);
+
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel38.setText("Oedema");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(84, 430, 70, 23);
 
         jLabel86.setText("Hepar :");
         jLabel86.setName("jLabel86"); // NOI18N
         FormInput.add(jLabel86);
-        jLabel86.setBounds(630, 980, 90, 23);
+        jLabel86.setBounds(630, 1080, 90, 23);
 
         jLabel87.setText("Batas :");
         jLabel87.setName("jLabel87"); // NOI18N
         FormInput.add(jLabel87);
-        jLabel87.setBounds(652, 930, 100, 23);
+        jLabel87.setBounds(652, 1030, 100, 23);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel88.setText("2. Jantung");
         jLabel88.setName("jLabel88"); // NOI18N
         FormInput.add(jLabel88);
-        jLabel88.setBounds(70, 910, 100, 23);
+        jLabel88.setBounds(64, 1010, 100, 23);
 
+        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel89.setText("Ictus Cordis :");
         jLabel89.setName("jLabel89"); // NOI18N
         FormInput.add(jLabel89);
-        jLabel89.setBounds(0, 930, 159, 23);
+        jLabel89.setBounds(84, 1030, 159, 23);
 
+        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel90.setText("Inspeksi :");
         jLabel90.setName("jLabel90"); // NOI18N
         FormInput.add(jLabel90);
-        jLabel90.setBounds(0, 980, 141, 23);
+        jLabel90.setBounds(64, 1080, 141, 23);
 
         jLabel91.setText("Palpasi :");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
-        jLabel91.setBounds(330, 980, 90, 23);
+        jLabel91.setBounds(330, 1080, 90, 23);
 
         jLabel92.setText("Limpa :");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(630, 1010, 90, 23);
+        jLabel92.setBounds(630, 1110, 90, 23);
 
         jLabel93.setText("Ekstremitas Bawah :");
         jLabel93.setName("jLabel93"); // NOI18N
         FormInput.add(jLabel93);
-        jLabel93.setBounds(465, 1110, 110, 23);
+        jLabel93.setBounds(465, 1210, 110, 23);
 
+        jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel94.setText("Perkusi :");
         jLabel94.setName("jLabel94"); // NOI18N
         FormInput.add(jLabel94);
-        jLabel94.setBounds(0, 1010, 141, 23);
+        jLabel94.setBounds(64, 1110, 141, 23);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel95.setText("Abdomen :");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
-        jLabel95.setBounds(44, 960, 97, 23);
+        jLabel95.setBounds(44, 1060, 97, 23);
 
         jLabel96.setText("Auskultasi :");
         jLabel96.setName("jLabel96"); // NOI18N
         FormInput.add(jLabel96);
-        jLabel96.setBounds(330, 1010, 90, 23);
+        jLabel96.setBounds(330, 1110, 90, 23);
 
+        jLabel97.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel97.setText("Nyeri Ketok Costovertebral Angle/CVA :");
         jLabel97.setName("jLabel97"); // NOI18N
         FormInput.add(jLabel97);
-        jLabel97.setBounds(0, 1060, 287, 23);
+        jLabel97.setBounds(64, 1160, 287, 23);
 
         jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel98.setText("Punggung :");
         jLabel98.setName("jLabel98"); // NOI18N
         FormInput.add(jLabel98);
-        jLabel98.setBounds(44, 1040, 99, 23);
+        jLabel98.setBounds(44, 1140, 99, 23);
 
+        jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel99.setText("Ekstremitas Atas :");
         jLabel99.setName("jLabel99"); // NOI18N
         FormInput.add(jLabel99);
-        jLabel99.setBounds(0, 1110, 183, 23);
+        jLabel99.setBounds(64, 1210, 183, 23);
 
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel100.setText("Anggota Gerak :");
         jLabel100.setName("jLabel100"); // NOI18N
         FormInput.add(jLabel100);
-        jLabel100.setBounds(44, 1090, 123, 23);
+        jLabel100.setBounds(44, 1190, 123, 23);
 
         IctusCordis.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Terlihat", "Terlihat", "Teraba", "Tidak Teraba" }));
         IctusCordis.setName("IctusCordis"); // NOI18N
@@ -1967,9 +1997,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(IctusCordis);
-        IctusCordis.setBounds(163, 930, 139, 23);
+        IctusCordis.setBounds(163, 1030, 139, 23);
 
-        BunyiJantung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Reguler", "Irreguler", "Korotkoff I, II", "Gallop", "Lain-lain" }));
+        BunyiJantung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Reguler", "Irreguler", "Gallop", "Lain-lain" }));
         BunyiJantung.setName("BunyiJantung"); // NOI18N
         BunyiJantung.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1977,7 +2007,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(BunyiJantung);
-        BunyiJantung.setBounds(495, 930, 116, 23);
+        BunyiJantung.setBounds(495, 1030, 116, 23);
 
         Batas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Melebar" }));
         Batas.setName("Batas"); // NOI18N
@@ -1987,9 +2017,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Batas);
-        Batas.setBounds(756, 930, 98, 23);
+        Batas.setBounds(756, 1030, 98, 23);
 
-        Inspeksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Datar", "Cembung" }));
+        Inspeksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Datar", "Cembung", "-" }));
         Inspeksi.setName("Inspeksi"); // NOI18N
         Inspeksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1997,9 +2027,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Inspeksi);
-        Inspeksi.setBounds(145, 980, 130, 23);
+        Inspeksi.setBounds(145, 1080, 130, 23);
 
-        Palpasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Supel", "Tegang (Defans Muscular)" }));
+        Palpasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Supel", "Tegang (Defans Muscular)", "Nyeri Tekan Epigastrium", "Nyeri Tekan Suprapubik", "Nyeri Tekan Right Lower Quadrant", "Nyeri Tekan Left Lower Quadrant", "-" }));
         Palpasi.setName("Palpasi"); // NOI18N
         Palpasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2007,9 +2037,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Palpasi);
-        Palpasi.setBounds(424, 980, 187, 23);
+        Palpasi.setBounds(424, 1080, 187, 23);
 
-        PerkusiAbdomen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Timpani", "Hipertimpani" }));
+        PerkusiAbdomen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Timpani", "Hipertimpani", "Dull", "-" }));
         PerkusiAbdomen.setName("PerkusiAbdomen"); // NOI18N
         PerkusiAbdomen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2017,9 +2047,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(PerkusiAbdomen);
-        PerkusiAbdomen.setBounds(145, 1010, 130, 23);
+        PerkusiAbdomen.setBounds(145, 1110, 130, 23);
 
-        Auskultasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Meningkat (>4x/menit)" }));
+        Auskultasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Bising Usus Meningkat", "Bising Usus Menurun", "-" }));
         Auskultasi.setName("Auskultasi"); // NOI18N
         Auskultasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2027,9 +2057,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Auskultasi);
-        Auskultasi.setBounds(424, 1010, 187, 23);
+        Auskultasi.setBounds(424, 1110, 187, 23);
 
-        Hepar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
+        Hepar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar", "-" }));
         Hepar.setName("Hepar"); // NOI18N
         Hepar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2037,9 +2067,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Hepar);
-        Hepar.setBounds(724, 980, 130, 23);
+        Hepar.setBounds(724, 1080, 130, 23);
 
-        Limpa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar" }));
+        Limpa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Membesar", "Membesar", "-" }));
         Limpa.setName("Limpa"); // NOI18N
         Limpa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2047,9 +2077,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Limpa);
-        Limpa.setBounds(724, 1010, 130, 23);
+        Limpa.setBounds(724, 1110, 130, 23);
 
-        NyeriKtok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        NyeriKtok.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada Di Kiri", "Ada Di Kanan", "-" }));
         NyeriKtok.setName("NyeriKtok"); // NOI18N
         NyeriKtok.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2057,9 +2087,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(NyeriKtok);
-        NyeriKtok.setBounds(291, 1060, 100, 23);
+        NyeriKtok.setBounds(291, 1160, 100, 23);
 
-        ExtremitasAtas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
+        ExtremitasAtas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "-" }));
         ExtremitasAtas.setName("ExtremitasAtas"); // NOI18N
         ExtremitasAtas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2067,9 +2097,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(ExtremitasAtas);
-        ExtremitasAtas.setBounds(187, 1110, 117, 23);
+        ExtremitasAtas.setBounds(187, 1210, 117, 23);
 
-        ExtremitasBawah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
+        ExtremitasBawah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "-" }));
         ExtremitasBawah.setName("ExtremitasBawah"); // NOI18N
         ExtremitasBawah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2077,7 +2107,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(ExtremitasBawah);
-        ExtremitasBawah.setBounds(579, 1110, 117, 23);
+        ExtremitasBawah.setBounds(579, 1210, 117, 23);
 
         KetExtremitasAtas.setName("KetExtremitasAtas"); // NOI18N
         KetExtremitasAtas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2086,7 +2116,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(KetExtremitasAtas);
-        KetExtremitasAtas.setBounds(307, 1110, 155, 23);
+        KetExtremitasAtas.setBounds(307, 1210, 155, 23);
 
         KetExtremitasBawah.setName("KetExtremitasBawah"); // NOI18N
         KetExtremitasBawah.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2095,9 +2125,9 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(KetExtremitasBawah);
-        KetExtremitasBawah.setBounds(699, 1110, 155, 23);
+        KetExtremitasBawah.setBounds(699, 1210, 155, 23);
 
-        Kulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tato", "Penyakit Kulit" }));
+        Kulit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tato", "Penyakit Kulit", "-" }));
         Kulit.setName("Kulit"); // NOI18N
         Kulit.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2105,7 +2135,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kulit);
-        Kulit.setBounds(736, 1060, 118, 23);
+        Kulit.setBounds(736, 1160, 118, 23);
 
         scrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane2.setName("scrollPane2"); // NOI18N
@@ -2162,41 +2192,41 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel24.setText("cm");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(384, 250, 30, 23);
+        jLabel24.setBounds(362, 250, 30, 23);
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Kg");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(557, 250, 30, 23);
+        jLabel13.setBounds(544, 250, 30, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 1140, 880, 1);
+        jSeparator3.setBounds(0, 1240, 880, 1);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 1220, 880, 1);
+        jSeparator4.setBounds(0, 1320, 880, 1);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator5.setName("jSeparator5"); // NOI18N
         FormInput.add(jSeparator5);
-        jSeparator5.setBounds(0, 1300, 880, 1);
+        jSeparator5.setBounds(0, 1400, 880, 1);
 
         jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator6.setName("jSeparator6"); // NOI18N
         FormInput.add(jSeparator6);
-        jSeparator6.setBounds(0, 1700, 880, 1);
+        jSeparator6.setBounds(0, 1800, 880, 1);
 
         Merokok.setName("Merokok"); // NOI18N
         Merokok.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2205,7 +2235,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Merokok);
-        Merokok.setBounds(95, 1720, 344, 23);
+        Merokok.setBounds(95, 1820, 344, 23);
 
         Alkohol.setName("Alkohol"); // NOI18N
         Alkohol.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -2214,21 +2244,33 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(Alkohol);
-        Alkohol.setBounds(510, 1720, 344, 23);
+        Alkohol.setBounds(510, 1820, 344, 23);
 
         jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator7.setName("jSeparator7"); // NOI18N
         FormInput.add(jSeparator7);
-        jSeparator7.setBounds(0, 1750, 880, 1);
+        jSeparator7.setBounds(0, 1850, 880, 1);
+
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel32.setText("Leher");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(64, 360, 50, 23);
+
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel30.setText("Palpebra ");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(84, 510, 70, 23);
 
         jSeparator8.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator8.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator8.setName("jSeparator8"); // NOI18N
         FormInput.add(jSeparator8);
-        jSeparator8.setBounds(0, 1830, 880, 1);
+        jSeparator8.setBounds(0, 1930, 880, 1);
 
         jSeparator9.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator9.setForeground(new java.awt.Color(239, 244, 234));
@@ -2249,46 +2291,46 @@ public final class RMMCU extends javax.swing.JDialog {
         jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator11.setName("jSeparator11"); // NOI18N
         FormInput.add(jSeparator11);
-        jSeparator11.setBounds(44, 810, 836, 1);
+        jSeparator11.setBounds(44, 830, 836, 1);
 
         jSeparator12.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator12.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator12.setName("jSeparator12"); // NOI18N
         FormInput.add(jSeparator12);
-        jSeparator12.setBounds(44, 960, 836, 1);
+        jSeparator12.setBounds(44, 1060, 836, 1);
 
         jSeparator13.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator13.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator13.setName("jSeparator13"); // NOI18N
         FormInput.add(jSeparator13);
-        jSeparator13.setBounds(44, 1040, 836, 1);
+        jSeparator13.setBounds(44, 1140, 836, 1);
 
         jSeparator14.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator14.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator14.setName("jSeparator14"); // NOI18N
         FormInput.add(jSeparator14);
-        jSeparator14.setBounds(44, 1090, 836, 1);
+        jSeparator14.setBounds(44, 1190, 836, 1);
 
         jLabel106.setText("Kondisi Kulit :");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
-        jLabel106.setBounds(642, 1060, 90, 23);
+        jLabel106.setBounds(642, 1160, 90, 23);
 
         jSeparator15.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator15.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator15.setName("jSeparator15"); // NOI18N
         FormInput.add(jSeparator15);
-        jSeparator15.setBounds(0, 1380, 880, 1);
+        jSeparator15.setBounds(0, 1480, 880, 1);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("F. SPIROMETRI");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
-        jLabel107.setBounds(10, 1380, 182, 23);
+        jLabel107.setBounds(10, 1480, 182, 23);
 
         scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane13.setName("scrollPane13"); // NOI18N
@@ -2306,20 +2348,20 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane13.setViewportView(Spirometri);
 
         FormInput.add(scrollPane13);
-        scrollPane13.setBounds(44, 1400, 810, 53);
+        scrollPane13.setBounds(44, 1500, 810, 53);
 
         jSeparator16.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator16.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator16.setName("jSeparator16"); // NOI18N
         FormInput.add(jSeparator16);
-        jSeparator16.setBounds(0, 1460, 880, 1);
+        jSeparator16.setBounds(0, 1560, 880, 1);
 
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel108.setText("G. AUDIOMETRI");
         jLabel108.setName("jLabel108"); // NOI18N
         FormInput.add(jLabel108);
-        jLabel108.setBounds(10, 1460, 182, 23);
+        jLabel108.setBounds(10, 1560, 182, 23);
 
         scrollPane16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane16.setName("scrollPane16"); // NOI18N
@@ -2337,20 +2379,20 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane16.setViewportView(Audiometri);
 
         FormInput.add(scrollPane16);
-        scrollPane16.setBounds(44, 1480, 810, 53);
+        scrollPane16.setBounds(44, 1580, 810, 53);
 
         jSeparator17.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator17.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator17.setName("jSeparator17"); // NOI18N
         FormInput.add(jSeparator17);
-        jSeparator17.setBounds(0, 1540, 880, 1);
+        jSeparator17.setBounds(0, 1640, 880, 1);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel109.setText("H. TREADMILL");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(10, 1540, 182, 23);
+        jLabel109.setBounds(10, 1640, 182, 23);
 
         scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane17.setName("scrollPane17"); // NOI18N
@@ -2368,20 +2410,20 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane17.setViewportView(Treadmill);
 
         FormInput.add(scrollPane17);
-        scrollPane17.setBounds(44, 1560, 810, 53);
+        scrollPane17.setBounds(44, 1660, 810, 53);
 
         jSeparator18.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator18.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator18.setName("jSeparator18"); // NOI18N
         FormInput.add(jSeparator18);
-        jSeparator18.setBounds(0, 1620, 880, 1);
+        jSeparator18.setBounds(0, 1720, 880, 1);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel110.setText("I. LAIN-LAIN");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
-        jLabel110.setBounds(10, 1620, 182, 23);
+        jLabel110.setBounds(10, 1720, 182, 23);
 
         scrollPane18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane18.setName("scrollPane18"); // NOI18N
@@ -2399,14 +2441,14 @@ public final class RMMCU extends javax.swing.JDialog {
         scrollPane18.setViewportView(Lainlain);
 
         FormInput.add(scrollPane18);
-        scrollPane18.setBounds(44, 1640, 810, 53);
+        scrollPane18.setBounds(44, 1740, 810, 53);
 
         jLabel111.setText("Sinus :");
         jLabel111.setName("jLabel111"); // NOI18N
         FormInput.add(jLabel111);
-        jLabel111.setBounds(532, 680, 100, 23);
+        jLabel111.setBounds(532, 670, 100, 23);
 
-        NyeriMastoideus1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal" }));
+        NyeriMastoideus1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "-" }));
         NyeriMastoideus1.setName("NyeriMastoideus1"); // NOI18N
         NyeriMastoideus1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2414,7 +2456,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(NyeriMastoideus1);
-        NyeriMastoideus1.setBounds(636, 680, 114, 23);
+        NyeriMastoideus1.setBounds(636, 670, 114, 23);
 
         BtnDokter3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter3.setMnemonic('2');
@@ -2427,7 +2469,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnDokter3);
-        BtnDokter3.setBounds(14, 1160, 28, 23);
+        BtnDokter3.setBounds(14, 1260, 28, 23);
 
         BtnDokter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter2.setMnemonic('2');
@@ -2440,7 +2482,7 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnDokter2);
-        BtnDokter2.setBounds(14, 1240, 28, 23);
+        BtnDokter2.setBounds(14, 1340, 28, 23);
 
         jLabel27.setText("BMI(BB/TB²) :");
         jLabel27.setName("jLabel27"); // NOI18N
@@ -2453,16 +2495,17 @@ public final class RMMCU extends javax.swing.JDialog {
         FormInput.add(IMT);
         IMT.setBounds(804, 250, 50, 23);
 
-        jLabel40.setText("Klasifikasi BMI :");
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel40.setText("Klasifikasi BMI");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(0, 280, 127, 23);
+        jLabel40.setBounds(44, 280, 90, 23);
 
         KlasifikasiIMT.setEditable(false);
         KlasifikasiIMT.setFocusTraversalPolicyProvider(true);
         KlasifikasiIMT.setName("KlasifikasiIMT"); // NOI18N
         FormInput.add(KlasifikasiIMT);
-        KlasifikasiIMT.setBounds(131, 280, 170, 23);
+        KlasifikasiIMT.setBounds(125, 280, 170, 23);
 
         jLabel42.setText(":");
         jLabel42.setName("jLabel42"); // NOI18N
@@ -2479,15 +2522,9 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel14.setText("BMI Ideal : 18.5 – 22.99");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(335, 280, 140, 23);
+        jLabel14.setBounds(333, 280, 140, 23);
 
-        jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel113.setText("2. Rambut");
-        jLabel113.setName("jLabel113"); // NOI18N
-        FormInput.add(jLabel113);
-        jLabel113.setBounds(70, 460, 150, 23);
-
-        NyeriKtok1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada" }));
+        NyeriKtok1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada", "Ada", "-" }));
         NyeriKtok1.setName("NyeriKtok1"); // NOI18N
         NyeriKtok1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2495,18 +2532,18 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(NyeriKtok1);
-        NyeriKtok1.setBounds(483, 1060, 100, 23);
+        NyeriKtok1.setBounds(483, 1160, 100, 23);
 
         jLabel114.setText("Scoliosis :");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
-        jLabel114.setBounds(399, 1060, 80, 23);
+        jLabel114.setBounds(399, 1160, 80, 23);
 
         jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel115.setText("cm");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
-        jLabel115.setBounds(562, 280, 30, 23);
+        jLabel115.setBounds(561, 280, 30, 23);
 
         LP.setFocusTraversalPolicyProvider(true);
         LP.setName("LP"); // NOI18N
@@ -2516,12 +2553,12 @@ public final class RMMCU extends javax.swing.JDialog {
             }
         });
         FormInput.add(LP);
-        LP.setBounds(509, 280, 50, 23);
+        LP.setBounds(508, 280, 50, 23);
 
         jLabel116.setText("LP :");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
-        jLabel116.setBounds(455, 280, 50, 23);
+        jLabel116.setBounds(454, 280, 50, 23);
 
         RisikoLP.setEditable(false);
         RisikoLP.setFocusTraversalPolicyProvider(true);
@@ -2533,6 +2570,151 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel117.setName("jLabel117"); // NOI18N
         FormInput.add(jLabel117);
         jLabel117.setBounds(600, 280, 110, 23);
+
+        jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel118.setText("Merokok");
+        jLabel118.setName("jLabel118"); // NOI18N
+        FormInput.add(jLabel118);
+        jLabel118.setBounds(44, 1820, 91, 23);
+
+        KlasifikasiIMT1.setEditable(false);
+        KlasifikasiIMT1.setFocusTraversalPolicyProvider(true);
+        KlasifikasiIMT1.setName("KlasifikasiIMT1"); // NOI18N
+        FormInput.add(KlasifikasiIMT1);
+        KlasifikasiIMT1.setBounds(125, 460, 729, 23);
+
+        jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel113.setText("2. Rambut");
+        jLabel113.setName("jLabel113"); // NOI18N
+        FormInput.add(jLabel113);
+        jLabel113.setBounds(64, 460, 80, 23);
+
+        jLabel119.setText(":");
+        jLabel119.setName("jLabel119"); // NOI18N
+        FormInput.add(jLabel119);
+        jLabel119.setBounds(0, 460, 121, 23);
+
+        TestButaWarna1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya", "-" }));
+        TestButaWarna1.setName("TestButaWarna1"); // NOI18N
+        TestButaWarna1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TestButaWarna1KeyPressed(evt);
+            }
+        });
+        FormInput.add(TestButaWarna1);
+        TestButaWarna1.setBounds(774, 540, 80, 23);
+
+        jLabel120.setText("Menggunakan Kacamata :");
+        jLabel120.setName("jLabel120"); // NOI18N
+        FormInput.add(jLabel120);
+        jLabel120.setBounds(640, 540, 130, 23);
+
+        KlasifikasiIMT2.setEditable(false);
+        KlasifikasiIMT2.setFocusTraversalPolicyProvider(true);
+        KlasifikasiIMT2.setName("KlasifikasiIMT2"); // NOI18N
+        FormInput.add(KlasifikasiIMT2);
+        KlasifikasiIMT2.setBounds(121, 570, 305, 23);
+
+        jLabel122.setText(":");
+        jLabel122.setName("jLabel122"); // NOI18N
+        FormInput.add(jLabel122);
+        jLabel122.setBounds(0, 250, 97, 23);
+
+        jLabel123.setText(":");
+        jLabel123.setName("jLabel123"); // NOI18N
+        FormInput.add(jLabel123);
+        jLabel123.setBounds(0, 280, 121, 23);
+
+        jLabel124.setText(":");
+        jLabel124.setName("jLabel124"); // NOI18N
+        FormInput.add(jLabel124);
+        jLabel124.setBounds(0, 330, 140, 23);
+
+        jLabel125.setText(":");
+        jLabel125.setName("jLabel125"); // NOI18N
+        FormInput.add(jLabel125);
+        jLabel125.setBounds(0, 360, 99, 23);
+
+        jLabel126.setText(":");
+        jLabel126.setName("jLabel126"); // NOI18N
+        FormInput.add(jLabel126);
+        jLabel126.setBounds(0, 430, 132, 23);
+
+        jLabel127.setText(":");
+        jLabel127.setName("jLabel127"); // NOI18N
+        FormInput.add(jLabel127);
+        jLabel127.setBounds(0, 510, 134, 23);
+
+        jLabel121.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel121.setText("Visus");
+        jLabel121.setName("jLabel121"); // NOI18N
+        FormInput.add(jLabel121);
+        jLabel121.setBounds(84, 570, 158, 23);
+
+        jLabel128.setText(":");
+        jLabel128.setName("jLabel128"); // NOI18N
+        FormInput.add(jLabel128);
+        jLabel128.setBounds(0, 540, 148, 23);
+
+        jLabel129.setText(":");
+        jLabel129.setName("jLabel129"); // NOI18N
+        FormInput.add(jLabel129);
+        jLabel129.setBounds(0, 570, 117, 23);
+
+        jLabel130.setText(":");
+        jLabel130.setName("jLabel130"); // NOI18N
+        FormInput.add(jLabel130);
+        jLabel130.setBounds(0, 620, 126, 23);
+
+        jLabel131.setText(":");
+        jLabel131.setName("jLabel131"); // NOI18N
+        FormInput.add(jLabel131);
+        jLabel131.setBounds(0, 670, 152, 23);
+
+        jLabel132.setText(":");
+        jLabel132.setName("jLabel132"); // NOI18N
+        FormInput.add(jLabel132);
+        jLabel132.setBounds(0, 720, 114, 23);
+
+        jLabel133.setText("Gusi :");
+        jLabel133.setName("jLabel133"); // NOI18N
+        FormInput.add(jLabel133);
+        jLabel133.setBounds(233, 720, 70, 23);
+
+        NyeriMastoideus2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "-" }));
+        NyeriMastoideus2.setName("NyeriMastoideus2"); // NOI18N
+        NyeriMastoideus2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriMastoideus2KeyPressed(evt);
+            }
+        });
+        FormInput.add(NyeriMastoideus2);
+        NyeriMastoideus2.setBounds(307, 720, 114, 23);
+
+        NyeriMastoideus3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Tidak Normal", "-" }));
+        NyeriMastoideus3.setName("NyeriMastoideus3"); // NOI18N
+        NyeriMastoideus3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriMastoideus3KeyPressed(evt);
+            }
+        });
+        FormInput.add(NyeriMastoideus3);
+        NyeriMastoideus3.setBounds(520, 720, 114, 23);
+
+        jLabel134.setText("Gigi :");
+        jLabel134.setName("jLabel134"); // NOI18N
+        FormInput.add(jLabel134);
+        jLabel134.setBounds(446, 720, 70, 23);
+
+        jLabel135.setText(":");
+        jLabel135.setName("jLabel135"); // NOI18N
+        FormInput.add(jLabel135);
+        jLabel135.setBounds(0, 750, 117, 23);
+
+        jLabel136.setText(":");
+        jLabel136.setName("jLabel136"); // NOI18N
+        FormInput.add(jLabel136);
+        jLabel136.setBounds(0, 800, 161, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2576,7 +2758,7 @@ public final class RMMCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2590,7 +2772,7 @@ public final class RMMCU extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -3572,6 +3754,18 @@ public final class RMMCU extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_LPKeyPressed
 
+    private void TestButaWarna1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TestButaWarna1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TestButaWarna1KeyPressed
+
+    private void NyeriMastoideus2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriMastoideus2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NyeriMastoideus2KeyPressed
+
+    private void NyeriMastoideus3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriMastoideus3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NyeriMastoideus3KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -3638,6 +3832,8 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.TextBox KetExtremitasAtas;
     private widget.TextBox KetExtremitasBawah;
     private widget.TextBox KlasifikasiIMT;
+    private widget.TextBox KlasifikasiIMT1;
+    private widget.TextBox KlasifikasiIMT2;
     private widget.ComboBox Konjungtiva;
     private widget.ComboBox Kulit;
     private widget.Label LCount;
@@ -3658,6 +3854,8 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.ComboBox NyeriKtok1;
     private widget.ComboBox NyeriMastoideus;
     private widget.ComboBox NyeriMastoideus1;
+    private widget.ComboBox NyeriMastoideus2;
+    private widget.ComboBox NyeriMastoideus3;
     private widget.ComboBox NyeriTekanSinusFrontalis;
     private widget.ComboBox NyeriTekananSinusMaxilaris;
     private widget.ComboBox Oedema;
@@ -3691,6 +3889,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private javax.swing.JTabbedPane TabRawat;
     private widget.TextBox TanggalRegistrasi;
     private widget.ComboBox TestButaWarna;
+    private widget.ComboBox TestButaWarna1;
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
     private widget.ComboBox Tonsil;
@@ -3719,8 +3918,27 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.Label jLabel115;
     private widget.Label jLabel116;
     private widget.Label jLabel117;
+    private widget.Label jLabel118;
+    private widget.Label jLabel119;
     private widget.Label jLabel12;
+    private widget.Label jLabel120;
+    private widget.Label jLabel121;
+    private widget.Label jLabel122;
+    private widget.Label jLabel123;
+    private widget.Label jLabel124;
+    private widget.Label jLabel125;
+    private widget.Label jLabel126;
+    private widget.Label jLabel127;
+    private widget.Label jLabel128;
+    private widget.Label jLabel129;
     private widget.Label jLabel13;
+    private widget.Label jLabel130;
+    private widget.Label jLabel131;
+    private widget.Label jLabel132;
+    private widget.Label jLabel133;
+    private widget.Label jLabel134;
+    private widget.Label jLabel135;
+    private widget.Label jLabel136;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;

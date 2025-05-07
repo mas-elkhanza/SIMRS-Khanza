@@ -50,7 +50,6 @@ import java.util.Base64;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
@@ -234,6 +233,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         BtnSimpanTandaTangan = new widget.Button();
         jLabel39 = new widget.Label();
         Phrase = new widget.PasswordBox();
+        ChkTampilPhrase = new widget.CekBox();
         Tanggal = new widget.Tanggal();
         WindowURLSertisign = new javax.swing.JDialog();
         internalFrame9 = new widget.InternalFrame();
@@ -582,19 +582,36 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         jLabel39.setText("Masukkan Passphrase :");
         jLabel39.setName("jLabel39"); // NOI18N
         panelisi5.add(jLabel39);
-        jLabel39.setBounds(0, 10, 130, 23);
+        jLabel39.setBounds(0, 10, 125, 23);
 
-        Phrase.setText("passwordBox1");
+        Phrase.setForeground(new java.awt.Color(0, 0, 0));
         Phrase.setName("Phrase"); // NOI18N
+        Phrase.setOpaque(true);
         panelisi5.add(Phrase);
-        Phrase.setBounds(134, 10, 160, 23);
+        Phrase.setBounds(129, 10, 146, 23);
+
+        ChkTampilPhrase.setBorder(null);
+        ChkTampilPhrase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/matatutup.png"))); // NOI18N
+        ChkTampilPhrase.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ChkTampilPhrase.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ChkTampilPhrase.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ChkTampilPhrase.setIconTextGap(1);
+        ChkTampilPhrase.setName("ChkTampilPhrase"); // NOI18N
+        ChkTampilPhrase.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/matabuka.png"))); // NOI18N
+        ChkTampilPhrase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkTampilPhraseActionPerformed(evt);
+            }
+        });
+        panelisi5.add(ChkTampilPhrase);
+        ChkTampilPhrase.setBounds(275, 10, 23, 23);
 
         internalFrame8.add(panelisi5, java.awt.BorderLayout.CENTER);
 
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-05-2025 13:19:53" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2025 11:00:50" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -3674,6 +3691,14 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }//GEN-LAST:event_BtnDownloadBukaFileActionPerformed
 
+    private void ChkTampilPhraseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkTampilPhraseActionPerformed
+        if(ChkTampilPhrase.isSelected()==true){
+            Phrase.setEchoChar((char) 0);
+        }else{
+            Phrase.setEchoChar('\u2022');
+        }
+    }//GEN-LAST:event_ChkTampilPhraseActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3707,6 +3732,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.TextBox CacatFisik;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
+    private widget.CekBox ChkTampilPhrase;
     private widget.panelisi FormInput;
     private widget.PanelBiasa FormMenu;
     private widget.TextBox GD;
@@ -6192,14 +6218,18 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         }else if((esign==true)&&(sertisign==false)){
                             if(rs.getString("status_lanjut").equals("Ralan")){
                                 if(akses.getkode().equals(rs.getString("kd_dokter"))){
-                                    htmlContent.append(
-                                        "<tr class='isi'>").append( 
-                                           "<td valign='top' width='2%'></td>").append(        
-                                           "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>").append(
-                                           "<td valign='middle' width='1%' align='center'>:</td>").append(
-                                           "<td valign='middle' width='79%' align='center'>Dokter Poli<br><br><br><br><br><br>#<br><br><br><br><br><br>").append(rs.getString("nm_dokter")).append("</td>").append(
-                                        "</tr>"
-                                    );
+                                    htmlContent.append("<tr class='isi'>").
+                                                        append("<td valign='top' width='2%'></td>").
+                                                        append("<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>").
+                                                        append("<td valign='middle' width='1%' align='center'>:</td>").
+                                                        append("<td valign='middle' width='79%' align='center'>Dokter Poli<br><br><br><br><br><br>#<br><br><br><br><br><br>").append(rs.getString("nm_dokter")).append("</td>").
+                                                append("</tr>").
+                                                append("<tr class='isi'>").
+                                                        append("<td valign='top' width='2%'></td>").
+                                                        append("<td valign='middle' width='18%'><img alt='Gambar BSRE' src='").append((getClass().getResource("/picture/bsre.jpg"))).append("' width='75' height='25'/></td>").
+                                                        append("<td valign='middle' width='1%' align='center'></td>").
+                                                        append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSRe</td>").
+                                                append("</tr>");
                                 }else{
                                     esign=false;
                                     JOptionPane.showMessageDialog(null,"Harus dilakukan oleh Dokter Poli yang menangani pasien...!!!!");
@@ -6209,15 +6239,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     rs3=koneksi.prepareStatement(
                                         "select dpjp_ranap.kd_dokter,dokter.nm_dokter from dpjp_ranap inner join dokter on dpjp_ranap.kd_dokter=dokter.kd_dokter where dpjp_ranap.no_rawat='"+rs.getString("no_rawat")+"'").executeQuery();
                                     if(rs3.next()){
-                                        htmlContent.append(
-                                            "<tr class='isi'>").append( 
-                                              "<td valign='top' width='2%'></td>").append(        
-                                              "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>").append(
-                                              "<td valign='middle' width='1%' align='center'>:</td>").append(
-                                              "<td valign='top' width='79%' align='center'>").append(
-                                                  "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
-                                                     "<tr class='isi'>"
-                                        );
+                                        htmlContent.append("<tr class='isi'>").
+                                                        append("<td valign='top' width='2%'></td>").
+                                                        append("<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>").
+                                                        append("<td valign='middle' width='1%' align='center'>:</td>").
+                                                        append("<td valign='top' width='79%' align='center'>").
+                                                            append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").
+                                                            append("<tr class='isi'>");
                                         urutdpjp=1;
                                         esign=false;
                                         do{
@@ -6232,21 +6260,29 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     
                                             urutdpjp++;
                                         }while(rs3.next());
-                                        htmlContent.append(
-                                                      "</tr>").append(
-                                                  "</table>").append(
-                                              "</td>").append(
-                                            "</tr>"
-                                        );    
+                                        htmlContent.append("</tr>").
+                                                            append("</table>").
+                                                        append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr class='isi'>").
+                                                            append("<td valign='top' width='2%'></td>").
+                                                            append("<td valign='middle' width='18%'><img alt='Gambar BSRE' src='").append((getClass().getResource("/picture/bsre.jpg"))).append("' width='75' height='25'/></td>").
+                                                            append("<td valign='middle' width='1%' align='center'></td>").
+                                                            append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSRe</td>").
+                                                    append("</tr>");    
                                     }else{
-                                        htmlContent.append(
-                                            "<tr class='isi'>").append( 
-                                               "<td valign='top' width='2%'></td>").append(        
-                                               "<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>").append(
-                                               "<td valign='middle' width='1%' align='center'>:</td>").append(
-                                               "<td valign='middle' width='79%' align='center'>Dokter Poli<br><br><br><br><br><br>#<br><br><br><br><br><br>").append(rs.getString("nm_dokter")).append("</td>").append(
-                                            "</tr>"
-                                        );
+                                        htmlContent.append("<tr class='isi'>").
+                                                        append("<td valign='top' width='2%'></td>").
+                                                        append("<td valign='middle' width='18%'>Tanda Tangan/Verifikasi</td>").
+                                                        append("<td valign='middle' width='1%' align='center'>:</td>").
+                                                        append("<td valign='middle' width='79%' align='center'>Dokter Poli<br><br><br><br><br><br>#<br><br><br><br><br><br>").append(rs.getString("nm_dokter")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr class='isi'>").
+                                                            append("<td valign='top' width='2%'></td>").
+                                                            append("<td valign='middle' width='18%'><img alt='Gambar BSRE' src='").append((getClass().getResource("/picture/bsre.jpg"))).append("' width='75' height='25'/></td>").
+                                                            append("<td valign='middle' width='1%' align='center'></td>").
+                                                            append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSRe</td>").
+                                                    append("</tr>");
                                     }
                                 } catch (Exception e) {
                                     System.out.println("Tanda Tangan IGD : "+e);
