@@ -890,7 +890,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="0" y="0" width="557" height="1" uuid="59895277-71ab-4435-8209-9c5db15a94c3"/>
