@@ -1349,7 +1349,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel52.setBounds(575, 430, 170, 23);
 
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel41.setText("2. Mata");
+        jLabel41.setText("3. Mata");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
         jLabel41.setBounds(64, 490, 150, 23);
@@ -1743,7 +1743,7 @@ public final class RMMCU extends javax.swing.JDialog {
         NyeriMastoideus.setBounds(740, 620, 114, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel46.setText("3. Telinga");
+        jLabel46.setText("4. Telinga");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
         jLabel46.setBounds(64, 600, 150, 23);
@@ -1780,7 +1780,7 @@ public final class RMMCU extends javax.swing.JDialog {
         LubangHidung.setBounds(424, 670, 100, 23);
 
         jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel68.setText("4. Hidung");
+        jLabel68.setText("5. Hidung");
         jLabel68.setName("jLabel68"); // NOI18N
         FormInput.add(jLabel68);
         jLabel68.setBounds(64, 650, 150, 23);
@@ -1864,7 +1864,7 @@ public final class RMMCU extends javax.swing.JDialog {
         Tonsil.setBounds(520, 750, 80, 23);
 
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel74.setText("5. Mulut");
+        jLabel74.setText("6. Mulut");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
         jLabel74.setBounds(64, 700, 150, 23);
@@ -1906,7 +1906,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel77.setBounds(64, 410, 150, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("6. Leher");
+        jLabel78.setText("7. Leher");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
         jLabel78.setBounds(64, 780, 150, 23);

@@ -124,6 +124,9 @@ public final class DlgKehadiran extends javax.swing.JDialog {
         Valid.loadCombo(Departemen,"nama","departemen");
         Departemen.addItem("Semua");
         Departemen.setSelectedItem("Semua");
+        Valid.loadCombo(StatusKerja,"ktg","stts_kerja");
+        StatusKerja.addItem("Semua");
+        StatusKerja.setSelectedItem("Semua");
     }
 
     
@@ -148,10 +151,12 @@ public final class DlgKehadiran extends javax.swing.JDialog {
         BlnCari = new widget.ComboBox();
         label12 = new widget.Label();
         Departemen = new widget.ComboBox();
+        label13 = new widget.Label();
+        StatusKerja = new widget.ComboBox();
+        panelGlass5 = new widget.panelisi();
         jLabel6 = new widget.Label();
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
-        panelGlass5 = new widget.panelisi();
         jLabel7 = new widget.Label();
         LCount = new widget.Label();
         BtnPrint = new widget.Button();
@@ -164,7 +169,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Kehadiran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Rekap Kehadiran ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -202,27 +207,42 @@ public final class DlgKehadiran extends javax.swing.JDialog {
 
         label12.setText("Departemen :");
         label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(77, 23));
+        label12.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass7.add(label12);
 
         Departemen.setName("Departemen"); // NOI18N
-        Departemen.setPreferredSize(new java.awt.Dimension(130, 23));
+        Departemen.setPreferredSize(new java.awt.Dimension(155, 23));
         panelGlass7.add(Departemen);
+
+        label13.setText("Status Kerja :");
+        label13.setName("label13"); // NOI18N
+        label13.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass7.add(label13);
+
+        StatusKerja.setName("StatusKerja"); // NOI18N
+        StatusKerja.setPreferredSize(new java.awt.Dimension(155, 23));
+        panelGlass7.add(StatusKerja);
+
+        jPanel1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
+
+        panelGlass5.setName("panelGlass5"); // NOI18N
+        panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
+        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
         jLabel6.setPreferredSize(new java.awt.Dimension(66, 23));
         jLabel6.setRequestFocusEnabled(false);
-        panelGlass7.add(jLabel6);
+        panelGlass5.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(195, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
             }
         });
-        panelGlass7.add(TCari);
+        panelGlass5.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('1');
@@ -239,13 +259,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass7.add(BtnCari);
-
-        jPanel1.add(panelGlass7, java.awt.BorderLayout.PAGE_START);
-
-        panelGlass5.setName("panelGlass5"); // NOI18N
-        panelGlass5.setPreferredSize(new java.awt.Dimension(55, 55));
-        panelGlass5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelGlass5.add(BtnCari);
 
         jLabel7.setText("Record :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -255,7 +269,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(68, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(55, 23));
         panelGlass5.add(LCount);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -355,6 +369,8 @@ public final class DlgKehadiran extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
+        Departemen.setSelectedItem("Semua");
+        StatusKerja.setSelectedItem("Semua");
         tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -443,6 +459,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
     private widget.ComboBox Departemen;
     private widget.Label LCount;
     private widget.ScrollPane Scroll;
+    private widget.ComboBox StatusKerja;
     private widget.TextBox TCari;
     private widget.ComboBox ThnCari;
     private widget.InternalFrame internalFrame1;
@@ -451,6 +468,7 @@ public final class DlgKehadiran extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private widget.Label label11;
     private widget.Label label12;
+    private widget.Label label13;
     private widget.panelisi panelGlass5;
     private widget.panelisi panelGlass7;
     private widget.Table tbBangsal;
@@ -460,13 +478,16 @@ public final class DlgKehadiran extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                   "select pegawai.nik,pegawai.nama,departemen.nama,pegawai.id,pegawai.wajibmasuk from pegawai inner join departemen on pegawai.departemen=departemen.dep_id where  "+
-                   " pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nik like ? or  pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and pegawai.nama like ?  order by pegawai.nik ");    
+                   "select pegawai.nik,pegawai.nama,departemen.nama,pegawai.id,pegawai.wajibmasuk from pegawai inner join departemen on pegawai.departemen=departemen.dep_id "+
+                   "inner join stts_kerja on stts_kerja.stts=pegawai.stts_kerja where pegawai.stts_aktif<>'KELUAR' and departemen.nama like ? and stts_kerja.ktg like ? "+
+                   (TCari.getText().trim().equals("")?"":" and (pegawai.nik like ? or pegawai.nama like ?) ")+"order by pegawai.nik ");    
             try {
                 ps.setString(1,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+Departemen.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+StatusKerja.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 liburhariraya=Sequel.cariInteger("select count(set_hari_libur.tanggal) from set_hari_libur where left(set_hari_libur.tanggal,7)=?",ThnCari.getSelectedItem().toString()+"-"+BlnCari.getSelectedItem().toString());
                 liburakhad=Valid.hariAkhad(Integer.parseInt(BlnCari.getSelectedItem().toString()),Integer.parseInt(ThnCari.getSelectedItem().toString()));

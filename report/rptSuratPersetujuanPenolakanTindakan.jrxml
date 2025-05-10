@@ -1546,14 +1546,14 @@
 				</textElement>
 				<text><![CDATA[Saya Yang bertanda tangan di bawah ini :]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="10" y="575" width="520" height="10" uuid="da3de938-d98a-435d-9625-a9427d0bd502"/>
+			<textField>
+				<reportElement x="10" y="575" width="520" height="10" uuid="3a969d8e-c25f-45ab-b939-bad23e539d48"/>
 				<textElement>
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Dengan ini menyatakan menolak untuk dilakukannya Penolakan Operasi / Tindakan Medis / Tindakan Diagnostik Terhadap :]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["Dengan ini menyatakan \""+$F{pernyataan}+"\" untuk dilakukannya Operasi / Tindakan Medis / Tindakan Diagnostik Terhadap :"]]></textFieldExpression>
+			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement x="325" y="599" width="205" height="20" uuid="f9908ae3-5ce3-4d0c-8932-747c66428efd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
