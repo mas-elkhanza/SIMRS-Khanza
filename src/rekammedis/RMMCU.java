@@ -798,6 +798,7 @@ public final class RMMCU extends javax.swing.JDialog {
         jLabel159 = new widget.Label();
         scrollPane24 = new widget.ScrollPane();
         AbiKakiKiri = new widget.TextArea();
+        BtnDokter4 = new widget.Button();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -3207,6 +3208,19 @@ public final class RMMCU extends javax.swing.JDialog {
         FormInput.add(scrollPane24);
         scrollPane24.setBounds(460, 2070, 395, 43);
 
+        BtnDokter4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnDokter4.setMnemonic('2');
+        BtnDokter4.setToolTipText("Alt+2");
+        BtnDokter4.setName("BtnDokter4"); // NOI18N
+        BtnDokter4.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokter4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokter4ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDokter4);
+        BtnDokter4.setBounds(14, 2270, 28, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -4586,6 +4600,39 @@ public final class RMMCU extends javax.swing.JDialog {
         Valid.pindah(evt,Kulit,ExtremitasAtas);
     }//GEN-LAST:event_PenyakitKulitKeyPressed
 
+    private void BtnDokter4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter4ActionPerformed
+        if(TNoRw.getText().equals("")&&TNoRM.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Pasien masih kosong...!!!");
+        }else{
+            RMCariKesimpulanAnjuranMCU form=new RMCariKesimpulanAnjuranMCU(null,false);
+            form.addWindowListener(new WindowListener() {
+                @Override
+                public void windowOpened(WindowEvent e) {}
+                @Override
+                public void windowClosing(WindowEvent e) {}
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(form.getTable().getSelectedRow()!= -1){
+                        Kesimpulan.append(form.getTable().getValueAt(form.getTable().getSelectedRow(),0).toString()+", ");
+                        Anjuran.append(form.getTable().getValueAt(form.getTable().getSelectedRow(),1).toString()+", ");
+                        Kesimpulan.requestFocus();
+                    }
+                }
+                @Override
+                public void windowIconified(WindowEvent e) {}
+                @Override
+                public void windowDeiconified(WindowEvent e) {}
+                @Override
+                public void windowActivated(WindowEvent e) {}
+                @Override
+                public void windowDeactivated(WindowEvent e) {}
+            });
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+        }
+    }//GEN-LAST:event_BtnDokter4ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -4624,6 +4671,7 @@ public final class RMMCU extends javax.swing.JDialog {
     private widget.Button BtnDokter;
     private widget.Button BtnDokter2;
     private widget.Button BtnDokter3;
+    private widget.Button BtnDokter4;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
