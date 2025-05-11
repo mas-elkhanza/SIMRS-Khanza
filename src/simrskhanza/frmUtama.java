@@ -929,6 +929,7 @@ import rekammedis.RMLaporanTindakan;
 import rekammedis.RMLayananKedokteranFisikRehabilitasi;
 import rekammedis.RMLayananProgramKFR;
 import rekammedis.RMMCU;
+import rekammedis.RMMasterKesimpulanAnjuranMCU;
 import rekammedis.RMMonitoringAldrettePascaAnestesi;
 import rekammedis.RMMonitoringBromagePascaAnestesi;
 import rekammedis.RMMonitoringStewardPascaAnestesi;
@@ -22592,6 +22593,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterKesimpulanAnjuranMCUActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMMasterKesimpulanAnjuranMCU form=new RMMasterKesimpulanAnjuranMCU(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.isCek();
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23296,7 +23309,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningKesehatanGigiMulutBalita,btnSkriningAnemia,btnPermintaanLayananProgramKFR,btnLayananProgramKFR,btnSkriningHipertensi,btnSkriningKesehatanPenglihatan,
             btnCatatanObservasiHemodialisa,btnSkriningKesehatanGigiMulutDewasa,btnSkriningRisikoKankerServiks,btnCatatanCairanHemodialisa,btnSkriningKesehatanGigiMulutLansia,
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
-            btnRiwayatSuratPeringatan;
+            btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU;
     
     public void isWall(){
         try{            
@@ -27597,6 +27610,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }
             
+            if(akses.getmaster_kesimpulan_anjuran_mcu()==true){
+                Panelmenu.add(btnMasterKesimpulanAnjuranMCU);
+                jmlmenu++;
+            }
+                    
             if(akses.getpenilaian_mcu()==true){
                 Panelmenu.add(btnPenilaianMCU);
                 jmlmenu++;
@@ -33153,6 +33171,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gethasil_tindakan_eswl()==true){
             Panelmenu.add(btnDokumentasiTindakanESWL);
+            jmlmenu++;
+        }
+        
+        if(akses.getmaster_kesimpulan_anjuran_mcu()==true){
+            Panelmenu.add(btnMasterKesimpulanAnjuranMCU);
             jmlmenu++;
         }
         
@@ -40370,6 +40393,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getmaster_kesimpulan_anjuran_mcu()==true){
+            if(btnMasterKesimpulanAnjuranMCU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterKesimpulanAnjuranMCU);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.getpenilaian_mcu()==true){
             if(btnPenilaianMCU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianMCU);
@@ -44890,6 +44920,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianMCU.setName("btnPenilaianMCU"); 
         btnPenilaianMCU.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianMCU.addActionListener(this::btnPenilaianMCUActionPerformed);
+        
+        btnMasterKesimpulanAnjuranMCU = new widget.ButtonBig();
+        btnMasterKesimpulanAnjuranMCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5854057_education_memo_notes_pad_reminder_icon.png"))); 
+        btnMasterKesimpulanAnjuranMCU.setText("Master Kesimpulan & Anjuran MCU");
+        btnMasterKesimpulanAnjuranMCU.setIconTextGap(0);
+        btnMasterKesimpulanAnjuranMCU.setName("btnMasterKesimpulanAnjuranMCU"); 
+        btnMasterKesimpulanAnjuranMCU.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterKesimpulanAnjuranMCU.addActionListener(this::btnMasterKesimpulanAnjuranMCUActionPerformed);
         
         btnCaraBayar = new widget.ButtonBig();
         btnCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4171274_day_heart_love_time_valentine_icon.png"))); 
