@@ -50,7 +50,7 @@
                   </td>
                   <td width="10%">Keyword</td><td width="">:</td>
                   <td width="63%">
-                      <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
+                      <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="50" pattern="[a-zA-Z 0-9-]{1,50}" title=" a-z A-Z 0-9 (Maksimal 50 karakter)" autocomplete="off" autofocus/>
                       <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                   </td>
               </tr>
@@ -62,14 +62,14 @@
                 kelompok_jabatan.indek as indekkelompok,resiko_kerja.indek as indekresiko,emergency_index.indek as indekemergency,
                 jnj_jabatan.indek as indekjabatan,CONCAT(FLOOR(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'),
                 DATE_FORMAT(mulai_kerja, '%Y%m'))/12), ' Tahun ',MOD(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'), DATE_FORMAT(mulai_kerja, '%Y%m')),12), ' Bulan ') as lama,
-                pendidikan.indek as index_pendidikan,(To_days('$tahun-$bulan-$hari')-to_days(mulai_kerja))/365 as masker,stts_kerja.indek as index_status,
+                pendidikan.indek as index_pendidikan,(To_days('$tahun-$bulan-$hari')-to_days(mulai_kerja))/365 as masker,stts_kerja.indek as index_status,stts_kerja.hakcuti,
                 pegawai.indek as index_struktural,pegawai.pengurang,pegawai.mulai_kontrak,CONCAT(FLOOR(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'),DATE_FORMAT(mulai_kontrak, '%Y%m'))/12), ' Tahun ',MOD(PERIOD_DIFF(DATE_FORMAT('$tahun-$bulan-$hari', '%Y%m'), DATE_FORMAT(mulai_kontrak, '%Y%m')),12), ' Bulan ') as lamakontrak,
                 (To_days('$tahun-$bulan-$hari')-to_days(mulai_kontrak))/365 as maskon, pegawai.cuti_diambil,pegawai.dankes
-                from pegawai inner join pendidikan inner join stts_kerja inner join kelompok_jabatan inner join resiko_kerja inner join emergency_index
-                inner join jnj_jabatan on pegawai.pendidikan=pendidikan.tingkat and pegawai.stts_kerja=stts_kerja.stts and pegawai.jnj_jabatan=jnj_jabatan.kode
-                and pegawai.kode_kelompok=kelompok_jabatan.kode_kelompok and pegawai.kode_resiko=resiko_kerja.kode_resiko and pegawai.kode_emergency=emergency_index.kode_emergency
-                where stts_aktif='$status' and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.jbtn like '%".$keyword."%' or
-                pegawai.pendidikan like '%".$keyword."%' or pegawai.mulai_kerja like '%".$keyword."%') order by pegawai.id ASC ";
+                from pegawai inner join pendidikan on pegawai.pendidikan=pendidikan.tingkat inner join stts_kerja on pegawai.stts_kerja=stts_kerja.stts
+                inner join kelompok_jabatan on pegawai.kode_kelompok=kelompok_jabatan.kode_kelompok inner join resiko_kerja on pegawai.kode_resiko=resiko_kerja.kode_resiko
+                inner join emergency_index on pegawai.kode_emergency=emergency_index.kode_emergency inner join jnj_jabatan on pegawai.jnj_jabatan=jnj_jabatan.kode
+                where stts_aktif='$status' ".(!empty($keyword)?"and (pegawai.nik like '%".$keyword."%' or pegawai.nama like '%".$keyword."%' or pegawai.jbtn like '%".$keyword."%' or
+                pegawai.pendidikan like '%".$keyword."%' or pegawai.mulai_kerja like '%".$keyword."%')":"")." order by pegawai.id ASC ";
         $hasil=bukaquery($_sql);
         $jumlah=mysqli_num_rows($hasil);
 
@@ -105,14 +105,13 @@
                          <td width='100px'><div align='center'>Sisa DanKes</div></td>
                     </tr>";
                     while($baris = mysqli_fetch_array($hasil)) {
-                        $_sql4     = "SELECT `gapok1`, `kenaikan`, `maksimal` from pendidikan  where tingkat='".$baris["pendidikan"]."' ";
+                        $_sql4     = "SELECT pendidikan.gapok1,pendidikan.kenaikan,pendidikan.maksimal from pendidikan  where pendidikan.tingkat='".$baris["pendidikan"]."' ";
                         $hasil4    = bukaquery($_sql4);
                         $baris4    = mysqli_fetch_array($hasil4);
                         $gapok     = 0;
                         @$gapok1   = $baris4["gapok1"];
                         @$kenaikan = $baris4["kenaikan"];
                         @$maksimal = $baris4["maksimal"];
-                        $hakcuti   = 0;
 
                         $_sql6     = "SELECT sum(jml) from ketidakhadiran  where id='$baris[0]' and tgl like '%".$tahun."%' and jns='C' group by id";
                         $hasil6    = bukaquery($_sql6);
@@ -145,10 +144,8 @@
 
                         if($baris["maskon"]<$maksimal){
                             $gapok=$gapok1+($kenaikan*round($baris["maskon"]));
-                            $hakcuti=12;
                         }elseif($baris["maskon"]>=$maksimal){
                             $gapok=$gapok1+($kenaikan*$maksimal);
-                            $hakcuti=14;
                         }
 
                         $indexevaluasi= getOne("select evaluasi_kinerja.indek from evaluasi_kinerja inner join evaluasi_kinerja_pegawai
@@ -205,9 +202,9 @@
                                 <td align='center'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["mulai_kontrak"]."</a></td>
                                 <td align='center'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["lamakontrak"]."</a></td>
                                 <td><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".formatDuit($gapok)."</a></td>
-                                <td align='center'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>$hakcuti</a></td>
+                                <td align='center'><a href=?act=InputPegawai&action=UBAH&id=$baris[0]>".$baris["hakcuti"]."</a></td>
                                 <td align='center'><a href=?act=EditIndexPegawai&action=UBAH&id=$baris[0]>$ttlc</a></td>
-                                <td align='center'><a href=?act=EditIndexPegawai&action=UBAH&id=$baris[0]>".($hakcuti-$ttlc)."</a></td>
+                                <td align='center'><a href=?act=EditIndexPegawai&action=UBAH&id=$baris[0]>".($baris["hakcuti"]-$ttlc)."</a></td>
                                 <td><a href=?act=EditIndexPegawai&action=UBAH&id=$baris[0]>".formatDuit($baris["dankes"])."</a></td>
                                 <td><a href=?act=SisaDankes&id=$baris[0]&action=TAMBAH>".formatDuit($baris["dankes"]-getOne("select sum(dankes) from ambil_dankes where id='$baris[0]' and tanggal like '%$tahun%'"))."</a></td>
                               </tr>";

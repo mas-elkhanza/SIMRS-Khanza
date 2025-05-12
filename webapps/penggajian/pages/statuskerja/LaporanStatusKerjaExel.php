@@ -14,7 +14,7 @@
    <?php
         $keyword = $_GET['keyword'];
         $keyword = validTeks($keyword);
-        $_sql    = "SELECT stts_kerja.stts,stts_kerja.ktg,stts_kerja.indek FROM stts_kerja where stts_kerja.stts like '%".$keyword."%' or stts_kerja.ktg like '%".$keyword."%' ORDER BY stts_kerja.indek desc";
+        $_sql    = "SELECT stts_kerja.stts,stts_kerja.ktg,stts_kerja.indek,stts_kerja.hakcuti FROM stts_kerja ".(!empty($keyword)?"where stts_kerja.stts like '%".$keyword."%' or stts_kerja.ktg like '%".$keyword."%'":"")." ORDER BY stts_kerja.indek desc";
         $hasil   = bukaquery($_sql);
         $no      = 1;
         if(mysqli_num_rows($hasil)!=0) {
@@ -24,14 +24,16 @@
                         <td width='10%'><div align='center'>No.</strong></div></td>
                         <td width='28%'><div align='center'>Status</div></td>
                         <td width='40%'><div align='center'>Keterangan</div></td>
-                        <td width='20%'><div align='center'>Index Status</div></td>
+                        <td width='10%'><div align='center'>Index Status</div></td>
+                        <td width='10%'><div align='center'>Hak Cuti</div></td>
                     </tr>";
             while($baris = mysqli_fetch_array($hasil)) {
                 echo "<tr class='isi'>
                         <td>$no</td>  
                         <td>$baris[0]</td>
                         <td>$baris[1]</td>
-                        <td>$baris[2]</td>   
+                        <td align='center'>$baris[2]</td>
+                        <td align='center'>$baris[3]</td>  
                      </tr>";
                 $no++;
             }
@@ -43,7 +45,8 @@
                         <td width='10%'><div align='center'>No.</strong></div></td>
                         <td width='28%'><div align='center'>Status</div></td>
                         <td width='40%'><div align='center'>Keterangan</div></td>
-                        <td width='20%'><div align='center'>Index Status</div></td>
+                        <td width='10%'><div align='center'>Index Status</div></td>
+                        <td width='10%'><div align='center'>Hak Cuti</div></td>
                     </tr>
                   </table>";
         } 

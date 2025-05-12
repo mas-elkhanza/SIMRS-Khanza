@@ -51,7 +51,8 @@
                                   'ListRiwayatPenghargaan','InputRiwayatPenelitian','ListRiwayatPenelitian','ListKelompokJabatan',
                                   'InputKelompokJabatan','InputResikoKerja','ListResikoKerja','InputEmergencyIndex','ListEmergencyIndex',
                                   'InputPencapaianKinerja','ListPencapaianKinerja','InputEvaluasiKinerja','ListEvaluasiKinerja',
-                                  'DetailEvaluasiKinerja','DetailPencapaianKinerja','ListCariRiwayatKinerja'
+                                  'DetailEvaluasiKinerja','DetailPencapaianKinerja','ListCariRiwayatKinerja','InputRiwayatSuratPeringatan',
+                                  'ListRiwayatSuratPeringatan'
                              );
 
                             foreach ($form as $page) {
@@ -170,6 +171,8 @@
                 case 'ListRiwayatGaji'                  : include_once('pages/riwayatgaji/list.php'); break;
                 case 'InputRiwayatPenghargaan'          : include_once('pages/riwayatpenghargaan/detail.php'); break;
                 case 'ListRiwayatPenghargaan'           : include_once('pages/riwayatpenghargaan/list.php'); break;
+                case 'InputRiwayatSuratPeringatan'      : include_once('pages/riwayatsuratperingatan/detail.php'); break;
+                case 'ListRiwayatSuratPeringatan'       : include_once('pages/riwayatsuratperingatan/list.php'); break;
                 case 'InputRiwayatPenelitian'           : include_once('pages/riwayatpenelitian/detail.php'); break;
                 case 'ListRiwayatPenelitian'            : include_once('pages/riwayatpenelitian/list.php'); break;
                 case 'ListPerpustakaanPenelitian'       : include_once('pages/riwayatpenelitian/perpustakaanpenelitian.php'); break;

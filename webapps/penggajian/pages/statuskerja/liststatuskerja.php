@@ -16,7 +16,7 @@
                 <tr class="head">
                     <td width="25%" >Keyword</td><td width="">:</td>
                     <td width="82%">
-                        <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="250" autofocus/>
+                        <input name="keyword" class="text" onkeydown="setDefault(this, document.getElementById('MsgIsi1'));" type=text id="TxtIsi1" value="<?php echo $keyword;?>" size="65" maxlength="50" pattern="[a-zA-Z 0-9-]{1,50}" title=" a-z A-Z 0-9 (Maksimal 50 karakter)" autocomplete="off"  autofocus/>
                         <input name=BtnCari type=submit class="button" value="&nbsp;&nbsp;Cari&nbsp;&nbsp;">
                     </td>
                 </tr>
@@ -24,7 +24,7 @@
         </form>
         <div style="width: 100%; height: 78%; overflow: auto;">
         <?php
-            $_sql   = "SELECT stts_kerja.stts,stts_kerja.ktg,stts_kerja.indek FROM stts_kerja where stts_kerja.stts like '%".$keyword."%' or stts_kerja.ktg like '%".$keyword."%' ORDER BY stts_kerja.indek desc";
+            $_sql   = "SELECT stts_kerja.stts,stts_kerja.ktg,stts_kerja.indek,stts_kerja.hakcuti FROM stts_kerja ".(!empty($keyword)?"where stts_kerja.stts like '%".$keyword."%' or stts_kerja.ktg like '%".$keyword."%'":"")." ORDER BY stts_kerja.indek desc";
             $hasil  = bukaquery($_sql);
             $jumlah = mysqli_num_rows($hasil);
             if(mysqli_num_rows($hasil)!=0) {
@@ -33,7 +33,8 @@
                             <td width='12%'><div align='center'>Proses</div></td>
                             <td width='28%'><div align='center'>Status</div></td>
                             <td width='40%'><div align='center'>Keterangan</div></td>
-                            <td width='20%'><div align='center'>Index Status</div></td>
+                            <td width='10%'><div align='center'>Index Status</div></td>
+                            <td width='10%'><div align='center'>Hak Cuti</div></td>
                         </tr>";
                         while($baris = mysqli_fetch_array($hasil)) {
                             echo "<tr class='isi'>
@@ -45,7 +46,8 @@
                                     </td>
                                     <td>$baris[0]</td>
                                     <td>$baris[1]</td>
-                                    <td>$baris[2]</td>                                
+                                    <td align='center'>$baris[2]</td>
+                                    <td align='center'>$baris[3]</td>                                   
                                   </tr>";
                         }
                 echo "</table>";
@@ -55,7 +57,8 @@
                             <td width='12%'><div align='center'>Proses</div></td>
                             <td width='28%'><div align='center'>Status</div></td>
                             <td width='40%'><div align='center'>Keterangan</div></td>
-                            <td width='20%'><div align='center'>Index Status</div></td>
+                            <td width='10%'><div align='center'>Index Status</div></td>
+                            <td width='10%'><div align='center'>Hak Cuti</div></td>
                         </tr>
                       </table>";
             }
