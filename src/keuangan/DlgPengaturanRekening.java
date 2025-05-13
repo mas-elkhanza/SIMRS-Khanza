@@ -2702,12 +2702,12 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Kontra_Hibah_Dapur),
                 Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Kontra_Hibah_Dapur)
             });
-            tabMode.addRow(new Object[]{" [Debit] Piutang Jasa Perusahaan pada menu Piutang Jasa Perusahaan",Piutang_Jasa_Perusahaan,
+            tabMode.addRow(new Object[]{" [Debit] Piutang Jasa Pelayanan Perusahaan pada menu Piutang Jasa Perusahaan",Piutang_Jasa_Perusahaan,
                 Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Piutang_Jasa_Perusahaan),
                 Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Piutang_Jasa_Perusahaan),
                 Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Piutang_Jasa_Perusahaan)
             });
-            tabMode.addRow(new Object[]{" [Kredit] Pendapatan Dari Piutang Jasa Perusahaan pada menu Piutang Jasa Perusahaan",Pendapatan_Piutang_Jasa_Perusahaan,
+            tabMode.addRow(new Object[]{" [Kredit] Pendapatan Dari Piutang Jasa Pelayanan Perusahaan pada menu Piutang Jasa Perusahaan",Pendapatan_Piutang_Jasa_Perusahaan,
                 Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Pendapatan_Piutang_Jasa_Perusahaan),
                 Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Pendapatan_Piutang_Jasa_Perusahaan),
                 Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Pendapatan_Piutang_Jasa_Perusahaan)
