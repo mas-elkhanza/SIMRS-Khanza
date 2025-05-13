@@ -97,7 +97,7 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Kontra_Hibah_Aset,Hibah_Non_Medis,Kontra_Hibah_Non_Medis,Bayar_JM_Dokter,PPN_Masukan,Pengadaan_Dapur,
             Stok_Keluar_Dapur,Kontra_Stok_Keluar_Dapur,PPN_Keluaran,Diskon_Piutang,Piutang_Tidak_Terbayar,Lebih_Bayar_Piutang,
             Penerimaan_Dapur,Kontra_Penerimaan_Dapur,Bayar_Pemesanan_Dapur,Retur_Beli_Dapur,Kontra_Retur_Beli_Dapur,
-            Hibah_Dapur,Kontra_Hibah_Dapur;
+            Hibah_Dapur,Kontra_Hibah_Dapur,Piutang_Jasa_Perusahaan,Pendapatan_Piutang_Jasa_Perusahaan;
     private String copyakun="";
     private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
 
@@ -817,6 +817,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Kontra_Retur_Beli_Dapur=tbPengaturan.getValueAt(198,1).toString();
             Hibah_Dapur=tbPengaturan.getValueAt(199,1).toString();
             Kontra_Hibah_Dapur=tbPengaturan.getValueAt(200,1).toString();
+            Piutang_Jasa_Perusahaan=tbPengaturan.getValueAt(201,1).toString();
+            Pendapatan_Piutang_Jasa_Perusahaan=tbPengaturan.getValueAt(202,1).toString();
             
             if(Pengadaan_Obat.equals("")||Pemesanan_Obat.equals("")||Kontra_Pemesanan_Obat.equals("")||Bayar_Pemesanan_Obat.equals("")||Penjualan_Obat.equals("")||
                     Piutang_Obat.equals("")||Kontra_Piutang_Obat.equals("")||Retur_Ke_Suplayer.equals("")||Kontra_Retur_Ke_Suplayer.equals("")||
@@ -873,7 +875,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Hibah_Non_Medis.equals("")||Kontra_Hibah_Non_Medis.equals("")||Bayar_JM_Dokter.equals("")||PPN_Masukan.equals("")||Stok_Keluar_Dapur.equals("")||
                     Kontra_Stok_Keluar_Dapur.equals("")||Pengadaan_Dapur.equals("")||PPN_Keluaran.equals("")||Diskon_Piutang.equals("")||Piutang_Tidak_Terbayar.equals("")||
                     Lebih_Bayar_Piutang.equals("")||Penerimaan_Dapur.equals("")||Kontra_Penerimaan_Dapur.equals("")||Bayar_Pemesanan_Dapur.equals("")||Retur_Beli_Dapur.equals("")||
-                    Kontra_Retur_Beli_Dapur.equals("")||Hibah_Dapur.equals("")||Kontra_Hibah_Dapur.equals("")){
+                    Kontra_Retur_Beli_Dapur.equals("")||Hibah_Dapur.equals("")||Kontra_Hibah_Dapur.equals("")||Piutang_Jasa_Perusahaan.equals("")||
+                    Pendapatan_Piutang_Jasa_Perusahaan.equals("")){
                     JOptionPane.showMessageDialog(null,"Silahkan lengkapi seluruh data Akun...!!!!");
                     tbPengaturan.requestFocus();
             }else{
@@ -931,8 +934,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     PPN_Keluaran,Diskon_Piutang,Piutang_Tidak_Terbayar,Lebih_Bayar_Piutang
                 });
                 Sequel.queryu("delete from set_akun2");
-                Sequel.menyimpan("set_akun2","?,?,?,?,?,?,?",7,new String[]{
-                    Penerimaan_Dapur,Kontra_Penerimaan_Dapur,Bayar_Pemesanan_Dapur,Retur_Beli_Dapur,Kontra_Retur_Beli_Dapur,Hibah_Dapur,Kontra_Hibah_Dapur
+                Sequel.menyimpan("set_akun2","?,?,?,?,?,?,?,?,?",9,new String[]{
+                    Penerimaan_Dapur,Kontra_Penerimaan_Dapur,Bayar_Pemesanan_Dapur,Retur_Beli_Dapur,Kontra_Retur_Beli_Dapur,Hibah_Dapur,Kontra_Hibah_Dapur,Piutang_Jasa_Perusahaan,Pendapatan_Piutang_Jasa_Perusahaan
                 });
                 JOptionPane.showMessageDialog(null,"Proses selesai...!!!!");
                 tampil();
@@ -1408,6 +1411,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
             Kontra_Retur_Beli_Dapur="";
             Hibah_Dapur="";
             Kontra_Hibah_Dapur="";
+            Piutang_Jasa_Perusahaan="";
+            Pendapatan_Piutang_Jasa_Perusahaan="";
             
             ps=koneksi.prepareStatement("select * from set_akun_ralan");
             try {
@@ -1678,6 +1683,8 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                     Kontra_Retur_Beli_Dapur=rs.getString("Kontra_Retur_Beli_Dapur");
                     Hibah_Dapur=rs.getString("Hibah_Dapur");
                     Kontra_Hibah_Dapur=rs.getString("Kontra_Hibah_Dapur");
+                    Piutang_Jasa_Perusahaan=rs.getString("Piutang_Jasa_Perusahaan");
+                    Pendapatan_Piutang_Jasa_Perusahaan=rs.getString("Pendapatan_Piutang_Jasa_Perusahaan");
                 }               
             } catch (Exception e) {
                 System.out.println("Notif Set Akun :"+e);
@@ -2694,6 +2701,16 @@ public class DlgPengaturanRekening extends javax.swing.JDialog {
                 Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Kontra_Hibah_Dapur),
                 Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Kontra_Hibah_Dapur),
                 Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Kontra_Hibah_Dapur)
+            });
+            tabMode.addRow(new Object[]{" [Debit] Piutang Jasa Perusahaan pada menu Piutang Jasa Perusahaan",Piutang_Jasa_Perusahaan,
+                Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Piutang_Jasa_Perusahaan),
+                Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Piutang_Jasa_Perusahaan),
+                Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Piutang_Jasa_Perusahaan)
+            });
+            tabMode.addRow(new Object[]{" [Kredit] Pendapatan Dari Piutang Jasa Perusahaan pada menu Piutang Jasa Perusahaan",Pendapatan_Piutang_Jasa_Perusahaan,
+                Sequel.cariIsi("select rekening.nm_rek from rekening where rekening.kd_rek=?",Pendapatan_Piutang_Jasa_Perusahaan),
+                Sequel.cariIsi("select rekening.tipe from rekening where rekening.kd_rek=?",Pendapatan_Piutang_Jasa_Perusahaan),
+                Sequel.cariIsi("select rekening.balance from rekening where rekening.kd_rek=?",Pendapatan_Piutang_Jasa_Perusahaan)
             });
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
