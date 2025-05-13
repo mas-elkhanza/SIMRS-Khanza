@@ -3129,12 +3129,12 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[K]Peminjam Piutang",peminjam_piutang});
         }
 
-        if("[K]Piutang Lain-lain".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[K]Piutang Lain-lain",piutang_lainlain});
+        if("[K]Piutang Peminjaman Uang".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[K]Piutang Peminjaman Uang",piutang_lainlain});
         }
 
-        if("[K]Bayar Piutang Lain-lain".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[K]Bayar Piutang Lain-lain",bayar_piutang_lain});
+        if("[K]Bayar Piutang Peminjaman Uang".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[K]Bayar Piutang Peminjaman Uang",bayar_piutang_lain});
         }
 
         if("[K]Asuransi/Askes/Jenis Bayar".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7632,11 +7632,11 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","peminjam_piutang='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[K]Piutang Lain-lain".equals(tbUser.getValueAt(i,1).toString())){
+            if("[K]Piutang Peminjaman Uang".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","piutang_lainlain='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[K]Bayar Piutang Lain-lain".equals(tbUser.getValueAt(i,1).toString())){
+            if("[K]Bayar Piutang Peminjaman Uang".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","bayar_piutang_lain='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             

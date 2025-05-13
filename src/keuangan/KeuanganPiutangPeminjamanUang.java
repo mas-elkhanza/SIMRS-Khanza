@@ -48,7 +48,7 @@ import toko.TokoBayarPiutang;
  *
  * @author dosen
  */
-public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
+public final class KeuanganPiutangPeminjamanUang extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();    
@@ -71,7 +71,7 @@ public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
     /** Creates new form DlgPenyakit
      * @param parent
      * @param modal */
-    public KeuanganPiutangLainLain(java.awt.Frame parent, boolean modal) {
+    public KeuanganPiutangPeminjamanUang(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(10,2);
@@ -333,7 +333,7 @@ public final class KeuanganPiutangLainLain extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Piutang Perusahaan/Lain-lain ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Piutang Peminjaman Uang Perusahaan/Lain-lain ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1074,7 +1074,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            KeuanganBayarPiutangLain bayarpiutang=new KeuanganBayarPiutangLain(null,false);
+            KeuanganBayarPiutangPeminjamanUang bayarpiutang=new KeuanganBayarPiutangPeminjamanUang(null,false);
             bayarpiutang.emptTeks();
             bayarpiutang.setData(tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),4).toString(),tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString());
             bayarpiutang.isCek();
@@ -1096,7 +1096,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            KeuanganPiutangLainLain dialog = new KeuanganPiutangLainLain(new javax.swing.JFrame(), true);
+            KeuanganPiutangPeminjamanUang dialog = new KeuanganPiutangPeminjamanUang(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
