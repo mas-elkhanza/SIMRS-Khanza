@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f312247f-4437-44e1-ba8c-a4acd9bee841">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -144,7 +144,7 @@
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[OngKir]]></text>
+				<text><![CDATA[PPN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="120" y="0" width="143" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="fd6144a3-a0a1-4fc2-8ad1-f3487cba0a6e">
@@ -180,7 +180,7 @@
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Piutang]]></text>
+				<text><![CDATA[Uang Muka]]></text>
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="880" y="0" width="80" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="d75a5544-d041-4dbd-ab97-2df9471de98b"/>
@@ -198,7 +198,7 @@
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[]]></text>
+				<text><![CDATA[Piutang]]></text>
 			</staticText>
 			<staticText>
 				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="263" y="0" width="241" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="df22af72-2345-4091-9717-fc07dfeeb25a"/>
@@ -232,7 +232,7 @@
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Uang Muka]]></text>
+				<text><![CDATA[OngKir]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="17" width="960" height="1" uuid="25280d27-2937-4852-8ed2-1af0ef2cb6f6"/>

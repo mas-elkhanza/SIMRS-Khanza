@@ -36,7 +36,7 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public final class DlgCariPPNObat extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5;
+    private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -238,6 +238,44 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         }
         tbRawatInap.setDefaultRenderer(Object.class, new WarnaTable());
         
+        tabMode6=new DefaultTableModel(null,new String[]{
+                "Tgl.Jual","No.Nota","Pasien","Petugas","Total","PPN","Total+PPN"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             Class[] types = new Class[] {
+                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbPiutangObat.setModel(tabMode6);
+        //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
+        tbPiutangObat.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbPiutangObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 7; i++) {
+            TableColumn column = tbPiutangObat.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(70);
+            }else if(i==1){
+                column.setPreferredWidth(100);
+            }else if(i==2){
+                column.setPreferredWidth(260);
+            }else if(i==3){
+                column.setPreferredWidth(260);
+            }else if(i==4){
+                column.setPreferredWidth(80);
+            }else if(i==5){
+                column.setPreferredWidth(70);
+            }else if(i==6){
+                column.setPreferredWidth(90);
+            }
+        }
+        tbPiutangObat.setDefaultRenderer(Object.class, new WarnaTable());
+        
         TKd.setDocument(new batasInput((byte)20).getKata(TKd));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -339,6 +377,8 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         tbObatJualBebas = new widget.Table();
         Scroll5 = new widget.ScrollPane();
         tbRawatInap = new widget.Table();
+        Scroll6 = new widget.ScrollPane();
+        tbPiutangObat = new widget.Table();
         panelGlass5 = new widget.panelisi();
         label11 = new widget.Label();
         Tgl1 = new widget.Tanggal();
@@ -379,16 +419,6 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
 
         tbPengadaan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPengadaan.setName("tbPengadaan"); // NOI18N
-        tbPengadaan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbPengadaanMouseClicked(evt);
-            }
-        });
-        tbPengadaan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbPengadaanKeyPressed(evt);
-            }
-        });
         Scroll.setViewportView(tbPengadaan);
 
         TabRawat.addTab("PPN Pengadaan Obat", Scroll);
@@ -399,16 +429,6 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
 
         tbPembelian.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbPembelian.setName("tbPembelian"); // NOI18N
-        tbPembelian.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbPembelianMouseClicked(evt);
-            }
-        });
-        tbPembelian.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbPembelianKeyPressed(evt);
-            }
-        });
         Scroll2.setViewportView(tbPembelian);
 
         TabRawat.addTab("PPN Penerimaan Obat", Scroll2);
@@ -419,16 +439,6 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
 
         tbRawatJalan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRawatJalan.setName("tbRawatJalan"); // NOI18N
-        tbRawatJalan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbRawatJalanMouseClicked(evt);
-            }
-        });
-        tbRawatJalan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbRawatJalanKeyPressed(evt);
-            }
-        });
         Scroll3.setViewportView(tbRawatJalan);
 
         TabRawat.addTab("PPN Obat Rawat Jalan", Scroll3);
@@ -439,16 +449,6 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
 
         tbObatJualBebas.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbObatJualBebas.setName("tbObatJualBebas"); // NOI18N
-        tbObatJualBebas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbObatJualBebasMouseClicked(evt);
-            }
-        });
-        tbObatJualBebas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbObatJualBebasKeyPressed(evt);
-            }
-        });
         Scroll4.setViewportView(tbObatJualBebas);
 
         TabRawat.addTab("PPN Obat Jual Bebas", Scroll4);
@@ -459,19 +459,19 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
 
         tbRawatInap.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRawatInap.setName("tbRawatInap"); // NOI18N
-        tbRawatInap.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbRawatInapMouseClicked(evt);
-            }
-        });
-        tbRawatInap.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbRawatInapKeyPressed(evt);
-            }
-        });
         Scroll5.setViewportView(tbRawatInap);
 
         TabRawat.addTab("PPN Obat Rawat Inap", Scroll5);
+
+        Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll6.setName("Scroll6"); // NOI18N
+        Scroll6.setOpaque(true);
+
+        tbPiutangObat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbPiutangObat.setName("tbPiutangObat"); // NOI18N
+        Scroll6.setViewportView(tbPiutangObat);
+
+        TabRawat.addTab("PPN Piutang Obat", Scroll6);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -699,6 +699,22 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
                 
                 Valid.MyReportqry("rptPPNRanap.jasper","report","::[ Laporan PPN Obat Ranap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }                
+        }else if(TabRawat.getSelectedIndex()==5){
+            if(tabMode6.getRowCount()==0){
+                JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+                //TCari.requestFocus();
+            }else if(tabMode6.getRowCount()!=0){
+                Valid.MyReportqry("rptPPNPiutangObat.jasper","report","::[ PPN Piutang Obat & BHP ]::",
+                    "select piutang.tgl_piutang,piutang.nota_piutang,piutang.no_rkm_medis,pasien.nm_pasien, "+
+                    "piutang.nip,petugas.nama,round(piutang.ppn) as ppn,sum(detailpiutang.total) as total "+
+                    "from piutang inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on piutang.nip=petugas.nip inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                    "where piutang.tgl_piutang between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' "+
+                    (TCari.getText().trim().equals("")?"":" and (piutang.nota_piutang like '%"+TCari.getText()+"%' or "+
+                    "piutang.no_rkm_medis like '%"+TCari.getText()+"%' or piutang.nm_pasien like '%"+TCari.getText()+"%' or "+
+                    "piutang.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%') ")+
+                    "group by piutang.nota_piutang order by piutang.tgl_piutang,piutang.nota_piutang ",param);
+            }                
         }
         
         this.setCursor(Cursor.getDefaultCursor());
@@ -722,26 +738,6 @@ public final class DlgCariPPNObat extends javax.swing.JDialog {
         }else{Valid.pindah(evt,BtnKeluar,TKd);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void tbPengadaanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPengadaanMouseClicked
-        if(tabMode.getRowCount()!=0){
-            try {
-                getData();
-            } catch (java.lang.NullPointerException e) {
-            }
-        }
-}//GEN-LAST:event_tbPengadaanMouseClicked
-
-    private void tbPengadaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengadaanKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                    getData();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }
-        }
-}//GEN-LAST:event_tbPengadaanKeyPressed
-
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
         if(TabRawat.getSelectedIndex()==0){
             tampil();
@@ -753,13 +749,15 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             tampil4();
         }else if(TabRawat.getSelectedIndex()==4){
             tampil5();
+        }else if(TabRawat.getSelectedIndex()==5){
+            tampil6();
         }
 }//GEN-LAST:event_BtnCariActionPerformed
 
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR)); 
-            tampil();
+            BtnCariActionPerformed(null);
             this.setCursor(Cursor.getDefaultCursor());
         }else{
             Valid.pindah(evt, TKd, BtnPrint);
@@ -788,6 +786,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 tampil4();
            }else if(TabRawat.getSelectedIndex()==4){
                 tampil5();
+           }else if(TabRawat.getSelectedIndex()==5){
+                tampil6();
            }
     }//GEN-LAST:event_BtnAllActionPerformed
 
@@ -810,40 +810,10 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             tampil4();
         }else if(TabRawat.getSelectedIndex()==4){
             tampil5();
+        }else if(TabRawat.getSelectedIndex()==5){
+            tampil6();
         }
     }//GEN-LAST:event_TabRawatMouseClicked
-
-    private void tbPembelianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPembelianMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbPembelianMouseClicked
-
-    private void tbPembelianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPembelianKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbPembelianKeyPressed
-
-    private void tbRawatJalanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRawatJalanMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbRawatJalanMouseClicked
-
-    private void tbRawatJalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRawatJalanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbRawatJalanKeyPressed
-
-    private void tbObatJualBebasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatJualBebasMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbObatJualBebasMouseClicked
-
-    private void tbObatJualBebasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatJualBebasKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbObatJualBebasKeyPressed
-
-    private void tbRawatInapMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRawatInapMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbRawatInapMouseClicked
-
-    private void tbRawatInapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRawatInapKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tbRawatInapKeyPressed
 
     /**
     * @param args the command line arguments
@@ -871,6 +841,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.ScrollPane Scroll3;
     private widget.ScrollPane Scroll4;
     private widget.ScrollPane Scroll5;
+    private widget.ScrollPane Scroll6;
     private widget.TextBox TCari;
     private widget.TextBox TKd;
     private javax.swing.JTabbedPane TabRawat;
@@ -885,6 +856,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbObatJualBebas;
     private widget.Table tbPembelian;
     private widget.Table tbPengadaan;
+    private widget.Table tbPiutangObat;
     private widget.Table tbRawatInap;
     private widget.Table tbRawatJalan;
     // End of variables declaration//GEN-END:variables
@@ -1060,7 +1032,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     "inner join petugas on penjualan.nip=petugas.nip inner join detailjual on penjualan.nota_jual=detailjual.nota_jual "+
                     "where penjualan.status='Sudah Dibayar' and penjualan.tgl_jual between ? and ? "+
                     (TCari.getText().trim().equals("")?"":" and (penjualan.nota_jual like ? or "+
-                    "penjualan.no_rkm_medis like ? or and penjualan.nm_pasien like ? or "+
+                    "penjualan.no_rkm_medis like ? or penjualan.nm_pasien like ? or "+
                     "penjualan.nip like ? or petugas.nama like ?) ")+" group by penjualan.nota_jual "+
                     " order by penjualan.tgl_jual,penjualan.nota_jual ");
             try {
@@ -1159,10 +1131,57 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
-    private void getData() {
-        int row=tbPengadaan.getSelectedRow();
-        if(row!= -1){
-            TKd.setText(tabMode.getValueAt(row,0).toString());
+    public void tampil6(){        
+        try {
+            Valid.tabelKosong(tabMode6);
+            ps=koneksi.prepareStatement(
+                    "select piutang.tgl_piutang,piutang.nota_piutang,piutang.no_rkm_medis,pasien.nm_pasien, "+
+                    "piutang.nip,petugas.nama,round(piutang.ppn) as ppn,sum(detailpiutang.total) as total "+
+                    "from piutang inner join pasien on piutang.no_rkm_medis=pasien.no_rkm_medis "+
+                    "inner join petugas on piutang.nip=petugas.nip inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang "+
+                    "where piutang.tgl_piutang between ? and ? "+(TCari.getText().trim().equals("")?"":" and (piutang.nota_piutang like ? or "+
+                    "piutang.no_rkm_medis like ? or piutang.nm_pasien like ? or piutang.nip like ? or petugas.nama like ?) ")+
+                    "group by piutang.nota_piutang order by piutang.tgl_piutang,piutang.nota_piutang ");
+            try {
+                ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
+                }   
+                rs=ps.executeQuery();
+                total=0;
+                totalppn=0;
+                totalsemua=0;
+                while(rs.next()){
+                    total=total+rs.getDouble("total");
+                    totalppn=totalppn+rs.getDouble("ppn");
+                    totalsemua=totalsemua+rs.getDouble("total")+rs.getDouble("ppn");
+                    tabMode6.addRow(new Object[]{
+                        rs.getString("tgl_piutang"),rs.getString("nota_piutang"),rs.getString("no_rkm_medis")+" "+rs.getString("nm_pasien"),
+                        rs.getString("nip")+" "+rs.getString("nama"),rs.getDouble("total"),rs.getDouble("ppn"),(rs.getDouble("total")+rs.getDouble("ppn"))
+                    });
+                }
+                if(total>0){
+                    tabMode6.addRow(new Object[]{
+                        "","","Total :","",total,totalppn,totalsemua
+                    });
+                }
+            } catch (Exception e) {
+                System.out.println("Notifikasi : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }  
+        } catch (Exception e) {
+            System.out.println("Notif : "+e);
         }
     }
 
