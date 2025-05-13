@@ -629,7 +629,7 @@ public class RMMasterKesimpulanAnjuranMCU extends javax.swing.JDialog {
         LCount.setText(""+tabMode.getRowCount());
     }
 
-    private void emptTeks() {
+    public void emptTeks() {
         Kesimpulan.setText("");
         Anjuran.setText("");
         TCari.setText("");

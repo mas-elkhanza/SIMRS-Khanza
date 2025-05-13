@@ -1446,7 +1446,6 @@ private void BtnPenjabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         TJmlDr.setText("0");
         TJmlPr.setText("0");
         TJmlDrPr.setText("0");
-        //Valid.autoNomer(" jns_perawatan ","JP",6,TKd);
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(kd_jenis_prw,5),signed)),0) from jns_perawatan  ","RJ",5,TKd);
         TKd.requestFocus();
     }
