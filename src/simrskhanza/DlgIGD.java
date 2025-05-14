@@ -684,7 +684,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         }
         
         try {
-            Sequel.cariIsi("select set_validasi_catatan.tampilkan_catatan from set_validasi_catatan");
+            validasicatatan=Sequel.cariIsi("select set_validasi_catatan.tampilkan_catatan from set_validasi_catatan");
             if(validasicatatan==null){
                 validasicatatan="No";
             }
