@@ -59,18 +59,24 @@
             }
             
             $querydatamcu = bukaquery(
-                "select penilaian_mcu.tanggal,penilaian_mcu.informasi,penilaian_mcu.rps,penilaian_mcu.rpk,penilaian_mcu.rpd,penilaian_mcu.alergi,penilaian_mcu.keadaan,penilaian_mcu.kesadaran,penilaian_mcu.td,".
-                "penilaian_mcu.nadi,penilaian_mcu.rr,penilaian_mcu.tb,penilaian_mcu.bb,penilaian_mcu.suhu,penilaian_mcu.submandibula,penilaian_mcu.axilla,penilaian_mcu.supraklavikula,".
-                "penilaian_mcu.leher,penilaian_mcu.inguinal,penilaian_mcu.oedema,penilaian_mcu.sinus_frontalis,penilaian_mcu.sinus_maxilaris,penilaian_mcu.palpebra,penilaian_mcu.sklera,".
-                "penilaian_mcu.cornea,penilaian_mcu.buta_warna,penilaian_mcu.konjungtiva,penilaian_mcu.lensa,penilaian_mcu.pupil,penilaian_mcu.lubang_telinga,penilaian_mcu.daun_telinga,".
-                "penilaian_mcu.selaput_pendengaran,penilaian_mcu.proc_mastoideus,penilaian_mcu.septum_nasi,penilaian_mcu.lubang_hidung,penilaian_mcu.bibir,penilaian_mcu.caries,".
-                "penilaian_mcu.lidah,penilaian_mcu.faring,penilaian_mcu.tonsil,penilaian_mcu.kelenjar_limfe,penilaian_mcu.kelenjar_gondok,penilaian_mcu.gerakan_dada,".
-                "penilaian_mcu.vocal_femitus,penilaian_mcu.perkusi_dada,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,penilaian_mcu.ictus_cordis,penilaian_mcu.bunyi_jantung,".
-                "penilaian_mcu.batas,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.hepar,penilaian_mcu.perkusi_abdomen,penilaian_mcu.auskultasi,penilaian_mcu.limpa,".
-                "penilaian_mcu.costovertebral,penilaian_mcu.kondisi_kulit,penilaian_mcu.ekstrimitas_atas,penilaian_mcu.ekstrimitas_atas_ket,penilaian_mcu.ekstrimitas_bawah,".
-                "penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.laborat,penilaian_mcu.radiologi,penilaian_mcu.ekg,penilaian_mcu.spirometri,penilaian_mcu.audiometri,".
-                "penilaian_mcu.treadmill,penilaian_mcu.lainlain,penilaian_mcu.merokok,penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,dokter.nm_dokter ".
-                "from penilaian_mcu inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter where penilaian_mcu.no_rawat='".$rsquerynorawat["no_rawat"]."'"
+                "select penilaian_mcu.tanggal,penilaian_mcu.informasi,penilaian_mcu.rps,penilaian_mcu.rpk,penilaian_mcu.rpd,penilaian_mcu.alergi,penilaian_mcu.keadaan,".
+                "penilaian_mcu.kesadaran,penilaian_mcu.td,penilaian_mcu.nadi,penilaian_mcu.rr,penilaian_mcu.tb,penilaian_mcu.bb,penilaian_mcu.suhu,penilaian_mcu.bmi,".
+                "penilaian_mcu.kasifikasi_bmi,penilaian_mcu.lingkar_pinggang,penilaian_mcu.risiko_lingkar_pinggang,penilaian_mcu.submandibula,penilaian_mcu.axilla,".
+                "penilaian_mcu.supraklavikula,penilaian_mcu.leher,penilaian_mcu.inguinal,penilaian_mcu.oedema,penilaian_mcu.sinus_frontalis,penilaian_mcu.sinus_maxilaris,".
+                "penilaian_mcu.rambut,penilaian_mcu.palpebra,penilaian_mcu.sklera,penilaian_mcu.cornea,penilaian_mcu.buta_warna,penilaian_mcu.konjungtiva,penilaian_mcu.lensa,".
+                "penilaian_mcu.pupil,penilaian_mcu.menggunakan_kacamata,penilaian_mcu.visus,penilaian_mcu.luas_lapang_pandang,penilaian_mcu.keterangan_luas_lapang_pandang,".
+                "penilaian_mcu.lubang_telinga,penilaian_mcu.daun_telinga,penilaian_mcu.selaput_pendengaran,penilaian_mcu.proc_mastoideus,penilaian_mcu.septum_nasi,".
+                "penilaian_mcu.lubang_hidung,penilaian_mcu.sinus,penilaian_mcu.bibir,penilaian_mcu.gusi,penilaian_mcu.gigi,penilaian_mcu.caries,penilaian_mcu.lidah,".
+                "penilaian_mcu.faring,penilaian_mcu.tonsil,penilaian_mcu.kelenjar_limfe,penilaian_mcu.kelenjar_gondok,penilaian_mcu.gerakan_dada,penilaian_mcu.vocal_femitus,".
+                "penilaian_mcu.perkusi_dada,penilaian_mcu.bunyi_napas,penilaian_mcu.bunyi_tambahan,penilaian_mcu.ictus_cordis,penilaian_mcu.bunyi_jantung,penilaian_mcu.batas,".
+                "penilaian_mcu.mamae,penilaian_mcu.keterangan_mamae,penilaian_mcu.inspeksi,penilaian_mcu.palpasi,penilaian_mcu.hepar,penilaian_mcu.perkusi_abdomen,".
+                "penilaian_mcu.auskultasi,penilaian_mcu.limpa,penilaian_mcu.costovertebral,penilaian_mcu.scoliosis,penilaian_mcu.kondisi_kulit,penilaian_mcu.penyakit_kulit,".
+                "penilaian_mcu.ekstrimitas_atas,penilaian_mcu.ekstrimitas_atas_ket,penilaian_mcu.ekstrimitas_bawah,penilaian_mcu.ekstrimitas_bawah_ket,penilaian_mcu.area_genitalia,".
+                "penilaian_mcu.keterangan_area_genitalia,penilaian_mcu.anus_perianal,penilaian_mcu.keterangan_anus_perianal,penilaian_mcu.laborat,penilaian_mcu.radiologi,".
+                "penilaian_mcu.ekg,penilaian_mcu.spirometri,penilaian_mcu.audiometri,penilaian_mcu.treadmill,penilaian_mcu.romberg_test,penilaian_mcu.back_strength,".
+                "penilaian_mcu.abi_tangan_kanan,penilaian_mcu.abi_tangan_kiri,penilaian_mcu.abi_kaki_kanan,penilaian_mcu.abi_kaki_kiri,penilaian_mcu.lainlain,penilaian_mcu.merokok,".
+                "penilaian_mcu.alkohol,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran,dokter.nm_dokter from penilaian_mcu inner join dokter on penilaian_mcu.kd_dokter=dokter.kd_dokter ".
+                "where penilaian_mcu.no_rawat='".$rsquerynorawat["no_rawat"]."'"
             );
             if($rsquerydatamcu = mysqli_fetch_array($querydatamcu)){
                 echo "          <table width='100%' class='table table-hover js-basic-example dataTable' align='right' cellpadding='3px' cellspacing='0'>
@@ -89,7 +95,7 @@
                                      </tr>
                                      <tr>
                                         <td valign='top'>
-                                           A. ANAMNESA SINGKAT  
+                                           ANAMNESA SINGKAT  
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='50%'>Riwayat Penyakit Sekarang : ".$rsquerydatamcu["rps"]."</td>
@@ -104,7 +110,7 @@
                                      </tr>
                                      <tr>
                                         <td valign='top'>
-                                           B. PEMERIKSAAN FISIK 
+                                           PEMERIKSAAN FISIK 
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='25%'>Keadaan : ".$rsquerydatamcu["keadaan"]."</td>
@@ -113,10 +119,19 @@
                                                   <td width='25%'>Nadi : ".$rsquerydatamcu["nadi"]." x/menit</td>
                                               </tr>
                                               <tr>
-                                                  <td width='25%'>RR : ".$rsquerydatamcu["rr"]." x/menit</td>
+                                                  <td width='25%'>Nafas : ".$rsquerydatamcu["rr"]." x/menit</td>
                                                   <td width='25%'>TB : ".$rsquerydatamcu["tb"]." Cm</td>
                                                   <td width='25%'>BB : ".$rsquerydatamcu["bb"]." Kg</td>
                                                   <td width='25%'>Suhu : ".$rsquerydatamcu["suhu"]." °C</td>
+                                              </tr>
+                                              <tr>
+                                                  <td width='25%'>BMI(BB/TB²) : ".$rsquerydatamcu["bmi"]."</td>
+                                                  <td width='50%' colspan='2'>Klasifikasi BMI : ".$rsquerydatamcu["kasifikasi_bmi"]."</td>
+                                                  <td width='25%'>BMI Ideal : 18.5 – 22.99</td>
+                                              </tr>
+                                              <tr>
+                                                  <td width='25%'>LP : ".$rsquerydatamcu["lingkar_pinggang"]." Cm</td>
+                                                  <td width='75%' colspan='3'>Risiko Berdasar LP : ".$rsquerydatamcu["risiko_lingkar_pinggang"]."</td>
                                               </tr>
                                               <tr>
                                                   <td width='100%' colspan='4'>
@@ -153,7 +168,12 @@
                                                         </tr>
                                                         <tr>
                                                             <td width='100%'>
-                                                                2. Mata
+                                                                2. Rambut : ".$rsquerydatamcu["rambut"]."
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width='100%'>
+                                                                3. Mata
                                                                 <table width='100%' align='right'>
                                                                    <tr>
                                                                        <td width='25%'>Palpebra : ".$rsquerydatamcu["palpebra"]."</td>
@@ -165,14 +185,18 @@
                                                                        <td width='25%'>Konjungtiva : ".$rsquerydatamcu["konjungtiva"]."</td>
                                                                        <td width='25%'>Lensa : ".$rsquerydatamcu["lensa"]."</td>
                                                                        <td width='25%'>Pupil : ".$rsquerydatamcu["pupil"]."</td>
-                                                                       <td width='25%'></td>
+                                                                       <td width='25%'>Menggunakan Kacamata : ".$rsquerydatamcu["menggunakan_kacamata"]."</td>
+                                                                   </tr>
+                                                                   <tr>
+                                                                       <td width='50%' colspan='2'>Visus : ".$rsquerydatamcu["visus"]."</td>
+                                                                       <td width='50%' colspan='2'>Luas Lapang Pandang : ".$rsquerydatamcu["luas_lapang_pandang"].($rsquerydatamcu["keterangan_luas_lapang_pandang"]==""?"":", ".$rsquerydatamcu["keterangan_luas_lapang_pandang"])."</td>
                                                                    </tr>
                                                                 </table>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td width='100%'>
-                                                                3. Telinga
+                                                                4. Telinga
                                                                 <table width='100%' align='right'>
                                                                    <tr>
                                                                        <td width='20%'>Lubang : ".$rsquerydatamcu["lubang_telinga"]."</td>
@@ -185,27 +209,33 @@
                                                         </tr>
                                                         <tr>
                                                             <td width='100%'>
-                                                                4. Hidung
+                                                                5. Hidung
                                                                 <table width='100%' align='right'>
                                                                    <tr>
-                                                                       <td width='20%'>Septum Nasi : ".$rsquerydatamcu["septum_nasi"]."</td>
-                                                                       <td width='20%'>Lubang Hidung : ".$rsquerydatamcu["lubang_hidung"]."</td>
+                                                                       <td width='33%'>Septum Nasi : ".$rsquerydatamcu["septum_nasi"]."</td>
+                                                                       <td width='33%'>Lubang Hidung : ".$rsquerydatamcu["lubang_hidung"]."</td>
+                                                                       <td width='33%'>Sinus : ".$rsquerydatamcu["sinus"]."</td>
                                                                    </tr>
                                                                 </table>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td width='100%'>
-                                                                5. Mulut
+                                                                6. Mulut
                                                                 <table width='100%' align='right'>
                                                                    <tr>
                                                                        <td width='33%'>Bibir : ".$rsquerydatamcu["bibir"]."</td>
-                                                                       <td width='33%'>Caries : ".$rsquerydatamcu["caries"]."</td>
-                                                                       <td width='33%'>Lidah : ".$rsquerydatamcu["lidah"]."</td>
+                                                                       <td width='33%'>Gusi : ".$rsquerydatamcu["caries"]."</td>
+                                                                       <td width='33%'>Gigi : ".$rsquerydatamcu["lidah"]."</td>
                                                                    </tr>
                                                                    <tr>
+                                                                       <td width='33%'>Caries : ".$rsquerydatamcu["caries"]."</td>
+                                                                       <td width='33%'>Lidah : ".$rsquerydatamcu["lidah"]."</td>
                                                                        <td width='33%'>Faring : ".$rsquerydatamcu["faring"]."</td>
+                                                                   </tr>
+                                                                   <tr>
                                                                        <td width='33%'>Tonsil : ".$rsquerydatamcu["tonsil"]."</td>
+                                                                       <td width='33%'></td>
                                                                        <td width='33%'></td>
                                                                    </tr>
                                                                 </table>
@@ -213,7 +243,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td width='100%'>
-                                                                6. Leher
+                                                                7. Leher
                                                                 <table width='100%' align='right'>
                                                                    <tr>
                                                                        <td width='50%'>Kelenjar Limfe : ".$rsquerydatamcu["kelenjar_limfe"]."</td>
@@ -234,13 +264,13 @@
                                                                 1. Paru
                                                                 <table width='100%' align='right'>
                                                                    <tr>
-                                                                       <td width='33%'>Gerakan : ".$rsquerydatamcu["gerakan_dada"]."</td>
+                                                                       <td width='33%'>Gerakan Dada : ".$rsquerydatamcu["gerakan_dada"]."</td>
                                                                        <td width='33%'>Vocal Fremitus : ".$rsquerydatamcu["vocal_femitus"]."</td>
                                                                        <td width='33%'>Perkusi : ".$rsquerydatamcu["perkusi_dada"]."</td>
                                                                    </tr>
                                                                    <tr>
                                                                        <td width='33%'>Bunyi Napas : ".$rsquerydatamcu["bunyi_napas"]."</td>
-                                                                       <td width='33%'>Bunyi : ".$rsquerydatamcu["bunyi_tambahan"]."</td>
+                                                                       <td width='33%'>Bunyi Tambahan : ".$rsquerydatamcu["bunyi_tambahan"]."</td>
                                                                        <td width='33%'></td>
                                                                    </tr>
                                                                 </table>
@@ -256,6 +286,11 @@
                                                                        <td width='33%'>Batas : ".$rsquerydatamcu["batas"]."</td>
                                                                    </tr>
                                                                 </table>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width='100%'>
+                                                                3. Mamae : ".$rsquerydatamcu["mamae"].($rsquerydatamcu["keterangan_mamae"]==""?"":", ".$rsquerydatamcu["keterangan_mamae"])."
                                                             </td>
                                                         </tr>
                                                      </table>
@@ -283,7 +318,8 @@
                                                      Punggung :
                                                      <table width='100%' align='right'>
                                                         <tr>
-                                                            <td width='100%'>Nyeri Ketok Costovertebral Angle/CVA : ".$rsquerydatamcu["costovertebral"]."</td>
+                                                            <td width='50%'>Nyeri Ketok Costovertebral Angle/CVA : ".$rsquerydatamcu["costovertebral"]."</td>
+                                                            <td width='50%'>Scoliosis : ".$rsquerydatamcu["scoliosis"]."</td>
                                                         </tr>
                                                      </table>
                                                   </td>
@@ -293,7 +329,8 @@
                                                      Kulit :
                                                      <table width='100%' align='right'>
                                                         <tr>
-                                                            <td width='100%'>Kondisi Kulit : ".$rsquerydatamcu["kondisi_kulit"]."</td>
+                                                            <td width='30%'>Kondisi Kulit : ".$rsquerydatamcu["kondisi_kulit"]."</td>
+                                                            <td width='70%'>Penyakit Kulit : ".$rsquerydatamcu["penyakit_kulit"]."</td>
                                                         </tr>
                                                      </table>
                                                   </td>
@@ -309,72 +346,136 @@
                                                      </table>
                                                   </td>
                                               </tr>
+                                              <tr>
+                                                  <td width='100%' colspan='4'>
+                                                     Area Genitalia : ".$rsquerydatamcu["area_genitalia"].($rsquerydatamcu["keterangan_area_genitalia"]==""?"":", ".$rsquerydatamcu["keterangan_area_genitalia"])."
+                                                  </td>
+                                              </tr>
+                                              <tr>
+                                                  <td width='100%' colspan='4'>
+                                                     Anus & Perianal : ".$rsquerydatamcu["anus_perianal"].($rsquerydatamcu["keterangan_anus_perianal"]==""?"":", ".$rsquerydatamcu["keterangan_anus_perianal"])."
+                                                  </td>
+                                              </tr>
                                            </table>
                                         </td>
-                                     </tr>
-                                     <tr>
+                                     </tr>".
+                                    ($rsquerydatamcu["laborat"]==""?"":
+                                    "<tr>
                                         <td valign='top'>
-                                           C. PEMERIKSAAN LABORATORIUM
+                                           PEMERIKSAAN LABORATORIUM
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["laborat"]."</td>
                                               </tr>
                                            </table>
                                         </td>
-                                     </tr>
-                                     <tr>
+                                     </tr>"
+                                    ).
+                                    ($rsquerydatamcu["radiologi"]==""?"":
+                                    "<tr>
                                         <td valign='top'>
-                                           D. RONGSEN THORAX
+                                           RONTGEN THORAX
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["radiologi"]."</td>
                                               </tr>
                                            </table>
                                         </td>
-                                     </tr>
-                                     <tr>
+                                     </tr>"
+                                    ).
+                                    ($rsquerydatamcu["ekg"]==""?"":
+                                    "<tr>
                                         <td valign='top'>
-                                           E. EKG
+                                           EKG
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["ekg"]."</td>
                                               </tr>
                                            </table>
                                         </td>
-                                     </tr>
-                                     <tr>
+                                     </tr>"
+                                    ).
+                                    ($rsquerydatamcu["spirometri"]==""?"":
+                                     "<tr>
                                         <td valign='top'>
-                                           F. SPIROMETRI
+                                           SPIROMETRI
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["spirometri"]."</td>
                                               </tr>
                                            </table>
                                         </td>
-                                     </tr>
-                                     <tr>
+                                     </tr>"
+                                    ).
+                                    ($rsquerydatamcu["audiometri"]==""?"":
+                                     "<tr>
                                         <td valign='top'>
-                                           G. AUDIOMETRI
+                                           AUDIOMETRI
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["audiometri"]."</td>
                                               </tr>
                                            </table>
                                         </td>
-                                     </tr>
-                                     <tr>
+                                     </tr>"
+                                    ).
+                                    ($rsquerydatamcu["treadmill"]==""?"":
+                                     "<tr>
                                         <td valign='top'>
-                                           H. TREADMILL
+                                           TREADMILL
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["treadmill"]."</td>
                                               </tr>
                                            </table>
                                         </td>
-                                     </tr>
-                                     <tr>
+                                     </tr>"
+                                    ).
+                                    ($rsquerydatamcu["romberg_test"]==""?"":
+                                     "<tr>
                                         <td valign='top'>
-                                           I. LAIN-LAIN
+                                           ROMBERG TEST
+                                           <table width='100%' align='right'>
+                                              <tr>
+                                                  <td width='100%' align='justify'>".$rsquerydatamcu["romberg_test"]."</td>
+                                              </tr>
+                                           </table>
+                                        </td>
+                                     </tr>"
+                                    ).
+                                    ($rsquerydatamcu["back_strength"]==""?"":
+                                     "<tr>
+                                        <td valign='top'>
+                                           BACK STRENGTH
+                                           <table width='100%' align='right'>
+                                              <tr>
+                                                  <td width='100%' align='justify'>".$rsquerydatamcu["back_strength"]."</td>
+                                              </tr>
+                                           </table>
+                                        </td>
+                                     </tr>"
+                                    ).
+                                    (($rsquerydatamcu["abi_tangan_kanan"]=="")&&($rsquerydatamcu["abi_tangan_kiri"]=="")&&($rsquerydatamcu["abi_kaki_kanan"]=="")&&($rsquerydatamcu["abi_kaki_kiri"]=="")?"":
+                                     "<tr>
+                                        <td valign='top'>
+                                           ANKLE BRACHIAL INDEX
+                                           <table width='100%' align='right'>
+                                              <tr>
+                                                  <td width='50%' align='justify'>Tangan Kanan : ".$rsquerydatamcu["abi_tangan_kanan"]."</td>
+                                                  <td width='50%' align='justify'>Tangan Kiri : ".$rsquerydatamcu["abi_tangan_kiri"]."</td>
+                                              </tr>
+                                              <tr>
+                                                  <td width='50%' align='justify'>Kaki Kanan : ".$rsquerydatamcu["abi_kaki_kanan"]."</td>
+                                                  <td width='50%' align='justify'>Kaki Kiri : ".$rsquerydatamcu["abi_kaki_kiri"]."</td>
+                                              </tr>
+                                           </table>
+                                        </td>
+                                     </tr>"
+                                    ).
+                                    ($rsquerydatamcu["lainlain"]==""?"":
+                                     "<tr>
+                                        <td valign='top'>
+                                           LAIN-LAIN
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["lainlain"]."</td>
@@ -382,9 +483,11 @@
                                            </table>
                                         </td>
                                      </tr>
-                                     <tr>
+                                     "
+                                    ).
+                                    "<tr>
                                         <td valign='top'>
-                                           J. RIWAYAT MEROKOK DAN KONSUMSI ALKOHOL
+                                           RIWAYAT MEROKOK DAN KONSUMSI ALKOHOL
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>Merokok : ".$rsquerydatamcu["merokok"]."</td>
@@ -397,7 +500,7 @@
                                      </tr>
                                      <tr>
                                         <td valign='top'>
-                                           K. KESIMPULAN
+                                           KESIMPULAN
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["kesimpulan"]."</td>
@@ -407,7 +510,7 @@
                                      </tr>
                                      <tr>
                                         <td valign='top'>
-                                           L. ANJURAN
+                                           ANJURAN
                                            <table width='100%' align='right'>
                                               <tr>
                                                   <td width='100%' align='justify'>".$rsquerydatamcu["anjuran"]."</td>
