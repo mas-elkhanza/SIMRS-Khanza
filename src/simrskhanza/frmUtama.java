@@ -769,6 +769,7 @@ import keuangan.KeuanganHutangDapurBelumLunas;
 import keuangan.KeuanganNilaiPiutangPerJenisBayarPerBulan;
 import keuangan.KeuanganPengajuanBiaya;
 import keuangan.KeuanganPersetujuanPengajuanBiaya;
+import keuangan.KeuanganPiutangJasaPerusahaan;
 import keuangan.KeuanganRekapPengajuanBiaya;
 import keuangan.KeuanganRingkasanHutangVendorDapur;
 import keuangan.KeuanganRingkasanJasaTindakan;
@@ -22618,6 +22619,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPiutangJasaPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {                                                        
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganPiutangJasaPerusahaan aplikasi=new KeuanganPiutangJasaPerusahaan(this,false);
+        aplikasi.isCek();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23322,7 +23335,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningKesehatanGigiMulutBalita,btnSkriningAnemia,btnPermintaanLayananProgramKFR,btnLayananProgramKFR,btnSkriningHipertensi,btnSkriningKesehatanPenglihatan,
             btnCatatanObservasiHemodialisa,btnSkriningKesehatanGigiMulutDewasa,btnSkriningRisikoKankerServiks,btnCatatanCairanHemodialisa,btnSkriningKesehatanGigiMulutLansia,
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
-            btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan;
+            btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan;
     
     public void isWall(){
         try{            
@@ -25626,6 +25639,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getkategori_piutang_jasa_perusahaan()==true){
                 Panelmenu.add(btnKategoriPiutangJasaPerusahaan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpiutang_jasa_perusahaan()==true){
+                Panelmenu.add(btnPiutangJasaPerusahaan);
                 jmlmenu++;
             }
 
@@ -31177,6 +31195,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getkategori_piutang_jasa_perusahaan()==true){
             Panelmenu.add(btnKategoriPiutangJasaPerusahaan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpiutang_jasa_perusahaan()==true){
+            Panelmenu.add(btnPiutangJasaPerusahaan);
             jmlmenu++;
         }
 
@@ -37627,6 +37650,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getkategori_piutang_jasa_perusahaan()==true){
             if(btnKategoriPiutangJasaPerusahaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnKategoriPiutangJasaPerusahaan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpiutang_jasa_perusahaan()==true){
+            if(btnPiutangJasaPerusahaan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPiutangJasaPerusahaan);
                 jmlmenu++;
             }                
         }
@@ -47638,5 +47668,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKategoriPiutangJasaPerusahaan.setName("btnKategoriPiutangJasaPerusahaan");
         btnKategoriPiutangJasaPerusahaan.setPreferredSize(new java.awt.Dimension(200, 90));
         btnKategoriPiutangJasaPerusahaan.addActionListener(this::btnKategoriPiutangJasaPerusahaanActionPerformed);
+        
+        btnPiutangJasaPerusahaan = new widget.ButtonBig();
+        btnPiutangJasaPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1889200_bag_coins_finance_saving_bank_icon.png"))); 
+        btnPiutangJasaPerusahaan.setText("Piutang Jasa Perusahaan");
+        btnPiutangJasaPerusahaan.setIconTextGap(0);
+        btnPiutangJasaPerusahaan.setName("btnPiutangJasaPerusahaan");
+        btnPiutangJasaPerusahaan.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPiutangJasaPerusahaan.addActionListener(this::btnPiutangJasaPerusahaanActionPerformed);
     }
 }

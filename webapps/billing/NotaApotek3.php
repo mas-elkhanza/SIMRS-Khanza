@@ -16,8 +16,11 @@
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
                 $nonota    = validTeks4(str_replace("_"," ",$_GET['nonota']),20);  
                 $kdptg     = validTeks4(str_replace("_"," ",$_GET['kdptg']),20); 
-                $muka      = validTeks4($_GET['muka'],20); 
-                $ongkir    = validTeks4($_GET['ongkir'],20); 
+                $muka      = validangka($_GET['muka']); 
+                $ongkir    = validangka($_GET['ongkir']); 
+                $besarppnobat = validangka($_GET['besarppnobat']);
+                $tagihanppn = validangka($_GET['tagihanppn']);
+                $sisapiutang = validangka($_GET['sisapiutang']);
                 $tanggal   = validTeks4($_GET['tanggal'],20); 
                 $nm_member = validTeks4(str_replace("_"," ",$_GET['nm_member']),60); 
                 $tgltempo  = validTeks4($_GET['tgltempo'],20); 
@@ -115,9 +118,19 @@
                                               }    
                                      echo " <tr class='isi14'>
                                               <td colspan=5></td>
-                                              <td>Ttl.Beli</td>
+                                              <td>Grand Total</td>
                                               <td align='right'>".formatDuit2($ttlpesan)."</td>
                                             </tr> 
+                                            <tr class='isi14'>
+                                              <td colspan=5></td>
+                                              <td>PPN</td>
+                                              <td align='right'>".formatDuit2($besarppnobat)."</td>
+                                            </tr>
+                                            <tr class='isi14'>
+                                              <td colspan=5></td>
+                                              <td>Tagihan+PPN</td>
+                                              <td align='right'>".formatDuit2($tagihanppn)."</td>
+                                            </tr>
                                             <tr class='isi14'>
                                               <td colspan=5></td>
                                               <td>Ongkir</td>
@@ -130,8 +143,8 @@
                                             </tr>                                    
                                             <tr class='isi14'>
                                               <td colspan=5></td>
-                                              <td><b>Total</b></td>
-                                              <td align='right'><b>".formatDuit2($ttlpesan+$ongkir-$muka)."</b></td>
+                                              <td><b>Sisa Piutang</b></td>
+                                              <td align='right'><b>".formatDuit2($sisapiutang)."</b></td>
                                             </tr>  
                                   </table>
                               </td>

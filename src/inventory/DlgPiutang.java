@@ -1640,7 +1640,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             kdbar.requestFocus();
         }else {
-            Valid.panggilUrl("billing/NotaApotek3.php?nonota="+NoNota.getText()+"&kdptg="+kdptg.getText()+"&muka="+UangMuka.getText()+"&ongkir="+Ongkir.getText()+"&tanggal="+Valid.SetTgl(TglJual.getSelectedItem()+"")+"&nm_member="+nmpasien.getText().replaceAll(" ","_")+"&tgltempo="+Valid.SetTgl(TglTempo.getSelectedItem()+"")+"&catatan="+catatan.getText().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());                                           
+            Valid.panggilUrl("billing/NotaApotek3.php?nonota="+NoNota.getText()+"&kdptg="+kdptg.getText()+"&muka="+uangmuka+"&ongkir="+ongkir+"&besarppnobat="+besarppnobat+"&tagihanppn="+tagihanppn+"&sisapiutang="+sisapiutang+"&tanggal="+Valid.SetTgl(TglJual.getSelectedItem()+"")+"&nm_member="+nmpasien.getText().replaceAll(" ","_")+"&tgltempo="+Valid.SetTgl(TglTempo.getSelectedItem()+"")+"&catatan="+catatan.getText().replaceAll(" ","_")+"&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB());                                           
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnNotaActionPerformed
@@ -1992,7 +1992,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     private void isSisaPiutang(){
-        ppnobat=0;besarppnobat=0;tagihanppn=0;ongkir=0;uangmuka=0;
+        ppnobat=0;besarppnobat=0;tagihanppn=0;ongkir=0;uangmuka=0;sisapiutang=0;
         if(!PersenppnObat.getText().trim().equals("")) {
             ppnobat=Double.parseDouble(PersenppnObat.getText()); 
         }

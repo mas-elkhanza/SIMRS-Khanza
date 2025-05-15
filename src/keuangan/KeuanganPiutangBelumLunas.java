@@ -62,7 +62,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         initComponents();
         this.setLocation(8,1);
         
-        WindowHitungPaket.setSize(320,200);
+        WindowHitungPaket.setSize(320,230);
 
         tabMode=new DefaultTableModel(null,new Object[]{
                 "P","No.Rawat/No.Tagihan","Tgl.Piutang","Pasien","Status","Total Piutang",
@@ -221,6 +221,8 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         jLabel39 = new widget.Label();
         PiutangBelumDibayar = new widget.TextBox();
         jLabel44 = new widget.Label();
+        jLabel45 = new widget.Label();
+        PilihanKekurangan = new widget.ComboBox();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -345,7 +347,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
             }
         });
         panelisi5.add(BtnCloseHitungKapitasi);
-        BtnCloseHitungKapitasi.setBounds(200, 135, 100, 30);
+        BtnCloseHitungKapitasi.setBounds(200, 165, 100, 30);
 
         BtnHitungKapitasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/gaji.png"))); // NOI18N
         BtnHitungKapitasi.setMnemonic('S');
@@ -358,7 +360,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
             }
         });
         panelisi5.add(BtnHitungKapitasi);
-        BtnHitungKapitasi.setBounds(10, 135, 100, 30);
+        BtnHitungKapitasi.setBounds(10, 165, 100, 30);
 
         jLabel43.setText("Lebih Bayar Piutang :");
         jLabel43.setName("jLabel43"); // NOI18N
@@ -415,7 +417,18 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
         jLabel44.setText("%");
         jLabel44.setName("jLabel44"); // NOI18N
         panelisi5.add(jLabel44);
-        jLabel44.setBounds(280, 70, 50, 23);
+        jLabel44.setBounds(281, 70, 50, 23);
+
+        jLabel45.setText("Kekurangan Jadikan :");
+        jLabel45.setName("jLabel45"); // NOI18N
+        panelisi5.add(jLabel45);
+        jLabel45.setBounds(0, 130, 140, 23);
+
+        PilihanKekurangan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diskon", "Tidak Terbayar", "Kekurangan Bayar" }));
+        PilihanKekurangan.setName("PilihanKekurangan"); // NOI18N
+        PilihanKekurangan.setPreferredSize(new java.awt.Dimension(45, 23));
+        panelisi5.add(PilihanKekurangan);
+        PilihanKekurangan.setBounds(144, 130, 150, 23);
 
         internalFrame8.add(panelisi5, java.awt.BorderLayout.CENTER);
 
@@ -1240,10 +1253,22 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             LebihBayarPiutang.setText("0");
             for(i=0;i<tbBangsal.getRowCount();i++){
                 try {
-                    tbBangsal.setValueAt(
-                        Math.round((Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-(Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+Double.parseDouble(tbBangsal.getValueAt(i,7).toString())))-
-                        ((Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-(Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+Double.parseDouble(tbBangsal.getValueAt(i,7).toString())))*(Double.parseDouble(PersentaseBayarPaket.getText())/100)))
-                    ,i,13);
+                    if(PilihanKekurangan.getSelectedIndex()==0){
+                        tbBangsal.setValueAt(
+                            Math.round((Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-(Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+Double.parseDouble(tbBangsal.getValueAt(i,7).toString())))-
+                            ((Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-(Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+Double.parseDouble(tbBangsal.getValueAt(i,7).toString())))*(Double.parseDouble(PersentaseBayarPaket.getText())/100)))
+                        ,i,12);
+                        tbBangsal.setValueAt(0,i,13);
+                    }else if(PilihanKekurangan.getSelectedIndex()==1){
+                        tbBangsal.setValueAt(0,i,12);
+                        tbBangsal.setValueAt(
+                            Math.round((Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-(Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+Double.parseDouble(tbBangsal.getValueAt(i,7).toString())))-
+                            ((Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-(Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+Double.parseDouble(tbBangsal.getValueAt(i,7).toString())))*(Double.parseDouble(PersentaseBayarPaket.getText())/100)))
+                        ,i,13);
+                    }else if(PilihanKekurangan.getSelectedIndex()==2){
+                        tbBangsal.setValueAt(0,i,12);
+                        tbBangsal.setValueAt(0,i,13);
+                    }   
                     tbBangsal.setValueAt(
                         Math.round((Double.parseDouble(tbBangsal.getValueAt(i,5).toString())-
                         (Double.parseDouble(tbBangsal.getValueAt(i,6).toString())+
@@ -1303,6 +1328,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private javax.swing.JMenuItem MnDetailPiutang;
     private widget.TextBox NilaiKapitasiPaket;
     private widget.TextBox PersentaseBayarPaket;
+    private widget.ComboBox PilihanKekurangan;
     private widget.TextBox PiutangBelumDibayar;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
@@ -1320,6 +1346,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
     private widget.Label jLabel42;
     private widget.Label jLabel43;
     private widget.Label jLabel44;
+    private widget.Label jLabel45;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.TextBox kdpenjab;

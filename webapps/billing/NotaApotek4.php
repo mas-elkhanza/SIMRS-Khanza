@@ -15,39 +15,35 @@
             $passwordte = trim(isset($_GET['passwordte']))?trim($_GET['passwordte']):NULL;
             if((USERHYBRIDWEB==$usere)&&(PASHYBRIDWEB==$passwordte)){
                 $nonota    =validTeks4(str_replace("_"," ",$_GET['nonota']),20);  
-                $_sql      ="select piutang.nota_piutang, piutang.tgl_piutang, 
-                            piutang.nip,petugas.nama, 
-                            piutang.no_rkm_medis,piutang.nm_pasien, 
-                            piutang.catatan,piutang.jns_jual,piutang.ongkir,piutang.uangmuka,piutang.sisapiutang,
-                            detailpiutang.kode_brng,databarang.nama_brng, detailpiutang.kode_sat,
-                            kodesatuan.satuan,detailpiutang.h_jual, detailpiutang.jumlah, 
-                            detailpiutang.subtotal, detailpiutang.dis, detailpiutang.bsr_dis, detailpiutang.total,piutang.tgltempo                        
-                            from piutang inner join petugas  
-                            inner join detailpiutang inner join databarang inner join kodesatuan 
-                            on detailpiutang.kode_brng=databarang.kode_brng 
-                            and detailpiutang.kode_sat=kodesatuan.kode_sat 
-                            and piutang.nip=petugas.nip
-                            and piutang.nota_piutang=detailpiutang.nota_piutang where piutang.nota_piutang='$nonota' ";            
+                $_sql      ="select piutang.nota_piutang,piutang.tgl_piutang,piutang.nip,petugas.nama,piutang.ppn, 
+                            piutang.no_rkm_medis,piutang.nm_pasien,piutang.catatan,piutang.jns_jual,piutang.ongkir,
+                            piutang.uangmuka,piutang.sisapiutang,detailpiutang.kode_brng,databarang.nama_brng, 
+                            detailpiutang.kode_sat,kodesatuan.satuan,detailpiutang.h_jual,detailpiutang.jumlah, 
+                            detailpiutang.subtotal,detailpiutang.dis,detailpiutang.bsr_dis,detailpiutang.total,
+                            piutang.tgltempo from piutang inner join petugas on piutang.nip=petugas.nip 
+                            inner join detailpiutang on piutang.nota_piutang=detailpiutang.nota_piutang
+                            inner join databarang on detailpiutang.kode_brng=databarang.kode_brng
+                            inner join kodesatuan on detailpiutang.kode_sat=kodesatuan.kode_sat
+                            where piutang.nota_piutang='$nonota' ";            
                 $hasil=bukaquery($_sql);
                 $barisdata=  mysqli_fetch_array($hasil);
 
-                $nota_piutang   =$barisdata["nota_piutang"];
-                $tgl_piutang    =$barisdata["tgl_piutang"]; 
-                $nip     =$barisdata["nip"];
-                $nama     =$barisdata["nama"];
-                $ongkir         =$barisdata["ongkir"];
-                $uangmuka       =$barisdata["uangmuka"];
-                $sisapiutang    =$barisdata["sisapiutang"];
-                $nm_pasien    =$barisdata["nm_pasien"];
-                $tgltempo       =$barisdata["tgltempo"];
-                $catatan        =$barisdata["catatan"];
-
-
+                $nota_piutang   = $barisdata["nota_piutang"];
+                $tgl_piutang    = $barisdata["tgl_piutang"]; 
+                $nip            = $barisdata["nip"];
+                $nama           = $barisdata["nama"];
+                $ongkir         = $barisdata["ongkir"];
+                $uangmuka       = $barisdata["uangmuka"];
+                $sisapiutang    = $barisdata["sisapiutang"];
+                $ppn            = $barisdata["ppn"];
+                $nm_pasien      = $barisdata["nm_pasien"];
+                $tgltempo       = $barisdata["tgltempo"];
+                $catatan        = $barisdata["catatan"];
                 $hasil2=bukaquery($_sql);
 
-                $_sqlins = "select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting";            
-                $hasilins=bukaquery($_sqlins);
-                $setting = mysqli_fetch_array($hasilins);
+                $_sqlins  = "select setting.nama_instansi,setting.alamat_instansi,setting.kabupaten,setting.propinsi,setting.kontak,setting.email,setting.logo from setting";            
+                $hasilins = bukaquery($_sqlins);
+                $setting  = mysqli_fetch_array($hasilins);
 
                 if(mysqli_num_rows($hasil)!=0) { 
                   echo "<table width='".getOne("select notaapotek from set_nota")."'  border='0' align='left' cellpadding='0' cellspacing='0' class='tbl_form'>
@@ -128,9 +124,19 @@
                                               }    
                                      echo " <tr class='isi14'>
                                               <td colspan=4></td>
-                                              <td>Ttl.Beli</td>
+                                              <td>Grand Total</td>
                                               <td align='right'>".formatDuit2($ttlpesan)."</td>
                                             </tr> 
+                                            <tr class='isi14'>
+                                              <td colspan=4></td>
+                                              <td>PPN</td>
+                                              <td align='right'>".formatDuit2($ppn)."</td>
+                                            </tr>
+                                            <tr class='isi14'>
+                                              <td colspan=4></td>
+                                              <td>Tagihan+PPN</td>
+                                              <td align='right'>".formatDuit2($ttlpesan+$ppn)."</td>
+                                            </tr>
                                             <tr class='isi14'>
                                               <td colspan=4></td>
                                               <td>Ongkir</td>
@@ -145,16 +151,14 @@
 
                                             <tr class='isi14'>
                                               <td colspan=4></td>
-                                              <td><b>Total</b></td>
+                                              <td><b>Sisa Piutang</b></td>
                                               <td align='right'><b>".formatDuit2($ttlpesan+$ongkir-$uangmuka)."</b></td>
                                             </tr>    
                                   </table>
                                   <br/>
                               </td>
                             </tr>
-
                          </table>";
-
                 } else {echo "<b>Data pesan masih kosong !</b>";}
             }else {
                 exit(header("Location:../index.php"));
