@@ -334,20 +334,22 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
         BtnTambah = new widget.Button();
         label12 = new widget.Label();
         LSubtotal = new widget.Label();
-        label9 = new widget.Label();
-        LPotongan = new widget.Label();
-        label20 = new widget.Label();
-        LTotal2 = new widget.Label();
         label17 = new widget.Label();
         tppn = new widget.TextBox();
-        LPpn = new widget.Label();
         Meterai = new widget.TextBox();
         label24 = new widget.Label();
-        label19 = new widget.Label();
-        LTagiha = new widget.Label();
         BtnSimpan = new widget.Button();
         BtnPrint = new widget.Button();
         BtnAll = new widget.Button();
+        label20 = new widget.Label();
+        tppn1 = new widget.TextBox();
+        label21 = new widget.Label();
+        tppn2 = new widget.TextBox();
+        tppn3 = new widget.TextBox();
+        tppn4 = new widget.TextBox();
+        label22 = new widget.Label();
+        tppn5 = new widget.TextBox();
+        tppn6 = new widget.TextBox();
 
         Popup.setName("Popup"); // NOI18N
 
@@ -534,7 +536,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label15);
-        label15.setBounds(0, 10, 92, 23);
+        label15.setBounds(0, 10, 75, 23);
 
         NoPemesanan.setName("NoPemesanan"); // NOI18N
         NoPemesanan.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -544,13 +546,13 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(NoPemesanan);
-        NoPemesanan.setBounds(95, 10, 120, 23);
+        NoPemesanan.setBounds(79, 10, 257, 23);
 
         label11.setText("Tgl.Piutang :");
         label11.setName("label11"); // NOI18N
         label11.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label11);
-        label11.setBounds(380, 10, 70, 23);
+        label11.setBounds(381, 10, 77, 23);
 
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
@@ -565,13 +567,13 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Tanggal);
-        Tanggal.setBounds(460, 10, 90, 23);
+        Tanggal.setBounds(462, 10, 90, 23);
 
         label13.setText("Pegawai :");
         label13.setName("label13"); // NOI18N
         label13.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label13);
-        label13.setBounds(390, 40, 75, 23);
+        label13.setBounds(381, 40, 77, 23);
 
         kdsup.setName("kdsup"); // NOI18N
         kdsup.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -581,13 +583,13 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(kdsup);
-        kdsup.setBounds(95, 40, 70, 23);
+        kdsup.setBounds(79, 40, 70, 23);
 
         label16.setText("Instansi :");
         label16.setName("label16"); // NOI18N
         label16.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi3.add(label16);
-        label16.setBounds(0, 40, 92, 23);
+        label16.setBounds(0, 40, 75, 23);
 
         kdptg.setName("kdptg"); // NOI18N
         kdptg.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -597,19 +599,19 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(kdptg);
-        kdptg.setBounds(460, 40, 76, 23);
+        kdptg.setBounds(462, 40, 100, 23);
 
         nmsup.setEditable(false);
         nmsup.setName("nmsup"); // NOI18N
         nmsup.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmsup);
-        nmsup.setBounds(167, 40, 170, 23);
+        nmsup.setBounds(151, 40, 185, 23);
 
         nmptg.setEditable(false);
         nmptg.setName("nmptg"); // NOI18N
         nmptg.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(nmptg);
-        nmptg.setBounds(540, 40, 190, 23);
+        nmptg.setBounds(564, 40, 175, 23);
 
         btnSuplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnSuplier.setMnemonic('1');
@@ -622,7 +624,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnSuplier);
-        btnSuplier.setBounds(340, 40, 28, 23);
+        btnSuplier.setBounds(339, 40, 28, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -635,24 +637,24 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnPetugas);
-        btnPetugas.setBounds(730, 40, 28, 23);
+        btnPetugas.setBounds(742, 40, 28, 23);
 
         label14.setText("Keterangan :");
         label14.setName("label14"); // NOI18N
         label14.setPreferredSize(new java.awt.Dimension(70, 23));
         panelisi3.add(label14);
-        label14.setBounds(-10, 70, 110, 23);
+        label14.setBounds(0, 70, 75, 23);
 
         Departemen.setName("Departemen"); // NOI18N
         Departemen.setPreferredSize(new java.awt.Dimension(207, 23));
         panelisi3.add(Departemen);
-        Departemen.setBounds(100, 70, 650, 23);
+        Departemen.setBounds(79, 70, 691, 23);
 
         label18.setText("Jatuh Tempo :");
         label18.setName("label18"); // NOI18N
         label18.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label18);
-        label18.setBounds(550, 10, 80, 23);
+        label18.setBounds(596, 10, 80, 23);
 
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
@@ -667,19 +669,19 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi3.add(Tanggal1);
-        Tanggal1.setBounds(640, 10, 90, 23);
+        Tanggal1.setBounds(680, 10, 90, 23);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
         panelisi1.setName("panelisi1"); // NOI18N
-        panelisi1.setPreferredSize(new java.awt.Dimension(100, 107));
+        panelisi1.setPreferredSize(new java.awt.Dimension(100, 115));
         panelisi1.setLayout(null);
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
         label10.setPreferredSize(new java.awt.Dimension(75, 23));
         panelisi1.add(label10);
-        label10.setBounds(210, 65, 75, 23);
+        label10.setBounds(210, 75, 75, 23);
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(150, 23));
@@ -689,7 +691,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(TCari);
-        TCari.setBounds(289, 65, 170, 23);
+        TCari.setBounds(289, 75, 180, 23);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('1');
@@ -707,7 +709,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnCari1);
-        BtnCari1.setBounds(461, 65, 28, 23);
+        BtnCari1.setBounds(471, 75, 28, 23);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -726,7 +728,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnCari);
-        BtnCari.setBounds(565, 62, 100, 30);
+        BtnCari.setBounds(575, 72, 100, 30);
 
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
@@ -745,7 +747,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnKeluar);
-        BtnKeluar.setBounds(670, 62, 100, 30);
+        BtnKeluar.setBounds(680, 72, 100, 30);
 
         BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
         BtnTambah.setMnemonic('3');
@@ -758,14 +760,13 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnTambah);
-        BtnTambah.setBounds(521, 65, 28, 23);
+        BtnTambah.setBounds(531, 75, 28, 23);
 
-        label12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label12.setText("Total 1 :");
+        label12.setText("Grand Total :");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label12);
-        label12.setBounds(10, 0, 60, 30);
+        label12.setBounds(0, 10, 120, 23);
 
         LSubtotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LSubtotal.setText("0");
@@ -773,46 +774,15 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
         LSubtotal.setName("LSubtotal"); // NOI18N
         LSubtotal.setPreferredSize(new java.awt.Dimension(110, 30));
         panelisi1.add(LSubtotal);
-        LSubtotal.setBounds(10, 20, 100, 30);
+        LSubtotal.setBounds(124, 10, 157, 23);
 
-        label9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label9.setText("Potongan :");
-        label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label9);
-        label9.setBounds(120, 0, 90, 30);
-
-        LPotongan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LPotongan.setText("0");
-        LPotongan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LPotongan.setName("LPotongan"); // NOI18N
-        LPotongan.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LPotongan);
-        LPotongan.setBounds(120, 20, 100, 30);
-
-        label20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label20.setText("Total 2 :");
-        label20.setName("label20"); // NOI18N
-        label20.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label20);
-        label20.setBounds(230, 0, 90, 30);
-
-        LTotal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal2.setText("0");
-        LTotal2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LTotal2.setName("LTotal2"); // NOI18N
-        LTotal2.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LTotal2);
-        LTotal2.setBounds(230, 20, 100, 30);
-
-        label17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label17.setText("PPN :");
+        label17.setText("PPN (%) :");
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label17);
-        label17.setBounds(340, 0, 40, 30);
+        label17.setBounds(280, 40, 85, 23);
 
-        tppn.setText("11");
+        tppn.setText("0");
         tppn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tppn.setName("tppn"); // NOI18N
         tppn.setPreferredSize(new java.awt.Dimension(80, 23));
@@ -822,15 +792,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(tppn);
-        tppn.setBounds(340, 26, 45, 23);
-
-        LPpn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LPpn.setText("0");
-        LPpn.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LPpn.setName("LPpn"); // NOI18N
-        LPpn.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LPpn);
-        LPpn.setBounds(410, 20, 100, 30);
+        tppn.setBounds(416, 40, 110, 23);
 
         Meterai.setText("0");
         Meterai.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -842,29 +804,13 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(Meterai);
-        Meterai.setBounds(520, 26, 100, 23);
+        Meterai.setBounds(619, 40, 157, 23);
 
-        label24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label24.setText("Meterai :");
+        label24.setText("Total Tagihan :");
         label24.setName("label24"); // NOI18N
         label24.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label24);
-        label24.setBounds(520, 0, 90, 30);
-
-        label19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label19.setText("Jumlah Tagihan :");
-        label19.setName("label19"); // NOI18N
-        label19.setPreferredSize(new java.awt.Dimension(60, 30));
-        panelisi1.add(label19);
-        label19.setBounds(630, 0, 130, 30);
-
-        LTagiha.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTagiha.setText("0");
-        LTagiha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        LTagiha.setName("LTagiha"); // NOI18N
-        LTagiha.setPreferredSize(new java.awt.Dimension(110, 30));
-        panelisi1.add(LTagiha);
-        LTagiha.setBounds(630, 20, 150, 30);
+        label24.setBounds(525, 40, 90, 23);
 
         BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
         BtnSimpan.setMnemonic('S');
@@ -882,7 +828,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnSimpan);
-        BtnSimpan.setBounds(5, 62, 100, 30);
+        BtnSimpan.setBounds(5, 72, 100, 30);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
         BtnPrint.setMnemonic('T');
@@ -901,7 +847,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnPrint);
-        BtnPrint.setBounds(110, 62, 100, 30);
+        BtnPrint.setBounds(110, 72, 100, 30);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('2');
@@ -920,7 +866,94 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
             }
         });
         panelisi1.add(BtnAll);
-        BtnAll.setBounds(491, 65, 28, 23);
+        BtnAll.setBounds(501, 75, 28, 23);
+
+        label20.setText("Jasa Menejemen(%) :");
+        label20.setName("label20"); // NOI18N
+        label20.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label20);
+        label20.setBounds(0, 40, 120, 23);
+
+        tppn1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tppn1.setName("tppn1"); // NOI18N
+        tppn1.setPreferredSize(new java.awt.Dimension(80, 23));
+        tppn1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tppn1KeyPressed(evt);
+            }
+        });
+        panelisi1.add(tppn1);
+        tppn1.setBounds(171, 40, 110, 23);
+
+        label21.setText("DPP Nilai Lain :");
+        label21.setName("label21"); // NOI18N
+        label21.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label21);
+        label21.setBounds(280, 10, 85, 23);
+
+        tppn2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tppn2.setName("tppn2"); // NOI18N
+        tppn2.setPreferredSize(new java.awt.Dimension(80, 23));
+        tppn2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tppn2KeyPressed(evt);
+            }
+        });
+        panelisi1.add(tppn2);
+        tppn2.setBounds(369, 10, 157, 23);
+
+        tppn3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tppn3.setName("tppn3"); // NOI18N
+        tppn3.setPreferredSize(new java.awt.Dimension(80, 23));
+        tppn3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tppn3KeyPressed(evt);
+            }
+        });
+        panelisi1.add(tppn3);
+        tppn3.setBounds(124, 40, 45, 23);
+
+        tppn4.setText("12");
+        tppn4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tppn4.setName("tppn4"); // NOI18N
+        tppn4.setPreferredSize(new java.awt.Dimension(80, 23));
+        tppn4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tppn4KeyPressed(evt);
+            }
+        });
+        panelisi1.add(tppn4);
+        tppn4.setBounds(369, 40, 45, 23);
+
+        label22.setText("PPH 23 (%) :");
+        label22.setName("label22"); // NOI18N
+        label22.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelisi1.add(label22);
+        label22.setBounds(525, 10, 90, 23);
+
+        tppn5.setText("2");
+        tppn5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tppn5.setName("tppn5"); // NOI18N
+        tppn5.setPreferredSize(new java.awt.Dimension(80, 23));
+        tppn5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tppn5KeyPressed(evt);
+            }
+        });
+        panelisi1.add(tppn5);
+        tppn5.setBounds(619, 10, 45, 23);
+
+        tppn6.setText("11");
+        tppn6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tppn6.setName("tppn6"); // NOI18N
+        tppn6.setPreferredSize(new java.awt.Dimension(80, 23));
+        tppn6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tppn6KeyPressed(evt);
+            }
+        });
+        panelisi1.add(tppn6);
+        tppn6.setBounds(666, 10, 110, 23);
 
         internalFrame1.add(panelisi1, java.awt.BorderLayout.PAGE_END);
 
@@ -1348,10 +1381,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             param.put("emailrs",akses.getemailrs());  
             param.put("suplier",nmsup.getText());  
             param.put("nomorpesan",NoPemesanan.getText());  
-            param.put("total",LTotal2.getText());  
-            param.put("ppn",LPpn.getText());  
+            //param.put("total",LTotal2.getText());  
+            //param.put("ppn",LPpn.getText());  
             param.put("meterai",Valid.SetAngka(meterai));  
-            param.put("tagihan",LTagiha.getText());  
+            //param.put("tagihan",LTagiha.getText());  
             param.put("tanggal",akses.getkabupatenrs()+", "+Tanggal.getSelectedItem());  
             param.put("apoteker",Apoteker.getText()); 
             param.put("petugas",nmptg.getText()); 
@@ -1415,6 +1448,30 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
         // TODO add your handling code here:
     }//GEN-LAST:event_Tanggal1KeyPressed
 
+    private void tppn1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppn1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tppn1KeyPressed
+
+    private void tppn2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppn2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tppn2KeyPressed
+
+    private void tppn3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppn3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tppn3KeyPressed
+
+    private void tppn4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppn4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tppn4KeyPressed
+
+    private void tppn5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppn5KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tppn5KeyPressed
+
+    private void tppn6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tppn6KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tppn6KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1447,11 +1504,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.TextBox Departemen;
     private javax.swing.JDialog DlgCetak;
     private widget.TextBox KabidKeu;
-    private widget.Label LPotongan;
-    private widget.Label LPpn;
     private widget.Label LSubtotal;
-    private widget.Label LTagiha;
-    private widget.Label LTotal2;
     private widget.TextBox Meterai;
     private widget.TextBox NoPemesanan;
     private javax.swing.JPopupMenu Popup;
@@ -1475,10 +1528,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.Label label16;
     private widget.Label label17;
     private widget.Label label18;
-    private widget.Label label19;
     private widget.Label label20;
+    private widget.Label label21;
+    private widget.Label label22;
     private widget.Label label24;
-    private widget.Label label9;
     private widget.TextBox nmptg;
     private widget.TextBox nmsup;
     private widget.PanelBiasa panelBiasa4;
@@ -1489,6 +1542,12 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     private widget.ScrollPane scrollPane1;
     private widget.Table tbDokter;
     private widget.TextBox tppn;
+    private widget.TextBox tppn1;
+    private widget.TextBox tppn2;
+    private widget.TextBox tppn3;
+    private widget.TextBox tppn4;
+    private widget.TextBox tppn5;
+    private widget.TextBox tppn6;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
@@ -1680,14 +1739,14 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             ttldisk=ttldisk+y;
         }
         LSubtotal.setText(Valid.SetAngka(sbttl));
-        LPotongan.setText(Valid.SetAngka(ttldisk));
+        //LPotongan.setText(Valid.SetAngka(ttldisk));
         ttl=sbttl-ttldisk;
-        LTotal2.setText(Valid.SetAngka(ttl));
+        //LTotal2.setText(Valid.SetAngka(ttl));
         ppn=0;
         if(!tppn.getText().equals("")){
             ppn=Math.round((Double.parseDouble(tppn.getText())/100) *(ttl));
-            LPpn.setText(Valid.SetAngka(ppn));
-            LTagiha.setText(Valid.SetAngka(ttl+ppn+meterai));
+            //LPpn.setText(Valid.SetAngka(ppn));
+            //LTagiha.setText(Valid.SetAngka(ttl+ppn+meterai));
         }
         
     }   
