@@ -1127,7 +1127,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             if((tbDokter.getSelectedColumn()==1)||(tbDokter.getSelectedColumn()==0)){   
                 if(!tbDokter.getValueAt(i,0).toString().equals("")){
                     try {
-                        if(Double.parseDouble(tabMode.getValueAt(i,0).toString())>0){
+                        if(Double.parseDouble(tabMode.getValueAt(i,0).toString())>=0){
                             try {
                                 kurang=Double.parseDouble(tbDokter.getValueAt(i,6).toString())-Double.parseDouble(tbDokter.getValueAt(i,0).toString());
                             } catch (Exception e) {

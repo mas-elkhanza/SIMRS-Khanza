@@ -39,8 +39,8 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
     private WarnaTable2 warna=new WarnaTable2();
     private double meterai=0,ttl=0,y=0,w=0,ttldisk=0,sbttl=0,ppn=0;
     private int jml=0,i=0,row=0,index=0,pilihan=1;
-    private String[] kodebarang,namabarang,satuan,satuanbeli;
-    private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok,isi,isibesar;
+    private String[] kode,kategori;
+    private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
     private boolean sukses=true;    
     private File file;
     private FileWriter fileWriter;
@@ -58,21 +58,19 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "Jml","Satuan Beli","Kode Barang","Nama Barang","Satuan","Harga(Rp)","Subtotal(Rp)",
-                "Disk(%)","Diskon(Rp)","Total","Jml.Stok","Isi","Isi Besar"
+                "Kode","Kategori","Jml","Harga(Rp)","Subtotal(Rp)","Disk(%)","Diskon(Rp)","Total(Rp)"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                boolean a = false;
-               if ((colIndex==0)||(colIndex==5)||(colIndex==7)||(colIndex==8)) {
+               if ((colIndex==2)||(colIndex==3)||(colIndex==5)||(colIndex==6)) {
                    a=true;
                }
                return a;
              }
               
              Class[] types = new Class[] {
-                java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
-                java.lang.String.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,
-                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class ,java.lang.Double.class ,java.lang.Double.class 
+                java.lang.String.class,java.lang.String.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class 
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -84,34 +82,27 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 13; i++) {
+        for (i = 0; i < 8; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(42);
+                column.setPreferredWidth(50);
             }else if(i==1){
-                column.setPreferredWidth(65);
+                column.setPreferredWidth(300);
             }else if(i==2){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(30);
             }else if(i==3){
-                column.setPreferredWidth(190);
+                column.setPreferredWidth(90);
             }else if(i==4){
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(100);
             }else if(i==5){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(47);
             }else if(i==6){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(90);
             }else if(i==7){
-                column.setPreferredWidth(50);
-            }else if(i==8){
-                column.setPreferredWidth(80);
-            }else if(i==9){
-                column.setPreferredWidth(85);
-            }else{
-                column.setMinWidth(0);
-                column.setMaxWidth(0);
+                column.setPreferredWidth(100);
             }
         }
-        warna.kolom=0;
+        warna.kolom=2;
         tbDokter.setDefaultRenderer(Object.class,warna);
 
         NoPemesanan.setDocument(new batasInput((byte)20).getKata(NoPemesanan));
@@ -782,7 +773,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/suratpemesananobat.iyem")<8){
+            if(Valid.daysOld("./cache/piutangjasaperusahaan.iyem")<8){
                 tampil2();
             }else{
                 tampil();
@@ -1182,18 +1173,16 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
     private void tampil() {
        try{
-            file=new File("./cache/suratpemesananobat.iyem");
+            file=new File("./cache/piutangjasaperusahaan.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            ps=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,databarang.kode_satbesar, "+
-                " (databarang.h_beli*databarang.isi) as harga,databarang.kode_sat,databarang.isi "+
-                " from databarang inner join jenis on databarang.kdjns=jenis.kdjns "+
-                " where databarang.status='1' order by databarang.nama_brng");
+            ps=koneksi.prepareStatement(
+                "select * from kategori_piutang_jasa_perusahaan order by kategori_piutang_jasa_perusahaan.kode_kategori");
             try {  
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    iyembuilder.append("{\"SatuanBeli\":\"").append(rs.getString("kode_satbesar")).append("\",\"KodeBarang\":\"").append(rs.getString("kode_brng")).append("\",\"NamaBarang\":\"").append(rs.getString("nama_brng").replaceAll("\"","")).append("\",\"Satuan\":\"").append(rs.getString("kode_sat")).append("\",\"Harga\":\"").append(rs.getString("harga")).append("\",\"Isi\":\"").append(rs.getString("isi")).append("\"},");
+                    iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"Kategori\":\"").append(rs.getString(2)).append("\"},");
                 }        
             } catch (Exception e) {
                 System.out.println("Notifikasi : "+e);
@@ -1208,7 +1197,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             
             if (iyembuilder.length() > 0) {
                 iyembuilder.setLength(iyembuilder.length() - 1);
-                fileWriter.write("{\"suratpemesananobat\":["+iyembuilder+"]}");
+                fileWriter.write("{\"piutangjasaperusahaan\":["+iyembuilder+"]}");
                 fileWriter.flush();
             }
             
@@ -1234,36 +1223,50 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 }            
             }
 
-            kodebarang=new String[jml];
-            namabarang=new String[jml];
-            satuan=new String[jml];
-            satuanbeli=new String[jml];
+            kode=new String[jml];
+            kategori=new String[jml];
             harga=new double[jml];
             jumlah=new double[jml];
             subtotal=new double[jml];
             diskon=new double[jml];
             besardiskon=new double[jml];
             jmltotal=new double[jml];
-            jmlstok=new double[jml];
-            isi=new double[jml];
-            isibesar=new double[jml];
             index=0;        
             for(i=0;i<row;i++){
                 try {
                     if(Double.parseDouble(tbDokter.getValueAt(i,0).toString())>0){
-                        jumlah[index]=Double.parseDouble(tbDokter.getValueAt(i,0).toString());
-                        satuanbeli[index]=tbDokter.getValueAt(i,1).toString();
-                        kodebarang[index]=tbDokter.getValueAt(i,2).toString();
-                        namabarang[index]=tbDokter.getValueAt(i,3).toString();
-                        satuan[index]=tbDokter.getValueAt(i,4).toString();
-                        harga[index]=Double.parseDouble(tbDokter.getValueAt(i,5).toString());
-                        subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,6).toString());
-                        diskon[index]=Double.parseDouble(tbDokter.getValueAt(i,7).toString());
-                        besardiskon[index]=Double.parseDouble(tbDokter.getValueAt(i,8).toString());
-                        jmltotal[index]=Double.parseDouble(tbDokter.getValueAt(i,9).toString());
-                        jmlstok[index]=Double.parseDouble(tbDokter.getValueAt(i,10).toString());
-                        isi[index]=Double.parseDouble(tbDokter.getValueAt(i,11).toString());
-                        isibesar[index]=Double.parseDouble(tbDokter.getValueAt(i,12).toString());
+                        kode[index]=tbDokter.getValueAt(i,0).toString();
+                        kategori[index]=tbDokter.getValueAt(i,1).toString();
+                        try {
+                            jumlah[index]=Double.parseDouble(tbDokter.getValueAt(i,2).toString());
+                        } catch (Exception e) {
+                            jumlah[index]=0;
+                        }
+                        try {
+                            harga[index]=Double.parseDouble(tbDokter.getValueAt(i,3).toString());
+                        } catch (Exception e) {
+                            harga[index]=0;
+                        }
+                        try {
+                            subtotal[index]=Double.parseDouble(tbDokter.getValueAt(i,4).toString());
+                        } catch (Exception e) {
+                            subtotal[index]=0;
+                        }
+                        try {
+                            diskon[index]=Double.parseDouble(tbDokter.getValueAt(i,5).toString());
+                        } catch (Exception e) {
+                            diskon[index]=0;
+                        }
+                        try {
+                            besardiskon[index]=Double.parseDouble(tbDokter.getValueAt(i,6).toString());
+                        } catch (Exception e) {
+                            besardiskon[index]=0;
+                        }
+                        try {
+                            jmltotal[index]=Double.parseDouble(tbDokter.getValueAt(i,7).toString());
+                        } catch (Exception e) {
+                            jmltotal[index]=0;
+                        }
                         index++;
                     }
                 } catch (Exception e) {
@@ -1271,38 +1274,33 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             }
             Valid.tabelKosong(tabMode);
             for(i=0;i<jml;i++){
-                tabMode.addRow(new Object[]{jumlah[i],satuanbeli[i],kodebarang[i],namabarang[i],satuan[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i],jmlstok[i],isi[i],isibesar[i]});
+                tabMode.addRow(new Object[]{kode[i],kategori[i],jumlah[i],harga[i],subtotal[i],diskon[i],besardiskon[i],jmltotal[i]});
             }
             
-            kodebarang=null;
-            namabarang=null;
-            satuan=null;
-            satuanbeli=null;
+            kode=null;
+            kategori=null;
             harga=null;
             jumlah=null;
             subtotal=null;
             diskon=null;
             besardiskon=null;
             jmltotal=null;
-            jmlstok=null;
-            isi=null;
-            isibesar=null;
             
-            myObj = new FileReader("./cache/suratpemesananobat.iyem");
+            myObj = new FileReader("./cache/piutangjasaperusahaan.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("suratpemesananobat");
+            response = root.path("piutangjasaperusahaan");
             if(response.isArray()){
                 if(TCari.getText().trim().equals("")){
                     for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
-                            "",list.path("SatuanBeli").asText(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Harga").asDouble(),0,0,0,0,0,list.path("Isi").asDouble(),1
+                            list.path("Kode").asText(),list.path("Kategori").asText(),0,0,0,0,0,0
                         });
                     }
                 }else{
                     for(JsonNode list:response){
-                        if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        if(list.path("Kategori").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                             tabMode.addRow(new Object[]{
-                                "",list.path("SatuanBeli").asText(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Harga").asDouble(),0,0,0,0,0,list.path("Isi").asDouble(),1
+                                list.path("Kode").asText(),list.path("Kategori").asText(),0,0,0,0,0,0
                             });
                         }
                     }
@@ -1316,7 +1314,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }
     
     private void getData(){        
-        row=tbDokter.getSelectedRow();
+        /*row=tbDokter.getSelectedRow();
         if(row!= -1){  
             if(!tbDokter.getValueAt(row,0).toString().equals("")){
                 try {
@@ -1377,7 +1375,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             ppn=Math.round((Double.parseDouble(tppn.getText())/100) *(ttl));
             //LPpn.setText(Valid.SetAngka(ppn));
             //LTagiha.setText(Valid.SetAngka(ttl+ppn+meterai));
-        }
+        }*/
         
     }   
     
@@ -1390,7 +1388,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             btnPetugas.setEnabled(false);
             kdptg.setText(akses.getkode());
             BtnSimpan.setEnabled(akses.getpiutang_jasa_perusahaan());
-            BtnTambah.setEnabled(akses.getobat());
             nmptg.setText(petugas.tampil3(kdptg.getText()));
         }        
     }
@@ -1421,7 +1418,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("jumlah"),rs.getString("satbesar"),rs.getString("kode_brng"),
+                        rs.getString("jumlah"),rs.getString("satbesar"),rs.getString(2),
                         rs.getString("nama_brng"),rs.getString("kode_sat"),rs.getDouble("h_pengajuan"),
                         rs.getDouble("total"),0,0,rs.getDouble("total"),rs.getDouble("jumlah2"),rs.getDouble("isi"),
                         (rs.getDouble("isi")/(rs.getDouble("jumlah2")/rs.getDouble("jumlah")))
