@@ -69,7 +69,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
              }
               
              Class[] types = new Class[] {
-                java.lang.String.class,java.lang.String.class,java.lang.Double.class,java.lang.Double.class,
+                java.lang.String.class,java.lang.String.class,java.lang.Double.class,java.lang.String.class,
                 java.lang.Double.class,java.lang.Double.class,java.lang.Double.class,java.lang.Double.class 
              };
              @Override
@@ -892,10 +892,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     }//GEN-LAST:event_tbDokterPropertyChange
 
     private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDokterKeyPressed
-        /*if(tbDokter.getRowCount()!=0){
+        if(tbDokter.getRowCount()!=0){
             if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                try {                  
-                   if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==3)||(tbDokter.getSelectedColumn()==6)||(tbDokter.getSelectedColumn()==9)){                       
+                try {      
+                    ////"Kode","Kategori","Jml","Harga(Rp)","Subtotal(Rp)","Disk(%)","Diskon(Rp)","Total(Rp)"
+                   if((tbDokter.getSelectedColumn()==2)||(tbDokter.getSelectedColumn()==3)||(tbDokter.getSelectedColumn()==5)||(tbDokter.getSelectedColumn()==6)){                       
                         getData();  
                         TCari.setText("");
                         TCari.requestFocus();                                                
@@ -944,26 +945,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                    }else if(tbDokter.getSelectedColumn()==1){
                        getData();  
                    }
-            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-                if(tbDokter.getSelectedColumn()==1){
-                    y=0;
-                    try {
-                        y=Double.parseDouble(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());                        
-                    } catch (Exception e) {
-                        y=0;
-                    }
-                    if(y>0){
-                        datakonversi.setSatuanKecil(tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
-                        datakonversi.isCek();
-                        datakonversi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight());
-                        datakonversi.setLocationRelativeTo(internalFrame1);
-                        datakonversi.setVisible(true);                        
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Silahkan masukkan jumlah pemesanan terelebih dahulu..!!");
-                    }
-                }
             }
-        }*/
+        }
     }//GEN-LAST:event_tbDokterKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
@@ -1235,7 +1218,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             index=0;        
             for(i=0;i<row;i++){
                 try {
-                    if(Double.parseDouble(tbDokter.getValueAt(i,0).toString())>0){
+                    if(Double.parseDouble(tbDokter.getValueAt(i,2).toString())>0){
                         kode[index]=tbDokter.getValueAt(i,0).toString();
                         kategori[index]=tbDokter.getValueAt(i,1).toString();
                         try {
