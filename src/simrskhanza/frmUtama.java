@@ -47692,7 +47692,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRiwayatSuratPeringatan.addActionListener(this::btnRiwayatSuratPeringatanActionPerformed);
         
         btnKategoriPiutangJasaPerusahaan = new widget.ButtonBig();
-        btnKategoriPiutangJasaPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7013428_business_calculation_mathematics_calculator_icon.png"))); 
+        btnKategoriPiutangJasaPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7013421_marketing_finance_business_money_payment_icon.png"))); 
         btnKategoriPiutangJasaPerusahaan.setText("Kategori Piutang Jasa Perusahaan");
         btnKategoriPiutangJasaPerusahaan.setIconTextGap(0);
         btnKategoriPiutangJasaPerusahaan.setName("btnKategoriPiutangJasaPerusahaan");
@@ -47700,7 +47700,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnKategoriPiutangJasaPerusahaan.addActionListener(this::btnKategoriPiutangJasaPerusahaanActionPerformed);
         
         btnPiutangJasaPerusahaan = new widget.ButtonBig();
-        btnPiutangJasaPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1889200_bag_coins_finance_saving_bank_icon.png"))); 
+        btnPiutangJasaPerusahaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5027880_bag_business_currency_dollar_finance_icon.png"))); 
         btnPiutangJasaPerusahaan.setText("Piutang Jasa Perusahaan");
         btnPiutangJasaPerusahaan.setIconTextGap(0);
         btnPiutangJasaPerusahaan.setName("btnPiutangJasaPerusahaan");
