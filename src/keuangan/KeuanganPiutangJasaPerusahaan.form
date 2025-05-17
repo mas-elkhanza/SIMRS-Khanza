@@ -119,15 +119,15 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="NoPemesanan">
+            <Component class="widget.TextBox" name="NoPiutang">
               <Properties>
-                <Property name="name" type="java.lang.String" value="NoPemesanan" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="NoPiutang" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[207, 23]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoPemesananKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoPiutangKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -149,14 +149,14 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Tanggal" name="Tanggal">
+            <Component class="widget.Tanggal" name="TanggalPiutang">
               <Properties>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
-                <Property name="name" type="java.lang.String" value="Tanggal" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="TanggalPiutang" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TanggalItemStateChanged"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TanggalKeyPressed"/>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TanggalPiutangItemStateChanged"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TanggalPiutangKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -209,16 +209,16 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="kdptg">
+            <Component class="widget.TextBox" name="KdPetugas">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="name" type="java.lang.String" value="kdptg" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="KdPetugas" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 23]"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="kdptgKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KdPetugasKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -240,10 +240,10 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="nmptg">
+            <Component class="widget.TextBox" name="NmPetugas">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="name" type="java.lang.String" value="nmptg" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="NmPetugas" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[207, 23]"/>
                 </Property>
@@ -337,14 +337,14 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Tanggal" name="Tanggal1">
+            <Component class="widget.Tanggal" name="JatuhTempo">
               <Properties>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
-                <Property name="name" type="java.lang.String" value="Tanggal1" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="JatuhTempo" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="Tanggal1ItemStateChanged"/>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Tanggal1KeyPressed"/>
+                <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JatuhTempoItemStateChanged"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="JatuhTempoKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
