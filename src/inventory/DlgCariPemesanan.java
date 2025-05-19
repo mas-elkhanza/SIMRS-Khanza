@@ -57,7 +57,7 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private double tagihan=0;
     private Jurnal jur=new Jurnal();
-    private String aktifkanbatch="no",tanggal= "",datanofaktur="",datasuplier="",datapetugas="",datajenis="",databarang="",dataindustri="",datacari="",statusbayar="";
+    private String aktifkanbatch="no";
     private boolean sukses=true;
     private int i=0;
     private StringBuilder htmlContent;
@@ -1610,50 +1610,43 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-       Valid.tabelKosong(tabMode);
+        Valid.tabelKosong(tabMode);
         try{   
+            String tanggal= "",datanofaktur="",datasuplier="",datapetugas="",datajenis="",databarang="",dataindustri="",datacari="",statusbayar="";
             if(RDatang.isSelected()==true){
                 tanggal=" pemesanan.tgl_pesan between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' ";
             }else if(RFaktur.isSelected()==true){
                 tanggal=" pemesanan.tgl_faktur between '"+Valid.SetTgl(TglFaktur1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglFaktur2.getSelectedItem()+"")+"' ";
             }
             
-            datanofaktur="";
             if(!NoFaktur.getText().equals("")){
-                datanofaktur=" and pemesanan.no_faktur like '%"+NoFaktur.getText()+"%' ";
+                datanofaktur=" and pemesanan.no_faktur='"+NoFaktur.getText()+"' ";
             }
             
-            datasuplier="";
             if(!nmsup.getText().equals("")){
-                datasuplier=" and datasuplier.nama_suplier like '%"+nmsup.getText()+"%' ";
+                datasuplier=" and datasuplier.nama_suplier='"+nmsup.getText()+"' ";
             }
             
-            datapetugas="";
             if(!nmptg.getText().equals("")){
-                datapetugas=" and petugas.nama like '%"+nmptg.getText()+"%' ";
+                datapetugas=" and petugas.nama='"+nmptg.getText()+"' ";
             }
             
-            datajenis="";
             if(!nmjenis.getText().equals("")){
-                datajenis=" and jenis.nama like '%"+nmjenis.getText()+"%' ";
+                datajenis=" and jenis.nama='"+nmjenis.getText()+"' ";
             }
             
-            databarang="";
             if(!nmbar.getText().equals("")){
-                databarang=" and databarang.nama_brng like '%"+nmbar.getText()+"%' ";
+                databarang=" and databarang.nama_brng='"+nmbar.getText()+"' ";
             }
             
-            dataindustri="";
             if(!NmIF.getText().equals("")){
-                dataindustri=" and industrifarmasi.nama_industri like '%"+NmIF.getText()+"%' ";
+                dataindustri=" and industrifarmasi.nama_industri='"+NmIF.getText()+"' ";
             }
             
-            statusbayar="";
             if(!Status.getSelectedItem().toString().equals("Semua")){
                 statusbayar=" and pemesanan.status='"+Status.getSelectedItem().toString()+"' ";
             }
             
-            datacari="";
             if(!TCari.getText().trim().equals("")){
                 datacari=" and (pemesanan.no_faktur like '%"+TCari.getText()+"%' or pemesanan.kode_suplier like '%"+TCari.getText()+"%' or datasuplier.nama_suplier like '%"+TCari.getText()+"%' or pemesanan.nip like '%"+TCari.getText()+"%' or "+
                          " petugas.nama like '%"+TCari.getText()+"%' or bangsal.nm_bangsal like '%"+TCari.getText()+"%' or detailpesan.kode_brng like '%"+TCari.getText()+"%' or databarang.nama_brng like '%"+TCari.getText()+"%' or detailpesan.kode_sat like '%"+TCari.getText()+"%' or "+
@@ -1752,6 +1745,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     
     private void tampil2() {
         try {
+            String tanggal= "",datanofaktur="",datasuplier="",datapetugas="",datajenis="",databarang="",dataindustri="",datacari="",statusbayar="";
             if(RDatang.isSelected()==true){
                 tanggal=" pemesanan.tgl_pesan between '"+Valid.SetTgl(TglBeli1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglBeli2.getSelectedItem()+"")+"' ";
             }else if(RFaktur.isSelected()==true){
