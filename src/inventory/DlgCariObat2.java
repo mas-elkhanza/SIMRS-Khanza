@@ -64,12 +64,9 @@ public final class DlgCariObat2 extends javax.swing.JDialog {
     private PreparedStatement psobat,pscarikapasitas,psstok,psrekening,ps2,psbatch;
     private ResultSet rsobat,carikapasitas,rsstok,rsrekening,rs2,rsbatch;
     private Jurnal jur=new Jurnal();
-    private double h_belicari=0, hargacari=0, sisacari=0,x=0,y=0,embalase=Sequel.cariIsiAngka("select set_embalase.embalase_per_obat from set_embalase"),
+    private double h_belicari=0, hargacari=0, sisacari=0,y=0,embalase=Sequel.cariIsiAngka("select set_embalase.embalase_per_obat from set_embalase"),
             tuslah=Sequel.cariIsiAngka("select set_embalase.tuslah_per_obat from set_embalase"),kenaikan,stokbarang,ttlhpp,ttljual;
     private int jml=0,i=0,z=0,row=0;
-    private boolean[] pilih; 
-    private double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
-    private String[] no,kodebarang,namabarang,kodesatuan,letakbarang,namajenis,industri,aturan,kategori,golongan,nobatch,nofaktur,kadaluarsa;
     private String signa1="1",signa2="1",kdObatSK="",requestJson="",nokunjungan="",URL="",otorisasi,sql="",no_batchcari="", tgl_kadaluarsacari="", 
                    no_fakturcari="",aktifkanbatch="no",aktifpcare="no",noresep="",Suspen_Piutang_Obat_Ranap="",Obat_Ranap="",HPP_Obat_Rawat_Inap="",
                    Persediaan_Obat_Rawat_Inap="",hppfarmasi="",bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1"),
@@ -2180,6 +2177,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     
     private void tampilcacheberiobat(){ 
         try{
+            boolean[] pilih; 
+            double[] jumlah,harga,eb,ts,stok,beli;
+            String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,industri,aturan,kategori,golongan,nobatch,nofaktur,kadaluarsa;
             jml=0;
             for(i=0;i<tbObat.getRowCount();i++){
                 if(Valid.SetAngka(tbObat.getValueAt(i,1).toString())>0){
@@ -2906,6 +2906,9 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
     
     public void tampildetailracikanobat() {  
         try {
+            double[] jumlah,harga,eb,ts,stok,beli,kapasitas,kandungan;
+            String[] no,kodebarang,namabarang,kodesatuan,namajenis,industri,kategori,golongan,nobatch,nofaktur,kadaluarsa;
+            
             z=0;
             for(i=0;i<tbDetailObatRacikan.getRowCount();i++){
                 if(Valid.SetAngka(tbDetailObatRacikan.getValueAt(i,10).toString())>0){
@@ -2913,7 +2916,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 }
             }    
 
-            pilih=new boolean[z]; 
             jumlah=new double[z];
             harga=new double[z];
             eb=new double[z];
@@ -2922,7 +2924,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             kodebarang=new String[z];
             namabarang=new String[z];
             kodesatuan=new String[z];
-            letakbarang=new String[z];
             no=new String[z];
             namajenis=new String[z];        
             industri=new String[z];         
@@ -3006,7 +3007,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 });
             }
             
-            pilih=null;
             jumlah=null;
             harga=null;
             eb=null;
@@ -3015,7 +3015,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
             kodebarang=null;
             namabarang=null;
             kodesatuan=null;
-            letakbarang=null;
             no=null;
             namajenis=null;       
             industri=null;         

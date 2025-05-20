@@ -40,9 +40,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
     private ResultSet rs;
     private WarnaTable2 warna=new WarnaTable2();
     private double x=0,grandtotal=0,persenmenejemen=0,besarmenejemen=0,dppnilailain=0,persenppn=0,besarppn=0,persenpph=0,besarpph=0,totaltagihan=0;
-    private int jml=0,i=0,row=0,index=0,pilihan=1;
-    private String[] kode,kategori;
-    private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
+    private int jml=0,i=0,row=0,index=0;
     private boolean sukses=true;    
     private File file;
     private FileWriter fileWriter;
@@ -544,7 +542,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
         panelisi1.add(LSubtotal);
         LSubtotal.setBounds(124, 10, 157, 23);
 
-        label17.setText("PPN (%) :");
+        label17.setText("PPN(%) :");
         label17.setName("label17"); // NOI18N
         label17.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label17);
@@ -696,7 +694,7 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
         panelisi1.add(PersenPPN);
         PersenPPN.setBounds(369, 40, 45, 23);
 
-        label22.setText("PPH 23 (%) :");
+        label22.setText("PPH 23(%) :");
         label22.setName("label22"); // NOI18N
         label22.setPreferredSize(new java.awt.Dimension(60, 30));
         panelisi1.add(label22);
@@ -1017,10 +1015,11 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             if (reply == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
-                if(Sequel.menyimpantf2("piutang_jasa_perusahaan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'0','Belum Lunas'","No.Piutang",15,new String[]{
+                if(Sequel.menyimpantf2("piutang_jasa_perusahaan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum Lunas'","No.Piutang",16,new String[]{
                     NoPiutang.getText(),Valid.SetTgl(TanggalPiutang.getSelectedItem()+""),Valid.SetTgl(JatuhTempo.getSelectedItem()+""),KdPetugas.getText(),KdPerusahaan.getText(), 
                     Keterangan.getText(),Double.toString(grandtotal),Double.toString(persenmenejemen),Double.toString(besarmenejemen),Double.toString(dppnilailain),
-                    Double.toString(persenppn),Double.toString(besarppn),Double.toString(persenpph),Double.toString(besarpph),Double.toString(totaltagihan)
+                    Double.toString(persenppn),Double.toString(besarppn),Double.toString(persenpph),Double.toString(besarpph),Double.toString(totaltagihan),
+                    Double.toString(totaltagihan)
                 })==true){
                     jml=tbDokter.getRowCount();
                     for(i=0;i<jml;i++){
@@ -1317,6 +1316,8 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void tampil2() {
         try{
+            String[] kode,kategori;
+            double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal;
             row=tbDokter.getRowCount();
             jml=0;
             for(i=0;i<row;i++){

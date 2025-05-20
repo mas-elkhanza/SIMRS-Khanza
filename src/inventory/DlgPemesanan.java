@@ -43,10 +43,6 @@ public class DlgPemesanan extends javax.swing.JDialog {
     private double hargakonversi=0,meterai=0,ttl=0,y=0,w=0,ttldisk=0,
             sbttl=0,ppn=0,jmlkonversi=0,hargappn=0,hargadiskon=0;
     private int jml=0,i=0,row=0,index=0;
-    private String[] kodebarang,namabarang,satuan,satuanbeli,kadaluwarsa,nobatch;
-    private boolean[] ganti;
-    private double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok,hpp,isi,jmlbesar,
-                     ralan,kelas1,kelas2,kelas3,utama,vip,vvip,beliluar,jualbebas,karyawan,dasar;
     private WarnaTable2 warna=new WarnaTable2();
     public boolean tampikan=true;
     private boolean sukses=true;
@@ -1565,6 +1561,10 @@ private void btnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     
     private void tampil2() {
         try{
+            String[] kodebarang,namabarang,satuan,satuanbeli,kadaluwarsa,nobatch;
+            boolean[] ganti;
+            double[] harga,jumlah,subtotal,diskon,besardiskon,jmltotal,jmlstok,hpp,isi,jmlbesar,
+                     ralan,kelas1,kelas2,kelas3,utama,vip,vvip,beliluar,jualbebas,karyawan,dasar;
             row=tbDokter.getRowCount();
             jml=0;
             for(i=0;i<row;i++){

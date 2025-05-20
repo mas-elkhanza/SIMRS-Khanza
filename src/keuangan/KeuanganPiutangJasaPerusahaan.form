@@ -524,7 +524,7 @@
             </Component>
             <Component class="widget.Label" name="label17">
               <Properties>
-                <Property name="text" type="java.lang.String" value="PPN (%) :"/>
+                <Property name="text" type="java.lang.String" value="PPN(%) :"/>
                 <Property name="name" type="java.lang.String" value="label17" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[60, 30]"/>
@@ -768,7 +768,7 @@
             </Component>
             <Component class="widget.Label" name="label22">
               <Properties>
-                <Property name="text" type="java.lang.String" value="PPH 23 (%) :"/>
+                <Property name="text" type="java.lang.String" value="PPH 23(%) :"/>
                 <Property name="name" type="java.lang.String" value="label22" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[60, 30]"/>

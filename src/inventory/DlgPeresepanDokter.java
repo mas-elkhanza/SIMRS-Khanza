@@ -60,9 +60,6 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private double y=0,kenaikan=0,ttl=0,ppnobat=0,jumlahracik=0,persenracik=0,kapasitasracik=0;
     private int i=0,z=0,row2=0,r=0;
     private boolean ubah=false,copy=false,sukses=true;
-    private boolean[] pilih; 
-    private double[] jumlah,harga,beli,stok,kapasitas,p1,p2;
-    private String[] no,kodebarang,namabarang,kodesatuan,kandungan,letakbarang,namajenis,aturan,industri,komposisi;
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
@@ -1712,6 +1709,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     private void tampilcacheresep() {  
         try{
+            boolean[] pilih; 
+            double[] jumlah,harga,beli,stok;
+            String[] kodebarang,namabarang,kodesatuan,letakbarang,namajenis,aturan,industri;
             z=0;
             for(i=0;i<tbResep.getRowCount();i++){
                 if(!tbResep.getValueAt(i,1).toString().equals("")){
@@ -2126,6 +2126,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     
     public void tampildetailracikanresep() {   
         try {
+            double[] jumlah,harga,beli,stok,kapasitas,p1,p2;
+            String[] no,kodebarang,namabarang,kodesatuan,kandungan,namajenis,industri,komposisi;
             z=0;
             for(i=0;i<tbDetailResepObatRacikan.getRowCount();i++){
                 if(Valid.SetAngka(tbDetailResepObatRacikan.getValueAt(i,13).toString())>0){
@@ -2133,7 +2135,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 }
             }    
 
-            pilih=new boolean[z]; 
             jumlah=new double[z];
             harga=new double[z];
             stok=new double[z];
@@ -2142,7 +2143,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             kodebarang=new String[z];
             namabarang=new String[z];
             kodesatuan=new String[z];
-            letakbarang=new String[z];
             no=new String[z];
             namajenis=new String[z];        
             industri=new String[z];          
@@ -2210,7 +2210,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 });
             }
             
-            pilih=null; 
             jumlah=null;
             harga=null;
             stok=null;
@@ -2219,7 +2218,6 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             kodebarang=null;
             namabarang=null;
             kodesatuan=null;
-            letakbarang=null;
             no=null;
             namajenis=null;        
             industri=null;          

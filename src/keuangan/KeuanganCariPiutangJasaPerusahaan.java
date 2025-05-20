@@ -16,7 +16,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -24,10 +23,8 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.DlgBayarPiutang;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
-import simrskhanza.DlgCariPasien;
 import simrskhanza.DlgCariPerusahaan;
 
 public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
@@ -40,8 +37,6 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
     private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");   
-    private double ttljual=0,subttljual=0,ttldisc=0,subttldisc=0,ttlall=0,
-                   subttlall=0,sisapiutang=0,cicilan=0,telat=0;
     private String aktifkanbatch="no";
     private int no=0,i=0;
     private boolean sukses=true;
@@ -61,7 +56,7 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
         }
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Piutang","Tgl.Piutang","Jatuh Tempo","Instansi/Perusahaan","Petugas","Keterangan","Jasa Menejemen","DPP Lain","PPN","PPH","Piutang","Sisa Piutang","Status"
+                "No.Piutang","Tgl.Piutang","Jatuh Tempo","Instansi/Perusahaan","Petugas","Keterangan","Status"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -70,12 +65,22 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 11; i++) {
+        for (i = 0; i < 7; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(200);
+            }else if(i==2){
+                column.setPreferredWidth(72);
+            }else if(i==3){
+                column.setPreferredWidth(200);
+            }else if(i==4){
+                column.setPreferredWidth(200);
+            }else if(i==5){
+                column.setPreferredWidth(200);
+            }else if(i==6){
+                column.setPreferredWidth(140);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -151,7 +156,6 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         label9 = new widget.Label();
-        LTotal = new widget.Label();
         BtnAll = new widget.Button();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
@@ -390,11 +394,11 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(70, 23));
+        label10.setPreferredSize(new java.awt.Dimension(65, 23));
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(170, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(310, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -419,16 +423,9 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
         });
         panelisi1.add(BtnCari);
 
-        label9.setText("Total :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(55, 30));
+        label9.setPreferredSize(new java.awt.Dimension(70, 30));
         panelisi1.add(label9);
-
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(152, 30));
-        panelisi1.add(LTotal);
 
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
@@ -623,7 +620,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+            /*Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                 Sequel.menyimpan("temporary","'"+i+"','"+
@@ -654,7 +651,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             Valid.MyReportqry("rptPiutang.jasper","report","::[ Transaksi Piutang Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
-        this.setCursor(Cursor.getDefaultCursor());
+        this.setCursor(Cursor.getDefaultCursor());*/
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -819,7 +816,6 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnPrint;
     private widget.TextBox KdPerusahaan;
     private widget.TextBox KdPetugas;
-    private widget.Label LTotal;
     private widget.TextBox NmPerusahaan;
     private widget.TextBox NmPetugas;
     private widget.TextBox NoPiutang;
@@ -878,28 +874,75 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         
         Valid.tabelKosong(tabMode);
         try{
-            ttljual=0;
-            ttldisc=0;
-            ttlall=0;
             ps=koneksi.prepareStatement(
-                    "select piutang_jasa_perusahaan.no_piutang,piutang_jasa_perusahaan.tgl_piutang,piutang_jasa_perusahaan.jatuh_tempo,piutang_jasa_perusahaan.nip,"+
-                    "petugas.nama,piutang_jasa_perusahaan.kode_perusahaan,perusahaan_pasien.nama_perusahaan,piutang_jasa_perusahaan.keterangan,piutang_jasa_perusahaan.grand_total,"+
-                    "piutang_jasa_perusahaan.persen_jasa_menejemen,piutang_jasa_perusahaan.jasa_menejemen,piutang_jasa_perusahaan.dpp_lain,piutang_jasa_perusahaan.persen_ppn,"+
-                    "piutang_jasa_perusahaan.ppn,piutang_jasa_perusahaan.persen_pph,piutang_jasa_perusahaan.pph,piutang_jasa_perusahaan.totalpiutang,piutang_jasa_perusahaan.sisapiutang,"+
-                    "piutang_jasa_perusahaan.status from piutang_jasa_perusahaan inner join petugas on piutang_jasa_perusahaan.nip=petugas.nip "+
-                    "inner join perusahaan_pasien on piutang_jasa_perusahaan.kode_perusahaan=perusahaan_pasien.kode_perusahaan where "+
-                    tanggal+nopiutang+instansi+petugas+status+(TCari.getText().trim().equals("")?"":" and (piutang_jasa_perusahaan.no_piutang like '%"+TCari.getText().trim()+"%' or "+
-                    "perusahaan_pasien.nama_perusahaan like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or "+
-                    "piutang_jasa_perusahaan.keterangan like '%"+TCari.getText().trim()+"%')")+" order by piutang_jasa_perusahaan.tgl_piutang");
+                "select piutang_jasa_perusahaan.no_piutang,piutang_jasa_perusahaan.tgl_piutang,piutang_jasa_perusahaan.jatuh_tempo,piutang_jasa_perusahaan.nip,"+
+                "petugas.nama,piutang_jasa_perusahaan.kode_perusahaan,perusahaan_pasien.nama_perusahaan,piutang_jasa_perusahaan.keterangan,piutang_jasa_perusahaan.grand_total,"+
+                "piutang_jasa_perusahaan.persen_jasa_menejemen,piutang_jasa_perusahaan.jasa_menejemen,piutang_jasa_perusahaan.dpp_lain,piutang_jasa_perusahaan.persen_ppn,"+
+                "piutang_jasa_perusahaan.ppn,piutang_jasa_perusahaan.persen_pph,piutang_jasa_perusahaan.pph,piutang_jasa_perusahaan.totalpiutang,piutang_jasa_perusahaan.sisapiutang,"+
+                "piutang_jasa_perusahaan.status from piutang_jasa_perusahaan inner join petugas on piutang_jasa_perusahaan.nip=petugas.nip "+
+                "inner join perusahaan_pasien on piutang_jasa_perusahaan.kode_perusahaan=perusahaan_pasien.kode_perusahaan where "+
+                tanggal+nopiutang+instansi+petugas+status+(TCari.getText().trim().equals("")?"":" and (piutang_jasa_perusahaan.no_piutang like '%"+TCari.getText().trim()+"%' or "+
+                "perusahaan_pasien.nama_perusahaan like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%' or "+
+                "piutang_jasa_perusahaan.keterangan like '%"+TCari.getText().trim()+"%')")+" order by piutang_jasa_perusahaan.tgl_piutang"
+            );
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    //"No.Piutang","Tgl.Piutang","Jatuh Tempo","Instansi/Perusahaan","Petugas","Keterangan","Jasa Menejemen","DPP Lain","PPN","PPH","Piutang"
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_piutang"),rs.getString("tgl_piutang"),rs.getString("jatuh_tempo"),rs.getString("kode_perusahaan")+", "+rs.getString("nama_perusahaan"),
-                        rs.getString("nip")+", "+rs.getString("nama"),rs.getString("keterangan"),df2.format(rs.getDouble("jasa_menejemen"))+"("+rs.getString("persen_jasa_menejemen")+"%)",
-                        df2.format(rs.getDouble("dpp_lain")),df2.format(rs.getDouble("ppn"))+"("+rs.getString("persen_ppn")+"%)",df2.format(rs.getDouble("pph"))+"("+rs.getString("persen_pph")+"%)",
-                        df2.format(rs.getDouble("totalpiutang")),df2.format(rs.getDouble("sisapiutang")),rs.getString("status")
+                        rs.getString("no_piutang"),rs.getString("tgl_piutang"),rs.getString("jatuh_tempo"),rs.getString("kode_perusahaan")+" "+rs.getString("nama_perusahaan"),
+                        rs.getString("nip")+" "+rs.getString("nama"),rs.getString("keterangan"),rs.getString("status")
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","Kategori","Jml","Harga","Subtotal","Diskon","Total"
+                    });
+                    ps2=koneksi.prepareStatement(
+                         "select detail_piutang_jasa_perusahaan.kode_kategori,kategori_piutang_jasa_perusahaan.nama_kategori,detail_piutang_jasa_perusahaan.jml,"+
+                         "detail_piutang_jasa_perusahaan.harga,detail_piutang_jasa_perusahaan.subtotal,detail_piutang_jasa_perusahaan.besar_diskon,"+
+                         "detail_piutang_jasa_perusahaan.total from detail_piutang_jasa_perusahaan inner join kategori_piutang_jasa_perusahaan "+
+                         "on kategori_piutang_jasa_perusahaan.kode_kategori=detail_piutang_jasa_perusahaan.kode_kategori "+
+                         "where detail_piutang_jasa_perusahaan.no_piutang=? order by detail_piutang_jasa_perusahaan.kode_kategori"
+                    );
+                    try{
+                        ps2.setString(1,rs.getString("no_piutang"));
+                        rs2=ps2.executeQuery();
+                        int no=1;
+                        while(rs2.next()){
+                            tabMode.addRow(new Object[]{
+                                "",no+"."+rs2.getString("kode_kategori")+" "+rs2.getString("nama_kategori"),rs2.getString("jml"),df2.format(rs2.getDouble("harga")),
+                                df2.format(rs2.getDouble("subtotal")),df2.format(rs2.getDouble("besar_diskon")),df2.format(rs2.getDouble("total"))
+                            });
+                            no++;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                        if(ps2!=null){
+                            ps2.close();
+                        }
+                    }
+                    tabMode.addRow(new Object[]{
+                        "","Grand Total",":","","","",df2.format(rs.getDouble("grand_total"))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","Jasa Menejemen("+rs.getString("persen_jasa_menejemen")+"%)",":","","","",df2.format(rs.getDouble("jasa_menejemen"))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","DPP Nilai Lain",":","","","",df2.format(rs.getDouble("dpp_lain"))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","PPN("+rs.getString("persen_ppn")+"%)",":","","","",df2.format(rs.getDouble("ppn"))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","PPH 23("+rs.getString("persen_pph")+"%)",":","","","",df2.format(rs.getDouble("pph"))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","Total Tagihan",":","","","",df2.format(rs.getDouble("totalpiutang"))
+                    });
+                    tabMode.addRow(new Object[]{
+                        "","Sisa Piutang",":","","","",df2.format(rs.getDouble("sisapiutang"))
                     });
                 }  
             } catch (Exception e) {
@@ -911,8 +954,31 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 if(ps!=null){
                     ps.close();
                 }
-            }                
-            LTotal.setText(df2.format(ttljual));
+            }      
+            tabMode.addRow(new Object[]{
+                "","","","","","",""
+            });
+            tabMode.addRow(new Object[]{
+                ">>","Jumlah Grand Total",":","","","",df2.format(rs.getDouble("grand_total"))
+            });
+            tabMode.addRow(new Object[]{
+                ">>","Jumlah Jasa Menejemen",":","","","",df2.format(rs.getDouble("jasa_menejemen"))
+            });
+            tabMode.addRow(new Object[]{
+                ">>","Jumlah DPP Nilai Lain",":","","","",df2.format(rs.getDouble("dpp_lain"))
+            });
+            tabMode.addRow(new Object[]{
+                ">>","Jumlah PPN",":","","","",df2.format(rs.getDouble("ppn"))
+            });
+            tabMode.addRow(new Object[]{
+                ">>","Jumlah PPH 23",":","","","",df2.format(rs.getDouble("pph"))
+            });
+            tabMode.addRow(new Object[]{
+                ">>","Jumlah Total Tagihan",":","","","",df2.format(rs.getDouble("totalpiutang"))
+            });
+            tabMode.addRow(new Object[]{
+                ">>","Jumlah Sisa Piutang",":","","","",df2.format(rs.getDouble("sisapiutang"))
+            });
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
