@@ -614,13 +614,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        /*this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
         }else if(tabMode.getRowCount()!=0){
-            /*Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
+            Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
             int row=tabMode.getRowCount();
             for(int i=0;i<row;i++){  
                 Sequel.menyimpan("temporary","'"+i+"','"+
@@ -850,6 +850,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void tampil() {
         String tanggal= "",nopiutang="",instansi="",petugas="",status="";
+        double totalgrandtotal=0,totaljasamenejemen=0,totaldpplain=0,totalppn=0,totalpph=0,totaltagihan=0,totalsisa=0;
+        
         if(RPiutang.isSelected()==true){
             tanggal=" piutang_jasa_perusahaan.tgl_piutang between '"+Valid.SetTgl(TglPiutang1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglPiutang2.getSelectedItem()+"")+"' ";
         }else if(RTempo.isSelected()==true){
@@ -888,6 +890,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
+                    totalgrandtotal=totalgrandtotal+rs.getDouble("grand_total");
+                    totaljasamenejemen=totaljasamenejemen+rs.getDouble("jasa_menejemen");
+                    totaldpplain=totaldpplain+rs.getDouble("dpp_lain");
+                    totalppn=totalppn+rs.getDouble("ppn");
+                    totalpph=totalpph+rs.getDouble("pph");
+                    totaltagihan=totaltagihan+rs.getDouble("totalpiutang");
+                    totalsisa=totalsisa+rs.getDouble("sisapiutang");
+                    
                     tabMode.addRow(new Object[]{
                         rs.getString("no_piutang"),rs.getString("tgl_piutang"),rs.getString("jatuh_tempo"),rs.getString("kode_perusahaan")+" "+rs.getString("nama_perusahaan"),
                         rs.getString("nip")+" "+rs.getString("nama"),rs.getString("keterangan"),rs.getString("status")
@@ -959,30 +969,29 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 "","","","","","",""
             });
             tabMode.addRow(new Object[]{
-                ">>","Jumlah Grand Total",":","","","",df2.format(rs.getDouble("grand_total"))
+                ">>","Jumlah Grand Total",":","","","",df2.format(totalgrandtotal)
             });
             tabMode.addRow(new Object[]{
-                ">>","Jumlah Jasa Menejemen",":","","","",df2.format(rs.getDouble("jasa_menejemen"))
+                ">>","Jumlah Jasa Menejemen",":","","","",df2.format(totaljasamenejemen)
             });
             tabMode.addRow(new Object[]{
-                ">>","Jumlah DPP Nilai Lain",":","","","",df2.format(rs.getDouble("dpp_lain"))
+                ">>","Jumlah DPP Nilai Lain",":","","","",df2.format(totaldpplain)
             });
             tabMode.addRow(new Object[]{
-                ">>","Jumlah PPN",":","","","",df2.format(rs.getDouble("ppn"))
+                ">>","Jumlah PPN",":","","","",df2.format(totalppn)
             });
             tabMode.addRow(new Object[]{
-                ">>","Jumlah PPH 23",":","","","",df2.format(rs.getDouble("pph"))
+                ">>","Jumlah PPH 23",":","","","",df2.format(totalpph)
             });
             tabMode.addRow(new Object[]{
-                ">>","Jumlah Total Tagihan",":","","","",df2.format(rs.getDouble("totalpiutang"))
+                ">>","Jumlah Total Tagihan",":","","","",df2.format(totaltagihan)
             });
             tabMode.addRow(new Object[]{
-                ">>","Jumlah Sisa Piutang",":","","","",df2.format(rs.getDouble("sisapiutang"))
+                ">>","Jumlah Sisa Piutang",":","","","",df2.format(totalsisa)
             });
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
-        
     }
 
     public void isCek(){
