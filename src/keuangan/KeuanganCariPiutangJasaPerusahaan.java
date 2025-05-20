@@ -38,7 +38,7 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");   
     private String aktifkanbatch="no";
-    private int no=0,i=0;
+    private int i=0;
     private boolean sukses=true;
     
     /** Creates new form DlgProgramStudi
@@ -614,7 +614,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnAllKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        /*this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         BtnCariActionPerformed(evt);
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
@@ -630,17 +630,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 tabMode.getValueAt(i,3).toString()+"','"+
                                 tabMode.getValueAt(i,4).toString()+"','"+
                                 tabMode.getValueAt(i,5).toString()+"','"+
-                                tabMode.getValueAt(i,6).toString()+"','"+
-                                tabMode.getValueAt(i,7).toString()+"','"+
-                                tabMode.getValueAt(i,8).toString()+"','"+
-                                tabMode.getValueAt(i,9).toString()+"','"+
-                                tabMode.getValueAt(i,10).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Piutang"); 
+                                tabMode.getValueAt(i,6).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Piutang"); 
             }
-            i++;
-            Sequel.menyimpan("temporary","'"+i+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Piutang"); 
-            i++;
-            Sequel.menyimpan("temporary","'"+i+"','Jml.Total :','','','','','','','','','','"+LTotal.getText()+"','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi Piutang"); 
-            
+             
             Map<String, Object> param = new HashMap<>();  
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -649,9 +641,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptPiutang.jasper","report","::[ Transaksi Piutang Barang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+            Valid.MyReportqry("rptPiutangJasaPerusahaan.jasper","report","::[ Transaksi Piutang Jasa Perusahaan ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
         }
-        this.setCursor(Cursor.getDefaultCursor());*/
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -964,31 +956,33 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 if(ps!=null){
                     ps.close();
                 }
-            }      
-            tabMode.addRow(new Object[]{
-                "","","","","","",""
-            });
-            tabMode.addRow(new Object[]{
-                ">>","Jumlah Grand Total",":","","","",df2.format(totalgrandtotal)
-            });
-            tabMode.addRow(new Object[]{
-                ">>","Jumlah Jasa Menejemen",":","","","",df2.format(totaljasamenejemen)
-            });
-            tabMode.addRow(new Object[]{
-                ">>","Jumlah DPP Nilai Lain",":","","","",df2.format(totaldpplain)
-            });
-            tabMode.addRow(new Object[]{
-                ">>","Jumlah PPN",":","","","",df2.format(totalppn)
-            });
-            tabMode.addRow(new Object[]{
-                ">>","Jumlah PPH 23",":","","","",df2.format(totalpph)
-            });
-            tabMode.addRow(new Object[]{
-                ">>","Jumlah Total Tagihan",":","","","",df2.format(totaltagihan)
-            });
-            tabMode.addRow(new Object[]{
-                ">>","Jumlah Sisa Piutang",":","","","",df2.format(totalsisa)
-            });
+            }   
+            if(totalgrandtotal>0){
+                tabMode.addRow(new Object[]{
+                    "","","","","","",""
+                });
+                tabMode.addRow(new Object[]{
+                    ">>","Jumlah Grand Total",":","","","",df2.format(totalgrandtotal)
+                });
+                tabMode.addRow(new Object[]{
+                    ">>","Jumlah Jasa Menejemen",":","","","",df2.format(totaljasamenejemen)
+                });
+                tabMode.addRow(new Object[]{
+                    ">>","Jumlah DPP Nilai Lain",":","","","",df2.format(totaldpplain)
+                });
+                tabMode.addRow(new Object[]{
+                    ">>","Jumlah PPN",":","","","",df2.format(totalppn)
+                });
+                tabMode.addRow(new Object[]{
+                    ">>","Jumlah PPH 23",":","","","",df2.format(totalpph)
+                });
+                tabMode.addRow(new Object[]{
+                    ">>","Jumlah Total Tagihan",":","","","",df2.format(totaltagihan)
+                });
+                tabMode.addRow(new Object[]{
+                    ">>","Jumlah Sisa Piutang",":","","","",df2.format(totalsisa)
+                });
+            }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
