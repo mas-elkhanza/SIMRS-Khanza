@@ -1,5 +1,4 @@
 package keuangan;
-import inventory.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -23,7 +22,6 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 import simrskhanza.DlgCariPerusahaan;
 
@@ -34,10 +32,8 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
     private PreparedStatement ps,ps2;
     private ResultSet rs,rs2;
     private Jurnal jur=new Jurnal();
-    private riwayatobat Trackobat=new riwayatobat();
     private Connection koneksi=koneksiDB.condb();
     private DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");   
-    private String aktifkanbatch="no";
     private int i=0;
     private boolean sukses=true;
     
@@ -47,13 +43,6 @@ public class KeuanganCariPiutangJasaPerusahaan extends javax.swing.JDialog {
     public KeuanganCariPiutangJasaPerusahaan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        try {
-            aktifkanbatch = koneksiDB.AKTIFKANBATCHOBAT();
-        } catch (Exception e) {
-            System.out.println("E : "+e);
-            aktifkanbatch = "no";
-        }
         
         tabMode=new DefaultTableModel(null,new Object[]{
                 "No.Piutang","Tgl.Piutang","Jatuh Tempo","Instansi/Perusahaan","Petugas","Keterangan","Status"
@@ -787,7 +776,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         sukses=false;
                     }
                     if(sukses==true){
-                        sukses=jur.simpanJurnal(NoPiutang.getText(),"U","PEMBATALAN PIUTANG JASA PERUSAHAAN "+NmPerusahaan.getText().toUpperCase()+", OLEH "+akses.getkode()); 
+                        sukses=jur.simpanJurnal(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString(),"U","PEMBATALAN PIUTANG JASA PERUSAHAAN "+tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString()+", OLEH "+akses.getkode()); 
                     }  
                 }
                 
