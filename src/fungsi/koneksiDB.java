@@ -37,7 +37,6 @@ public class koneksiDB {
                     dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
                     dataSource.setCachePreparedStatements(true);
                     dataSource.setUseCompression(true);
-                    dataSource.setAutoReconnectForPools(true);
                     dataSource.setUseLocalSessionState(true);
                     dataSource.setUseLocalTransactionState(true);
                     
