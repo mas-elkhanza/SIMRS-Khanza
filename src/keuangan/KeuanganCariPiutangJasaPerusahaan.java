@@ -768,88 +768,41 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
     }else{
         if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-          Valid.textKosong(TCari,"No.Piutang");
+            Valid.textKosong(TCari,"No.Piutang");
+        }else if(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString().trim().equals("Sudah Lunas")){
+            JOptionPane.showMessageDialog(null,"Maaf, Piutang sudah lunas dan tidak boleh dihapus..!!");
         }else{
-          try {
-              ps=koneksi.prepareStatement(
-                      "select nota_piutang, kd_bangsal from piutang where nota_piutang=?");
-              try {
-                 ps.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
-                 rs=ps.executeQuery();
-                 if(rs.next()){
-                     Sequel.AutoComitFalse();
-                     sukses=true;
-                     ps2=koneksi.prepareStatement(
-                          "select kode_brng,jumlah,no_batch,no_faktur from detailpiutang where nota_piutang=? ");
-                     try {
-                         ps2.setString(1,rs.getString(1));
-                         rs2=ps2.executeQuery();
-                         while(rs2.next()){
-                             if(aktifkanbatch.equals("yes")){
-                                Sequel.mengedit("data_batch","no_batch=? and kode_brng=? and no_faktur=?","sisa=sisa+?",4,new String[]{
-                                    rs2.getString("jumlah"),rs2.getString("no_batch"),rs2.getString("kode_brng"),rs2.getString("no_faktur")
-                                });
-                                Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Piutang",akses.getkode(),rs.getString("kd_bangsal"),"Hapus",rs2.getString("no_batch"),rs2.getString("no_faktur"),rs.getString("nota_piutang"));
-                                Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jumlah") +"','"+rs2.getString("no_batch")+"','"+rs2.getString("no_faktur")+"'", 
-                                              "stok=stok+'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"' and no_batch='"+rs2.getString("no_batch")+"' and no_faktur='"+rs2.getString("no_faktur")+"'");
-                             }else{
-                                 Trackobat.catatRiwayat(rs2.getString("kode_brng"),rs2.getDouble("jumlah"),0,"Piutang",akses.getkode(),rs.getString("kd_bangsal"),"Hapus","","",rs.getString("nota_piutang"));
-                                Sequel.menyimpan("gudangbarang","'"+rs2.getString("kode_brng") +"','"+rs.getString("kd_bangsal") +"','"+rs2.getString("jumlah") +"','',''", 
-                                              "stok=stok+'"+rs2.getString("jumlah") +"'","kode_brng='"+rs2.getString("kode_brng")+"' and kd_bangsal='"+rs.getString("kd_bangsal") +"' and no_batch='' and no_faktur=''");
-                             } 
-                         }
-                     } catch (Exception e) {
-                         sukses=false;
-                         System.out.println("Notif : "+e);
-                     } finally{
-                         if(rs2!=null){
-                             rs2.close();
-                         }
-                         if(ps2!=null){
-                             ps2.close();
-                         }
-                     }
-
-                     if(sukses==true){
-                         Sequel.queryu("delete from tampjurnal");
-                         if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select Piutang_Obat from set_akun")+"','PIUTANG PASIEN','0','"+Sequel.cariIsi("select sisapiutang from piutang where nota_piutang='"+rs.getString("nota_piutang")+"'")+"'","Rekening")==false){
-                            sukses=false;
-                         }    
-                         if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select Kontra_Piutang_Obat from set_akun")+"','KAS DI TANGAN','"+Sequel.cariIsi("select sisapiutang  from piutang where nota_piutang='"+rs.getString("nota_piutang")+"'")+"','0'","Rekening")==false){
-                            sukses=false;
-                         } 
-                         if(sukses==true){
-                            sukses=jur.simpanJurnal(rs.getString("nota_piutang"),"U","BATAL PIUTANG OBAT DI "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal where bangsal.kd_bangsal='"+rs.getString("kd_bangsal")+"'").toUpperCase()+", OLEH "+akses.getkode());
-                         }
-                     }
-
-                     if(sukses==true){
-                         Sequel.queryu("delete from piutang where nota_piutang='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"'");
-                         Sequel.Commit();
-                     }else{
-                         sukses=false;
-                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                         Sequel.RollBack();
-                     }
-
-                     Sequel.AutoComitTrue();
-                     if(sukses==true){
-                         tampil();
-                     }   
-                 } 
-              } catch (Exception e) {
-                  System.out.println("Notif : "+e);
-              } finally{
-                  if(rs!=null){
-                      rs.close();
-                  }
-                  if(ps!=null){
-                      ps.close();
-                  }
-              }
-           } catch (Exception ex) {
-              System.out.println(ex);
-           }      
+            int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau dihapus..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                Sequel.AutoComitFalse();
+                sukses=true;
+                double nilaipiutang=Sequel.cariIsiAngka("select piutang_jasa_perusahaan.totalpiutang from piutang_jasa_perusahaan where piutang_jasa_perusahaan.no_piutang=?",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                
+                if(nilaipiutang>0){
+                    Sequel.queryu("delete from tampjurnal");
+                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select set_akun2.Piutang_Jasa_Perusahaan from set_akun2")+"','PIUTANG JASA PERUSAHAAN','0','"+nilaipiutang+"'","Rekening")==false){
+                        sukses=false;
+                    }  
+                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select set_akun2.Pendapatan_Piutang_Jasa_Perusahaan from set_akun2")+"','PENDAPATAN PIUTANG JASA PERUSAHAAN','"+nilaipiutang+"','0'","Rekening")==false){
+                        sukses=false;
+                    }
+                    if(sukses==true){
+                        sukses=jur.simpanJurnal(NoPiutang.getText(),"U","PEMBATALAN PIUTANG JASA PERUSAHAAN "+NmPerusahaan.getText().toUpperCase()+", OLEH "+akses.getkode()); 
+                    }  
+                }
+                
+                if(sukses==true){
+                    sukses=Sequel.meghapustf("piutang_jasa_perusahaan","no_piutang",tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                    Sequel.Commit();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                    Sequel.RollBack();
+                }
+                Sequel.AutoComitTrue();
+                if(sukses==true){
+                     tampil();
+                } 
+            } 
         }
     }
 }//GEN-LAST:event_ppHapusActionPerformed
