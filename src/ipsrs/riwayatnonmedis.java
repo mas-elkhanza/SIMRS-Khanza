@@ -18,7 +18,7 @@ public class riwayatnonmedis {
     private ResultSet rs,rsawal;
     private PreparedStatement ps,psawal;
     private double stokawal=0,stokakhir=0;
-    public void catatRiwayat(String kodebarang,double masuk,double keluar,String posisi,String petugas,String status){        
+    public synchronized void catatRiwayat(String kodebarang,double masuk,double keluar,String posisi,String petugas,String status){        
         try {
             stokakhir=0;stokawal=0;            
             psawal=koneksi.prepareStatement("select stok from ipsrsbarang where kode_brng=?");

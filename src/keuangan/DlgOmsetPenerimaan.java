@@ -286,9 +286,9 @@ public final class DlgOmsetPenerimaan extends javax.swing.JDialog {
             }else if(i==2){
                 column.setPreferredWidth(80);
             }else if(i==3){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(210);
             }else if(i==4){
-                column.setPreferredWidth(175);
+                column.setPreferredWidth(180);
             }else if(i==5){
                 column.setPreferredWidth(100);
             }

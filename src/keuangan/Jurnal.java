@@ -23,7 +23,7 @@ public class Jurnal {
     private PreparedStatement ps2,ps,pscek;
     private String nojur="";
     private boolean sukses=true;
-    public boolean simpanJurnal(String nobukti,String jenis,String keterangan){  
+    public synchronized boolean simpanJurnal(String nobukti,String jenis,String keterangan){  
         try {
             pscek=koneksi.prepareStatement("select count(*) as jml,current_date() as tanggal,current_time() as jam,sum(tampjurnal.debet) as debet,sum(tampjurnal.kredit) as kredit from tampjurnal");
             try {
