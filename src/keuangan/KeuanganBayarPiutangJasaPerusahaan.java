@@ -826,7 +826,7 @@ public final class KeuanganBayarPiutangJasaPerusahaan extends javax.swing.JDialo
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());        
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));   
-            Valid.MyReportqry("rptBayarPiutangLain.jasper","report","::[ Bayar Piutang Perusahaan/Lain-lain ]::",
+            Valid.MyReportqry("rptBayarPiutangJasaPerusahaan.jasper","report","::[ Bayar Piutang Jasa Perusahaan ]::",
                 "select bayar_piutang_jasa_perusahaan.tgl_bayar, bayar_piutang_jasa_perusahaan.kode_perusahaan,perusahaan_pasien.nama_perusahaan, bayar_piutang_jasa_perusahaan.besar_cicilan,"+
                 "bayar_piutang_jasa_perusahaan.keterangan, bayar_piutang_jasa_perusahaan.no_piutang,bayar_piutang_jasa_perusahaan.nama_bayar from bayar_piutang_jasa_perusahaan "+
                 "inner join perusahaan_pasien on bayar_piutang_jasa_perusahaan.kode_perusahaan=perusahaan_pasien.kode_perusahaan where "+

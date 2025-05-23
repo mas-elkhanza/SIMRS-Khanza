@@ -822,7 +822,9 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan pilih data..!!");
         }else{
             if(tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString().trim().equals("")){
-                Valid.textKosong(TCari,"No.Nota");
+                Valid.textKosong(TCari,"No.Piutang");
+            }else if(tbDokter.getValueAt(tbDokter.getSelectedRow(),6).toString().trim().equals("Sudah Lunas")){
+                JOptionPane.showMessageDialog(null,"Maaf, Piutang sudah lunas..!!");
             }else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 KeuanganBayarPiutangJasaPerusahaan bayarpiutang=new KeuanganBayarPiutangJasaPerusahaan(null,false);
@@ -1050,11 +1052,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         MnDetailCicilan.setEnabled(akses.getbayar_piutang_jasa_perusahaan());
         BtnPrint.setEnabled(akses.getpiutang_jasa_perusahaan());
         ppCetakNota.setEnabled(akses.getpiutang_jasa_perusahaan());
-        if(akses.getkode().equals("Admin Utama")){
-            ppHapus.setEnabled(true);
-        }else{
-            ppHapus.setEnabled(false);
-        }  
+        ppHapus.setEnabled(akses.getpiutang_jasa_perusahaan());
     }
  
 }
