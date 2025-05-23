@@ -50,6 +50,8 @@ public class KeuanganPiutangJasaPerusahaan extends javax.swing.JDialog {
     private FileReader myObj;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
     private Jurnal jur=new Jurnal();
+    private String Piutang_Jasa_Perusahaan=Sequel.cariIsi("select set_akun2.Piutang_Jasa_Perusahaan from set_akun2"),
+                   Pendapatan_Piutang_Jasa_Perusahaan=Sequel.cariIsi("select set_akun2.Pendapatan_Piutang_Jasa_Perusahaan from set_akun2");
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -1043,10 +1045,10 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
                 }
                 if(sukses==true){
                     Sequel.queryu("delete from tampjurnal");
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select set_akun2.Piutang_Jasa_Perusahaan from set_akun2")+"','PIUTANG JASA PERUSAHAAN','"+totaltagihan+"','0'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+Piutang_Jasa_Perusahaan+"','PIUTANG JASA PERUSAHAAN','"+totaltagihan+"','0'","Rekening")==false){
                         sukses=false;
                     }  
-                    if(Sequel.menyimpantf2("tampjurnal","'"+Sequel.cariIsi("select set_akun2.Pendapatan_Piutang_Jasa_Perusahaan from set_akun2")+"','PENDAPATAN PIUTANG JASA PERUSAHAAN','0','"+totaltagihan+"'","Rekening")==false){
+                    if(Sequel.menyimpantf2("tampjurnal","'"+Pendapatan_Piutang_Jasa_Perusahaan+"','PENDAPATAN PIUTANG JASA PERUSAHAAN','0','"+totaltagihan+"'","Rekening")==false){
                         sukses=false;
                     }
                     if(sukses==true){
