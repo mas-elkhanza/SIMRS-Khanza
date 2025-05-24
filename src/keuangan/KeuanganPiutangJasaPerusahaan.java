@@ -1527,7 +1527,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
     
     private void autoNomor() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(piutang_jasa_perusahaan.no_piutang,3),signed)),0) from piutang_jasa_perusahaan where piutang_jasa_perusahaan.tgl_piutang='"+Valid.SetTgl(TanggalPiutang.getSelectedItem()+"")+"' ",
-                "PJP"+TanggalPiutang.getSelectedItem().toString().substring(8,10)+TanggalPiutang.getSelectedItem().toString().substring(3,5)+TanggalPiutang.getSelectedItem().toString().substring(0,2),3,NoPiutang); 
+                "PJP"+TanggalPiutang.getSelectedItem().toString().substring(6,10)+TanggalPiutang.getSelectedItem().toString().substring(3,5)+TanggalPiutang.getSelectedItem().toString().substring(0,2),3,NoPiutang); 
     }
 
     public DefaultTableModel tabMode(){

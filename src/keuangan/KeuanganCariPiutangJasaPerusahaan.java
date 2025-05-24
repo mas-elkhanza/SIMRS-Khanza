@@ -15,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -1055,4 +1056,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         ppHapus.setEnabled(akses.getpiutang_jasa_perusahaan());
     }
  
+    public void cariNoTagihan(String notagihan,Date Taggal){
+        NoPiutang.setText(notagihan);
+        TglPiutang1.setDate(Taggal);
+        TglPiutang2.setDate(Taggal);
+        tampil();
+    }
 }
