@@ -2722,7 +2722,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     "</tr>"+
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75%'>Penilaian</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75%'>Pengkajian</td>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%'>Ya/Tidak</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+
@@ -2802,7 +2802,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                     "</tr>"+
                                     "<tr class='isi'>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='5%'>No</td>"+
-                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75%'>Penilaian</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center' width='75%'>Pengkajian</td>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center' width='20%'>Ya/Tidak</td>"+
                                     "</tr>"+
                                     "<tr class='isi'>"+

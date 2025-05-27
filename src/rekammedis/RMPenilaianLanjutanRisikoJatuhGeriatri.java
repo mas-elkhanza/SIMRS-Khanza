@@ -369,7 +369,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         MnPenilaianLanjutanRisikoGeriatri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianLanjutanRisikoGeriatri.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianLanjutanRisikoGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianLanjutanRisikoGeriatri.setText("Formulir Penilaian Lanjutan Risiko Jatuh Geriatri");
+        MnPenilaianLanjutanRisikoGeriatri.setText("Formulir Pengkajian Lanjutan Risiko Jatuh Geriatri");
         MnPenilaianLanjutanRisikoGeriatri.setName("MnPenilaianLanjutanRisikoGeriatri"); // NOI18N
         MnPenilaianLanjutanRisikoGeriatri.setPreferredSize(new java.awt.Dimension(290, 26));
         MnPenilaianLanjutanRisikoGeriatri.addActionListener(new java.awt.event.ActionListener() {
@@ -389,7 +389,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Lanjutan Risiko Jatuh Pasien Geriatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Lanjutan Risiko Jatuh Pasien Geriatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1761,7 +1761,7 @@ public final class RMPenilaianLanjutanRisikoJatuhGeriatri extends javax.swing.JD
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),32).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),31).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirPenilaianLanjutanRisikoJatuhGeriatri.jasper","report","::[ Formulir Penilaian Lanjutan Risiko Jatuh Geriatri ]::",
+            Valid.MyReportqry("rptFormulirPenilaianLanjutanRisikoJatuhGeriatri.jasper","report","::[ Formulir Pengkajian Lanjutan Risiko Jatuh Geriatri ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_lanjutan_resiko_jatuh_geriatri.tanggal,"+
                     "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala1,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai1,"+
                     "penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_skala2,penilaian_lanjutan_resiko_jatuh_geriatri.penilaian_jatuh_nilai2,"+

@@ -25,7 +25,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Formulir Penilaian Dehidrasi"/>
+            <Property name="text" type="java.lang.String" value="Formulir Pengkajian Dehidrasi"/>
             <Property name="name" type="java.lang.String" value="MnPenilaianDehidrasi" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[290, 26]"/>
@@ -82,7 +82,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Penilaian Derajat Dehidrasi Berdasarkan WHO ]::">
+            <TitledBorder title="::[ Pengkajian Derajat Dehidrasi Berdasarkan WHO ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -917,7 +917,7 @@
                     <Component class="widget.Label" name="jLabel57">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Item Penilaian :"/>
+                        <Property name="text" type="java.lang.String" value="Item Pengkajian :"/>
                         <Property name="name" type="java.lang.String" value="jLabel57" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1222,7 +1222,7 @@
                     <Component class="widget.Label" name="jLabel30">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Hasil Penilaian :"/>
+                        <Property name="text" type="java.lang.String" value="Hasil Pengkajian :"/>
                         <Property name="name" type="java.lang.String" value="jLabel30" noResource="true"/>
                       </Properties>
                       <Constraints>

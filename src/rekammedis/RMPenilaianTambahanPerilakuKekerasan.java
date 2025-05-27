@@ -414,7 +414,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
         MnPenilaianTambahanPerilakuKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianTambahanPerilakuKekerasan.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianTambahanPerilakuKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianTambahanPerilakuKekerasan.setText("Formulir Penilaian Tambahan Perilaku Kekerasan");
+        MnPenilaianTambahanPerilakuKekerasan.setText("Formulir Pengkajian Tambahan Perilaku Kekerasan");
         MnPenilaianTambahanPerilakuKekerasan.setName("MnPenilaianTambahanPerilakuKekerasan"); // NOI18N
         MnPenilaianTambahanPerilakuKekerasan.setPreferredSize(new java.awt.Dimension(290, 26));
         MnPenilaianTambahanPerilakuKekerasan.addActionListener(new java.awt.event.ActionListener() {
@@ -434,7 +434,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Tambahan Perilaku Kekerasan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Tambahan Perilaku Kekerasan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1983,7 +1983,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),48).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),47).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirPenilaianTambahanPerilakuKekerasan.jasper","report","::[ Formulir Penilaian Tambahan Perilaku Kekerasan ]::",
+            Valid.MyReportqry("rptFormulirPenilaianTambahanPerilakuKekerasan.jasper","report","::[ Formulir Pengkajian Tambahan Perilaku Kekerasan ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_perilaku_kekerasan.tanggal,date_format(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,reg_periksa.jam_reg,"+
                     "penilaian_tambahan_perilaku_kekerasan.statik_insiden_kekerasan_baru_ini,penilaian_tambahan_perilaku_kekerasan.statik_skorinsiden_kekerasan_baru_ini,"+
                     "penilaian_tambahan_perilaku_kekerasan.statik_riwayat_penggunaan_senjata,penilaian_tambahan_perilaku_kekerasan.statik_skorriwayat_penggunaan_senjata,"+

@@ -1789,7 +1789,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         NilaiSDQ25.setBounds(749, 810, 40, 23);
 
         jLabel272.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel272.setText("F. Penilaian Skor Kesulitan ");
+        jLabel272.setText("F. Pengkajian Skor Kesulitan ");
         jLabel272.setName("jLabel272"); // NOI18N
         FormInput.add(jLabel272);
         jLabel272.setBounds(44, 1040, 160, 23);
@@ -1890,7 +1890,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         NilaiKesimpulanKesulitan.setBounds(749, 1040, 40, 23);
 
         jLabel288.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel288.setText("A. Penilaian Gejala Emosional (E)");
+        jLabel288.setText("A. Pengkajian Gejala Emosional (E)");
         jLabel288.setName("jLabel288"); // NOI18N
         FormInput.add(jLabel288);
         jLabel288.setBounds(44, 890, 170, 23);
@@ -1908,7 +1908,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         jLabel59.setBounds(11, 873, 550, 23);
 
         jLabel291.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel291.setText("B. Penilaian Masalah Perilaku (C)");
+        jLabel291.setText("B. Pengkajian Masalah Perilaku (C)");
         jLabel291.setName("jLabel291"); // NOI18N
         FormInput.add(jLabel291);
         jLabel291.setBounds(44, 920, 170, 23);
@@ -1920,7 +1920,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         KesimpulanSkorC.setBounds(210, 920, 240, 23);
 
         jLabel293.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel293.setText("C. Penilaian Hiperaktivitas (H)");
+        jLabel293.setText("C. Pengkajian Hiperaktivitas (H)");
         jLabel293.setName("jLabel293"); // NOI18N
         FormInput.add(jLabel293);
         jLabel293.setBounds(44, 950, 170, 23);
@@ -1944,7 +1944,7 @@ public final class RMSkriningInstrumenSDQ extends javax.swing.JDialog {
         KesimpulanSkorP.setBounds(210, 980, 240, 23);
 
         jLabel297.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel297.setText("E. Penilaian Skor Kekuatan (Pr)");
+        jLabel297.setText("E. Pengkajian Skor Kekuatan (Pr)");
         jLabel297.setName("jLabel297"); // NOI18N
         FormInput.add(jLabel297);
         jLabel297.setBounds(44, 1010, 170, 23);

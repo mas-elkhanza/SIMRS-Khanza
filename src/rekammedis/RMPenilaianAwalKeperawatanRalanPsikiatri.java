@@ -81,7 +81,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             "Alasan Penggunaan Obat Lainnya","Alergi Obat","Keterangan Alergi Obat","Merokok","Keterangan Merokok","Minum Kopi","Keterangan Minum Kopi","TD","Nadi","GCS","RR","Suhu",
             "Keluhan Fisik","Keterangan Keluhan Fisik","Skala Nyeri","Durasi","Nyeri","Provokes","Keterangan Provokes","Kualitas","Keterangan Kualitas","Lokasi","Menyebar","Lapor Dokter",
             "Jam Lapor Nyeri","Nyeri Hilang","Keterangan Hilang Nyeri","BB","TB","BMI","Lapor Status Nutrisi","Jam Lapor Status Nutrisi","Skrining Gizi 1","Nilai 1","Skrining Gizi 2",
-            "Nilai 2","Total Skor","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter","Jam Dilapor",
+            "Nilai 2","Total Skor","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Pengkajian Resiko Jatuh","Lapor Dokter","Jam Dilapor",
             "ADL Mandi","ADL Berpakaian","ADL Makan","ADL BAK","ADL BAB","ADL Hobi","Keterangan ADL Hobi","ADL Sosialisasi","Keterangan ADL Sosialisasi","ADL Kegiatan","Keterangan ADL. Kegiatan",
             "Penampilan","Alam Perasaan","Pembicaraan","Afek","Aktifitas Motorik","Gangguan Ringan","Proses Pikir","Orientasi","Kesadaran","Memori","Interaksi","Konsentrasi",
             "Persepsi","Keterangan Persepsi","Isi Pikir","Waham","Keterangan Waham","Daya Tilik Diri","Keterangan Daya Tilik Diri","Pembelajaran","Keterangan Pembelajaran",
@@ -1027,7 +1027,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Awal Keperawatan Rawat Jalan Psikiatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Awal Keperawatan Rawat Jalan Psikiatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -2790,7 +2790,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
         FormInput.add(jLabel57);
         jLabel57.setBounds(10, 1290, 230, 23);
 
-        jLabel154.setText("Kemampuan Penilaian :");
+        jLabel154.setText("Kemampuan Pengkajian :");
         jLabel154.setName("jLabel154"); // NOI18N
         FormInput.add(jLabel154);
         jLabel154.setBounds(570, 1460, 130, 23);
@@ -3465,7 +3465,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -3669,7 +3669,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
 
         internalFrame3.add(PanelAccor, java.awt.BorderLayout.EAST);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -3980,7 +3980,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Berjalan A</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Berjalan B</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Cara Berjalan C</b></td>").append(
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Penilaian Resiko Jatuh</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pengkajian Resiko Jatuh</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lapor Dokter</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jam Dilapor</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ADL Mandi</b></td>").append(
@@ -4498,7 +4498,7 @@ public final class RMPenilaianAwalKeperawatanRalanPsikiatri extends javax.swing.
                 System.out.println("Notif : "+e);
             }
             param.put("rencana",masalahkeperawatan); 
-            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanPsikiatri.jasper","report","::[ Laporan Penilaian Awal Keperawatan Ralan Psikiatri ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanPsikiatri.jasper","report","::[ Laporan Pengkajian Awal Keperawatan Ralan Psikiatri ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_psikiatri.tanggal,"+
                 "penilaian_awal_keperawatan_ralan_psikiatri.informasi,penilaian_awal_keperawatan_ralan_psikiatri.keluhan_utama,penilaian_awal_keperawatan_ralan_psikiatri.rkd_sakit_sejak,penilaian_awal_keperawatan_ralan_psikiatri.rkd_keluhan,penilaian_awal_keperawatan_ralan_psikiatri.rkd_berobat,penilaian_awal_keperawatan_ralan_psikiatri.rkd_hasil_pengobatan,"+
                 "penilaian_awal_keperawatan_ralan_psikiatri.fp_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.ket_putus_obat,penilaian_awal_keperawatan_ralan_psikiatri.fp_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_ekonomi,penilaian_awal_keperawatan_ralan_psikiatri.fp_masalah_fisik,penilaian_awal_keperawatan_ralan_psikiatri.ket_masalah_fisik,"+

@@ -84,7 +84,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             "BB","TB","BMI","Keluhan Utama","Riwayat Penyakit","Keterangan Riwayat Penyakit","Riwayat Alergi","Perawatan Gigi","Keterangan Perawatan Gigi",
             "Kebiasaan Sikat Gigi","Kebiasaan Lain","Keterangan Kebiasaan Lain","Obat Yang Diminum Saat Ini","Alat Bantu","Keterangan Alat Bantu","Prothesa",
             "Keterangan Prothesa","Status Psikologis","Keterangan Status Psikologis","Hubungan Keluarga","Tinggal Dengan","Keterangan Tinggal","Ekonomi","Budaya",
-            "Keterangan Budaya","Edukasi","Keterangan Edukasi","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Penilaian Resiko Jatuh","Lapor Dokter",
+            "Keterangan Budaya","Edukasi","Keterangan Edukasi","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C","Hasil Pengkajian Resiko Jatuh","Lapor Dokter",
             "Jam Lapor","Tingkat Nyeri","Lokasi","Skala Nyeri","Durasi","Frekuensi","Nyeri Hilang Bila","Keterangan Hilang Nyeri","Diberitahunkan Dokter",
             "Jam Diberitahukan","Kebersihan Mulut","Mukosa Mulut","Karies","Karang Gigi","Gingiva","Palatum","Rencana","NIP","Nama Petugas"
         }){
@@ -733,7 +733,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Awal Keperawatan Gigi & Mulut ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Awal Keperawatan Gigi & Mulut ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -2167,7 +2167,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -2366,7 +2366,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
 
         internalFrame3.add(PanelAccor, java.awt.BorderLayout.EAST);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -3231,7 +3231,7 @@ public final class RMPenilaianAwalKeperawatanGigi extends javax.swing.JDialog {
                 System.out.println("Notif : "+e);
             }
             param.put("rencana",masalahkeperawatan); 
-            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanGigi.jasper","report","::[ Laporan Penilaian Awal Keperawatan Gigi ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanGigi.jasper","report","::[ Laporan Pengkajian Awal Keperawatan Gigi ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_gigi.tanggal,"+
                         "penilaian_awal_keperawatan_gigi.informasi,penilaian_awal_keperawatan_gigi.td,penilaian_awal_keperawatan_gigi.nadi,penilaian_awal_keperawatan_gigi.rr,penilaian_awal_keperawatan_gigi.suhu,penilaian_awal_keperawatan_gigi.bb,"+
                         "penilaian_awal_keperawatan_gigi.tb,penilaian_awal_keperawatan_gigi.bmi,penilaian_awal_keperawatan_gigi.keluhan_utama,penilaian_awal_keperawatan_gigi.riwayat_penyakit,penilaian_awal_keperawatan_gigi.ket_riwayat_penyakit,"+

@@ -558,7 +558,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
         MnPenilaianTerapiWicara.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianTerapiWicara.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianTerapiWicara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianTerapiWicara.setText("Laporan Penilaian Terapi Wicara");
+        MnPenilaianTerapiWicara.setText("Laporan Pengkajian Terapi Wicara");
         MnPenilaianTerapiWicara.setName("MnPenilaianTerapiWicara"); // NOI18N
         MnPenilaianTerapiWicara.setPreferredSize(new java.awt.Dimension(220, 26));
         MnPenilaianTerapiWicara.addActionListener(new java.awt.event.ActionListener() {
@@ -577,7 +577,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Terapi Wicara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Terapi Wicara ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1982,7 +1982,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -2084,7 +2084,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -2546,7 +2546,7 @@ public final class RMPenilaianTerapiWicara extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),47).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),46).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()));
 
-            Valid.MyReportqry("rptCetakPenilaianTerapiWicara.jasper","report","::[ Laporan Penilaian Terapi Wicara ]::",
+            Valid.MyReportqry("rptCetakPenilaianTerapiWicara.jasper","report","::[ Laporan Pengkajian Terapi Wicara ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_terapi_wicara.tanggal,penilaian_terapi_wicara.diagnosa_terapi_wicara,penilaian_terapi_wicara.diagnosa_medis,"+
                 "penilaian_terapi_wicara.anamnesa,penilaian_terapi_wicara.suhu,penilaian_terapi_wicara.rr,penilaian_terapi_wicara.nadi,penilaian_terapi_wicara.td,penilaian_terapi_wicara.perilaku_adaptif_kontak_mata,penilaian_terapi_wicara.perilaku_adaptif_atensi,"+
                 "penilaian_terapi_wicara.perilaku_adaptif_perilaku,penilaian_terapi_wicara.kemampuan_bahasa_bicara_spontan,penilaian_terapi_wicara.kemampuan_bahasa_pemahaman_bahasa,penilaian_terapi_wicara.kemampuan_bahasa_pengujaran,penilaian_terapi_wicara.kemampuan_bahasa_membaca,"+

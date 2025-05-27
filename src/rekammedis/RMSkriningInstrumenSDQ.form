@@ -2362,7 +2362,7 @@
                     <Component class="widget.Label" name="jLabel272">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="F. Penilaian Skor Kesulitan "/>
+                        <Property name="text" type="java.lang.String" value="F. Pengkajian Skor Kesulitan "/>
                         <Property name="name" type="java.lang.String" value="jLabel272" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -2571,7 +2571,7 @@
                     <Component class="widget.Label" name="jLabel288">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="A. Penilaian Gejala Emosional (E)"/>
+                        <Property name="text" type="java.lang.String" value="A. Pengkajian Gejala Emosional (E)"/>
                         <Property name="name" type="java.lang.String" value="jLabel288" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -2607,7 +2607,7 @@
                     <Component class="widget.Label" name="jLabel291">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="B. Penilaian Masalah Perilaku (C)"/>
+                        <Property name="text" type="java.lang.String" value="B. Pengkajian Masalah Perilaku (C)"/>
                         <Property name="name" type="java.lang.String" value="jLabel291" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -2631,7 +2631,7 @@
                     <Component class="widget.Label" name="jLabel293">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="C. Penilaian Hiperaktivitas (H)"/>
+                        <Property name="text" type="java.lang.String" value="C. Pengkajian Hiperaktivitas (H)"/>
                         <Property name="name" type="java.lang.String" value="jLabel293" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -2679,7 +2679,7 @@
                     <Component class="widget.Label" name="jLabel297">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="E. Penilaian Skor Kekuatan (Pr)"/>
+                        <Property name="text" type="java.lang.String" value="E. Pengkajian Skor Kekuatan (Pr)"/>
                         <Property name="name" type="java.lang.String" value="jLabel297" noResource="true"/>
                       </Properties>
                       <Constraints>

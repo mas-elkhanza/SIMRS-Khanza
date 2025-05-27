@@ -4385,7 +4385,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
 
         BtnPenilaianUlangNyeri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianUlangNyeri.setText("Penilaian Ulang Nyeri");
+        BtnPenilaianUlangNyeri.setText("Pengkajian Ulang Nyeri");
         BtnPenilaianUlangNyeri.setFocusPainted(false);
         BtnPenilaianUlangNyeri.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianUlangNyeri.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -4609,7 +4609,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
 
         BtnPenilaianPreOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPreOperasi.setText("Penilaian Pre Operasi");
+        BtnPenilaianPreOperasi.setText("Pengkajian Pre Operasi");
         BtnPenilaianPreOperasi.setFocusPainted(false);
         BtnPenilaianPreOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPreOperasi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -4625,7 +4625,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
 
         BtnPenilaianPreAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPreAnestesi.setText("Penilaian Pre Anestesi");
+        BtnPenilaianPreAnestesi.setText("Pengkajian Pre Anestesi");
         BtnPenilaianPreAnestesi.setFocusPainted(false);
         BtnPenilaianPreAnestesi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPreAnestesi.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -5057,7 +5057,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
 
         BtnPenilaianPasienTerminal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPasienTerminal.setText("Penilaian Pasien Terminal");
+        BtnPenilaianPasienTerminal.setText("Pengkajian Pasien Terminal");
         BtnPenilaianPasienTerminal.setFocusPainted(false);
         BtnPenilaianPasienTerminal.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPasienTerminal.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -5073,7 +5073,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
 
         BtnPenilaianKorbanKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianKorbanKekerasan.setText("Penilaian Korban Kekerasan");
+        BtnPenilaianKorbanKekerasan.setText("Pengkajian Korban Kekerasan");
         BtnPenilaianKorbanKekerasan.setFocusPainted(false);
         BtnPenilaianKorbanKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianKorbanKekerasan.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -12674,13 +12674,13 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianPreInduksi = new widget.Button();
         BtnPenilaianPreInduksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPreInduksi.setText("Penilaian Pre Induksi");
+        BtnPenilaianPreInduksi.setText("Pengkajian Pre Induksi");
         BtnPenilaianPreInduksi.setFocusPainted(false);
         BtnPenilaianPreInduksi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPreInduksi.setGlassColor(new java.awt.Color(255, 255, 255));
         BtnPenilaianPreInduksi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnPenilaianPreInduksi.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        BtnPenilaianPreInduksi.setName("Penilaian Pre Induksi"); 
+        BtnPenilaianPreInduksi.setName("Pengkajian Pre Induksi"); 
         BtnPenilaianPreInduksi.setPreferredSize(new java.awt.Dimension(190, 23));
         BtnPenilaianPreInduksi.setRoundRect(false);
         BtnPenilaianPreInduksi.addActionListener(this::BtnPenilaianPreInduksiActionPerformed);
@@ -12765,7 +12765,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianPsikolog = new widget.Button();
         BtnPenilaianPsikolog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPsikolog.setText("Penilaian Psikologi");
+        BtnPenilaianPsikolog.setText("Pengkajian Psikologi");
         BtnPenilaianPsikolog.setFocusPainted(false);
         BtnPenilaianPsikolog.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPsikolog.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -12778,7 +12778,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianPsikologKlinis = new widget.Button();
         BtnPenilaianPsikologKlinis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianPsikologKlinis.setText("Penilaian Psikologi Klinis");
+        BtnPenilaianPsikologKlinis.setText("Pengkajian Psikologi Klinis");
         BtnPenilaianPsikologKlinis.setFocusPainted(false);
         BtnPenilaianPsikologKlinis.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianPsikologKlinis.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -12791,7 +12791,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianBayiBaruLahir = new widget.Button();
         BtnPenilaianBayiBaruLahir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianBayiBaruLahir.setText("Penilaian Bayi Baru Lahir");
+        BtnPenilaianBayiBaruLahir.setText("Pengkajian Bayi Baru Lahir");
         BtnPenilaianBayiBaruLahir.setFocusPainted(false);
         BtnPenilaianBayiBaruLahir.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianBayiBaruLahir.setGlassColor(new java.awt.Color(255, 255, 255));
@@ -12804,7 +12804,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         
         BtnPenilaianDerajatDehidrasi = new widget.Button();
         BtnPenilaianDerajatDehidrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
-        BtnPenilaianDerajatDehidrasi.setText("Penilaian Derajat Dehidrasi");
+        BtnPenilaianDerajatDehidrasi.setText("Pengkajian Derajat Dehidrasi");
         BtnPenilaianDerajatDehidrasi.setFocusPainted(false);
         BtnPenilaianDerajatDehidrasi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
         BtnPenilaianDerajatDehidrasi.setGlassColor(new java.awt.Color(255, 255, 255));

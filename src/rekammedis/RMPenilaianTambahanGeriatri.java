@@ -348,7 +348,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         MnPenilaianMedis.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianMedis.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianMedis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianMedis.setText("Laporan Penilaian Tambahan Pasien Geriatri");
+        MnPenilaianMedis.setText("Laporan Pengkajian Tambahan Pasien Geriatri");
         MnPenilaianMedis.setName("MnPenilaianMedis"); // NOI18N
         MnPenilaianMedis.setPreferredSize(new java.awt.Dimension(270, 26));
         MnPenilaianMedis.addActionListener(new java.awt.event.ActionListener() {
@@ -362,7 +362,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Tambahan Pasien Geriatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Tambahan Pasien Geriatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setPreferredSize(new java.awt.Dimension(467, 500));
@@ -1097,7 +1097,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -1199,7 +1199,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -1624,7 +1624,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
-            Valid.MyReportqry("rptCetakPenilaianTambahanGeriatri.jasper","report","::[ Laporan Penilaian Tambahan Geriatri ]::",
+            Valid.MyReportqry("rptCetakPenilaianTambahanGeriatri.jasper","report","::[ Laporan Pengkajian Tambahan Geriatri ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_tambahan_geriatri.tanggal,"+
                 "penilaian_tambahan_geriatri.nik,pegawai.nama,penilaian_tambahan_geriatri.asal_masuk,penilaian_tambahan_geriatri.kondisi_masuk,penilaian_tambahan_geriatri.keterangan_kondisi_masuk,"+
                 "penilaian_tambahan_geriatri.anamnesis,penilaian_tambahan_geriatri.diagnosa_medis,penilaian_tambahan_geriatri.riwayat_immuno_telinga,penilaian_tambahan_geriatri.riwayat_immuno_sinus,"+

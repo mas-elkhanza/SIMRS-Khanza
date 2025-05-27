@@ -159,7 +159,7 @@
                 </tr>
                 <tr class="text-dark">
                     <td width="100%">
-                        Penilaian & Order Dokter :
+                        Pengkajian & Order Dokter :
                         <table class="default" width="98%" align="center" cellpadding="3px" cellspacing="0px">
                             <tr class="text-dark">
                                 <td width="25%">Restrain Non Farmakologi</td>

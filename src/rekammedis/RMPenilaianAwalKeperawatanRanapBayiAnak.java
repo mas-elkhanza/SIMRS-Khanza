@@ -94,7 +94,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             "Pemahaman Penyakit","Pemahaman Pengobatan","Pemahaman Perawatan","Skrining Gizi 1","N.G.1","Skrining Gizi 2","N.G.2",
             "Skrining Gizi 3","N.G.3","Skrining Gizi 4","N.G.4","T.N.Gizi","Keterangan Skrining Gizi","Skala Humpty Dumpty 1","N.H. 1","Skala Humpty Dumpty 2","N.H. 2",
             "Skala Humpty Dumpty 3","N.H. 3","Skala Humpty Dumpty 4","N.H. 4","Skala Humpty Dumpty 5","N.H. 5","Skala Humpty Dumpty 6","N.H. 6","Skala Humpty Dumpty 7","N.H. 7",
-            "Total H.D.","Hasil Skrining Penilaian H.D.","Nyeri Wajah","N.N.Wajah","Nyeri Kaki","N.N.Kaki","Nyeri Aktifitas","N.N.Aktifitas",
+            "Total H.D.","Hasil Skrining Pengkajian H.D.","Nyeri Wajah","N.N.Wajah","Nyeri Kaki","N.N.Kaki","Nyeri Aktifitas","N.N.Aktifitas",
             "Nyeri Menangis","N.N.Menangis","Nyeri Bersuara","N.N.Bersuara","Total Nilai Nyeri","Kondisi Nyeri","Lokasi Nyeri","Durasi Nyeri","Frekuensi Nyeri",
             "Nyeri Hilang Bila","Keterangan Nyeri Hilang","Nyeri Diberitahukan Dokter","Jam Nyeri Diberitahukan","Informasi Perencanaan Pulang","Lama Rawat Rata-rata",
             "Perencanaan Pulang","Kondisi Klinis Saat Pulang","Perawatan Lanjutan Yang Diberikan Di Rumah","Cara Transportasi Pulang","Transportasi Yang Digunakan",
@@ -1550,7 +1550,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Awal Keperawatan Rawat Inap Bayi & Anak ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Awal Keperawatan Rawat Inap Bayi & Anak ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -5261,7 +5261,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -5468,7 +5468,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
 
         internalFrame3.add(PanelAccor, java.awt.BorderLayout.EAST);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -5781,7 +5781,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skala Humpty Dumpty 7</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.H. 7</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total H.D.</b></td>").append(
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining Penilaian H.D.</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Skrining Pengkajian H.D.</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Wajah</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.N.Wajah</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri Kaki</b></td>").append(
@@ -7309,7 +7309,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 System.out.println("Notif : "+e);
             }
             param.put("imunisasi",masalahkeperawatan);
-            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanAnak.jasper","report","::[ Laporan Penilaian Awal Keperawatan Ralan Bayi/Anak ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanAnak.jasper","report","::[ Laporan Pengkajian Awal Keperawatan Ralan Bayi/Anak ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ranap_bayi.tanggal,"+
                 "penilaian_awal_keperawatan_ranap_bayi.informasi,penilaian_awal_keperawatan_ranap_bayi.td,penilaian_awal_keperawatan_ranap_bayi.nadi,penilaian_awal_keperawatan_ranap_bayi.rr,penilaian_awal_keperawatan_ranap_bayi.suhu,penilaian_awal_keperawatan_ranap_bayi.gcs,"+
                 "penilaian_awal_keperawatan_ranap_bayi.bb,penilaian_awal_keperawatan_ranap_bayi.tb,penilaian_awal_keperawatan_ranap_bayi.lp,penilaian_awal_keperawatan_ranap_bayi.lk,penilaian_awal_keperawatan_ranap_bayi.ld,penilaian_awal_keperawatan_ranap_bayi.keluhan_utama,"+

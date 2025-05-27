@@ -645,7 +645,7 @@ public class DlgCariPermintaanLayananProgramKFR extends javax.swing.JDialog {
         FormMenu.add(BtnRiwayatPasien);
 
         BtnAwalFisioTerapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
-        BtnAwalFisioTerapi.setText("Penilaian Awal Fisioterapi");
+        BtnAwalFisioTerapi.setText("Pengkajian Awal Fisioterapi");
         BtnAwalFisioTerapi.setFocusPainted(false);
         BtnAwalFisioTerapi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         BtnAwalFisioTerapi.setGlassColor(new java.awt.Color(255, 255, 255));

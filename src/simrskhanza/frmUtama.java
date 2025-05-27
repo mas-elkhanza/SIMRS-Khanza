@@ -44961,7 +44961,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianBayiBaruLahir = new widget.ButtonBig();
         btnPenilaianBayiBaruLahir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7717231_baby_kid_pushchair_buggy_pram_icon.png"))); 
-        btnPenilaianBayiBaruLahir.setText("Penilaian Bayi Baru Lahir");
+        btnPenilaianBayiBaruLahir.setText("Pengkajian Bayi Baru Lahir");
         btnPenilaianBayiBaruLahir.setIconTextGap(0);
         btnPenilaianBayiBaruLahir.setName("btnPenilaianBayiBaruLahir"); 
         btnPenilaianBayiBaruLahir.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45129,7 +45129,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianMCU = new widget.ButtonBig();
         btnPenilaianMCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4852556_doctor_files_medical_record_icon.png"))); 
-        btnPenilaianMCU.setText("Penilaian MCU");
+        btnPenilaianMCU.setText("Pengkajian MCU");
         btnPenilaianMCU.setIconTextGap(0);
         btnPenilaianMCU.setName("btnPenilaianMCU"); 
         btnPenilaianMCU.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45561,7 +45561,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianPsikologi = new widget.ButtonBig();
         btnPenilaianPsikologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2890565_ai_artificial intelligence_automaton_brain_electronics_icon.png")));
-        btnPenilaianPsikologi.setText("Penilaian Psikologi");
+        btnPenilaianPsikologi.setText("Pengkajian Psikologi");
         btnPenilaianPsikologi.setIconTextGap(0);
         btnPenilaianPsikologi.setName("btnPenilaianPsikologi"); 
         btnPenilaianPsikologi.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45569,7 +45569,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianPsikologiKlinis = new widget.ButtonBig();
         btnPenilaianPsikologiKlinis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9320236_wifi_mind_interaction_untact_icon.png")));
-        btnPenilaianPsikologiKlinis.setText("Penilaian Psikologi Klinis");
+        btnPenilaianPsikologiKlinis.setText("Pengkajian Psikologi Klinis");
         btnPenilaianPsikologiKlinis.setIconTextGap(0);
         btnPenilaianPsikologiKlinis.setName("btnPenilaianPsikologiKlinis"); 
         btnPenilaianPsikologiKlinis.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45897,7 +45897,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianPreOperasi = new widget.ButtonBig();
         btnPenilaianPreOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088726_bed_hospital_icu_medical_treatment_icon.png"))); 
-        btnPenilaianPreOperasi.setText("Penilaian Pre Operasi");
+        btnPenilaianPreOperasi.setText("Pengkajian Pre Operasi");
         btnPenilaianPreOperasi.setIconTextGap(0);
         btnPenilaianPreOperasi.setName("btnPenilaianPreOperasi"); 
         btnPenilaianPreOperasi.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45905,7 +45905,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianPreAnastesi = new widget.ButtonBig();
         btnPenilaianPreAnastesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6141465_bed_rest_sleep_sleeping_get enough rest_icon.png"))); 
-        btnPenilaianPreAnastesi.setText("Penilaian Pre Anestesi");
+        btnPenilaianPreAnastesi.setText("Pengkajian Pre Anestesi");
         btnPenilaianPreAnastesi.setIconTextGap(0);
         btnPenilaianPreAnastesi.setName("btnPenilaianPreAnastesi"); 
         btnPenilaianPreAnastesi.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45937,7 +45937,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianRisikoJatuhDewasa = new widget.ButtonBig();
         btnPenilaianRisikoJatuhDewasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5859949_accident_foot_injury_leg_pain_icon.png"))); 
-        btnPenilaianRisikoJatuhDewasa.setText("Penilaian Lanjutan Risiko Jatuh Dewasa");
+        btnPenilaianRisikoJatuhDewasa.setText("Pengkajian Lanjutan Risiko Jatuh Dewasa");
         btnPenilaianRisikoJatuhDewasa.setIconTextGap(0);
         btnPenilaianRisikoJatuhDewasa.setName("btnPenilaianRisikoJatuhDewasa");
         btnPenilaianRisikoJatuhDewasa.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45945,7 +45945,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianRisikoJatuhAnak = new widget.ButtonBig();
         btnPenilaianRisikoJatuhAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5986162_disease_health_injury_medical_numb_icon.png"))); 
-        btnPenilaianRisikoJatuhAnak.setText("Penilaian Lanjutan Risiko Jatuh Anak");
+        btnPenilaianRisikoJatuhAnak.setText("Pengkajian Lanjutan Risiko Jatuh Anak");
         btnPenilaianRisikoJatuhAnak.setIconTextGap(0);
         btnPenilaianRisikoJatuhAnak.setName("btnPenilaianRisikoJatuhAnak");
         btnPenilaianRisikoJatuhAnak.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45961,7 +45961,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianRisikoJatuhLansia = new widget.ButtonBig();
         btnPenilaianRisikoJatuhLansia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/131480_spectacles_retired_retiree_father_grandfather_icon.png"))); 
-        btnPenilaianRisikoJatuhLansia.setText("Penilaian Lanjutan Risiko Jatuh Lansia");
+        btnPenilaianRisikoJatuhLansia.setText("Pengkajian Lanjutan Risiko Jatuh Lansia");
         btnPenilaianRisikoJatuhLansia.setIconTextGap(0);
         btnPenilaianRisikoJatuhLansia.setName("btnPenilaianRisikoJatuhLansia");
         btnPenilaianRisikoJatuhLansia.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -45969,7 +45969,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianTambahanGeriatri = new widget.ButtonBig();
         btnPenilaianTambahanGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6141440_boy_man_old_people_elderly and kid_icon.png"))); 
-        btnPenilaianTambahanGeriatri.setText("Penilaian Tambahan Pasien Geriatri");
+        btnPenilaianTambahanGeriatri.setText("Pengkajian Tambahan Pasien Geriatri");
         btnPenilaianTambahanGeriatri.setIconTextGap(0);
         btnPenilaianTambahanGeriatri.setName("btnPenilaianTambahanGeriatri");
         btnPenilaianTambahanGeriatri.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46321,7 +46321,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianPasienTerminal = new widget.ButtonBig();
         btnPenilaianPasienTerminal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6141428_coronavirus_covid19_isolation_patient_coronavirus isolation_icon.png")));
-        btnPenilaianPasienTerminal.setText("Penilaian Pasien Terminal");
+        btnPenilaianPasienTerminal.setText("Pengkajian Pasien Terminal");
         btnPenilaianPasienTerminal.setIconTextGap(0);
         btnPenilaianPasienTerminal.setName("btnPenilaianPasienTerminal"); 
         btnPenilaianPasienTerminal.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46345,7 +46345,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianKorbanKekerasan = new widget.ButtonBig();
         btnPenilaianKorbanKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3792054_blood_halloween_knife_murder_icon.png")));
-        btnPenilaianKorbanKekerasan.setText("Penilaian Korban Kekerasan");
+        btnPenilaianKorbanKekerasan.setText("Pengkajian Korban Kekerasan");
         btnPenilaianKorbanKekerasan.setIconTextGap(0);
         btnPenilaianKorbanKekerasan.setName("btnPenilaianKorbanKekerasan"); 
         btnPenilaianKorbanKekerasan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46385,7 +46385,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianPasienPenyakitMenular = new widget.ButtonBig();
         btnPenilaianPasienPenyakitMenular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5980337_coronavirus_data_disease_information_research_icon.png")));
-        btnPenilaianPasienPenyakitMenular.setText("Penilaian Pasien Penyakit Menular");
+        btnPenilaianPasienPenyakitMenular.setText("Pengkajian Pasien Penyakit Menular");
         btnPenilaianPasienPenyakitMenular.setIconTextGap(0);
         btnPenilaianPasienPenyakitMenular.setName("btnPenilaianPasienPenyakitMenular"); 
         btnPenilaianPasienPenyakitMenular.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46409,7 +46409,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianTambahanBunuhDiri = new widget.ButtonBig();
         btnPenilaianTambahanBunuhDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6954610_blood_crime_kill_killer_knife_icon.png"))); 
-        btnPenilaianTambahanBunuhDiri.setText("Penilaian Tambahan Bunuh Diri");
+        btnPenilaianTambahanBunuhDiri.setText("Pengkajian Tambahan Bunuh Diri");
         btnPenilaianTambahanBunuhDiri.setIconTextGap(0);
         btnPenilaianTambahanBunuhDiri.setName("btnPenilaianTambahanBunuhDiri");
         btnPenilaianTambahanBunuhDiri.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46417,7 +46417,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianTambahanPerilakuKekerasan = new widget.ButtonBig();
         btnPenilaianTambahanPerilakuKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9191525_nonviolence_violence_weapon_criminal_combat_icon.png"))); 
-        btnPenilaianTambahanPerilakuKekerasan.setText("Penilaian Tambahan Perilaku Kekerasan");
+        btnPenilaianTambahanPerilakuKekerasan.setText("Pengkajian Tambahan Perilaku Kekerasan");
         btnPenilaianTambahanPerilakuKekerasan.setIconTextGap(0);
         btnPenilaianTambahanPerilakuKekerasan.setName("btnPenilaianTambahanPerilakuKekerasan");
         btnPenilaianTambahanPerilakuKekerasan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46425,7 +46425,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianTambahanMelarikanDiri = new widget.ButtonBig();
         btnPenilaianTambahanMelarikanDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6141439_healthcare_marathon_run_running_exercise regularly_icon.png"))); 
-        btnPenilaianTambahanMelarikanDiri.setText("Penilaian Tambahan Melarikan Diri");
+        btnPenilaianTambahanMelarikanDiri.setText("Pengkajian Tambahan Melarikan Diri");
         btnPenilaianTambahanMelarikanDiri.setIconTextGap(0);
         btnPenilaianTambahanMelarikanDiri.setName("btnPenilaianTambahanMelarikanDiri");
         btnPenilaianTambahanMelarikanDiri.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46457,7 +46457,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianPasienKeracunan = new widget.ButtonBig();
         btnPenilaianPasienKeracunan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2730370_inkcontober_mushroom_poison_icon.png"))); 
-        btnPenilaianPasienKeracunan.setText("Penilaian Pasien Keracunan");
+        btnPenilaianPasienKeracunan.setText("Pengkajian Pasien Keracunan");
         btnPenilaianPasienKeracunan.setIconTextGap(0);
         btnPenilaianPasienKeracunan.setName("btnPenilaianPasienKeracunan"); 
         btnPenilaianPasienKeracunan.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46521,7 +46521,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianRisikoDekubitus = new widget.ButtonBig();
         btnPenilaianRisikoDekubitus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6090058_bed_rent_room_icon.png"))); 
-        btnPenilaianRisikoDekubitus.setText("Penilaian Risiko Dekubitus");
+        btnPenilaianRisikoDekubitus.setText("Pengkajian Risiko Dekubitus");
         btnPenilaianRisikoDekubitus.setIconTextGap(0);
         btnPenilaianRisikoDekubitus.setName("btnPenilaianRisikoDekubitus"); 
         btnPenilaianRisikoDekubitus.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46601,7 +46601,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianRisikoJatuhNeonatus = new widget.ButtonBig();
         btnPenilaianRisikoJatuhNeonatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7717236_hand_baby_kid_motherhood_mothers_icon.png"))); 
-        btnPenilaianRisikoJatuhNeonatus.setText("Penilaian Lanjutan Risiko Jatuh Neonatus");
+        btnPenilaianRisikoJatuhNeonatus.setText("Pengkajian Lanjutan Risiko Jatuh Neonatus");
         btnPenilaianRisikoJatuhNeonatus.setIconTextGap(0);
         btnPenilaianRisikoJatuhNeonatus.setName("btnPenilaianRisikoJatuhNeonatus"); 
         btnPenilaianRisikoJatuhNeonatus.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46617,7 +46617,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianRisikoJatuhGeriatri = new widget.ButtonBig();
         btnPenilaianRisikoJatuhGeriatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5958966_mask_medical_pollution_security_icon.png"))); 
-        btnPenilaianRisikoJatuhGeriatri.setText("Penilaian Lanjutan Risiko Jatuh Geriatri");
+        btnPenilaianRisikoJatuhGeriatri.setText("Pengkajian Lanjutan Risiko Jatuh Geriatri");
         btnPenilaianRisikoJatuhGeriatri.setIconTextGap(0);
         btnPenilaianRisikoJatuhGeriatri.setName("btnPenilaianRisikoJatuhGeriatri"); 
         btnPenilaianRisikoJatuhGeriatri.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46681,7 +46681,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianLevelKecemasanRanapAnak = new widget.ButtonBig();
         btnPenilaianLevelKecemasanRanapAnak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8468129_dead_death_fear_grim_horror_icon.png"))); 
-        btnPenilaianLevelKecemasanRanapAnak.setText("Penilaian Level Kecemasan Ranap Anak");
+        btnPenilaianLevelKecemasanRanapAnak.setText("Pengkajian Level Kecemasan Ranap Anak");
         btnPenilaianLevelKecemasanRanapAnak.setIconTextGap(0);
         btnPenilaianLevelKecemasanRanapAnak.setName("btnPenilaianLevelKecemasanRanapAnak"); 
         btnPenilaianLevelKecemasanRanapAnak.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46697,7 +46697,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianRisikoJatuhPsikiatri = new widget.ButtonBig();
         btnPenilaianRisikoJatuhPsikiatri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9803221_man_fall_holiday_autumn_tradition_icon.png"))); 
-        btnPenilaianRisikoJatuhPsikiatri.setText("Penilaian Lanjutan Risiko Jatuh Psikiatri");
+        btnPenilaianRisikoJatuhPsikiatri.setText("Pengkajian Lanjutan Risiko Jatuh Psikiatri");
         btnPenilaianRisikoJatuhPsikiatri.setIconTextGap(0);
         btnPenilaianRisikoJatuhPsikiatri.setName("btnPenilaianRisikoJatuhPsikiatri"); 
         btnPenilaianRisikoJatuhPsikiatri.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46705,7 +46705,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianLanjutanSkriningFungsional = new widget.ButtonBig();
         btnPenilaianLanjutanSkriningFungsional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6000610_covid19_people_scan_tempurature_virus_icon.png"))); 
-        btnPenilaianLanjutanSkriningFungsional.setText("Penilaian Lanjutan Skrining Fungsional");
+        btnPenilaianLanjutanSkriningFungsional.setText("Pengkajian Lanjutan Skrining Fungsional");
         btnPenilaianLanjutanSkriningFungsional.setIconTextGap(0);
         btnPenilaianLanjutanSkriningFungsional.setName("btnPenilaianLanjutanSkriningFungsional"); 
         btnPenilaianLanjutanSkriningFungsional.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46769,7 +46769,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianUlangNyeri = new widget.ButtonBig();
         btnPenilaianUlangNyeri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5725022_head_headache_migraine_pain_severe_icon.png")));
-        btnPenilaianUlangNyeri.setText("Penilaian Ulang Nyeri");
+        btnPenilaianUlangNyeri.setText("Pengkajian Ulang Nyeri");
         btnPenilaianUlangNyeri.setIconTextGap(0);
         btnPenilaianUlangNyeri.setName("btnPenilaianUlangNyeri"); 
         btnPenilaianUlangNyeri.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46777,7 +46777,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianTerapiWicara = new widget.ButtonBig();
         btnPenilaianTerapiWicara.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2185069_dental_dentist_halitosis_human_mouth_icon.png")));
-        btnPenilaianTerapiWicara.setText("Penilaian Terapi Wicara");
+        btnPenilaianTerapiWicara.setText("Pengkajian Terapi Wicara");
         btnPenilaianTerapiWicara.setIconTextGap(0);
         btnPenilaianTerapiWicara.setName("btnPenilaianTerapiWicara"); 
         btnPenilaianTerapiWicara.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -46865,7 +46865,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianPreInduksi = new widget.ButtonBig();
         btnPenilaianPreInduksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6008650_breath_breathing_difficult_healthcare_illness_icon.png")));
-        btnPenilaianPreInduksi.setText("Penilaian Pre Induksi");
+        btnPenilaianPreInduksi.setText("Pengkajian Pre Induksi");
         btnPenilaianPreInduksi.setIconTextGap(0);
         btnPenilaianPreInduksi.setName("btnPenilaianPreInduksi"); 
         btnPenilaianPreInduksi.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -47161,7 +47161,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                
         btnPenilaianPasienImunitasRendah = new widget.ButtonBig();
         btnPenilaianPasienImunitasRendah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5964813_chest_coronavirus_healthcare_medical_pain_icon.png")));
-        btnPenilaianPasienImunitasRendah.setText("Penilaian Pasien Imunitas Rendah");
+        btnPenilaianPasienImunitasRendah.setText("Pengkajian Pasien Imunitas Rendah");
         btnPenilaianPasienImunitasRendah.setIconTextGap(0);
         btnPenilaianPasienImunitasRendah.setName("btnPenilaianPasienImunitasRendah"); 
         btnPenilaianPasienImunitasRendah.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -47169,7 +47169,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnPenilaianDerajatDehidrasi = new widget.ButtonBig();
         btnPenilaianDerajatDehidrasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/897234_aqua_bottle_drink_water_icon.png")));
-        btnPenilaianDerajatDehidrasi.setText("Penilaian Derajat Dehidrasi");
+        btnPenilaianDerajatDehidrasi.setText("Pengkajian Derajat Dehidrasi");
         btnPenilaianDerajatDehidrasi.setIconTextGap(0);
         btnPenilaianDerajatDehidrasi.setName("btnPenilaianDerajatDehidrasi"); 
         btnPenilaianDerajatDehidrasi.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -47233,7 +47233,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnSKPKategoriPenilaian = new widget.ButtonBig();
         btnSKPKategoriPenilaian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5986210_clothing_equipment_protection_protective_safety_icon.png"))); 
-        btnSKPKategoriPenilaian.setText("Kategori Penilaian SKP");
+        btnSKPKategoriPenilaian.setText("Kategori Pengkajian SKP");
         btnSKPKategoriPenilaian.setIconTextGap(0);
         btnSKPKategoriPenilaian.setName("btnSKPKategoriPenilaian"); 
         btnSKPKategoriPenilaian.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -47241,7 +47241,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnSKPKriteriaPenilaian = new widget.ButtonBig();
         btnSKPKriteriaPenilaian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9016856_safety_suit_virus_glove_covid-19_icon.png"))); 
-        btnSKPKriteriaPenilaian.setText("Kriteria Penilaian SKP");
+        btnSKPKriteriaPenilaian.setText("Kriteria Pengkajian SKP");
         btnSKPKriteriaPenilaian.setIconTextGap(0);
         btnSKPKriteriaPenilaian.setName("btnSKPKriteriaPenilaian"); 
         btnSKPKriteriaPenilaian.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -47265,7 +47265,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnSKPPenilaianPegawai = new widget.ButtonBig();
         btnSKPPenilaianPegawai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088187_gloves_hand_safety_secure_icon.png"))); 
-        btnSKPPenilaianPegawai.setText("Penilaian SKP Petugas/Dokter");
+        btnSKPPenilaianPegawai.setText("Pengkajian SKP Petugas/Dokter");
         btnSKPPenilaianPegawai.setIconTextGap(0);
         btnSKPPenilaianPegawai.setName("btnSKPPenilaianPegawai"); 
         btnSKPPenilaianPegawai.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -47305,7 +47305,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnSKPRekapitulasiPenilaian = new widget.ButtonBig();
         btnSKPRekapitulasiPenilaian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5958329_crowd patient_disease_epidemic_hospital_infection_icon.png"))); 
-        btnSKPRekapitulasiPenilaian.setText("Rekapitulasi Penilaian SKP");
+        btnSKPRekapitulasiPenilaian.setText("Rekapitulasi Pengkajian SKP");
         btnSKPRekapitulasiPenilaian.setIconTextGap(0);
         btnSKPRekapitulasiPenilaian.setName("btnSKPRekapitulasiPenilaian"); 
         btnSKPRekapitulasiPenilaian.setPreferredSize(new java.awt.Dimension(200, 90));

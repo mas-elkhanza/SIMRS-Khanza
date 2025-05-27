@@ -276,7 +276,7 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -311,7 +311,7 @@ public class SKPPenilaianPegawai extends javax.swing.JDialog {
         panelisi3.setPreferredSize(new java.awt.Dimension(100, 103));
         panelisi3.setLayout(null);
 
-        label15.setText("No.Penilaian :");
+        label15.setText("No.Pengkajian :");
         label15.setName("label15"); // NOI18N
         label15.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi3.add(label15);
@@ -667,7 +667,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }
         }
         if(NoPenilaian.getText().trim().equals("")){
-            Valid.textKosong(NoPenilaian,"No.Penilaian");
+            Valid.textKosong(NoPenilaian,"No.Pengkajian");
         }else if(KdPenilai.getText().trim().equals("")||NmPenilai.getText().trim().equals("")){
             Valid.textKosong(btnPenilai,"Yang Menilai");
         }else if(KdDInilai.getText().trim().equals("")||NmDinilai.getText().trim().equals("")){
@@ -675,14 +675,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
         }else if(jml==0){
-            Valid.textKosong(TCari,"Data Penilaian");
+            Valid.textKosong(TCari,"Data Pengkajian");
         }else{
             index = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (index == JOptionPane.YES_OPTION) {
                 Sequel.AutoComitFalse();
                 sukses=true;
                 if(Sequel.menyimpantf2("skp_penilaian","?,?,?,?,?,?","No.Permintaan",6,new String[]{
-                    NoPenilaian.getText(),KdPenilai.getText(),KdDInilai.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Keterangan.getText(),"Proses Penilaian"
+                    NoPenilaian.getText(),KdPenilai.getText(),KdDInilai.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Keterangan.getText(),"Proses Pengkajian"
                     })==true){
                     row=tbDokter.getRowCount();
                     for(i=0;i<row;i++){

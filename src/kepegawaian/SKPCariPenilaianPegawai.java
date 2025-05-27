@@ -236,7 +236,7 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Data Penilaian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Data Pengkajian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -263,7 +263,7 @@ public class SKPCariPenilaianPegawai extends javax.swing.JDialog {
         jLabel11.setPreferredSize(new java.awt.Dimension(47, 23));
         panelisi1.add(jLabel11);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Proses Penilaian", "Keluar Hasil" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Proses Pengkajian", "Keluar Hasil" }));
         Status.setName("Status"); // NOI18N
         Status.setPreferredSize(new java.awt.Dimension(130, 23));
         Status.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -686,7 +686,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                 akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                 akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                "<font size='2' face='Tahoma'>Laporan Penilaian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien<br><br></font>"+        
+                                "<font size='2' face='Tahoma'>Laporan Pengkajian Petugas/Dokter Dalam Implementasi Sasaran Keselamatan Pasien<br><br></font>"+        
                             "</td>"+
                        "</tr>"+
                     "</table>")
@@ -762,7 +762,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         htmlContent = new StringBuilder();
         htmlContent.append(
             "<tr class='head'>"+
-                "<td valign='top' bgcolor='#FFFAFA' align='center' width='95px'>No.Penilaian</td>"+
+                "<td valign='top' bgcolor='#FFFAFA' align='center' width='95px'>No.Pengkajian</td>"+
                 "<td valign='top' bgcolor='#FFFAFA' align='center' width='200px'>Yang Dinilai</td>"+
                 "<td valign='top' bgcolor='#FFFAFA' align='center' width='200px'>Yang Menilai</td>"+
                 "<td valign='top' bgcolor='#FFFAFA' align='center' width='105px'>Tanggal</td>"+
@@ -787,7 +787,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(NoPenilaian.getText().trim().equals("")){
-            Valid.textKosong(NoPenilaian,"No.Penilaian");
+            Valid.textKosong(NoPenilaian,"No.Pengkajian");
         }else {
             if(Valid.SetInteger(LTotal.getText())>0){
                 if(Sequel.meghapustf("skp_penilaian","nomor_penilaian",NoPenilaian.getText())==true){
@@ -863,7 +863,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             htmlContent = new StringBuilder();
             htmlContent.append(
                 "<tr class='head'>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='95px'>No.Penilaian</td>"+
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='95px'>No.Pengkajian</td>"+
                     "<td valign='top' bgcolor='#FFFAFA' align='center' width='200px'>Yang Dinilai</td>"+
                     "<td valign='top' bgcolor='#FFFAFA' align='center' width='200px'>Yang Menilai</td>"+
                     "<td valign='top' bgcolor='#FFFAFA' align='center' width='105px'>Tanggal</td>"+

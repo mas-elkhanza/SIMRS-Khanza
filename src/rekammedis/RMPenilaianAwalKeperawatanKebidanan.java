@@ -68,7 +68,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             "Merokok","Jml.Rokok","Alkohol","Jml.Alkohol","Obat Tidur","Riwayat KB","Lama KB","Komplikasi KB","Ket.Komplikasi KB","Berhenti KB",
             "Alasan Berhenti KB","Alat Bantu","Ket.Alat Bantu","Prothesa","Keterangan Prothesa","ADL","Stts.Psikologi","Ket.Stts Psikologi",
             "Hubungan Keluarga","Tinggal Dengan","Keterangan Tinggal","Ekonomi","Budaya","Keterangan Budaya","Edukasi","Keterangan Edukasi",
-            "R.J.a.1","R.J.a.2","R.J.b","Hasil Penilaian Resiko Jatuh","Dilaporkan","Jam Lapor","Skrining Gizi 1","N1","Skrining Gizi 2","N2",
+            "R.J.a.1","R.J.a.2","R.J.b","Hasil Pengkajian Resiko Jatuh","Dilaporkan","Jam Lapor","Skrining Gizi 1","N1","Skrining Gizi 2","N2",
             "Total Skor","Kondisi Nyeri","Penyebab Nyeri","Ket.Peny Nyeri","Kualitas","Ket.Kualitas","Lokasi","Menyebar","Skala","Durasi",
             "Nyeri Hilang","Ket.Nyeri Hilang","Diberitahukan","Jam Diberitahukan","Masalah Kebidanan","Tindakan","NIP","Nama Petugas/Bidan"
         }){
@@ -1151,7 +1151,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Awal Keperawatan Rawat Jalan Kebidanan & Kandungan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Awal Keperawatan Rawat Jalan Kebidanan & Kandungan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -3538,7 +3538,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -3748,7 +3748,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
 
         internalFrame3.add(PanelAccor, java.awt.BorderLayout.EAST);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -4524,7 +4524,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 System.out.println("Notif : "+e);
             }
             
-            Valid.MyReportqry("rptCetakPenilaianAwalKebidananRalan.jasper","report","::[ Laporan Penilaian Awal Ralan Kebidanan & Kandungan ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalKebidananRalan.jasper","report","::[ Laporan Pengkajian Awal Ralan Kebidanan & Kandungan ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_kebidanan.tanggal,"+
                 "penilaian_awal_keperawatan_kebidanan.informasi,penilaian_awal_keperawatan_kebidanan.td,penilaian_awal_keperawatan_kebidanan.nadi,penilaian_awal_keperawatan_kebidanan.rr,penilaian_awal_keperawatan_kebidanan.suhu,penilaian_awal_keperawatan_kebidanan.bb,"+
                 "penilaian_awal_keperawatan_kebidanan.tb,penilaian_awal_keperawatan_kebidanan.nadi,penilaian_awal_keperawatan_kebidanan.rr,penilaian_awal_keperawatan_kebidanan.suhu,penilaian_awal_keperawatan_kebidanan.gcs,penilaian_awal_keperawatan_kebidanan.bb,"+
@@ -4554,7 +4554,7 @@ public final class RMPenilaianAwalKeperawatanKebidanan extends javax.swing.JDial
                 "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
                 "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             
-            Valid.MyReportqry("rptCetakPenilaianAwalKebidananRalan2.jasper","report","::[ Laporan Penilaian Awal Ralan Kebidanan & Kandungan ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalKebidananRalan2.jasper","report","::[ Laporan Pengkajian Awal Ralan Kebidanan & Kandungan ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_kebidanan.tanggal,"+
                 "penilaian_awal_keperawatan_kebidanan.informasi,penilaian_awal_keperawatan_kebidanan.td,penilaian_awal_keperawatan_kebidanan.nadi,penilaian_awal_keperawatan_kebidanan.rr,penilaian_awal_keperawatan_kebidanan.suhu,penilaian_awal_keperawatan_kebidanan.bb,"+
                 "penilaian_awal_keperawatan_kebidanan.tb,penilaian_awal_keperawatan_kebidanan.nadi,penilaian_awal_keperawatan_kebidanan.rr,penilaian_awal_keperawatan_kebidanan.suhu,penilaian_awal_keperawatan_kebidanan.gcs,penilaian_awal_keperawatan_kebidanan.bb,"+

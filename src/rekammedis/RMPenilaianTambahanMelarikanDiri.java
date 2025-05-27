@@ -406,7 +406,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         MnPenilaianTambahanMelarikanDiri.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianTambahanMelarikanDiri.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianTambahanMelarikanDiri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianTambahanMelarikanDiri.setText("Formulir Penilaian Tambahan Berisiko Melarikan Diri");
+        MnPenilaianTambahanMelarikanDiri.setText("Formulir Pengkajian Tambahan Berisiko Melarikan Diri");
         MnPenilaianTambahanMelarikanDiri.setName("MnPenilaianTambahanMelarikanDiri"); // NOI18N
         MnPenilaianTambahanMelarikanDiri.setPreferredSize(new java.awt.Dimension(305, 26));
         MnPenilaianTambahanMelarikanDiri.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +426,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Tambahan Risiko Melarikan Diri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Tambahan Risiko Melarikan Diri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1937,7 +1937,7 @@ public final class RMPenilaianTambahanMelarikanDiri extends javax.swing.JDialog 
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),46).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),45).toString():finger)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirPenilaianTambahanMelarikanDiri.jasper","report","::[ Formulir Penilaian Tambahan Berisiko Melarikan Diri ]::",
+            Valid.MyReportqry("rptFormulirPenilaianTambahanMelarikanDiri.jasper","report","::[ Formulir Pengkajian Tambahan Berisiko Melarikan Diri ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,penilaian_tambahan_beresiko_melarikan_diri.tanggal,date_format(reg_periksa.tgl_registrasi,'%d-%m-%Y')as tgl_registrasi,reg_periksa.jam_reg,"+
                     "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_melarikan_diri,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_melarikan_diri,"+
                     "penilaian_tambahan_beresiko_melarikan_diri.statik_riwayat_penolakan_pengobatan,penilaian_tambahan_beresiko_melarikan_diri.statik_skorriwayat_penolakan_pengobatan,"+

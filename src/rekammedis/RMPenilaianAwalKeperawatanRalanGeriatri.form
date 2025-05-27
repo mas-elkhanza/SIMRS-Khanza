@@ -50,7 +50,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Penilaian Awal Keperawatan Rawat Jalan Geriatri ]::">
+            <TitledBorder title="::[ Pengkajian Awal Keperawatan Rawat Jalan Geriatri ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
@@ -253,8 +253,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Input Penilaian">
-                    <Property name="tabTitle" type="java.lang.String" value="Input Penilaian"/>
+                  <JTabbedPaneConstraints tabName="Input Pengkajian">
+                    <Property name="tabTitle" type="java.lang.String" value="Input Pengkajian"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>
@@ -3719,8 +3719,8 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Data Penilaian">
-                    <Property name="tabTitle" type="java.lang.String" value="Data Penilaian"/>
+                  <JTabbedPaneConstraints tabName="Data Pengkajian">
+                    <Property name="tabTitle" type="java.lang.String" value="Data Pengkajian"/>
                   </JTabbedPaneConstraints>
                 </Constraint>
               </Constraints>

@@ -76,7 +76,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             "GCS","BB","TB","BMI","Keluhan Utama","Riwayat Penyakit Dahulu","Riwayat Penyakit Keluarga","Riwayat Pengobatan",
             "Alergi","Alat Bantu","Ket. Alat Bantu","Prothesa","Ket. Prothesa","ADL","Stts Psikologi","Ket. Psikologi","Hubungan Keluarga","Tinggal Dengan",
             "Ket. Tinggal","Ekonomi","Budaya","Ket. Budaya","Edukasi","Ket. Edukasi","Cara Berjalan A","Cara Berjalan B","Cara Berjalan C",
-            "Hasil Penilaian Resiko Jatuh","Lapor Dokter","Ket. Lapor","Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Tingkat Nyeri","Provokes",
+            "Hasil Pengkajian Resiko Jatuh","Lapor Dokter","Ket. Lapor","Skrining Gizi 1","Nilai 1","Skrining Gizi 2","Nilai 2","Total Skor","Tingkat Nyeri","Provokes",
             "Ket. Provokes","Kualitas","Ket. Kualitas","Lokasi","Menyebar","Skala Nyeri","Durasi","Nyeri Hilang","Ket. Hilang Nyeri","Lapor Ke Dokter",
             "Jam Lapor","Kemampuan Baca & Tulis","Dibutuhkan Penerjamah","Keterangan Penerjemah","Hambatan Edukasi","Kategori Hambatan", 
             "Keterangan Hambatan","Hambatan Cara Bicara","Bahasa Isyarat","Menerima Informasi","Keterangan Menerima Informasi","Cara Belajar Disukai", 
@@ -843,7 +843,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Awal Keperawatan Rawat Jalan Geriatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Awal Keperawatan Rawat Jalan Geriatri ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -2772,7 +2772,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -2971,7 +2971,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
 
         internalFrame3.add(PanelAccor, java.awt.BorderLayout.EAST);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -3981,7 +3981,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                 System.out.println("Notif : "+e);
             }
             param.put("rencana",masalahkeperawatangeriatri); 
-            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanGeriatri.jasper","report","::[ Laporan Penilaian Awal Keperawatan Ralan Geriatri ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanGeriatri.jasper","report","::[ Laporan Pengkajian Awal Keperawatan Ralan Geriatri ]::",
                         "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ralan_geriatri.tanggal,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.informasi,penilaian_awal_keperawatan_ralan_geriatri.td,penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,"+
                         "penilaian_awal_keperawatan_ralan_geriatri.nadi,penilaian_awal_keperawatan_ralan_geriatri.rr,penilaian_awal_keperawatan_ralan_geriatri.suhu,penilaian_awal_keperawatan_ralan_geriatri.gcs,penilaian_awal_keperawatan_ralan_geriatri.bb,penilaian_awal_keperawatan_ralan_geriatri.tb,penilaian_awal_keperawatan_ralan_geriatri.bmi,penilaian_awal_keperawatan_ralan_geriatri.keluhan_utama,"+

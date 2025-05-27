@@ -1106,7 +1106,7 @@
                             <Component class="widget.CekBox" name="chkAsuhanTerapiWicara">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Terapi Wicara"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Terapi Wicara"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkAsuhanTerapiWicara" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -1130,7 +1130,7 @@
                             <Component class="widget.CekBox" name="chkAsuhanPsikolog">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Psikologi"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Psikologi"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkAsuhanPsikolog" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -1142,7 +1142,7 @@
                             <Component class="widget.CekBox" name="chkAsuhanPsikologiKlinis">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Psikologi Klinis"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Psikologi Klinis"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkAsuhanPsikologiKlinis" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -1754,7 +1754,7 @@
                             <Component class="widget.CekBox" name="chkPenilaianUlangNyeri">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Ulang Nyeri"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Ulang Nyeri"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkPenilaianUlangNyeri" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -1862,7 +1862,7 @@
                             <Component class="widget.CekBox" name="chkAsuhanPreInduksi">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Pre Induksi"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Pre Induksi"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkAsuhanPreInduksi" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -1934,7 +1934,7 @@
                             <Component class="widget.CekBox" name="chkAsuhanPreOperasi">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Pre Operasi"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Pre Operasi"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkAsuhanPreOperasi" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -1958,7 +1958,7 @@
                             <Component class="widget.CekBox" name="chkAsuhanPreAnestesi">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Pre Operasi"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Pre Operasi"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkAsuhanPreAnestesi" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -2846,7 +2846,7 @@
                             <Component class="widget.CekBox" name="chkPenilaianPasienTerminal">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Pasien Terminal"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Pasien Terminal"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkPenilaianPasienTerminal" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -2858,7 +2858,7 @@
                             <Component class="widget.CekBox" name="chkPenilaianKorbanKekerasan">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Korban Kekerasan"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Korban Kekerasan"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkPenilaianKorbanKekerasan" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -2871,7 +2871,7 @@
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
-                                <Property name="label" type="java.lang.String" value="Penilaian Kecemasan Ranap Anak"/>
+                                <Property name="label" type="java.lang.String" value="Pengkajian Kecemasan Ranap Anak"/>
                                 <Property name="name" type="java.lang.String" value="chkPenilaianLevelKecemasanRanapAnak" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2882,7 +2882,7 @@
                             <Component class="widget.CekBox" name="chkPenilaianPasienPenyakitMenular">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Pasien Penyakit Menular"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Pasien Penyakit Menular"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkPenilaianPasienPenyakitMenular" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -2894,7 +2894,7 @@
                             <Component class="widget.CekBox" name="chkPenilaianPasienImunitasRendah">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Pasien Imunitas Rendah"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Pasien Imunitas Rendah"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkPenilaianPasienImunitasRendah" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>
@@ -2906,7 +2906,7 @@
                             <Component class="widget.CekBox" name="chkPenilaianPasienKeracunan">
                               <Properties>
                                 <Property name="selected" type="boolean" value="true"/>
-                                <Property name="text" type="java.lang.String" value="Penilaian Pasien Keracunan"/>
+                                <Property name="text" type="java.lang.String" value="Pengkajian Pasien Keracunan"/>
                                 <Property name="horizontalAlignment" type="int" value="2"/>
                                 <Property name="name" type="java.lang.String" value="chkPenilaianPasienKeracunan" noResource="true"/>
                                 <Property name="opaque" type="boolean" value="false"/>

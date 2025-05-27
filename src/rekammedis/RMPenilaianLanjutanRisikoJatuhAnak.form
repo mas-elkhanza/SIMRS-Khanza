@@ -25,7 +25,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Formulir Penilaian Lanjutan Risiko Jatuh Anak"/>
+            <Property name="text" type="java.lang.String" value="Formulir Pengkajian Lanjutan Risiko Jatuh Anak"/>
             <Property name="name" type="java.lang.String" value="MnPenilaianLanjutanRisikoJatuh" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[290, 26]"/>
@@ -74,7 +74,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Penilaian Lanjutan Risiko Jatuh Pasien Anak ]::">
+            <TitledBorder title="::[ Pengkajian Lanjutan Risiko Jatuh Pasien Anak ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>

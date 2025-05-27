@@ -985,7 +985,7 @@ public final class RMPengkajianRestrain extends javax.swing.JDialog {
         jLabel104.setBounds(10, 340, 130, 23);
 
         jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel106.setText("Penilaian & Order Dokter :");
+        jLabel106.setText("Pengkajian & Order Dokter :");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
         jLabel106.setBounds(10, 240, 180, 23);

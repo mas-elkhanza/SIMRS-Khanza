@@ -355,7 +355,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         MnPenilaianKorbanKekerasan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianKorbanKekerasan.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianKorbanKekerasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianKorbanKekerasan.setText("Laporan Penilaian Korban Kekerasan");
+        MnPenilaianKorbanKekerasan.setText("Laporan Pengkajian Korban Kekerasan");
         MnPenilaianKorbanKekerasan.setName("MnPenilaianKorbanKekerasan"); // NOI18N
         MnPenilaianKorbanKekerasan.setPreferredSize(new java.awt.Dimension(250, 26));
         MnPenilaianKorbanKekerasan.addActionListener(new java.awt.event.ActionListener() {
@@ -369,7 +369,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Pasien Korban Kekerasan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Pasien Korban Kekerasan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1064,7 +1064,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -1166,7 +1166,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
 
         internalFrame3.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -1594,7 +1594,7 @@ public final class RMPenilaianKorbanKekerasan extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptFormulirPenilaianKorbanKekerasan.jasper","report","::[ Formulir Penilaian Korban Kekerasan ]::",
+            Valid.MyReportqry("rptFormulirPenilaianKorbanKekerasan.jasper","report","::[ Formulir Pengkajian Korban Kekerasan ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_korban_kekerasan.nip,pegawai.nama,penilaian_korban_kekerasan.tanggal, "+
                 "penilaian_korban_kekerasan.informasi,penilaian_korban_kekerasan.hubungan_dengan_pasien,penilaian_korban_kekerasan.jumlah_saudara,penilaian_korban_kekerasan.kondisi_keluaga,penilaian_korban_kekerasan.hubungan_orang_terdekat,"+
                 "penilaian_korban_kekerasan.kekerasan_yang_dialami,penilaian_korban_kekerasan.tempat_kejadian,penilaian_korban_kekerasan.lama_kekerasan,penilaian_korban_kekerasan.periode_kekerasan,penilaian_korban_kekerasan.seberapa_sering_mengalami,"+

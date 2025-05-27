@@ -1048,7 +1048,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Awal Medis Rawat Inap Neonatus ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Awal Medis Rawat Inap Neonatus ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
@@ -1675,7 +1675,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
         jLabel117.setBounds(292, 430, 120, 23);
 
         jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel73.setText("Penilaian Awal Lahir :");
+        jLabel73.setText("Pengkajian Awal Lahir :");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
         jLabel73.setBounds(44, 460, 182, 23);
@@ -2931,7 +2931,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
 
-        TabRawat.addTab("Input Penilaian", internalFrame2);
+        TabRawat.addTab("Input Pengkajian", internalFrame2);
 
         internalFrame3.setBorder(null);
         internalFrame3.setName("internalFrame3"); // NOI18N
@@ -3032,7 +3032,7 @@ public final class RMPenilaianAwalMedisRanapNeonatus extends javax.swing.JDialog
 
         internalFrame3.add(panelGlass9, java.awt.BorderLayout.PAGE_END);
 
-        TabRawat.addTab("Data Penilaian", internalFrame3);
+        TabRawat.addTab("Data Pengkajian", internalFrame3);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 

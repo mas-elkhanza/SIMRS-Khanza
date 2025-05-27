@@ -304,7 +304,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         MnPenilaianRisikoJatuh.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianRisikoJatuh.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianRisikoJatuh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianRisikoJatuh.setText("Formulir Penilaian Risiko Jatuh Neonatus");
+        MnPenilaianRisikoJatuh.setText("Formulir Pengkajian Risiko Jatuh Neonatus");
         MnPenilaianRisikoJatuh.setName("MnPenilaianRisikoJatuh"); // NOI18N
         MnPenilaianRisikoJatuh.setPreferredSize(new java.awt.Dimension(270, 26));
         MnPenilaianRisikoJatuh.addActionListener(new java.awt.event.ActionListener() {
@@ -324,7 +324,7 @@ public final class RMPenilaianRisikoJatuhNeonatus extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Penilaian Lanjutan Risiko Jatuh Neonatus ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pengkajian Lanjutan Risiko Jatuh Neonatus ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
