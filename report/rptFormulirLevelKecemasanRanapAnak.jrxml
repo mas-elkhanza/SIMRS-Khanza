@@ -633,7 +633,7 @@
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN LEVEL KECEMASAN PASIEN RAWAT INAP ANAK]]></text>
+				<text><![CDATA[PENGKAJIAN LEVEL KECEMASAN PASIEN RAWAT INAP ANAK]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="5" y="77" width="54" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="b2cdf71f-db7d-4272-8d62-f12f21abeefc"/>
@@ -838,7 +838,7 @@
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[KRITERIA PENILAIAN]]></text>
+				<text><![CDATA[KRITERIA PENGKAJIAN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="2" y="19" width="20" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="d6d852da-b176-4f72-bf65-db3072c89089">

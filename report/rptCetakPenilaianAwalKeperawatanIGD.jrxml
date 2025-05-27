@@ -676,7 +676,7 @@
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN AWAL KEPERAWATAN GAWAT DARURAT]]></text>
+				<text><![CDATA[PENGKAJIAN AWAL KEPERAWATAN GAWAT DARURAT]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="78" width="557" height="1" uuid="ba9aa647-e524-46f8-adfb-6d4a9d562118">
@@ -872,7 +872,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VI. PENILAIAN RESIKO JATUH (GET UP AND GO)]]></text>
+				<text><![CDATA[VI. PENGKAJIAN RESIKO JATUH (GET UP AND GO)]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="538" width="557" height="1" uuid="7c6a892c-25ef-4747-9118-1d6e8ab60c4f"/>

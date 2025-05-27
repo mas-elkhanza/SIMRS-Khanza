@@ -719,7 +719,7 @@
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN AWAL KEPERAWATAN RAWAT JALAN GERIATRI]]></text>
+				<text><![CDATA[PENGKAJIAN AWAL KEPERAWATAN RAWAT JALAN GERIATRI]]></text>
 			</staticText>
 			<line>
 				<reportElement x="11" y="78" width="557" height="1" uuid="ba9aa647-e524-46f8-adfb-6d4a9d562118">
@@ -1312,7 +1312,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VI. PENILAIAN RESIKO JATUH ]]></text>
+				<text><![CDATA[VI. PENGKAJIAN RESIKO JATUH ]]></text>
 			</staticText>
 			<line>
 				<reportElement x="11" y="394" width="557" height="1" uuid="7c6a892c-25ef-4747-9118-1d6e8ab60c4f"/>
@@ -1697,7 +1697,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VIII. PENILAIAN TINGKAT NYERI]]></text>
+				<text><![CDATA[VIII. PENGKAJIAN TINGKAT NYERI]]></text>
 			</staticText>
 			<line>
 				<reportElement x="11" y="534" width="557" height="1" uuid="8fc1c1e7-90b5-43e0-bd1b-b91863bc5266"/>

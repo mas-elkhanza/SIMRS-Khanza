@@ -915,7 +915,7 @@
                         <Component class="widget.Label" name="jLabel109">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="I. PENILAIAN PRA INDUKSI"/>
+                            <Property name="text" type="java.lang.String" value="I. PENGKAJIAN PRA INDUKSI"/>
                             <Property name="name" type="java.lang.String" value="jLabel109" noResource="true"/>
                           </Properties>
                           <Constraints>

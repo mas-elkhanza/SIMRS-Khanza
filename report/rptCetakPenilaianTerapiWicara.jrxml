@@ -611,7 +611,7 @@
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN TERAPI WICARA]]></text>
+				<text><![CDATA[PENGKAJIAN TERAPI WICARA]]></text>
 			</staticText>
 			<line>
 				<reportElement x="13" y="78" width="557" height="1" uuid="ba9aa647-e524-46f8-adfb-6d4a9d562118">

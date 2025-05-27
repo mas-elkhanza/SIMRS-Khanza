@@ -651,7 +651,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VII. PENILAIAN RESIKO JATUH ]]></text>
+				<text><![CDATA[VII. PENGKAJIAN RESIKO JATUH ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="38" width="118" height="11" uuid="d8df6e85-2b2e-4fe4-a901-91cbf73716d3">

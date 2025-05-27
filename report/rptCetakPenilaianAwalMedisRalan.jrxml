@@ -447,7 +447,7 @@ inner join dokter on penilaian_medis_ralan.kd_dokter=dokter.kd_dokter ]]>
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN AWAL MEDIS RAWAT JALAN]]></text>
+				<text><![CDATA[PENGKAJIAN AWAL MEDIS RAWAT JALAN]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="78" width="557" height="1" uuid="ba9aa647-e524-46f8-adfb-6d4a9d562118">

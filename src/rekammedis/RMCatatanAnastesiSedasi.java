@@ -1058,7 +1058,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
         BtnPetugasBedah.setBounds(696, 140, 28, 23);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel109.setText("I. PENILAIAN PRA INDUKSI");
+        jLabel109.setText("I. PENGKAJIAN PRA INDUKSI");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
         jLabel109.setBounds(10, 170, 170, 23);
@@ -2530,7 +2530,7 @@ public final class RMCatatanAnastesiSedasi extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN PRE ANESTESI<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN PRE ANESTESI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")

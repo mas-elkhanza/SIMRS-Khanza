@@ -789,7 +789,7 @@
                         <Component class="widget.Label" name="jLabel52">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VII. PENILAIAN TINGKAT NYERI"/>
+                            <Property name="text" type="java.lang.String" value="VII. PENGKAJIAN TINGKAT NYERI"/>
                             <Property name="name" type="java.lang.String" value="jLabel52" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -1690,7 +1690,7 @@
                         <Component class="widget.Label" name="jLabel63">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VI. PENILAIAN RESIKO JATUH"/>
+                            <Property name="text" type="java.lang.String" value="VI. PENGKAJIAN RESIKO JATUH"/>
                             <Property name="name" type="java.lang.String" value="jLabel63" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -2228,7 +2228,7 @@
                         <Component class="widget.Label" name="jLabel57">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VIII. PENILAIAN INTRAORAL"/>
+                            <Property name="text" type="java.lang.String" value="VIII. PENGKAJIAN INTRAORAL"/>
                             <Property name="name" type="java.lang.String" value="jLabel57" noResource="true"/>
                           </Properties>
                           <Constraints>

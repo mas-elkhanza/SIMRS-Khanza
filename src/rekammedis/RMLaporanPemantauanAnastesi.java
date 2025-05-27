@@ -3778,7 +3778,7 @@ public final class RMLaporanPemantauanAnastesi extends javax.swing.JDialog {
         jSeparator8.setBounds(0, 1430, 880, 1);
 
         jLabel167.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel167.setText("VI. PENILAIAN TINGKAT NYERI");
+        jLabel167.setText("VI. PENGKAJIAN TINGKAT NYERI");
         jLabel167.setName("jLabel167"); // NOI18N
         FormInput.add(jLabel167);
         jLabel167.setBounds(10, 1430, 380, 23);
@@ -4001,7 +4001,7 @@ public final class RMLaporanPemantauanAnastesi extends javax.swing.JDialog {
         jSeparator10.setBounds(0, 1620, 880, 1);
 
         jLabel180.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel180.setText("VII. PENILAIAN RESIKO JATUH");
+        jLabel180.setText("VII. PENGKAJIAN RESIKO JATUH");
         jLabel180.setName("jLabel180"); // NOI18N
         FormInput.add(jLabel180);
         jLabel180.setBounds(10, 1620, 380, 23);
@@ -4396,7 +4396,7 @@ public final class RMLaporanPemantauanAnastesi extends javax.swing.JDialog {
         jSeparator12.setBounds(0, 2020, 880, 1);
 
         jLabel210.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel210.setText("ASESMEN/PENILAIAN KEBIDANAN :");
+        jLabel210.setText("ASESMEN/PENGKAJIAN KEBIDANAN :");
         jLabel210.setName("jLabel210"); // NOI18N
         FormInput.add(jLabel210);
         jLabel210.setBounds(10, 2030, 200, 23);

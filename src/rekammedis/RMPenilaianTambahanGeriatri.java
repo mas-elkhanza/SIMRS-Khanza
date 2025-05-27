@@ -915,7 +915,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
         jSeparator12.setBounds(0, 500, 750, 1);
 
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel95.setText("II. PENILAIAN KUALITAS HIDUP – EQ5D, POLA AKTIFITAS DAN ISTIRAHAT");
+        jLabel95.setText("II. PENGKAJIAN KUALITAS HIDUP – EQ5D, POLA AKTIFITAS DAN ISTIRAHAT");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
         jLabel95.setBounds(10, 500, 430, 23);
@@ -1493,7 +1493,7 @@ public final class RMPenilaianTambahanGeriatri extends javax.swing.JDialog {
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                             akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                             akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA PENILAIAN TAMBAHAN PASIEN GERIATRI<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA PENGKAJIAN TAMBAHAN PASIEN GERIATRI<br><br></font>"+        
                                         "</td>"+
                                    "</tr>"+
                                 "</table>")

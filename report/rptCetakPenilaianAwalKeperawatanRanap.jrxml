@@ -1379,7 +1379,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VI. PENILAIAN TINGKAT NYERI]]></text>
+				<text><![CDATA[VI. PENGKAJIAN TINGKAT NYERI]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="73" y="128" width="185" height="11" uuid="f5f9267d-6b48-4b4a-9b49-bab68292629d">

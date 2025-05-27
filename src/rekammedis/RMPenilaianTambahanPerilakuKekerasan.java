@@ -1857,7 +1857,7 @@ public final class RMPenilaianTambahanPerilakuKekerasan extends javax.swing.JDia
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN TAMBAHAN PERILAKU KEKERASAN<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN TAMBAHAN PERILAKU KEKERASAN<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")

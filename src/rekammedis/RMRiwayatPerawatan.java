@@ -7733,7 +7733,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN RESIKO JATUH (GET UP AND GO)").append(  
+                                       "VI. PENGKAJIAN RESIKO JATUH (GET UP AND GO)").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td colpsan='2' border='0'>a. Cara Berjalan :</td>").append(
@@ -7954,7 +7954,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN RESIKO JATUH").append(  
+                                       "VI. PENGKAJIAN RESIKO JATUH").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td colpsan='2' border='0'>a. Cara Berjalan :</td>").append(
@@ -8007,7 +8007,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VIII. PENILAIAN TINGKAT NYERI").append(  
+                                       "VIII. PENGKAJIAN TINGKAT NYERI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='50%' border='0'>Tingkat Nyeri : ").append(rs2.getString("nyeri")).append(", Waktu / Durasi : ").append(rs2.getString("durasi")).append(" Menit</td>").append(
@@ -8233,7 +8233,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN RESIKO JATUH").append(  
+                                       "VI. PENGKAJIAN RESIKO JATUH").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td colpsan='2' border='0'>a. Cara Berjalan :</td>").append(
@@ -8286,7 +8286,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VIII. PENILAIAN TINGKAT NYERI").append(  
+                                       "VIII. PENGKAJIAN TINGKAT NYERI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='50%' border='0'>Tingkat Nyeri : ").append(rs2.getString("nyeri")).append(", Waktu / Durasi : ").append(rs2.getString("durasi")).append(" Menit</td>").append(
@@ -8585,7 +8585,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN RESIKO JATUH").append(  
+                                       "VI. PENGKAJIAN RESIKO JATUH").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td colpsan='2' border='0'>a. Cara Berjalan :</td>").append(
@@ -8610,7 +8610,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VII. PENILAIAN TINGKAT NYERI").append(  
+                                       "VII. PENGKAJIAN TINGKAT NYERI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='50%' border='0'>Tingkat Nyeri : ").append(rs2.getString("nyeri")).append("</td>").append(
@@ -8631,7 +8631,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "</td>").append(
                                  "</tr>").append(
                                     "<td valign='top'>").append(
-                                       "VIII. PENILAIAN INTRAORAL").append(  
+                                       "VIII. PENGKAJIAN INTRAORAL").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='50%' border='0'>Kebersihan Mulut : ").append(rs2.getString("kebersihan_mulut")).append("</td>").append(
@@ -8955,7 +8955,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VIII. PENILAIAN RESIKO JATUH").append(  
+                                       "VIII. PENGKAJIAN RESIKO JATUH").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td colpsan='2' border='0'>a. Cara Berjalan :</td>").append(
@@ -9020,7 +9020,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "X. PENILAIAN TINGKAT NYERI (Skala FLACCS)").append(  
+                                       "X. PENGKAJIAN TINGKAT NYERI (Skala FLACCS)").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='30%' bgcolor='#FFFAF8' align='center' valign='middle'>Pengkajian</td>").append(
@@ -9391,7 +9391,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN RESIKO JATUH").append(  
+                                       "VI. PENGKAJIAN RESIKO JATUH").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td colpsan='2' border='0'>a. Cara Berjalan :</td>").append(
@@ -9444,7 +9444,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VIII. PENILAIAN TINGKAT NYERI").append(  
+                                       "VIII. PENGKAJIAN TINGKAT NYERI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='50%' border='0'>Tingkat Nyeri : ").append(rs2.getString("nyeri")).append(", Waktu / Durasi : ").append(rs2.getString("durasi")).append(" Menit</td>").append(
@@ -9664,7 +9664,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN TINGKAT NYERI").append(  
+                                       "VI. PENGKAJIAN TINGKAT NYERI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='50%' border='0'>Tingkat Nyeri : ").append(rs2.getString("nyeri")).append(", Waktu / Durasi : ").append(rs2.getString("durasi")).append(" Menit</td>").append(
@@ -9732,7 +9732,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "IX. PENILAIAN RESIKO JATUH").append(  
+                                       "IX. PENGKAJIAN RESIKO JATUH").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td colpsan='2' border='0'>a. Cara Berjalan :</td>").append(
@@ -12604,7 +12604,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN TINGKAT NYERI").append(  
+                                       "VI. PENGKAJIAN TINGKAT NYERI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='50%' border='0'>Tingkat Nyeri : ").append(rs2.getString("penilaian_nyeri")).append(", Waktu / Durasi : ").append(rs2.getString("penilaian_nyeri_waktu")).append(" Menit</td>").append(
@@ -12630,7 +12630,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VII. PENILAIAN RESIKO JATUH").append(  
+                                       "VII. PENGKAJIAN RESIKO JATUH").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                          "<tr class='isi'>").append(
                                               "<td width='50%' bgcolor='#FFFAF8' align='center'>Faktor Resiko</td>").append(
@@ -12726,7 +12726,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top'>").append(
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
-                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>ASESMEN/PENILAIAN KEBIDANAN :</td>").append(
+                                               "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>ASESMEN/PENGKAJIAN KEBIDANAN :</td>").append(
                                                "<td valign='middle' bgcolor='#FFFAF8' align='center' width='50%'>RENCANA KEBIDANAN :</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
@@ -14071,7 +14071,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "I. PENILAIAN PRA INDUKSI").append(  
+                                       "I. PENGKAJIAN PRA INDUKSI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='25%' border='0'>Jam : ").append(rs2.getString("pre_induksi_jam")).append("</td>").append(
@@ -17208,7 +17208,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN TINGKAT NYERI").append(  
+                                       "VI. PENGKAJIAN TINGKAT NYERI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='50%' border='0'>Tingkat Nyeri : ").append(rs2.getString("penilaian_nyeri")).append(", Waktu / Durasi : ").append(rs2.getString("penilaian_nyeri_waktu")).append(" Menit</td>").append(
@@ -17234,7 +17234,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VII. PENILAIAN RESIKO JATUH").append(  
+                                       "VII. PENGKAJIAN RESIKO JATUH").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='100%' border='0'>Skala Morse :").append(
@@ -19944,7 +19944,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "II. PENILAIAN KUALITAS HIDUP – EQ5D, POLA AKTIFITAS DAN ISTIRAHAT").append(  
+                                       "II. PENGKAJIAN KUALITAS HIDUP – EQ5D, POLA AKTIFITAS DAN ISTIRAHAT").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='100%'>Kualitas Hidup Dengan EQ5D :").append(
@@ -22937,7 +22937,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='4%' valign='top' align='center' bgcolor='#FFFAF8'></td>").append(
-                                              "<td width='86%' valign='top' align='center' bgcolor='#FFFAF8'>KRITERIA PENILAIAN</td>").append(
+                                              "<td width='86%' valign='top' align='center' bgcolor='#FFFAF8'>KRITERIA PENGKAJIAN</td>").append(
                                               "<td width='10%' valign='top' align='center' bgcolor='#FFFAF8'>SKOR</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
@@ -24190,7 +24190,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "DATA PENILAIAN").append(  
+                                       "DATA PENGKAJIAN").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                                "<td width='100%'>Diagnosa Terapi Wicara : ").append(rs2.getString("diagnosa_terapi_wicara").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
@@ -24489,7 +24489,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "PENILAIAN & ORDER DOKTER :").append(  
+                                       "PENGKAJIAN & ORDER DOKTER :").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                                "<td width='100%'>").append(
@@ -26652,7 +26652,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VI. PENILAIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)").append(  
+                                       "VI. PENGKAJIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                          "<tr class='isi'>").append(
                                               "<td width='35%' bgcolor='#FFFAF8' align='center'>Faktor Resiko</td>").append(
@@ -26703,7 +26703,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "VII. PENILAIAN TINGKAT NYERI (SKALA NIPS)").append(  
+                                       "VII. PENGKAJIAN TINGKAT NYERI (SKALA NIPS)").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                          "<tr class='isi'>").append(
                                               "<td width='30%' bgcolor='#FFFAF8' align='center'>Pengkajian</td>").append(
@@ -29227,7 +29227,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "IX. PENILAIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)").append(  
+                                       "IX. PENGKAJIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                          "<tr class='isi'>").append(
                                               "<td width='35%' bgcolor='#FFFAF8' align='center'>Faktor Resiko</td>").append(
@@ -29279,7 +29279,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "X. PENILAIAN TINGKAT NYERI").append(  
+                                       "X. PENGKAJIAN TINGKAT NYERI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td colspan='3'>Skala FLACCS :</td>").append(
@@ -32284,7 +32284,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                  "</tr>").append(
                                  "<tr>").append(
                                     "<td valign='top'>").append(
-                                       "HASIL PENILAIAN/ASESMEN/PEMERIKSAAN").append(  
+                                       "HASIL PENGKAJIAN/ASESMEN/PEMERIKSAAN").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='29%'>Anamnesa</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("anamnesa")).append("</td>").append(

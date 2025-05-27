@@ -2307,7 +2307,7 @@ public final class RMPenilaianPsikologiKlinis extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN PSIKOLOGI KLINIS<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN PSIKOLOGI KLINIS<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")

@@ -3233,7 +3233,7 @@ Persalinan]]></text>
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VI. PENILAIAN RESIKO JATUH ]]></text>
+				<text><![CDATA[VI. PENGKAJIAN RESIKO JATUH ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="3" y="606" width="14" height="11" uuid="5a388dc1-f5f7-4616-9257-e167eeaccdd3">

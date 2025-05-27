@@ -3908,7 +3908,7 @@
                         <Component class="widget.Label" name="jLabel141">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VI. PENILAIAN RESIKO JATUH"/>
+                            <Property name="text" type="java.lang.String" value="VI. PENGKAJIAN RESIKO JATUH"/>
                             <Property name="name" type="java.lang.String" value="jLabel141" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -4302,7 +4302,7 @@
                         <Component class="widget.Label" name="jLabel155">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VIII. PENILAIAN TINGKAT NYERI"/>
+                            <Property name="text" type="java.lang.String" value="VIII. PENGKAJIAN TINGKAT NYERI"/>
                             <Property name="name" type="java.lang.String" value="jLabel155" noResource="true"/>
                           </Properties>
                           <Constraints>

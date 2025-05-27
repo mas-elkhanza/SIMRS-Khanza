@@ -384,7 +384,7 @@
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN TAMBAHAN PASIEN GERIATRI]]></text>
+				<text><![CDATA[PENGKAJIAN TAMBAHAN PASIEN GERIATRI]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="78" width="557" height="1" uuid="ba9aa647-e524-46f8-adfb-6d4a9d562118">
@@ -1027,7 +1027,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[II. PENILAIAN KUALITAS HIDUP – EQ5D, POLA AKTIFITAS DAN ISTIRAHAT]]></text>
+				<text><![CDATA[II. PENGKAJIAN KUALITAS HIDUP – EQ5D, POLA AKTIFITAS DAN ISTIRAHAT]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="373" width="557" height="1" uuid="9c2e7c01-637c-4402-b726-8b1c20486ed5"/>

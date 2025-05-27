@@ -167,7 +167,7 @@ inner join dokter on penilaian_dehidrasi.kd_dokter=dokter.kd_dokter]]>
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[DATA PENILAIAN DEHIDRASI]]></text>
+				<text><![CDATA[DATA PENGKAJIAN DEHIDRASI]]></text>
 			</staticText>
 			<image scaleImage="FillFrame" onErrorType="Blank">
 				<reportElement x="0" y="2" width="48" height="45" uuid="0b5ac850-d047-49b2-9a74-6249b9e226e8"/>

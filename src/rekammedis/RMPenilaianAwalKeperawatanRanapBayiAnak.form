@@ -5965,7 +5965,7 @@
                         <Component class="widget.Label" name="jLabel242">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="IX. PENILAIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)"/>
+                            <Property name="text" type="java.lang.String" value="IX. PENGKAJIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)"/>
                             <Property name="name" type="java.lang.String" value="jLabel242" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -6365,7 +6365,7 @@
                         <Component class="widget.Label" name="jLabel181">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="X. PENILAIAN TINGKAT NYERI"/>
+                            <Property name="text" type="java.lang.String" value="X. PENGKAJIAN TINGKAT NYERI"/>
                             <Property name="name" type="java.lang.String" value="jLabel181" noResource="true"/>
                           </Properties>
                           <Constraints>

@@ -1491,7 +1491,7 @@
                         <Component class="widget.Label" name="jLabel63">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VI. PENILAIAN RESIKO JATUH (GET UP AND GO)"/>
+                            <Property name="text" type="java.lang.String" value="VI. PENGKAJIAN RESIKO JATUH (GET UP AND GO)"/>
                             <Property name="name" type="java.lang.String" value="jLabel63" noResource="true"/>
                           </Properties>
                           <Constraints>

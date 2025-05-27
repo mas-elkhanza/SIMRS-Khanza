@@ -3737,7 +3737,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         jSeparator8.setBounds(0, 1550, 880, 1);
 
         jLabel203.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel203.setText("VI. PENILAIAN TINGKAT NYERI");
+        jLabel203.setText("VI. PENGKAJIAN TINGKAT NYERI");
         jLabel203.setName("jLabel203"); // NOI18N
         FormInput.add(jLabel203);
         jLabel203.setBounds(10, 1550, 380, 23);
@@ -3961,7 +3961,7 @@ public final class RMPenilaianAwalKeperawatanRanap extends javax.swing.JDialog {
         jSeparator10.setBounds(0, 1740, 880, 1);
 
         jLabel216.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel216.setText("VII. PENILAIAN RESIKO JATUH");
+        jLabel216.setText("VII. PENGKAJIAN RESIKO JATUH");
         jLabel216.setName("jLabel216"); // NOI18N
         FormInput.add(jLabel216);
         jLabel216.setBounds(10, 1740, 380, 23);

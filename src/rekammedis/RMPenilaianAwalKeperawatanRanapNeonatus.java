@@ -1918,7 +1918,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jSeparator11.setBounds(0, 2380, 880, 1);
 
         jLabel271.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel271.setText("VII. PENILAIAN TINGKAT NYERI (SKALA NIPS)");
+        jLabel271.setText("VII. PENGKAJIAN TINGKAT NYERI (SKALA NIPS)");
         jLabel271.setName("jLabel271"); // NOI18N
         FormInput.add(jLabel271);
         jLabel271.setBounds(10, 2380, 380, 23);
@@ -5378,7 +5378,7 @@ public final class RMPenilaianAwalKeperawatanRanapNeonatus extends javax.swing.J
         jSeparator8.setBounds(0, 2120, 880, 1);
 
         jLabel242.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel242.setText("VI. PENILAIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)");
+        jLabel242.setText("VI. PENGKAJIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)");
         jLabel242.setName("jLabel242"); // NOI18N
         FormInput.add(jLabel242);
         jLabel242.setBounds(10, 2120, 380, 23);

@@ -357,7 +357,7 @@ on reg_periksa.no_rawat=penilaian_psikologi.no_rawat inner join petugas on penil
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN PSIKOLOG]]></text>
+				<text><![CDATA[PENGKAJIAN PSIKOLOG]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="78" width="557" height="1" uuid="ba9aa647-e524-46f8-adfb-6d4a9d562118">

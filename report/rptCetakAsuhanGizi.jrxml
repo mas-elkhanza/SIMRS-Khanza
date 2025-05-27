@@ -428,7 +428,7 @@ inner join petugas on asuhan_gizi.nip=petugas.nip]]>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN GIZI]]></text>
+				<text><![CDATA[PENGKAJIAN GIZI]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="6" y="157" width="82" height="14" uuid="84b9be1c-8f09-4c16-b50c-1a1cd5373def"/>

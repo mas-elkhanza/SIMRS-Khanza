@@ -1352,7 +1352,7 @@ public final class RMPenilaianLanjutanSkriningFungsional extends javax.swing.JDi
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN LANJUTAN SKRINING FUNGSIONAL<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN LANJUTAN SKRINING FUNGSIONAL<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")

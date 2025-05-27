@@ -709,7 +709,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[I. PENILAIAN PRA INDUKSI]]></text>
+				<text><![CDATA[I. PENGKAJIAN PRA INDUKSI]]></text>
 			</staticText>
 			<line>
 				<reportElement x="169" y="536" width="1" height="100" uuid="ebca76b0-c3c8-41a4-99fb-4e01e36ffb4a">

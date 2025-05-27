@@ -606,7 +606,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VIII. PENILAIAN TINGKAT NYERI]]></text>
+				<text><![CDATA[VIII. PENGKAJIAN TINGKAT NYERI]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="14" width="557" height="1" uuid="8fc1c1e7-90b5-43e0-bd1b-b91863bc5266"/>

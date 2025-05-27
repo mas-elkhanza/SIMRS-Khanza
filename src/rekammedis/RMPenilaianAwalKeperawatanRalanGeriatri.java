@@ -1278,7 +1278,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         jLabel50.setBounds(476, 340, 60, 23);
 
         jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel52.setText("VIII. PENILAIAN TINGKAT NYERI");
+        jLabel52.setText("VIII. PENGKAJIAN TINGKAT NYERI");
         jLabel52.setName("jLabel52"); // NOI18N
         FormInput.add(jLabel52);
         jLabel52.setBounds(10, 800, 380, 23);
@@ -2018,7 +2018,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
         jLabel97.setBounds(381, 660, 190, 23);
 
         jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel63.setText("VI. PENILAIAN RESIKO JATUH");
+        jLabel63.setText("VI. PENGKAJIAN RESIKO JATUH");
         jLabel63.setName("jLabel63"); // NOI18N
         FormInput.add(jLabel63);
         jLabel63.setBounds(10, 560, 380, 23);
@@ -3191,9 +3191,9 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>III. RIWAYAT KESEHATAN</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IV. FUNGSIONAL</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>V. RIWAYAT PSIKO-SOSIAL SPIRITUAL DAN BUDAYA</b></td>").append(
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VI. PENILAIAN RESIKO JATUH</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VI. PENGKAJIAN RESIKO JATUH</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VII. SKRINING GIZI</b></td>").append(
-                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VIII. PENILAIAN TINGKAT NYERI</b></td>").append(
+                            "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>VIII. PENGKAJIAN TINGKAT NYERI</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IX. KEBUTUHAN KOMUNIKASI DAN EDUKASI</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>X. FRAILTY PHENOTYPE</b></td>").append(
                             "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MASALAH & RENCANA KEPERAWATAN</b></td>").append(
@@ -3530,7 +3530,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
                                             "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                             akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                             akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL KEPERAWATAN RAWAT JALAN GERIATRI<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA PENGKAJIAN AWAL KEPERAWATAN RAWAT JALAN GERIATRI<br><br></font>"+        
                                         "</td>"+
                                    "</tr>"+
                                 "</table>")

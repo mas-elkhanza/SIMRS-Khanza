@@ -2125,7 +2125,7 @@ public final class RMPenilaianAwalMedisRalanBedahMulut extends javax.swing.JDial
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL MEDIS RAWAT JALAN BEDAH MULUT<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN AWAL MEDIS RAWAT JALAN BEDAH MULUT<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")

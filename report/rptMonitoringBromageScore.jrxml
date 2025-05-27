@@ -358,7 +358,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN]]></text>
+				<text><![CDATA[PENGKAJIAN]]></text>
 			</staticText>
 		</band>
 	</columnHeader>

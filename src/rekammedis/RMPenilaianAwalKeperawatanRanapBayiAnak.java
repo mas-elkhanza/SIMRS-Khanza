@@ -4564,7 +4564,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jSeparator9.setBounds(0, 1820, 880, 1);
 
         jLabel242.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel242.setText("IX. PENILAIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)");
+        jLabel242.setText("IX. PENGKAJIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)");
         jLabel242.setName("jLabel242"); // NOI18N
         FormInput.add(jLabel242);
         jLabel242.setBounds(10, 1820, 380, 23);
@@ -4790,7 +4790,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
         jSeparator11.setBounds(0, 2080, 880, 1);
 
         jLabel181.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel181.setText("X. PENILAIAN TINGKAT NYERI");
+        jLabel181.setText("X. PENGKAJIAN TINGKAT NYERI");
         jLabel181.setName("jLabel181"); // NOI18N
         FormInput.add(jLabel181);
         jLabel181.setBounds(10, 2080, 380, 23);
@@ -6049,7 +6049,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENILAIAN AWAL KEPERAWATAN RAWAT INAP BAYI<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN AWAL KEPERAWATAN RAWAT INAP BAYI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")

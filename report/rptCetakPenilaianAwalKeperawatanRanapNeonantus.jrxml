@@ -1597,7 +1597,7 @@
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN AWAL KEPERAWATAN RAWAT INAP NEONATUS]]></text>
+				<text><![CDATA[PENGKAJIAN AWAL KEPERAWATAN RAWAT INAP NEONATUS]]></text>
 			</staticText>
 			<line>
 				<reportElement positionType="Float" x="0" y="26" width="557" height="1" uuid="d44767f9-659c-44ad-95b0-1775bd7bfa6d">
@@ -4666,7 +4666,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VI. PENILAIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)]]></text>
+				<text><![CDATA[VI. PENGKAJIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="17" width="510" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="2fdf8347-0d8d-4a13-950a-4d841c2842e0"/>
@@ -5019,7 +5019,7 @@
 					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[VII. PENILAIAN TINGKAT NYERI (SKALA NIPS)]]></text>
+				<text><![CDATA[VII. PENGKAJIAN TINGKAT NYERI (SKALA NIPS)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="17" width="510" height="16" forecolor="#000000" backcolor="#F0F0DC" uuid="2b06889c-f841-4fa4-850f-5239cf284ee2"/>

@@ -489,7 +489,7 @@
 					<font fontName="Tahoma" size="9" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[PENILAIAN PRE INDUKSI]]></text>
+				<text><![CDATA[PENGKAJIAN PRE INDUKSI]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="24" width="557" height="1" uuid="97c6bfcb-17be-4e10-aa81-ee8c465ac5cb">

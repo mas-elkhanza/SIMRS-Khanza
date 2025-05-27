@@ -1127,7 +1127,7 @@
                         <Component class="widget.Label" name="jLabel95">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="II. PENILAIAN KUALITAS HIDUP &#x2013; EQ5D, POLA AKTIFITAS DAN ISTIRAHAT"/>
+                            <Property name="text" type="java.lang.String" value="II. PENGKAJIAN KUALITAS HIDUP &#x2013; EQ5D, POLA AKTIFITAS DAN ISTIRAHAT"/>
                             <Property name="name" type="java.lang.String" value="jLabel95" noResource="true"/>
                           </Properties>
                           <Constraints>

@@ -750,7 +750,7 @@
                         <Component class="widget.Label" name="jLabel271">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VII. PENILAIAN TINGKAT NYERI (SKALA NIPS)"/>
+                            <Property name="text" type="java.lang.String" value="VII. PENGKAJIAN TINGKAT NYERI (SKALA NIPS)"/>
                             <Property name="name" type="java.lang.String" value="jLabel271" noResource="true"/>
                           </Properties>
                           <Constraints>
@@ -7311,7 +7311,7 @@
                         <Component class="widget.Label" name="jLabel242">
                           <Properties>
                             <Property name="horizontalAlignment" type="int" value="2"/>
-                            <Property name="text" type="java.lang.String" value="VI. PENILAIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)"/>
+                            <Property name="text" type="java.lang.String" value="VI. PENGKAJIAN RISIKO JATUH (SKALA HUMPTY DUMPTY)"/>
                             <Property name="name" type="java.lang.String" value="jLabel242" noResource="true"/>
                           </Properties>
                           <Constraints>
