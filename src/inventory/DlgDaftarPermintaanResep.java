@@ -2100,9 +2100,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(Status.equals("Sudah Terlayani")){
                             JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
                         }else {
-                            Sequel.meghapus("resep_obat","no_resep",NoResep);    
-                            TeksKosong();
-                            tampil();
+                            if(Sequel.meghapustf("resep_obat","no_resep",NoResep)==true){
+                                TeksKosong();
+                                if(tbResepRalan.getSelectedRow()!= -1){
+                                    tabMode.removeRow(tbResepRalan.getSelectedRow());
+                                }
+                            }   
                         }                    
                     }
                 }
@@ -2122,9 +2125,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(Status.equals("Sudah Terlayani")){
                             JOptionPane.showMessageDialog(rootPane,"Resep sudah tervalidasi ..!!");
                         }else {
-                            Sequel.meghapus("resep_obat","no_resep",NoResep); 
-                            TeksKosong();
-                            tampil3();
+                            if(Sequel.meghapustf("resep_obat","no_resep",NoResep)==true){
+                                TeksKosong();
+                                if(tbResepRanap.getSelectedRow()!= -1){
+                                    tabMode3.removeRow(tbResepRanap.getSelectedRow());
+                                }
+                            } 
                         }                    
                     }
                 }
@@ -2142,9 +2148,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(Status.equals("Sudah Terlayani")){
                             JOptionPane.showMessageDialog(rootPane,"permintaan stok sudah tervalidasi ..!!");
                         }else {
-                            Sequel.meghapus("permintaan_stok_obat_pasien","no_permintaan",NoResep); 
-                            TeksKosong();
-                            tampil5();
+                            if(Sequel.meghapustf("permintaan_stok_obat_pasien","no_permintaan",NoResep)==true){
+                                TeksKosong();
+                                if(tbPermintaanStok.getSelectedRow()!= -1){
+                                    tabMode5.removeRow(tbPermintaanStok.getSelectedRow());
+                                }
+                            }
                         }                    
                     }
                 }
@@ -2162,9 +2171,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         if(Status.equals("Sudah Terlayani")){
                             JOptionPane.showMessageDialog(rootPane,"permintaan resep pulang sudah tervalidasi ..!!");
                         }else {
-                            Sequel.meghapus("permintaan_resep_pulang","no_permintaan",NoResep); 
-                            TeksKosong();
-                            tampil7();
+                            if(Sequel.meghapustf("permintaan_resep_pulang","no_permintaan",NoResep)==true){
+                                TeksKosong();
+                                if(tbPermintaanResepPulang.getSelectedRow()!= -1){
+                                    tabMode7.removeRow(tbPermintaanResepPulang.getSelectedRow());
+                                }
+                            }
                         }                    
                     }
                 }
