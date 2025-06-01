@@ -2282,21 +2282,18 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             tbTarifPK.setValueAt(false,i,0);
         }
         Valid.tabelKosong(tabMode);
-        tampiltarif();
         
         jml=tbTarifPA.getRowCount();
         for(i=0;i<jml;i++){ 
             tbTarifPA.setValueAt(false,i,0);
         }
         Valid.tabelKosong(tabMode3);
-        tampiltarif2();
         
         jml3=tbTarifMB.getRowCount();
         for(i=0;i<jml3;i++){ 
             tbTarifMB.setValueAt(false,i,0);
         }
         Valid.tabelKosong(tabModeDetailMB);
-        tampiltarifmb();
     }
     
     private void jam(){
