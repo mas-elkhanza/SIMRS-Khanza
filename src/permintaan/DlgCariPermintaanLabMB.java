@@ -287,19 +287,19 @@ public class DlgCariPermintaanLabMB extends javax.swing.JDialog {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        pilihTab();
                     }
                 }
                 @Override
                 public void removeUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        pilihTab();
                     }
                 }
                 @Override
                 public void changedUpdate(DocumentEvent e) {
                     if(TCari.getText().length()>2){
-                        tampil();
+                        pilihTab();
                     }
                 }
             });
@@ -506,7 +506,7 @@ public class DlgCariPermintaanLabMB extends javax.swing.JDialog {
         internalFrame5.add(jLabel26);
         jLabel26.setBounds(6, 32, 100, 23);
 
-        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023 15:55:12" }));
+        TanggalPulang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-06-2025 07:55:09" }));
         TanggalPulang.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPulang.setName("TanggalPulang"); // NOI18N
         TanggalPulang.setOpaque(false);
@@ -548,9 +548,6 @@ public class DlgCariPermintaanLabMB extends javax.swing.JDialog {
             }
             public void windowDeactivated(java.awt.event.WindowEvent evt) {
                 formWindowDeactivated(evt);
-            }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
             }
         });
 
@@ -1504,10 +1501,6 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             }
         }
 }//GEN-LAST:event_tbLabRalanKeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        pilihTab();
-    }//GEN-LAST:event_formWindowOpened
 
     private void TabRawatJalanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatJalanMouseClicked
         TeksKosong();
@@ -2509,7 +2502,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         TCari.setText(pasien);
     }
 
-    public void pilihTab(){
+    private void pilihTab(){
         if(TabPilihRawat.getSelectedIndex()==0){
             pilihRalan();
         }else if(TabPilihRawat.getSelectedIndex()==1){
@@ -2517,7 +2510,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
     }
     
-    public void pilihRalan(){
+    private void pilihRalan(){
         if(TabRawatJalan.getSelectedIndex()==0){
             tampil();
         }else if(TabRawatJalan.getSelectedIndex()==1){
@@ -2525,7 +2518,7 @@ private void tbLabRalanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
     }
     
-    public void pilihRanap(){
+    private void pilihRanap(){
         if(TabRawatInap.getSelectedIndex()==0){
             tampil3();
         }else if(TabRawatInap.getSelectedIndex()==1){
