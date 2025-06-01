@@ -13,13 +13,11 @@
 package simrskhanza;
 
 import fungsi.WarnaTable;
-import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JTable;
@@ -34,7 +32,6 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
     private final DefaultTableModel TabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
     private int i=0;
     private String NoRawat="",NoRm="",NoSEP="",NoReg="",NamaPoli="",NamaBayar="",NamaPasien="",
             NamaDokter="",AlamatPasien="",PenanggungJawab="",TanggalDaftar="",JenisPelayanan="",
