@@ -2774,7 +2774,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     tampilKunjungan();
                     break;
                 case 1:
-                    SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                    new SwingWorker<Void, Void>() {
                         @Override
                         protected Void doInBackground() throws Exception {
                             tampilSoapi();
@@ -2789,13 +2789,12 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 System.out.println("Notif : " + ex);
                             }
                         }
-                    };
-                    worker.execute();
+                    }.execute();
                     break;
                 case 2:
                     esign=false;
                     sertisign=false;
-                    SwingWorker<Void, Void> worker2 = new SwingWorker<Void, Void>() {
+                    new SwingWorker<Void, Void>() {
                         @Override
                         protected Void doInBackground() throws Exception {
                             tampilPerawatan();
@@ -2810,11 +2809,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 System.out.println("Notif : " + ex);
                             }
                         }
-                    };
-                    worker2.execute();
+                    }.execute();
                     break;
                 case 3:
-                    SwingWorker<Void, Void> worker3 = new SwingWorker<Void, Void>() {
+                    new SwingWorker<Void, Void>() {
                         @Override
                         protected Void doInBackground() throws Exception {
                             tampilPembelian();
@@ -2829,11 +2827,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 System.out.println("Notif : " + ex);
                             }
                         }
-                    };
-                    worker3.execute();
+                    }.execute();
                     break;
                 case 4:
-                    SwingWorker<Void, Void> worker4 = new SwingWorker<Void, Void>() {
+                    new SwingWorker<Void, Void>() {
                         @Override
                         protected Void doInBackground() throws Exception {
                             tampilPiutang();
@@ -2848,11 +2845,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 System.out.println("Notif : " + ex);
                             }
                         }
-                    };
-                    worker4.execute();
+                    }.execute();
                     break;
                 case 5:
-                    SwingWorker<Void, Void> worker5 = new SwingWorker<Void, Void>() {
+                    new SwingWorker<Void, Void>() {
                         @Override
                         protected Void doInBackground() throws Exception {
                             tampilRetensi();
@@ -2867,8 +2863,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                 System.out.println("Notif : " + ex);
                             }
                         }
-                    };
-                    worker5.execute();
+                    }.execute();
                     break;
                 default:
                     break;
