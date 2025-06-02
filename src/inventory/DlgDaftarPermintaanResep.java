@@ -3850,7 +3850,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
                                         rs.getString("tgl_perawatan"),rs.getString("jam")
                                     }; 
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                    SwingUtilities.invokeLater(() -> tabMode3.addRow(row));
                                 }
                             } 
                         }else{
@@ -3863,7 +3863,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
                                             rs.getString("tgl_perawatan"),rs.getString("jam")
                                         };  
-                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                        SwingUtilities.invokeLater(() -> tabMode3.addRow(row));
                                     }                  
                                 } 
                             }
@@ -3945,7 +3945,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
                                         rs.getString("tgl_perawatan"),rs.getString("jam")
                                     };   
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                    SwingUtilities.invokeLater(() -> tabMode3.addRow(row));
                                 } 
                             }
                         }else{
@@ -3958,7 +3958,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab"),
                                             rs.getString("tgl_perawatan"),rs.getString("jam")
                                         };  
-                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                        SwingUtilities.invokeLater(() -> tabMode3.addRow(row));
                                     }                  
                                 } 
                             }
@@ -4508,7 +4508,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                     };  
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                    SwingUtilities.invokeLater(() -> tabMode5.addRow(row));
                                 } 
                             }
                         }else{
@@ -4520,7 +4520,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                         };  
-                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                        SwingUtilities.invokeLater(() -> tabMode5.addRow(row));
                                     }                  
                                 }
                             }
@@ -4597,7 +4597,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                     };  
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                    SwingUtilities.invokeLater(() -> tabMode5.addRow(row));
                                 } 
                             }
                         }else{
@@ -4609,7 +4609,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                         };  
-                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row));  
+                                        SwingUtilities.invokeLater(() -> tabMode5.addRow(row));  
                                     }                  
                                 } 
                             }
@@ -5104,7 +5104,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                     }; 
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                    SwingUtilities.invokeLater(() -> tabMode7.addRow(row));
                                 }
                             } 
                         }else{
@@ -5116,7 +5116,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                         }; 
-                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row));  
+                                        SwingUtilities.invokeLater(() -> tabMode7.addRow(row));  
                                     }                  
                                 } 
                             }
@@ -5193,7 +5193,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                         rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                     }; 
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));           
+                                    SwingUtilities.invokeLater(() -> tabMode7.addRow(row));           
                                 } 
                             }
                         }else{
@@ -5205,7 +5205,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("nm_dokter"),rs.getString("status"),
                                             rs.getString("kd_dokter"),rs.getString("nm_bangsal"),rs.getString("kd_bangsal"),rs.getString("png_jawab")
                                         }; 
-                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row));   
+                                        SwingUtilities.invokeLater(() -> tabMode7.addRow(row));   
                                     }                  
                                 } 
                             }
