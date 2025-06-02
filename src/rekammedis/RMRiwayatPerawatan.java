@@ -61,6 +61,7 @@ import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import java.nio.channels.Channels;
+import javax.swing.SwingWorker;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import org.apache.hc.core5.http.io.entity.StringEntity;
@@ -2773,21 +2774,101 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     tampilKunjungan();
                     break;
                 case 1:
-                    tampilSoapi();
+                    SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
+                        @Override
+                        protected Void doInBackground() throws Exception {
+                            tampilSoapi();
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            try {
+                                get(); 
+                            } catch (Exception ex) {
+                                System.out.println("Notif : " + ex);
+                            }
+                        }
+                    };
+                    worker.execute();
                     break;
                 case 2:
                     esign=false;
                     sertisign=false;
-                    tampilPerawatan();
+                    SwingWorker<Void, Void> worker2 = new SwingWorker<Void, Void>() {
+                        @Override
+                        protected Void doInBackground() throws Exception {
+                            tampilPerawatan();
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            try {
+                                get(); 
+                            } catch (Exception ex) {
+                                System.out.println("Notif : " + ex);
+                            }
+                        }
+                    };
+                    worker2.execute();
                     break;
                 case 3:
-                    tampilPembelian();
+                    SwingWorker<Void, Void> worker3 = new SwingWorker<Void, Void>() {
+                        @Override
+                        protected Void doInBackground() throws Exception {
+                            tampilPembelian();
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            try {
+                                get(); 
+                            } catch (Exception ex) {
+                                System.out.println("Notif : " + ex);
+                            }
+                        }
+                    };
+                    worker3.execute();
                     break;
                 case 4:
-                    tampilPiutang();
+                    SwingWorker<Void, Void> worker4 = new SwingWorker<Void, Void>() {
+                        @Override
+                        protected Void doInBackground() throws Exception {
+                            tampilPiutang();
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            try {
+                                get(); 
+                            } catch (Exception ex) {
+                                System.out.println("Notif : " + ex);
+                            }
+                        }
+                    };
+                    worker4.execute();
                     break;
                 case 5:
-                    tampilRetensi();
+                    SwingWorker<Void, Void> worker5 = new SwingWorker<Void, Void>() {
+                        @Override
+                        protected Void doInBackground() throws Exception {
+                            tampilRetensi();
+                            return null;
+                        }
+
+                        @Override
+                        protected void done() {
+                            try {
+                                get(); 
+                            } catch (Exception ex) {
+                                System.out.println("Notif : " + ex);
+                            }
+                        }
+                    };
+                    worker5.execute();
                     break;
                 default:
                     break;
