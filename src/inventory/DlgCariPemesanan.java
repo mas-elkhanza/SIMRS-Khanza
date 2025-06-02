@@ -60,7 +60,6 @@ public class DlgCariPemesanan extends javax.swing.JDialog {
     private String aktifkanbatch="no";
     private boolean sukses=true;
     private int i=0;
-    private StringBuilder htmlContent;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -1794,28 +1793,28 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                          " detailpesan.no_batch like '%"+TCari.getText()+"%' or industrifarmasi.nama_industri like '%"+TCari.getText()+"%' or pemesanan.no_order like '%"+TCari.getText()+"%' or jenis.nama like '%"+TCari.getText()+"%') ";
             }
             
-            htmlContent = new StringBuilder();
+            StringBuilder htmlContent = new StringBuilder();
             htmlContent.append(
-                "<tr class='head'>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='90px'>No.Faktur</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Tgl.Faktur</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Tgl.Datang</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Jth.Tempo</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Status Bayar</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='180px'>Suplier</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='180px'>Petugas</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='300px'>Barang</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Satuan</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='40px'>Jml</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='75px'>Harga(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Subtotal(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='40px'>Disk(%)</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='75px'>Besar Disk(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Total(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Penerimaan(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='65px'>Meterai(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='65px'>PPN(Rp)</td>"+
-                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='85px'>Tagihan(Rp)</td>"+
+                "<tr class='head'>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='90px'>No.Faktur</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Tgl.Faktur</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Tgl.Datang</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Jth.Tempo</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Status Bayar</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='180px'>Suplier</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='180px'>Petugas</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='300px'>Barang</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='70px'>Satuan</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='40px'>Jml</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='75px'>Harga(Rp)</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Subtotal(Rp)</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='40px'>Disk(%)</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='75px'>Besar Disk(Rp)</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Total(Rp)</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='80px'>Penerimaan(Rp)</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='65px'>Meterai(Rp)</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='65px'>PPN(Rp)</td>").append(
+                    "<td valign='top' bgcolor='#FFFAFA' align='center' width='85px'>Tagihan(Rp)</td>").append(
                 "</tr>"); 
             ps=koneksi.prepareStatement("select pemesanan.tgl_pesan,pemesanan.no_faktur, "+
                     "pemesanan.kode_suplier,datasuplier.nama_suplier, "+
@@ -1839,19 +1838,19 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 tagihan=0;
                 while(rs.next()){
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                            "<td valign='top' align='center'>"+rs.getString("no_faktur")+"</td>"+
-                            "<td valign='top' align='center'>"+rs.getString("tgl_faktur")+"</td>"+
-                            "<td valign='top' align='center'>"+rs.getString("tgl_pesan")+"</td>"+
-                            "<td valign='top' align='center'>"+rs.getString("tgl_tempo")+"</td>"+
-                            "<td valign='top' align='center'>"+rs.getString("status")+"</td>"+
-                            "<td valign='top' align='left'>"+rs.getString("kode_suplier")+", "+rs.getString("nama_suplier")+"</td>"+
-                            "<td valign='top' align='left'>"+rs.getString("nip")+", "+rs.getString("nama")+"</td>"+
-                            "<td valign='top' align='left' colspan='8'>"+"Pengadaan di "+rs.getString("nm_bangsal") +" :"+"</td>"+
-                            "<td valign='top' align='right'>"+rs.getString("total2")+"</td>"+
-                            "<td valign='top' align='right'>"+rs.getString("meterai")+"</td>"+
-                            "<td valign='top' align='right'>"+rs.getString("ppn")+"</td>"+
-                            "<td valign='top' align='right'>"+rs.getString("tagihan")+"</td>"+
+                        "<tr class='isi'>").append(
+                            "<td valign='top' align='center'>").append(rs.getString("no_faktur")).append("</td>").append(
+                            "<td valign='top' align='center'>").append(rs.getString("tgl_faktur")).append("</td>").append(
+                            "<td valign='top' align='center'>").append(rs.getString("tgl_pesan")).append("</td>").append(
+                            "<td valign='top' align='center'>").append(rs.getString("tgl_tempo")).append("</td>").append(
+                            "<td valign='top' align='center'>").append(rs.getString("status")).append("</td>").append(
+                            "<td valign='top' align='left'>").append(rs.getString("kode_suplier")).append(", ").append(rs.getString("nama_suplier")).append("</td>").append(
+                            "<td valign='top' align='left'>").append(rs.getString("nip")).append(", ").append(rs.getString("nama")).append("</td>").append(
+                            "<td valign='top' align='left' colspan='8'>").append("Pengadaan di ").append(rs.getString("nm_bangsal") ).append(" :").append("</td>").append(
+                            "<td valign='top' align='right'>").append(rs.getString("total2")).append("</td>").append(
+                            "<td valign='top' align='right'>").append(rs.getString("meterai")).append("</td>").append(
+                            "<td valign='top' align='right'>").append(rs.getString("ppn")).append("</td>").append(
+                            "<td valign='top' align='right'>").append(rs.getString("tagihan")).append("</td>").append(
                         "</tr>");  
                     
                     ps2=koneksi.prepareStatement("select detailpesan.kode_brng,databarang.nama_brng, "+
@@ -1880,23 +1879,23 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         int no=1;
                         while(rs2.next()){
                             htmlContent.append(
-                                "<tr class='isi'>"+
-                                    "<td valign='top' align='center'>&nbsp;</td>"+
-                                    "<td valign='top' align='left' colspan='2'>"+no+". No.Batch : "+rs2.getString("no_batch")+"</td>"+
-                                    "<td valign='top' align='left' colspan='2'>Exp : "+rs2.getString("kadaluarsa")+"</td>"+
-                                    "<td valign='top' align='left' colspan='2'>I.F. : "+rs2.getString("nama_industri")+"</td>"+
-                                    "<td valign='top' align='left'>"+rs2.getString("kode_brng")+", "+rs2.getString("nama_brng")+"</td>"+
-                                    "<td valign='top' align='center'>"+rs2.getString("satuan")+"</td>"+
-                                    "<td valign='top' align='center'>"+rs2.getString("jumlah")+"</td>"+
-                                    "<td valign='top' align='right'>"+rs2.getString("h_pesan")+"</td>"+
-                                    "<td valign='top' align='right'>"+rs2.getString("subtotal")+"</td>"+
-                                    "<td valign='top' align='right'>"+rs2.getString("dis")+"</td>"+
-                                    "<td valign='top' align='right'>"+rs2.getString("besardis")+"</td>"+
-                                    "<td valign='top' align='right'>"+rs2.getString("total")+"</td>"+
-                                    "<td valign='top' align='center'>&nbsp;</td>"+
-                                    "<td valign='top' align='center'>&nbsp;</td>"+
-                                    "<td valign='top' align='center'>&nbsp;</td>"+
-                                    "<td valign='top' align='center'>&nbsp;</td>"+
+                                "<tr class='isi'>").append(
+                                    "<td valign='top' align='center'>&nbsp;</td>").append(
+                                    "<td valign='top' align='left' colspan='2'>").append(no).append(". No.Batch : ").append(rs2.getString("no_batch")).append("</td>").append(
+                                    "<td valign='top' align='left' colspan='2'>Exp : ").append(rs2.getString("kadaluarsa")).append("</td>").append(
+                                    "<td valign='top' align='left' colspan='2'>I.F. : ").append(rs2.getString("nama_industri")).append("</td>").append(
+                                    "<td valign='top' align='left'>").append(rs2.getString("kode_brng")).append(", ").append(rs2.getString("nama_brng")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("satuan")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append(rs2.getString("jumlah")).append("</td>").append(
+                                    "<td valign='top' align='right'>").append(rs2.getString("h_pesan")).append("</td>").append(
+                                    "<td valign='top' align='right'>").append(rs2.getString("subtotal")).append("</td>").append(
+                                    "<td valign='top' align='right'>").append(rs2.getString("dis")).append("</td>").append(
+                                    "<td valign='top' align='right'>").append(rs2.getString("besardis")).append("</td>").append(
+                                    "<td valign='top' align='right'>").append(rs2.getString("total")).append("</td>").append(
+                                    "<td valign='top' align='center'>&nbsp;</td>").append(
+                                    "<td valign='top' align='center'>&nbsp;</td>").append(
+                                    "<td valign='top' align='center'>&nbsp;</td>").append(
+                                    "<td valign='top' align='center'>&nbsp;</td>").append(
                                 "</tr>"); 
                             no++;
                         }                        
