@@ -85,7 +85,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
     private StringBuilder htmlContent;
     private HttpClient http = new HttpClient();
     private GetMethod get;
-    private boolean esign=false,sertisign=false;
+    private boolean esign=false,sertisign=false,ceksukses=false;
     private ObjectMapper mapper= new ObjectMapper();
     private JsonNode root;
 
@@ -2774,96 +2774,91 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     tampilKunjungan();
                     break;
                 case 1:
-                    new SwingWorker<Void, Void>() {
-                        @Override
-                        protected Void doInBackground() throws Exception {
-                            tampilSoapi();
-                            return null;
-                        }
-
-                        @Override
-                        protected void done() {
-                            try {
-                                get(); 
-                            } catch (Exception ex) {
-                                System.out.println("Notif : " + ex);
+                    if(ceksukses==false){
+                        ceksukses=true;
+                        new SwingWorker<Void, Void>() {
+                            @Override
+                            protected Void doInBackground() throws Exception {
+                                tampilSoapi();
+                                return null;
                             }
-                        }
-                    }.execute();
+
+                            @Override
+                            protected void done() {
+                                ceksukses = false;
+                            }
+                        }.execute();
+                    }
                     break;
                 case 2:
                     esign=false;
                     sertisign=false;
-                    new SwingWorker<Void, Void>() {
-                        @Override
-                        protected Void doInBackground() throws Exception {
-                            tampilPerawatan();
-                            return null;
-                        }
-
-                        @Override
-                        protected void done() {
-                            try {
-                                get(); 
-                            } catch (Exception ex) {
-                                System.out.println("Notif : " + ex);
+                    if(ceksukses==false){
+                        ceksukses=true;
+                        new SwingWorker<Void, Void>() {
+                            @Override
+                            protected Void doInBackground() throws Exception {
+                                tampilPerawatan();
+                                return null;
                             }
-                        }
-                    }.execute();
+
+                            @Override
+                            protected void done() {
+                                ceksukses = false;
+                            }
+                        }.execute();
+                    }
                     break;
                 case 3:
-                    new SwingWorker<Void, Void>() {
-                        @Override
-                        protected Void doInBackground() throws Exception {
-                            tampilPembelian();
-                            return null;
-                        }
-
-                        @Override
-                        protected void done() {
-                            try {
-                                get(); 
-                            } catch (Exception ex) {
-                                System.out.println("Notif : " + ex);
+                    if(ceksukses==false){
+                        ceksukses=true;
+                        new SwingWorker<Void, Void>() {
+                            @Override
+                            protected Void doInBackground() throws Exception {
+                                tampilPembelian();
+                                return null;
                             }
-                        }
-                    }.execute();
+
+                            @Override
+                            protected void done() {
+                                ceksukses = false;
+                            }
+                        }.execute();
+                    }
                     break;
                 case 4:
-                    new SwingWorker<Void, Void>() {
-                        @Override
-                        protected Void doInBackground() throws Exception {
-                            tampilPiutang();
-                            return null;
-                        }
-
-                        @Override
-                        protected void done() {
-                            try {
-                                get(); 
-                            } catch (Exception ex) {
-                                System.out.println("Notif : " + ex);
+                    if(ceksukses==false){
+                        ceksukses=true;
+                        new SwingWorker<Void, Void>() {
+                            @Override
+                            protected Void doInBackground() throws Exception {
+                                tampilPiutang();
+                                return null;
                             }
-                        }
-                    }.execute();
+
+                            @Override
+                            protected void done() {
+                                ceksukses = false;
+                            }
+                        }.execute();
+                    }
                     break;
                 case 5:
-                    new SwingWorker<Void, Void>() {
-                        @Override
-                        protected Void doInBackground() throws Exception {
-                            tampilRetensi();
-                            return null;
-                        }
-
-                        @Override
-                        protected void done() {
-                            try {
-                                get(); 
-                            } catch (Exception ex) {
-                                System.out.println("Notif : " + ex);
+                    if(ceksukses==false){
+                        ceksukses=true;
+                        new SwingWorker<Void, Void>() {
+                            @Override
+                            protected Void doInBackground() throws Exception {
+                                tampilRetensi();
+                                return null;
                             }
-                        }
-                    }.execute();
+
+                            @Override
+                            protected void done() {
+                                ceksukses = false;
+                            }
+                        }.execute();
+                    }
                     break;
                 default:
                     break;

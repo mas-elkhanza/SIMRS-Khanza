@@ -259,7 +259,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
     public DlgKamarInap kamarinap=new DlgKamarInap(null,false);
     private DlgRawatJalan dlgrwjl2=new DlgRawatJalan(null,false);
     private boolean semua;
-    private boolean sukses=false;
+    private boolean sukses=false,ceksukses=false;
     private Jurnal jur=new Jurnal();
     private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttljasasarana=0,ttlbhp=0,ttlmenejemen=0,ttlpendapatan=0;
 
@@ -15510,158 +15510,166 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                   MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,MnCatatanPengkajianPaskaOperasi,MnSkriningFrailtySyndrome,MnCatatanObservasiBayi;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut;
     
-    private void tampilkasir() {     
-        Valid.tabelKosong(tabModekasir);
-        new SwingWorker<Void, Void>() {
-            @Override
-            protected Void doInBackground() {
-                try{   
-                    semua=caripenjab.equals("")&&CrPoli.getText().trim().equals("")&&CrPtg.getText().trim().equals("")&&cmbStatus.getSelectedItem().toString().equals("Semua")&&cmbStatusBayar.getSelectedItem().toString().equals("Semua")&&TCari.getText().trim().equals("");
-                    pskasir=koneksi.prepareStatement("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
-                        "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
-                        "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts,penjab.png_jawab,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur, "+
-                        "reg_periksa.status_bayar,reg_periksa.status_poli,reg_periksa.kd_pj,reg_periksa.kd_poli,pasien.no_tlp "+
-                        "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+
-                        "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut='Ralan' "+tampildiagnosa+
-                        (semua?"":"and reg_periksa.kd_pj like ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.status_bayar like ? and "+
-                        "(reg_periksa.no_reg like ? or reg_periksa.no_rawat like ? or reg_periksa.tgl_registrasi like ? or reg_periksa.kd_dokter like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or poliklinik.nm_poli like ? or "+
-                        "reg_periksa.p_jawab like ? or penjab.png_jawab like ? or reg_periksa.almt_pj like ? or reg_periksa.status_bayar like ? or reg_periksa.hubunganpj like ?) ")+terbitsep+
-                        "order by "+order);
-                    try{
-                        pskasir.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                        pskasir.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                        if(!semua){
-                            pskasir.setString(3,"%"+caripenjab+"%");
-                            pskasir.setString(4,"%"+CrPoli.getText()+"%");
-                            pskasir.setString(5,"%"+CrPtg.getText()+"%");
-                            pskasir.setString(6,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                            pskasir.setString(7,"%"+cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                            pskasir.setString(8,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(9,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(10,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(11,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(12,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(13,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(14,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(15,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(16,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(17,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(18,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(19,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(20,"%"+TCari.getText().trim()+"%");
-                        }
+    private synchronized void tampilkasir() { 
+        if(ceksukses==false){
+            ceksukses=true;
+            Valid.tabelKosong(tabModekasir);
+            new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() {
+                    try{   
+                        semua=caripenjab.equals("")&&CrPoli.getText().trim().equals("")&&CrPtg.getText().trim().equals("")&&cmbStatus.getSelectedItem().toString().equals("Semua")&&cmbStatusBayar.getSelectedItem().toString().equals("Semua")&&TCari.getText().trim().equals("");
+                        pskasir=koneksi.prepareStatement("select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                            "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
+                            "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts,penjab.png_jawab,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur, "+
+                            "reg_periksa.status_bayar,reg_periksa.status_poli,reg_periksa.kd_pj,reg_periksa.kd_poli,pasien.no_tlp "+
+                            "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj where  "+
+                            "reg_periksa.tgl_registrasi between ? and ? and reg_periksa.status_lanjut='Ralan' "+tampildiagnosa+
+                            (semua?"":"and reg_periksa.kd_pj like ? and poliklinik.nm_poli like ? and dokter.nm_dokter like ? and reg_periksa.stts like ? and reg_periksa.status_bayar like ? and "+
+                            "(reg_periksa.no_reg like ? or reg_periksa.no_rawat like ? or reg_periksa.tgl_registrasi like ? or reg_periksa.kd_dokter like ? or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or poliklinik.nm_poli like ? or "+
+                            "reg_periksa.p_jawab like ? or penjab.png_jawab like ? or reg_periksa.almt_pj like ? or reg_periksa.status_bayar like ? or reg_periksa.hubunganpj like ?) ")+terbitsep+
+                            "order by "+order);
+                        try{
+                            pskasir.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                            pskasir.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                            if(!semua){
+                                pskasir.setString(3,"%"+caripenjab+"%");
+                                pskasir.setString(4,"%"+CrPoli.getText()+"%");
+                                pskasir.setString(5,"%"+CrPtg.getText()+"%");
+                                pskasir.setString(6,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                                pskasir.setString(7,"%"+cmbStatusBayar.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                                pskasir.setString(8,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(9,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(10,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(11,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(12,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(13,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(14,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(15,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(16,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(17,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(18,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(19,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(20,"%"+TCari.getText().trim()+"%");
+                            }
 
-                        rskasir=pskasir.executeQuery();
-                        if (rskasir != null) {
-                            while(rskasir.next()){
-                                Object[] row = new Object[]{
-                                    rskasir.getString(5),rskasir.getString(6),rskasir.getString(7),rskasir.getString(8)+" ("+rskasir.getString("umur")+")",
-                                    rskasir.getString(9),rskasir.getString(10),rskasir.getString(11),rskasir.getString(12),Valid.SetAngka(rskasir.getDouble(13)),
-                                    rskasir.getString("png_jawab"),rskasir.getString(14),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
-                                    rskasir.getString("jam_reg"),rskasir.getString(1),rskasir.getString("status_bayar"),rskasir.getString("status_poli"),
-                                    rskasir.getString("kd_pj"),rskasir.getString("kd_poli"),rskasir.getString("no_tlp")
-                                };
-                                SwingUtilities.invokeLater(() -> tabModekasir.addRow(row));
-                            } 
-                        }               
-                    } catch(Exception e){
+                            rskasir=pskasir.executeQuery();
+                            if (rskasir != null) {
+                                while(rskasir.next()){
+                                    Object[] row = new Object[]{
+                                        rskasir.getString(5),rskasir.getString(6),rskasir.getString(7),rskasir.getString(8)+" ("+rskasir.getString("umur")+")",
+                                        rskasir.getString(9),rskasir.getString(10),rskasir.getString(11),rskasir.getString(12),Valid.SetAngka(rskasir.getDouble(13)),
+                                        rskasir.getString("png_jawab"),rskasir.getString(14),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
+                                        rskasir.getString("jam_reg"),rskasir.getString(1),rskasir.getString("status_bayar"),rskasir.getString("status_poli"),
+                                        rskasir.getString("kd_pj"),rskasir.getString("kd_poli"),rskasir.getString("no_tlp")
+                                    };
+                                    SwingUtilities.invokeLater(() -> tabModekasir.addRow(row));
+                                } 
+                            }               
+                        } catch(Exception e){
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                           if(rskasir!=null){
+                               rskasir.close();
+                           } 
+                           if(pskasir!=null){
+                               pskasir.close();
+                           } 
+                        }            
+                    }catch(Exception e){
                         System.out.println("Notifikasi : "+e);
-                    } finally{
-                       if(rskasir!=null){
-                           rskasir.close();
-                       } 
-                       if(pskasir!=null){
-                           pskasir.close();
-                       } 
-                    }            
-                }catch(Exception e){
-                    System.out.println("Notifikasi : "+e);
-                } 
-                return null;
-            }
-            
-            @Override
-            protected void done() {
-                LCount.setText(""+tabModekasir.getRowCount());
-            }
-        }.execute(); 
+                    } 
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    LCount.setText(""+tabModekasir.getRowCount());
+                    ceksukses = false;
+                }
+            }.execute(); 
+        }
     }
     
-    private void tampilkasir2() {                   
-        Valid.tabelKosong(tabModekasir2);
-        new SwingWorker<Void, Void>() {
-            @Override
-            protected Void doInBackground() {
-                try{   
-                    semua=CrPoli.getText().trim().equals("")&&CrPtg.getText().trim().equals("")&&cmbStatus.getSelectedItem().toString().equals("Semua")&&TCari.getText().trim().equals("");
-                    pskasir=koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
-                        "rujukan_internal_poli.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
-                        "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.stts,penjab.png_jawab,rujukan_internal_poli.kd_poli,"+
-                        "concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.kd_pj,pasien.no_tlp "+
-                        "from reg_periksa inner join rujukan_internal_poli on rujukan_internal_poli.no_rawat=reg_periksa.no_rawat "+
-                        "inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
-                        "where reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? "+
-                        (semua?"":"and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and "+
-                        "(reg_periksa.no_reg like ? or reg_periksa.no_rawat like ? or reg_periksa.tgl_registrasi like ? or rujukan_internal_poli.kd_dokter like ? "+
-                        "or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or poliklinik.nm_poli like ? "+
-                        "or reg_periksa.p_jawab like ? or penjab.png_jawab like ? or reg_periksa.almt_pj like ? or reg_periksa.hubunganpj like ?) ")+terbitsep+    
-                        "order by "+order);
-                    try{
-                        pskasir.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
-                        pskasir.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
-                        if(!semua){
-                            pskasir.setString(3,"%"+CrPoli.getText()+"%");
-                            pskasir.setString(4,"%"+CrPtg.getText()+"%");
-                            pskasir.setString(5,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                            pskasir.setString(6,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(7,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(8,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(9,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(10,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(11,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(12,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(13,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(14,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(15,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(16,"%"+TCari.getText().trim()+"%");
-                            pskasir.setString(17,"%"+TCari.getText().trim()+"%");
-                        }
-                        rskasir=pskasir.executeQuery();
-                        if (rskasir != null) {
-                            while(rskasir.next()){
-                                Object[] row = new Object[]{
-                                    rskasir.getString("kd_dokter"),rskasir.getString("nm_dokter"),
-                                    rskasir.getString("no_rkm_medis"),rskasir.getString("nm_pasien")+" ("+rskasir.getString("umur")+")",
-                                    rskasir.getString("nm_poli"),rskasir.getString("p_jawab"),rskasir.getString("almt_pj"),rskasir.getString("hubunganpj"),
-                                    rskasir.getString("png_jawab"),rskasir.getString("stts"),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
-                                    rskasir.getString("jam_reg"),rskasir.getString("kd_poli"),rskasir.getString("kd_pj"),rskasir.getString("no_tlp")
-                                };
-                                SwingUtilities.invokeLater(() -> tabModekasir2.addRow(row));
-                            }  
-                        }              
-                    } catch(Exception e){
+    private synchronized void tampilkasir2() {     
+        if(ceksukses==false){
+            ceksukses=true;
+            Valid.tabelKosong(tabModekasir2);
+            new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() {
+                    try{   
+                        semua=CrPoli.getText().trim().equals("")&&CrPtg.getText().trim().equals("")&&cmbStatus.getSelectedItem().toString().equals("Semua")&&TCari.getText().trim().equals("");
+                        pskasir=koneksi.prepareStatement("select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,"+
+                            "rujukan_internal_poli.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,poliklinik.nm_poli,"+
+                            "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.stts,penjab.png_jawab,rujukan_internal_poli.kd_poli,"+
+                            "concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,reg_periksa.kd_pj,pasien.no_tlp "+
+                            "from reg_periksa inner join rujukan_internal_poli on rujukan_internal_poli.no_rawat=reg_periksa.no_rawat "+
+                            "inner join dokter on rujukan_internal_poli.kd_dokter=dokter.kd_dokter inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join poliklinik on rujukan_internal_poli.kd_poli=poliklinik.kd_poli inner join penjab on reg_periksa.kd_pj=penjab.kd_pj "+
+                            "where reg_periksa.status_lanjut='Ralan' and reg_periksa.tgl_registrasi between ? and ? "+
+                            (semua?"":"and poliklinik.nm_poli like ? and  dokter.nm_dokter like ? and reg_periksa.stts like ? and "+
+                            "(reg_periksa.no_reg like ? or reg_periksa.no_rawat like ? or reg_periksa.tgl_registrasi like ? or rujukan_internal_poli.kd_dokter like ? "+
+                            "or dokter.nm_dokter like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or poliklinik.nm_poli like ? "+
+                            "or reg_periksa.p_jawab like ? or penjab.png_jawab like ? or reg_periksa.almt_pj like ? or reg_periksa.hubunganpj like ?) ")+terbitsep+    
+                            "order by "+order);
+                        try{
+                            pskasir.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
+                            pskasir.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
+                            if(!semua){
+                                pskasir.setString(3,"%"+CrPoli.getText()+"%");
+                                pskasir.setString(4,"%"+CrPtg.getText()+"%");
+                                pskasir.setString(5,"%"+cmbStatus.getSelectedItem().toString().replaceAll("Semua","")+"%");
+                                pskasir.setString(6,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(7,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(8,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(9,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(10,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(11,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(12,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(13,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(14,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(15,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(16,"%"+TCari.getText().trim()+"%");
+                                pskasir.setString(17,"%"+TCari.getText().trim()+"%");
+                            }
+                            rskasir=pskasir.executeQuery();
+                            if (rskasir != null) {
+                                while(rskasir.next()){
+                                    Object[] row = new Object[]{
+                                        rskasir.getString("kd_dokter"),rskasir.getString("nm_dokter"),
+                                        rskasir.getString("no_rkm_medis"),rskasir.getString("nm_pasien")+" ("+rskasir.getString("umur")+")",
+                                        rskasir.getString("nm_poli"),rskasir.getString("p_jawab"),rskasir.getString("almt_pj"),rskasir.getString("hubunganpj"),
+                                        rskasir.getString("png_jawab"),rskasir.getString("stts"),rskasir.getString("no_rawat"),rskasir.getString("tgl_registrasi"),
+                                        rskasir.getString("jam_reg"),rskasir.getString("kd_poli"),rskasir.getString("kd_pj"),rskasir.getString("no_tlp")
+                                    };
+                                    SwingUtilities.invokeLater(() -> tabModekasir2.addRow(row));
+                                }  
+                            }              
+                        } catch(Exception e){
+                            System.out.println("Notifikasi : "+e);
+                        } finally{
+                           if(rskasir!=null){
+                               rskasir.close();
+                           } 
+                           if(pskasir!=null){
+                               pskasir.close();
+                           } 
+                        }            
+                    }catch(Exception e){
                         System.out.println("Notifikasi : "+e);
-                    } finally{
-                       if(rskasir!=null){
-                           rskasir.close();
-                       } 
-                       if(pskasir!=null){
-                           pskasir.close();
-                       } 
-                    }            
-                }catch(Exception e){
-                    System.out.println("Notifikasi : "+e);
-                } 
-                return null;
-            }
-            
-            @Override
-            protected void done() {
-                LCount.setText(""+tabModekasir2.getRowCount());
-            }
-        }.execute(); 
+                    } 
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    LCount.setText(""+tabModekasir2.getRowCount());
+                    ceksukses = false;
+                }
+            }.execute(); 
+        }
     }
 
 
