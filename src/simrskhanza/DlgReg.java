@@ -16339,6 +16339,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                             }
 
                             rs=ps.executeQuery();
+                            i=0;
                             while(rs.next()){
                                 Object[] row = new Object[]{
                                     false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
@@ -16348,8 +16349,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                                     rs.getString(16),rs.getString("no_tlp"),rs.getString("stts"),rs.getString("status_poli"),
                                     rs.getString("kd_poli"),rs.getString("kd_pj"),rs.getString("status_bayar")
                                 };  
+                                i++;
                                 SwingUtilities.invokeLater(() -> tabMode.addRow(row));
-                            }                   
+                            }   
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -16369,7 +16371,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
                 @Override
                 protected void done() {
-                    LCount.setText(""+tabMode.getRowCount());
+                    LCount.setText(""+i);
                     ceksukses = false;
                 }
             }.execute(); 
@@ -16412,22 +16414,22 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
                             ps.setString(16,"%"+TCari.getText().trim()+"%");
                             ps.setString(17,"%"+TCari.getText().trim()+"%");
                             rs=ps.executeQuery();
-                            if (rs != null) {
-                                while(rs.next()){
-                                    Object[] row = new Object[]{
-                                        rs.getString("no_rawat"),rs.getString("tgl_registrasi"),
-                                        rs.getString("jam_reg"),rs.getString("kd_dokter"),
-                                        rs.getString("nm_dokter"),rs.getString("no_rkm_medis"),
-                                        rs.getString("nm_pasien"),rs.getString("jk"),
-                                        rs.getString("umur"),rs.getString("nm_poli"),
-                                        rs.getString("png_jawab"),rs.getString("p_jawab"),
-                                        rs.getString("almt_pj"),rs.getString("hubunganpj"),
-                                        rs.getString("stts_daftar"),rs.getString("no_tlp"),
-                                        rs.getString("stts"),rs.getString("kd_poli"),rs.getString("kd_pj")
-                                    };
-                                    SwingUtilities.invokeLater(() -> tabMode2.addRow(row));
-                                } 
-                            }                   
+                            i=0;
+                            while(rs.next()){
+                                Object[] row = new Object[]{
+                                    rs.getString("no_rawat"),rs.getString("tgl_registrasi"),
+                                    rs.getString("jam_reg"),rs.getString("kd_dokter"),
+                                    rs.getString("nm_dokter"),rs.getString("no_rkm_medis"),
+                                    rs.getString("nm_pasien"),rs.getString("jk"),
+                                    rs.getString("umur"),rs.getString("nm_poli"),
+                                    rs.getString("png_jawab"),rs.getString("p_jawab"),
+                                    rs.getString("almt_pj"),rs.getString("hubunganpj"),
+                                    rs.getString("stts_daftar"),rs.getString("no_tlp"),
+                                    rs.getString("stts"),rs.getString("kd_poli"),rs.getString("kd_pj")
+                                };
+                                i++;
+                                SwingUtilities.invokeLater(() -> tabMode2.addRow(row));
+                            }                    
                         }catch(Exception e){
                             System.out.println("Notifikasi : "+e);
                         }finally{
@@ -16447,7 +16449,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
 
                 @Override
                 protected void done() {
-                    LCount.setText(""+tabMode2.getRowCount());
+                    LCount.setText(""+i);
                     ceksukses = false;
                 }
             }.execute(); 

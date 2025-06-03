@@ -18250,46 +18250,47 @@ public class DlgKamarInap extends javax.swing.JDialog {
                            (namadokter.equals("")?"where "+key+" "+order:"inner join dpjp_ranap on dpjp_ranap.no_rawat=reg_periksa.no_rawat where dpjp_ranap.kd_dokter='"+namadokter+"' and "+key+" "+order));
                         try {
                             rs=ps.executeQuery();
-                            if (rs != null) {
-                                while(rs.next()){
-                                    Object[] row = new Object[]{
-                                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umur")+")",
-                                        rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
-                                        rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")),rs.getString("diagnosa_awal"),
-                                        rs.getString("diagnosa_akhir"),rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
-                                        rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")),rs.getString("stts_pulang"),
-                                        rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar"),rs.getString("agama")
-                                    };  
-                                    SwingUtilities.invokeLater(() -> tabMode.addRow(row));
-                                    psanak=koneksi.prepareStatement(
-                                        "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
-                                        "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
-                                        "from reg_periksa inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
-                                        "inner join ranap_gabung on ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
-                                    try {
-                                        psanak.setString(1,rs.getString(1));
-                                        rs2=psanak.executeQuery();
-                                        if(rs2.next()){
-                                            Object[] row2 = new Object[]{
-                                                "",rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien")+" ("+rs2.getString("umur")+")",
-                                                rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
-                                                rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")*(persenbayi/100)),"",
-                                                "",rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
-                                                rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")*(persenbayi/100)),rs.getString("stts_pulang"),
-                                                rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar")
-                                            };
-                                            SwingUtilities.invokeLater(() -> tabMode.addRow(row2));
-                                        }
-                                    }catch(Exception ex){
-                                        System.out.println("Notifikasi : "+ex);
-                                    }finally{
-                                          if(rs2 != null){
-                                              rs2.close();
-                                          }
-                                          if(psanak != null){
-                                              psanak.close();
-                                          }
+                            i=0;
+                            while(rs.next()){
+                                Object[] row = new Object[]{
+                                    rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien")+" ("+rs.getString("umur")+")",
+                                    rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
+                                    rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")),rs.getString("diagnosa_awal"),
+                                    rs.getString("diagnosa_akhir"),rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
+                                    rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")),rs.getString("stts_pulang"),
+                                    rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar"),rs.getString("agama")
+                                };  
+                                i++;
+                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                                psanak=koneksi.prepareStatement(
+                                    "select pasien.no_rkm_medis,pasien.nm_pasien,ranap_gabung.no_rawat2,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur,pasien.no_peserta, "+
+                                    "concat(pasien.alamatpj,', ',pasien.kelurahanpj,', ',pasien.kecamatanpj,', ',pasien.kabupatenpj) as alamat "+
+                                    "from reg_periksa inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis "+
+                                    "inner join ranap_gabung on ranap_gabung.no_rawat2=reg_periksa.no_rawat where ranap_gabung.no_rawat=?");            
+                                try {
+                                    psanak.setString(1,rs.getString(1));
+                                    rs2=psanak.executeQuery();
+                                    if(rs2.next()){
+                                        Object[] row2 = new Object[]{
+                                            "",rs2.getString("no_rkm_medis"),rs2.getString("nm_pasien")+" ("+rs2.getString("umur")+")",
+                                            rs.getString("alamat"),rs.getString("p_jawab"),rs.getString("hubunganpj"),rs.getString("png_jawab"),
+                                            rs.getString("kamar"),Valid.SetAngka(rs.getDouble("trf_kamar")*(persenbayi/100)),"",
+                                            "",rs.getString("tgl_masuk"),rs.getString("jam_masuk"),rs.getString("tgl_keluar"),
+                                            rs.getString("jam_keluar"),Valid.SetAngka(rs.getDouble("ttl_biaya")*(persenbayi/100)),rs.getString("stts_pulang"),
+                                            rs.getString("lama"),rs.getString("nm_dokter"),rs.getString("kd_kamar"),rs.getString("status_bayar")
+                                        };
+                                        i++;
+                                        SwingUtilities.invokeLater(() -> tabMode.addRow(row2));
                                     }
+                                }catch(Exception ex){
+                                    System.out.println("Notifikasi : "+ex);
+                                }finally{
+                                      if(rs2 != null){
+                                          rs2.close();
+                                      }
+                                      if(psanak != null){
+                                          psanak.close();
+                                      }
                                 }
                             }
                         } catch (Exception e) {
@@ -18310,7 +18311,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
 
                 @Override
                 protected void done() {
-                    LCount.setText(""+tabMode.getRowCount());
+                    LCount.setText(""+i);
                     ceksukses = false;
                 }
             }.execute(); 
