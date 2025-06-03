@@ -5319,6 +5319,7 @@ public final class DlgIGD extends javax.swing.JDialog {
                     TStatus.getText(),nmpnj.getText(),"Belum",kdpnj.getText(),"Belum Bayar"
                 });
                 emptTeks(); 
+                ceksukses=false;
             }
             
         }
