@@ -9,6 +9,10 @@
         $penyakit           = validTeks4((isset($_GET["penyakit"])?$_GET["penyakit"]:NULL),20);
         $discharge_status   = "5";               
         $norawat            = validTeks4((isset($_GET["norawat"])?$_GET["norawat"]:NULL),20);
+        $kelas              = getOne("select bridging_sep.klsrawat from bridging_sep where bridging_sep.no_rawat='$norawat'");
+        if(!empty($kelas)){
+            $kelas="2";
+        }
         $_sql               = "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,
                                 reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.no_peserta,
                                 pasien.umur,pasien.tgl_lahir,poliklinik.nm_poli,reg_periksa.status_lanjut,reg_periksa.umurdaftar,reg_periksa.sttsumur,
@@ -42,6 +46,6 @@
         }
         BuatKlaimBaru($no_peserta,$norawat,$no_rkm_medis,$nm_pasien,$tgl_lahir." 00:00:00", $gender);
         EditUlangKlaim($norawat);
-        UpdateDataKlaim($norawat,$no_peserta,$tgl_registrasi,$tgl_registrasi,"1","Kelas 2","","","","","","","","","","0",$discharge_status,$penyakit,$prosedur,getOne("select biaya_reg from reg_periksa where no_rawat='".$norawat."'"), $nm_dokter,getKelasRS(),"","","#",getOne("select no_ik from inacbg_coder_nik"),$norawat,"other");
+        UpdateDataKlaim($norawat,$no_peserta,$tgl_registrasi,$tgl_registrasi,"1","Kelas $kelas","","","","","","","","","","0",$discharge_status,$penyakit,$prosedur,getOne("select biaya_reg from reg_periksa where no_rawat='".$norawat."'"), $nm_dokter,getKelasRS(),"","","#",getOne("select no_ik from inacbg_coder_nik"),$norawat,"other");
     }   
 ?>
