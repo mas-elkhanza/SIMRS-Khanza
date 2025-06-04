@@ -4114,7 +4114,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
     
-    private void tampilKunjungan() {
+    private synchronized void tampilKunjungan() {
         Valid.tabelKosong(tabModeRegistrasi);
         try{   
             if(R1.isSelected()==true){
@@ -4260,7 +4260,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
-    private void tampilPerawatan() {
+    private synchronized void tampilPerawatan() {
         try{   
             htmlContent = new StringBuilder();
             if(R1.isSelected()==true){
@@ -6466,7 +6466,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }
 
-    private void tampilSoapi() {
+    private synchronized void tampilSoapi() {
         try {
             htmlContent = new StringBuilder();
             htmlContent.append("<tr class='isi'>").
@@ -6624,7 +6624,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         } 
     }
 
-    private void tampilPembelian() {
+    private synchronized void tampilPembelian() {
         try{
             htmlContent = new StringBuilder();
             htmlContent.append(
@@ -6860,7 +6860,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         } 
     }
 
-    private void tampilPiutang() {
+    private synchronized void tampilPiutang() {
         try{
             htmlContent = new StringBuilder();
             htmlContent.append(
@@ -7008,7 +7008,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         } 
     }
 
-    private void tampilRetensi() {
+    private synchronized void tampilRetensi() {
         try{
             htmlContent = new StringBuilder();
             try{

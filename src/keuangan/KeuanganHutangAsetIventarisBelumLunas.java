@@ -34,6 +34,8 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import kepegawaian.DlgCariPetugas;
 
 /**
@@ -53,7 +55,7 @@ public final class KeuanganHutangAsetIventarisBelumLunas extends javax.swing.JDi
     private double sisahutang=0,cicilan=0,bayar=0;
     private Jurnal jur=new Jurnal();
     private WarnaTable3 warna=new WarnaTable3();
-    private boolean sukses=false;
+    private boolean sukses=false,ceksukses=false;
     private File file;
     private FileWriter fileWriter;
     private String notagihan="";
@@ -1692,65 +1694,80 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil(){
-        Valid.tabelKosong(tabMode);
-        try{
-            tanggaldatang="";
-            tanggaltempo="";
-            if(ChkTanggalDatang.isSelected()==true){
-                tanggaldatang=" inventaris_pemesanan.tgl_pesan between '"+Valid.SetTgl(TglDatang1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglDatang2.getSelectedItem()+"")+"' and ";
-            }
-            if(ChkTanggalTempo.isSelected()==true){
-                tanggaltempo=" inventaris_pemesanan.tgl_tempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
-            }
-            ps=koneksi.prepareStatement(
-                    "select inventaris_pemesanan.no_faktur,inventaris_pemesanan.no_order,inventaris_suplier.nama_suplier, "+
-                    "petugas.nama,inventaris_pemesanan.tgl_tempo,inventaris_pemesanan.tgl_pesan,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tagihan,"+
-                    "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_inventaris where bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur) as bayar, "+
-                    "inventaris_suplier.nama_bank,inventaris_suplier.rekening,inventaris_pemesanan.kd_rek_aset from inventaris_pemesanan inner join inventaris_suplier inner join petugas "+
-                    "on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
-                    "and inventaris_pemesanan.nip=petugas.nip where "+
-                    tanggaldatang+tanggaltempo+"(inventaris_pemesanan.status='Belum Dibayar' or inventaris_pemesanan.status='Belum Lunas') and inventaris_suplier.nama_suplier like ? "+
-                    (TCari.getText().trim().equals("")?"":"and (inventaris_pemesanan.no_faktur like ? or inventaris_pemesanan.no_order like ? or inventaris_pemesanan.tgl_tempo like ? or "+
-                    "inventaris_suplier.nama_suplier like ? or petugas.nama like ?)")+" order by inventaris_pemesanan.tgl_tempo ");
-            try {
-                ps.setString(1,"%"+NamaSuplier.getText().trim()+"%");
-                if(!TCari.getText().trim().equals("")){
-                    ps.setString(2,"%"+TCari.getText().trim()+"%");
-                    ps.setString(3,"%"+TCari.getText().trim()+"%");
-                    ps.setString(4,"%"+TCari.getText().trim()+"%");
-                    ps.setString(5,"%"+TCari.getText().trim()+"%");
-                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+    public synchronized void tampil(){
+        if(ceksukses==false){
+            ceksukses=true;
+            Valid.tabelKosong(tabMode);
+            new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    try{
+                        tanggaldatang="";
+                        tanggaltempo="";
+                        if(ChkTanggalDatang.isSelected()==true){
+                            tanggaldatang=" inventaris_pemesanan.tgl_pesan between '"+Valid.SetTgl(TglDatang1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglDatang2.getSelectedItem()+"")+"' and ";
+                        }
+                        if(ChkTanggalTempo.isSelected()==true){
+                            tanggaltempo=" inventaris_pemesanan.tgl_tempo between '"+Valid.SetTgl(TglTempo1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(TglTempo2.getSelectedItem()+"")+"' and ";
+                        }
+                        ps=koneksi.prepareStatement(
+                                "select inventaris_pemesanan.no_faktur,inventaris_pemesanan.no_order,inventaris_suplier.nama_suplier, "+
+                                "petugas.nama,inventaris_pemesanan.tgl_tempo,inventaris_pemesanan.tgl_pesan,inventaris_pemesanan.tgl_faktur,inventaris_pemesanan.tagihan,"+
+                                "(SELECT ifnull(SUM(besar_bayar),0) FROM bayar_pemesanan_inventaris where bayar_pemesanan_inventaris.no_faktur=inventaris_pemesanan.no_faktur) as bayar, "+
+                                "inventaris_suplier.nama_bank,inventaris_suplier.rekening,inventaris_pemesanan.kd_rek_aset from inventaris_pemesanan inner join inventaris_suplier inner join petugas "+
+                                "on inventaris_pemesanan.kode_suplier=inventaris_suplier.kode_suplier "+
+                                "and inventaris_pemesanan.nip=petugas.nip where "+
+                                tanggaldatang+tanggaltempo+"(inventaris_pemesanan.status='Belum Dibayar' or inventaris_pemesanan.status='Belum Lunas') and inventaris_suplier.nama_suplier like ? "+
+                                (TCari.getText().trim().equals("")?"":"and (inventaris_pemesanan.no_faktur like ? or inventaris_pemesanan.no_order like ? or inventaris_pemesanan.tgl_tempo like ? or "+
+                                "inventaris_suplier.nama_suplier like ? or petugas.nama like ?)")+" order by inventaris_pemesanan.tgl_tempo ");
+                        try {
+                            ps.setString(1,"%"+NamaSuplier.getText().trim()+"%");
+                            if(!TCari.getText().trim().equals("")){
+                                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                            }
+
+                            rs=ps.executeQuery();
+                            sisahutang=0;
+                            cicilan=0;
+                            while(rs.next()){
+                                Object[] row = new Object[]{
+                                    false,rs.getString("no_faktur"),rs.getString("no_order"),
+                                    rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
+                                    rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),
+                                    rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
+                                    0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),
+                                    rs.getString("rekening"),rs.getString("kd_rek_aset")
+                                };
+                                sisahutang=sisahutang+rs.getDouble("tagihan");
+                                cicilan=cicilan+rs.getDouble("bayar");
+                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi Data Hutang: "+e);
+                        } finally{
+                            if(rs!=null){
+                                rs.close();
+                            }
+                            if(ps!=null){
+                                ps.close();
+                            }
+                        }
+                    }catch(Exception e){
+                        System.out.println("Notifikasi : "+e);
+                    }
+                    return null;
                 }
-                    
-                rs=ps.executeQuery();
-                sisahutang=0;
-                cicilan=0;
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        false,rs.getString("no_faktur"),rs.getString("no_order"),
-                        rs.getString("nama_suplier"),rs.getString("nama"),rs.getString("tgl_faktur"),
-                        rs.getString("tgl_pesan"),rs.getString("tgl_tempo"),
-                        rs.getDouble("tagihan"),(rs.getDouble("tagihan")-rs.getDouble("bayar")),
-                        0,(rs.getDouble("tagihan")-rs.getDouble("bayar")),rs.getString("nama_bank"),
-                        rs.getString("rekening"),rs.getString("kd_rek_aset")
-                    });
-                    sisahutang=sisahutang+rs.getDouble("tagihan");
-                    cicilan=cicilan+rs.getDouble("bayar");
+
+                @Override
+                protected void done() {
+                    LCount.setText(Valid.SetAngka(sisahutang-cicilan));
+                    ceksukses = false;
                 }
-                LCount.setText(Valid.SetAngka(sisahutang-cicilan));
-            } catch (Exception e) {
-                System.out.println("Notifikasi Data Hutang: "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(ps!=null){
-                    ps.close();
-                }
-            }
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            }.execute();
         }
     }
     

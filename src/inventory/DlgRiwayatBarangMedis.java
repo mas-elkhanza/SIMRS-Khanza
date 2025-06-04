@@ -21,17 +21,19 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 import simrskhanza.DlgCariBangsal;
 
 public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();    
-    private DlgBarang barang=new DlgBarang(null,false);
+    private Connection koneksi=koneksiDB.condb(); 
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+    private boolean ceksukses=false;
+    private int i=0;
 
     /** 
      * @param parent
@@ -107,73 +109,7 @@ public class DlgRiwayatBarangMedis extends javax.swing.JDialog {
                     }
                 }
             });
-        }   
-        
-        barang.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgRiwayatBarangMedis")){
-                    if(barang.getTable().getSelectedRow()!= -1){                   
-                        kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
-                        nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
-                    }  
-                    kdbar.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        barang.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("DlgRiwayatBarangMedis")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        barang.dispose();                    
-                    }                
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        
-        bangsal.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgRiwayatBarangMedis")){
-                    if(bangsal.getTable().getSelectedRow()!= -1){                   
-                        KdGudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
-                        NmGudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
-                    }  
-                    KdGudang.requestFocus();
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
+        } 
     }    
     /** This method is called from within the constructor to
      * initialize the form.
@@ -530,13 +466,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnCariKeyPressed
 
     private void kdbarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdbarKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nama_brng from databarang where kode_brng=?",nmbar,kdbar.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Sequel.cariIsi("select nama_brng from databarang where kode_brng=?",nmbar,kdbar.getText());
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            Sequel.cariIsi("select nama_brng from databarang where kode_brng=?",nmbar,kdbar.getText());
             TCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnBarangActionPerformed(null);
@@ -545,6 +477,46 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
         akses.setform("DlgRiwayatBarangMedis");
+        DlgBarang barang=new DlgBarang(null,false);
+        barang.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgRiwayatBarangMedis")){
+                    if(barang.getTable().getSelectedRow()!= -1){                   
+                        kdbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());                    
+                        nmbar.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),2).toString());
+                    }  
+                    kdbar.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        barang.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("DlgRiwayatBarangMedis")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        barang.dispose();                    
+                    }                
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
         barang.emptTeks();
         barang.isCek();
         barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -574,6 +546,31 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void btnBarang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarang1ActionPerformed
         akses.setform("DlgRiwayatBarangMedis");
+        DlgCariBangsal bangsal=new DlgCariBangsal(null,false);
+        bangsal.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgRiwayatBarangMedis")){
+                    if(bangsal.getTable().getSelectedRow()!= -1){                   
+                        KdGudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),0).toString());
+                        NmGudang.setText(bangsal.getTable().getValueAt(bangsal.getTable().getSelectedRow(),1).toString());
+                    }  
+                    KdGudang.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         bangsal.emptTeks();
         bangsal.isCek();
         bangsal.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -630,90 +627,104 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
 
-    private void prosesCari() {
-       Valid.tabelKosong(tabMode);      
-       try{   
-            if(nmbar.getText().trim().equals("")&&NmGudang.getText().trim().equals("")&&TCari.getText().trim().equals("")){
-                ps=koneksi.prepareStatement(
-                    "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"+
-                    "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"+
-                    "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"+
-                    "riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,"+
-                    "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"+
-                    "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"+
-                    "riwayat_barang_medis.status,riwayat_barang_medis.no_batch,"+
-                    "riwayat_barang_medis.no_faktur,riwayat_barang_medis.keterangan from riwayat_barang_medis "+
-                    "inner join bangsal inner join databarang on "+
-                    "riwayat_barang_medis.kode_brng=databarang.kode_brng and "+
-                    "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "+
-                    "riwayat_barang_medis.tanggal between ? and ? order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
-            }else{
-                ps=koneksi.prepareStatement(
-                    "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"+
-                    "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"+
-                    "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"+
-                    "riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,"+
-                    "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"+
-                    "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"+
-                    "riwayat_barang_medis.status,riwayat_barang_medis.no_batch,"+
-                    "riwayat_barang_medis.no_faktur,riwayat_barang_medis.keterangan from riwayat_barang_medis "+
-                    "inner join bangsal inner join databarang on "+
-                    "riwayat_barang_medis.kode_brng=databarang.kode_brng and "+
-                    "riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal where "+
-                    "riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and "+
-                    "(riwayat_barang_medis.kode_brng like ? or databarang.nama_brng like ? or riwayat_barang_medis.petugas like ? or "+
-                    "bangsal.nm_bangsal like ? or riwayat_barang_medis.no_batch like ? or riwayat_barang_medis.no_faktur like ? or "+
-                    "riwayat_barang_medis.kd_bangsal like ? or riwayat_barang_medis.status like ? or riwayat_barang_medis.keterangan like ? or "+
-                    "riwayat_barang_medis.posisi like ?) "+"order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
-            }
-                
-            try {
-                if(nmbar.getText().trim().equals("")&&NmGudang.getText().trim().equals("")&&TCari.getText().trim().equals("")){
-                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                }else{
-                    ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
-                    ps.setString(3,"%"+nmbar.getText()+"%");
-                    ps.setString(4,"%"+NmGudang.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText().trim()+"%");
-                    ps.setString(6,"%"+TCari.getText().trim()+"%");
-                    ps.setString(7,"%"+TCari.getText().trim()+"%");
-                    ps.setString(8,"%"+TCari.getText().trim()+"%");
-                    ps.setString(9,"%"+TCari.getText().trim()+"%");
-                    ps.setString(10,"%"+TCari.getText().trim()+"%");
-                    ps.setString(11,"%"+TCari.getText().trim()+"%");
-                    ps.setString(12,"%"+TCari.getText().trim()+"%");
-                    ps.setString(13,"%"+TCari.getText().trim()+"%");
-                    ps.setString(14,"%"+TCari.getText().trim()+"%");
+    private synchronized void prosesCari() {
+        if(ceksukses==false){
+            ceksukses=true;
+            Valid.tabelKosong(tabMode); 
+            new SwingWorker<Void, Void>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    try{   
+                        if(nmbar.getText().trim().equals("")&&NmGudang.getText().trim().equals("")&&TCari.getText().trim().equals("")){
+                            ps=koneksi.prepareStatement(
+                                 "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"+
+                                 "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"+
+                                 "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"+
+                                 "riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,"+
+                                 "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"+
+                                 "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"+
+                                 "riwayat_barang_medis.status,riwayat_barang_medis.no_batch,"+
+                                 "riwayat_barang_medis.no_faktur,riwayat_barang_medis.keterangan "+
+                                 "from riwayat_barang_medis inner join bangsal on riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal "+
+                                 "inner join databarang on riwayat_barang_medis.kode_brng=databarang.kode_brng "+
+                                 "where riwayat_barang_medis.tanggal between ? and ? order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
+                        }else{
+                            ps=koneksi.prepareStatement(
+                                 "select riwayat_barang_medis.kode_brng,databarang.nama_brng,"+
+                                 "riwayat_barang_medis.stok_awal,riwayat_barang_medis.masuk,"+
+                                 "riwayat_barang_medis.keluar,riwayat_barang_medis.stok_akhir,"+
+                                 "riwayat_barang_medis.posisi,riwayat_barang_medis.tanggal,"+
+                                 "riwayat_barang_medis.jam,riwayat_barang_medis.petugas,"+
+                                 "riwayat_barang_medis.kd_bangsal,bangsal.nm_bangsal,"+
+                                 "riwayat_barang_medis.status,riwayat_barang_medis.no_batch,"+
+                                 "riwayat_barang_medis.no_faktur,riwayat_barang_medis.keterangan "+
+                                 "from riwayat_barang_medis inner join bangsal on riwayat_barang_medis.kd_bangsal=bangsal.kd_bangsal "+
+                                 "inner join databarang on riwayat_barang_medis.kode_brng=databarang.kode_brng "+
+                                 "where riwayat_barang_medis.tanggal between ? and ? and databarang.nama_brng like ? and bangsal.nm_bangsal like ? and "+
+                                 "(riwayat_barang_medis.kode_brng like ? or databarang.nama_brng like ? or riwayat_barang_medis.petugas like ? or "+
+                                 "bangsal.nm_bangsal like ? or riwayat_barang_medis.no_batch like ? or riwayat_barang_medis.no_faktur like ? or "+
+                                 "riwayat_barang_medis.kd_bangsal like ? or riwayat_barang_medis.status like ? or riwayat_barang_medis.keterangan like ? or "+
+                                 "riwayat_barang_medis.posisi like ?) "+"order by riwayat_barang_medis.tanggal,riwayat_barang_medis.jam ");
+                        }
+
+                        try {
+                            if(nmbar.getText().trim().equals("")&&NmGudang.getText().trim().equals("")&&TCari.getText().trim().equals("")){
+                                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                            }else{
+                                 ps.setString(1,Valid.SetTgl(Tgl1.getSelectedItem()+""));
+                                 ps.setString(2,Valid.SetTgl(Tgl2.getSelectedItem()+""));
+                                 ps.setString(3,"%"+nmbar.getText()+"%");
+                                 ps.setString(4,"%"+NmGudang.getText()+"%");
+                                 ps.setString(5,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(6,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(7,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(8,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(9,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(10,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(11,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(12,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(13,"%"+TCari.getText().trim()+"%");
+                                 ps.setString(14,"%"+TCari.getText().trim()+"%");
+                            }
+                            rs=ps.executeQuery(); 
+                            i=0;
+                            while(rs.next()){
+                                Object[] row = new Object[]{
+                                     rs.getString("kode_brng")+" "+rs.getString("nama_brng"),
+                                     rs.getString("stok_awal"),rs.getString("masuk"),
+                                     rs.getString("keluar"),rs.getString("stok_akhir"),
+                                     rs.getString("posisi"),rs.getString("tanggal"),
+                                     rs.getString("jam"),rs.getString("petugas"),
+                                     rs.getString("kd_bangsal")+" "+rs.getString("nm_bangsal"),
+                                     rs.getString("status"),rs.getString("no_batch"),
+                                     rs.getString("no_faktur"),rs.getString("keterangan")
+                                }; 
+                                i++;
+                                SwingUtilities.invokeLater(() -> tabMode.addRow(row));
+                            }    
+                         } catch (Exception e) {
+                             System.out.println("Notifikasi Data Barang : "+e);
+                         } finally{
+                             if(rs!=null){
+                                 rs.close();
+                             }
+                             if(ps!=null){
+                                 ps.close();
+                             }
+                         }                
+                     }catch(Exception e){
+                         System.out.println("Notifikasi : "+e);
+                     }
+                    return null;
                 }
-                rs=ps.executeQuery();            
-                while(rs.next()){
-                    tabMode.addRow(new Object[]{
-                        rs.getString("kode_brng")+" "+rs.getString("nama_brng"),
-                        rs.getString("stok_awal"),rs.getString("masuk"),
-                        rs.getString("keluar"),rs.getString("stok_akhir"),
-                        rs.getString("posisi"),rs.getString("tanggal"),
-                        rs.getString("jam"),rs.getString("petugas"),
-                        rs.getString("kd_bangsal")+" "+rs.getString("nm_bangsal"),
-                        rs.getString("status"),rs.getString("no_batch"),
-                        rs.getString("no_faktur"),rs.getString("keterangan")
-                    });                    
-                }    
-            } catch (Exception e) {
-                System.out.println("Notifikasi Data Barang : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
+
+                @Override
+                protected void done() {
+                    ceksukses = false;
                 }
-                if(ps!=null){
-                    ps.close();
-                }
-            }                
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+            }.execute();
         }
-        
     }
     
     public void isCek(){
