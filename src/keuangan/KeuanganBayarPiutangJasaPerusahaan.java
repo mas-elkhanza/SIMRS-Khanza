@@ -711,7 +711,7 @@ public final class KeuanganBayarPiutangJasaPerusahaan extends javax.swing.JDialo
                         }   
                         Sequel.mengedit("piutang_jasa_perusahaan","no_piutang='"+NoPiutang.getText()+"'","sisapiutang=sisapiutang-"+Cicilan.getText());
                         Sequel.queryu("delete from tampjurnal");                    
-                        if(Sequel.menyimpantf2("tampjurnal","'"+Piutang_Jasa_Perusahaan+"','"+"PIUTANG JASA PERUSAHAAN"+"','0','"+Cicilan.getText()+"'","Rekening")==false){
+                        if(Sequel.menyimpantf2("tampjurnal","'"+Piutang_Jasa_Perusahaan+"','PIUTANG JASA PERUSAHAAN','0','"+Cicilan.getText()+"'","Rekening")==false){
                             sukses=false;
                         }    
                         if(Sequel.menyimpantf2("tampjurnal","'"+koderekening+"','"+AkunBayar.getSelectedItem()+"','"+Cicilan.getText()+"','0'","Rekening")==false){
