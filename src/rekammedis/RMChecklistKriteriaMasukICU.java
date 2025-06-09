@@ -360,7 +360,7 @@ public final class RMChecklistKriteriaMasukICU extends javax.swing.JDialog {
         MnKriteriaMasukICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKriteriaMasukICU.setForeground(new java.awt.Color(50, 50, 50));
         MnKriteriaMasukICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukICU.setText("Formulir Checklist Kriteria Masuk ICU");
+        MnKriteriaMasukICU.setText("Formulir Check List Kriteria Masuk ICU");
         MnKriteriaMasukICU.setName("MnKriteriaMasukICU"); // NOI18N
         MnKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(260, 26));
         MnKriteriaMasukICU.addActionListener(new java.awt.event.ActionListener() {

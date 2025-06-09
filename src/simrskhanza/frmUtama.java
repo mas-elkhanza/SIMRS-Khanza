@@ -46646,7 +46646,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnChecklistKesiapanAnestesi = new widget.ButtonBig();
         btnChecklistKesiapanAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7479646_questionnaire_survey_checklist_list_clipboard_icon.png"))); 
-        btnChecklistKesiapanAnestesi.setText("Checklist Kesiapan Anestesi");
+        btnChecklistKesiapanAnestesi.setText("Check List Kesiapan Anestesi");
         btnChecklistKesiapanAnestesi.setIconTextGap(0);
         btnChecklistKesiapanAnestesi.setName("btnChecklistKesiapanAnestesi"); 
         btnChecklistKesiapanAnestesi.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -47622,7 +47622,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnChecklistPemberianFibrinolitik = new widget.ButtonBig();
         btnChecklistPemberianFibrinolitik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2620524_cv_employee_job_seeker_unemployee_icon.png"))); 
-        btnChecklistPemberianFibrinolitik.setText("Checklist Pemberian Fibrinolitik");
+        btnChecklistPemberianFibrinolitik.setText("Check List Pemberian Fibrinolitik");
         btnChecklistPemberianFibrinolitik.setIconTextGap(0);
         btnChecklistPemberianFibrinolitik.setName("btnChecklistPemberianFibrinolitik"); 
         btnChecklistPemberianFibrinolitik.setPreferredSize(new java.awt.Dimension(200, 90));

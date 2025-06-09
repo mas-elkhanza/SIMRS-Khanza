@@ -416,7 +416,7 @@ public final class RMChecklistPostOperasi extends javax.swing.JDialog {
         MnPostOperasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPostOperasi.setForeground(new java.awt.Color(50, 50, 50));
         MnPostOperasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPostOperasi.setText("Formulir Checklist Post Operasi");
+        MnPostOperasi.setText("Formulir Check List Post Operasi");
         MnPostOperasi.setName("MnPostOperasi"); // NOI18N
         MnPostOperasi.setPreferredSize(new java.awt.Dimension(260, 26));
         MnPostOperasi.addActionListener(new java.awt.event.ActionListener() {

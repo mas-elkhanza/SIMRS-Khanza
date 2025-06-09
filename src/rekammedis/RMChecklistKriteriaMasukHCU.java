@@ -321,7 +321,7 @@ public final class RMChecklistKriteriaMasukHCU extends javax.swing.JDialog {
         MnKriteriaMasukHCU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKriteriaMasukHCU.setForeground(new java.awt.Color(50, 50, 50));
         MnKriteriaMasukHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukHCU.setText("Formulir Checklist Kriteria Masuk HCU");
+        MnKriteriaMasukHCU.setText("Formulir Check List Kriteria Masuk HCU");
         MnKriteriaMasukHCU.setName("MnKriteriaMasukHCU"); // NOI18N
         MnKriteriaMasukHCU.setPreferredSize(new java.awt.Dimension(260, 26));
         MnKriteriaMasukHCU.addActionListener(new java.awt.event.ActionListener() {

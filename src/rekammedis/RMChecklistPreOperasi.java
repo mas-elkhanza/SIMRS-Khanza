@@ -394,7 +394,7 @@ public final class RMChecklistPreOperasi extends javax.swing.JDialog {
         MnSkriningNutrisi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnSkriningNutrisi.setForeground(new java.awt.Color(50, 50, 50));
         MnSkriningNutrisi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningNutrisi.setText("Formulir Checklist Pre Operasi");
+        MnSkriningNutrisi.setText("Formulir Check List Pre Operasi");
         MnSkriningNutrisi.setName("MnSkriningNutrisi"); // NOI18N
         MnSkriningNutrisi.setPreferredSize(new java.awt.Dimension(260, 26));
         MnSkriningNutrisi.addActionListener(new java.awt.event.ActionListener() {

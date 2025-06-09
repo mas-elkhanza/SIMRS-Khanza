@@ -328,7 +328,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         MnKriteriaMasukICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKriteriaMasukICU.setForeground(new java.awt.Color(50, 50, 50));
         MnKriteriaMasukICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukICU.setText("Formulir Checklist Kriteria Masuk ICU");
+        MnKriteriaMasukICU.setText("Formulir Check List Kriteria Masuk ICU");
         MnKriteriaMasukICU.setName("MnKriteriaMasukICU"); // NOI18N
         MnKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(260, 26));
         MnKriteriaMasukICU.addActionListener(new java.awt.event.ActionListener() {
@@ -351,7 +351,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Check List Kriteria Masuk ICU ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Check List Kesiapan Anestesi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
