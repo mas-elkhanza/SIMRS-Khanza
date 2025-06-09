@@ -889,6 +889,7 @@ import rekammedis.RMCatatanADIMEGizi;
 import rekammedis.RMCatatanAnastesiSedasi;
 import rekammedis.RMCatatanPengkajianPaskaOperasi;
 import rekammedis.RMCatatanPersalinan;
+import rekammedis.RMChecklistKesiapanAnestesi;
 import rekammedis.RMChecklistKriteriaKeluarHCU;
 import rekammedis.RMChecklistKriteriaKeluarICU;
 import rekammedis.RMChecklistKriteriaMasukHCU;
@@ -22760,6 +22761,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnChecklistKesiapanAnestesiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMChecklistKesiapanAnestesi aplikasi=new RMChecklistKesiapanAnestesi(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     
     /**
     * @param args the command line arguments
@@ -23466,7 +23479,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiHemodialisa,btnSkriningKesehatanGigiMulutDewasa,btnSkriningRisikoKankerServiks,btnCatatanCairanHemodialisa,btnSkriningKesehatanGigiMulutLansia,
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
             btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan,btnBayarPiutangJasaPerusahaan,btnPiutangJasaPerusahaanBelumLunas,
-            btnPiutangPeminjamanUangBelumLunas;
+            btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi;
     
     public void isWall(){
         try{            
@@ -27675,6 +27688,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_pre_anestesi()==true){
                 Panelmenu.add(btnPenilaianPreAnastesi);
+                jmlmenu++;
+            }
+            
+            if(akses.getchecklist_kesiapan_anestesi()==true){
+                Panelmenu.add(btnChecklistKesiapanAnestesi);
                 jmlmenu++;
             }
             
@@ -33264,6 +33282,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_pre_anestesi()==true){
             Panelmenu.add(btnPenilaianPreAnastesi);
+            jmlmenu++;
+        }
+        
+        if(akses.getchecklist_kesiapan_anestesi()==true){
+            Panelmenu.add(btnChecklistKesiapanAnestesi);
             jmlmenu++;
         }
         
@@ -40475,6 +40498,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.getchecklist_kesiapan_anestesi()==true){
+            if(btnChecklistKesiapanAnestesi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnChecklistKesiapanAnestesi);
+                jmlmenu++;
+            } 
+        }
+        
         if(akses.getcatatan_anestesi_sedasi()==true){
             if(btnCatatanAnastesiSedasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnCatatanAnastesiSedasi);
@@ -46613,6 +46643,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistKriteriaKeluarICU.setName("btnChecklistKriteriaKeluarICU"); 
         btnChecklistKriteriaKeluarICU.setPreferredSize(new java.awt.Dimension(200, 90));
         btnChecklistKriteriaKeluarICU.addActionListener(this::btnChecklistKriteriaKeluarICUActionPerformed);
+        
+        btnChecklistKesiapanAnestesi = new widget.ButtonBig();
+        btnChecklistKesiapanAnestesi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7479646_questionnaire_survey_checklist_list_clipboard_icon.png"))); 
+        btnChecklistKesiapanAnestesi.setText("Checklist Kesiapan Anestesi");
+        btnChecklistKesiapanAnestesi.setIconTextGap(0);
+        btnChecklistKesiapanAnestesi.setName("btnChecklistKesiapanAnestesi"); 
+        btnChecklistKesiapanAnestesi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnChecklistKesiapanAnestesi.addActionListener(this::btnChecklistKesiapanAnestesiActionPerformed);
         
         btnDataFollowUpDBD = new widget.ButtonBig();
         btnDataFollowUpDBD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5972298_carrier_insect_mosquito_transmission_virus_icon.png"))); 
