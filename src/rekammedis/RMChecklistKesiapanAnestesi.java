@@ -213,19 +213,19 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         KodeDokter = new widget.TextBox();
         NamaDokter = new widget.TextBox();
         BtnDokter = new widget.Button();
-        Prioritas1_5 = new widget.ComboBox();
+        Listrik3 = new widget.ComboBox();
         jLabel58 = new widget.Label();
         jLabel5 = new widget.Label();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel53 = new widget.Label();
-        Prioritas1_6 = new widget.ComboBox();
-        Prioritas1_2 = new widget.ComboBox();
-        Prioritas1_3 = new widget.ComboBox();
+        GasMedis2 = new widget.ComboBox();
+        Listrik4 = new widget.ComboBox();
+        Listrik2 = new widget.ComboBox();
         jLabel63 = new widget.Label();
-        Prioritas1_1 = new widget.ComboBox();
+        Listrik1 = new widget.ComboBox();
         jLabel65 = new widget.Label();
-        Prioritas1_4 = new widget.ComboBox();
+        GasMedis1 = new widget.ComboBox();
         jLabel24 = new widget.Label();
         KodePetugas1 = new widget.TextBox();
         jLabel25 = new widget.Label();
@@ -241,86 +241,86 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         jLabel60 = new widget.Label();
         jLabel61 = new widget.Label();
         jLabel62 = new widget.Label();
-        Prioritas1_7 = new widget.ComboBox();
+        GasMedis3 = new widget.ComboBox();
         jLabel64 = new widget.Label();
-        Prioritas1_8 = new widget.ComboBox();
+        GasMedis4 = new widget.ComboBox();
         jLabel66 = new widget.Label();
-        Prioritas1_9 = new widget.ComboBox();
+        GasMedis5 = new widget.ComboBox();
         jLabel67 = new widget.Label();
-        Prioritas1_10 = new widget.ComboBox();
+        GasMedis6 = new widget.ComboBox();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel55 = new widget.Label();
         jLabel68 = new widget.Label();
-        Prioritas1_11 = new widget.ComboBox();
-        Prioritas1_12 = new widget.ComboBox();
+        MesinAnestesi1 = new widget.ComboBox();
+        MesinAnestesi3 = new widget.ComboBox();
         jLabel69 = new widget.Label();
         jLabel70 = new widget.Label();
-        Prioritas1_13 = new widget.ComboBox();
+        MesinAnestesi5 = new widget.ComboBox();
         jLabel71 = new widget.Label();
-        Prioritas1_14 = new widget.ComboBox();
+        MesinAnestesi4 = new widget.ComboBox();
         jLabel72 = new widget.Label();
-        Prioritas1_15 = new widget.ComboBox();
+        MesinAnestesi2 = new widget.ComboBox();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel56 = new widget.Label();
         jLabel73 = new widget.Label();
-        Prioritas1_16 = new widget.ComboBox();
+        JalanNapas1 = new widget.ComboBox();
         jLabel74 = new widget.Label();
-        Prioritas1_17 = new widget.ComboBox();
+        JalanNapas3 = new widget.ComboBox();
         jLabel75 = new widget.Label();
-        Prioritas1_18 = new widget.ComboBox();
+        JalanNapas2 = new widget.ComboBox();
         jLabel76 = new widget.Label();
-        Prioritas1_19 = new widget.ComboBox();
+        JalanNapas5 = new widget.ComboBox();
         jLabel77 = new widget.Label();
-        Prioritas1_20 = new widget.ComboBox();
+        JalanNapas7 = new widget.ComboBox();
         jLabel78 = new widget.Label();
-        Prioritas1_21 = new widget.ComboBox();
-        Prioritas1_22 = new widget.ComboBox();
+        JalanNapas9 = new widget.ComboBox();
+        JalanNapas4 = new widget.ComboBox();
         jLabel79 = new widget.Label();
         jLabel80 = new widget.Label();
-        Prioritas1_23 = new widget.ComboBox();
+        JalanNapas6 = new widget.ComboBox();
         jLabel81 = new widget.Label();
-        Prioritas1_24 = new widget.ComboBox();
+        JalanNapas8 = new widget.ComboBox();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel57 = new widget.Label();
         jLabel82 = new widget.Label();
-        Prioritas1_25 = new widget.ComboBox();
+        LainLain1 = new widget.ComboBox();
         jLabel83 = new widget.Label();
-        Prioritas1_26 = new widget.ComboBox();
+        LainLain2 = new widget.ComboBox();
         jLabel84 = new widget.Label();
-        Prioritas1_27 = new widget.ComboBox();
+        LainLain7 = new widget.ComboBox();
         jLabel85 = new widget.Label();
-        Prioritas1_28 = new widget.ComboBox();
+        LainLain3 = new widget.ComboBox();
         jLabel86 = new widget.Label();
-        Prioritas1_29 = new widget.ComboBox();
+        LainLain8 = new widget.ComboBox();
         jLabel87 = new widget.Label();
-        Prioritas1_30 = new widget.ComboBox();
+        LainLain4 = new widget.ComboBox();
         jLabel88 = new widget.Label();
-        Prioritas1_31 = new widget.ComboBox();
+        LainLain5 = new widget.ComboBox();
         jLabel89 = new widget.Label();
-        Prioritas1_32 = new widget.ComboBox();
+        LainLain6 = new widget.ComboBox();
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
         jLabel90 = new widget.Label();
         jLabel91 = new widget.Label();
-        Prioritas1_33 = new widget.ComboBox();
+        ObatObat1 = new widget.ComboBox();
         jLabel92 = new widget.Label();
-        Prioritas1_34 = new widget.ComboBox();
+        ObatObat2 = new widget.ComboBox();
         jLabel93 = new widget.Label();
-        Prioritas1_35 = new widget.ComboBox();
-        Prioritas1_36 = new widget.ComboBox();
+        ObatObat3 = new widget.ComboBox();
+        ObatObat4 = new widget.ComboBox();
         jLabel94 = new widget.Label();
         jLabel95 = new widget.Label();
-        Prioritas1_37 = new widget.ComboBox();
+        ObatObat5 = new widget.ComboBox();
         jLabel96 = new widget.Label();
-        Prioritas1_38 = new widget.ComboBox();
+        ObatObat6 = new widget.ComboBox();
         jSeparator13 = new javax.swing.JSeparator();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel97 = new widget.Label();
         scrollPane14 = new widget.ScrollPane();
-        Edukasi = new widget.TextArea();
+        KeteranganLainnya = new widget.TextArea();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -328,7 +328,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         MnKriteriaMasukICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnKriteriaMasukICU.setForeground(new java.awt.Color(50, 50, 50));
         MnKriteriaMasukICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukICU.setText("Formulir Check List Kriteria Masuk ICU");
+        MnKriteriaMasukICU.setText("Formulir Checklist Kriteria Masuk ICU");
         MnKriteriaMasukICU.setName("MnKriteriaMasukICU"); // NOI18N
         MnKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(260, 26));
         MnKriteriaMasukICU.addActionListener(new java.awt.event.ActionListener() {
@@ -517,7 +517,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -531,7 +531,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -680,7 +680,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-06-2025 19:25:47" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025 22:09:35" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -725,16 +725,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(BtnDokter);
         BtnDokter.setBounds(761, 70, 28, 23);
 
-        Prioritas1_5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_5.setSelectedIndex(1);
-        Prioritas1_5.setName("Prioritas1_5"); // NOI18N
-        Prioritas1_5.addKeyListener(new java.awt.event.KeyAdapter() {
+        Listrik3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Listrik3.setSelectedIndex(1);
+        Listrik3.setName("Listrik3"); // NOI18N
+        Listrik3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_5KeyPressed(evt);
+                Listrik3KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_5);
-        Prioritas1_5.setBounds(699, 180, 90, 23);
+        FormInput.add(Listrik3);
+        Listrik3.setBounds(699, 180, 90, 23);
 
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel58.setText("Syringe pump terhubung dengan sumber listrik, indikator (+) ?");
@@ -767,38 +767,38 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel53);
         jLabel53.setBounds(10, 100, 180, 23);
 
-        Prioritas1_6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_6.setSelectedIndex(1);
-        Prioritas1_6.setName("Prioritas1_6"); // NOI18N
-        Prioritas1_6.addKeyListener(new java.awt.event.KeyAdapter() {
+        GasMedis2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        GasMedis2.setSelectedIndex(1);
+        GasMedis2.setName("GasMedis2"); // NOI18N
+        GasMedis2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_6KeyPressed(evt);
+                GasMedis2KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_6);
-        Prioritas1_6.setBounds(699, 290, 90, 23);
+        FormInput.add(GasMedis2);
+        GasMedis2.setBounds(699, 290, 90, 23);
 
-        Prioritas1_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_2.setSelectedIndex(1);
-        Prioritas1_2.setName("Prioritas1_2"); // NOI18N
-        Prioritas1_2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Listrik4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Listrik4.setSelectedIndex(1);
+        Listrik4.setName("Listrik4"); // NOI18N
+        Listrik4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_2KeyPressed(evt);
+                Listrik4KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_2);
-        Prioritas1_2.setBounds(699, 210, 90, 23);
+        FormInput.add(Listrik4);
+        Listrik4.setBounds(699, 210, 90, 23);
 
-        Prioritas1_3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_3.setSelectedIndex(1);
-        Prioritas1_3.setName("Prioritas1_3"); // NOI18N
-        Prioritas1_3.addKeyListener(new java.awt.event.KeyAdapter() {
+        Listrik2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Listrik2.setSelectedIndex(1);
+        Listrik2.setName("Listrik2"); // NOI18N
+        Listrik2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_3KeyPressed(evt);
+                Listrik2KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_3);
-        Prioritas1_3.setBounds(699, 150, 90, 23);
+        FormInput.add(Listrik2);
+        Listrik2.setBounds(699, 150, 90, 23);
 
         jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel63.setText("Layar pemantauan terhubung dengan sumber listrik, indikator (+) ?");
@@ -806,16 +806,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel63);
         jLabel63.setBounds(30, 150, 580, 23);
 
-        Prioritas1_1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_1.setSelectedIndex(1);
-        Prioritas1_1.setName("Prioritas1_1"); // NOI18N
-        Prioritas1_1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Listrik1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Listrik1.setSelectedIndex(1);
+        Listrik1.setName("Listrik1"); // NOI18N
+        Listrik1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_1KeyPressed(evt);
+                Listrik1KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_1);
-        Prioritas1_1.setBounds(699, 120, 90, 23);
+        FormInput.add(Listrik1);
+        Listrik1.setBounds(699, 120, 90, 23);
 
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel65.setText("Mesin anestesi terhubung dengan sumber listrik, indikator (+) menyala ?");
@@ -823,16 +823,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel65);
         jLabel65.setBounds(30, 120, 490, 23);
 
-        Prioritas1_4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_4.setSelectedIndex(1);
-        Prioritas1_4.setName("Prioritas1_4"); // NOI18N
-        Prioritas1_4.addKeyListener(new java.awt.event.KeyAdapter() {
+        GasMedis1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        GasMedis1.setSelectedIndex(1);
+        GasMedis1.setName("GasMedis1"); // NOI18N
+        GasMedis1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_4KeyPressed(evt);
+                GasMedis1KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_4);
-        Prioritas1_4.setBounds(699, 260, 90, 23);
+        FormInput.add(GasMedis1);
+        GasMedis1.setBounds(699, 260, 90, 23);
 
         jLabel24.setText("Tindakan :");
         jLabel24.setName("jLabel24"); // NOI18N
@@ -931,16 +931,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel62);
         jLabel62.setBounds(30, 320, 500, 23);
 
-        Prioritas1_7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_7.setSelectedIndex(1);
-        Prioritas1_7.setName("Prioritas1_7"); // NOI18N
-        Prioritas1_7.addKeyListener(new java.awt.event.KeyAdapter() {
+        GasMedis3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        GasMedis3.setSelectedIndex(1);
+        GasMedis3.setName("GasMedis3"); // NOI18N
+        GasMedis3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_7KeyPressed(evt);
+                GasMedis3KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_7);
-        Prioritas1_7.setBounds(699, 320, 90, 23);
+        FormInput.add(GasMedis3);
+        GasMedis3.setBounds(699, 320, 90, 23);
 
         jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel64.setText("Flow meter \"Air\" di mesin anestesi berfungsi, aliran gas keluar mesin dapat dirasakan ?");
@@ -948,16 +948,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel64);
         jLabel64.setBounds(30, 350, 500, 23);
 
-        Prioritas1_8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_8.setSelectedIndex(1);
-        Prioritas1_8.setName("Prioritas1_8"); // NOI18N
-        Prioritas1_8.addKeyListener(new java.awt.event.KeyAdapter() {
+        GasMedis4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        GasMedis4.setSelectedIndex(1);
+        GasMedis4.setName("GasMedis4"); // NOI18N
+        GasMedis4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_8KeyPressed(evt);
+                GasMedis4KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_8);
-        Prioritas1_8.setBounds(699, 350, 90, 23);
+        FormInput.add(GasMedis4);
+        GasMedis4.setBounds(699, 350, 90, 23);
 
         jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel66.setText("N2O terhubung antara sumber gas dengan mesin anestesi ?");
@@ -965,16 +965,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel66);
         jLabel66.setBounds(30, 380, 500, 23);
 
-        Prioritas1_9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_9.setSelectedIndex(1);
-        Prioritas1_9.setName("Prioritas1_9"); // NOI18N
-        Prioritas1_9.addKeyListener(new java.awt.event.KeyAdapter() {
+        GasMedis5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        GasMedis5.setSelectedIndex(1);
+        GasMedis5.setName("GasMedis5"); // NOI18N
+        GasMedis5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_9KeyPressed(evt);
+                GasMedis5KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_9);
-        Prioritas1_9.setBounds(699, 380, 90, 23);
+        FormInput.add(GasMedis5);
+        GasMedis5.setBounds(699, 380, 90, 23);
 
         jLabel67.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel67.setText("Flow meter N2O di mesin anestesi berfungsi, aliran gas keluar mesin dapat dirasakan ?");
@@ -982,16 +982,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel67);
         jLabel67.setBounds(30, 410, 500, 23);
 
-        Prioritas1_10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_10.setSelectedIndex(1);
-        Prioritas1_10.setName("Prioritas1_10"); // NOI18N
-        Prioritas1_10.addKeyListener(new java.awt.event.KeyAdapter() {
+        GasMedis6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        GasMedis6.setSelectedIndex(1);
+        GasMedis6.setName("GasMedis6"); // NOI18N
+        GasMedis6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_10KeyPressed(evt);
+                GasMedis6KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_10);
-        Prioritas1_10.setBounds(699, 410, 90, 23);
+        FormInput.add(GasMedis6);
+        GasMedis6.setBounds(699, 410, 90, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
@@ -1019,27 +1019,27 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel68);
         jLabel68.setBounds(30, 460, 100, 23);
 
-        Prioritas1_11.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_11.setSelectedIndex(1);
-        Prioritas1_11.setName("Prioritas1_11"); // NOI18N
-        Prioritas1_11.addKeyListener(new java.awt.event.KeyAdapter() {
+        MesinAnestesi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        MesinAnestesi1.setSelectedIndex(1);
+        MesinAnestesi1.setName("MesinAnestesi1"); // NOI18N
+        MesinAnestesi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_11KeyPressed(evt);
+                MesinAnestesi1KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_11);
-        Prioritas1_11.setBounds(125, 460, 90, 23);
+        FormInput.add(MesinAnestesi1);
+        MesinAnestesi1.setBounds(125, 460, 90, 23);
 
-        Prioritas1_12.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_12.setSelectedIndex(1);
-        Prioritas1_12.setName("Prioritas1_12"); // NOI18N
-        Prioritas1_12.addKeyListener(new java.awt.event.KeyAdapter() {
+        MesinAnestesi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        MesinAnestesi3.setSelectedIndex(1);
+        MesinAnestesi3.setName("MesinAnestesi3"); // NOI18N
+        MesinAnestesi3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_12KeyPressed(evt);
+                MesinAnestesi3KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_12);
-        Prioritas1_12.setBounds(699, 460, 90, 23);
+        FormInput.add(MesinAnestesi3);
+        MesinAnestesi3.setBounds(699, 460, 90, 23);
 
         jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel69.setText("Self calibration : DONE ?");
@@ -1053,16 +1053,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel70);
         jLabel70.setBounds(258, 490, 180, 23);
 
-        Prioritas1_13.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_13.setSelectedIndex(1);
-        Prioritas1_13.setName("Prioritas1_13"); // NOI18N
-        Prioritas1_13.addKeyListener(new java.awt.event.KeyAdapter() {
+        MesinAnestesi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        MesinAnestesi5.setSelectedIndex(1);
+        MesinAnestesi5.setName("MesinAnestesi5"); // NOI18N
+        MesinAnestesi5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_13KeyPressed(evt);
+                MesinAnestesi5KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_13);
-        Prioritas1_13.setBounds(438, 490, 90, 23);
+        FormInput.add(MesinAnestesi5);
+        MesinAnestesi5.setBounds(438, 490, 90, 23);
 
         jLabel71.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel71.setText("Zat volatil terisi ?");
@@ -1070,16 +1070,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel71);
         jLabel71.setBounds(30, 490, 100, 23);
 
-        Prioritas1_14.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_14.setSelectedIndex(1);
-        Prioritas1_14.setName("Prioritas1_14"); // NOI18N
-        Prioritas1_14.addKeyListener(new java.awt.event.KeyAdapter() {
+        MesinAnestesi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        MesinAnestesi4.setSelectedIndex(1);
+        MesinAnestesi4.setName("MesinAnestesi4"); // NOI18N
+        MesinAnestesi4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_14KeyPressed(evt);
+                MesinAnestesi4KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_14);
-        Prioritas1_14.setBounds(125, 490, 90, 23);
+        FormInput.add(MesinAnestesi4);
+        MesinAnestesi4.setBounds(125, 490, 90, 23);
 
         jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel72.setText("Absorber CO2 dalam kondisi baik ?");
@@ -1087,16 +1087,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel72);
         jLabel72.setBounds(258, 460, 180, 23);
 
-        Prioritas1_15.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_15.setSelectedIndex(1);
-        Prioritas1_15.setName("Prioritas1_15"); // NOI18N
-        Prioritas1_15.addKeyListener(new java.awt.event.KeyAdapter() {
+        MesinAnestesi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        MesinAnestesi2.setSelectedIndex(1);
+        MesinAnestesi2.setName("MesinAnestesi2"); // NOI18N
+        MesinAnestesi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_15KeyPressed(evt);
+                MesinAnestesi2KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_15);
-        Prioritas1_15.setBounds(438, 460, 90, 23);
+        FormInput.add(MesinAnestesi2);
+        MesinAnestesi2.setBounds(438, 460, 90, 23);
 
         jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
@@ -1124,16 +1124,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel73);
         jLabel73.setBounds(30, 540, 300, 23);
 
-        Prioritas1_16.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_16.setSelectedIndex(1);
-        Prioritas1_16.setName("Prioritas1_16"); // NOI18N
-        Prioritas1_16.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas1.setSelectedIndex(1);
+        JalanNapas1.setName("JalanNapas1"); // NOI18N
+        JalanNapas1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_16KeyPressed(evt);
+                JalanNapas1KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_16);
-        Prioritas1_16.setBounds(320, 540, 90, 23);
+        FormInput.add(JalanNapas1);
+        JalanNapas1.setBounds(320, 540, 90, 23);
 
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel74.setText("Oropharygeal airway (Guedel) dalam ukuran yang benar ?");
@@ -1141,16 +1141,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel74);
         jLabel74.setBounds(30, 570, 300, 23);
 
-        Prioritas1_17.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_17.setSelectedIndex(1);
-        Prioritas1_17.setName("Prioritas1_17"); // NOI18N
-        Prioritas1_17.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas3.setSelectedIndex(1);
+        JalanNapas3.setName("JalanNapas3"); // NOI18N
+        JalanNapas3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_17KeyPressed(evt);
+                JalanNapas3KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_17);
-        Prioritas1_17.setBounds(320, 570, 90, 23);
+        FormInput.add(JalanNapas3);
+        JalanNapas3.setBounds(320, 570, 90, 23);
 
         jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel75.setText("Batang laringoskop berisi baterai ? ");
@@ -1158,16 +1158,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel75);
         jLabel75.setBounds(505, 540, 200, 23);
 
-        Prioritas1_18.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_18.setSelectedIndex(1);
-        Prioritas1_18.setName("Prioritas1_18"); // NOI18N
-        Prioritas1_18.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas2.setSelectedIndex(1);
+        JalanNapas2.setName("JalanNapas2"); // NOI18N
+        JalanNapas2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_18KeyPressed(evt);
+                JalanNapas2KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_18);
-        Prioritas1_18.setBounds(699, 540, 90, 23);
+        FormInput.add(JalanNapas2);
+        JalanNapas2.setBounds(699, 540, 90, 23);
 
         jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel76.setText("Bilah laringoskop dalam ukuran yang benar ?");
@@ -1175,16 +1175,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel76);
         jLabel76.setBounds(30, 600, 300, 23);
 
-        Prioritas1_19.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_19.setSelectedIndex(1);
-        Prioritas1_19.setName("Prioritas1_19"); // NOI18N
-        Prioritas1_19.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas5.setSelectedIndex(1);
+        JalanNapas5.setName("JalanNapas5"); // NOI18N
+        JalanNapas5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_19KeyPressed(evt);
+                JalanNapas5KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_19);
-        Prioritas1_19.setBounds(320, 600, 90, 23);
+        FormInput.add(JalanNapas5);
+        JalanNapas5.setBounds(320, 600, 90, 23);
 
         jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel77.setText("Gagang dan bilah laringoskop berfungsi baik ?");
@@ -1192,16 +1192,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel77);
         jLabel77.setBounds(30, 630, 300, 23);
 
-        Prioritas1_20.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_20.setSelectedIndex(1);
-        Prioritas1_20.setName("Prioritas1_20"); // NOI18N
-        Prioritas1_20.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas7.setSelectedIndex(1);
+        JalanNapas7.setName("JalanNapas7"); // NOI18N
+        JalanNapas7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_20KeyPressed(evt);
+                JalanNapas7KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_20);
-        Prioritas1_20.setBounds(320, 630, 90, 23);
+        FormInput.add(JalanNapas7);
+        JalanNapas7.setBounds(320, 630, 90, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel78.setText("ETT atau LMA dalam ukuran yang benar, tidak bocor ?");
@@ -1209,27 +1209,27 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel78);
         jLabel78.setBounds(30, 660, 300, 23);
 
-        Prioritas1_21.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_21.setSelectedIndex(1);
-        Prioritas1_21.setName("Prioritas1_21"); // NOI18N
-        Prioritas1_21.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas9.setSelectedIndex(1);
+        JalanNapas9.setName("JalanNapas9"); // NOI18N
+        JalanNapas9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_21KeyPressed(evt);
+                JalanNapas9KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_21);
-        Prioritas1_21.setBounds(320, 660, 90, 23);
+        FormInput.add(JalanNapas9);
+        JalanNapas9.setBounds(320, 660, 90, 23);
 
-        Prioritas1_22.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_22.setSelectedIndex(1);
-        Prioritas1_22.setName("Prioritas1_22"); // NOI18N
-        Prioritas1_22.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas4.setSelectedIndex(1);
+        JalanNapas4.setName("JalanNapas4"); // NOI18N
+        JalanNapas4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_22KeyPressed(evt);
+                JalanNapas4KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_22);
-        Prioritas1_22.setBounds(699, 570, 90, 23);
+        FormInput.add(JalanNapas4);
+        JalanNapas4.setBounds(699, 570, 90, 23);
 
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel79.setText("Stilet (introduser) ?");
@@ -1243,16 +1243,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel80);
         jLabel80.setBounds(505, 600, 200, 23);
 
-        Prioritas1_23.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_23.setSelectedIndex(1);
-        Prioritas1_23.setName("Prioritas1_23"); // NOI18N
-        Prioritas1_23.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas6.setSelectedIndex(1);
+        JalanNapas6.setName("JalanNapas6"); // NOI18N
+        JalanNapas6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_23KeyPressed(evt);
+                JalanNapas6KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_23);
-        Prioritas1_23.setBounds(699, 600, 90, 23);
+        FormInput.add(JalanNapas6);
+        JalanNapas6.setBounds(699, 600, 90, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel81.setText("Forceps Magill ?");
@@ -1260,16 +1260,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel81);
         jLabel81.setBounds(505, 630, 200, 23);
 
-        Prioritas1_24.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_24.setSelectedIndex(1);
-        Prioritas1_24.setName("Prioritas1_24"); // NOI18N
-        Prioritas1_24.addKeyListener(new java.awt.event.KeyAdapter() {
+        JalanNapas8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        JalanNapas8.setSelectedIndex(1);
+        JalanNapas8.setName("JalanNapas8"); // NOI18N
+        JalanNapas8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_24KeyPressed(evt);
+                JalanNapas8KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_24);
-        Prioritas1_24.setBounds(699, 630, 90, 23);
+        FormInput.add(JalanNapas8);
+        JalanNapas8.setBounds(699, 630, 90, 23);
 
         jSeparator9.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator9.setForeground(new java.awt.Color(239, 244, 234));
@@ -1297,16 +1297,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel82);
         jLabel82.setBounds(30, 710, 140, 23);
 
-        Prioritas1_25.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_25.setSelectedIndex(1);
-        Prioritas1_25.setName("Prioritas1_25"); // NOI18N
-        Prioritas1_25.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainLain1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LainLain1.setSelectedIndex(1);
+        LainLain1.setName("LainLain1"); // NOI18N
+        LainLain1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_25KeyPressed(evt);
+                LainLain1KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_25);
-        Prioritas1_25.setBounds(165, 710, 90, 23);
+        FormInput.add(LainLain1);
+        LainLain1.setBounds(165, 710, 90, 23);
 
         jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel83.setText("Suction berfungsi baik ?");
@@ -1314,16 +1314,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel83);
         jLabel83.setBounds(313, 710, 130, 23);
 
-        Prioritas1_26.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_26.setSelectedIndex(1);
-        Prioritas1_26.setName("Prioritas1_26"); // NOI18N
-        Prioritas1_26.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainLain2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LainLain2.setSelectedIndex(1);
+        LainLain2.setName("LainLain2"); // NOI18N
+        LainLain2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_26KeyPressed(evt);
+                LainLain2KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_26);
-        Prioritas1_26.setBounds(440, 710, 90, 23);
+        FormInput.add(LainLain2);
+        LainLain2.setBounds(440, 710, 90, 23);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel84.setText("Selang suction terhubung, kateter suction dalam ukuran yang benar ?");
@@ -1331,16 +1331,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel84);
         jLabel84.setBounds(30, 770, 410, 23);
 
-        Prioritas1_27.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_27.setSelectedIndex(1);
-        Prioritas1_27.setName("Prioritas1_27"); // NOI18N
-        Prioritas1_27.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainLain7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LainLain7.setSelectedIndex(1);
+        LainLain7.setName("LainLain7"); // NOI18N
+        LainLain7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_27KeyPressed(evt);
+                LainLain7KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_27);
-        Prioritas1_27.setBounds(440, 770, 90, 23);
+        FormInput.add(LainLain7);
+        LainLain7.setBounds(440, 770, 90, 23);
 
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel85.setText("Plester untuk fiksasi ?");
@@ -1348,16 +1348,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel85);
         jLabel85.setBounds(582, 710, 120, 23);
 
-        Prioritas1_28.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_28.setSelectedIndex(1);
-        Prioritas1_28.setName("Prioritas1_28"); // NOI18N
-        Prioritas1_28.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainLain3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LainLain3.setSelectedIndex(1);
+        LainLain3.setName("LainLain3"); // NOI18N
+        LainLain3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_28KeyPressed(evt);
+                LainLain3KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_28);
-        Prioritas1_28.setBounds(699, 710, 90, 23);
+        FormInput.add(LainLain3);
+        LainLain3.setBounds(699, 710, 90, 23);
 
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel86.setText("Blanket rolll hemotherm/radiant heater terhubung sumber listrik, berfungsi baik ?");
@@ -1365,16 +1365,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel86);
         jLabel86.setBounds(30, 800, 410, 23);
 
-        Prioritas1_29.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_29.setSelectedIndex(1);
-        Prioritas1_29.setName("Prioritas1_29"); // NOI18N
-        Prioritas1_29.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainLain8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LainLain8.setSelectedIndex(1);
+        LainLain8.setName("LainLain8"); // NOI18N
+        LainLain8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_29KeyPressed(evt);
+                LainLain8KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_29);
-        Prioritas1_29.setBounds(440, 800, 90, 23);
+        FormInput.add(LainLain8);
+        LainLain8.setBounds(440, 800, 90, 23);
 
         jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel87.setText("Blanket roll dilapisi alas ?");
@@ -1382,16 +1382,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel87);
         jLabel87.setBounds(30, 740, 140, 23);
 
-        Prioritas1_30.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_30.setSelectedIndex(1);
-        Prioritas1_30.setName("Prioritas1_30"); // NOI18N
-        Prioritas1_30.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainLain4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LainLain4.setSelectedIndex(1);
+        LainLain4.setName("LainLain4"); // NOI18N
+        LainLain4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_30KeyPressed(evt);
+                LainLain4KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_30);
-        Prioritas1_30.setBounds(165, 740, 90, 23);
+        FormInput.add(LainLain4);
+        LainLain4.setBounds(165, 740, 90, 23);
 
         jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel88.setText("Lidocaine spray/ jelly ?");
@@ -1399,16 +1399,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel88);
         jLabel88.setBounds(313, 740, 130, 23);
 
-        Prioritas1_31.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_31.setSelectedIndex(1);
-        Prioritas1_31.setName("Prioritas1_31"); // NOI18N
-        Prioritas1_31.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainLain5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LainLain5.setSelectedIndex(1);
+        LainLain5.setName("LainLain5"); // NOI18N
+        LainLain5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_31KeyPressed(evt);
+                LainLain5KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_31);
-        Prioritas1_31.setBounds(440, 740, 90, 23);
+        FormInput.add(LainLain5);
+        LainLain5.setBounds(440, 740, 90, 23);
 
         jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel89.setText("Defibrillator jelly ?");
@@ -1416,16 +1416,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel89);
         jLabel89.setBounds(582, 740, 120, 23);
 
-        Prioritas1_32.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_32.setSelectedIndex(1);
-        Prioritas1_32.setName("Prioritas1_32"); // NOI18N
-        Prioritas1_32.addKeyListener(new java.awt.event.KeyAdapter() {
+        LainLain6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        LainLain6.setSelectedIndex(1);
+        LainLain6.setName("LainLain6"); // NOI18N
+        LainLain6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_32KeyPressed(evt);
+                LainLain6KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_32);
-        Prioritas1_32.setBounds(699, 740, 90, 23);
+        FormInput.add(LainLain6);
+        LainLain6.setBounds(699, 740, 90, 23);
 
         jSeparator11.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator11.setForeground(new java.awt.Color(239, 244, 234));
@@ -1451,18 +1451,18 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         jLabel91.setText("Epinefrin ?");
         jLabel91.setName("jLabel91"); // NOI18N
         FormInput.add(jLabel91);
-        jLabel91.setBounds(30, 850, 140, 23);
+        jLabel91.setBounds(30, 850, 70, 23);
 
-        Prioritas1_33.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_33.setSelectedIndex(1);
-        Prioritas1_33.setName("Prioritas1_33"); // NOI18N
-        Prioritas1_33.addKeyListener(new java.awt.event.KeyAdapter() {
+        ObatObat1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        ObatObat1.setSelectedIndex(1);
+        ObatObat1.setName("ObatObat1"); // NOI18N
+        ObatObat1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_33KeyPressed(evt);
+                ObatObat1KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_33);
-        Prioritas1_33.setBounds(90, 850, 90, 23);
+        FormInput.add(ObatObat1);
+        ObatObat1.setBounds(90, 850, 90, 23);
 
         jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel92.setText("Atropin ?");
@@ -1470,16 +1470,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel92);
         jLabel92.setBounds(225, 850, 60, 23);
 
-        Prioritas1_34.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_34.setSelectedIndex(1);
-        Prioritas1_34.setName("Prioritas1_34"); // NOI18N
-        Prioritas1_34.addKeyListener(new java.awt.event.KeyAdapter() {
+        ObatObat2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        ObatObat2.setSelectedIndex(1);
+        ObatObat2.setName("ObatObat2"); // NOI18N
+        ObatObat2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_34KeyPressed(evt);
+                ObatObat2KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_34);
-        Prioritas1_34.setBounds(278, 850, 90, 23);
+        FormInput.add(ObatObat2);
+        ObatObat2.setBounds(278, 850, 90, 23);
 
         jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel93.setText("Antibiotika ?");
@@ -1487,27 +1487,27 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel93);
         jLabel93.setBounds(410, 850, 70, 23);
 
-        Prioritas1_35.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_35.setSelectedIndex(1);
-        Prioritas1_35.setName("Prioritas1_35"); // NOI18N
-        Prioritas1_35.addKeyListener(new java.awt.event.KeyAdapter() {
+        ObatObat3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        ObatObat3.setSelectedIndex(1);
+        ObatObat3.setName("ObatObat3"); // NOI18N
+        ObatObat3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_35KeyPressed(evt);
+                ObatObat3KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_35);
-        Prioritas1_35.setBounds(480, 850, 90, 23);
+        FormInput.add(ObatObat3);
+        ObatObat3.setBounds(480, 850, 90, 23);
 
-        Prioritas1_36.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_36.setSelectedIndex(1);
-        Prioritas1_36.setName("Prioritas1_36"); // NOI18N
-        Prioritas1_36.addKeyListener(new java.awt.event.KeyAdapter() {
+        ObatObat4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        ObatObat4.setSelectedIndex(1);
+        ObatObat4.setName("ObatObat4"); // NOI18N
+        ObatObat4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_36KeyPressed(evt);
+                ObatObat4KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_36);
-        Prioritas1_36.setBounds(699, 850, 90, 23);
+        FormInput.add(ObatObat4);
+        ObatObat4.setBounds(699, 850, 90, 23);
 
         jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel94.setText("Pelumpuh otot ?");
@@ -1521,16 +1521,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel95);
         jLabel95.setBounds(30, 880, 300, 23);
 
-        Prioritas1_37.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_37.setSelectedIndex(1);
-        Prioritas1_37.setName("Prioritas1_37"); // NOI18N
-        Prioritas1_37.addKeyListener(new java.awt.event.KeyAdapter() {
+        ObatObat5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        ObatObat5.setSelectedIndex(1);
+        ObatObat5.setName("ObatObat5"); // NOI18N
+        ObatObat5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_37KeyPressed(evt);
+                ObatObat5KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_37);
-        Prioritas1_37.setBounds(330, 880, 90, 23);
+        FormInput.add(ObatObat5);
+        ObatObat5.setBounds(330, 880, 90, 23);
 
         jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel96.setText("Opiat/opioid ?");
@@ -1538,16 +1538,16 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel96);
         jLabel96.setBounds(470, 880, 100, 23);
 
-        Prioritas1_38.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Prioritas1_38.setSelectedIndex(1);
-        Prioritas1_38.setName("Prioritas1_38"); // NOI18N
-        Prioritas1_38.addKeyListener(new java.awt.event.KeyAdapter() {
+        ObatObat6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        ObatObat6.setSelectedIndex(1);
+        ObatObat6.setName("ObatObat6"); // NOI18N
+        ObatObat6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Prioritas1_38KeyPressed(evt);
+                ObatObat6KeyPressed(evt);
             }
         });
-        FormInput.add(Prioritas1_38);
-        Prioritas1_38.setBounds(550, 880, 90, 23);
+        FormInput.add(ObatObat6);
+        ObatObat6.setBounds(550, 880, 90, 23);
 
         jSeparator13.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator13.setForeground(new java.awt.Color(239, 244, 234));
@@ -1572,19 +1572,19 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
 
-        Edukasi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Edukasi.setColumns(20);
-        Edukasi.setRows(5);
-        Edukasi.setName("Edukasi"); // NOI18N
-        Edukasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganLainnya.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        KeteranganLainnya.setColumns(20);
+        KeteranganLainnya.setRows(10);
+        KeteranganLainnya.setName("KeteranganLainnya"); // NOI18N
+        KeteranganLainnya.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                EdukasiKeyPressed(evt);
+                KeteranganLainnyaKeyPressed(evt);
             }
         });
-        scrollPane14.setViewportView(Edukasi);
+        scrollPane14.setViewportView(KeteranganLainnya);
 
         FormInput.add(scrollPane14);
-        scrollPane14.setBounds(30, 930, 810, 83);
+        scrollPane14.setBounds(30, 930, 759, 83);
 
         scrollInput.setViewportView(FormInput);
 
@@ -2028,32 +2028,32 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-       Valid.pindah(evt,Tanggal,Prioritas1_1);
+       Valid.pindah(evt,Tanggal,Listrik1);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
-    private void Prioritas1_5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_5KeyPressed
-       Valid.pindah(evt,Prioritas1_4,Prioritas1_6);
-    }//GEN-LAST:event_Prioritas1_5KeyPressed
+    private void Listrik3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Listrik3KeyPressed
+       Valid.pindah(evt,GasMedis1,GasMedis2);
+    }//GEN-LAST:event_Listrik3KeyPressed
 
-    private void Prioritas1_6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_6KeyPressed
+    private void GasMedis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GasMedis2KeyPressed
         //Valid.pindah(evt,Kardiologi5,Pernapasan1);
-    }//GEN-LAST:event_Prioritas1_6KeyPressed
+    }//GEN-LAST:event_GasMedis2KeyPressed
 
-    private void Prioritas1_2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_2KeyPressed
-        Valid.pindah(evt,Prioritas1_1,Prioritas1_3);
-    }//GEN-LAST:event_Prioritas1_2KeyPressed
+    private void Listrik4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Listrik4KeyPressed
+        Valid.pindah(evt,Listrik1,Listrik2);
+    }//GEN-LAST:event_Listrik4KeyPressed
 
-    private void Prioritas1_3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_3KeyPressed
-        Valid.pindah(evt,Prioritas1_2,Prioritas1_4);
-    }//GEN-LAST:event_Prioritas1_3KeyPressed
+    private void Listrik2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Listrik2KeyPressed
+        Valid.pindah(evt,Listrik4,GasMedis1);
+    }//GEN-LAST:event_Listrik2KeyPressed
 
-    private void Prioritas1_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_1KeyPressed
-        Valid.pindah(evt,BtnDokter,Prioritas1_2);
-    }//GEN-LAST:event_Prioritas1_1KeyPressed
+    private void Listrik1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Listrik1KeyPressed
+        Valid.pindah(evt,BtnDokter,Listrik4);
+    }//GEN-LAST:event_Listrik1KeyPressed
 
-    private void Prioritas1_4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_4KeyPressed
-        Valid.pindah(evt,Prioritas1_3,Prioritas1_5);
-    }//GEN-LAST:event_Prioritas1_4KeyPressed
+    private void GasMedis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GasMedis1KeyPressed
+        Valid.pindah(evt,Listrik2,Listrik3);
+    }//GEN-LAST:event_GasMedis1KeyPressed
 
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
         petugas.emptTeks();
@@ -2067,137 +2067,137 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         //Valid.pindah(evt,PerhatianUtamaFasePemulihan,BtnSimpan);
     }//GEN-LAST:event_BtnPetugasKeyPressed
 
-    private void Prioritas1_7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_7KeyPressed
+    private void GasMedis3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GasMedis3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_7KeyPressed
+    }//GEN-LAST:event_GasMedis3KeyPressed
 
-    private void Prioritas1_8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_8KeyPressed
+    private void GasMedis4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GasMedis4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_8KeyPressed
+    }//GEN-LAST:event_GasMedis4KeyPressed
 
-    private void Prioritas1_9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_9KeyPressed
+    private void GasMedis5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GasMedis5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_9KeyPressed
+    }//GEN-LAST:event_GasMedis5KeyPressed
 
-    private void Prioritas1_10KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_10KeyPressed
+    private void GasMedis6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GasMedis6KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_10KeyPressed
+    }//GEN-LAST:event_GasMedis6KeyPressed
 
-    private void Prioritas1_11KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_11KeyPressed
+    private void MesinAnestesi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MesinAnestesi1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_11KeyPressed
+    }//GEN-LAST:event_MesinAnestesi1KeyPressed
 
-    private void Prioritas1_12KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_12KeyPressed
+    private void MesinAnestesi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MesinAnestesi3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_12KeyPressed
+    }//GEN-LAST:event_MesinAnestesi3KeyPressed
 
-    private void Prioritas1_13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_13KeyPressed
+    private void MesinAnestesi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MesinAnestesi5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_13KeyPressed
+    }//GEN-LAST:event_MesinAnestesi5KeyPressed
 
-    private void Prioritas1_14KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_14KeyPressed
+    private void MesinAnestesi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MesinAnestesi4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_14KeyPressed
+    }//GEN-LAST:event_MesinAnestesi4KeyPressed
 
-    private void Prioritas1_15KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_15KeyPressed
+    private void MesinAnestesi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MesinAnestesi2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_15KeyPressed
+    }//GEN-LAST:event_MesinAnestesi2KeyPressed
 
-    private void Prioritas1_16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_16KeyPressed
+    private void JalanNapas1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_16KeyPressed
+    }//GEN-LAST:event_JalanNapas1KeyPressed
 
-    private void Prioritas1_17KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_17KeyPressed
+    private void JalanNapas3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_17KeyPressed
+    }//GEN-LAST:event_JalanNapas3KeyPressed
 
-    private void Prioritas1_18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_18KeyPressed
+    private void JalanNapas2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_18KeyPressed
+    }//GEN-LAST:event_JalanNapas2KeyPressed
 
-    private void Prioritas1_19KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_19KeyPressed
+    private void JalanNapas5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_19KeyPressed
+    }//GEN-LAST:event_JalanNapas5KeyPressed
 
-    private void Prioritas1_20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_20KeyPressed
+    private void JalanNapas7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas7KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_20KeyPressed
+    }//GEN-LAST:event_JalanNapas7KeyPressed
 
-    private void Prioritas1_21KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_21KeyPressed
+    private void JalanNapas9KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas9KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_21KeyPressed
+    }//GEN-LAST:event_JalanNapas9KeyPressed
 
-    private void Prioritas1_22KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_22KeyPressed
+    private void JalanNapas4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_22KeyPressed
+    }//GEN-LAST:event_JalanNapas4KeyPressed
 
-    private void Prioritas1_23KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_23KeyPressed
+    private void JalanNapas6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas6KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_23KeyPressed
+    }//GEN-LAST:event_JalanNapas6KeyPressed
 
-    private void Prioritas1_24KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_24KeyPressed
+    private void JalanNapas8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JalanNapas8KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_24KeyPressed
+    }//GEN-LAST:event_JalanNapas8KeyPressed
 
-    private void Prioritas1_25KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_25KeyPressed
+    private void LainLain1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLain1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_25KeyPressed
+    }//GEN-LAST:event_LainLain1KeyPressed
 
-    private void Prioritas1_26KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_26KeyPressed
+    private void LainLain2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLain2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_26KeyPressed
+    }//GEN-LAST:event_LainLain2KeyPressed
 
-    private void Prioritas1_27KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_27KeyPressed
+    private void LainLain7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLain7KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_27KeyPressed
+    }//GEN-LAST:event_LainLain7KeyPressed
 
-    private void Prioritas1_28KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_28KeyPressed
+    private void LainLain3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLain3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_28KeyPressed
+    }//GEN-LAST:event_LainLain3KeyPressed
 
-    private void Prioritas1_29KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_29KeyPressed
+    private void LainLain8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLain8KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_29KeyPressed
+    }//GEN-LAST:event_LainLain8KeyPressed
 
-    private void Prioritas1_30KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_30KeyPressed
+    private void LainLain4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLain4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_30KeyPressed
+    }//GEN-LAST:event_LainLain4KeyPressed
 
-    private void Prioritas1_31KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_31KeyPressed
+    private void LainLain5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLain5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_31KeyPressed
+    }//GEN-LAST:event_LainLain5KeyPressed
 
-    private void Prioritas1_32KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_32KeyPressed
+    private void LainLain6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLain6KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_32KeyPressed
+    }//GEN-LAST:event_LainLain6KeyPressed
 
-    private void Prioritas1_33KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_33KeyPressed
+    private void ObatObat1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatObat1KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_33KeyPressed
+    }//GEN-LAST:event_ObatObat1KeyPressed
 
-    private void Prioritas1_34KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_34KeyPressed
+    private void ObatObat2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatObat2KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_34KeyPressed
+    }//GEN-LAST:event_ObatObat2KeyPressed
 
-    private void Prioritas1_35KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_35KeyPressed
+    private void ObatObat3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatObat3KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_35KeyPressed
+    }//GEN-LAST:event_ObatObat3KeyPressed
 
-    private void Prioritas1_36KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_36KeyPressed
+    private void ObatObat4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatObat4KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_36KeyPressed
+    }//GEN-LAST:event_ObatObat4KeyPressed
 
-    private void Prioritas1_37KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_37KeyPressed
+    private void ObatObat5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatObat5KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_37KeyPressed
+    }//GEN-LAST:event_ObatObat5KeyPressed
 
-    private void Prioritas1_38KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prioritas1_38KeyPressed
+    private void ObatObat6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ObatObat6KeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Prioritas1_38KeyPressed
+    }//GEN-LAST:event_ObatObat6KeyPressed
 
-    private void EdukasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EdukasiKeyPressed
+    private void KeteranganLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganLainnyaKeyPressed
         //Valid.pindah2(evt,Tindakan,BtnSimpan);
-    }//GEN-LAST:event_EdukasiKeyPressed
+    }//GEN-LAST:event_KeteranganLainnyaKeyPressed
 
     /**
     * @param args the command line arguments
@@ -2229,57 +2229,57 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private widget.TextArea Edukasi;
     private widget.PanelBiasa FormInput;
+    private widget.ComboBox GasMedis1;
+    private widget.ComboBox GasMedis2;
+    private widget.ComboBox GasMedis3;
+    private widget.ComboBox GasMedis4;
+    private widget.ComboBox GasMedis5;
+    private widget.ComboBox GasMedis6;
     private widget.TextBox JK;
+    private widget.ComboBox JalanNapas1;
+    private widget.ComboBox JalanNapas2;
+    private widget.ComboBox JalanNapas3;
+    private widget.ComboBox JalanNapas4;
+    private widget.ComboBox JalanNapas5;
+    private widget.ComboBox JalanNapas6;
+    private widget.ComboBox JalanNapas7;
+    private widget.ComboBox JalanNapas8;
+    private widget.ComboBox JalanNapas9;
+    private widget.TextArea KeteranganLainnya;
     private widget.TextBox KodeDokter;
     private widget.TextBox KodePetugas;
     private widget.TextBox KodePetugas1;
     private widget.TextBox KodePetugas2;
     private widget.Label LCount;
+    private widget.ComboBox LainLain1;
+    private widget.ComboBox LainLain2;
+    private widget.ComboBox LainLain3;
+    private widget.ComboBox LainLain4;
+    private widget.ComboBox LainLain5;
+    private widget.ComboBox LainLain6;
+    private widget.ComboBox LainLain7;
+    private widget.ComboBox LainLain8;
+    private widget.ComboBox Listrik1;
+    private widget.ComboBox Listrik2;
+    private widget.ComboBox Listrik3;
+    private widget.ComboBox Listrik4;
     private widget.editorpane LoadHTML;
+    private widget.ComboBox MesinAnestesi1;
+    private widget.ComboBox MesinAnestesi2;
+    private widget.ComboBox MesinAnestesi3;
+    private widget.ComboBox MesinAnestesi4;
+    private widget.ComboBox MesinAnestesi5;
     private javax.swing.JMenuItem MnKriteriaMasukICU;
     private widget.TextBox NamaDokter;
     private widget.TextBox NamaPetugas;
+    private widget.ComboBox ObatObat1;
+    private widget.ComboBox ObatObat2;
+    private widget.ComboBox ObatObat3;
+    private widget.ComboBox ObatObat4;
+    private widget.ComboBox ObatObat5;
+    private widget.ComboBox ObatObat6;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox Prioritas1_1;
-    private widget.ComboBox Prioritas1_10;
-    private widget.ComboBox Prioritas1_11;
-    private widget.ComboBox Prioritas1_12;
-    private widget.ComboBox Prioritas1_13;
-    private widget.ComboBox Prioritas1_14;
-    private widget.ComboBox Prioritas1_15;
-    private widget.ComboBox Prioritas1_16;
-    private widget.ComboBox Prioritas1_17;
-    private widget.ComboBox Prioritas1_18;
-    private widget.ComboBox Prioritas1_19;
-    private widget.ComboBox Prioritas1_2;
-    private widget.ComboBox Prioritas1_20;
-    private widget.ComboBox Prioritas1_21;
-    private widget.ComboBox Prioritas1_22;
-    private widget.ComboBox Prioritas1_23;
-    private widget.ComboBox Prioritas1_24;
-    private widget.ComboBox Prioritas1_25;
-    private widget.ComboBox Prioritas1_26;
-    private widget.ComboBox Prioritas1_27;
-    private widget.ComboBox Prioritas1_28;
-    private widget.ComboBox Prioritas1_29;
-    private widget.ComboBox Prioritas1_3;
-    private widget.ComboBox Prioritas1_30;
-    private widget.ComboBox Prioritas1_31;
-    private widget.ComboBox Prioritas1_32;
-    private widget.ComboBox Prioritas1_33;
-    private widget.ComboBox Prioritas1_34;
-    private widget.ComboBox Prioritas1_35;
-    private widget.ComboBox Prioritas1_36;
-    private widget.ComboBox Prioritas1_37;
-    private widget.ComboBox Prioritas1_38;
-    private widget.ComboBox Prioritas1_4;
-    private widget.ComboBox Prioritas1_5;
-    private widget.ComboBox Prioritas1_6;
-    private widget.ComboBox Prioritas1_7;
-    private widget.ComboBox Prioritas1_8;
-    private widget.ComboBox Prioritas1_9;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
@@ -2471,14 +2471,14 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        Prioritas1_1.setSelectedIndex(1);
-        Prioritas1_2.setSelectedIndex(1);
-        Prioritas1_3.setSelectedIndex(1);
-        Prioritas1_4.setSelectedIndex(1);
-        Prioritas1_5.setSelectedIndex(1);
-        Prioritas1_6.setSelectedIndex(1);
+        Listrik1.setSelectedIndex(1);
+        Listrik4.setSelectedIndex(1);
+        Listrik2.setSelectedIndex(1);
+        GasMedis1.setSelectedIndex(1);
+        Listrik3.setSelectedIndex(1);
+        GasMedis2.setSelectedIndex(1);
         Tanggal.setDate(new Date());
-        Prioritas1_1.requestFocus();
+        Listrik1.requestFocus();
     } 
 
     private void getData() {
@@ -2488,12 +2488,12 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Prioritas1_1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            Prioritas1_2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Prioritas1_3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Prioritas1_4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Prioritas1_5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Prioritas1_6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Listrik1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            Listrik4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Listrik2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            GasMedis1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Listrik3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            GasMedis2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
