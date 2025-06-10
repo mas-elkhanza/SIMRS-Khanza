@@ -807,7 +807,6 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         jLabel63.setBounds(30, 150, 580, 23);
 
         Listrik1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Listrik1.setSelectedIndex(1);
         Listrik1.setName("Listrik1"); // NOI18N
         Listrik1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
