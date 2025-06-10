@@ -2482,7 +2482,36 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         GasMedis4.setSelectedIndex(1);
         GasMedis5.setSelectedIndex(1);
         GasMedis6.setSelectedIndex(1);
+        MesinAnestesi1.setSelectedIndex(1);
+        MesinAnestesi2.setSelectedIndex(1);
+        MesinAnestesi3.setSelectedIndex(1);
+        MesinAnestesi4.setSelectedIndex(1);
+        MesinAnestesi5.setSelectedIndex(1);
+        JalanNapas1.setSelectedIndex(1);
+        JalanNapas2.setSelectedIndex(1);
+        JalanNapas3.setSelectedIndex(1);
+        JalanNapas4.setSelectedIndex(1);
+        JalanNapas5.setSelectedIndex(1);
+        JalanNapas6.setSelectedIndex(1);
+        JalanNapas7.setSelectedIndex(1);
+        JalanNapas8.setSelectedIndex(1);
+        JalanNapas9.setSelectedIndex(1);
+        LainLain1.setSelectedIndex(1);
+        LainLain2.setSelectedIndex(1);
+        LainLain3.setSelectedIndex(1);
+        LainLain4.setSelectedIndex(1);
+        LainLain5.setSelectedIndex(1);
+        LainLain6.setSelectedIndex(1);
+        LainLain7.setSelectedIndex(1);
+        LainLain8.setSelectedIndex(1);
+        ObatObat1.setSelectedIndex(1);
+        ObatObat2.setSelectedIndex(1);
+        ObatObat3.setSelectedIndex(1);
+        ObatObat4.setSelectedIndex(1);
+        ObatObat5.setSelectedIndex(1);
+        ObatObat6.setSelectedIndex(1);
         Tanggal.setDate(new Date());
+        KeteranganLainnya.setText("");
         Listrik1.requestFocus();
     } 
 
