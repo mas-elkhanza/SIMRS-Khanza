@@ -108,6 +108,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        KeteranganLainnya.setDocument(new batasInput((int)1000).getKata(KeteranganLainnya));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -807,6 +808,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         jLabel63.setBounds(30, 150, 580, 23);
 
         Listrik1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Listrik1.setSelectedIndex(1);
         Listrik1.setName("Listrik1"); // NOI18N
         Listrik1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -2471,11 +2473,15 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     
     public void emptTeks() {
         Listrik1.setSelectedIndex(1);
-        Listrik4.setSelectedIndex(1);
         Listrik2.setSelectedIndex(1);
-        GasMedis1.setSelectedIndex(1);
         Listrik3.setSelectedIndex(1);
+        Listrik4.setSelectedIndex(1);
+        GasMedis1.setSelectedIndex(1);
         GasMedis2.setSelectedIndex(1);
+        GasMedis3.setSelectedIndex(1);
+        GasMedis4.setSelectedIndex(1);
+        GasMedis5.setSelectedIndex(1);
+        GasMedis6.setSelectedIndex(1);
         Tanggal.setDate(new Date());
         Listrik1.requestFocus();
     } 

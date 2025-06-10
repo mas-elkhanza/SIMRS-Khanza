@@ -925,6 +925,7 @@ import rekammedis.RMHasilEndoskopiHidung;
 import rekammedis.RMHasilEndoskopiTelinga;
 import rekammedis.RMHasilPemeriksaanEKG;
 import rekammedis.RMHasilPemeriksaanEcho;
+import rekammedis.RMHasilPemeriksaanOCT;
 import rekammedis.RMHasilPemeriksaanSlitLamp;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
@@ -22788,6 +22789,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnHasilPemeriksaanOCTActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMHasilPemeriksaanOCT form=new RMHasilPemeriksaanOCT(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23493,7 +23508,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiHemodialisa,btnSkriningKesehatanGigiMulutDewasa,btnSkriningRisikoKankerServiks,btnCatatanCairanHemodialisa,btnSkriningKesehatanGigiMulutLansia,
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
             btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan,btnBayarPiutangJasaPerusahaan,btnPiutangJasaPerusahaanBelumLunas,
-            btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp;
+            btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT;
     
     public void isWall(){
         try{            
@@ -27457,6 +27472,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gethasil_pemeriksaan_slit_lamp()==true){
                 Panelmenu.add(btnHasilPemeriksaanSlitLamp);
+                jmlmenu++;
+            }
+            
+            if(akses.gethasil_pemeriksaan_oct()==true){
+                Panelmenu.add(btnHasilPemeriksaanOCT);
                 jmlmenu++;
             }
             
@@ -33056,6 +33076,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gethasil_pemeriksaan_slit_lamp()==true){
             Panelmenu.add(btnHasilPemeriksaanSlitLamp);
+            jmlmenu++;
+        }
+        
+        if(akses.gethasil_pemeriksaan_oct()==true){
+            Panelmenu.add(btnHasilPemeriksaanOCT);
             jmlmenu++;
         }
         
@@ -40179,6 +40204,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         }
         
+        if(akses.gethasil_pemeriksaan_oct()==true){
+            if(btnHasilPemeriksaanOCT.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHasilPemeriksaanOCT);
+                jmlmenu++;
+            }
+        }
+        
         if(akses.gethasil_pemeriksaan_echo()==true){
             if(btnHasilPemeriksaanECHO.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHasilPemeriksaanECHO);
@@ -47002,6 +47034,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilPemeriksaanSlitLamp.setName("btnHasilPemeriksaanSlitLamp"); 
         btnHasilPemeriksaanSlitLamp.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilPemeriksaanSlitLamp.addActionListener(this::btnHasilPemeriksaanSlitLampActionPerformed);
+        
+        btnHasilPemeriksaanOCT = new widget.ButtonBig();
+        btnHasilPemeriksaanOCT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/12689641_eye_tracking_target_behavior_vision_icon.png")));
+        btnHasilPemeriksaanOCT.setText("Hasil Pemeriksaan OCT");
+        btnHasilPemeriksaanOCT.setIconTextGap(0);
+        btnHasilPemeriksaanOCT.setName("btnHasilPemeriksaanOCT"); 
+        btnHasilPemeriksaanOCT.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHasilPemeriksaanOCT.addActionListener(this::btnHasilPemeriksaanOCTActionPerformed);
         
         btnHasilPemeriksaanECHO = new widget.ButtonBig();
         btnHasilPemeriksaanECHO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2104702_beat_health_healthcare_heart_heartbeat_icon.png")));
