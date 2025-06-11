@@ -1057,7 +1057,7 @@ public final class RMHasilPemeriksaanOCT extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataHasilPemeriksaanSlitLamp.html");            
+                File f = new File("DataHasilPemeriksaanOCT.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1067,7 +1067,7 @@ public final class RMHasilPemeriksaanOCT extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>HASIL PEMERIKSAAN SLIT LAMP<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>HASIL PEMERIKSAAN OCT<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1186,7 +1186,7 @@ public final class RMHasilPemeriksaanOCT extends javax.swing.JDialog {
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
             
-            Valid.MyReportqry("rptCetakHasilPemeriksaanSLitLamp.jasper","report","::[ Formulir Hasil Pemeriksaan OCT ]::",
+            Valid.MyReportqry("rptCetakHasilPemeriksaanOCT.jasper","report","::[ Formulir Hasil Pemeriksaan OCT ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_oct.tanggal,"+
                 "hasil_pemeriksaan_oct.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_oct.diagnosa_klinis,hasil_pemeriksaan_oct.kiriman_dari,"+
                 "hasil_pemeriksaan_oct.hasil_pemeriksaan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+

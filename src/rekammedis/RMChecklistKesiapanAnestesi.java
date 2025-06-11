@@ -109,6 +109,8 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         KeteranganLainnya.setDocument(new batasInput((int)1000).getKata(KeteranganLainnya));
+        TeknikAnestesi.setDocument(new batasInput((int)30).getKata(TeknikAnestesi));
+        Tindakan.setDocument(new batasInput((int)100).getKata(Tindakan));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -228,9 +230,9 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         jLabel65 = new widget.Label();
         GasMedis1 = new widget.ComboBox();
         jLabel24 = new widget.Label();
-        KodePetugas1 = new widget.TextBox();
+        Tindakan = new widget.TextBox();
         jLabel25 = new widget.Label();
-        KodePetugas2 = new widget.TextBox();
+        TeknikAnestesi = new widget.TextBox();
         BtnPetugas = new widget.Button();
         NamaPetugas = new widget.TextBox();
         KodePetugas = new widget.TextBox();
@@ -840,20 +842,25 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         FormInput.add(jLabel24);
         jLabel24.setBounds(206, 40, 65, 23);
 
-        KodePetugas1.setHighlighter(null);
-        KodePetugas1.setName("KodePetugas1"); // NOI18N
-        FormInput.add(KodePetugas1);
-        KodePetugas1.setBounds(275, 40, 310, 23);
+        Tindakan.setHighlighter(null);
+        Tindakan.setName("Tindakan"); // NOI18N
+        Tindakan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TindakanKeyPressed(evt);
+            }
+        });
+        FormInput.add(Tindakan);
+        Tindakan.setBounds(275, 40, 310, 23);
 
         jLabel25.setText("Teknik Anestesi :");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
         jLabel25.setBounds(585, 40, 100, 23);
 
-        KodePetugas2.setHighlighter(null);
-        KodePetugas2.setName("KodePetugas2"); // NOI18N
-        FormInput.add(KodePetugas2);
-        KodePetugas2.setBounds(689, 40, 100, 23);
+        TeknikAnestesi.setHighlighter(null);
+        TeknikAnestesi.setName("TeknikAnestesi"); // NOI18N
+        FormInput.add(TeknikAnestesi);
+        TeknikAnestesi.setBounds(689, 40, 100, 23);
 
         BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPetugas.setMnemonic('2');
@@ -2200,6 +2207,10 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         //Valid.pindah2(evt,Tindakan,BtnSimpan);
     }//GEN-LAST:event_KeteranganLainnyaKeyPressed
 
+    private void TindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKeyPressed
+        Valid.pindah(evt,Tanggal,TeknikAnestesi);
+    }//GEN-LAST:event_TindakanKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -2250,8 +2261,6 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private widget.TextArea KeteranganLainnya;
     private widget.TextBox KodeDokter;
     private widget.TextBox KodePetugas;
-    private widget.TextBox KodePetugas1;
-    private widget.TextBox KodePetugas2;
     private widget.Label LCount;
     private widget.ComboBox LainLain1;
     private widget.ComboBox LainLain2;
@@ -2288,7 +2297,9 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
+    private widget.TextBox TeknikAnestesi;
     private widget.TextBox TglLahir;
+    private widget.TextBox Tindakan;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel19;
@@ -2512,7 +2523,9 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
         ObatObat6.setSelectedIndex(1);
         Tanggal.setDate(new Date());
         KeteranganLainnya.setText("");
-        Listrik1.requestFocus();
+        Tindakan.setText("");
+        TeknikAnestesi.setText("");
+        Tindakan.requestFocus();
     } 
 
     private void getData() {
