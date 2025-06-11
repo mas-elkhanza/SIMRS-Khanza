@@ -360,7 +360,7 @@
 				<text><![CDATA[Nama Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="390" y="77" width="83" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3236cf36-103e-46d4-9899-59f27cdde081">
+				<reportElement mode="Transparent" x="370" y="77" width="78" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3236cf36-103e-46d4-9899-59f27cdde081">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -370,7 +370,7 @@
 				<text><![CDATA[No. Rekam Medis :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="474" y="77" width="74" height="14" uuid="e895e828-344b-4070-a63d-9a55d5c6707e"/>
+				<reportElement positionType="Float" x="448" y="77" width="100" height="14" uuid="e895e828-344b-4070-a63d-9a55d5c6707e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -378,7 +378,7 @@
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="66" y="77" width="314" height="14" uuid="fe286446-47d7-4409-827a-27798355f33b">
+				<reportElement positionType="Float" x="66" y="77" width="304" height="14" uuid="fe286446-47d7-4409-827a-27798355f33b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -394,7 +394,7 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="410" y="95" width="138" height="14" uuid="2968fada-116f-49a6-96b7-f62bfc77c5ec">
+				<reportElement positionType="Float" x="388" y="95" width="160" height="14" uuid="2968fada-116f-49a6-96b7-f62bfc77c5ec">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -412,7 +412,7 @@
 				<text><![CDATA[Tgl. Lahir]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="390" y="95" width="18" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="89482fee-9044-480f-8806-a383293ab5ca">
+				<reportElement mode="Transparent" x="370" y="95" width="18" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="89482fee-9044-480f-8806-a383293ab5ca">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -422,7 +422,7 @@
 				<text><![CDATA[JK :]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="66" y="95" width="314" height="14" uuid="7dd40592-503c-46e9-97ef-935c16e50183"/>
+				<reportElement positionType="Float" x="66" y="95" width="304" height="14" uuid="7dd40592-503c-46e9-97ef-935c16e50183"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
@@ -534,7 +534,7 @@
 				<textFieldExpression><![CDATA[$F{tindakan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="370" y="113" width="70" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="39a4d322-5344-4607-9b5e-9dc51fb7cb2a">
+				<reportElement mode="Transparent" x="370" y="113" width="66" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="39a4d322-5344-4607-9b5e-9dc51fb7cb2a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
