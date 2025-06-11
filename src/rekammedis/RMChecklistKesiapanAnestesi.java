@@ -859,6 +859,11 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
 
         TeknikAnestesi.setHighlighter(null);
         TeknikAnestesi.setName("TeknikAnestesi"); // NOI18N
+        TeknikAnestesi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TeknikAnestesiKeyPressed(evt);
+            }
+        });
         FormInput.add(TeknikAnestesi);
         TeknikAnestesi.setBounds(689, 40, 100, 23);
 
@@ -2036,7 +2041,7 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterActionPerformed
 
     private void BtnDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnDokterKeyPressed
-       Valid.pindah(evt,Tanggal,Listrik1);
+       Valid.pindah(evt,TeknikAnestesi,Listrik1);
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void Listrik3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Listrik3KeyPressed
@@ -2052,11 +2057,11 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     }//GEN-LAST:event_Listrik4KeyPressed
 
     private void Listrik2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Listrik2KeyPressed
-        Valid.pindah(evt,Listrik4,GasMedis1);
+        Valid.pindah(evt,Listrik1,Listrik3);
     }//GEN-LAST:event_Listrik2KeyPressed
 
     private void Listrik1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Listrik1KeyPressed
-        Valid.pindah(evt,BtnDokter,Listrik4);
+        Valid.pindah(evt,BtnDokter,Listrik2);
     }//GEN-LAST:event_Listrik1KeyPressed
 
     private void GasMedis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GasMedis1KeyPressed
@@ -2210,6 +2215,10 @@ public final class RMChecklistKesiapanAnestesi extends javax.swing.JDialog {
     private void TindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKeyPressed
         Valid.pindah(evt,Tanggal,TeknikAnestesi);
     }//GEN-LAST:event_TindakanKeyPressed
+
+    private void TeknikAnestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TeknikAnestesiKeyPressed
+        Valid.pindah(evt,Tindakan,BtnDokter);
+    }//GEN-LAST:event_TeknikAnestesiKeyPressed
 
     /**
     * @param args the command line arguments
