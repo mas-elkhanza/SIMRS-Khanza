@@ -60,7 +60,7 @@
                                     }else{
                                         unset($_SESSION['Capcay']);
                                         $usere      = cleankar($_POST['norme']);
-                                        $passworde  = cleankar2($_POST['passworde']);
+                                        $passworde  = validTeks($_POST['passworde']);
                                         if(strlen($usere)>30){
                                             header('Location: https://www.google.com');
                                         }else{

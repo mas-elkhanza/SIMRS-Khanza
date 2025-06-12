@@ -81,7 +81,7 @@
                                     </tr>
                                     <tr>
                                         <td width='100%'>
-                                            Pengkajian & Order Dokter :
+                                            Penilaian & Order Dokter :
                                             <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>
                                                 <tr>
                                                     <td width='20%'>Restrain Non Farmakologi</td>

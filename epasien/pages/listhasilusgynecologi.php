@@ -16,7 +16,7 @@
                     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
                         <div class='card'>
                             <div class='header'>
-                                <h2><center>HASIL USG GYNECOLOGI</center></h2>
+                                <h2><center>HASIL PEMERIKSAAN USG GYNECOLOGI</center></h2>
                             </div>
                             <div class='body' align='center'>
                                 <table width='100%' align='center' class='table table-hover js-basic-example dataTable'>

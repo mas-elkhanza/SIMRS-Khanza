@@ -354,6 +354,12 @@
                             <li <?=$subhalaman=="AntrianEcho"?"class='active'":""?>>
                                 <a href="index.php?act=AntrianEcho&hal=AntrianTindakan">Echocardiografi</a>
                             </li>
+                            <li <?=$subhalaman=="AntrianSlitLamp"?"class='active'":""?>>
+                                <a href="index.php?act=AntrianSlitLamp&hal=AntrianTindakan">Slit Lamp</a>
+                            </li>
+                            <li <?=$subhalaman=="AntrianOCT"?"class='active'":""?>>
+                                <a href="index.php?act=AntrianOCT&hal=AntrianTindakan">OCT</a>
+                            </li>
                             <li <?=$subhalaman=="AntrianEndoskopiFaring"?"class='active'":""?>>
                                 <a href="index.php?act=AntrianEndoskopiFaring&hal=AntrianTindakan">Endoskopi Faring/Laringoskopi</a>
                             </li>
