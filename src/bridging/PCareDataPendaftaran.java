@@ -3199,6 +3199,11 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                             }
                         }
                         
+                        kodesarana="null";
+                        if(!KdSarana.getText().equals("")){
+                            kodesarana="\""+KdSarana.getText()+"\"";
+                        }
+                        
                         requestJson ="{" +
                                         "\"noKunjungan\": \""+tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),1).toString()+"\",," +
                                         "\"noKartu\": \""+NoKartu.getText()+"\"," +
@@ -5744,6 +5749,15 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                 getData3();
             } catch (java.lang.NullPointerException e) {
             }
+            if(evt.getClickCount()==2){
+                pilihanedit=3;
+                chkKunjungan.setSelected(true);
+                ChkRujukLanjut.setSelected(true);
+                chkSubspesialis.setSelected(true);
+                ChkRujukLanjut.setEnabled(true);
+                chkSubspesialis.setEnabled(true);
+                TabRawat.setSelectedIndex(0);
+            }
         }
     }//GEN-LAST:event_tbSpesialisMouseClicked
 
@@ -5755,7 +5769,18 @@ public final class PCareDataPendaftaran extends javax.swing.JDialog {
                     getData3();
                 } catch (java.lang.NullPointerException e) {
                 }
-            }  
+            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                try {
+                    pilihanedit=3;
+                    chkKunjungan.setSelected(true);
+                    ChkRujukLanjut.setSelected(true);
+                    chkSubspesialis.setSelected(true);
+                    ChkRujukLanjut.setEnabled(true);
+                    chkSubspesialis.setEnabled(true);
+                    TabRawat.setSelectedIndex(0);
+                } catch (java.lang.NullPointerException e) {
+                }
+            }   
         }
     }//GEN-LAST:event_tbSpesialisKeyPressed
 
