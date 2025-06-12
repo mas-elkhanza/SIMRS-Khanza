@@ -1605,7 +1605,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.add(chkCatatanAnastesiSedasi);
 
         chkAsuhanPreAnestesi.setSelected(true);
-        chkAsuhanPreAnestesi.setText("Pengkajian Pre Operasi");
+        chkAsuhanPreAnestesi.setText("Pengkajian Pre Anestesi");
         chkAsuhanPreAnestesi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkAsuhanPreAnestesi.setName("chkAsuhanPreAnestesi"); // NOI18N
         chkAsuhanPreAnestesi.setOpaque(false);
@@ -4500,113 +4500,61 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanAsuhanMedisRawatJalan(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisRawatJalanKandungan(rs.getString("no_rawat"));
                     menampilkanAsuhanMedisRawatJalanBayi(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan THT
                     menampilkanAsuhanMedisRawatJalanTHT(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan psikiatrik
                     menampilkanAsuhanMedisRawatJalanPsikiatrik(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan penyakit dalam
                     menampilkanAsuhanMedisRawatJalanPenyakitDalam(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan nata
                     menampilkanAsuhanMedisRawatJalanMata(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan neurologi
                     menampilkanAsuhanMedisRawatJalanNeurologi(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan orthopedi
                     menampilkanAsuhanMedisRawatJalanOrthopedi(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan bedah
                     menampilkanAsuhanMedisRawatJalanBedah(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan bedah mulut
                     menampilkanAsuhanMedisRawatJalanBedahMulut(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan geriatri
                     menampilkanAsuhanMedisRawatJalanGeriatri(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan kulit kelamin
                     menampilkanAsuhanMedisRawatJalanKulitKelamin(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan Paru
                     menampilkanAsuhanMedisRawatJalanParu(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat jalan kedokteran fisik & rehabilitasi
                     menampilkanAsuhanMedisRawatJalanKedokteranFisikRehabilitasi(rs.getString("no_rawat"));
-                    //menampilkan layanan kedokteran fisik dan rehabilitasi
                     menampilkanLayananKedokteranFisikRehabilitasi(rs.getString("no_rawat"));
-                    //menampilkan layanan program KFR
                     menampilkanLayananProgramKFR(rs.getString("no_rawat"));
-                    //menampilkan uji fungsi KFR
                     menampilkanUjiFungsiKFR(rs.getString("no_rawat"));
-                    //menampilkan hemodialisa
                     menampilkanHemodialisa(rs.getString("no_rawat"));
-                    //menampilkan pemeriksaan Ralan
                     menampilkanPemeriksaanRalan(rs.getString("no_rawat"));
-                    //menampilkan asuhan keperawatan rawat inap
                     menampilkanAsuhanKeperawatanRawatInap(rs.getString("no_rawat"));
-                    //menampilkan asuhan kebidanan rawat inap
                     menampilkanAsuhanKebidananRawatInap(rs.getString("no_rawat"));
-                    //menampilkan asuhan keperawatan rawat inap neonatus
                     menampilkanAsuhanKeperawatanRawatInapNeonatus(rs.getString("no_rawat"));
-                    //menampilkan asuhan keperawatan rawat inap bayi
                     menampilkanAsuhanKeperawatanRanapBayi(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat inap
                     menampilkanAsuhanMedisRawatInap(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat inap kebidanan
                     menampilkanAsuhanMedisRawatInapKebidanan(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal medis rawat inap neonatus
                     menampilkanAsuhanMedisRawatInapNeonatus(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal hemodialisa
                     menampilkanAsuhanMedisHemodialisa(rs.getString("no_rawat"));
-                    //menampilkan edukasi pasien dan keluarga
                     menampilkanEdukasiPasienTerintegrasiRawatJalan(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal pre operasi
                     menampilkanPerencanaanPemulangan(rs.getString("no_rawat"));
-                    //menampilkan observasi
                     menampilkanCatatanObservasi(rs.getString("no_rawat"));
-                    //menampilkan pemeriksaan rawat inap
                     menampilkanPemeriksaanRanap(rs.getString("no_rawat"));
-                    //menampilkan konsultasi medik
                     menampilkanKonsultasiMedik(rs.getString("no_rawat"));
-                    //menampilkan follow up DBD
                     menampilkanFollowUpDBD(rs.getString("no_rawat"));
-                    //menampilkan reaksi tranfusi
                     menampilkanMonitoringReaksiTranfusi(rs.getString("no_rawat"));
-                    //menampilkan penilaian lanjutan risiko jatuh dewasa
                     menampilkanLanjutanResikoJatuhDewasa(rs.getString("no_rawat"));
-                    //menampilkan penilaian lanjutan risiko jatuh anak
                     menampilkanLanjutanResikoJatuhAnak(rs.getString("no_rawat"));
-                    //menampilkan penilaian lanjutan risiko jatuh lansia
                     menampilkanLanjutanResikoJatuhLansia(rs.getString("no_rawat"));
-                    //menampilkan penilaian lanjutan risiko jatuh Geriatri
                     menampilkanLanjutanResikoJatuhGeriatri(rs.getString("no_rawat"));
-                    //menampilkan penilaian lanjutan risiko jatuh psikiatri
                     menampilkanLanjutanResikoJatuhPsikiatri(rs.getString("no_rawat"));
-                    //menampilkan penilaian lanjutan risiko jatuh neonatus
                     menampilkanLanjutanResikoJatuhNeonatus(rs.getString("no_rawat"));
-                    //menampilkan penilaian skrining fungsional
                     menampilkanLanjutanSkriningFungsional(rs.getString("no_rawat"));
-                    //menampilkan penilaian risiko dekubitus
                     menampilkanAsuhanResikoDekubitus(rs.getString("no_rawat"));
-                    //menampilkan penilaian tambahan geriatri
                     menampilkanTambahanGeriatri(rs.getString("no_rawat"));
-                    //menampilkan penilaian tambahan bunuh diri
                     menampilkanTambahanBunuhDiri(rs.getString("no_rawat"));
-                    //menampilkan penilaian tambahan perilaku kekerasan
                     menampilkanTambahanPerilakuKekerasan(rs.getString("no_rawat"));
-                    //menampilkan penilaian tambahan melarikan diri
                     menampilkanTambahanMelarikanDiri(rs.getString("no_rawat"));
-                    //menampilkan skrining gizi lanjut
                     menampilkanEWS(rs.getString("no_rawat"));
-                    //menampilkan Pre Induksi
                     menampilkanAsuhanPreInduksi(rs.getString("no_rawat"));
-                    //menampilkan checlist pre operasi
                     menampilkanChecklistPreOperasi(rs.getString("no_rawat"));
-                    //menampilkan signin sebelum tindakan anestesi
                     menampilkanSignInSebelumAnestesi(rs.getString("no_rawat"));
-                    //menampilkan timeout sebelum tindakan insisi
                     menampilkanTimeOutSebelumInsisi(rs.getString("no_rawat"));
-                    //menampilkan signout sebelum menutup luka
                     menampilkanSignOutSebelumMenutupLuka(rs.getString("no_rawat"));
-                    //menampilkan checlist post operasi
                     menampilkanChecklistPostOperasi(rs.getString("no_rawat"));
-                    //menampilkan asuhan awal pre operasi
                     menampilkanAsuhanPreOperasi(rs.getString("no_rawat"));
-                    //menampilkan catatan anastesi sedasi
                     menampilkanCatatanAnestesiSedasi(rs.getString("no_rawat"));
                     menampilkanAsuhanPreAnestesi(rs.getString("no_rawat"));
+                    menampilkanChecklistKesiapanAnestesi(rs.getString("no_rawat"));
                     menampilkanSkorAldrettePascaAnestesi(rs.getString("no_rawat"));
                     menampilkanSkorStewardPascaAnestesi(rs.getString("no_rawat"));
                     menampilkanSkorBromagePascaAnestesi(rs.getString("no_rawat"));
@@ -21944,161 +21892,159 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                         append("<td width='4%' valign='top' align='center'>III.</td>").
                                                         append("<td width='76%' valign='top'>PRIORITAS 3</td>").
                                                         append("<td width='20%' valign='top' align='center'></td>").
-                                                    append("</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>1</td>").append(
-                                              "<td width='76%' valign='top'>Penyakit Keganasan Dengan Metastasis</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("prioritas3_1")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>2</td>").append(
-                                              "<td width='76%' valign='top'>Pasien Geriatrik Dengan Fungsi Hidup Sebelumnya Minimal</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("prioritas3_2")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>3</td>").append(
-                                              "<td width='76%' valign='top'>Pasien Dengan GCS 3</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("prioritas3_3")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>4</td>").append(
-                                              "<td width='76%' valign='top'>Pasien Jantung, Penyakit Paru Terminal Disertai Komplikasi Penyakit Akut Berat</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("prioritas3_4")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>IV.</td>").append(
-                                              "<td width='76%' valign='top'>KRITERIA FISIOLOGIS TANDA-TANDA VITAL</td>").append(
-                                              "<td width='20%' valign='top' align='center'></td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>1</td>").append(
-                                              "<td width='76%' valign='top'>Nadi < 40 atau >150 (x/menit)</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_1")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>2</td>").append(
-                                              "<td width='76%' valign='top'>SBP < 80 mmHg Atau 20 mmHg Di Bawah SBP Pasien</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_2")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>3</td>").append(
-                                              "<td width='76%' valign='top'>MAP < 60 mmHg</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_3")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>4</td>").append(
-                                              "<td width='76%' valign='top'>DBP > 120 mmHg</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_4")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>5</td>").append(
-                                              "<td width='76%' valign='top'>R > 35 x/menit</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_5")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>V.</td>").append(
-                                              "<td width='76%' valign='top'>KRITERIA FISIOLOGIS LABORATORIUM</td>").append(
-                                              "<td width='20%' valign='top' align='center'></td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>1</td>").append(
-                                              "<td width='76%' valign='top'>Na < 110 meq/L Atau > 170 meq/L</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_1")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>2</td>").append(
-                                              "<td width='76%' valign='top'>Ca > 15 mg/dl</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_2")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>3</td>").append(
-                                              "<td width='76%' valign='top'>GDS > 800 mg/dl</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_3")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>4</td>").append(
-                                              "<td width='76%' valign='top'>K < 2 meq/L Atau 7meq/L</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_4")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>5</td>").append(
-                                              "<td width='76%' valign='top'>PaO2 < 50 mmHg</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_5")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>6</td>").append(
-                                              "<td width='76%' valign='top'>PH < 7,1 Atau 7,7</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_6")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>VI.</td>").append(
-                                              "<td width='76%' valign='top'>KRITERIA FISIOLOGIS RADIOLOGI</td>").append(
-                                              "<td width='20%' valign='top' align='center'></td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>1</td>").append(
-                                              "<td width='76%' valign='top'>Perbedaan Cerebrovaskuler, SAH, Atau Contusion Dengan Gangguan Kesadaran Atau Neorologi</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_radiologi_1")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>2</td>").append(
-                                              "<td width='76%' valign='top'>Ruptor Organ Dalam, Kandung Kemih, Hati, Varices Esophagus Atau Uterus Dengan Gangguan Hemodinamik</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_radiologi_2")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>VII.</td>").append(
-                                              "<td width='76%' valign='top'>KRITERIA FISILOGIS KLINIS</td>").append(
-                                              "<td width='20%' valign='top' align='center'></td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>1</td>").append(
-                                              "<td width='76%' valign='top'>Pupil Anisokor</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_1")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>2</td>").append(
-                                              "<td width='76%' valign='top'>Obstruksi Jalan Nafas</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_2")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>3</td>").append(
-                                              "<td width='76%' valign='top'>Anuria</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_3")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>4</td>").append(
-                                              "<td width='76%' valign='top'>Kejang Berulang</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_4")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>5</td>").append(
-                                              "<td width='76%' valign='top'>Tamponade Jantung</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_5")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>6</td>").append(
-                                              "<td width='76%' valign='top'>Coma</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_6")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>7</td>").append(
-                                              "<td width='76%' valign='top'>Sianosis</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_7")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' valign='top' align='center'>8</td>").append(
-                                              "<td width='76%' valign='top'>Luka Bakar > 10 % BSA</td>").append(
-                                              "<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_8")).append("</td>").append(
-                                          "</tr>").append(
-                                       "</table>").append(
-                                    "</td>").append(
-                                 "</tr>"
-                            );
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Penyakit Keganasan Dengan Metastasis</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("prioritas3_1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Pasien Geriatrik Dengan Fungsi Hidup Sebelumnya Minimal</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("prioritas3_2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>Pasien Dengan GCS 3</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("prioritas3_3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>Pasien Jantung, Penyakit Paru Terminal Disertai Komplikasi Penyakit Akut Berat</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("prioritas3_4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>IV.</td>").
+                                                        append("<td width='76%' valign='top'>KRITERIA FISIOLOGIS TANDA-TANDA VITAL</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Nadi < 40 atau >150 (x/menit)</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>SBP < 80 mmHg Atau 20 mmHg Di Bawah SBP Pasien</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>MAP < 60 mmHg</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>DBP > 120 mmHg</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>5</td>").
+                                                        append("<td width='76%' valign='top'>R > 35 x/menit</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_tanda_vital_5")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>V.</td>").
+                                                        append("<td width='76%' valign='top'>KRITERIA FISIOLOGIS LABORATORIUM</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Na < 110 meq/L Atau > 170 meq/L</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Ca > 15 mg/dl</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>GDS > 800 mg/dl</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>K < 2 meq/L Atau 7meq/L</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>5</td>").
+                                                        append("<td width='76%' valign='top'>PaO2 < 50 mmHg</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_5")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>6</td>").
+                                                        append("<td width='76%' valign='top'>PH < 7,1 Atau 7,7</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_laborat_6")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>VI.</td>").
+                                                        append("<td width='76%' valign='top'>KRITERIA FISIOLOGIS RADIOLOGI</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Perbedaan Cerebrovaskuler, SAH, Atau Contusion Dengan Gangguan Kesadaran Atau Neorologi</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_radiologi_1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Ruptor Organ Dalam, Kandung Kemih, Hati, Varices Esophagus Atau Uterus Dengan Gangguan Hemodinamik</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_radiologi_2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>VII.</td>").
+                                                        append("<td width='76%' valign='top'>KRITERIA FISILOGIS KLINIS</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Pupil Anisokor</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Obstruksi Jalan Nafas</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>Anuria</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>Kejang Berulang</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>5</td>").
+                                                        append("<td width='76%' valign='top'>Tamponade Jantung</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_5")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>6</td>").
+                                                        append("<td width='76%' valign='top'>Coma</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_6")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>7</td>").
+                                                        append("<td width='76%' valign='top'>Sianosis</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_7")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>8</td>").
+                                                        append("<td width='76%' valign='top'>Luka Bakar > 10 % BSA</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("kriteria_fisiologis_klinis_8")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>");
                         }while(rs2.next());
-                        htmlContent.append(
-                              "</table>").append(
-                            "</td>").append(
-                          "</tr>");
+                        htmlContent.append("</table>").
+                                    append("</td>").
+                                append("</tr>");
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -33910,6 +33856,305 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Hasil Pemeriksaan OCT : "+e);
+        }
+    }
+    
+    private void menampilkanChecklistKesiapanAnestesi(String norawat) {
+        try {
+            if(chkChecklistKesiapanAnestesi.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                        "select checklist_kesiapan_anestesi.tanggal,checklist_kesiapan_anestesi.nip,petugas.nama,checklist_kesiapan_anestesi.kd_dokter,dokter.nm_dokter,checklist_kesiapan_anestesi.tindakan,"+
+                        "checklist_kesiapan_anestesi.teknik_anestesi,checklist_kesiapan_anestesi.listrik1,checklist_kesiapan_anestesi.listrik2,checklist_kesiapan_anestesi.listrik3,"+
+                        "checklist_kesiapan_anestesi.listrik4,checklist_kesiapan_anestesi.gasmedis1,checklist_kesiapan_anestesi.gasmedis2,checklist_kesiapan_anestesi.gasmedis3,"+
+                        "checklist_kesiapan_anestesi.gasmedis4,checklist_kesiapan_anestesi.gasmedis5,checklist_kesiapan_anestesi.gasmedis6,checklist_kesiapan_anestesi.mesinanes1,"+
+                        "checklist_kesiapan_anestesi.mesinanes2,checklist_kesiapan_anestesi.mesinanes3,checklist_kesiapan_anestesi.mesinanes4,checklist_kesiapan_anestesi.mesinanes5,"+
+                        "checklist_kesiapan_anestesi.jalannapas1,checklist_kesiapan_anestesi.jalannapas2,checklist_kesiapan_anestesi.jalannapas3,checklist_kesiapan_anestesi.jalannapas4,"+
+                        "checklist_kesiapan_anestesi.jalannapas5,checklist_kesiapan_anestesi.jalannapas6,checklist_kesiapan_anestesi.jalannapas7,checklist_kesiapan_anestesi.jalannapas8,"+
+                        "checklist_kesiapan_anestesi.jalannapas9,checklist_kesiapan_anestesi.lainlain1,checklist_kesiapan_anestesi.lainlain2,checklist_kesiapan_anestesi.lainlain3,"+
+                        "checklist_kesiapan_anestesi.lainlain4,checklist_kesiapan_anestesi.lainlain5,checklist_kesiapan_anestesi.lainlain6,checklist_kesiapan_anestesi.lainlain7,"+
+                        "checklist_kesiapan_anestesi.lainlain8,checklist_kesiapan_anestesi.obatobat1,checklist_kesiapan_anestesi.obatobat2,checklist_kesiapan_anestesi.obatobat3,"+
+                        "checklist_kesiapan_anestesi.obatobat4,checklist_kesiapan_anestesi.obatobat5,checklist_kesiapan_anestesi.obatobat6,checklist_kesiapan_anestesi.keterangan_lainnya "+
+                        "from checklist_kesiapan_anestesi inner join petugas on petugas.nip=checklist_kesiapan_anestesi.nip inner join dokter on dokter.kd_dokter=checklist_kesiapan_anestesi.kd_dokter "+
+                        "where checklist_kesiapan_anestesi.no_rawat='"+norawat+"' order by checklist_kesiapan_anestesi.tanggal").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append("<tr class='isi'>").
+                                        append("<td valign='top' width='2%'></td>").
+                                        append("<td valign='top' width='18%'>Check List Kesiapan Anestesi</td>").
+                                        append("<td valign='top' width='1%' align='center'>:</td>").
+                                        append("<td valign='top' width='79%'>").
+                                        append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>");
+                        do{
+                            htmlContent.append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("YANG MELAKUKAN PENGKAJIAN").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='26%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").
+                                                        append("<td width='37%' border='0'>Dokter Anestesi : ").append(rs2.getString("kd_dokter")).append(" ").append(rs2.getString("nm_dokter")).append("</td>").
+                                                        append("<td width='37%' border='0'>Asisten : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='63%' border='0' colspan='2'>Tindakan : ").append(rs2.getString("tindakan")).append("</td>").
+                                                        append("<td width='37%' border='0'>Teknik Anestesi : ").append(rs2.getString("teknik_anestesi")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center' bgcolor='#FFFAF8'></td>").
+                                                        append("<td width='76%' valign='top' align='center' bgcolor='#FFFAF8'>ITEM PENGECEKAN</td>").
+                                                        append("<td width='20%' valign='top' align='center' bgcolor='#FFFAF8'>YA/TIDAK</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>I.</td>").
+                                                        append("<td width='76%' valign='top'>LISTRIK</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Mesin anestesi terhubung dengan sumber listrik, indikator (+) menyala ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("listrik1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Layar pemantauan terhubung dengan sumber listrik, indikator (+) ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("listrik2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>Syringe pump terhubung dengan sumber listrik, indikator (+) ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("listrik3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>Defibrilator terhubung dengan sumber listrik, indikator (+) ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("listrik4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>II.</td>").
+                                                        append("<td width='76%' valign='top'>GAS MEDIS</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Selang oksigen terhubung antara sumber gas dengan mesin anestesi ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("gasmedis1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Flow meter O2 di mesin anestesi berfungsi, aliran gas keluar dari mesin dapat dirasakan ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("gasmedis2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>Compressed air terhubung antara sumber gas dengan mesin anestesi ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("gasmedis3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>Flow meter \"Air\" di mesin anestesi berfungsi, aliran gas keluar mesin dapat dirasakan ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("gasmedis4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>5</td>").
+                                                        append("<td width='76%' valign='top'>N2O terhubung antara sumber gas dengan mesin anestesi ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("gasmedis5")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>6</td>").
+                                                        append("<td width='76%' valign='top'>Flow meter N2O di mesin anestesi berfungsi, aliran gas keluar mesin dapat dirasakan ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("gasmedis6")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>III.</td>").
+                                                        append("<td width='76%' valign='top'>MESIN ANESTESI</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Power ON ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("mesinanes1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Absorber CO2 dalam kondisi baik ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("mesinanes2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>Self calibration : DONE ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("mesinanes3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>Zat volatil terisi ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("mesinanes4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>5</td>").
+                                                        append("<td width='76%' valign='top'>Tidak ada kebocoran sirkuit nafas ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("mesinanes5")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>IV.</td>").
+                                                        append("<td width='76%' valign='top'>MANAJEMEN JALAN NAPAS</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Sungkup muka dalam ukuran yang benar ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Batang laringoskop berisi baterai ? </td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>Oropharygeal airway (Guedel) dalam ukuran yang benar ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>Stilet (introduser) ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>5</td>").
+                                                        append("<td width='76%' valign='top'>Bilah laringoskop dalam ukuran yang benar ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas5")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>6</td>").
+                                                        append("<td width='76%' valign='top'>Semprit untuk mengembangkan cuff ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas6")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>7</td>").
+                                                        append("<td width='76%' valign='top'>Gagang dan bilah laringoskop berfungsi baik ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas7")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>8</td>").
+                                                        append("<td width='76%' valign='top'>Forceps Magill ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas8")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>9</td>").
+                                                        append("<td width='76%' valign='top'>ETT atau LMA dalam ukuran yang benar, tidak bocor ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("jalannapas9")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>V.</td>").
+                                                        append("<td width='76%' valign='top'>LAIN-LAIN</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Stetoskop tersedia ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("lainlain1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Suction berfungsi baik ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("lainlain2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>Plester untuk fiksasi ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("lainlain3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>Blanket roll dilapisi alas ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("lainlain4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>5</td>").
+                                                        append("<td width='76%' valign='top'>Lidocaine spray/ jelly ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("lainlain5")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>6</td>").
+                                                        append("<td width='76%' valign='top'>Defibrillator jelly ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("lainlain6")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>7</td>").
+                                                        append("<td width='76%' valign='top'>Selang suction terhubung, kateter suction dalam ukuran yang benar ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("lainlain7")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>8</td>").
+                                                        append("<td width='76%' valign='top'>Blanket rolll hemotherm/radiant heater terhubung sumber listrik, berfungsi baik ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("lainlain8")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>VI.</td>").
+                                                        append("<td width='76%' valign='top'>OBAT-OBAT</td>").
+                                                        append("<td width='20%' valign='top' align='center'></td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>1</td>").
+                                                        append("<td width='76%' valign='top'>Epinefrin ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("obatobat1")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>2</td>").
+                                                        append("<td width='76%' valign='top'>Atropin ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("obatobat2")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>3</td>").
+                                                        append("<td width='76%' valign='top'>Antibiotika ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("obatobat3")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>4</td>").
+                                                        append("<td width='76%' valign='top'>Pelumpuh otot ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("obatobat4")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>5</td>").
+                                                        append("<td width='76%' valign='top'>Sedatif (midazolam/propofol/etomidat/ketamin/tiopental) ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("obatobat5")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>6</td>").
+                                                        append("<td width='76%' valign='top'>Opiat/opioid ?</td>").
+                                                        append("<td width='20%' valign='top' align='center'>").append(rs2.getString("obatobat6")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'>VII.</td>").
+                                                        append("<td colspan='2' valign='top'>KETERANGAN LAINNYA</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' valign='top' align='center'></td>").
+                                                        append("<td colspan='2' valign='top'>").append(rs2.getString("keterangan_lainnya")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>");
+                        }while(rs2.next());
+                        htmlContent.append("</table>").
+                                    append("</td>").
+                                append("</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Check List Kesipatan Anestesi : "+e);
         }
     }
 }
