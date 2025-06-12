@@ -4,7 +4,7 @@
     }
 ?>
 <div class="block-header">
-    <h2><center>RIWAYAT USG KANDUNGAN</center></h2>
+    <h2><center>RIWAYAT PEMERIKSAAN USG KANDUNGAN</center></h2>
 </div>
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

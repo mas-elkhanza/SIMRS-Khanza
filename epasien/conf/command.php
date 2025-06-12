@@ -49,15 +49,16 @@
                 'PersetujuanTransferAntarRuang','PersetujuanRawatInap','PersetujuanPenundaanPelayanan','PersetujuanPenolakanAnjuranMedis',
                 'PersetujuanRestrain','PersetujuanPenolakanTindakan','BuktiPelaksanaanEdukasi','BuktiPelayananRehabilitasi','KartuPasien',
                 'TampilPermintaanLab','TampilHasilLab','UpdatePassword','RiwayatMCU','HasilMCU','HasilLabPK','HasilLabMB','HasilLabPA',
-                'HasilRad','HasilUSGKandungan','HasilUSGUrologi','HasilUSGGynecologi','HasilUSGNeonatus','HasilEKG','HasilEcho',
+                'HasilRad','HasilUSGKandungan','HasilUSGUrologi','HasilUSGGynecologi','HasilUSGNeonatus','HasilEKG','HasilEcho','HasilSlitLamp',
                 'HasilEndoskopiFaring','HasilEndoskopiHidung','HasilEndoskopiTelinga','AmbilPersetujuanUmum','AmbilPersetujuanRencanaPemulangan',
                 'AmbilPenyerahanResepRalan','AmbilPersetujuanPernyataanPasienUmum','AmbilPersetujuanRawatInap','AmbilPersetujuanTransferAntarRuang',
-                'AmbilPersetujuanPenundaanPelayanan','AmbilPersetujuanPenolakanAnjuranMedis','AmbilPersetujuanRestrain',
+                'AmbilPersetujuanPenundaanPelayanan','AmbilPersetujuanPenolakanAnjuranMedis','AmbilPersetujuanRestrain','HasilOCT',
                 'AmbilPersetujuanPernyataanPulangAPS','AmbilPersetujuanPenolakanTindakan','AmbilBuktiPelaksanaanEdukasi','AmbilBuktiPelayananRehabilitasi',
                 'HasilPersetujuanUmum','HasilPersetujuanRencanaPemulangan','HasilPenyerahanResepRalan','HasilPersetujuanPernyataanPasienUmum',
                 'HasilPersetujuanTransferAntarRuang','HasilPersetujuanRawatInap','HasilPersetujuanPenundaanPelayanan','HasilPersetujuanPenolakanAnjuranMedis',
                 'HasilPersetujuanRestrain','HasilPersetujuanPernyataanPulangAPS','HasilPersetujuanPenolakanTindakan','HasilBuktiPelaksanaanEdukasi',
-                'HasilBuktiPelayananRehabilitasi','BuktiPelayananProgramKFR','AmbilBuktiPelayananProgramKFR','HasilBuktiPelayananProgramKFR'
+                'HasilBuktiPelayananRehabilitasi','BuktiPelayananProgramKFR','AmbilBuktiPelayananProgramKFR','HasilBuktiPelayananProgramKFR','AntrianSlitLamp',
+                'AntrianOCT'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -135,6 +136,8 @@
                 case "AntrianUSGGynecologi"                    : include_once("pages/listriwayatusgynecologi.php"); break;
                 case "AntrianUSGNeonatus"                      : include_once("pages/listriwayatusgneonatus.php"); break;
                 case "AntrianEKG"                              : include_once("pages/listriwayatekg.php"); break;
+                case "AntrianSlitLamp"                         : include_once("pages/listriwayatslitlamp.php"); break;
+                case "AntrianOCT"                              : include_once("pages/listriwayatoct.php"); break;
                 case "AntrianEcho"                             : include_once("pages/listriwayatecho.php"); break;
                 case "AntrianEndoskopiFaring"                  : include_once("pages/listriwayatendoskopifaring.php"); break;
                 case "AntrianEndoskopiHidung"                  : include_once("pages/listriwayatendoskopihidung.php"); break;
@@ -168,6 +171,8 @@
                 case "HasilUSGGynecologi"                      : include_once("pages/listhasilusgynecologi.php"); break;
                 case "HasilUSGNeonatus"                        : include_once("pages/listhasilusgneonatus.php"); break;
                 case "HasilEKG"                                : include_once("pages/listhasilekg.php"); break;
+                case "HasilSlitLamp"                           : include_once("pages/listhasilslitlamp.php"); break;
+                case "HasilOCT"                                : include_once("pages/listhasiloct.php"); break;
                 case "HasilEcho"                               : include_once("pages/listhasilecho.php"); break;
                 case "HasilEndoskopiFaring"                    : include_once("pages/listhasilendoskopifaring.php"); break;
                 case "HasilEndoskopiHidung"                    : include_once("pages/listhasilendoskopihidung.php"); break;
