@@ -450,8 +450,10 @@ public final class ApotekBPJSDaftarPelayananObat extends javax.swing.JDialog {
                 if(response.path("detailsep").path("listobat").isArray()){
                     for(JsonNode list:response.path("detailsep").path("listobat")){
                         tabMode.addRow(new Object[]{
-                            list.path("kodeobat").asText(),list.path("namaobat").asText(),list.path("prb").asText(),list.path("kronis").asText(),list.path("kemo").asText(),
-                            Valid.SetAngka(list.path("harga").asDouble()),list.path("restriksi").asText(),list.path("generik").asText(),list.path("aktif").asText()
+                            list.path("noSepApotek").asText(),list.path("noSepAsal").asText(),list.path("noresep").asText(),list.path("nokartu").asText(),list.path("nmpst").asText(),
+                            list.path("kdjnsobat").asText(),list.path("nmjnsobat").asText(),list.path("tglpelayanan").asText(),list.path("kodeobat").asText(),list.path("namaobat").asText(),
+                            list.path("tipeobat").asText(),list.path("signa1").asText(),list.path("signa2").asText(),list.path("hari").asText(),list.path("permintaan").asText(),
+                            list.path("jumlah").asText(),Valid.SetAngka(list.path("harga").asDouble())
                         });
                     }
                 }

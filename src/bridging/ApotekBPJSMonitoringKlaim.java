@@ -456,7 +456,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
 	    headers.add("x-signature",api.getHmac(utc));
 	    headers.add("user_key",koneksiDB.USERKEYAPIAPOTEKBPJS());
             requestEntity = new HttpEntity(headers);
-            URL = link+"monitoring/klaim/"+Bulan.getSelectedItem().toString()+"/"+Tahun.getSelectedItem().toString()+"/"+Jenis.getSelectedItem().toString().substring(0,1)+"/"+Status.getSelectedItem().toString().substring(0,1);	
+            URL = link+"/monitoring/klaim/"+Bulan.getSelectedItem().toString()+"/"+Tahun.getSelectedItem().toString()+"/"+Jenis.getSelectedItem().toString().substring(0,1)+"/"+Status.getSelectedItem().toString().substring(0,1);	
             System.out.println(URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
