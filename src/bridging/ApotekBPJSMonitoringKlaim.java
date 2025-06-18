@@ -318,7 +318,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
         label13.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi1.add(label13);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Belum diverifikasi", "2. Sudah Verifikasi" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Belum diverifikasi", "1. Sudah Verifikasi" }));
         Status.setName("Status"); // NOI18N
         Status.setPreferredSize(new java.awt.Dimension(150, 23));
         panelisi1.add(Status);

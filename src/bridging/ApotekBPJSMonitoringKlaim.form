@@ -324,8 +324,8 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="1. Belum diverifikasi"/>
-                    <StringItem index="1" value="2. Sudah Verifikasi"/>
+                    <StringItem index="0" value="0. Belum diverifikasi"/>
+                    <StringItem index="1" value="1. Sudah Verifikasi"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="Status" noResource="true"/>
