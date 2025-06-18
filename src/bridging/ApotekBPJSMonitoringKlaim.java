@@ -298,7 +298,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
         Tahun.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi1.add(Tahun);
 
-        Bulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        Bulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         Bulan.setName("Bulan"); // NOI18N
         Bulan.setPreferredSize(new java.awt.Dimension(62, 23));
         panelisi1.add(Bulan);
