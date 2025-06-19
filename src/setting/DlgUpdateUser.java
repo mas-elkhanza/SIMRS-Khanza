@@ -208,7 +208,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             catatan_observasi_hemodialisa=false,skrining_kesehatan_gigi_mulut_dewasa=false,skrining_risiko_kanker_serviks=false,catatan_cairan_hemodialisa=false,skrining_kesehatan_gigi_mulut_lansia=false,
             skrining_indra_pendengaran=false,catatan_pengkajian_paska_operasi=false,skrining_frailty_syndrome=false,sirkulasi_cssd=false,lama_pelayanan_cssd=false,catatan_observasi_bayi=false,
             riwayat_surat_peringatan=false,master_kesimpulan_anjuran_mcu=false,kategori_piutang_jasa_perusahaan=false,piutang_jasa_perusahaan=false,bayar_piutang_jasa_perusahaan=false,piutang_jasa_perusahaan_belum_lunas=false,
-            checklist_kesiapan_anestesi=false,piutang_peminjaman_uang_belum_lunas=false,hasil_pemeriksaan_slit_lamp=false,hasil_pemeriksaan_oct=false;
+            checklist_kesiapan_anestesi=false,piutang_peminjaman_uang_belum_lunas=false,hasil_pemeriksaan_slit_lamp=false,hasil_pemeriksaan_oct=false,beban_hutang_lain=false,poli_asal_pasien_ranap=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -840,7 +840,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         catatan_observasi_hemodialisa=false;skrining_kesehatan_gigi_mulut_dewasa=false;skrining_risiko_kanker_serviks=false;catatan_cairan_hemodialisa=false;skrining_kesehatan_gigi_mulut_lansia=false;
         skrining_indra_pendengaran=false;catatan_pengkajian_paska_operasi=false;skrining_frailty_syndrome=false;sirkulasi_cssd=false;lama_pelayanan_cssd=false;catatan_observasi_bayi=false;
         riwayat_surat_peringatan=false;master_kesimpulan_anjuran_mcu=false;kategori_piutang_jasa_perusahaan=false;piutang_jasa_perusahaan=false;bayar_piutang_jasa_perusahaan=false;piutang_jasa_perusahaan_belum_lunas=false;
-        checklist_kesiapan_anestesi=false;piutang_peminjaman_uang_belum_lunas=false;hasil_pemeriksaan_slit_lamp=false;hasil_pemeriksaan_oct=false;
+        checklist_kesiapan_anestesi=false;piutang_peminjaman_uang_belum_lunas=false;hasil_pemeriksaan_slit_lamp=false;hasil_pemeriksaan_oct=false;beban_hutang_lain=false;poli_asal_pasien_ranap=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1091,7 +1091,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.skrining_risiko_kanker_serviks,user.catatan_cairan_hemodialisa,user.skrining_kesehatan_gigi_mulut_lansia,user.skrining_indra_pendengaran,user.catatan_pengkajian_paska_operasi,"+
                 "user.skrining_frailty_syndrome,user.sirkulasi_cssd,user.lama_pelayanan_cssd,user.catatan_observasi_bayi,user.riwayat_surat_peringatan,user.master_kesimpulan_anjuran_mcu,"+
                 "user.kategori_piutang_jasa_perusahaan,user.piutang_jasa_perusahaan,user.bayar_piutang_jasa_perusahaan,user.piutang_jasa_perusahaan_belum_lunas,user.checklist_kesiapan_anestesi,"+
-                "user.piutang_peminjaman_uang_belum_lunas,user.hasil_pemeriksaan_slit_lamp,user.hasil_pemeriksaan_oct from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.piutang_peminjaman_uang_belum_lunas,user.hasil_pemeriksaan_slit_lamp,user.hasil_pemeriksaan_oct,user.beban_hutang_lain,user.poli_asal_pasien_ranap from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1221,7 +1221,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     skrining_kesehatan_gigi_mulut_balita=rs.getBoolean("skrining_kesehatan_gigi_mulut_balita");skrining_anemia=rs.getBoolean("skrining_anemia");layanan_program_kfr=rs.getBoolean("layanan_program_kfr");skrining_hipertensi=rs.getBoolean("skrining_hipertensi");skrining_kesehatan_penglihatan=rs.getBoolean("skrining_kesehatan_penglihatan");catatan_observasi_hemodialisa=rs.getBoolean("catatan_observasi_hemodialisa");skrining_kesehatan_gigi_mulut_dewasa=rs.getBoolean("skrining_kesehatan_gigi_mulut_dewasa");skrining_risiko_kanker_serviks=rs.getBoolean("skrining_risiko_kanker_serviks");
                     catatan_cairan_hemodialisa=rs.getBoolean("catatan_cairan_hemodialisa");skrining_kesehatan_gigi_mulut_lansia=rs.getBoolean("skrining_kesehatan_gigi_mulut_lansia");skrining_indra_pendengaran=rs.getBoolean("skrining_indra_pendengaran");catatan_pengkajian_paska_operasi=rs.getBoolean("catatan_pengkajian_paska_operasi");skrining_frailty_syndrome=rs.getBoolean("skrining_frailty_syndrome");sirkulasi_cssd=rs.getBoolean("sirkulasi_cssd");lama_pelayanan_cssd=rs.getBoolean("lama_pelayanan_cssd");catatan_observasi_bayi=rs.getBoolean("catatan_observasi_bayi");riwayat_surat_peringatan=rs.getBoolean("riwayat_surat_peringatan");
                     master_kesimpulan_anjuran_mcu=rs.getBoolean("master_kesimpulan_anjuran_mcu");kategori_piutang_jasa_perusahaan=rs.getBoolean("kategori_piutang_jasa_perusahaan");piutang_jasa_perusahaan=rs.getBoolean("piutang_jasa_perusahaan");bayar_piutang_jasa_perusahaan=rs.getBoolean("bayar_piutang_jasa_perusahaan");piutang_jasa_perusahaan_belum_lunas=rs.getBoolean("piutang_jasa_perusahaan_belum_lunas");checklist_kesiapan_anestesi=rs.getBoolean("checklist_kesiapan_anestesi");piutang_peminjaman_uang_belum_lunas=rs.getBoolean("piutang_peminjaman_uang_belum_lunas");hasil_pemeriksaan_slit_lamp=rs.getBoolean("hasil_pemeriksaan_slit_lamp");
-                    hasil_pemeriksaan_oct=rs.getBoolean("hasil_pemeriksaan_oct");
+                    hasil_pemeriksaan_oct=rs.getBoolean("hasil_pemeriksaan_oct");beban_hutang_lain=rs.getBoolean("beban_hutang_lain");poli_asal_pasien_ranap=rs.getBoolean("poli_asal_pasien_ranap");
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -2929,6 +2929,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         if("[J]Lama Pelayanan CSSD".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[J]Lama Pelayanan CSSD",lama_pelayanan_cssd});
         }
+        
+        if("[J]Poli Asal Pasien Ranap".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[J]Poli Asal Pasien Ranap",poli_asal_pasien_ranap});
+        }
 
         if("[K]Deposit Pasien".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[K]Deposit Pasien",deposit_pasien});
@@ -3256,6 +3260,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[K]Piutang Peminjaman Uang Belum Lunas".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[K]Piutang Peminjaman Uang Belum Lunas",piutang_peminjaman_uang_belum_lunas});
+        }
+        
+        if("[K]Beban Hutang Lain".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[K]Beban Hutang Lain",beban_hutang_lain});
         }
         
         if("[L]Cek NIK".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -7465,6 +7473,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","lama_pelayanan_cssd='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
+            if("[J]Poli Asal Pasien Ranap".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","poli_asal_pasien_ranap='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
             if("[K]Deposit Pasien".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","deposit_pasien='"+tbUser.getValueAt(i,2).toString()+"'");
             }
@@ -7791,6 +7803,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[K]Piutang Peminjaman Uang Belum Lunas".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","piutang_peminjaman_uang_belum_lunas='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[K]Beban Hutang Lain".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","beban_hutang_lain='"+tbUser.getValueAt(i,2).toString()+"'");
             }
         }
     }
