@@ -379,7 +379,7 @@ public final class RMCariKesimpulanAnjuranMCU extends javax.swing.JDialog {
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
             
-            ps=koneksi.prepareStatement("select * from master_kesimpulan_anjuran_mcu order by aturan ");
+            ps=koneksi.prepareStatement("select * from master_kesimpulan_anjuran_mcu order by anjuran");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){

@@ -25,6 +25,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
@@ -33,6 +34,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.web.client.HttpStatusCodeException;
 
 /**
  *
@@ -611,11 +613,60 @@ public final class SatuSehatKirimSpecimenRadiologi extends javax.swing.JDialog {
                                 tbObat.setValueAt(false,i,0);
                             }
                         }
-                    }catch(Exception e){
-                        System.out.println("Notifikasi Bridging : "+e);
-                    }
+                    }catch (HttpStatusCodeException ea) {
+                        // Log error ke console
+                        System.err.println("Error Response Status Code: " + ea.getStatusCode());
+                        ObjectMapper mapper = new ObjectMapper();
+
+                        try {
+                            // Parse response error
+                            JsonNode errorResponse = mapper.readTree(ea.getResponseBodyAsString());
+
+                            // Format pesan error yang lebih mudah dibaca
+                            StringBuilder errorMessage = new StringBuilder();
+                            errorMessage.append("Gagal mengirim data ke Satu Sehat\n");
+                            errorMessage.append("Status: ").append(ea.getStatusCode()).append("\n\n");
+
+                            // Ekstrak detail error dari response JSON
+                            if (errorResponse.has("issue") && errorResponse.get("issue").isArray()) {
+                                for (JsonNode issue : errorResponse.get("issue")) {
+                                    if (issue.has("details") && issue.get("details").has("text")) {
+                                        errorMessage.append("Error: ").append(issue.get("details").get("text").asText()).append("\n");
+                                    }
+                                    if (issue.has("expression")) {
+                                        errorMessage.append("Location: ").append(issue.get("expression").toString()).append("\n");
+                                    }
+                                }
+                            } else {
+                                // Fallback jika format tidak sesuai ekspektasi
+                                errorMessage.append("Detail Error:\n").append(errorResponse.toString());
+                            }
+
+                            // Tampilkan dialog error
+                            JOptionPane.showMessageDialog(
+                                rootPane, 
+                                errorMessage.toString(), 
+                                "Error Bridging ke Satu Sehat", 
+                                JOptionPane.ERROR_MESSAGE
+                            );
+
+                        } catch (Exception jsonEx) {
+                            // Jika parsing JSON gagal, tampilkan response mentah
+                            JOptionPane.showMessageDialog(
+                                rootPane, 
+                                "Error: " + ea.getStatusCode() + "\n" + ea.getResponseBodyAsString(),
+                                "Error Bridging ke Satu Sehat",
+                                JOptionPane.ERROR_MESSAGE
+                            );
+                        }
+                    } 
                 } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
+                    JOptionPane.showMessageDialog(
+                        rootPane, 
+                        "Terjadi kesalahan: " + e.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                    );
                 }
             }
         }
@@ -678,11 +729,60 @@ public final class SatuSehatKirimSpecimenRadiologi extends javax.swing.JDialog {
                         json=api.getRest().exchange(link+"/Specimen/"+tbObat.getValueAt(i,13).toString(), HttpMethod.PUT, requestEntity, String.class).getBody();
                         System.out.println("Result JSON : "+json);
                         tbObat.setValueAt(false,i,0);
-                    }catch(Exception e){
-                        System.out.println("Notifikasi Bridging : "+e);
-                    }
+                    }catch (HttpStatusCodeException ea) {
+                        // Log error ke console
+                        System.err.println("Error Response Status Code: " + ea.getStatusCode());
+                        ObjectMapper mapper = new ObjectMapper();
+
+                        try {
+                            // Parse response error
+                            JsonNode errorResponse = mapper.readTree(ea.getResponseBodyAsString());
+
+                            // Format pesan error yang lebih mudah dibaca
+                            StringBuilder errorMessage = new StringBuilder();
+                            errorMessage.append("Gagal mengirim data ke Satu Sehat\n");
+                            errorMessage.append("Status: ").append(ea.getStatusCode()).append("\n\n");
+
+                            // Ekstrak detail error dari response JSON
+                            if (errorResponse.has("issue") && errorResponse.get("issue").isArray()) {
+                                for (JsonNode issue : errorResponse.get("issue")) {
+                                    if (issue.has("details") && issue.get("details").has("text")) {
+                                        errorMessage.append("Error: ").append(issue.get("details").get("text").asText()).append("\n");
+                                    }
+                                    if (issue.has("expression")) {
+                                        errorMessage.append("Location: ").append(issue.get("expression").toString()).append("\n");
+                                    }
+                                }
+                            } else {
+                                // Fallback jika format tidak sesuai ekspektasi
+                                errorMessage.append("Detail Error:\n").append(errorResponse.toString());
+                            }
+
+                            // Tampilkan dialog error
+                            JOptionPane.showMessageDialog(
+                                rootPane, 
+                                errorMessage.toString(), 
+                                "Error Bridging ke Satu Sehat", 
+                                JOptionPane.ERROR_MESSAGE
+                            );
+
+                        } catch (Exception jsonEx) {
+                            // Jika parsing JSON gagal, tampilkan response mentah
+                            JOptionPane.showMessageDialog(
+                                rootPane, 
+                                "Error: " + ea.getStatusCode() + "\n" + ea.getResponseBodyAsString(),
+                                "Error Bridging ke Satu Sehat",
+                                JOptionPane.ERROR_MESSAGE
+                            );
+                        }
+                    } 
                 } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
+                    JOptionPane.showMessageDialog(
+                        rootPane, 
+                        "Terjadi kesalahan: " + e.getMessage(),
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE
+                    );
                 }
             }
         }

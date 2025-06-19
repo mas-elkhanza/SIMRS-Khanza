@@ -601,13 +601,19 @@ public class DlgPerusahaan extends javax.swing.JDialog {
                 Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
             })==true){
                 if(!Password.getText().trim().equals("")){
-                    Sequel.mengedit("password_perusahaan_pasien","kode_perusahaan=?","password=aes_encrypt(?,'windi')", 2,new String[]{
-                        Password.getText(),Kd.getText()
-                    });
+                    if(Sequel.cariInteger("SELECT COUNT(password_perusahaan_pasien.kode_perusahaan) WHERE kode_perusahaan='" + Kd.getText() + "'") > 0) {
+                        Sequel.mengedit("password_perusahaan_pasien","kode_perusahaan=?","password=aes_encrypt(?,'windi')", 2,new String[]{
+                            Kd.getText(),Password.getText()
+                        });
+                    } else {
+                        Sequel.menyimpan("password_perusahaan_pasien","?,aes_encrypt(?,'windi')",2,new String[]{
+                            Kd.getText(),Password.getText()
+                        });
+                    }
                 }else{
                     Sequel.meghapus("password_perusahaan_pasien","kode_perusahaan",Kd.getText());
                 }
-                
+                                
                 if(tbDokter.getSelectedRow()!= -1){
                     tbDokter.setValueAt(Kd.getText(),tbDokter.getSelectedRow(),0);
                     tbDokter.setValueAt(Nm.getText(),tbDokter.getSelectedRow(),1);
