@@ -20,7 +20,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -276,7 +275,8 @@ public final class DlgRestorePeminjamPiutang extends javax.swing.JDialog {
             if(Sequel.mengedittf("peminjampiutang","kode_peminjam=?","status='1'",1,new String[]{
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()
             })==true){
-                BtnCariActionPerformed(null);
+                tabMode.removeRow(tbKamar.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data pada tabel terlebih dahulu");
@@ -294,8 +294,10 @@ public final class DlgRestorePeminjamPiutang extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbKamar.getSelectedRow()>-1){
-            Sequel.meghapus("peminjampiutang","kode_peminjam",tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString());
-            BtnCariActionPerformed(evt);
+            if(Sequel.meghapustf("peminjampiutang","kode_peminjam",tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString())==true){
+                tabMode.removeRow(tbKamar.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+            }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data pada tabel terlebih dahulu");
             tbKamar.requestFocus();

@@ -46,7 +46,6 @@ public final class KeuanganPeminjamPiutang extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
-    private DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
     private int i=0;
     
     /** Creates new form DlgPenyakit
@@ -112,52 +111,6 @@ public final class KeuanganPeminjamPiutang extends javax.swing.JDialog {
                 }
             });
         } 
-        
-        rekening.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("KeuanganPinjamPiutang")){
-                    if(rekening.getTabel().getSelectedRow()!= -1){      
-                        if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("N")&&
-                            rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("D")){
-                            KodeRekening.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
-                            NamaRekening.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString()); 
-                        }else{
-                            JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe N dan Balance D..!!");
-                        }
-                                                                      
-                        KodeRekening.requestFocus();
-                    }                 
-                }
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        rekening.getTabel().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(akses.getform().equals("KeuanganPinjamPiutang")){
-                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                        rekening.dispose();
-                    }
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        }); 
         
         ChkInput.setSelected(false);
         isForm();  
@@ -613,7 +566,10 @@ public final class KeuanganPeminjamPiutang extends javax.swing.JDialog {
             if(Sequel.menyimpantf("peminjampiutang","?,?,?,?,?,'1'","Kode",5,new String[]{
                 KdPeminjam.getText(),NmPeminjam.getText(),AlamatPeminjam.getText(),NoTelp.getText(),KodeRekening.getText()
             })==true){
-                BtnCariActionPerformed(evt);
+                tabMode.addRow(new Object[]{
+                    KdPeminjam.getText(),NmPeminjam.getText(),AlamatPeminjam.getText(),NoTelp.getText(),KodeRekening.getText(),NamaRekening.getText()
+                });
+                LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }
         }
@@ -644,8 +600,9 @@ public final class KeuanganPeminjamPiutang extends javax.swing.JDialog {
             if(Sequel.mengedittf("peminjampiutang","kode_peminjam=?","status='0'",1,new String[]{
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()
             })==true){
-                BtnCariActionPerformed(null);
+                tabMode.removeRow(tbKamar.getSelectedRow());
                 emptTeks();
+                LCount.setText(""+tabMode.getRowCount());
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data pada tabel terlebih dahulu");
@@ -677,7 +634,12 @@ public final class KeuanganPeminjamPiutang extends javax.swing.JDialog {
                 if(Sequel.mengedittf("peminjampiutang","kode_peminjam=?","kode_peminjam=?,nama_peminjam=?,alamat=?,no_telp=?,kd_rek=?",6,new String[]{
                     KdPeminjam.getText(),NmPeminjam.getText(),AlamatPeminjam.getText(),NoTelp.getText(),KodeRekening.getText(),tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()
                 })==true){
-                    BtnCariActionPerformed(null);
+                    tbKamar.setValueAt(KdPeminjam.getText(),tbKamar.getSelectedRow(),0);
+                    tbKamar.setValueAt(NmPeminjam.getText(),tbKamar.getSelectedRow(),1);
+                    tbKamar.setValueAt(AlamatPeminjam.getText(),tbKamar.getSelectedRow(),2);
+                    tbKamar.setValueAt(NoTelp.getText(),tbKamar.getSelectedRow(),3);
+                    tbKamar.setValueAt(KodeRekening.getText(),tbKamar.getSelectedRow(),4);
+                    tbKamar.setValueAt(NamaRekening.getText(),tbKamar.getSelectedRow(),5);
                     emptTeks();
                 }
             }else{
@@ -828,6 +790,52 @@ private void NmPeminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
 
     private void BtnAkunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAkunActionPerformed
         akses.setform("KeuanganPinjamPiutang");
+        DlgRekeningTahun rekening=new DlgRekeningTahun(null,false);
+        rekening.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("KeuanganPinjamPiutang")){
+                    if(rekening.getTabel().getSelectedRow()!= -1){      
+                        if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("N")&&
+                            rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("D")){
+                            KodeRekening.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
+                            NamaRekening.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString()); 
+                        }else{
+                            JOptionPane.showMessageDialog(rootPane,"Rekening harus Tipe N dan Balance D..!!");
+                        }
+                                                                      
+                        KodeRekening.requestFocus();
+                    }                 
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        rekening.getTabel().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(akses.getform().equals("KeuanganPinjamPiutang")){
+                    if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                        rekening.dispose();
+                    }
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        }); 
         rekening.emptTeks();
         rekening.tampil();
         rekening.isCek();
@@ -906,12 +914,15 @@ private void NmPeminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select peminjampiutang.kode_peminjam,peminjampiutang.nama_peminjam,peminjampiutang.alamat,peminjampiutang.no_telp, "+
-                    "peminjampiutang.kd_rek,rekening.nm_rek from peminjampiutang inner join rekening on peminjampiutang.kd_rek=rekening.kd_rek "+
-                    "where peminjampiutang.status='1' and (peminjampiutang.kode_peminjam like ? or peminjampiutang.nama_peminjam like ?) order by nama_peminjam ");
+                    "select peminjampiutang.kode_peminjam,peminjampiutang.nama_peminjam,peminjampiutang.alamat,peminjampiutang.no_telp,peminjampiutang.kd_rek,"+
+                    "rekening.nm_rek from peminjampiutang inner join rekening on peminjampiutang.kd_rek=rekening.kd_rek where peminjampiutang.status='1' "+
+                    (TCari.getText().trim().equals("")?"":"and (peminjampiutang.kode_peminjam like ? or peminjampiutang.nama_peminjam like ?) ")+
+                    "order by nama_peminjam ");
             try{
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});
