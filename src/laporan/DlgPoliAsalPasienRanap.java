@@ -316,9 +316,7 @@ public final class DlgPoliAsalPasienRanap extends javax.swing.JDialog {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if(tabMode.getRowCount()==0){
                 JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-                //TCari.requestFocus();
             }else if(tabMode.getRowCount()!=0){
-                
                 Map<String, Object> param = new HashMap<>();         
                 param.put("namars",akses.getnamars());
                 param.put("alamatrs",akses.getalamatrs());
@@ -326,26 +324,14 @@ public final class DlgPoliAsalPasienRanap extends javax.swing.JDialog {
                 param.put("propinsirs",akses.getpropinsirs());
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
-                if(nmpenjab.getText().equals("")){
-                    param.put("ruang","SEMUA CARA BAYAR"); 
-                }else{
-                    param.put("ruang",nmpenjab.getText().toUpperCase()); 
-                }                       
                 param.put("periode",Tgl1.getSelectedItem()+" s.d. "+Tgl2.getSelectedItem());  
                 param.put("tanggal",Tgl2.getDate());  
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));  
                 Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
-                    if(!tbBangsal.getValueAt(r,0).toString().contains(">>")){
-                        Sequel.menyimpan("temporary","'"+r+"','"+
-                                        tabMode.getValueAt(r,0).toString()+"','"+
-                                        tabMode.getValueAt(r,1).toString()+"','"+
-                                        tabMode.getValueAt(r,2).toString()+"','"+
-                                        tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
-                    }                    
-                }
-                   
-                Valid.MyReportqry("rptRanapPerRuang.jasper","report","::[ Laporan Rawat Inap Per Ruang ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                    Sequel.menyimpan("temporary","'"+r+"','"+tabMode.getValueAt(r,0).toString()+"','"+tabMode.getValueAt(r,1).toString()+"','"+tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
+                }  
+                Valid.MyReportqry("rptPoliAsalPasienRanap.jasper","report","::[ Laporan Poli Asal Pasien Ranap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -354,7 +340,7 @@ public final class DlgPoliAsalPasienRanap extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnPrintActionPerformed(null);
         }else{
-            //Valid.pindah(evt, BtnHapus, BtnAll);
+            Valid.pindah(evt, TCari, BtnAll);
         }
 }//GEN-LAST:event_BtnPrintKeyPressed
 
@@ -531,11 +517,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         rs.getString("kd_poli"),rs.getString("nm_poli"),jumlahpasien
                     });
                 }
-                if(totaljumlahpasien>0){
-                    tabMode.addRow(new Object[]{
-                        ">>","Jumlah Total Pasien",totaljumlahpasien
-                    });
-                }
+                tabMode.addRow(new Object[]{
+                    ">>","Jumlah Total Pasien",totaljumlahpasien
+                });
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
