@@ -33,6 +33,7 @@ import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import restore.DlgRestorePemberiHutangLain;
 import restore.DlgRestorePeminjamPiutang;
 
 /**
@@ -57,7 +58,7 @@ public final class KeuanganPemberiHutangLain extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"Kode","Peminjam","Alamat","No.Telp","Kode Rekening","Nama Rekening"};
+        Object[] row={"Kode","Pemberi Hutang","Alamat","No.Telp","Kode Rekening","Nama Rekening"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -774,11 +775,11 @@ private void NmPemberiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_KdPemberiKeyPressed
 
     private void NoTelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoTelpKeyPressed
-        Valid.pindah(evt,AlamatPemberiHutang,BtnAkun);
+        Valid.pindah(evt,AlamatPemberiHutang,KodeRekening);
     }//GEN-LAST:event_NoTelpKeyPressed
 
     private void MnRestoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRestoreActionPerformed
-        DlgRestorePeminjamPiutang restore=new DlgRestorePeminjamPiutang(null,true);
+        DlgRestorePemberiHutangLain restore=new DlgRestorePemberiHutangLain(null,true);
         restore.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         restore.setLocationRelativeTo(internalFrame1);
         restore.setVisible(true);
@@ -801,7 +802,7 @@ private void NmPemberiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                 if(akses.getform().equals("KeuanganPemberiHutangLain")){
                     if(rekening.getTabel().getSelectedRow()!= -1){      
                         if(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),3).toString().equals("N")&&
-                            rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("D")){
+                            rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),4).toString().equals("K")){
                             KodeRekening.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),1).toString());
                             NamaRekening.setText(rekening.getTabel().getValueAt(rekening.getTabel().getSelectedRow(),2).toString()); 
                         }else{
@@ -852,7 +853,7 @@ private void NmPemberiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         if(evt.getKeyCode()==KeyEvent.VK_UP){
             BtnAkunActionPerformed(null);
         }else{            
-            Valid.pindah(evt,AlamatPemberiHutang,BtnSimpan);
+            Valid.pindah(evt,NoTelp,BtnSimpan);
         }
     }//GEN-LAST:event_KodeRekeningKeyPressed
 
