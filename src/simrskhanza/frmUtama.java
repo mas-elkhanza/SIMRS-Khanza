@@ -810,6 +810,7 @@ import laporan.DlgPelayananPoli;
 import laporan.DlgPemeriksaanFisikRalanPerPenyakit;
 import laporan.DlgPenyakit;
 import laporan.DlgPenyiapanRM;
+import laporan.DlgPoliAsalPasienRanap;
 import laporan.DlgRL13KetersediaanTempatTidur;
 import laporan.DlgRekapKunjungan;
 import laporan.DlgRekapMutasiBerkas;
@@ -22800,6 +22801,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPoliAsalPasienRanapActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgPoliAsalPasienRanap form=new DlgPoliAsalPasienRanap(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23505,7 +23517,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiHemodialisa,btnSkriningKesehatanGigiMulutDewasa,btnSkriningRisikoKankerServiks,btnCatatanCairanHemodialisa,btnSkriningKesehatanGigiMulutLansia,
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
             btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan,btnBayarPiutangJasaPerusahaan,btnPiutangJasaPerusahaanBelumLunas,
-            btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT;
+            btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap;
     
     public void isWall(){
         try{            
@@ -25497,6 +25509,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getranap_per_ruang()==true){  
                 Panelmenu.add(btnRanapPerRuang);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getpoli_asal_pasien_ranap()==true){  
+                Panelmenu.add(btnPoliAsalPasienRanap);                 
                 jmlmenu++;
             }
             
@@ -31104,6 +31121,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getranap_per_ruang()==true){  
             Panelmenu.add(btnRanapPerRuang);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getpoli_asal_pasien_ranap()==true){  
+            Panelmenu.add(btnPoliAsalPasienRanap);                 
             jmlmenu++;
         }
         
@@ -37447,6 +37469,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnRanapPerRuang);                 
                 jmlmenu++;
             }                
+        }
+        
+        if(akses.getpoli_asal_pasien_ranap()==true){  
+            if(btnPoliAsalPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPoliAsalPasienRanap);                 
+                jmlmenu++;
+            }
         }
         
         if(akses.getpenyakit_ranap_cara_bayar()==true){  
@@ -47999,5 +48028,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPiutangPeminjamanUangBelumLunas.setName("btnPiutangPeminjamanUangBelumLunas");
         btnPiutangPeminjamanUangBelumLunas.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPiutangPeminjamanUangBelumLunas.addActionListener(this::btnPiutangPeminjamanUangBelumLunasActionPerformed);
+        
+        btnPoliAsalPasienRanap = new widget.ButtonBig();
+        btnPoliAsalPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/12565805_analysis_audit_checklist_evaluation_list_icon.png"))); 
+        btnPoliAsalPasienRanap.setText("Poli Asal Pasien Ranap");
+        btnPoliAsalPasienRanap.setIconTextGap(0);
+        btnPoliAsalPasienRanap.setName("btnPoliAsalPasienRanap");
+        btnPoliAsalPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPoliAsalPasienRanap.addActionListener(this::btnPoliAsalPasienRanapActionPerformed);
     }
 }
