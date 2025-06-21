@@ -71,9 +71,9 @@ public final class DlgDokterAsalPasienRanap extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(450);
             }else if(i==2){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(80);
             }else if(i==3){
-                column.setPreferredWidth(85);
+                column.setPreferredWidth(105);
             }
         }
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
@@ -332,9 +332,9 @@ public final class DlgDokterAsalPasienRanap extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));  
                 Sequel.queryu("delete from temporary where temp37='"+akses.getalamatip()+"'");
                 for(int r=0;r<tabMode.getRowCount();r++){ 
-                    Sequel.menyimpan("temporary","'"+r+"','"+tabMode.getValueAt(r,0).toString()+"','"+tabMode.getValueAt(r,1).toString()+"','"+tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
+                    Sequel.menyimpan("temporary","'"+r+"','"+tabMode.getValueAt(r,0).toString()+"','"+tabMode.getValueAt(r,1).toString()+"','"+tabMode.getValueAt(r,2).toString()+"','"+tabMode.getValueAt(r,3).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','"+akses.getalamatip()+"'","Transaksi");
                 }  
-                Valid.MyReportqry("rptPoliAsalPasienRanap.jasper","report","::[ Laporan Poli Asal Pasien Ranap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
+                Valid.MyReportqry("rptDokterAsalPasienRanap.jasper","report","::[ Laporan Dokter Asal Pasien Ranap ]::","select * from temporary where temporary.temp37='"+akses.getalamatip()+"' order by temporary.no",param);
             }
             this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
