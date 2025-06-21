@@ -766,6 +766,7 @@ import keuangan.DlgPendapatanPerAKunClosing;
 import keuangan.DlgRekapBiayaRegistrasi;
 import keuangan.KeuanganBayarPemesananDapur;
 import keuangan.KeuanganBayarPiutangJasaPerusahaan;
+import keuangan.KeuanganBebanHutangLain;
 import keuangan.KeuanganHutangDapurBelumLunas;
 import keuangan.KeuanganNilaiPiutangPerJenisBayarPerBulan;
 import keuangan.KeuanganPemberiHutangLain;
@@ -22838,6 +22839,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBebanHutangLainActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganBebanHutangLain form=new KeuanganBebanHutangLain(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23544,7 +23557,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
             btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan,btnBayarPiutangJasaPerusahaan,btnPiutangJasaPerusahaanBelumLunas,
             btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap,btnPemberiHutangLain,
-            btnDokterAsalPasienRanap;
+            btnDokterAsalPasienRanap,btnBebanHutangLain;
     
     public void isWall(){
         try{            
@@ -26104,6 +26117,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpemberi_hutang_lain()==true){
                 Panelmenu.add(btnPemberiHutangLain);
+                jmlmenu++;
+            }
+            
+            if(akses.getbeban_hutang_lain()==true){
+                Panelmenu.add(btnBebanHutangLain);
                 jmlmenu++;
             }
             
@@ -31725,6 +31743,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpemberi_hutang_lain()==true){
             Panelmenu.add(btnPemberiHutangLain);
+            jmlmenu++;
+        }
+        
+        if(akses.getbeban_hutang_lain()==true){
+            Panelmenu.add(btnBebanHutangLain);
             jmlmenu++;
         }
 
@@ -38309,6 +38332,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnPemberiHutangLain);
                 jmlmenu++;
             }  
+        }
+        
+        if(akses.getbeban_hutang_lain()==true){
+            if(btnBebanHutangLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBebanHutangLain);
+                jmlmenu++;
+            }
         }
         
         if(akses.getbayar_jm_dokter()==true){
@@ -48113,5 +48143,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPemberiHutangLain.setName("btnPemberiHutangLain");
         btnPemberiHutangLain.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPemberiHutangLain.addActionListener(this::btnPemberiHutangLainActionPerformed);
+        
+        btnBebanHutangLain = new widget.ButtonBig();
+        btnBebanHutangLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9554836_finance_business_marketing_chart_office_icon.png"))); 
+        btnBebanHutangLain.setText("Beban Hutang Lain");
+        btnBebanHutangLain.setIconTextGap(0);
+        btnBebanHutangLain.setName("btnBebanHutangLain");
+        btnBebanHutangLain.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBebanHutangLain.addActionListener(this::btnBebanHutangLainActionPerformed);
     }
 }
