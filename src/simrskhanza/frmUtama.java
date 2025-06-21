@@ -789,6 +789,7 @@ import laporan.DlgDataKlasifikasiPasienRanap;
 import laporan.DlgDataSasaranUsiaLansia;
 import laporan.DlgDataSasaranUsiaProduktif;
 import laporan.DlgDemografiUmurKunjungan;
+import laporan.DlgDokterAsalPasienRanap;
 import laporan.DlgDosisRadiologi;
 import rekammedis.RMDataResumePasien;
 import laporan.DlgHarianHAIs2;
@@ -22826,6 +22827,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnDokterAsalPasienRanapActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+        isTutup();
+        DlgDokterAsalPasienRanap form=new DlgDokterAsalPasienRanap(this,false);
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23531,7 +23543,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnCatatanObservasiHemodialisa,btnSkriningKesehatanGigiMulutDewasa,btnSkriningRisikoKankerServiks,btnCatatanCairanHemodialisa,btnSkriningKesehatanGigiMulutLansia,
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
             btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan,btnBayarPiutangJasaPerusahaan,btnPiutangJasaPerusahaanBelumLunas,
-            btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap,btnPemberiHutangLain;
+            btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap,btnPemberiHutangLain,
+            btnDokterAsalPasienRanap;
     
     public void isWall(){
         try{            
@@ -25528,6 +25541,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpoli_asal_pasien_ranap()==true){  
                 Panelmenu.add(btnPoliAsalPasienRanap);                 
+                jmlmenu++;
+            }
+            
+            if(akses.getdokter_asal_pasien_ranap()==true){  
+                Panelmenu.add(btnDokterAsalPasienRanap);                 
                 jmlmenu++;
             }
             
@@ -31145,6 +31163,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpoli_asal_pasien_ranap()==true){  
             Panelmenu.add(btnPoliAsalPasienRanap);                 
+            jmlmenu++;
+        }
+        
+        if(akses.getdokter_asal_pasien_ranap()==true){  
+            Panelmenu.add(btnDokterAsalPasienRanap);                 
             jmlmenu++;
         }
         
@@ -37498,6 +37521,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpoli_asal_pasien_ranap()==true){  
             if(btnPoliAsalPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPoliAsalPasienRanap);                 
+                jmlmenu++;
+            }
+        }
+        
+        if(akses.getdokter_asal_pasien_ranap()==true){  
+            if(btnDokterAsalPasienRanap.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnDokterAsalPasienRanap);                 
                 jmlmenu++;
             }
         }
@@ -48067,6 +48097,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPoliAsalPasienRanap.setName("btnPoliAsalPasienRanap");
         btnPoliAsalPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPoliAsalPasienRanap.addActionListener(this::btnPoliAsalPasienRanapActionPerformed);
+        
+        btnDokterAsalPasienRanap = new widget.ButtonBig();
+        btnDokterAsalPasienRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4698580_chat_conversation_laptop_message_text_icon.png"))); 
+        btnDokterAsalPasienRanap.setText("Dokter Asal Pasien Ranap");
+        btnDokterAsalPasienRanap.setIconTextGap(0);
+        btnDokterAsalPasienRanap.setName("btnDokterAsalPasienRanap");
+        btnDokterAsalPasienRanap.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDokterAsalPasienRanap.addActionListener(this::btnDokterAsalPasienRanapActionPerformed);
         
         btnPemberiHutangLain = new widget.ButtonBig();
         btnPemberiHutangLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6427817_building_business_corporate_office_icon.png"))); 

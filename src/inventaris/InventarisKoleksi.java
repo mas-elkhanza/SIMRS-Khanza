@@ -126,47 +126,6 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         ChkInput.setSelected(false);
         isForm(); 
         
-        barang.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(barang.getTable().getSelectedRow()!= -1){    
-                    kode_barang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());
-                    nama_barang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
-                    nm_produsen.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),3).toString());
-                    nm_merk.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),4).toString());
-                    nm_kategori.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),7).toString());
-                    nm_jenis.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),8).toString());
-                }   
-                kode_barang.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-
-        });
-        
-        barang.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    barang.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-              
         ruang.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -253,8 +212,7 @@ public final class InventarisKoleksi extends javax.swing.JDialog {
         
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-    }
-    private InventarisBarang barang=new InventarisBarang(null,false); 
+    } 
     private InventarisRuang ruang=new InventarisRuang(null,false); 
     private double nilai_inven=0;
     private int pilihan=0;
@@ -1187,6 +1145,47 @@ private void kode_barangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 }//GEN-LAST:event_kode_barangKeyPressed
 
 private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
+    InventarisBarang barang=new InventarisBarang(null,false);
+    barang.addWindowListener(new WindowListener() {
+        @Override
+        public void windowOpened(WindowEvent e) {}
+        @Override
+        public void windowClosing(WindowEvent e) {}
+        @Override
+        public void windowClosed(WindowEvent e) {
+            if(barang.getTable().getSelectedRow()!= -1){    
+                kode_barang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),0).toString());
+                nama_barang.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),1).toString());
+                nm_produsen.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),3).toString());
+                nm_merk.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),4).toString());
+                nm_kategori.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),7).toString());
+                nm_jenis.setText(barang.getTable().getValueAt(barang.getTable().getSelectedRow(),8).toString());
+            }   
+            kode_barang.requestFocus();
+        }
+        @Override
+        public void windowIconified(WindowEvent e) {}
+        @Override
+        public void windowDeiconified(WindowEvent e) {}
+        @Override
+        public void windowActivated(WindowEvent e) {}
+        @Override
+        public void windowDeactivated(WindowEvent e) {}
+
+    });
+
+    barang.getTable().addKeyListener(new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {}
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                barang.dispose();
+            }                
+        }
+        @Override
+        public void keyReleased(KeyEvent e) {}
+    });
     barang.isCek();
     barang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     barang.setLocationRelativeTo(internalFrame1);
