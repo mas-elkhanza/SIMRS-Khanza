@@ -507,8 +507,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
-                int jumlahpasien=0,totaljumlahpasien=0;
-                double jasadokter=0;
+                int jumlahpasien,totaljumlahpasien=0;
+                double jasadokter;
                 while(rs.next()){
                     if(kdpenjab.getText().trim().equals("")){
                         jumlahpasien=Sequel.cariInteger("select count(reg_periksa.no_rawat) from reg_periksa where reg_periksa.status_lanjut='Ranap' and reg_periksa.tgl_registrasi between '"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"' and reg_periksa.kd_dokter='"+rs.getString("kd_dokter")+"'");
@@ -522,7 +522,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                     });
                 }
                 tabMode.addRow(new Object[]{
-                    ">>","Jumlah Total Pasien",totaljumlahpasien,,Valid.SetAngka(totaljumlahpasien*nilaiperujuk)
+                    ">>","Jumlah Total Pasien",totaljumlahpasien,Valid.SetAngka(totaljumlahpasien*nilaiperujuk)
                 });
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
