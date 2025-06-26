@@ -42,7 +42,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
-import toko.TokoBayarPiutang;
 
 /**
  *
