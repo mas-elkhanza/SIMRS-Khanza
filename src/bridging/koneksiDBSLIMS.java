@@ -26,9 +26,13 @@ public class koneksiDBSLIMS {
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTSLIMS"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTSLIMS"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASESLIMS"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
+                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTSLIMS"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTSLIMS"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASESLIMS"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERSLIMS")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASSLIMS")));
+                dataSource.setCachePreparedStatements(true);
+                dataSource.setUseCompression(true);
+                dataSource.setUseLocalSessionState(true);
+                dataSource.setUseLocalTransactionState(true);
                 connection=dataSource.getConnection();       
                 System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging SLIMS...!!!");
             }catch(Exception e){

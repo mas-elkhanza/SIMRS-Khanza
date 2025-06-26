@@ -16,27 +16,27 @@ import javax.swing.JOptionPane;
  *
  * @author khanzasoft
  */
-public class koneksiDBSMARTLAB {
+public class koneksiDBDutaParking {
     private static Connection connection=null;
     private static final Properties prop = new Properties();  
     private static final MysqlDataSource dataSource=new MysqlDataSource();
     
-    public koneksiDBSMARTLAB(){} 
+    public koneksiDBDutaParking(){} 
     public static Connection condb(){ 
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTSMARTLAB"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTSMARTLAB"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASESMARTLAB"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
-                dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERSMARTLAB")));
-                dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASSMARTLAB")));
+                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTDUTAPARKING"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTDUTAPARKING"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASEDUTAPARKING"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
+                dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERDUTAPARKING")));
+                dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASDUTAPARKING")));
                 dataSource.setCachePreparedStatements(true);
                 dataSource.setUseCompression(true);
                 dataSource.setUseLocalSessionState(true);
                 dataSource.setUseLocalTransactionState(true);
                 connection=dataSource.getConnection();       
-                System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging SMARTLAB...!!!");
+                System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging ELIMS...!!!");
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"Koneksi ke server bridging SMARTLAB terputus : "+e);
+                JOptionPane.showMessageDialog(null,"Koneksi ke server bridging ELIMS terputus : "+e);
             }
         }
         return connection;        
