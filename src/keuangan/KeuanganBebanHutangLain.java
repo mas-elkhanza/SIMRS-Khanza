@@ -129,7 +129,7 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         
         NoNota.setDocument(new batasInput((byte)20).getKata(NoNota));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
-        NominalPinjam.setDocument(new batasInput((byte)15).getOnlyAngka(NominalPinjam));
+        NilaiHutang.setDocument(new batasInput((byte)15).getOnlyAngka(NilaiHutang));
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -241,17 +241,17 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         label36 = new widget.Label();
         Keterangan = new widget.TextBox();
         label16 = new widget.Label();
-        KdPeminjam = new widget.TextBox();
-        NmPeminjam = new widget.TextBox();
+        KdPemberiHutang = new widget.TextBox();
+        NmPemberiHutang = new widget.TextBox();
         Tanggal = new widget.Tanggal();
-        BtnPeminjam = new widget.Button();
+        BtnPemberiHutang = new widget.Button();
         label17 = new widget.Label();
         KdPetugas = new widget.TextBox();
         NmPetugas = new widget.TextBox();
         BtnPetugas = new widget.Button();
         label33 = new widget.Label();
         Tempo = new widget.Tanggal();
-        NominalPinjam = new widget.TextBox();
+        NilaiHutang = new widget.TextBox();
         label37 = new widget.Label();
 
         Kd2.setHighlighter(null);
@@ -583,22 +583,22 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         FormInput.add(label16);
         label16.setBounds(330, 10, 100, 23);
 
-        KdPeminjam.setEditable(false);
-        KdPeminjam.setName("KdPeminjam"); // NOI18N
-        KdPeminjam.setPreferredSize(new java.awt.Dimension(80, 23));
-        KdPeminjam.addKeyListener(new java.awt.event.KeyAdapter() {
+        KdPemberiHutang.setEditable(false);
+        KdPemberiHutang.setName("KdPemberiHutang"); // NOI18N
+        KdPemberiHutang.setPreferredSize(new java.awt.Dimension(80, 23));
+        KdPemberiHutang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdPeminjamKeyPressed(evt);
+                KdPemberiHutangKeyPressed(evt);
             }
         });
-        FormInput.add(KdPeminjam);
-        KdPeminjam.setBounds(434, 10, 70, 23);
+        FormInput.add(KdPemberiHutang);
+        KdPemberiHutang.setBounds(434, 10, 70, 23);
 
-        NmPeminjam.setEditable(false);
-        NmPeminjam.setName("NmPeminjam"); // NOI18N
-        NmPeminjam.setPreferredSize(new java.awt.Dimension(207, 23));
-        FormInput.add(NmPeminjam);
-        NmPeminjam.setBounds(506, 10, 254, 23);
+        NmPemberiHutang.setEditable(false);
+        NmPemberiHutang.setName("NmPemberiHutang"); // NOI18N
+        NmPemberiHutang.setPreferredSize(new java.awt.Dimension(207, 23));
+        FormInput.add(NmPemberiHutang);
+        NmPemberiHutang.setBounds(506, 10, 254, 23);
 
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
@@ -610,17 +610,17 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         FormInput.add(Tanggal);
         Tanggal.setBounds(78, 40, 90, 23);
 
-        BtnPeminjam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPeminjam.setMnemonic('1');
-        BtnPeminjam.setToolTipText("ALt+1");
-        BtnPeminjam.setName("BtnPeminjam"); // NOI18N
-        BtnPeminjam.addActionListener(new java.awt.event.ActionListener() {
+        BtnPemberiHutang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPemberiHutang.setMnemonic('1');
+        BtnPemberiHutang.setToolTipText("ALt+1");
+        BtnPemberiHutang.setName("BtnPemberiHutang"); // NOI18N
+        BtnPemberiHutang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPeminjamActionPerformed(evt);
+                BtnPemberiHutangActionPerformed(evt);
             }
         });
-        FormInput.add(BtnPeminjam);
-        BtnPeminjam.setBounds(762, 10, 28, 23);
+        FormInput.add(BtnPemberiHutang);
+        BtnPemberiHutang.setBounds(762, 10, 28, 23);
 
         label17.setText("Petugas :");
         label17.setName("label17"); // NOI18N
@@ -668,15 +668,15 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         FormInput.add(Tempo);
         Tempo.setBounds(224, 40, 90, 23);
 
-        NominalPinjam.setHighlighter(null);
-        NominalPinjam.setName("NominalPinjam"); // NOI18N
-        NominalPinjam.addKeyListener(new java.awt.event.KeyAdapter() {
+        NilaiHutang.setHighlighter(null);
+        NilaiHutang.setName("NilaiHutang"); // NOI18N
+        NilaiHutang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NominalPinjamKeyPressed(evt);
+                NilaiHutangKeyPressed(evt);
             }
         });
-        FormInput.add(NominalPinjam);
-        NominalPinjam.setBounds(670, 70, 120, 23);
+        FormInput.add(NilaiHutang);
+        NilaiHutang.setBounds(670, 70, 120, 23);
 
         label37.setText("Nilai Hutang : Rp.");
         label37.setName("label37"); // NOI18N
@@ -700,10 +700,10 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
        if(NoNota.getText().trim().equals("")){
             Valid.textKosong(NoNota,"No.Tagihan/No.Rawat");
-        }else if(NominalPinjam.getText().trim().equals("")||NominalPinjam.getText().trim().equals("0")){
-            Valid.textKosong(NominalPinjam,"Nominal Pinjam");
-        }else if(KdPeminjam.getText().trim().equals("")||NmPeminjam.getText().trim().equals("")){
-            Valid.textKosong(KdPeminjam,"Peminjam");
+        }else if(NilaiHutang.getText().trim().equals("")||NilaiHutang.getText().trim().equals("0")){
+            Valid.textKosong(NilaiHutang,"Nominal Pinjam");
+        }else if(KdPemberiHutang.getText().trim().equals("")||NmPemberiHutang.getText().trim().equals("")){
+            Valid.textKosong(KdPemberiHutang,"Peminjam");
         }else if(KdPetugas.getText().trim().equals("")||NmPetugas.getText().trim().equals("")){
             Valid.textKosong(KdPetugas,"Petugas");
         }else{            
@@ -750,7 +750,7 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,NominalPinjam,BtnBatal);
+            Valid.pindah(evt,NilaiHutang,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -888,7 +888,7 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnCariKeyPressed
 
 private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-   Valid.pindah(evt,KdPeminjam,NominalPinjam);
+   Valid.pindah(evt,KdPemberiHutang,NilaiHutang);
 }//GEN-LAST:event_KeteranganKeyPressed
 
     private void Kd2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kd2KeyPressed
@@ -912,10 +912,10 @@ private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         tampil();
     }//GEN-LAST:event_BtnAllActionPerformed
 
-private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPeminjamActionPerformed
+private void BtnPemberiHutangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPemberiHutangActionPerformed
         kontraakun="";
         namakontraakun="";
-        DlgCariPeminjamPiutang peminjam=new DlgCariPeminjamPiutang(null,false);
+        DlgCariPemberiHutang peminjam=new DlgCariPemberiHutang(null,false);
         peminjam.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -924,11 +924,11 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             @Override
             public void windowClosed(WindowEvent e) {
                 if(peminjam.getTable().getSelectedRow()!= -1){
-                    KdPeminjam.setText(peminjam.getTable().getValueAt(peminjam.getTable().getSelectedRow(),0).toString());
-                    NmPeminjam.setText(peminjam.getTable().getValueAt(peminjam.getTable().getSelectedRow(),1).toString());
+                    KdPemberiHutang.setText(peminjam.getTable().getValueAt(peminjam.getTable().getSelectedRow(),0).toString());
+                    NmPemberiHutang.setText(peminjam.getTable().getValueAt(peminjam.getTable().getSelectedRow(),1).toString());
                     kontraakun=peminjam.getTable().getValueAt(peminjam.getTable().getSelectedRow(),4).toString();
                     namakontraakun=peminjam.getTable().getValueAt(peminjam.getTable().getSelectedRow(),5).toString();
-                    BtnPeminjam.requestFocus();
+                    BtnPemberiHutang.requestFocus();
                 }      
             }
             @Override
@@ -959,7 +959,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         peminjam.setLocationRelativeTo(internalFrame1);
         peminjam.setAlwaysOnTop(false);
         peminjam.setVisible(true);
-}//GEN-LAST:event_BtnPeminjamActionPerformed
+}//GEN-LAST:event_BtnPemberiHutangActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -988,17 +988,17 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
     }//GEN-LAST:event_BtnBatalKeyPressed
 
-    private void NominalPinjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NominalPinjamKeyPressed
+    private void NilaiHutangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiHutangKeyPressed
         Valid.pindah(evt,Keterangan,BtnSimpan);
-    }//GEN-LAST:event_NominalPinjamKeyPressed
+    }//GEN-LAST:event_NilaiHutangKeyPressed
 
-    private void KdPeminjamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPeminjamKeyPressed
+    private void KdPemberiHutangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdPemberiHutangKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnPeminjamActionPerformed(null);
+            BtnPemberiHutangActionPerformed(null);
         }else{
             //Valid.pindah(evt,AkunBayar,Keterangan);
         }
-    }//GEN-LAST:event_KdPeminjamKeyPressed
+    }//GEN-LAST:event_KdPemberiHutangKeyPressed
 
     private void ppBayarPiutangBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBayarPiutangBtnPrintActionPerformed
         if(tabMode.getRowCount()==0){
@@ -1043,23 +1043,23 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPeminjam;
+    private widget.Button BtnPemberiHutang;
     private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
     private widget.panelisi FormInput;
     private widget.TextBox Kd2;
-    private widget.TextBox KdPeminjam;
+    private widget.TextBox KdPemberiHutang;
     private widget.TextBox KdPetugas;
     private widget.TextBox Keterangan;
     private widget.Label LCount;
     private widget.Label LTotal;
     private widget.Label LTotal1;
-    private widget.TextBox NmPeminjam;
+    private widget.TextBox NilaiHutang;
+    private widget.TextBox NmPemberiHutang;
     private widget.TextBox NmPetugas;
     private widget.TextBox NoNota;
-    private widget.TextBox NominalPinjam;
     private javax.swing.JPanel PanelInput;
     private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll;
@@ -1146,12 +1146,12 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     public void emptTeks() {
         ChkInput.setSelected(true);
         isForm();
-        NominalPinjam.setText("");
+        NilaiHutang.setText("");
         Tanggal.setDate(new Date());
         Tempo.setDate(new Date());
         Keterangan.setText("");
-        KdPeminjam.setText("");
-        NmPeminjam.setText("");
+        KdPemberiHutang.setText("");
+        NmPemberiHutang.setText("");
         kontraakun="";
         namakontraakun="";
         autoNomor();

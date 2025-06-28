@@ -425,7 +425,7 @@ public final class DlgCariPeminjamPiutang extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(akses.getadmin());
+        BtnTambah.setEnabled(akses.getpeminjam_piutang());
     }
     
     private void tampil2() {

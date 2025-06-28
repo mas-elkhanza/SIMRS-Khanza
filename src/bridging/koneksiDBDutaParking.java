@@ -34,9 +34,9 @@ public class koneksiDBDutaParking {
                 dataSource.setUseLocalSessionState(true);
                 dataSource.setUseLocalTransactionState(true);
                 connection=dataSource.getConnection();       
-                System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging ELIMS...!!!");
+                System.out.println("  Koneksi Berhasil. Menyambungkan ke database Duta Parking...!!!");
             }catch(Exception e){
-                JOptionPane.showMessageDialog(null,"Koneksi ke server bridging ELIMS terputus : "+e);
+                JOptionPane.showMessageDialog(null,"Koneksi ke server Duta Parking terputus : "+e);
             }
         }
         return connection;        

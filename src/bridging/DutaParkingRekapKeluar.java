@@ -1,11 +1,9 @@
 package bridging;
-import fungsi.koneksiDB;
 import fungsi.validasi;
 import fungsi.akses;
 import fungsi.batasInput;
 import java.awt.Cursor;
 import java.awt.Desktop;
-import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -437,7 +435,12 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     ps.setString(10,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
+                double totalparkir=0,totalinap=0,totaldenda=0,totalbermasalah=0;
                 while(rs.next()){
+                    totalparkir = totalparkir+rs.getDouble("parkir");
+                    totalinap = totalinap+rs.getDouble("inap");
+                    totaldenda = totaldenda+rs.getDouble("denda");
+                    totalbermasalah = totalbermasalah+rs.getDouble("tiketmasalah");
                     htmlContent.append("<tr class='isi'>").
                                     append("<td align='center'>").append(rs.getString("kode")).append("</td>").
                                     append("<td align='center'>").append(rs.getString("nopol")).append("</td>").
@@ -447,11 +450,11 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                     append("<td align='center'>").append(rs.getString("pintum")).append("</td>").
                                     append("<td align='center'>").append(rs.getString("pintuk")).append("</td>").
                                     append("<td align='center'>").append(rs.getString("jenisk")).append("</td>").
-                                    append("<td align='center'>").append(rs.getString("tarif")).append("</td>").
-                                    append("<td align='center'>").append(rs.getString("parkir")).append("</td>").
-                                    append("<td align='center'>").append(rs.getString("inap")).append("</td>").
-                                    append("<td align='center'>").append(rs.getString("denda")).append("</td>").
-                                    append("<td align='center'>").append(rs.getString("tiketmasalah")).append("</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(rs.getDouble("tarif"))).append("</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(rs.getDouble("parkir"))).append("</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(rs.getDouble("inap"))).append("</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(rs.getDouble("denda"))).append("</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(rs.getDouble("tiketmasalah"))).append("</td>").
                                     append("<td align='center'>").append(rs.getString("paket")).append("</td>").
                                     append("<td align='center'>").append(rs.getString("kadaluarsa")).append("</td>").
                                     append("<td align='center'>").append(rs.getString("rfid")).append("</td>").
@@ -462,6 +465,14 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                     append("<td align='center'>").append(rs.getString("tipe")).append("</td>").
                                 append("</tr>");
                 }
+                htmlContent.append("<tr class='isi'>").
+                                    append("<td align='right' colspan='9'>Total :</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(totalparkir)).append("</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(totalinap)).append("</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(totaldenda)).append("</td>").
+                                    append("<td align='center'>").append(Valid.SetAngka(totalbermasalah)).append("</td>").
+                                append("<td align='center' colspan='8'></td>").
+                                append("</tr>");
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
