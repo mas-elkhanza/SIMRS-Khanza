@@ -735,7 +735,7 @@ public final class KeuanganPiutangPeminjamanUang extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
        if(NoNota.getText().trim().equals("")){
-            Valid.textKosong(NoNota,"No.Tagihan/No.Rawat");
+            Valid.textKosong(NoNota,"No.Nota");
         }else if(NominalPinjam.getText().trim().equals("")||NominalPinjam.getText().trim().equals("0")){
             Valid.textKosong(NominalPinjam,"Nominal Pinjam");
         }else if(KdPeminjam.getText().trim().equals("")||NmPeminjam.getText().trim().equals("")){

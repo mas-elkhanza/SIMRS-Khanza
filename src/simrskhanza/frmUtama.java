@@ -48183,7 +48183,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBebanHutangLain.addActionListener(this::btnBebanHutangLainActionPerformed);
         
         btnRekapKeluarDutaParking = new widget.ButtonBig();
-        btnRekapKeluarDutaParking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8333859_wish_list_checklist_icon.png"))); 
+        btnRekapKeluarDutaParking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/22989_cabriolet_car_mazda_red_transport_icon.png"))); 
         btnRekapKeluarDutaParking.setText("Rekap Keluar Duta Parking");
         btnRekapKeluarDutaParking.setIconTextGap(0);
         btnRekapKeluarDutaParking.setName("btnRekapKeluarDutaParking");

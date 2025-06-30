@@ -465,14 +465,16 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                     append("<td align='center'>").append(rs.getString("tipe")).append("</td>").
                                 append("</tr>");
                 }
-                htmlContent.append("<tr class='isi'>").
-                                    append("<td align='right' colspan='9'>Total :</td>").
-                                    append("<td align='center'>").append(Valid.SetAngka(totalparkir)).append("</td>").
-                                    append("<td align='center'>").append(Valid.SetAngka(totalinap)).append("</td>").
-                                    append("<td align='center'>").append(Valid.SetAngka(totaldenda)).append("</td>").
-                                    append("<td align='center'>").append(Valid.SetAngka(totalbermasalah)).append("</td>").
-                                append("<td align='center' colspan='8'></td>").
-                                append("</tr>");
+                if((totalparkir>0)||(totalinap>0)||(totaldenda>0)||(totalbermasalah>0)){
+                    htmlContent.append("<tr class='isi'>").
+                                        append("<td align='right' colspan='9'>Total :</td>").
+                                        append("<td align='center'>").append(Valid.SetAngka(totalparkir)).append("</td>").
+                                        append("<td align='center'>").append(Valid.SetAngka(totalinap)).append("</td>").
+                                        append("<td align='center'>").append(Valid.SetAngka(totaldenda)).append("</td>").
+                                        append("<td align='center'>").append(Valid.SetAngka(totalbermasalah)).append("</td>").
+                                    append("<td align='center' colspan='8'></td>").
+                                    append("</tr>");
+                }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             } finally{
