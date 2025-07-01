@@ -247,7 +247,8 @@ public final class akses {
             catatan_pengkajian_paska_operasi=false,skrining_frailty_syndrome=false,sirkulasi_cssd=false,lama_pelayanan_cssd=false,catatan_observasi_bayi=false,
             riwayat_surat_peringatan=false,master_kesimpulan_anjuran_mcu=false,kategori_piutang_jasa_perusahaan=false,piutang_jasa_perusahaan=false,bayar_piutang_jasa_perusahaan=false,
             piutang_jasa_perusahaan_belum_lunas=false,checklist_kesiapan_anestesi=false,piutang_peminjaman_uang_belum_lunas=false,hasil_pemeriksaan_slit_lamp=false,
-            hasil_pemeriksaan_oct=false,beban_hutang_lain=false,poli_asal_pasien_ranap=false,pemberi_hutang_lain=false,dokter_asal_pasien_ranap=false,duta_parkir_rekap_keluar=false;
+            hasil_pemeriksaan_oct=false,beban_hutang_lain=false,poli_asal_pasien_ranap=false,pemberi_hutang_lain=false,dokter_asal_pasien_ranap=false,duta_parkir_rekap_keluar=false,
+            surat_keterangan_layak_terbang=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1407,6 +1408,7 @@ public final class akses {
                         akses.pemberi_hutang_lain=true;
                         akses.dokter_asal_pasien_ranap=true;
                         akses.duta_parkir_rekap_keluar=true;
+                        akses.surat_keterangan_layak_terbang=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2550,6 +2552,7 @@ public final class akses {
                         akses.pemberi_hutang_lain=rs2.getBoolean("pemberi_hutang_lain");
                         akses.dokter_asal_pasien_ranap=rs2.getBoolean("dokter_asal_pasien_ranap");
                         akses.duta_parkir_rekap_keluar=rs2.getBoolean("duta_parkir_rekap_keluar");
+                        akses.surat_keterangan_layak_terbang=rs2.getBoolean("surat_keterangan_layak_terbang");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3716,6 +3719,7 @@ public final class akses {
         akses.pemberi_hutang_lain=false;
         akses.dokter_asal_pasien_ranap=false;
         akses.duta_parkir_rekap_keluar=false;
+        akses.surat_keterangan_layak_terbang=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -4896,4 +4900,5 @@ public final class akses {
     public static boolean getpemberi_hutang_lain(){return akses.pemberi_hutang_lain;}
     public static boolean getdokter_asal_pasien_ranap(){return akses.dokter_asal_pasien_ranap;}
     public static boolean getduta_parkir_rekap_keluar(){return akses.duta_parkir_rekap_keluar;}
+    public static boolean getsurat_keterangan_layak_terbang(){return akses.surat_keterangan_layak_terbang;}
 }   

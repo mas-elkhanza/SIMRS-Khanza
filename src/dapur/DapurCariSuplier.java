@@ -427,7 +427,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
     
     public void isCek(){
-        BtnTambah.setEnabled(akses.getsuplier());
+        BtnTambah.setEnabled(akses.getdapur_suplier());
     }
     
 }
