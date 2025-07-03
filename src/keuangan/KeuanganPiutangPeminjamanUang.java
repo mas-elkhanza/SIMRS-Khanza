@@ -1242,6 +1242,7 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         BtnSimpan.setEnabled(akses.getpiutang_lainlain());
         BtnHapus.setEnabled(akses.getpiutang_lainlain());
         BtnPrint.setEnabled(akses.getpiutang_lainlain());
+        ppBayarPiutang.setEnabled(akses.getbayar_piutang_lain());
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
