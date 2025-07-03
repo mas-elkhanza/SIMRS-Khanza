@@ -420,7 +420,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         tabModePemeriksaan=new DefaultTableModel(null,new Object[]{
             "P","No.Rawat","No.R.M.","Nama Pasien","Tgl.Rawat","Jam","Suhu(C)","Tensi","Nadi(/menit)",
             "Respirasi(/menit)","Tinggi(Cm)","Berat(Kg)","SpO2(%)","GCS(E,V,M)","Kesadaran","Subjek","Objek","Alergi","Asesmen","Plan",
-            "Instruksi","Evaluasi","NIP","Dokter/Paramedis","Profesi/Jabatan"}){
+            "Inst/Impl","Evaluasi","NIP","Dokter/Paramedis","Profesi/Jabatan"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
                 if (colIndex==0) {
@@ -2290,7 +2290,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         panelGlass12.add(jLabel54);
         jLabel54.setBounds(0, 40, 190, 23);
 
-        jLabel55.setText("Instruksi :");
+        jLabel55.setText("Inst/Impl :");
         jLabel55.setName("jLabel55"); // NOI18N
         panelGlass12.add(jLabel55);
         jLabel55.setBounds(450, 139, 90, 23);

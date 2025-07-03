@@ -48221,7 +48221,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRekapKeluarDutaParking.addActionListener(this::btnRekapKeluarDutaParkingActionPerformed);
         
         btnSuratKeteranganLayakTerbang = new widget.ButtonBig();
-        btnSuratKeteranganLayakTerbang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/11334216_aircraft_airplane_travel_plane_light aircraft_icon.png"))); 
+        btnSuratKeteranganLayakTerbang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088199_plane_prohibit_travel_warning_icon.png"))); 
         btnSuratKeteranganLayakTerbang.setText("Surat Keterangan Layak Terbang");
         btnSuratKeteranganLayakTerbang.setIconTextGap(0);
         btnSuratKeteranganLayakTerbang.setName("btnSuratKeteranganLayakTerbang");

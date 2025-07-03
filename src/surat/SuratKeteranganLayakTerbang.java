@@ -77,7 +77,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(65);
             }else if(i==5){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(62);
             }else if(i==6){
                 column.setPreferredWidth(90);
             }else if(i==7){
@@ -129,7 +129,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnCetakSuratBebasTato = new javax.swing.JMenuItem();
+        MnCetakSuratKeterangan = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -168,19 +168,19 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnCetakSuratBebasTato.setBackground(new java.awt.Color(255, 255, 254));
-        MnCetakSuratBebasTato.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnCetakSuratBebasTato.setForeground(new java.awt.Color(50, 50, 50));
-        MnCetakSuratBebasTato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnCetakSuratBebasTato.setText("Cetak Surat Keterangan Bertato/ Tidak Bertato");
-        MnCetakSuratBebasTato.setName("MnCetakSuratBebasTato"); // NOI18N
-        MnCetakSuratBebasTato.setPreferredSize(new java.awt.Dimension(316, 18));
-        MnCetakSuratBebasTato.addActionListener(new java.awt.event.ActionListener() {
+        MnCetakSuratKeterangan.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakSuratKeterangan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakSuratKeterangan.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakSuratKeterangan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakSuratKeterangan.setText("Cetak Surat Keterangan Layak Terbang");
+        MnCetakSuratKeterangan.setName("MnCetakSuratKeterangan"); // NOI18N
+        MnCetakSuratKeterangan.setPreferredSize(new java.awt.Dimension(260, 18));
+        MnCetakSuratKeterangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCetakSuratBebasTatoActionPerformed(evt);
+                MnCetakSuratKeteranganActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnCetakSuratBebasTato);
+        jPopupMenu1.add(MnCetakSuratKeterangan);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -505,7 +505,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
         jLabel5.setText("Kehamilan :");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
-        jLabel5.setBounds(445, 40, 68, 23);
+        jLabel5.setBounds(447, 40, 68, 23);
 
         Kehamilan.setHighlighter(null);
         Kehamilan.setName("Kehamilan"); // NOI18N
@@ -515,7 +515,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
             }
         });
         FormInput.add(Kehamilan);
-        Kehamilan.setBounds(517, 40, 65, 23);
+        Kehamilan.setBounds(519, 40, 63, 23);
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel8.setText("Minggu");
@@ -676,33 +676,32 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             tgl=" surat_keterangan_layak_terbang.tanggal_periksa between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' ";
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataSuratBebasTato.jasper","report","::[ Data Surat Keterangan Bebas Tato ]::",
+                Valid.MyReportqry("rptDataSuratLayakTerbang.jasper","report","::[ Data Surat Keterangan Layak Terbang ]::",
                      "select surat_keterangan_layak_terbang.no_surat,surat_keterangan_layak_terbang.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                     "surat_keterangan_layak_terbang.tanggal_periksa,surat_keterangan_layak_terbang.kehamilan,reg_periksa.kd_dokter,dokter.nm_dokter,surat_keterangan_layak_terbang.keperluan "+                  
+                     "surat_keterangan_layak_terbang.tanggal_periksa,surat_keterangan_layak_terbang.kehamilan,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
                      "from surat_keterangan_layak_terbang inner join reg_periksa on surat_keterangan_layak_terbang.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
                      "where "+tgl+"order by surat_keterangan_layak_terbang.no_surat",param);
             }else{
-                Valid.MyReportqry("rptDataSuratBebasTato.jasper","report","::[ Data Surat Keterangan Bebas Tato ]::",
+                Valid.MyReportqry("rptDataSuratLayakTerbang.jasper","report","::[ Data Surat Keterangan Layak Terbang ]::",
                      "select surat_keterangan_layak_terbang.no_surat,surat_keterangan_layak_terbang.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
-                     "surat_keterangan_layak_terbang.tanggal_periksa,surat_keterangan_layak_terbang.kehamilan,reg_periksa.kd_dokter,dokter.nm_dokter,surat_keterangan_layak_terbang.keperluan "+                  
+                     "surat_keterangan_layak_terbang.tanggal_periksa,surat_keterangan_layak_terbang.kehamilan,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
                      "from surat_keterangan_layak_terbang inner join reg_periksa on surat_keterangan_layak_terbang.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
                      "where "+tgl+"and (no_surat like '%"+TCari.getText().trim()+"%' or surat_keterangan_layak_terbang.no_rawat like '%"+TCari.getText().trim()+"%' or "+
                      "reg_periksa.no_rkm_medis like '%"+TCari.getText().trim()+"%' or  pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                     "surat_keterangan_layak_terbang.tanggal_periksa like '%"+TCari.getText().trim()+"%' or surat_keterangan_layak_terbang.keperluan like '%"+TCari.getText().trim()+"%') "+                    
+                     "surat_keterangan_layak_terbang.tanggal_periksa like '%"+TCari.getText().trim()+"%') "+                    
                      "order by surat_keterangan_layak_terbang.no_surat",param);
             }
-            
         }
         this.setCursor(Cursor.getDefaultCursor());        
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -780,7 +779,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbObatKeyReleased
 
-    private void MnCetakSuratBebasTatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratBebasTatoActionPerformed
+    private void MnCetakSuratKeteranganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakSuratKeteranganActionPerformed
        if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
         }else{
@@ -795,17 +794,18 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
                 finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
                 param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),6).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString()));  
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptSuratBebasTato.jasper","report","::[ Surat Keterangan Bertato/ Tidak Bertato ]::",
-                              " select surat_keterangan_layak_terbang.no_surat,DATE_FORMAT(surat_keterangan_layak_terbang.tanggal_periksa,'%d-%m-%Y')as tanggal_periksa,surat_keterangan_layak_terbang.kehamilan,dokter.nm_dokter,pasien.jk," +
-                              " pasien.nm_pasien,DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y')as tgl_lahir,pasien.tmp_lahir,pasien.pekerjaan,dokter.kd_dokter,"+
-                              " concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,surat_keterangan_layak_terbang.keperluan" +
-                              " from surat_keterangan_layak_terbang inner join reg_periksa inner join pasien inner join dokter inner join kelurahan inner join kecamatan inner join kabupaten" +
-                              " on reg_periksa.no_rkm_medis=pasien.no_rkm_medis and reg_periksa.kd_dokter=dokter.kd_dokter and pasien.kd_kel=kelurahan.kd_kel and "+
-                              " pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab and reg_periksa.no_rawat=surat_keterangan_layak_terbang.no_rawat "+
-                              " where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
+                Valid.MyReportqry("rptSuratLayakTerbang.jasper","report","::[ Surat Keterangan Layak Terbang ]::",
+                        "select surat_keterangan_layak_terbang.no_surat,surat_keterangan_layak_terbang.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                        "pasien.alamat,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,propinsi.nm_prop,pasien.jk,pasien.pekerjaan,reg_periksa.umurdaftar,"+
+                        "reg_periksa.sttsumur,surat_keterangan_layak_terbang.tanggal_periksa,surat_keterangan_layak_terbang.kehamilan,reg_periksa.kd_dokter,"+
+                        "dokter.nm_dokter from surat_keterangan_layak_terbang inner join reg_periksa on surat_keterangan_layak_terbang.no_rawat=reg_periksa.no_rawat "+
+                        "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
+                        "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec "+
+                        "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
+                        "where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",param);
                 this.setCursor(Cursor.getDefaultCursor());  
        }
-    }//GEN-LAST:event_MnCetakSuratBebasTatoActionPerformed
+    }//GEN-LAST:event_MnCetakSuratKeteranganActionPerformed
 
     private void DTPCari1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DTPCari1ActionPerformed
         // TODO add your handling code here:
@@ -850,7 +850,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.TextBox Kehamilan;
     private widget.Label LCount;
-    private javax.swing.JMenuItem MnCetakSuratBebasTato;
+    private javax.swing.JMenuItem MnCetakSuratKeterangan;
     private widget.TextBox NoSurat;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -888,7 +888,7 @@ public final class SuratKeteranganLayakTerbang extends javax.swing.JDialog {
                      "where "+tgl+"order by surat_keterangan_layak_terbang.no_surat");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select surat_keterangan_layak_terbang.no_surat,surat_keterangan_layak_terbang.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
+                     "select surat_keterangan_layak_terbang.no_surat,surat_keterangan_layak_terbang.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,"+
                      "surat_keterangan_layak_terbang.tanggal_periksa,surat_keterangan_layak_terbang.kehamilan,reg_periksa.kd_dokter,dokter.nm_dokter "+                  
                      "from surat_keterangan_layak_terbang inner join reg_periksa on surat_keterangan_layak_terbang.no_rawat=reg_periksa.no_rawat "+
                      "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join dokter on dokter.kd_dokter=reg_periksa.kd_dokter "+
