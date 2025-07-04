@@ -765,6 +765,7 @@ import keuangan.DlgPengeluaranPengeluaran;
 import keuangan.DlgPendapatanPerAKun;
 import keuangan.DlgPendapatanPerAKunClosing;
 import keuangan.DlgRekapBiayaRegistrasi;
+import keuangan.KeuanganBayarBebanHutangLain;
 import keuangan.KeuanganBayarPemesananDapur;
 import keuangan.KeuanganBayarPiutangJasaPerusahaan;
 import keuangan.KeuanganBebanHutangLain;
@@ -22877,6 +22878,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnBayarBebanHutangLainActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        KeuanganBayarBebanHutangLain aplikasi=new KeuanganBayarBebanHutangLain(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23583,7 +23597,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
             btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan,btnBayarPiutangJasaPerusahaan,btnPiutangJasaPerusahaanBelumLunas,
             btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap,btnPemberiHutangLain,
-            btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang;
+            btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain;
     
     public void isWall(){
         try{            
@@ -26148,6 +26162,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getbeban_hutang_lain()==true){
                 Panelmenu.add(btnBebanHutangLain);
+                jmlmenu++;
+            }
+            
+            if(akses.getbayar_beban_hutang_lain()==true){
+                Panelmenu.add(btnBayarBebanHutangLain);
                 jmlmenu++;
             }
             
@@ -31784,6 +31803,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getbeban_hutang_lain()==true){
             Panelmenu.add(btnBebanHutangLain);
+            jmlmenu++;
+        }
+        
+        if(akses.getbayar_beban_hutang_lain()==true){
+            Panelmenu.add(btnBayarBebanHutangLain);
             jmlmenu++;
         }
 
@@ -38383,6 +38407,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getbeban_hutang_lain()==true){
             if(btnBebanHutangLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnBebanHutangLain);
+                jmlmenu++;
+            }
+        }
+        
+        if(akses.getbayar_beban_hutang_lain()==true){
+            if(btnBayarBebanHutangLain.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnBayarBebanHutangLain);
                 jmlmenu++;
             }
         }
@@ -48211,6 +48242,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnBebanHutangLain.setName("btnBebanHutangLain");
         btnBebanHutangLain.setPreferredSize(new java.awt.Dimension(200, 90));
         btnBebanHutangLain.addActionListener(this::btnBebanHutangLainActionPerformed);
+        
+        btnBayarBebanHutangLain = new widget.ButtonBig();
+        btnBayarBebanHutangLain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9554841_finance_business_office_marketing_chart_icon.png"))); 
+        btnBayarBebanHutangLain.setText("Bayar Beban Hutang Lain");
+        btnBayarBebanHutangLain.setIconTextGap(0);
+        btnBayarBebanHutangLain.setName("btnBayarBebanHutangLain");
+        btnBayarBebanHutangLain.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnBayarBebanHutangLain.addActionListener(this::btnBayarBebanHutangLainActionPerformed);
         
         btnRekapKeluarDutaParking = new widget.ButtonBig();
         btnRekapKeluarDutaParking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/22989_cabriolet_car_mazda_red_transport_icon.png"))); 
