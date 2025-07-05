@@ -72,7 +72,7 @@ public final class KeuanganBebanHutangLain extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Nota","Tgl.Piutang","NIP","Nama Petugas","Kode","Nama Pemberi Hutang","Keterangan","Tgl.Tempo","Nilai Hutang","Sisa Piutang","Status"}){
+            "No.Nota","Tgl.Hutang","NIP","Nama Petugas","Kode","Nama Pemberi Hutang","Keterangan","Tgl.Tempo","Nilai Hutang","Sisa Hutang","Status"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                  java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,java.lang.String.class,
