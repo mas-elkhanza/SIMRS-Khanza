@@ -33,13 +33,14 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
-    private final DefaultTableModel tabModeBayarPesanObat,tabModeBayarPesanNonMedis,tabModeBayarPesanAset,tabModeBayarPesanDapur,tabModeBayarJM,tabModePengeluaranHarian;
+    private final DefaultTableModel tabModeBayarPesanObat,tabModeBayarPesanNonMedis,tabModeBayarPesanAset,tabModeBayarPesanDapur,tabModeBayarJM,
+                                    tabModePengeluaranHarian,tabModeBebanHutang;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private double bayarobat=0,bayarnonmedis=0,bayaraset=0,bayardapur=0,bayarjm=0,pengeluaranharian=0;
+    private double bayarobat=0,bayarnonmedis=0,bayaraset=0,bayardapur=0,bayarjm=0,pengeluaranharian=0,bayarbebanhutang=0;
 
     /** Creates new form DlgLhtBiaya
      * @param parent
@@ -267,6 +268,46 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
             }
         }
         tbPengeluaranHarian.setDefaultRenderer(Object.class, new WarnaTable());
+        
+        tabModeBebanHutang=new DefaultTableModel(null,new Object[]{
+            "Tgl.Bayar","Kode","Pemberi Hutang","Pembayaran(Rp)","Keterangan","No.Hutang","Kode Akun","Akun Bayar"}){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+             Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbBebanHutang.setModel(tabModeBebanHutang);
+        //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
+        tbBebanHutang.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbBebanHutang.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (int i = 0; i < 8; i++) {
+            TableColumn column = tbBebanHutang.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(65);
+            }else if(i==1){
+                column.setPreferredWidth(60);
+            }else if(i==2){
+                column.setPreferredWidth(200);
+            }else if(i==3){
+                column.setPreferredWidth(90);
+            }else if(i==4){
+                column.setPreferredWidth(220);
+            }else if(i==5){
+                column.setPreferredWidth(100);
+            }else if(i==6){
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }else if(i==7){
+                column.setPreferredWidth(150);
+            }
+        }
+        tbBebanHutang.setDefaultRenderer(Object.class, new WarnaTable());
     }    
     
      
@@ -305,6 +346,8 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountBayarJM = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         LCountPengeluaranHarian = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        LCountBayarBebanHutang = new javax.swing.JLabel();
         TabRawat = new javax.swing.JTabbedPane();
         Scroll = new widget.ScrollPane();
         tbBayarPesanObat = new widget.Table();
@@ -318,6 +361,8 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         tbBayarJM = new widget.Table();
         Scroll8 = new widget.ScrollPane();
         tbPengeluaranHarian = new widget.Table();
+        Scroll9 = new widget.ScrollPane();
+        tbBebanHutang = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -342,7 +387,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         panelGlass8.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -356,7 +401,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         panelGlass8.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "05-07-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -441,11 +486,11 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(50, 50, 50));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Bayar Pesan Obat :");
+        jLabel10.setText("Pesan Obat :");
         jLabel10.setName("jLabel10"); // NOI18N
         jLabel10.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel10);
-        jLabel10.setBounds(0, 10, 110, 23);
+        jLabel10.setBounds(0, 10, 80, 23);
 
         LCountPesanObat.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountPesanObat.setForeground(new java.awt.Color(50, 50, 50));
@@ -454,7 +499,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountPesanObat.setName("LCountPesanObat"); // NOI18N
         LCountPesanObat.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountPesanObat);
-        LCountPesanObat.setBounds(114, 10, 150, 23);
+        LCountPesanObat.setBounds(84, 10, 110, 23);
 
         LCountBayarNonMedis.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountBayarNonMedis.setForeground(new java.awt.Color(50, 50, 50));
@@ -463,25 +508,25 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountBayarNonMedis.setName("LCountBayarNonMedis"); // NOI18N
         LCountBayarNonMedis.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountBayarNonMedis);
-        LCountBayarNonMedis.setBounds(381, 10, 150, 23);
+        LCountBayarNonMedis.setBounds(301, 10, 110, 23);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(50, 50, 50));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Bayar Pesan Non Medis :");
+        jLabel11.setText("Pesan Non Medis :");
         jLabel11.setName("jLabel11"); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel11);
-        jLabel11.setBounds(247, 10, 130, 23);
+        jLabel11.setBounds(197, 10, 100, 23);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(50, 50, 50));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("Bayar Pesan Aset :");
+        jLabel12.setText("Pesan Aset :");
         jLabel12.setName("jLabel12"); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel12);
-        jLabel12.setBounds(550, 10, 100, 23);
+        jLabel12.setBounds(415, 10, 115, 23);
 
         LCountBayarAset.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountBayarAset.setForeground(new java.awt.Color(50, 50, 50));
@@ -490,16 +535,16 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountBayarAset.setName("LCountBayarAset"); // NOI18N
         LCountBayarAset.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountBayarAset);
-        LCountBayarAset.setBounds(654, 10, 150, 23);
+        LCountBayarAset.setBounds(534, 10, 110, 23);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(50, 50, 50));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Bayar Pesan Dapur :");
+        jLabel13.setText("Pesan Dapur :");
         jLabel13.setName("jLabel13"); // NOI18N
         jLabel13.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel13);
-        jLabel13.setBounds(0, 40, 110, 23);
+        jLabel13.setBounds(0, 40, 80, 23);
 
         LCountBayarDapur.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountBayarDapur.setForeground(new java.awt.Color(50, 50, 50));
@@ -508,16 +553,16 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountBayarDapur.setName("LCountBayarDapur"); // NOI18N
         LCountBayarDapur.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountBayarDapur);
-        LCountBayarDapur.setBounds(114, 40, 150, 23);
+        LCountBayarDapur.setBounds(84, 40, 110, 23);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(50, 50, 50));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("Bayar JM Dokter :");
+        jLabel14.setText("JM Dokter :");
         jLabel14.setName("jLabel14"); // NOI18N
         jLabel14.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel14);
-        jLabel14.setBounds(257, 40, 120, 23);
+        jLabel14.setBounds(197, 40, 100, 23);
 
         LCountBayarJM.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountBayarJM.setForeground(new java.awt.Color(50, 50, 50));
@@ -526,7 +571,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountBayarJM.setName("LCountBayarJM"); // NOI18N
         LCountBayarJM.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountBayarJM);
-        LCountBayarJM.setBounds(381, 40, 150, 23);
+        LCountBayarJM.setBounds(301, 40, 110, 23);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(50, 50, 50));
@@ -535,7 +580,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         jLabel15.setName("jLabel15"); // NOI18N
         jLabel15.setPreferredSize(new java.awt.Dimension(80, 23));
         panelGlass9.add(jLabel15);
-        jLabel15.setBounds(520, 40, 130, 23);
+        jLabel15.setBounds(415, 40, 115, 23);
 
         LCountPengeluaranHarian.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         LCountPengeluaranHarian.setForeground(new java.awt.Color(50, 50, 50));
@@ -544,7 +589,25 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         LCountPengeluaranHarian.setName("LCountPengeluaranHarian"); // NOI18N
         LCountPengeluaranHarian.setPreferredSize(new java.awt.Dimension(180, 23));
         panelGlass9.add(LCountPengeluaranHarian);
-        LCountPengeluaranHarian.setBounds(654, 40, 150, 23);
+        LCountPengeluaranHarian.setBounds(534, 40, 110, 23);
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(50, 50, 50));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel17.setText("Beban Hutang :");
+        jLabel17.setName("jLabel17"); // NOI18N
+        jLabel17.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass9.add(jLabel17);
+        jLabel17.setBounds(648, 10, 90, 23);
+
+        LCountBayarBebanHutang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LCountBayarBebanHutang.setForeground(new java.awt.Color(50, 50, 50));
+        LCountBayarBebanHutang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCountBayarBebanHutang.setText("0");
+        LCountBayarBebanHutang.setName("LCountBayarBebanHutang"); // NOI18N
+        LCountBayarBebanHutang.setPreferredSize(new java.awt.Dimension(180, 23));
+        panelGlass9.add(LCountBayarBebanHutang);
+        LCountBayarBebanHutang.setBounds(742, 10, 110, 23);
 
         jPanel3.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
@@ -614,6 +677,15 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         Scroll8.setViewportView(tbPengeluaranHarian);
 
         TabRawat.addTab("Pengeluaran Harian", Scroll8);
+
+        Scroll9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        Scroll9.setName("Scroll9"); // NOI18N
+        Scroll9.setOpaque(true);
+
+        tbBebanHutang.setName("tbBebanHutang"); // NOI18N
+        Scroll9.setViewportView(tbBebanHutang);
+
+        TabRawat.addTab("Bayar Beban Hutang", Scroll9);
 
         internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
@@ -757,6 +829,22 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
                 "inner join petugas on pengeluaran_harian.nip=petugas.nip "+
                 "where pengeluaran_harian.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by pengeluaran_harian.tanggal ",param);
         }
+        
+        if(tabModeBebanHutang.getRowCount()!=0){
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
+            Valid.MyReportqry("rptBayarBebanHutangLain.jasper","report","::[ Bayar Beban Hutang Lain ]::",
+                "select bayar_beban_hutang_lain.tgl_bayar, bayar_beban_hutang_lain.kode_pemberi_hutang,pemberi_hutang_lain.nama_pemberi_hutang, bayar_beban_hutang_lain.besar_cicilan,"+
+                "bayar_beban_hutang_lain.keterangan, bayar_beban_hutang_lain.no_hutang,bayar_beban_hutang_lain.nama_bayar from bayar_beban_hutang_lain "+
+                "inner join pemberi_hutang_lain on bayar_beban_hutang_lain.kode_pemberi_hutang=pemberi_hutang_lain.kode_pemberi_hutang where "+
+                "bayar_beban_hutang_lain.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by bayar_beban_hutang_lain.tgl_bayar ",param);
+        }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
@@ -791,6 +879,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private javax.swing.JLabel LCountBayarAset;
+    private javax.swing.JLabel LCountBayarBebanHutang;
     private javax.swing.JLabel LCountBayarDapur;
     private javax.swing.JLabel LCountBayarJM;
     private javax.swing.JLabel LCountBayarNonMedis;
@@ -803,6 +892,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private widget.ScrollPane Scroll4;
     private widget.ScrollPane Scroll7;
     private widget.ScrollPane Scroll8;
+    private widget.ScrollPane Scroll9;
     private javax.swing.JTabbedPane TabRawat;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JLabel jLabel10;
@@ -812,6 +902,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private javax.swing.JPanel jPanel3;
@@ -822,6 +913,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
     private widget.Table tbBayarPesanDapur;
     private widget.Table tbBayarPesanNonMedis;
     private widget.Table tbBayarPesanObat;
+    private widget.Table tbBebanHutang;
     private widget.Table tbPengeluaranHarian;
     // End of variables declaration//GEN-END:variables
 
@@ -1010,7 +1102,36 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
             }
             LCountPengeluaranHarian.setText(Valid.SetAngka(pengeluaranharian));
             
-            LCountTotal.setText(Valid.SetAngka(bayarobat+bayarnonmedis+bayaraset+bayardapur+bayarjm+pengeluaranharian));
+            Valid.tabelKosong(tabModeBebanHutang);
+            bayarbebanhutang=0;
+            ps=koneksi.prepareStatement(
+                    "select bayar_beban_hutang_lain.tgl_bayar, bayar_beban_hutang_lain.kode_pemberi_hutang,pemberi_hutang_lain.nama_pemberi_hutang, bayar_beban_hutang_lain.besar_cicilan,"+
+                    "bayar_beban_hutang_lain.keterangan, bayar_beban_hutang_lain.no_hutang,bayar_beban_hutang_lain.kd_rek,bayar_beban_hutang_lain.nama_bayar from bayar_beban_hutang_lain "+
+                    "inner join pemberi_hutang_lain on bayar_beban_hutang_lain.kode_pemberi_hutang=pemberi_hutang_lain.kode_pemberi_hutang where "+
+                    "bayar_beban_hutang_lain.tgl_bayar between ? and ? order by bayar_beban_hutang_lain.tgl_bayar ");
+            try {
+                ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem().toString()+""));
+                ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem().toString()+""));
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabModeBebanHutang.addRow(new Object[]{
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
+                    });
+                    bayarbebanhutang=bayarbebanhutang+rs.getDouble(4);
+                }
+            } catch (Exception e) {
+                System.out.println("Notif Deposit : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            LCountBayarBebanHutang.setText(Valid.SetAngka(bayarbebanhutang));
+            
+            LCountTotal.setText(Valid.SetAngka(bayarobat+bayarnonmedis+bayaraset+bayardapur+bayarjm+pengeluaranharian+bayarbebanhutang));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }
