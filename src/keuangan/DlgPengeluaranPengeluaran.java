@@ -270,11 +270,12 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         tbPengeluaranHarian.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeBebanHutang=new DefaultTableModel(null,new Object[]{
-            "Tgl.Bayar","Kode","Pemberi Hutang","Pembayaran(Rp)","Keterangan","No.Hutang","Kode Akun","Akun Bayar"}){
+            "Tgl.Bayar","Kode","Pemberi Hutang","Pembayaran(Rp)","Keterangan","No.Hutang","Kode Akun","Akun Bayar","No.Bukti"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class,
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -286,7 +287,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
         tbBebanHutang.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBebanHutang.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < 9; i++) {
             TableColumn column = tbBebanHutang.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(65);
@@ -305,6 +306,8 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }else if(i==7){
                 column.setPreferredWidth(150);
+            }else if(i==8){
+                column.setPreferredWidth(120);
             }
         }
         tbBebanHutang.setDefaultRenderer(Object.class, new WarnaTable());
@@ -841,7 +844,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             Valid.MyReportqry("rptBayarBebanHutangLain.jasper","report","::[ Bayar Beban Hutang Lain ]::",
                 "select bayar_beban_hutang_lain.tgl_bayar, bayar_beban_hutang_lain.kode_pemberi_hutang,pemberi_hutang_lain.nama_pemberi_hutang, bayar_beban_hutang_lain.besar_cicilan,"+
-                "bayar_beban_hutang_lain.keterangan, bayar_beban_hutang_lain.no_hutang,bayar_beban_hutang_lain.nama_bayar from bayar_beban_hutang_lain "+
+                "bayar_beban_hutang_lain.keterangan, bayar_beban_hutang_lain.no_hutang,bayar_beban_hutang_lain.nama_bayar,bayar_beban_hutang_lain.no_bukti from bayar_beban_hutang_lain "+
                 "inner join pemberi_hutang_lain on bayar_beban_hutang_lain.kode_pemberi_hutang=pemberi_hutang_lain.kode_pemberi_hutang where "+
                 "bayar_beban_hutang_lain.tgl_bayar between '"+Valid.SetTgl(DTPCari1.getSelectedItem().toString()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem().toString()+"")+"' order by bayar_beban_hutang_lain.tgl_bayar ",param);
         }
@@ -1106,8 +1109,8 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
             bayarbebanhutang=0;
             ps=koneksi.prepareStatement(
                     "select bayar_beban_hutang_lain.tgl_bayar, bayar_beban_hutang_lain.kode_pemberi_hutang,pemberi_hutang_lain.nama_pemberi_hutang, bayar_beban_hutang_lain.besar_cicilan,"+
-                    "bayar_beban_hutang_lain.keterangan, bayar_beban_hutang_lain.no_hutang,bayar_beban_hutang_lain.kd_rek,bayar_beban_hutang_lain.nama_bayar from bayar_beban_hutang_lain "+
-                    "inner join pemberi_hutang_lain on bayar_beban_hutang_lain.kode_pemberi_hutang=pemberi_hutang_lain.kode_pemberi_hutang where "+
+                    "bayar_beban_hutang_lain.keterangan, bayar_beban_hutang_lain.no_hutang,bayar_beban_hutang_lain.kd_rek,bayar_beban_hutang_lain.nama_bayar,bayar_beban_hutang_lain.no_bukti "+
+                    "from bayar_beban_hutang_lain inner join pemberi_hutang_lain on bayar_beban_hutang_lain.kode_pemberi_hutang=pemberi_hutang_lain.kode_pemberi_hutang where "+
                     "bayar_beban_hutang_lain.tgl_bayar between ? and ? order by bayar_beban_hutang_lain.tgl_bayar ");
             try {
                 ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem().toString()+""));
@@ -1115,7 +1118,7 @@ public final class DlgPengeluaranPengeluaran extends javax.swing.JDialog {
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabModeBebanHutang.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)
                     });
                     bayarbebanhutang=bayarbebanhutang+rs.getDouble(4);
                 }
