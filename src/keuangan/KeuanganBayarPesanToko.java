@@ -158,6 +158,36 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
             });
         }  
         
+        BesarBayar.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if(sisahutang>0){
+                    SisaHutang.setText(Valid.SetAngka(sisahutang));
+                    if(!BesarBayar.getText().equals("")){                           
+                         SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));                           
+                    }
+                }
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if(sisahutang>0){
+                    SisaHutang.setText(Valid.SetAngka(sisahutang));
+                    if(!BesarBayar.getText().equals("")){                           
+                         SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));                           
+                    }
+                }
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if(sisahutang>0){
+                    SisaHutang.setText(Valid.SetAngka(sisahutang));
+                    if(!BesarBayar.getText().equals("")){                           
+                         SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));                           
+                    }
+                }
+            }
+        });
+        
         petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -236,7 +266,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         nip = new widget.TextBox();
         nama_petugas = new widget.TextBox();
         TglBayar = new widget.Tanggal();
-        sisa_hutang = new widget.TextBox();
+        SisaHutang = new widget.TextBox();
         BtnPetugas = new widget.Button();
         jLabel10 = new widget.Label();
         AkunBayar = new widget.ComboBox();
@@ -517,17 +547,17 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         panelisi4.add(TglBayar);
         TglBayar.setBounds(74, 40, 100, 23);
 
-        sisa_hutang.setEditable(false);
-        sisa_hutang.setText("0");
-        sisa_hutang.setHighlighter(null);
-        sisa_hutang.setName("sisa_hutang"); // NOI18N
-        sisa_hutang.addKeyListener(new java.awt.event.KeyAdapter() {
+        SisaHutang.setEditable(false);
+        SisaHutang.setText("0");
+        SisaHutang.setHighlighter(null);
+        SisaHutang.setName("SisaHutang"); // NOI18N
+        SisaHutang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                sisa_hutangKeyPressed(evt);
+                SisaHutangKeyPressed(evt);
             }
         });
-        panelisi4.add(sisa_hutang);
-        sisa_hutang.setBounds(171, 70, 94, 23);
+        panelisi4.add(SisaHutang);
+        SisaHutang.setBounds(171, 70, 94, 23);
 
         BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPetugas.setMnemonic('1');
@@ -971,7 +1001,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,sisa_hutang,BtnKeluar);
+            Valid.pindah(evt,SisaHutang,BtnKeluar);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1297,9 +1327,9 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPetugasActionPerformed
 
-    private void sisa_hutangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sisa_hutangKeyPressed
+    private void SisaHutangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SisaHutangKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_sisa_hutangKeyPressed
+    }//GEN-LAST:event_SisaHutangKeyPressed
 
     private void TglBayarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglBayarKeyPressed
         Valid.pindah(evt,NoFaktur,AkunBayar);
@@ -1319,26 +1349,26 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             if(!BesarBayar.getText().equals("")){
                 try {
-                    sisa_hutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));
+                    SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));
                 } catch (Exception e) {
-                    sisa_hutang.setText("0");
+                    SisaHutang.setText("0");
                 }
             }
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
             if(!BesarBayar.getText().equals("")){
                 try {
-                    sisa_hutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));
+                    SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));
                 } catch (Exception e) {
-                    sisa_hutang.setText("0");
+                    SisaHutang.setText("0");
                 }
             }
             NoBukti.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             if(!BesarBayar.getText().equals("")){
                 try {
-                    sisa_hutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));
+                    SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));
                 } catch (Exception e) {
-                    sisa_hutang.setText("0");
+                    SisaHutang.setText("0");
                 }
             }
             BtnSimpan.requestFocus();
@@ -1553,6 +1583,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private widget.TextBox NoRekening;
     private widget.TextBox RekeningAtasNama;
     private widget.ScrollPane Scroll;
+    private widget.TextBox SisaHutang;
     private widget.TextBox TCari;
     private widget.Tanggal TglBayar;
     private widget.Tanggal TglCari1;
@@ -1586,7 +1617,6 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
     private widget.panelisi panelisi5;
-    private widget.TextBox sisa_hutang;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
@@ -1657,7 +1687,7 @@ public final class KeuanganBayarPesanToko extends javax.swing.JDialog {
         TCari.setText(nofaktur);
         sisahutang=Math.round(Sequel.cariIsiAngka("SELECT tokopemesanan.tagihan FROM tokopemesanan where tokopemesanan.no_faktur=?",nofaktur)
                    -Sequel.cariIsiAngka("SELECT ifnull(SUM(toko_bayar_pemesanan.besar_bayar),0) FROM toko_bayar_pemesanan where toko_bayar_pemesanan.no_faktur=?",nofaktur));
-        sisa_hutang.setText(Valid.SetAngka(sisahutang));
+        SisaHutang.setText(Valid.SetAngka(sisahutang));
         BesarBayar.setText("0");
     }
 

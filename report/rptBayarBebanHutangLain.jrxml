@@ -17,7 +17,7 @@
 	<parameter name="logo" class="java.io.InputStream"/>
 	<queryString>
 		<![CDATA[select bayar_beban_hutang_lain.tgl_bayar, bayar_beban_hutang_lain.kode_pemberi_hutang,pemberi_hutang_lain.nama_pemberi_hutang, bayar_beban_hutang_lain.besar_cicilan,
-                bayar_beban_hutang_lain.keterangan, bayar_beban_hutang_lain.no_hutang,bayar_beban_hutang_lain.nama_bayar from bayar_beban_hutang_lain 
+                bayar_beban_hutang_lain.keterangan, bayar_beban_hutang_lain.no_hutang,bayar_beban_hutang_lain.nama_bayar,bayar_beban_hutang_lain.no_bukti from bayar_beban_hutang_lain 
                 inner join pemberi_hutang_lain on bayar_beban_hutang_lain.kode_pemberi_hutang=pemberi_hutang_lain.kode_pemberi_hutang]]>
 	</queryString>
 	<field name="tgl_bayar" class="java.sql.Date">
@@ -59,6 +59,12 @@
 	<field name="nama_bayar" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nama_bayar"/>
 		<property name="com.jaspersoft.studio.field.label" value="nama_bayar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bayar_beban_hutang_lain"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no_bukti" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_bukti"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_bukti"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="bayar_beban_hutang_lain"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -126,9 +132,17 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="18" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="616" y="0" width="186" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="19611cab-215b-4681-8c55-076e50792aa2"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="700" y="0" width="102" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="bdb96b71-f6c5-498b-ae10-7cc7be6fc474"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[No.Bukti]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="546" y="0" width="154" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="19611cab-215b-4681-8c55-076e50792aa2"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -152,7 +166,7 @@
 				<text><![CDATA[Kode]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="260" y="0" width="120" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="ef58bc26-ef78-462d-97c1-b614b114eeea"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="240" y="0" width="80" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="ef58bc26-ef78-462d-97c1-b614b114eeea"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -160,7 +174,7 @@
 				<text><![CDATA[Cicilan(Rp)  ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="380" y="0" width="150" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e76dcefd-5027-4e62-a61a-175978913309"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="320" y="0" width="140" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e76dcefd-5027-4e62-a61a-175978913309"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -168,7 +182,7 @@
 				<text><![CDATA[Keterangan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="100" y="0" width="160" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="1fce0fdb-60c9-48e7-8c23-e2b758c9e904"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="100" y="0" width="140" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="1fce0fdb-60c9-48e7-8c23-e2b758c9e904"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -176,7 +190,7 @@
 				<text><![CDATA[Pemberi Hutang]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="530" y="0" width="86" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e5415a80-38d8-4330-9290-13e1a7a4d302"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="460" y="0" width="86" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e5415a80-38d8-4330-9290-13e1a7a4d302"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -198,7 +212,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="13" splitType="Stretch">
+		<band height="16" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="1" y="1" width="62" height="10" uuid="43943a0b-6b13-4045-b1ae-6731f7f7f6e4"/>
 				<textElement>
@@ -216,7 +230,7 @@
 				<textFieldExpression><![CDATA[$F{kode_pemberi_hutang}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="260" y="1" width="117" height="10" uuid="c97871d8-6f12-4dd8-b1d1-f4f717d835a4"/>
+				<reportElement positionType="Float" x="240" y="1" width="78" height="10" uuid="c97871d8-6f12-4dd8-b1d1-f4f717d835a4"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -224,7 +238,7 @@
 				<textFieldExpression><![CDATA[$F{besar_cicilan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="380" y="1" width="150" height="10" uuid="56b5fc2a-caec-4c90-aa19-4be9d37ab07d"/>
+				<reportElement positionType="Float" x="320" y="1" width="140" height="10" uuid="56b5fc2a-caec-4c90-aa19-4be9d37ab07d"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -232,7 +246,7 @@
 				<textFieldExpression><![CDATA[$F{keterangan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="100" y="1" width="160" height="10" uuid="372aae24-4002-4e2e-a7d1-a663ae8d6a8a"/>
+				<reportElement positionType="Float" x="100" y="1" width="140" height="10" uuid="372aae24-4002-4e2e-a7d1-a663ae8d6a8a"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -240,7 +254,7 @@
 				<textFieldExpression><![CDATA[$F{nama_pemberi_hutang}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="530" y="1" width="86" height="10" uuid="f411a47e-90cd-4c77-8bef-59aa8ebf3efa"/>
+				<reportElement positionType="Float" x="460" y="1" width="86" height="10" uuid="f411a47e-90cd-4c77-8bef-59aa8ebf3efa"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -256,12 +270,20 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="616" y="1" width="186" height="10" uuid="bd209a99-62d0-4b73-b5a4-a5ab34054969"/>
+				<reportElement positionType="Float" x="546" y="1" width="154" height="10" uuid="bd209a99-62d0-4b73-b5a4-a5ab34054969"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nama_bayar}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="700" y="1" width="100" height="10" uuid="8690a6b8-70bb-49ee-99aa-23771cb7d2ac"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_bukti}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -333,7 +355,7 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true" pattern="#,##0" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="241" y="3" width="137" height="15" uuid="2756fabd-c5ef-4708-94f1-71fcfd009ad3"/>
+				<reportElement stretchType="RelativeToBandHeight" x="201" y="3" width="119" height="15" uuid="2756fabd-c5ef-4708-94f1-71fcfd009ad3"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -341,7 +363,7 @@
 				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="195" y="3" width="46" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="88b1d043-bc78-4d05-9567-3e38260c082e"/>
+				<reportElement mode="Transparent" x="155" y="3" width="46" height="15" forecolor="#000000" backcolor="#FFFFFF" uuid="88b1d043-bc78-4d05-9567-3e38260c082e"/>
 				<textElement textAlignment="Right">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>

@@ -158,7 +158,37 @@ public final class KeuanganBayarPemesananFarmasi extends javax.swing.JDialog {
                     }
                 }
             });
-        }  
+        } 
+        
+        BesarBayar.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if(sisahutang>0){
+                    SisaHutang.setText(Valid.SetAngka(sisahutang));
+                    if(!BesarBayar.getText().equals("")){                           
+                         SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));                           
+                    }
+                }
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if(sisahutang>0){
+                    SisaHutang.setText(Valid.SetAngka(sisahutang));
+                    if(!BesarBayar.getText().equals("")){                           
+                         SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));                           
+                    }
+                }
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if(sisahutang>0){
+                    SisaHutang.setText(Valid.SetAngka(sisahutang));
+                    if(!BesarBayar.getText().equals("")){                           
+                         SisaHutang.setText(Valid.SetAngka(sisahutang-Double.parseDouble(BesarBayar.getText())));                           
+                    }
+                }
+            }
+        });
         
         petugas.addWindowListener(new WindowListener() {
             @Override

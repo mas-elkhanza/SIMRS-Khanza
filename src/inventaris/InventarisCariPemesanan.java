@@ -990,7 +990,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
 
                 if(sukses==true){
-                   Sequel.queryu2("delete from inventaris_pemesanan where no_faktur=?",1,new String[]{rs.getString("no_faktur")});
+                    sukses=Sequel.queryu2tf("delete from inventaris_pemesanan where no_faktur=?",1,new String[]{rs.getString("no_faktur")});
+                }
+                
+                if(sukses==true){
                    Sequel.Commit();
                    tampil();
                 }else{

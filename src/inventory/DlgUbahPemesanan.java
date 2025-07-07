@@ -743,7 +743,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             int reply = JOptionPane.showConfirmDialog(null,"Eeiiiiiits, udah bener belum data yang mau disimpan..??\nBisa jadi stok menjadi tidak sinkron karena data stok sudah digunakan..!!","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                sukses=true;
                 try {
                     pscaripesan=koneksi.prepareStatement(
                         "select pemesanan.no_faktur, pemesanan.tagihan, pemesanan.kd_bangsal,pemesanan.tgl_faktur,pemesanan.status,pemesanan.no_order,pemesanan.ppn,(pemesanan.total2+pemesanan.meterai) as total from pemesanan where pemesanan.no_faktur=?");
@@ -751,6 +750,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         pscaripesan.setString(1,NoFaktur2.getText());
                         rs=pscaripesan.executeQuery();
                         if(rs.next()){
+                            sukses=true;
                             Sequel.AutoComitFalse();
                             psdetailpesan=koneksi.prepareStatement("select kode_brng,jumlah2,no_batch,no_faktur from detailpesan where no_faktur=? ");
                             try {
@@ -811,15 +811,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
                             
                             if(sukses==true){
-                                Sequel.Commit();
-                            }else{
-                                sukses=false;
-                                Sequel.RollBack();
-                            }
-                            Sequel.AutoComitTrue();
-
-                            if(sukses==true){
-                                Sequel.AutoComitFalse();
                                 if(Sequel.queryu2tf("delete from pemesanan where no_faktur=?",1,new String[]{NoFaktur2.getText()})==true){
                                     if(Sequel.menyimpantf2("pemesanan","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Faktur",15,new String[]{
                                         NoFaktur.getText(),NoOrder.getText(),kdsup.getText(),kdptg.getText(),Valid.SetTgl(TglPesan.getSelectedItem()+""),
@@ -883,14 +874,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                         }
                                     }else{
                                         sukses=false;
-                                        JOptionPane.showMessageDialog(rootPane, "Gagal Menyimpan, kemungkinan No.Faktur sudah ada sebelumnya...!!");
                                     } 
                                 }else{
                                     sukses=false;
                                 }
                                 
                                 if(sukses==true){
-                                    Sequel.Commit();
                                     jml=tbDokter.getRowCount();
                                     if(aktifkanbatch.equals("yes")){
                                         for(i=0;i<jml;i++){ 
@@ -920,10 +909,22 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     getData();
                                 }else{
                                     sukses=false;
-                                    JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
-                                    Sequel.RollBack();
                                 }
-                                Sequel.AutoComitTrue();
+                            }
+                            
+                            if(sukses==true){
+                                Sequel.Commit();
+                            }else{
+                                sukses=false;
+                                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                                Sequel.RollBack();
+                            }
+                            
+                            Sequel.AutoComitTrue();
+                            
+                            if(sukses==true){
+                                JOptionPane.showMessageDialog(null, "Proses simpan selesai...!!");
+                                dispose();
                             }
                         }
                     } catch (Exception e) {
@@ -939,11 +940,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 } catch (Exception e) {
                     System.out.println("Notif : "+e);
                 } 
-                
-                if(sukses==true){
-                    JOptionPane.showMessageDialog(null, "Proses simpan selesai...!!");
-                    dispose();
-                }
             }
         }        
     }//GEN-LAST:event_BtnSimpanActionPerformed

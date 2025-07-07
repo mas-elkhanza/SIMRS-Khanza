@@ -140,31 +140,37 @@ public final class KeuanganBayarPiutangPeminjamanUang extends javax.swing.JDialo
                     }
                 }
             });
-            
-            Cicilan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-            });
         } 
+        
+        Cicilan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if(sisapiutang>0){
+                    Sisa.setText(Valid.SetAngka(sisapiutang));
+                    if(!Cicilan.getText().equals("")){                           
+                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                    }
+                }
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if(sisapiutang>0){
+                    Sisa.setText(Valid.SetAngka(sisapiutang));
+                    if(!Cicilan.getText().equals("")){                           
+                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                    }
+                }
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if(sisapiutang>0){
+                    Sisa.setText(Valid.SetAngka(sisapiutang));
+                    if(!Cicilan.getText().equals("")){                           
+                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                    }
+                }
+            }
+        });
         
         ChkInput.setSelected(false);
         isForm();
