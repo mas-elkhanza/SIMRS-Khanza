@@ -248,7 +248,7 @@ public final class akses {
             riwayat_surat_peringatan=false,master_kesimpulan_anjuran_mcu=false,kategori_piutang_jasa_perusahaan=false,piutang_jasa_perusahaan=false,bayar_piutang_jasa_perusahaan=false,
             piutang_jasa_perusahaan_belum_lunas=false,checklist_kesiapan_anestesi=false,piutang_peminjaman_uang_belum_lunas=false,hasil_pemeriksaan_slit_lamp=false,
             hasil_pemeriksaan_oct=false,beban_hutang_lain=false,poli_asal_pasien_ranap=false,pemberi_hutang_lain=false,dokter_asal_pasien_ranap=false,duta_parkir_rekap_keluar=false,
-            surat_keterangan_layak_terbang=false,bayar_beban_hutang_lain=false;
+            surat_keterangan_layak_terbang=false,bayar_beban_hutang_lain=false,surat_persetujuan_pemeriksaan_hiv=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1410,6 +1410,7 @@ public final class akses {
                         akses.duta_parkir_rekap_keluar=true;
                         akses.surat_keterangan_layak_terbang=true;
                         akses.bayar_beban_hutang_lain=true;
+                        akses.surat_persetujuan_pemeriksaan_hiv=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2555,6 +2556,7 @@ public final class akses {
                         akses.duta_parkir_rekap_keluar=rs2.getBoolean("duta_parkir_rekap_keluar");
                         akses.surat_keterangan_layak_terbang=rs2.getBoolean("surat_keterangan_layak_terbang");
                         akses.bayar_beban_hutang_lain=rs2.getBoolean("bayar_beban_hutang_lain");
+                        akses.surat_persetujuan_pemeriksaan_hiv=rs2.getBoolean("surat_persetujuan_pemeriksaan_hiv");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3723,6 +3725,7 @@ public final class akses {
         akses.duta_parkir_rekap_keluar=false;
         akses.surat_keterangan_layak_terbang=false;
         akses.bayar_beban_hutang_lain=false;
+        akses.surat_persetujuan_pemeriksaan_hiv=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -4905,4 +4908,5 @@ public final class akses {
     public static boolean getduta_parkir_rekap_keluar(){return akses.duta_parkir_rekap_keluar;}
     public static boolean getsurat_keterangan_layak_terbang(){return akses.surat_keterangan_layak_terbang;}
     public static boolean getbayar_beban_hutang_lain(){return akses.bayar_beban_hutang_lain;}
+    public static boolean getsurat_persetujuan_pemeriksaan_hiv(){return akses.surat_persetujuan_pemeriksaan_hiv;}
 }   
