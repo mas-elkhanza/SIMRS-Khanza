@@ -31,7 +31,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import kepegawaian.DlgCariPetugas;
+import kepegawaian.DlgCariPegawai;
 
 
 /**
@@ -46,7 +46,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
     private String finger="",lokasifile="";
     
     public SuratPersetujuanPemeriksaanHIV(java.awt.Frame parent, boolean modal) {
@@ -56,8 +56,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         setSize(628,674);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Pernyataan","No.Rawat","No.R.M.","Nama Pasien","Umur","J.K.","Tgl.Lahir","Tanggal","Nama Penanggung Jawab",
-            "Tempat Lahir P.J.","Tgl.Lahir P.J.","Hubungan","J.K. P.J.","Nomor Telp/HP","Nomor KTP","Alamat P.J.","NIP","Nama Petugas"
+            "No.Persetujuan","No.Rawat","No.R.M.","Nama Pasien","Umur","J.K.","Tgl.Lahir","Tanggal","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -67,7 +66,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 18; i++) {
+        for (i = 0; i < 10; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -86,24 +85,8 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             }else if(i==7){
                 column.setPreferredWidth(65);
             }else if(i==8){
-                column.setPreferredWidth(150);
-            }else if(i==9){
-                column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setPreferredWidth(70);
-            }else if(i==11){
-                column.setPreferredWidth(60);
-            }else if(i==12){
-                column.setPreferredWidth(45);
-            }else if(i==13){
-                column.setPreferredWidth(100);
-            }else if(i==14){
-                column.setPreferredWidth(100);
-            }else if(i==15){
-                column.setPreferredWidth(150);
-            }else if(i==16){
                 column.setPreferredWidth(80);
-            }else if(i==17){
+            }else if(i==9){
                 column.setPreferredWidth(150);
             }
         }
@@ -113,11 +96,6 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         NIP.setDocument(new batasInput((byte)20).getKata(NIP));  
         NoSurat.setDocument(new batasInput((byte)20).getKata(NoSurat));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        NamaPJ.setDocument(new batasInput((byte)50).getKata(NamaPJ));
-        NoKTP.setDocument(new batasInput((byte)20).getKata(NoKTP));
-        AlamatPj.setDocument(new batasInput((int)100).getKata(AlamatPj));  
-        TempatLahir.setDocument(new batasInput((byte)20).getKata(TempatLahir));  
-        NoTelp.setDocument(new batasInput((byte)30).getKata(NoTelp));    
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -142,16 +120,16 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             });
         }
         
-        petugas.addWindowListener(new WindowListener() {
+        pegawai.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
             @Override
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
-                    NIP.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                    NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                if(pegawai.getTable().getSelectedRow()!= -1){                   
+                    NIP.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
+                    NamaPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
                 }  
                 NIP.requestFocus();
             }
@@ -233,14 +211,6 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         TNoRw = new widget.TextBox();
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
-        jLabel8 = new widget.Label();
-        NamaPJ = new widget.TextBox();
-        jLabel9 = new widget.Label();
-        JKPJ = new widget.ComboBox();
-        jLabel10 = new widget.Label();
-        jLabel11 = new widget.Label();
-        Hubungan = new widget.ComboBox();
-        AlamatPj = new widget.TextBox();
         jLabel17 = new widget.Label();
         LahirPasien = new widget.TextBox();
         jLabel18 = new widget.Label();
@@ -248,17 +218,9 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         NamaPetugas = new widget.TextBox();
         btnPetugas = new widget.Button();
         jLabel16 = new widget.Label();
-        TglLahir = new widget.Tanggal();
-        jLabel44 = new widget.Label();
-        TempatLahir = new widget.TextBox();
         Tanggal = new widget.Tanggal();
-        jLabel14 = new widget.Label();
         jLabel3 = new widget.Label();
         NoSurat = new widget.TextBox();
-        jLabel15 = new widget.Label();
-        NoKTP = new widget.TextBox();
-        NoTelp = new widget.TextBox();
-        jLabel20 = new widget.Label();
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
@@ -447,9 +409,9 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         panelGlass9.setPreferredSize(new java.awt.Dimension(44, 44));
         panelGlass9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        jLabel19.setText("Tgl. Surat :");
+        jLabel19.setText("Tanggal :");
         jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(67, 23));
+        jLabel19.setPreferredSize(new java.awt.Dimension(60, 23));
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
@@ -480,7 +442,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(210, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -522,7 +484,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 205));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 95));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -566,64 +528,6 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         FormInput.add(TNoRM);
         TNoRM.setBounds(212, 10, 111, 23);
 
-        jLabel8.setText("Hubungan :");
-        jLabel8.setName("jLabel8"); // NOI18N
-        FormInput.add(jLabel8);
-        jLabel8.setBounds(0, 120, 100, 23);
-
-        NamaPJ.setName("NamaPJ"); // NOI18N
-        NamaPJ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NamaPJKeyPressed(evt);
-            }
-        });
-        FormInput.add(NamaPJ);
-        NamaPJ.setBounds(104, 90, 260, 23);
-
-        jLabel9.setText("Jenis Kelamin :");
-        jLabel9.setName("jLabel9"); // NOI18N
-        FormInput.add(jLabel9);
-        jLabel9.setBounds(235, 120, 80, 23);
-
-        JKPJ.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
-        JKPJ.setName("JKPJ"); // NOI18N
-        JKPJ.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                JKPJKeyPressed(evt);
-            }
-        });
-        FormInput.add(JKPJ);
-        JKPJ.setBounds(319, 120, 110, 23);
-
-        jLabel10.setText("Nama :");
-        jLabel10.setName("jLabel10"); // NOI18N
-        FormInput.add(jLabel10);
-        jLabel10.setBounds(0, 90, 100, 23);
-
-        jLabel11.setText("Alamat :");
-        jLabel11.setName("jLabel11"); // NOI18N
-        FormInput.add(jLabel11);
-        jLabel11.setBounds(260, 150, 55, 23);
-
-        Hubungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Saudara", "Keponakan" }));
-        Hubungan.setName("Hubungan"); // NOI18N
-        Hubungan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                HubunganKeyPressed(evt);
-            }
-        });
-        FormInput.add(Hubungan);
-        Hubungan.setBounds(104, 120, 110, 23);
-
-        AlamatPj.setName("AlamatPj"); // NOI18N
-        AlamatPj.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AlamatPjKeyPressed(evt);
-            }
-        });
-        FormInput.add(AlamatPj);
-        AlamatPj.setBounds(319, 150, 414, 23);
-
         jLabel17.setText("Tgl.Lahir :");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
@@ -648,7 +552,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         NamaPetugas.setEditable(false);
         NamaPetugas.setName("NamaPetugas"); // NOI18N
         FormInput.add(NamaPetugas);
-        NamaPetugas.setBounds(331, 40, 157, 23);
+        NamaPetugas.setBounds(331, 40, 152, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -665,40 +569,13 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnPetugas);
-        btnPetugas.setBounds(490, 40, 28, 23);
+        btnPetugas.setBounds(485, 40, 28, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
         jLabel16.setVerifyInputWhenFocusTarget(false);
         FormInput.add(jLabel16);
         jLabel16.setBounds(0, 40, 70, 23);
-
-        TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2025" }));
-        TglLahir.setDisplayFormat("dd-MM-yyyy");
-        TglLahir.setName("TglLahir"); // NOI18N
-        TglLahir.setOpaque(false);
-        TglLahir.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglLahirKeyPressed(evt);
-            }
-        });
-        FormInput.add(TglLahir);
-        TglLahir.setBounds(643, 90, 90, 23);
-
-        jLabel44.setText("Tempat/Tanggal Lahir :");
-        jLabel44.setName("jLabel44"); // NOI18N
-        FormInput.add(jLabel44);
-        jLabel44.setBounds(376, 90, 120, 23);
-
-        TempatLahir.setName("TempatLahir"); // NOI18N
-        TempatLahir.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TempatLahirKeyPressed(evt);
-            }
-        });
-        FormInput.add(TempatLahir);
-        TempatLahir.setBounds(500, 90, 140, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
         Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2025" }));
@@ -713,15 +590,10 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         FormInput.add(Tanggal);
         Tanggal.setBounds(74, 40, 90, 23);
 
-        jLabel14.setText("Penanggung Jawab Pasien :");
-        jLabel14.setName("jLabel14"); // NOI18N
-        FormInput.add(jLabel14);
-        jLabel14.setBounds(0, 70, 154, 23);
-
-        jLabel3.setText("No. Pernyataan :");
+        jLabel3.setText("No. Persetujuan :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(520, 40, 90, 23);
+        jLabel3.setBounds(510, 40, 100, 23);
 
         NoSurat.setHighlighter(null);
         NoSurat.setName("NoSurat"); // NOI18N
@@ -732,34 +604,6 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         });
         FormInput.add(NoSurat);
         NoSurat.setBounds(614, 40, 119, 23);
-
-        jLabel15.setText("Nomor KTP :");
-        jLabel15.setName("jLabel15"); // NOI18N
-        FormInput.add(jLabel15);
-        jLabel15.setBounds(0, 150, 100, 23);
-
-        NoKTP.setName("NoKTP"); // NOI18N
-        NoKTP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoKTPKeyPressed(evt);
-            }
-        });
-        FormInput.add(NoKTP);
-        NoKTP.setBounds(104, 150, 150, 23);
-
-        NoTelp.setName("NoTelp"); // NOI18N
-        NoTelp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoTelpKeyPressed(evt);
-            }
-        });
-        FormInput.add(NoTelp);
-        NoTelp.setBounds(573, 120, 160, 23);
-
-        jLabel20.setText("Nomor Telp/Nomor HP :");
-        jLabel20.setName("jLabel20"); // NOI18N
-        FormInput.add(jLabel20);
-        jLabel20.setBounds(429, 120, 140, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -885,31 +729,17 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
-        }else if(NamaPJ.getText().trim().equals("")){
-            Valid.textKosong(NamaPJ,"Nama Penanggung Jawab");
-        }else if(AlamatPj.getText().trim().equals("")){
-            Valid.textKosong(AlamatPj,"Alamat Penanggung Jawab");
-        }else if(TempatLahir.getText().trim().equals("")){
-            Valid.textKosong(TempatLahir,"Tempat Lahir");
-        }else if(NoTelp.getText().trim().equals("")){
-            Valid.textKosong(NoTelp,"Nomor Telp");
-        }else if(NoKTP.getText().trim().equals("")){
-            Valid.textKosong(NoKTP,"Nomor KTP");
         }else if(NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NamaPetugas,"Petugas");
         }else if(NoSurat.getText().trim().equals("")){
-            Valid.textKosong(NoSurat,"No.Pernyataan");
+            Valid.textKosong(NoSurat,"No.Persetujuan");
         }else{
-            if(Sequel.menyimpantf("surat_pernyataan_pasien_umum","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
-                    NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
-                    TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),JKPJ.getSelectedItem().toString().substring(0,1),
-                    AlamatPj.getText(),Hubungan.getSelectedItem().toString(),NoTelp.getText(),NIP.getText()
+            if(Sequel.menyimpantf("surat_persetujuan_pemeriksaan_hiv","?,?,?,?","Data",4,new String[]{
+                    NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NIP.getText()
                 })==true){
                 tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
-                    Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),
-                    Hubungan.getSelectedItem().toString(),JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),NoKTP.getText(),
-                    AlamatPj.getText(),NIP.getText(),NamaPetugas.getText()
+                    Valid.SetTgl(Tanggal.getSelectedItem()+""),NIP.getText(),NamaPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -921,7 +751,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,AlamatPj,BtnBatal);
+            Valid.pindah(evt,NoSurat,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -942,10 +772,10 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())){
                     hapus();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh pegawai yang bersangkutan..!!");
                 }
             }
         }else{
@@ -965,29 +795,19 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
-        }else if(NamaPJ.getText().trim().equals("")){
-            Valid.textKosong(NamaPJ,"Nama Penanggung Jawab");
-        }else if(AlamatPj.getText().trim().equals("")){
-            Valid.textKosong(AlamatPj,"Alamat Penanggung Jawab");
-        }else if(TempatLahir.getText().trim().equals("")){
-            Valid.textKosong(TempatLahir,"Tempat Lahir");
-        }else if(NoTelp.getText().trim().equals("")){
-            Valid.textKosong(NoTelp,"Nomor Telp");
-        }else if(NoKTP.getText().trim().equals("")){
-            Valid.textKosong(NoKTP,"Nomor KTP");
         }else if(NamaPetugas.getText().trim().equals("")){
             Valid.textKosong(NamaPetugas,"Petugas");
         }else if(NoSurat.getText().trim().equals("")){
-            Valid.textKosong(NoSurat,"No.Pernyataan");
+            Valid.textKosong(NoSurat,"No.Persetujuan");
         }else{
             if(tbObat.getSelectedRow()>-1){
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())){
                         ganti();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh pegawai yang bersangkutan..!!");
                     }
                 }
             }else{
@@ -1005,7 +825,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        petugas.dispose();
+        pegawai.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1031,31 +851,22 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataFormulirPernyataanPasienUmum.jasper","report","::[ Data Formulir Pernyataan Pasien Umum ]::",
-                    "select surat_pernyataan_pasien_umum.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_pernyataan_pasien_umum.tanggal,surat_pernyataan_pasien_umum.nama_pj,"+
-                    "surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.tempat_lahirpj,surat_pernyataan_pasien_umum.lahirpj,"+
-                    "surat_pernyataan_pasien_umum.jkpj,surat_pernyataan_pasien_umum.alamatpj,surat_pernyataan_pasien_umum.hubungan,"+
-                    "surat_pernyataan_pasien_umum.no_telp,surat_pernyataan_pasien_umum.nip,petugas.nama from surat_pernyataan_pasien_umum "+
-                    "inner join reg_periksa on surat_pernyataan_pasien_umum.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_pernyataan_pasien_umum.nip=petugas.nip where "+
-                    "surat_pernyataan_pasien_umum.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by surat_pernyataan_pasien_umum.tanggal",param);
+                Valid.MyReportqry("rptDataFormulirPersetujuanPemeriksaanHIV.jasper","report","::[ Data Formulir Persetujuan Pemeriksaan HIV ]::",
+                    "select surat_persetujuan_pemeriksaan_hiv.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
+                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_persetujuan_pemeriksaan_hiv.tanggal,surat_persetujuan_pemeriksaan_hiv.nik,pegawai.nama "+
+                    "from surat_persetujuan_pemeriksaan_hiv inner join reg_periksa on surat_persetujuan_pemeriksaan_hiv.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on surat_persetujuan_pemeriksaan_hiv.nik=pegawai.nik where "+
+                    "surat_persetujuan_pemeriksaan_hiv.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by surat_persetujuan_pemeriksaan_hiv.tanggal",param);
             }else{
-                Valid.MyReportqry("rptDataFormulirPernyataanPasienUmum.jasper","report","::[ Data Formulir Pernyataan Pasien Umum ]::",
-                    "select surat_pernyataan_pasien_umum.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_pernyataan_pasien_umum.tanggal,surat_pernyataan_pasien_umum.nama_pj,"+
-                    "surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.tempat_lahirpj,surat_pernyataan_pasien_umum.lahirpj,"+
-                    "surat_pernyataan_pasien_umum.jkpj,surat_pernyataan_pasien_umum.alamatpj,surat_pernyataan_pasien_umum.hubungan,"+
-                    "surat_pernyataan_pasien_umum.no_telp,surat_pernyataan_pasien_umum.nip,petugas.nama from surat_pernyataan_pasien_umum "+
-                    "inner join reg_periksa on surat_pernyataan_pasien_umum.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_pernyataan_pasien_umum.nip=petugas.nip where "+
-                    "surat_pernyataan_pasien_umum.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                Valid.MyReportqry("rptDataFormulirPersetujuanPemeriksaanHIV.jasper","report","::[ Data Formulir Persetujuan Pemeriksaan HIV ]::",
+                    "select surat_persetujuan_pemeriksaan_hiv.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
+                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_persetujuan_pemeriksaan_hiv.tanggal,surat_persetujuan_pemeriksaan_hiv.nik,pegawai.nama "+
+                    "from surat_persetujuan_pemeriksaan_hiv inner join reg_periksa on surat_persetujuan_pemeriksaan_hiv.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on surat_persetujuan_pemeriksaan_hiv.nik=pegawai.nik where "+
+                    "surat_persetujuan_pemeriksaan_hiv.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
                     "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    "surat_pernyataan_pasien_umum.alamatpj like '%"+TCari.getText().trim()+"%' or surat_pernyataan_pasien_umum.nama_pj like '%"+TCari.getText().trim()+"%' or "+
-                    "surat_pernyataan_pasien_umum.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by surat_pernyataan_pasien_umum.tanggal",param);
+                    "surat_persetujuan_pemeriksaan_hiv.nik like '%"+TCari.getText().trim()+"%' or pegawai.nama like '%"+TCari.getText().trim()+"%') "+
+                    "order by surat_persetujuan_pemeriksaan_hiv.tanggal",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1136,32 +947,15 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     }//GEN-LAST:event_tbObatKeyReleased
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-        Valid.pindah(evt,Tanggal,NamaPJ);
+        Valid.pindah(evt,Tanggal,NoSurat);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.emptTeks();
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
-        petugas.setVisible(true);
+        pegawai.emptTeks();
+        pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pegawai.setLocationRelativeTo(internalFrame1);
+        pegawai.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
-
-    private void AlamatPjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatPjKeyPressed
-        Valid.pindah(evt,NoKTP,BtnSimpan);
-    }//GEN-LAST:event_AlamatPjKeyPressed
-
-    private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
-        Valid.pindah(evt,TglLahir,JKPJ);
-    }//GEN-LAST:event_HubunganKeyPressed
-
-    private void JKPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKPJKeyPressed
-        Valid.pindah(evt,Hubungan,NoTelp);
-    }//GEN-LAST:event_JKPJKeyPressed
-
-    private void NamaPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaPJKeyPressed
-        Valid.pindah(evt,NoSurat,TempatLahir);
-    }//GEN-LAST:event_NamaPJKeyPressed
 
     private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
     // Valid.pindah(evt, TNm, BtnSimpan);
@@ -1179,29 +973,13 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_TNoRwKeyPressed
 
-    private void TglLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglLahirKeyPressed
-        Valid.pindah2(evt,TempatLahir,Hubungan);
-    }//GEN-LAST:event_TglLahirKeyPressed
-
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
         //Valid.pindah(evt,TCari,Jam);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void NoSuratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoSuratKeyPressed
-        Valid.pindah(evt,btnPetugas,NamaPJ);
+        Valid.pindah(evt,btnPetugas,BtnSimpan);
     }//GEN-LAST:event_NoSuratKeyPressed
-
-    private void NoKTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKTPKeyPressed
-        Valid.pindah(evt,NoTelp,AlamatPj);
-    }//GEN-LAST:event_NoKTPKeyPressed
-
-    private void TempatLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TempatLahirKeyPressed
-        Valid.pindah(evt,NamaPJ,TglLahir);
-    }//GEN-LAST:event_TempatLahirKeyPressed
-
-    private void NoTelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoTelpKeyPressed
-        Valid.pindah(evt,JKPJ,NoKTP);
-    }//GEN-LAST:event_NoTelpKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
         if(tbObat.getSelectedRow()!= -1){
@@ -1209,7 +987,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             panggilPhoto();
         }else{
             ChkAccor.setSelected(false);
-            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pernyataan..!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Persetujuan..!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
@@ -1219,11 +997,11 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()>-1){
-                Sequel.queryu("delete from antripernyataanumum");
-                Sequel.queryu("insert into antripernyataanumum values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from surat_pernyataan_pasien_umum_pembuat_pernyataan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from antripersetujuanpemeriksaanhiv");
+                Sequel.queryu("insert into antripersetujuanpemeriksaanhiv values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
+                Sequel.queryu("delete from surat_persetujuan_pemeriksaan_hiv_pembuat_persetujuan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
+                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Persetujuan terlebih dahulu..!!");
             }
         }
     }//GEN-LAST:event_btnAmbilActionPerformed
@@ -1232,14 +1010,14 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         if(tbObat.getSelectedRow()>-1){
             panggilPhoto();
         }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Pernyataan terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Persetujuan terlebih dahulu..!!");
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
     private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
         if(tbObat.getSelectedRow()>-1){
             if(lokasifile.equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, Silahkan ambil photo bukti pernyataan pasien umum terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan ambil photo bukti persetujuan pasien umum terlebih dahulu..!!!!");
             }else{
                 Map<String, Object> param = new HashMap<>();
                 param.put("namars",akses.getnamars());
@@ -1249,14 +1027,13 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanumum/"+lokasifile);
-                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),16).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
-                Valid.MyReportqry("rptSuratPernyataanPasienUmum.jasper","report","::[ Surat Pernyataan Pasien Umum ]::",
-                    "select surat_pernyataan_pasien_umum.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,pasien.pekerjaan,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_pernyataan_pasien_umum.tanggal,surat_pernyataan_pasien_umum.nama_pj,"+
-		    "surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.tempat_lahirpj,surat_pernyataan_pasien_umum.lahirpj,surat_pernyataan_pasien_umum.jkpj,surat_pernyataan_pasien_umum.alamatpj,surat_pernyataan_pasien_umum.hubungan,surat_pernyataan_pasien_umum.no_telp,surat_pernyataan_pasien_umum.nip,petugas.nama from surat_pernyataan_pasien_umum inner join reg_periksa on surat_pernyataan_pasien_umum.no_rawat=reg_periksa.no_rawat "+
-		    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on surat_pernyataan_pasien_umum.nip=petugas.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                    "where surat_pernyataan_pasien_umum.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuanpemeriksaanhiv/"+lokasifile);
+                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),8).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
+                Valid.MyReportqry("rptSuratPersetujuanPemeriksaanHIV.jasper","report","::[ Surat Persetujuan Pemeriksaan HIV ]::",
+                    "select surat_persetujuan_pemeriksaan_hiv.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,if(pasien.jk='L','LAKI-LAKI','PEREMPUAN') as jk,pasien.tgl_lahir,surat_persetujuan_pemeriksaan_hiv.tanggal,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat,"+
+                    "pasien.no_tlp,pasien.tmp_lahir,surat_persetujuan_pemeriksaan_hiv.nik,pegawai.nama from surat_persetujuan_pemeriksaan_hiv inner join reg_periksa on surat_persetujuan_pemeriksaan_hiv.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on surat_persetujuan_pemeriksaan_hiv.nik=pegawai.nik "+
+                    "inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab where surat_persetujuan_pemeriksaan_hiv.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
@@ -1280,7 +1057,6 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox AlamatPj;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1298,18 +1074,13 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
-    private widget.ComboBox Hubungan;
     private widget.TextBox JK;
-    private widget.ComboBox JKPJ;
     private widget.Label LCount;
     private widget.TextBox LahirPasien;
     private widget.editorpane LoadHTML2;
     private widget.TextBox NIP;
-    private widget.TextBox NamaPJ;
     private widget.TextBox NamaPetugas;
-    private widget.TextBox NoKTP;
     private widget.TextBox NoSurat;
-    private widget.TextBox NoTelp;
     private widget.PanelBiasa PanelAccor;
     private javax.swing.JPanel PanelInput;
     private widget.ScrollPane Scroll;
@@ -1319,29 +1090,19 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
-    private widget.TextBox TempatLahir;
-    private widget.Tanggal TglLahir;
     private widget.TextBox Umur;
     private widget.Button btnAmbil;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel10;
-    private widget.Label jLabel11;
-    private widget.Label jLabel14;
-    private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
-    private widget.Label jLabel20;
     private widget.Label jLabel21;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
-    private widget.Label jLabel44;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
-    private widget.Label jLabel8;
-    private widget.Label jLabel9;
     private javax.swing.JPanel jPanel3;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
@@ -1353,30 +1114,20 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select surat_pernyataan_pasien_umum.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_pernyataan_pasien_umum.tanggal,surat_pernyataan_pasien_umum.nama_pj,"+
-                    "surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.tempat_lahirpj,surat_pernyataan_pasien_umum.lahirpj,"+
-                    "surat_pernyataan_pasien_umum.jkpj,surat_pernyataan_pasien_umum.alamatpj,surat_pernyataan_pasien_umum.hubungan,"+
-                    "surat_pernyataan_pasien_umum.no_telp,surat_pernyataan_pasien_umum.nip,petugas.nama from surat_pernyataan_pasien_umum "+
-                    "inner join reg_periksa on surat_pernyataan_pasien_umum.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_pernyataan_pasien_umum.nip=petugas.nip where "+
-                    "surat_pernyataan_pasien_umum.tanggal between ? and ? order by surat_pernyataan_pasien_umum.tanggal");
+                    "select surat_persetujuan_pemeriksaan_hiv.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
+                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_persetujuan_pemeriksaan_hiv.tanggal,surat_persetujuan_pemeriksaan_hiv.nik,pegawai.nama "+
+                    "from surat_persetujuan_pemeriksaan_hiv inner join reg_periksa on surat_persetujuan_pemeriksaan_hiv.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on surat_persetujuan_pemeriksaan_hiv.nik=pegawai.nik where "+
+                    "surat_persetujuan_pemeriksaan_hiv.tanggal between ? and ? order by surat_persetujuan_pemeriksaan_hiv.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select surat_pernyataan_pasien_umum.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_pernyataan_pasien_umum.tanggal,surat_pernyataan_pasien_umum.nama_pj,"+
-                    "surat_pernyataan_pasien_umum.no_ktppj,surat_pernyataan_pasien_umum.tempat_lahirpj,surat_pernyataan_pasien_umum.lahirpj,"+
-                    "surat_pernyataan_pasien_umum.jkpj,surat_pernyataan_pasien_umum.alamatpj,surat_pernyataan_pasien_umum.hubungan,"+
-                    "surat_pernyataan_pasien_umum.no_telp,surat_pernyataan_pasien_umum.nip,petugas.nama from surat_pernyataan_pasien_umum "+
-                    "inner join reg_periksa on surat_pernyataan_pasien_umum.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_pernyataan_pasien_umum.nip=petugas.nip where "+
-                    "surat_pernyataan_pasien_umum.tanggal between ? and ? and "+
-                    "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                    "surat_pernyataan_pasien_umum.alamatpj like ? or surat_pernyataan_pasien_umum.nama_pj like ? or "+
-                    "surat_pernyataan_pasien_umum.nip like ? or petugas.nama like ?) "+
-                    "order by surat_pernyataan_pasien_umum.tanggal");
+                    "select surat_persetujuan_pemeriksaan_hiv.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
+                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_persetujuan_pemeriksaan_hiv.tanggal,surat_persetujuan_pemeriksaan_hiv.nik,pegawai.nama "+
+                    "from surat_persetujuan_pemeriksaan_hiv inner join reg_periksa on surat_persetujuan_pemeriksaan_hiv.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on surat_persetujuan_pemeriksaan_hiv.nik=pegawai.nik where "+
+                    "surat_persetujuan_pemeriksaan_hiv.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or surat_persetujuan_pemeriksaan_hiv.nik like ? or pegawai.nama like ?) "+
+                    "order by surat_persetujuan_pemeriksaan_hiv.tanggal");
             }
                 
             try {
@@ -1391,8 +1142,6 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
                     ps.setString(5,"%"+TCari.getText()+"%");
                     ps.setString(6,"%"+TCari.getText()+"%");
                     ps.setString(7,"%"+TCari.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,"%"+TCari.getText()+"%");
                 }
                   
                 rs=ps.executeQuery();
@@ -1400,9 +1149,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
                     tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
-                        rs.getString("tanggal"),rs.getString("nama_pj"),rs.getString("tempat_lahirpj"),rs.getString("lahirpj"),
-                        rs.getString("hubungan"),rs.getString("jkpj"),rs.getString("no_telp"),rs.getString("no_ktppj"),
-                        rs.getString("alamatpj"),rs.getString("nip"),rs.getString("nama") 
+                        rs.getString("tanggal"),rs.getString("nik"),rs.getString("nama") 
                     });
                 }
             } catch (Exception e) {
@@ -1422,17 +1169,9 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        NamaPJ.setText("");
-        TempatLahir.setText("");
-        TglLahir.setDate(new Date());
-        Hubungan.setSelectedIndex(0);
-        JKPJ.setSelectedIndex(0);
-        NoTelp.setText("");
-        NoKTP.setText("");
-        AlamatPj.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_pernyataan_pasien_umum.no_surat,3),signed)),0) from surat_pernyataan_pasien_umum where surat_pernyataan_pasien_umum.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_persetujuan_pemeriksaan_hiv.no_surat,3),signed)),0) from surat_persetujuan_pemeriksaan_hiv where surat_persetujuan_pemeriksaan_hiv.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
                 "PPU"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
-        NamaPJ.requestFocus();
+        NoSurat.requestFocus();
     }
 
  
@@ -1445,15 +1184,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             LahirPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            NamaPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()); 
-            TempatLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()); 
-            Hubungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()); 
-            JKPJ.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan")); 
-            NoTelp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()); 
-            NoKTP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());  
-            AlamatPj.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString()); 
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Valid.SetTgl(TglLahir,tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
         }
     }
 
@@ -1500,7 +1231,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,205));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,95));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1513,27 +1244,21 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
        
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsurat_pernyataan_pasien_umum());
-        BtnHapus.setEnabled(akses.getsurat_pernyataan_pasien_umum());
-        BtnEdit.setEnabled(akses.getsurat_pernyataan_pasien_umum());
-        BtnPrint.setEnabled(akses.getsurat_pernyataan_pasien_umum()); 
+        BtnSimpan.setEnabled(akses.getsurat_persetujuan_pemeriksaan_hiv());
+        BtnHapus.setEnabled(akses.getsurat_persetujuan_pemeriksaan_hiv());
+        BtnEdit.setEnabled(akses.getsurat_persetujuan_pemeriksaan_hiv());
+        BtnPrint.setEnabled(akses.getsurat_persetujuan_pemeriksaan_hiv()); 
         if(akses.getjml2()>=1){
             NIP.setEditable(false);
             btnPetugas.setEnabled(false);
             NIP.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(NIP.getText()));
-            if(NamaPetugas.getText().equals("")){
-                NIP.setText("");
-                JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
-            }
+            NamaPetugas.setText(pegawai.tampil3(NIP.getText()));
         }            
     }
   
     private void ganti() {
-        if(Sequel.mengedittf("surat_pernyataan_pasien_umum","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,nama_pj=?,no_ktppj=?,tempat_lahirpj=?,lahirpj=?,jkpj=?,alamatpj=?,hubungan=?,no_telp=?,nip=?",13,new String[]{
-            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
-            TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),JKPJ.getSelectedItem().toString().substring(0,1),
-            AlamatPj.getText(),Hubungan.getSelectedItem().toString(),NoTelp.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("surat_persetujuan_pemeriksaan_hiv","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,nik=?",5,new String[]{
+            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
@@ -1543,22 +1268,14 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(LahirPasien.getText(),tbObat.getSelectedRow(),6);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(NamaPJ.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(TempatLahir.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(Valid.SetTgl(TglLahir.getSelectedItem()+""),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(Hubungan.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(JKPJ.getSelectedItem().toString().substring(0,1),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(NoTelp.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(NoKTP.getText(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(AlamatPj.getText(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),9);
             emptTeks();
         }
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from surat_pernyataan_pasien_umum where no_surat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from surat_persetujuan_pemeriksaan_hiv where no_surat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1587,7 +1304,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
         if(FormPhoto.isVisible()==true){
             lokasifile="";
             try {
-                ps=koneksi.prepareStatement("select surat_pernyataan_pasien_umum_pembuat_pernyataan.photo from surat_pernyataan_pasien_umum_pembuat_pernyataan where surat_pernyataan_pasien_umum_pembuat_pernyataan.no_surat=?");
+                ps=koneksi.prepareStatement("select surat_persetujuan_pemeriksaan_hiv_pembuat_persetujuan.photo from surat_persetujuan_pemeriksaan_hiv_pembuat_persetujuan where surat_persetujuan_pemeriksaan_hiv_pembuat_persetujuan.no_surat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -1597,7 +1314,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
                             lokasifile=rs.getString("photo");
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanumum/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/persetujuanpemeriksaanhiv/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
                         }  
                     }else{
                         lokasifile="";
