@@ -138,6 +138,14 @@
                                       </a>
                                     </td>
                                     <td width='33%' align='center'>
+                                      <a target=_blank href=persetujuanpemeriksaanhiv/login.php?iyem=".encrypt_decrypt("{\"usere\":\"".USERHYBRIDWEB."\",\"passwordte\":\"".PASHYBRIDWEB."\"}","e").">                                                 
+                                         <img src='images/6217201_corona_coronavirus_test_tube_virus_icon.png'/><br>
+                                         Bukti Persetujuan Pemeriksaan HIV                                           
+                                      </a>
+                                    </td>
+                                </tr>
+                                <tr width='100%' align='center'>
+                                    <td width='33%' align='center'>
                                       <a href='?aksi=Keluar'>                                                 
                                          <img src='images/1360484978_application-pgp-signature.png'/><br>
                                          Keluar                                               

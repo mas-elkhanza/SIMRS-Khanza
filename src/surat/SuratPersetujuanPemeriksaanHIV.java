@@ -1170,7 +1170,7 @@ public final class SuratPersetujuanPemeriksaanHIV extends javax.swing.JDialog {
 
     public void emptTeks() {
         Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_persetujuan_pemeriksaan_hiv.no_surat,3),signed)),0) from surat_persetujuan_pemeriksaan_hiv where surat_persetujuan_pemeriksaan_hiv.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PPU"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
+                "PPHIV"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
         NoSurat.requestFocus();
     }
 
