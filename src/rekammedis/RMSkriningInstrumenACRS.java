@@ -1191,61 +1191,61 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel110.setText("Apakah Anda sering merasa sakit kepala ?");
+        jLabel110.setText("Tidak kenal lelah, atau aktivitas yang berlebihan ?");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
         jLabel110.setBounds(62, 90, 450, 23);
 
         jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel111.setText("Apakah Anda kehilangan nafsu makan ?");
+        jLabel111.setText("Mudah jadi gembira, impulsive ?");
         jLabel111.setName("jLabel111"); // NOI18N
         FormInput.add(jLabel111);
         jLabel111.setBounds(62, 120, 450, 23);
 
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel112.setText("Apakah tidur Anda tidak nyenyak ?");
+        jLabel112.setText("Mengganggu anak-anak lain ?");
         jLabel112.setName("jLabel112"); // NOI18N
         FormInput.add(jLabel112);
         jLabel112.setBounds(62, 150, 450, 23);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel113.setText("Apakah Anda mudah merasa takut ?");
+        jLabel113.setText("Gagal menyelesaikan kegiatan yang telah dimulai, rentang perhatian pendek ?");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
         jLabel113.setBounds(62, 180, 450, 23);
 
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel114.setText("Apakah Anda merasa cemas, tegang, atau khawatir ?");
+        jLabel114.setText("Menggerak-gerakkan anggota badan atau kepala secara terus-menerus ?");
         jLabel114.setName("jLabel114"); // NOI18N
         FormInput.add(jLabel114);
         jLabel114.setBounds(62, 210, 490, 23);
 
         jLabel115.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel115.setText("Apakah tangan Anda gemetar ?");
+        jLabel115.setText("Kurang perhatian, mudah teralihkan ?");
         jLabel115.setName("jLabel115"); // NOI18N
         FormInput.add(jLabel115);
         jLabel115.setBounds(62, 240, 450, 23);
 
         jLabel116.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel116.setText("Apakah Anda mengalami gangguan pencernaan ?");
+        jLabel116.setText("Permintaannya harus segera dipenuhi, mudah menjadi frustasi ?");
         jLabel116.setName("jLabel116"); // NOI18N
         FormInput.add(jLabel116);
         jLabel116.setBounds(62, 270, 480, 23);
 
         jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel117.setText("Apakah Anda merasa sulit berpikir jernih ?");
+        jLabel117.setText("Sering dan mudah menangis ?");
         jLabel117.setName("jLabel117"); // NOI18N
         FormInput.add(jLabel117);
         jLabel117.setBounds(62, 300, 450, 23);
 
         jLabel118.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel118.setText("Apakah Anda merasa tidak bahagia ?");
+        jLabel118.setText("Suasana hatinya mudah berubah dengan cepat dan dastric ?");
         jLabel118.setName("jLabel118"); // NOI18N
         FormInput.add(jLabel118);
         jLabel118.setBounds(62, 330, 450, 23);
 
         jLabel119.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel119.setText("Apakah Anda lebih sering menangis?");
+        jLabel119.setText("Ledakan kekesalan, tingkah laku eksplosif dan tak terduga ?");
         jLabel119.setName("jLabel119"); // NOI18N
         FormInput.add(jLabel119);
         jLabel119.setBounds(62, 360, 450, 23);
@@ -1745,91 +1745,52 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
     }//GEN-LAST:event_ACRS10KeyPressed
 
     private void ACRS1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS1ItemStateChanged
-        if(ACRS1.getSelectedIndex()==1){
-            NilaiACRS1.setText("1");
-        }else{
-            NilaiACRS1.setText("0");
-        }
+        NilaiACRS1.setText(Integer.toString(ACRS1.getSelectedIndex()));
         isTotal();
     }//GEN-LAST:event_ACRS1ItemStateChanged
 
     private void ACRS2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS2ItemStateChanged
-        if(ACRS2.getSelectedIndex()==1){
-            NilaiACRS2.setText("1");
-        }else{
-            NilaiACRS2.setText("0");
-        }
+        NilaiACRS2.setText(Integer.toString(ACRS2.getSelectedIndex()));
         isTotal();
     }//GEN-LAST:event_ACRS2ItemStateChanged
 
     private void ACRS3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS3ItemStateChanged
-       if(ACRS3.getSelectedIndex()==1){
-            NilaiACRS3.setText("1");
-        }else{
-            NilaiACRS3.setText("0");
-        }
+       NilaiACRS3.setText(Integer.toString(ACRS3.getSelectedIndex()));
        isTotal();
     }//GEN-LAST:event_ACRS3ItemStateChanged
 
     private void ACRS4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS4ItemStateChanged
-       if(ACRS4.getSelectedIndex()==1){
-            NilaiACRS4.setText("1");
-        }else{
-            NilaiACRS4.setText("0");
-        }
-       isTotal();
+        NilaiACRS4.setText(Integer.toString(ACRS4.getSelectedIndex()));
+        isTotal();
     }//GEN-LAST:event_ACRS4ItemStateChanged
 
     private void ACRS5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS5ItemStateChanged
-        if(ACRS5.getSelectedIndex()==1){
-            NilaiACRS5.setText("1");
-        }else{
-            NilaiACRS5.setText("0");
-        }
+        NilaiACRS5.setText(Integer.toString(ACRS5.getSelectedIndex()));
         isTotal();
     }//GEN-LAST:event_ACRS5ItemStateChanged
 
     private void ACRS6ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS6ItemStateChanged
-       if(ACRS6.getSelectedIndex()==1){
-            NilaiACRS6.setText("1");
-        }else{
-            NilaiACRS6.setText("0");
-        }
+       NilaiACRS6.setText(Integer.toString(ACRS6.getSelectedIndex()));
+       isTotal();
     }//GEN-LAST:event_ACRS6ItemStateChanged
 
     private void ACRS7ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS7ItemStateChanged
-        if(ACRS7.getSelectedIndex()==1){
-            NilaiACRS7.setText("1");
-        }else{
-            NilaiACRS7.setText("0");
-        }
+        NilaiACRS7.setText(Integer.toString(ACRS7.getSelectedIndex()));
         isTotal();
     }//GEN-LAST:event_ACRS7ItemStateChanged
 
     private void ACRS8ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS8ItemStateChanged
-       if(ACRS8.getSelectedIndex()==1){
-            NilaiACRS8.setText("1");
-        }else{
-            NilaiACRS8.setText("0");
-        }
-       isTotal();
+        NilaiACRS8.setText(Integer.toString(ACRS8.getSelectedIndex()));
+        isTotal();
     }//GEN-LAST:event_ACRS8ItemStateChanged
 
     private void ACRS9ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS9ItemStateChanged
-        if(ACRS9.getSelectedIndex()==1){
-            NilaiACRS9.setText("1");
-        }else{
-            NilaiACRS9.setText("0");
-        }
+        NilaiACRS9.setText(Integer.toString(ACRS9.getSelectedIndex()));
         isTotal();
     }//GEN-LAST:event_ACRS9ItemStateChanged
 
     private void ACRS10ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ACRS10ItemStateChanged
-        if(ACRS10.getSelectedIndex()==1){
-            NilaiACRS10.setText("1");
-        }else{
-            NilaiACRS10.setText("0");
-        }
+        NilaiACRS10.setText(Integer.toString(ACRS10.getSelectedIndex()));
         isTotal();
     }//GEN-LAST:event_ACRS10ItemStateChanged
 

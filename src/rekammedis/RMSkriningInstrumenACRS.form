@@ -1607,7 +1607,7 @@
                     <Component class="widget.Label" name="jLabel110">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda sering merasa sakit kepala ?"/>
+                        <Property name="text" type="java.lang.String" value="Tidak kenal lelah, atau aktivitas yang berlebihan ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel110" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1619,7 +1619,7 @@
                     <Component class="widget.Label" name="jLabel111">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda kehilangan nafsu makan ?"/>
+                        <Property name="text" type="java.lang.String" value="Mudah jadi gembira, impulsive ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel111" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1631,7 +1631,7 @@
                     <Component class="widget.Label" name="jLabel112">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah tidur Anda tidak nyenyak ?"/>
+                        <Property name="text" type="java.lang.String" value="Mengganggu anak-anak lain ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel112" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1643,7 +1643,7 @@
                     <Component class="widget.Label" name="jLabel113">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda mudah merasa takut ?"/>
+                        <Property name="text" type="java.lang.String" value="Gagal menyelesaikan kegiatan yang telah dimulai, rentang perhatian pendek ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel113" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1655,7 +1655,7 @@
                     <Component class="widget.Label" name="jLabel114">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda merasa cemas, tegang, atau khawatir ?"/>
+                        <Property name="text" type="java.lang.String" value="Menggerak-gerakkan anggota badan atau kepala secara terus-menerus ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel114" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1667,7 +1667,7 @@
                     <Component class="widget.Label" name="jLabel115">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah tangan Anda gemetar ?"/>
+                        <Property name="text" type="java.lang.String" value="Kurang perhatian, mudah teralihkan ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel115" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1679,7 +1679,7 @@
                     <Component class="widget.Label" name="jLabel116">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda mengalami gangguan pencernaan ?"/>
+                        <Property name="text" type="java.lang.String" value="Permintaannya harus segera dipenuhi, mudah menjadi frustasi ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel116" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1691,7 +1691,7 @@
                     <Component class="widget.Label" name="jLabel117">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda merasa sulit berpikir jernih ?"/>
+                        <Property name="text" type="java.lang.String" value="Sering dan mudah menangis ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel117" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1703,7 +1703,7 @@
                     <Component class="widget.Label" name="jLabel118">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda merasa tidak bahagia ?"/>
+                        <Property name="text" type="java.lang.String" value="Suasana hatinya mudah berubah dengan cepat dan dastric ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel118" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1715,7 +1715,7 @@
                     <Component class="widget.Label" name="jLabel119">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Apakah Anda lebih sering menangis?"/>
+                        <Property name="text" type="java.lang.String" value="Ledakan kekesalan, tingkah laku eksplosif dan tak terduga ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel119" noResource="true"/>
                       </Properties>
                       <Constraints>
