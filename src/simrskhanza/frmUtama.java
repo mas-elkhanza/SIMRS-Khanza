@@ -23624,7 +23624,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSkriningIndraPendengaran,btnCatatanPengkajianPaskaOperasi,btnSirkulasiInventarisCSSD,btnSkriningFrailtySyndrome,btnLamaPelayananCSSD,btnCatatanObservasiBayi,
             btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan,btnBayarPiutangJasaPerusahaan,btnPiutangJasaPerusahaanBelumLunas,
             btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap,btnPemberiHutangLain,
-            btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV;
+            btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV,btnSkriningInstrumenACRS;
     
     public void isWall(){
         try{            
@@ -28162,6 +28162,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_instrumen_srq()==true){
                 Panelmenu.add(btnSkriningInstrumenSRQ);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_instrumen_acrs()==true){
+                Panelmenu.add(btnSkriningInstrumenACRS);
                 jmlmenu++;
             }
             
@@ -33806,6 +33811,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_instrumen_srq()==true){
             Panelmenu.add(btnSkriningInstrumenSRQ);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_instrumen_acrs()==true){
+            Panelmenu.add(btnSkriningInstrumenACRS);
             jmlmenu++;
         }
         
@@ -41035,6 +41045,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSkriningInstrumenSRQ);
                 jmlmenu++;
             }                
+        }
+        
+        if(akses.getskrining_instrumen_acrs()==true){
+            if(btnSkriningInstrumenACRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningInstrumenACRS);
+                jmlmenu++;
+            } 
         }
         
         if(akses.getskrining_kanker_kolorektal()==true){
@@ -48318,5 +48335,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSuratKeteranganLayakTerbang.setName("btnSuratKeteranganLayakTerbang");
         btnSuratKeteranganLayakTerbang.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSuratKeteranganLayakTerbang.addActionListener(this::btnSuratKeteranganLayakTerbangActionPerformed);
+        
+        btnSkriningInstrumenACRS = new widget.ButtonBig();
+        btnSkriningInstrumenACRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/3231124_boy_brother_cartoon_child_family_icon.png"))); 
+        btnSkriningInstrumenACRS.setText("Skrining Instrumen ACRS");
+        btnSkriningInstrumenACRS.setIconTextGap(0);
+        btnSkriningInstrumenACRS.setName("btnSkriningInstrumenACRS");
+        btnSkriningInstrumenACRS.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningInstrumenACRS.addActionListener(this::btnSkriningInstrumenACRSActionPerformed);
     }
 }

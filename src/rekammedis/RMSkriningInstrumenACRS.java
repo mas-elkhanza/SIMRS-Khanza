@@ -915,7 +915,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS1);
-        ACRS1.setBounds(600, 90, 100, 23);
+        ACRS1.setBounds(570, 90, 130, 23);
 
         ACRS2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS2.setName("ACRS2"); // NOI18N
@@ -930,7 +930,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS2);
-        ACRS2.setBounds(600, 120, 100, 23);
+        ACRS2.setBounds(570, 120, 130, 23);
 
         ACRS3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS3.setName("ACRS3"); // NOI18N
@@ -945,7 +945,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS3);
-        ACRS3.setBounds(600, 150, 100, 23);
+        ACRS3.setBounds(570, 150, 130, 23);
 
         ACRS4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS4.setName("ACRS4"); // NOI18N
@@ -960,7 +960,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS4);
-        ACRS4.setBounds(600, 180, 100, 23);
+        ACRS4.setBounds(570, 180, 130, 23);
 
         ACRS5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS5.setName("ACRS5"); // NOI18N
@@ -975,7 +975,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS5);
-        ACRS5.setBounds(600, 210, 100, 23);
+        ACRS5.setBounds(570, 210, 130, 23);
 
         ACRS6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS6.setName("ACRS6"); // NOI18N
@@ -990,7 +990,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS6);
-        ACRS6.setBounds(600, 240, 100, 23);
+        ACRS6.setBounds(570, 240, 130, 23);
 
         ACRS7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS7.setName("ACRS7"); // NOI18N
@@ -1005,7 +1005,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS7);
-        ACRS7.setBounds(600, 270, 100, 23);
+        ACRS7.setBounds(570, 270, 130, 23);
 
         ACRS8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS8.setName("ACRS8"); // NOI18N
@@ -1020,7 +1020,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS8);
-        ACRS8.setBounds(600, 300, 100, 23);
+        ACRS8.setBounds(570, 300, 130, 23);
 
         ACRS9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS9.setName("ACRS9"); // NOI18N
@@ -1035,7 +1035,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS9);
-        ACRS9.setBounds(600, 330, 100, 23);
+        ACRS9.setBounds(570, 330, 130, 23);
 
         ACRS10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Pernah", "Kadang-kadang", "Sering", "Selalu" }));
         ACRS10.setName("ACRS10"); // NOI18N
@@ -1050,7 +1050,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             }
         });
         FormInput.add(ACRS10);
-        ACRS10.setBounds(600, 360, 100, 23);
+        ACRS10.setBounds(570, 360, 130, 23);
 
         jLabel130.setText("Nilai :");
         jLabel130.setName("jLabel130"); // NOI18N
@@ -1686,15 +1686,15 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningInstrumenSRQ.jasper","report","::[ Formulir Skrining Instrumen SRQ ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_instrumen_acrs.nip,petugas.nama,skrining_instrumen_acrs.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"+
-                    "skrining_instrumen_acrs.pernyataansrq1,skrining_instrumen_acrs.nilai_srq1,skrining_instrumen_acrs.pernyataansrq2,skrining_instrumen_acrs.nilai_srq2,skrining_instrumen_acrs.pernyataansrq3,"+
-                    "skrining_instrumen_acrs.nilai_srq3,skrining_instrumen_acrs.pernyataansrq4,skrining_instrumen_acrs.nilai_srq4,skrining_instrumen_acrs.pernyataansrq5,skrining_instrumen_acrs.nilai_srq5,"+
-                    "skrining_instrumen_acrs.pernyataansrq6,skrining_instrumen_acrs.nilai_srq6,skrining_instrumen_acrs.pernyataansrq7,skrining_instrumen_acrs.nilai_srq7,skrining_instrumen_acrs.pernyataansrq8,"+
-                    "skrining_instrumen_acrs.nilai_srq8,skrining_instrumen_acrs.pernyataansrq9,skrining_instrumen_acrs.nilai_srq9,skrining_instrumen_acrs.pernyataansrq10,skrining_instrumen_acrs.nilai_srq10,"+
-                    "skrining_instrumen_acrs.pernyataansrq11,skrining_instrumen_acrs.nilai_srq11,skrining_instrumen_acrs.pernyataansrq12,skrining_instrumen_acrs.nilai_srq12,skrining_instrumen_acrs.pernyataansrq13,"+
-                    "skrining_instrumen_acrs.nilai_srq13,skrining_instrumen_acrs.pernyataansrq14,skrining_instrumen_acrs.nilai_srq14,skrining_instrumen_acrs.pernyataansrq15,skrining_instrumen_acrs.nilai_srq15,"+
-                    "skrining_instrumen_acrs.pernyataansrq16,skrining_instrumen_acrs.nilai_srq16,skrining_instrumen_acrs.pernyataansrq17,skrining_instrumen_acrs.nilai_srq17,skrining_instrumen_acrs.pernyataansrq18,"+
-                    "skrining_instrumen_acrs.nilai_srq18,skrining_instrumen_acrs.pernyataansrq19,skrining_instrumen_acrs.nilai_srq19,skrining_instrumen_acrs.pernyataansrq20,skrining_instrumen_acrs.nilai_srq20,"+
-                    "skrining_instrumen_acrs.nilai_total_srq,skrining_instrumen_acrs.kesimpulan from skrining_instrumen_acrs inner join reg_periksa on skrining_instrumen_acrs.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_instrumen_acrs.pernyataanacrs1,skrining_instrumen_acrs.nilai_acrs1,skrining_instrumen_acrs.pernyataanacrs2,skrining_instrumen_acrs.nilai_acrs2,skrining_instrumen_acrs.pernyataanacrs3,"+
+                    "skrining_instrumen_acrs.nilai_acrs3,skrining_instrumen_acrs.pernyataanacrs4,skrining_instrumen_acrs.nilai_acrs4,skrining_instrumen_acrs.pernyataanacrs5,skrining_instrumen_acrs.nilai_acrs5,"+
+                    "skrining_instrumen_acrs.pernyataanacrs6,skrining_instrumen_acrs.nilai_acrs6,skrining_instrumen_acrs.pernyataanacrs7,skrining_instrumen_acrs.nilai_acrs7,skrining_instrumen_acrs.pernyataanacrs8,"+
+                    "skrining_instrumen_acrs.nilai_acrs8,skrining_instrumen_acrs.pernyataanacrs9,skrining_instrumen_acrs.nilai_acrs9,skrining_instrumen_acrs.pernyataanacrs10,skrining_instrumen_acrs.nilai_acrs10,"+
+                    "skrining_instrumen_acrs.pernyataanacrs11,skrining_instrumen_acrs.nilai_acrs11,skrining_instrumen_acrs.pernyataanacrs12,skrining_instrumen_acrs.nilai_acrs12,skrining_instrumen_acrs.pernyataanacrs13,"+
+                    "skrining_instrumen_acrs.nilai_acrs13,skrining_instrumen_acrs.pernyataanacrs14,skrining_instrumen_acrs.nilai_acrs14,skrining_instrumen_acrs.pernyataanacrs15,skrining_instrumen_acrs.nilai_acrs15,"+
+                    "skrining_instrumen_acrs.pernyataanacrs16,skrining_instrumen_acrs.nilai_acrs16,skrining_instrumen_acrs.pernyataanacrs17,skrining_instrumen_acrs.nilai_acrs17,skrining_instrumen_acrs.pernyataanacrs18,"+
+                    "skrining_instrumen_acrs.nilai_acrs18,skrining_instrumen_acrs.pernyataanacrs19,skrining_instrumen_acrs.nilai_acrs19,skrining_instrumen_acrs.pernyataanacrs20,skrining_instrumen_acrs.nilai_acrs20,"+
+                    "skrining_instrumen_acrs.nilai_total_acrs,skrining_instrumen_acrs.kesimpulan from skrining_instrumen_acrs inner join reg_periksa on skrining_instrumen_acrs.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_acrs.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
@@ -1930,29 +1930,21 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
            if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_instrumen_acrs.nip,petugas.nama,skrining_instrumen_acrs.tanggal,"+
-                    "skrining_instrumen_acrs.pernyataansrq1,skrining_instrumen_acrs.nilai_srq1,skrining_instrumen_acrs.pernyataansrq2,skrining_instrumen_acrs.nilai_srq2,skrining_instrumen_acrs.pernyataansrq3,"+
-                    "skrining_instrumen_acrs.nilai_srq3,skrining_instrumen_acrs.pernyataansrq4,skrining_instrumen_acrs.nilai_srq4,skrining_instrumen_acrs.pernyataansrq5,skrining_instrumen_acrs.nilai_srq5,"+
-                    "skrining_instrumen_acrs.pernyataansrq6,skrining_instrumen_acrs.nilai_srq6,skrining_instrumen_acrs.pernyataansrq7,skrining_instrumen_acrs.nilai_srq7,skrining_instrumen_acrs.pernyataansrq8,"+
-                    "skrining_instrumen_acrs.nilai_srq8,skrining_instrumen_acrs.pernyataansrq9,skrining_instrumen_acrs.nilai_srq9,skrining_instrumen_acrs.pernyataansrq10,skrining_instrumen_acrs.nilai_srq10,"+
-                    "skrining_instrumen_acrs.pernyataansrq11,skrining_instrumen_acrs.nilai_srq11,skrining_instrumen_acrs.pernyataansrq12,skrining_instrumen_acrs.nilai_srq12,skrining_instrumen_acrs.pernyataansrq13,"+
-                    "skrining_instrumen_acrs.nilai_srq13,skrining_instrumen_acrs.pernyataansrq14,skrining_instrumen_acrs.nilai_srq14,skrining_instrumen_acrs.pernyataansrq15,skrining_instrumen_acrs.nilai_srq15,"+
-                    "skrining_instrumen_acrs.pernyataansrq16,skrining_instrumen_acrs.nilai_srq16,skrining_instrumen_acrs.pernyataansrq17,skrining_instrumen_acrs.nilai_srq17,skrining_instrumen_acrs.pernyataansrq18,"+
-                    "skrining_instrumen_acrs.nilai_srq18,skrining_instrumen_acrs.pernyataansrq19,skrining_instrumen_acrs.nilai_srq19,skrining_instrumen_acrs.pernyataansrq20,skrining_instrumen_acrs.nilai_srq20,"+
-                    "skrining_instrumen_acrs.nilai_total_srq,skrining_instrumen_acrs.kesimpulan from skrining_instrumen_acrs inner join reg_periksa on skrining_instrumen_acrs.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_instrumen_acrs.pernyataanacrs1,skrining_instrumen_acrs.nilai_acrs1,skrining_instrumen_acrs.pernyataanacrs2,skrining_instrumen_acrs.nilai_acrs2,skrining_instrumen_acrs.pernyataanacrs3,"+
+                    "skrining_instrumen_acrs.nilai_acrs3,skrining_instrumen_acrs.pernyataanacrs4,skrining_instrumen_acrs.nilai_acrs4,skrining_instrumen_acrs.pernyataanacrs5,skrining_instrumen_acrs.nilai_acrs5,"+
+                    "skrining_instrumen_acrs.pernyataanacrs6,skrining_instrumen_acrs.nilai_acrs6,skrining_instrumen_acrs.pernyataanacrs7,skrining_instrumen_acrs.nilai_acrs7,skrining_instrumen_acrs.pernyataanacrs8,"+
+                    "skrining_instrumen_acrs.nilai_acrs8,skrining_instrumen_acrs.pernyataanacrs9,skrining_instrumen_acrs.nilai_acrs9,skrining_instrumen_acrs.pernyataanacrs10,skrining_instrumen_acrs.nilai_total_acrs,"+
+                    "skrining_instrumen_acrs.kesimpulan from skrining_instrumen_acrs inner join reg_periksa on skrining_instrumen_acrs.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_acrs.nip=petugas.nip "+
                     "where skrining_instrumen_acrs.tanggal between ? and ? order by skrining_instrumen_acrs.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_instrumen_acrs.nip,petugas.nama,skrining_instrumen_acrs.tanggal,"+
-                    "skrining_instrumen_acrs.pernyataansrq1,skrining_instrumen_acrs.nilai_srq1,skrining_instrumen_acrs.pernyataansrq2,skrining_instrumen_acrs.nilai_srq2,skrining_instrumen_acrs.pernyataansrq3,"+
-                    "skrining_instrumen_acrs.nilai_srq3,skrining_instrumen_acrs.pernyataansrq4,skrining_instrumen_acrs.nilai_srq4,skrining_instrumen_acrs.pernyataansrq5,skrining_instrumen_acrs.nilai_srq5,"+
-                    "skrining_instrumen_acrs.pernyataansrq6,skrining_instrumen_acrs.nilai_srq6,skrining_instrumen_acrs.pernyataansrq7,skrining_instrumen_acrs.nilai_srq7,skrining_instrumen_acrs.pernyataansrq8,"+
-                    "skrining_instrumen_acrs.nilai_srq8,skrining_instrumen_acrs.pernyataansrq9,skrining_instrumen_acrs.nilai_srq9,skrining_instrumen_acrs.pernyataansrq10,skrining_instrumen_acrs.nilai_srq10,"+
-                    "skrining_instrumen_acrs.pernyataansrq11,skrining_instrumen_acrs.nilai_srq11,skrining_instrumen_acrs.pernyataansrq12,skrining_instrumen_acrs.nilai_srq12,skrining_instrumen_acrs.pernyataansrq13,"+
-                    "skrining_instrumen_acrs.nilai_srq13,skrining_instrumen_acrs.pernyataansrq14,skrining_instrumen_acrs.nilai_srq14,skrining_instrumen_acrs.pernyataansrq15,skrining_instrumen_acrs.nilai_srq15,"+
-                    "skrining_instrumen_acrs.pernyataansrq16,skrining_instrumen_acrs.nilai_srq16,skrining_instrumen_acrs.pernyataansrq17,skrining_instrumen_acrs.nilai_srq17,skrining_instrumen_acrs.pernyataansrq18,"+
-                    "skrining_instrumen_acrs.nilai_srq18,skrining_instrumen_acrs.pernyataansrq19,skrining_instrumen_acrs.nilai_srq19,skrining_instrumen_acrs.pernyataansrq20,skrining_instrumen_acrs.nilai_srq20,"+
-                    "skrining_instrumen_acrs.nilai_total_srq,skrining_instrumen_acrs.kesimpulan from skrining_instrumen_acrs inner join reg_periksa on skrining_instrumen_acrs.no_rawat=reg_periksa.no_rawat "+
+                    "skrining_instrumen_acrs.pernyataanacrs1,skrining_instrumen_acrs.nilai_acrs1,skrining_instrumen_acrs.pernyataanacrs2,skrining_instrumen_acrs.nilai_acrs2,skrining_instrumen_acrs.pernyataanacrs3,"+
+                    "skrining_instrumen_acrs.nilai_acrs3,skrining_instrumen_acrs.pernyataanacrs4,skrining_instrumen_acrs.nilai_acrs4,skrining_instrumen_acrs.pernyataanacrs5,skrining_instrumen_acrs.nilai_acrs5,"+
+                    "skrining_instrumen_acrs.pernyataanacrs6,skrining_instrumen_acrs.nilai_acrs6,skrining_instrumen_acrs.pernyataanacrs7,skrining_instrumen_acrs.nilai_acrs7,skrining_instrumen_acrs.pernyataanacrs8,"+
+                    "skrining_instrumen_acrs.nilai_acrs8,skrining_instrumen_acrs.pernyataanacrs9,skrining_instrumen_acrs.nilai_acrs9,skrining_instrumen_acrs.pernyataanacrs10,skrining_instrumen_acrs.nilai_total_acrs,"+
+                    "skrining_instrumen_acrs.kesimpulan from skrining_instrumen_acrs inner join reg_periksa on skrining_instrumen_acrs.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_acrs.nip=petugas.nip "+
                     "where skrining_instrumen_acrs.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
                     "pasien.nm_pasien like ? or skrining_instrumen_acrs.nip like ? or petugas.nama like ?) "+
@@ -1977,12 +1969,9 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("nip"),rs.getString("nama"),rs.getString("tanggal"),
-                        rs.getString("pernyataansrq1"),rs.getString("nilai_srq1"),rs.getString("pernyataansrq2"),rs.getString("nilai_srq2"),rs.getString("pernyataansrq3"),rs.getString("nilai_srq3"),rs.getString("pernyataansrq4"),
-                        rs.getString("nilai_srq4"),rs.getString("pernyataansrq5"),rs.getString("nilai_srq5"),rs.getString("pernyataansrq6"),rs.getString("nilai_srq6"),rs.getString("pernyataansrq7"),rs.getString("nilai_srq7"),
-                        rs.getString("pernyataansrq8"),rs.getString("nilai_srq8"),rs.getString("pernyataansrq9"),rs.getString("nilai_srq9"),rs.getString("pernyataansrq10"),rs.getString("nilai_srq10"),rs.getString("pernyataansrq11"),
-                        rs.getString("nilai_srq11"),rs.getString("pernyataansrq12"),rs.getString("nilai_srq12"),rs.getString("pernyataansrq13"),rs.getString("nilai_srq13"),rs.getString("pernyataansrq14"),rs.getString("nilai_srq14"),
-                        rs.getString("pernyataansrq15"),rs.getString("nilai_srq15"),rs.getString("pernyataansrq16"),rs.getString("nilai_srq16"),rs.getString("pernyataansrq17"),rs.getString("nilai_srq17"),rs.getString("pernyataansrq18"),
-                        rs.getString("nilai_srq18"),rs.getString("pernyataansrq19"),rs.getString("nilai_srq19"),rs.getString("pernyataansrq20"),rs.getString("nilai_srq20"),rs.getString("nilai_total_srq"),rs.getString("kesimpulan")
+                        rs.getString("pernyataanacrs1"),rs.getString("nilai_acrs1"),rs.getString("pernyataanacrs2"),rs.getString("nilai_acrs2"),rs.getString("pernyataanacrs3"),rs.getString("nilai_acrs3"),rs.getString("pernyataanacrs4"),
+                        rs.getString("nilai_acrs4"),rs.getString("pernyataanacrs5"),rs.getString("nilai_acrs5"),rs.getString("pernyataanacrs6"),rs.getString("nilai_acrs6"),rs.getString("pernyataanacrs7"),rs.getString("nilai_acrs7"),
+                        rs.getString("pernyataanacrs8"),rs.getString("nilai_acrs8"),rs.getString("pernyataanacrs9"),rs.getString("nilai_acrs9"),rs.getString("pernyataanacrs10"),rs.getString("nilai_total_acrs"),rs.getString("kesimpulan")
                     });
                 }
             } catch (Exception e) {
@@ -2023,7 +2012,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
         ACRS10.setSelectedIndex(0);
         NilaiACRS10.setText("0");
         TotalNilai.setText("0");
-        Kesimpulan.setText("");
+        Kesimpulan.setText("Kondisi Normal");
         Tanggal.setDate(new Date());
         ACRS1.requestFocus();
     } 
@@ -2202,8 +2191,8 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("skrining_instrumen_acrs","no_rawat=?","no_rawat=?,tanggal=?,nip=?,pernyataansrq1=?,nilai_srq1=?,pernyataansrq2=?,nilai_srq2=?,pernyataansrq3=?,nilai_srq3=?,pernyataansrq4=?,nilai_srq4=?,pernyataansrq5=?,nilai_srq5=?,"+
-                "pernyataansrq6=?,nilai_srq6=?,pernyataansrq7=?,nilai_srq7=?,pernyataansrq8=?,nilai_srq8=?,pernyataansrq9=?,nilai_srq9=?,pernyataansrq10=?,nilai_srq10=?,kesimpulan=?",26,new String[]{
+        if(Sequel.mengedittf("skrining_instrumen_acrs","no_rawat=?","no_rawat=?,tanggal=?,nip=?,pernyataanacrs1=?,nilai_acrs1=?,pernyataanacrs2=?,nilai_acrs2=?,pernyataanacrs3=?,nilai_acrs3=?,pernyataanacrs4=?,nilai_acrs4=?,pernyataanacrs5=?,nilai_acrs5=?,"+
+                "pernyataanacrs6=?,nilai_acrs6=?,pernyataanacrs7=?,nilai_acrs7=?,pernyataanacrs8=?,nilai_acrs8=?,pernyataanacrs9=?,nilai_acrs9=?,pernyataanacrs10=?,nilai_acrs10=?,kesimpulan=?",26,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdPetugas.getText(),
                 ACRS1.getSelectedItem().toString(),NilaiACRS1.getText(),ACRS2.getSelectedItem().toString(),NilaiACRS2.getText(),ACRS3.getSelectedItem().toString(),NilaiACRS3.getText(),ACRS4.getSelectedItem().toString(),NilaiACRS4.getText(), 
                 ACRS5.getSelectedItem().toString(),NilaiACRS5.getText(),ACRS6.getSelectedItem().toString(),NilaiACRS6.getText(),ACRS7.getSelectedItem().toString(),NilaiACRS7.getText(),ACRS8.getSelectedItem().toString(),NilaiACRS8.getText(), 
