@@ -2107,7 +2107,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
 
     private void ganti() {
         if(Sequel.mengedittf("skrining_instrumen_acrs","no_rawat=?","no_rawat=?,tanggal=?,nip=?,pernyataanacrs1=?,nilai_acrs1=?,pernyataanacrs2=?,nilai_acrs2=?,pernyataanacrs3=?,nilai_acrs3=?,pernyataanacrs4=?,nilai_acrs4=?,pernyataanacrs5=?,nilai_acrs5=?,"+
-                "pernyataanacrs6=?,nilai_acrs6=?,pernyataanacrs7=?,nilai_acrs7=?,pernyataanacrs8=?,nilai_acrs8=?,pernyataanacrs9=?,nilai_acrs9=?,pernyataanacrs10=?,nilai_acrs10=?,kesimpulan=?",26,new String[]{
+                "pernyataanacrs6=?,nilai_acrs6=?,pernyataanacrs7=?,nilai_acrs7=?,pernyataanacrs8=?,nilai_acrs8=?,pernyataanacrs9=?,nilai_acrs9=?,pernyataanacrs10=?,nilai_acrs10=?,nilai_total_acrs=?,kesimpulan=?",26,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),KdPetugas.getText(),
                 ACRS1.getSelectedItem().toString(),NilaiACRS1.getText(),ACRS2.getSelectedItem().toString(),NilaiACRS2.getText(),ACRS3.getSelectedItem().toString(),NilaiACRS3.getText(),ACRS4.getSelectedItem().toString(),NilaiACRS4.getText(), 
                 ACRS5.getSelectedItem().toString(),NilaiACRS5.getText(),ACRS6.getSelectedItem().toString(),NilaiACRS6.getText(),ACRS7.getSelectedItem().toString(),NilaiACRS7.getText(),ACRS8.getSelectedItem().toString(),NilaiACRS8.getText(), 
