@@ -240,7 +240,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningInstrumenSRQ = new javax.swing.JMenuItem();
+        MnSkriningInstrumenACRS = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -349,19 +349,19 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningInstrumenSRQ.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningInstrumenSRQ.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningInstrumenSRQ.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningInstrumenSRQ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningInstrumenSRQ.setText("Formulir Skrining SRQ");
-        MnSkriningInstrumenSRQ.setName("MnSkriningInstrumenSRQ"); // NOI18N
-        MnSkriningInstrumenSRQ.setPreferredSize(new java.awt.Dimension(180, 26));
-        MnSkriningInstrumenSRQ.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningInstrumenACRS.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningInstrumenACRS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningInstrumenACRS.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningInstrumenACRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningInstrumenACRS.setText("Formulir Skrining ACRS");
+        MnSkriningInstrumenACRS.setName("MnSkriningInstrumenACRS"); // NOI18N
+        MnSkriningInstrumenACRS.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnSkriningInstrumenACRS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningInstrumenSRQActionPerformed(evt);
+                MnSkriningInstrumenACRSActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningInstrumenSRQ);
+        jPopupMenu1.add(MnSkriningInstrumenACRS);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1590,7 +1590,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningInstrumenSRQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningInstrumenSRQActionPerformed
+    private void MnSkriningInstrumenACRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningInstrumenACRSActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1608,15 +1608,11 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
                     "skrining_instrumen_acrs.nilai_acrs3,skrining_instrumen_acrs.pernyataanacrs4,skrining_instrumen_acrs.nilai_acrs4,skrining_instrumen_acrs.pernyataanacrs5,skrining_instrumen_acrs.nilai_acrs5,"+
                     "skrining_instrumen_acrs.pernyataanacrs6,skrining_instrumen_acrs.nilai_acrs6,skrining_instrumen_acrs.pernyataanacrs7,skrining_instrumen_acrs.nilai_acrs7,skrining_instrumen_acrs.pernyataanacrs8,"+
                     "skrining_instrumen_acrs.nilai_acrs8,skrining_instrumen_acrs.pernyataanacrs9,skrining_instrumen_acrs.nilai_acrs9,skrining_instrumen_acrs.pernyataanacrs10,skrining_instrumen_acrs.nilai_acrs10,"+
-                    "skrining_instrumen_acrs.pernyataanacrs11,skrining_instrumen_acrs.nilai_acrs11,skrining_instrumen_acrs.pernyataanacrs12,skrining_instrumen_acrs.nilai_acrs12,skrining_instrumen_acrs.pernyataanacrs13,"+
-                    "skrining_instrumen_acrs.nilai_acrs13,skrining_instrumen_acrs.pernyataanacrs14,skrining_instrumen_acrs.nilai_acrs14,skrining_instrumen_acrs.pernyataanacrs15,skrining_instrumen_acrs.nilai_acrs15,"+
-                    "skrining_instrumen_acrs.pernyataanacrs16,skrining_instrumen_acrs.nilai_acrs16,skrining_instrumen_acrs.pernyataanacrs17,skrining_instrumen_acrs.nilai_acrs17,skrining_instrumen_acrs.pernyataanacrs18,"+
-                    "skrining_instrumen_acrs.nilai_acrs18,skrining_instrumen_acrs.pernyataanacrs19,skrining_instrumen_acrs.nilai_acrs19,skrining_instrumen_acrs.pernyataanacrs20,skrining_instrumen_acrs.nilai_acrs20,"+
                     "skrining_instrumen_acrs.nilai_total_acrs,skrining_instrumen_acrs.kesimpulan from skrining_instrumen_acrs inner join reg_periksa on skrining_instrumen_acrs.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_acrs.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningInstrumenSRQActionPerformed
+    }//GEN-LAST:event_MnSkriningInstrumenACRSActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1764,7 +1760,7 @@ public final class RMSkriningInstrumenACRS extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningInstrumenSRQ;
+    private javax.swing.JMenuItem MnSkriningInstrumenACRS;
     private widget.TextBox NilaiACRS1;
     private widget.TextBox NilaiACRS10;
     private widget.TextBox NilaiACRS2;
