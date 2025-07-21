@@ -1703,7 +1703,7 @@
                     <Component class="widget.Label" name="jLabel118">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Suasana hatinya mudah berubah dengan cepat dan dastric ?"/>
+                        <Property name="text" type="java.lang.String" value="Suasana hatinya mudah berubah dengan cepat dan drastris ?"/>
                         <Property name="name" type="java.lang.String" value="jLabel118" noResource="true"/>
                       </Properties>
                       <Constraints>
