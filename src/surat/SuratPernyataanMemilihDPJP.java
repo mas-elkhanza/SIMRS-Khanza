@@ -921,13 +921,13 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
         }else{
             if(Sequel.menyimpantf("surat_pernyataan_memilih_dpjp","?,?,?,?,?,?,?,?,?,?,?","Data",11,new String[]{
                     NoPenyataan.getText(),TNoRw.getText(),Valid.SetTgl(TglPernyataan.getSelectedItem()+""),KdDokter.getText(),KdPerawat.getText(),PembuatPernyataan.getText(), 
-                    AlamatPembuatPernyataan.getText(),Valid.SetTgl(TanggalLahir.getSelectedItem()+""),JKPembuatPernyataan.getSelectedItem().toString().substring(1), 
+                    AlamatPembuatPernyataan.getText(),Valid.SetTgl(TanggalLahir.getSelectedItem()+""),JKPembuatPernyataan.getSelectedItem().toString().substring(0,1), 
                     HubunganDenganPasien.getSelectedItem().toString(),SaksiKeluarga.getText()
                 })==true){
                 tabMode.addRow(new Object[]{
-                    NoPenyataan.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText().substring(1),
+                    NoPenyataan.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText().substring(0,1),
                     Valid.SetTgl(TglPernyataan.getSelectedItem()+""),PembuatPernyataan.getText(),AlamatPembuatPernyataan.getText(),
-                    Valid.SetTgl(TanggalLahir.getSelectedItem()+""),JKPembuatPernyataan.getSelectedItem().toString().substring(1),
+                    Valid.SetTgl(TanggalLahir.getSelectedItem()+""),JKPembuatPernyataan.getSelectedItem().toString().substring(0,1),
                     HubunganDenganPasien.getSelectedItem().toString(),SaksiKeluarga.getText(),KdDokter.getText(),NmDokter.getText(),
                     KdPerawat.getText(),NmPerawat.getText()
                 });
@@ -960,10 +960,10 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString())){
+                if(KdPerawat.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString())){
                     hapus();
                 }else{
-                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh dokter yang bersangkutan..!!");
+                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
                 }
             }
         }else{
@@ -988,7 +988,7 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
         }else if(PembuatPernyataan.getText().trim().equals("")){
             Valid.textKosong(PembuatPernyataan,"Pembuat Pernyataan");
         }else if(NmPerawat.getText().trim().equals("")){
-            Valid.textKosong(NmPerawat,"Saksi II Perawat");
+            Valid.textKosong(NmPerawat,"Saksi II Petugas");
         }else if(SaksiKeluarga.getText().trim().equals("")){
             Valid.textKosong(SaksiKeluarga,"Saksi I Keluarga");
         }else{
@@ -996,10 +996,10 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString())){
+                    if(KdPerawat.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString())){
                         ganti();
                     }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh dokter yang bersangkutan..!!");
+                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
                     }
                 }
             }else{
@@ -1824,20 +1824,20 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()); 
-            KdPerawat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            NmPerawat.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
-            PembuatPernyataan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            if(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString().equals("L")){
+            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan")); 
+            PembuatPernyataan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            AlamatPembuatPernyataan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            if(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString().equals("L")){
                 JKPembuatPernyataan.setSelectedIndex(0);
             }else{
                 JKPembuatPernyataan.setSelectedIndex(1);
             }
-            AlamatPembuatPernyataan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
-            HubunganDenganPasien.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
-            SaksiKeluarga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            HubunganDenganPasien.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            SaksiKeluarga.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            NmDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
             Valid.SetTgl2(TglPernyataan,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            Valid.SetTgl2(TanggalLahir,tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            Valid.SetTgl2(TanggalLahir,tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
         }
     }
 
