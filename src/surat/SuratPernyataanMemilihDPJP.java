@@ -88,6 +88,26 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
                 column.setPreferredWidth(25);
             }else if(i==6){
                 column.setPreferredWidth(65);
+            }else if(i==7){
+                column.setPreferredWidth(160);
+            }else if(i==8){
+                column.setPreferredWidth(210);
+            }else if(i==9){
+                column.setPreferredWidth(65);
+            }else if(i==10){
+                column.setPreferredWidth(45);
+            }else if(i==11){
+                column.setPreferredWidth(85);
+            }else if(i==12){
+                column.setPreferredWidth(160);
+            }else if(i==13){
+                column.setPreferredWidth(90);
+            }else if(i==14){
+                column.setPreferredWidth(160);
+            }else if(i==15){
+                column.setPreferredWidth(90);
+            }else if(i==16){
+                column.setPreferredWidth(160);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1500,15 +1520,15 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
                 param.put("photo_penerima","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanmemilihdpjp/"+lokasifile);
                 param.put("photo_saksi","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pernyataanmemilihdpjp/"+lokasifile2);
-                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
-                finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),30).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),29).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()));
-                param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),32).toString()+"\nID "+(finger2.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),31).toString():finger2)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()));
+                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+                finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),13).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()));
+                param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),16).toString()+"\nID "+(finger2.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),15).toString():finger2)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()));
                 Valid.MyReportqry("rptSuratPernyataanMemilihDPJP.jasper","report","::[ Surat Pernyataan Memilih DPJP Rawat Inap ]::",
                     "select surat_pernyataan_memilih_dpjp.no_pernyataan,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,surat_pernyataan_memilih_dpjp.tanggal,surat_pernyataan_memilih_dpjp.pembuat_pernyataan,surat_pernyataan_memilih_dpjp.alamat_pembuat_pernyataan,pasien.umur,pasien.no_tlp,"+
                     "surat_pernyataan_memilih_dpjp.tgl_lahir_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.jk_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.hubungan_pembuat_pernyataan,surat_pernyataan_memilih_dpjp.saksi_keluarga,surat_pernyataan_memilih_dpjp.kd_dokter,dokter.nm_dokter,surat_pernyataan_memilih_dpjp.nip,petugas.nama from surat_pernyataan_memilih_dpjp inner join reg_periksa on surat_pernyataan_memilih_dpjp.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on pasien.no_rkm_medis=reg_periksa.no_rkm_medis inner join dokter on dokter.kd_dokter=surat_pernyataan_memilih_dpjp.kd_dokter inner join petugas on petugas.nip=surat_pernyataan_memilih_dpjp.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                    "where surat_pernyataan_memilih_dpjp.tanggal surat_pernyataan_memilih_dpjp.no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                    "where surat_pernyataan_memilih_dpjp.no_pernyataan='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
