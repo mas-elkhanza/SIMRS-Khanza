@@ -1372,7 +1372,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         LoadHTML2.setName("LoadHTML2"); // NOI18N
         Scroll5.setViewportView(LoadHTML2);
 
-        TabData.addTab("Tanda Tangan Pembuat Pernyataan", Scroll5);
+        TabData.addTab("Bukti Pembuat Pernyataan", Scroll5);
 
         Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll6.setName("Scroll6"); // NOI18N
@@ -1383,7 +1383,7 @@ public final class SuratPersetujuanPenolakanTindakan extends javax.swing.JDialog
         LoadHTML3.setName("LoadHTML3"); // NOI18N
         Scroll6.setViewportView(LoadHTML3);
 
-        TabData.addTab("Tanda Tangan Saksi I Keluarga", Scroll6);
+        TabData.addTab("Bukti Saksi I Keluarga", Scroll6);
 
         FormPhoto.add(TabData, java.awt.BorderLayout.CENTER);
 

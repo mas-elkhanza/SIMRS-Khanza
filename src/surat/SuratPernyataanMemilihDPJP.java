@@ -292,7 +292,7 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-07-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -306,7 +306,7 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-07-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -605,7 +605,7 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
         LoadHTML2.setName("LoadHTML2"); // NOI18N
         Scroll5.setViewportView(LoadHTML2);
 
-        TabData.addTab("Tanda Tangan Pembuat Pernyataan", Scroll5);
+        TabData.addTab("Bukti Pembuat Pernyataan", Scroll5);
 
         Scroll6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         Scroll6.setName("Scroll6"); // NOI18N
@@ -616,7 +616,7 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
         LoadHTML3.setName("LoadHTML3"); // NOI18N
         Scroll6.setViewportView(LoadHTML3);
 
-        TabData.addTab("Tanda Tangan Saksi I Keluarga", Scroll6);
+        TabData.addTab("Bukti Saksi I Keluarga", Scroll6);
 
         FormPhoto.add(TabData, java.awt.BorderLayout.CENTER);
 
@@ -769,7 +769,7 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
         HubunganDenganPasien.setBounds(105, 90, 135, 23);
 
         TglPernyataan.setForeground(new java.awt.Color(50, 70, 50));
-        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2025" }));
+        TglPernyataan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-07-2025" }));
         TglPernyataan.setDisplayFormat("dd-MM-yyyy");
         TglPernyataan.setName("TglPernyataan"); // NOI18N
         TglPernyataan.setOpaque(false);
@@ -850,7 +850,7 @@ public final class SuratPernyataanMemilihDPJP extends javax.swing.JDialog {
         jLabel39.setBounds(0, 120, 101, 23);
 
         TanggalLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-07-2025" }));
+        TanggalLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-07-2025" }));
         TanggalLahir.setDisplayFormat("dd-MM-yyyy");
         TanggalLahir.setName("TanggalLahir"); // NOI18N
         TanggalLahir.setOpaque(false);

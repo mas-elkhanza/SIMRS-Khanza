@@ -584,8 +584,8 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Tanda Tangan Pembuat Pernyataan">
-                            <Property name="tabTitle" type="java.lang.String" value="Tanda Tangan Pembuat Pernyataan"/>
+                          <JTabbedPaneConstraints tabName="Bukti Pembuat Pernyataan">
+                            <Property name="tabTitle" type="java.lang.String" value="Bukti Pembuat Pernyataan"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
@@ -619,8 +619,8 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="Tanda Tangan Saksi I Keluarga">
-                            <Property name="tabTitle" type="java.lang.String" value="Tanda Tangan Saksi I Keluarga"/>
+                          <JTabbedPaneConstraints tabName="Bukti Saksi I Keluarga">
+                            <Property name="tabTitle" type="java.lang.String" value="Bukti Saksi I Keluarga"/>
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
