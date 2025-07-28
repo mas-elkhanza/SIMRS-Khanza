@@ -47,3 +47,4 @@ nbproject/project.properties
 # End of https://www.toptal.com/developers/gitignore/api/netbeans,java
 
 nbproject/private/private.properties
+setting/database.xml
