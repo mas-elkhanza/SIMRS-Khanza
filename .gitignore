@@ -43,8 +43,7 @@ setting/
 nbproject/private/private.properties
 nbproject/private/private.xml
 nbproject/project.properties
+setting/database.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/netbeans,java
 
-nbproject/private/private.properties
-setting/database.xml
