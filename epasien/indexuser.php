@@ -448,6 +448,9 @@
                             <li <?=$subhalaman=="BuktiPelayananProgramKFR"?"class='active'":""?>>
                                 <a href="index.php?act=BuktiPelayananProgramKFR&hal=Persetujuan">Layanan Program KFR</a>
                             </li>
+                            <li <?=$subhalaman=="PernyataanMemilihDPJP"?"class='active'":""?>>
+                                <a href="index.php?act=PernyataanMemilihDPJP&hal=Persetujuan">Pernyataan Memilih DPJP</a>
+                            </li>
                         </ul>
                     </li>
                     <li <?=$halaman=="Fasilitas"?"class='active'":""?>>

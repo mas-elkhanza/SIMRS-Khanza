@@ -58,7 +58,8 @@
                 'HasilPersetujuanTransferAntarRuang','HasilPersetujuanRawatInap','HasilPersetujuanPenundaanPelayanan','HasilPersetujuanPenolakanAnjuranMedis',
                 'HasilPersetujuanRestrain','HasilPersetujuanPernyataanPulangAPS','HasilPersetujuanPenolakanTindakan','HasilBuktiPelaksanaanEdukasi',
                 'HasilBuktiPelayananRehabilitasi','BuktiPelayananProgramKFR','AmbilBuktiPelayananProgramKFR','HasilBuktiPelayananProgramKFR','AntrianSlitLamp',
-                'AntrianOCT','PersetujuanPemeriksaanHIV','AmbilPersetujuanPemeriksaanHIV','HasilPersetujuanPemeriksaanHIV'
+                'AntrianOCT','PersetujuanPemeriksaanHIV','AmbilPersetujuanPemeriksaanHIV','HasilPersetujuanPemeriksaanHIV','AmbilPernyataanMemilihDPJP',
+                'PernyataanMemilihDPJP','HasilPernyataanMemilihDPJP'
             );
             foreach ($form as $page) {
                 if ($aksi==$page) {
@@ -153,6 +154,7 @@
                 case "PersetujuanPenolakanAnjuranMedis"        : include_once("pages/listriwayatpersetujuanpenolakananjuranmedis.php"); break;
                 case "PersetujuanRestrain"                     : include_once("pages/listriwayatpersetujuanrestrain.php"); break;
                 case "PersetujuanPenolakanTindakan"            : include_once("pages/listriwayatpersetujuanpenolakantindakan.php"); break;
+                case "PernyataanMemilihDPJP"                   : include_once("pages/listriwayatpernyataanmemilihdpjp.php"); break;
                 case "PersetujuanPemeriksaanHIV"               : include_once("pages/listriwayatpersetujuanpemeriksaanhiv.php"); break;
                 case "BuktiPelaksanaanEdukasi"                 : include_once("pages/listriwayatbuktipelaksanaanedukasi.php"); break;
                 case "BuktiPelayananRehabilitasi"              : include_once("pages/listriwayatbuktipelayananrehabilitasi.php"); break;
@@ -190,6 +192,7 @@
                 case "AmbilPersetujuanRestrain"                : include_once("pages/ambilpersetujuanrestrain.php"); break;
                 case "AmbilPersetujuanPernyataanPulangAPS"     : include_once("pages/ambilpersetujuanpernyataanpulangaps.php"); break;
                 case "AmbilPersetujuanPenolakanTindakan"       : include_once("pages/ambilpersetujuanpenolakantindakan.php"); break;
+                case "AmbilPernyataanMemilihDPJP"              : include_once("pages/ambilpernyataanmemilihdpjp.php"); break;
                 case "AmbilBuktiPelaksanaanEdukasi"            : include_once("pages/ambilbuktipelaksanaanedukasi.php"); break;
                 case "AmbilBuktiPelayananRehabilitasi"         : include_once("pages/ambilbuktipelayananrehabilitasi.php"); break;
                 case "AmbilBuktiPelayananProgramKFR"           : include_once("pages/ambilbuktipelayananprogramkfr.php"); break;
@@ -208,6 +211,7 @@
                 case "HasilBuktiPelaksanaanEdukasi"            : include_once("pages/listhasilbuktipelaksanaanedukasi.php"); break;
                 case "HasilBuktiPelayananRehabilitasi"         : include_once("pages/listhasilbuktipelayananrehabilitasi.php"); break;
                 case "HasilBuktiPelayananProgramKFR"           : include_once("pages/listhasilbuktipelayananprogramkfr.php"); break;
+                case "HasilPernyataanMemilihDPJP"              : include_once("pages/listhasilpernyataanmemilihdpjp.php"); break;
                 default                                        : include_once("pages/homeuser.php");
             }
         }
