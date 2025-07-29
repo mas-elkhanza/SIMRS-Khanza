@@ -1775,7 +1775,7 @@ public final class SuratPersetujuanPenundaanPelayanan extends javax.swing.JDialo
         KeteranganPenundaanPelayananKarena.setText("");
         AlternatifDiberikan.setSelectedIndex(0);
         KeteranganAlternatifDiberikan.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(persetujuan_penundaan_pelayanan.no_surat,3),signed)),0) from persetujuan_penundaan_pelayanan where persetujuan_penundaan_pelayanan.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(persetujuan_penundaan_pelayanan.no_surat,3),signed)),0) from persetujuan_penundaan_pelayanan where persetujuan_penundaan_pelayanan.tanggal like '%"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"%' ",
                 "PPP"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
         btnDokter.requestFocus();
     }

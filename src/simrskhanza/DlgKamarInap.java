@@ -5883,9 +5883,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(! TCari.getText().trim().equals("")){
-            BtnCariActionPerformed(evt);
-        }
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
@@ -5989,7 +5986,6 @@ public class DlgKamarInap extends javax.swing.JDialog {
                               break;
                     }
                 }catch(Exception e){
-                    System.out.println("Notifikasi : "+e);
                 }      
         }
     }//GEN-LAST:event_BtnPrintActionPerformed
