@@ -248,7 +248,8 @@ public final class akses {
             riwayat_surat_peringatan=false,master_kesimpulan_anjuran_mcu=false,kategori_piutang_jasa_perusahaan=false,piutang_jasa_perusahaan=false,bayar_piutang_jasa_perusahaan=false,
             piutang_jasa_perusahaan_belum_lunas=false,checklist_kesiapan_anestesi=false,piutang_peminjaman_uang_belum_lunas=false,hasil_pemeriksaan_slit_lamp=false,
             hasil_pemeriksaan_oct=false,beban_hutang_lain=false,poli_asal_pasien_ranap=false,pemberi_hutang_lain=false,dokter_asal_pasien_ranap=false,duta_parkir_rekap_keluar=false,
-            surat_keterangan_layak_terbang=false,bayar_beban_hutang_lain=false,surat_persetujuan_pemeriksaan_hiv=false,skrining_instrumen_acrs=false,surat_pernyataan_memilih_dpjp=false;
+            surat_keterangan_layak_terbang=false,bayar_beban_hutang_lain=false,surat_persetujuan_pemeriksaan_hiv=false,skrining_instrumen_acrs=false,surat_pernyataan_memilih_dpjp=false,
+            skrining_instrumen_mental_emosional=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1413,6 +1414,7 @@ public final class akses {
                         akses.surat_persetujuan_pemeriksaan_hiv=true;
                         akses.skrining_instrumen_acrs=true;
                         akses.surat_pernyataan_memilih_dpjp=true;
+                        akses.skrining_instrumen_mental_emosional=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2561,6 +2563,7 @@ public final class akses {
                         akses.surat_persetujuan_pemeriksaan_hiv=rs2.getBoolean("surat_persetujuan_pemeriksaan_hiv");
                         akses.skrining_instrumen_acrs=rs2.getBoolean("skrining_instrumen_acrs");
                         akses.surat_pernyataan_memilih_dpjp=rs2.getBoolean("surat_pernyataan_memilih_dpjp");
+                        akses.skrining_instrumen_mental_emosional=rs2.getBoolean("skrining_instrumen_mental_emosional");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3732,6 +3735,7 @@ public final class akses {
         akses.surat_persetujuan_pemeriksaan_hiv=false;
         akses.skrining_instrumen_acrs=false;
         akses.surat_pernyataan_memilih_dpjp=false;
+        akses.skrining_instrumen_mental_emosional=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -4917,4 +4921,5 @@ public final class akses {
     public static boolean getsurat_persetujuan_pemeriksaan_hiv(){return akses.surat_persetujuan_pemeriksaan_hiv;}
     public static boolean getskrining_instrumen_acrs(){return akses.skrining_instrumen_acrs;}
     public static boolean getsurat_pernyataan_memilih_dpjp(){return akses.surat_pernyataan_memilih_dpjp;}
+    public static boolean getskrining_instrumen_mental_emosional(){return akses.skrining_instrumen_mental_emosional;}
 }   

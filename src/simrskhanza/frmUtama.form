@@ -362,7 +362,7 @@
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="20">
                         <StringItem index="0" value="[A] Registrasi, Tagihan Ranap &amp; Ralan, Pelayanan &amp; Billing Pasien"/>
-                        <StringItem index="1" value="[B] Input Data Tindakan, Obat &amp; BHP Via Barcode No.Rawat"/>
+                        <StringItem index="1" value="[B] Tindakan &amp; Obat &amp; BHP Via Barcode, Lab Kesehatan Lingkungan"/>
                         <StringItem index="2" value="[C] Presensi, Manajemen &amp; Penggajian Pegawai Rumah Sakit"/>
                         <StringItem index="3" value="[D] Transaksi Inventory Obat, BHP Medis, Alat Kesehatan Pasien"/>
                         <StringItem index="4" value="[E] Transaksi Inventory Barang Non Medis, Penunjang ( Lab &amp; RO )"/>
@@ -485,7 +485,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="22/07/2025"/>
+            <StringItem index="0" value="04/08/2025"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
