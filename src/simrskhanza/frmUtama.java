@@ -1026,6 +1026,7 @@ import rekammedis.RMSkriningFrailtySyndrome;
 import rekammedis.RMSkriningHipertensi;
 import rekammedis.RMSkriningIndraPendengaran;
 import rekammedis.RMSkriningInstrumenACRS;
+import rekammedis.RMSkriningInstrumenMentalEmosional;
 import rekammedis.RMSkriningInstrumenSDQ;
 import rekammedis.RMSkriningKankerKolorektal;
 import rekammedis.RMSkriningKekerasanPadaPerempuan;
@@ -22791,6 +22792,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningInstrumenMentalEmosionalActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningInstrumenMentalEmosional form=new RMSkriningInstrumenMentalEmosional(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23498,7 +23512,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnRiwayatSuratPeringatan,btnMasterKesimpulanAnjuranMCU,btnKategoriPiutangJasaPerusahaan,btnPiutangJasaPerusahaan,btnBayarPiutangJasaPerusahaan,btnPiutangJasaPerusahaanBelumLunas,
             btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap,btnPemberiHutangLain,
             btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV,btnSkriningInstrumenACRS,
-            btnSuratPernyataanMemilihDPJP;
+            btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional;
     
     public void isWall(){
         try{            
@@ -28041,6 +28055,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_instrumen_acrs()==true){
                 Panelmenu.add(btnSkriningInstrumenACRS);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_instrumen_mental_emosional()==true){
+                Panelmenu.add(btnSkriningInstrumenMentalEmosional);
                 jmlmenu++;
             }
             
@@ -33695,6 +33714,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_instrumen_acrs()==true){
             Panelmenu.add(btnSkriningInstrumenACRS);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_instrumen_mental_emosional()==true){
+            Panelmenu.add(btnSkriningInstrumenMentalEmosional);
             jmlmenu++;
         }
         
@@ -40934,6 +40958,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getskrining_instrumen_acrs()==true){
             if(btnSkriningInstrumenACRS.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnSkriningInstrumenACRS);
+                jmlmenu++;
+            } 
+        }
+        
+        if(akses.getskrining_instrumen_mental_emosional()==true){
+            if(btnSkriningInstrumenMentalEmosional.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningInstrumenMentalEmosional);
                 jmlmenu++;
             } 
         }
@@ -48242,5 +48273,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningInstrumenACRS.setName("btnSkriningInstrumenACRS");
         btnSkriningInstrumenACRS.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningInstrumenACRS.addActionListener(this::btnSkriningInstrumenACRSActionPerformed);
+        
+        btnSkriningInstrumenMentalEmosional = new widget.ButtonBig();
+        btnSkriningInstrumenMentalEmosional.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5859961_depression_disorder_health_mental_psychology_icon.png"))); 
+        btnSkriningInstrumenMentalEmosional.setText("Skrining Instrumen Mental Emosional Anak");
+        btnSkriningInstrumenMentalEmosional.setIconTextGap(0);
+        btnSkriningInstrumenMentalEmosional.setName("btnSkriningInstrumenMentalEmosional");
+        btnSkriningInstrumenMentalEmosional.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningInstrumenMentalEmosional.addActionListener(this::btnSkriningInstrumenMentalEmosionalActionPerformed);
     }
 }

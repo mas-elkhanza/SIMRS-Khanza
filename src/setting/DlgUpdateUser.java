@@ -4861,8 +4861,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[M]Skrining Instrumen ACRS",skrining_instrumen_acrs});
         }
         
-        if("[M]Skrining Instrumen Mental Emosional".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[M]Skrining Instrumen Mental Emosional",skrining_instrumen_mental_emosional});
+        if("[M]Skrining Instrumen Mental Emosional Anak".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Skrining Instrumen Mental Emosional Anak",skrining_instrumen_mental_emosional});
         }
         
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -9448,7 +9448,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","skrining_instrumen_acrs='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[M]Skrining Instrumen Mental Emosional".equals(tbUser.getValueAt(i,1).toString())){
+            if("[M]Skrining Instrumen Mental Emosional Anak".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","skrining_instrumen_mental_emosional='"+tbUser.getValueAt(i,2).toString()+"'");
             }
                     
