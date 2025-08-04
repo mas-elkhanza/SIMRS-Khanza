@@ -270,7 +270,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[K]Piutang Jasa Perusahaan","[K]Bayar Piutang Jasa Perusahaan","[K]Piutang Jasa Perusahaan Belum Lunas","[M]Check List Kesiapan Anestesi","[K]Piutang Peminjaman Uang Belum Lunas",
                 "[M]Hasil Pemeriksaan Slit Lamp","[M]Hasil Pemeriksaan OCT","[K]Beban Hutang Lain","[J]Poli Asal Pasien Ranap","[K]Pemberi Hutang Lain","[J]Dokter Asal Pasien Ranap",
                 "[L]Rekap Keluar Duta Parking","[P]Surat Keterangan Layak Terbang","[K]Bayar Beban Hutang Lain","[P]Surat Persetujuan Pemeriksaan HIV","[M]Skrining Instrumen ACRS",
-                "[P]Surat Pernyataan Memilih DPJP","[M]Skrining Instrumen Mental Emosional"
+                "[P]Surat Pernyataan Memilih DPJP","[M]Skrining Instrumen Mental Emosional","[B]Pelanggan Lab Kesehatan Lingkungan"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -594,7 +594,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1146;i++) {
+        for (i = 0; i < 1147;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3484,7 +3484,10 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(173);
                     break;
                 case 1145:
-                    column.setPreferredWidth(203);
+                    column.setPreferredWidth(204);
+                    break;
+                case 1146:
+                    column.setPreferredWidth(205);
                     break;
                 default:
                     column.setPreferredWidth(133);
@@ -3968,7 +3971,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -3997,7 +4000,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -5190,7 +5193,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "surat_persetujuan_pemeriksaan_hiv='"+tbUser.getValueAt(i,1142).toString()+"',"+
                     "skrining_instrumen_acrs='"+tbUser.getValueAt(i,1143).toString()+"',"+
                     "surat_pernyataan_memilih_dpjp='"+tbUser.getValueAt(i,1144).toString()+"',"+
-                    "skrining_instrumen_mental_emosional='"+tbUser.getValueAt(i,1145).toString()+"'")==true){
+                    "skrining_instrumen_mental_emosional='"+tbUser.getValueAt(i,1145).toString()+"',"+
+                    "pelanggan_lab_kesehatan_lingkungan='"+tbUser.getValueAt(i,1146).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6553,7 +6557,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "surat_persetujuan_pemeriksaan_hiv='"+tbUser.getValueAt(barisdicopy,1142).toString()+"',"+
                                         "skrining_instrumen_acrs='"+tbUser.getValueAt(barisdicopy,1143).toString()+"',"+
                                         "surat_pernyataan_memilih_dpjp='"+tbUser.getValueAt(barisdicopy,1144).toString()+"',"+
-                                        "skrining_instrumen_mental_emosional='"+tbUser.getValueAt(barisdicopy,1145).toString()+"'");
+                                        "skrining_instrumen_mental_emosional='"+tbUser.getValueAt(barisdicopy,1145).toString()+"',"+
+                                        "pelanggan_lab_kesehatan_lingkungan='"+tbUser.getValueAt(barisdicopy,1146).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -6877,7 +6882,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             "user.kategori_piutang_jasa_perusahaan,user.piutang_jasa_perusahaan,user.bayar_piutang_jasa_perusahaan,user.piutang_jasa_perusahaan_belum_lunas,user.checklist_kesiapan_anestesi,"+
                             "user.piutang_peminjaman_uang_belum_lunas,user.hasil_pemeriksaan_slit_lamp,user.hasil_pemeriksaan_oct,user.beban_hutang_lain,user.poli_asal_pasien_ranap,user.pemberi_hutang_lain,"+
                             "user.dokter_asal_pasien_ranap,user.duta_parkir_rekap_keluar,user.surat_keterangan_layak_terbang,user.bayar_beban_hutang_lain,user.surat_persetujuan_pemeriksaan_hiv,"+
-                            "user.skrining_instrumen_acrs,user.surat_pernyataan_memilih_dpjp,user.skrining_instrumen_mental_emosional from user order by AES_DECRYPT(user.id_user,'nur')");
+                            "user.skrining_instrumen_acrs,user.surat_pernyataan_memilih_dpjp,user.skrining_instrumen_mental_emosional,user.pelanggan_lab_kesehatan_lingkungan from user order by AES_DECRYPT(user.id_user,'nur')");
                         try {
                             rs=ps.executeQuery();
                             i=0;
@@ -8036,7 +8041,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("surat_persetujuan_pemeriksaan_hiv"),
                                            rs.getBoolean("skrining_instrumen_acrs"),
                                            rs.getBoolean("surat_pernyataan_memilih_dpjp"),
-                                           rs.getBoolean("skrining_instrumen_mental_emosional")
+                                           rs.getBoolean("skrining_instrumen_mental_emosional"),
+                                           rs.getBoolean("pelanggan_lab_kesehatan_lingkungan")
                                         };
                                         i++;
                                         SwingUtilities.invokeLater(() -> tabMode.addRow(row));
@@ -9185,7 +9191,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        rs.getBoolean("surat_persetujuan_pemeriksaan_hiv"),
                                        rs.getBoolean("skrining_instrumen_acrs"),
                                        rs.getBoolean("surat_pernyataan_memilih_dpjp"),
-                                       rs.getBoolean("skrining_instrumen_mental_emosional")
+                                       rs.getBoolean("skrining_instrumen_mental_emosional"),
+                                       rs.getBoolean("pelanggan_lab_kesehatan_lingkungan")
                                     };
                                     i++;
                                     SwingUtilities.invokeLater(() -> tabMode.addRow(row));
