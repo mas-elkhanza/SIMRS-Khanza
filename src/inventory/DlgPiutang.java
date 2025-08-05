@@ -321,7 +321,7 @@ public class DlgPiutang extends javax.swing.JDialog {
                         }
                             
                         if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),20).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),20).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Karyawan")){
                                HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString()); 
                         }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
