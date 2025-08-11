@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="420" orientation="Landscape" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ce64ca70-da6c-4a16-ba37-503a6b046641">
 	<property name="ireport.zoom" value="1.6105100000000143"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="111"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="koneksi"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
@@ -19,73 +19,100 @@
 	<queryString>
 		<![CDATA[select skrining_rawat_jalan.tanggal,skrining_rawat_jalan.jam,skrining_rawat_jalan.no_rkm_medis,pasien.nm_pasien,
 pasien.tgl_lahir,pasien.nm_ibu,pasien.jk,skrining_rawat_jalan.geriatri,skrining_rawat_jalan.kesadaran,
-skrining_rawat_jalan.pernapasan,skrining_rawat_jalan.nyeri_dada,skrining_rawat_jalan.skala_nyeri,
+skrining_rawat_jalan.pernapasan,skrining_rawat_jalan.nyeri_dada,skrining_rawat_jalan.skala_nyeri,skrining_rawat_jalan.batuk,skrining_rawat_jalan.risiko_jatuh,
 skrining_rawat_jalan.keputusan,skrining_rawat_jalan.nip,petugas.nama  from skrining_rawat_jalan 
 inner join pasien inner join petugas on skrining_rawat_jalan.no_rkm_medis=pasien.no_rkm_medis 
 and skrining_rawat_jalan.nip=petugas.nip]]>
 	</queryString>
 	<field name="tanggal" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal"/>
 		<property name="com.jaspersoft.studio.field.label" value="tanggal"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
 	<field name="jam" class="java.sql.Time">
+		<property name="com.jaspersoft.studio.field.name" value="jam"/>
 		<property name="com.jaspersoft.studio.field.label" value="jam"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_pasien" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="tgl_lahir" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nm_ibu" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nm_ibu"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_ibu"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="jk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jk"/>
 		<property name="com.jaspersoft.studio.field.label" value="jk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="geriatri" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="geriatri"/>
 		<property name="com.jaspersoft.studio.field.label" value="geriatri"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
 	<field name="kesadaran" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="kesadaran"/>
 		<property name="com.jaspersoft.studio.field.label" value="kesadaran"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
 	<field name="pernapasan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="pernapasan"/>
 		<property name="com.jaspersoft.studio.field.label" value="pernapasan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
 	<field name="nyeri_dada" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nyeri_dada"/>
 		<property name="com.jaspersoft.studio.field.label" value="nyeri_dada"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
 	<field name="skala_nyeri" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="skala_nyeri"/>
 		<property name="com.jaspersoft.studio.field.label" value="skala_nyeri"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
+	<field name="batuk" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="batuk"/>
+		<property name="com.jaspersoft.studio.field.label" value="batuk"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="risiko_jatuh" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="risiko_jatuh"/>
+		<property name="com.jaspersoft.studio.field.label" value="risiko_jatuh"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="keputusan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="keputusan"/>
 		<property name="com.jaspersoft.studio.field.label" value="keputusan"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
 	<field name="nip" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nip"/>
 		<property name="com.jaspersoft.studio.field.label" value="nip"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="skrining_rawat_jalan"/>
 	</field>
 	<field name="nama" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama"/>
 		<property name="com.jaspersoft.studio.field.label" value="nama"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
 	</field>
@@ -101,7 +128,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement mode="Transparent" x="190" y="118" width="348" height="13" uuid="0416d068-0be8-4b8c-91e5-43eda3e95722"/>
+				<reportElement mode="Transparent" x="190" y="113" width="348" height="13" uuid="0416d068-0be8-4b8c-91e5-43eda3e95722"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -109,7 +136,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="57" y="118" width="116" height="13" uuid="66100df3-c49e-4a1e-84f0-d3962f9f2020"/>
+				<reportElement x="57" y="113" width="116" height="13" uuid="66100df3-c49e-4a1e-84f0-d3962f9f2020"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -125,7 +152,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[LEMBAR SKRINING RAWAT JALAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="174" y="118" width="5" height="13" uuid="7dcf1d73-f910-446f-84aa-a77865ddb87d"/>
+				<reportElement x="174" y="113" width="5" height="13" uuid="7dcf1d73-f910-446f-84aa-a77865ddb87d"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -133,7 +160,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="288" y="150" width="251" height="13" uuid="212ec09e-c36e-4cae-a461-825906319ab7"/>
+				<reportElement mode="Transparent" x="288" y="141" width="251" height="13" uuid="212ec09e-c36e-4cae-a461-825906319ab7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -141,7 +168,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[" / "+$F{jk}.replaceAll("L","Laki-Laki").replaceAll("P","Perempuan")]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="174" y="150" width="5" height="13" uuid="47a64c7c-dff1-429c-a734-4a32851bd82c"/>
+				<reportElement x="174" y="141" width="5" height="13" uuid="47a64c7c-dff1-429c-a734-4a32851bd82c"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -149,7 +176,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="57" y="150" width="116" height="13" uuid="f1b1f37b-b418-4bdf-b001-2f5804f9a0fd"/>
+				<reportElement x="57" y="141" width="116" height="13" uuid="f1b1f37b-b418-4bdf-b001-2f5804f9a0fd"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -157,7 +184,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[Tgl. Lahir / Jenis Kelamin]]></text>
 			</staticText>
 			<textField pattern="dd-MM-yyyy">
-				<reportElement mode="Transparent" x="190" y="150" width="96" height="13" uuid="f2f06851-5e3c-4650-ba8c-505f4981a0e0"/>
+				<reportElement mode="Transparent" x="190" y="141" width="96" height="13" uuid="f2f06851-5e3c-4650-ba8c-505f4981a0e0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -302,7 +329,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="174" y="102" width="5" height="13" uuid="3f931ff2-bed0-479f-a5e6-1ac81743826f"/>
+				<reportElement x="174" y="99" width="5" height="13" uuid="3f931ff2-bed0-479f-a5e6-1ac81743826f"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -310,7 +337,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="190" y="102" width="348" height="13" uuid="aed7d518-515d-46ae-8421-cdddff598bdb"/>
+				<reportElement mode="Transparent" x="190" y="99" width="348" height="13" uuid="aed7d518-515d-46ae-8421-cdddff598bdb"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -318,7 +345,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="57" y="102" width="116" height="13" uuid="97ab49b0-9e62-4fd8-8f74-56956b708078"/>
+				<reportElement x="57" y="99" width="116" height="13" uuid="97ab49b0-9e62-4fd8-8f74-56956b708078"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -326,7 +353,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[No.R.M.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="174" y="134" width="5" height="13" uuid="3a494add-e6b7-4d91-8e87-22cdbd6e2804"/>
+				<reportElement x="174" y="127" width="5" height="13" uuid="3a494add-e6b7-4d91-8e87-22cdbd6e2804"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -334,7 +361,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="57" y="134" width="116" height="13" uuid="1e1832b2-33a8-4236-8064-6f530c8fdca6"/>
+				<reportElement x="57" y="127" width="116" height="13" uuid="1e1832b2-33a8-4236-8064-6f530c8fdca6"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -342,7 +369,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[Nama Ibu Kandung]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="190" y="134" width="348" height="13" uuid="9a8d83eb-edc3-49ee-bb07-a3802f0f9bf7"/>
+				<reportElement mode="Transparent" x="190" y="127" width="348" height="13" uuid="9a8d83eb-edc3-49ee-bb07-a3802f0f9bf7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -350,7 +377,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{nm_ibu}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="45" y="168" width="509" height="1" uuid="0b5af3f3-5032-4957-8587-39341a473f8e">
+				<reportElement positionType="Float" x="45" y="156" width="509" height="1" uuid="0b5af3f3-5032-4957-8587-39341a473f8e">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -359,7 +386,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="144" y="173" width="5" height="13" uuid="226b4f1b-0702-42e6-a65f-203f06c9c914">
+				<reportElement x="144" y="159" width="5" height="13" uuid="226b4f1b-0702-42e6-a65f-203f06c9c914">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -369,7 +396,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="82" y="173" width="60" height="13" uuid="ad07475e-48a9-4614-a69e-72245e69e1c1"/>
+				<reportElement x="82" y="159" width="60" height="13" uuid="ad07475e-48a9-4614-a69e-72245e69e1c1"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -377,7 +404,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[Kesadaran]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="160" y="173" width="360" height="13" uuid="90e355eb-7cae-4802-ac1d-8223a37d7e15"/>
+				<reportElement mode="Transparent" x="160" y="159" width="360" height="13" uuid="90e355eb-7cae-4802-ac1d-8223a37d7e15"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -385,7 +412,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{kesadaran}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="45" y="191" width="509" height="1" uuid="a4ab7eb1-3429-4e01-be59-4cbed881fda1">
+				<reportElement positionType="Float" x="45" y="174" width="509" height="1" uuid="a4ab7eb1-3429-4e01-be59-4cbed881fda1">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -394,7 +421,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="144" y="196" width="5" height="13" uuid="690f9a01-5cce-4d05-ab18-97272c643496">
+				<reportElement x="144" y="177" width="5" height="13" uuid="690f9a01-5cce-4d05-ab18-97272c643496">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -404,7 +431,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="82" y="196" width="60" height="13" uuid="98f150c5-d288-460a-a6a8-96f257503d5e"/>
+				<reportElement x="82" y="177" width="60" height="13" uuid="98f150c5-d288-460a-a6a8-96f257503d5e"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -412,7 +439,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[Pernafasan]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="160" y="196" width="360" height="13" uuid="c41d948e-f56c-4a35-99bc-a4c41bd9df1e"/>
+				<reportElement mode="Transparent" x="160" y="177" width="360" height="13" uuid="c41d948e-f56c-4a35-99bc-a4c41bd9df1e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -420,7 +447,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{pernapasan}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="Float" x="45" y="214" width="509" height="1" uuid="af4a583a-a6f2-496a-a646-7d0a327a3e9c">
+				<reportElement positionType="Float" x="45" y="192" width="509" height="1" uuid="af4a583a-a6f2-496a-a646-7d0a327a3e9c">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -429,7 +456,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="144" y="219" width="5" height="13" uuid="eb276ccd-fee8-4449-a65f-8d1b49d23148">
+				<reportElement x="144" y="195" width="5" height="13" uuid="eb276ccd-fee8-4449-a65f-8d1b49d23148">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -439,7 +466,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="160" y="219" width="360" height="13" uuid="ebf1a932-6cdb-449c-8538-22a082350b78"/>
+				<reportElement mode="Transparent" x="160" y="195" width="360" height="13" uuid="ebf1a932-6cdb-449c-8538-22a082350b78"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -447,7 +474,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{nyeri_dada}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="82" y="219" width="60" height="13" uuid="93089772-2a7b-41b7-8198-1bf6948cc00e"/>
+				<reportElement x="82" y="195" width="60" height="13" uuid="93089772-2a7b-41b7-8198-1bf6948cc00e"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -455,7 +482,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[Nyeri Dada]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="Float" x="45" y="237" width="509" height="1" uuid="44b2e62d-9267-4643-8b2a-8eb21b51ce81">
+				<reportElement positionType="Float" x="45" y="210" width="509" height="1" uuid="44b2e62d-9267-4643-8b2a-8eb21b51ce81">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -464,7 +491,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="144" y="242" width="5" height="13" uuid="2cd71081-35f1-47df-81ca-6ec1a968c93d">
+				<reportElement x="144" y="213" width="5" height="13" uuid="2cd71081-35f1-47df-81ca-6ec1a968c93d">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -474,7 +501,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="160" y="242" width="360" height="13" uuid="17655134-fd81-4507-bde5-2344745c99b7"/>
+				<reportElement mode="Transparent" x="160" y="213" width="360" height="13" uuid="17655134-fd81-4507-bde5-2344745c99b7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -482,7 +509,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{skala_nyeri}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="82" y="242" width="60" height="13" uuid="9848cd44-c213-4132-af40-1c511d6ebd9a"/>
+				<reportElement x="82" y="213" width="60" height="13" uuid="9848cd44-c213-4132-af40-1c511d6ebd9a"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -490,7 +517,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[Skala Nyeri]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="Float" x="45" y="260" width="509" height="1" uuid="41390709-5f1d-44da-bbdb-74099c0c4ad3">
+				<reportElement positionType="Float" x="45" y="228" width="509" height="1" uuid="41390709-5f1d-44da-bbdb-74099c0c4ad3">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -499,7 +526,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="144" y="265" width="5" height="13" uuid="5d06eacb-8bbb-4903-88a3-52f571264bf2">
+				<reportElement x="144" y="267" width="5" height="13" uuid="5d06eacb-8bbb-4903-88a3-52f571264bf2">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -509,7 +536,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Transparent" x="160" y="265" width="360" height="13" uuid="93fe3add-0572-4a41-8856-824085f56662"/>
+				<reportElement mode="Transparent" x="160" y="267" width="360" height="13" uuid="93fe3add-0572-4a41-8856-824085f56662"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -517,7 +544,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{keputusan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="82" y="265" width="60" height="13" uuid="cbe01527-effa-4ca1-a39b-8852792a50a4"/>
+				<reportElement x="82" y="267" width="60" height="13" uuid="cbe01527-effa-4ca1-a39b-8852792a50a4"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma"/>
 					<paragraph lineSpacing="Single"/>
@@ -525,7 +552,7 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				<text><![CDATA[Keputusan]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="Float" x="45" y="283" width="509" height="1" uuid="22f2dffe-6b56-4c52-b847-523d98fa3c63">
+				<reportElement positionType="Float" x="45" y="282" width="509" height="1" uuid="22f2dffe-6b56-4c52-b847-523d98fa3c63">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -557,6 +584,76 @@ and skrining_rawat_jalan.nip=petugas.nip]]>
 				</textElement>
 				<text><![CDATA[Petugas]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="144" y="231" width="5" height="13" uuid="a4ee3bf8-bb86-410d-972a-50e18981d5a3">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="231" width="60" height="13" uuid="34e060c8-bd9a-4b24-b793-dfb250221201"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Batuk]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="160" y="231" width="360" height="13" uuid="a2448ed6-0a8a-44b9-979e-1e9a26565c06"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{batuk}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="45" y="246" width="509" height="1" uuid="41c0c742-08b2-4d35-b219-f70ce8c230ef">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="144" y="249" width="5" height="13" uuid="4251a977-96ba-4256-89bc-b98d002b36a3">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="249" width="60" height="13" uuid="0bb0fbfb-9264-4e8c-bfd8-45b1641606e2"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Risiko Jatuh]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="160" y="249" width="360" height="13" uuid="4e684e05-08ba-40fe-a720-c760a3eda3ce"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{risiko_jatuh}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="45" y="264" width="509" height="1" uuid="408f72dc-a276-4a61-8f97-8d853c615b3c">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.4" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</title>
 </jasperReport>
