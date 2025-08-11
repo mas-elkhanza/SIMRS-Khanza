@@ -249,7 +249,7 @@ public final class akses {
             piutang_jasa_perusahaan_belum_lunas=false,checklist_kesiapan_anestesi=false,piutang_peminjaman_uang_belum_lunas=false,hasil_pemeriksaan_slit_lamp=false,
             hasil_pemeriksaan_oct=false,beban_hutang_lain=false,poli_asal_pasien_ranap=false,pemberi_hutang_lain=false,dokter_asal_pasien_ranap=false,duta_parkir_rekap_keluar=false,
             surat_keterangan_layak_terbang=false,bayar_beban_hutang_lain=false,surat_persetujuan_pemeriksaan_hiv=false,skrining_instrumen_acrs=false,surat_pernyataan_memilih_dpjp=false,
-            skrining_instrumen_mental_emosional=false,pelanggan_lab_kesehatan_lingkungan=false;
+            skrining_instrumen_mental_emosional=false,pelanggan_lab_kesehatan_lingkungan=false,kriteria_masuk_nicu=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1416,6 +1416,7 @@ public final class akses {
                         akses.surat_pernyataan_memilih_dpjp=true;
                         akses.skrining_instrumen_mental_emosional=true;
                         akses.pelanggan_lab_kesehatan_lingkungan=true;
+                        akses.kriteria_masuk_nicu=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2566,6 +2567,7 @@ public final class akses {
                         akses.surat_pernyataan_memilih_dpjp=rs2.getBoolean("surat_pernyataan_memilih_dpjp");
                         akses.skrining_instrumen_mental_emosional=rs2.getBoolean("skrining_instrumen_mental_emosional");
                         akses.pelanggan_lab_kesehatan_lingkungan=rs2.getBoolean("pelanggan_lab_kesehatan_lingkungan");
+                        akses.kriteria_masuk_nicu=rs2.getBoolean("kriteria_masuk_nicu");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3739,6 +3741,7 @@ public final class akses {
         akses.surat_pernyataan_memilih_dpjp=false;
         akses.skrining_instrumen_mental_emosional=false;
         akses.pelanggan_lab_kesehatan_lingkungan=false;
+        akses.kriteria_masuk_nicu=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -4926,4 +4929,5 @@ public final class akses {
     public static boolean getsurat_pernyataan_memilih_dpjp(){return akses.surat_pernyataan_memilih_dpjp;}
     public static boolean getskrining_instrumen_mental_emosional(){return akses.skrining_instrumen_mental_emosional;}
     public static boolean getpelanggan_lab_kesehatan_lingkungan(){return akses.pelanggan_lab_kesehatan_lingkungan;}
+    public static boolean getkriteria_masuk_nicu(){return akses.kriteria_masuk_nicu;}
 }   
