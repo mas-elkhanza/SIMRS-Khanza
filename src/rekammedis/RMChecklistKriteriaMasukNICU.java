@@ -1654,7 +1654,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasKeyPressed
 
     private void Respirasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi2KeyPressed
-        //Valid.pindah(evt,Kardiologi1,Kardiologi3);
+        Valid.pindah(evt,Respirasi1,Respirasi3);
     }//GEN-LAST:event_Respirasi2KeyPressed
 
     private void Respirasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi1KeyPressed
@@ -1666,7 +1666,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }//GEN-LAST:event_Respirasi4KeyPressed
 
     private void Respirasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Respirasi2,Respirasi4);
     }//GEN-LAST:event_Respirasi3KeyPressed
 
     private void Prematur2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prematur2KeyPressed
