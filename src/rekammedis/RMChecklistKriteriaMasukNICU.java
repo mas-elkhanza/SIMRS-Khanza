@@ -107,6 +107,8 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
 
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
+        Keterangan.setDocument(new batasInput((int)50).getKata(Keterangan));
+        
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -1271,6 +1273,11 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
 
         Keterangan.setHighlighter(null);
         Keterangan.setName("Keterangan"); // NOI18N
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
         FormInput.add(Keterangan);
         Keterangan.setBounds(549, 510, 240, 23);
 
@@ -1320,7 +1327,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Infeksi,BtnBatal);
+            Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1662,7 +1669,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }//GEN-LAST:event_Respirasi1KeyPressed
 
     private void Respirasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Respirasi3,Prematur1);
     }//GEN-LAST:event_Respirasi4KeyPressed
 
     private void Respirasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi3KeyPressed
@@ -1670,72 +1677,76 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }//GEN-LAST:event_Respirasi3KeyPressed
 
     private void Prematur2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prematur2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Prematur1,Prematur3);
     }//GEN-LAST:event_Prematur2KeyPressed
 
     private void Prematur1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prematur1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Respirasi4,Prematur2);
     }//GEN-LAST:event_Prematur1KeyPressed
 
     private void Prematur3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prematur3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Prematur2,Kardio1);
     }//GEN-LAST:event_Prematur3KeyPressed
 
     private void Kardio3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardio3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kardio2,Neuro1);
     }//GEN-LAST:event_Kardio3KeyPressed
 
     private void Kardio1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardio1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Prematur3,Kardio2);
     }//GEN-LAST:event_Kardio1KeyPressed
 
     private void Kardio2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardio2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kardio1,Kardio3);
     }//GEN-LAST:event_Kardio2KeyPressed
 
     private void Neuro3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neuro3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Neuro2,Metabolik1);
     }//GEN-LAST:event_Neuro3KeyPressed
 
     private void Neuro1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neuro1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kardio3,Neuro2);
     }//GEN-LAST:event_Neuro1KeyPressed
 
     private void Neuro2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neuro2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Neuro1,Neuro3);
     }//GEN-LAST:event_Neuro2KeyPressed
 
     private void Metabolik2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Metabolik2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Metabolik1,Metabolik3);
     }//GEN-LAST:event_Metabolik2KeyPressed
 
     private void Metabolik1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Metabolik1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Neuro3,Metabolik2);
     }//GEN-LAST:event_Metabolik1KeyPressed
 
     private void Metabolik3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Metabolik3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Metabolik2,Kondisilain1);
     }//GEN-LAST:event_Metabolik3KeyPressed
 
     private void Kondisilain2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kondisilain2KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kondisilain1,Kondisilain3);
     }//GEN-LAST:event_Kondisilain2KeyPressed
 
     private void Kondisilain1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kondisilain1KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Metabolik3,Kondisilain2);
     }//GEN-LAST:event_Kondisilain1KeyPressed
 
     private void Kondisilain4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kondisilain4KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kondisilain3,Keputusan);
     }//GEN-LAST:event_Kondisilain4KeyPressed
 
     private void Kondisilain3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kondisilain3KeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kondisilain2,Kondisilain4);
     }//GEN-LAST:event_Kondisilain3KeyPressed
 
     private void KeputusanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeputusanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Kondisilain4,Keterangan);
     }//GEN-LAST:event_KeputusanKeyPressed
+
+    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
+        Valid.pindah(evt,Keputusan,BtnSimpan);
+    }//GEN-LAST:event_KeteranganKeyPressed
 
     /**
     * @param args the command line arguments
