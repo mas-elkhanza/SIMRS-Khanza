@@ -64,13 +64,14 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Gangguan Sirkulasi Atau Pre Dan Pasca Operasi (Syok Hypovolemic)",
-            "Hypertensi Emergency","HR 60x/menit (Tiidak Stabil Hasil EKG Gambaran Mengancam Nyawa)","Gagal Jantung Acute","Menggunakan Inotropik / Vasoaktif Gent",
-            "MAP < 60 mmHg","R <8 x/ menit > 25 x/menit","Trauma Thorax / Peumothorax","Oxigenisasi Tidak Cukup Dari Hasil AGD","Kesadaran Dengan GCS >= 7",
-            "Temperatur <35 C / >38 C","Trauma Kepala Sedang - Berat","Kejang Yang Tidak Memerlukan Ventilator / Cerebro Vasculer / Neoromusculer / Infeksi Syaraf",
-            "Gangguan Elektrolit (Na, Ca,CI, Mg, Cal) & Asam Basa","Hypeglikemia & Hypoglikemia, Ketoasidosis Metabolic","Pendarahan Saluran Pencernaan Tanpa Hypotensi & Repon Dengan Cairan",
-            "Pengobatan Keracunan","Penyulit Pasca Pembedahan","Pasca Pembedahan Hemodinamik Stabil Tetapi Masih Perlu Resusitasi Cairan","Gangguan Imunologi (Reaksi Alergi, Steven Jhonson) dll",
-            "DIC, Anemia Berat, Reaksi Penolakan Transfusi Darah","Semua Infeksi Yang Menyebabkan Penurunan Kesadaran & Tidak Memerlukan Ventilator","NIP/Kode Dokter","DPJP/Dokter Jaga/IGD"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Distres Napas Berat (Grunting, Retraksi, Takipnea > 70x/menit)",
+            "Apnea Berulang/Apnea Dengan Bradikardia","Kebutuhan CPAP Atau Ventilasi Mekanik","Saturasi O₂ < 90% Dengan Oksigen Suplementasi",
+            "Berat Lahir < 2000 g (Khususnya < 1500 g : VLBW)","Usia Kehamilan < 35 minggu (Khususnya < 32 minggu)","Hipotermia (< 36°C) Yang Tidak Membaik Dengan Penghangatan Biasa",
+            "Syok Refrakter Resusitasi Awal","Bradikardia Berat (< 80x/menit)","Sianosis Sentral Menetap","Kejang","GCS/Kesadaran Bayi Sangat Rendah",
+            "Ensefalopati Hipoksik Iskemik Sedang–Berat","Hipoglikemia (< 40 mg/dL) Atau Hiperglikemia Berat","Dugaan Atau Terkonfirmasi Sepsis Neonatal",
+            "Asidosis Metabolik Berat (pH < 7,2)","Kelainan Kongenital Berat Memerlukan Stabilisasi Intensif","Dari Ibu Dengan Riwayat Komplikasi Perinatal Berat",
+            "Pasca Operasi Besar Neonatus","Ikterus Berat Memerlukan Fototerapi Intensif Atau Transfusi Tukar",
+            "Keputusan","Keterangan/Catatan","NIP/Kode Dokter","DPJP/Dokter Jaga/IGD"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -193,7 +194,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukHCU = new javax.swing.JMenuItem();
+        MnKriteriaMasukNICU = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -235,101 +236,99 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         KodePetugas = new widget.TextBox();
         NamaPetugas = new widget.TextBox();
         btnPetugas = new widget.Button();
-        Kardiologi5 = new widget.ComboBox();
-        jLabel58 = new widget.Label();
         jLabel5 = new widget.Label();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel53 = new widget.Label();
-        jLabel59 = new widget.Label();
-        jLabel60 = new widget.Label();
-        Kardiologi6 = new widget.ComboBox();
         jLabel61 = new widget.Label();
-        Kardiologi2 = new widget.ComboBox();
-        jLabel62 = new widget.Label();
-        Kardiologi3 = new widget.ComboBox();
-        jLabel63 = new widget.Label();
+        Respirasi2 = new widget.ComboBox();
         jLabel64 = new widget.Label();
         jLabel65 = new widget.Label();
-        Kardiologi1 = new widget.ComboBox();
+        Respirasi1 = new widget.ComboBox();
+        Respirasi4 = new widget.ComboBox();
+        jLabel62 = new widget.Label();
+        Respirasi3 = new widget.ComboBox();
         jLabel66 = new widget.Label();
-        Kardiologi4 = new widget.ComboBox();
+        jLabel67 = new widget.Label();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel54 = new widget.Label();
-        jLabel67 = new widget.Label();
+        jLabel63 = new widget.Label();
+        Prematur2 = new widget.ComboBox();
         jLabel68 = new widget.Label();
-        Pernapasan1 = new widget.ComboBox();
-        Pernapasan2 = new widget.ComboBox();
         jLabel69 = new widget.Label();
+        Prematur1 = new widget.ComboBox();
         jLabel70 = new widget.Label();
+        Prematur3 = new widget.ComboBox();
         jLabel71 = new widget.Label();
-        Pernapasan3 = new widget.ComboBox();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jLabel55 = new widget.Label();
-        jLabel73 = new widget.Label();
-        Syaraf1 = new widget.ComboBox();
         jLabel72 = new widget.Label();
+        Kardio3 = new widget.ComboBox();
+        jLabel73 = new widget.Label();
         jLabel74 = new widget.Label();
-        Syaraf2 = new widget.ComboBox();
-        Syaraf3 = new widget.ComboBox();
-        jLabel75 = new widget.Label();
+        Kardio1 = new widget.ComboBox();
         jLabel76 = new widget.Label();
-        jLabel77 = new widget.Label();
-        Syaraf4 = new widget.ComboBox();
+        Kardio2 = new widget.ComboBox();
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jLabel56 = new widget.Label();
-        Pencernaan1 = new widget.ComboBox();
+        jLabel75 = new widget.Label();
+        Neuro3 = new widget.ComboBox();
+        jLabel77 = new widget.Label();
         jLabel78 = new widget.Label();
+        Neuro1 = new widget.ComboBox();
         jLabel79 = new widget.Label();
-        jLabel80 = new widget.Label();
-        Pencernaan2 = new widget.ComboBox();
-        jLabel81 = new widget.Label();
-        jLabel82 = new widget.Label();
-        Pencernaan3 = new widget.ComboBox();
-        jLabel83 = new widget.Label();
-        Pencernaan4 = new widget.ComboBox();
+        Neuro2 = new widget.ComboBox();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
         jLabel57 = new widget.Label();
+        jLabel80 = new widget.Label();
+        Metabolik2 = new widget.ComboBox();
+        jLabel81 = new widget.Label();
+        jLabel82 = new widget.Label();
+        Metabolik1 = new widget.ComboBox();
+        Metabolik3 = new widget.ComboBox();
         jLabel84 = new widget.Label();
         jLabel85 = new widget.Label();
-        Pembedahan1 = new widget.ComboBox();
-        jLabel86 = new widget.Label();
-        jLabel87 = new widget.Label();
-        Pembedahan2 = new widget.ComboBox();
         jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
+        jLabel58 = new widget.Label();
+        jLabel83 = new widget.Label();
+        Kondisilain2 = new widget.ComboBox();
+        jLabel86 = new widget.Label();
+        jLabel87 = new widget.Label();
+        Kondisilain1 = new widget.ComboBox();
         jLabel88 = new widget.Label();
+        Kondisilain4 = new widget.ComboBox();
         jLabel89 = new widget.Label();
-        Hematologi1 = new widget.ComboBox();
         jLabel90 = new widget.Label();
-        jLabel91 = new widget.Label();
-        Hematologi2 = new widget.ComboBox();
+        Kondisilain3 = new widget.ComboBox();
         jSeparator13 = new javax.swing.JSeparator();
         jSeparator14 = new javax.swing.JSeparator();
+        jLabel59 = new widget.Label();
         jLabel92 = new widget.Label();
-        jLabel93 = new widget.Label();
-        jLabel94 = new widget.Label();
-        Infeksi = new widget.ComboBox();
+        Keputusan = new widget.ComboBox();
+        jLabel91 = new widget.Label();
+        jLabel9 = new widget.Label();
+        Keterangan = new widget.TextBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnKriteriaMasukHCU.setBackground(new java.awt.Color(255, 255, 254));
-        MnKriteriaMasukHCU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKriteriaMasukHCU.setForeground(new java.awt.Color(50, 50, 50));
-        MnKriteriaMasukHCU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukHCU.setText("Formulir Checklist Kriteria Masuk HCU");
-        MnKriteriaMasukHCU.setName("MnKriteriaMasukHCU"); // NOI18N
-        MnKriteriaMasukHCU.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnKriteriaMasukHCU.addActionListener(new java.awt.event.ActionListener() {
+        MnKriteriaMasukNICU.setBackground(new java.awt.Color(255, 255, 254));
+        MnKriteriaMasukNICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKriteriaMasukNICU.setForeground(new java.awt.Color(50, 50, 50));
+        MnKriteriaMasukNICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKriteriaMasukNICU.setText("Formulir Checklist Kriteria Masuk NICU");
+        MnKriteriaMasukNICU.setName("MnKriteriaMasukNICU"); // NOI18N
+        MnKriteriaMasukNICU.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnKriteriaMasukNICU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKriteriaMasukHCUActionPerformed(evt);
+                MnKriteriaMasukNICUActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnKriteriaMasukHCU);
+        jPopupMenu1.add(MnKriteriaMasukNICU);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -615,7 +614,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 603));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 543));
         FormInput.setLayout(null);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -667,6 +666,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         FormInput.add(jLabel8);
         jLabel8.setBounds(625, 10, 60, 23);
 
+        TglLahir.setEditable(false);
         TglLahir.setHighlighter(null);
         TglLahir.setName("TglLahir"); // NOI18N
         FormInput.add(TglLahir);
@@ -718,23 +718,6 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         FormInput.add(btnPetugas);
         btnPetugas.setBounds(761, 40, 28, 23);
 
-        Kardiologi5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi5.setSelectedIndex(1);
-        Kardiologi5.setName("Kardiologi5"); // NOI18N
-        Kardiologi5.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi5KeyPressed(evt);
-            }
-        });
-        FormInput.add(Kardiologi5);
-        Kardiologi5.setBounds(247, 150, 90, 23);
-
-        jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel58.setText("Menggunakan Inotropik / Vasoaktif Gent");
-        jLabel58.setName("jLabel58"); // NOI18N
-        FormInput.add(jLabel58);
-        jLabel58.setBounds(40, 150, 210, 23);
-
         jLabel5.setText(":");
         jLabel5.setName("jLabel5"); // NOI18N
         FormInput.add(jLabel5);
@@ -755,543 +738,541 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         jSeparator2.setBounds(0, 70, 810, 1);
 
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel53.setText("I. SISTEM KARDIOLOGI");
+        jLabel53.setText("I. RESPIRASI");
         jLabel53.setName("jLabel53"); // NOI18N
         FormInput.add(jLabel53);
         jLabel53.setBounds(10, 70, 180, 23);
 
-        jLabel59.setText(":");
-        jLabel59.setName("jLabel59"); // NOI18N
-        FormInput.add(jLabel59);
-        jLabel59.setBounds(0, 150, 243, 23);
-
-        jLabel60.setText("MAP < 60 mmHg :");
-        jLabel60.setName("jLabel60"); // NOI18N
-        FormInput.add(jLabel60);
-        jLabel60.setBounds(391, 150, 110, 23);
-
-        Kardiologi6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi6.setSelectedIndex(1);
-        Kardiologi6.setName("Kardiologi6"); // NOI18N
-        Kardiologi6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi6KeyPressed(evt);
-            }
-        });
-        FormInput.add(Kardiologi6);
-        Kardiologi6.setBounds(505, 150, 90, 23);
-
-        jLabel61.setText("Hypertensi Emergency :");
+        jLabel61.setText("Apnea Berulang/Apnea Dengan Bradikardia :");
         jLabel61.setName("jLabel61"); // NOI18N
         FormInput.add(jLabel61);
-        jLabel61.setBounds(545, 90, 150, 23);
+        jLabel61.setBounds(445, 90, 260, 23);
 
-        Kardiologi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi2.setSelectedIndex(1);
-        Kardiologi2.setName("Kardiologi2"); // NOI18N
-        Kardiologi2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Respirasi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Respirasi2.setSelectedIndex(1);
+        Respirasi2.setName("Respirasi2"); // NOI18N
+        Respirasi2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi2KeyPressed(evt);
+                Respirasi2KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi2);
-        Kardiologi2.setBounds(699, 90, 90, 23);
-
-        jLabel62.setText(":");
-        jLabel62.setName("jLabel62"); // NOI18N
-        FormInput.add(jLabel62);
-        jLabel62.setBounds(0, 120, 379, 23);
-
-        Kardiologi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi3.setSelectedIndex(1);
-        Kardiologi3.setName("Kardiologi3"); // NOI18N
-        Kardiologi3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi3KeyPressed(evt);
-            }
-        });
-        FormInput.add(Kardiologi3);
-        Kardiologi3.setBounds(383, 120, 90, 23);
-
-        jLabel63.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel63.setText("HR 60x/menit (Tidak Stabil Hasil EKG Gambaran Mengancam Nyawa)");
-        jLabel63.setName("jLabel63"); // NOI18N
-        FormInput.add(jLabel63);
-        jLabel63.setBounds(40, 120, 380, 23);
+        FormInput.add(Respirasi2);
+        Respirasi2.setBounds(709, 90, 80, 23);
 
         jLabel64.setText(":");
         jLabel64.setName("jLabel64"); // NOI18N
         FormInput.add(jLabel64);
-        jLabel64.setBounds(0, 90, 376, 23);
+        jLabel64.setBounds(0, 90, 355, 23);
 
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel65.setText("Gangguan Sirkulasi Atau Pre Dan Pasca Operasi (Syok Hypovolemic)");
+        jLabel65.setText("Distres Napas Berat (Grunting, Retraksi, Takipnea > 70x/menit)");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
         jLabel65.setBounds(40, 90, 341, 23);
 
-        Kardiologi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi1.setSelectedIndex(1);
-        Kardiologi1.setName("Kardiologi1"); // NOI18N
-        Kardiologi1.addKeyListener(new java.awt.event.KeyAdapter() {
+        Respirasi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Respirasi1.setSelectedIndex(1);
+        Respirasi1.setName("Respirasi1"); // NOI18N
+        Respirasi1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi1KeyPressed(evt);
+                Respirasi1KeyPressed(evt);
             }
         });
-        FormInput.add(Kardiologi1);
-        Kardiologi1.setBounds(380, 90, 90, 23);
+        FormInput.add(Respirasi1);
+        Respirasi1.setBounds(359, 90, 80, 23);
 
-        jLabel66.setText("Gagal Jantung Acute :");
+        Respirasi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Respirasi4.setSelectedIndex(1);
+        Respirasi4.setName("Respirasi4"); // NOI18N
+        Respirasi4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Respirasi4KeyPressed(evt);
+            }
+        });
+        FormInput.add(Respirasi4);
+        Respirasi4.setBounds(709, 120, 80, 23);
+
+        jLabel62.setText("Saturasi O₂ < 90% Dengan Oksigen Suplementasi :");
+        jLabel62.setName("jLabel62"); // NOI18N
+        FormInput.add(jLabel62);
+        jLabel62.setBounds(435, 120, 270, 23);
+
+        Respirasi3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Respirasi3.setSelectedIndex(1);
+        Respirasi3.setName("Respirasi3"); // NOI18N
+        Respirasi3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Respirasi3KeyPressed(evt);
+            }
+        });
+        FormInput.add(Respirasi3);
+        Respirasi3.setBounds(247, 120, 80, 23);
+
+        jLabel66.setText(":");
         jLabel66.setName("jLabel66"); // NOI18N
         FormInput.add(jLabel66);
-        jLabel66.setBounds(545, 120, 150, 23);
+        jLabel66.setBounds(0, 120, 243, 23);
 
-        Kardiologi4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Kardiologi4.setSelectedIndex(1);
-        Kardiologi4.setName("Kardiologi4"); // NOI18N
-        Kardiologi4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Kardiologi4KeyPressed(evt);
-            }
-        });
-        FormInput.add(Kardiologi4);
-        Kardiologi4.setBounds(699, 120, 90, 23);
+        jLabel67.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel67.setText("Kebutuhan CPAP Atau Ventilasi Mekanik");
+        jLabel67.setName("jLabel67"); // NOI18N
+        FormInput.add(jLabel67);
+        jLabel67.setBounds(40, 120, 230, 23);
 
         jSeparator3.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator3.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator3.setName("jSeparator3"); // NOI18N
         FormInput.add(jSeparator3);
-        jSeparator3.setBounds(0, 180, 810, 1);
+        jSeparator3.setBounds(0, 150, 810, 1);
 
         jSeparator4.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator4.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator4.setName("jSeparator4"); // NOI18N
         FormInput.add(jSeparator4);
-        jSeparator4.setBounds(0, 180, 810, 1);
+        jSeparator4.setBounds(0, 150, 810, 1);
 
         jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel54.setText("II. SISTEM PERNAFASAN");
+        jLabel54.setText("II.  PREMATURITAS & BERAT BADAN");
         jLabel54.setName("jLabel54"); // NOI18N
         FormInput.add(jLabel54);
-        jLabel54.setBounds(10, 180, 180, 23);
+        jLabel54.setBounds(10, 150, 210, 23);
 
-        jLabel67.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel67.setText("R <8 x/ menit > 25 x/menit (Adanya Gangguan Pada Ventilasi : Hypoxia / Hypercapnia / Sumbatan Jalan Nafas / Oedema Paru Acute)");
-        jLabel67.setName("jLabel67"); // NOI18N
-        FormInput.add(jLabel67);
-        jLabel67.setBounds(40, 200, 660, 23);
+        jLabel63.setText("Usia Kehamilan < 35 minggu (Khususnya < 32 minggu) :");
+        jLabel63.setName("jLabel63"); // NOI18N
+        FormInput.add(jLabel63);
+        jLabel63.setBounds(415, 170, 290, 23);
+
+        Prematur2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Prematur2.setSelectedIndex(1);
+        Prematur2.setName("Prematur2"); // NOI18N
+        Prematur2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Prematur2KeyPressed(evt);
+            }
+        });
+        FormInput.add(Prematur2);
+        Prematur2.setBounds(709, 170, 80, 23);
 
         jLabel68.setText(":");
         jLabel68.setName("jLabel68"); // NOI18N
         FormInput.add(jLabel68);
-        jLabel68.setBounds(0, 200, 695, 23);
-
-        Pernapasan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pernapasan1.setSelectedIndex(1);
-        Pernapasan1.setName("Pernapasan1"); // NOI18N
-        Pernapasan1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pernapasan1KeyPressed(evt);
-            }
-        });
-        FormInput.add(Pernapasan1);
-        Pernapasan1.setBounds(699, 200, 90, 23);
-
-        Pernapasan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pernapasan2.setSelectedIndex(1);
-        Pernapasan2.setName("Pernapasan2"); // NOI18N
-        Pernapasan2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pernapasan2KeyPressed(evt);
-            }
-        });
-        FormInput.add(Pernapasan2);
-        Pernapasan2.setBounds(200, 230, 90, 23);
+        jLabel68.setBounds(0, 170, 294, 23);
 
         jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel69.setText("Trauma Thorax / Peumothorax");
+        jLabel69.setText("Berat Lahir < 2000 g (Khususnya < 1500 g : VLBW)");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(40, 230, 170, 23);
+        jLabel69.setBounds(40, 170, 260, 23);
 
-        jLabel70.setText(":");
-        jLabel70.setName("jLabel70"); // NOI18N
-        FormInput.add(jLabel70);
-        jLabel70.setBounds(0, 230, 196, 23);
-
-        jLabel71.setText("Oxigenisasi Tidak Cukup Dari Hasil AGD :");
-        jLabel71.setName("jLabel71"); // NOI18N
-        FormInput.add(jLabel71);
-        jLabel71.setBounds(335, 230, 260, 23);
-
-        Pernapasan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pernapasan3.setSelectedIndex(1);
-        Pernapasan3.setName("Pernapasan3"); // NOI18N
-        Pernapasan3.addKeyListener(new java.awt.event.KeyAdapter() {
+        Prematur1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Prematur1.setSelectedIndex(1);
+        Prematur1.setName("Prematur1"); // NOI18N
+        Prematur1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pernapasan3KeyPressed(evt);
+                Prematur1KeyPressed(evt);
             }
         });
-        FormInput.add(Pernapasan3);
-        Pernapasan3.setBounds(599, 230, 90, 23);
+        FormInput.add(Prematur1);
+        Prematur1.setBounds(298, 170, 80, 23);
+
+        jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel70.setText("Hipotermia (< 36°C) Yang Tidak Membaik Dengan Penghangatan Biasa");
+        jLabel70.setName("jLabel70"); // NOI18N
+        FormInput.add(jLabel70);
+        jLabel70.setBounds(40, 200, 370, 23);
+
+        Prematur3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Prematur3.setSelectedIndex(1);
+        Prematur3.setName("Prematur3"); // NOI18N
+        Prematur3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Prematur3KeyPressed(evt);
+            }
+        });
+        FormInput.add(Prematur3);
+        Prematur3.setBounds(395, 200, 80, 23);
+
+        jLabel71.setText(":");
+        jLabel71.setName("jLabel71"); // NOI18N
+        FormInput.add(jLabel71);
+        jLabel71.setBounds(0, 200, 391, 23);
 
         jSeparator5.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator5.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator5.setName("jSeparator5"); // NOI18N
         FormInput.add(jSeparator5);
-        jSeparator5.setBounds(0, 260, 810, 1);
+        jSeparator5.setBounds(0, 230, 810, 1);
 
         jSeparator6.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator6.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator6.setName("jSeparator6"); // NOI18N
         FormInput.add(jSeparator6);
-        jSeparator6.setBounds(0, 260, 810, 1);
+        jSeparator6.setBounds(0, 230, 810, 1);
 
         jLabel55.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel55.setText("III. SISTEM SYARAF");
+        jLabel55.setText("III. KONDISI KARDIOVASKULAR");
         jLabel55.setName("jLabel55"); // NOI18N
         FormInput.add(jLabel55);
-        jLabel55.setBounds(10, 260, 180, 23);
+        jLabel55.setBounds(10, 230, 210, 23);
+
+        jLabel72.setText("Sianosis Sentral Menetap :");
+        jLabel72.setName("jLabel72"); // NOI18N
+        FormInput.add(jLabel72);
+        jLabel72.setBounds(555, 250, 150, 23);
+
+        Kardio3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kardio3.setSelectedIndex(1);
+        Kardio3.setName("Kardio3"); // NOI18N
+        Kardio3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Kardio3KeyPressed(evt);
+            }
+        });
+        FormInput.add(Kardio3);
+        Kardio3.setBounds(709, 250, 80, 23);
 
         jLabel73.setText(":");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(0, 280, 189, 23);
+        jLabel73.setBounds(0, 250, 198, 23);
 
-        Syaraf1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Syaraf1.setSelectedIndex(1);
-        Syaraf1.setName("Syaraf1"); // NOI18N
-        Syaraf1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Syaraf1KeyPressed(evt);
-            }
-        });
-        FormInput.add(Syaraf1);
-        Syaraf1.setBounds(193, 280, 90, 23);
-
-        jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel72.setText("Kesadaran Dengan GCS >= 7");
-        jLabel72.setName("jLabel72"); // NOI18N
-        FormInput.add(jLabel72);
-        jLabel72.setBounds(40, 280, 170, 23);
-
-        jLabel74.setText("Temperatur <35 C / >38 C :");
+        jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel74.setText("Syok Refrakter Resusitasi Awal");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(283, 280, 150, 23);
+        jLabel74.setBounds(40, 250, 170, 23);
 
-        Syaraf2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Syaraf2.setSelectedIndex(1);
-        Syaraf2.setName("Syaraf2"); // NOI18N
-        Syaraf2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kardio1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kardio1.setSelectedIndex(1);
+        Kardio1.setName("Kardio1"); // NOI18N
+        Kardio1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Syaraf2KeyPressed(evt);
+                Kardio1KeyPressed(evt);
             }
         });
-        FormInput.add(Syaraf2);
-        Syaraf2.setBounds(437, 280, 90, 23);
+        FormInput.add(Kardio1);
+        Kardio1.setBounds(202, 250, 80, 23);
 
-        Syaraf3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Syaraf3.setSelectedIndex(1);
-        Syaraf3.setName("Syaraf3"); // NOI18N
-        Syaraf3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Syaraf3KeyPressed(evt);
-            }
-        });
-        FormInput.add(Syaraf3);
-        Syaraf3.setBounds(699, 280, 90, 23);
-
-        jLabel75.setText("Trauma Kepala Sedang - Berat :");
-        jLabel75.setName("jLabel75"); // NOI18N
-        FormInput.add(jLabel75);
-        jLabel75.setBounds(525, 280, 170, 23);
-
-        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel76.setText("Kejang Yang Tidak Memerlukan Ventilator / Cerebro Vasculer / Neoromusculer / Infeksi Syaraf");
+        jLabel76.setText("Bradikardia Berat (< 80x/menit) :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(40, 310, 470, 23);
+        jLabel76.setBounds(288, 250, 180, 23);
 
-        jLabel77.setText(":");
-        jLabel77.setName("jLabel77"); // NOI18N
-        FormInput.add(jLabel77);
-        jLabel77.setBounds(0, 310, 504, 23);
-
-        Syaraf4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Syaraf4.setSelectedIndex(1);
-        Syaraf4.setName("Syaraf4"); // NOI18N
-        Syaraf4.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kardio2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kardio2.setSelectedIndex(1);
+        Kardio2.setName("Kardio2"); // NOI18N
+        Kardio2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Syaraf4KeyPressed(evt);
+                Kardio2KeyPressed(evt);
             }
         });
-        FormInput.add(Syaraf4);
-        Syaraf4.setBounds(508, 310, 90, 23);
+        FormInput.add(Kardio2);
+        Kardio2.setBounds(472, 250, 80, 23);
 
         jSeparator7.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator7.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator7.setName("jSeparator7"); // NOI18N
         FormInput.add(jSeparator7);
-        jSeparator7.setBounds(0, 340, 810, 1);
+        jSeparator7.setBounds(0, 280, 810, 1);
 
         jSeparator8.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator8.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator8.setName("jSeparator8"); // NOI18N
         FormInput.add(jSeparator8);
-        jSeparator8.setBounds(0, 340, 810, 1);
+        jSeparator8.setBounds(0, 280, 810, 1);
 
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel56.setText("IV. SISTEM PENCERNAAN DAN ENDOKRIN");
+        jLabel56.setText("IV. NEUROLOGI");
         jLabel56.setName("jLabel56"); // NOI18N
         FormInput.add(jLabel56);
-        jLabel56.setBounds(10, 340, 240, 23);
+        jLabel56.setBounds(10, 280, 210, 23);
 
-        Pencernaan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pencernaan1.setSelectedIndex(1);
-        Pencernaan1.setName("Pencernaan1"); // NOI18N
-        Pencernaan1.addKeyListener(new java.awt.event.KeyAdapter() {
+        jLabel75.setText("Ensefalopati Hipoksik Iskemik Sedang–Berat :");
+        jLabel75.setName("jLabel75"); // NOI18N
+        FormInput.add(jLabel75);
+        jLabel75.setBounds(445, 300, 260, 23);
+
+        Neuro3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Neuro3.setSelectedIndex(1);
+        Neuro3.setName("Neuro3"); // NOI18N
+        Neuro3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pencernaan1KeyPressed(evt);
+                Neuro3KeyPressed(evt);
             }
         });
-        FormInput.add(Pencernaan1);
-        Pencernaan1.setBounds(313, 360, 90, 23);
+        FormInput.add(Neuro3);
+        Neuro3.setBounds(709, 300, 80, 23);
+
+        jLabel77.setText(":");
+        jLabel77.setName("jLabel77"); // NOI18N
+        FormInput.add(jLabel77);
+        jLabel77.setBounds(0, 300, 80, 23);
 
         jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel78.setText("Gangguan Elektrolit (Na, Ca,CI, Mg, Cal) & Asam Basa");
+        jLabel78.setText("Kejang");
         jLabel78.setName("jLabel78"); // NOI18N
         FormInput.add(jLabel78);
-        jLabel78.setBounds(40, 360, 290, 23);
+        jLabel78.setBounds(40, 300, 70, 23);
 
-        jLabel79.setText(":");
+        Neuro1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Neuro1.setSelectedIndex(1);
+        Neuro1.setName("Neuro1"); // NOI18N
+        Neuro1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Neuro1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Neuro1);
+        Neuro1.setBounds(84, 300, 80, 23);
+
+        jLabel79.setText("GCS/Kesadaran Bayi Sangat Rendah :");
         jLabel79.setName("jLabel79"); // NOI18N
         FormInput.add(jLabel79);
-        jLabel79.setBounds(0, 360, 309, 23);
+        jLabel79.setBounds(173, 300, 200, 23);
 
-        jLabel80.setText("Hypeglikemia & Hypoglikemia, Ketoasidosis Metabolic :");
-        jLabel80.setName("jLabel80"); // NOI18N
-        FormInput.add(jLabel80);
-        jLabel80.setBounds(405, 360, 290, 23);
-
-        Pencernaan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pencernaan2.setSelectedIndex(1);
-        Pencernaan2.setName("Pencernaan2"); // NOI18N
-        Pencernaan2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Neuro2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Neuro2.setSelectedIndex(1);
+        Neuro2.setName("Neuro2"); // NOI18N
+        Neuro2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pencernaan2KeyPressed(evt);
+                Neuro2KeyPressed(evt);
             }
         });
-        FormInput.add(Pencernaan2);
-        Pencernaan2.setBounds(699, 360, 90, 23);
-
-        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("Pendarahan Saluran Pencernaan Tanpa Hypotensi & Repon Dengan Cairan");
-        jLabel81.setName("jLabel81"); // NOI18N
-        FormInput.add(jLabel81);
-        jLabel81.setBounds(40, 390, 370, 23);
-
-        jLabel82.setText(":");
-        jLabel82.setName("jLabel82"); // NOI18N
-        FormInput.add(jLabel82);
-        jLabel82.setBounds(0, 390, 409, 23);
-
-        Pencernaan3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pencernaan3.setSelectedIndex(1);
-        Pencernaan3.setName("Pencernaan3"); // NOI18N
-        Pencernaan3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pencernaan3KeyPressed(evt);
-            }
-        });
-        FormInput.add(Pencernaan3);
-        Pencernaan3.setBounds(413, 390, 90, 23);
-
-        jLabel83.setText("Pengobatan Keracunan :");
-        jLabel83.setName("jLabel83"); // NOI18N
-        FormInput.add(jLabel83);
-        jLabel83.setBounds(565, 390, 130, 23);
-
-        Pencernaan4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pencernaan4.setSelectedIndex(1);
-        Pencernaan4.setName("Pencernaan4"); // NOI18N
-        Pencernaan4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pencernaan4KeyPressed(evt);
-            }
-        });
-        FormInput.add(Pencernaan4);
-        Pencernaan4.setBounds(699, 390, 90, 23);
+        FormInput.add(Neuro2);
+        Neuro2.setBounds(377, 300, 80, 23);
 
         jSeparator9.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator9.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator9.setName("jSeparator9"); // NOI18N
         FormInput.add(jSeparator9);
-        jSeparator9.setBounds(0, 420, 810, 1);
+        jSeparator9.setBounds(0, 330, 810, 1);
 
         jSeparator10.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator10.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator10.setName("jSeparator10"); // NOI18N
         FormInput.add(jSeparator10);
-        jSeparator10.setBounds(0, 420, 810, 1);
+        jSeparator10.setBounds(0, 330, 810, 1);
 
         jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel57.setText("V. PEMBEDAHAN");
+        jLabel57.setText("V. METABOLIK & INFEKSI");
         jLabel57.setName("jLabel57"); // NOI18N
         FormInput.add(jLabel57);
-        jLabel57.setBounds(10, 420, 240, 23);
+        jLabel57.setBounds(10, 330, 210, 23);
+
+        jLabel80.setText("Dugaan Atau Terkonfirmasi Sepsis Neonatal :");
+        jLabel80.setName("jLabel80"); // NOI18N
+        FormInput.add(jLabel80);
+        jLabel80.setBounds(445, 350, 260, 23);
+
+        Metabolik2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Metabolik2.setSelectedIndex(1);
+        Metabolik2.setName("Metabolik2"); // NOI18N
+        Metabolik2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Metabolik2KeyPressed(evt);
+            }
+        });
+        FormInput.add(Metabolik2);
+        Metabolik2.setBounds(709, 350, 80, 23);
+
+        jLabel81.setText(":");
+        jLabel81.setName("jLabel81"); // NOI18N
+        FormInput.add(jLabel81);
+        jLabel81.setBounds(0, 350, 302, 23);
+
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel82.setText("Hipoglikemia (< 40 mg/dL) Atau Hiperglikemia Berat");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(40, 350, 280, 23);
+
+        Metabolik1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Metabolik1.setSelectedIndex(1);
+        Metabolik1.setName("Metabolik1"); // NOI18N
+        Metabolik1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Metabolik1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Metabolik1);
+        Metabolik1.setBounds(306, 350, 80, 23);
+
+        Metabolik3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Metabolik3.setSelectedIndex(1);
+        Metabolik3.setName("Metabolik3"); // NOI18N
+        Metabolik3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Metabolik3KeyPressed(evt);
+            }
+        });
+        FormInput.add(Metabolik3);
+        Metabolik3.setBounds(223, 380, 80, 23);
 
         jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel84.setText("Penyulit Pasca Pembedahan : Digestif / Orthopedi / Urologi / Vasculer / Plastik / Kebidanan (Eklamsia Pre Operasi & Pasca Bedah) Dll");
+        jLabel84.setText("Asidosis Metabolik Berat (pH < 7,2)");
         jLabel84.setName("jLabel84"); // NOI18N
         FormInput.add(jLabel84);
-        jLabel84.setBounds(40, 440, 660, 23);
+        jLabel84.setBounds(40, 380, 190, 23);
 
         jLabel85.setText(":");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(0, 440, 695, 23);
-
-        Pembedahan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pembedahan1.setSelectedIndex(1);
-        Pembedahan1.setName("Pembedahan1"); // NOI18N
-        Pembedahan1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pembedahan1KeyPressed(evt);
-            }
-        });
-        FormInput.add(Pembedahan1);
-        Pembedahan1.setBounds(699, 440, 90, 23);
-
-        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel86.setText("Pasca Pembedahan Hemodinamik Stabil Tetapi Masih Perlu Resusitasi Cairan");
-        jLabel86.setName("jLabel86"); // NOI18N
-        FormInput.add(jLabel86);
-        jLabel86.setBounds(40, 470, 390, 23);
-
-        jLabel87.setText(":");
-        jLabel87.setName("jLabel87"); // NOI18N
-        FormInput.add(jLabel87);
-        jLabel87.setBounds(0, 470, 422, 23);
-
-        Pembedahan2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Pembedahan2.setSelectedIndex(1);
-        Pembedahan2.setName("Pembedahan2"); // NOI18N
-        Pembedahan2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Pembedahan2KeyPressed(evt);
-            }
-        });
-        FormInput.add(Pembedahan2);
-        Pembedahan2.setBounds(426, 470, 90, 23);
+        jLabel85.setBounds(0, 380, 219, 23);
 
         jSeparator11.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator11.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator11.setName("jSeparator11"); // NOI18N
         FormInput.add(jSeparator11);
-        jSeparator11.setBounds(0, 500, 810, 1);
+        jSeparator11.setBounds(0, 410, 810, 1);
 
         jSeparator12.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator12.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator12.setName("jSeparator12"); // NOI18N
         FormInput.add(jSeparator12);
-        jSeparator12.setBounds(0, 500, 810, 1);
+        jSeparator12.setBounds(0, 410, 810, 1);
 
-        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel88.setText("VI. GANGGUAN HEMATOLOGI");
+        jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel58.setText("VI. KONDISI LAIN");
+        jLabel58.setName("jLabel58"); // NOI18N
+        FormInput.add(jLabel58);
+        jLabel58.setBounds(10, 410, 210, 23);
+
+        jLabel83.setText("Dari Ibu Dengan Riwayat Komplikasi Perinatal Berat :");
+        jLabel83.setName("jLabel83"); // NOI18N
+        FormInput.add(jLabel83);
+        jLabel83.setBounds(425, 430, 280, 23);
+
+        Kondisilain2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kondisilain2.setSelectedIndex(1);
+        Kondisilain2.setName("Kondisilain2"); // NOI18N
+        Kondisilain2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Kondisilain2KeyPressed(evt);
+            }
+        });
+        FormInput.add(Kondisilain2);
+        Kondisilain2.setBounds(709, 430, 80, 23);
+
+        jLabel86.setText(":");
+        jLabel86.setName("jLabel86"); // NOI18N
+        FormInput.add(jLabel86);
+        jLabel86.setBounds(0, 430, 329, 23);
+
+        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel87.setText("Kelainan Kongenital Berat Memerlukan Stabilisasi Intensif");
+        jLabel87.setName("jLabel87"); // NOI18N
+        FormInput.add(jLabel87);
+        jLabel87.setBounds(40, 430, 300, 23);
+
+        Kondisilain1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kondisilain1.setSelectedIndex(1);
+        Kondisilain1.setName("Kondisilain1"); // NOI18N
+        Kondisilain1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Kondisilain1KeyPressed(evt);
+            }
+        });
+        FormInput.add(Kondisilain1);
+        Kondisilain1.setBounds(333, 430, 80, 23);
+
+        jLabel88.setText("Ikterus Berat Memerlukan Fototerapi Intensif Atau Transfusi Tukar :");
         jLabel88.setName("jLabel88"); // NOI18N
         FormInput.add(jLabel88);
-        jLabel88.setBounds(10, 500, 240, 23);
+        jLabel88.setBounds(325, 460, 380, 23);
 
-        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel89.setText("Gangguan Imunologi (Reaksi Alergi, Steven Jhonson) dll");
+        Kondisilain4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kondisilain4.setSelectedIndex(1);
+        Kondisilain4.setName("Kondisilain4"); // NOI18N
+        Kondisilain4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Kondisilain4KeyPressed(evt);
+            }
+        });
+        FormInput.add(Kondisilain4);
+        Kondisilain4.setBounds(709, 460, 80, 23);
+
+        jLabel89.setText(":");
         jLabel89.setName("jLabel89"); // NOI18N
         FormInput.add(jLabel89);
-        jLabel89.setBounds(40, 520, 290, 23);
+        jLabel89.setBounds(0, 460, 195, 23);
 
-        Hematologi1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Hematologi1.setSelectedIndex(1);
-        Hematologi1.setName("Hematologi1"); // NOI18N
-        Hematologi1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Hematologi1KeyPressed(evt);
-            }
-        });
-        FormInput.add(Hematologi1);
-        Hematologi1.setBounds(324, 520, 90, 23);
-
-        jLabel90.setText(":");
+        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel90.setText("Pasca Operasi Besar Neonatus");
         jLabel90.setName("jLabel90"); // NOI18N
         FormInput.add(jLabel90);
-        jLabel90.setBounds(0, 520, 320, 23);
+        jLabel90.setBounds(40, 460, 160, 23);
 
-        jLabel91.setText("DIC, Anemia Berat, Reaksi Penolakan Transfusi Darah :");
-        jLabel91.setName("jLabel91"); // NOI18N
-        FormInput.add(jLabel91);
-        jLabel91.setBounds(415, 520, 280, 23);
-
-        Hematologi2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Hematologi2.setSelectedIndex(1);
-        Hematologi2.setName("Hematologi2"); // NOI18N
-        Hematologi2.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kondisilain3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
+        Kondisilain3.setSelectedIndex(1);
+        Kondisilain3.setName("Kondisilain3"); // NOI18N
+        Kondisilain3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                Hematologi2KeyPressed(evt);
+                Kondisilain3KeyPressed(evt);
             }
         });
-        FormInput.add(Hematologi2);
-        Hematologi2.setBounds(699, 520, 90, 23);
+        FormInput.add(Kondisilain3);
+        Kondisilain3.setBounds(199, 460, 80, 23);
 
         jSeparator13.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator13.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator13.setName("jSeparator13"); // NOI18N
         FormInput.add(jSeparator13);
-        jSeparator13.setBounds(0, 550, 810, 1);
+        jSeparator13.setBounds(0, 490, 810, 1);
 
         jSeparator14.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator14.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator14.setName("jSeparator14"); // NOI18N
         FormInput.add(jSeparator14);
-        jSeparator14.setBounds(0, 550, 810, 1);
+        jSeparator14.setBounds(0, 490, 810, 1);
 
-        jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel92.setText("VII. PENYAKIT INFEKSI");
+        jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel59.setText("VII. KEPUTUSAN & KETERANGAN");
+        jLabel59.setName("jLabel59"); // NOI18N
+        FormInput.add(jLabel59);
+        jLabel59.setBounds(10, 490, 210, 23);
+
+        jLabel92.setText(":");
         jLabel92.setName("jLabel92"); // NOI18N
         FormInput.add(jLabel92);
-        jLabel92.setBounds(10, 550, 240, 23);
+        jLabel92.setBounds(0, 510, 98, 23);
 
-        jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel93.setText("Semua Infeksi Yang Menyebabkan Penurunan Kesadaran & Tidak Memerlukan Ventilator : DBD Thrombositopenia, Sepsis, Tetanus, Dll");
-        jLabel93.setName("jLabel93"); // NOI18N
-        FormInput.add(jLabel93);
-        jLabel93.setBounds(40, 570, 660, 23);
-
-        jLabel94.setText(":");
-        jLabel94.setName("jLabel94"); // NOI18N
-        FormInput.add(jLabel94);
-        jLabel94.setBounds(0, 570, 695, 23);
-
-        Infeksi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
-        Infeksi.setSelectedIndex(1);
-        Infeksi.setName("Infeksi"); // NOI18N
-        Infeksi.addKeyListener(new java.awt.event.KeyAdapter() {
+        Keputusan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Diterima Di NICU", "Tidak Diterima - Dirawat Di Ruang Perawatan Bayi Lain" }));
+        Keputusan.setName("Keputusan"); // NOI18N
+        Keputusan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                InfeksiKeyPressed(evt);
+                KeputusanKeyPressed(evt);
             }
         });
-        FormInput.add(Infeksi);
-        Infeksi.setBounds(699, 570, 90, 23);
+        FormInput.add(Keputusan);
+        Keputusan.setBounds(102, 510, 320, 23);
+
+        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel91.setText("Keputusan");
+        jLabel91.setName("jLabel91"); // NOI18N
+        FormInput.add(jLabel91);
+        jLabel91.setBounds(40, 510, 160, 23);
+
+        jLabel9.setText("Keterangan/Catatan :");
+        jLabel9.setName("jLabel9"); // NOI18N
+        FormInput.add(jLabel9);
+        jLabel9.setBounds(415, 510, 130, 23);
+
+        Keterangan.setHighlighter(null);
+        Keterangan.setName("Keterangan"); // NOI18N
+        FormInput.add(Keterangan);
+        Keterangan.setBounds(549, 510, 240, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1339,7 +1320,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Infeksi,BtnBatal);
+            //Valid.pindah(evt,Infeksi,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1445,30 +1426,30 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Sirkulasi Atau Pre Dan Pasca Operasi (Syok Hypovolemic)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hypertensi Emergency</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>HR 60x/menit (Tiidak Stabil Hasil EKG Gambaran Mengancam Nyawa)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung Acute</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Menggunakan Inotropik / Vasoaktif Gent</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP < 60 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>R <8 x/ menit > 25 x/menit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Trauma Thorax / Peumothorax</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Oxigenisasi Tidak Cukup Dari Hasil AGD</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesadaran Dengan GCS >= 7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Temperatur <35 C / >38 C</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Trauma Kepala Sedang - Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Yang Tidak Memerlukan Ventilator / Cerebro Vasculer / Neoromusculer / Infeksi Syaraf</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Elektrolit (Na, Ca,CI, Mg, Cal) & Asam Basa</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hypeglikemia & Hypoglikemia, Ketoasidosis Metabolic</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pendarahan Saluran Pencernaan Tanpa Hypotensi & Repon Dengan Cairan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pengobatan Keracunan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyulit Pasca Pembedahan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Pembedahan Hemodinamik Stabil Tetapi Masih Perlu Resusitasi Cairan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Imunologi (Reaksi Alergi, Steven Jhonson) dll</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DIC, Anemia Berat, Reaksi Penolakan Transfusi Darah</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Semua Infeksi Yang Menyebabkan Penurunan Kesadaran & Tidak Memerlukan Ventilator</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Distres Napas Berat (Grunting, Retraksi, Takipnea > 70x/menit)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Apnea Berulang/Apnea Dengan Bradikardia</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebutuhan CPAP Atau Ventilasi Mekanik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Saturasi O₂ < 90% Dengan Oksigen Suplementasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berat Lahir < 2000 g (Khususnya < 1500 g : VLBW)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Usia Kehamilan < 35 minggu (Khususnya < 32 minggu)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hipotermia (< 36°C) Yang Tidak Membaik Dengan Penghangatan Biasa</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Syok Refrakter Resusitasi Awal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Bradikardia Berat (< 80x/menit)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sianosis Sentral Menetap</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GCS/Kesadaran Bayi Sangat Rendah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ensefalopati Hipoksik Iskemik Sedang–Berat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hipoglikemia (< 40 mg/dL) Atau Hiperglikemia Berat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dugaan Atau Terkonfirmasi Sepsis Neonatal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asidosis Metabolik Berat (pH < 7,2)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelainan Kongenital Berat Memerlukan Stabilisasi Intensif</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dari Ibu Dengan Riwayat Komplikasi Perinatal Berat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Besar Neonatus</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ikterus Berat Memerlukan Fototerapi Intensif Atau Transfusi Tukar</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keputusan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan/Catatan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/IGD</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/IGD</td>"+
                     "</tr>"
                 );
                 
@@ -1531,7 +1512,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataChecklistKriteriaMasukHCU.html");            
+                File f = new File("DataChecklistKriteriaMasukNICU.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1541,7 +1522,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA MASUK HCU<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA MASUK NICU<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1624,7 +1605,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnKriteriaMasukHCUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukHCUActionPerformed
+    private void MnKriteriaMasukNICUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukNICUActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1636,22 +1617,22 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),28).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukHCU.jasper","report","::[ Formulir Check List Kriteria Masuk HCU ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_hcu.tanggal,"+
-                    "checklist_kriteria_masuk_hcu.kardiologi1,checklist_kriteria_masuk_hcu.kardiologi2,checklist_kriteria_masuk_hcu.kardiologi3,"+
-                    "checklist_kriteria_masuk_hcu.kardiologi4,checklist_kriteria_masuk_hcu.kardiologi5,checklist_kriteria_masuk_hcu.kardiologi6,"+
-                    "checklist_kriteria_masuk_hcu.pernapasan1,checklist_kriteria_masuk_hcu.pernapasan2,checklist_kriteria_masuk_hcu.pernapasan3,"+
-                    "checklist_kriteria_masuk_hcu.syaraf1,checklist_kriteria_masuk_hcu.syaraf2,checklist_kriteria_masuk_hcu.syaraf3,checklist_kriteria_masuk_hcu.syaraf4,"+
-                    "checklist_kriteria_masuk_hcu.pencernaan1,checklist_kriteria_masuk_hcu.pencernaan2,checklist_kriteria_masuk_hcu.pencernaan3,"+
-                    "checklist_kriteria_masuk_hcu.pencernaan4,checklist_kriteria_masuk_hcu.pembedahan1,checklist_kriteria_masuk_hcu.pembedahan2,"+
-                    "checklist_kriteria_masuk_hcu.hematologi1,checklist_kriteria_masuk_hcu.hematologi2,checklist_kriteria_masuk_hcu.infeksi,"+
-                    "checklist_kriteria_masuk_hcu.nik,pegawai.nama "+
-                    "from checklist_kriteria_masuk_hcu inner join reg_periksa on checklist_kriteria_masuk_hcu.no_rawat=reg_periksa.no_rawat "+
+            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukNICU.jasper","report","::[ Formulir Check List Kriteria Masuk NICU ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_nicu.tanggal,"+
+                    "checklist_kriteria_masuk_nicu.respirasi1,checklist_kriteria_masuk_nicu.respirasi2,checklist_kriteria_masuk_nicu.respirasi3,"+
+                    "checklist_kriteria_masuk_nicu.respirasi4,checklist_kriteria_masuk_nicu.prematur1,checklist_kriteria_masuk_nicu.prematur2,"+
+                    "checklist_kriteria_masuk_nicu.prematur3,checklist_kriteria_masuk_nicu.kardio1,checklist_kriteria_masuk_nicu.kardio2,"+
+                    "checklist_kriteria_masuk_nicu.kardio3,checklist_kriteria_masuk_nicu.neuro1,checklist_kriteria_masuk_nicu.neuro2,"+
+                    "checklist_kriteria_masuk_nicu.neuro3,checklist_kriteria_masuk_nicu.metabolik1,checklist_kriteria_masuk_nicu.metabolik2,"+
+                    "checklist_kriteria_masuk_nicu.metabolik3,checklist_kriteria_masuk_nicu.kondisilain1,checklist_kriteria_masuk_nicu.kondisilain2,"+
+                    "checklist_kriteria_masuk_nicu.kondisilain3,checklist_kriteria_masuk_nicu.kondisilain4,checklist_kriteria_masuk_nicu.keputusan,"+
+                    "checklist_kriteria_masuk_nicu.keterangan,checklist_kriteria_masuk_nicu.nik,pegawai.nama "+
+                    "from checklist_kriteria_masuk_nicu inner join reg_periksa on checklist_kriteria_masuk_nicu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_hcu.nik "+
-                    "where checklist_kriteria_masuk_hcu.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_masuk_hcu.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
+                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_nicu.nik "+
+                    "where checklist_kriteria_masuk_nicu.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_masuk_nicu.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnKriteriaMasukHCUActionPerformed
+    }//GEN-LAST:event_MnKriteriaMasukNICUActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1669,96 +1650,92 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPetugasActionPerformed
 
     private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
-       Valid.pindah(evt,Tanggal,Kardiologi1);
+       Valid.pindah(evt,Tanggal,Respirasi1);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void Kardiologi5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi5KeyPressed
-       Valid.pindah(evt,Kardiologi4,Kardiologi6);
-    }//GEN-LAST:event_Kardiologi5KeyPressed
+    private void Respirasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi2KeyPressed
+        //Valid.pindah(evt,Kardiologi1,Kardiologi3);
+    }//GEN-LAST:event_Respirasi2KeyPressed
 
-    private void Kardiologi6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi6KeyPressed
-        Valid.pindah(evt,Kardiologi5,Pernapasan1);
-    }//GEN-LAST:event_Kardiologi6KeyPressed
+    private void Respirasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi1KeyPressed
+        Valid.pindah(evt,btnPetugas,Respirasi2);
+    }//GEN-LAST:event_Respirasi1KeyPressed
 
-    private void Kardiologi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi2KeyPressed
-        Valid.pindah(evt,Kardiologi1,Kardiologi3);
-    }//GEN-LAST:event_Kardiologi2KeyPressed
+    private void Respirasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Respirasi4KeyPressed
 
-    private void Kardiologi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi3KeyPressed
-        Valid.pindah(evt,Kardiologi2,Kardiologi4);
-    }//GEN-LAST:event_Kardiologi3KeyPressed
+    private void Respirasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Respirasi3KeyPressed
 
-    private void Kardiologi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi1KeyPressed
-        Valid.pindah(evt,btnPetugas,Kardiologi2);
-    }//GEN-LAST:event_Kardiologi1KeyPressed
+    private void Prematur2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prematur2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Prematur2KeyPressed
 
-    private void Kardiologi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiologi4KeyPressed
-        Valid.pindah(evt,Kardiologi3,Kardiologi5);
-    }//GEN-LAST:event_Kardiologi4KeyPressed
+    private void Prematur1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prematur1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Prematur1KeyPressed
 
-    private void Pernapasan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pernapasan1KeyPressed
-        Valid.pindah(evt,Kardiologi6,Pernapasan2);
-    }//GEN-LAST:event_Pernapasan1KeyPressed
+    private void Prematur3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Prematur3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Prematur3KeyPressed
 
-    private void Pernapasan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pernapasan2KeyPressed
-        Valid.pindah(evt,Pernapasan1,Pernapasan3);
-    }//GEN-LAST:event_Pernapasan2KeyPressed
+    private void Kardio3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardio3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kardio3KeyPressed
 
-    private void Pernapasan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pernapasan3KeyPressed
-        Valid.pindah(evt,Pernapasan2,Syaraf1);
-    }//GEN-LAST:event_Pernapasan3KeyPressed
+    private void Kardio1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardio1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kardio1KeyPressed
 
-    private void Syaraf1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Syaraf1KeyPressed
-        Valid.pindah(evt,Pernapasan3,Syaraf2);
-    }//GEN-LAST:event_Syaraf1KeyPressed
+    private void Kardio2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardio2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kardio2KeyPressed
 
-    private void Syaraf2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Syaraf2KeyPressed
-        Valid.pindah(evt,Syaraf1,Syaraf3);
-    }//GEN-LAST:event_Syaraf2KeyPressed
+    private void Neuro3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neuro3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Neuro3KeyPressed
 
-    private void Syaraf3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Syaraf3KeyPressed
-        Valid.pindah(evt,Syaraf2,Syaraf4);
-    }//GEN-LAST:event_Syaraf3KeyPressed
+    private void Neuro1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neuro1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Neuro1KeyPressed
 
-    private void Syaraf4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Syaraf4KeyPressed
-        Valid.pindah(evt,Syaraf3,Pencernaan1);
-    }//GEN-LAST:event_Syaraf4KeyPressed
+    private void Neuro2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neuro2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Neuro2KeyPressed
 
-    private void Pencernaan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pencernaan1KeyPressed
-        Valid.pindah(evt,Syaraf4,Pencernaan2);
-    }//GEN-LAST:event_Pencernaan1KeyPressed
+    private void Metabolik2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Metabolik2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Metabolik2KeyPressed
 
-    private void Pencernaan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pencernaan2KeyPressed
-        Valid.pindah(evt,Pencernaan1,Pencernaan3);
-    }//GEN-LAST:event_Pencernaan2KeyPressed
+    private void Metabolik1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Metabolik1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Metabolik1KeyPressed
 
-    private void Pencernaan3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pencernaan3KeyPressed
-        Valid.pindah(evt,Pencernaan2,Pencernaan4);
-    }//GEN-LAST:event_Pencernaan3KeyPressed
+    private void Metabolik3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Metabolik3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Metabolik3KeyPressed
 
-    private void Pencernaan4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pencernaan4KeyPressed
-        Valid.pindah(evt,Pencernaan3,Pembedahan1);
-    }//GEN-LAST:event_Pencernaan4KeyPressed
+    private void Kondisilain2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kondisilain2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kondisilain2KeyPressed
 
-    private void Pembedahan1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pembedahan1KeyPressed
-        Valid.pindah(evt,Pencernaan4,Pembedahan2);
-    }//GEN-LAST:event_Pembedahan1KeyPressed
+    private void Kondisilain1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kondisilain1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kondisilain1KeyPressed
 
-    private void Pembedahan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Pembedahan2KeyPressed
-        Valid.pindah(evt,Pembedahan1,Hematologi1);
-    }//GEN-LAST:event_Pembedahan2KeyPressed
+    private void Kondisilain4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kondisilain4KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kondisilain4KeyPressed
 
-    private void Hematologi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hematologi1KeyPressed
-        Valid.pindah(evt,Pembedahan2,Hematologi2);
-    }//GEN-LAST:event_Hematologi1KeyPressed
+    private void Kondisilain3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kondisilain3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Kondisilain3KeyPressed
 
-    private void Hematologi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Hematologi2KeyPressed
-        Valid.pindah(evt,Hematologi1,Infeksi);
-    }//GEN-LAST:event_Hematologi2KeyPressed
-
-    private void InfeksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InfeksiKeyPressed
-        Valid.pindah(evt,Hematologi2,BtnSimpan);
-    }//GEN-LAST:event_InfeksiKeyPressed
+    private void KeputusanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeputusanKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KeputusanKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1789,36 +1766,36 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.PanelBiasa FormInput;
-    private widget.ComboBox Hematologi1;
-    private widget.ComboBox Hematologi2;
-    private widget.ComboBox Infeksi;
     private widget.TextBox JK;
-    private widget.ComboBox Kardiologi1;
-    private widget.ComboBox Kardiologi2;
-    private widget.ComboBox Kardiologi3;
-    private widget.ComboBox Kardiologi4;
-    private widget.ComboBox Kardiologi5;
-    private widget.ComboBox Kardiologi6;
+    private widget.ComboBox Kardio1;
+    private widget.ComboBox Kardio2;
+    private widget.ComboBox Kardio3;
+    private widget.ComboBox Keputusan;
+    private widget.TextBox Keterangan;
     private widget.TextBox KodePetugas;
+    private widget.ComboBox Kondisilain1;
+    private widget.ComboBox Kondisilain2;
+    private widget.ComboBox Kondisilain3;
+    private widget.ComboBox Kondisilain4;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaMasukHCU;
+    private widget.ComboBox Metabolik1;
+    private widget.ComboBox Metabolik2;
+    private widget.ComboBox Metabolik3;
+    private javax.swing.JMenuItem MnKriteriaMasukNICU;
     private widget.TextBox NamaPetugas;
+    private widget.ComboBox Neuro1;
+    private widget.ComboBox Neuro2;
+    private widget.ComboBox Neuro3;
     private javax.swing.JPanel PanelInput;
-    private widget.ComboBox Pembedahan1;
-    private widget.ComboBox Pembedahan2;
-    private widget.ComboBox Pencernaan1;
-    private widget.ComboBox Pencernaan2;
-    private widget.ComboBox Pencernaan3;
-    private widget.ComboBox Pencernaan4;
-    private widget.ComboBox Pernapasan1;
-    private widget.ComboBox Pernapasan2;
-    private widget.ComboBox Pernapasan3;
+    private widget.ComboBox Prematur1;
+    private widget.ComboBox Prematur2;
+    private widget.ComboBox Prematur3;
+    private widget.ComboBox Respirasi1;
+    private widget.ComboBox Respirasi2;
+    private widget.ComboBox Respirasi3;
+    private widget.ComboBox Respirasi4;
     private widget.ScrollPane Scroll;
-    private widget.ComboBox Syaraf1;
-    private widget.ComboBox Syaraf2;
-    private widget.ComboBox Syaraf3;
-    private widget.ComboBox Syaraf4;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1842,7 +1819,6 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     private widget.Label jLabel58;
     private widget.Label jLabel59;
     private widget.Label jLabel6;
-    private widget.Label jLabel60;
     private widget.Label jLabel61;
     private widget.Label jLabel62;
     private widget.Label jLabel63;
@@ -1874,11 +1850,10 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     private widget.Label jLabel87;
     private widget.Label jLabel88;
     private widget.Label jLabel89;
+    private widget.Label jLabel9;
     private widget.Label jLabel90;
     private widget.Label jLabel91;
     private widget.Label jLabel92;
-    private widget.Label jLabel93;
-    private widget.Label jLabel94;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
@@ -1906,35 +1881,35 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_hcu.tanggal,"+
-                    "checklist_kriteria_masuk_hcu.kardiologi1,checklist_kriteria_masuk_hcu.kardiologi2,checklist_kriteria_masuk_hcu.kardiologi3,"+
-                    "checklist_kriteria_masuk_hcu.kardiologi4,checklist_kriteria_masuk_hcu.kardiologi5,checklist_kriteria_masuk_hcu.kardiologi6,"+
-                    "checklist_kriteria_masuk_hcu.pernapasan1,checklist_kriteria_masuk_hcu.pernapasan2,checklist_kriteria_masuk_hcu.pernapasan3,"+
-                    "checklist_kriteria_masuk_hcu.syaraf1,checklist_kriteria_masuk_hcu.syaraf2,checklist_kriteria_masuk_hcu.syaraf3,checklist_kriteria_masuk_hcu.syaraf4,"+
-                    "checklist_kriteria_masuk_hcu.pencernaan1,checklist_kriteria_masuk_hcu.pencernaan2,checklist_kriteria_masuk_hcu.pencernaan3,"+
-                    "checklist_kriteria_masuk_hcu.pencernaan4,checklist_kriteria_masuk_hcu.pembedahan1,checklist_kriteria_masuk_hcu.pembedahan2,"+
-                    "checklist_kriteria_masuk_hcu.hematologi1,checklist_kriteria_masuk_hcu.hematologi2,checklist_kriteria_masuk_hcu.infeksi,"+
-                    "checklist_kriteria_masuk_hcu.nik,pegawai.nama "+
-                    "from checklist_kriteria_masuk_hcu inner join reg_periksa on checklist_kriteria_masuk_hcu.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_nicu.tanggal,"+
+                    "checklist_kriteria_masuk_nicu.respirasi1,checklist_kriteria_masuk_nicu.respirasi2,checklist_kriteria_masuk_nicu.respirasi3,"+
+                    "checklist_kriteria_masuk_nicu.respirasi4,checklist_kriteria_masuk_nicu.prematur1,checklist_kriteria_masuk_nicu.prematur2,"+
+                    "checklist_kriteria_masuk_nicu.prematur3,checklist_kriteria_masuk_nicu.kardio1,checklist_kriteria_masuk_nicu.kardio2,"+
+                    "checklist_kriteria_masuk_nicu.kardio3,checklist_kriteria_masuk_nicu.neuro1,checklist_kriteria_masuk_nicu.neuro2,"+
+                    "checklist_kriteria_masuk_nicu.neuro3,checklist_kriteria_masuk_nicu.metabolik1,checklist_kriteria_masuk_nicu.metabolik2,"+
+                    "checklist_kriteria_masuk_nicu.metabolik3,checklist_kriteria_masuk_nicu.kondisilain1,checklist_kriteria_masuk_nicu.kondisilain2,"+
+                    "checklist_kriteria_masuk_nicu.kondisilain3,checklist_kriteria_masuk_nicu.kondisilain4,checklist_kriteria_masuk_nicu.keputusan,"+
+                    "checklist_kriteria_masuk_nicu.keterangan,checklist_kriteria_masuk_nicu.nik,pegawai.nama "+
+                    "from checklist_kriteria_masuk_nicu inner join reg_periksa on checklist_kriteria_masuk_nicu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_hcu.nik "+
-                    "where checklist_kriteria_masuk_hcu.tanggal between ? and ? order by checklist_kriteria_masuk_hcu.tanggal ");
+                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_nicu.nik "+
+                    "where checklist_kriteria_masuk_nicu.tanggal between ? and ? order by checklist_kriteria_masuk_nicu.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_hcu.tanggal,"+
-                    "checklist_kriteria_masuk_hcu.kardiologi1,checklist_kriteria_masuk_hcu.kardiologi2,checklist_kriteria_masuk_hcu.kardiologi3,"+
-                    "checklist_kriteria_masuk_hcu.kardiologi4,checklist_kriteria_masuk_hcu.kardiologi5,checklist_kriteria_masuk_hcu.kardiologi6,"+
-                    "checklist_kriteria_masuk_hcu.pernapasan1,checklist_kriteria_masuk_hcu.pernapasan2,checklist_kriteria_masuk_hcu.pernapasan3,"+
-                    "checklist_kriteria_masuk_hcu.syaraf1,checklist_kriteria_masuk_hcu.syaraf2,checklist_kriteria_masuk_hcu.syaraf3,checklist_kriteria_masuk_hcu.syaraf4,"+
-                    "checklist_kriteria_masuk_hcu.pencernaan1,checklist_kriteria_masuk_hcu.pencernaan2,checklist_kriteria_masuk_hcu.pencernaan3,"+
-                    "checklist_kriteria_masuk_hcu.pencernaan4,checklist_kriteria_masuk_hcu.pembedahan1,checklist_kriteria_masuk_hcu.pembedahan2,"+
-                    "checklist_kriteria_masuk_hcu.hematologi1,checklist_kriteria_masuk_hcu.hematologi2,checklist_kriteria_masuk_hcu.infeksi,"+
-                    "checklist_kriteria_masuk_hcu.nik,pegawai.nama "+
-                    "from checklist_kriteria_masuk_hcu inner join reg_periksa on checklist_kriteria_masuk_hcu.no_rawat=reg_periksa.no_rawat "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_nicu.tanggal,"+
+                    "checklist_kriteria_masuk_nicu.respirasi1,checklist_kriteria_masuk_nicu.respirasi2,checklist_kriteria_masuk_nicu.respirasi3,"+
+                    "checklist_kriteria_masuk_nicu.respirasi4,checklist_kriteria_masuk_nicu.prematur1,checklist_kriteria_masuk_nicu.prematur2,"+
+                    "checklist_kriteria_masuk_nicu.prematur3,checklist_kriteria_masuk_nicu.kardio1,checklist_kriteria_masuk_nicu.kardio2,"+
+                    "checklist_kriteria_masuk_nicu.kardio3,checklist_kriteria_masuk_nicu.neuro1,checklist_kriteria_masuk_nicu.neuro2,"+
+                    "checklist_kriteria_masuk_nicu.neuro3,checklist_kriteria_masuk_nicu.metabolik1,checklist_kriteria_masuk_nicu.metabolik2,"+
+                    "checklist_kriteria_masuk_nicu.metabolik3,checklist_kriteria_masuk_nicu.kondisilain1,checklist_kriteria_masuk_nicu.kondisilain2,"+
+                    "checklist_kriteria_masuk_nicu.kondisilain3,checklist_kriteria_masuk_nicu.kondisilain4,checklist_kriteria_masuk_nicu.keputusan,"+
+                    "checklist_kriteria_masuk_nicu.keterangan,checklist_kriteria_masuk_nicu.nik,pegawai.nama "+
+                    "from checklist_kriteria_masuk_nicu inner join reg_periksa on checklist_kriteria_masuk_nicu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_hcu.nik "+
-                    "where checklist_kriteria_masuk_hcu.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or pegawai.nama like ? or checklist_kriteria_masuk_hcu.nik like ?) order by checklist_kriteria_masuk_hcu.tanggal ");
+                    "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_nicu.nik "+
+                    "where checklist_kriteria_masuk_nicu.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or pegawai.nama like ? or checklist_kriteria_masuk_nicu.nik like ?) order by checklist_kriteria_masuk_nicu.tanggal ");
             }
                 
             try {
@@ -1955,11 +1930,12 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
-                        rs.getString("tanggal"),rs.getString("kardiologi1"),rs.getString("kardiologi2"),rs.getString("kardiologi3"),rs.getString("kardiologi4"),
-                        rs.getString("kardiologi5"),rs.getString("kardiologi6"),rs.getString("pernapasan1"),rs.getString("pernapasan2"),rs.getString("pernapasan3"),
-                        rs.getString("syaraf1"),rs.getString("syaraf2"),rs.getString("syaraf3"),rs.getString("syaraf4"),rs.getString("pencernaan1"),
-                        rs.getString("pencernaan2"),rs.getString("pencernaan3"),rs.getString("pencernaan4"),rs.getString("pembedahan1"),rs.getString("pembedahan2"),
-                        rs.getString("hematologi1"),rs.getString("hematologi2"),rs.getString("infeksi"),rs.getString("nik"),rs.getString("nama")
+                        rs.getString("tanggal"),rs.getString("respirasi1"),rs.getString("respirasi2"),rs.getString("respirasi3"),rs.getString("respirasi4"),
+                        rs.getString("prematur1"),rs.getString("prematur2"),rs.getString("prematur3"),rs.getString("kardio1"),rs.getString("kardio2"),
+                        rs.getString("kardio3"),rs.getString("neuro1"),rs.getString("neuro2"),rs.getString("neuro3"),rs.getString("metabolik1"),
+                        rs.getString("metabolik2"),rs.getString("metabolik3"),rs.getString("kondisilain1"),rs.getString("kondisilain2"),
+                        rs.getString("kondisilain3"),rs.getString("kondisilain4"),rs.getString("keputusan"),rs.getString("keterangan"),
+                        rs.getString("nik"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1979,30 +1955,32 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        Kardiologi1.setSelectedItem("Tidak");
-        Kardiologi2.setSelectedItem("Tidak");
-        Kardiologi3.setSelectedItem("Tidak");
-        Kardiologi4.setSelectedItem("Tidak");
-        Kardiologi5.setSelectedItem("Tidak");
-        Kardiologi6.setSelectedItem("Tidak");
-        Pernapasan1.setSelectedItem("Tidak");
-        Pernapasan2.setSelectedItem("Tidak");
-        Pernapasan3.setSelectedItem("Tidak");
-        Syaraf1.setSelectedItem("Tidak");
-        Syaraf2.setSelectedItem("Tidak");
-        Syaraf3.setSelectedItem("Tidak");
-        Syaraf4.setSelectedItem("Tidak");
-        Pencernaan1.setSelectedItem("Tidak");
-        Pencernaan2.setSelectedItem("Tidak");
-        Pencernaan3.setSelectedItem("Tidak");
-        Pencernaan4.setSelectedItem("Tidak");
-        Pembedahan1.setSelectedItem("Tidak");
-        Pembedahan2.setSelectedItem("Tidak");
-        Hematologi1.setSelectedItem("Tidak");
-        Hematologi2.setSelectedItem("Tidak");
-        Infeksi.setSelectedItem("Tidak");
+        Respirasi1.setSelectedItem("Tidak");
+        Respirasi2.setSelectedItem("Tidak");
+        Respirasi1.setSelectedItem("Tidak");
+        Respirasi2.setSelectedItem("Tidak");
+        Respirasi3.setSelectedItem("Tidak");
+        Respirasi4.setSelectedItem("Tidak");
+        Prematur1.setSelectedItem("Tidak");
+        Prematur2.setSelectedItem("Tidak");
+        Prematur3.setSelectedItem("Tidak");
+        Kardio1.setSelectedItem("Tidak");
+        Kardio2.setSelectedItem("Tidak");
+        Kardio3.setSelectedItem("Tidak");
+        Neuro1.setSelectedItem("Tidak");
+        Neuro2.setSelectedItem("Tidak");
+        Neuro3.setSelectedItem("Tidak");
+        Metabolik1.setSelectedItem("Tidak");
+        Metabolik2.setSelectedItem("Tidak");
+        Metabolik3.setSelectedItem("Tidak");
+        Kondisilain1.setSelectedItem("Tidak");
+        Kondisilain2.setSelectedItem("Tidak");
+        Kondisilain3.setSelectedItem("Tidak");
+        Kondisilain4.setSelectedItem("Tidak");
+        Keputusan.setSelectedItem("Tidak");
+        Keterangan.setText("");
         Tanggal.setDate(new Date());
-        Kardiologi1.requestFocus();
+        Respirasi1.requestFocus();
     } 
 
     private void getData() {
@@ -2012,28 +1990,28 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
-            Kardiologi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            Kardiologi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Kardiologi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Kardiologi4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Kardiologi5.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Kardiologi6.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            Pernapasan1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Pernapasan2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            Pernapasan3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Syaraf1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            Syaraf2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            Syaraf3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            Syaraf4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Pencernaan1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Pencernaan2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            Pencernaan3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            Pencernaan4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Pembedahan1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            Pembedahan2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            Hematologi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            Hematologi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            Infeksi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            Respirasi1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            Respirasi2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            Respirasi3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Respirasi4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            Prematur1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Prematur2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Prematur3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Kardio1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Kardio2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Kardio3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            Neuro1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Neuro2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            Neuro3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Metabolik1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            Metabolik2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Metabolik3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Kondisilain1.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            Kondisilain2.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            Kondisilain3.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            Kondisilain4.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            Keputusan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
@@ -2094,10 +2072,10 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getchecklist_kriteria_masuk_hcu());
-        BtnHapus.setEnabled(akses.getchecklist_kriteria_masuk_hcu());
-        BtnEdit.setEnabled(akses.getchecklist_kriteria_masuk_hcu());
-        BtnPrint.setEnabled(akses.getchecklist_kriteria_masuk_hcu()); 
+        BtnSimpan.setEnabled(akses.getkriteria_masuk_nicu());
+        BtnHapus.setEnabled(akses.getkriteria_masuk_nicu());
+        BtnEdit.setEnabled(akses.getkriteria_masuk_nicu());
+        BtnPrint.setEnabled(akses.getkriteria_masuk_nicu()); 
         if(akses.getjml2()>=1){
             btnPetugas.setEnabled(false);
             KodePetugas.setText(akses.getkode());
@@ -2112,15 +2090,16 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("checklist_kriteria_masuk_hcu","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,kardiologi1=?,kardiologi2=?,kardiologi3=?,kardiologi4=?,kardiologi5=?,kardiologi6=?,pernapasan1=?,pernapasan2=?,"+
-                "pernapasan3=?,syaraf1=?,syaraf2=?,syaraf3=?,syaraf4=?,pencernaan1=?,pencernaan2=?,pencernaan3=?,pencernaan4=?,pembedahan1=?,pembedahan2=?,hematologi1=?,hematologi2=?,infeksi=?,nik=?",27,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kardiologi1.getSelectedItem().toString(),
-                Kardiologi2.getSelectedItem().toString(),Kardiologi3.getSelectedItem().toString(),Kardiologi4.getSelectedItem().toString(),Kardiologi5.getSelectedItem().toString(),
-                Kardiologi6.getSelectedItem().toString(),Pernapasan1.getSelectedItem().toString(),Pernapasan2.getSelectedItem().toString(),Pernapasan3.getSelectedItem().toString(),
-                Syaraf1.getSelectedItem().toString(),Syaraf2.getSelectedItem().toString(),Syaraf3.getSelectedItem().toString(),Syaraf4.getSelectedItem().toString(),
-                Pencernaan1.getSelectedItem().toString(),Pencernaan2.getSelectedItem().toString(),Pencernaan3.getSelectedItem().toString(),Pencernaan4.getSelectedItem().toString(),
-                Pembedahan1.getSelectedItem().toString(),Pembedahan2.getSelectedItem().toString(),Hematologi1.getSelectedItem().toString(),Hematologi2.getSelectedItem().toString(),
-                Infeksi.getSelectedItem().toString(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
+        if(Sequel.mengedittf("checklist_kriteria_masuk_nicu","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,respirasi1=?,respirasi2=?,respirasi3=?,respirasi4=?,prematur1=?,prematur2=?,"+
+                "prematur3=?,kardio1=?,kardio2=?,kardio3=?,neuro1=?,neuro2=?,neuro3=?,metabolik1=?,metabolik2=?,metabolik3=?,kondisilain1=?,kondisilain2=?,kondisilain3=?,kondisilain4=?,"+
+                "keputusan=?,keterangan=?,nik=?",27,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Respirasi1.getSelectedItem().toString(),
+                Respirasi2.getSelectedItem().toString(),Respirasi3.getSelectedItem().toString(),Respirasi4.getSelectedItem().toString(),Prematur1.getSelectedItem().toString(),
+                Prematur2.getSelectedItem().toString(),Prematur3.getSelectedItem().toString(),Kardio1.getSelectedItem().toString(),Kardio2.getSelectedItem().toString(),
+                Kardio3.getSelectedItem().toString(),Neuro1.getSelectedItem().toString(),Neuro2.getSelectedItem().toString(),Neuro3.getSelectedItem().toString(),
+                Metabolik1.getSelectedItem().toString(),Metabolik2.getSelectedItem().toString(),Metabolik3.getSelectedItem().toString(),Kondisilain1.getSelectedItem().toString(),
+                Kondisilain2.getSelectedItem().toString(),Kondisilain3.getSelectedItem().toString(),Kondisilain4.getSelectedItem().toString(),Keputusan.getSelectedItem().toString(),
+                Keterangan.getText(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2128,28 +2107,28 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(Kardiologi1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(Kardiologi2.getSelectedItem().toString(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(Kardiologi3.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(Kardiologi4.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(Kardiologi5.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(Kardiologi6.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(Pernapasan1.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(Pernapasan2.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(Pernapasan3.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(Syaraf1.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(Syaraf2.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(Syaraf3.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(Syaraf4.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(Pencernaan1.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(Pencernaan2.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(Pencernaan3.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-            tbObat.setValueAt(Pencernaan4.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-            tbObat.setValueAt(Pembedahan1.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
-            tbObat.setValueAt(Pembedahan2.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(Hematologi1.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(Hematologi2.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
-            tbObat.setValueAt(Infeksi.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+            tbObat.setValueAt(Respirasi1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(Respirasi2.getSelectedItem().toString(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(Respirasi3.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(Respirasi4.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(Prematur1.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(Prematur2.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(Prematur3.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(Kardio1.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(Kardio2.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(Kardio3.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(Neuro1.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(Neuro2.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(Neuro3.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(Metabolik1.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(Metabolik2.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(Metabolik3.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(Kondisilain1.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(Kondisilain2.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(Kondisilain3.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(Kondisilain4.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(Keputusan.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),27);
             tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),28);
             tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),29);
             emptTeks();
@@ -2157,7 +2136,7 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from checklist_kriteria_masuk_hcu where no_rawat=? and tanggal=?",2,new String[]{
+        if(Sequel.queryu2tf("delete from checklist_kriteria_masuk_nicu where no_rawat=? and tanggal=?",2,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2169,26 +2148,26 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("checklist_kriteria_masuk_hcu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",25,new String[]{
-            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Kardiologi1.getSelectedItem().toString(),
-            Kardiologi2.getSelectedItem().toString(),Kardiologi3.getSelectedItem().toString(),Kardiologi4.getSelectedItem().toString(),Kardiologi5.getSelectedItem().toString(),
-            Kardiologi6.getSelectedItem().toString(),Pernapasan1.getSelectedItem().toString(),Pernapasan2.getSelectedItem().toString(),Pernapasan3.getSelectedItem().toString(),
-            Syaraf1.getSelectedItem().toString(),Syaraf2.getSelectedItem().toString(),Syaraf3.getSelectedItem().toString(),Syaraf4.getSelectedItem().toString(),
-            Pencernaan1.getSelectedItem().toString(),Pencernaan2.getSelectedItem().toString(),Pencernaan3.getSelectedItem().toString(),Pencernaan4.getSelectedItem().toString(),
-            Pembedahan1.getSelectedItem().toString(),Pembedahan2.getSelectedItem().toString(),Hematologi1.getSelectedItem().toString(),Hematologi2.getSelectedItem().toString(),
-            Infeksi.getSelectedItem().toString(),KodePetugas.getText()
+        if(Sequel.menyimpantf("checklist_kriteria_masuk_nicu","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",25,new String[]{
+            TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Respirasi1.getSelectedItem().toString(),
+            Respirasi2.getSelectedItem().toString(),Respirasi3.getSelectedItem().toString(),Respirasi4.getSelectedItem().toString(),Prematur1.getSelectedItem().toString(),
+            Prematur2.getSelectedItem().toString(),Prematur3.getSelectedItem().toString(),Kardio1.getSelectedItem().toString(),Kardio2.getSelectedItem().toString(),
+            Kardio3.getSelectedItem().toString(),Neuro1.getSelectedItem().toString(),Neuro2.getSelectedItem().toString(),Neuro3.getSelectedItem().toString(),
+            Metabolik1.getSelectedItem().toString(),Metabolik2.getSelectedItem().toString(),Metabolik3.getSelectedItem().toString(),Kondisilain1.getSelectedItem().toString(),
+            Kondisilain2.getSelectedItem().toString(),Kondisilain3.getSelectedItem().toString(),Kondisilain4.getSelectedItem().toString(),Keputusan.getSelectedItem().toString(),
+            Keterangan.getText(),KodePetugas.getText()
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),JK.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                Kardiologi1.getSelectedItem().toString(),Kardiologi2.getSelectedItem().toString(),Kardiologi3.getSelectedItem().toString(),Kardiologi4.getSelectedItem().toString(),
-                Kardiologi5.getSelectedItem().toString(),Kardiologi6.getSelectedItem().toString(),Pernapasan1.getSelectedItem().toString(),Pernapasan2.getSelectedItem().toString(),
-                Pernapasan3.getSelectedItem().toString(),Syaraf1.getSelectedItem().toString(),Syaraf2.getSelectedItem().toString(),Syaraf3.getSelectedItem().toString(),Syaraf4.getSelectedItem().toString(),
-                Pencernaan1.getSelectedItem().toString(),Pencernaan2.getSelectedItem().toString(),Pencernaan3.getSelectedItem().toString(),Pencernaan4.getSelectedItem().toString(),
-                Pembedahan1.getSelectedItem().toString(),Pembedahan2.getSelectedItem().toString(),Hematologi1.getSelectedItem().toString(),Hematologi2.getSelectedItem().toString(),
-                Infeksi.getSelectedItem().toString(),KodePetugas.getText(),NamaPetugas.getText()
+                Respirasi1.getSelectedItem().toString(),Respirasi2.getSelectedItem().toString(),Respirasi3.getSelectedItem().toString(),Respirasi4.getSelectedItem().toString(),
+                Prematur1.getSelectedItem().toString(),Prematur2.getSelectedItem().toString(),Prematur3.getSelectedItem().toString(),Kardio1.getSelectedItem().toString(),
+                Kardio2.getSelectedItem().toString(),Kardio3.getSelectedItem().toString(),Neuro1.getSelectedItem().toString(),Neuro2.getSelectedItem().toString(),Neuro3.getSelectedItem().toString(),
+                Metabolik1.getSelectedItem().toString(),Metabolik2.getSelectedItem().toString(),Metabolik3.getSelectedItem().toString(),Kondisilain1.getSelectedItem().toString(),
+                Kondisilain2.getSelectedItem().toString(),Kondisilain3.getSelectedItem().toString(),Kondisilain4.getSelectedItem().toString(),Keputusan.getSelectedItem().toString(),
+                Keterangan.getText(),KodePetugas.getText(),NamaPetugas.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();
-        } 
+        }
     }
 }
