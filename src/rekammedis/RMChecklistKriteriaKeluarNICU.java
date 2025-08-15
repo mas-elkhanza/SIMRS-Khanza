@@ -627,11 +627,6 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
-        TNoRM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoRMKeyPressed(evt);
-            }
-        });
         FormInput.add(TNoRM);
         TNoRM.setBounds(222, 10, 112, 23);
 
@@ -1127,10 +1122,11 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isRawat();
-        }else{            
-            Valid.pindah(evt,TCari,Tanggal);
+            Tanggal.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+            TCari.requestFocus();
         }
 }//GEN-LAST:event_TNoRwKeyPressed
 
@@ -1408,10 +1404,6 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
-    private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
-        // Valid.pindah(evt, TNm, BtnSimpan);
-}//GEN-LAST:event_TNoRMKeyPressed
-
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
         if(tabMode.getRowCount()!=0){
             try {
@@ -1444,17 +1436,15 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),29).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),28).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukNICU.jasper","report","::[ Formulir Check List Kriteria Masuk NICU ]::",
+            Valid.MyReportqry("rptFormulirChecklistKriteriaKeluarNICU.jasper","report","::[ Formulir Check List Kriteria Keluar NICU ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_nicu.tanggal,"+
                     "checklist_kriteria_keluar_nicu.respirasi1,checklist_kriteria_keluar_nicu.respirasi2,checklist_kriteria_keluar_nicu.respirasi3,"+
-                    "checklist_kriteria_keluar_nicu.respirasi4,checklist_kriteria_keluar_nicu.prematur1,checklist_kriteria_keluar_nicu.prematur2,"+
-                    "checklist_kriteria_keluar_nicu.prematur3,checklist_kriteria_keluar_nicu.kardio1,checklist_kriteria_keluar_nicu.kardio2,"+
-                    "checklist_kriteria_keluar_nicu.kardio3,checklist_kriteria_keluar_nicu.neuro1,checklist_kriteria_keluar_nicu.neuro2,"+
-                    "checklist_kriteria_keluar_nicu.neuro3,checklist_kriteria_keluar_nicu.metabolik1,checklist_kriteria_keluar_nicu.metabolik2,"+
-                    "checklist_kriteria_keluar_nicu.metabolik3,checklist_kriteria_keluar_nicu.kondisilain1,checklist_kriteria_keluar_nicu.kondisilain2,"+
-                    "checklist_kriteria_keluar_nicu.kondisilain3,checklist_kriteria_keluar_nicu.kondisilain4,checklist_kriteria_keluar_nicu.keputusan,"+
-                    "checklist_kriteria_keluar_nicu.keterangan,checklist_kriteria_keluar_nicu.nik,pegawai.nama "+
-                    "from checklist_kriteria_keluar_nicu inner join reg_periksa on checklist_kriteria_keluar_nicu.no_rawat=reg_periksa.no_rawat "+
+                    "checklist_kriteria_keluar_nicu.kardio1,checklist_kriteria_keluar_nicu.kardio2,checklist_kriteria_keluar_nicu.nutrisi1,"+
+                    "checklist_kriteria_keluar_nicu.nutrisi2,checklist_kriteria_keluar_nicu.nutrisi3,checklist_kriteria_keluar_nicu.suhutubuh1,"+
+                    "checklist_kriteria_keluar_nicu.suhutubuh2,checklist_kriteria_keluar_nicu.infeksi1,checklist_kriteria_keluar_nicu.infeksi2,"+
+                    "checklist_kriteria_keluar_nicu.infeksi3,checklist_kriteria_keluar_nicu.keputusan,checklist_kriteria_keluar_nicu.keterangan,"+
+                    "checklist_kriteria_keluar_nicu.nik,pegawai.nama from checklist_kriteria_keluar_nicu "+
+                    "inner join reg_periksa on checklist_kriteria_keluar_nicu.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join pegawai on pegawai.nik=checklist_kriteria_keluar_nicu.nik "+
                     "where checklist_kriteria_keluar_nicu.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_keluar_nicu.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
