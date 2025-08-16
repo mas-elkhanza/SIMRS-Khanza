@@ -51,8 +51,6 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;    
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-    private String finger="";
-    private StringBuilder htmlContent;
     private String TANGGALMUNDUR="yes";
     /** Creates new form DlgRujuk
      * @param parent
@@ -1254,61 +1252,61 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             try{
-                htmlContent = new StringBuilder();
+                StringBuilder htmlContent = new StringBuilder();
                 htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Memerlukan Ventilasi Mekanik Atau CPAP</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Saturasi O₂ ≥ 90% Tanpa Oksigen Tambahan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Ada Apnea Atau Bradikardia Dalam 5–7 Hari Terakhir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tekanan Darah Stabil Sesuai Usia</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Ada Episode Syok Dalam 5 Hari Terakhir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asupan Oral Penuh (ASI/PMK) Tanpa Distress</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Memerlukan Nutrisi Parenteral</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berat Badan Stabil/Meningkat ≥ 15 g/Kg/Hari</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu Stabil (36,5–37,5°C) Di Ruang/Incubator Terbuka</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Ada Episode Hipotermia/Hipertermia 3 Hari Terakhir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Memerlukan Monitoring Invasif</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Semua Terapi/Tindakan Invasif Telah Selesai</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Ada Tanda Infeksi Aktif</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keputusan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan/Catatan</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/NICU</b></td>"+
+                    "<tr class='isi'>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Rawat</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.RM</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pasien</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Memerlukan Ventilasi Mekanik Atau CPAP</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Saturasi O₂ ≥ 90% Tanpa Oksigen Tambahan</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Ada Apnea Atau Bradikardia Dalam 5–7 Hari Terakhir</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tekanan Darah Stabil Sesuai Usia</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Ada Episode Syok Dalam 5 Hari Terakhir</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asupan Oral Penuh (ASI/PMK) Tanpa Distress</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Memerlukan Nutrisi Parenteral</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Berat Badan Stabil/Meningkat ≥ 15 g/Kg/Hari</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu Stabil (36,5–37,5°C) Di Ruang/Incubator Terbuka</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Ada Episode Hipotermia/Hipertermia 3 Hari Terakhir</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Memerlukan Monitoring Invasif</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Semua Terapi/Tindakan Invasif Telah Selesai</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tidak Ada Tanda Infeksi Aktif</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keputusan</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan/Catatan</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/NICU</b></td>").append(
                     "</tr>"
                 );
                 
                 for (i = 0; i < tabMode.getRowCount(); i++) {
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
-                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                        "<tr class='isi'>").append(
+                           "<td valign='top'>").append(tbObat.getValueAt(i,0).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,1).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,2).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,3).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,4).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,5).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,6).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,7).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,8).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,9).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,10).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,11).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,12).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,13).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,14).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,15).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,16).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,17).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,18).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,19).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,20).toString()).append("</td>").append( 
+                            "<td valign='top'>").append(tbObat.getValueAt(i,21).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,22).toString()).append("</td>").append(
                         "</tr>");
                 }
                 
@@ -1352,7 +1350,7 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
                 );
                 bw.close();                         
                 Desktop.getDesktop().browse(f.toURI());
-
+                htmlContent=null;
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
             }
@@ -1434,7 +1432,7 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),22).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),21).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirChecklistKriteriaKeluarNICU.jasper","report","::[ Formulir Check List Kriteria Keluar NICU ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_keluar_nicu.tanggal,"+
