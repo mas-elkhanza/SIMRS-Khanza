@@ -334,7 +334,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="21-03-2023"/>
+                        <StringItem index="0" value="16-08-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -362,7 +362,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="21-03-2023"/>
+                        <StringItem index="0" value="16-08-2025"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -570,7 +570,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="21-03-2023"/>
+                            <StringItem index="0" value="16-08-2025"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1213,9 +1213,9 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="3">
-                            <StringItem index="0" value="Asupan Makan Tidak Berkurang"/>
+                            <StringItem index="0" value="Asupan Makan Sangat Berkurang"/>
                             <StringItem index="1" value="Asupan Makan Agak Berkurang"/>
-                            <StringItem index="2" value="Asupan Makan Sangat Berkurang"/>
+                            <StringItem index="2" value="Asupan Makan Tidak Berkurang"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SG1" noResource="true"/>
@@ -1269,10 +1269,10 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
-                            <StringItem index="0" value="Tidak Ada Penurunan Berat Badan"/>
-                            <StringItem index="1" value="Penurunan Berat Badan Antara 1 Hingga 3 Kg"/>
-                            <StringItem index="2" value="Tidak Tahu"/>
-                            <StringItem index="3" value="Penurunan Berat Badan Lebih Dari 3 Kg"/>
+                            <StringItem index="0" value="Penurunan Berat Badan Lebih Dari 3 Kg"/>
+                            <StringItem index="1" value="Tidak Tahu"/>
+                            <StringItem index="2" value="Penurunan Berat Badan Antara 1 Hingga 3 Kg"/>
+                            <StringItem index="3" value="Tidak Ada Penurunan Berat Badan"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SG2" noResource="true"/>
@@ -1379,9 +1379,9 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="3">
-                            <StringItem index="0" value="Dapat Bepergian Keluar Rumah"/>
+                            <StringItem index="0" value="Terbatas Dari Tempat Tidur Atau Kursi"/>
                             <StringItem index="1" value="Mampu Bangun Dari Tempat Tidur/Kursi Tetapi Tidak Bepergian Keluar Rumah"/>
-                            <StringItem index="2" value="Terbatas Dari Tempat Tidur Atau Kursi"/>
+                            <StringItem index="2" value="Dapat Bepergian Keluar Rumah"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SG3" noResource="true"/>
@@ -1448,8 +1448,8 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
-                            <StringItem index="0" value="Tidak"/>
-                            <StringItem index="1" value="Ya"/>
+                            <StringItem index="0" value="Ya"/>
+                            <StringItem index="1" value="Tidak"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SG4" noResource="true"/>
@@ -1492,10 +1492,10 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="4">
-                            <StringItem index="0" value="IMT &gt;= 23"/>
-                            <StringItem index="1" value="21 Hingga &lt; 23"/>
-                            <StringItem index="2" value="19 Hingga &lt; 21"/>
-                            <StringItem index="3" value="IMT &lt; 19"/>
+                            <StringItem index="0" value="IMT &lt; 19"/>
+                            <StringItem index="1" value="19 Hingga &lt; 21"/>
+                            <StringItem index="2" value="21 Hingga &lt; 23"/>
+                            <StringItem index="3" value="IMT &gt;= 23"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SG6" noResource="true"/>
@@ -1560,9 +1560,9 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="3">
-                            <StringItem index="0" value="Tidak Ada Gangguan Psikologis"/>
+                            <StringItem index="0" value="Depresi Berat Atau Kepikunan Berat"/>
                             <StringItem index="1" value="Kepikunan Ringan"/>
-                            <StringItem index="2" value="Depresi Berat Atau Kepikunan Berat"/>
+                            <StringItem index="2" value="Tidak Ada Gangguan Psikologis"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SG5" noResource="true"/>
@@ -1629,8 +1629,8 @@
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
-                            <StringItem index="0" value="Lingkar Betis &gt;= 31"/>
-                            <StringItem index="1" value="Lingkar Betis &lt; 31"/>
+                            <StringItem index="0" value="Lingkar Betis &lt; 31"/>
+                            <StringItem index="1" value="Lingkar Betis &gt;= 31"/>
                           </StringArray>
                         </Property>
                         <Property name="name" type="java.lang.String" value="SG7" noResource="true"/>

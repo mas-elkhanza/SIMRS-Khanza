@@ -533,7 +533,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-03-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -547,7 +547,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-03-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -668,7 +668,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-03-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-08-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -952,7 +952,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         FormInput.add(jLabel39);
         jLabel39.setBounds(20, 130, 460, 23);
 
-        SG1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Asupan Makan Tidak Berkurang", "Asupan Makan Agak Berkurang", "Asupan Makan Sangat Berkurang" }));
+        SG1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Asupan Makan Sangat Berkurang", "Asupan Makan Agak Berkurang", "Asupan Makan Tidak Berkurang" }));
         SG1.setName("SG1"); // NOI18N
         SG1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -984,7 +984,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         FormInput.add(jLabel43);
         jLabel43.setBounds(44, 180, 260, 23);
 
-        SG2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Penurunan Berat Badan", "Penurunan Berat Badan Antara 1 Hingga 3 Kg", "Tidak Tahu", "Penurunan Berat Badan Lebih Dari 3 Kg" }));
+        SG2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Penurunan Berat Badan Lebih Dari 3 Kg", "Tidak Tahu", "Penurunan Berat Badan Antara 1 Hingga 3 Kg", "Tidak Ada Penurunan Berat Badan" }));
         SG2.setName("SG2"); // NOI18N
         SG2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1043,7 +1043,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         FormInput.add(jLabel45);
         jLabel45.setBounds(44, 210, 80, 23);
 
-        SG3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dapat Bepergian Keluar Rumah", "Mampu Bangun Dari Tempat Tidur/Kursi Tetapi Tidak Bepergian Keluar Rumah", "Terbatas Dari Tempat Tidur Atau Kursi" }));
+        SG3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Terbatas Dari Tempat Tidur Atau Kursi", "Mampu Bangun Dari Tempat Tidur/Kursi Tetapi Tidak Bepergian Keluar Rumah", "Dapat Bepergian Keluar Rumah" }));
         SG3.setName("SG3"); // NOI18N
         SG3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1082,7 +1082,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         FormInput.add(Nilai4);
         Nilai4.setBounds(729, 240, 60, 23);
 
-        SG4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
+        SG4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         SG4.setName("SG4"); // NOI18N
         SG4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1109,7 +1109,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         FormInput.add(jLabel47);
         jLabel47.setBounds(44, 330, 130, 23);
 
-        SG6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IMT >= 23", "21 Hingga < 23", "19 Hingga < 21", "IMT < 19" }));
+        SG6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IMT < 19", "19 Hingga < 21", "21 Hingga < 23", "IMT >= 23" }));
         SG6.setName("SG6"); // NOI18N
         SG6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1146,7 +1146,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         FormInput.add(R1);
         R1.setBounds(15, 300, 26, 23);
 
-        SG5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak Ada Gangguan Psikologis", "Kepikunan Ringan", "Depresi Berat Atau Kepikunan Berat" }));
+        SG5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Depresi Berat Atau Kepikunan Berat", "Kepikunan Ringan", "Tidak Ada Gangguan Psikologis" }));
         SG5.setName("SG5"); // NOI18N
         SG5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -1185,7 +1185,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         FormInput.add(jLabel76);
         jLabel76.setBounds(675, 330, 50, 23);
 
-        SG7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lingkar Betis >= 31", "Lingkar Betis < 31" }));
+        SG7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Lingkar Betis < 31", "Lingkar Betis >= 31" }));
         SG7.setName("SG7"); // NOI18N
         SG7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -2033,7 +2033,7 @@ public final class RMSkriningNutrisiLansia extends javax.swing.JDialog {
         SG7.setSelectedIndex(0);
         Nilai7.setText("0");
         TotalHasil.setText("0");
-        LabelSkrining.setText("Status Gizi Normal");
+        LabelSkrining.setText("Malnutrisi");
         BB.requestFocus();
     } 
 
