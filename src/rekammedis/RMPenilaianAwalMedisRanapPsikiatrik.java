@@ -2000,6 +2000,7 @@ public final class RMPenilaianAwalMedisRanapPsikiatrik extends javax.swing.JDial
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center'>Pengendalian Impuls</td>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center'>Tilikan</td>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center'>Reality Testing Ability</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Penilaian Khusus</td>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center'>Keadaan Umum</td>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center'>GCS</td>"+
                                         "<td valign='middle' bgcolor='#FFFAFA' align='center'>Kesadaran</td>"+
@@ -2127,6 +2128,7 @@ public final class RMPenilaianAwalMedisRanapPsikiatrik extends javax.swing.JDial
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Pengendalian Impuls</td>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Tilikan</td>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Reality Testing Ability</td>"+
+                                        "<td valign='middle' bgcolor='#FFFAFA' align='center'>Skala Penilaian Khusus</td>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Keadaan Umum</td>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>GCS</td>"+
                                         "<td valign='middle' bgcolor='#FFFAF8' align='center'>Kesadaran</td>"+
@@ -2226,7 +2228,7 @@ public final class RMPenilaianAwalMedisRanapPsikiatrik extends javax.swing.JDial
                         case "Laporan 3 (CSV)":
                                 htmlContent = new StringBuilder();
                                 htmlContent.append(                             
-                                    "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Dokter\";\"Nama Dokter\";\"Tanggal\";\"Anamnesis\";\"Hubungan\";\"Keluhan Utama\";\"Riwayat Penyakit Sekarang\";\"Riwayat Penyakit Dahulu\";\"Riwayat Penyakit Keluarga\";\"Riwayat Napza\";\"Riwayat Alergi\";\"Penampilan\";\"Pembicaraan\";\"Psikomotor\";\"Sikap\";\"Mood\";\"Fungsi Kognitif\";\"Gangguan Persepsi\";\"Proses Pikir\";\"Pengendalian Impuls\";\"Tilikan\";\"Reality Testing Ability\";\"Keadaan Umum\";\"GCS\";\"Kesadaran\";\"TD(mmHg)\";\"Nadi(x/menit)\";\"RR(x/menit)\";\"Suhu\";\"SpO2\";\"BB(Kg)\";\"TB(cm)\";\"Kepala\";\"Gigi & Mulut\";\"THT\";\"Thoraks\";\"Abdomen\";\"Genital & Anus\";\"Ekstremitas\";\"Kulit\";\"Keterangan Pemeriksaan Fisik\";\"Pemeriksaan Penunjang\";\"Diagnosis/Asesmen\";\"Tatalaksana\";\"Konsul/Rujuk\"\n"
+                                    "\"No.Rawat\";\"No.RM\";\"Nama Pasien\";\"Tgl.Lahir\";\"J.K.\";\"Kode Dokter\";\"Nama Dokter\";\"Tanggal\";\"Anamnesis\";\"Hubungan\";\"Keluhan Utama\";\"Riwayat Penyakit Sekarang\";\"Riwayat Penyakit Dahulu\";\"Riwayat Penyakit Keluarga\";\"Riwayat Napza\";\"Riwayat Alergi\";\"Penampilan\";\"Pembicaraan\";\"Psikomotor\";\"Sikap\";\"Mood\";\"Fungsi Kognitif\";\"Gangguan Persepsi\";\"Proses Pikir\";\"Pengendalian Impuls\";\"Tilikan\";\"Reality Testing Ability\";\"Skala Penilaian Khusus\";\"Keadaan Umum\";\"GCS\";\"Kesadaran\";\"TD(mmHg)\";\"Nadi(x/menit)\";\"RR(x/menit)\";\"Suhu\";\"SpO2\";\"BB(Kg)\";\"TB(cm)\";\"Kepala\";\"Gigi & Mulut\";\"THT\";\"Thoraks\";\"Abdomen\";\"Genital & Anus\";\"Ekstremitas\";\"Kulit\";\"Keterangan Pemeriksaan Fisik\";\"Pemeriksaan Penunjang\";\"Diagnosis/Asesmen\";\"Tatalaksana\";\"Konsul/Rujuk\"\n"
                                 ); 
                                 while(rs.next()){
                                     htmlContent.append(
