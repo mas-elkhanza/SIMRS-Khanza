@@ -35,7 +35,7 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Supplier","Nama Supplier","Alamat Supplier","Kota","No.Telp","Nama Bank","No.Rekening"};
+        Object[] row={"Kode Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kota","No.Telp","Kegiatan Usaha","Personal Yang Dihubungi"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -57,20 +57,20 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
             }else if(i==4){
                 column.setPreferredWidth(100);
             }else if(i==5){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(200);
             }else if(i==6){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(200);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Kd.setDocument(new batasInput((byte)5).getKata(Kd));
-        Nm.setDocument(new batasInput((byte)50).getKata(Nm));      
+        Kode.setDocument(new batasInput((byte)5).getKata(Kode));
+        Nama.setDocument(new batasInput((byte)50).getKata(Nama));      
         Alamat.setDocument(new batasInput((byte)50).getKata(Alamat));  
         Kota.setDocument(new batasInput((byte)20).getKata(Kota));    
         Telp.setDocument(new batasInput((byte)13).getOnlyAngka(Telp)); 
-        NoRek.setDocument(new batasInput((byte)20).getKata(NoRek));   
-        Bank.setDocument(new batasInput((byte)30).getKata(Bank));  
+        PersonalDihubungi.setDocument(new batasInput((byte)30).getKata(PersonalDihubungi));   
+        KegiatanUsaha.setDocument(new batasInput((byte)30).getKata(KegiatanUsaha));  
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));    
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -129,8 +129,8 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         ChkInput = new widget.CekBox();
         FormInput = new widget.PanelBiasa();
         label12 = new widget.Label();
-        Kd = new widget.TextBox();
-        Nm = new widget.TextBox();
+        Kode = new widget.TextBox();
+        Nama = new widget.TextBox();
         label18 = new widget.Label();
         label26 = new widget.Label();
         Telp = new widget.TextBox();
@@ -138,9 +138,9 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         Alamat = new widget.TextBox();
         label29 = new widget.Label();
         Kota = new widget.TextBox();
-        Bank = new widget.TextBox();
+        KegiatanUsaha = new widget.TextBox();
         label27 = new widget.Label();
-        NoRek = new widget.TextBox();
+        PersonalDihubungi = new widget.TextBox();
         label28 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -410,25 +410,25 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         FormInput.add(label12);
         label12.setBounds(0, 12, 55, 23);
 
-        Kd.setName("Kd"); // NOI18N
-        Kd.setPreferredSize(new java.awt.Dimension(207, 23));
-        Kd.addKeyListener(new java.awt.event.KeyAdapter() {
+        Kode.setName("Kode"); // NOI18N
+        Kode.setPreferredSize(new java.awt.Dimension(207, 23));
+        Kode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KdKeyPressed(evt);
+                KodeKeyPressed(evt);
             }
         });
-        FormInput.add(Kd);
-        Kd.setBounds(59, 12, 100, 23);
+        FormInput.add(Kode);
+        Kode.setBounds(59, 12, 100, 23);
 
-        Nm.setName("Nm"); // NOI18N
-        Nm.setPreferredSize(new java.awt.Dimension(207, 23));
-        Nm.addKeyListener(new java.awt.event.KeyAdapter() {
+        Nama.setName("Nama"); // NOI18N
+        Nama.setPreferredSize(new java.awt.Dimension(207, 23));
+        Nama.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NmKeyPressed(evt);
+                NamaKeyPressed(evt);
             }
         });
-        FormInput.add(Nm);
-        Nm.setBounds(59, 42, 310, 23);
+        FormInput.add(Nama);
+        Nama.setBounds(59, 42, 310, 23);
 
         label18.setText("Nama :");
         label18.setName("label18"); // NOI18N
@@ -436,7 +436,7 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         FormInput.add(label18);
         label18.setBounds(0, 42, 55, 23);
 
-        label26.setText("No.Telp :");
+        label26.setText("No.Telp/HP :");
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label26);
@@ -494,15 +494,15 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         FormInput.add(Kota);
         Kota.setBounds(520, 12, 210, 23);
 
-        Bank.setName("Bank"); // NOI18N
-        Bank.setPreferredSize(new java.awt.Dimension(207, 23));
-        Bank.addKeyListener(new java.awt.event.KeyAdapter() {
+        KegiatanUsaha.setName("KegiatanUsaha"); // NOI18N
+        KegiatanUsaha.setPreferredSize(new java.awt.Dimension(207, 23));
+        KegiatanUsaha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                BankKeyPressed(evt);
+                KegiatanUsahaKeyPressed(evt);
             }
         });
-        FormInput.add(Bank);
-        Bank.setBounds(520, 42, 210, 23);
+        FormInput.add(KegiatanUsaha);
+        KegiatanUsaha.setBounds(520, 42, 210, 23);
 
         label27.setText("Kegiatan Usaha :");
         label27.setName("label27"); // NOI18N
@@ -510,15 +510,15 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         FormInput.add(label27);
         label27.setBounds(366, 42, 150, 23);
 
-        NoRek.setName("NoRek"); // NOI18N
-        NoRek.setPreferredSize(new java.awt.Dimension(207, 23));
-        NoRek.addKeyListener(new java.awt.event.KeyAdapter() {
+        PersonalDihubungi.setName("PersonalDihubungi"); // NOI18N
+        PersonalDihubungi.setPreferredSize(new java.awt.Dimension(207, 23));
+        PersonalDihubungi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRekKeyPressed(evt);
+                PersonalDihubungiKeyPressed(evt);
             }
         });
-        FormInput.add(NoRek);
-        NoRek.setBounds(520, 72, 210, 23);
+        FormInput.add(PersonalDihubungi);
+        PersonalDihubungi.setBounds(520, 72, 210, 23);
 
         label28.setText("Personal Yang Dihubungi :");
         label28.setName("label28"); // NOI18N
@@ -580,11 +580,11 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
 }//GEN-LAST:event_tbDokterKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Nm.getText().trim().equals("")){
+        if(Nama.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Pilih dulu data yang akan Anda hapus dengan menklik data pada tabel...!!!");
             tbDokter.requestFocus();
         }else{
-            Valid.hapusTable(tabMode,Kd,"ipsrssuplier","kode_suplier");
+            Valid.hapusTable(tabMode,Kode,"laborat_kesling_pelanggan","kode_pelanggan");
             tampil();
             emptTeks();
         }
@@ -599,23 +599,23 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Kd.getText().trim().equals("")){
-            Valid.textKosong(Kd,"Kode Supplier");
-        }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Supplier");
+        if(Kode.getText().trim().equals("")){
+            Valid.textKosong(Kode,"Kode Pelanggan");
+        }else if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Nama Pelanggan");
         }else if(Alamat.getText().trim().equals("")){
-            Valid.textKosong(Alamat,"Alamat Supplier");
+            Valid.textKosong(Alamat,"Alamat Pelanggan");
         }else if(Telp.getText().trim().equals("")){
             Valid.textKosong(Telp,"No.Telp");
         }else if(Kota.getText().trim().equals("")){
             Valid.textKosong(Kota,"Kota");
-        }else if(Bank.getText().trim().equals("")){
-            Valid.textKosong(Bank,"Nama Bank Suplier");
-        }else if(NoRek.getText().trim().equals("")){
-            Valid.textKosong(NoRek,"Nomer Rekening");
+        }else if(KegiatanUsaha.getText().trim().equals("")){
+            Valid.textKosong(KegiatanUsaha,"Kegiatan Usaha Suplier");
+        }else if(PersonalDihubungi.getText().trim().equals("")){
+            Valid.textKosong(PersonalDihubungi,"Nomer Rekening");
         }else{
-            Valid.editTable(tabMode,"ipsrssuplier","kode_suplier","?","kode_suplier=?,nama_suplier=?,alamat=?,kota=?,no_telp=?,nama_bank=?,rekening=?",8,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),Bank.getText(),NoRek.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
+            Valid.editTable(tabMode,"laborat_kesling_pelanggan","kode_pelanggan","?","kode_pelanggan=?,nama_pelanggan=?,alamat=?,kota=?,no_telp=?,kegiatan_usaha=?,personal_dihubungi=?",8,new String[]{
+                Kode.getText(),Nama.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),KegiatanUsaha.getText(),PersonalDihubungi.getText(),tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()
             });
             if(tabMode.getRowCount()!=0){tampil();}
             emptTeks();
@@ -639,21 +639,22 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
             BtnBatal.requestFocus();
         }else if(tabMode.getRowCount()!=0){
             Map<String, Object> param = new HashMap<>(); 
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptSuplier.jasper","report","::[ Data Suplier ]::","select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
-                    " ipsrssuplier.alamat,ipsrssuplier.kota, ipsrssuplier.no_telp,ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrssuplier "+
-                    " where ipsrssuplier.kode_suplier like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.nama_suplier like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.alamat like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.kota like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.nama_bank like '%"+TCari.getText().trim()+"%' or "+
-                    " ipsrssuplier.no_telp like '%"+TCari.getText().trim()+"%' order by ipsrssuplier.kode_suplier",param);            
+            param.put("namars",akses.getnamars());
+            param.put("alamatrs",akses.getalamatrs());
+            param.put("kotars",akses.getkabupatenrs());
+            param.put("propinsirs",akses.getpropinsirs());
+            param.put("kontakrs",akses.getkontakrs());
+            param.put("emailrs",akses.getemailrs());   
+            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
+            Valid.MyReportqry("rptLaboratKeslingPelanggan.jasper","report","::[ Data Pelanggan Laboratorium Kesehatan Lingkungan ]::","select laborat_kesling_pelanggan.kode_pelanggan, laborat_kesling_pelanggan.nama_pelanggan, "+
+                    " laborat_kesling_pelanggan.alamat,laborat_kesling_pelanggan.kota, laborat_kesling_pelanggan.no_telp,laborat_kesling_pelanggan.kegiatan_usaha,laborat_kesling_pelanggan.personal_dihubungi from laborat_kesling_pelanggan "+
+                    (TCari.getText().trim().equals("")?"":"where laborat_kesling_pelanggan.kode_pelanggan like '%"+TCari.getText().trim()+"%' or "+
+                    " laborat_kesling_pelanggan.nama_pelanggan like '%"+TCari.getText().trim()+"%' or "+
+                    " laborat_kesling_pelanggan.alamat like '%"+TCari.getText().trim()+"%' or "+
+                    " laborat_kesling_pelanggan.kota like '%"+TCari.getText().trim()+"%' or "+
+                    " laborat_kesling_pelanggan.kegiatan_usaha like '%"+TCari.getText().trim()+"%' or "+
+                    " laborat_kesling_pelanggan.no_telp like '%"+TCari.getText().trim()+"%' ")+
+                    " order by laborat_kesling_pelanggan.kode_pelanggan",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -690,23 +691,23 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Kd.getText().trim().equals("")){
-            Valid.textKosong(Kd,"Kode Supplier");
-        }else if(Nm.getText().trim().equals("")){
-            Valid.textKosong(Nm,"Nama Supplier");
+        if(Kode.getText().trim().equals("")){
+            Valid.textKosong(Kode,"Kode Pelanggan");
+        }else if(Nama.getText().trim().equals("")){
+            Valid.textKosong(Nama,"Nama Pelanggan");
         }else if(Alamat.getText().trim().equals("")){
-            Valid.textKosong(Alamat,"Alamat Supplier");
+            Valid.textKosong(Alamat,"Alamat Pelanggan");
         }else if(Telp.getText().trim().equals("")){
             Valid.textKosong(Telp,"No.Telp");
         }else if(Kota.getText().trim().equals("")){
             Valid.textKosong(Kota,"Kota");
-        }else if(Bank.getText().trim().equals("")){
-            Valid.textKosong(Bank,"Nama Bank Suplier");
-        }else if(NoRek.getText().trim().equals("")){
-            Valid.textKosong(NoRek,"Nomer Rekening");
+        }else if(KegiatanUsaha.getText().trim().equals("")){
+            Valid.textKosong(KegiatanUsaha,"Kegiatan Usaha Suplier");
+        }else if(PersonalDihubungi.getText().trim().equals("")){
+            Valid.textKosong(PersonalDihubungi,"Nomer Rekening");
         }else{
-            if(Sequel.menyimpantf("ipsrssuplier","?,?,?,?,?,?,?","Kode Supplier",7,new String[]{
-                Kd.getText(),Nm.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),Bank.getText(),NoRek.getText()        
+            if(Sequel.menyimpantf("laborat_kesling_pelanggan","?,?,?,?,?,?,?","Kode Pelanggan",7,new String[]{
+                Kode.getText(),Nama.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),KegiatanUsaha.getText(),PersonalDihubungi.getText()        
             })==true){
                 tampil();
                 emptTeks();
@@ -747,13 +748,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
-    private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdKeyPressed
-        Valid.pindah(evt,NoRek,Telp,TCari);
-    }//GEN-LAST:event_KdKeyPressed
+    private void KodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeKeyPressed
+        Valid.pindah(evt,PersonalDihubungi,Telp,TCari);
+    }//GEN-LAST:event_KodeKeyPressed
 
-    private void NmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NmKeyPressed
+    private void NamaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaKeyPressed
         Valid.pindah(evt,Telp,Alamat);
-    }//GEN-LAST:event_NmKeyPressed
+    }//GEN-LAST:event_NamaKeyPressed
 
     private void TelpMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TelpMouseMoved
         if(Telp.getText().equals("0")||Telp.getText().equals("0.0")){
@@ -768,24 +769,24 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_TelpMouseExited
 
     private void TelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TelpKeyPressed
-        Valid.pindah(evt,Kd,Nm);
+        Valid.pindah(evt,Kode,Nama);
     }//GEN-LAST:event_TelpKeyPressed
 
     private void AlamatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatKeyPressed
-        Valid.pindah(evt,Nm,Kota);
+        Valid.pindah(evt,Nama,Kota);
     }//GEN-LAST:event_AlamatKeyPressed
 
     private void KotaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KotaKeyPressed
-        Valid.pindah(evt,Alamat,Bank);
+        Valid.pindah(evt,Alamat,KegiatanUsaha);
     }//GEN-LAST:event_KotaKeyPressed
 
-    private void BankKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BankKeyPressed
-        Valid.pindah(evt,Kota,NoRek);
-    }//GEN-LAST:event_BankKeyPressed
+    private void KegiatanUsahaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KegiatanUsahaKeyPressed
+        Valid.pindah(evt,Kota,PersonalDihubungi);
+    }//GEN-LAST:event_KegiatanUsahaKeyPressed
 
-    private void NoRekKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRekKeyPressed
-        Valid.pindah(evt,Bank,BtnSimpan);
-    }//GEN-LAST:event_NoRekKeyPressed
+    private void PersonalDihubungiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PersonalDihubungiKeyPressed
+        Valid.pindah(evt,KegiatanUsaha,BtnSimpan);
+    }//GEN-LAST:event_PersonalDihubungiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -805,7 +806,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox Alamat;
-    private widget.TextBox Bank;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -816,12 +816,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Button BtnSimpan;
     private widget.CekBox ChkInput;
     private widget.PanelBiasa FormInput;
-    private widget.TextBox Kd;
+    private widget.TextBox KegiatanUsaha;
+    private widget.TextBox Kode;
     private widget.TextBox Kota;
     private widget.Label LCount;
-    private widget.TextBox Nm;
-    private widget.TextBox NoRek;
+    private widget.TextBox Nama;
     private javax.swing.JPanel PanelInput;
+    private widget.TextBox PersonalDihubungi;
     private widget.TextBox TCari;
     private widget.TextBox Telp;
     private widget.InternalFrame internalFrame1;
@@ -844,22 +845,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps=koneksi.prepareStatement("select ipsrssuplier.kode_suplier, ipsrssuplier.nama_suplier, "+
-                    " ipsrssuplier.alamat,ipsrssuplier.kota, ipsrssuplier.no_telp,"+
-                    " ipsrssuplier.nama_bank,ipsrssuplier.rekening from ipsrssuplier "+
-                    " where ipsrssuplier.kode_suplier like ? or "+
-                    " ipsrssuplier.nama_suplier like ? or "+
-                    " ipsrssuplier.alamat like ? or "+
-                    " ipsrssuplier.kota like ? or "+
-                    " ipsrssuplier.nama_bank like ? or "+
-                    " ipsrssuplier.no_telp like ? order by ipsrssuplier.kode_suplier");
+            ps=koneksi.prepareStatement(
+                    "select laborat_kesling_pelanggan.kode_pelanggan, laborat_kesling_pelanggan.nama_pelanggan, "+
+                    "laborat_kesling_pelanggan.alamat,laborat_kesling_pelanggan.kota, laborat_kesling_pelanggan.no_telp,"+
+                    "laborat_kesling_pelanggan.kegiatan_usaha,laborat_kesling_pelanggan.personal_dihubungi from laborat_kesling_pelanggan "+
+                    (TCari.getText().trim().equals("")?"":"where laborat_kesling_pelanggan.kode_pelanggan like ? or "+
+                    "laborat_kesling_pelanggan.nama_pelanggan like ? or "+
+                    "laborat_kesling_pelanggan.alamat like ? or "+
+                    "laborat_kesling_pelanggan.kota like ? or "+
+                    "laborat_kesling_pelanggan.kegiatan_usaha like ? or "+
+                    "laborat_kesling_pelanggan.no_telp like ? ")+
+                    "order by laborat_kesling_pelanggan.kode_pelanggan");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
-                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
+                    
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
@@ -884,27 +890,27 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
 
     public void emptTeks() {
-        Kd.setText("");
-        Nm.setText("");
+        Kode.setText("");
+        Nama.setText("");
         Alamat.setText("");
         Kota.setText("");
         Telp.setText("0");
-        Bank.setText("");
-        NoRek.setText("");
+        KegiatanUsaha.setText("");
+        PersonalDihubungi.setText("");
         
-        Kd.requestFocus();
-        Valid.autoNomer("ipsrssuplier","S",4,Kd);
+        Kode.requestFocus();
+        Valid.autoNomer("laborat_kesling_pelanggan","P",4,Kode);
     }
 
     private void getData() {
         if(tbDokter.getSelectedRow()!= -1){
-            Kd.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
-            Nm.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
+            Kode.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
+            Nama.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),1).toString());
             Alamat.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),2).toString());
             Kota.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),3).toString());
             Telp.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),4).toString());
-            Bank.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
-            NoRek.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
+            KegiatanUsaha.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),5).toString());
+            PersonalDihubungi.setText(tabMode.getValueAt(tbDokter.getSelectedRow(),6).toString());
         }
     }
 
@@ -913,10 +919,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsuplier_penunjang());
-        BtnHapus.setEnabled(akses.getsuplier_penunjang());
-        BtnEdit.setEnabled(akses.getsuplier_penunjang());
-        BtnPrint.setEnabled(akses.getsuplier_penunjang());
+        BtnSimpan.setEnabled(akses.getpelanggan_lab_kesehatan_lingkungan());
+        BtnHapus.setEnabled(akses.getpelanggan_lab_kesehatan_lingkungan());
+        BtnEdit.setEnabled(akses.getpelanggan_lab_kesehatan_lingkungan());
+        BtnPrint.setEnabled(akses.getpelanggan_lab_kesehatan_lingkungan());
     }
     
     private void isForm(){

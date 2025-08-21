@@ -902,6 +902,7 @@ import rekammedis.RMChecklistKriteriaKeluarNICU;
 import rekammedis.RMChecklistKriteriaMasukHCU;
 import rekammedis.RMChecklistKriteriaMasukICU;
 import rekammedis.RMChecklistKriteriaMasukNICU;
+import rekammedis.RMChecklistKriteriaMasukPICU;
 import rekammedis.RMChecklistPemberianFibrinolitik;
 import rekammedis.RMChecklistPostOperasi;
 import rekammedis.RMChecklistPreOperasi;
@@ -22858,6 +22859,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnChecklistKriteriaMasukPICUActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMChecklistKriteriaMasukPICU aplikasi=new RMChecklistKriteriaMasukPICU(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23566,7 +23579,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap,btnPemberiHutangLain,
             btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV,btnSkriningInstrumenACRS,
             btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional,btnChecklistKriteriaMasukNICU,btnChecklistKriteriaKeluarNICU,btnPenilaianAwalMedisRanapPsikiatri,
-            btnLabKeslingPelanggan;
+            btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU;
     
     public void isWall(){
         try{            
@@ -27875,6 +27888,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getkriteria_keluar_nicu()==true){
                 Panelmenu.add(btnChecklistKriteriaKeluarNICU);
+                jmlmenu++;
+            }
+            
+            if(akses.getkriteria_masuk_picu()==true){
+                Panelmenu.add(btnChecklistKriteriaMasukPICU);
                 jmlmenu++;
             }
             
@@ -33554,6 +33572,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getkriteria_keluar_nicu()==true){
             Panelmenu.add(btnChecklistKriteriaKeluarNICU);
+            jmlmenu++;
+        }
+        
+        if(akses.getkriteria_masuk_picu()==true){
+            Panelmenu.add(btnChecklistKriteriaMasukPICU);
             jmlmenu++;
         }
         
@@ -40895,6 +40918,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }
         }
         
+        if(akses.getkriteria_masuk_picu()==true){
+            if(btnChecklistKriteriaMasukPICU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnChecklistKriteriaMasukPICU);
+                jmlmenu++;
+            }
+        }
+        
         if(akses.getchecklist_kriteria_masuk_icu()==true){
             if(btnChecklistKriteriaMasukICU.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnChecklistKriteriaMasukICU);
@@ -46979,6 +47009,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnChecklistKriteriaMasukNICU.setName("btnChecklistKriteriaMasukNICU"); 
         btnChecklistKriteriaMasukNICU.setPreferredSize(new java.awt.Dimension(200, 90));
         btnChecklistKriteriaMasukNICU.addActionListener(this::btnChecklistKriteriaMasukNICUActionPerformed);
+        
+        btnChecklistKriteriaMasukPICU = new widget.ButtonBig();
+        btnChecklistKriteriaMasukPICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/1934246_boy_child_kid_people_playing_icon.png"))); 
+        btnChecklistKriteriaMasukPICU.setText("Check List Kriteria Masuk PICU");
+        btnChecklistKriteriaMasukPICU.setIconTextGap(0);
+        btnChecklistKriteriaMasukPICU.setName("btnChecklistKriteriaMasukPICU"); 
+        btnChecklistKriteriaMasukPICU.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnChecklistKriteriaMasukPICU.addActionListener(this::btnChecklistKriteriaMasukPICUActionPerformed);
         
         btnChecklistKriteriaKeluarNICU = new widget.ButtonBig();
         btnChecklistKriteriaKeluarNICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088517_beat_care_heart_pulse_time_icon.png"))); 
