@@ -673,7 +673,7 @@ public final class RMChecklistKriteriaMasukPICU extends javax.swing.JDialog {
         TglLahir.setBounds(689, 10, 100, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-08-2025 20:20:10" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-08-2025 20:20:39" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -738,7 +738,7 @@ public final class RMChecklistKriteriaMasukPICU extends javax.swing.JDialog {
         jSeparator2.setBounds(0, 70, 810, 1);
 
         jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel53.setText("I. RESPIRASI");
+        jLabel53.setText("I. KRITERIA UMUM");
         jLabel53.setName("jLabel53"); // NOI18N
         FormInput.add(jLabel53);
         jLabel53.setBounds(10, 70, 180, 23);

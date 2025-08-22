@@ -770,7 +770,7 @@
                     <Component class="widget.Label" name="jLabel53">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="I. RESPIRASI"/>
+                        <Property name="text" type="java.lang.String" value="I. KRITERIA UMUM"/>
                         <Property name="name" type="java.lang.String" value="jLabel53" noResource="true"/>
                       </Properties>
                       <Constraints>
