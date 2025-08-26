@@ -1966,8 +1966,6 @@ public final class RMChecklistKriteriaMasukNICU extends javax.swing.JDialog {
     public void emptTeks() {
         Respirasi1.setSelectedItem("Tidak");
         Respirasi2.setSelectedItem("Tidak");
-        Respirasi1.setSelectedItem("Tidak");
-        Respirasi2.setSelectedItem("Tidak");
         Respirasi3.setSelectedItem("Tidak");
         Respirasi4.setSelectedItem("Tidak");
         Prematur1.setSelectedItem("Tidak");

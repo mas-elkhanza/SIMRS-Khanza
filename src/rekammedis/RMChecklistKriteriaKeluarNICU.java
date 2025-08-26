@@ -1724,8 +1724,6 @@ public final class RMChecklistKriteriaKeluarNICU extends javax.swing.JDialog {
         Respirasi1.setSelectedItem("Tidak");
         Respirasi2.setSelectedItem("Tidak");
         Respirasi3.setSelectedItem("Tidak");
-        Respirasi2.setSelectedItem("Tidak");
-        Respirasi3.setSelectedItem("Tidak");
         Kardio1.setSelectedItem("Tidak");
         Kardio2.setSelectedItem("Tidak");
         Nutrisi1.setSelectedItem("Tidak");

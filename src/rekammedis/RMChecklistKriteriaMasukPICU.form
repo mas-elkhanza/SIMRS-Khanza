@@ -11,7 +11,7 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="MnKriteriaMasukNICU">
+        <MenuItem class="javax.swing.JMenuItem" name="MnKriteriaMasukPICU">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fe" green="ff" red="ff" type="rgb"/>
@@ -25,14 +25,14 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/picture/category.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Formulir Checklist Kriteria Masuk NICU"/>
-            <Property name="name" type="java.lang.String" value="MnKriteriaMasukNICU" noResource="true"/>
+            <Property name="text" type="java.lang.String" value="Formulir Checklist Kriteria Masuk PICU"/>
+            <Property name="name" type="java.lang.String" value="MnKriteriaMasukPICU" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 26]"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnKriteriaMasukNICUActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnKriteriaMasukPICUActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -786,11 +786,11 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="445" y="90" width="260" height="23"/>
+                          <AbsoluteConstraints x="455" y="90" width="250" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi2">
+                    <Component class="widget.ComboBox" name="KriteriaUmum2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -799,10 +799,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi2" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="KriteriaUmum2" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi2KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KriteriaUmum2KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -833,7 +833,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi1">
+                    <Component class="widget.ComboBox" name="KriteriaUmum1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -842,10 +842,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi1" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="KriteriaUmum1" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi1KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KriteriaUmum1KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -902,7 +902,7 @@
                     <Component class="widget.Label" name="jLabel59">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="VII. KEPUTUSAN &amp; KETERANGAN"/>
+                        <Property name="text" type="java.lang.String" value="III. KEPUTUSAN &amp; KETERANGAN"/>
                         <Property name="name" type="java.lang.String" value="jLabel59" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -937,7 +937,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="102" y="590" width="220" height="23"/>
+                          <AbsoluteConstraints x="102" y="590" width="240" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -960,7 +960,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="415" y="590" width="130" height="23"/>
+                          <AbsoluteConstraints x="385" y="590" width="130" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -976,7 +976,7 @@
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="549" y="590" width="240" height="23"/>
+                          <AbsoluteConstraints x="519" y="590" width="270" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1003,7 +1003,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi3">
+                    <Component class="widget.ComboBox" name="KriteriaUmum3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1012,10 +1012,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi3" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="KriteriaUmum3" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi3KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KriteriaUmum3KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1116,7 +1116,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi4">
+                    <Component class="widget.ComboBox" name="Respirasi1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1125,10 +1125,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi4" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Respirasi1" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi4KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi1KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1136,7 +1136,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi5">
+                    <Component class="widget.ComboBox" name="Respirasi2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1145,10 +1145,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi5" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Respirasi2" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi5KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi2KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1190,7 +1190,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi6">
+                    <Component class="widget.ComboBox" name="Respirasi3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1199,10 +1199,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi6" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Respirasi3" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi6KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi3KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1210,7 +1210,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi7">
+                    <Component class="widget.ComboBox" name="Respirasi4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1219,10 +1219,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi7" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Respirasi4" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi7KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi4KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1276,7 +1276,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi8">
+                    <Component class="widget.ComboBox" name="Kardiovaskuler1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1285,10 +1285,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi8" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Kardiovaskuler1" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi8KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Kardiovaskuler1KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1296,7 +1296,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi9">
+                    <Component class="widget.ComboBox" name="Kardiovaskuler2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1305,10 +1305,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi9" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Kardiovaskuler2" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi9KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Kardiovaskuler2KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1350,7 +1350,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi10">
+                    <Component class="widget.ComboBox" name="Kardiovaskuler3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1359,10 +1359,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi10" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Kardiovaskuler3" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi10KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Kardiovaskuler3KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1370,7 +1370,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi11">
+                    <Component class="widget.ComboBox" name="Kardiovaskuler4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1379,10 +1379,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi11" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Kardiovaskuler4" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi11KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Kardiovaskuler4KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1436,7 +1436,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi12">
+                    <Component class="widget.ComboBox" name="Neurologis1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1445,10 +1445,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi12" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Neurologis1" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi12KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Neurologis1KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1456,7 +1456,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi13">
+                    <Component class="widget.ComboBox" name="Neurologis2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1465,10 +1465,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi13" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Neurologis2" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi13KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Neurologis2KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1495,7 +1495,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="60" y="380" width="310" height="23"/>
+                          <AbsoluteConstraints x="60" y="380" width="250" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1510,7 +1510,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi14">
+                    <Component class="widget.ComboBox" name="Neurologis3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1519,10 +1519,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi14" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Neurologis3" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi14KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Neurologis3KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1530,7 +1530,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi15">
+                    <Component class="widget.ComboBox" name="Neurologis4">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1539,10 +1539,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi15" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Neurologis4" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi15KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Neurologis4KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1596,7 +1596,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi16">
+                    <Component class="widget.ComboBox" name="Bedah1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1605,10 +1605,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi16" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Bedah1" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi16KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Bedah1KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1616,7 +1616,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi17">
+                    <Component class="widget.ComboBox" name="Bedah2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1625,10 +1625,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi17" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Bedah2" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi17KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Bedah2KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1655,7 +1655,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="60" y="460" width="270" height="23"/>
+                          <AbsoluteConstraints x="60" y="460" width="250" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -1670,7 +1670,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi18">
+                    <Component class="widget.ComboBox" name="Bedah3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1679,10 +1679,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi18" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Bedah3" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi18KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Bedah3KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1725,7 +1725,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi19">
+                    <Component class="widget.ComboBox" name="Lainlain1">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1734,10 +1734,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi19" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Lainlain1" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi19KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Lainlain1KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1745,7 +1745,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi20">
+                    <Component class="widget.ComboBox" name="Lainlain2">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1754,10 +1754,10 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi20" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Lainlain2" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi20KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Lainlain2KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1776,18 +1776,6 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.Label" name="jLabel99">
-                      <Properties>
-                        <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="Sepsis Berat Dengan Disfungsi Organ Multipel"/>
-                        <Property name="name" type="java.lang.String" value="jLabel99" noResource="true"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="60" y="540" width="280" height="23"/>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
                     <Component class="widget.Label" name="jLabel100">
                       <Properties>
                         <Property name="text" type="java.lang.String" value=":"/>
@@ -1799,7 +1787,7 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="widget.ComboBox" name="Respirasi21">
+                    <Component class="widget.ComboBox" name="Lainlain3">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="2">
@@ -1808,14 +1796,26 @@
                           </StringArray>
                         </Property>
                         <Property name="selectedIndex" type="int" value="1"/>
-                        <Property name="name" type="java.lang.String" value="Respirasi21" noResource="true"/>
+                        <Property name="name" type="java.lang.String" value="Lainlain3" noResource="true"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Respirasi21KeyPressed"/>
+                        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Lainlain3KeyPressed"/>
                       </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="293" y="540" width="80" height="23"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="widget.Label" name="jLabel99">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="Sepsis Berat Dengan Disfungsi Organ Multipel"/>
+                        <Property name="name" type="java.lang.String" value="jLabel99" noResource="true"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="60" y="540" width="280" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
