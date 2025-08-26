@@ -445,32 +445,12 @@
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="2" y="35" width="20" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="465687fd-7847-450f-9e61-eada0d1b8e74">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[1]]></text>
-			</staticText>
 			<line>
 				<reportElement positionType="Float" x="0" y="49" width="552" height="1" uuid="5cdbcf29-e07e-4552-836c-61eab635d766"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="2" y="50" width="20" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="07bef688-bdd1-4fe3-95cf-71e68d302e4f">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[2]]></text>
-			</staticText>
 			<line>
 				<reportElement positionType="Float" x="0" y="64" width="552" height="1" uuid="1de5b6c7-44fc-44e8-9b28-d7882ba6c665"/>
 				<graphicElement>
@@ -487,16 +467,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{kriteriaumum1}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="2" y="65" width="20" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="437ecd68-7673-49f7-89d4-0fae02588b44">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[3]]></text>
-			</staticText>
 			<line>
 				<reportElement positionType="Float" x="0" y="79" width="552" height="1" uuid="39e7d89c-a26c-4c18-b512-f9c1b588b059"/>
 				<graphicElement>
@@ -553,7 +523,7 @@
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Membutuhkan Monitoring & Terapi Intensif Secara Berkelanjutan]]></text>
+				<text><![CDATA[1. Membutuhkan Monitoring & Terapi Intensif Secara Berkelanjutan]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" mode="Transparent" x="28" y="50" width="446" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="482bd42f-ead1-4685-81b1-4192fb7f5960"/>
@@ -561,7 +531,7 @@
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Membutuhkan Dukungan ≥ 1 Organ Vital]]></text>
+				<text><![CDATA[2. Membutuhkan Dukungan ≥ 1 Organ Vital]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="484" y="50" width="66" height="14" uuid="76cf9576-6b7e-4aca-af8f-f0d30a9ffc3d">
@@ -589,7 +559,7 @@
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[Pasien Dengan Kondisi Mengancam Jiwa Yang Masih Berpotensi Reversibel]]></text>
+				<text><![CDATA[3. Pasien Dengan Kondisi Mengancam Jiwa Yang Masih Berpotensi Reversibel]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" mode="Transparent" x="28" y="80" width="446" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="62b31158-fc8e-4b7e-9226-67a42733c3d7"/>
