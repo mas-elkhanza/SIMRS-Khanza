@@ -763,7 +763,7 @@ public final class RMChecklistKriteriaKeluarPICU extends javax.swing.JDialog {
         jSeparator14.setBounds(0, 340, 810, 1);
 
         jLabel59.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel59.setText("VI. KEPUTUSAN & KETERANGAN");
+        jLabel59.setText("IV. KEPUTUSAN & KETERANGAN");
         jLabel59.setName("jLabel59"); // NOI18N
         FormInput.add(jLabel59);
         jLabel59.setBounds(10, 340, 210, 23);
@@ -999,7 +999,7 @@ public final class RMChecklistKriteriaKeluarPICU extends javax.swing.JDialog {
         jLabel76.setText("Orang Tua/Wali Mendapat Edukasi Kondisi & Rencana Perawatan :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(325, 280, 380, 23);
+        jLabel76.setBounds(355, 280, 350, 23);
 
         TindakLanjut2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         TindakLanjut2.setSelectedIndex(1);

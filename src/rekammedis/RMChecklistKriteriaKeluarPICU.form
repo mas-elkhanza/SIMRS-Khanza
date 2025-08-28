@@ -899,7 +899,7 @@
                     <Component class="widget.Label" name="jLabel59">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="VI. KEPUTUSAN &amp; KETERANGAN"/>
+                        <Property name="text" type="java.lang.String" value="IV. KEPUTUSAN &amp; KETERANGAN"/>
                         <Property name="name" type="java.lang.String" value="jLabel59" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -1396,7 +1396,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="325" y="280" width="380" height="23"/>
+                          <AbsoluteConstraints x="355" y="280" width="350" height="23"/>
                         </Constraint>
                       </Constraints>
                     </Component>
