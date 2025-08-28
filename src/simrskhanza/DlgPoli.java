@@ -565,9 +565,13 @@ public final class DlgPoli extends javax.swing.JDialog {
         }else if(Nm.getText().trim().equals("")){
             Valid.textKosong(Nm,"Nama Unit");
         }else{
-            Sequel.menyimpan("poliklinik","'"+Kd.getText()+"','"+Nm.getText()+"','"+By.getText()+"','"+ByLm.getText()+"','1'","Kode Unit");
-            BtnCariActionPerformed(evt);
-            emptTeks();
+            if(Sequel.menyimpantf("poliklinik","'"+Kd.getText()+"','"+Nm.getText()+"','"+By.getText()+"','"+ByLm.getText()+"','1'","Kode Unit")==true){
+                tabMode.addRow(new Object[]{
+                    false,Kd.getText(),Nm.getText(),Double.parseDouble(By.getText()),Double.parseDouble(ByLm.getText())
+                });
+                LCount.setText(""+tabMode.getRowCount());
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -617,11 +621,15 @@ public final class DlgPoli extends javax.swing.JDialog {
         }else if(Nm.getText().trim().equals("")){
             Valid.textKosong(Nm,"Nama Unit");
         }else{
-            Valid.editTable(tabMode,"poliklinik","kd_poli",Kd2,"registrasi='"+By.getText()+
-                    "',nm_poli='"+Nm.getText()+"',registrasilama='"+ByLm.getText()+
-                    "',kd_poli='"+Kd.getText()+"'");
-            if(tabMode.getRowCount()!=0){BtnCariActionPerformed(evt);}
-            emptTeks();
+            if(tbKamar.getSelectedRow()!= -1){
+                if(Valid.editTabletf(tabMode,"poliklinik","kd_poli",Kd2,"registrasi='"+By.getText()+"',nm_poli='"+Nm.getText()+"',registrasilama='"+ByLm.getText()+"',kd_poli='"+Kd.getText()+"'")==true){
+                    tbKamar.setValueAt(Kd.getText(),tbKamar.getSelectedRow(),1);
+                    tbKamar.setValueAt(Nm.getText(),tbKamar.getSelectedRow(),2);
+                    tbKamar.setValueAt(Double.parseDouble(By.getText()),tbKamar.getSelectedRow(),3);
+                    tbKamar.setValueAt(Double.parseDouble(ByLm.getText()),tbKamar.getSelectedRow(),4);
+                    emptTeks();
+                }
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 

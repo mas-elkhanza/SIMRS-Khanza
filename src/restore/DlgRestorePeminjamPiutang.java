@@ -20,7 +20,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
@@ -276,7 +275,8 @@ public final class DlgRestorePeminjamPiutang extends javax.swing.JDialog {
             if(Sequel.mengedittf("peminjampiutang","kode_peminjam=?","status='1'",1,new String[]{
                 tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString()
             })==true){
-                BtnCariActionPerformed(null);
+                tabMode.removeRow(tbKamar.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
             }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data pada tabel terlebih dahulu");
@@ -294,8 +294,10 @@ public final class DlgRestorePeminjamPiutang extends javax.swing.JDialog {
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
         if(tbKamar.getSelectedRow()>-1){
-            Sequel.meghapus("peminjampiutang","kode_peminjam",tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString());
-            BtnCariActionPerformed(evt);
+            if(Sequel.meghapustf("peminjampiutang","kode_peminjam",tbKamar.getValueAt(tbKamar.getSelectedRow(),0).toString())==true){
+                tabMode.removeRow(tbKamar.getSelectedRow());
+                LCount.setText(""+tabMode.getRowCount());
+            }
         }else{
             JOptionPane.showMessageDialog(rootPane,"Silahkan pilih data pada tabel terlebih dahulu");
             tbKamar.requestFocus();
@@ -396,12 +398,15 @@ public final class DlgRestorePeminjamPiutang extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select peminjampiutang.kode_peminjam,peminjampiutang.nama_peminjam,peminjampiutang.alamat,peminjampiutang.no_telp, "+
-                    "peminjampiutang.kd_rek,rekening.nm_rek from peminjampiutang inner join rekening on peminjampiutang.kd_rek=rekening.kd_rek "+
-                    "where peminjampiutang.status='0' and (peminjampiutang.kode_peminjam like ? or peminjampiutang.nama_peminjam like ?) order by nama_peminjam ");
+                    "select peminjampiutang.kode_peminjam,peminjampiutang.nama_peminjam,peminjampiutang.alamat,peminjampiutang.no_telp,peminjampiutang.kd_rek,rekening.nm_rek "+
+                    "from peminjampiutang inner join rekening on peminjampiutang.kd_rek=rekening.kd_rek where peminjampiutang.status='0' "+
+                    (TCari.getText().trim().equals("")?"":"and (peminjampiutang.kode_peminjam like ? or peminjampiutang.nama_peminjam like ?) ")+
+                    "order by nama_peminjam ");
             try{
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)});

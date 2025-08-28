@@ -80,7 +80,7 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
             }else if(i==3){
                 column.setPreferredWidth(120);
             }else if(i==4){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(120);
             }
         }
         tbSpesialis.setDefaultRenderer(Object.class, new WarnaTable());
@@ -192,7 +192,7 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Barang CSSD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Barang CSSD ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -417,7 +417,7 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
         label1.setText("Jenis :");
         label1.setName("label1"); // NOI18N
         panelGlass7.add(label1);
-        label1.setBounds(510, 10, 60, 23);
+        label1.setBounds(510, 10, 50, 23);
 
         no_inventaris.setEditable(false);
         no_inventaris.setName("no_inventaris"); // NOI18N
@@ -448,7 +448,7 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
         panelGlass7.add(btnInv);
         btnInv.setBounds(480, 10, 25, 23);
 
-        KategoriBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Heacting Set", "Partus Set", "Set Bedah" }));
+        KategoriBarang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Heacting Set", "Partus Set", "Set Bedah", "Set Minor", "Set SC", "Set Kuret", "Set Hernia", "Set THT", "Set APP", "Set Histerektomi", "Set Tonsil", "Set Mata", "Set Pheco", "Set Bedah Mulut", "Set Othopedi Minor", "Set Bor Orthopedi", "Set Vaskuler", "Set Hemoroid", "Set Duk", "Set Instrumen Satuan", "Selang", "-" }));
         KategoriBarang.setName("KategoriBarang"); // NOI18N
         KategoriBarang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -456,7 +456,7 @@ public class InventarisBarangCSSD extends javax.swing.JDialog {
             }
         });
         panelGlass7.add(KategoriBarang);
-        KategoriBarang.setBounds(573, 10, 140, 23);
+        KategoriBarang.setBounds(563, 10, 160, 23);
 
         label2.setText("No.Inventaris :");
         label2.setName("label2"); // NOI18N

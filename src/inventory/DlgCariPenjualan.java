@@ -32,7 +32,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import simrskhanza.DlgPasien;
 import keuangan.Jurnal;
 import kepegawaian.DlgCariPetugas;
 import simrskhanza.DlgCariPasien;
@@ -378,6 +377,7 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
         BtnSimpan4 = new widget.Button();
         jLabel10 = new widget.Label();
         AkunBayar = new widget.ComboBox();
+        BtnAll1 = new widget.Button();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
         panelisi4 = new widget.panelisi();
@@ -561,7 +561,20 @@ public class DlgCariPenjualan extends javax.swing.JDialog {
 
         AkunBayar.setName("AkunBayar"); // NOI18N
         internalFrame5.add(AkunBayar);
-        AkunBayar.setBounds(84, 32, 300, 23);
+        AkunBayar.setBounds(84, 32, 272, 23);
+
+        BtnAll1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/refresh.png"))); // NOI18N
+        BtnAll1.setMnemonic('M');
+        BtnAll1.setToolTipText("Alt+M");
+        BtnAll1.setName("BtnAll1"); // NOI18N
+        BtnAll1.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnAll1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAll1ActionPerformed(evt);
+            }
+        });
+        internalFrame5.add(BtnAll1);
+        BtnAll1.setBounds(360, 32, 27, 23);
 
         WindowGantiCaraBayar.getContentPane().add(internalFrame5, java.awt.BorderLayout.CENTER);
 
@@ -1668,6 +1681,10 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_BtnSimpan4ActionPerformed
 
+    private void BtnAll1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAll1ActionPerformed
+        tampilAkunBayar();
+    }//GEN-LAST:event_BtnAll1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1687,6 +1704,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AkunBayar;
     private widget.Button BtnAll;
+    private widget.Button BtnAll1;
     private widget.Button BtnCari;
     private widget.Button BtnCloseIn4;
     private widget.Button BtnKeluar;

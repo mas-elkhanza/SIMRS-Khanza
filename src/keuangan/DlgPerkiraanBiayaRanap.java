@@ -404,7 +404,6 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
 
         Scroll3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), "Berdasar Data Tarif Rumah Sakit 2 Tahun Terakhir", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11))); // NOI18N
         Scroll3.setName("Scroll3"); // NOI18N
-        Scroll3.setOpaque(true);
         Scroll3.setPreferredSize(new java.awt.Dimension(452, 100));
 
         tbNilaiRS.setComponentPopupMenu(jPopupMenu1);
@@ -415,7 +414,6 @@ public final class DlgPerkiraanBiayaRanap extends javax.swing.JDialog {
 
         Scroll4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)), "Berdasar Data Nilai Balik INACBG 2 Tahun Terakhir", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11))); // NOI18N
         Scroll4.setName("Scroll4"); // NOI18N
-        Scroll4.setOpaque(true);
         Scroll4.setPreferredSize(new java.awt.Dimension(452, 100));
 
         tbNilaiINACBG.setComponentPopupMenu(jPopupMenu2);

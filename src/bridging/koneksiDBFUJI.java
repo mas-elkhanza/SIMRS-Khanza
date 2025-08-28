@@ -26,9 +26,13 @@ public class koneksiDBFUJI {
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTFUJI"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTFUJI"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASEFUJI"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
+                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTFUJI"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTFUJI"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASEFUJI"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERFUJI")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASFUJI")));
+                dataSource.setCachePreparedStatements(true);
+                dataSource.setUseCompression(true);
+                dataSource.setUseLocalSessionState(true);
+                dataSource.setUseLocalTransactionState(true);
                 connection=dataSource.getConnection();       
                 System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging radiologi...!!!");
             }catch(Exception e){

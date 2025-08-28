@@ -313,7 +313,7 @@ public class DlgSetKeterlambatan extends javax.swing.JDialog {
         if(Toleransi.getText().trim().equals("")){
             Valid.textKosong(Toleransi,"Embalase");
         }else if(Terlambat1.getText().trim().equals("")){
-            Valid.textKosong(Terlambat1,"Tuslah");
+            Valid.textKosong(Terlambat1,"Terlambat 1");
         }else if(tabMode.getRowCount()==0){
             Sequel.menyimpan("set_keterlambatan","'"+Toleransi.getText()+"','"+Terlambat1.getText()+"','"+Terlambat2.getText()+"'","Set Keterlambatan");
             tampil();
@@ -365,7 +365,7 @@ public class DlgSetKeterlambatan extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data No.RM Terakhir tidak boleh kosong ...!!!!");
+            JOptionPane.showMessageDialog(null,"Maaf, data tidak boleh kosong ...!!!!");
             Toleransi.requestFocus();
         }else if(! (tabMode.getRowCount()==0)) {
             dispose();
@@ -411,7 +411,7 @@ private void ToleransiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         if(Toleransi.getText().trim().equals("")){
             Valid.textKosong(Toleransi,"Embalase");
         }else if(Terlambat1.getText().trim().equals("")){
-            Valid.textKosong(Terlambat1,"Tuslah");
+            Valid.textKosong(Terlambat1,"Terlambat 1");
         }else{
             Sequel.queryu("delete from set_keterlambatan");
             Sequel.menyimpan("set_keterlambatan","'"+Toleransi.getText()+"','"+Terlambat1.getText()+"','"+Terlambat2.getText()+"'","Set Keterlambatan");

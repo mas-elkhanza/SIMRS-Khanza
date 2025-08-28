@@ -1210,8 +1210,8 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         jmldiagnosa++;
                     }
                     no_lab=Sequel.cariIsi(
-                        "select noorder from permintaan_radiologi where no_rawat='"+rs.getString("no_rawat")+"' "+
-                        "and tgl_hasil='"+rs.getString("tgl_periksa")+"' and jam_hasil='"+rs.getString("jam")+"' "
+                        "select permintaan_radiologi.noorder from permintaan_radiologi where permintaan_radiologi.no_rawat='"+rs.getString("no_rawat")+"' "+
+                        "and permintaan_radiologi.tgl_hasil='"+rs.getString("tgl_periksa")+"' and permintaan_radiologi.jam_hasil='"+rs.getString("jam")+"' "
                     );
                     if(!no_lab.equals("")){
                         jmlnolab++;

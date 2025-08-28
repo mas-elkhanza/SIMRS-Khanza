@@ -384,7 +384,7 @@ public final class ApotekBPJSCekReferensiFaskes extends javax.swing.JDialog {
             URL = link+"/referensi/ppk/2/"+faskes;	
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
-            if(nameNode.path("message").asText().equals("Sukses")){ 
+            if(nameNode.path("code").asText().equals("200")){ 
                 tabMode.addRow(new Object[]{
                     "","",""
                 });

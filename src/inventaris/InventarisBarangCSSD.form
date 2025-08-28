@@ -24,7 +24,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-128,0,0,2,-26"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-128,0,0,2,-13"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -355,7 +355,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="510" y="10" width="60" height="23"/>
+                  <AbsoluteConstraints x="510" y="10" width="50" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -411,10 +411,29 @@
             <Component class="widget.ComboBox" name="KategoriBarang">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
+                  <StringArray count="22">
                     <StringItem index="0" value="Heacting Set"/>
                     <StringItem index="1" value="Partus Set"/>
                     <StringItem index="2" value="Set Bedah"/>
+                    <StringItem index="3" value="Set Minor"/>
+                    <StringItem index="4" value="Set SC"/>
+                    <StringItem index="5" value="Set Kuret"/>
+                    <StringItem index="6" value="Set Hernia"/>
+                    <StringItem index="7" value="Set THT"/>
+                    <StringItem index="8" value="Set APP"/>
+                    <StringItem index="9" value="Set Histerektomi"/>
+                    <StringItem index="10" value="Set Tonsil"/>
+                    <StringItem index="11" value="Set Mata"/>
+                    <StringItem index="12" value="Set Pheco"/>
+                    <StringItem index="13" value="Set Bedah Mulut"/>
+                    <StringItem index="14" value="Set Othopedi Minor"/>
+                    <StringItem index="15" value="Set Bor Orthopedi"/>
+                    <StringItem index="16" value="Set Vaskuler"/>
+                    <StringItem index="17" value="Set Hemoroid"/>
+                    <StringItem index="18" value="Set Duk"/>
+                    <StringItem index="19" value="Set Instrumen Satuan"/>
+                    <StringItem index="20" value="Selang"/>
+                    <StringItem index="21" value="-"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="KategoriBarang" noResource="true"/>
@@ -424,7 +443,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="573" y="10" width="140" height="23"/>
+                  <AbsoluteConstraints x="563" y="10" width="160" height="23"/>
                 </Constraint>
               </Constraints>
             </Component>

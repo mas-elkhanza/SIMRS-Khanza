@@ -407,6 +407,11 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         btnAmbilPhoto1 = new widget.Button();
         BtnSimpan = new widget.Button();
         BtnPrint1 = new widget.Button();
+        panelisi8 = new widget.panelisi();
+        InformasiTambahan = new widget.TextBox();
+        jLabel5 = new widget.Label();
+        jLabel6 = new widget.Label();
+        DiagnosisKlinis = new widget.TextBox();
         FormOrthan = new widget.PanelBiasa();
         Scroll5 = new widget.ScrollPane();
         tbListDicom = new widget.Table();
@@ -1119,6 +1124,35 @@ public class DlgCariPeriksaRadiologi extends javax.swing.JDialog {
         panelGlass6.add(BtnPrint1);
 
         FormHasilRadiologi.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
+
+        panelisi8.setBorder(null);
+        panelisi8.setName("panelisi8"); // NOI18N
+        panelisi8.setPreferredSize(new java.awt.Dimension(100, 73));
+        panelisi8.setLayout(null);
+
+        InformasiTambahan.setEditable(false);
+        InformasiTambahan.setHighlighter(null);
+        InformasiTambahan.setName("InformasiTambahan"); // NOI18N
+        panelisi8.add(InformasiTambahan);
+        InformasiTambahan.setBounds(124, 10, 220, 23);
+
+        jLabel5.setText("Informasi Tambahan :");
+        jLabel5.setName("jLabel5"); // NOI18N
+        panelisi8.add(jLabel5);
+        jLabel5.setBounds(0, 10, 120, 23);
+
+        jLabel6.setText("Diagnosis Klinis :");
+        jLabel6.setName("jLabel6"); // NOI18N
+        panelisi8.add(jLabel6);
+        jLabel6.setBounds(0, 40, 120, 23);
+
+        DiagnosisKlinis.setEditable(false);
+        DiagnosisKlinis.setHighlighter(null);
+        DiagnosisKlinis.setName("DiagnosisKlinis"); // NOI18N
+        panelisi8.add(DiagnosisKlinis);
+        DiagnosisKlinis.setBounds(124, 40, 220, 23);
+
+        FormHasilRadiologi.add(panelisi8, java.awt.BorderLayout.PAGE_START);
 
         TabData.addTab("Hasil Bacaan Radiologi", FormHasilRadiologi);
 
@@ -1911,8 +1945,17 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                 Sequel.menyimpan("hasil_radiologi","?,?,?,?","Hasil Pemeriksaan", 4,new String[]{
                     NoRawatDicari.getText(),TglDicari.getText(),JamDicari.getText(),HasilPeriksa.getText()
                 });
-            }
-                
+                if(akses.getjml2()>=1){
+                    NmDokterPj.setText(dokter.tampil3(akses.getkode()));
+                    if(!NmDokterPj.getText().equals("")){
+                        if(Sequel.queryu2tf("update periksa_radiologi set kd_dokter=? where no_rawat=? and tgl_periksa=? and jam=?",4,new String[]{
+                            akses.getkode(),NoRawatDicari.getText(),TglDicari.getText(),JamDicari.getText()
+                        })==true){
+                            tampil();
+                        } 
+                    }
+                }
+            }   
             JOptionPane.showMessageDialog(null,"Proses update selesai...!!!!"); 
         }
     }//GEN-LAST:event_BtnSimpanActionPerformed
@@ -2223,12 +2266,14 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.Button BtnSimpan;
     private widget.Button BtnSimpan4;
     private widget.CekBox ChkAccor;
+    private widget.TextBox DiagnosisKlinis;
     private widget.PanelBiasa FormHasilRadiologi;
     private widget.panelisi FormInput;
     private widget.PanelBiasa FormOrthan;
     private widget.PanelBiasa FormPass2;
     private widget.PanelBiasa FormPhoto;
     private widget.TextArea HasilPeriksa;
+    private widget.TextBox InformasiTambahan;
     private widget.Label JamDicari;
     private widget.TextBox Jk;
     private widget.TextBox Kd2;
@@ -2270,6 +2315,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame5;
     private widget.Label jLabel12;
+    private widget.Label jLabel5;
+    private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel9;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -2291,6 +2338,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private widget.panelisi panelGlass7;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
+    private widget.panelisi panelisi8;
     private javax.swing.JMenuItem ppBelumKeluarBacaan;
     private javax.swing.JMenuItem ppBerkasDigital;
     private javax.swing.JMenuItem ppRiwayat;
@@ -2520,9 +2568,13 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             PanelAccor.setPreferredSize(new Dimension(internalFrame1.getWidth()-300,HEIGHT));
             TabData.setVisible(true);  
             ChkAccor.setVisible(true);
+            InformasiTambahan.setSize(new Dimension(internalFrame1.getWidth()-473,23));
+            DiagnosisKlinis.setSize(new Dimension(internalFrame1.getWidth()-473,23));
         }else if(ChkAccor.isSelected()==false){    
             ChkAccor.setVisible(false);
             PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
+            InformasiTambahan.setSize(new Dimension(15,23));
+            DiagnosisKlinis.setSize(new Dimension(15,23));
             TabData.setVisible(false);
             PanelDataDicari.setVisible(false);
             ChkAccor.setVisible(true);
@@ -2563,6 +2615,30 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             }
                             if(ps!=null){
                                 ps.close();
+                            }
+                        }
+                        
+                        ps5=koneksi.prepareStatement("select permintaan_radiologi.informasi_tambahan,permintaan_radiologi.diagnosa_klinis from permintaan_radiologi where permintaan_radiologi.no_rawat=? and permintaan_radiologi.tgl_hasil=? and permintaan_radiologi.jam_hasil=?");  
+                        try {
+                            ps5.setString(1,tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString());
+                            ps5.setString(2,tbDokter.getValueAt(tbDokter.getSelectedRow(),3).toString());
+                            ps5.setString(3,tbDokter.getValueAt(tbDokter.getSelectedRow(),4).toString());
+                            rs5=ps5.executeQuery();
+                            if(rs5.next()){  
+                                InformasiTambahan.setText(rs5.getString("informasi_tambahan"));
+                                DiagnosisKlinis.setText(rs5.getString("diagnosa_klinis"));
+                            }else{
+                                InformasiTambahan.setText("");
+                                DiagnosisKlinis.setText("");
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Notif ps5 : "+e);
+                        } finally{
+                            if(rs5!=null){
+                                rs5.close();
+                            }
+                            if(ps5!=null){
+                                ps5.close();
                             }
                         }
                         

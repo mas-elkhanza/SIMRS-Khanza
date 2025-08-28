@@ -888,7 +888,7 @@ public final class RMPenilaianDerajatDehidrasi extends javax.swing.JDialog {
         jLabel30.setText("Hasil Pengkajian :");
         jLabel30.setName("jLabel30"); // NOI18N
         FormInput.add(jLabel30);
-        jLabel30.setBounds(11, 210, 80, 23);
+        jLabel30.setBounds(11, 210, 130, 23);
 
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N

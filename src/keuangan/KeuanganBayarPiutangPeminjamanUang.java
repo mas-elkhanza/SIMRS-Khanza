@@ -140,31 +140,37 @@ public final class KeuanganBayarPiutangPeminjamanUang extends javax.swing.JDialo
                     }
                 }
             });
-            
-            Cicilan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    Sisa.setText(Valid.SetAngka(sisapiutang));
-                    if(!Cicilan.getText().equals("")){                           
-                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
-                    }
-                }
-            });
         } 
+        
+        Cicilan.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if(sisapiutang>0){
+                    Sisa.setText(Valid.SetAngka(sisapiutang));
+                    if(!Cicilan.getText().equals("")){                           
+                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                    }
+                }
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if(sisapiutang>0){
+                    Sisa.setText(Valid.SetAngka(sisapiutang));
+                    if(!Cicilan.getText().equals("")){                           
+                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                    }
+                }
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if(sisapiutang>0){
+                    Sisa.setText(Valid.SetAngka(sisapiutang));
+                    if(!Cicilan.getText().equals("")){                           
+                         Sisa.setText(Valid.SetAngka(sisapiutang-Double.parseDouble(Cicilan.getText())));                           
+                    }
+                }
+            }
+        });
         
         ChkInput.setSelected(false);
         isForm();
@@ -668,11 +674,11 @@ public final class KeuanganBayarPiutangPeminjamanUang extends javax.swing.JDialo
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(NoNota.getText().trim().equals("")){
-            Valid.textKosong(NoNota,"No.Tagihan/No.Rawat");
+            Valid.textKosong(NoNota,"No.Nota");
         }else if(Cicilan.getText().trim().equals("")||Cicilan.getText().trim().equals("0")){
             Valid.textKosong(Cicilan,"Besar Cicilan");
         }else if(NmPeminjam.getText().trim().equals("")){
-            Valid.textKosong(KdPeminjam,"Member");
+            Valid.textKosong(KdPeminjam,"Peminjam");
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Keterangan");
         }else if(AkunBayar.getSelectedItem()==null){

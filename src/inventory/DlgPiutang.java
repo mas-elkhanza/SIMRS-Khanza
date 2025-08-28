@@ -321,27 +321,27 @@ public class DlgPiutang extends javax.swing.JDialog {
                         }
                             
                         if(Jenisjual.getSelectedItem().equals("Jual Bebas")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),20).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),20).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Karyawan")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),21).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Beli Luar")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),19).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),19).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Rawat Jalan")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),12).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),12).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Kelas 1")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),13).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),13).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Kelas 2")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),14).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),14).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Kelas 3")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),15).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),15).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Utama")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),16).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),16).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("VIP")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),17).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),17).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("VVIP")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),18).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),18).toString()),100)+""); 
                         }else if(Jenisjual.getSelectedItem().equals("Harga Beli")){
-                               HrgJual.setText(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),11).toString()); 
+                               HrgJual.setText(Valid.roundUp(Double.parseDouble(form.barang.getTable().getValueAt(form.barang.getTable().getSelectedRow(),11).toString()),100)+""); 
                         } 
                         
                         if(aktifkanbatch.equals("yes")){

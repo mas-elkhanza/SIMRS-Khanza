@@ -298,7 +298,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
         Tahun.setPreferredSize(new java.awt.Dimension(80, 23));
         panelisi1.add(Tahun);
 
-        Bulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        Bulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
         Bulan.setName("Bulan"); // NOI18N
         Bulan.setPreferredSize(new java.awt.Dimension(62, 23));
         panelisi1.add(Bulan);
@@ -318,7 +318,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
         label13.setPreferredSize(new java.awt.Dimension(85, 23));
         panelisi1.add(label13);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Belum diverifikasi", "2. Sudah Verifikasi" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Belum diverifikasi", "1. Sudah Verifikasi" }));
         Status.setName("Status"); // NOI18N
         Status.setPreferredSize(new java.awt.Dimension(150, 23));
         panelisi1.add(Status);
@@ -456,7 +456,7 @@ public final class ApotekBPJSMonitoringKlaim extends javax.swing.JDialog {
 	    headers.add("x-signature",api.getHmac(utc));
 	    headers.add("user_key",koneksiDB.USERKEYAPIAPOTEKBPJS());
             requestEntity = new HttpEntity(headers);
-            URL = link+"monitoring/klaim/"+Bulan.getSelectedItem().toString()+"/"+Tahun.getSelectedItem().toString()+"/"+Jenis.getSelectedItem().toString().substring(0,1)+"/"+Status.getSelectedItem().toString().substring(0,1);	
+            URL = link+"/monitoring/klaim/"+Bulan.getSelectedItem().toString()+"/"+Tahun.getSelectedItem().toString()+"/"+Jenis.getSelectedItem().toString().substring(0,1)+"/"+Status.getSelectedItem().toString().substring(0,1);	
             System.out.println(URL);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");

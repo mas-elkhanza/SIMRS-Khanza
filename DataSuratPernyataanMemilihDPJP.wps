@@ -1,0 +1,168 @@
+<html>
+  <head><link href="file2.css" rel="stylesheet" type="text/css" /><table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'><tr class='isi2'><td valign='top' align='center'><font size='4' face='Tahoma'>RS SIMRS KHANZA</font><br>GUWOSARI, Pajangan, Bantul<br>Hp: 08562675039, 085296559963, E-mail : khanzasoftmedia@gmail.com<br><br><font size='2' face='Tahoma'>DATA SURAT PENYATAAN MEMILIH DPJP<br><br></font></td></tr></table>
+    
+  </head>
+  <body>
+    <table width="100%" border="0" align="center" cellpadding="1px" cellspacing="0" class="tbl_form">
+      <tr class="isi">
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Pernyataan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Rawat</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.RM</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Pasien</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tgl.Lahir</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>J.K.</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tanggal</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Pembuat Pernyataan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Alamat Pembuat Pernyataan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Tgl.Lahir</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>J.K.P.P.</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Hubungan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Saksi I Keluarga</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kode Dokter</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Dokter</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nip</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Saksi II Petugas</b>
+        </td>
+      </tr>
+      <tr class="isi">
+        <td valign="top">
+          DPJP20250722001
+        </td>
+        <td valign="top">
+          2025/06/20/000003
+        </td>
+        <td valign="top">
+          000011
+        </td>
+        <td valign="top">
+          SETIYAWAN KRISTANTO
+        </td>
+        <td valign="top">
+          1960-02-21
+        </td>
+        <td valign="top">
+          L
+        </td>
+        <td valign="top">
+          2025-07-22
+        </td>
+        <td valign="top">
+          SETIYAWAN KRISTANTO
+        </td>
+        <td valign="top">
+          JL. DOKTER CIPTI RT 01/RW01, BEDALI, LAWANG, KABUPATEN MALANG
+        </td>
+        <td valign="top">
+          1960-02-21
+        </td>
+        <td valign="top">
+          L
+        </td>
+        <td valign="top">
+          Diri Sendiri
+        </td>
+        <td valign="top">
+          tes
+        </td>
+        <td valign="top">
+          D0000004
+        </td>
+        <td valign="top">
+          dr. Hilyatul Nadia
+        </td>
+        <td valign="top">
+          123124
+        </td>
+        <td valign="top">
+          FREDIAN AHMAD
+        </td>
+      </tr>
+      <tr class="isi">
+        <td valign="top">
+          DPJP20250723001
+        </td>
+        <td valign="top">
+          2025/07/08/000001
+        </td>
+        <td valign="top">
+          000023
+        </td>
+        <td valign="top">
+          RAHMA NIA
+        </td>
+        <td valign="top">
+          1992-02-22
+        </td>
+        <td valign="top">
+          P
+        </td>
+        <td valign="top">
+          2025-07-23
+        </td>
+        <td valign="top">
+          RAHMA NIA
+        </td>
+        <td valign="top">
+          RT 01 RW 02, CISARANTEN ENDAH, ARCAMANIK, KOTA BANDUNG
+        </td>
+        <td valign="top">
+          1992-02-22
+        </td>
+        <td valign="top">
+          P
+        </td>
+        <td valign="top">
+          Diri Sendiri
+        </td>
+        <td valign="top">
+          tes
+        </td>
+        <td valign="top">
+          D0000004
+        </td>
+        <td valign="top">
+          dr. Hilyatul Nadia
+        </td>
+        <td valign="top">
+          123124
+        </td>
+        <td valign="top">
+          FREDIAN AHMAD
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

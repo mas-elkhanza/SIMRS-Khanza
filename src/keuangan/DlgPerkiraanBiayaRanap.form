@@ -245,7 +245,6 @@
                       </Border>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Scroll3" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[452, 100]"/>
                     </Property>
@@ -281,7 +280,6 @@
                       </Border>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Scroll4" noResource="true"/>
-                    <Property name="opaque" type="boolean" value="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[452, 100]"/>
                     </Property>

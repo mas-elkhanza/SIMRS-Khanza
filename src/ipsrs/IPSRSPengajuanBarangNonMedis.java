@@ -859,7 +859,6 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             satuan=new String[jml];
             jumlah=new String[jml];
             ipsrsjenisbarang=new String[jml];
-            ipsrsjenisbarang=null;
             harga=new Double[jml];
             subtotal=new Double[jml];
             
@@ -883,6 +882,7 @@ private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
             
             kodebarang=null;
             namabarang=null;
+            ipsrsjenisbarang=null;
             satuan=null;
             jumlah=null;
             harga=null;

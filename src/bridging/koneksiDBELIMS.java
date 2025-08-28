@@ -26,9 +26,13 @@ public class koneksiDBELIMS {
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTELIMS"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTELIMS"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASEELIMS"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
+                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTELIMS"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTELIMS"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASEELIMS"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERELIMS")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASELIMS")));
+                dataSource.setCachePreparedStatements(true);
+                dataSource.setUseCompression(true);
+                dataSource.setUseLocalSessionState(true);
+                dataSource.setUseLocalTransactionState(true);
                 connection=dataSource.getConnection();       
                 System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging ELIMS...!!!");
             }catch(Exception e){

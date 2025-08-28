@@ -340,7 +340,14 @@ public final class DlgCariPeminjamPiutang extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowActivated
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        try {
+            if(Valid.daysOld("./cache/peminjampiutang.iyem")<30){
+                tampil2();
+            }else{
+                tampil();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -425,7 +432,7 @@ public final class DlgCariPeminjamPiutang extends javax.swing.JDialog {
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(akses.getadmin());
+        BtnTambah.setEnabled(akses.getpeminjam_piutang());
     }
     
     private void tampil2() {

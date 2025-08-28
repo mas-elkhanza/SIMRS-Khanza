@@ -26,9 +26,13 @@ public class koneksiDBSMARTLAB {
         if(connection == null){
             try{
                 prop.loadFromXML(new FileInputStream("setting/database.xml"));
-                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTSMARTLAB"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTSMARTLAB"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASESMARTLAB"))+"?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true");
+                dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOSTSMARTLAB"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORTSMARTLAB"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASESMARTLAB"))+"?zeroDateTimeBehavior=convertToNull&autoReconnect=true&useCompression=true");
                 dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USERSMARTLAB")));
                 dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PASSMARTLAB")));
+                dataSource.setCachePreparedStatements(true);
+                dataSource.setUseCompression(true);
+                dataSource.setUseLocalSessionState(true);
+                dataSource.setUseLocalTransactionState(true);
                 connection=dataSource.getConnection();       
                 System.out.println("  Koneksi Berhasil. Menyambungkan ke database bridging SMARTLAB...!!!");
             }catch(Exception e){
