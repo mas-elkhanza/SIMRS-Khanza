@@ -726,7 +726,8 @@ public class frmUtama extends javax.swing.JFrame {
                         }
                         
                         //pasien Non JKN
-                        TeksArea.append("Menjalankan WS tambah antrian Mobile JKN Pasien Non BPJS/BJS Onsite\n");
+                        TeksArea.append("Menjalankan WS tambah antrian BPJS Onsite\n");
+                        TeksArea.append("HARI : " + hari + "\n");
                         ps=koneksi.prepareStatement(
                                 "select reg_periksa.no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.kd_poli,poliklinik.nm_poli,reg_periksa.stts_daftar,reg_periksa.no_rkm_medis,reg_periksa.kd_pj "+
                                 "from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.tgl_registrasi between '"+Tanggal1.getText()+"' and '"+Tanggal2.getText()+"' "+
@@ -837,7 +838,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"3",datajam})==true){
                                                         parsedDate = dateFormat.parse(datajam);
                                                         try {     
-                                                            TeksArea.append("Menjalankan WS taskid mulai tunggu poli Mobile JKN Pasien Non BPJS/BPS Onsite\n");
+                                                            TeksArea.append("Menjalankan WS taskid 3 BPJS Onsite\n");
                                                             headers = new HttpHeaders();
                                                             headers.setContentType(MediaType.APPLICATION_JSON);
                                                             headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
@@ -877,7 +878,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"4",datajam})==true){
                                                         parsedDate = dateFormat.parse(datajam);
                                                         try {     
-                                                            TeksArea.append("Menjalankan WS taskid mulai pelayanan poli Mobile JKN Pasien Non BPJS/BPS Onsite\n");
+                                                            TeksArea.append("Menjalankan WS taskid 4 BPJS Onsite\n");
                                                             headers = new HttpHeaders();
                                                             headers.setContentType(MediaType.APPLICATION_JSON);
                                                             headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
@@ -917,7 +918,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"5",datajam})==true){
                                                         parsedDate = dateFormat.parse(datajam);
                                                         try {     
-                                                            TeksArea.append("Menjalankan WS taskid selesai pelayanan poli Mobile JKN Pasien Non BPJS/BPS Onsite\n");
+                                                            TeksArea.append("Menjalankan WS taskid 5 BPJS Onsite\n");
                                                             headers = new HttpHeaders();
                                                             headers.setContentType(MediaType.APPLICATION_JSON);
                                                             headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
@@ -952,7 +953,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 noresep=Sequel.cariIsi("select resep_obat.no_resep from resep_obat where resep_obat.no_rawat=?",rs.getString("no_rawat"));
                                                 if(!noresep.equals("")){
                                                     try {     
-                                                        TeksArea.append("Menjalankan WS tambah antrian farmasi Mobile JKN Pasien Non BPJS/BPS Onsite\n");
+                                                        TeksArea.append("Menjalankan WS tambah antrian farmasi BPJS Onsite\n");
                                                         headers = new HttpHeaders();
                                                         headers.setContentType(MediaType.APPLICATION_JSON);
                                                         headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
@@ -963,7 +964,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                         requestJson ="{" +
                                                                          "\"kodebooking\": \""+rs.getString("no_rawat")+"\"," +
                                                                          "\"jenisresep\": \""+(Sequel.cariInteger("select count(resep_dokter_racikan.no_resep) from resep_dokter_racikan where resep_dokter_racikan.no_resep=?",noresep)>0?"Racikan":"Non Racikan")+"\"," +
-                                                                         "\"nomorantrean\": "+Integer.parseInt(StringUtils.right(noresep,4))+"," +
+                                                                         "\"nomorantrean\": "+Integer.valueOf(StringUtils.right(noresep,4))+"," +
                                                                          "\"keterangan\": \"Resep dibuat secara elektronik di poli\"" +
                                                                       "}";
                                                         TeksArea.append("JSON : "+requestJson+"\n");
@@ -984,7 +985,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"6",datajam})==true){
                                                         parsedDate = dateFormat.parse(datajam);
                                                         try {     
-                                                            TeksArea.append("Menjalankan WS taskid permintaan resep poli Mobile JKN Pasien Non BPJS/BPS Onsite\n");
+                                                            TeksArea.append("Menjalankan WS taskid 6 BPJS Onsite\n");
                                                             headers = new HttpHeaders();
                                                             headers.setContentType(MediaType.APPLICATION_JSON);
                                                             headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
@@ -1021,7 +1022,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"7",datajam})==true){
                                                         parsedDate = dateFormat.parse(datajam);
                                                         try {     
-                                                            TeksArea.append("Menjalankan WS taskid validasi resep poli Mobile JKN Pasien Non BPJS/BPS Onsite\n");
+                                                            TeksArea.append("Menjalankan WS taskid 7 BPJS Onsite\n");
                                                             headers = new HttpHeaders();
                                                             headers.setContentType(MediaType.APPLICATION_JSON);
                                                             headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());
@@ -1058,7 +1059,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                     if(Sequel.menyimpantf2("referensi_mobilejkn_bpjs_taskid","?,?,?","task id",3,new String[]{rs.getString("no_rawat"),"99",datajam})==true){
                                                         parsedDate = dateFormat.parse(datajam);
                                                         try {     
-                                                            TeksArea.append("Menjalankan WS taskid batal pelayanan poli Mobile JKN Pasien Non BPJS/BPS Onsite\n");
+                                                            TeksArea.append("Menjalankan WS taskid 99 BPJS Onsite\n");
                                                             headers = new HttpHeaders();
                                                             headers.setContentType(MediaType.APPLICATION_JSON);
                                                             headers.add("x-cons-id",koneksiDB.CONSIDAPIMOBILEJKN());

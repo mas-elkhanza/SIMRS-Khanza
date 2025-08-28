@@ -496,7 +496,7 @@ public final class MobileJKNReferensiPendaftaran extends javax.swing.JDialog {
     private void BtnCheckinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCheckinActionPerformed
         if(Sequel.mengedittf("referensi_mobilejkn_bpjs","nobooking=?","status='Checkin',validasi=now()",1,new String[]{
             tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString()
-        })==true){
+        }) && Sequel.mengedittf("reg_periksa", "no_rawat=?", "jam_reg=now()",1,new String[]{tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()})==true){
             Sequel.meghapus("referensi_mobilejkn_bpjs_batal","nobooking",tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),14).toString());
             tampil();
         }
