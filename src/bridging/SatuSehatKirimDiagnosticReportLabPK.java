@@ -874,9 +874,8 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                    "left join satu_sehat_diagnosticreport_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_diagnosticreport_lab.noorder "+
                    "and satu_sehat_servicerequest_lab.id_template=satu_sehat_diagnosticreport_lab.id_template "+
                    "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_diagnosticreport_lab.kd_jenis_prw "+
-                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on periksa_lab.kd_dokter=pegawai.nik "+
-                   "where nota_jalan.tanggal between ? and ? "+
+                   "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.nama like ? or template_laboratorium.Pemeriksaan like ? or "+
                    "satu_sehat_mapping_lab.code like ? or permintaan_lab.noorder like ?)"));
@@ -941,9 +940,8 @@ public final class SatuSehatKirimDiagnosticReportLabPK extends javax.swing.JDial
                    "left join satu_sehat_diagnosticreport_lab on satu_sehat_servicerequest_lab.noorder=satu_sehat_diagnosticreport_lab.noorder "+
                    "and satu_sehat_servicerequest_lab.id_template=satu_sehat_diagnosticreport_lab.id_template "+
                    "and satu_sehat_servicerequest_lab.kd_jenis_prw=satu_sehat_diagnosticreport_lab.kd_jenis_prw "+
-                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "inner join pegawai on periksa_lab.kd_dokter=pegawai.nik "+
-                   "where nota_inap.tanggal between ? and ? "+
+                   "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or pegawai.nama like ? or template_laboratorium.Pemeriksaan like ? or "+
                    "satu_sehat_mapping_lab.code like ? or permintaan_lab.noorder like ?)"));

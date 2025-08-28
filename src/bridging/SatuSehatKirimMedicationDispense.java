@@ -1015,14 +1015,13 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                    "inner join bangsal on bangsal.kd_bangsal=detail_pemberian_obat.kd_bangsal "+
                    "inner join satu_sehat_mapping_lokasi_depo_farmasi on satu_sehat_mapping_lokasi_depo_farmasi.kd_bangsal=bangsal.kd_bangsal "+
                    "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
-                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
                    "left join satu_sehat_medicationdispense on satu_sehat_medicationdispense.no_rawat=detail_pemberian_obat.no_rawat and "+
                    "satu_sehat_medicationdispense.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
                    "satu_sehat_medicationdispense.jam=detail_pemberian_obat.jam and "+
                    "satu_sehat_medicationdispense.kode_brng=detail_pemberian_obat.kode_brng and "+
                    "satu_sehat_medicationdispense.no_batch=detail_pemberian_obat.no_batch and "+
                    "satu_sehat_medicationdispense.no_faktur=detail_pemberian_obat.no_faktur "+
-                   "where nota_jalan.tanggal between ? and ? "+
+                   "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ?) "));
             try {
@@ -1079,14 +1078,13 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                    "inner join bangsal on bangsal.kd_bangsal=detail_pemberian_obat.kd_bangsal "+
                    "inner join satu_sehat_mapping_lokasi_depo_farmasi on satu_sehat_mapping_lokasi_depo_farmasi.kd_bangsal=bangsal.kd_bangsal "+
                    "inner join satu_sehat_medication on satu_sehat_medication.kode_brng=satu_sehat_mapping_obat.kode_brng "+
-                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
                    "left join satu_sehat_medicationdispense on satu_sehat_medicationdispense.no_rawat=detail_pemberian_obat.no_rawat and "+
                    "satu_sehat_medicationdispense.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "+
                    "satu_sehat_medicationdispense.jam=detail_pemberian_obat.jam and "+
                    "satu_sehat_medicationdispense.kode_brng=detail_pemberian_obat.kode_brng and "+
                    "satu_sehat_medicationdispense.no_batch=detail_pemberian_obat.no_batch and "+
                    "satu_sehat_medicationdispense.no_faktur=detail_pemberian_obat.no_faktur "+
-                   "where nota_inap.tanggal between ? and ? "+
+                   "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ?) "));
             try {

@@ -759,13 +759,13 @@ public final class SatuSehatKirimProcedure extends javax.swing.JDialog {
         try{
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,reg_periksa.status_lanjut,concat(nota_jalan.tanggal,'T',nota_jalan.jam,'+07:00') as pulang,satu_sehat_encounter.id_encounter, "+
+                   "reg_periksa.stts,reg_periksa.status_lanjut,concat(reg_periksa.tgl_registrasi,'T',reg_periksa.jam_reg,'+07:00') as pulang,satu_sehat_encounter.id_encounter, "+
                    "prosedur_pasien.kode,icd9.deskripsi_panjang,ifnull(satu_sehat_procedure.id_procedure,'') as id_procedure "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join prosedur_pasien on prosedur_pasien.no_rawat=reg_periksa.no_rawat "+
                    "inner join icd9 on prosedur_pasien.kode=icd9.kode left join satu_sehat_procedure on satu_sehat_procedure.no_rawat=prosedur_pasien.no_rawat "+
                    "and satu_sehat_procedure.kode=prosedur_pasien.kode and satu_sehat_procedure.status=prosedur_pasien.status "+
-                   "where nota_jalan.tanggal between ? and ? "+
+                   "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or prosedur_pasien.kode like ? or icd9.deskripsi_panjang like ? or "+
                    "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)"));
@@ -803,13 +803,13 @@ public final class SatuSehatKirimProcedure extends javax.swing.JDialog {
             
             ps=koneksi.prepareStatement(
                    "select reg_periksa.tgl_registrasi,reg_periksa.jam_reg,reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.no_ktp,"+
-                   "reg_periksa.stts,reg_periksa.status_lanjut,concat(nota_inap.tanggal,'T',nota_inap.jam,'+07:00') as pulang,satu_sehat_encounter.id_encounter, "+
+                   "reg_periksa.stts,reg_periksa.status_lanjut,concat(reg_periksa.tgl_registrasi,'T',reg_periksa.jam_reg,'+07:00') as pulang,satu_sehat_encounter.id_encounter, "+
                    "prosedur_pasien.kode,icd9.deskripsi_panjang,ifnull(satu_sehat_procedure.id_procedure,'') as id_procedure "+
-                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
+                   "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                    "inner join satu_sehat_encounter on satu_sehat_encounter.no_rawat=reg_periksa.no_rawat inner join prosedur_pasien on prosedur_pasien.no_rawat=reg_periksa.no_rawat "+
                    "inner join icd9 on prosedur_pasien.kode=icd9.kode left join satu_sehat_procedure on satu_sehat_procedure.no_rawat=prosedur_pasien.no_rawat "+
                    "and satu_sehat_procedure.kode=prosedur_pasien.kode and satu_sehat_procedure.status=prosedur_pasien.status "+
-                   "where nota_inap.tanggal between ? and ? "+
+                   "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or prosedur_pasien.kode like ? or icd9.deskripsi_panjang like ? or "+
                    "reg_periksa.stts like ? or reg_periksa.status_lanjut like ?)"));

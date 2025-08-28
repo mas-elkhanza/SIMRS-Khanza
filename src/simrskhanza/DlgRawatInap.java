@@ -69,6 +69,7 @@ import rekammedis.RMChecklistKesiapanAnestesi;
 import rekammedis.RMChecklistKriteriaKeluarHCU;
 import rekammedis.RMChecklistKriteriaKeluarICU;
 import rekammedis.RMChecklistKriteriaKeluarNICU;
+import rekammedis.RMChecklistKriteriaKeluarPICU;
 import rekammedis.RMChecklistKriteriaMasukHCU;
 import rekammedis.RMChecklistKriteriaMasukICU;
 import rekammedis.RMChecklistKriteriaMasukNICU;
@@ -8820,6 +8821,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnChecklistKriteriaKeluarPICUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnChecklistKriteriaMasukICUActionPerformed
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMChecklistKriteriaKeluarPICU form=new RMChecklistKriteriaKeluarPICU(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            form.emptTeks();
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -9153,7 +9171,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnAwalKeperawatanNeonatus,BtnPenilaianPasienImunitasRendah,BtnCatatanKeseimbanganCairan,BtnCatatanObservasiCHBP,BtnCatatanObservasiInduksiPersalinan,BtnPermintaanKonsultasiMedik,BtnAwalKeperawatanBayiAnak,BtnCatatanObservasiRestrainNonfarmakologi,
                           BtnCatatanObservasiVentilator,BtnCatatanAnastesiSedasi,BtnChecklistPemberianFibrinolitik,BtnPenilaianPsikologKlinis,BtnAwalMedisNeonatus,BtnPenilaianDerajatDehidrasi,BtnHasilPemeriksaanECHO,BtnPenilaianBayiBaruLahir,BtnLaporanTindakan,
                           BtnPelaksanaanInformasiEdukasi,BtnCatatanObservasiHemodialisa,BtnCatatanCairanHemodialisa,BtnCatatanPengkajianPaskaOperasi,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,
-                          BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU;
+                          BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaKeluarNICU,BtnAwalMedisPsikiatri,BtnChecklistKriteriaMasukPICU,BtnChecklistKriteriaKeluarPICU;
     
     public void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -9840,6 +9858,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnChecklistKriteriaMasukPICU.setVisible(akses.getkriteria_masuk_picu()); 
         if(akses.getkriteria_masuk_picu()==true){
+            tinggi=tinggi+24;
+        }
+        BtnChecklistKriteriaKeluarPICU.setVisible(akses.getkriteria_keluar_picu()); 
+        if(akses.getkriteria_keluar_picu()==true){
             tinggi=tinggi+24;
         }
         BtnChecklistKriteriaKeluarICU.setVisible(akses.getchecklist_kriteria_keluar_icu()); 
@@ -10878,6 +10900,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnChecklistKriteriaMasukPICU.setRoundRect(false);
         BtnChecklistKriteriaMasukPICU.addActionListener(this::BtnChecklistKriteriaMasukPICUActionPerformed);
         
+        BtnChecklistKriteriaKeluarPICU = new widget.Button();
+        BtnChecklistKriteriaKeluarPICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
+        BtnChecklistKriteriaKeluarPICU.setText("Check List Keluar PICU");
+        BtnChecklistKriteriaKeluarPICU.setFocusPainted(false);
+        BtnChecklistKriteriaKeluarPICU.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnChecklistKriteriaKeluarPICU.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnChecklistKriteriaKeluarPICU.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnChecklistKriteriaKeluarPICU.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnChecklistKriteriaKeluarPICU.setName("BtnChecklistKriteriaKeluarPICU");
+        BtnChecklistKriteriaKeluarPICU.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnChecklistKriteriaKeluarPICU.setRoundRect(false);
+        BtnChecklistKriteriaKeluarPICU.addActionListener(this::BtnChecklistKriteriaKeluarPICUActionPerformed);
+        
         BtnChecklistKriteriaKeluarNICU = new widget.Button();
         BtnChecklistKriteriaKeluarNICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
         BtnChecklistKriteriaKeluarNICU.setText("Check List Keluar NICU");
@@ -10988,6 +11023,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnChecklistKriteriaMasukNICU);
         FormMenu.add(BtnChecklistKriteriaKeluarNICU);
         FormMenu.add(BtnChecklistKriteriaMasukPICU);
+        FormMenu.add(BtnChecklistKriteriaKeluarPICU);
         FormMenu.add(BtnMonitoringReaksiTranfusi);
         FormMenu.add(BtnSkriningNutrisiDewasa);
         FormMenu.add(BtnSkriningNutrisiLansia);

@@ -1654,77 +1654,77 @@ public final class RMChecklistKriteriaMasukPICU extends javax.swing.JDialog {
         Valid.pindah(evt,KriteriaUmum2,Respirasi1);
     }//GEN-LAST:event_KriteriaUmum3KeyPressed
 
-    private void Respirasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi1KeyPressed
-        Valid.pindah(evt,KriteriaUmum2,Respirasi2);
-    }//GEN-LAST:event_Respirasi1KeyPressed
-
-    private void Respirasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi2KeyPressed
-        Valid.pindah(evt,Respirasi1,Respirasi3);
-    }//GEN-LAST:event_Respirasi2KeyPressed
-
-    private void Respirasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi3KeyPressed
-        Valid.pindah(evt,Respirasi2,Respirasi4);
-    }//GEN-LAST:event_Respirasi3KeyPressed
-
-    private void Respirasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi4KeyPressed
-        Valid.pindah(evt,Respirasi3,Kardiovaskuler1);
-    }//GEN-LAST:event_Respirasi4KeyPressed
-
-    private void Kardiovaskuler1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiovaskuler1KeyPressed
-        Valid.pindah(evt,Respirasi4,Kardiovaskuler2);
-    }//GEN-LAST:event_Kardiovaskuler1KeyPressed
-
-    private void Kardiovaskuler2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiovaskuler2KeyPressed
-        Valid.pindah(evt,Kardiovaskuler1,Kardiovaskuler3);
-    }//GEN-LAST:event_Kardiovaskuler2KeyPressed
-
-    private void Kardiovaskuler3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiovaskuler3KeyPressed
-        Valid.pindah(evt,Kardiovaskuler2,Kardiovaskuler4);
-    }//GEN-LAST:event_Kardiovaskuler3KeyPressed
-
-    private void Kardiovaskuler4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiovaskuler4KeyPressed
-        Valid.pindah(evt,Kardiovaskuler3,Neurologis1);
-    }//GEN-LAST:event_Kardiovaskuler4KeyPressed
-
-    private void Neurologis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neurologis1KeyPressed
-        Valid.pindah(evt,Kardiovaskuler4,Neurologis2);
-    }//GEN-LAST:event_Neurologis1KeyPressed
-
-    private void Neurologis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neurologis2KeyPressed
-        Valid.pindah(evt,Neurologis1,Neurologis3);
-    }//GEN-LAST:event_Neurologis2KeyPressed
-
-    private void Neurologis3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neurologis3KeyPressed
-        Valid.pindah(evt,Neurologis2,Neurologis4);
-    }//GEN-LAST:event_Neurologis3KeyPressed
-
-    private void Neurologis4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neurologis4KeyPressed
-        Valid.pindah(evt,Neurologis3,Bedah1);
-    }//GEN-LAST:event_Neurologis4KeyPressed
-
-    private void Bedah1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bedah1KeyPressed
-        Valid.pindah(evt,Neurologis4,Bedah2);
-    }//GEN-LAST:event_Bedah1KeyPressed
-
-    private void Bedah2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bedah2KeyPressed
-        Valid.pindah(evt,Bedah1,Bedah3);
-    }//GEN-LAST:event_Bedah2KeyPressed
-
-    private void Bedah3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bedah3KeyPressed
-        Valid.pindah(evt,Bedah2,Lainlain1);
-    }//GEN-LAST:event_Bedah3KeyPressed
-
-    private void Lainlain1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Lainlain1KeyPressed
-        Valid.pindah(evt,Bedah3,Lainlain2);
-    }//GEN-LAST:event_Lainlain1KeyPressed
+    private void Lainlain3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Lainlain3KeyPressed
+        Valid.pindah(evt,Lainlain2,Keputusan);
+    }//GEN-LAST:event_Lainlain3KeyPressed
 
     private void Lainlain2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Lainlain2KeyPressed
         Valid.pindah(evt,Lainlain1,Lainlain3);
     }//GEN-LAST:event_Lainlain2KeyPressed
 
-    private void Lainlain3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Lainlain3KeyPressed
-        Valid.pindah(evt,Lainlain2,Keputusan);
-    }//GEN-LAST:event_Lainlain3KeyPressed
+    private void Lainlain1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Lainlain1KeyPressed
+        Valid.pindah(evt,Bedah3,Lainlain2);
+    }//GEN-LAST:event_Lainlain1KeyPressed
+
+    private void Bedah3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bedah3KeyPressed
+        Valid.pindah(evt,Bedah2,Lainlain1);
+    }//GEN-LAST:event_Bedah3KeyPressed
+
+    private void Bedah2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bedah2KeyPressed
+        Valid.pindah(evt,Bedah1,Bedah3);
+    }//GEN-LAST:event_Bedah2KeyPressed
+
+    private void Bedah1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Bedah1KeyPressed
+        Valid.pindah(evt,Neurologis4,Bedah2);
+    }//GEN-LAST:event_Bedah1KeyPressed
+
+    private void Neurologis4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neurologis4KeyPressed
+        Valid.pindah(evt,Neurologis3,Bedah1);
+    }//GEN-LAST:event_Neurologis4KeyPressed
+
+    private void Neurologis3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neurologis3KeyPressed
+        Valid.pindah(evt,Neurologis2,Neurologis4);
+    }//GEN-LAST:event_Neurologis3KeyPressed
+
+    private void Neurologis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neurologis2KeyPressed
+        Valid.pindah(evt,Neurologis1,Neurologis3);
+    }//GEN-LAST:event_Neurologis2KeyPressed
+
+    private void Neurologis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Neurologis1KeyPressed
+        Valid.pindah(evt,Kardiovaskuler4,Neurologis2);
+    }//GEN-LAST:event_Neurologis1KeyPressed
+
+    private void Kardiovaskuler4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiovaskuler4KeyPressed
+        Valid.pindah(evt,Kardiovaskuler3,Neurologis1);
+    }//GEN-LAST:event_Kardiovaskuler4KeyPressed
+
+    private void Kardiovaskuler3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiovaskuler3KeyPressed
+        Valid.pindah(evt,Kardiovaskuler2,Kardiovaskuler4);
+    }//GEN-LAST:event_Kardiovaskuler3KeyPressed
+
+    private void Kardiovaskuler2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiovaskuler2KeyPressed
+        Valid.pindah(evt,Kardiovaskuler1,Kardiovaskuler3);
+    }//GEN-LAST:event_Kardiovaskuler2KeyPressed
+
+    private void Kardiovaskuler1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Kardiovaskuler1KeyPressed
+        Valid.pindah(evt,Respirasi4,Kardiovaskuler2);
+    }//GEN-LAST:event_Kardiovaskuler1KeyPressed
+
+    private void Respirasi4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi4KeyPressed
+        Valid.pindah(evt,Respirasi3,Kardiovaskuler1);
+    }//GEN-LAST:event_Respirasi4KeyPressed
+
+    private void Respirasi3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi3KeyPressed
+        Valid.pindah(evt,Respirasi2,Respirasi4);
+    }//GEN-LAST:event_Respirasi3KeyPressed
+
+    private void Respirasi2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi2KeyPressed
+        Valid.pindah(evt,Respirasi1,Respirasi3);
+    }//GEN-LAST:event_Respirasi2KeyPressed
+
+    private void Respirasi1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Respirasi1KeyPressed
+        Valid.pindah(evt,KriteriaUmum2,Respirasi2);
+    }//GEN-LAST:event_Respirasi1KeyPressed
 
     /**
     * @param args the command line arguments

@@ -765,8 +765,7 @@ public final class SatuSehatKirimSpecimenLabMB extends javax.swing.JDialog {
                    "left join satu_sehat_specimen_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=satu_sehat_specimen_lab_mb.noorder "+
                    "and satu_sehat_servicerequest_lab_mb.id_template=satu_sehat_specimen_lab_mb.id_template "+
                    "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=satu_sehat_specimen_lab_mb.kd_jenis_prw "+
-                   "inner join nota_jalan on nota_jalan.no_rawat=reg_periksa.no_rawat "+
-                   "where nota_jalan.tanggal between ? and ? "+
+                   "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or template_laboratorium.Pemeriksaan like ? or "+
                    "satu_sehat_mapping_lab.sampel_code like ? or permintaan_labmb.noorder like ?)"));
@@ -816,8 +815,7 @@ public final class SatuSehatKirimSpecimenLabMB extends javax.swing.JDialog {
                    "left join satu_sehat_specimen_lab_mb on satu_sehat_servicerequest_lab_mb.noorder=satu_sehat_specimen_lab_mb.noorder "+
                    "and satu_sehat_servicerequest_lab_mb.id_template=satu_sehat_specimen_lab_mb.id_template "+
                    "and satu_sehat_servicerequest_lab_mb.kd_jenis_prw=satu_sehat_specimen_lab_mb.kd_jenis_prw "+
-                   "inner join nota_inap on nota_inap.no_rawat=reg_periksa.no_rawat "+
-                   "where nota_inap.tanggal between ? and ? "+
+                   "where reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or template_laboratorium.Pemeriksaan like ? or "+
                    "satu_sehat_mapping_lab.sampel_code like ? or permintaan_labmb.noorder like ?)"));
