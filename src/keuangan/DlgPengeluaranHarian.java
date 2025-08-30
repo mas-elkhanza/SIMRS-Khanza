@@ -1513,7 +1513,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             Nomor.setText(tbResep.getValueAt(tbResep.getSelectedRow(),0).toString());
             NmKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),2).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString()+" ",""));
             NmPtg.setText(tbResep.getValueAt(tbResep.getSelectedRow(),3).toString().replaceAll(tbResep.getValueAt(tbResep.getSelectedRow(),7).toString()+" ",""));
-            Pengeluaran.setText(tbResep.getValueAt(tbResep.getSelectedRow(),4).toString());
+            Pengeluaran.setText(new java.math.BigDecimal((Double) tbResep.getValueAt(tbResep.getSelectedRow(),4)).toPlainString());
             Keterangan.setText(tbResep.getValueAt(tbResep.getSelectedRow(),5).toString());
             KdKategori.setText(tbResep.getValueAt(tbResep.getSelectedRow(),6).toString());
             KdPtg.setText(tbResep.getValueAt(tbResep.getSelectedRow(),7).toString());
