@@ -1022,7 +1022,7 @@ public final class DlgPengeluaranHarian extends javax.swing.JDialog {
                                         sukses=false;
                                     }
                                 }
-                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek"),"Akun","0",Pengeluaran.getText()})==false){
+                                if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek"),"Akun","0",Valid.SetAngka(Pengeluaran.getText())+""})==false){
                                     sukses=false;
                                 }
                                 if(Sequel.menyimpantf2("tampjurnal","?,?,?,?",4,new String[]{rs.getString("kd_rek2"),"Kontra Akun",(Valid.SetAngka(Pengeluaran.getText())+total)+"","0"})==false){
