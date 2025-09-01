@@ -211,7 +211,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             checklist_kesiapan_anestesi=false,piutang_peminjaman_uang_belum_lunas=false,hasil_pemeriksaan_slit_lamp=false,hasil_pemeriksaan_oct=false,beban_hutang_lain=false,poli_asal_pasien_ranap=false,
             pemberi_hutang_lain=false,dokter_asal_pasien_ranap=false,duta_parkir_rekap_keluar=false,surat_keterangan_layak_terbang=false,bayar_beban_hutang_lain=false,surat_persetujuan_pemeriksaan_hiv=false,
             skrining_instrumen_acrs=false,surat_pernyataan_memilih_dpjp=false,skrining_instrumen_mental_emosional=false,pelanggan_lab_kesehatan_lingkungan=false,kriteria_masuk_nicu=false,kriteria_keluar_nicu=false,
-            penilaian_medis_ranap_psikiatrik=false,kriteria_masuk_picu=false,kriteria_keluar_picu=false;
+            penilaian_medis_ranap_psikiatrik=false,kriteria_masuk_picu=false,kriteria_keluar_picu=false,master_sampel_bakumutu=false,skrining_instrumen_amt=false;
 
     /** Creates new form DlgUser
      * @param parent
@@ -846,7 +846,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         checklist_kesiapan_anestesi=false;piutang_peminjaman_uang_belum_lunas=false;hasil_pemeriksaan_slit_lamp=false;hasil_pemeriksaan_oct=false;beban_hutang_lain=false;poli_asal_pasien_ranap=false;
         pemberi_hutang_lain=false;dokter_asal_pasien_ranap=false;duta_parkir_rekap_keluar=false;surat_keterangan_layak_terbang=false;bayar_beban_hutang_lain=false;surat_persetujuan_pemeriksaan_hiv=false;
         skrining_instrumen_acrs=false;surat_pernyataan_memilih_dpjp=false;skrining_instrumen_mental_emosional=false;pelanggan_lab_kesehatan_lingkungan=false;kriteria_masuk_nicu=false;kriteria_keluar_nicu=false;
-        penilaian_medis_ranap_psikiatrik=false;kriteria_masuk_picu=false;kriteria_keluar_picu=false;
+        penilaian_medis_ranap_psikiatrik=false;kriteria_masuk_picu=false;kriteria_keluar_picu=false;master_sampel_bakumutu=false;skrining_instrumen_amt=false;
         try{    
             jml=0;
             for(i=0;i<tbUser.getRowCount();i++){
@@ -1100,7 +1100,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 "user.piutang_peminjaman_uang_belum_lunas,user.hasil_pemeriksaan_slit_lamp,user.hasil_pemeriksaan_oct,user.beban_hutang_lain,user.poli_asal_pasien_ranap,user.pemberi_hutang_lain,"+
                 "user.dokter_asal_pasien_ranap,user.duta_parkir_rekap_keluar,user.surat_keterangan_layak_terbang,user.bayar_beban_hutang_lain,user.surat_persetujuan_pemeriksaan_hiv,"+
                 "user.skrining_instrumen_acrs,user.surat_pernyataan_memilih_dpjp,user.skrining_instrumen_mental_emosional,user.pelanggan_lab_kesehatan_lingkungan,user.kriteria_masuk_nicu,"+
-                "user.kriteria_keluar_nicu,user.penilaian_medis_ranap_psikiatrik,user.kriteria_masuk_picu,user.kriteria_keluar_picu from user where user.id_user=AES_ENCRYPT(?,'nur')");
+                "user.kriteria_keluar_nicu,user.penilaian_medis_ranap_psikiatrik,user.kriteria_masuk_picu,user.kriteria_keluar_picu,user.master_sampel_bakumutu,user.skrining_instrumen_amt from user where user.id_user=AES_ENCRYPT(?,'nur')");
             try {
                 ps.setString(1,user);
                 rs=ps.executeQuery();
@@ -1232,6 +1232,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                     master_kesimpulan_anjuran_mcu=rs.getBoolean("master_kesimpulan_anjuran_mcu");kategori_piutang_jasa_perusahaan=rs.getBoolean("kategori_piutang_jasa_perusahaan");piutang_jasa_perusahaan=rs.getBoolean("piutang_jasa_perusahaan");bayar_piutang_jasa_perusahaan=rs.getBoolean("bayar_piutang_jasa_perusahaan");piutang_jasa_perusahaan_belum_lunas=rs.getBoolean("piutang_jasa_perusahaan_belum_lunas");checklist_kesiapan_anestesi=rs.getBoolean("checklist_kesiapan_anestesi");piutang_peminjaman_uang_belum_lunas=rs.getBoolean("piutang_peminjaman_uang_belum_lunas");hasil_pemeriksaan_slit_lamp=rs.getBoolean("hasil_pemeriksaan_slit_lamp");
                     hasil_pemeriksaan_oct=rs.getBoolean("hasil_pemeriksaan_oct");beban_hutang_lain=rs.getBoolean("beban_hutang_lain");poli_asal_pasien_ranap=rs.getBoolean("poli_asal_pasien_ranap");pemberi_hutang_lain=rs.getBoolean("pemberi_hutang_lain");dokter_asal_pasien_ranap=rs.getBoolean("dokter_asal_pasien_ranap");duta_parkir_rekap_keluar=rs.getBoolean("duta_parkir_rekap_keluar");surat_keterangan_layak_terbang=rs.getBoolean("surat_keterangan_layak_terbang");bayar_beban_hutang_lain=rs.getBoolean("bayar_beban_hutang_lain");surat_persetujuan_pemeriksaan_hiv=rs.getBoolean("surat_persetujuan_pemeriksaan_hiv");
                     skrining_instrumen_acrs=rs.getBoolean("skrining_instrumen_acrs");surat_pernyataan_memilih_dpjp=rs.getBoolean("surat_pernyataan_memilih_dpjp");skrining_instrumen_mental_emosional=rs.getBoolean("skrining_instrumen_mental_emosional");pelanggan_lab_kesehatan_lingkungan=rs.getBoolean("pelanggan_lab_kesehatan_lingkungan");kriteria_masuk_nicu=rs.getBoolean("kriteria_masuk_nicu");kriteria_keluar_nicu=rs.getBoolean("kriteria_keluar_nicu");penilaian_medis_ranap_psikiatrik=rs.getBoolean("penilaian_medis_ranap_psikiatrik");kriteria_masuk_picu=rs.getBoolean("kriteria_masuk_picu");kriteria_keluar_picu=rs.getBoolean("kriteria_keluar_picu");
+                    master_sampel_bakumutu=rs.getBoolean("master_sampel_bakumutu");skrining_instrumen_amt=false;
                     setTampil();
                 }       
                 LCount.setText(""+tabMode.getRowCount());
@@ -1442,6 +1443,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         
         if("[B]Pelanggan Lab Kesehatan Lingkungan".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[B]Pelanggan Lab Kesehatan Lingkungan",pelanggan_lab_kesehatan_lingkungan});
+        }
+        
+        if("[B]Master Sampel & Baku Mutu".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[B]Master Sampel & Baku Mutu",master_sampel_bakumutu});
         }
 
         if("[C]Dokter".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -4887,6 +4892,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
         if("[M]Check List Kriteria Keluar PICU".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[M]Check List Kriteria Keluar PICU",kriteria_keluar_picu});
         }
+        
+        if("[M]Skrining Instrumen AMT".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Skrining Instrumen AMT",skrining_instrumen_amt});
+        }
                 
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
             tabMode.addRow(new Object[]{false,"[N]Pengambilan BHP Medis",pengambilan_utd2});
@@ -6045,6 +6054,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[B]Pelanggan Lab Kesehatan Lingkungan".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pelanggan_lab_kesehatan_lingkungan='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[B]Master Sampel & Baku Mutu".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_sampel_bakumutu='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 
             if("[C]Dokter".equals(tbUser.getValueAt(i,1).toString())){
@@ -9493,6 +9506,10 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             
             if("[M]Check List Kriteria Keluar PICU".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","kriteria_keluar_picu='"+tbUser.getValueAt(i,2).toString()+"'");
+            }
+            
+            if("[M]Skrining Instrumen AMT".equals(tbUser.getValueAt(i,1).toString())){
+                Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","skrining_instrumen_amt='"+tbUser.getValueAt(i,2).toString()+"'");
             }
                     
             if("[N]Pengambilan BHP Medis".equals(tbUser.getValueAt(i,1).toString())){
