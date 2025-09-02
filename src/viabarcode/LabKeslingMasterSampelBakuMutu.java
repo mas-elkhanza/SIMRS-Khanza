@@ -11,7 +11,6 @@
 
 package viabarcode;
 
-import simrskhanza.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -23,7 +22,6 @@ import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -53,9 +51,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(459,539);
 
-        Object[] row={"Kode Spesialis",
-                      "Nama Spesialis"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{"Kode Sampel","Nama Sampel","Baku Mutu"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -65,19 +61,22 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         tbSpesialis.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbSpesialis.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             TableColumn column = tbSpesialis.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(90);
             }else if(i==1){
-                column.setPreferredWidth(300);
+                column.setPreferredWidth(200);
+            }else if(i==2){
+                column.setPreferredWidth(350);
             }
         }
 
         tbSpesialis.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TKd.setDocument(new batasInput((byte)5).getKata(TKd));
-        TNm.setDocument(new batasInput((byte)30).getKata(TNm));
+        KodeSampel.setDocument(new batasInput((byte)4).getKata(KodeSampel));
+        NamaSampel.setDocument(new batasInput((byte)40).getKata(NamaSampel));
+        BakuMutu.setDocument(new batasInput((byte)120).getKata(BakuMutu));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -101,12 +100,6 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
                 }
             });
         }  
-        try {
-            ps=koneksi.prepareStatement("select * from spesialis where kd_sps like ? "+
-                "or nm_sps like ? order by kd_sps ");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
     }
 
     /** This method is called from within the constructor to
@@ -138,9 +131,9 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         panelGlass7 = new widget.panelisi();
         jLabel3 = new widget.Label();
         jLabel4 = new widget.Label();
-        TKd = new widget.TextBox();
-        TNm = new widget.TextBox();
-        TNm1 = new widget.TextBox();
+        KodeSampel = new widget.TextBox();
+        NamaSampel = new widget.TextBox();
+        BakuMutu = new widget.TextBox();
         jLabel5 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -361,33 +354,33 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         panelGlass7.add(jLabel4);
         jLabel4.setBounds(156, 10, 100, 23);
 
-        TKd.setHighlighter(null);
-        TKd.setName("TKd"); // NOI18N
-        TKd.addKeyListener(new java.awt.event.KeyAdapter() {
+        KodeSampel.setHighlighter(null);
+        KodeSampel.setName("KodeSampel"); // NOI18N
+        KodeSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TKdKeyPressed(evt);
+                KodeSampelKeyPressed(evt);
             }
         });
-        panelGlass7.add(TKd);
-        TKd.setBounds(86, 10, 70, 23);
+        panelGlass7.add(KodeSampel);
+        KodeSampel.setBounds(86, 10, 70, 23);
 
-        TNm.setName("TNm"); // NOI18N
-        TNm.addKeyListener(new java.awt.event.KeyAdapter() {
+        NamaSampel.setName("NamaSampel"); // NOI18N
+        NamaSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNmKeyPressed(evt);
+                NamaSampelKeyPressed(evt);
             }
         });
-        panelGlass7.add(TNm);
-        TNm.setBounds(260, 10, 255, 23);
+        panelGlass7.add(NamaSampel);
+        NamaSampel.setBounds(260, 10, 255, 23);
 
-        TNm1.setName("TNm1"); // NOI18N
-        TNm1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BakuMutu.setName("BakuMutu"); // NOI18N
+        BakuMutu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNm1KeyPressed(evt);
+                BakuMutuKeyPressed(evt);
             }
         });
-        panelGlass7.add(TNm1);
-        TNm1.setBounds(86, 40, 429, 23);
+        panelGlass7.add(BakuMutu);
+        BakuMutu.setBounds(86, 40, 429, 23);
 
         jLabel5.setText("Baku Mutu :");
         jLabel5.setName("jLabel5"); // NOI18N
@@ -401,23 +394,25 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TKdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKeyPressed
-        Valid.pindah(evt,TCari,TNm);
-}//GEN-LAST:event_TKdKeyPressed
+    private void KodeSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeSampelKeyPressed
+        Valid.pindah(evt,TCari,NamaSampel);
+}//GEN-LAST:event_KodeSampelKeyPressed
 
-    private void TNmKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNmKeyPressed
-        Valid.pindah(evt,TKd,BtnSimpan);
-}//GEN-LAST:event_TNmKeyPressed
+    private void NamaSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaSampelKeyPressed
+        Valid.pindah(evt,KodeSampel,BakuMutu);
+}//GEN-LAST:event_NamaSampelKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(TKd.getText().trim().equals("")){
-            Valid.textKosong(TKd,"kode spesialis");
-        }else if(TNm.getText().trim().equals("")){
-            Valid.textKosong(TNm,"nama spesialis");
+        if(KodeSampel.getText().trim().equals("")){
+            Valid.textKosong(KodeSampel,"Kode Sampel");
+        }else if(NamaSampel.getText().trim().equals("")){
+            Valid.textKosong(NamaSampel,"Nama Sampel");
+        }else if(BakuMutu.getText().trim().equals("")){
+            Valid.textKosong(BakuMutu,"Baku Mutu");
         }else{
-            if(Sequel.menyimpantf("spesialis","'"+TKd.getText()+"','"+TNm.getText()+"'","Kode Spesialis")==true){
+            if(Sequel.menyimpantf("laborat_kesling_master_sampel","'"+KodeSampel.getText()+"','"+NamaSampel.getText()+"','"+BakuMutu.getText()+"'","Kode Sampel")==true){
                 tabMode.addRow(new Object[]{
-                    TKd.getText(),TNm.getText()
+                    KodeSampel.getText(),NamaSampel.getText(),BakuMutu.getText()
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -429,7 +424,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,TNm,BtnBatal);
+            Valid.pindah(evt,BakuMutu,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -444,7 +439,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Valid.hapusTabletf(tabMode,TKd,"spesialis","kd_sps")==true){
+        if(Valid.hapusTabletf(tabMode,KodeSampel,"laborat_kesling_master_sampel","kode_sampel")==true){
             if(tbSpesialis.getSelectedRow()!= -1){
                 tabMode.removeRow(tbSpesialis.getSelectedRow());
                 LCount.setText(""+tabMode.getRowCount());
@@ -462,15 +457,18 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(TKd.getText().trim().equals("")){
-            Valid.textKosong(TKd,"kode spesialis");
-        }else if(TNm.getText().trim().equals("")){
-            Valid.textKosong(TNm,"nama spesialis");
+        if(KodeSampel.getText().trim().equals("")){
+            Valid.textKosong(KodeSampel,"Kode Sampel");
+        }else if(NamaSampel.getText().trim().equals("")){
+            Valid.textKosong(NamaSampel,"Nama Sampel");
+        }else if(BakuMutu.getText().trim().equals("")){
+            Valid.textKosong(BakuMutu,"Baku Mutu");
         }else{
-            if(Valid.editTabletf(tabMode,"spesialis","kd_sps",TKd,"nm_sps='"+TNm.getText()+"'")==true){
+            if(Valid.editTabletf(tabMode,"laborat_kesling_master_sampel","kode_sampel",KodeSampel,"nama_sampel='"+NamaSampel.getText()+"',baku_mutu='"+BakuMutu.getText()+"'")==true){
                 if(tbSpesialis.getSelectedRow()>-1){
-                    tabMode.setValueAt(TKd.getText(),tbSpesialis.getSelectedRow(),0);
-                    tabMode.setValueAt(TNm.getText(),tbSpesialis.getSelectedRow(),1);
+                    tabMode.setValueAt(KodeSampel.getText(),tbSpesialis.getSelectedRow(),0);
+                    tabMode.setValueAt(NamaSampel.getText(),tbSpesialis.getSelectedRow(),1);
+                    tabMode.setValueAt(BakuMutu.getText(),tbSpesialis.getSelectedRow(),2);
                     emptTeks();
                 }
             }
@@ -530,7 +528,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnAllActionPerformed(null);
         }else{
-            Valid.pindah(evt, BtnCari, TKd);
+            Valid.pindah(evt, BtnCari, KodeSampel);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -558,9 +556,9 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
         tampil();
     }//GEN-LAST:event_formWindowOpened
 
-    private void TNm1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNm1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TNm1KeyPressed
+    private void BakuMutuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BakuMutuKeyPressed
+        Valid.pindah(evt,NamaSampel,BtnSimpan);
+    }//GEN-LAST:event_BakuMutuKeyPressed
 
     /**
     * @param args the command line arguments
@@ -580,6 +578,7 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox BakuMutu;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -587,12 +586,11 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnSimpan;
+    private widget.TextBox KodeSampel;
     private widget.Label LCount;
+    private widget.TextBox NamaSampel;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
-    private widget.TextBox TKd;
-    private widget.TextBox TNm;
-    private widget.TextBox TNm1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
@@ -609,36 +607,53 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1, "%"+TCari.getText().trim()+"%");
-            ps.setString(2, "%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-             }
-        }catch(SQLException e){
+            ps=koneksi.prepareStatement(
+                "select * from laborat_kesling_master_sampel "+(TCari.getText().trim().equals("")?"":"where laborat_kesling_master_sampel.kode_sampel like ? or laborat_kesling_master_sampel.nama_sampel like ? or laborat_kesling_master_sampel.baku_mutu like ?")+" order by laborat_kesling_master_sampel.kode_sampel ");
+            try{
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1, "%"+TCari.getText().trim()+"%");
+                    ps.setString(2, "%"+TCari.getText().trim()+"%");
+                    ps.setString(3, "%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                }
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if( rs != null){
+                    rs.close();
+                }
+                
+                if( ps != null){
+                    ps.close();
+                }
+            }
+        }catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());
     }
 
     public void emptTeks() {
-        TKd.setText("");
-        TNm.setText("");
+        KodeSampel.setText("");
+        NamaSampel.setText("");
+        BakuMutu.setText("");
         TCari.setText("");
-        TKd.requestFocus();
-        Valid.autoNomer(tabMode,"S",4,TKd);
-        TKd.requestFocus();
+        KodeSampel.requestFocus();
     }
 
     private void getData() {
         if(tbSpesialis.getSelectedRow()!= -1){
-            TKd.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString());
-            TNm.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),1).toString());
+            KodeSampel.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),0).toString());
+            NamaSampel.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),1).toString());
+            BakuMutu.setText(tbSpesialis.getValueAt(tbSpesialis.getSelectedRow(),2).toString());
         }
     }
     
     public JTextField getTextField(){
-        return TKd;
+        return KodeSampel;
     }
 
     public JButton getButton(){
@@ -646,8 +661,8 @@ public class LabKeslingMasterSampelBakuMutu extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getdokter());
-        BtnHapus.setEnabled(akses.getdokter());
-        BtnEdit.setEnabled(akses.getdokter());
+        BtnSimpan.setEnabled(akses.getmaster_sampel_bakumutu());
+        BtnHapus.setEnabled(akses.getmaster_sampel_bakumutu());
+        BtnEdit.setEnabled(akses.getmaster_sampel_bakumutu());
     }
 }

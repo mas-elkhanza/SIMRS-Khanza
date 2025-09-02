@@ -99,13 +99,7 @@ public class DlgSpesialis extends javax.swing.JDialog {
                     }
                 }
             });
-        }  
-        try {
-            ps=koneksi.prepareStatement("select * from spesialis where kd_sps like ? "+
-                "or nm_sps like ? order by kd_sps ");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
+        } 
     }
 
     /** This method is called from within the constructor to
@@ -586,13 +580,29 @@ public class DlgSpesialis extends javax.swing.JDialog {
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            ps.setString(1, "%"+TCari.getText().trim()+"%");
-            ps.setString(2, "%"+TCari.getText().trim()+"%");
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
-             }
-        }catch(SQLException e){
+            ps=koneksi.prepareStatement(
+                "select * from spesialis "+(TCari.getText().trim().equals("")?"":"where spesialis.kd_sps like ? or spesialis.nm_sps like ?")+" order by spesialis.kd_sps ");
+            try{
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1, "%"+TCari.getText().trim()+"%");
+                    ps.setString(2, "%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2)});
+                }
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if( rs != null){
+                    rs.close();
+                }
+                
+                if( ps != null){
+                    ps.close();
+                }
+            }
+        }catch (Exception e) {
             System.out.println("Notifikasi : "+e);
         }
         LCount.setText(""+tabMode.getRowCount());

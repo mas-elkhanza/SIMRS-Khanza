@@ -346,15 +346,15 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="TKd">
+            <Component class="widget.TextBox" name="KodeSampel">
               <Properties>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="null"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="TKd" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="KodeSampel" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TKdKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="KodeSampelKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -362,12 +362,12 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="TNm">
+            <Component class="widget.TextBox" name="NamaSampel">
               <Properties>
-                <Property name="name" type="java.lang.String" value="TNm" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="NamaSampel" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TNmKeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NamaSampelKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -375,12 +375,12 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextBox" name="TNm1">
+            <Component class="widget.TextBox" name="BakuMutu">
               <Properties>
-                <Property name="name" type="java.lang.String" value="TNm1" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="BakuMutu" noResource="true"/>
               </Properties>
               <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TNm1KeyPressed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BakuMutuKeyPressed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
