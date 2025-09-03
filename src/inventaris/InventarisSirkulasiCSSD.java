@@ -215,7 +215,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         Keterangan = new widget.TextBox();
         LblTgl = new widget.Label();
         label7 = new widget.Label();
-        nama_barang = new widget.TextBox();
+        NamaBarang = new widget.TextBox();
         btnInv = new widget.Button();
         Jenis = new widget.TextBox();
         label11 = new widget.Label();
@@ -367,10 +367,10 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         internalFrame2.add(label7);
         label7.setBounds(0, 115, 100, 23);
 
-        nama_barang.setEditable(false);
-        nama_barang.setName("nama_barang"); // NOI18N
-        internalFrame2.add(nama_barang);
-        nama_barang.setBounds(235, 25, 450, 23);
+        NamaBarang.setEditable(false);
+        NamaBarang.setName("NamaBarang"); // NOI18N
+        internalFrame2.add(NamaBarang);
+        NamaBarang.setBounds(235, 25, 450, 23);
 
         btnInv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnInv.setMnemonic('1');
@@ -449,7 +449,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         label12.setBounds(362, 55, 60, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025 13:00:36" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025 20:08:15" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -646,7 +646,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         R2.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass11.add(R2);
 
-        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025" }));
+        TglPinjam1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025" }));
         TglPinjam1.setDisplayFormat("dd-MM-yyyy");
         TglPinjam1.setName("TglPinjam1"); // NOI18N
         TglPinjam1.setOpaque(false);
@@ -664,7 +664,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
         jLabel22.setPreferredSize(new java.awt.Dimension(25, 23));
         panelGlass11.add(jLabel22);
 
-        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2025" }));
+        TglPinjam2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025" }));
         TglPinjam2.setDisplayFormat("dd-MM-yyyy");
         TglPinjam2.setName("TglPinjam2"); // NOI18N
         TglPinjam2.setOpaque(false);
@@ -813,9 +813,9 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
        if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
             NoInventaris.requestFocus();
-        }else if(nama_barang.getText().trim().equals("")){
+        }else if(NamaBarang.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
-        }else if(!(nama_barang.getText().trim().equals(""))){
+        }else if(!(NamaBarang.getText().trim().equals(""))){
             if(Sequel.meghapustf("inventaris_ambil_cssd","no_sirkulasi",NoSirkulasi.getText())==true){
                 Sequel.queryu("update inventaris set status_barang='Ada' where no_inventaris='"+NoInventaris.getText()+"'");
                 tabMode.removeRow(tbKamIn.getSelectedRow());
@@ -1100,7 +1100,7 @@ public class InventarisSirkulasiCSSD extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnCloseInKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(NoInventaris.getText().trim().equals("")||nama_barang.getText().trim().equals("")){
+        if(NoInventaris.getText().trim().equals("")||NamaBarang.getText().trim().equals("")){
             Valid.textKosong(NoInventaris,"Inventaris");
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Peminjam");
@@ -1219,7 +1219,7 @@ private void btnInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
         public void windowClosed(WindowEvent e) {
             if(inventaris.getTable().getSelectedRow()!= -1){                   
                 NoInventaris.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),0).toString());
-                nama_barang.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),1).toString()+", "+inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),2).toString());
+                NamaBarang.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),1).toString()+", "+inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),2).toString());
                 Merk.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),4).toString());
                 Jenis.setText(inventaris.getTable().getValueAt(inventaris.getTable().getSelectedRow(),8).toString());
                 Sequel.cariIsi("select inventaris.status_barang from inventaris where inventaris.no_inventaris='"+NoInventaris.getText()+"'",Status);                       
@@ -1367,6 +1367,7 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private widget.editorpane LoadHTML;
     private widget.TextBox Merk;
     private widget.TextBox NIP;
+    private widget.TextBox NamaBarang;
     private widget.TextBox NamaPetugas;
     private widget.TextBox NoInventaris;
     private widget.TextBox NoSirkulasi;
@@ -1397,7 +1398,6 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
     private widget.Label label6;
     private widget.Label label7;
     private widget.Label label8;
-    private widget.TextBox nama_barang;
     private widget.panelisi panelGlass10;
     private widget.panelisi panelGlass11;
     private widget.Table tbKamIn;
@@ -1502,7 +1502,7 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
 
     public void emptTeks() {       
         NoInventaris.setText("");
-        nama_barang.setText("");
+        NamaBarang.setText("");
         Jenis.setText("");
         Merk.setText("");
         Status.setText("");
@@ -1518,7 +1518,7 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
         if(tbKamIn.getSelectedRow()!= -1){
             NoSirkulasi.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),0).toString());
             NoInventaris.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),1).toString());
-            nama_barang.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),2).toString()+", "+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),3).toString());
+            NamaBarang.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),2).toString()+", "+tbKamIn.getValueAt(tbKamIn.getSelectedRow(),3).toString());
             Jenis.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),9).toString());
             Merk.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),5).toString());
             //TIn.setText(tbKamIn.getValueAt(tbKamIn.getSelectedRow(),11).toString());
@@ -1545,17 +1545,23 @@ private void NoSirkulasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:eve
             ps=koneksi.prepareStatement(
                "select inventaris.no_inventaris,inventaris_barang.kode_barang, inventaris_barang.nama_barang, "+
                "inventaris_merk.nama_merk,cssd_barang.jenis_barang,inventaris.status_barang "+
-               "from inventaris inner join inventaris_barang inner join cssd_barang inner join inventaris_merk "+
-               "on inventaris_barang.id_merk=inventaris_merk.id_merk and inventaris_barang.id_jenis=cssd_barang.id_jenis "+
-               "and inventaris_barang.kode_barang=inventaris.kode_barang where inventaris.no_inventaris=?");
+               "from inventaris inner join inventaris_barang on inventaris_barang.kode_barang=inventaris.kode_barang "+
+               "inner join cssd_barang on inventaris.no_inventaris=cssd_barang.no_inventaris "+
+               "inner join inventaris_merk on inventaris_barang.id_merk=inventaris_merk.id_merk "+
+               "where inventaris.no_inventaris=?");
             try{
                 ps.setString(1,NoInventaris.getText());
                 rs=ps.executeQuery();
                 if(rs.next()){
-                    nama_barang.setText(rs.getString("kode_barang")+", "+rs.getString("nama_barang"));
+                    NamaBarang.setText(rs.getString("kode_barang")+", "+rs.getString("nama_barang"));
                     Merk.setText(rs.getString("nama_merk"));
                     Jenis.setText(rs.getString("jenis_barang"));
                     Status.setText(rs.getString("status_barang"));
+                }else{
+                    NamaBarang.setText("");
+                    Merk.setText("");
+                    Jenis.setText("");
+                    Status.setText("");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);

@@ -1372,6 +1372,11 @@ private void tlpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tlpKe
                         merk.setText(rs.getString("nama_merk"));
                         jenis.setText(rs.getString("nama_jenis"));
                         status.setText(rs.getString("status_barang"));
+                    }else{
+                        nama_barang.setText("");
+                        merk.setText("");
+                        jenis.setText("");
+                        status.setText("");
                     }
                 } catch (Exception e) {
                     System.out.println("Notif : "+e);

@@ -1347,6 +1347,11 @@ private void tgl_permintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:
                     merk.setText(rs.getString("nama_merk"));
                     jenis.setText(rs.getString("nama_jenis"));
                     kategori.setText(rs.getString("nama_kategori"));
+                }else{
+                    nama_barang.setText("");
+                    merk.setText("");
+                    jenis.setText("");
+                    kategori.setText("");
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
