@@ -1031,6 +1031,7 @@ import rekammedis.RMSkriningFrailtySyndrome;
 import rekammedis.RMSkriningHipertensi;
 import rekammedis.RMSkriningIndraPendengaran;
 import rekammedis.RMSkriningInstrumenACRS;
+import rekammedis.RMSkriningInstrumenAMT;
 import rekammedis.RMSkriningInstrumenMentalEmosional;
 import rekammedis.RMSkriningInstrumenSDQ;
 import rekammedis.RMSkriningKankerKolorektal;
@@ -22898,6 +22899,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSkriningInstrumenAMTActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMSkriningInstrumenAMT form=new RMSkriningInstrumenAMT(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23606,7 +23620,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPiutangPeminjamanUangBelumLunas,btnChecklistKesiapanAnestesi,btnHasilPemeriksaanSlitLamp,btnHasilPemeriksaanOCT,btnPoliAsalPasienRanap,btnPemberiHutangLain,
             btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV,btnSkriningInstrumenACRS,
             btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional,btnChecklistKriteriaMasukNICU,btnChecklistKriteriaKeluarNICU,btnPenilaianAwalMedisRanapPsikiatri,
-            btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu;
+            btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu,btnSkriningInstrumenAMT;
     
     public void isWall(){
         try{            
@@ -28189,6 +28203,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getskrining_instrumen_mental_emosional()==true){
                 Panelmenu.add(btnSkriningInstrumenMentalEmosional);
+                jmlmenu++;
+            }
+            
+            if(akses.getskrining_instrumen_amt()==true){
+                Panelmenu.add(btnSkriningInstrumenAMT);
                 jmlmenu++;
             }
             
@@ -33883,6 +33902,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getskrining_instrumen_mental_emosional()==true){
             Panelmenu.add(btnSkriningInstrumenMentalEmosional);
+            jmlmenu++;
+        }
+        
+        if(akses.getskrining_instrumen_amt()==true){
+            Panelmenu.add(btnSkriningInstrumenAMT);
             jmlmenu++;
         }
         
@@ -41180,6 +41204,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnSkriningInstrumenMentalEmosional);
                 jmlmenu++;
             } 
+        }
+        
+        if(akses.getskrining_instrumen_amt()==true){
+            if(btnSkriningInstrumenAMT.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSkriningInstrumenAMT);
+                jmlmenu++;
+            }
         }
         
         if(akses.getskrining_kanker_kolorektal()==true){
@@ -48534,6 +48565,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnSkriningInstrumenMentalEmosional.setName("btnSkriningInstrumenMentalEmosional");
         btnSkriningInstrumenMentalEmosional.setPreferredSize(new java.awt.Dimension(200, 90));
         btnSkriningInstrumenMentalEmosional.addActionListener(this::btnSkriningInstrumenMentalEmosionalActionPerformed);
+        
+        btnSkriningInstrumenAMT = new widget.ButtonBig();
+        btnSkriningInstrumenAMT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7717225_woman_mothers_day_avatar_mom_icon.png"))); 
+        btnSkriningInstrumenAMT.setText("Skrining Instrumen AMT");
+        btnSkriningInstrumenAMT.setIconTextGap(0);
+        btnSkriningInstrumenAMT.setName("btnSkriningInstrumenAMT");
+        btnSkriningInstrumenAMT.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSkriningInstrumenAMT.addActionListener(this::btnSkriningInstrumenAMTActionPerformed);
         
         btnLabKeslingPelanggan = new widget.ButtonBig();
         btnLabKeslingPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/9554587_school_education_learning_book_science_icon.png"))); 
