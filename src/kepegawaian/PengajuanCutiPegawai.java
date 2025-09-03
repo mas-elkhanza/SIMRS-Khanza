@@ -1004,11 +1004,11 @@ private void NmPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_Tgl2KeyPressed
 
     private void Tgl2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Tgl2ItemStateChanged
-        Sequel.cariIsi("select to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')",Jumlah);   
+        Sequel.cariIsi("select to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"')",Jumlah);   
     }//GEN-LAST:event_Tgl2ItemStateChanged
 
     private void Tgl1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_Tgl1ItemStateChanged
-        Sequel.cariIsi("select to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')",Jumlah); 
+        Sequel.cariIsi("select to_days('"+Valid.SetTgl(Tgl2.getSelectedItem()+"")+"')-to_days('"+Valid.SetTgl(Tgl1.getSelectedItem()+"")+"')",Jumlah); 
     }//GEN-LAST:event_Tgl1ItemStateChanged
 
     /**
