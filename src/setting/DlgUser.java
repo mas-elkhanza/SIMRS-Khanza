@@ -271,7 +271,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Hasil Pemeriksaan Slit Lamp","[M]Hasil Pemeriksaan OCT","[K]Beban Hutang Lain","[J]Poli Asal Pasien Ranap","[K]Pemberi Hutang Lain","[J]Dokter Asal Pasien Ranap",
                 "[L]Rekap Keluar Duta Parking","[P]Surat Keterangan Layak Terbang","[K]Bayar Beban Hutang Lain","[P]Surat Persetujuan Pemeriksaan HIV","[M]Skrining Instrumen ACRS",
                 "[P]Surat Pernyataan Memilih DPJP","[M]Skrining Instrumen Mental Emosional Anak","[B]Pelanggan Lab Kesehatan Lingkungan","[M]Check List Kriteria Masuk NICU",
-                "[M]Check List Kriteria Keluar NICU","[M]Pengkajian Awal Medis Ranap Psikiatri","[M]Check List Kriteria Masuk PICU","[M]Check List Kriteria Keluar PICU","[B]Master Sampel & Baku Mutu",
+                "[M]Check List Kriteria Keluar NICU","[M]Pengkajian Awal Medis Ranap Psikiatri","[M]Check List Kriteria Masuk PICU","[M]Check List Kriteria Keluar PICU","[B]Master Sampel Lab Kesling",
                 "[M]Skrining Instrumen AMT"
         };
         
@@ -3509,7 +3509,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(173);
                     break;
                 case 1152:
-                    column.setPreferredWidth(157);
+                    column.setPreferredWidth(152);
                     break;
                 case 1153:
                     column.setPreferredWidth(141);

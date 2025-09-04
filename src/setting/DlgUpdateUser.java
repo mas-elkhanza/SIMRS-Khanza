@@ -1445,8 +1445,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[B]Pelanggan Lab Kesehatan Lingkungan",pelanggan_lab_kesehatan_lingkungan});
         }
         
-        if("[B]Master Sampel & Baku Mutu".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[B]Master Sampel & Baku Mutu",master_sampel_bakumutu});
+        if("[B]Master Sampel Lab Kesling".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[B]Master Sampel Lab Kesling",master_sampel_bakumutu});
         }
 
         if("[C]Dokter".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -6056,7 +6056,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","pelanggan_lab_kesehatan_lingkungan='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[B]Master Sampel & Baku Mutu".equals(tbUser.getValueAt(i,1).toString())){
+            if("[B]Master Sampel Lab Kesling".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","master_sampel_bakumutu='"+tbUser.getValueAt(i,2).toString()+"'");
             }
 

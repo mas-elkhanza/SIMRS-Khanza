@@ -48584,7 +48584,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnLabKeslingSampelBakuMutu = new widget.ButtonBig();
         btnLabKeslingSampelBakuMutu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5856695_laboratory_medical_research_science_test_icon.png"))); 
-        btnLabKeslingSampelBakuMutu.setText("Master Sampel & Baku Mutu");
+        btnLabKeslingSampelBakuMutu.setText("Master Sampel Lab Kesling");
         btnLabKeslingSampelBakuMutu.setIconTextGap(0);
         btnLabKeslingSampelBakuMutu.setName("btnLabKeslingSampelBakuMutu");
         btnLabKeslingSampelBakuMutu.setPreferredSize(new java.awt.Dimension(200, 90));
