@@ -379,12 +379,12 @@ public final class RMCariKesimpulanAnjuranMCU extends javax.swing.JDialog {
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
             
-            ps=koneksi.prepareStatement("select * from master_kesimpulan_anjuran_mcu order by aturan ");
+            ps=koneksi.prepareStatement("select master_kesimpulan_anjuran_mcu.kesimpulan,master_kesimpulan_anjuran_mcu.anjuran from master_kesimpulan_anjuran_mcu order by master_kesimpulan_anjuran_mcu.anjuran ");
             try {
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1)});
-                    iyembuilder.append("{\"Kesimpulan\":\"").append(rs.getString(1)).append("\",\"Anjuran\":\"").append(rs.getString(2)).append("\"},");
+                    tabMode.addRow(new Object[]{rs.getString("kesimpulan"),rs.getString("anjuran")});
+                    iyembuilder.append("{\"Kesimpulan\":\"").append(rs.getString("kesimpulan").replaceAll("(\r\n|\r|\n|\n\r)","")).append("\",\"Anjuran\":\"").append(rs.getString("anjuran").replaceAll("(\r\n|\r|\n|\n\r)","")).append("\"},");
                 }
             } catch (Exception e) {
                 System.out.println(e);
