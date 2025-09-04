@@ -270,7 +270,7 @@ public class DlgAbout extends javax.swing.JDialog {
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(50, 50, 50));
-        jLabel25.setText("RS Puri Husada Sleman Yogyakarta, RS Pelita Insani Martapura,");
+        jLabel25.setText("RS Permata Hati Bungo, RS Pelita Insani Martapura,");
         jLabel25.setName("jLabel25"); // NOI18N
         panelGlass4.add(jLabel25);
         jLabel25.setBounds(126, 120, 320, 14);
