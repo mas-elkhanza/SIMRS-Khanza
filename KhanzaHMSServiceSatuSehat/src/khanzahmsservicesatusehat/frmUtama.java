@@ -346,7 +346,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -434,7 +434,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -536,7 +536,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception eg){
-                                System.out.println("Notifikasi Bridging : "+eg);
+                                TeksArea.append("Notifikasi Bridging : "+eg);
                             }
                         } catch (Exception ed) {
                             System.out.println("Notifikasi : "+ed);
@@ -631,7 +631,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception eg){
-                                System.out.println("Notifikasi Bridging : "+eg);
+                                TeksArea.append("Notifikasi Bridging : "+eg);
                             }
                         } catch (Exception ed) {
                             System.out.println("Notifikasi : "+ed);
@@ -731,7 +731,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ef){
-                                System.out.println("Notifikasi Bridging : "+ef);
+                                TeksArea.append("Notifikasi Bridging : "+ef);
                             }
                         } catch (Exception eg) {
                             System.out.println("Notifikasi : "+eg);
@@ -826,7 +826,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ef){
-                                System.out.println("Notifikasi Bridging : "+ef);
+                                TeksArea.append("Notifikasi Bridging : "+ef);
                             }
                         } catch (Exception eg) {
                             System.out.println("Notifikasi : "+eg);
@@ -926,7 +926,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception es) {
                             System.out.println("Notifikasi : "+es);
@@ -1021,7 +1021,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception es) {
                             System.out.println("Notifikasi : "+es);
@@ -1121,7 +1121,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ef){
-                                System.out.println("Notifikasi Bridging : "+ef);
+                                TeksArea.append("Notifikasi Bridging : "+ef);
                             }
                         } catch (Exception ex) {
                             System.out.println("Notifikasi : "+ex);
@@ -1216,7 +1216,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ef){
-                                System.out.println("Notifikasi Bridging : "+ef);
+                                TeksArea.append("Notifikasi Bridging : "+ef);
                             }
                         } catch (Exception ex) {
                             System.out.println("Notifikasi : "+ex);
@@ -1315,7 +1315,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception es){
-                                System.out.println("Notifikasi Bridging : "+es);
+                                TeksArea.append("Notifikasi Bridging : "+es);
                             }
                         } catch (Exception ea) {
                             System.out.println("Notifikasi : "+ea);
@@ -1409,7 +1409,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception es){
-                                System.out.println("Notifikasi Bridging : "+es);
+                                TeksArea.append("Notifikasi Bridging : "+es);
                             }
                         } catch (Exception ea) {
                             System.out.println("Notifikasi : "+ea);
@@ -1506,7 +1506,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception eg){
-                                System.out.println("Notifikasi Bridging : "+eg);
+                                TeksArea.append("Notifikasi Bridging : "+eg);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -1598,7 +1598,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception eg){
-                                System.out.println("Notifikasi Bridging : "+eg);
+                                TeksArea.append("Notifikasi Bridging : "+eg);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -1746,7 +1746,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception eg){
-                                System.out.println("Notifikasi Bridging : "+eg);
+                                TeksArea.append("Notifikasi Bridging : "+eg);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -1889,7 +1889,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception eg){
-                                System.out.println("Notifikasi Bridging : "+eg);
+                                TeksArea.append("Notifikasi Bridging : "+eg);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -1989,7 +1989,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception eg){
-                                System.out.println("Notifikasi Bridging : "+eg);
+                                TeksArea.append("Notifikasi Bridging : "+eg);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -2084,7 +2084,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception eg){
-                                System.out.println("Notifikasi Bridging : "+eg);
+                                TeksArea.append("Notifikasi Bridging : "+eg);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -2184,7 +2184,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -2279,7 +2279,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -2379,7 +2379,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -2491,7 +2491,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -2595,7 +2595,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -2740,7 +2740,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -2879,7 +2879,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -2971,7 +2971,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3057,7 +3057,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3154,7 +3154,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3245,7 +3245,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3372,7 +3372,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3493,7 +3493,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3587,7 +3587,7 @@ public class frmUtama extends javax.swing.JFrame {
                             json=api.getRest().exchange(link+"/Medication/"+rs.getString("id_medication"), HttpMethod.PUT, requestEntity, String.class).getBody();
                             TeksArea.append("Result JSON : "+json);
                         }catch(Exception e){
-                            System.out.println("Notifikasi Bridging : "+e);
+                            TeksArea.append("Notifikasi Bridging : "+e);
                         }
                     }
                 }
@@ -3755,7 +3755,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -3920,7 +3920,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -4087,7 +4087,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -4254,7 +4254,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -4443,7 +4443,7 @@ public class frmUtama extends javax.swing.JFrame {
                                    });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -4626,7 +4626,7 @@ public class frmUtama extends javax.swing.JFrame {
                                    });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -4743,7 +4743,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -4858,7 +4858,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -4950,7 +4950,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -5040,7 +5040,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -5158,7 +5158,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -5274,7 +5274,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -5408,7 +5408,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -5540,7 +5540,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -5658,7 +5658,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -5774,7 +5774,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -5892,7 +5892,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6008,7 +6008,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6103,7 +6103,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6196,7 +6196,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6291,7 +6291,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6384,7 +6384,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6505,7 +6505,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6624,7 +6624,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6745,7 +6745,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -6864,7 +6864,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -7002,7 +7002,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -7138,7 +7138,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -7276,7 +7276,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -7412,7 +7412,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception ea){
-                                System.out.println("Notifikasi Bridging : "+ea);
+                                TeksArea.append("Notifikasi Bridging : "+ea);
                             }
                         } catch (Exception ef) {
                             System.out.println("Notifikasi : "+ef);
@@ -7510,7 +7510,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -7602,7 +7602,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -7752,7 +7752,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -7896,7 +7896,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -8042,7 +8042,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);
@@ -8188,7 +8188,7 @@ public class frmUtama extends javax.swing.JFrame {
                                     });
                                 }
                             }catch(Exception e){
-                                System.out.println("Notifikasi Bridging : "+e);
+                                TeksArea.append("Notifikasi Bridging : "+e);
                             }
                         } catch (Exception e) {
                             System.out.println("Notifikasi : "+e);

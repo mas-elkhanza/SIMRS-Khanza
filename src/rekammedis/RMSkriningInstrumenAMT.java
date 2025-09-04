@@ -240,7 +240,7 @@ public final class RMSkriningInstrumenAMT extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningInstrumenACRS = new javax.swing.JMenuItem();
+        MnSkriningInstrumenAMT = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         Jk = new widget.TextBox();
@@ -349,19 +349,19 @@ public final class RMSkriningInstrumenAMT extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningInstrumenACRS.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningInstrumenACRS.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningInstrumenACRS.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningInstrumenACRS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningInstrumenACRS.setText("Formulir Skrining ACRS");
-        MnSkriningInstrumenACRS.setName("MnSkriningInstrumenACRS"); // NOI18N
-        MnSkriningInstrumenACRS.setPreferredSize(new java.awt.Dimension(180, 26));
-        MnSkriningInstrumenACRS.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningInstrumenAMT.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningInstrumenAMT.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningInstrumenAMT.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningInstrumenAMT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningInstrumenAMT.setText("Formulir Skrining AMT");
+        MnSkriningInstrumenAMT.setName("MnSkriningInstrumenAMT"); // NOI18N
+        MnSkriningInstrumenAMT.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnSkriningInstrumenAMT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningInstrumenACRSActionPerformed(evt);
+                MnSkriningInstrumenAMTActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningInstrumenACRS);
+        jPopupMenu1.add(MnSkriningInstrumenAMT);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1191,7 +1191,7 @@ public final class RMSkriningInstrumenAMT extends javax.swing.JDialog {
         jLabel116.setBounds(62, 270, 480, 23);
 
         jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel117.setText("Siapa nama Presiden/Kepala Negara saat ini?");
+        jLabel117.setText("Siapa nama Presiden/Kepala Negara saat ini ?");
         jLabel117.setName("jLabel117"); // NOI18N
         FormInput.add(jLabel117);
         jLabel117.setBounds(62, 300, 450, 23);
@@ -1590,7 +1590,7 @@ public final class RMSkriningInstrumenAMT extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningInstrumenACRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningInstrumenACRSActionPerformed
+    private void MnSkriningInstrumenAMTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningInstrumenAMTActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1612,7 +1612,7 @@ public final class RMSkriningInstrumenAMT extends javax.swing.JDialog {
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_instrumen_amt.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningInstrumenACRSActionPerformed
+    }//GEN-LAST:event_MnSkriningInstrumenAMTActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -1760,7 +1760,7 @@ public final class RMSkriningInstrumenAMT extends javax.swing.JDialog {
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningInstrumenACRS;
+    private javax.swing.JMenuItem MnSkriningInstrumenAMT;
     private widget.TextBox NilaiAMT1;
     private widget.TextBox NilaiAMT10;
     private widget.TextBox NilaiAMT2;
