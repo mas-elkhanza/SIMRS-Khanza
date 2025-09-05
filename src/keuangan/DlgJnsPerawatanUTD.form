@@ -500,7 +500,7 @@
                 </Component>
                 <Component class="widget.Label" name="jLabel9">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="J.S. Rumah Sakit : Rp."/>
+                    <Property name="text" type="java.lang.String" value="Jasa Sarana : Rp."/>
                     <Property name="name" type="java.lang.String" value="jLabel9" noResource="true"/>
                   </Properties>
                   <Constraints>

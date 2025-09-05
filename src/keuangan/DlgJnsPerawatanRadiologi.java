@@ -50,7 +50,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
         setSize(628,674);
 
         Object[] row={
-            "P","Kode Periksa","Nama Pemeriksaan","J.S. RS",
+            "P","Kode Periksa","Nama Pemeriksaan","Jasa Sarana",
             "Paket BHP","J.M. Perujuk","J.M. Dokter","J.M. Petugas",
             "K.S.O.","Menejemen","Total Tarif","Jenis Bayar","Kelas"};
         tabMode=new DefaultTableModel(null,row){
@@ -236,7 +236,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
 
         MnRestore.setBackground(new java.awt.Color(255, 255, 254));
         MnRestore.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnRestore.setForeground(new java.awt.Color(50,50,50));
+        MnRestore.setForeground(new java.awt.Color(50, 50, 50));
         MnRestore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
         MnRestore.setText("Data Sampah");
         MnRestore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -259,7 +259,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pemeriksaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Tarif Pemeriksaan Radiologi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -486,7 +486,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
         jLabel3.setText("Kode Periksa :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(-10, 12, 115, 23);
+        jLabel3.setBounds(-10, 12, 95, 23);
 
         TKd.setHighlighter(null);
         TKd.setName("TKd"); // NOI18N
@@ -496,7 +496,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(TKd);
-        TKd.setBounds(108, 12, 130, 23);
+        TKd.setBounds(88, 12, 130, 23);
 
         jLabel8.setText("Nama Pemeriksaan :");
         jLabel8.setName("jLabel8"); // NOI18N
@@ -513,10 +513,10 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
         FormInput.add(TNm);
         TNm.setBounds(433, 12, 283, 23);
 
-        jLabel9.setText("J.S. Rumah Sakit : Rp.");
+        jLabel9.setText("Jasa Sarana : Rp.");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(-10, 42, 135, 23);
+        jLabel9.setBounds(-10, 42, 115, 23);
 
         jLabel11.setText("Total Biaya Radiologi : Rp. ");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -526,7 +526,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
         jLabel13.setText("J.M. Petugas : Rp.");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(-10, 132, 135, 23);
+        jLabel13.setBounds(-10, 132, 115, 23);
 
         jLabel18.setText("Jenis Bayar :");
         jLabel18.setName("jLabel18"); // NOI18N
@@ -563,17 +563,17 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
         jLabel10.setText("J.M. Dokter : Rp.");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(-10, 102, 135, 23);
+        jLabel10.setBounds(-10, 102, 115, 23);
 
         jLabel12.setText("J.M. Perujuk : Rp.");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(-10, 162, 135, 23);
+        jLabel12.setBounds(-10, 162, 115, 23);
 
         jLabel14.setText("Paket BHP : Rp.");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(-10, 72, 135, 23);
+        jLabel14.setBounds(-10, 72, 115, 23);
 
         BagianRs.setText("0");
         BagianRs.setHighlighter(null);
@@ -584,7 +584,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(BagianRs);
-        BagianRs.setBounds(127, 42, 170, 23);
+        BagianRs.setBounds(107, 42, 170, 23);
 
         Bhp.setText("0");
         Bhp.setHighlighter(null);
@@ -595,7 +595,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(Bhp);
-        Bhp.setBounds(127, 72, 170, 23);
+        Bhp.setBounds(107, 72, 170, 23);
 
         JMDokter.setText("0");
         JMDokter.setHighlighter(null);
@@ -606,7 +606,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(JMDokter);
-        JMDokter.setBounds(127, 102, 170, 23);
+        JMDokter.setBounds(107, 102, 170, 23);
 
         JMLaborat.setText("0");
         JMLaborat.setHighlighter(null);
@@ -617,7 +617,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(JMLaborat);
-        JMLaborat.setBounds(127, 132, 170, 23);
+        JMLaborat.setBounds(107, 132, 170, 23);
 
         JMPerujuk.setText("0");
         JMPerujuk.setHighlighter(null);
@@ -628,7 +628,7 @@ public final class DlgJnsPerawatanRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(JMPerujuk);
-        JMPerujuk.setBounds(127, 162, 170, 23);
+        JMPerujuk.setBounds(107, 162, 170, 23);
 
         TotalBiaya.setText("0");
         TotalBiaya.setHighlighter(null);
