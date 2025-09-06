@@ -8,9 +8,6 @@ import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import restore.DlgRestoreTarifUTD;
 
 /**
  *
@@ -71,13 +67,13 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
             if(i==0){
                 column.setPreferredWidth(50);
             }else if(i==1){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==2){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(110);
             }else if(i==3){
                 column.setPreferredWidth(70);
             }else{
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(85);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -684,8 +680,9 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
                 PaketBHP.getText(),JasaPJLab.getText(),JasaPetugas.getText(),KSO.getText(),Manajemen.getText(),TotalTarif.getText()
             })==true){
                 tabMode.addRow(new Object[]{
-                    Kode.getText(),Parameter.getText(),MetodePengujian.getSelectedItem().toString(),Satuan.getText(),JasaSarana.getText(),
-                    PaketBHP.getText(),JasaPJLab.getText(),JasaPetugas.getText(),KSO.getText(),Manajemen.getText(),TotalTarif.getText()
+                    Kode.getText(),Parameter.getText(),MetodePengujian.getSelectedItem().toString(),Satuan.getText(),Valid.SetAngka(JasaSarana.getText()),
+                    Valid.SetAngka(PaketBHP.getText()),Valid.SetAngka(JasaPJLab.getText()),Valid.SetAngka(JasaPetugas.getText()),Valid.SetAngka(KSO.getText()),
+                    Valid.SetAngka(Manajemen.getText()),Valid.SetAngka(TotalTarif.getText())
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -757,19 +754,19 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
                 "jasa_sarana=?,paket_bhp=?,jasa_pj_lab=?,jasa_petugas=?,kso=?,jasa_menejemen=?,total=?",12,new String[]{
                 Kode.getText(),Parameter.getText(),MetodePengujian.getSelectedItem().toString(),Satuan.getText(),JasaSarana.getText(),
                 PaketBHP.getText(),JasaPJLab.getText(),JasaPetugas.getText(),KSO.getText(),Manajemen.getText(),TotalTarif.getText(),
-                tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString()
+                tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
             })==true){
                 tbJnsPerawatan.setValueAt(Kode.getText(),tbJnsPerawatan.getSelectedRow(),0);
                 tbJnsPerawatan.setValueAt(Parameter.getText(),tbJnsPerawatan.getSelectedRow(),1);
                 tbJnsPerawatan.setValueAt(MetodePengujian.getSelectedItem().toString(),tbJnsPerawatan.getSelectedRow(),2);
                 tbJnsPerawatan.setValueAt(Satuan.getText(),tbJnsPerawatan.getSelectedRow(),3);
-                tbJnsPerawatan.setValueAt(JasaSarana.getText(),tbJnsPerawatan.getSelectedRow(),4);
-                tbJnsPerawatan.setValueAt(PaketBHP.getText(),tbJnsPerawatan.getSelectedRow(),5);
-                tbJnsPerawatan.setValueAt(JasaPJLab.getText(),tbJnsPerawatan.getSelectedRow(),6);
-                tbJnsPerawatan.setValueAt(JasaPetugas.getText(),tbJnsPerawatan.getSelectedRow(),7);
-                tbJnsPerawatan.setValueAt(KSO.getText(),tbJnsPerawatan.getSelectedRow(),8);
-                tbJnsPerawatan.setValueAt(Manajemen.getText(),tbJnsPerawatan.getSelectedRow(),9);
-                tbJnsPerawatan.setValueAt(TotalTarif.getText(),tbJnsPerawatan.getSelectedRow(),10);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaSarana.getText()),tbJnsPerawatan.getSelectedRow(),4);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(PaketBHP.getText()),tbJnsPerawatan.getSelectedRow(),5);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaPJLab.getText()),tbJnsPerawatan.getSelectedRow(),6);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaPetugas.getText()),tbJnsPerawatan.getSelectedRow(),7);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(KSO.getText()),tbJnsPerawatan.getSelectedRow(),8);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(Manajemen.getText()),tbJnsPerawatan.getSelectedRow(),9);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(TotalTarif.getText()),tbJnsPerawatan.getSelectedRow(),10);
                 emptTeks();
             }
         }
@@ -1042,8 +1039,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("kode_parameter"),rs.getString("nama_parameter"),rs.getString("metode_pengujian"),rs.getString("satuan"),rs.getString("jasa_sarana"),
-                        rs.getString("paket_bhp"),rs.getString("jasa_pj_lab"),rs.getString("jasa_petugas"),rs.getString("kso"),rs.getString("jasa_menejemen"),rs.getString("total")
+                        rs.getString("kode_parameter"),rs.getString("nama_parameter"),rs.getString("metode_pengujian"),rs.getString("satuan"),rs.getDouble("jasa_sarana"),
+                        rs.getDouble("paket_bhp"),rs.getDouble("jasa_pj_lab"),rs.getDouble("jasa_petugas"),rs.getDouble("kso"),rs.getDouble("jasa_menejemen"),rs.getDouble("total")
                     });
                 }
             } catch (Exception e) {
