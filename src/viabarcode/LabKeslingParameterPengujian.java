@@ -807,14 +807,12 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());   
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                Valid.MyReportqry("rptTarifUtd.jasper","report","::[ Data Tarif Radiologi ]::","select laborat_kesling_parameter_pengujian.kd_jenis_prw,laborat_kesling_parameter_pengujian.nm_perawatan,laborat_kesling_parameter_pengujian.bagian_rs,"+
-                    "laborat_kesling_parameter_pengujian.bhp,laborat_kesling_parameter_pengujian.tarif_perujuk,laborat_kesling_parameter_pengujian.tarif_tindakan_dokter,laborat_kesling_parameter_pengujian.tarif_tindakan_petugas,laborat_kesling_parameter_pengujian.kso,"+
-                    "laborat_kesling_parameter_pengujian.manajemen,laborat_kesling_parameter_pengujian.total_byr,penjab.png_jawab "+
-                    "from laborat_kesling_parameter_pengujian inner join penjab on penjab.kd_pj=laborat_kesling_parameter_pengujian.kd_pj where "+
-                    " laborat_kesling_parameter_pengujian.status='1' and laborat_kesling_parameter_pengujian.kd_jenis_prw like '%"+TCari.getText().trim()+"%' or "+
-                    " laborat_kesling_parameter_pengujian.status='1' and laborat_kesling_parameter_pengujian.nm_perawatan like '%"+TCari.getText().trim()+"%' or "+
-                    " laborat_kesling_parameter_pengujian.status='1' and penjab.png_jawab like '%"+TCari.getText().trim()+"%' "+
-                    "order by laborat_kesling_parameter_pengujian.kd_jenis_prw",param);   
+                Valid.MyReportqry("rptTarifLabKesLing.jasper","report","::[ Tarif & Parameter Pengujian Laboratorium Kesehatan Lingkungan ]::",
+                    "select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
+                    "laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,laborat_kesling_parameter_pengujian.jasa_petugas,"+
+                    "laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,laborat_kesling_parameter_pengujian.total from laborat_kesling_parameter_pengujian "+
+                    (TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like '%"+TCari.getText().trim()+"%' or laborat_kesling_parameter_pengujian.nama_parameter like '%"+TCari.getText().trim()+"%' "+
+                    "or laborat_kesling_parameter_pengujian.metode_pengujian like '%"+TCari.getText().trim()+"%' ")+"order by laborat_kesling_parameter_pengujian.kode_parameter",param);   
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
