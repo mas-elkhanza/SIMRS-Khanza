@@ -2504,13 +2504,16 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 
             if(sukses==true){
                 Sequel.Commit();
-                JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
                 isReset();
             }else{
-                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
                 Sequel.RollBack();
             }
             Sequel.AutoComitTrue();    
+            if(sukses==true){
+                JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
+            }else{
+                JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+            }
             ChkJln.setSelected(true);
         }
     }
