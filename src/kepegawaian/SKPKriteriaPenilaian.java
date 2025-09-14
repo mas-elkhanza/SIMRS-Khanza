@@ -112,7 +112,6 @@ public final class SKPKriteriaPenilaian extends javax.swing.JDialog {
                 }
             });
         } 
-        Kode.requestFocus();
         
         kategori.addWindowListener(new WindowListener() {
             @Override

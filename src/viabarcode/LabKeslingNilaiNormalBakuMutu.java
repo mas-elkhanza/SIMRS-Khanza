@@ -88,8 +88,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
 
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Kode.setDocument(new batasInput((byte)10).getKata(Kode));
-        Kriteria.setDocument(new batasInput((int)150).getKata(Kriteria));
+        //Kriteria.setDocument(new batasInput((int)150).getKata(Kriteria));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -113,7 +112,6 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
                 }
             });
         } 
-        Kode.requestFocus();
         
         kategori.addWindowListener(new WindowListener() {
             @Override
@@ -182,14 +180,17 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         BtnKeluar = new widget.Button();
         panelGlass8 = new widget.panelisi();
         jLabel3 = new widget.Label();
-        Kode = new widget.TextBox();
-        Kriteria = new widget.TextBox();
-        jLabel4 = new widget.Label();
         jLabel9 = new widget.Label();
         NmKategori = new widget.TextBox();
         KdKategori = new widget.TextBox();
         btnKategori = new widget.Button();
         Sasaran = new widget.TextBox();
+        KdKategori1 = new widget.TextBox();
+        NmKategori1 = new widget.TextBox();
+        Sasaran1 = new widget.TextBox();
+        btnKategori1 = new widget.Button();
+        jLabel10 = new widget.Label();
+        KdKategori2 = new widget.TextBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -417,53 +418,29 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         panelGlass8.setName("panelGlass8"); // NOI18N
-        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 74));
+        panelGlass8.setPreferredSize(new java.awt.Dimension(44, 104));
         panelGlass8.setLayout(null);
 
-        jLabel3.setText("Kode :");
+        jLabel3.setText("Parameter :");
         jLabel3.setName("jLabel3"); // NOI18N
         panelGlass8.add(jLabel3);
-        jLabel3.setBounds(0, 10, 60, 23);
+        jLabel3.setBounds(0, 10, 80, 23);
 
-        Kode.setName("Kode"); // NOI18N
-        Kode.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(Kode);
-        Kode.setBounds(64, 10, 100, 23);
-
-        Kriteria.setFocusTraversalPolicyProvider(true);
-        Kriteria.setName("Kriteria"); // NOI18N
-        Kriteria.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KriteriaKeyPressed(evt);
-            }
-        });
-        panelGlass8.add(Kriteria);
-        Kriteria.setBounds(249, 10, 370, 23);
-
-        jLabel4.setText("Kriteria :");
-        jLabel4.setName("jLabel4"); // NOI18N
-        panelGlass8.add(jLabel4);
-        jLabel4.setBounds(165, 10, 80, 23);
-
-        jLabel9.setText("Kategori :");
+        jLabel9.setText("Sampel :");
         jLabel9.setName("jLabel9"); // NOI18N
         panelGlass8.add(jLabel9);
-        jLabel9.setBounds(0, 40, 60, 23);
+        jLabel9.setBounds(0, 40, 80, 23);
 
         NmKategori.setEditable(false);
         NmKategori.setName("NmKategori"); // NOI18N
         panelGlass8.add(NmKategori);
-        NmKategori.setBounds(136, 40, 267, 23);
+        NmKategori.setBounds(146, 40, 201, 23);
 
         KdKategori.setEditable(false);
         KdKategori.setHighlighter(null);
         KdKategori.setName("KdKategori"); // NOI18N
         panelGlass8.add(KdKategori);
-        KdKategori.setBounds(64, 40, 70, 23);
+        KdKategori.setBounds(84, 40, 60, 23);
 
         btnKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnKategori.setMnemonic('1');
@@ -485,7 +462,51 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         Sasaran.setEditable(false);
         Sasaran.setName("Sasaran"); // NOI18N
         panelGlass8.add(Sasaran);
-        Sasaran.setBounds(405, 40, 184, 23);
+        Sasaran.setBounds(349, 40, 240, 23);
+
+        KdKategori1.setEditable(false);
+        KdKategori1.setHighlighter(null);
+        KdKategori1.setName("KdKategori1"); // NOI18N
+        panelGlass8.add(KdKategori1);
+        KdKategori1.setBounds(84, 10, 77, 23);
+
+        NmKategori1.setEditable(false);
+        NmKategori1.setName("NmKategori1"); // NOI18N
+        panelGlass8.add(NmKategori1);
+        NmKategori1.setBounds(163, 10, 240, 23);
+
+        Sasaran1.setEditable(false);
+        Sasaran1.setName("Sasaran1"); // NOI18N
+        panelGlass8.add(Sasaran1);
+        Sasaran1.setBounds(405, 10, 184, 23);
+
+        btnKategori1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnKategori1.setMnemonic('1');
+        btnKategori1.setToolTipText("Alt+1");
+        btnKategori1.setName("btnKategori1"); // NOI18N
+        btnKategori1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKategori1ActionPerformed(evt);
+            }
+        });
+        btnKategori1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnKategori1KeyPressed(evt);
+            }
+        });
+        panelGlass8.add(btnKategori1);
+        btnKategori1.setBounds(591, 10, 28, 23);
+
+        jLabel10.setText("Nilai Normal :");
+        jLabel10.setName("jLabel10"); // NOI18N
+        panelGlass8.add(jLabel10);
+        jLabel10.setBounds(0, 70, 80, 23);
+
+        KdKategori2.setEditable(false);
+        KdKategori2.setHighlighter(null);
+        KdKategori2.setName("KdKategori2"); // NOI18N
+        panelGlass8.add(KdKategori2);
+        KdKategori2.setBounds(84, 70, 130, 23);
 
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
@@ -494,16 +515,8 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void KodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeKeyPressed
-        Valid.pindah(evt,TCari,Kriteria);
-}//GEN-LAST:event_KodeKeyPressed
-
-    private void KriteriaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KriteriaKeyPressed
-        Valid.pindah(evt,Kode,btnKategori);
-}//GEN-LAST:event_KriteriaKeyPressed
-
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Kode.getText().trim().equals("")){
+        /*if(Kode.getText().trim().equals("")){
             Valid.textKosong(Kode,"Kode");
         }else if(Kriteria.getText().trim().equals("")){
             Valid.textKosong(Kriteria,"Kategori");
@@ -517,7 +530,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }           
-        }
+        }*/
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -539,13 +552,13 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Valid.hapusTabletf(tabMode,Kode,"skp_kriteria_penilaian","kode_kriteria")==true){
+        /*if(Valid.hapusTabletf(tabMode,Kode,"skp_kriteria_penilaian","kode_kriteria")==true){
             if(tbBangsal.getSelectedRow()!= -1){
                 tabMode.removeRow(tbBangsal.getSelectedRow());
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
             }
-        }
+        }*/
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -557,7 +570,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Kode.getText().trim().equals("")){
+        /*if(Kode.getText().trim().equals("")){
             Valid.textKosong(Kode,"Kode");
         }else if(Kriteria.getText().trim().equals("")){
             Valid.textKosong(Kriteria,"Kategori");
@@ -574,7 +587,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
                     emptTeks();
                 }
             }            
-        }
+        }*/
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -660,7 +673,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
             TCari.setText("");
             tampil();
         }else{
-            Valid.pindah(evt, BtnCari, Kode);
+            //Valid.pindah(evt, BtnCari, Kode);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
@@ -704,6 +717,14 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         Valid.pindah(evt,KdKategori,BtnSimpan);
     }//GEN-LAST:event_btnKategoriKeyPressed
 
+    private void btnKategori1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategori1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKategori1ActionPerformed
+
+    private void btnKategori1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKategori1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnKategori1KeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -730,17 +751,20 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
     private widget.TextBox KdKategori;
-    private widget.TextBox Kode;
-    private widget.TextBox Kriteria;
+    private widget.TextBox KdKategori1;
+    private widget.TextBox KdKategori2;
     private widget.Label LCount;
     private widget.TextBox NmKategori;
+    private widget.TextBox NmKategori1;
     private widget.TextBox Sasaran;
+    private widget.TextBox Sasaran1;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.Button btnKategori;
+    private widget.Button btnKategori1;
     private widget.InternalFrame internalFrame1;
+    private widget.Label jLabel10;
     private widget.Label jLabel3;
-    private widget.Label jLabel4;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel9;
@@ -795,24 +819,20 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        Kode.setText("");
-        Kriteria.setText("");
+        //Kode.setText("");
+        //Kriteria.setText("");
         TCari.setText("");
-        Kode.requestFocus();
+        //Kode.requestFocus();
     }
 
     private void getData() {
-        if(tbBangsal.getSelectedRow()!= -1){
+        /*if(tbBangsal.getSelectedRow()!= -1){
             Kode.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
             Kriteria.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
             KdKategori.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),2).toString());
             NmKategori.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),3).toString());
             Sasaran.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
-        }
-    }
-    
-    public JTextField getTextField(){
-        return Kode;
+        }*/
     }
 
     public JTable getTable(){
