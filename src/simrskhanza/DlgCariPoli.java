@@ -387,7 +387,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
             try{           
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),Valid.SetAngka(rs.getDouble(3)),Valid.SetAngka(rs.getDouble(4))});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
                     iyembuilder.append("{\"KodeUnit\":\"").append(rs.getString(1)).append("\",\"NamaUnit\":\"").append(rs.getString(2)).append("\",\"RegistrasiBaru\":\"").append(rs.getString(3)).append("\",\"RegistrasiLama\":\"").append(rs.getString(4)).append("\"},");
                 }
             }catch(Exception e){

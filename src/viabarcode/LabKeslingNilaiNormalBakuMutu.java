@@ -11,7 +11,6 @@
  */
 
 package viabarcode;
-import kepegawaian.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -49,7 +48,6 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private DlgCariSKPKategoriPenilaian kategori=new DlgCariSKPKategoriPenilaian(null,false);
 
     /** Creates new form DlgBangsal
      * @param parent
@@ -112,43 +110,6 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
                 }
             });
         } 
-        
-        kategori.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(kategori.getTable().getSelectedRow()!= -1){
-                    KdKategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(),0).toString());
-                    NmKategori.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(),1).toString());
-                    Sasaran.setText(kategori.getTable().getValueAt(kategori.getTable().getSelectedRow(),2).toString());
-                }  
-                btnKategori.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        });
-        
-        kategori.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    kategori.dispose();
-                }                
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
     }
     
     /** This method is called from within the constructor to
@@ -181,16 +142,16 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         panelGlass8 = new widget.panelisi();
         jLabel3 = new widget.Label();
         jLabel9 = new widget.Label();
-        NmKategori = new widget.TextBox();
-        KdKategori = new widget.TextBox();
-        btnKategori = new widget.Button();
-        Sasaran = new widget.TextBox();
-        KdKategori1 = new widget.TextBox();
-        NmKategori1 = new widget.TextBox();
-        Sasaran1 = new widget.TextBox();
-        btnKategori1 = new widget.Button();
+        NamaSampel = new widget.TextBox();
+        KodeSampel = new widget.TextBox();
+        BtnSampel = new widget.Button();
+        BakuMutu = new widget.TextBox();
+        KodeParameter = new widget.TextBox();
+        NamaParameter = new widget.TextBox();
+        MetodePengujian = new widget.TextBox();
+        BtnParameter = new widget.Button();
         jLabel10 = new widget.Label();
-        KdKategori2 = new widget.TextBox();
+        NilaiNormal = new widget.TextBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -431,82 +392,82 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         panelGlass8.add(jLabel9);
         jLabel9.setBounds(0, 40, 80, 23);
 
-        NmKategori.setEditable(false);
-        NmKategori.setName("NmKategori"); // NOI18N
-        panelGlass8.add(NmKategori);
-        NmKategori.setBounds(146, 40, 201, 23);
+        NamaSampel.setEditable(false);
+        NamaSampel.setName("NamaSampel"); // NOI18N
+        panelGlass8.add(NamaSampel);
+        NamaSampel.setBounds(146, 40, 181, 23);
 
-        KdKategori.setEditable(false);
-        KdKategori.setHighlighter(null);
-        KdKategori.setName("KdKategori"); // NOI18N
-        panelGlass8.add(KdKategori);
-        KdKategori.setBounds(84, 40, 60, 23);
+        KodeSampel.setEditable(false);
+        KodeSampel.setHighlighter(null);
+        KodeSampel.setName("KodeSampel"); // NOI18N
+        panelGlass8.add(KodeSampel);
+        KodeSampel.setBounds(84, 40, 60, 23);
 
-        btnKategori.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnKategori.setMnemonic('1');
-        btnKategori.setToolTipText("Alt+1");
-        btnKategori.setName("btnKategori"); // NOI18N
-        btnKategori.addActionListener(new java.awt.event.ActionListener() {
+        BtnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSampel.setMnemonic('1');
+        BtnSampel.setToolTipText("Alt+1");
+        BtnSampel.setName("BtnSampel"); // NOI18N
+        BtnSampel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKategoriActionPerformed(evt);
+                BtnSampelActionPerformed(evt);
             }
         });
-        btnKategori.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnKategoriKeyPressed(evt);
+                BtnSampelKeyPressed(evt);
             }
         });
-        panelGlass8.add(btnKategori);
-        btnKategori.setBounds(591, 40, 28, 23);
+        panelGlass8.add(BtnSampel);
+        BtnSampel.setBounds(591, 40, 28, 23);
 
-        Sasaran.setEditable(false);
-        Sasaran.setName("Sasaran"); // NOI18N
-        panelGlass8.add(Sasaran);
-        Sasaran.setBounds(349, 40, 240, 23);
+        BakuMutu.setEditable(false);
+        BakuMutu.setName("BakuMutu"); // NOI18N
+        panelGlass8.add(BakuMutu);
+        BakuMutu.setBounds(329, 40, 260, 23);
 
-        KdKategori1.setEditable(false);
-        KdKategori1.setHighlighter(null);
-        KdKategori1.setName("KdKategori1"); // NOI18N
-        panelGlass8.add(KdKategori1);
-        KdKategori1.setBounds(84, 10, 77, 23);
+        KodeParameter.setEditable(false);
+        KodeParameter.setHighlighter(null);
+        KodeParameter.setName("KodeParameter"); // NOI18N
+        panelGlass8.add(KodeParameter);
+        KodeParameter.setBounds(84, 10, 77, 23);
 
-        NmKategori1.setEditable(false);
-        NmKategori1.setName("NmKategori1"); // NOI18N
-        panelGlass8.add(NmKategori1);
-        NmKategori1.setBounds(163, 10, 240, 23);
+        NamaParameter.setEditable(false);
+        NamaParameter.setName("NamaParameter"); // NOI18N
+        panelGlass8.add(NamaParameter);
+        NamaParameter.setBounds(163, 10, 240, 23);
 
-        Sasaran1.setEditable(false);
-        Sasaran1.setName("Sasaran1"); // NOI18N
-        panelGlass8.add(Sasaran1);
-        Sasaran1.setBounds(405, 10, 184, 23);
+        MetodePengujian.setEditable(false);
+        MetodePengujian.setName("MetodePengujian"); // NOI18N
+        panelGlass8.add(MetodePengujian);
+        MetodePengujian.setBounds(405, 10, 184, 23);
 
-        btnKategori1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnKategori1.setMnemonic('1');
-        btnKategori1.setToolTipText("Alt+1");
-        btnKategori1.setName("btnKategori1"); // NOI18N
-        btnKategori1.addActionListener(new java.awt.event.ActionListener() {
+        BtnParameter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnParameter.setMnemonic('1');
+        BtnParameter.setToolTipText("Alt+1");
+        BtnParameter.setName("BtnParameter"); // NOI18N
+        BtnParameter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKategori1ActionPerformed(evt);
+                BtnParameterActionPerformed(evt);
             }
         });
-        btnKategori1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnParameter.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnKategori1KeyPressed(evt);
+                BtnParameterKeyPressed(evt);
             }
         });
-        panelGlass8.add(btnKategori1);
-        btnKategori1.setBounds(591, 10, 28, 23);
+        panelGlass8.add(BtnParameter);
+        BtnParameter.setBounds(591, 10, 28, 23);
 
         jLabel10.setText("Nilai Normal :");
         jLabel10.setName("jLabel10"); // NOI18N
         panelGlass8.add(jLabel10);
         jLabel10.setBounds(0, 70, 80, 23);
 
-        KdKategori2.setEditable(false);
-        KdKategori2.setHighlighter(null);
-        KdKategori2.setName("KdKategori2"); // NOI18N
-        panelGlass8.add(KdKategori2);
-        KdKategori2.setBounds(84, 70, 130, 23);
+        NilaiNormal.setEditable(false);
+        NilaiNormal.setHighlighter(null);
+        NilaiNormal.setName("NilaiNormal"); // NOI18N
+        panelGlass8.add(NilaiNormal);
+        NilaiNormal.setBounds(84, 70, 130, 23);
 
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
@@ -537,7 +498,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,btnKategori,BtnBatal);
+            Valid.pindah(evt,BtnSampel,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -706,24 +667,61 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         emptTeks();
     }//GEN-LAST:event_formWindowOpened
 
-    private void btnKategoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategoriActionPerformed
-        kategori.isCek();
-        kategori.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        kategori.setLocationRelativeTo(internalFrame1);
-        kategori.setVisible(true);
-    }//GEN-LAST:event_btnKategoriActionPerformed
+    private void BtnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSampelActionPerformed
+        LabKeslingCariMasterSampelBakuMutu sampel=new LabKeslingCariMasterSampelBakuMutu(null,false);
+        sampel.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(sampel.getTable().getSelectedRow()!= -1){
+                    KodeSampel.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),0).toString());
+                    NamaSampel.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),1).toString());
+                    BakuMutu.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),2).toString());
+                }  
+                BtnSampel.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        sampel.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    sampel.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        sampel.isCek();
+        sampel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        sampel.setLocationRelativeTo(internalFrame1);
+        sampel.setVisible(true);
+    }//GEN-LAST:event_BtnSampelActionPerformed
 
-    private void btnKategoriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKategoriKeyPressed
-        Valid.pindah(evt,KdKategori,BtnSimpan);
-    }//GEN-LAST:event_btnKategoriKeyPressed
+    private void BtnSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSampelKeyPressed
+        Valid.pindah(evt,KodeSampel,BtnSimpan);
+    }//GEN-LAST:event_BtnSampelKeyPressed
 
-    private void btnKategori1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKategori1ActionPerformed
+    private void BtnParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnParameterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnKategori1ActionPerformed
+    }//GEN-LAST:event_BtnParameterActionPerformed
 
-    private void btnKategori1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKategori1KeyPressed
+    private void BtnParameterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnParameterKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnKategori1KeyPressed
+    }//GEN-LAST:event_BtnParameterKeyPressed
 
     /**
     * @param args the command line arguments
@@ -742,26 +740,26 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox BakuMutu;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnParameter;
     private widget.Button BtnPrint;
+    private widget.Button BtnSampel;
     private widget.Button BtnSimpan;
-    private widget.TextBox KdKategori;
-    private widget.TextBox KdKategori1;
-    private widget.TextBox KdKategori2;
+    private widget.TextBox KodeParameter;
+    private widget.TextBox KodeSampel;
     private widget.Label LCount;
-    private widget.TextBox NmKategori;
-    private widget.TextBox NmKategori1;
-    private widget.TextBox Sasaran;
-    private widget.TextBox Sasaran1;
+    private widget.TextBox MetodePengujian;
+    private widget.TextBox NamaParameter;
+    private widget.TextBox NamaSampel;
+    private widget.TextBox NilaiNormal;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
-    private widget.Button btnKategori;
-    private widget.Button btnKategori1;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel3;
