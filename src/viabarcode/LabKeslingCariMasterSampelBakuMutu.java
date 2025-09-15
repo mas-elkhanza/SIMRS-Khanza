@@ -44,7 +44,6 @@ public final class LabKeslingCariMasterSampelBakuMutu extends javax.swing.JDialo
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;

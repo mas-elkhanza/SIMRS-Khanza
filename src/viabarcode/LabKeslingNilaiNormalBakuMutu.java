@@ -58,35 +58,40 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         this.setLocation(10,10);
         setSize(545,599);
 
-        tabMode=new DefaultTableModel(null,new String[]{"Kode Kriteria","Kriteria","Kode Kategori","Kategori","Sasaran"}){
+        tabMode=new DefaultTableModel(null,new String[]{
+                "Kode","Nama Parameter","Metode Pengujian","Satuan","Nilai Normal","Kode Sampel","Nama Sampel","Baku Mutu"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
         tbBangsal.setModel(tabMode);
-        //tampil();
-
-        //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
         tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 8; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
-            }else if(i==1){
-                column.setPreferredWidth(400);
-            }else if(i==2){
                 column.setPreferredWidth(80);
+            }else if(i==1){
+                column.setPreferredWidth(220);
+            }else if(i==2){
+                column.setPreferredWidth(190);
             }else if(i==3){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(90);
             }else if(i==4){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(110);
+            }else if(i==5){
+                column.setPreferredWidth(90);
+            }else if(i==6){
+                column.setPreferredWidth(200);
+            }else if(i==7){
+                column.setPreferredWidth(450);
             }
         }
 
         tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
 
-        //Kriteria.setDocument(new batasInput((int)150).getKata(Kriteria));
+        NilaiNormal.setDocument(new batasInput((int)30).getKata(NilaiNormal));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -152,6 +157,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         BtnParameter = new widget.Button();
         jLabel10 = new widget.Label();
         NilaiNormal = new widget.TextBox();
+        Satuan = new widget.TextBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -400,6 +406,11 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         KodeSampel.setEditable(false);
         KodeSampel.setHighlighter(null);
         KodeSampel.setName("KodeSampel"); // NOI18N
+        KodeSampel.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KodeSampelKeyPressed(evt);
+            }
+        });
         panelGlass8.add(KodeSampel);
         KodeSampel.setBounds(84, 40, 60, 23);
 
@@ -428,18 +439,23 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         KodeParameter.setEditable(false);
         KodeParameter.setHighlighter(null);
         KodeParameter.setName("KodeParameter"); // NOI18N
+        KodeParameter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KodeParameterKeyPressed(evt);
+            }
+        });
         panelGlass8.add(KodeParameter);
-        KodeParameter.setBounds(84, 10, 77, 23);
+        KodeParameter.setBounds(84, 10, 60, 23);
 
         NamaParameter.setEditable(false);
         NamaParameter.setName("NamaParameter"); // NOI18N
         panelGlass8.add(NamaParameter);
-        NamaParameter.setBounds(163, 10, 240, 23);
+        NamaParameter.setBounds(146, 10, 220, 23);
 
         MetodePengujian.setEditable(false);
         MetodePengujian.setName("MetodePengujian"); // NOI18N
         panelGlass8.add(MetodePengujian);
-        MetodePengujian.setBounds(405, 10, 184, 23);
+        MetodePengujian.setBounds(368, 10, 148, 23);
 
         BtnParameter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnParameter.setMnemonic('1');
@@ -463,11 +479,20 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         panelGlass8.add(jLabel10);
         jLabel10.setBounds(0, 70, 80, 23);
 
-        NilaiNormal.setEditable(false);
         NilaiNormal.setHighlighter(null);
         NilaiNormal.setName("NilaiNormal"); // NOI18N
+        NilaiNormal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NilaiNormalKeyPressed(evt);
+            }
+        });
         panelGlass8.add(NilaiNormal);
         NilaiNormal.setBounds(84, 70, 130, 23);
+
+        Satuan.setEditable(false);
+        Satuan.setName("Satuan"); // NOI18N
+        panelGlass8.add(Satuan);
+        Satuan.setBounds(518, 10, 70, 23);
 
         internalFrame1.add(panelGlass8, java.awt.BorderLayout.PAGE_START);
 
@@ -477,21 +502,24 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*if(Kode.getText().trim().equals("")){
-            Valid.textKosong(Kode,"Kode");
-        }else if(Kriteria.getText().trim().equals("")){
-            Valid.textKosong(Kriteria,"Kategori");
+        if(KodeParameter.getText().trim().equals("")||NamaParameter.getText().trim().equals("")){
+            Valid.textKosong(KodeParameter,"Parameter");
+        }else if(KodeSampel.getText().trim().equals("")||NamaSampel.getText().trim().equals("")){
+            Valid.textKosong(KodeSampel,"Sampel");
+        }else if(NilaiNormal.getText().trim().equals("")){
+            Valid.textKosong(NilaiNormal,"Nilai Normal");
         }else{
-            if(Sequel.menyimpantf("skp_kriteria_penilaian","?,?,?","Kode",3,new String[]{
-                    Kode.getText(),Kriteria.getText(),KdKategori.getText()
+            if(Sequel.menyimpantf("laborat_kesling_nilai_normal_baku_mutun","?,?,?","Kode",3,new String[]{
+                    KodeSampel.getText(),KodeParameter.getText(),NilaiNormal.getText()
                 })==true){
                 tabMode.addRow(new Object[]{
-                    Kode.getText(),Kriteria.getText(),KdKategori.getText(),NmKategori.getText(),Sasaran.getText()
+                    KodeParameter.getText(),NamaParameter.getText(),MetodePengujian.getText(),Satuan.getText(),
+                    NilaiNormal.getText(),KodeSampel.getText(),NamaSampel.getText(),BakuMutu.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
             }           
-        }*/
+        }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
@@ -712,16 +740,77 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnSampelActionPerformed
 
     private void BtnSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSampelKeyPressed
-        Valid.pindah(evt,KodeSampel,BtnSimpan);
+        Valid.pindah(evt,BtnParameter,NilaiNormal);
     }//GEN-LAST:event_BtnSampelKeyPressed
 
     private void BtnParameterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnParameterActionPerformed
-        // TODO add your handling code here:
+        LabKeslingCariParameterPengujian sampel=new LabKeslingCariParameterPengujian(null,false);
+        sampel.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(sampel.getTable().getSelectedRow()!= -1){
+                    KodeParameter.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),0).toString());
+                    NamaParameter.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),1).toString());
+                    MetodePengujian.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),2).toString());
+                    Satuan.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),3).toString());
+                }  
+                BtnSampel.requestFocus();
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        sampel.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {}
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode()==KeyEvent.VK_SPACE){
+                    sampel.dispose();
+                }                
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {}
+        });
+        sampel.isCek();
+        sampel.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        sampel.setLocationRelativeTo(internalFrame1);
+        sampel.setVisible(true);
     }//GEN-LAST:event_BtnParameterActionPerformed
 
     private void BtnParameterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnParameterKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TCari,BtnSampel);
     }//GEN-LAST:event_BtnParameterKeyPressed
+
+    private void NilaiNormalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiNormalKeyPressed
+        Valid.pindah(evt,KodeSampel,BtnSimpan);
+    }//GEN-LAST:event_NilaiNormalKeyPressed
+
+    private void KodeParameterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeParameterKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnParameterActionPerformed(null);
+        }else{            
+            Valid.pindah(evt,TCari,KodeSampel);
+        }
+    }//GEN-LAST:event_KodeParameterKeyPressed
+
+    private void KodeSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeSampelKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
+            BtnSampelActionPerformed(null);
+        }else{            
+            Valid.pindah(evt,KodeParameter,NilaiNormal);
+        }
+    }//GEN-LAST:event_KodeSampelKeyPressed
 
     /**
     * @param args the command line arguments
@@ -758,6 +847,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     private widget.TextBox NamaParameter;
     private widget.TextBox NamaSampel;
     private widget.TextBox NilaiNormal;
+    private widget.TextBox Satuan;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.InternalFrame internalFrame1;
@@ -777,30 +867,30 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try{
             ps=koneksi.prepareStatement(
-                    "select skp_kriteria_penilaian.kode_kriteria,skp_kriteria_penilaian.nama_kriteria,skp_kriteria_penilaian.kode_kategori,"+
-                    "skp_kategori_penilaian.nama_kategori,skp_kategori_penilaian.sasaran from skp_kriteria_penilaian inner join skp_kategori_penilaian on skp_kategori_penilaian.kode_kategori=skp_kriteria_penilaian.kode_kategori "+
-                    "where skp_kriteria_penilaian.kode_kriteria like ? or skp_kriteria_penilaian.nama_kriteria like ? or skp_kriteria_penilaian.kode_kategori like ? or skp_kategori_penilaian.nama_kategori like ? or "+
-                    "skp_kategori_penilaian.sasaran like ? order by skp_kategori_penilaian.sasaran,skp_kriteria_penilaian.kode_kategori");
+                    "select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
+                    "laborat_kesling_nilai_normal_baku_mutu.nilai_normal,laborat_kesling_master_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,laborat_kesling_master_sampel.baku_mutu from laborat_kesling_nilai_normal_baku_mutu "+
+                    "inner join laborat_kesling_parameter_pengujian on laborat_kesling_parameter_pengujian.kode_parameter=laborat_kesling_nilai_normal_baku_mutu.kode_parameter "+
+                    "inner join laborat_kesling_master_sampel on laborat_kesling_master_sampel.kode_sampel=laborat_kesling_nilai_normal_baku_mutu.kode_sampel "+
+                    (TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like ? or laborat_kesling_parameter_pengujian.nama_parameter like ? or "+
+                    "laborat_kesling_parameter_pengujian.metode_pengujian like ? or laborat_kesling_master_sampel.kode_sampel like ? or laborat_kesling_master_sampel.nama_sampel like ? or "+
+                    "laborat_kesling_master_sampel.baku_mutu like ?")+"order by laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_master_sampel.kode_sampe");
             try {
-                ps.setString(1,"%"+TCari.getText().trim()+"%");
-                ps.setString(2,"%"+TCari.getText().trim()+"%");
-                ps.setString(3,"%"+TCari.getText().trim()+"%");
-                ps.setString(4,"%"+TCari.getText().trim()+"%");
-                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5).
-                        replaceAll("1","1. Mengidentifikasi Pasien Dengan Benar").
-                        replaceAll("2","2. Meningkatkan Komunikasi Yang Efektif").
-                        replaceAll("3","3. Meningkatkan Keamanan Obat-obatan Yang Harus Diwaspadai").
-                        replaceAll("4","4. Memastikan Lokasi Pembedahan Yang Benar, Prosedur Yang Benar, Pembedahan Pada Pasien Yang Benar").
-                        replaceAll("5","5. Mengurangi Risiko Infeksi Akibat Perawatan Kesehatan").
-                        replaceAll("6","6. Mengurangi Risiko Cidera Pasien Akibat Terjatuh")
+                        rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif Bangsal : "+e);
+                System.out.println("Notif : "+e);
             } finally{
                 if(rs!=null){
                     rs.close();
@@ -817,10 +907,9 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        //Kode.setText("");
-        //Kriteria.setText("");
+        NilaiNormal.setText("");
         TCari.setText("");
-        //Kode.requestFocus();
+        NilaiNormal.requestFocus();
     }
 
     private void getData() {

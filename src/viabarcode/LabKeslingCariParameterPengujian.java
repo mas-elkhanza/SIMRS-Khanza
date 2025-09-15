@@ -44,7 +44,6 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
     private ResultSet rs;
     private File file;
     private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
@@ -58,7 +57,7 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
         this.setLocation(10,2);
         setSize(656,250);
 
-        tabMode=new DefaultTableModel(null,new Object[]{"Kode Sampel","Nama Sampel","Baku Mutu"}){
+        tabMode=new DefaultTableModel(null,new Object[]{"Kode","Nama Parameter","Metode Pengujian","Satuan"}){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
 
@@ -67,14 +66,16 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==1){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(220);
             }else if(i==2){
-                column.setPreferredWidth(450);
+                column.setPreferredWidth(190);
+            }else if(i==3){
+                column.setPreferredWidth(90);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -170,7 +171,7 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
         panelisi3.add(label9);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(312, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(272, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -334,7 +335,7 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            if(Valid.daysOld("./cache/sampelbakumutulabkesling.iyem")<30){
+            if(Valid.daysOld("./cache/parameterpengujianlabkesling.iyem")<30){
                 tampil2();
             }else{
                 tampil();
@@ -377,16 +378,16 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try {
-            file=new File("./cache/sampelbakumutulabkesling.iyem");
+            file=new File("./cache/parameterpengujianlabkesling.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-            ps=koneksi.prepareStatement("select * from laborat_kesling_master_sampel");
+            ps=koneksi.prepareStatement("select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan from laborat_kesling_parameter_pengujian");
             try{           
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
-                    iyembuilder.append("{\"KodeSampel\":\"").append(rs.getString(1)).append("\",\"NamaSampel\":\"").append(rs.getString(2)).append("\",\"BakuMutu\":\"").append(rs.getString(3)).append("\"},");
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                    iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"NamaParameter\":\"").append(rs.getString(2)).append("\",\"MetodePengujian\":\"").append(rs.getString(3)).append("\",\"Satuan\":\"").append(rs.getString(4)).append("\"},");
                 }
             }catch(Exception e){
                 System.out.println("Notifikasi : "+e);
@@ -402,7 +403,7 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
 
             if (iyembuilder.length() > 0) {
                 iyembuilder.setLength(iyembuilder.length() - 1);
-                fileWriter.write("{\"sampelbakumutulabkesling\":["+iyembuilder+"]}");
+                fileWriter.write("{\"parameterpengujianlabkesling\":["+iyembuilder+"]}");
                 fileWriter.flush();
             }
             
@@ -423,27 +424,27 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
     }
     
     public void isCek(){        
-        BtnTambah.setEnabled(akses.getmaster_sampel_bakumutu());
+        BtnTambah.setEnabled(akses.getparameter_pengujian_lab_kesehatan_lingkungan());
     }
     
     private void tampil2() {
         try {
-            myObj = new FileReader("./cache/sampelbakumutulabkesling.iyem");
+            myObj = new FileReader("./cache/parameterpengujianlabkesling.iyem");
             root = mapper.readTree(myObj);
             Valid.tabelKosong(tabMode);
-            response = root.path("sampelbakumutulabkesling");
+            response = root.path("parameterpengujianlabkesling");
             if(response.isArray()){
                 if(TCari.getText().trim().equals("")){
                     for(JsonNode list:response){
                         tabMode.addRow(new Object[]{
-                            list.path("KodeSampel").asText(),list.path("NamaSampel").asText(),list.path("BakuMutu").asText()
+                            list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText()
                         });
                     }
                 }else{
                     for(JsonNode list:response){
-                        if(list.path("KodeSampel").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaSampel").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                        if(list.path("Kode").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaParameter").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
                             tabMode.addRow(new Object[]{
-                                list.path("KodeSampel").asText(),list.path("NamaSampel").asText(),list.path("BakuMutu").asText()
+                                list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText()
                             });
                         }
                     }
