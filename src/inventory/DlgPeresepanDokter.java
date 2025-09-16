@@ -2000,7 +2000,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         return BtnSimpan;
     }
     
-    public void isCek(){   
+    public void isCek(){
+        ChkRM.setEnabled(akses.getadmin());
+        NoResep.setEditable(akses.getadmin());
         BtnTambah.setEnabled(akses.getresep_dokter());
         TCari.requestFocus();
         if(!DEPOAKTIFOBAT.equals("")){
