@@ -59,7 +59,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         setSize(545,599);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "Kode","Nama Parameter","Metode Pengujian","Satuan","Nilai Normal","Kode Sampel","Nama Sampel","Baku Mutu"
+                "Kode Param","Nama Parameter","Metode Pengujian","Satuan","Nilai Normal","Kode Sampel","Nama Sampel","Baku Mutu"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -71,19 +71,19 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         for (i = 0; i < 8; i++) {
             TableColumn column = tbBangsal.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(70);
             }else if(i==1){
-                column.setPreferredWidth(220);
+                column.setPreferredWidth(160);
             }else if(i==2){
-                column.setPreferredWidth(190);
+                column.setPreferredWidth(150);
             }else if(i==3){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==4){
-                column.setPreferredWidth(110);
+                column.setPreferredWidth(100);
             }else if(i==5){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(80);
             }else if(i==6){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(180);
             }else if(i==7){
                 column.setPreferredWidth(450);
             }
@@ -509,7 +509,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
         }else if(NilaiNormal.getText().trim().equals("")){
             Valid.textKosong(NilaiNormal,"Nilai Normal");
         }else{
-            if(Sequel.menyimpantf("laborat_kesling_nilai_normal_baku_mutun","?,?,?","Kode",3,new String[]{
+            if(Sequel.menyimpantf("laborat_kesling_nilai_normal_baku_mutu","?,?,?","Kode",3,new String[]{
                     KodeSampel.getText(),KodeParameter.getText(),NilaiNormal.getText()
                 })==true){
                 tabMode.addRow(new Object[]{
@@ -541,13 +541,14 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        /*if(Valid.hapusTabletf(tabMode,Kode,"skp_kriteria_penilaian","kode_kriteria")==true){
+        if(Sequel.queryu2tf("delete from laborat_kesling_nilai_normal_baku_mutu where kode_sampel=? and kode_parameter=?",2,
+            new String[]{KodeSampel.getText(),KodeParameter.getText()})==true){
             if(tbBangsal.getSelectedRow()!= -1){
                 tabMode.removeRow(tbBangsal.getSelectedRow());
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
             }
-        }*/
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
@@ -559,24 +560,29 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        /*if(Kode.getText().trim().equals("")){
-            Valid.textKosong(Kode,"Kode");
-        }else if(Kriteria.getText().trim().equals("")){
-            Valid.textKosong(Kriteria,"Kategori");
+        if(KodeParameter.getText().trim().equals("")||NamaParameter.getText().trim().equals("")){
+            Valid.textKosong(KodeParameter,"Parameter");
+        }else if(KodeSampel.getText().trim().equals("")||NamaSampel.getText().trim().equals("")){
+            Valid.textKosong(KodeSampel,"Sampel");
+        }else if(NilaiNormal.getText().trim().equals("")){
+            Valid.textKosong(NilaiNormal,"Nilai Normal");
         }else{
             if(tbBangsal.getSelectedRow()>-1){
-                if(Sequel.mengedittf("skp_kriteria_penilaian","kode_kriteria=?","kode_kriteria=?,nama_kriteria=?,kode_kategori=?",4,new String[]{
-                    Kode.getText(),Kriteria.getText(),KdKategori.getText(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 0).toString()
+                if(Sequel.mengedittf("laborat_kesling_nilai_normal_baku_mutu","kode_sampel=? and kode_parameter=?","kode_sampel=?,kode_parameter=?,nilai_normal=?",5,new String[]{
+                    KodeSampel.getText(),KodeParameter.getText(),NilaiNormal.getText(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 5).toString(),tbBangsal.getValueAt(tbBangsal.getSelectedRow(), 0).toString()
                 })==true){
-                    tbBangsal.setValueAt(Kode.getText(),tbBangsal.getSelectedRow(),0);
-                    tbBangsal.setValueAt(Kriteria.getText(),tbBangsal.getSelectedRow(),1);
-                    tbBangsal.setValueAt(KdKategori.getText(),tbBangsal.getSelectedRow(),2);
-                    tbBangsal.setValueAt(NmKategori.getText(),tbBangsal.getSelectedRow(),3);
-                    tbBangsal.setValueAt(Sasaran.getText(),tbBangsal.getSelectedRow(),4);
+                    tbBangsal.setValueAt(KodeParameter.getText(),tbBangsal.getSelectedRow(),0);
+                    tbBangsal.setValueAt(NamaParameter.getText(),tbBangsal.getSelectedRow(),1);
+                    tbBangsal.setValueAt(MetodePengujian.getText(),tbBangsal.getSelectedRow(),2);
+                    tbBangsal.setValueAt(Satuan.getText(),tbBangsal.getSelectedRow(),3);
+                    tbBangsal.setValueAt(NilaiNormal.getText(),tbBangsal.getSelectedRow(),4);
+                    tbBangsal.setValueAt(KodeSampel.getText(),tbBangsal.getSelectedRow(),5);
+                    tbBangsal.setValueAt(NamaSampel.getText(),tbBangsal.getSelectedRow(),6);
+                    tbBangsal.setValueAt(BakuMutu.getText(),tbBangsal.getSelectedRow(),7);
                     emptTeks();
                 }
             }            
-        }*/
+        }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
@@ -615,7 +621,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReport("rptSKPKriteriaPenilaian.jasper",param,"::[ Kriteria Pengkajian Pasien ]::");
+            Valid.MyReport("rptLaboratKeslingNilaiNormalBakuMutu.jasper",param,"::[ Nilai Normal Baku Mutu Laboratorium Kesehatan Lingkungan ]::");
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -873,7 +879,7 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
                     "inner join laborat_kesling_master_sampel on laborat_kesling_master_sampel.kode_sampel=laborat_kesling_nilai_normal_baku_mutu.kode_sampel "+
                     (TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like ? or laborat_kesling_parameter_pengujian.nama_parameter like ? or "+
                     "laborat_kesling_parameter_pengujian.metode_pengujian like ? or laborat_kesling_master_sampel.kode_sampel like ? or laborat_kesling_master_sampel.nama_sampel like ? or "+
-                    "laborat_kesling_master_sampel.baku_mutu like ?")+"order by laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_master_sampel.kode_sampe");
+                    "laborat_kesling_master_sampel.baku_mutu like ?")+"order by laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_master_sampel.kode_sampel");
             try {
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");
@@ -913,13 +919,16 @@ public final class LabKeslingNilaiNormalBakuMutu extends javax.swing.JDialog {
     }
 
     private void getData() {
-        /*if(tbBangsal.getSelectedRow()!= -1){
-            Kode.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
-            Kriteria.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
-            KdKategori.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),2).toString());
-            NmKategori.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),3).toString());
-            Sasaran.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
-        }*/
+        if(tbBangsal.getSelectedRow()!= -1){
+            KodeParameter.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
+            NamaParameter.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),1).toString());
+            MetodePengujian.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),2).toString());
+            Satuan.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),3).toString());
+            NilaiNormal.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),4).toString());
+            KodeSampel.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),5).toString());
+            NamaSampel.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),6).toString());
+            BakuMutu.setText(tbBangsal.getValueAt(tbBangsal.getSelectedRow(),7).toString());
+        }
     }
 
     public JTable getTable(){
