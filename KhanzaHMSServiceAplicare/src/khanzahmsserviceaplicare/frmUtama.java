@@ -31,7 +31,7 @@ public class frmUtama extends javax.swing.JFrame {
     private  Connection koneksi=koneksiDB.condb();
     private final sekuel Sequel=new sekuel();
     private String requestJson;
-    private final String URL = "";
+    private final String URL = koneksiDB.URLAPIAPLICARE();
     private final String kodeppk = Sequel.cariIsi("select setting.kode_ppk from setting");
     private final BPJSApiAplicare api=new BPJSApiAplicare();
     private  HttpHeaders headers;
