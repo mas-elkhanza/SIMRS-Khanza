@@ -2464,10 +2464,10 @@ public final class RMSkriningTBC extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        //BtnSimpan.setEnabled(akses.getskrining_tbc());
-        //BtnHapus.setEnabled(akses.getskrining_tbc());
-        //BtnEdit.setEnabled(akses.getskrining_tbc());
-        //BtnPrint.setEnabled(akses.getskrining_tbc()); 
+        BtnSimpan.setEnabled(akses.getskrining_tbc());
+        BtnHapus.setEnabled(akses.getskrining_tbc());
+        BtnEdit.setEnabled(akses.getskrining_tbc());
+        BtnPrint.setEnabled(akses.getskrining_tbc()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
