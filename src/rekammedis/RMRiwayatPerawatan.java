@@ -311,6 +311,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanMedisRalanGeriatri = new widget.CekBox();
         chkAsuhanMedisRalanKulitKelamin = new widget.CekBox();
         chkAsuhanMedisRalanParu = new widget.CekBox();
+        chkAsuhanMedisRalanJantung = new widget.CekBox();
         chkAsuhanMedisRalanKedokteranFisik = new widget.CekBox();
         chkAsuhanMedisRanap = new widget.CekBox();
         chkAsuhanMedisRanapKandungan = new widget.CekBox();
@@ -622,7 +623,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-08-2025 14:52:06" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2025 14:25:16" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -931,7 +932,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4375));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4400));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -1250,6 +1251,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkAsuhanMedisRalanParu.setOpaque(false);
         chkAsuhanMedisRalanParu.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkAsuhanMedisRalanParu);
+
+        chkAsuhanMedisRalanJantung.setSelected(true);
+        chkAsuhanMedisRalanJantung.setText("Awal Medis Ralan Jantung");
+        chkAsuhanMedisRalanJantung.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkAsuhanMedisRalanJantung.setName("chkAsuhanMedisRalanJantung"); // NOI18N
+        chkAsuhanMedisRalanJantung.setOpaque(false);
+        chkAsuhanMedisRalanJantung.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkAsuhanMedisRalanJantung);
 
         chkAsuhanMedisRalanKedokteranFisik.setSelected(true);
         chkAsuhanMedisRalanKedokteranFisik.setText("Awal Medis Ralan Fisik & Rehabilitasi");
@@ -3156,6 +3165,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkChecklistKriteriaMasukPICU.setSelected(true);
             chkChecklistKriteriaKeluarPICU.setSelected(true);
             chkSkriningInstrumenAMT.setSelected(true);
+            chkAsuhanMedisRalanJantung.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3346,6 +3356,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkChecklistKriteriaMasukPICU.setSelected(false);
             chkChecklistKriteriaKeluarPICU.setSelected(false);
             chkSkriningInstrumenAMT.setSelected(false);
+            chkAsuhanMedisRalanJantung.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -3986,6 +3997,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkAsuhanMedisRalanBedah;
     private widget.CekBox chkAsuhanMedisRalanBedahMulut;
     private widget.CekBox chkAsuhanMedisRalanGeriatri;
+    private widget.CekBox chkAsuhanMedisRalanJantung;
     private widget.CekBox chkAsuhanMedisRalanKandungan;
     private widget.CekBox chkAsuhanMedisRalanKedokteranFisik;
     private widget.CekBox chkAsuhanMedisRalanKulitKelamin;
