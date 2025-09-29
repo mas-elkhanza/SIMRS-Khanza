@@ -988,6 +988,7 @@ import rekammedis.RMPenilaianAwalMedisRalanPenyakitDalam;
 import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
 import rekammedis.RMPenilaianAwalMedisRalanRehabMedik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
+import rekammedis.RMPenilaianAwalMedisRalanUrologi;
 import rekammedis.RMPenilaianAwalMedisRanapDewasa;
 import rekammedis.RMPenilaianAwalMedisRanapKandungan;
 import rekammedis.RMPenilaianAwalMedisRanapNeonatus;
@@ -22969,6 +22970,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianAwalMedisRalanUrologiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianAwalMedisRalanUrologi aplikasi=new RMPenilaianAwalMedisRalanUrologi(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23678,7 +23693,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV,btnSkriningInstrumenACRS,
             btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional,btnChecklistKriteriaMasukNICU,btnChecklistKriteriaKeluarNICU,btnPenilaianAwalMedisRanapPsikiatri,
             btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu,btnSkriningInstrumenAMT,btnLabKeslingParameterPengujian,
-            btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung;
+            btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung,btnPenilaianAwalMedisRalanUrologi;
     
     public void isWall(){
         try{            
@@ -27602,6 +27617,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_medis_ralan_jantung()==true){
                 Panelmenu.add(btnPenilaianAwalMedisRalanJantung);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_medis_ralan_urologi()==true){
+                Panelmenu.add(btnPenilaianAwalMedisRalanUrologi);
                 jmlmenu++;
             }
             
@@ -33321,6 +33341,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpenilaian_awal_medis_ralan_jantung()==true){
             Panelmenu.add(btnPenilaianAwalMedisRalanJantung);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_awal_medis_ralan_urologi()==true){
+            Panelmenu.add(btnPenilaianAwalMedisRalanUrologi);
             jmlmenu++;
         }
         
@@ -40544,6 +40569,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenilaian_awal_medis_ralan_jantung()==true){
             if(btnPenilaianAwalMedisRalanJantung.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalMedisRalanJantung);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_awal_medis_ralan_urologi()==true){
+            if(btnPenilaianAwalMedisRalanUrologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalMedisRalanUrologi);
                 jmlmenu++;
             }                
         }
@@ -48747,5 +48779,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRalanJantung.setName("btnPenilaianAwalMedisRalanJantung");
         btnPenilaianAwalMedisRalanJantung.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRalanJantung.addActionListener(this::btnPenilaianAwalMedisRalanJantungActionPerformed);
+        
+        btnPenilaianAwalMedisRalanUrologi = new widget.ButtonBig();
+        btnPenilaianAwalMedisRalanUrologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/12321086_kidney_medical_health_organ_care_icon.png"))); 
+        btnPenilaianAwalMedisRalanUrologi.setText("Awal Medis Ralan Urologi");
+        btnPenilaianAwalMedisRalanUrologi.setIconTextGap(0);
+        btnPenilaianAwalMedisRalanUrologi.setName("btnPenilaianAwalMedisRalanUrologi");
+        btnPenilaianAwalMedisRalanUrologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalMedisRalanUrologi.addActionListener(this::btnPenilaianAwalMedisRalanUrologiActionPerformed);
     }
 }

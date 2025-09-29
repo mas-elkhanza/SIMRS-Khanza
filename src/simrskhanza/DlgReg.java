@@ -182,6 +182,7 @@ import rekammedis.RMPenilaianAwalMedisRalanPenyakitDalam;
 import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
 import rekammedis.RMPenilaianAwalMedisRalanRehabMedik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
+import rekammedis.RMPenilaianAwalMedisRalanUrologi;
 import rekammedis.RMPenilaianBayiBaruLahir;
 import rekammedis.RMPenilaianDerajatDehidrasi;
 import rekammedis.RMPenilaianFisioterapi;
@@ -16143,6 +16144,28 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }
     
+    private void MnPenilaianAwalMedisRalanUrologiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianAwalMedisRalanActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPenilaianAwalMedisRalanUrologi form=new RMPenilaianAwalMedisRalanUrologi(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -16583,7 +16606,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             MnSkriningKankerKolorektal,MnPenilaianPsikologKlinis,MnPenilaianDerajatDehidrasi,MnHasilPemeriksaanECHO,MnPenilaianBayiBaruLahir,MnSkriningDiabetesMelitus,MnLaporanTindakan,MnPelaksanaanInformasiEdukasi,MnLayananKedokteranFisikRehabilitasi,MnSkriningKesehatanGigiMulutBalita,
             MnSkriningAnemia,MnSkriningHipertensi,MnSkriningKesehatanPenglihatan,MnCatatanObservasiHemodialisa,MnSkriningKesehatanGigiMulutDewasa,MnSkriningRisikoKankerServiks,MnCatatanCairanHemodialisa,MnSkriningKesehatanGigiMulutLansia,MnSkriningIndraPendengaran,
             MnCatatanPengkajianPaskaOperasi,MnSkriningFrailtySyndrome,MnCatatanObservasiBayi,MnCheckListKesiapanAnestesi,MnHasilPemeriksaanSlitLamp,MnHasilPemeriksaanOCT,MnCetakSuratKeteranganLayakTerbang,MnPersetujuanPemeriksaanHIV,MnSkriningInstrumenACRS,MnPernyataanMemilihDPJP,
-            MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung;
+            MnSkriningInstrumenMentalEmosional,MnCheckListKriteriaMasukNICU,MnCheckListKriteriaMasukPICU,MnSkriningInstrumenAMT,MnSkriningPneumoniaSeverityIndex,MnPenilaianAwalMedisRalanJantung,MnPenilaianAwalMedisRalanUrologi;
     private javax.swing.JMenu MnHasilUSG,MnHasilEndoskopi,MnRMSkrining,MnEdukasi,MnRehabMedik,MnRMSkriningRisikoKanker,MnRMSkriningKesehatanGigiMulut,MnSuratPersetujuan,MnSkriningInstrumen;
     
     private synchronized void tampil() {
@@ -17072,7 +17095,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianAwalMedisIGD.setEnabled(akses.getpenilaian_awal_medis_igd());     
         MnPenilaianAwalMedisRalanKebidanan.setEnabled(akses.getpenilaian_awal_medis_ralan_kebidanan());     
         MnPenilaianAwalMedisRalanBayi.setEnabled(akses.getpenilaian_awal_medis_ralan_anak());        
-        MnPenilaianAwalMedisRalanJantung.setEnabled(akses.getpenilaian_awal_medis_ralan_jantung());        
+        MnPenilaianAwalMedisRalanJantung.setEnabled(akses.getpenilaian_awal_medis_ralan_jantung());     
+        MnPenilaianAwalMedisRalanUrologi.setEnabled(akses.getpenilaian_awal_medis_ralan_urologi());     
         MnPenilaianFisioterapi.setEnabled(akses.getpenilaian_fisioterapi());             
         ppProgramPRB.setEnabled(akses.getbpjs_program_prb());    
         ppSuplesiJasaRaharja.setEnabled(akses.getbpjs_suplesi_jasaraharja());    
@@ -18430,6 +18454,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPenilaianAwalMedisRalanJantung.setPreferredSize(new java.awt.Dimension(260, 26));
         MnPenilaianAwalMedisRalanJantung.addActionListener(this::MnPenilaianAwalMedisRalanJantungActionPerformed);
         
+        MnPenilaianAwalMedisRalanUrologi = new javax.swing.JMenuItem();
+        MnPenilaianAwalMedisRalanUrologi.setBackground(new java.awt.Color(255, 255, 254));
+        MnPenilaianAwalMedisRalanUrologi.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPenilaianAwalMedisRalanUrologi.setForeground(new java.awt.Color(50, 50, 50));
+        MnPenilaianAwalMedisRalanUrologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPenilaianAwalMedisRalanUrologi.setText("Pengkajian Awal Medis Urologi");
+        MnPenilaianAwalMedisRalanUrologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPenilaianAwalMedisRalanUrologi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPenilaianAwalMedisRalanUrologi.setName("MnPenilaianAwalMedisRalanUrologi");
+        MnPenilaianAwalMedisRalanUrologi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnPenilaianAwalMedisRalanUrologi.addActionListener(this::MnPenilaianAwalMedisRalanUrologiActionPerformed);
+        
         MnHasilUSG = new javax.swing.JMenu();
         MnHasilUSG.setBackground(new java.awt.Color(255, 255, 254));
         MnHasilUSG.setForeground(new java.awt.Color(50, 50, 50));
@@ -18574,6 +18610,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnAwalMedis.add(MnPenilaianAwalMedisRalanKulitKelamin);
         MnAwalMedis.add(MnPenilaianAwalMedisRalanParu);
         MnAwalMedis.add(MnPenilaianAwalMedisRalanJantung);
+        MnAwalMedis.add(MnPenilaianAwalMedisRalanUrologi);
         MnAwalMedis.add(MnPenilaianAwalMedisRalanFisikRehabilitasi);
         MnAwalMedis.add(MnPenilaianAwalMedisHemodialisa);
         

@@ -141,6 +141,7 @@ import rekammedis.RMPenilaianAwalMedisRalanPenyakitDalam;
 import rekammedis.RMPenilaianAwalMedisRalanPsikiatrik;
 import rekammedis.RMPenilaianAwalMedisRalanRehabMedik;
 import rekammedis.RMPenilaianAwalMedisRalanTHT;
+import rekammedis.RMPenilaianAwalMedisRalanUrologi;
 import rekammedis.RMPenilaianBayiBaruLahir;
 import rekammedis.RMPenilaianDerajatDehidrasi;
 import rekammedis.RMPenilaianFisioterapi;
@@ -10318,6 +10319,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnAwalMedisUrologiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMPenilaianAwalMedisRalanUrologi form=new RMPenilaianAwalMedisRalanUrologi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -10677,7 +10695,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnLaporanTindakan,BtnPelaksanaanInformasiEdukasi,BtnLayananKedokteranFisikRehabilitasi,BtnSkriningKesehatanGigiMulutBalita,BtnSkriningAnemia,BtnSkriningHipertensi,BtnSkriningKesehatanPenglihatan,
                           BtnCatatanObservasiHemodialisa,BtnSkriningKesehatanGigiMulutDewasa,BtnSkriningRisikoKankerServiks,BtnCatatanCairanHemodialisa,BtnSkriningKesehatanGigiMulutLansia,BtnSkriningIndraPendengaran,
                           BtnCatatanPengkajianPaskaOperasi,BtnSkriningFrailtySyndrome,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,BtnSkriningInstrumenACRS,
-                          BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaMasukPICU,BtnSkriningInstrumenMentalEmosional,BtnSkriningInstrumenAMT,BtnSkriningPneumoniaSeverityIndex,BtnAwalMedisJantung;   
+                          BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaMasukPICU,BtnSkriningInstrumenMentalEmosional,BtnSkriningInstrumenAMT,BtnSkriningPneumoniaSeverityIndex,BtnAwalMedisJantung,BtnAwalMedisUrologi;   
     
     private void tampilDr() {
         Valid.tabelKosong(tabModeDr);
@@ -11139,6 +11157,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
         BtnAwalMedisJantung.setVisible(akses.getpenilaian_awal_medis_ralan_jantung()); 
         if(akses.getpenilaian_awal_medis_ralan_jantung()==true){
+            tinggi=tinggi+24;
+        }
+        BtnAwalMedisUrologi.setVisible(akses.getpenilaian_awal_medis_ralan_urologi()); 
+        if(akses.getpenilaian_awal_medis_ralan_urologi()==true){
             tinggi=tinggi+24;
         }
         BtnPenilaianPsikolog.setVisible(akses.getpenilaian_psikologi()); 
@@ -13601,6 +13623,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnAwalMedisJantung.setRoundRect(false);
         BtnAwalMedisJantung.addActionListener(this::BtnAwalMedisJantungActionPerformed);
         
+        BtnAwalMedisUrologi = new widget.Button();
+        BtnAwalMedisUrologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
+        BtnAwalMedisUrologi.setText("Awal Medis Urologi");
+        BtnAwalMedisUrologi.setFocusPainted(false);
+        BtnAwalMedisUrologi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnAwalMedisUrologi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnAwalMedisUrologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnAwalMedisUrologi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnAwalMedisUrologi.setName("BtnAwalMedisUrologi"); 
+        BtnAwalMedisUrologi.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnAwalMedisUrologi.setRoundRect(false);
+        BtnAwalMedisUrologi.addActionListener(this::BtnAwalMedisUrologiActionPerformed);
+        
         BtnLaporanTindakan = new widget.Button();
         BtnLaporanTindakan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); 
         BtnLaporanTindakan.setText("Laporan Tindakan");
@@ -13739,6 +13774,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnAwalMedisKulitKelamin);
         FormMenu.add(BtnAwalMedisParu);
         FormMenu.add(BtnAwalMedisJantung);
+        FormMenu.add(BtnAwalMedisUrologi);
         FormMenu.add(BtnAwalMedisRehabMedik);
         FormMenu.add(BtnAwalMedisHemodialisa);
         FormMenu.add(BtnRujukKeluar);
