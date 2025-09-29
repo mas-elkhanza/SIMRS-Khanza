@@ -68,7 +68,8 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
 
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.R.M.","Nama Pasien","Umur","JK","Tgl.Lahir","Tgl.Obser","Jam Obser","QB","QD",
-            "Arteri","Vena","TMP","UFR","Tensi","Nadi","Suhu","SpO2","Tindakan","UFG","NIP","Nama Petugas"
+            "Arteri","Vena","TMP","UFR","Tensi","Nadi","Suhu","SpO2","Tindakan","UFG","Barcode HF","NIP",
+            "Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -78,7 +79,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 22; i++) {
+        for (i = 0; i < 23; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -121,8 +122,10 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }else if(i==19){
                 column.setPreferredWidth(45);
             }else if(i==20){
-                column.setPreferredWidth(90);
+                column.setPreferredWidth(200);
             }else if(i==21){
+                column.setPreferredWidth(90);
+            }else if(i==22){
                 column.setPreferredWidth(150);
             }
         }
@@ -140,8 +143,9 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         Nadi.setDocument(new batasInput((byte)6).getKata(Nadi));
         Suhu.setDocument(new batasInput((byte)5).getKata(Suhu));
         SpO2.setDocument(new batasInput((byte)5).getKata(SpO2));
-        Tindakan.setDocument(new batasInput((byte)100).getKata(Tindakan));
+        Tindakan.setDocument(new batasInput((int)100).getKata(Tindakan));
         UFG.setDocument(new batasInput((byte)10).getKata(UFG));
+        BarcodeHF.setDocument(new batasInput((int)50).getKata(BarcodeHF));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -299,6 +303,8 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         Tindakan = new widget.TextBox();
         jLabel31 = new widget.Label();
         UFG = new widget.TextBox();
+        jLabel27 = new widget.Label();
+        BarcodeHF = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
@@ -499,7 +505,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -513,7 +519,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -574,7 +580,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 154));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 184));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setBackground(new java.awt.Color(250, 255, 245));
@@ -609,7 +615,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -888,12 +894,12 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(Tindakan);
-        Tindakan.setBounds(415, 100, 267, 23);
+        Tindakan.setBounds(415, 100, 374, 23);
 
         jLabel31.setText("UFG :");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(686, 100, 40, 23);
+        jLabel31.setBounds(0, 130, 70, 23);
 
         UFG.setFocusTraversalPolicyProvider(true);
         UFG.setName("UFG"); // NOI18N
@@ -903,7 +909,22 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             }
         });
         FormInput.add(UFG);
-        UFG.setBounds(730, 100, 60, 23);
+        UFG.setBounds(74, 130, 60, 23);
+
+        jLabel27.setText("Barcode HF :");
+        jLabel27.setName("jLabel27"); // NOI18N
+        FormInput.add(jLabel27);
+        jLabel27.setBounds(146, 130, 70, 23);
+
+        BarcodeHF.setFocusTraversalPolicyProvider(true);
+        BarcodeHF.setName("BarcodeHF"); // NOI18N
+        BarcodeHF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BarcodeHFKeyPressed(evt);
+            }
+        });
+        FormInput.add(BarcodeHF);
+        BarcodeHF.setBounds(220, 130, 260, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -970,7 +991,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,UFG,BtnBatal);
+            Valid.pindah(evt,BarcodeHF,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -991,7 +1012,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString())){
+                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString())){
                     if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+" "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
                         hapus();
                     }
@@ -1022,7 +1043,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString())){
+                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString())){
                         if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+" "+tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
                             if(TanggalRegistrasi.getText().equals("")){
                                 TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
@@ -1405,7 +1426,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_hemodialisa.tgl_perawatan,catatan_observasi_hemodialisa.jam_rawat,catatan_observasi_hemodialisa.qb,catatan_observasi_hemodialisa.qd,"+
                     "catatan_observasi_hemodialisa.tekanan_arteri,catatan_observasi_hemodialisa.tekanan_vena,catatan_observasi_hemodialisa.tmp,catatan_observasi_hemodialisa.ufr,catatan_observasi_hemodialisa.tensi,"+
                     "catatan_observasi_hemodialisa.nadi,catatan_observasi_hemodialisa.suhu,catatan_observasi_hemodialisa.spo2,catatan_observasi_hemodialisa.tindakan,catatan_observasi_hemodialisa.ufg,"+
-                    "catatan_observasi_hemodialisa.nip,petugas.nama from catatan_observasi_hemodialisa inner join reg_periksa on catatan_observasi_hemodialisa.no_rawat=reg_periksa.no_rawat "+
+                    "catatan_observasi_hemodialisa.barcode_hf,catatan_observasi_hemodialisa.nip,petugas.nama from catatan_observasi_hemodialisa inner join reg_periksa on catatan_observasi_hemodialisa.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on catatan_observasi_hemodialisa.nip=petugas.nip where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' "+
                     "order by catatan_observasi_hemodialisa.tgl_perawatan,catatan_observasi_hemodialisa.jam_rawat",param);
         }
@@ -1456,8 +1477,12 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
     }//GEN-LAST:event_TindakanKeyPressed
 
     private void UFGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UFGKeyPressed
-        Valid.pindah(evt,Tindakan,BtnSimpan);
+        Valid.pindah(evt,Tindakan,BarcodeHF);
     }//GEN-LAST:event_UFGKeyPressed
+
+    private void BarcodeHFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BarcodeHFKeyPressed
+        Valid.pindah(evt,UFG,BtnSimpan);
+    }//GEN-LAST:event_BarcodeHFKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1477,6 +1502,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox Arteri;
+    private widget.TextBox BarcodeHF;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1534,6 +1560,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
     private widget.Label jLabel24;
     private widget.Label jLabel25;
     private widget.Label jLabel26;
+    private widget.Label jLabel27;
     private widget.Label jLabel28;
     private widget.Label jLabel29;
     private widget.Label jLabel30;
@@ -1558,7 +1585,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_hemodialisa.tgl_perawatan,catatan_observasi_hemodialisa.jam_rawat,catatan_observasi_hemodialisa.qb,catatan_observasi_hemodialisa.qd,"+
                     "catatan_observasi_hemodialisa.tekanan_arteri,catatan_observasi_hemodialisa.tekanan_vena,catatan_observasi_hemodialisa.tmp,catatan_observasi_hemodialisa.ufr,catatan_observasi_hemodialisa.tensi,"+
                     "catatan_observasi_hemodialisa.nadi,catatan_observasi_hemodialisa.suhu,catatan_observasi_hemodialisa.spo2,catatan_observasi_hemodialisa.tindakan,catatan_observasi_hemodialisa.ufg,"+
-                    "catatan_observasi_hemodialisa.nip,petugas.nama from catatan_observasi_hemodialisa inner join reg_periksa on catatan_observasi_hemodialisa.no_rawat=reg_periksa.no_rawat "+
+                    "catatan_observasi_hemodialisa.barcode_hf,catatan_observasi_hemodialisa.nip,petugas.nama from catatan_observasi_hemodialisa inner join reg_periksa on catatan_observasi_hemodialisa.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on catatan_observasi_hemodialisa.nip=petugas.nip where "+
                     "catatan_observasi_hemodialisa.tgl_perawatan between ? and ? order by catatan_observasi_hemodialisa.tgl_perawatan,catatan_observasi_hemodialisa.jam_rawat");
             }else{
@@ -1567,7 +1594,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
                     "pasien.jk,pasien.tgl_lahir,catatan_observasi_hemodialisa.tgl_perawatan,catatan_observasi_hemodialisa.jam_rawat,catatan_observasi_hemodialisa.qb,catatan_observasi_hemodialisa.qd,"+
                     "catatan_observasi_hemodialisa.tekanan_arteri,catatan_observasi_hemodialisa.tekanan_vena,catatan_observasi_hemodialisa.tmp,catatan_observasi_hemodialisa.ufr,catatan_observasi_hemodialisa.tensi,"+
                     "catatan_observasi_hemodialisa.nadi,catatan_observasi_hemodialisa.suhu,catatan_observasi_hemodialisa.spo2,catatan_observasi_hemodialisa.tindakan,catatan_observasi_hemodialisa.ufg,"+
-                    "catatan_observasi_hemodialisa.nip,petugas.nama from catatan_observasi_hemodialisa inner join reg_periksa on catatan_observasi_hemodialisa.no_rawat=reg_periksa.no_rawat "+
+                    "catatan_observasi_hemodialisa.barcode_hf,catatan_observasi_hemodialisa.nip,petugas.nama from catatan_observasi_hemodialisa inner join reg_periksa on catatan_observasi_hemodialisa.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on catatan_observasi_hemodialisa.nip=petugas.nip where "+
                     "catatan_observasi_hemodialisa.tgl_perawatan between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or catatan_observasi_hemodialisa.nip like ? or petugas.nama like ?) "+
                     "order by catatan_observasi_hemodialisa.tgl_perawatan,catatan_observasi_hemodialisa.jam_rawat ");
@@ -1592,7 +1619,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
                         rs.getDate("tgl_perawatan"),rs.getTime("jam_rawat"),rs.getString("qb"),rs.getString("qd"),rs.getString("tekanan_arteri"),rs.getString("tekanan_vena"),rs.getString("tmp"),rs.getString("ufr"),
-                        rs.getString("tensi"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("spo2"),rs.getString("tindakan"),rs.getString("ufg"),rs.getString("nip"),rs.getString("nama")
+                        rs.getString("tensi"),rs.getString("nadi"),rs.getString("suhu"),rs.getString("spo2"),rs.getString("tindakan"),rs.getString("ufg"),rs.getString("barcode_hf"),rs.getString("nip"),rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
@@ -1624,6 +1651,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
         SpO2.setText("");
         Tindakan.setText("");
         UFG.setText("");
+        BarcodeHF.setText("");
         Tanggal.setDate(new Date());
         QB.requestFocus();
     } 
@@ -1651,6 +1679,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             SpO2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
             Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
             UFG.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            BarcodeHF.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());  
         }
     }
@@ -1699,7 +1728,7 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,154));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,184));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1793,10 +1822,10 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
 
     private void ganti() {
         if(Sequel.mengedittf("catatan_observasi_hemodialisa","tgl_perawatan=? and jam_rawat=? and no_rawat=?","no_rawat=?,tgl_perawatan=?,jam_rawat=?,qb=?,qd=?,tekanan_arteri=?,"+
-            "tekanan_vena=?,tmp=?,ufr=?,tensi=?,nadi=?,suhu=?,spo2=?,tindakan=?,ufg=?,nip=?",19,new String[]{
+            "tekanan_vena=?,tmp=?,ufr=?,tensi=?,nadi=?,suhu=?,spo2=?,tindakan=?,ufg=?,barcode_hf=?,nip=?",20,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             QB.getText(),QD.getText(),Arteri.getText(),Vena.getText(),TMP.getText(),UFR.getText(),Tensi.getText(),Nadi.getText(),Suhu.getText(),
-            SpO2.getText(),Tindakan.getText(),UFG.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
+            SpO2.getText(),Tindakan.getText(),UFG.getText(),BarcodeHF.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),6).toString(),
             tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
@@ -1819,8 +1848,9 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
             tbObat.setValueAt(SpO2.getText(),tbObat.getSelectedRow(),17);
             tbObat.setValueAt(Tindakan.getText(),tbObat.getSelectedRow(),18);
             tbObat.setValueAt(UFG.getText(),tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(BarcodeHF.getText(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),22);
             emptTeks();
         }
     }
@@ -1838,16 +1868,16 @@ public final class RMDataCatatanObservasiHemodialisa extends javax.swing.JDialog
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("catatan_observasi_hemodialisa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
+        if(Sequel.menyimpantf("catatan_observasi_hemodialisa","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 QB.getText(),QD.getText(),Arteri.getText(),Vena.getText(),TMP.getText(),UFR.getText(),Tensi.getText(),Nadi.getText(),Suhu.getText(),
-                SpO2.getText(),Tindakan.getText(),UFG.getText(),NIP.getText()
+                SpO2.getText(),Tindakan.getText(),UFG.getText(),BarcodeHF.getText(),NIP.getText()
         })==true){
             tabMode.addRow(new Object[]{
                 TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),TglLahir.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem()+""),Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
                 QB.getText(),QD.getText(),Arteri.getText(),Vena.getText(),TMP.getText(),UFR.getText(),Tensi.getText(),Nadi.getText(),Suhu.getText(),
-                SpO2.getText(),Tindakan.getText(),UFG.getText(),NIP.getText(),NamaPetugas.getText()
+                SpO2.getText(),Tindakan.getText(),UFG.getText(),BarcodeHF.getText(),NIP.getText(),NamaPetugas.getText()
             });
             LCount.setText(""+tabMode.getRowCount());
             emptTeks();

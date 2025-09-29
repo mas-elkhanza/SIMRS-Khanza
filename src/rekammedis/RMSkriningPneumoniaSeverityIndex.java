@@ -348,9 +348,9 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         NilaiPenyakitSerebrovaskular = new widget.TextBox();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel103 = new widget.Label();
-        jLabel34 = new widget.Label();
         jLabel35 = new widget.Label();
         DisorentasiMental = new widget.ComboBox();
+        jLabel34 = new widget.Label();
         jLabel36 = new widget.Label();
         NilaiDisorentasiMental = new widget.TextBox();
         jLabel37 = new widget.Label();
@@ -1200,12 +1200,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         FormInput.add(jLabel103);
         jLabel103.setBounds(10, 230, 490, 23);
 
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel34.setText("Disorientasi Mental");
-        jLabel34.setName("jLabel34"); // NOI18N
-        FormInput.add(jLabel34);
-        jLabel34.setBounds(44, 250, 150, 23);
-
         jLabel35.setText(":");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
@@ -1220,6 +1214,12 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         });
         FormInput.add(DisorentasiMental);
         DisorentasiMental.setBounds(149, 250, 90, 23);
+
+        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel34.setText("Disorientasi Mental");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(44, 250, 150, 23);
 
         jLabel36.setText("Nilai :");
         jLabel36.setName("jLabel36"); // NOI18N
