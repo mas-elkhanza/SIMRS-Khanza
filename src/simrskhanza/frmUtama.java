@@ -977,6 +977,7 @@ import rekammedis.RMPenilaianAwalMedisRalanBedah;
 import rekammedis.RMPenilaianAwalMedisRalanBedahMulut;
 import rekammedis.RMPenilaianAwalMedisRalanDewasa;
 import rekammedis.RMPenilaianAwalMedisRalanGeriatri;
+import rekammedis.RMPenilaianAwalMedisRalanJantung;
 import rekammedis.RMPenilaianAwalMedisRalanKandungan;
 import rekammedis.RMPenilaianAwalMedisRalanKulitDanKelamin;
 import rekammedis.RMPenilaianAwalMedisRalanMata;
@@ -22954,6 +22955,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnPenilaianAwalMedisRalanJantungActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMPenilaianAwalMedisRalanJantung aplikasi=new RMPenilaianAwalMedisRalanJantung(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setTampil();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23663,7 +23678,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV,btnSkriningInstrumenACRS,
             btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional,btnChecklistKriteriaMasukNICU,btnChecklistKriteriaKeluarNICU,btnPenilaianAwalMedisRanapPsikiatri,
             btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu,btnSkriningInstrumenAMT,btnLabKeslingParameterPengujian,
-            btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex;
+            btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung;
     
     public void isWall(){
         try{            
@@ -27582,6 +27597,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
                 Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
+                jmlmenu++;
+            }
+            
+            if(akses.getpenilaian_awal_medis_ralan_jantung()==true){
+                Panelmenu.add(btnPenilaianAwalMedisRalanJantung);
                 jmlmenu++;
             }
             
@@ -33296,6 +33316,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
             Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
+            jmlmenu++;
+        }
+        
+        if(akses.getpenilaian_awal_medis_ralan_jantung()==true){
+            Panelmenu.add(btnPenilaianAwalMedisRalanJantung);
             jmlmenu++;
         }
         
@@ -40512,6 +40537,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpenilaian_awal_medis_ranap_kebidanan()==true){
             if(btnPenilaianAwalMedisRanapKandungan.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnPenilaianAwalMedisRanapKandungan);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.getpenilaian_awal_medis_ralan_jantung()==true){
+            if(btnPenilaianAwalMedisRalanJantung.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnPenilaianAwalMedisRalanJantung);
                 jmlmenu++;
             }                
         }
@@ -48707,5 +48739,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLabKeslingNilaiNormalBakuMutu.setName("btnLabKeslingNilaiNormalBakuMutu");
         btnLabKeslingNilaiNormalBakuMutu.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLabKeslingNilaiNormalBakuMutu.addActionListener(this::btnLabKeslingNilaiNormalBakuMutuActionPerformed);
+        
+        btnPenilaianAwalMedisRalanJantung = new widget.ButtonBig();
+        btnPenilaianAwalMedisRalanJantung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4171353_couple_day_greetings_heart_love_icon.png"))); 
+        btnPenilaianAwalMedisRalanJantung.setText("Awal Medis Ralan Jantung");
+        btnPenilaianAwalMedisRalanJantung.setIconTextGap(0);
+        btnPenilaianAwalMedisRalanJantung.setName("btnPenilaianAwalMedisRalanJantung");
+        btnPenilaianAwalMedisRalanJantung.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnPenilaianAwalMedisRalanJantung.addActionListener(this::btnPenilaianAwalMedisRalanJantungActionPerformed);
     }
 }
