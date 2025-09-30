@@ -252,7 +252,7 @@ public final class akses {
             skrining_instrumen_mental_emosional=false,pelanggan_lab_kesehatan_lingkungan=false,kriteria_masuk_nicu=false,kriteria_keluar_nicu=false,penilaian_medis_ranap_psikiatrik=false,
             kriteria_masuk_picu=false,kriteria_keluar_picu=false,master_sampel_bakumutu=false,skrining_instrumen_amt=false,parameter_pengujian_lab_kesehatan_lingkungan=false,
             nilai_normal_baku_mutu_lab_kesehatan_lingkungan=false,skrining_pneumonia_severity_index=false,permintaan_pengujian_sampel_lab_kesehatan_lingkungan=false,
-            penilaian_awal_medis_ralan_jantung=false,penilaian_awal_medis_ralan_urologi=false,hasil_pemeriksaan_treadmill=false;
+            penilaian_awal_medis_ralan_jantung=false,penilaian_awal_medis_ralan_urologi=false,hasil_pemeriksaan_treadmill=false,hasil_pemeriksaan_echo_pediatrik=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1433,6 +1433,7 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_jantung=true;
                         akses.penilaian_awal_medis_ralan_urologi=true;
                         akses.hasil_pemeriksaan_treadmill=true;
+                        akses.hasil_pemeriksaan_echo_pediatrik=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2597,6 +2598,7 @@ public final class akses {
                         akses.penilaian_awal_medis_ralan_jantung=rs2.getBoolean("penilaian_awal_medis_ralan_jantung");
                         akses.penilaian_awal_medis_ralan_urologi=rs2.getBoolean("penilaian_awal_medis_ralan_urologi");
                         akses.hasil_pemeriksaan_treadmill=rs2.getBoolean("hasil_pemeriksaan_treadmill");
+                        akses.hasil_pemeriksaan_echo_pediatrik=rs2.getBoolean("hasil_pemeriksaan_echo_pediatrik");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3784,6 +3786,7 @@ public final class akses {
         akses.penilaian_awal_medis_ralan_jantung=false;
         akses.penilaian_awal_medis_ralan_urologi=false;
         akses.hasil_pemeriksaan_treadmill=false;
+        akses.hasil_pemeriksaan_echo_pediatrik=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -4985,4 +4988,5 @@ public final class akses {
     public static boolean getpenilaian_awal_medis_ralan_jantung(){return akses.penilaian_awal_medis_ralan_jantung;}
     public static boolean getpenilaian_awal_medis_ralan_urologi(){return akses.penilaian_awal_medis_ralan_urologi;}
     public static boolean gethasil_pemeriksaan_treadmill(){return akses.hasil_pemeriksaan_treadmill;}
+    public static boolean gethasil_pemeriksaan_echo_pediatrik(){return akses.hasil_pemeriksaan_echo_pediatrik;}
 }   
