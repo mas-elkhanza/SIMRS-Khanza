@@ -22,6 +22,7 @@ public final class akses {
     private static String kode="",kdbangsal="",alamatip="",namars="",alamatrs="",kabupatenrs="",propinsirs="",kontakrs="",emailrs="",form="",namauser="",kode_ppk=""; 
     private static int jml1=0,jml2=0,lebar=0,tinggi=0;
     private static boolean aktif=false,admin=false,user=false,vakum=false,aplikasi=false,penyakit=false,obat_penyakit=false,dokter=false,jadwal_praktek=false,petugas=false,pasien=false,registrasi=false,
+            rujuk_edukasi_berkelanjutan=false,
             tindakan_ralan=false,kamar_inap=false,tindakan_ranap=false,operasi=false,rujukan_keluar=false,rujukan_masuk=false,beri_obat=false,
             resep_pulang=false,pasien_meninggal=false,diet_pasien=false,kelahiran_bayi=false,periksa_lab=false,periksa_radiologi=false,
             kasir_ralan=false,deposit_pasien=false,piutang_pasien=false,peminjaman_berkas=false,barcode=false,presensi_harian=false,
@@ -283,6 +284,7 @@ public final class akses {
                         akses.kamar_inap=true;
                         akses.tindakan_ranap=true;
                         akses.operasi=true;
+                        akses.rujuk_edukasi_berkelanjutan = true;
                         akses.rujukan_keluar=true;
                         akses.rujukan_masuk=true;
                         akses.beri_obat=true;
@@ -1440,6 +1442,7 @@ public final class akses {
                         akses.petugas=rs2.getBoolean("petugas");
                         akses.pasien=rs2.getBoolean("pasien");
                         akses.registrasi=rs2.getBoolean("registrasi");
+                        akses.rujuk_edukasi_berkelanjutan=rs2.getBoolean("rujuk_edukasi_berkelanjutan");
                         akses.tindakan_ralan=rs2.getBoolean("tindakan_ralan");
                         akses.kamar_inap=rs2.getBoolean("kamar_inap");
                         akses.tindakan_ranap=rs2.getBoolean("tindakan_ranap");
@@ -2623,6 +2626,7 @@ public final class akses {
         akses.jadwal_praktek= false;
         akses.petugas= false;
         akses.pasien= false;
+        akses.rujuk_edukasi_berkelanjutan= false;
         akses.registrasi= false;
         akses.tindakan_ralan= false;
         akses.kamar_inap= false;
@@ -3783,7 +3787,8 @@ public final class akses {
     public static boolean getvakum(){return akses.vakum;} 
     public static boolean getaplikasi(){return akses.aplikasi;} 
     public static boolean getpenyakit(){return akses.penyakit;} 
-    public static boolean getobat_penyakit(){return akses.obat_penyakit;} 
+    public static boolean getobat_penyakit(){return akses.obat_penyakit;}
+    public static boolean getrujuk_edukasi_berkelanjutan(){return akses.rujuk_edukasi_berkelanjutan;}
     public static boolean getdokter(){return akses.dokter;} 
     public static boolean getjadwal_praktek(){return akses.jadwal_praktek;} 
     public static boolean getpetugas(){return akses.petugas;} 
