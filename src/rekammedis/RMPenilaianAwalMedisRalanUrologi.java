@@ -56,8 +56,9 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Keluarga","Riwayat Penyakit Dahulu",
-            "Riwayat Penggunakan Obat","Riwayat Alergi","TD(mmHg)","BB(Kg)","TB(Cm)","Suhu","Nadi(x/menit)","RR(x/menit)","Keadaan Umum","Nyeri","Status Nutrisi","Jantung","Keterangan Jantung","Paru","Keterangan Paru",
-            "Ekstremitas","Keterangan Ekstrimitas","Status Kelainan Lainnya","Laboratorium","EKG","Penunjang Lainnya","Asesmen Kerja","Asesmen Banding","Permasalahan","Terapi/Pengobatan","Tindakan/Rencana Tindakan","Edukasi"
+            "Riwayat Penggunakan Obat","Riwayat Kebiasaan","Riwayat Operasi Urologi","Riwayat Alergi","TD(mmHg)","BB(Kg)","TB(Cm)","Suhu","Nadi(x/menit)","RR(x/menit)","Keadaan Umum","Nyeri","Status Nutrisi",
+            "Thoraks","Keterangan Thoraks","Abdomen","Keterangan Abdomen","Ekstremitas","Keterangan Ekstrimitas","Nyeri ketok CVA","Genitalia Eksternal","Colok Dubur","Status Kelainan Lainnya","Urinalisis",
+            "Darah (Hb, Ureum, Kreatinin, Elektrolit)","USG Urologi","Radiologi (IVP, CT, MRI)","Penunjang Lainnya","Asesmen Kerja","Asesmen Banding","Permasalahan","Terapi/Pengobatan","Tindakan/Rencana Tindakan","Edukasi"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -66,7 +67,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 41; i++) {
+        for (i = 0; i < 48; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -99,29 +100,29 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }else if(i==14){
                 column.setPreferredWidth(200);
             }else if(i==15){
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(200);
             }else if(i==16){
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(200);
             }else if(i==17){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(100);
             }else if(i==18){
-                column.setPreferredWidth(45);
+                column.setPreferredWidth(60);
             }else if(i==19){
                 column.setPreferredWidth(45);
             }else if(i==20){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(45);
             }else if(i==21){
-                column.setPreferredWidth(68);
+                column.setPreferredWidth(45);
             }else if(i==22){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(75);
             }else if(i==23){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(68);
             }else if(i==24){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(87);
             }else if(i==25){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(150);
             }else if(i==26){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(150);
             }else if(i==27){
                 column.setPreferredWidth(80);
             }else if(i==28){
@@ -131,24 +132,38 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }else if(i==30){
                 column.setPreferredWidth(130);
             }else if(i==31){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(80);
             }else if(i==32){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(130);
             }else if(i==33){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(130);
             }else if(i==34){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(130);
             }else if(i==35){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(130);
             }else if(i==36){
                 column.setPreferredWidth(200);
             }else if(i==37){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(200);
             }else if(i==38){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(200);
             }else if(i==39){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(200);
             }else if(i==40){
+                column.setPreferredWidth(200);
+            }else if(i==41){
+                column.setPreferredWidth(200);
+            }else if(i==42){
+                column.setPreferredWidth(200);
+            }else if(i==43){
+                column.setPreferredWidth(200);
+            }else if(i==44){
+                column.setPreferredWidth(250);
+            }else if(i==45){
+                column.setPreferredWidth(250);
+            }else if(i==46){
+                column.setPreferredWidth(250);
+            }else if(i==47){
                 column.setPreferredWidth(250);
             }
         }
@@ -161,6 +176,8 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         RPD.setDocument(new batasInput((int)1000).getKata(RPD));
         RPK.setDocument(new batasInput((int)1000).getKata(RPK));
         RPO.setDocument(new batasInput((int)1000).getKata(RPO));
+        RiwayatKebiasaan.setDocument(new batasInput((int)1000).getKata(RiwayatKebiasaan));
+        RiwayatOperasiUrologi.setDocument(new batasInput((int)1000).getKata(RiwayatOperasiUrologi));
         Alergi.setDocument(new batasInput((int)50).getKata(Alergi));
         TD.setDocument(new batasInput((byte)8).getKata(TD));
         Nadi.setDocument(new batasInput((byte)5).getKata(Nadi));
@@ -170,13 +187,18 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         TB.setDocument(new batasInput((byte)5).getKata(TB));
         Nyeri.setDocument(new batasInput((byte)50).getKata(Nyeri));
         StatusNutrisi.setDocument(new batasInput((byte)50).getKata(StatusNutrisi));
-        KeteranganJantung.setDocument(new batasInput((byte)50).getKata(KeteranganJantung));
-        KeteranganParu.setDocument(new batasInput((byte)50).getKata(KeteranganParu));
+        KeteranganThoraks.setDocument(new batasInput((byte)50).getKata(KeteranganThoraks));
+        KeteranganAbdomen.setDocument(new batasInput((byte)50).getKata(KeteranganAbdomen));
         KeteranganEkstrimitas.setDocument(new batasInput((byte)50).getKata(KeteranganEkstrimitas));
+        NyeriKetokCVA.setDocument(new batasInput((int)100).getKata(NyeriKetokCVA));
+        GenitaliaEksternal.setDocument(new batasInput((int)100).getKata(GenitaliaEksternal));
+        ColokDubur.setDocument(new batasInput((int)100).getKata(ColokDubur));
         Lainnya.setDocument(new batasInput((int)1000).getKata(Lainnya));
-        Lab.setDocument(new batasInput((int)500).getKata(Lab));
-        EKG.setDocument(new batasInput((int)500).getKata(EKG));
-        PenunjangLain.setDocument(new batasInput((int)500).getKata(PenunjangLain));
+        Urinalisis.setDocument(new batasInput((int)500).getKata(Urinalisis));
+        Darah.setDocument(new batasInput((int)500).getKata(Darah));
+        USGUrologi.setDocument(new batasInput((int)500).getKata(USGUrologi));
+        Radiologi.setDocument(new batasInput((int)500).getKata(Radiologi));
+        PenunjangLainnya.setDocument(new batasInput((int)500).getKata(PenunjangLainnya));
         Diagnosis.setDocument(new batasInput((int)500).getKata(Diagnosis));
         Diagnosis2.setDocument(new batasInput((int)500).getKata(Diagnosis2));
         Permasalahan.setDocument(new batasInput((int)500).getKata(Permasalahan));
@@ -323,27 +345,27 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         jLabel37 = new widget.Label();
         jSeparator14 = new javax.swing.JSeparator();
         jLabel40 = new widget.Label();
-        Jantung = new widget.ComboBox();
+        Thoraks = new widget.ComboBox();
         jLabel47 = new widget.Label();
         jLabel46 = new widget.Label();
-        Paru = new widget.ComboBox();
+        Abdomen = new widget.ComboBox();
         jLabel49 = new widget.Label();
         Ekstrimitas = new widget.ComboBox();
-        KeteranganJantung = new widget.TextBox();
-        KeteranganParu = new widget.TextBox();
+        KeteranganThoraks = new widget.TextBox();
+        KeteranganAbdomen = new widget.TextBox();
         KeteranganEkstrimitas = new widget.TextBox();
         scrollPane5 = new widget.ScrollPane();
         Lainnya = new widget.TextArea();
         jSeparator16 = new javax.swing.JSeparator();
         scrollPane12 = new widget.ScrollPane();
-        PenunjangLain = new widget.TextArea();
+        USGUrologi = new widget.TextArea();
         jLabel105 = new widget.Label();
         scrollPane9 = new widget.ScrollPane();
-        Lab = new widget.TextArea();
+        Urinalisis = new widget.TextArea();
         jLabel80 = new widget.Label();
         jLabel81 = new widget.Label();
         scrollPane10 = new widget.ScrollPane();
-        EKG = new widget.TextArea();
+        Darah = new widget.TextArea();
         jSeparator17 = new javax.swing.JSeparator();
         jLabel106 = new widget.Label();
         scrollPane15 = new widget.ScrollPane();
@@ -396,6 +418,24 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         jLabel39 = new widget.Label();
         Keadaan = new widget.ComboBox();
         jLabel41 = new widget.Label();
+        jLabel32 = new widget.Label();
+        scrollPane8 = new widget.ScrollPane();
+        RiwayatOperasiUrologi = new widget.TextArea();
+        jLabel34 = new widget.Label();
+        scrollPane3 = new widget.ScrollPane();
+        RiwayatKebiasaan = new widget.TextArea();
+        jLabel50 = new widget.Label();
+        NyeriKetokCVA = new widget.TextBox();
+        GenitaliaEksternal = new widget.TextBox();
+        jLabel51 = new widget.Label();
+        jLabel52 = new widget.Label();
+        ColokDubur = new widget.TextBox();
+        jLabel83 = new widget.Label();
+        jLabel84 = new widget.Label();
+        scrollPane11 = new widget.ScrollPane();
+        PenunjangLainnya = new widget.TextArea();
+        scrollPane13 = new widget.ScrollPane();
+        Radiologi = new widget.TextArea();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -591,7 +631,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(870, 883));
+        FormInput.setPreferredSize(new java.awt.Dimension(870, 1043));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -695,10 +735,10 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         Anamnesis.setBounds(644, 40, 128, 23);
 
         jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel94.setText("III. STATUS KELAINAN");
+        jLabel94.setText("III. STATUS KELAINAN & TEMUAN UROLOGI SPESIFIK");
         jLabel94.setName("jLabel94"); // NOI18N
         FormInput.add(jLabel94);
-        jLabel94.setBounds(10, 320, 180, 23);
+        jLabel94.setBounds(10, 370, 270, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -727,7 +767,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         jSeparator12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator12.setName("jSeparator12"); // NOI18N
         FormInput.add(jSeparator12);
-        jSeparator12.setBounds(0, 240, 880, 1);
+        jSeparator12.setBounds(0, 290, 880, 1);
 
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel99.setText("I. RIWAYAT KESEHATAN");
@@ -739,7 +779,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         jLabel101.setText("IV. PEMERIKSAAN PENUNJANG");
         jLabel101.setName("jLabel101"); // NOI18N
         FormInput.add(jLabel101);
-        jLabel101.setBounds(10, 430, 190, 23);
+        jLabel101.setBounds(10, 540, 190, 23);
 
         label11.setText("Tanggal :");
         label11.setName("label11"); // NOI18N
@@ -748,7 +788,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2025 20:49:16" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-09-2025 20:50:33" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -764,7 +804,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         jLabel95.setText("II. PEMERIKSAAN FISIK");
         jLabel95.setName("jLabel95"); // NOI18N
         FormInput.add(jLabel95);
-        jLabel95.setBounds(10, 240, 180, 23);
+        jLabel95.setBounds(10, 290, 180, 23);
 
         jLabel9.setText("Riwayat Penyakit Keluarga :");
         jLabel9.setName("jLabel9"); // NOI18N
@@ -862,61 +902,61 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(Alergi);
-        Alergi.setBounds(594, 190, 260, 23);
+        Alergi.setBounds(594, 240, 260, 23);
 
         jLabel37.setText("Riwayat Alergi :");
         jLabel37.setName("jLabel37"); // NOI18N
         FormInput.add(jLabel37);
-        jLabel37.setBounds(440, 190, 150, 23);
+        jLabel37.setBounds(470, 240, 120, 23);
 
         jSeparator14.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator14.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator14.setName("jSeparator14"); // NOI18N
         FormInput.add(jSeparator14);
-        jSeparator14.setBounds(0, 320, 880, 1);
+        jSeparator14.setBounds(0, 370, 880, 1);
 
-        jLabel40.setText("Jantung :");
+        jLabel40.setText("Thoraks :");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(0, 340, 109, 23);
+        jLabel40.setBounds(0, 390, 109, 23);
 
-        Jantung.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
-        Jantung.setSelectedIndex(2);
-        Jantung.setName("Jantung"); // NOI18N
-        Jantung.addKeyListener(new java.awt.event.KeyAdapter() {
+        Thoraks.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
+        Thoraks.setSelectedIndex(2);
+        Thoraks.setName("Thoraks"); // NOI18N
+        Thoraks.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                JantungKeyPressed(evt);
+                ThoraksKeyPressed(evt);
             }
         });
-        FormInput.add(Jantung);
-        Jantung.setBounds(114, 340, 128, 23);
+        FormInput.add(Thoraks);
+        Thoraks.setBounds(113, 390, 128, 23);
 
         jLabel47.setText("Lainnya :");
         jLabel47.setName("jLabel47"); // NOI18N
         FormInput.add(jLabel47);
-        jLabel47.setBounds(480, 340, 60, 23);
+        jLabel47.setBounds(480, 420, 60, 23);
 
-        jLabel46.setText("Paru :");
+        jLabel46.setText("Abdomen :");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(0, 370, 109, 23);
+        jLabel46.setBounds(0, 420, 109, 23);
 
-        Paru.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
-        Paru.setSelectedIndex(2);
-        Paru.setName("Paru"); // NOI18N
-        Paru.addKeyListener(new java.awt.event.KeyAdapter() {
+        Abdomen.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
+        Abdomen.setSelectedIndex(2);
+        Abdomen.setName("Abdomen"); // NOI18N
+        Abdomen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ParuKeyPressed(evt);
+                AbdomenKeyPressed(evt);
             }
         });
-        FormInput.add(Paru);
-        Paru.setBounds(114, 370, 128, 23);
+        FormInput.add(Abdomen);
+        Abdomen.setBounds(113, 420, 128, 23);
 
         jLabel49.setText("Ekstremitas :");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(0, 400, 109, 23);
+        jLabel49.setBounds(0, 450, 109, 23);
 
         Ekstrimitas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Normal", "Abnormal", "Tidak Diperiksa" }));
         Ekstrimitas.setSelectedIndex(2);
@@ -927,27 +967,27 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(Ekstrimitas);
-        Ekstrimitas.setBounds(114, 400, 128, 23);
+        Ekstrimitas.setBounds(113, 450, 128, 23);
 
-        KeteranganJantung.setFocusTraversalPolicyProvider(true);
-        KeteranganJantung.setName("KeteranganJantung"); // NOI18N
-        KeteranganJantung.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganThoraks.setFocusTraversalPolicyProvider(true);
+        KeteranganThoraks.setName("KeteranganThoraks"); // NOI18N
+        KeteranganThoraks.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganJantungKeyPressed(evt);
+                KeteranganThoraksKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganJantung);
-        KeteranganJantung.setBounds(246, 340, 210, 23);
+        FormInput.add(KeteranganThoraks);
+        KeteranganThoraks.setBounds(245, 390, 211, 23);
 
-        KeteranganParu.setFocusTraversalPolicyProvider(true);
-        KeteranganParu.setName("KeteranganParu"); // NOI18N
-        KeteranganParu.addKeyListener(new java.awt.event.KeyAdapter() {
+        KeteranganAbdomen.setFocusTraversalPolicyProvider(true);
+        KeteranganAbdomen.setName("KeteranganAbdomen"); // NOI18N
+        KeteranganAbdomen.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganParuKeyPressed(evt);
+                KeteranganAbdomenKeyPressed(evt);
             }
         });
-        FormInput.add(KeteranganParu);
-        KeteranganParu.setBounds(246, 370, 210, 23);
+        FormInput.add(KeteranganAbdomen);
+        KeteranganAbdomen.setBounds(245, 420, 211, 23);
 
         KeteranganEkstrimitas.setFocusTraversalPolicyProvider(true);
         KeteranganEkstrimitas.setName("KeteranganEkstrimitas"); // NOI18N
@@ -957,7 +997,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(KeteranganEkstrimitas);
-        KeteranganEkstrimitas.setBounds(246, 400, 210, 23);
+        KeteranganEkstrimitas.setBounds(245, 450, 211, 23);
 
         scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane5.setName("scrollPane5"); // NOI18N
@@ -974,98 +1014,98 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         scrollPane5.setViewportView(Lainnya);
 
         FormInput.add(scrollPane5);
-        scrollPane5.setBounds(544, 340, 310, 80);
+        scrollPane5.setBounds(544, 420, 310, 113);
 
         jSeparator16.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator16.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator16.setName("jSeparator16"); // NOI18N
         FormInput.add(jSeparator16);
-        jSeparator16.setBounds(0, 430, 880, 1);
+        jSeparator16.setBounds(0, 540, 880, 1);
 
         scrollPane12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane12.setName("scrollPane12"); // NOI18N
 
-        PenunjangLain.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        PenunjangLain.setColumns(20);
-        PenunjangLain.setRows(5);
-        PenunjangLain.setName("PenunjangLain"); // NOI18N
-        PenunjangLain.addKeyListener(new java.awt.event.KeyAdapter() {
+        USGUrologi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        USGUrologi.setColumns(20);
+        USGUrologi.setRows(5);
+        USGUrologi.setName("USGUrologi"); // NOI18N
+        USGUrologi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                PenunjangLainKeyPressed(evt);
+                USGUrologiKeyPressed(evt);
             }
         });
-        scrollPane12.setViewportView(PenunjangLain);
+        scrollPane12.setViewportView(USGUrologi);
 
         FormInput.add(scrollPane12);
-        scrollPane12.setBounds(594, 470, 260, 63);
+        scrollPane12.setBounds(594, 580, 260, 43);
 
         jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel105.setText("Penunjang Lainnya :");
+        jLabel105.setText("USG Urologi :");
         jLabel105.setName("jLabel105"); // NOI18N
         FormInput.add(jLabel105);
-        jLabel105.setBounds(594, 450, 190, 23);
+        jLabel105.setBounds(594, 560, 190, 23);
 
         scrollPane9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane9.setName("scrollPane9"); // NOI18N
 
-        Lab.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Lab.setColumns(20);
-        Lab.setRows(5);
-        Lab.setName("Lab"); // NOI18N
-        Lab.setPreferredSize(new java.awt.Dimension(102, 52));
-        Lab.addKeyListener(new java.awt.event.KeyAdapter() {
+        Urinalisis.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Urinalisis.setColumns(20);
+        Urinalisis.setRows(5);
+        Urinalisis.setName("Urinalisis"); // NOI18N
+        Urinalisis.setPreferredSize(new java.awt.Dimension(102, 52));
+        Urinalisis.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LabKeyPressed(evt);
+                UrinalisisKeyPressed(evt);
             }
         });
-        scrollPane9.setViewportView(Lab);
+        scrollPane9.setViewportView(Urinalisis);
 
         FormInput.add(scrollPane9);
-        scrollPane9.setBounds(44, 470, 260, 63);
+        scrollPane9.setBounds(44, 580, 260, 43);
 
         jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel80.setText("Laboratorium :");
+        jLabel80.setText("Urinalisis :");
         jLabel80.setName("jLabel80"); // NOI18N
         FormInput.add(jLabel80);
-        jLabel80.setBounds(44, 450, 150, 23);
+        jLabel80.setBounds(44, 560, 150, 23);
 
         jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel81.setText("EKG :");
+        jLabel81.setText("Darah (Hb, Ureum, Kreatinin, Elektrolit) :");
         jLabel81.setName("jLabel81"); // NOI18N
         FormInput.add(jLabel81);
-        jLabel81.setBounds(319, 450, 150, 23);
+        jLabel81.setBounds(319, 560, 230, 23);
 
         scrollPane10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane10.setName("scrollPane10"); // NOI18N
 
-        EKG.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        EKG.setColumns(20);
-        EKG.setRows(5);
-        EKG.setName("EKG"); // NOI18N
-        EKG.setPreferredSize(new java.awt.Dimension(102, 52));
-        EKG.addKeyListener(new java.awt.event.KeyAdapter() {
+        Darah.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Darah.setColumns(20);
+        Darah.setRows(5);
+        Darah.setName("Darah"); // NOI18N
+        Darah.setPreferredSize(new java.awt.Dimension(102, 52));
+        Darah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                EKGKeyPressed(evt);
+                DarahKeyPressed(evt);
             }
         });
-        scrollPane10.setViewportView(EKG);
+        scrollPane10.setViewportView(Darah);
 
         FormInput.add(scrollPane10);
-        scrollPane10.setBounds(319, 470, 260, 63);
+        scrollPane10.setBounds(319, 580, 260, 43);
 
         jSeparator17.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator17.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator17.setName("jSeparator17"); // NOI18N
         FormInput.add(jSeparator17);
-        jSeparator17.setBounds(0, 540, 880, 1);
+        jSeparator17.setBounds(0, 700, 880, 1);
 
         jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel106.setText("V. DIAGNOSIS/ASESMEN");
         jLabel106.setName("jLabel106"); // NOI18N
         FormInput.add(jLabel106);
-        jLabel106.setBounds(10, 540, 190, 23);
+        jLabel106.setBounds(10, 700, 190, 23);
 
         scrollPane15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane15.setName("scrollPane15"); // NOI18N
@@ -1082,7 +1122,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         scrollPane15.setViewportView(Diagnosis);
 
         FormInput.add(scrollPane15);
-        scrollPane15.setBounds(44, 580, 400, 43);
+        scrollPane15.setBounds(44, 740, 400, 43);
 
         scrollPane16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane16.setName("scrollPane16"); // NOI18N
@@ -1099,32 +1139,32 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         scrollPane16.setViewportView(Diagnosis2);
 
         FormInput.add(scrollPane16);
-        scrollPane16.setBounds(454, 580, 400, 43);
+        scrollPane16.setBounds(454, 740, 400, 43);
 
         jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel82.setText("Asesmen Kerja :");
         jLabel82.setName("jLabel82"); // NOI18N
         FormInput.add(jLabel82);
-        jLabel82.setBounds(44, 560, 150, 23);
+        jLabel82.setBounds(44, 720, 150, 23);
 
         jLabel85.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel85.setText("Asesmen Banding :");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(454, 560, 150, 23);
+        jLabel85.setBounds(454, 720, 150, 23);
 
         jSeparator18.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator18.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator18.setName("jSeparator18"); // NOI18N
         FormInput.add(jSeparator18);
-        jSeparator18.setBounds(0, 630, 880, 1);
+        jSeparator18.setBounds(0, 790, 880, 1);
 
         jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel107.setText("VI. PERMASALAHAN & TATALAKSANA");
         jLabel107.setName("jLabel107"); // NOI18N
         FormInput.add(jLabel107);
-        jLabel107.setBounds(10, 630, 190, 23);
+        jLabel107.setBounds(10, 790, 190, 23);
 
         scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane17.setName("scrollPane17"); // NOI18N
@@ -1141,19 +1181,19 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         scrollPane17.setViewportView(Terapi);
 
         FormInput.add(scrollPane17);
-        scrollPane17.setBounds(454, 670, 400, 43);
+        scrollPane17.setBounds(454, 830, 400, 43);
 
         jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel108.setText("Terapi/Pengobatan :");
         jLabel108.setName("jLabel108"); // NOI18N
         FormInput.add(jLabel108);
-        jLabel108.setBounds(454, 650, 190, 20);
+        jLabel108.setBounds(454, 810, 190, 20);
 
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel112.setText("Permasalahan :");
         jLabel112.setName("jLabel112"); // NOI18N
         FormInput.add(jLabel112);
-        jLabel112.setBounds(44, 650, 190, 20);
+        jLabel112.setBounds(44, 810, 190, 20);
 
         scrollPane20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane20.setName("scrollPane20"); // NOI18N
@@ -1170,7 +1210,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         scrollPane20.setViewportView(Permasalahan);
 
         FormInput.add(scrollPane20);
-        scrollPane20.setBounds(44, 670, 400, 43);
+        scrollPane20.setBounds(44, 830, 400, 43);
 
         scrollPane19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane19.setName("scrollPane19"); // NOI18N
@@ -1187,26 +1227,26 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         scrollPane19.setViewportView(Tindakan);
 
         FormInput.add(scrollPane19);
-        scrollPane19.setBounds(44, 740, 810, 43);
+        scrollPane19.setBounds(44, 900, 810, 43);
 
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel113.setText("Tindakan/Rencana Tindakan :");
         jLabel113.setName("jLabel113"); // NOI18N
         FormInput.add(jLabel113);
-        jLabel113.setBounds(44, 720, 320, 20);
+        jLabel113.setBounds(44, 880, 320, 20);
 
         jSeparator19.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator19.setForeground(new java.awt.Color(239, 244, 234));
         jSeparator19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator19.setName("jSeparator19"); // NOI18N
         FormInput.add(jSeparator19);
-        jSeparator19.setBounds(0, 790, 880, 1);
+        jSeparator19.setBounds(0, 950, 880, 1);
 
         jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel109.setText("VII. EDUKASI");
         jLabel109.setName("jLabel109"); // NOI18N
         FormInput.add(jLabel109);
-        jLabel109.setBounds(10, 790, 190, 23);
+        jLabel109.setBounds(10, 950, 190, 23);
 
         scrollPane14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane14.setName("scrollPane14"); // NOI18N
@@ -1223,7 +1263,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         scrollPane14.setViewportView(Edukasi);
 
         FormInput.add(scrollPane14);
-        scrollPane14.setBounds(44, 810, 810, 63);
+        scrollPane14.setBounds(44, 970, 810, 63);
 
         scrollPane6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane6.setName("scrollPane6"); // NOI18N
@@ -1250,7 +1290,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         jLabel12.setText("TB :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(321, 260, 30, 23);
+        jLabel12.setBounds(321, 310, 30, 23);
 
         BB.setFocusTraversalPolicyProvider(true);
         BB.setName("BB"); // NOI18N
@@ -1260,19 +1300,19 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(BB);
-        BB.setBounds(234, 260, 50, 23);
+        BB.setBounds(234, 310, 50, 23);
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("Kg");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(287, 260, 30, 23);
+        jLabel13.setBounds(287, 310, 30, 23);
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setText("x/menit");
         jLabel16.setName("jLabel16"); // NOI18N
         FormInput.add(jLabel16);
-        jLabel16.setBounds(670, 260, 50, 23);
+        jLabel16.setBounds(670, 310, 50, 23);
 
         Nadi.setFocusTraversalPolicyProvider(true);
         Nadi.setName("Nadi"); // NOI18N
@@ -1282,17 +1322,17 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(Nadi);
-        Nadi.setBounds(617, 260, 50, 23);
+        Nadi.setBounds(617, 310, 50, 23);
 
         jLabel17.setText("Nadi :");
         jLabel17.setName("jLabel17"); // NOI18N
         FormInput.add(jLabel17);
-        jLabel17.setBounds(573, 260, 40, 23);
+        jLabel17.setBounds(573, 310, 40, 23);
 
         jLabel18.setText("Suhu :");
         jLabel18.setName("jLabel18"); // NOI18N
         FormInput.add(jLabel18);
-        jLabel18.setBounds(445, 260, 40, 23);
+        jLabel18.setBounds(445, 310, 40, 23);
 
         Suhu.setFocusTraversalPolicyProvider(true);
         Suhu.setName("Suhu"); // NOI18N
@@ -1302,12 +1342,12 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(Suhu);
-        Suhu.setBounds(489, 260, 50, 23);
+        Suhu.setBounds(489, 310, 50, 23);
 
         jLabel22.setText(":");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(0, 260, 64, 23);
+        jLabel22.setBounds(0, 310, 64, 23);
 
         TD.setFocusTraversalPolicyProvider(true);
         TD.setName("TD"); // NOI18N
@@ -1317,25 +1357,25 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(TD);
-        TD.setBounds(68, 260, 76, 23);
+        TD.setBounds(68, 310, 76, 23);
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel20.setText("°C");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(542, 260, 30, 23);
+        jLabel20.setBounds(542, 310, 30, 23);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel23.setText("mmHg");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(147, 260, 50, 23);
+        jLabel23.setBounds(147, 310, 50, 23);
 
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("x/menit");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(815, 260, 50, 23);
+        jLabel25.setBounds(815, 310, 50, 23);
 
         RR.setFocusTraversalPolicyProvider(true);
         RR.setName("RR"); // NOI18N
@@ -1345,24 +1385,24 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(RR);
-        RR.setBounds(762, 260, 50, 23);
+        RR.setBounds(762, 310, 50, 23);
 
         jLabel26.setText("RR :");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(718, 260, 40, 23);
+        jLabel26.setBounds(718, 310, 40, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel24.setText("TD");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(44, 260, 30, 23);
+        jLabel24.setBounds(44, 310, 30, 23);
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setText("Cm");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(408, 260, 30, 23);
+        jLabel15.setBounds(408, 310, 30, 23);
 
         TB.setFocusTraversalPolicyProvider(true);
         TB.setName("TB"); // NOI18N
@@ -1372,17 +1412,17 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(TB);
-        TB.setBounds(355, 260, 50, 23);
+        TB.setBounds(355, 310, 50, 23);
 
         jLabel27.setText("BB :");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(200, 260, 30, 23);
+        jLabel27.setBounds(200, 310, 30, 23);
 
         jLabel28.setText("Status Nutrisi :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
-        jLabel28.setBounds(550, 290, 100, 23);
+        jLabel28.setBounds(550, 340, 100, 23);
 
         StatusNutrisi.setFocusTraversalPolicyProvider(true);
         StatusNutrisi.setName("StatusNutrisi"); // NOI18N
@@ -1392,12 +1432,12 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(StatusNutrisi);
-        StatusNutrisi.setBounds(654, 290, 200, 23);
+        StatusNutrisi.setBounds(654, 340, 200, 23);
 
         jLabel29.setText(":");
         jLabel29.setName("jLabel29"); // NOI18N
         FormInput.add(jLabel29);
-        jLabel29.setBounds(0, 290, 127, 23);
+        jLabel29.setBounds(0, 340, 127, 23);
 
         Nyeri.setFocusTraversalPolicyProvider(true);
         Nyeri.setName("Nyeri"); // NOI18N
@@ -1407,13 +1447,13 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(Nyeri);
-        Nyeri.setBounds(335, 290, 200, 23);
+        Nyeri.setBounds(335, 340, 200, 23);
 
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel39.setText("Keadaan Umum");
         jLabel39.setName("jLabel39"); // NOI18N
         FormInput.add(jLabel39);
-        jLabel39.setBounds(44, 290, 90, 23);
+        jLabel39.setBounds(44, 340, 90, 23);
 
         Keadaan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sehat", "Sakit Ringan", "Sakit Sedang", "Sakit Berat" }));
         Keadaan.setName("Keadaan"); // NOI18N
@@ -1423,12 +1463,149 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             }
         });
         FormInput.add(Keadaan);
-        Keadaan.setBounds(131, 290, 118, 23);
+        Keadaan.setBounds(131, 340, 118, 23);
 
         jLabel41.setText("Nyeri :");
         jLabel41.setName("jLabel41"); // NOI18N
         FormInput.add(jLabel41);
-        jLabel41.setBounds(281, 290, 50, 23);
+        jLabel41.setBounds(281, 340, 50, 23);
+
+        jLabel32.setText("Riwayat Operasi Urologi :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(0, 240, 169, 23);
+
+        scrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane8.setName("scrollPane8"); // NOI18N
+
+        RiwayatOperasiUrologi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RiwayatOperasiUrologi.setColumns(20);
+        RiwayatOperasiUrologi.setRows(5);
+        RiwayatOperasiUrologi.setName("RiwayatOperasiUrologi"); // NOI18N
+        RiwayatOperasiUrologi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RiwayatOperasiUrologiKeyPressed(evt);
+            }
+        });
+        scrollPane8.setViewportView(RiwayatOperasiUrologi);
+
+        FormInput.add(scrollPane8);
+        scrollPane8.setBounds(173, 240, 266, 43);
+
+        jLabel34.setText("Riwayat Kebiasaan :");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(440, 190, 150, 23);
+
+        scrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane3.setName("scrollPane3"); // NOI18N
+
+        RiwayatKebiasaan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        RiwayatKebiasaan.setColumns(20);
+        RiwayatKebiasaan.setRows(5);
+        RiwayatKebiasaan.setName("RiwayatKebiasaan"); // NOI18N
+        RiwayatKebiasaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RiwayatKebiasaanKeyPressed(evt);
+            }
+        });
+        scrollPane3.setViewportView(RiwayatKebiasaan);
+
+        FormInput.add(scrollPane3);
+        scrollPane3.setBounds(594, 190, 260, 43);
+
+        jLabel50.setText("Nyeri ketok CVA :");
+        jLabel50.setName("jLabel50"); // NOI18N
+        FormInput.add(jLabel50);
+        jLabel50.setBounds(0, 480, 144, 23);
+
+        NyeriKetokCVA.setFocusTraversalPolicyProvider(true);
+        NyeriKetokCVA.setName("NyeriKetokCVA"); // NOI18N
+        NyeriKetokCVA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NyeriKetokCVAKeyPressed(evt);
+            }
+        });
+        FormInput.add(NyeriKetokCVA);
+        NyeriKetokCVA.setBounds(148, 480, 308, 23);
+
+        GenitaliaEksternal.setFocusTraversalPolicyProvider(true);
+        GenitaliaEksternal.setName("GenitaliaEksternal"); // NOI18N
+        GenitaliaEksternal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                GenitaliaEksternalKeyPressed(evt);
+            }
+        });
+        FormInput.add(GenitaliaEksternal);
+        GenitaliaEksternal.setBounds(148, 510, 308, 23);
+
+        jLabel51.setText("Genitalia Eksternal :");
+        jLabel51.setName("jLabel51"); // NOI18N
+        FormInput.add(jLabel51);
+        jLabel51.setBounds(0, 510, 144, 23);
+
+        jLabel52.setText("Colok Dubur :");
+        jLabel52.setName("jLabel52"); // NOI18N
+        FormInput.add(jLabel52);
+        jLabel52.setBounds(460, 390, 80, 23);
+
+        ColokDubur.setFocusTraversalPolicyProvider(true);
+        ColokDubur.setName("ColokDubur"); // NOI18N
+        ColokDubur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ColokDuburKeyPressed(evt);
+            }
+        });
+        FormInput.add(ColokDubur);
+        ColokDubur.setBounds(544, 390, 310, 23);
+
+        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel83.setText("Radiologi (IVP, CT, MRI) :");
+        jLabel83.setName("jLabel83"); // NOI18N
+        FormInput.add(jLabel83);
+        jLabel83.setBounds(44, 630, 150, 23);
+
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel84.setText("Penunjang Lainnya :");
+        jLabel84.setName("jLabel84"); // NOI18N
+        FormInput.add(jLabel84);
+        jLabel84.setBounds(319, 630, 230, 23);
+
+        scrollPane11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane11.setName("scrollPane11"); // NOI18N
+
+        PenunjangLainnya.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        PenunjangLainnya.setColumns(20);
+        PenunjangLainnya.setRows(5);
+        PenunjangLainnya.setName("PenunjangLainnya"); // NOI18N
+        PenunjangLainnya.setPreferredSize(new java.awt.Dimension(102, 52));
+        PenunjangLainnya.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PenunjangLainnyaKeyPressed(evt);
+            }
+        });
+        scrollPane11.setViewportView(PenunjangLainnya);
+
+        FormInput.add(scrollPane11);
+        scrollPane11.setBounds(319, 650, 535, 43);
+
+        scrollPane13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane13.setName("scrollPane13"); // NOI18N
+
+        Radiologi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Radiologi.setColumns(20);
+        Radiologi.setRows(5);
+        Radiologi.setName("Radiologi"); // NOI18N
+        Radiologi.setPreferredSize(new java.awt.Dimension(102, 52));
+        Radiologi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RadiologiKeyPressed(evt);
+            }
+        });
+        scrollPane13.setViewportView(Radiologi);
+
+        FormInput.add(scrollPane13);
+        scrollPane13.setBounds(44, 650, 260, 43);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1947,17 +2124,17 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
             Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanJantung.jasper","report","::[ Laporan Pengkajian Awal Medis Rawat Jalan Jantung ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_jantung.tanggal,"+
-                "penilaian_medis_ralan_jantung.kd_dokter,penilaian_medis_ralan_jantung.anamnesis,penilaian_medis_ralan_jantung.hubungan,penilaian_medis_ralan_jantung.keluhan_utama,penilaian_medis_ralan_jantung.rps,"+
-                "penilaian_medis_ralan_jantung.rpk,penilaian_medis_ralan_jantung.rpd,penilaian_medis_ralan_jantung.rpo,penilaian_medis_ralan_jantung.alergi,penilaian_medis_ralan_jantung.td,penilaian_medis_ralan_jantung.bb,"+
-                "penilaian_medis_ralan_jantung.tb,penilaian_medis_ralan_jantung.suhu,penilaian_medis_ralan_jantung.nadi,penilaian_medis_ralan_jantung.rr,penilaian_medis_ralan_jantung.keadaan_umum,"+
-                "penilaian_medis_ralan_jantung.nyeri,penilaian_medis_ralan_jantung.status_nutrisi,penilaian_medis_ralan_jantung.jantung,penilaian_medis_ralan_jantung.keterangan_jantung,penilaian_medis_ralan_jantung.paru,"+
-                "penilaian_medis_ralan_jantung.keterangan_paru,penilaian_medis_ralan_jantung.ekstrimitas,penilaian_medis_ralan_jantung.keterangan_ekstrimitas,penilaian_medis_ralan_jantung.lainnya,"+
-                "penilaian_medis_ralan_jantung.lab,penilaian_medis_ralan_jantung.ekg,penilaian_medis_ralan_jantung.penunjang_lain,penilaian_medis_ralan_jantung.diagnosis,penilaian_medis_ralan_jantung.diagnosis2,"+
-                "penilaian_medis_ralan_jantung.permasalahan,penilaian_medis_ralan_jantung.terapi,penilaian_medis_ralan_jantung.tindakan,penilaian_medis_ralan_jantung.edukasi,dokter.nm_dokter "+
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_urologi.tanggal,"+
+                "penilaian_medis_ralan_urologi.kd_dokter,penilaian_medis_ralan_urologi.anamnesis,penilaian_medis_ralan_urologi.hubungan,penilaian_medis_ralan_urologi.keluhan_utama,penilaian_medis_ralan_urologi.rps,"+
+                "penilaian_medis_ralan_urologi.rpk,penilaian_medis_ralan_urologi.rpd,penilaian_medis_ralan_urologi.rpo,penilaian_medis_ralan_urologi.alergi,penilaian_medis_ralan_urologi.td,penilaian_medis_ralan_urologi.bb,"+
+                "penilaian_medis_ralan_urologi.tb,penilaian_medis_ralan_urologi.suhu,penilaian_medis_ralan_urologi.nadi,penilaian_medis_ralan_urologi.rr,penilaian_medis_ralan_urologi.keadaan_umum,"+
+                "penilaian_medis_ralan_urologi.nyeri,penilaian_medis_ralan_urologi.status_nutrisi,penilaian_medis_ralan_urologi.urologi,penilaian_medis_ralan_urologi.keterangan_urologi,penilaian_medis_ralan_urologi.paru,"+
+                "penilaian_medis_ralan_urologi.keterangan_paru,penilaian_medis_ralan_urologi.ekstrimitas,penilaian_medis_ralan_urologi.keterangan_ekstrimitas,penilaian_medis_ralan_urologi.lainnya,"+
+                "penilaian_medis_ralan_urologi.lab,penilaian_medis_ralan_urologi.ekg,penilaian_medis_ralan_urologi.penunjang_lain,penilaian_medis_ralan_urologi.diagnosis,penilaian_medis_ralan_urologi.diagnosis2,"+
+                "penilaian_medis_ralan_urologi.permasalahan,penilaian_medis_ralan_urologi.terapi,penilaian_medis_ralan_urologi.tindakan,penilaian_medis_ralan_urologi.edukasi,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                "inner join penilaian_medis_ralan_jantung on reg_periksa.no_rawat=penilaian_medis_ralan_jantung.no_rawat "+
-                "inner join dokter on penilaian_medis_ralan_jantung.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_jantung.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join penilaian_medis_ralan_urologi on reg_periksa.no_rawat=penilaian_medis_ralan_urologi.no_rawat "+
+                "inner join dokter on penilaian_medis_ralan_urologi.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_urologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
@@ -1978,51 +2155,51 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     }//GEN-LAST:event_RPSKeyPressed
 
     private void AlergiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlergiKeyPressed
-        Valid.pindah(evt,RPO,TD);
+        Valid.pindah(evt,RiwayatOperasiUrologi,TD);
     }//GEN-LAST:event_AlergiKeyPressed
 
-    private void JantungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JantungKeyPressed
-        Valid.pindah(evt,StatusNutrisi,KeteranganJantung);
-    }//GEN-LAST:event_JantungKeyPressed
+    private void ThoraksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ThoraksKeyPressed
+        Valid.pindah(evt,StatusNutrisi,KeteranganThoraks);
+    }//GEN-LAST:event_ThoraksKeyPressed
 
-    private void ParuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ParuKeyPressed
-        Valid.pindah(evt,KeteranganJantung,KeteranganParu);
-    }//GEN-LAST:event_ParuKeyPressed
+    private void AbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AbdomenKeyPressed
+        Valid.pindah(evt,KeteranganThoraks,KeteranganAbdomen);
+    }//GEN-LAST:event_AbdomenKeyPressed
 
     private void EkstrimitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EkstrimitasKeyPressed
-        Valid.pindah(evt,KeteranganParu,KeteranganEkstrimitas);
+        Valid.pindah(evt,KeteranganAbdomen,KeteranganEkstrimitas);
     }//GEN-LAST:event_EkstrimitasKeyPressed
 
-    private void KeteranganJantungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganJantungKeyPressed
-        Valid.pindah(evt,Jantung,Paru);
-    }//GEN-LAST:event_KeteranganJantungKeyPressed
+    private void KeteranganThoraksKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganThoraksKeyPressed
+        Valid.pindah(evt,Thoraks,Abdomen);
+    }//GEN-LAST:event_KeteranganThoraksKeyPressed
 
-    private void KeteranganParuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganParuKeyPressed
-        Valid.pindah(evt,Paru,Ekstrimitas);
-    }//GEN-LAST:event_KeteranganParuKeyPressed
+    private void KeteranganAbdomenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganAbdomenKeyPressed
+        Valid.pindah(evt,Abdomen,Ekstrimitas);
+    }//GEN-LAST:event_KeteranganAbdomenKeyPressed
 
     private void KeteranganEkstrimitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganEkstrimitasKeyPressed
-        Valid.pindah(evt,Ekstrimitas,Lainnya);
+        Valid.pindah(evt,Ekstrimitas,NyeriKetokCVA);
     }//GEN-LAST:event_KeteranganEkstrimitasKeyPressed
 
     private void LainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainnyaKeyPressed
-        Valid.pindah2(evt,KeteranganEkstrimitas,Lab);
+        Valid.pindah2(evt,ColokDubur,Urinalisis);
     }//GEN-LAST:event_LainnyaKeyPressed
 
-    private void PenunjangLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenunjangLainKeyPressed
-        Valid.pindah2(evt,Edukasi,Diagnosis);
-    }//GEN-LAST:event_PenunjangLainKeyPressed
+    private void USGUrologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_USGUrologiKeyPressed
+        Valid.pindah2(evt,Darah,Radiologi);
+    }//GEN-LAST:event_USGUrologiKeyPressed
 
-    private void LabKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LabKeyPressed
-        Valid.pindah2(evt,Lainnya,EKG);
-    }//GEN-LAST:event_LabKeyPressed
+    private void UrinalisisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UrinalisisKeyPressed
+        Valid.pindah2(evt,Lainnya,Darah);
+    }//GEN-LAST:event_UrinalisisKeyPressed
 
-    private void EKGKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EKGKeyPressed
-        Valid.pindah2(evt,Lab,PenunjangLain);
-    }//GEN-LAST:event_EKGKeyPressed
+    private void DarahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DarahKeyPressed
+        Valid.pindah2(evt,Urinalisis,USGUrologi);
+    }//GEN-LAST:event_DarahKeyPressed
 
     private void DiagnosisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKeyPressed
-        Valid.pindah2(evt,PenunjangLain,Diagnosis2);
+        Valid.pindah2(evt,PenunjangLainnya,Diagnosis2);
     }//GEN-LAST:event_DiagnosisKeyPressed
 
     private void Diagnosis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Diagnosis2KeyPressed
@@ -2046,7 +2223,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     }//GEN-LAST:event_EdukasiKeyPressed
 
     private void RPOKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RPOKeyPressed
-        Valid.pindah2(evt,RPD,Alergi);
+        Valid.pindah2(evt,RPD,RiwayatKebiasaan);
     }//GEN-LAST:event_RPOKeyPressed
 
     private void BBKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BBKeyPressed
@@ -2074,7 +2251,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     }//GEN-LAST:event_TBKeyPressed
 
     private void StatusNutrisiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_StatusNutrisiKeyPressed
-        Valid.pindah(evt,Nyeri,Jantung);
+        Valid.pindah(evt,Nyeri,Thoraks);
     }//GEN-LAST:event_StatusNutrisiKeyPressed
 
     private void NyeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKeyPressed
@@ -2084,6 +2261,34 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     private void KeadaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeadaanKeyPressed
         Valid.pindah(evt,RR,Nyeri);
     }//GEN-LAST:event_KeadaanKeyPressed
+
+    private void RiwayatOperasiUrologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatOperasiUrologiKeyPressed
+        Valid.pindah2(evt,RiwayatKebiasaan,Alergi);
+    }//GEN-LAST:event_RiwayatOperasiUrologiKeyPressed
+
+    private void RiwayatKebiasaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RiwayatKebiasaanKeyPressed
+        Valid.pindah2(evt,RPO,RiwayatOperasiUrologi);
+    }//GEN-LAST:event_RiwayatKebiasaanKeyPressed
+
+    private void NyeriKetokCVAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NyeriKetokCVAKeyPressed
+        Valid.pindah(evt,KeteranganEkstrimitas,GenitaliaEksternal);
+    }//GEN-LAST:event_NyeriKetokCVAKeyPressed
+
+    private void GenitaliaEksternalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GenitaliaEksternalKeyPressed
+        Valid.pindah(evt,NyeriKetokCVA,ColokDubur);
+    }//GEN-LAST:event_GenitaliaEksternalKeyPressed
+
+    private void ColokDuburKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ColokDuburKeyPressed
+        Valid.pindah(evt,GenitaliaEksternal,Lainnya);
+    }//GEN-LAST:event_ColokDuburKeyPressed
+
+    private void PenunjangLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenunjangLainnyaKeyPressed
+        Valid.pindah(evt,Radiologi,Diagnosis);
+    }//GEN-LAST:event_PenunjangLainnyaKeyPressed
+
+    private void RadiologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RadiologiKeyPressed
+        Valid.pindah(evt,USGUrologi,PenunjangLainnya);
+    }//GEN-LAST:event_RadiologiKeyPressed
 
     /**
     * @param args the command line arguments
@@ -2102,6 +2307,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.ComboBox Abdomen;
     private widget.TextBox Alergi;
     private widget.ComboBox Anamnesis;
     private widget.TextBox BB;
@@ -2114,39 +2320,42 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.TextBox ColokDubur;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
+    private widget.TextArea Darah;
     private widget.TextArea Diagnosis;
     private widget.TextArea Diagnosis2;
-    private widget.TextArea EKG;
     private widget.TextArea Edukasi;
     private widget.ComboBox Ekstrimitas;
     private widget.PanelBiasa FormInput;
+    private widget.TextBox GenitaliaEksternal;
     private widget.TextBox Hubungan;
-    private widget.ComboBox Jantung;
     private widget.TextBox Jk;
     private widget.TextBox KdDokter;
     private widget.ComboBox Keadaan;
     private widget.TextArea KeluhanUtama;
+    private widget.TextBox KeteranganAbdomen;
     private widget.TextBox KeteranganEkstrimitas;
-    private widget.TextBox KeteranganJantung;
-    private widget.TextBox KeteranganParu;
+    private widget.TextBox KeteranganThoraks;
     private widget.Label LCount;
-    private widget.TextArea Lab;
     private widget.TextArea Lainnya;
     private widget.editorpane LoadHTML;
     private javax.swing.JMenuItem MnPenilaianMedis;
     private widget.TextBox Nadi;
     private widget.TextBox NmDokter;
     private widget.TextBox Nyeri;
-    private widget.ComboBox Paru;
-    private widget.TextArea PenunjangLain;
+    private widget.TextBox NyeriKetokCVA;
+    private widget.TextArea PenunjangLainnya;
     private widget.TextArea Permasalahan;
     private widget.TextArea RPD;
     private widget.TextArea RPK;
     private widget.TextArea RPO;
     private widget.TextArea RPS;
     private widget.TextBox RR;
+    private widget.TextArea Radiologi;
+    private widget.TextArea RiwayatKebiasaan;
+    private widget.TextArea RiwayatOperasiUrologi;
     private widget.ScrollPane Scroll;
     private widget.TextBox StatusNutrisi;
     private widget.TextBox Suhu;
@@ -2161,7 +2370,10 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     private widget.TextArea Terapi;
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
+    private widget.ComboBox Thoraks;
     private widget.TextArea Tindakan;
+    private widget.TextArea USGUrologi;
+    private widget.TextArea Urinalisis;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
     private widget.InternalFrame internalFrame3;
@@ -2195,7 +2407,9 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     private widget.Label jLabel29;
     private widget.Label jLabel30;
     private widget.Label jLabel31;
+    private widget.Label jLabel32;
     private widget.Label jLabel33;
+    private widget.Label jLabel34;
     private widget.Label jLabel37;
     private widget.Label jLabel38;
     private widget.Label jLabel39;
@@ -2204,12 +2418,17 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     private widget.Label jLabel46;
     private widget.Label jLabel47;
     private widget.Label jLabel49;
+    private widget.Label jLabel50;
+    private widget.Label jLabel51;
+    private widget.Label jLabel52;
     private widget.Label jLabel6;
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel80;
     private widget.Label jLabel81;
     private widget.Label jLabel82;
+    private widget.Label jLabel83;
+    private widget.Label jLabel84;
     private widget.Label jLabel85;
     private widget.Label jLabel9;
     private widget.Label jLabel94;
@@ -2230,7 +2449,9 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     private widget.ScrollPane scrollInput;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane10;
+    private widget.ScrollPane scrollPane11;
     private widget.ScrollPane scrollPane12;
+    private widget.ScrollPane scrollPane13;
     private widget.ScrollPane scrollPane14;
     private widget.ScrollPane scrollPane15;
     private widget.ScrollPane scrollPane16;
@@ -2238,10 +2459,12 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     private widget.ScrollPane scrollPane19;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane20;
+    private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPane4;
     private widget.ScrollPane scrollPane5;
     private widget.ScrollPane scrollPane6;
     private widget.ScrollPane scrollPane7;
+    private widget.ScrollPane scrollPane8;
     private widget.ScrollPane scrollPane9;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
@@ -2251,33 +2474,37 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_jantung.tanggal,"+
-                        "penilaian_medis_ralan_jantung.kd_dokter,penilaian_medis_ralan_jantung.anamnesis,penilaian_medis_ralan_jantung.hubungan,penilaian_medis_ralan_jantung.keluhan_utama,penilaian_medis_ralan_jantung.rps,"+
-                        "penilaian_medis_ralan_jantung.rpk,penilaian_medis_ralan_jantung.rpd,penilaian_medis_ralan_jantung.rpo,penilaian_medis_ralan_jantung.alergi,penilaian_medis_ralan_jantung.td,penilaian_medis_ralan_jantung.bb,"+
-                        "penilaian_medis_ralan_jantung.tb,penilaian_medis_ralan_jantung.suhu,penilaian_medis_ralan_jantung.nadi,penilaian_medis_ralan_jantung.rr,penilaian_medis_ralan_jantung.keadaan_umum,"+
-                        "penilaian_medis_ralan_jantung.nyeri,penilaian_medis_ralan_jantung.status_nutrisi,penilaian_medis_ralan_jantung.jantung,penilaian_medis_ralan_jantung.keterangan_jantung,penilaian_medis_ralan_jantung.paru,"+
-                        "penilaian_medis_ralan_jantung.keterangan_paru,penilaian_medis_ralan_jantung.ekstrimitas,penilaian_medis_ralan_jantung.keterangan_ekstrimitas,penilaian_medis_ralan_jantung.lainnya,"+
-                        "penilaian_medis_ralan_jantung.lab,penilaian_medis_ralan_jantung.ekg,penilaian_medis_ralan_jantung.penunjang_lain,penilaian_medis_ralan_jantung.diagnosis,penilaian_medis_ralan_jantung.diagnosis2,"+
-                        "penilaian_medis_ralan_jantung.permasalahan,penilaian_medis_ralan_jantung.terapi,penilaian_medis_ralan_jantung.tindakan,penilaian_medis_ralan_jantung.edukasi,dokter.nm_dokter "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_urologi.tanggal,"+
+                        "penilaian_medis_ralan_urologi.kd_dokter,penilaian_medis_ralan_urologi.anamnesis,penilaian_medis_ralan_urologi.hubungan,penilaian_medis_ralan_urologi.keluhan_utama,penilaian_medis_ralan_urologi.rps,"+
+                        "penilaian_medis_ralan_urologi.rpk,penilaian_medis_ralan_urologi.rpd,penilaian_medis_ralan_urologi.rpo,penilaian_medis_ralan_urologi.riwayat_kebiasaan,penilaian_medis_ralan_urologi.riwayat_operasi_urologi,"+
+                        "penilaian_medis_ralan_urologi.alergi,penilaian_medis_ralan_urologi.td,penilaian_medis_ralan_urologi.bb,penilaian_medis_ralan_urologi.tb,penilaian_medis_ralan_urologi.suhu,penilaian_medis_ralan_urologi.nadi,"+
+                        "penilaian_medis_ralan_urologi.rr,penilaian_medis_ralan_urologi.keadaan_umum,penilaian_medis_ralan_urologi.nyeri,penilaian_medis_ralan_urologi.status_nutrisi,penilaian_medis_ralan_urologi.thoraks,"+
+                        "penilaian_medis_ralan_urologi.keterangan_thoraks,penilaian_medis_ralan_urologi.abdomen,penilaian_medis_ralan_urologi.keterangan_abdomen,penilaian_medis_ralan_urologi.ekstrimitas,"+
+                        "penilaian_medis_ralan_urologi.keterangan_ekstrimitas,penilaian_medis_ralan_urologi.nyeri_ketok_cva,penilaian_medis_ralan_urologi.genitalia_eksternal,penilaian_medis_ralan_urologi.colok_dubur,"+
+                        "penilaian_medis_ralan_urologi.lainnya,penilaian_medis_ralan_urologi.urinalisis,penilaian_medis_ralan_urologi.darah,penilaian_medis_ralan_urologi.usg_urologi,penilaian_medis_ralan_urologi.radiologi,"+
+                        "penilaian_medis_ralan_urologi.penunjang_lain,penilaian_medis_ralan_urologi.diagnosis,penilaian_medis_ralan_urologi.diagnosis2,penilaian_medis_ralan_urologi.permasalahan,penilaian_medis_ralan_urologi.terapi,"+
+                        "penilaian_medis_ralan_urologi.tindakan,penilaian_medis_ralan_urologi.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_medis_ralan_jantung on reg_periksa.no_rawat=penilaian_medis_ralan_jantung.no_rawat "+
-                        "inner join dokter on penilaian_medis_ralan_jantung.kd_dokter=dokter.kd_dokter where "+
-                        "penilaian_medis_ralan_jantung.tanggal between ? and ? order by penilaian_medis_ralan_jantung.tanggal");
+                        "inner join penilaian_medis_ralan_urologi on reg_periksa.no_rawat=penilaian_medis_ralan_urologi.no_rawat "+
+                        "inner join dokter on penilaian_medis_ralan_urologi.kd_dokter=dokter.kd_dokter where "+
+                        "penilaian_medis_ralan_urologi.tanggal between ? and ? order by penilaian_medis_ralan_urologi.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_jantung.tanggal,"+
-                        "penilaian_medis_ralan_jantung.kd_dokter,penilaian_medis_ralan_jantung.anamnesis,penilaian_medis_ralan_jantung.hubungan,penilaian_medis_ralan_jantung.keluhan_utama,penilaian_medis_ralan_jantung.rps,"+
-                        "penilaian_medis_ralan_jantung.rpk,penilaian_medis_ralan_jantung.rpd,penilaian_medis_ralan_jantung.rpo,penilaian_medis_ralan_jantung.alergi,penilaian_medis_ralan_jantung.td,penilaian_medis_ralan_jantung.bb,"+
-                        "penilaian_medis_ralan_jantung.tb,penilaian_medis_ralan_jantung.suhu,penilaian_medis_ralan_jantung.nadi,penilaian_medis_ralan_jantung.rr,penilaian_medis_ralan_jantung.keadaan_umum,"+
-                        "penilaian_medis_ralan_jantung.nyeri,penilaian_medis_ralan_jantung.status_nutrisi,penilaian_medis_ralan_jantung.jantung,penilaian_medis_ralan_jantung.keterangan_jantung,penilaian_medis_ralan_jantung.paru,"+
-                        "penilaian_medis_ralan_jantung.keterangan_paru,penilaian_medis_ralan_jantung.ekstrimitas,penilaian_medis_ralan_jantung.keterangan_ekstrimitas,penilaian_medis_ralan_jantung.lainnya,"+
-                        "penilaian_medis_ralan_jantung.lab,penilaian_medis_ralan_jantung.ekg,penilaian_medis_ralan_jantung.penunjang_lain,penilaian_medis_ralan_jantung.diagnosis,penilaian_medis_ralan_jantung.diagnosis2,"+
-                        "penilaian_medis_ralan_jantung.permasalahan,penilaian_medis_ralan_jantung.terapi,penilaian_medis_ralan_jantung.tindakan,penilaian_medis_ralan_jantung.edukasi,dokter.nm_dokter "+
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_urologi.tanggal,"+
+                        "penilaian_medis_ralan_urologi.kd_dokter,penilaian_medis_ralan_urologi.anamnesis,penilaian_medis_ralan_urologi.hubungan,penilaian_medis_ralan_urologi.keluhan_utama,penilaian_medis_ralan_urologi.rps,"+
+                        "penilaian_medis_ralan_urologi.rpk,penilaian_medis_ralan_urologi.rpd,penilaian_medis_ralan_urologi.rpo,penilaian_medis_ralan_urologi.riwayat_kebiasaan,penilaian_medis_ralan_urologi.riwayat_operasi_urologi,"+
+                        "penilaian_medis_ralan_urologi.alergi,penilaian_medis_ralan_urologi.td,penilaian_medis_ralan_urologi.bb,penilaian_medis_ralan_urologi.tb,penilaian_medis_ralan_urologi.suhu,penilaian_medis_ralan_urologi.nadi,"+
+                        "penilaian_medis_ralan_urologi.rr,penilaian_medis_ralan_urologi.keadaan_umum,penilaian_medis_ralan_urologi.nyeri,penilaian_medis_ralan_urologi.status_nutrisi,penilaian_medis_ralan_urologi.thoraks,"+
+                        "penilaian_medis_ralan_urologi.keterangan_thoraks,penilaian_medis_ralan_urologi.abdomen,penilaian_medis_ralan_urologi.keterangan_abdomen,penilaian_medis_ralan_urologi.ekstrimitas,"+
+                        "penilaian_medis_ralan_urologi.keterangan_ekstrimitas,penilaian_medis_ralan_urologi.nyeri_ketok_cva,penilaian_medis_ralan_urologi.genitalia_eksternal,penilaian_medis_ralan_urologi.colok_dubur,"+
+                        "penilaian_medis_ralan_urologi.lainnya,penilaian_medis_ralan_urologi.urinalisis,penilaian_medis_ralan_urologi.darah,penilaian_medis_ralan_urologi.usg_urologi,penilaian_medis_ralan_urologi.radiologi,"+
+                        "penilaian_medis_ralan_urologi.penunjang_lain,penilaian_medis_ralan_urologi.diagnosis,penilaian_medis_ralan_urologi.diagnosis2,penilaian_medis_ralan_urologi.permasalahan,penilaian_medis_ralan_urologi.terapi,"+
+                        "penilaian_medis_ralan_urologi.tindakan,penilaian_medis_ralan_urologi.edukasi,dokter.nm_dokter "+
                         "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join penilaian_medis_ralan_jantung on reg_periksa.no_rawat=penilaian_medis_ralan_jantung.no_rawat "+
-                        "inner join dokter on penilaian_medis_ralan_jantung.kd_dokter=dokter.kd_dokter where "+
-                        "penilaian_medis_ralan_jantung.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                        "penilaian_medis_ralan_jantung.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_medis_ralan_jantung.tanggal");
+                        "inner join penilaian_medis_ralan_urologi on reg_periksa.no_rawat=penilaian_medis_ralan_urologi.no_rawat "+
+                        "inner join dokter on penilaian_medis_ralan_urologi.kd_dokter=dokter.kd_dokter where "+
+                        "penilaian_medis_ralan_urologi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                        "penilaian_medis_ralan_urologi.kd_dokter like ? or dokter.nm_dokter like ?) order by penilaian_medis_ralan_urologi.tanggal");
             }
                 
             try {
@@ -2297,10 +2524,12 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpk"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("alergi"),rs.getString("td"),
-                        rs.getString("bb"),rs.getString("tb"),rs.getString("suhu"),rs.getString("nadi"),rs.getString("rr"),rs.getString("keadaan_umum"),rs.getString("nyeri"),rs.getString("status_nutrisi"),rs.getString("jantung"),
-                        rs.getString("keterangan_jantung"),rs.getString("paru"),rs.getString("keterangan_paru"),rs.getString("ekstrimitas"),rs.getString("keterangan_ekstrimitas"),rs.getString("lainnya"),rs.getString("lab"),
-                        rs.getString("ekg"),rs.getString("penunjang_lain"),rs.getString("diagnosis"),rs.getString("diagnosis2"),rs.getString("permasalahan"),rs.getString("terapi"),rs.getString("tindakan"),rs.getString("edukasi")
+                        rs.getString("anamnesis"),rs.getString("hubungan"),rs.getString("keluhan_utama"),rs.getString("rps"),rs.getString("rpk"),rs.getString("rpd"),rs.getString("rpo"),rs.getString("riwayat_kebiasaan"),
+                        rs.getString("riwayat_operasi_urologi"),rs.getString("alergi"),rs.getString("td"),rs.getString("bb"),rs.getString("tb"),rs.getString("suhu"),rs.getString("nadi"),rs.getString("rr"),rs.getString("keadaan_umum"),
+                        rs.getString("nyeri"),rs.getString("status_nutrisi"),rs.getString("thoraks"),rs.getString("keterangan_thoraks"),rs.getString("abdomen"),rs.getString("keterangan_abdomen"),rs.getString("ekstrimitas"),
+                        rs.getString("keterangan_ekstrimitas"),rs.getString("nyeri_ketok_cva"),rs.getString("genitalia_eksternal"),rs.getString("colok_dubur"),rs.getString("lainnya"),rs.getString("urinalisis"),rs.getString("darah"),
+                        rs.getString("usg_urologi"),rs.getString("radiologi"),rs.getString("penunjang_lain"),rs.getString("diagnosis"),rs.getString("diagnosis2"),rs.getString("permasalahan"),rs.getString("terapi"),
+                        rs.getString("tindakan"),rs.getString("edukasi")
                     });
                 }
             } catch (Exception e) {
@@ -2327,6 +2556,9 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         RPS.setText("");
         RPD.setText("");
         RPK.setText("");
+        RPO.setText("");
+        RiwayatKebiasaan.setText("");
+        RiwayatOperasiUrologi.setText("");
         Alergi.setText("");
         TD.setText("");
         Nadi.setText("");
@@ -2334,16 +2566,25 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         RR.setText("");
         BB.setText("");
         Nyeri.setText("");
-        Jantung.setSelectedIndex(0);
-        Paru.setSelectedIndex(0);
+        StatusNutrisi.setText("");
+        TB.setText("");
+        Thoraks.setSelectedIndex(0);
+        Abdomen.setSelectedIndex(0);
         Ekstrimitas.setSelectedIndex(0);
-        KeteranganJantung.setText("");
-        KeteranganParu.setText("");
+        KeteranganThoraks.setText("");
+        KeteranganAbdomen.setText("");
         KeteranganEkstrimitas.setText("");
+        NyeriKetokCVA.setText("");
+        GenitaliaEksternal.setText("");
+        ColokDubur.setText("");
         Lainnya.setText("");
-        Lab.setText("");
-        EKG.setText("");
-        PenunjangLain.setText("");
+        Urinalisis.setText("");
+        Darah.setText("");
+        Radiologi.setText("");
+        PenunjangLainnya.setText("");
+        USGUrologi.setText("");
+        Radiologi.setText("");
+        PenunjangLainnya.setText("");
         Diagnosis.setText("");
         Diagnosis2.setText("");
         Permasalahan.setText("");
@@ -2369,32 +2610,39 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             RPK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
             RPD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
             RPO.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            Keadaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            Nyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            StatusNutrisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
-            Jantung.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
-            KeteranganJantung.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
-            Paru.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
-            KeteranganParu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
-            Ekstrimitas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
-            KeteranganEkstrimitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
-            Lainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
-            Lab.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
-            EKG.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
-            PenunjangLain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
-            Diagnosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
-            Diagnosis2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
-            Permasalahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
-            Terapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
-            Edukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+            RiwayatKebiasaan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            RiwayatOperasiUrologi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            Alergi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            TD.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            BB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            TB.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            Suhu.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            Nadi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            RR.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            Keadaan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            Nyeri.setText(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            StatusNutrisi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            Thoraks.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            KeteranganThoraks.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            Abdomen.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            KeteranganAbdomen.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            Ekstrimitas.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            KeteranganEkstrimitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            NyeriKetokCVA.setText(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            GenitaliaEksternal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            ColokDubur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            Lainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            Urinalisis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            Darah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            USGUrologi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
+            Radiologi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
+            PenunjangLainnya.setText(tbObat.getValueAt(tbObat.getSelectedRow(),41).toString());
+            Diagnosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),42).toString());
+            Diagnosis2.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
+            Permasalahan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
+            Terapi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),45).toString());
+            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),46).toString());
+            Edukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),47).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
         }
     }
@@ -2440,9 +2688,9 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_jantung());
-        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_jantung());
-        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_jantung());
+        BtnSimpan.setEnabled(akses.getpenilaian_awal_medis_ralan_urologi());
+        BtnHapus.setEnabled(akses.getpenilaian_awal_medis_ralan_urologi());
+        BtnEdit.setEnabled(akses.getpenilaian_awal_medis_ralan_urologi());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -2467,7 +2715,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from penilaian_medis_ralan_jantung where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from penilaian_medis_ralan_urologi where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2479,12 +2727,15 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("penilaian_medis_ralan_jantung","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpk=?,rpd=?,rpo=?,alergi=?,td=?,bb=?,tb=?,suhu=?,nadi=?,rr=?,keadaan_umum=?,nyeri=?,status_nutrisi=?,jantung=?,keterangan_jantung=?,paru=?,"+
-                "keterangan_paru=?,ekstrimitas=?,keterangan_ekstrimitas=?,lainnya=?,lab=?,ekg=?,penunjang_lain=?,diagnosis=?,diagnosis2=?,permasalahan=?,terapi=?,tindakan=?,edukasi=?",37,new String[]{
+        if(Sequel.mengedittf("penilaian_medis_ralan_urologi","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,anamnesis=?,hubungan=?,keluhan_utama=?,rps=?,rpk=?,rpd=?,rpo=?,riwayat_kebiasaan=?,riwayat_operasi_urologi=?,alergi=?,"+
+                "td=?,bb=?,tb=?,suhu=?,nadi=?,rr=?,keadaan_umum=?,nyeri=?,status_nutrisi=?,thoraks=?,keterangan_thoraks=?,abdomen=?,keterangan_abdomen=?,ekstrimitas=?,keterangan_ekstrimitas=?,nyeri_ketok_cva=?,genitalia_eksternal=?,"+
+                "colok_dubur=?,lainnya=?,urinalisis=?,darah=?,usg_urologi=?,radiologi=?,penunjang_lain=?,diagnosis=?,diagnosis2=?,permasalahan=?,terapi=?,tindakan=?,edukasi=?",44,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                KeluhanUtama.getText(),RPS.getText(),RPK.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),TD.getText(),BB.getText(),TB.getText(),Suhu.getText(),Nadi.getText(),RR.getText(),Keadaan.getSelectedItem().toString(),Nyeri.getText(),StatusNutrisi.getText(),
-                Jantung.getSelectedItem().toString(),KeteranganJantung.getText(),Paru.getSelectedItem().toString(),KeteranganParu.getText(),Ekstrimitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),Lainnya.getText(),Lab.getText(),EKG.getText(),
-                PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                KeluhanUtama.getText(),RPS.getText(),RPK.getText(),RPD.getText(),RPO.getText(),RiwayatKebiasaan.getText(),RiwayatOperasiUrologi.getText(),Alergi.getText(),TD.getText(),BB.getText(),TB.getText(),
+                Suhu.getText(),Nadi.getText(),RR.getText(),Keadaan.getSelectedItem().toString(),Nyeri.getText(),StatusNutrisi.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),
+                Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),Ekstrimitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),NyeriKetokCVA.getText(),GenitaliaEksternal.getText(),
+                ColokDubur.getText(),Lainnya.getText(),Urinalisis.getText(),Darah.getText(),USGUrologi.getText(),Radiologi.getText(),PenunjangLainnya.getText(),Diagnosis.getText(),Diagnosis2.getText(),
+                Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2501,49 +2752,58 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
                tbObat.setValueAt(RPK.getText(),tbObat.getSelectedRow(),12);
                tbObat.setValueAt(RPD.getText(),tbObat.getSelectedRow(),13);
                tbObat.setValueAt(RPO.getText(),tbObat.getSelectedRow(),14);
-               tbObat.setValueAt(Alergi.getText(),tbObat.getSelectedRow(),15);
-               tbObat.setValueAt(TD.getText(),tbObat.getSelectedRow(),16);
-               tbObat.setValueAt(BB.getText(),tbObat.getSelectedRow(),17);
-               tbObat.setValueAt(TB.getText(),tbObat.getSelectedRow(),18);
-               tbObat.setValueAt(Suhu.getText(),tbObat.getSelectedRow(),19);
-               tbObat.setValueAt(Nadi.getText(),tbObat.getSelectedRow(),20);
-               tbObat.setValueAt(RR.getText(),tbObat.getSelectedRow(),21);
-               tbObat.setValueAt(Keadaan.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-               tbObat.setValueAt(Nyeri.getText(),tbObat.getSelectedRow(),23);
-               tbObat.setValueAt(StatusNutrisi.getText(),tbObat.getSelectedRow(),24);
-               tbObat.setValueAt(Jantung.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
-               tbObat.setValueAt(KeteranganJantung.getText(),tbObat.getSelectedRow(),26);
-               tbObat.setValueAt(Paru.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
-               tbObat.setValueAt(KeteranganParu.getText(),tbObat.getSelectedRow(),28);
-               tbObat.setValueAt(Ekstrimitas.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
-               tbObat.setValueAt(KeteranganEkstrimitas.getText(),tbObat.getSelectedRow(),30);
-               tbObat.setValueAt(Lainnya.getText(),tbObat.getSelectedRow(),31);
-               tbObat.setValueAt(Lab.getText(),tbObat.getSelectedRow(),32);
-               tbObat.setValueAt(EKG.getText(),tbObat.getSelectedRow(),33);
-               tbObat.setValueAt(PenunjangLain.getText(),tbObat.getSelectedRow(),34);
-               tbObat.setValueAt(Diagnosis.getText(),tbObat.getSelectedRow(),35);
-               tbObat.setValueAt(Diagnosis2.getText(),tbObat.getSelectedRow(),36);
-               tbObat.setValueAt(Permasalahan.getText(),tbObat.getSelectedRow(),37);
-               tbObat.setValueAt(Terapi.getText(),tbObat.getSelectedRow(),38);
-               tbObat.setValueAt(Tindakan.getText(),tbObat.getSelectedRow(),39);
-               tbObat.setValueAt(Edukasi.getText(),tbObat.getSelectedRow(),40);
+               tbObat.setValueAt(RiwayatKebiasaan.getText(),tbObat.getSelectedRow(),15);
+               tbObat.setValueAt(RiwayatOperasiUrologi.getText(),tbObat.getSelectedRow(),16);
+               tbObat.setValueAt(Alergi.getText(),tbObat.getSelectedRow(),17);
+               tbObat.setValueAt(TD.getText(),tbObat.getSelectedRow(),18);
+               tbObat.setValueAt(BB.getText(),tbObat.getSelectedRow(),19);
+               tbObat.setValueAt(TB.getText(),tbObat.getSelectedRow(),20);
+               tbObat.setValueAt(Suhu.getText(),tbObat.getSelectedRow(),21);
+               tbObat.setValueAt(Nadi.getText(),tbObat.getSelectedRow(),22);
+               tbObat.setValueAt(RR.getText(),tbObat.getSelectedRow(),23);
+               tbObat.setValueAt(Keadaan.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+               tbObat.setValueAt(Nyeri.getText(),tbObat.getSelectedRow(),25);
+               tbObat.setValueAt(StatusNutrisi.getText(),tbObat.getSelectedRow(),26);
+               tbObat.setValueAt(Thoraks.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+               tbObat.setValueAt(KeteranganThoraks.getText(),tbObat.getSelectedRow(),28);
+               tbObat.setValueAt(Abdomen.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
+               tbObat.setValueAt(KeteranganAbdomen.getText(),tbObat.getSelectedRow(),30);
+               tbObat.setValueAt(Ekstrimitas.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
+               tbObat.setValueAt(KeteranganEkstrimitas.getText(),tbObat.getSelectedRow(),32);
+               tbObat.setValueAt(NyeriKetokCVA.getText(),tbObat.getSelectedRow(),33);
+               tbObat.setValueAt(GenitaliaEksternal.getText(),tbObat.getSelectedRow(),34);
+               tbObat.setValueAt(ColokDubur.getText(),tbObat.getSelectedRow(),35);
+               tbObat.setValueAt(Lainnya.getText(),tbObat.getSelectedRow(),36);
+               tbObat.setValueAt(Urinalisis.getText(),tbObat.getSelectedRow(),37);
+               tbObat.setValueAt(Darah.getText(),tbObat.getSelectedRow(),38);
+               tbObat.setValueAt(USGUrologi.getText(),tbObat.getSelectedRow(),39);
+               tbObat.setValueAt(Radiologi.getText(),tbObat.getSelectedRow(),40);
+               tbObat.setValueAt(PenunjangLainnya.getText(),tbObat.getSelectedRow(),41);
+               tbObat.setValueAt(Diagnosis.getText(),tbObat.getSelectedRow(),42);
+               tbObat.setValueAt(Diagnosis2.getText(),tbObat.getSelectedRow(),43);
+               tbObat.setValueAt(Permasalahan.getText(),tbObat.getSelectedRow(),44);
+               tbObat.setValueAt(Terapi.getText(),tbObat.getSelectedRow(),45);
+               tbObat.setValueAt(Tindakan.getText(),tbObat.getSelectedRow(),46);
+               tbObat.setValueAt(Edukasi.getText(),tbObat.getSelectedRow(),47);
                emptTeks();
                TabRawat.setSelectedIndex(1);
         }
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("penilaian_medis_ralan_jantung","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",36,new String[]{
+        if(Sequel.menyimpantf("penilaian_medis_ralan_urologi","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",43,new String[]{
                 TNoRw.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),KdDokter.getText(),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                KeluhanUtama.getText(),RPS.getText(),RPK.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),TD.getText(),BB.getText(),TB.getText(),Suhu.getText(),Nadi.getText(),RR.getText(),Keadaan.getSelectedItem().toString(),Nyeri.getText(),StatusNutrisi.getText(),
-                Jantung.getSelectedItem().toString(),KeteranganJantung.getText(),Paru.getSelectedItem().toString(),KeteranganParu.getText(),Ekstrimitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),Lainnya.getText(),Lab.getText(),EKG.getText(),
-                PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
+                KeluhanUtama.getText(),RPS.getText(),RPK.getText(),RPD.getText(),RPO.getText(),RiwayatKebiasaan.getText(),RiwayatOperasiUrologi.getText(),Alergi.getText(),TD.getText(),BB.getText(),TB.getText(),
+                Suhu.getText(),Nadi.getText(),RR.getText(),Keadaan.getSelectedItem().toString(),Nyeri.getText(),StatusNutrisi.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),
+                Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),Ekstrimitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),NyeriKetokCVA.getText(),GenitaliaEksternal.getText(),
+                ColokDubur.getText(),Lainnya.getText(),Urinalisis.getText(),Darah.getText(),USGUrologi.getText(),Radiologi.getText(),PenunjangLainnya.getText(),Diagnosis.getText(),Diagnosis2.getText(),
+                Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
             })==true){
                 tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),Jk.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19),Anamnesis.getSelectedItem().toString(),Hubungan.getText(),
-                    KeluhanUtama.getText(),RPS.getText(),RPK.getText(),RPD.getText(),RPO.getText(),Alergi.getText(),TD.getText(),BB.getText(),TB.getText(),Suhu.getText(),Nadi.getText(),RR.getText(),Keadaan.getSelectedItem().toString(),Nyeri.getText(),StatusNutrisi.getText(),Jantung.getSelectedItem().toString(),
-                    KeteranganJantung.getText(),Paru.getSelectedItem().toString(),KeteranganParu.getText(),Ekstrimitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),Lainnya.getText(),Lab.getText(),EKG.getText(),PenunjangLain.getText(),Diagnosis.getText(),Diagnosis2.getText(),Permasalahan.getText(),
-                    Terapi.getText(),Tindakan.getText(),Edukasi.getText()
+                    KeluhanUtama.getText(),RPS.getText(),RPK.getText(),RPD.getText(),RPO.getText(),RiwayatKebiasaan.getText(),RiwayatOperasiUrologi.getText(),Alergi.getText(),TD.getText(),BB.getText(),TB.getText(),Suhu.getText(),Nadi.getText(),RR.getText(),Keadaan.getSelectedItem().toString(),Nyeri.getText(),
+                    StatusNutrisi.getText(),Thoraks.getSelectedItem().toString(),KeteranganThoraks.getText(),Abdomen.getSelectedItem().toString(),KeteranganAbdomen.getText(),Ekstrimitas.getSelectedItem().toString(),KeteranganEkstrimitas.getText(),NyeriKetokCVA.getText(),GenitaliaEksternal.getText(),
+                    ColokDubur.getText(),Lainnya.getText(),Urinalisis.getText(),Darah.getText(),USGUrologi.getText(),Radiologi.getText(),PenunjangLainnya.getText(),Diagnosis.getText(),Diagnosis2.getText(),Permasalahan.getText(),Terapi.getText(),Tindakan.getText(),Edukasi.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();

@@ -890,7 +890,7 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
             }
         });
         FormInput.add(Jantung);
-        Jantung.setBounds(114, 340, 128, 23);
+        Jantung.setBounds(113, 340, 128, 23);
 
         jLabel47.setText("Lainnya :");
         jLabel47.setName("jLabel47"); // NOI18N
@@ -911,7 +911,7 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
             }
         });
         FormInput.add(Paru);
-        Paru.setBounds(114, 370, 128, 23);
+        Paru.setBounds(113, 370, 128, 23);
 
         jLabel49.setText("Ekstremitas :");
         jLabel49.setName("jLabel49"); // NOI18N
@@ -927,7 +927,7 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
             }
         });
         FormInput.add(Ekstrimitas);
-        Ekstrimitas.setBounds(114, 400, 128, 23);
+        Ekstrimitas.setBounds(113, 400, 128, 23);
 
         KeteranganJantung.setFocusTraversalPolicyProvider(true);
         KeteranganJantung.setName("KeteranganJantung"); // NOI18N
@@ -937,7 +937,7 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
             }
         });
         FormInput.add(KeteranganJantung);
-        KeteranganJantung.setBounds(246, 340, 210, 23);
+        KeteranganJantung.setBounds(245, 340, 215, 23);
 
         KeteranganParu.setFocusTraversalPolicyProvider(true);
         KeteranganParu.setName("KeteranganParu"); // NOI18N
@@ -947,7 +947,7 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
             }
         });
         FormInput.add(KeteranganParu);
-        KeteranganParu.setBounds(246, 370, 210, 23);
+        KeteranganParu.setBounds(245, 370, 215, 23);
 
         KeteranganEkstrimitas.setFocusTraversalPolicyProvider(true);
         KeteranganEkstrimitas.setName("KeteranganEkstrimitas"); // NOI18N
@@ -957,7 +957,7 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
             }
         });
         FormInput.add(KeteranganEkstrimitas);
-        KeteranganEkstrimitas.setBounds(246, 400, 210, 23);
+        KeteranganEkstrimitas.setBounds(245, 400, 215, 23);
 
         scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane5.setName("scrollPane5"); // NOI18N
@@ -2327,6 +2327,7 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
         RPS.setText("");
         RPD.setText("");
         RPK.setText("");
+        RPO.setText("");
         Alergi.setText("");
         TD.setText("");
         Nadi.setText("");
@@ -2334,6 +2335,8 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
         RR.setText("");
         BB.setText("");
         Nyeri.setText("");
+        StatusNutrisi.setText("");
+        TB.setText("");
         Jantung.setSelectedIndex(0);
         Paru.setSelectedIndex(0);
         Ekstrimitas.setSelectedIndex(0);
