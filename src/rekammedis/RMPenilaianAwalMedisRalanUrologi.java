@@ -1514,7 +1514,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         FormInput.add(scrollPane3);
         scrollPane3.setBounds(594, 190, 260, 43);
 
-        jLabel50.setText("Nyeri ketok CVA :");
+        jLabel50.setText("Nyeri Ketok CVA :");
         jLabel50.setName("jLabel50"); // NOI18N
         FormInput.add(jLabel50);
         jLabel50.setBounds(0, 480, 144, 23);
@@ -1887,6 +1887,8 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Keluarga</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penyakit Dahulu</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Penggunakan Obat</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Kebiasaan</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Operasi Urologi :</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Alergi</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD(mmHg)</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB(Kg)</b></td>").append(
@@ -1897,15 +1899,20 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keadaan Umum</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Nutrisi</b></td>").append(
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jantung</b></td>").append(
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Jantung</b></td>").append(
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Paru</b></td>").append(
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Paru</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Thoraks</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Thoraks</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Abdomen</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Abdomen</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ekstremitas</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan Ekstrimitas</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nyeri ketok CVA</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Genitalia Eksternal</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Colok Dubur</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Kelainan Lainnya</b></td>").append(
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Laboratorium</b></td>").append(
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>EKG</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Urinalisis</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Darah (Hb, Ureum, Kreatinin, Elektrolit)</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>USG Urologi</b></td>").append(
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Radiologi (IVP, CT, MRI)</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penunjang Lainnya</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asesmen Kerja</b></td>").append(
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asesmen Banding</b></td>").append(
@@ -1918,7 +1925,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
                 for (i = 0; i < tabMode.getRowCount(); i++) {
                     htmlContent.append(
                         "<tr class='isi'>").append(
-                           "<td valign='top'>").append(tbObat.getValueAt(i,0).toString()).append("</td>").append(
+                            "<td valign='top'>").append(tbObat.getValueAt(i,0).toString()).append("</td>").append(
                             "<td valign='top'>").append(tbObat.getValueAt(i,1).toString()).append("</td>").append(
                             "<td valign='top'>").append(tbObat.getValueAt(i,2).toString()).append("</td>").append(
                             "<td valign='top'>").append(tbObat.getValueAt(i,3).toString()).append("</td>").append(
@@ -1959,6 +1966,13 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
                             "<td valign='top'>").append(tbObat.getValueAt(i,38).toString()).append("</td>").append(
                             "<td valign='top'>").append(tbObat.getValueAt(i,39).toString()).append("</td>").append(
                             "<td valign='top'>").append(tbObat.getValueAt(i,40).toString()).append("</td>").append( 
+                            "<td valign='top'>").append(tbObat.getValueAt(i,41).toString()).append("</td>").append( 
+                            "<td valign='top'>").append(tbObat.getValueAt(i,42).toString()).append("</td>").append( 
+                            "<td valign='top'>").append(tbObat.getValueAt(i,43).toString()).append("</td>").append( 
+                            "<td valign='top'>").append(tbObat.getValueAt(i,44).toString()).append("</td>").append( 
+                            "<td valign='top'>").append(tbObat.getValueAt(i,45).toString()).append("</td>").append( 
+                            "<td valign='top'>").append(tbObat.getValueAt(i,46).toString()).append("</td>").append( 
+                            "<td valign='top'>").append(tbObat.getValueAt(i,47).toString()).append("</td>").append( 
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1985,7 +1999,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
                 );
                 bg.close();
 
-                File f = new File("DataPenilaianAwalMedisRalanJantung.html");            
+                File f = new File("DataPenilaianAwalMedisRalanUrologi.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -1995,7 +2009,7 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN AWAL MEDIS RAWAT JALAN JANTUNG<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA PENGKAJIAN AWAL MEDIS RAWAT JALAN UROLOGI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -2123,15 +2137,17 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
             String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
             
-            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanJantung.jasper","report","::[ Laporan Pengkajian Awal Medis Rawat Jalan Jantung ]::",
+            Valid.MyReportqry("rptCetakPenilaianAwalMedisRalanUrologi.jasper","report","::[ Laporan Pengkajian Awal Medis Rawat Jalan Urologi ]::",
                 "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,penilaian_medis_ralan_urologi.tanggal,"+
                 "penilaian_medis_ralan_urologi.kd_dokter,penilaian_medis_ralan_urologi.anamnesis,penilaian_medis_ralan_urologi.hubungan,penilaian_medis_ralan_urologi.keluhan_utama,penilaian_medis_ralan_urologi.rps,"+
-                "penilaian_medis_ralan_urologi.rpk,penilaian_medis_ralan_urologi.rpd,penilaian_medis_ralan_urologi.rpo,penilaian_medis_ralan_urologi.alergi,penilaian_medis_ralan_urologi.td,penilaian_medis_ralan_urologi.bb,"+
-                "penilaian_medis_ralan_urologi.tb,penilaian_medis_ralan_urologi.suhu,penilaian_medis_ralan_urologi.nadi,penilaian_medis_ralan_urologi.rr,penilaian_medis_ralan_urologi.keadaan_umum,"+
-                "penilaian_medis_ralan_urologi.nyeri,penilaian_medis_ralan_urologi.status_nutrisi,penilaian_medis_ralan_urologi.urologi,penilaian_medis_ralan_urologi.keterangan_urologi,penilaian_medis_ralan_urologi.paru,"+
-                "penilaian_medis_ralan_urologi.keterangan_paru,penilaian_medis_ralan_urologi.ekstrimitas,penilaian_medis_ralan_urologi.keterangan_ekstrimitas,penilaian_medis_ralan_urologi.lainnya,"+
-                "penilaian_medis_ralan_urologi.lab,penilaian_medis_ralan_urologi.ekg,penilaian_medis_ralan_urologi.penunjang_lain,penilaian_medis_ralan_urologi.diagnosis,penilaian_medis_ralan_urologi.diagnosis2,"+
-                "penilaian_medis_ralan_urologi.permasalahan,penilaian_medis_ralan_urologi.terapi,penilaian_medis_ralan_urologi.tindakan,penilaian_medis_ralan_urologi.edukasi,dokter.nm_dokter "+
+                "penilaian_medis_ralan_urologi.rpk,penilaian_medis_ralan_urologi.rpd,penilaian_medis_ralan_urologi.rpo,penilaian_medis_ralan_urologi.riwayat_kebiasaan,penilaian_medis_ralan_urologi.riwayat_operasi_urologi,"+
+                "penilaian_medis_ralan_urologi.alergi,penilaian_medis_ralan_urologi.td,penilaian_medis_ralan_urologi.bb,penilaian_medis_ralan_urologi.tb,penilaian_medis_ralan_urologi.suhu,penilaian_medis_ralan_urologi.nadi,"+
+                "penilaian_medis_ralan_urologi.rr,penilaian_medis_ralan_urologi.keadaan_umum,penilaian_medis_ralan_urologi.nyeri,penilaian_medis_ralan_urologi.status_nutrisi,penilaian_medis_ralan_urologi.thoraks,"+
+                "penilaian_medis_ralan_urologi.keterangan_thoraks,penilaian_medis_ralan_urologi.abdomen,penilaian_medis_ralan_urologi.keterangan_abdomen,penilaian_medis_ralan_urologi.ekstrimitas,"+
+                "penilaian_medis_ralan_urologi.keterangan_ekstrimitas,penilaian_medis_ralan_urologi.nyeri_ketok_cva,penilaian_medis_ralan_urologi.genitalia_eksternal,penilaian_medis_ralan_urologi.colok_dubur,"+
+                "penilaian_medis_ralan_urologi.lainnya,penilaian_medis_ralan_urologi.urinalisis,penilaian_medis_ralan_urologi.darah,penilaian_medis_ralan_urologi.usg_urologi,penilaian_medis_ralan_urologi.radiologi,"+
+                "penilaian_medis_ralan_urologi.penunjang_lain,penilaian_medis_ralan_urologi.diagnosis,penilaian_medis_ralan_urologi.diagnosis2,penilaian_medis_ralan_urologi.permasalahan,penilaian_medis_ralan_urologi.terapi,"+
+                "penilaian_medis_ralan_urologi.tindakan,penilaian_medis_ralan_urologi.edukasi,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_medis_ralan_urologi on reg_periksa.no_rawat=penilaian_medis_ralan_urologi.no_rawat "+
                 "inner join dokter on penilaian_medis_ralan_urologi.kd_dokter=dokter.kd_dokter where penilaian_medis_ralan_urologi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);

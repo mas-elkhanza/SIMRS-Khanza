@@ -2102,7 +2102,7 @@
                         </Container>
                         <Component class="widget.Label" name="jLabel50">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nyeri ketok CVA :"/>
+                            <Property name="text" type="java.lang.String" value="Nyeri Ketok CVA :"/>
                             <Property name="name" type="java.lang.String" value="jLabel50" noResource="true"/>
                           </Properties>
                           <Constraints>
