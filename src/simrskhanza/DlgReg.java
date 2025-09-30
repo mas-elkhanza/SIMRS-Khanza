@@ -8571,7 +8571,7 @@ private void MnRujukEdukasiBerkelanjutanActionPerformed(java.awt.event.ActionEve
         }else{            
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Valid.editTable(tabMode,"reg_periksa","no_rawat",TNoRw,"stts='Dirujuk'");
-            DlgRujukBerkelanjutan form=new DlgRujukBerkelanjutan(null,false);
+            DlgRujukEdukasiBerkelanjutan form=new DlgRujukEdukasiBerkelanjutan(null,false);
             form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             form.setLocationRelativeTo(internalFrame1);
             form.emptTeks();
@@ -17031,7 +17031,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnNoResep.setEnabled(akses.getresep_obat());
         MnNoResep1.setEnabled(akses.getresep_obat());
         MnRujuk.setEnabled(akses.getrujukan_keluar());
-        MnRujukEdukasiBerkelanjutan.setEnabled(akses.getrujukan_berkelanjutan());
+        MnRujukEdukasiBerkelanjutan.setEnabled(akses.getrujuk_edukasi_berkelanjutan());
         MnRujukMasuk.setEnabled(akses.getrujukan_masuk());
         MnDiagnosa.setEnabled(akses.getdiagnosa_pasien());
         MnDiagnosa1.setEnabled(akses.getdiagnosa_pasien());
