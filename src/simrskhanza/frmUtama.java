@@ -935,6 +935,7 @@ import rekammedis.RMHasilEndoskopiHidung;
 import rekammedis.RMHasilEndoskopiTelinga;
 import rekammedis.RMHasilPemeriksaanEKG;
 import rekammedis.RMHasilPemeriksaanEcho;
+import rekammedis.RMHasilPemeriksaanEchoPediatrik;
 import rekammedis.RMHasilPemeriksaanOCT;
 import rekammedis.RMHasilPemeriksaanSlitLamp;
 import rekammedis.RMHasilPemeriksaanTreadmill;
@@ -1067,33 +1068,93 @@ import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
 import setting.DlgRuangOperasi;
 import setting.DlgSetHargaToko;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgAbout;
+import simrskhanza.DlgBahasa;
+import simrskhanza.DlgBahasa;
 import simrskhanza.DlgBahasa;
 import simrskhanza.DlgCacatFisik;
+import simrskhanza.DlgCacatFisik;
+import simrskhanza.DlgCacatFisik;
+import simrskhanza.DlgCariPeriksaLab;
+import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaLab;
 import simrskhanza.DlgCariPeriksaLabMB;
+import simrskhanza.DlgCariPeriksaLabMB;
+import simrskhanza.DlgCariPeriksaLabMB;
+import simrskhanza.DlgCariPeriksaLabPA;
+import simrskhanza.DlgCariPeriksaLabPA;
 import simrskhanza.DlgCariPeriksaLabPA;
 import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariPeriksaRadiologi;
+import simrskhanza.DlgCariTagihanOperasi;
+import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgCariTagihanOperasi;
 import simrskhanza.DlgDpjp;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgDpjp;
+import simrskhanza.DlgGolonganPolri;
+import simrskhanza.DlgGolonganPolri;
 import simrskhanza.DlgGolonganPolri;
 import simrskhanza.DlgGolonganTNI;
+import simrskhanza.DlgGolonganTNI;
+import simrskhanza.DlgGolonganTNI;
+import simrskhanza.DlgIGD;
+import simrskhanza.DlgIGD;
 import simrskhanza.DlgIGD;
 import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgIKBBayi;
+import simrskhanza.DlgJabatanPolri;
+import simrskhanza.DlgJabatanPolri;
 import simrskhanza.DlgJabatanPolri;
 import simrskhanza.DlgJabatanTNI;
+import simrskhanza.DlgJabatanTNI;
+import simrskhanza.DlgJabatanTNI;
+import simrskhanza.DlgKasirRalan;
+import simrskhanza.DlgKasirRalan;
 import simrskhanza.DlgKasirRalan;
 import simrskhanza.DlgLhtCatatanPasien;
+import simrskhanza.DlgLhtCatatanPasien;
+import simrskhanza.DlgLhtCatatanPasien;
+import simrskhanza.DlgPangkatPolri;
+import simrskhanza.DlgPangkatPolri;
 import simrskhanza.DlgPangkatPolri;
 import simrskhanza.DlgPangkatTNI;
+import simrskhanza.DlgPangkatTNI;
+import simrskhanza.DlgPangkatTNI;
+import simrskhanza.DlgPasienMati;
+import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPasienMati;
 import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPemberianDiet;
+import simrskhanza.DlgPenanggungJawab;
+import simrskhanza.DlgPenanggungJawab;
 import simrskhanza.DlgPenanggungJawab;
 import simrskhanza.DlgPerusahaan;
+import simrskhanza.DlgPerusahaan;
+import simrskhanza.DlgPerusahaan;
+import simrskhanza.DlgRawatJalan;
+import simrskhanza.DlgRawatJalan;
+import simrskhanza.DlgReg;
+import simrskhanza.DlgReg;
 import simrskhanza.DlgReg;
 import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujuk;
+import simrskhanza.DlgRujukMasuk;
+import simrskhanza.DlgRujukMasuk;
 import simrskhanza.DlgRujukMasuk;
 import simrskhanza.DlgSatuanPolri;
+import simrskhanza.DlgSatuanPolri;
+import simrskhanza.DlgSatuanPolri;
 import simrskhanza.DlgSatuanTNI;
+import simrskhanza.DlgSatuanTNI;
+import simrskhanza.DlgSatuanTNI;
+import simrskhanza.DlgSuku;
+import simrskhanza.DlgSuku;
 import simrskhanza.DlgSuku;
 import smsui.frmSmsView;
 import surat.MasterTemplatePersetujuanPenolakanTindakan;
@@ -1210,6 +1271,7 @@ public class frmUtama extends javax.swing.JFrame {
         super();
         initComponents();
         initKhanza();
+        initKhanza2();
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/yaski24.png")).getImage());
         
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -2098,7 +2160,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11/08/2025" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01/10/2025" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -22999,6 +23061,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnHasilPemeriksaanECHOPediatrikActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMHasilPemeriksaanEchoPediatrik form=new RMHasilPemeriksaanEchoPediatrik(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23708,7 +23784,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV,btnSkriningInstrumenACRS,
             btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional,btnChecklistKriteriaMasukNICU,btnChecklistKriteriaKeluarNICU,btnPenilaianAwalMedisRanapPsikiatri,
             btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu,btnSkriningInstrumenAMT,btnLabKeslingParameterPengujian,
-            btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung,btnPenilaianAwalMedisRalanUrologi,btnHasilPemeriksaanTreadmill;
+            btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung,btnPenilaianAwalMedisRalanUrologi,btnHasilPemeriksaanTreadmill,
+            btnHasilPemeriksaanECHOPediatrik;
     
     public void isWall(){
         try{            
@@ -27752,6 +27829,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gethasil_pemeriksaan_echo()==true){
                 Panelmenu.add(btnHasilPemeriksaanECHO);
+                jmlmenu++;
+            }
+            
+            if(akses.gethasil_pemeriksaan_echo_pediatrik()==true){
+                Panelmenu.add(btnHasilPemeriksaanECHOPediatrik);
                 jmlmenu++;
             }
             
@@ -33481,6 +33563,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gethasil_pemeriksaan_echo()==true){
             Panelmenu.add(btnHasilPemeriksaanECHO);
+            jmlmenu++;
+        }
+        
+        if(akses.gethasil_pemeriksaan_echo_pediatrik()==true){
+            Panelmenu.add(btnHasilPemeriksaanECHOPediatrik);
             jmlmenu++;
         }
         
@@ -40762,6 +40849,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.gethasil_pemeriksaan_echo()==true){
             if(btnHasilPemeriksaanECHO.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHasilPemeriksaanECHO);
+                jmlmenu++;
+            }                
+        }
+        
+        if(akses.gethasil_pemeriksaan_echo_pediatrik()==true){
+            if(btnHasilPemeriksaanECHOPediatrik.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHasilPemeriksaanECHOPediatrik);
                 jmlmenu++;
             }                
         }
@@ -48827,5 +48921,15 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRalanUrologi.setName("btnPenilaianAwalMedisRalanUrologi");
         btnPenilaianAwalMedisRalanUrologi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRalanUrologi.addActionListener(this::btnPenilaianAwalMedisRalanUrologiActionPerformed);
+    }
+    
+    private void initKhanza2() {
+        btnHasilPemeriksaanECHOPediatrik = new widget.ButtonBig();
+        btnHasilPemeriksaanECHOPediatrik.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2104702_beat_health_healthcare_heart_heartbeat_icon.png")));
+        btnHasilPemeriksaanECHOPediatrik.setText("Hasil Pemeriksaan ECHO Pediatrik");
+        btnHasilPemeriksaanECHOPediatrik.setIconTextGap(0);
+        btnHasilPemeriksaanECHOPediatrik.setName("btnHasilPemeriksaanECHOPediatrik"); 
+        btnHasilPemeriksaanECHOPediatrik.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHasilPemeriksaanECHOPediatrik.addActionListener(this::btnHasilPemeriksaanECHOPediatrikActionPerformed);
     }
 }
