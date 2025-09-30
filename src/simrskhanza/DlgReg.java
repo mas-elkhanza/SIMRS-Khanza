@@ -1215,6 +1215,7 @@ public final class DlgReg extends javax.swing.JDialog {
         MnRujukan = new javax.swing.JMenu();
         MnRujukMasuk = new javax.swing.JMenuItem();
         MnRujuk = new javax.swing.JMenuItem();
+        MnRujukEdukasiBerkelanjutan = new javax.swing.JMenuItem();
         MnPoliInternal = new javax.swing.JMenuItem();
         MnBridging = new javax.swing.JMenu();
         MnSEP = new javax.swing.JMenuItem();
@@ -4559,6 +4560,22 @@ public final class DlgReg extends javax.swing.JDialog {
         });
         MnRujukan.add(MnRujuk);
 
+                MnRujukEdukasiBerkelanjutan.setBackground(new java.awt.Color(255, 255, 254));
+        MnRujukEdukasiBerkelanjutan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnRujukEdukasiBerkelanjutan.setForeground(new java.awt.Color(50, 50, 50));
+        MnRujukEdukasiBerkelanjutan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnRujukEdukasiBerkelanjutan.setText("Rujuk Edukasi Berkelanjutan");
+        MnRujukEdukasiBerkelanjutan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnRujukEdukasiBerkelanjutan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnRujukEdukasiBerkelanjutan.setName("MnRujukEdukasiBerkelanjutan"); // NOI18N
+        MnRujukEdukasiBerkelanjutan.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnRujukEdukasiBerkelanjutan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRujukEdukasiBerkelanjutanActionPerformed(evt);
+            }
+        });
+        MnRujukan.add(MnRujukEdukasiBerkelanjutan);
+        
         MnPoliInternal.setBackground(new java.awt.Color(255, 255, 254));
         MnPoliInternal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPoliInternal.setForeground(new java.awt.Color(50, 50, 50));
@@ -8543,6 +8560,28 @@ private void MnRujukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             this.setCursor(Cursor.getDefaultCursor());
         }
 }//GEN-LAST:event_MnRujukActionPerformed
+
+private void MnRujukEdukasiBerkelanjutanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnRujukEdukasiBerkelanjutanActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TNoReg.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{            
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            Valid.editTable(tabMode,"reg_periksa","no_rawat",TNoRw,"stts='Dirujuk'");
+            DlgRujukBerkelanjutan form=new DlgRujukBerkelanjutan(null,false);
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.emptTeks();
+            form.isCek();
+            form.setNoRm(TNoRw.getText(),DTPCari1.getDate(),DTPCari2.getDate()); 
+            form.tampil();
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+}//GEN-LAST:event_MnRujukEdukasiBerkelanjutanActionPerformed
 
 private void MnPemberianObatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPemberianObatActionPerformed
         if(tabMode.getRowCount()==0){
@@ -16380,6 +16419,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     private javax.swing.JMenuItem MnRiwayatPerawatanICareNoKartu;
     private javax.swing.JMenuItem MnRiwayatPerawatanICareNoKartu1;
     private javax.swing.JMenuItem MnRujuk;
+    private javax.swing.JMenuItem MnRujukEdukasiBerkelanjutan;
     private javax.swing.JMenuItem MnRujukMasuk;
     private javax.swing.JMenuItem MnRujukSisrute;
     private javax.swing.JMenu MnRujukan;
@@ -16991,6 +17031,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnNoResep.setEnabled(akses.getresep_obat());
         MnNoResep1.setEnabled(akses.getresep_obat());
         MnRujuk.setEnabled(akses.getrujukan_keluar());
+        MnRujukEdukasiBerkelanjutan.setEnabled(akses.getrujukan_berkelanjutan());
         MnRujukMasuk.setEnabled(akses.getrujukan_masuk());
         MnDiagnosa.setEnabled(akses.getdiagnosa_pasien());
         MnDiagnosa1.setEnabled(akses.getdiagnosa_pasien());
