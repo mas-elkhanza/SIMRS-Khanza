@@ -5276,8 +5276,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "select laporan_operasi.tanggal,laporan_operasi.diagnosa_preop,laporan_operasi.diagnosa_postop,laporan_operasi.jaringan_dieksekusi,laporan_operasi.selesaioperasi,laporan_operasi.permintaan_pa,laporan_operasi.laporan_operasi,"+
                                     "laporan_operasi.nomor_implan from laporan_operasi where no_rawat='"+rs.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
                             if(rs2.next()){   
-                                get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode2.php?barcode="+rs2.getString("nomor_implan").replaceAll(" ","_"));
-                                http.executeMethod(get);
+                                if(!rs2.getString("nomor_implan").equals("")){
+                                    get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode2.php?barcode="+rs2.getString("nomor_implan").replaceAll(" ","_"));
+                                    http.executeMethod(get);
+                                }
                             
                                 htmlContent.append(  
                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
@@ -5289,7 +5291,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             "<td valign='top' width='4%' align='center'>").append(w).append("</td>").append(
                                             "<td valign='top' width='21%'>Mulai Operasi</td>").append(
                                             "<td valign='top' width='60%'>:&nbsp;").append(rs2.getString("tanggal")).append("</td>").append(
-                                            "<td valign='top' width='15%' rowspan='6' align='center'>Nomor Implan<br><img width='70' height='70' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/penggajian/temp/").append(rs2.getString("nomor_implan").replaceAll(" ","_")).append(".png'/><br>").append(rs2.getString("nomor_implan").replaceAll(" ","_")).append("</td>").append(
+                                            "<td valign='top' width='15%' rowspan='6' align='center'>Nomor Implan<br>").append((rs2.getString("nomor_implan").equals("")?"":"<img width='70' height='70' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+rs2.getString("nomor_implan").replaceAll(" ","_")+".png'/><br>"+rs2.getString("nomor_implan").replaceAll(" ","_"))).append("</td>").append(
                                          "</tr>").append(
                                          "<tr>").append(
                                             "<td valign='top' width='4%' align='center'></td>").append(
@@ -15844,8 +15846,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                         );
                         w=1;
                         do{
-                            get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode2.php?barcode="+rs2.getString("barcode_hf").replaceAll(" ","_"));
-                            http.executeMethod(get);
+                            if(!rs2.getString("barcode_hf").equals("")){
+                                get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode2.php?barcode="+rs2.getString("barcode_hf").replaceAll(" ","_"));
+                                http.executeMethod(get);
+                            }
                             htmlContent.append(
                                  "<tr>").append(
                                     "<td valign='top' align='center'>").append(w).append("</td>").append(
@@ -15861,7 +15865,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center'>").append(rs2.getString("suhu")).append("</td>").append(
                                     "<td valign='top' align='center'>").append(rs2.getString("spo2")).append("</td>").append(
                                     "<td valign='top'>").append(rs2.getString("tindakan")).append("</td>").append(
-                                    "<td valign='top' align='center'><img width='70' height='70' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/penggajian/temp/").append(rs2.getString("barcode_hf").replaceAll(" ","_")).append(".png'/><br>").append(rs2.getString("barcode_hf").replaceAll(" ","_")).append("</td>").append(
+                                    "<td valign='top' align='center'>").append((rs2.getString("barcode_hf").equals("")?"":"<img width='70' height='70' src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/temp/"+rs2.getString("barcode_hf").replaceAll(" ","_")+".png'/><br>"+rs2.getString("barcode_hf").replaceAll(" ","_"))).append("</td>").append(
                                     "<td valign='top'>").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
                                  "</tr>");                                        
                             w++;
