@@ -937,7 +937,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         label11.setBounds(380, 40, 52, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023 10:58:41" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2025 15:11:40" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1439,7 +1439,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         jLabel113.setBounds(0, 760, 135, 23);
 
         TglFisioterapi.setForeground(new java.awt.Color(50, 70, 50));
-        TglFisioterapi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglFisioterapi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2025" }));
         TglFisioterapi.setDisplayFormat("dd-MM-yyyy");
         TglFisioterapi.setEnabled(false);
         TglFisioterapi.setName("TglFisioterapi"); // NOI18N
@@ -1448,7 +1448,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         TglFisioterapi.setBounds(764, 640, 90, 23);
 
         TglOkupasi.setForeground(new java.awt.Color(50, 70, 50));
-        TglOkupasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglOkupasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2025" }));
         TglOkupasi.setDisplayFormat("dd-MM-yyyy");
         TglOkupasi.setEnabled(false);
         TglOkupasi.setName("TglOkupasi"); // NOI18N
@@ -1457,7 +1457,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         TglOkupasi.setBounds(764, 670, 90, 23);
 
         TglWicara.setForeground(new java.awt.Color(50, 70, 50));
-        TglWicara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglWicara.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2025" }));
         TglWicara.setDisplayFormat("dd-MM-yyyy");
         TglWicara.setEnabled(false);
         TglWicara.setName("TglWicara"); // NOI18N
@@ -1466,7 +1466,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         TglWicara.setBounds(764, 700, 90, 23);
 
         TglAkupuntur.setForeground(new java.awt.Color(50, 70, 50));
-        TglAkupuntur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglAkupuntur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2025" }));
         TglAkupuntur.setDisplayFormat("dd-MM-yyyy");
         TglAkupuntur.setEnabled(false);
         TglAkupuntur.setName("TglAkupuntur"); // NOI18N
@@ -1475,7 +1475,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         TglAkupuntur.setBounds(764, 730, 90, 23);
 
         TglTerapilainnya.setForeground(new java.awt.Color(50, 70, 50));
-        TglTerapilainnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        TglTerapilainnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2025" }));
         TglTerapilainnya.setDisplayFormat("dd-MM-yyyy");
         TglTerapilainnya.setEnabled(false);
         TglTerapilainnya.setName("TglTerapilainnya"); // NOI18N
@@ -1646,7 +1646,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1660,7 +1660,7 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-08-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-09-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);

@@ -1021,7 +1021,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                    "satu_sehat_medicationdispense.kode_brng=detail_pemberian_obat.kode_brng and "+
                    "satu_sehat_medicationdispense.no_batch=detail_pemberian_obat.no_batch and "+
                    "satu_sehat_medicationdispense.no_faktur=detail_pemberian_obat.no_faktur "+
-                   "where reg_periksa.tgl_registrasi between ? and ? "+
+                   "where detail_pemberian_obat.status='Ralan' and reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ?) "));
             try {
@@ -1084,7 +1084,7 @@ public final class SatuSehatKirimMedicationDispense extends javax.swing.JDialog 
                    "satu_sehat_medicationdispense.kode_brng=detail_pemberian_obat.kode_brng and "+
                    "satu_sehat_medicationdispense.no_batch=detail_pemberian_obat.no_batch and "+
                    "satu_sehat_medicationdispense.no_faktur=detail_pemberian_obat.no_faktur "+
-                   "where reg_periksa.tgl_registrasi between ? and ? "+
+                   "where detail_pemberian_obat.status='Ranap' and reg_periksa.tgl_registrasi between ? and ? "+
                    (TCari.getText().equals("")?"":"and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or "+
                    "pasien.nm_pasien like ? or pasien.no_ktp like ? or satu_sehat_mapping_obat.kode_brng like ? or satu_sehat_mapping_obat.obat_display like ?) "));
             try {

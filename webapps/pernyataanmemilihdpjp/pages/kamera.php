@@ -101,7 +101,7 @@
                     <td width="70%">: <?=$jk_pembuat_pernyataan;?></td>
                 </tr>
                 <tr class="text-dark">
-                    <td width="30%">Hubungan dengan pasien</td>
+                    <td width="30%">Hubungan Dengan Pasien</td>
                     <td width="70%">: <?=$hubungan_pembuat_pernyataan;?></td>
                 </tr>
             </table>
