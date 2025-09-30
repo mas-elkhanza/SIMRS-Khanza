@@ -937,6 +937,7 @@ import rekammedis.RMHasilPemeriksaanEKG;
 import rekammedis.RMHasilPemeriksaanEcho;
 import rekammedis.RMHasilPemeriksaanOCT;
 import rekammedis.RMHasilPemeriksaanSlitLamp;
+import rekammedis.RMHasilPemeriksaanTreadmill;
 import rekammedis.RMHasilPemeriksaanUSG;
 import rekammedis.RMHasilPemeriksaanUSGGynecologi;
 import rekammedis.RMHasilPemeriksaanUSGNeonatus;
@@ -22984,6 +22985,20 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnHasilPemeriksaanTreadmillActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMHasilPemeriksaanTreadmill form=new RMHasilPemeriksaanTreadmill(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setTampil();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23693,7 +23708,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnDokterAsalPasienRanap,btnBebanHutangLain,btnRekapKeluarDutaParking,btnSuratKeteranganLayakTerbang,btnBayarBebanHutangLain,btnPersetujuanPemeriksaanHIV,btnSkriningInstrumenACRS,
             btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional,btnChecklistKriteriaMasukNICU,btnChecklistKriteriaKeluarNICU,btnPenilaianAwalMedisRanapPsikiatri,
             btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu,btnSkriningInstrumenAMT,btnLabKeslingParameterPengujian,
-            btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung,btnPenilaianAwalMedisRalanUrologi;
+            btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung,btnPenilaianAwalMedisRalanUrologi,btnHasilPemeriksaanTreadmill;
     
     public void isWall(){
         try{            
@@ -27717,6 +27732,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gethasil_pemeriksaan_ekg()==true){
                 Panelmenu.add(btnHasilPemeriksaanEKG);
+                jmlmenu++;
+            }
+            
+            if(akses.gethasil_pemeriksaan_treadmill()==true){
+                Panelmenu.add(btnHasilPemeriksaanTreadmill);
                 jmlmenu++;
             }
             
@@ -33441,6 +33461,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
         if(akses.gethasil_pemeriksaan_ekg()==true){
             Panelmenu.add(btnHasilPemeriksaanEKG);
+            jmlmenu++;
+        }
+        
+        if(akses.gethasil_pemeriksaan_treadmill()==true){
+            Panelmenu.add(btnHasilPemeriksaanTreadmill);
             jmlmenu++;
         }
         
@@ -40713,6 +40738,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             }                
         }
         
+        if(akses.gethasil_pemeriksaan_treadmill()==true){
+            if(btnHasilPemeriksaanTreadmill.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnHasilPemeriksaanTreadmill);
+                jmlmenu++;
+            }                
+        }
+        
         if(akses.gethasil_pemeriksaan_slit_lamp()==true){
             if(btnHasilPemeriksaanSlitLamp.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnHasilPemeriksaanSlitLamp);
@@ -47676,6 +47708,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilPemeriksaanEKG.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilPemeriksaanEKG.addActionListener(this::btnHasilPemeriksaanEKGActionPerformed);
         
+        btnHasilPemeriksaanTreadmill = new widget.ButtonBig();
+        btnHasilPemeriksaanTreadmill.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/11685378_running_walking_jogging_run_exercise_icon.png")));
+        btnHasilPemeriksaanTreadmill.setText("Hasil Pemeriksaan Treadmill");
+        btnHasilPemeriksaanTreadmill.setIconTextGap(0);
+        btnHasilPemeriksaanTreadmill.setName("btnHasilPemeriksaanTreadmill"); 
+        btnHasilPemeriksaanTreadmill.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnHasilPemeriksaanTreadmill.addActionListener(this::btnHasilPemeriksaanTreadmillActionPerformed);
+        
         btnHasilPemeriksaanSlitLamp = new widget.ButtonBig();
         btnHasilPemeriksaanSlitLamp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/5173015_eye_focus_internet_scan_security_icon.png")));
         btnHasilPemeriksaanSlitLamp.setText("Hasil Pemeriksaan Slit Lamp");
@@ -48773,7 +48813,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLabKeslingNilaiNormalBakuMutu.addActionListener(this::btnLabKeslingNilaiNormalBakuMutuActionPerformed);
         
         btnPenilaianAwalMedisRalanJantung = new widget.ButtonBig();
-        btnPenilaianAwalMedisRalanJantung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4171353_couple_day_greetings_heart_love_icon.png"))); 
+        btnPenilaianAwalMedisRalanJantung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6217204_anatomy_heart_human_medical_organ_icon.png"))); 
         btnPenilaianAwalMedisRalanJantung.setText("Awal Medis Ralan Jantung");
         btnPenilaianAwalMedisRalanJantung.setIconTextGap(0);
         btnPenilaianAwalMedisRalanJantung.setName("btnPenilaianAwalMedisRalanJantung");
