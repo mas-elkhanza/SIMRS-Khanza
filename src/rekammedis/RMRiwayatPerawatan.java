@@ -5273,49 +5273,53 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                        
                         try{
                             rs2=koneksi.prepareStatement(
-                                    "select tanggal, diagnosa_preop, diagnosa_postop, jaringan_dieksekusi, selesaioperasi, permintaan_pa, laporan_operasi "+
-                                    "from laporan_operasi where no_rawat='"+rs.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
-                            if(rs2.next()){                                    
+                                    "select laporan_operasi.tanggal,laporan_operasi.diagnosa_preop,laporan_operasi.diagnosa_postop,laporan_operasi.jaringan_dieksekusi,laporan_operasi.selesaioperasi,laporan_operasi.permintaan_pa,laporan_operasi.laporan_operasi,"+
+                                    "laporan_operasi.nomor_implan from laporan_operasi where no_rawat='"+rs.getString("no_rawat")+"' group by no_rawat,tanggal order by tanggal").executeQuery();
+                            if(rs2.next()){   
+                                get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode2.php?barcode="+rs2.getString("nomor_implan").replaceAll(" ","_"));
+                                http.executeMethod(get);
+                            
                                 htmlContent.append(  
                                   "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>").append(
-                                    "<tr><td valign='top' colspan='3'>Laporan Operasi :</td></tr>");
+                                    "<tr><td valign='top' colspan='4'>Laporan Operasi :</td></tr>");
                                 w=1;
                                 do{
                                     htmlContent.append(
                                          "<tr>").append(
                                             "<td valign='top' width='4%' align='center'>").append(w).append("</td>").append(
                                             "<td valign='top' width='21%'>Mulai Operasi</td>").append(
-                                            "<td valign='top' width='75%'>:&nbsp;").append(rs2.getString("tanggal")).append("</td>").append(
+                                            "<td valign='top' width='60%'>:&nbsp;").append(rs2.getString("tanggal")).append("</td>").append(
+                                            "<td valign='top' width='15%' rowspan='6' align='center'>Nomor Implan<br><img width='70' height='70' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/penggajian/temp/").append(rs2.getString("nomor_implan").replaceAll(" ","_")).append(".png'/><br>").append(rs2.getString("nomor_implan").replaceAll(" ","_")).append("</td>").append(
                                          "</tr>").append(
                                          "<tr>").append(
                                             "<td valign='top' width='4%' align='center'></td>").append(
                                             "<td valign='top' width='21%'>Diagnosa Pre-operatif</td>").append(
-                                            "<td valign='top' width='75%'>:&nbsp;").append(rs2.getString("diagnosa_preop")).append("</td>").append(
+                                            "<td valign='top' width='60%'>:&nbsp;").append(rs2.getString("diagnosa_preop")).append("</td>").append(
                                          "</tr>").append(
                                          "<tr>").append(
                                             "<td valign='top' width='4%' align='center'></td>").append(
                                             "<td valign='top' width='21%'>Jaringan Yang di-Eksisi/-Insisi</td>").append(
-                                            "<td valign='top' width='75%'>:&nbsp;").append(rs2.getString("jaringan_dieksekusi")).append("</td>").append(
+                                            "<td valign='top' width='60%'>:&nbsp;").append(rs2.getString("jaringan_dieksekusi")).append("</td>").append(
                                          "</tr>").append(
                                          "<tr>").append(
                                             "<td valign='top' width='4%' align='center'></td>").append(
                                             "<td valign='top' width='21%'>Diagnosa Post-operatif</td>").append(
-                                            "<td valign='top' width='75%'>:&nbsp;").append(rs2.getString("diagnosa_postop")).append("</td>").append(
+                                            "<td valign='top' width='60%'>:&nbsp;").append(rs2.getString("diagnosa_postop")).append("</td>").append(
                                          "</tr>").append(
                                          "<tr>").append(
                                             "<td valign='top' width='4%' align='center'></td>").append(
                                             "<td valign='top' width='21%'>Selesai Operasi</td>").append(
-                                            "<td valign='top' width='75%'>:&nbsp;").append(rs2.getString("selesaioperasi")).append("</td>").append(
+                                            "<td valign='top' width='60%'>:&nbsp;").append(rs2.getString("selesaioperasi")).append("</td>").append(
                                          "</tr>").append(
                                          "<tr>").append(
                                             "<td valign='top' width='4%' align='center'></td>").append(
                                             "<td valign='top' width='21%'>Dikirim Untuk Pemeriksaan PA</td>").append(
-                                            "<td valign='top' width='75%'>:&nbsp;").append(rs2.getString("permintaan_pa")).append("</td>").append(
+                                            "<td valign='top' width='60%'>:&nbsp;").append(rs2.getString("permintaan_pa")).append("</td>").append(
                                          "</tr>").append(
                                          "<tr>").append(
                                             "<td valign='top' width='4%' align='center'></td>").append(
                                             "<td valign='top' width='21%'>Laporan</td>").append(
-                                            "<td valign='top' width='75%'>:&nbsp;").append(rs2.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
+                                            "<td valign='top' colspan='2'>:&nbsp;").append(rs2.getString("laporan_operasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").append(
                                          "</tr>"); 
                                     w++;
                                 }while(rs2.next());
@@ -15857,7 +15861,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                     "<td valign='top' align='center'>").append(rs2.getString("suhu")).append("</td>").append(
                                     "<td valign='top' align='center'>").append(rs2.getString("spo2")).append("</td>").append(
                                     "<td valign='top'>").append(rs2.getString("tindakan")).append("</td>").append(
-                                    "<td valign='top' align='center'><img width='90' height='90' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/penggajian/temp/").append(rs2.getString("barcode_hf").replaceAll(" ","_")).append(".png'/></td>").append(
+                                    "<td valign='top' align='center'><img width='70' height='70' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/penggajian/temp/").append(rs2.getString("barcode_hf").replaceAll(" ","_")).append(".png'/><br>").append(rs2.getString("barcode_hf").replaceAll(" ","_")).append("</td>").append(
                                     "<td valign='top'>").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
                                  "</tr>");                                        
                             w++;

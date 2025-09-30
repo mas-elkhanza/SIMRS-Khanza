@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.9.0.final using JasperReports Library version 6.9.0-cb8f9004be492ccc537180b49c026951f4220bf3  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="1442" pageHeight="595" orientation="Landscape" columnWidth="1402" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="02edfbf6-c6f9-4b48-85bd-2d388eb9a6a8">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="73"/>
@@ -138,7 +138,17 @@
 		<band height="18" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="680" y="0" width="90" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="8bd12922-0c61-4512-86cd-b90f8103b6aa"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="1030" y="0" width="59" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="3d1b55e0-e150-4f80-bb83-e3d8f4f66ae0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Nomor Implan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="654" y="0" width="83" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="8bd12922-0c61-4512-86cd-b90f8103b6aa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -146,7 +156,7 @@
 				<text><![CDATA[Diagnosa Pre-operatif]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="770" y="0" width="90" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="fc79090c-f80f-4e3b-bc05-3ed4704a0e97"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="737" y="0" width="87" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="fc79090c-f80f-4e3b-bc05-3ed4704a0e97"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -154,7 +164,7 @@
 				<text><![CDATA[Diagnosa Post-operatif]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="860" y="0" width="120" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="5c3cc5b9-8b01-46a6-b167-c3ab3bb9ae68"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="824" y="0" width="112" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="5c3cc5b9-8b01-46a6-b167-c3ab3bb9ae68"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -162,7 +172,7 @@
 				<text><![CDATA[Jaringan Yang di-Eksisi/-Insisi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="980" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="4be25676-9ef9-4806-a5db-8f67e4c866b6">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="936" y="0" width="35" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="4be25676-9ef9-4806-a5db-8f67e4c866b6">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -172,7 +182,7 @@
 				<text><![CDATA[Kirim PA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="1015" y="0" width="88" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="d4b2802b-7072-4729-8f31-a2e4a50dd1b2">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="971" y="0" width="59" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="d4b2802b-7072-4729-8f31-a2e4a50dd1b2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -182,7 +192,7 @@
 				<text><![CDATA[Selesai Operasi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="1103" y="0" width="297" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e8d2d331-4ea2-444e-8f56-0f17f989f167">
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="1089" y="0" width="311" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="e8d2d331-4ea2-444e-8f56-0f17f989f167">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -223,7 +233,7 @@
 				<text><![CDATA[Pasien]]></text>
 			</staticText>
 			<staticText>
-				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="332" y="0" width="348" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="b3acfa4c-c3c9-4c87-8074-6496cc67c66d"/>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="332" y="0" width="322" height="18" forecolor="#000000" backcolor="#F0F0DC" uuid="b3acfa4c-c3c9-4c87-8074-6496cc67c66d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -245,7 +255,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="16" splitType="Stretch">
+		<band height="11" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement stretchType="RelativeToBandHeight" x="0" y="1" width="88" height="10" uuid="5f797eb2-93d5-4368-a4c3-4b90b74e00ff">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -283,7 +293,7 @@
 				<textFieldExpression><![CDATA[$F{temp4}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="364" y="1" width="212" height="10" uuid="088f4678-acdf-4b07-bc53-02346c322347"/>
+				<reportElement stretchType="RelativeToBandHeight" x="364" y="1" width="186" height="10" uuid="088f4678-acdf-4b07-bc53-02346c322347"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -291,7 +301,7 @@
 				<textFieldExpression><![CDATA[$F{temp5}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="576" y="1" width="104" height="10" uuid="429342d4-b66c-4904-af05-ed5e4b73bb50"/>
+				<reportElement stretchType="RelativeToBandHeight" x="550" y="1" width="104" height="10" uuid="429342d4-b66c-4904-af05-ed5e4b73bb50"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -299,7 +309,7 @@
 				<textFieldExpression><![CDATA[$F{temp6}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="680" y="1" width="90" height="10" uuid="b52ef841-35e0-4252-b190-aaa61e807c89"/>
+				<reportElement stretchType="RelativeToBandHeight" x="654" y="1" width="83" height="10" uuid="b52ef841-35e0-4252-b190-aaa61e807c89"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -307,7 +317,7 @@
 				<textFieldExpression><![CDATA[$F{temp7}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="770" y="1" width="90" height="10" uuid="4f510cea-ec7a-4142-8d00-75ade5dc8f56"/>
+				<reportElement stretchType="RelativeToBandHeight" x="737" y="1" width="87" height="10" uuid="4f510cea-ec7a-4142-8d00-75ade5dc8f56"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -315,7 +325,7 @@
 				<textFieldExpression><![CDATA[$F{temp8}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="860" y="1" width="120" height="10" uuid="ef299f4c-3ff9-4943-8dc7-7cecd7731f77"/>
+				<reportElement stretchType="RelativeToBandHeight" x="824" y="1" width="112" height="10" uuid="ef299f4c-3ff9-4943-8dc7-7cecd7731f77"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -323,7 +333,7 @@
 				<textFieldExpression><![CDATA[$F{temp9}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="980" y="1" width="34" height="10" uuid="bf36c009-4dff-4bb6-be09-17be34a6a12e"/>
+				<reportElement stretchType="RelativeToBandHeight" x="936" y="1" width="34" height="10" uuid="bf36c009-4dff-4bb6-be09-17be34a6a12e"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -331,7 +341,7 @@
 				<textFieldExpression><![CDATA[$F{temp10}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="1015" y="1" width="88" height="10" uuid="6b47cc5c-f5be-41f8-b4ee-9ef34ae27d8b"/>
+				<reportElement stretchType="RelativeToBandHeight" x="971" y="1" width="59" height="10" uuid="6b47cc5c-f5be-41f8-b4ee-9ef34ae27d8b"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
@@ -339,7 +349,15 @@
 				<textFieldExpression><![CDATA[$F{temp11}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="1103" y="1" width="296" height="10" uuid="79c56142-1ecf-4a07-86c1-5e3d8f716814"/>
+				<reportElement stretchType="RelativeToBandHeight" x="1089" y="1" width="310" height="10" uuid="79c56142-1ecf-4a07-86c1-5e3d8f716814"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{temp13}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="1030" y="1" width="59" height="10" uuid="dddd1ae9-dc10-448f-99b8-5c9333996213"/>
 				<textElement textAlignment="Left">
 					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
