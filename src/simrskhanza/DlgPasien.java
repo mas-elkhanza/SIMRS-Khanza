@@ -7231,7 +7231,7 @@ private void KabupatenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:eve
             cekViaBPJS.tampil(TKtp.getText());
             TNm.setText(cekViaBPJS.nama);
 //            CmbJk.setSelectedItem(cekViaBPJS.sex);
-            String jenisKelamin = cekViaBPJS.sex.equals("L") ? "Laki-Laki" : "Perempuan";
+            String jenisKelamin = cekViaBPJS.sex.equals("L") ? "LAKI-LAKI" : "PEREMPUAN";
             CmbJk.setSelectedItem(jenisKelamin);
             TNoPeserta.setText(cekViaBPJS.noKartu);
             TTlp.setText(cekViaBPJS.mrnoTelepon);
