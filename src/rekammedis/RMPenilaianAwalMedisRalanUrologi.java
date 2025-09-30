@@ -2283,11 +2283,11 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
     }//GEN-LAST:event_ColokDuburKeyPressed
 
     private void PenunjangLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenunjangLainnyaKeyPressed
-        Valid.pindah(evt,Radiologi,Diagnosis);
+        Valid.pindah2(evt,Radiologi,Diagnosis);
     }//GEN-LAST:event_PenunjangLainnyaKeyPressed
 
     private void RadiologiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RadiologiKeyPressed
-        Valid.pindah(evt,USGUrologi,PenunjangLainnya);
+        Valid.pindah2(evt,USGUrologi,PenunjangLainnya);
     }//GEN-LAST:event_RadiologiKeyPressed
 
     /**
@@ -2568,9 +2568,9 @@ public final class RMPenilaianAwalMedisRalanUrologi extends javax.swing.JDialog 
         Nyeri.setText("");
         StatusNutrisi.setText("");
         TB.setText("");
-        Thoraks.setSelectedIndex(0);
-        Abdomen.setSelectedIndex(0);
-        Ekstrimitas.setSelectedIndex(0);
+        Thoraks.setSelectedIndex(2);
+        Abdomen.setSelectedIndex(2);
+        Ekstrimitas.setSelectedIndex(2);
         KeteranganThoraks.setText("");
         KeteranganAbdomen.setText("");
         KeteranganEkstrimitas.setText("");

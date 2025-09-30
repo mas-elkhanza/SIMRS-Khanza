@@ -2612,12 +2612,12 @@ public final class RMPenilaianAwalMedisRalanRehabMedik extends javax.swing.JDial
         BB.setText("");
         Nyeri.setSelectedIndex(0);
         SkalaNyeri.setSelectedIndex(0);
-        Kepala.setSelectedIndex(0);
-        Thoraks.setSelectedIndex(0);
-        Abdomen.setSelectedIndex(0);
-        Ekstremitas.setSelectedIndex(0);
-        Columna.setSelectedIndex(0);
-        Muskulos.setSelectedIndex(0);
+        Kepala.setSelectedIndex(2);
+        Thoraks.setSelectedIndex(2);
+        Abdomen.setSelectedIndex(2);
+        Ekstremitas.setSelectedIndex(2);
+        Columna.setSelectedIndex(2);
+        Muskulos.setSelectedIndex(2);
         KeteranganKepala.setText("");
         KeteranganThoraks.setText("");
         KeteranganAbdomen.setText("");

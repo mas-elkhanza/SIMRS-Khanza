@@ -2337,9 +2337,9 @@ public final class RMPenilaianAwalMedisRalanJantung extends javax.swing.JDialog 
         Nyeri.setText("");
         StatusNutrisi.setText("");
         TB.setText("");
-        Jantung.setSelectedIndex(0);
-        Paru.setSelectedIndex(0);
-        Ekstrimitas.setSelectedIndex(0);
+        Jantung.setSelectedIndex(2);
+        Paru.setSelectedIndex(2);
+        Ekstrimitas.setSelectedIndex(2);
         KeteranganJantung.setText("");
         KeteranganParu.setText("");
         KeteranganEkstrimitas.setText("");
