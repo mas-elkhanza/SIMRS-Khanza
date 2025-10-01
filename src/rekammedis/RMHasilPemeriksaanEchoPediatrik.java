@@ -62,8 +62,10 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","F Sistolik LV","F Diastolic LV",
-                "Kontraktilitas RV","Dimensi Ruang Jantung","Katup-katup","Analisa Segmental","eRAP","Lain-lain","Kesimpulan"
+                "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","Kode Dokter","Nama Dokter","Tanggal","Diagnosa Klinis","Kiriman Dari",
+                "Situs","AV-VA","Drainase Vena Pulmonalis","Mitral","Aorta","Tricuspid","Pulmonal","Septum Atrium","Septum Ventrikal",
+                "Arkus Aorta","Lain-lain","Ruang Jantung","IVDS","IVSS","LVID dextra","LVID sinistra","LVPW dextra","LVPW sinistra",
+                "Ejection Fraction","Fraction Shotening","Doppler","Kesimpulan","Saran"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -72,7 +74,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 16; i++) {
+        for (i = 0; i < 32; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -89,23 +91,55 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
             }else if(i==6){
                 column.setPreferredWidth(115);
             }else if(i==7){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }else if(i==8){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }else if(i==9){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(180);
             }else if(i==10){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }else if(i==11){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }else if(i==12){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }else if(i==13){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             }else if(i==14){
                 column.setPreferredWidth(180);
             }else if(i==15){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(180);
+            }else if(i==16){
+                column.setPreferredWidth(180);
+            }else if(i==17){
+                column.setPreferredWidth(180);
+            }else if(i==18){
+                column.setPreferredWidth(180);
+            }else if(i==19){
+                column.setPreferredWidth(180);
+            }else if(i==20){
+                column.setPreferredWidth(180);
+            }else if(i==21){
+                column.setPreferredWidth(80);
+            }else if(i==22){
+                column.setPreferredWidth(80);
+            }else if(i==23){
+                column.setPreferredWidth(80);
+            }else if(i==24){
+                column.setPreferredWidth(80);
+            }else if(i==25){
+                column.setPreferredWidth(80);
+            }else if(i==26){
+                column.setPreferredWidth(80);
+            }else if(i==27){
+                column.setPreferredWidth(100);
+            }else if(i==28){
+                column.setPreferredWidth(100);
+            }else if(i==29){
+                column.setPreferredWidth(180);
+            }else if(i==30){
+                column.setPreferredWidth(220);
+            }else if(i==31){
+                column.setPreferredWidth(180);
             }
         }
         
@@ -132,15 +166,31 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         tbListDicom.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        Sistolik.setDocument(new batasInput((int)30).getKata(Sistolik));
-        Diastolik.setDocument(new batasInput((int)30).getKata(Diastolik));
-        Kontraktilitas.setDocument(new batasInput((int)30).getKata(Kontraktilitas));
-        Dimensi.setDocument(new batasInput((int)50).getKata(Dimensi));
-        Katup.setDocument(new batasInput((int)50).getKata(Katup));
-        AnalisaSegmental.setDocument(new batasInput((int)100).getKata(AnalisaSegmental));
-        Erap.setDocument(new batasInput((int)15).getKata(Erap));
-        LainLain.setDocument(new batasInput((int)100).getKata(LainLain));
-        Kesimpulan.setDocument(new batasInput((int)200).getKata(Kesimpulan));
+        KirimanDari.setDocument(new batasInput((int)50).getKata(KirimanDari));
+        DiagnosaKlinis.setDocument(new batasInput((int)50).getKata(DiagnosaKlinis));
+        Situs.setDocument(new batasInput((int)100).getKata(Situs));
+        AVVA.setDocument(new batasInput((int)100).getKata(AVVA));
+        Drainase.setDocument(new batasInput((int)100).getKata(Drainase));
+        Mitral.setDocument(new batasInput((int)100).getKata(Mitral));
+        Aorta.setDocument(new batasInput((int)100).getKata(Aorta));
+        Tricuspid.setDocument(new batasInput((int)100).getKata(Tricuspid));
+        Pulmonal.setDocument(new batasInput((int)100).getKata(Pulmonal));
+        SeptumAtrium.setDocument(new batasInput((int)100).getKata(SeptumAtrium));
+        SeptumVentrikal.setDocument(new batasInput((int)100).getKata(SeptumVentrikal));
+        ArkusAorta.setDocument(new batasInput((int)100).getKata(ArkusAorta));
+        Lainlain.setDocument(new batasInput((int)100).getKata(Lainlain));
+        RuangJantung.setDocument(new batasInput((int)100).getKata(RuangJantung));
+        IVDS.setDocument(new batasInput((int)20).getKata(IVDS));
+        IVSS.setDocument(new batasInput((int)20).getKata(IVSS));
+        LVIDdextra.setDocument(new batasInput((int)20).getKata(LVIDdextra));
+        LVIDsinistra.setDocument(new batasInput((int)20).getKata(LVIDsinistra));
+        LVPWdextra.setDocument(new batasInput((int)20).getKata(LVPWdextra));
+        LVPWsinistra.setDocument(new batasInput((int)20).getKata(LVPWsinistra));
+        EjectionFraction.setDocument(new batasInput((int)20).getKata(EjectionFraction));
+        FractionShotening.setDocument(new batasInput((int)20).getKata(FractionShotening));
+        Dopler.setDocument(new batasInput((int)100).getKata(Dopler));
+        Kesimpulan.setDocument(new batasInput((int)250).getKata(Kesimpulan));
+        Saran.setDocument(new batasInput((int)100).getKata(Saran));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -270,25 +320,84 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         jSeparator1 = new javax.swing.JSeparator();
         label11 = new widget.Label();
         Tanggal = new widget.Tanggal();
+        Situs = new widget.TextBox();
         jLabel31 = new widget.Label();
-        Sistolik = new widget.TextBox();
-        Katup = new widget.TextBox();
+        Pulmonal = new widget.TextBox();
         jLabel35 = new widget.Label();
+        AVVA = new widget.TextBox();
         jLabel40 = new widget.Label();
-        Diastolik = new widget.TextBox();
+        SeptumAtrium = new widget.TextBox();
         jLabel41 = new widget.Label();
-        AnalisaSegmental = new widget.TextBox();
-        Dimensi = new widget.TextBox();
+        Tricuspid = new widget.TextBox();
         jLabel43 = new widget.Label();
-        jLabel44 = new widget.Label();
         scrollPane17 = new widget.ScrollPane();
         Kesimpulan = new widget.TextArea();
+        RuangJantung = new widget.TextBox();
         jLabel45 = new widget.Label();
-        Erap = new widget.TextBox();
         jLabel42 = new widget.Label();
-        Kontraktilitas = new widget.TextBox();
-        jLabel46 = new widget.Label();
-        LainLain = new widget.TextBox();
+        Drainase = new widget.TextBox();
+        Dopler = new widget.TextBox();
+        jLabel30 = new widget.Label();
+        KirimanDari = new widget.TextBox();
+        jLabel32 = new widget.Label();
+        DiagnosaKlinis = new widget.TextBox();
+        jLabel33 = new widget.Label();
+        jLabel34 = new widget.Label();
+        jLabel36 = new widget.Label();
+        jLabel37 = new widget.Label();
+        jLabel47 = new widget.Label();
+        Mitral = new widget.TextBox();
+        jLabel48 = new widget.Label();
+        jLabel38 = new widget.Label();
+        jLabel39 = new widget.Label();
+        Aorta = new widget.TextBox();
+        jLabel49 = new widget.Label();
+        jLabel50 = new widget.Label();
+        jLabel51 = new widget.Label();
+        jLabel52 = new widget.Label();
+        jLabel53 = new widget.Label();
+        jLabel55 = new widget.Label();
+        SeptumVentrikal = new widget.TextBox();
+        jLabel54 = new widget.Label();
+        jLabel57 = new widget.Label();
+        ArkusAorta = new widget.TextBox();
+        jLabel56 = new widget.Label();
+        jLabel59 = new widget.Label();
+        Lainlain = new widget.TextBox();
+        jLabel58 = new widget.Label();
+        jLabel60 = new widget.Label();
+        jLabel61 = new widget.Label();
+        jLabel62 = new widget.Label();
+        jLabel63 = new widget.Label();
+        IVDS = new widget.TextBox();
+        jLabel64 = new widget.Label();
+        jLabel65 = new widget.Label();
+        IVSS = new widget.TextBox();
+        jLabel66 = new widget.Label();
+        jLabel67 = new widget.Label();
+        LVIDdextra = new widget.TextBox();
+        jLabel68 = new widget.Label();
+        jLabel69 = new widget.Label();
+        LVIDsinistra = new widget.TextBox();
+        jLabel73 = new widget.Label();
+        LVPWdextra = new widget.TextBox();
+        jLabel70 = new widget.Label();
+        LVPWsinistra = new widget.TextBox();
+        jLabel71 = new widget.Label();
+        EjectionFraction = new widget.TextBox();
+        jLabel72 = new widget.Label();
+        FractionShotening = new widget.TextBox();
+        jLabel74 = new widget.Label();
+        jLabel75 = new widget.Label();
+        jLabel76 = new widget.Label();
+        jLabel77 = new widget.Label();
+        Saran = new widget.TextBox();
+        jLabel78 = new widget.Label();
+        jLabel79 = new widget.Label();
+        jLabel80 = new widget.Label();
+        jLabel81 = new widget.Label();
+        jLabel82 = new widget.Label();
+        jLabel83 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -498,7 +607,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         FormInput.setBackground(new java.awt.Color(255, 255, 255));
         FormInput.setBorder(null);
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(750, 403));
+        FormInput.setPreferredSize(new java.awt.Dimension(750, 763));
         FormInput.setLayout(null);
 
         TNoRw.setHighlighter(null);
@@ -601,86 +710,86 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         FormInput.add(Tanggal);
         Tanggal.setBounds(594, 40, 130, 23);
 
-        jLabel31.setText("Fungsi Sistolik LV :");
+        Situs.setFocusTraversalPolicyProvider(true);
+        Situs.setName("Situs"); // NOI18N
+        Situs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SitusKeyPressed(evt);
+            }
+        });
+        FormInput.add(Situs);
+        Situs.setBounds(51, 110, 673, 23);
+
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel31.setText("Situs");
         jLabel31.setName("jLabel31"); // NOI18N
         FormInput.add(jLabel31);
-        jLabel31.setBounds(0, 80, 135, 23);
+        jLabel31.setBounds(16, 110, 60, 23);
 
-        Sistolik.setFocusTraversalPolicyProvider(true);
-        Sistolik.setName("Sistolik"); // NOI18N
-        Sistolik.addKeyListener(new java.awt.event.KeyAdapter() {
+        Pulmonal.setFocusTraversalPolicyProvider(true);
+        Pulmonal.setName("Pulmonal"); // NOI18N
+        Pulmonal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                SistolikKeyPressed(evt);
+                PulmonalKeyPressed(evt);
             }
         });
-        FormInput.add(Sistolik);
-        Sistolik.setBounds(139, 80, 585, 23);
+        FormInput.add(Pulmonal);
+        Pulmonal.setBounds(91, 310, 633, 23);
 
-        Katup.setFocusTraversalPolicyProvider(true);
-        Katup.setName("Katup"); // NOI18N
-        Katup.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KatupKeyPressed(evt);
-            }
-        });
-        FormInput.add(Katup);
-        Katup.setBounds(139, 200, 585, 23);
-
-        jLabel35.setText("Katup-katup :");
+        jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel35.setText("Pulmonal");
         jLabel35.setName("jLabel35"); // NOI18N
         FormInput.add(jLabel35);
-        jLabel35.setBounds(0, 200, 135, 23);
+        jLabel35.setBounds(36, 310, 135, 23);
 
-        jLabel40.setText("Fungsi Diastolik LV :");
-        jLabel40.setName("jLabel40"); // NOI18N
-        FormInput.add(jLabel40);
-        jLabel40.setBounds(0, 110, 135, 23);
-
-        Diastolik.setFocusTraversalPolicyProvider(true);
-        Diastolik.setName("Diastolik"); // NOI18N
-        Diastolik.addKeyListener(new java.awt.event.KeyAdapter() {
+        AVVA.setFocusTraversalPolicyProvider(true);
+        AVVA.setName("AVVA"); // NOI18N
+        AVVA.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiastolikKeyPressed(evt);
+                AVVAKeyPressed(evt);
             }
         });
-        FormInput.add(Diastolik);
-        Diastolik.setBounds(139, 110, 585, 23);
+        FormInput.add(AVVA);
+        AVVA.setBounds(59, 140, 665, 23);
 
-        jLabel41.setText("Analisa Segmental :");
+        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel40.setText("AV-VA");
+        jLabel40.setName("jLabel40"); // NOI18N
+        FormInput.add(jLabel40);
+        jLabel40.setBounds(16, 140, 135, 23);
+
+        SeptumAtrium.setFocusTraversalPolicyProvider(true);
+        SeptumAtrium.setName("SeptumAtrium"); // NOI18N
+        SeptumAtrium.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SeptumAtriumKeyPressed(evt);
+            }
+        });
+        FormInput.add(SeptumAtrium);
+        SeptumAtrium.setBounds(157, 360, 567, 23);
+
+        jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel41.setText("- Septum Atrium");
         jLabel41.setName("jLabel41"); // NOI18N
         jLabel41.setPreferredSize(new java.awt.Dimension(68, 14));
         FormInput.add(jLabel41);
-        jLabel41.setBounds(0, 230, 135, 23);
+        jLabel41.setBounds(66, 360, 135, 23);
 
-        AnalisaSegmental.setFocusTraversalPolicyProvider(true);
-        AnalisaSegmental.setName("AnalisaSegmental"); // NOI18N
-        AnalisaSegmental.addKeyListener(new java.awt.event.KeyAdapter() {
+        Tricuspid.setFocusTraversalPolicyProvider(true);
+        Tricuspid.setName("Tricuspid"); // NOI18N
+        Tricuspid.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                AnalisaSegmentalKeyPressed(evt);
+                TricuspidKeyPressed(evt);
             }
         });
-        FormInput.add(AnalisaSegmental);
-        AnalisaSegmental.setBounds(139, 230, 585, 23);
+        FormInput.add(Tricuspid);
+        Tricuspid.setBounds(91, 280, 633, 23);
 
-        Dimensi.setFocusTraversalPolicyProvider(true);
-        Dimensi.setName("Dimensi"); // NOI18N
-        Dimensi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DimensiKeyPressed(evt);
-            }
-        });
-        FormInput.add(Dimensi);
-        Dimensi.setBounds(139, 170, 585, 23);
-
-        jLabel43.setText("Dimensi Ruang Jantung :");
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel43.setText("Tricuspid");
         jLabel43.setName("jLabel43"); // NOI18N
         FormInput.add(jLabel43);
-        jLabel43.setBounds(0, 170, 135, 23);
-
-        jLabel44.setText("Kesimpulan :");
-        jLabel44.setName("jLabel44"); // NOI18N
-        FormInput.add(jLabel44);
-        jLabel44.setBounds(0, 320, 135, 23);
+        jLabel43.setBounds(36, 280, 135, 23);
 
         scrollPane17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane17.setName("scrollPane17"); // NOI18N
@@ -697,54 +806,461 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         scrollPane17.setViewportView(Kesimpulan);
 
         FormInput.add(scrollPane17);
-        scrollPane17.setBounds(139, 320, 585, 73);
+        scrollPane17.setBounds(83, 680, 641, 43);
 
-        jLabel45.setText("eRAP :");
+        RuangJantung.setFocusTraversalPolicyProvider(true);
+        RuangJantung.setName("RuangJantung"); // NOI18N
+        RuangJantung.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RuangJantungKeyPressed(evt);
+            }
+        });
+        FormInput.add(RuangJantung);
+        RuangJantung.setBounds(100, 480, 624, 23);
+
+        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel45.setText("Ruang Jantung");
         jLabel45.setName("jLabel45"); // NOI18N
         jLabel45.setPreferredSize(new java.awt.Dimension(68, 14));
         FormInput.add(jLabel45);
-        jLabel45.setBounds(0, 260, 135, 23);
+        jLabel45.setBounds(16, 480, 135, 23);
 
-        Erap.setFocusTraversalPolicyProvider(true);
-        Erap.setName("Erap"); // NOI18N
-        Erap.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ErapKeyPressed(evt);
-            }
-        });
-        FormInput.add(Erap);
-        Erap.setBounds(139, 260, 585, 23);
-
-        jLabel42.setText("Kontaktilitas RV :");
+        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel42.setText("Drainase Vena Pulmonalis");
         jLabel42.setName("jLabel42"); // NOI18N
         FormInput.add(jLabel42);
-        jLabel42.setBounds(0, 140, 135, 23);
+        jLabel42.setBounds(16, 170, 135, 23);
 
-        Kontraktilitas.setFocusTraversalPolicyProvider(true);
-        Kontraktilitas.setName("Kontraktilitas"); // NOI18N
-        Kontraktilitas.addKeyListener(new java.awt.event.KeyAdapter() {
+        Drainase.setFocusTraversalPolicyProvider(true);
+        Drainase.setName("Drainase"); // NOI18N
+        Drainase.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                KontraktilitasKeyPressed(evt);
+                DrainaseKeyPressed(evt);
             }
         });
-        FormInput.add(Kontraktilitas);
-        Kontraktilitas.setBounds(139, 140, 585, 23);
+        FormInput.add(Drainase);
+        Drainase.setBounds(154, 170, 570, 23);
 
-        jLabel46.setText("Lain-lain :");
-        jLabel46.setName("jLabel46"); // NOI18N
-        jLabel46.setPreferredSize(new java.awt.Dimension(68, 14));
-        FormInput.add(jLabel46);
-        jLabel46.setBounds(0, 290, 135, 23);
-
-        LainLain.setFocusTraversalPolicyProvider(true);
-        LainLain.setName("LainLain"); // NOI18N
-        LainLain.addKeyListener(new java.awt.event.KeyAdapter() {
+        Dopler.setFocusTraversalPolicyProvider(true);
+        Dopler.setName("Dopler"); // NOI18N
+        Dopler.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                LainLainKeyPressed(evt);
+                DoplerKeyPressed(evt);
             }
         });
-        FormInput.add(LainLain);
-        LainLain.setBounds(139, 290, 585, 23);
+        FormInput.add(Dopler);
+        Dopler.setBounds(66, 650, 658, 23);
+
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel30.setText("Kiriman Dari");
+        jLabel30.setName("jLabel30"); // NOI18N
+        FormInput.add(jLabel30);
+        jLabel30.setBounds(16, 80, 83, 23);
+
+        KirimanDari.setFocusTraversalPolicyProvider(true);
+        KirimanDari.setName("KirimanDari"); // NOI18N
+        KirimanDari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KirimanDariKeyPressed(evt);
+            }
+        });
+        FormInput.add(KirimanDari);
+        KirimanDari.setBounds(87, 80, 270, 23);
+
+        jLabel32.setText("Diagnosa Klinis :");
+        jLabel32.setName("jLabel32"); // NOI18N
+        FormInput.add(jLabel32);
+        jLabel32.setBounds(360, 80, 90, 23);
+
+        DiagnosaKlinis.setFocusTraversalPolicyProvider(true);
+        DiagnosaKlinis.setName("DiagnosaKlinis"); // NOI18N
+        DiagnosaKlinis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DiagnosaKlinisKeyPressed(evt);
+            }
+        });
+        FormInput.add(DiagnosaKlinis);
+        DiagnosaKlinis.setBounds(454, 80, 270, 23);
+
+        jLabel33.setText(":");
+        jLabel33.setName("jLabel33"); // NOI18N
+        FormInput.add(jLabel33);
+        jLabel33.setBounds(0, 80, 83, 23);
+
+        jLabel34.setText(":");
+        jLabel34.setName("jLabel34"); // NOI18N
+        FormInput.add(jLabel34);
+        jLabel34.setBounds(0, 110, 47, 23);
+
+        jLabel36.setText(":");
+        jLabel36.setName("jLabel36"); // NOI18N
+        FormInput.add(jLabel36);
+        jLabel36.setBounds(0, 140, 55, 23);
+
+        jLabel37.setText(":");
+        jLabel37.setName("jLabel37"); // NOI18N
+        FormInput.add(jLabel37);
+        jLabel37.setBounds(0, 170, 150, 23);
+
+        jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel47.setText("Katup :");
+        jLabel47.setName("jLabel47"); // NOI18N
+        FormInput.add(jLabel47);
+        jLabel47.setBounds(16, 200, 135, 23);
+
+        Mitral.setFocusTraversalPolicyProvider(true);
+        Mitral.setName("Mitral"); // NOI18N
+        Mitral.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MitralKeyPressed(evt);
+            }
+        });
+        FormInput.add(Mitral);
+        Mitral.setBounds(74, 220, 650, 23);
+
+        jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel48.setText("Mitral");
+        jLabel48.setName("jLabel48"); // NOI18N
+        FormInput.add(jLabel48);
+        jLabel48.setBounds(36, 220, 135, 23);
+
+        jLabel38.setText(":");
+        jLabel38.setName("jLabel38"); // NOI18N
+        FormInput.add(jLabel38);
+        jLabel38.setBounds(0, 220, 70, 23);
+
+        jLabel39.setText(":");
+        jLabel39.setName("jLabel39"); // NOI18N
+        FormInput.add(jLabel39);
+        jLabel39.setBounds(0, 250, 70, 23);
+
+        Aorta.setFocusTraversalPolicyProvider(true);
+        Aorta.setName("Aorta"); // NOI18N
+        Aorta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AortaKeyPressed(evt);
+            }
+        });
+        FormInput.add(Aorta);
+        Aorta.setBounds(74, 250, 650, 23);
+
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel49.setText("Aorta");
+        jLabel49.setName("jLabel49"); // NOI18N
+        FormInput.add(jLabel49);
+        jLabel49.setBounds(36, 250, 70, 23);
+
+        jLabel50.setText(":");
+        jLabel50.setName("jLabel50"); // NOI18N
+        FormInput.add(jLabel50);
+        jLabel50.setBounds(0, 280, 87, 23);
+
+        jLabel51.setText(":");
+        jLabel51.setName("jLabel51"); // NOI18N
+        FormInput.add(jLabel51);
+        jLabel51.setBounds(0, 310, 87, 23);
+
+        jLabel52.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel52.setText("Keterangan Lain :");
+        jLabel52.setName("jLabel52"); // NOI18N
+        FormInput.add(jLabel52);
+        jLabel52.setBounds(36, 340, 135, 23);
+
+        jLabel53.setText(":");
+        jLabel53.setName("jLabel53"); // NOI18N
+        FormInput.add(jLabel53);
+        jLabel53.setBounds(0, 360, 153, 23);
+
+        jLabel55.setText(":");
+        jLabel55.setName("jLabel55"); // NOI18N
+        FormInput.add(jLabel55);
+        jLabel55.setBounds(0, 390, 163, 23);
+
+        SeptumVentrikal.setFocusTraversalPolicyProvider(true);
+        SeptumVentrikal.setName("SeptumVentrikal"); // NOI18N
+        SeptumVentrikal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SeptumVentrikalKeyPressed(evt);
+            }
+        });
+        FormInput.add(SeptumVentrikal);
+        SeptumVentrikal.setBounds(167, 390, 557, 23);
+
+        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel54.setText("- Septum Ventrikal");
+        jLabel54.setName("jLabel54"); // NOI18N
+        jLabel54.setPreferredSize(new java.awt.Dimension(68, 14));
+        FormInput.add(jLabel54);
+        jLabel54.setBounds(66, 390, 135, 23);
+
+        jLabel57.setText(":");
+        jLabel57.setName("jLabel57"); // NOI18N
+        FormInput.add(jLabel57);
+        jLabel57.setBounds(0, 420, 137, 23);
+
+        ArkusAorta.setFocusTraversalPolicyProvider(true);
+        ArkusAorta.setName("ArkusAorta"); // NOI18N
+        ArkusAorta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ArkusAortaKeyPressed(evt);
+            }
+        });
+        FormInput.add(ArkusAorta);
+        ArkusAorta.setBounds(141, 420, 583, 23);
+
+        jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel56.setText("- Arkus Aorta");
+        jLabel56.setName("jLabel56"); // NOI18N
+        jLabel56.setPreferredSize(new java.awt.Dimension(68, 14));
+        FormInput.add(jLabel56);
+        jLabel56.setBounds(66, 420, 135, 23);
+
+        jLabel59.setText(":");
+        jLabel59.setName("jLabel59"); // NOI18N
+        FormInput.add(jLabel59);
+        jLabel59.setBounds(0, 450, 122, 23);
+
+        Lainlain.setFocusTraversalPolicyProvider(true);
+        Lainlain.setName("Lainlain"); // NOI18N
+        Lainlain.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LainlainKeyPressed(evt);
+            }
+        });
+        FormInput.add(Lainlain);
+        Lainlain.setBounds(126, 450, 598, 23);
+
+        jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel58.setText("- Lain-lain");
+        jLabel58.setName("jLabel58"); // NOI18N
+        jLabel58.setPreferredSize(new java.awt.Dimension(68, 14));
+        FormInput.add(jLabel58);
+        jLabel58.setBounds(66, 450, 135, 23);
+
+        jLabel60.setText(":");
+        jLabel60.setName("jLabel60"); // NOI18N
+        FormInput.add(jLabel60);
+        jLabel60.setBounds(0, 480, 96, 23);
+
+        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel61.setText("M. Mode :");
+        jLabel61.setName("jLabel61"); // NOI18N
+        FormInput.add(jLabel61);
+        jLabel61.setBounds(16, 510, 135, 23);
+
+        jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel62.setText("IVDS");
+        jLabel62.setName("jLabel62"); // NOI18N
+        FormInput.add(jLabel62);
+        jLabel62.setBounds(36, 530, 50, 23);
+
+        jLabel63.setText(":");
+        jLabel63.setName("jLabel63"); // NOI18N
+        FormInput.add(jLabel63);
+        jLabel63.setBounds(0, 530, 67, 23);
+
+        IVDS.setFocusTraversalPolicyProvider(true);
+        IVDS.setName("IVDS"); // NOI18N
+        IVDS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IVDSKeyPressed(evt);
+            }
+        });
+        FormInput.add(IVDS);
+        IVDS.setBounds(71, 530, 260, 23);
+
+        jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel64.setText("IVSS");
+        jLabel64.setName("jLabel64"); // NOI18N
+        FormInput.add(jLabel64);
+        jLabel64.setBounds(36, 560, 50, 23);
+
+        jLabel65.setText(":");
+        jLabel65.setName("jLabel65"); // NOI18N
+        FormInput.add(jLabel65);
+        jLabel65.setBounds(0, 560, 67, 23);
+
+        IVSS.setFocusTraversalPolicyProvider(true);
+        IVSS.setName("IVSS"); // NOI18N
+        IVSS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                IVSSKeyPressed(evt);
+            }
+        });
+        FormInput.add(IVSS);
+        IVSS.setBounds(71, 560, 260, 23);
+
+        jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel66.setText("LVID dextra");
+        jLabel66.setName("jLabel66"); // NOI18N
+        FormInput.add(jLabel66);
+        jLabel66.setBounds(36, 590, 70, 23);
+
+        jLabel67.setText(":");
+        jLabel67.setName("jLabel67"); // NOI18N
+        FormInput.add(jLabel67);
+        jLabel67.setBounds(0, 590, 100, 23);
+
+        LVIDdextra.setFocusTraversalPolicyProvider(true);
+        LVIDdextra.setName("LVIDdextra"); // NOI18N
+        LVIDdextra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LVIDdextraKeyPressed(evt);
+            }
+        });
+        FormInput.add(LVIDdextra);
+        LVIDdextra.setBounds(104, 590, 227, 23);
+
+        jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel68.setText("LVID sinistra");
+        jLabel68.setName("jLabel68"); // NOI18N
+        FormInput.add(jLabel68);
+        jLabel68.setBounds(36, 620, 70, 23);
+
+        jLabel69.setText(":");
+        jLabel69.setName("jLabel69"); // NOI18N
+        FormInput.add(jLabel69);
+        jLabel69.setBounds(0, 620, 105, 23);
+
+        LVIDsinistra.setFocusTraversalPolicyProvider(true);
+        LVIDsinistra.setName("LVIDsinistra"); // NOI18N
+        LVIDsinistra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LVIDsinistraKeyPressed(evt);
+            }
+        });
+        FormInput.add(LVIDsinistra);
+        LVIDsinistra.setBounds(109, 620, 222, 23);
+
+        jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel73.setText("Fraction Shotening");
+        jLabel73.setName("jLabel73"); // NOI18N
+        FormInput.add(jLabel73);
+        jLabel73.setBounds(410, 620, 110, 23);
+
+        LVPWdextra.setFocusTraversalPolicyProvider(true);
+        LVPWdextra.setName("LVPWdextra"); // NOI18N
+        LVPWdextra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LVPWdextraKeyPressed(evt);
+            }
+        });
+        FormInput.add(LVPWdextra);
+        LVPWdextra.setBounds(483, 530, 241, 23);
+
+        jLabel70.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel70.setText("LVPW dextra");
+        jLabel70.setName("jLabel70"); // NOI18N
+        FormInput.add(jLabel70);
+        jLabel70.setBounds(410, 530, 110, 23);
+
+        LVPWsinistra.setFocusTraversalPolicyProvider(true);
+        LVPWsinistra.setName("LVPWsinistra"); // NOI18N
+        LVPWsinistra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LVPWsinistraKeyPressed(evt);
+            }
+        });
+        FormInput.add(LVPWsinistra);
+        LVPWsinistra.setBounds(488, 560, 236, 23);
+
+        jLabel71.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel71.setText("LVPW sinistra");
+        jLabel71.setName("jLabel71"); // NOI18N
+        FormInput.add(jLabel71);
+        jLabel71.setBounds(410, 560, 110, 23);
+
+        EjectionFraction.setFocusTraversalPolicyProvider(true);
+        EjectionFraction.setName("EjectionFraction"); // NOI18N
+        EjectionFraction.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EjectionFractionKeyPressed(evt);
+            }
+        });
+        FormInput.add(EjectionFraction);
+        EjectionFraction.setBounds(503, 590, 221, 23);
+
+        jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel72.setText("Ejection Fraction");
+        jLabel72.setName("jLabel72"); // NOI18N
+        FormInput.add(jLabel72);
+        jLabel72.setBounds(410, 590, 110, 23);
+
+        FractionShotening.setFocusTraversalPolicyProvider(true);
+        FractionShotening.setName("FractionShotening"); // NOI18N
+        FractionShotening.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FractionShoteningKeyPressed(evt);
+            }
+        });
+        FormInput.add(FractionShotening);
+        FractionShotening.setBounds(513, 620, 211, 23);
+
+        jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel74.setText("Doppler");
+        jLabel74.setName("jLabel74"); // NOI18N
+        jLabel74.setPreferredSize(new java.awt.Dimension(68, 14));
+        FormInput.add(jLabel74);
+        jLabel74.setBounds(16, 650, 135, 23);
+
+        jLabel75.setText(":");
+        jLabel75.setName("jLabel75"); // NOI18N
+        FormInput.add(jLabel75);
+        jLabel75.setBounds(0, 650, 62, 23);
+
+        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel76.setText("Kesimpulan");
+        jLabel76.setName("jLabel76"); // NOI18N
+        jLabel76.setPreferredSize(new java.awt.Dimension(68, 14));
+        FormInput.add(jLabel76);
+        jLabel76.setBounds(16, 680, 135, 23);
+
+        jLabel77.setText(":");
+        jLabel77.setName("jLabel77"); // NOI18N
+        FormInput.add(jLabel77);
+        jLabel77.setBounds(0, 680, 79, 23);
+
+        Saran.setFocusTraversalPolicyProvider(true);
+        Saran.setName("Saran"); // NOI18N
+        Saran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SaranKeyPressed(evt);
+            }
+        });
+        FormInput.add(Saran);
+        Saran.setBounds(55, 730, 669, 23);
+
+        jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel78.setText("Saran");
+        jLabel78.setName("jLabel78"); // NOI18N
+        jLabel78.setPreferredSize(new java.awt.Dimension(68, 14));
+        FormInput.add(jLabel78);
+        jLabel78.setBounds(16, 730, 135, 23);
+
+        jLabel79.setText(":");
+        jLabel79.setName("jLabel79"); // NOI18N
+        FormInput.add(jLabel79);
+        jLabel79.setBounds(0, 730, 51, 23);
+
+        jLabel80.setText(":");
+        jLabel80.setName("jLabel80"); // NOI18N
+        FormInput.add(jLabel80);
+        jLabel80.setBounds(380, 530, 99, 23);
+
+        jLabel81.setText(":");
+        jLabel81.setName("jLabel81"); // NOI18N
+        FormInput.add(jLabel81);
+        jLabel81.setBounds(380, 560, 104, 23);
+
+        jLabel82.setText(":");
+        jLabel82.setName("jLabel82"); // NOI18N
+        FormInput.add(jLabel82);
+        jLabel82.setBounds(380, 590, 119, 23);
+
+        jLabel83.setText(":");
+        jLabel83.setName("jLabel83"); // NOI18N
+        FormInput.add(jLabel83);
+        jLabel83.setBounds(380, 620, 129, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -1000,8 +1516,8 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Sistolik.getText().trim().equals("")){
-            Valid.textKosong(Sistolik,"Sitolik");
+        }else if(DiagnosaKlinis.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
@@ -1023,7 +1539,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,Kesimpulan,BtnBatal);
+            Valid.pindah(evt,Saran,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1068,8 +1584,8 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
             Valid.textKosong(TNoRw,"Nama Pasien");
         }else if(NmDokter.getText().trim().equals("")){
             Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Sistolik.getText().trim().equals("")){
-            Valid.textKosong(Sistolik,"Sistolik");
+        }else if(DiagnosaKlinis.getText().trim().equals("")){
+            Valid.textKosong(DiagnosaKlinis,"Diagnosa Klinis");
         }else if(Kesimpulan.getText().trim().equals("")){
             Valid.textKosong(Kesimpulan,"Kesimpulan");
         }else{
@@ -1131,15 +1647,31 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Fungsi Sistolik LV</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Fungsi Diastolik LV</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kontraktilitas RV</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dimensi Ruang Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Katup-katup</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Analisa Segmental</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>eRAP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosa Klinis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kiriman Dari</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Situs</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>AV-VA</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Drainase Vena Pulmonalis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Mitral</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Aorta</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tricuspid</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pulmonal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Septum Atrium</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Septum Ventrikal</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Arkus Aorta</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Lain-lain</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ruang Jantung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>IVDS</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>IVSS</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>LVID dextra</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>LVID sinistra</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>LVPW dextra</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>LVPW sinistra</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Ejection Fraction</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Fraction Shotening</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Doppler</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kesimpulan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Saran</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1161,11 +1693,27 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,22).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,23).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,24).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,25).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,26).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,27).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,28).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,29).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,30).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,31).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2000px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1190,13 +1738,13 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA HASIL PEMERIKSAAN ECHO<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA HASIL PEMERIKSAAN ECHO PEDIATRIK<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1300,7 +1848,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        Valid.pindah2(evt,BtnDokter,Sistolik);
+        Valid.pindah2(evt,BtnDokter,Situs);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void MnPenilaianMedisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianMedisActionPerformed
@@ -1315,40 +1863,40 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
-            param.put("hasil","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanecho/"+Sequel.cariIsi("select hasil_pemeriksaan_echo_gambar.photo from hasil_pemeriksaan_echo_gambar where hasil_pemeriksaan_echo_gambar.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
+            param.put("hasil","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanecho/"+Sequel.cariIsi("select hasil_pemeriksaan_echo_pediatrik_gambar.photo from hasil_pemeriksaan_echo_pediatrik_gambar where hasil_pemeriksaan_echo_pediatrik_gambar.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
             Valid.MyReportqry("rptCetakHasilPemeriksaanECHO.jasper","report","::[ Formulir Hasil Pemeriksaan ECHOCARDIOGRAFI ]::",
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo.tanggal,"+
-                            "hasil_pemeriksaan_echo.kd_dokter,dokter.nm_dokter,"+
-                            "hasil_pemeriksaan_echo.sistolik,hasil_pemeriksaan_echo.diastolic,hasil_pemeriksaan_echo.kontraktilitas,hasil_pemeriksaan_echo.dimensi_ruang,"+
-                            "hasil_pemeriksaan_echo.katup,hasil_pemeriksaan_echo.analisa_segmental,hasil_pemeriksaan_echo.erap,hasil_pemeriksaan_echo.lain_lain,"+
-                            "hasil_pemeriksaan_echo.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join hasil_pemeriksaan_echo on reg_periksa.no_rawat=hasil_pemeriksaan_echo.no_rawat "+
-                            "inner join dokter on hasil_pemeriksaan_echo.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_echo.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo_pediatrik.tanggal,"+
+                            "hasil_pemeriksaan_echo_pediatrik.kd_dokter,dokter.nm_dokter,"+
+                            "hasil_pemeriksaan_echo_pediatrik.sistolik,hasil_pemeriksaan_echo_pediatrik.diastolic,hasil_pemeriksaan_echo_pediatrik.kontraktilitas,hasil_pemeriksaan_echo_pediatrik.dimensi_ruang,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup,hasil_pemeriksaan_echo_pediatrik.analisa_segmental,hasil_pemeriksaan_echo_pediatrik.erap,hasil_pemeriksaan_echo_pediatrik.lain_lain,"+
+                            "hasil_pemeriksaan_echo_pediatrik.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join hasil_pemeriksaan_echo_pediatrik on reg_periksa.no_rawat=hasil_pemeriksaan_echo_pediatrik.no_rawat "+
+                            "inner join dokter on hasil_pemeriksaan_echo_pediatrik.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_echo_pediatrik.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnPenilaianMedisActionPerformed
 
-    private void SistolikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SistolikKeyPressed
-        Valid.pindah(evt,Tanggal,Diastolik);
-    }//GEN-LAST:event_SistolikKeyPressed
+    private void SitusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SitusKeyPressed
+        Valid.pindah(evt,DiagnosaKlinis,AVVA);
+    }//GEN-LAST:event_SitusKeyPressed
 
-    private void KatupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KatupKeyPressed
-        Valid.pindah(evt,Dimensi,AnalisaSegmental);
-    }//GEN-LAST:event_KatupKeyPressed
+    private void PulmonalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PulmonalKeyPressed
+        Valid.pindah(evt,Tricuspid,SeptumAtrium);
+    }//GEN-LAST:event_PulmonalKeyPressed
 
-    private void DiastolikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiastolikKeyPressed
-        Valid.pindah(evt,Sistolik,Kontraktilitas);
-    }//GEN-LAST:event_DiastolikKeyPressed
+    private void AVVAKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AVVAKeyPressed
+        Valid.pindah(evt,Situs,Drainase);
+    }//GEN-LAST:event_AVVAKeyPressed
 
-    private void AnalisaSegmentalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnalisaSegmentalKeyPressed
-        Valid.pindah(evt,Katup,Erap);
-    }//GEN-LAST:event_AnalisaSegmentalKeyPressed
+    private void SeptumAtriumKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeptumAtriumKeyPressed
+        Valid.pindah(evt,Pulmonal,SeptumVentrikal);
+    }//GEN-LAST:event_SeptumAtriumKeyPressed
 
-    private void DimensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DimensiKeyPressed
-        Valid.pindah(evt,Kontraktilitas,Katup);
-    }//GEN-LAST:event_DimensiKeyPressed
+    private void TricuspidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TricuspidKeyPressed
+        Valid.pindah(evt,Aorta,Pulmonal);
+    }//GEN-LAST:event_TricuspidKeyPressed
 
     private void KesimpulanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KesimpulanKeyPressed
-        Valid.pindah2(evt,LainLain,BtnSimpan);
+        Valid.pindah2(evt,Dopler,Saran);
     }//GEN-LAST:event_KesimpulanKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
@@ -1361,17 +1909,17 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
-    private void ErapKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ErapKeyPressed
-        Valid.pindah(evt,AnalisaSegmental,LainLain);
-    }//GEN-LAST:event_ErapKeyPressed
+    private void RuangJantungKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RuangJantungKeyPressed
+        Valid.pindah(evt,Lainlain,IVDS);
+    }//GEN-LAST:event_RuangJantungKeyPressed
 
-    private void KontraktilitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontraktilitasKeyPressed
-        Valid.pindah(evt,Diastolik,Dimensi);
-    }//GEN-LAST:event_KontraktilitasKeyPressed
+    private void DrainaseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DrainaseKeyPressed
+        Valid.pindah(evt,AVVA,Mitral);
+    }//GEN-LAST:event_DrainaseKeyPressed
 
-    private void LainLainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainLainKeyPressed
-        Valid.pindah(evt,Erap,Kesimpulan);
-    }//GEN-LAST:event_LainLainKeyPressed
+    private void DoplerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DoplerKeyPressed
+        Valid.pindah(evt,FractionShotening,Kesimpulan);
+    }//GEN-LAST:event_DoplerKeyPressed
 
     private void btnAmbilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilActionPerformed
         if(tabMode.getRowCount()==0){
@@ -1424,6 +1972,70 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         tampilOrthanc();
     }//GEN-LAST:event_TabDataMouseClicked
 
+    private void KirimanDariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KirimanDariKeyPressed
+        Valid.pindah(evt,BtnDokter,DiagnosaKlinis);
+    }//GEN-LAST:event_KirimanDariKeyPressed
+
+    private void DiagnosaKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKlinisKeyPressed
+        Valid.pindah(evt,KirimanDari,Situs);
+    }//GEN-LAST:event_DiagnosaKlinisKeyPressed
+
+    private void MitralKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MitralKeyPressed
+        Valid.pindah(evt,Drainase,Aorta);
+    }//GEN-LAST:event_MitralKeyPressed
+
+    private void AortaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AortaKeyPressed
+        Valid.pindah(evt,Mitral,Tricuspid);
+    }//GEN-LAST:event_AortaKeyPressed
+
+    private void SeptumVentrikalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SeptumVentrikalKeyPressed
+        Valid.pindah(evt,SeptumAtrium,ArkusAorta);
+    }//GEN-LAST:event_SeptumVentrikalKeyPressed
+
+    private void ArkusAortaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ArkusAortaKeyPressed
+        Valid.pindah(evt,SeptumVentrikal,Lainlain);
+    }//GEN-LAST:event_ArkusAortaKeyPressed
+
+    private void LainlainKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LainlainKeyPressed
+        Valid.pindah(evt,ArkusAorta,RuangJantung);
+    }//GEN-LAST:event_LainlainKeyPressed
+
+    private void IVDSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IVDSKeyPressed
+        Valid.pindah(evt,RuangJantung,IVSS);
+    }//GEN-LAST:event_IVDSKeyPressed
+
+    private void IVSSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_IVSSKeyPressed
+        Valid.pindah(evt,IVDS,LVIDdextra);
+    }//GEN-LAST:event_IVSSKeyPressed
+
+    private void LVIDdextraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LVIDdextraKeyPressed
+        Valid.pindah(evt,IVSS,LVIDsinistra);
+    }//GEN-LAST:event_LVIDdextraKeyPressed
+
+    private void LVIDsinistraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LVIDsinistraKeyPressed
+        Valid.pindah(evt,LVIDdextra,LVPWdextra);
+    }//GEN-LAST:event_LVIDsinistraKeyPressed
+
+    private void LVPWdextraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LVPWdextraKeyPressed
+        Valid.pindah(evt,LVIDsinistra,LVPWsinistra);
+    }//GEN-LAST:event_LVPWdextraKeyPressed
+
+    private void LVPWsinistraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LVPWsinistraKeyPressed
+        Valid.pindah(evt,LVPWdextra,EjectionFraction);
+    }//GEN-LAST:event_LVPWsinistraKeyPressed
+
+    private void EjectionFractionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EjectionFractionKeyPressed
+        Valid.pindah(evt,LVPWsinistra,FractionShotening);
+    }//GEN-LAST:event_EjectionFractionKeyPressed
+
+    private void FractionShoteningKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FractionShoteningKeyPressed
+        Valid.pindah(evt,EjectionFraction,Dopler);
+    }//GEN-LAST:event_FractionShoteningKeyPressed
+
+    private void SaranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SaranKeyPressed
+        Valid.pindah(evt,Kesimpulan,BtnSimpan);
+    }//GEN-LAST:event_SaranKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1441,7 +2053,9 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox AnalisaSegmental;
+    private widget.TextBox AVVA;
+    private widget.TextBox Aorta;
+    private widget.TextBox ArkusAorta;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1455,28 +2069,41 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     private widget.CekBox ChkAccor;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private widget.TextBox Diastolik;
-    private widget.TextBox Dimensi;
-    private widget.TextBox Erap;
+    private widget.TextBox DiagnosaKlinis;
+    private widget.TextBox Dopler;
+    private widget.TextBox Drainase;
+    private widget.TextBox EjectionFraction;
     private widget.PanelBiasa FormInput;
     private widget.PanelBiasa FormOrthan;
     private widget.PanelBiasa FormPass3;
     private widget.PanelBiasa FormPhoto;
-    private widget.TextBox Katup;
+    private widget.TextBox FractionShotening;
+    private widget.TextBox IVDS;
+    private widget.TextBox IVSS;
     private widget.TextBox KdDokter;
     private widget.TextArea Kesimpulan;
-    private widget.TextBox Kontraktilitas;
+    private widget.TextBox KirimanDari;
     private widget.Label LCount;
-    private widget.TextBox LainLain;
+    private widget.TextBox LVIDdextra;
+    private widget.TextBox LVIDsinistra;
+    private widget.TextBox LVPWdextra;
+    private widget.TextBox LVPWsinistra;
+    private widget.TextBox Lainlain;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
+    private widget.TextBox Mitral;
     private javax.swing.JMenuItem MnPenilaianMedis;
     private widget.TextBox NmDokter;
     private widget.PanelBiasa PanelAccor;
+    private widget.TextBox Pulmonal;
+    private widget.TextBox RuangJantung;
+    private widget.TextBox Saran;
     private widget.ScrollPane Scroll;
     private widget.ScrollPane Scroll5;
     private widget.ScrollPane Scroll6;
-    private widget.TextBox Sistolik;
+    private widget.TextBox SeptumAtrium;
+    private widget.TextBox SeptumVentrikal;
+    private widget.TextBox Situs;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
@@ -1486,6 +2113,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox TanggalRegistrasi;
     private widget.TextBox TglLahir;
+    private widget.TextBox Tricuspid;
     private widget.Button btnAmbil;
     private widget.Button btnDicom;
     private widget.InternalFrame internalFrame1;
@@ -1494,18 +2122,61 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     private widget.Label jLabel10;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
+    private widget.Label jLabel30;
     private widget.Label jLabel31;
+    private widget.Label jLabel32;
+    private widget.Label jLabel33;
+    private widget.Label jLabel34;
     private widget.Label jLabel35;
+    private widget.Label jLabel36;
+    private widget.Label jLabel37;
+    private widget.Label jLabel38;
+    private widget.Label jLabel39;
     private widget.Label jLabel40;
     private widget.Label jLabel41;
     private widget.Label jLabel42;
     private widget.Label jLabel43;
-    private widget.Label jLabel44;
     private widget.Label jLabel45;
-    private widget.Label jLabel46;
+    private widget.Label jLabel47;
+    private widget.Label jLabel48;
+    private widget.Label jLabel49;
+    private widget.Label jLabel50;
+    private widget.Label jLabel51;
+    private widget.Label jLabel52;
+    private widget.Label jLabel53;
+    private widget.Label jLabel54;
+    private widget.Label jLabel55;
+    private widget.Label jLabel56;
+    private widget.Label jLabel57;
+    private widget.Label jLabel58;
+    private widget.Label jLabel59;
     private widget.Label jLabel6;
+    private widget.Label jLabel60;
+    private widget.Label jLabel61;
+    private widget.Label jLabel62;
+    private widget.Label jLabel63;
+    private widget.Label jLabel64;
+    private widget.Label jLabel65;
+    private widget.Label jLabel66;
+    private widget.Label jLabel67;
+    private widget.Label jLabel68;
+    private widget.Label jLabel69;
     private widget.Label jLabel7;
+    private widget.Label jLabel70;
+    private widget.Label jLabel71;
+    private widget.Label jLabel72;
+    private widget.Label jLabel73;
+    private widget.Label jLabel74;
+    private widget.Label jLabel75;
+    private widget.Label jLabel76;
+    private widget.Label jLabel77;
+    private widget.Label jLabel78;
+    private widget.Label jLabel79;
     private widget.Label jLabel8;
+    private widget.Label jLabel80;
+    private widget.Label jLabel81;
+    private widget.Label jLabel82;
+    private widget.Label jLabel83;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private widget.Label label11;
@@ -1524,25 +2195,35 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo.tanggal,"+
-                            "hasil_pemeriksaan_echo.kd_dokter,dokter.nm_dokter,"+
-                            "hasil_pemeriksaan_echo.sistolik,hasil_pemeriksaan_echo.diastolic,hasil_pemeriksaan_echo.kontraktilitas,hasil_pemeriksaan_echo.dimensi_ruang,"+
-                            "hasil_pemeriksaan_echo.katup,hasil_pemeriksaan_echo.analisa_segmental,hasil_pemeriksaan_echo.erap,hasil_pemeriksaan_echo.lain_lain,"+
-                            "hasil_pemeriksaan_echo.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join hasil_pemeriksaan_echo on reg_periksa.no_rawat=hasil_pemeriksaan_echo.no_rawat "+
-                            "inner join dokter on hasil_pemeriksaan_echo.kd_dokter=dokter.kd_dokter where "+
-                            "hasil_pemeriksaan_echo.tanggal between ? and ? order by hasil_pemeriksaan_echo.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo_pediatrik.tanggal,"+
+                            "hasil_pemeriksaan_echo_pediatrik.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_echo_pediatrik.diagnosa_klinis,hasil_pemeriksaan_echo_pediatrik.kiriman_dari,"+
+                            "hasil_pemeriksaan_echo_pediatrik.situs,hasil_pemeriksaan_echo_pediatrik.av_va,hasil_pemeriksaan_echo_pediatrik.drainase_vena_pulmonalis,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_mitral,hasil_pemeriksaan_echo_pediatrik.katup_aorta,hasil_pemeriksaan_echo_pediatrik.katup_tricuspid,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_pulmonal,hasil_pemeriksaan_echo_pediatrik.katup_septum_atrium,hasil_pemeriksaan_echo_pediatrik.katup_septum_ventrikal,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_arkus_aorta,hasil_pemeriksaan_echo_pediatrik.katup_keterangan_lainnya,hasil_pemeriksaan_echo_pediatrik.ruang_jantung,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_ivds,hasil_pemeriksaan_echo_pediatrik.mode_ivss,hasil_pemeriksaan_echo_pediatrik.mode_lvid_dextra,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_lvid_sinistra,hasil_pemeriksaan_echo_pediatrik.mode_lvpw_dextra,hasil_pemeriksaan_echo_pediatrik.mode_lvpw_sinistra,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_ejection_fraction,hasil_pemeriksaan_echo_pediatrik.mode_fraction_shotening,hasil_pemeriksaan_echo_pediatrik.doppler,"+
+                            "hasil_pemeriksaan_echo_pediatrik.kesimpulan,hasil_pemeriksaan_echo_pediatrik.saran from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join hasil_pemeriksaan_echo_pediatrik on reg_periksa.no_rawat=hasil_pemeriksaan_echo_pediatrik.no_rawat "+
+                            "inner join dokter on hasil_pemeriksaan_echo_pediatrik.kd_dokter=dokter.kd_dokter where "+
+                            "hasil_pemeriksaan_echo_pediatrik.tanggal between ? and ? order by hasil_pemeriksaan_echo_pediatrik.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo.tanggal,"+
-                            "hasil_pemeriksaan_echo.kd_dokter,dokter.nm_dokter,"+
-                            "hasil_pemeriksaan_echo.sistolik,hasil_pemeriksaan_echo.diastolic,hasil_pemeriksaan_echo.kontraktilitas,hasil_pemeriksaan_echo.dimensi_ruang,"+
-                            "hasil_pemeriksaan_echo.katup,hasil_pemeriksaan_echo.analisa_segmental,hasil_pemeriksaan_echo.erap,hasil_pemeriksaan_echo.lain_lain,"+
-                            "hasil_pemeriksaan_echo.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join hasil_pemeriksaan_echo on reg_periksa.no_rawat=hasil_pemeriksaan_echo.no_rawat "+
-                            "inner join dokter on hasil_pemeriksaan_echo.kd_dokter=dokter.kd_dokter where "+
-                            "hasil_pemeriksaan_echo.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                            "hasil_pemeriksaan_echo.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_echo.tanggal");
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo_pediatrik.tanggal,"+
+                            "hasil_pemeriksaan_echo_pediatrik.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_echo_pediatrik.diagnosa_klinis,hasil_pemeriksaan_echo_pediatrik.kiriman_dari,"+
+                            "hasil_pemeriksaan_echo_pediatrik.situs,hasil_pemeriksaan_echo_pediatrik.av_va,hasil_pemeriksaan_echo_pediatrik.drainase_vena_pulmonalis,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_mitral,hasil_pemeriksaan_echo_pediatrik.katup_aorta,hasil_pemeriksaan_echo_pediatrik.katup_tricuspid,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_pulmonal,hasil_pemeriksaan_echo_pediatrik.katup_septum_atrium,hasil_pemeriksaan_echo_pediatrik.katup_septum_ventrikal,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_arkus_aorta,hasil_pemeriksaan_echo_pediatrik.katup_keterangan_lainnya,hasil_pemeriksaan_echo_pediatrik.ruang_jantung,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_ivds,hasil_pemeriksaan_echo_pediatrik.mode_ivss,hasil_pemeriksaan_echo_pediatrik.mode_lvid_dextra,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_lvid_sinistra,hasil_pemeriksaan_echo_pediatrik.mode_lvpw_dextra,hasil_pemeriksaan_echo_pediatrik.mode_lvpw_sinistra,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_ejection_fraction,hasil_pemeriksaan_echo_pediatrik.mode_fraction_shotening,hasil_pemeriksaan_echo_pediatrik.doppler,"+
+                            "hasil_pemeriksaan_echo_pediatrik.kesimpulan,hasil_pemeriksaan_echo_pediatrik.saran from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "inner join hasil_pemeriksaan_echo_pediatrik on reg_periksa.no_rawat=hasil_pemeriksaan_echo_pediatrik.no_rawat "+
+                            "inner join dokter on hasil_pemeriksaan_echo_pediatrik.kd_dokter=dokter.kd_dokter where "+
+                            "hasil_pemeriksaan_echo_pediatrik.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+                            "hasil_pemeriksaan_echo_pediatrik.kd_dokter like ? or dokter.nm_dokter like ?) order by hasil_pemeriksaan_echo_pediatrik.tanggal");
             }
                 
             try {
@@ -1562,8 +2243,11 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),rs.getString("tanggal"),
-                        rs.getString("sistolik"),rs.getString("diastolic"),rs.getString("kontraktilitas"),rs.getString("dimensi_ruang"),rs.getString("katup"),rs.getString("analisa_segmental"),
-                        rs.getString("erap"),rs.getString("lain_lain"),rs.getString("kesimpulan")
+                        rs.getString("diagnosa_klinis"),rs.getString("kiriman_dari"),rs.getString("situs"),rs.getString("av_va"),rs.getString("drainase_vena_pulmonalis"),rs.getString("katup_mitral"),
+                        rs.getString("katup_aorta"),rs.getString("katup_tricuspid"),rs.getString("katup_pulmonal"),rs.getString("katup_septum_atrium"),rs.getString("katup_septum_ventrikal"),
+                        rs.getString("katup_arkus_aorta"),rs.getString("katup_keterangan_lainnya"),rs.getString("ruang_jantung"),rs.getString("mode_ivds"),rs.getString("mode_ivss"),rs.getString("mode_lvid_dextra"),
+                        rs.getString("mode_lvid_sinistra"),rs.getString("mode_lvpw_dextra"),rs.getString("mode_lvpw_sinistra"),rs.getString("mode_ejection_fraction"),rs.getString("mode_fraction_shotening"),
+                        rs.getString("doppler"),rs.getString("kesimpulan"),rs.getString("saran")
                     });
                 }
             } catch (Exception e) {
@@ -1584,18 +2268,32 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     }
 
     public void emptTeks() {
-        Sistolik.setText("");
-        Diastolik.setText("");
-        Kontraktilitas.setText("");
-        Dimensi.setText("");
-        Katup.setText("");
-        AnalisaSegmental.setText("");
-        Erap.setText("");
-        LainLain.setText("");
+        KirimanDari.setText("");
+        DiagnosaKlinis.setText("");
+        Situs.setText("");
+        AVVA.setText("");
+        Drainase.setText("");
+        Mitral.setText("");
+        Aorta.setText("");
+        Tricuspid.setText("");
+        Pulmonal.setText("");
+        SeptumAtrium.setText("");
+        SeptumVentrikal.setText("");
+        ArkusAorta.setText("");
+        Lainlain.setText("");
+        RuangJantung.setText("");
+        IVDS.setText("");
+        IVSS.setText("");
+        LVPWdextra.setText("");
+        LVPWsinistra.setText("");
+        LVIDdextra.setText("");
+        LVIDsinistra.setText("");
+        Dopler.setText("");
         Kesimpulan.setText("");
+        Saran.setText("");
         Tanggal.setDate(new Date());
         TabRawat.setSelectedIndex(0);
-        Sistolik.requestFocus();
+        KirimanDari.requestFocus();
     } 
 
     private void getData() {
@@ -1604,15 +2302,31 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            Sistolik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Diastolik.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            Kontraktilitas.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            Dimensi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            Katup.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            AnalisaSegmental.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            Erap.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            LainLain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            DiagnosaKlinis.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            KirimanDari.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            Situs.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            AVVA.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            Drainase.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            Mitral.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            Aorta.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            Tricuspid.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            Pulmonal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            SeptumAtrium.setText(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            SeptumVentrikal.setText(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            ArkusAorta.setText(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            Lainlain.setText(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            RuangJantung.setText(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            IVDS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            IVSS.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            LVIDdextra.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            LVIDsinistra.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            LVPWdextra.setText(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            LVPWsinistra.setText(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            EjectionFraction.setText(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            FractionShotening.setText(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            Dopler.setText(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            Kesimpulan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            Saran.setText(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
         }
     }
@@ -1655,10 +2369,10 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     }
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_echo());
-        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_echo());
-        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_echo());
-        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_echo());
+        BtnSimpan.setEnabled(akses.gethasil_pemeriksaan_echo_pediatrik());
+        BtnHapus.setEnabled(akses.gethasil_pemeriksaan_echo_pediatrik());
+        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_echo_pediatrik());
+        BtnEdit.setEnabled(akses.gethasil_pemeriksaan_echo_pediatrik());
         if(akses.getjml2()>=1){
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
@@ -1683,7 +2397,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from hasil_pemeriksaan_echo where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from hasil_pemeriksaan_echo_pediatrik where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1695,11 +2409,11 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        if(Sequel.mengedittf("hasil_pemeriksaan_echo","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,sistolik=?,diastolic=?,kontraktilitas=?,dimensi_ruang=?,katup=?,"+
+        if(Sequel.mengedittf("hasil_pemeriksaan_echo_pediatrik","no_rawat=?","no_rawat=?,tanggal=?,kd_dokter=?,sistolik=?,diastolic=?,kontraktilitas=?,dimensi_ruang=?,katup=?,"+
                 "analisa_segmental=?,erap=?,lain_lain=?,kesimpulan=?",13,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                Sistolik.getText(),Diastolik.getText(),Kontraktilitas.getText(),Dimensi.getText(),Katup.getText(),AnalisaSegmental.getText(),
-                Erap.getText(),LainLain.getText(),Kesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+                Situs.getText(),AVVA.getText(),Drainase.getText(),Tricuspid.getText(),Pulmonal.getText(),SeptumAtrium.getText(),
+                RuangJantung.getText(),Dopler.getText(),Kesimpulan.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
                tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
                 tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -1708,15 +2422,31 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
                 tbObat.setValueAt(KdDokter.getText(),tbObat.getSelectedRow(),4);
                 tbObat.setValueAt(NmDokter.getText(),tbObat.getSelectedRow(),5);
                 tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),6);
-                tbObat.setValueAt(Sistolik.getText(),tbObat.getSelectedRow(),7);
-                tbObat.setValueAt(Diastolik.getText(),tbObat.getSelectedRow(),8);
-                tbObat.setValueAt(Kontraktilitas.getText(),tbObat.getSelectedRow(),9);
-                tbObat.setValueAt(Dimensi.getText(),tbObat.getSelectedRow(),10);
-                tbObat.setValueAt(Katup.getText(),tbObat.getSelectedRow(),11);
-                tbObat.setValueAt(AnalisaSegmental.getText(),tbObat.getSelectedRow(),12);
-                tbObat.setValueAt(Erap.getText(),tbObat.getSelectedRow(),13);
-                tbObat.setValueAt(LainLain.getText(),tbObat.getSelectedRow(),14);
-                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(DiagnosaKlinis.getText(),tbObat.getSelectedRow(),7);
+                tbObat.setValueAt(KirimanDari.getText(),tbObat.getSelectedRow(),8);
+                tbObat.setValueAt(Situs.getText(),tbObat.getSelectedRow(),9);
+                tbObat.setValueAt(AVVA.getText(),tbObat.getSelectedRow(),10);
+                tbObat.setValueAt(Drainase.getText(),tbObat.getSelectedRow(),11);
+                tbObat.setValueAt(Mitral.getText(),tbObat.getSelectedRow(),12);
+                tbObat.setValueAt(Aorta.getText(),tbObat.getSelectedRow(),13);
+                tbObat.setValueAt(Tricuspid.getText(),tbObat.getSelectedRow(),14);
+                tbObat.setValueAt(Pulmonal.getText(),tbObat.getSelectedRow(),15);
+                tbObat.setValueAt(SeptumAtrium.getText(),tbObat.getSelectedRow(),16);
+                tbObat.setValueAt(SeptumVentrikal.getText(),tbObat.getSelectedRow(),17);
+                tbObat.setValueAt(ArkusAorta.getText(),tbObat.getSelectedRow(),18);
+                tbObat.setValueAt(Lainlain.getText(),tbObat.getSelectedRow(),19);
+                tbObat.setValueAt(RuangJantung.getText(),tbObat.getSelectedRow(),20);
+                tbObat.setValueAt(IVDS.getText(),tbObat.getSelectedRow(),21);
+                tbObat.setValueAt(IVSS.getText(),tbObat.getSelectedRow(),22);
+                tbObat.setValueAt(LVIDdextra.getText(),tbObat.getSelectedRow(),23);
+                tbObat.setValueAt(LVIDsinistra.getText(),tbObat.getSelectedRow(),24);
+                tbObat.setValueAt(LVPWdextra.getText(),tbObat.getSelectedRow(),24);
+                tbObat.setValueAt(LVPWsinistra.getText(),tbObat.getSelectedRow(),26);
+                tbObat.setValueAt(EjectionFraction.getText(),tbObat.getSelectedRow(),27);
+                tbObat.setValueAt(FractionShotening.getText(),tbObat.getSelectedRow(),28);
+                tbObat.setValueAt(Dopler.getText(),tbObat.getSelectedRow(),29);
+                tbObat.setValueAt(Kesimpulan.getText(),tbObat.getSelectedRow(),30);
+                tbObat.setValueAt(Saran.getText(),tbObat.getSelectedRow(),31);
                 emptTeks();
                 TabRawat.setSelectedIndex(1);
         }
@@ -1739,7 +2469,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select hasil_pemeriksaan_echo_gambar.photo from hasil_pemeriksaan_echo_gambar where hasil_pemeriksaan_echo_gambar.no_rawat=?");
+                ps=koneksi.prepareStatement("select hasil_pemeriksaan_echo_pediatrik_gambar.photo from hasil_pemeriksaan_echo_pediatrik_gambar where hasil_pemeriksaan_echo_pediatrik_gambar.no_rawat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -1769,14 +2499,19 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
     }
 
     private void simpan() {
-        if(Sequel.menyimpantf("hasil_pemeriksaan_echo","?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",12,new String[]{
+        if(Sequel.menyimpantf("hasil_pemeriksaan_echo_pediatrik","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",28,new String[]{
                 TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),KdDokter.getText(),
-                Sistolik.getText(),Diastolik.getText(),Kontraktilitas.getText(),Dimensi.getText(),Katup.getText(),AnalisaSegmental.getText(),
-                Erap.getText(),LainLain.getText(),Kesimpulan.getText()
+                DiagnosaKlinis.getText(),KirimanDari.getText(),Situs.getText(),AVVA.getText(),Drainase.getText(),Mitral.getText(),Aorta.getText(),Tricuspid.getText(), 
+                Pulmonal.getText(),SeptumAtrium.getText(),SeptumVentrikal.getText(),ArkusAorta.getText(),Lainlain.getText(),RuangJantung.getText(), 
+                IVDS.getText(),IVSS.getText(),LVIDdextra.getText(),LVIDsinistra.getText(),LVPWdextra.getText(),LVPWsinistra.getText(),EjectionFraction.getText(), 
+                FractionShotening.getText(),Dopler.getText(),Kesimpulan.getText(),Saran.getText()
             })==true){
                 tabMode.addRow(new Object[]{
                     TNoRw.getText(),TNoRM.getText(),TPasien.getText(),TglLahir.getText(),KdDokter.getText(),NmDokter.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),
-                    Sistolik.getText(),Diastolik.getText(),Kontraktilitas.getText(),Dimensi.getText(),Katup.getText(),AnalisaSegmental.getText(),Erap.getText(),LainLain.getText(),Kesimpulan.getText()
+                    DiagnosaKlinis.getText(),KirimanDari.getText(),Situs.getText(),AVVA.getText(),Drainase.getText(),Mitral.getText(),Aorta.getText(),Tricuspid.getText(), 
+                    Pulmonal.getText(),SeptumAtrium.getText(),SeptumVentrikal.getText(),ArkusAorta.getText(),Lainlain.getText(),RuangJantung.getText(), 
+                    IVDS.getText(),IVSS.getText(),LVIDdextra.getText(),LVIDsinistra.getText(),LVPWdextra.getText(),LVPWsinistra.getText(),EjectionFraction.getText(), 
+                    FractionShotening.getText(),Dopler.getText(),Kesimpulan.getText(),Saran.getText()
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
