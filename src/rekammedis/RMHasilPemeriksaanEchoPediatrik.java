@@ -1863,13 +1863,18 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),4).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString())); 
-            param.put("hasil","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanecho/"+Sequel.cariIsi("select hasil_pemeriksaan_echo_pediatrik_gambar.photo from hasil_pemeriksaan_echo_pediatrik_gambar where hasil_pemeriksaan_echo_pediatrik_gambar.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
-            Valid.MyReportqry("rptCetakHasilPemeriksaanECHO.jasper","report","::[ Formulir Hasil Pemeriksaan ECHOCARDIOGRAFI ]::",
+            param.put("hasil","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanechopediatrik/"+Sequel.cariIsi("select hasil_pemeriksaan_echo_pediatrik_gambar.photo from hasil_pemeriksaan_echo_pediatrik_gambar where hasil_pemeriksaan_echo_pediatrik_gambar.no_rawat=?",tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()));
+            Valid.MyReportqry("rptCetakHasilPemeriksaanECHOPediatrik.jasper","report","::[ Formulir Hasil Pemeriksaan ECHOCARDIOGRAFI ]::",
                             "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,hasil_pemeriksaan_echo_pediatrik.tanggal,"+
-                            "hasil_pemeriksaan_echo_pediatrik.kd_dokter,dokter.nm_dokter,"+
-                            "hasil_pemeriksaan_echo_pediatrik.sistolik,hasil_pemeriksaan_echo_pediatrik.diastolic,hasil_pemeriksaan_echo_pediatrik.kontraktilitas,hasil_pemeriksaan_echo_pediatrik.dimensi_ruang,"+
-                            "hasil_pemeriksaan_echo_pediatrik.katup,hasil_pemeriksaan_echo_pediatrik.analisa_segmental,hasil_pemeriksaan_echo_pediatrik.erap,hasil_pemeriksaan_echo_pediatrik.lain_lain,"+
-                            "hasil_pemeriksaan_echo_pediatrik.kesimpulan from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+                            "hasil_pemeriksaan_echo_pediatrik.kd_dokter,dokter.nm_dokter,hasil_pemeriksaan_echo_pediatrik.diagnosa_klinis,hasil_pemeriksaan_echo_pediatrik.kiriman_dari,"+
+                            "hasil_pemeriksaan_echo_pediatrik.situs,hasil_pemeriksaan_echo_pediatrik.av_va,hasil_pemeriksaan_echo_pediatrik.drainase_vena_pulmonalis,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_mitral,hasil_pemeriksaan_echo_pediatrik.katup_aorta,hasil_pemeriksaan_echo_pediatrik.katup_tricuspid,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_pulmonal,hasil_pemeriksaan_echo_pediatrik.katup_septum_atrium,hasil_pemeriksaan_echo_pediatrik.katup_septum_ventrikal,"+
+                            "hasil_pemeriksaan_echo_pediatrik.katup_arkus_aorta,hasil_pemeriksaan_echo_pediatrik.katup_keterangan_lainnya,hasil_pemeriksaan_echo_pediatrik.ruang_jantung,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_ivds,hasil_pemeriksaan_echo_pediatrik.mode_ivss,hasil_pemeriksaan_echo_pediatrik.mode_lvid_dextra,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_lvid_sinistra,hasil_pemeriksaan_echo_pediatrik.mode_lvpw_dextra,hasil_pemeriksaan_echo_pediatrik.mode_lvpw_sinistra,"+
+                            "hasil_pemeriksaan_echo_pediatrik.mode_ejection_fraction,hasil_pemeriksaan_echo_pediatrik.mode_fraction_shotening,hasil_pemeriksaan_echo_pediatrik.doppler,"+
+                            "hasil_pemeriksaan_echo_pediatrik.kesimpulan,hasil_pemeriksaan_echo_pediatrik.saran from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                             "inner join hasil_pemeriksaan_echo_pediatrik on reg_periksa.no_rawat=hasil_pemeriksaan_echo_pediatrik.no_rawat "+
                             "inner join dokter on hasil_pemeriksaan_echo_pediatrik.kd_dokter=dokter.kd_dokter where hasil_pemeriksaan_echo_pediatrik.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
@@ -1928,7 +1933,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
         }else{
             if(tbObat.getSelectedRow()>-1){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                Valid.panggilUrl("hasilpemeriksaanecho/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                Valid.panggilUrl("hasilpemeriksaanechopediatrik/login.php?act=login&usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&no_rawat="+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Rawat terlebih dahulu..!!");
@@ -2477,7 +2482,7 @@ public final class RMHasilPemeriksaanEchoPediatrik extends javax.swing.JDialog {
                         if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
-                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanecho/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanecho/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><a href='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanechopediatrik/"+rs.getString("photo")+"'><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/hasilpemeriksaanechopediatrik/"+rs.getString("photo")+"' alt='photo' width='550' height='550'/></a></center></body></html>");
                         }  
                     }else{
                         LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
