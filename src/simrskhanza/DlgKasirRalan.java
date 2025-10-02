@@ -7689,6 +7689,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                             if (pilihan == JOptionPane.YES_OPTION) {
                                 MnDataRalanActionPerformed(null);
                             }
+                        }else {
+                            MnDataRalanActionPerformed(null);
                         }
                     }
                 }else if(i==1){
