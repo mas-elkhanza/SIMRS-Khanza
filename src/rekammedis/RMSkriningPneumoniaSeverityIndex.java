@@ -68,12 +68,11 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal",
-            "BB(Kg)","TB(Cm)","IMT","Kasifikasi IMT","LP(Cm)","Risiko L.P.","Riwayat Kontak TBC","Jenis Kontak TBC",
-            "Pernah Terdiagnosa TBC","Jika Ya Kapan ?","Pernah Berobat TBC","Malnutrisi","Merokok","Riwayat DM","ODHIV",
-            "Lansia > 65 Tahun","Ibu Hamil","Warga Binaan Permasyarakatan (WBP)","Tinggal Di Wilayah Padat Kumuh Miskin",
-            "Abnormalitas TBC","Gejala Batuk","Gejala BB Turun","Gejala Demam","Gejala Berkeringat Malam Hari",
-            "Gejala Penyakit Lain","Kesimpulan Skrining","Keterangan"
+            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Petugas","Nama Petugas","Tanggal","Umur","N.U",
+            "Panti Jompo","N.P.J","Gagal Jantung","N.G.J","Penyakit Hati","N.P.H","Ginjal Kronis","N.G.K","Kanker","N.K",
+            "Penyakit Serebrovaskular","N.P.S","Disorientasi Mental","N.D.M","Frekuensi Napas","N.F.N","TD Sistolik","N.T.S",
+            "Suhu","N.S","Nadi","N.N","pH Darah","N.pH","Natrium","N.Na","BUN","N.B","PaO₂","N.P","Glukosa","N.G","Efusi Pleura","N.E.P",
+            "Hematokrit","N.H","Total Skor","Kelas","Skor","Mortalitas","Rekomendasi"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -83,7 +82,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 35; i++) {
+        for (i = 0; i < 20; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -101,62 +100,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
                 column.setPreferredWidth(150);
             }else if(i==7){
                 column.setPreferredWidth(120);
-            }else if(i==8){
-                column.setPreferredWidth(48);
-            }else if(i==9){
-                column.setPreferredWidth(48);
-            }else if(i==10){
-                column.setPreferredWidth(50);
-            }else if(i==11){
-                column.setPreferredWidth(120);
-            }else if(i==12){
-                column.setPreferredWidth(48);
-            }else if(i==13){
-                column.setPreferredWidth(120);
-            }else if(i==14){
-                column.setPreferredWidth(105);
-            }else if(i==15){
-                column.setPreferredWidth(118);
-            }else if(i==16){
-                column.setPreferredWidth(130);
-            }else if(i==17){
-                column.setPreferredWidth(150);
-            }else if(i==18){
-                column.setPreferredWidth(105);
-            }else if(i==19){
-                column.setPreferredWidth(56);
-            }else if(i==20){
-                column.setPreferredWidth(48);
-            }else if(i==21){
-                column.setPreferredWidth(66);
-            }else if(i==22){
-                column.setPreferredWidth(43);
-            }else if(i==23){
-                column.setPreferredWidth(99);
-            }else if(i==24){
-                column.setPreferredWidth(58);
-            }else if(i==25){
-                column.setPreferredWidth(198);
-            }else if(i==26){
-                column.setPreferredWidth(200);
-            }else if(i==27){
-                column.setPreferredWidth(97);
-            }else if(i==28){
-                column.setPreferredWidth(75);
-            }else if(i==29){
-                column.setPreferredWidth(85);
-            }else if(i==30){
-                column.setPreferredWidth(81);
-            }else if(i==31){
-                column.setPreferredWidth(156);
-            }else if(i==32){
-                column.setPreferredWidth(200);
-            }else if(i==33){
-                column.setPreferredWidth(108);
-            }else if(i==34){
-                column.setPreferredWidth(200);
             }
-            
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
@@ -889,11 +833,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         SkorInterpretasi.setEditable(false);
         SkorInterpretasi.setFocusTraversalPolicyProvider(true);
         SkorInterpretasi.setName("SkorInterpretasi"); // NOI18N
-        SkorInterpretasi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SkorInterpretasiKeyPressed(evt);
-            }
-        });
         FormInput.add(SkorInterpretasi);
         SkorInterpretasi.setBounds(184, 550, 100, 23);
 
@@ -1067,11 +1006,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         NilaiPenyakitHati.setEditable(false);
         NilaiPenyakitHati.setFocusTraversalPolicyProvider(true);
         NilaiPenyakitHati.setName("NilaiPenyakitHati"); // NOI18N
-        NilaiPenyakitHati.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiPenyakitHatiKeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiPenyakitHati);
         NilaiPenyakitHati.setBounds(749, 140, 40, 23);
 
@@ -1140,11 +1074,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         NilaiKankerNeoplasma.setEditable(false);
         NilaiKankerNeoplasma.setFocusTraversalPolicyProvider(true);
         NilaiKankerNeoplasma.setName("NilaiKankerNeoplasma"); // NOI18N
-        NilaiKankerNeoplasma.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NilaiKankerNeoplasmaKeyPressed(evt);
-            }
-        });
         FormInput.add(NilaiKankerNeoplasma);
         NilaiKankerNeoplasma.setBounds(749, 170, 40, 23);
 
@@ -1664,11 +1593,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         Mortalitas.setEditable(false);
         Mortalitas.setFocusTraversalPolicyProvider(true);
         Mortalitas.setName("Mortalitas"); // NOI18N
-        Mortalitas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                MortalitasKeyPressed(evt);
-            }
-        });
         FormInput.add(Mortalitas);
         Mortalitas.setBounds(376, 550, 75, 23);
 
@@ -1685,11 +1609,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         Rekomendasi.setEditable(false);
         Rekomendasi.setFocusTraversalPolicyProvider(true);
         Rekomendasi.setName("Rekomendasi"); // NOI18N
-        Rekomendasi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                RekomendasiKeyPressed(evt);
-            }
-        });
         FormInput.add(Rekomendasi);
         Rekomendasi.setBounds(558, 550, 231, 23);
 
@@ -1761,6 +1680,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         emptTeks();
         ChkInput.setSelected(true);
         isForm(); 
+        TotalNilai();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -2101,15 +2021,15 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
             Valid.MyReportqry("rptFormulirSkriningTBC.jasper","report","::[ Formulir Skrining TBC ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_tbc.nip,petugas.nama,skrining_tbc.tanggal,"+
-                    "skrining_tbc.berat_badan,skrining_tbc.tinggi_badan,skrining_tbc.imt,skrining_tbc.kasifikasi_imt,skrining_tbc.lingkar_pinggang,skrining_tbc.risiko_lingkar_pinggang,"+
-                    "skrining_tbc.riwayat_kontak_tbc,skrining_tbc.jenis_kontak_tbc,"+
-                    "skrining_tbc.faktor_resiko_pernah_terdiagnosa_tbc,skrining_tbc.keterangan_pernah_terdiagnosa,"+
-                    "skrining_tbc.faktor_resiko_pernah_berobat_tbc,skrining_tbc.faktor_resiko_malnutrisi,skrining_tbc.faktor_resiko_merokok,skrining_tbc.faktor_resiko_riwayat_dm,"+
-                    "skrining_tbc.faktor_resiko_odhiv,skrining_tbc.faktor_resiko_lansia,skrining_tbc.faktor_resiko_ibu_hamil,skrining_tbc.faktor_resiko_wbp,skrining_tbc.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
-                    "skrining_tbc.abnormalitas_tbc,skrining_tbc.gejala_tbc_batuk,skrining_tbc.gejala_tbc_bb_turun,skrining_tbc.gejala_tbc_demam,skrining_tbc.gejala_tbc_berkeringat_malam_hari,skrining_tbc.keterangan_gejala_penyakit_lain,"+
-                    "skrining_tbc.kesimpulan_skrining,skrining_tbc.keterangan_hasil_skrining from skrining_tbc inner join reg_periksa on skrining_tbc.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_tbc.nip=petugas.nip "+
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_pneumonia_severity_index.nip,petugas.nama,skrining_pneumonia_severity_index.tanggal,"+
+                    "skrining_pneumonia_severity_index.berat_badan,skrining_pneumonia_severity_index.tinggi_badan,skrining_pneumonia_severity_index.imt,skrining_pneumonia_severity_index.kasifikasi_imt,skrining_pneumonia_severity_index.lingkar_pinggang,skrining_pneumonia_severity_index.risiko_lingkar_pinggang,"+
+                    "skrining_pneumonia_severity_index.riwayat_kontak_tbc,skrining_pneumonia_severity_index.jenis_kontak_tbc,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_pernah_terdiagnosa_tbc,skrining_pneumonia_severity_index.keterangan_pernah_terdiagnosa,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_pernah_berobat_tbc,skrining_pneumonia_severity_index.faktor_resiko_malnutrisi,skrining_pneumonia_severity_index.faktor_resiko_merokok,skrining_pneumonia_severity_index.faktor_resiko_riwayat_dm,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_odhiv,skrining_pneumonia_severity_index.faktor_resiko_lansia,skrining_pneumonia_severity_index.faktor_resiko_ibu_hamil,skrining_pneumonia_severity_index.faktor_resiko_wbp,skrining_pneumonia_severity_index.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
+                    "skrining_pneumonia_severity_index.abnormalitas_tbc,skrining_pneumonia_severity_index.gejala_tbc_batuk,skrining_pneumonia_severity_index.gejala_tbc_bb_turun,skrining_pneumonia_severity_index.gejala_tbc_demam,skrining_pneumonia_severity_index.gejala_tbc_berkeringat_malam_hari,skrining_pneumonia_severity_index.keterangan_gejala_penyakit_lain,"+
+                    "skrining_pneumonia_severity_index.kesimpulan_skrining,skrining_pneumonia_severity_index.keterangan_hasil_skrining from skrining_pneumonia_severity_index inner join reg_periksa on skrining_pneumonia_severity_index.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_pneumonia_severity_index.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
     }//GEN-LAST:event_MnSkriningTBCActionPerformed
@@ -2117,10 +2037,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
-
-    private void SkorInterpretasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SkorInterpretasiKeyPressed
-        //Valid.pindah(evt,KetGejalaPenyakit,BtnSimpan);
-    }//GEN-LAST:event_SkorInterpretasiKeyPressed
 
     private void TinggalDiPantiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TinggalDiPantiKeyPressed
         Valid.pindah(evt,btnPetugas,GagalJantung);
@@ -2134,10 +2050,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         Valid.pindah(evt,GagalJantung,GinjalKronis);
     }//GEN-LAST:event_PenyakitHatiKeyPressed
 
-    private void NilaiPenyakitHatiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiPenyakitHatiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiPenyakitHatiKeyPressed
-
     private void GinjalKronisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GinjalKronisKeyPressed
         Valid.pindah(evt,PenyakitHati,KankerNeoplasma);
     }//GEN-LAST:event_GinjalKronisKeyPressed
@@ -2145,10 +2057,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     private void KankerNeoplasmaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KankerNeoplasmaKeyPressed
         Valid.pindah(evt,GinjalKronis,PenyakitSerebrovaskular);
     }//GEN-LAST:event_KankerNeoplasmaKeyPressed
-
-    private void NilaiKankerNeoplasmaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NilaiKankerNeoplasmaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NilaiKankerNeoplasmaKeyPressed
 
     private void PenyakitSerebrovaskularKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PenyakitSerebrovaskularKeyPressed
         Valid.pindah(evt,KankerNeoplasma,DisorentasiMental);
@@ -2201,14 +2109,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     private void HematokritKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HematokritKeyPressed
         Valid.pindah(evt,EfusiPleura,BtnSimpan);
     }//GEN-LAST:event_HematokritKeyPressed
-
-    private void MortalitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MortalitasKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MortalitasKeyPressed
-
-    private void RekomendasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RekomendasiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RekomendasiKeyPressed
 
     private void TinggalDiPantiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TinggalDiPantiItemStateChanged
         if(TinggalDiPanti.getSelectedIndex()==0){
@@ -2558,30 +2458,30 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_tbc.nip,petugas.nama,skrining_tbc.tanggal,"+
-                    "skrining_tbc.berat_badan,skrining_tbc.tinggi_badan,skrining_tbc.imt,skrining_tbc.kasifikasi_imt,skrining_tbc.lingkar_pinggang,skrining_tbc.risiko_lingkar_pinggang,"+
-                    "skrining_tbc.riwayat_kontak_tbc,skrining_tbc.jenis_kontak_tbc,"+
-                    "skrining_tbc.faktor_resiko_pernah_terdiagnosa_tbc,skrining_tbc.keterangan_pernah_terdiagnosa,"+
-                    "skrining_tbc.faktor_resiko_pernah_berobat_tbc,skrining_tbc.faktor_resiko_malnutrisi,skrining_tbc.faktor_resiko_merokok,skrining_tbc.faktor_resiko_riwayat_dm,"+
-                    "skrining_tbc.faktor_resiko_odhiv,skrining_tbc.faktor_resiko_lansia,skrining_tbc.faktor_resiko_ibu_hamil,skrining_tbc.faktor_resiko_wbp,skrining_tbc.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
-                    "skrining_tbc.abnormalitas_tbc,skrining_tbc.gejala_tbc_batuk,skrining_tbc.gejala_tbc_bb_turun,skrining_tbc.gejala_tbc_demam,skrining_tbc.gejala_tbc_berkeringat_malam_hari,skrining_tbc.keterangan_gejala_penyakit_lain,"+
-                    "skrining_tbc.kesimpulan_skrining,skrining_tbc.keterangan_hasil_skrining from skrining_tbc inner join reg_periksa on skrining_tbc.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_tbc.nip=petugas.nip "+
-                    "where skrining_tbc.tanggal between ? and ? order by skrining_tbc.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_pneumonia_severity_index.nip,petugas.nama,skrining_pneumonia_severity_index.tanggal,"+
+                    "skrining_pneumonia_severity_index.berat_badan,skrining_pneumonia_severity_index.tinggi_badan,skrining_pneumonia_severity_index.imt,skrining_pneumonia_severity_index.kasifikasi_imt,skrining_pneumonia_severity_index.lingkar_pinggang,skrining_pneumonia_severity_index.risiko_lingkar_pinggang,"+
+                    "skrining_pneumonia_severity_index.riwayat_kontak_tbc,skrining_pneumonia_severity_index.jenis_kontak_tbc,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_pernah_terdiagnosa_tbc,skrining_pneumonia_severity_index.keterangan_pernah_terdiagnosa,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_pernah_berobat_tbc,skrining_pneumonia_severity_index.faktor_resiko_malnutrisi,skrining_pneumonia_severity_index.faktor_resiko_merokok,skrining_pneumonia_severity_index.faktor_resiko_riwayat_dm,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_odhiv,skrining_pneumonia_severity_index.faktor_resiko_lansia,skrining_pneumonia_severity_index.faktor_resiko_ibu_hamil,skrining_pneumonia_severity_index.faktor_resiko_wbp,skrining_pneumonia_severity_index.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
+                    "skrining_pneumonia_severity_index.abnormalitas_tbc,skrining_pneumonia_severity_index.gejala_tbc_batuk,skrining_pneumonia_severity_index.gejala_tbc_bb_turun,skrining_pneumonia_severity_index.gejala_tbc_demam,skrining_pneumonia_severity_index.gejala_tbc_berkeringat_malam_hari,skrining_pneumonia_severity_index.keterangan_gejala_penyakit_lain,"+
+                    "skrining_pneumonia_severity_index.kesimpulan_skrining,skrining_pneumonia_severity_index.keterangan_hasil_skrining from skrining_pneumonia_severity_index inner join reg_periksa on skrining_pneumonia_severity_index.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_pneumonia_severity_index.nip=petugas.nip "+
+                    "where skrining_pneumonia_severity_index.tanggal between ? and ? order by skrining_pneumonia_severity_index.tanggal ");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_tbc.nip,petugas.nama,skrining_tbc.tanggal,"+
-                    "skrining_tbc.berat_badan,skrining_tbc.tinggi_badan,skrining_tbc.imt,skrining_tbc.kasifikasi_imt,skrining_tbc.lingkar_pinggang,skrining_tbc.risiko_lingkar_pinggang,"+
-                    "skrining_tbc.riwayat_kontak_tbc,skrining_tbc.jenis_kontak_tbc,"+
-                    "skrining_tbc.faktor_resiko_pernah_terdiagnosa_tbc,skrining_tbc.keterangan_pernah_terdiagnosa,"+
-                    "skrining_tbc.faktor_resiko_pernah_berobat_tbc,skrining_tbc.faktor_resiko_malnutrisi,skrining_tbc.faktor_resiko_merokok,skrining_tbc.faktor_resiko_riwayat_dm,"+
-                    "skrining_tbc.faktor_resiko_odhiv,skrining_tbc.faktor_resiko_lansia,skrining_tbc.faktor_resiko_ibu_hamil,skrining_tbc.faktor_resiko_wbp,skrining_tbc.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
-                    "skrining_tbc.abnormalitas_tbc,skrining_tbc.gejala_tbc_batuk,skrining_tbc.gejala_tbc_bb_turun,skrining_tbc.gejala_tbc_demam,skrining_tbc.gejala_tbc_berkeringat_malam_hari,skrining_tbc.keterangan_gejala_penyakit_lain,"+
-                    "skrining_tbc.kesimpulan_skrining,skrining_tbc.keterangan_hasil_skrining from skrining_tbc inner join reg_periksa on skrining_tbc.no_rawat=reg_periksa.no_rawat "+
-                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_tbc.nip=petugas.nip "+
-                    "where skrining_tbc.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or skrining_tbc.nip like ? or petugas.nama like ? or skrining_tbc.kasifikasi_imt like ? or skrining_tbc.kesimpulan_skrining like ?) "+
-                    "order by skrining_tbc.tanggal ");
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_pneumonia_severity_index.nip,petugas.nama,skrining_pneumonia_severity_index.tanggal,"+
+                    "skrining_pneumonia_severity_index.berat_badan,skrining_pneumonia_severity_index.tinggi_badan,skrining_pneumonia_severity_index.imt,skrining_pneumonia_severity_index.kasifikasi_imt,skrining_pneumonia_severity_index.lingkar_pinggang,skrining_pneumonia_severity_index.risiko_lingkar_pinggang,"+
+                    "skrining_pneumonia_severity_index.riwayat_kontak_tbc,skrining_pneumonia_severity_index.jenis_kontak_tbc,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_pernah_terdiagnosa_tbc,skrining_pneumonia_severity_index.keterangan_pernah_terdiagnosa,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_pernah_berobat_tbc,skrining_pneumonia_severity_index.faktor_resiko_malnutrisi,skrining_pneumonia_severity_index.faktor_resiko_merokok,skrining_pneumonia_severity_index.faktor_resiko_riwayat_dm,"+
+                    "skrining_pneumonia_severity_index.faktor_resiko_odhiv,skrining_pneumonia_severity_index.faktor_resiko_lansia,skrining_pneumonia_severity_index.faktor_resiko_ibu_hamil,skrining_pneumonia_severity_index.faktor_resiko_wbp,skrining_pneumonia_severity_index.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
+                    "skrining_pneumonia_severity_index.abnormalitas_tbc,skrining_pneumonia_severity_index.gejala_tbc_batuk,skrining_pneumonia_severity_index.gejala_tbc_bb_turun,skrining_pneumonia_severity_index.gejala_tbc_demam,skrining_pneumonia_severity_index.gejala_tbc_berkeringat_malam_hari,skrining_pneumonia_severity_index.keterangan_gejala_penyakit_lain,"+
+                    "skrining_pneumonia_severity_index.kesimpulan_skrining,skrining_pneumonia_severity_index.keterangan_hasil_skrining from skrining_pneumonia_severity_index inner join reg_periksa on skrining_pneumonia_severity_index.no_rawat=reg_periksa.no_rawat "+
+                    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_pneumonia_severity_index.nip=petugas.nip "+
+                    "where skrining_pneumonia_severity_index.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
+                    "pasien.nm_pasien like ? or skrining_pneumonia_severity_index.nip like ? or petugas.nama like ? or skrining_pneumonia_severity_index.kasifikasi_imt like ? or skrining_pneumonia_severity_index.kesimpulan_skrining like ?) "+
+                    "order by skrining_pneumonia_severity_index.tanggal ");
             }
                 
             try {
@@ -2640,6 +2540,8 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         NilaiGinjalKronis.setText("0");
         KankerNeoplasma.setSelectedIndex(0);
         NilaiKankerNeoplasma.setText("0");
+        PenyakitSerebrovaskular.setSelectedIndex(0);
+        NilaiPenyakitSerebrovaskular.setText("0");
         DisorentasiMental.setSelectedIndex(0);
         NilaiDisorentasiMental.setText("0");
         FrekuensiNapas.setSelectedIndex(0);
@@ -2664,11 +2566,10 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         NilaiEfusiPleura.setText("0");
         Hematokrit.setSelectedIndex(0);
         NilaiHematokrit.setText("0");
-        TotalNilai();
         Kelas.setText("I");
-        SkorInterpretasi.setText("Ditentukan algoritma awal");
+        SkorInterpretasi.setText("Ditentukan Algoritma Awal");
         Mortalitas.setText("<0.4%");
-        Rekomendasi.setText("Rawat jalan");
+        Rekomendasi.setText("Rawat Jalan");
         Tanggal.setDate(new Date());
         Jk.requestFocus();
     } 
@@ -2714,7 +2615,6 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
                     }
                     TglLahir.setText(rs.getString("tgl_lahir"));
                     TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
-                    TotalNilai();
                 }
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
@@ -2738,37 +2638,74 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         isRawat(); 
         ChkInput.setSelected(true);
         isForm();
+        TotalNilai();
     }
     
     private void TotalNilai(){
         try{
-            if((NilaiUmur.getText().equals(""))&(NilaiTinggalDiPanti.getText().equals(""))&(NilaiGagalJantung.getText().equals(""))&(NilaiGinjalKronis.getText().equals(""))&
-                    (NilaiPenyakitSerebrovaskular.getText().equals(""))&(NilaiPenyakitHati.getText().equals(""))&(NilaiKankerNeoplasma.getText().equals(""))&(NilaiDisorentasiMental.getText().equals(""))&
-                    (NilaiTDSistolik.getText().equals(""))&(NilaiNadi.getText().equals(""))&(NilaiFrekuensiNapas.getText().equals(""))&(NilaiSuhu.getText().equals(""))&(NilaipHDarah.getText().equals(""))&
-                    (NilaiBUN.getText().equals(""))&(NilaiGlukosa.getText().equals(""))&(NilaiHematokrit.getText().equals(""))&(NilaiNatrium.getText().equals(""))&(NilaiPaO.getText().equals(""))&(NilaiEfusiPleura.getText().equals("")))
-            TotalSkorPSI.setText(Integer.toString(
-                Integer.parseInt(NilaiUmur.getText())+
-                Integer.parseInt(NilaiTinggalDiPanti.getText())+
-                Integer.parseInt(NilaiGagalJantung.getText())+
-                Integer.parseInt(NilaiGinjalKronis.getText())+
-                Integer.parseInt(NilaiPenyakitSerebrovaskular.getText())+
-                Integer.parseInt(NilaiPenyakitHati.getText())+
-                Integer.parseInt(NilaiKankerNeoplasma.getText())+
-                Integer.parseInt(NilaiDisorentasiMental.getText())+
-                Integer.parseInt(NilaiTDSistolik.getText())+
-                Integer.parseInt(NilaiNadi.getText())+
-                Integer.parseInt(NilaiFrekuensiNapas.getText())+
-                Integer.parseInt(NilaiSuhu.getText())+
-                Integer.parseInt(NilaipHDarah.getText())+
-                Integer.parseInt(NilaiBUN.getText())+
-                Integer.parseInt(NilaiGlukosa.getText())+
-                Integer.parseInt(NilaiHematokrit.getText())+
-                Integer.parseInt(NilaiNatrium.getText())+
-                Integer.parseInt(NilaiPaO.getText())+
-                Integer.parseInt(NilaiEfusiPleura.getText())
-            ));
+            if((!NilaiUmur.getText().equals(""))&&(!NilaiTinggalDiPanti.getText().equals(""))&&(!NilaiGagalJantung.getText().equals(""))&&(!NilaiGinjalKronis.getText().equals(""))&&
+                    (!NilaiPenyakitSerebrovaskular.getText().equals(""))&&(!NilaiPenyakitHati.getText().equals(""))&&(!NilaiKankerNeoplasma.getText().equals(""))&&(!NilaiDisorentasiMental.getText().equals(""))&&
+                    (!NilaiTDSistolik.getText().equals(""))&&(!NilaiNadi.getText().equals(""))&&(!NilaiFrekuensiNapas.getText().equals(""))&&(!NilaiSuhu.getText().equals(""))&&(!NilaipHDarah.getText().equals(""))&&
+                    (!NilaiBUN.getText().equals(""))&&(!NilaiGlukosa.getText().equals(""))&&(!NilaiHematokrit.getText().equals(""))&&(!NilaiNatrium.getText().equals(""))&&(!NilaiPaO.getText().equals(""))&&(!NilaiEfusiPleura.getText().equals(""))){
+                TotalSkorPSI.setText(Integer.toString(
+                    Integer.parseInt(NilaiUmur.getText())+
+                    Integer.parseInt(NilaiTinggalDiPanti.getText())+
+                    Integer.parseInt(NilaiGagalJantung.getText())+
+                    Integer.parseInt(NilaiGinjalKronis.getText())+
+                    Integer.parseInt(NilaiPenyakitSerebrovaskular.getText())+
+                    Integer.parseInt(NilaiPenyakitHati.getText())+
+                    Integer.parseInt(NilaiKankerNeoplasma.getText())+
+                    Integer.parseInt(NilaiDisorentasiMental.getText())+
+                    Integer.parseInt(NilaiTDSistolik.getText())+
+                    Integer.parseInt(NilaiNadi.getText())+
+                    Integer.parseInt(NilaiFrekuensiNapas.getText())+
+                    Integer.parseInt(NilaiSuhu.getText())+
+                    Integer.parseInt(NilaipHDarah.getText())+
+                    Integer.parseInt(NilaiBUN.getText())+
+                    Integer.parseInt(NilaiGlukosa.getText())+
+                    Integer.parseInt(NilaiHematokrit.getText())+
+                    Integer.parseInt(NilaiNatrium.getText())+
+                    Integer.parseInt(NilaiPaO.getText())+
+                    Integer.parseInt(NilaiEfusiPleura.getText())
+                ));
+            }
+                
+            if((Integer.parseInt(Umur.getText())<50)&&(NilaiGagalJantung.getText().equals("0"))&&(NilaiGinjalKronis.getText().equals("0"))&&(NilaiPenyakitSerebrovaskular.getText().equals("0"))&&
+                    (NilaiPenyakitHati.getText().equals("0"))&&(NilaiKankerNeoplasma.getText().equals("0"))&&(NilaiDisorentasiMental.getText().equals("0"))&&(NilaiTDSistolik.getText().equals("0"))&&
+                    (NilaiNadi.getText().equals("0"))&&(NilaiFrekuensiNapas.getText().equals("0"))&&(NilaiSuhu.getText().equals("0"))){
+                Kelas.setText("I");
+                SkorInterpretasi.setText("Ditentukan Algoritma Awal");
+                Mortalitas.setText("<0.4%");
+                Rekomendasi.setText("Rawat Jalan");
+            }else {
+                if(Integer.parseInt(TotalSkorPSI.getText())<=70){
+                    Kelas.setText("II");
+                    SkorInterpretasi.setText("≤70");
+                    Mortalitas.setText("~0.6%");
+                    Rekomendasi.setText("Rawat Jalan");
+                }else if((Integer.parseInt(TotalSkorPSI.getText())>=71)&&(Integer.parseInt(TotalSkorPSI.getText())<=90)){
+                    Kelas.setText("III");
+                    SkorInterpretasi.setText("71–90");
+                    Mortalitas.setText("~2.8%");
+                    Rekomendasi.setText("Observasi/Rawat Inap Singkat");
+                }else if((Integer.parseInt(TotalSkorPSI.getText())>=91)&&(Integer.parseInt(TotalSkorPSI.getText())<=130)){
+                    Kelas.setText("IV");
+                    SkorInterpretasi.setText("91–130");
+                    Mortalitas.setText("~8–9%");
+                    Rekomendasi.setText("Rawat Inap");
+                }else if(Integer.parseInt(TotalSkorPSI.getText())>130){
+                    Kelas.setText("V");
+                    SkorInterpretasi.setText(">130");
+                    Mortalitas.setText("~27–30%");
+                    Rekomendasi.setText("Rawat Inap, Pertimbangkan ICU");
+                }
+            }
         }catch (Exception e) {
             TotalSkorPSI.setText("0");
+            Kelas.setText("I");
+            SkorInterpretasi.setText("Ditentukan Algoritma Awal");
+            Mortalitas.setText("<0.4%");
+            Rekomendasi.setText("Rawat Jalan");
             System.out.println("Notif : "+e);
         }
     }
@@ -2788,10 +2725,10 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     }
     
     public void isCek(){
-        //BtnSimpan.setEnabled(akses.getskrining_tbc());
-        //BtnHapus.setEnabled(akses.getskrining_tbc());
-        //BtnEdit.setEnabled(akses.getskrining_tbc());
-        //BtnPrint.setEnabled(akses.getskrining_tbc()); 
+        BtnSimpan.setEnabled(akses.getskrining_pneumonia_severity_index());
+        BtnHapus.setEnabled(akses.getskrining_pneumonia_severity_index());
+        BtnEdit.setEnabled(akses.getskrining_pneumonia_severity_index());
+        BtnPrint.setEnabled(akses.getskrining_pneumonia_severity_index()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
@@ -2869,7 +2806,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("skrining_tbc","no_rawat=?","no_rawat=?,tanggal=?,berat_badan=?,tinggi_badan=?,imt=?,kasifikasi_imt=?,lingkar_pinggang=?,risiko_lingkar_pinggang=?,"+
+        /*if(Sequel.mengedittf("skrining_pneumonia_severity_index","no_rawat=?","no_rawat=?,tanggal=?,berat_badan=?,tinggi_badan=?,imt=?,kasifikasi_imt=?,lingkar_pinggang=?,risiko_lingkar_pinggang=?,"+
                 "riwayat_kontak_tbc=?,jenis_kontak_tbc=?,faktor_resiko_pernah_terdiagnosa_tbc=?,keterangan_pernah_terdiagnosa=?,faktor_resiko_pernah_berobat_tbc=?,"+
                 "faktor_resiko_malnutrisi=?,faktor_resiko_merokok=?,faktor_resiko_riwayat_dm=?,faktor_resiko_odhiv=?,faktor_resiko_lansia=?,faktor_resiko_ibu_hamil=?,"+
                 "faktor_resiko_wbp=?,faktor_resiko_tinggal_diwilayah_padat_kumuh=?,abnormalitas_tbc=?,gejala_tbc_batuk=?,gejala_tbc_bb_turun=?,gejala_tbc_demam=?,"+
@@ -2923,7 +2860,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from skrining_tbc where no_rawat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from skrining_pneumonia_severity_index where no_rawat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -2935,7 +2872,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     }
     
     private void simpan() {
-        /*if(Sequel.menyimpantf("skrining_tbc","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",30,new String[]{
+        /*if(Sequel.menyimpantf("skrining_pneumonia_severity_index","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",30,new String[]{
             TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Jam.getSelectedItem()+":"+Menit.getSelectedItem()+":"+Detik.getSelectedItem(),
             BB.getText(),TB.getText(),IMT.getText(),KlasifikasiIMT.getText(),LP.getText(),RisikoLP.getText(),RiwayatKontakTBC.getSelectedItem().toString(),
             JenisKontakTBC.getSelectedItem().toString(),PernahTerdiagnosaTBC.getSelectedItem().toString(),KetPernahTerdiagnosa.getText(),PernahberobatTBC.getSelectedItem().toString(),
