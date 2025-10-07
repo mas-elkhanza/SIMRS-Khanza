@@ -282,7 +282,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSkriningTBC = new javax.swing.JMenuItem();
+        MnSkriningPSI = new javax.swing.JMenuItem();
         buttonGroup1 = new javax.swing.ButtonGroup();
         LoadHTML = new widget.editorpane();
         TanggalRegistrasi = new widget.TextBox();
@@ -446,19 +446,19 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnSkriningTBC.setBackground(new java.awt.Color(255, 255, 254));
-        MnSkriningTBC.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnSkriningTBC.setForeground(new java.awt.Color(50, 50, 50));
-        MnSkriningTBC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnSkriningTBC.setText("Formulir Skrining TBC");
-        MnSkriningTBC.setName("MnSkriningTBC"); // NOI18N
-        MnSkriningTBC.setPreferredSize(new java.awt.Dimension(200, 26));
-        MnSkriningTBC.addActionListener(new java.awt.event.ActionListener() {
+        MnSkriningPSI.setBackground(new java.awt.Color(255, 255, 254));
+        MnSkriningPSI.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnSkriningPSI.setForeground(new java.awt.Color(50, 50, 50));
+        MnSkriningPSI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnSkriningPSI.setText("Formulir Skrining PSI");
+        MnSkriningPSI.setName("MnSkriningPSI"); // NOI18N
+        MnSkriningPSI.setPreferredSize(new java.awt.Dimension(200, 26));
+        MnSkriningPSI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSkriningTBCActionPerformed(evt);
+                MnSkriningPSIActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnSkriningTBC);
+        jPopupMenu1.add(MnSkriningPSI);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1861,33 +1861,49 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Petugas</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BB(Kg)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB(Cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>IMT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kasifikasi IMT</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>LP(Cm)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko L.P.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Kontak TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Kontak TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Terdiagnosa TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jika Ya Kapan ?</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pernah Berobat TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Malnutrisi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Merokok</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat DM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>ODHIV</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lansia > 65 Tahun</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ibu Hamil</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>WBP (Warga Binaan Permasyarakatan )</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tinggal di wilayah padat kumuh miskin</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Abnormalitas TBC</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Batuk</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala BB Turun</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Demam</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Berkeringat Malam Hari</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Penyakit Lain</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kesimpulan Skrining</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Umur</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.U</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Panti Jompo</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.J</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.G.J</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyakit Hati</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.H</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ginjal Kronis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.G.K</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kanker</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.K</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyakit Serebrovaskular</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P.S</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Disorientasi Mental</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.D.M</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Frekuensi Napas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.F.N</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TD Sistolik</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.T.S</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Suhu</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.S</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.N</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>pH Darah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.pH</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Natrium</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.Na</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>BUN</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.B</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PaO₂</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.P</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Glukosa</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.G</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Efusi Pleura</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.E.P</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hematokrit</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>N.H</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Total Skor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skor</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Mortalitas</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Rekomendasi</b></td>"+
                     "</tr>"
                 );
                 for (i = 0; i < tabMode.getRowCount(); i++) {
@@ -1928,11 +1944,27 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
                             "<td valign='top'>"+tbObat.getValueAt(i,32).toString()+"</td>"+ 
                             "<td valign='top'>"+tbObat.getValueAt(i,33).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,34).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,35).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,36).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,37).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,38).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,47).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,48).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,49).toString()+"</td>"+
+                            "<td valign='top'>"+tbObat.getValueAt(i,50).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='2100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='2500px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1953,17 +1985,17 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
                 );
                 bg.close();
 
-                File f = new File("DataSkriningTBC.html");            
+                File f = new File("DataSkriningPSI.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='2500px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA SEKRINING TBC<br><br></font>"+        
+                                            "<font size='2' face='Tahoma'>DATA SEKRINING PNEUMONIA SEVERITY INDEX<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -2074,7 +2106,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
         Valid.pindah(evt,Detik,Jk);
     }//GEN-LAST:event_btnPetugasKeyPressed
 
-    private void MnSkriningTBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningTBCActionPerformed
+    private void MnSkriningPSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSkriningPSIActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -2086,19 +2118,21 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirSkriningTBC.jasper","report","::[ Formulir Skrining TBC ]::",
+            Valid.MyReportqry("rptFormulirSkriningPSI.jasper","report","::[ Formulir Skrining Pneumonia Severity Index ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_pneumonia_severity_index.nip,petugas.nama,skrining_pneumonia_severity_index.tanggal,"+
-                    "skrining_pneumonia_severity_index.berat_badan,skrining_pneumonia_severity_index.tinggi_badan,skrining_pneumonia_severity_index.imt,skrining_pneumonia_severity_index.kasifikasi_imt,skrining_pneumonia_severity_index.lingkar_pinggang,skrining_pneumonia_severity_index.risiko_lingkar_pinggang,"+
-                    "skrining_pneumonia_severity_index.riwayat_kontak_tbc,skrining_pneumonia_severity_index.jenis_kontak_tbc,"+
-                    "skrining_pneumonia_severity_index.faktor_resiko_pernah_terdiagnosa_tbc,skrining_pneumonia_severity_index.keterangan_pernah_terdiagnosa,"+
-                    "skrining_pneumonia_severity_index.faktor_resiko_pernah_berobat_tbc,skrining_pneumonia_severity_index.faktor_resiko_malnutrisi,skrining_pneumonia_severity_index.faktor_resiko_merokok,skrining_pneumonia_severity_index.faktor_resiko_riwayat_dm,"+
-                    "skrining_pneumonia_severity_index.faktor_resiko_odhiv,skrining_pneumonia_severity_index.faktor_resiko_lansia,skrining_pneumonia_severity_index.faktor_resiko_ibu_hamil,skrining_pneumonia_severity_index.faktor_resiko_wbp,skrining_pneumonia_severity_index.faktor_resiko_tinggal_diwilayah_padat_kumuh,"+
-                    "skrining_pneumonia_severity_index.abnormalitas_tbc,skrining_pneumonia_severity_index.gejala_tbc_batuk,skrining_pneumonia_severity_index.gejala_tbc_bb_turun,skrining_pneumonia_severity_index.gejala_tbc_demam,skrining_pneumonia_severity_index.gejala_tbc_berkeringat_malam_hari,skrining_pneumonia_severity_index.keterangan_gejala_penyakit_lain,"+
-                    "skrining_pneumonia_severity_index.kesimpulan_skrining,skrining_pneumonia_severity_index.keterangan_hasil_skrining from skrining_pneumonia_severity_index inner join reg_periksa on skrining_pneumonia_severity_index.no_rawat=reg_periksa.no_rawat "+
+                    "if(reg_periksa.sttsumur='Th',reg_periksa.umurdaftar,'0') as umur,skrining_pneumonia_severity_index.nilai_umur,skrining_pneumonia_severity_index.tinggal_di_panti_jompo,skrining_pneumonia_severity_index.nilai_tinggal_di_panti_jompo,"+
+                    "skrining_pneumonia_severity_index.gagal_jantung,skrining_pneumonia_severity_index.nilai_gagal_jantung,skrining_pneumonia_severity_index.penyakit_hati,skrining_pneumonia_severity_index.nilai_penyakit_hati,skrining_pneumonia_severity_index.penyakit_ginjal,"+
+                    "skrining_pneumonia_severity_index.nilai_penyakit_ginjal,skrining_pneumonia_severity_index.kanker,skrining_pneumonia_severity_index.nilai_kanker,skrining_pneumonia_severity_index.penyakit_serebrovaskuler,skrining_pneumonia_severity_index.nilai_penyakit_serebrovaskuler,"+
+                    "skrining_pneumonia_severity_index.disorentasi_mental,skrining_pneumonia_severity_index.nilai_disorentasi_mental,skrining_pneumonia_severity_index.frekuensi_napas,skrining_pneumonia_severity_index.nilai_frekuensi_napas,skrining_pneumonia_severity_index.td_sistolik,"+
+                    "skrining_pneumonia_severity_index.nilai_td_sistolik,skrining_pneumonia_severity_index.suhu,skrining_pneumonia_severity_index.nilai_suhu,skrining_pneumonia_severity_index.nadi,skrining_pneumonia_severity_index.nilai_nadi,skrining_pneumonia_severity_index.ph_darah,"+
+                    "skrining_pneumonia_severity_index.nilai_ph_darah,skrining_pneumonia_severity_index.natrium,skrining_pneumonia_severity_index.nilai_natrium,skrining_pneumonia_severity_index.bun,skrining_pneumonia_severity_index.nilai_bun,skrining_pneumonia_severity_index.pao,"+
+                    "skrining_pneumonia_severity_index.nilai_pao,skrining_pneumonia_severity_index.glukosa,skrining_pneumonia_severity_index.nilai_glukosa,skrining_pneumonia_severity_index.efusi_pleura,skrining_pneumonia_severity_index.nilai_efusi_pleura,skrining_pneumonia_severity_index.hematokrit,"+
+                    "skrining_pneumonia_severity_index.nilai_hematokrit,skrining_pneumonia_severity_index.total_skor,skrining_pneumonia_severity_index.kelas,skrining_pneumonia_severity_index.skor_interpretasi,skrining_pneumonia_severity_index.mortalitas,skrining_pneumonia_severity_index.rekomendasi "+
+                    "from skrining_pneumonia_severity_index inner join reg_periksa on skrining_pneumonia_severity_index.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_pneumonia_severity_index.nip=petugas.nip "+
                     "where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
         }
-    }//GEN-LAST:event_MnSkriningTBCActionPerformed
+    }//GEN-LAST:event_MnSkriningPSIActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -2385,7 +2419,7 @@ public final class RMSkriningPneumoniaSeverityIndex extends javax.swing.JDialog 
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.ComboBox Menit;
-    private javax.swing.JMenuItem MnSkriningTBC;
+    private javax.swing.JMenuItem MnSkriningPSI;
     private widget.TextBox Mortalitas;
     private widget.ComboBox Nadi;
     private widget.ComboBox Natrium;
