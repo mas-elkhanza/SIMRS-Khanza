@@ -425,6 +425,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningGigiMulutDewasa = new widget.CekBox();
         chkSkriningGigiMulutLansia = new widget.CekBox();
         chkSkriningTBC = new widget.CekBox();
+        chkSkriningPSI = new widget.CekBox();
         chkSkriningPUMA = new widget.CekBox();
         chkSkriningAdiksiNikotin = new widget.CekBox();
         chkSkriningThalasemia = new widget.CekBox();
@@ -935,7 +936,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         FormMenu.setBackground(new java.awt.Color(255, 255, 255));
         FormMenu.setBorder(null);
         FormMenu.setName("FormMenu"); // NOI18N
-        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4470));
+        FormMenu.setPreferredSize(new java.awt.Dimension(255, 4495));
         FormMenu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 1, 1));
 
         chkSemua.setSelected(true);
@@ -2167,6 +2168,14 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkSkriningTBC.setPreferredSize(new java.awt.Dimension(245, 22));
         FormMenu.add(chkSkriningTBC);
 
+        chkSkriningPSI.setSelected(true);
+        chkSkriningPSI.setText("Skrining PSI");
+        chkSkriningPSI.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        chkSkriningPSI.setName("chkSkriningPSI"); // NOI18N
+        chkSkriningPSI.setOpaque(false);
+        chkSkriningPSI.setPreferredSize(new java.awt.Dimension(245, 22));
+        FormMenu.add(chkSkriningPSI);
+
         chkSkriningPUMA.setSelected(true);
         chkSkriningPUMA.setText("Skrining PUMA");
         chkSkriningPUMA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -3196,6 +3205,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanMedisRalanUrologi.setSelected(true);
             chkHasilPemeriksaanTreadmill.setSelected(true);
             chkHasilPemeriksaanEchoPediatrik.setSelected(true);
+            chkSkriningPSI.setSelected(true);
         }else{
             chkTriase.setSelected(false);
             chkAsuhanKeperawatanRalan.setSelected(false);
@@ -3390,6 +3400,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             chkAsuhanMedisRalanUrologi.setSelected(false);
             chkHasilPemeriksaanTreadmill.setSelected(false);
             chkHasilPemeriksaanEchoPediatrik.setSelected(false);
+            chkSkriningPSI.setSelected(false);
         }
     }//GEN-LAST:event_chkSemuaItemStateChanged
 
@@ -4178,6 +4189,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.CekBox chkSkriningNutrisiDewasa;
     private widget.CekBox chkSkriningNutrisiLansia;
     private widget.CekBox chkSkriningObesitas;
+    private widget.CekBox chkSkriningPSI;
     private widget.CekBox chkSkriningPUMA;
     private widget.CekBox chkSkriningRisikoKankerParu;
     private widget.CekBox chkSkriningRisikoKankerPayudara;
@@ -4742,6 +4754,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                     menampilkanSkriningKesehatanGigiMulutDewasa(rs.getString("no_rawat"));
                     menampilkanSkriningKesehatanGigiMulutLansia(rs.getString("no_rawat"));
                     menampilkanSkriningTBC(rs.getString("no_rawat"));
+                    menampilkanSkriningPSI(rs.getString("no_rawat"));
                     menampilkanSkriningPUMA(rs.getString("no_rawat"));
                     menampilkanSkriningAdiksiNikotin(rs.getString("no_rawat"));
                     menampilkanSkriningThalassemia(rs.getString("no_rawat"));
@@ -11786,12 +11799,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             if(chkCatatanObservasiCHBP.isSelected()==true){
                 try {
                     rs2=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,"+
-                            "catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat,catatan_observasi_chbp.td,catatan_observasi_chbp.hr,catatan_observasi_chbp.suhu,"+
+                            "select catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat,catatan_observasi_chbp.td,catatan_observasi_chbp.hr,catatan_observasi_chbp.suhu,"+
                             "catatan_observasi_chbp.djj,catatan_observasi_chbp.his,catatan_observasi_chbp.ppv,catatan_observasi_chbp.keterangan,catatan_observasi_chbp.nip,petugas.nama "+
-                            "from catatan_observasi_chbp inner join reg_periksa on catatan_observasi_chbp.no_rawat=reg_periksa.no_rawat "+
-                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                            "inner join petugas on catatan_observasi_chbp.nip=petugas.nip "+
+                            "from catatan_observasi_chbp inner join petugas on catatan_observasi_chbp.nip=petugas.nip "+
                             "where catatan_observasi_chbp.no_rawat='"+norawat+"' order by catatan_observasi_chbp.tgl_perawatan,catatan_observasi_chbp.jam_rawat").executeQuery();
                     if(rs2.next()){
                         htmlContent.append(
@@ -27216,18 +27226,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             if(chkSkriningKekerasanPadaPerempuan.isSelected()==true){
                 try {
                     rs2=koneksi.prepareStatement(
-                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,reg_periksa.umurdaftar,reg_periksa.sttsumur,skrining_kekerasan_pada_perempuan.nip,"+
-                            "petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
+                            "select skrining_kekerasan_pada_perempuan.nip,petugas.nama,skrining_kekerasan_pada_perempuan.tanggal,skrining_kekerasan_pada_perempuan.menggambarkan_hubungan,skrining_kekerasan_pada_perempuan.skor_menggambarkan_hubungan,"+
                             "skrining_kekerasan_pada_perempuan.berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_berdebat_dengan_pasangan,skrining_kekerasan_pada_perempuan.pertengkaran_membuat_sedih,"+
-                            "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,"+
-                            "skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,"+
-                            "skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
-                            "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,"+
-                            "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,"+
-                            "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
-                            "from skrining_kekerasan_pada_perempuan inner join reg_periksa on skrining_kekerasan_pada_perempuan.no_rawat=reg_periksa.no_rawat "+
-                            "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip "+
-                            "where skrining_kekerasan_pada_perempuan.no_rawat='"+norawat+"'").executeQuery();
+                            "skrining_kekerasan_pada_perempuan.skor_pertengkaran_membuat_sedih,skrining_kekerasan_pada_perempuan.pertengkaran_menghasilkan_pukulan,skrining_kekerasan_pada_perempuan.skor_pertengkaran_menghasilkan_pukulan,"+
+                            "skrining_kekerasan_pada_perempuan.pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.skor_pernah_merasa_takut_dengan_pasangan,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_fisik,"+
+                            "skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_fisik,skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_imosional,skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_imosional,"+
+                            "skrining_kekerasan_pada_perempuan.pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.skor_pasangan_melecehkan_secara_seksual,skrining_kekerasan_pada_perempuan.totalskor,skrining_kekerasan_pada_perempuan.hasil_skrining "+
+                            "from skrining_kekerasan_pada_perempuan inner join petugas on skrining_kekerasan_pada_perempuan.nip=petugas.nip where skrining_kekerasan_pada_perempuan.no_rawat='"+norawat+"'").executeQuery();
                     if(rs2.next()){
                         htmlContent.append(
                           "<tr class='isi'>").append( 
@@ -28129,196 +28134,191 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             "skrining_tbc.gejala_tbc_batuk,skrining_tbc.gejala_tbc_bb_turun,skrining_tbc.gejala_tbc_demam,skrining_tbc.gejala_tbc_berkeringat_malam_hari,skrining_tbc.keterangan_gejala_penyakit_lain,"+
                             "skrining_tbc.kesimpulan_skrining,skrining_tbc.keterangan_hasil_skrining from skrining_tbc inner join petugas on skrining_tbc.nip=petugas.nip where skrining_tbc.no_rawat='"+norawat+"'").executeQuery();
                     if(rs2.next()){
-                        htmlContent.append(
-                          "<tr class='isi'>").append( 
-                            "<td valign='top' width='2%'></td>").append(        
-                            "<td valign='top' width='18%'>Skrining TBC</td>").append(
-                            "<td valign='top' width='1%' align='center'>:</td>").append(
-                            "<td valign='top' width='79%'>").append(
-                              "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
-                        );
+                        htmlContent.append("<tr class='isi'>").
+                                    append("<td valign='top' width='2%'></td>").
+                                    append("<td valign='top' width='18%'>Skrining TBC</td>").
+                                    append("<td valign='top' width='1%' align='center'>:</td>").
+                                    append("<td valign='top' width='79%'>").
+                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>");
                         do{
-                            htmlContent.append(
-                                 "<tr>").append(
-                                    "<td valign='top'>").append(
-                                       "YANG MELAKUKAN PENGKAJIAN").append(  
-                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
-                                          "<tr>").append(
-                                              "<td width='30%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").append(
-                                              "<td width='70%' border='0'>Petugas : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
-                                          "</tr>").append(
-                                       "</table>").append(
-                                    "</td>").append(
-                                 "</tr>").append(
-                                 "<tr>").append(
-                                    "<td valign='top'>").append(
-                                       "I. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK, 2020)").append(  
-                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>1.</td>").append(
-                                              "<td width='70%'>Berat Badan (Kg)</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("berat_badan")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>2.</td>").append(
-                                              "<td width='70%'>Tinggi Badan (Cm)</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("tinggi_badan")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>3.</td>").append(
-                                              "<td width='70%'>Indeks Masa Tubuh (BB/TB²)</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("imt")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>4.</td>").append(
-                                              "<td width='70%'>Klasifikasi IMT</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("kasifikasi_imt")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>5.</td>").append(
-                                              "<td width='70%'>Lingkat Pinggang (Cm)</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("lingkar_pinggang")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>6.</td>").append(
-                                              "<td width='70%'>Risiko Berdasarkan Lingkar Pinggang</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("risiko_lingkar_pinggang")).append("</td>").append(
-                                          "</tr>").append(
-                                       "</table>").append(
-                                    "</td>").append(
-                                 "</tr>").append(
-                                 "<tr>").append(
-                                    "<td valign='top'>").append(
-                                       "II. PEMERIKSAAN RIWAYAT KONTAK TBC").append(  
-                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
-                                          "<tr>").append(
-                                              "<td width='50%'>Riwayat Kontak TBC : ").append(rs2.getString("riwayat_kontak_tbc")).append("</td>").append(
-                                              "<td width='50%'>Jenis Kontak TBC : ").append(rs2.getString("jenis_kontak_tbc")).append("</td>").append(
-                                          "</tr>").append(
-                                       "</table>").append(
-                                    "</td>").append(
-                                 "</tr>").append(
-                                 "<tr>").append(
-                                    "<td valign='top'>").append(
-                                       "III. FAKTOR RESIKO").append(  
-                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>1.</td>").append(
-                                              "<td width='70%'>Pernah Terdiagnosa / Berobat TBC ?</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_pernah_terdiagnosa_tbc")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>2.</td>").append(
-                                              "<td width='70%'>Jika Pertanyaan 1 Ya, Kapan ?</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("keterangan_pernah_terdiagnosa")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>3.</td>").append(
-                                              "<td width='70%'>Pernah Berobat TBC Tapi Pernah Tidak Tuntas</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_pernah_berobat_tbc")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>4.</td>").append(
-                                              "<td width='70%'>Malnutrisi</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_malnutrisi")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>5.</td>").append(
-                                              "<td width='70%'>Merokok / Perokok Pasif ?</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_merokok")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>6.</td>").append(
-                                              "<td width='70%'>Riwayat DM / Kencing Manis ?</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_riwayat_dm")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>7.</td>").append(
-                                              "<td width='70%'>ODHIV</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_odhiv")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>8.</td>").append(
-                                              "<td width='70%'>Lansia > 65 Tahun</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_lansia")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>9.</td>").append(
-                                              "<td width='70%'>Ibu Hamil ?</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_ibu_hamil")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>10.</td>").append(
-                                              "<td width='70%'>Warga Binaan Permasyarakatan (WBP) ?</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_wbp")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>11.</td>").append(
-                                              "<td width='70%'>Tinggal diwilayah padat kumuh miskin ?</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_tinggal_diwilayah_padat_kumuh")).append("</td>").append(
-                                          "</tr>").append(
-                                       "</table>").append(
-                                    "</td>").append(
-                                 "</tr>").append(
-                                 "<tr>").append(
-                                    "<td valign='top'>").append(
-                                       "IV. ABNOMARLITAS TBC").append(  
-                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
-                                          "<tr>").append(
-                                              "<td width='100%'>Abnormalitas TBC : ").append(rs2.getString("abnormalitas_tbc")).append("</td>").append(
-                                          "</tr>").append(
-                                       "</table>").append(
-                                    "</td>").append(
-                                 "</tr>").append(
-                                 "<tr>").append(
-                                    "<td valign='top'>").append(
-                                       "V. GEJALA TBC").append(  
-                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>1.</td>").append(
-                                              "<td width='70%'>Batuk ( Semua bentuk batuk tanpa melihat durasi )</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("gejala_tbc_batuk")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>2.</td>").append(
-                                              "<td width='70%'>BB turun tanpa penyebab jelas / BB tidak naik / Nafsu makan turun</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("gejala_tbc_bb_turun")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>3.</td>").append(
-                                              "<td width='70%'>Demam yang tidak diketahui penyebabnya</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("gejala_tbc_demam")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='4%' align='center'>4.</td>").append(
-                                              "<td width='70%'>Berkeringat malam hari tanpa kegiatan</td>").append(
-                                              "<td width='26%' align='center'>").append(rs2.getString("gejala_tbc_berkeringat_malam_hari")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td colspan='3'>Gejala Penyakit Pernafasan Lainnya, Sebutkan ( Seperti pilek/flu, sakit tengorokan dll ) : ").append(rs2.getString("keterangan_gejala_penyakit_lain")).append("</td>").append(
-                                          "</tr>").append(
-                                       "</table>").append(
-                                    "</td>").append(
-                                 "</tr>").append(
-                                 "<tr>").append(
-                                    "<td valign='top'>").append(
-                                       "VI. HASIL SKRINING GEJALA TBC DAN PENYAKIT PERNAFASAN LAINNYA").append(  
-                                       "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
-                                          "<tr>").append(
-                                              "<td width='100%'>Kesimpulan Hasil Skrining : ").append(rs2.getString("kesimpulan_skrining")).append("</td>").append(
-                                          "</tr>").append(
-                                          "<tr>").append(
-                                              "<td width='100%'>Keterangan : ").append(rs2.getString("keterangan_hasil_skrining")).append("</td>").append(
-                                          "</tr>").append(
-                                       "</table>").append(
-                                    "</td>").append(
-                                 "</tr>"
-                            ); 
+                            htmlContent.append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("YANG MELAKUKAN PENGKAJIAN").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='30%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").
+                                                        append("<td width='70%' border='0'>Petugas : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("I. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK, 2020)").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>1.</td>").
+                                                        append("<td width='70%'>Berat Badan (Kg)</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("berat_badan")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>2.</td>").
+                                                        append("<td width='70%'>Tinggi Badan (Cm)</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("tinggi_badan")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>3.</td>").
+                                                        append("<td width='70%'>Indeks Masa Tubuh (BB/TB²)</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("imt")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>4.</td>").
+                                                        append("<td width='70%'>Klasifikasi IMT</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("kasifikasi_imt")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>5.</td>").
+                                                        append("<td width='70%'>Lingkat Pinggang (Cm)</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("lingkar_pinggang")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>6.</td>").
+                                                        append("<td width='70%'>Risiko Berdasarkan Lingkar Pinggang</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("risiko_lingkar_pinggang")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("II. PEMERIKSAAN RIWAYAT KONTAK TBC").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='50%'>Riwayat Kontak TBC : ").append(rs2.getString("riwayat_kontak_tbc")).append("</td>").
+                                                        append("<td width='50%'>Jenis Kontak TBC : ").append(rs2.getString("jenis_kontak_tbc")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("III. FAKTOR RESIKO").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>1.</td>").
+                                                        append("<td width='70%'>Pernah Terdiagnosa / Berobat TBC ?</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_pernah_terdiagnosa_tbc")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>2.</td>").
+                                                        append("<td width='70%'>Jika Pertanyaan 1 Ya, Kapan ?</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("keterangan_pernah_terdiagnosa")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>3.</td>").
+                                                        append("<td width='70%'>Pernah Berobat TBC Tapi Pernah Tidak Tuntas</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_pernah_berobat_tbc")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>4.</td>").
+                                                        append("<td width='70%'>Malnutrisi</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_malnutrisi")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>5.</td>").
+                                                        append("<td width='70%'>Merokok / Perokok Pasif ?</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_merokok")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>6.</td>").
+                                                        append("<td width='70%'>Riwayat DM / Kencing Manis ?</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_riwayat_dm")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>7.</td>").
+                                                        append("<td width='70%'>ODHIV</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_odhiv")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>8.</td>").
+                                                        append("<td width='70%'>Lansia > 65 Tahun</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_lansia")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>9.</td>").
+                                                        append("<td width='70%'>Ibu Hamil ?</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_ibu_hamil")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>10.</td>").
+                                                        append("<td width='70%'>Warga Binaan Permasyarakatan (WBP) ?</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_wbp")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>11.</td>").
+                                                        append("<td width='70%'>Tinggal diwilayah padat kumuh miskin ?</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("faktor_resiko_tinggal_diwilayah_padat_kumuh")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("IV. ABNOMARLITAS TBC").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='100%'>Abnormalitas TBC : ").append(rs2.getString("abnormalitas_tbc")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("V. GEJALA TBC").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>1.</td>").
+                                                        append("<td width='70%'>Batuk ( Semua bentuk batuk tanpa melihat durasi )</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("gejala_tbc_batuk")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>2.</td>").
+                                                        append("<td width='70%'>BB turun tanpa penyebab jelas / BB tidak naik / Nafsu makan turun</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("gejala_tbc_bb_turun")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>3.</td>").
+                                                        append("<td width='70%'>Demam yang tidak diketahui penyebabnya</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("gejala_tbc_demam")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>4.</td>").
+                                                        append("<td width='70%'>Berkeringat malam hari tanpa kegiatan</td>").
+                                                        append("<td width='26%' align='center'>").append(rs2.getString("gejala_tbc_berkeringat_malam_hari")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td colspan='3'>Gejala Penyakit Pernafasan Lainnya, Sebutkan ( Seperti pilek/flu, sakit tengorokan dll ) : ").append(rs2.getString("keterangan_gejala_penyakit_lain")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("VI. HASIL SKRINING GEJALA TBC DAN PENYAKIT PERNAFASAN LAINNYA").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='100%'>Kesimpulan Hasil Skrining : ").append(rs2.getString("kesimpulan_skrining")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='100%'>Keterangan : ").append(rs2.getString("keterangan_hasil_skrining")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>"); 
                         }while(rs2.next());
-                        htmlContent.append(
-                              "</table>").append(
-                            "</td>").append(
-                          "</tr>");
+                        htmlContent.append("</table>").
+                                    append("</td>").
+                                    append("</tr>");
                     }
                 } catch (Exception e) {
                     System.out.println("Notifikasi : "+e);
@@ -36100,6 +36100,242 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             }
         } catch (Exception e) {
             System.out.println("Notif Hasil Pemeriksaan ECHO Pediatrik : "+e);
+        }
+    }
+    
+    private void menampilkanSkriningPSI(String norawat) {
+        try {
+            if(chkSkriningPSI.isSelected()==true){
+                try {
+                    rs2=koneksi.prepareStatement(
+                            "select skrining_pneumonia_severity_index.nip,petugas.nama,skrining_pneumonia_severity_index.tanggal,skrining_pneumonia_severity_index.nilai_umur,skrining_pneumonia_severity_index.tinggal_di_panti_jompo,skrining_pneumonia_severity_index.nilai_tinggal_di_panti_jompo,skrining_pneumonia_severity_index.gagal_jantung,skrining_pneumonia_severity_index.nilai_gagal_jantung,"+
+                            "skrining_pneumonia_severity_index.penyakit_hati,skrining_pneumonia_severity_index.nilai_penyakit_hati,skrining_pneumonia_severity_index.penyakit_ginjal,skrining_pneumonia_severity_index.nilai_penyakit_ginjal,skrining_pneumonia_severity_index.kanker,skrining_pneumonia_severity_index.nilai_kanker,skrining_pneumonia_severity_index.penyakit_serebrovaskuler,"+
+                            "skrining_pneumonia_severity_index.nilai_penyakit_serebrovaskuler,skrining_pneumonia_severity_index.disorentasi_mental,skrining_pneumonia_severity_index.nilai_disorentasi_mental,skrining_pneumonia_severity_index.frekuensi_napas,skrining_pneumonia_severity_index.nilai_frekuensi_napas,skrining_pneumonia_severity_index.td_sistolik,skrining_pneumonia_severity_index.nilai_td_sistolik,"+
+                            "skrining_pneumonia_severity_index.suhu,skrining_pneumonia_severity_index.nilai_suhu,skrining_pneumonia_severity_index.nadi,skrining_pneumonia_severity_index.nilai_nadi,skrining_pneumonia_severity_index.ph_darah,skrining_pneumonia_severity_index.nilai_ph_darah,skrining_pneumonia_severity_index.natrium,skrining_pneumonia_severity_index.nilai_natrium,"+
+                            "skrining_pneumonia_severity_index.bun,skrining_pneumonia_severity_index.nilai_bun,skrining_pneumonia_severity_index.pao,skrining_pneumonia_severity_index.nilai_pao,skrining_pneumonia_severity_index.glukosa,skrining_pneumonia_severity_index.nilai_glukosa,skrining_pneumonia_severity_index.efusi_pleura,skrining_pneumonia_severity_index.nilai_efusi_pleura,"+
+                            "skrining_pneumonia_severity_index.hematokrit,skrining_pneumonia_severity_index.nilai_hematokrit,skrining_pneumonia_severity_index.total_skor,skrining_pneumonia_severity_index.kelas,skrining_pneumonia_severity_index.skor_interpretasi,skrining_pneumonia_severity_index.mortalitas,skrining_pneumonia_severity_index.rekomendasi "+
+                            "from skrining_pneumonia_severity_index inner join petugas on skrining_pneumonia_severity_index.nip=petugas.nip where skrining_pneumonia_severity_index.no_rawat='"+norawat+"'").executeQuery();
+                    if(rs2.next()){
+                        htmlContent.append("<tr class='isi'>").
+                                    append("<td valign='top' width='2%'></td>").
+                                    append("<td valign='top' width='18%'>Skrining Pneumonia Severity Index</td>").
+                                    append("<td valign='top' width='1%' align='center'>:</td>").
+                                    append("<td valign='top' width='79%'>").
+                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>");
+                        do{
+                            htmlContent.append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("YANG MELAKUKAN PENGKAJIAN").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='30%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").
+                                                        append("<td width='70%' border='0'>Petugas : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("I. PEMERIKSAAN FISIK (KLASIFIKASI WHO ASIA PASIFIK, 2020)").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>No.</td>").
+                                                        append("<td width='56%' align='center'>Variabel</td>").
+                                                        append("<td width='20%' align='center'>Nilai</td>").
+                                                        append("<td width='20%' align='center'>Poin</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>1.</td>").
+                                                        append("<td width='56%'>Usia</td>").
+                                                        append("<td width='20%' align='center'>").append((rs.getString("sttsumur").equals("Th")?rs.getString("umurdaftar"):"0")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_umur")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>2.</td>").
+                                                        append("<td width='56%'>Tinggal Di Panti Jompo</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("tinggal_di_panti_jompo")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_tinggal_di_panti_jompo")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("II. RIWAYAT PENYAKIT").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>No.</td>").
+                                                        append("<td width='56%' align='center'>Variabel</td>").
+                                                        append("<td width='20%' align='center'>Nilai</td>").
+                                                        append("<td width='20%' align='center'>Poin</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>1.</td>").
+                                                        append("<td width='56%'>Gagal Jantung Kongestif</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("gagal_jantung")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_gagal_jantung")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>2.</td>").
+                                                        append("<td width='56%'>Penyakit Hati</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("penyakit_hati")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_penyakit_hati")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>3.</td>").
+                                                        append("<td width='56%'>Penyakit Ginjal Kronis</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("penyakit_ginjal")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_penyakit_ginjal")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>4.</td>").
+                                                        append("<td width='56%'>Kanker (Neoplasma)</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("kanker")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_kanker")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>5.</td>").
+                                                        append("<td width='56%'>Penyakit Serebrovaskular</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("penyakit_serebrovaskuler")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_penyakit_serebrovaskuler")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("III. PEMERIKSAAN FISIK").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>No.</td>").
+                                                        append("<td width='56%' align='center'>Variabel</td>").
+                                                        append("<td width='20%' align='center'>Nilai</td>").
+                                                        append("<td width='20%' align='center'>Poin</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>1.</td>").
+                                                        append("<td width='56%'>Disorientasi Mental</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("disorentasi_mental")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_disorentasi_mental")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>2.</td>").
+                                                        append("<td width='56%'>Frekuensi Napas ≥ 30 /menit</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("frekuensi_napas")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_frekuensi_napas")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>3.</td>").
+                                                        append("<td width='56%'>TD Sistolik < 90 mmHg</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("td_sistolik")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_td_sistolik")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>4.</td>").
+                                                        append("<td width='56%'>Suhu < 35°C Atau ≥ 40°C</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("suhu")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_suhu")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>5.</td>").
+                                                        append("<td width='56%'>Nadi ≥ 125 /menit</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nadi")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_nadi")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("IV. LABORATORIUM & RADIOLOGI").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>No.</td>").
+                                                        append("<td width='56%' align='center'>Variabel</td>").
+                                                        append("<td width='20%' align='center'>Nilai</td>").
+                                                        append("<td width='20%' align='center'>Poin</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>1.</td>").
+                                                        append("<td width='56%'>pH Darah < 7.35</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("ph_darah")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_ph_darah")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>2.</td>").
+                                                        append("<td width='56%'>Natrium < 130 mEq/L</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("natrium")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_natrium")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>3.</td>").
+                                                        append("<td width='56%'>BUN ≥ 30 mg/dL</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("bun")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_bun")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>4.</td>").
+                                                        append("<td width='56%'>PaO₂ < 60 mmHg / SaO₂ < 90%</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("pao")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_pao")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>5.</td>").
+                                                        append("<td width='56%'>Glukosa ≥ 250 mg/dL</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("glukosa")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_glukosa")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>6.</td>").
+                                                        append("<td width='56%'>Efusi Pleura (Foto Toraks)</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("efusi_pleura")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_efusi_pleura")).append("</td>").
+                                                    append("</tr>").
+                                                    append("<tr>").
+                                                        append("<td width='4%' align='center'>7.</td>").
+                                                        append("<td width='56%'>Hematokrit < 30%</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("hematokrit")).append("</td>").
+                                                        append("<td width='20%' align='center'>").append(rs2.getString("nilai_hematokrit")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("V. TOTAL SKOR PNEUMONIA SEVERITY INDEX").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<td width='100%' align='left' border='0'> Total Skor = Demografi + Riwayat Penyakit + Pemeriksaan Fisik + Laboratorium & Radiologi = ").append(rs2.getString("total_skor")).append(" poin</td>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>").
+                                        append("<tr>").
+                                            append("<td valign='top'>").
+                                                append("VI. HASIL SKRINING/INTERPRETASI").
+                                                append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                    append("<tr>").
+                                                        append("<td width='20%' border='0'>Kelas : ").append(rs2.getString("kelas")).append("</td>").
+                                                        append("<td width='30%' border='0'>Skor : ").append(rs2.getString("skor_interpretasi")).append("</td>").
+                                                        append("<td width='20%' border='0'>Mortalitas : ").append(rs2.getString("mortalitas")).append("</td>").
+                                                        append("<td width='30%' border='0'>Rekomendasi : ").append(rs2.getString("rekomendasi")).append("</td>").
+                                                    append("</tr>").
+                                                append("</table>").
+                                            append("</td>").
+                                        append("</tr>"); 
+                        }while(rs2.next());
+                        htmlContent.append("</table>").
+                                    append("</td>").
+                                    append("</tr>");
+                    }
+                } catch (Exception e) {
+                    System.out.println("Notifikasi : "+e);
+                } finally{
+                    if(rs2!=null){
+                        rs2.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif Skrining PSI : "+e);
         }
     }
 }
