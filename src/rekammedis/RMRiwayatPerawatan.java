@@ -30220,7 +30220,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "II. INTEPRETASI/KESIMPULAN HASIL PEMERIKSAAN").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
-                                              "<td width='100%'>Kesimpulan : ").append(rs2.getString("kesimpulan")).append("</td>").append(
+                                              "<td width='100%' border='0'>Kesimpulan : ").append(rs2.getString("kesimpulan")).append("</td>").append(
                                           "</tr>").append(
                                        "</table>").append(
                                     "</td>").append(
@@ -30503,7 +30503,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "III. INTERPRETASI").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
-                                              "<td width='100%'>Kesimpulan : ").append(rs2.getString("kesimpulan")).append((rs2.getString("keterangan_kesimpulan").equals("")?"":", "+rs2.getString("keterangan_kesimpulan"))).append("</td>").append(
+                                              "<td width='100%' border='0'>Kesimpulan : ").append(rs2.getString("kesimpulan")).append((rs2.getString("keterangan_kesimpulan").equals("")?"":", "+rs2.getString("keterangan_kesimpulan"))).append("</td>").append(
                                           "</tr>").append(
                                        "</table>").append(
                                     "</td>").append(
@@ -33893,7 +33893,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("HASIL PEMERIKSAAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>").append(rs2.getString("hasil_pemeriksaan")).append("</td>").
+                                                        append("<td width='100%' border='0'>").append(rs2.getString("hasil_pemeriksaan")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
@@ -33965,7 +33965,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("HASIL PEMERIKSAAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>").append(rs2.getString("hasil_pemeriksaan")).append("</td>").
+                                                        append("<td width='100%' border='0'>").append(rs2.getString("hasil_pemeriksaan")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
@@ -34400,7 +34400,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("II. INTEPRETASI/KESIMPULAN HASIL PEMERIKSAAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>Kesan/Kesimpulan : ").append(rs2.getString("kesimpulan")).append("</td>").
+                                                        append("<td width='100%' border='0'>Kesan/Kesimpulan : ").append(rs2.getString("kesimpulan")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
@@ -35459,7 +35459,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("II. INTEPRETASI/KESIMPULAN HASIL PEMERIKSAAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>Kesan/Kesimpulan : ").append(rs2.getString("kesimpulan")).append("</td>").
+                                                        append("<td width='100%' border='0'>Kesan/Kesimpulan : ").append(rs2.getString("kesimpulan")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
@@ -35884,7 +35884,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("HASIL PEMERIKSAAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>").append(rs2.getString("hasil_pemeriksaan")).append("</td>").
+                                                        append("<td width='100%' border='0'>").append(rs2.getString("hasil_pemeriksaan")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
@@ -35894,7 +35894,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("TEMUAN EKG").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>").append(rs2.getString("temuan_ekg")).append("</td>").
+                                                        append("<td width='100%' border='0'>").append(rs2.getString("temuan_ekg")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
@@ -35904,7 +35904,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("KAPASITAS FUNGSIONAL").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>").append(rs2.getString("kapasitas_fungsional")).append("</td>").
+                                                        append("<td width='100%' border='0'>").append(rs2.getString("kapasitas_fungsional")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
@@ -35914,7 +35914,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("INTERPRETASI").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>").append(rs2.getString("interpretasi")).append("</td>").
+                                                        append("<td width='100%' border='0'>").append(rs2.getString("interpretasi")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
@@ -35924,7 +35924,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("KESIMPULAN").
                                                 append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
                                                     append("<tr>").
-                                                        append("<td width='100%'>").append(rs2.getString("kesimpulan")).append("</td>").
+                                                        append("<td width='100%' border='0'>").append(rs2.getString("kesimpulan")).append("</td>").
                                                     append("</tr>").
                                                 append("</table>").
                                             append("</td>").
