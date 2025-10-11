@@ -6363,9 +6363,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("</tr>").
                                                 append("<tr class='isi'>").
                                                         append("<td valign='top' width='2%'></td>").
-                                                        append("<td valign='middle' width='18%'><img alt='Gambar BSRE' src='").append((getClass().getResource("/picture/bsre.jpg"))).append("' width='100%' height='40'/></td>").
+                                                        append("<td valign='middle' width='18%'><img alt='Gambar BSrE' src='").append((getClass().getResource("/picture/BSrE.jpg"))).append("' width='100%' height='40'/></td>").
                                                         append("<td valign='middle' width='1%' align='center'></td>").
-                                                        append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSRe</td>").
+                                                        append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSrE</td>").
                                                 append("</tr>");
                                 }else{
                                     esign=false;
@@ -6403,9 +6403,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("</tr>").
                                                     append("<tr class='isi'>").
                                                             append("<td valign='top' width='2%'></td>").
-                                                            append("<td valign='middle' width='18%'><img alt='Gambar BSRE' src='").append((getClass().getResource("/picture/bsre.jpg"))).append("' width='100%' height='40'/></td>").
+                                                            append("<td valign='middle' width='18%'><img alt='Gambar BSrE' src='").append((getClass().getResource("/picture/BSrE.jpg"))).append("' width='100%' height='40'/></td>").
                                                             append("<td valign='middle' width='1%' align='center'></td>").
-                                                            append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSRe</td>").
+                                                            append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSrE</td>").
                                                     append("</tr>");    
                                     }else{
                                         htmlContent.append("<tr class='isi'>").
@@ -6416,9 +6416,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("</tr>").
                                                     append("<tr class='isi'>").
                                                             append("<td valign='top' width='2%'></td>").
-                                                            append("<td valign='middle' width='18%'><img alt='Gambar BSRE' src='").append((getClass().getResource("/picture/bsre.jpg"))).append("' width='100%' height='40'/></td>").
+                                                            append("<td valign='middle' width='18%'><img alt='Gambar BSrE' src='").append((getClass().getResource("/picture/BSrE.jpg"))).append("' width='100%' height='40'/></td>").
                                                             append("<td valign='middle' width='1%' align='center'></td>").
-                                                            append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSRe</td>").
+                                                            append("<td valign='middle' width='79%' align='center'>- UU ITE No 11 Tahun 2008 Pasal 5 Ayat 1 <br>&nbsp;&nbsp;'Informasi Elektronik dan/atau Dokumen Elektronik dan/atau hasil cetaknya merupakan alat bukti hukum yang sah'<br>- Dokumen ini telah ditandatangani secara elektronik menggunakan sertifikat elektronik yang diterbitkan BSrE</td>").
                                                     append("</tr>");
                                     }
                                 } catch (Exception e) {
@@ -32375,33 +32375,46 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "HASIL PENGKAJIAN/ASESMEN/PEMERIKSAAN").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
-                                              "<td width='29%'>Anamnesa</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("anamnesa")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Anamnesa</td><td valign='top' width='75%'>:").append(rs2.getString("anamnesa")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='29%'>Pemeriksaan Fisik & Uji Fungsi</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("pemeriksaan_fisik")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Pemeriksaan Fisik & Uji Fungsi</td><td valign='top' width='75%'>:").append(rs2.getString("pemeriksaan_fisik")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='29%'>Diagnosis Medis (ICD - 10)</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("diagnosa_medis")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Diagnosis Medis (ICD - 10)</td><td valign='top' width='75%'>:").append(rs2.getString("diagnosa_medis")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='29%'>Diagnosis Fungsi (ICD - 10)</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("diagnosa_fungsi")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Diagnosis Fungsi (ICD - 10)</td><td valign='top' width='75%'>:").append(rs2.getString("diagnosa_fungsi")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='29%'>Tata Laksana KFR (ICD - 9 CM)</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("tatalaksana")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Tata Laksana KFR (ICD - 9 CM)</td><td valign='top' width='75%'>:").append(rs2.getString("tatalaksana")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='29%'>Anjuran</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("anjuran")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Anjuran</td><td valign='top' width='75%'>:").append(rs2.getString("anjuran")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='29%'>Evaluasi</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("evaluasi")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Evaluasi</td><td valign='top' width='75%'>:").append(rs2.getString("evaluasi")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='29%'>Suspek Penyakit Akibat Kerja</td><td width='1%'>:</td><td width='70%'>").append(rs2.getString("suspek_penyakit_kerja")).append((rs2.getString("keterangan_suspek_penyakit_kerja").equals("")?"":", "+rs2.getString("keterangan_suspek_penyakit_kerja"))).append("</td>").append(
+                                              "<td valign='top' width='25%'>Suspek Penyakit Akibat Kerja</td><td valign='top' width='75%'>:").append(rs2.getString("suspek_penyakit_kerja")).append((rs2.getString("keterangan_suspek_penyakit_kerja").equals("")?"":", "+rs2.getString("keterangan_suspek_penyakit_kerja"))).append("</td>").append(
                                           "</tr>").append(
                                        "</table>").append(
                                     "</td>").append(
                                  "</tr>"
                             );
+                            file=Sequel.cariIsi("select bukti_layanan_kedokteran_fisik_rehabilitasi.photo from bukti_layanan_kedokteran_fisik_rehabilitasi where bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+norawat+"'");
+                            if(!file.equals("")){
+                                htmlContent.append("<tr>").
+                                                append("<td valign='top'>").
+                                                    append("PHOTO BUKTI PELAYANANAN").
+                                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                        append("<tr>").
+                                                            append("<td valign='top' border='0' width='100%' align='center'><a href='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/layanankedokteranfisikrehabilitasi/").append(file).append("'><img alt='Gambar EKG' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/layanankedokteranfisikrehabilitasi/").append(file).append("' width='450' height='450'/></a></td>").
+                                                        append("</tr>").
+                                                    append("</table>").
+                                                append("</td>").
+                                            append("</tr>");
+                            }
                         }while(rs2.next());
                         htmlContent.append(
                               "</table>").append(
@@ -32767,25 +32780,38 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "PERMINTAAN & PELAYANAN").append(  
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
-                                              "<td width='25%' border='0'>No.Permintaan</td>").append(
-                                              "<td width='75%' border='0'>: ").append(rs2.getString("no_rawat_layanan")).append("</td>").append(
+                                              "<td valign='top' width='25%'>No.Permintaan</td>").append(
+                                              "<td valign='top' width='75%'>: ").append(rs2.getString("no_rawat_layanan")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='25%' border='0'>Diagnosa</td>").append(
-                                              "<td width='75%' border='0'>: ").append(rs2.getString("diagnosa_medis")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Diagnosa</td>").append(
+                                              "<td valign='top' width='75%'>: ").append(rs2.getString("diagnosa_medis")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='25%' border='0'>Permintaan Terapi</td>").append(
-                                              "<td width='75%' border='0'>: ").append(rs2.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")).append(". ").append(rs2.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Permintaan Terapi</td>").append(
+                                              "<td valign='top' width='75%'>: ").append(rs2.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")).append(". ").append(rs2.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)","; ")).append("</td>").append(
                                           "</tr>").append(
                                           "<tr>").append(
-                                              "<td width='25%' border='0'>Program</td>").append(
-                                              "<td width='75%' border='0'>: ").append(rs2.getString("program")).append("</td>").append(
+                                              "<td valign='top' width='25%'>Program</td>").append(
+                                              "<td valign='top' width='75%'>: ").append(rs2.getString("program")).append("</td>").append(
                                           "</tr>").append(
                                        "</table>").append(
                                     "</td>").append(
                                  "</tr>"
                             ); 
+                            file=Sequel.cariIsi("select bukti_layanan_program_kfr.photo from bukti_layanan_program_kfr where bukti_layanan_program_kfr.no_rawat='"+norawat+"'");
+                            if(!file.equals("")){
+                                htmlContent.append("<tr>").
+                                                append("<td valign='top'>").
+                                                    append("PHOTO BUKTI PELAYANANAN").
+                                                    append("<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").
+                                                        append("<tr>").
+                                                            append("<td valign='top' border='0' width='100%' align='center'><a href='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/layananprogramkfr/").append(file).append("'><img alt='Gambar EKG' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/layananprogramkfr/").append(file).append("' width='450' height='450'/></a></td>").
+                                                        append("</tr>").
+                                                    append("</table>").
+                                                append("</td>").
+                                            append("</tr>");
+                            }
                         }while(rs2.next());
                         htmlContent.append(
                               "</table>").append(
