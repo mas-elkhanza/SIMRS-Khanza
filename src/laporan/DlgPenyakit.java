@@ -60,7 +60,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         this.setLocation(10,2);
         setSize(628,674);
 
-        Object[] row={"P","Kode","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Kategori Penyakit","Ciri-ciri Umum","Status"};
+        Object[] row={"P","Kode","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Kategori Penyakit","Ciri-ciri Umum","Status","Valid Code","ACC PDX","Asterisk","IM"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -71,6 +71,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
              }
              Class[] types = new Class[] {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              @Override
@@ -83,7 +84,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         tbPenyakit.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPenyakit.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (z = 0; z < 8; z++) {
+        for (z = 0; z < 12; z++) {
             TableColumn column = tbPenyakit.getColumnModel().getColumn(z);
             if(z==0){
                 column.setPreferredWidth(20);
@@ -101,6 +102,14 @@ public final class DlgPenyakit extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }else if(z==7){
                 column.setPreferredWidth(100);
+            }else if(z==8){
+                column.setPreferredWidth(62);
+            }else if(z==9){
+                column.setPreferredWidth(53);
+            }else if(z==10){
+                column.setPreferredWidth(50);
+            }else if(z==11){
+                column.setPreferredWidth(28);
             }
         }
         tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable());
@@ -136,32 +145,6 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         
         ChkInput.setSelected(false);
         isForm(); 
-        try{
-            ps=koneksi.prepareStatement("select penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
-                "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,status "+
-                "from kategori_penyakit inner join penyakit "+
-                "on penyakit.kd_ktg=kategori_penyakit.kd_ktg where  "+
-                " penyakit.kd_penyakit like ? or "+
-                " penyakit.nm_penyakit like ? or "+
-                " penyakit.ciri_ciri like ? or "+
-                " penyakit.keterangan like ? or "+
-                " kategori_penyakit.nm_kategori like ? or "+
-                " penyakit.status like ? or "+
-                " kategori_penyakit.ciri_umum like ? "+
-                "order by penyakit.kd_penyakit  LIMIT ?,500");
-            ps2=koneksi.prepareStatement("select count(penyakit.kd_penyakit) as jumlah from kategori_penyakit inner join penyakit "+
-                " on penyakit.kd_ktg=kategori_penyakit.kd_ktg where  "+
-                " penyakit.kd_penyakit like ? or "+
-                " penyakit.nm_penyakit like ? or "+
-                " penyakit.ciri_ciri like ? or "+
-                " penyakit.keterangan like ? or "+
-                " kategori_penyakit.nm_kategori like ? or "+
-                " penyakit.status like ? or "+
-                " kategori_penyakit.ciri_umum like ? "+
-                " order by penyakit.kd_penyakit");
-        }catch(Exception ex){
-            System.out.println(ex);
-        }
     }
     
     
@@ -212,6 +195,14 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         kd_ktg = new widget.TextBox();
         cmbStatus = new widget.ComboBox();
         jLabel12 = new widget.Label();
+        jLabel13 = new widget.Label();
+        cmbIM = new widget.ComboBox();
+        jLabel14 = new widget.Label();
+        cmbValidCode = new widget.ComboBox();
+        cmbACCPDX = new widget.ComboBox();
+        jLabel15 = new widget.Label();
+        jLabel16 = new widget.Label();
+        cmbAsterisk = new widget.ComboBox();
         ChkInput = new widget.CekBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -232,7 +223,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data ICD 10 Penyakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data ICD 10 Penyakit ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -380,12 +371,12 @@ public final class DlgPenyakit extends javax.swing.JDialog {
 
         jLabel6.setText("Key Word :");
         jLabel6.setName("jLabel6"); // NOI18N
-        jLabel6.setPreferredSize(new java.awt.Dimension(70, 23));
+        jLabel6.setPreferredSize(new java.awt.Dimension(65, 23));
         jLabel6.setRequestFocusEnabled(false);
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(202, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(197, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -453,6 +444,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
+        PanelInput.setPreferredSize(new java.awt.Dimension(611, 205));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -462,12 +454,12 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         jLabel3.setText("Kode Penyakit :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(0, 12, 100, 23);
+        jLabel3.setBounds(0, 10, 90, 23);
 
         jLabel4.setText("Kategori :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(0, 119, 100, 23);
+        jLabel4.setBounds(0, 120, 90, 23);
 
         TKd.setHighlighter(null);
         TKd.setName("TKd"); // NOI18N
@@ -477,7 +469,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(TKd);
-        TKd.setBounds(103, 12, 110, 23);
+        TKd.setBounds(94, 10, 110, 23);
 
         TKtg.setEditable(false);
         TKtg.setName("TKtg"); // NOI18N
@@ -487,12 +479,12 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(TKtg);
-        TKtg.setBounds(215, 119, 374, 23);
+        TKtg.setBounds(206, 120, 374, 23);
 
         jLabel8.setText("Nama Penyakit :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(222, 12, 110, 23);
+        jLabel8.setBounds(212, 10, 110, 23);
 
         TNm.setHighlighter(null);
         TNm.setName("TNm"); // NOI18N
@@ -502,15 +494,15 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNm);
-        TNm.setBounds(335, 12, 284, 23);
+        TNm.setBounds(326, 10, 284, 23);
 
         jLabel9.setText("Ciri-ciri :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(0, 42, 100, 23);
+        jLabel9.setBounds(0, 40, 90, 23);
 
         ScrollCiri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ScrollCiri.setForeground(new java.awt.Color(50,50,50));
+        ScrollCiri.setForeground(new java.awt.Color(50, 50, 50));
         ScrollCiri.setName("ScrollCiri"); // NOI18N
 
         TCiri.setBorder(null);
@@ -525,7 +517,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         ScrollCiri.setViewportView(TCiri);
 
         FormInput.add(ScrollCiri);
-        ScrollCiri.setBounds(103, 42, 516, 40);
+        ScrollCiri.setBounds(94, 40, 516, 43);
 
         TKeterangan.setHighlighter(null);
         TKeterangan.setName("TKeterangan"); // NOI18N
@@ -535,12 +527,12 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(TKeterangan);
-        TKeterangan.setBounds(103, 90, 330, 23);
+        TKeterangan.setBounds(94, 90, 330, 23);
 
         jLabel10.setText("Keterangan :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(0, 89, 100, 23);
+        jLabel10.setBounds(0, 90, 90, 23);
 
         btnKtg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnKtg.setMnemonic('1');
@@ -557,7 +549,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnKtg);
-        btnKtg.setBounds(591, 120, 28, 23);
+        btnKtg.setBounds(582, 120, 28, 23);
 
         kd_ktg.setHighlighter(null);
         kd_ktg.setName("kd_ktg"); // NOI18N
@@ -567,7 +559,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(kd_ktg);
-        kd_ktg.setBounds(103, 119, 110, 23);
+        kd_ktg.setBounds(94, 120, 110, 23);
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Menular", "Tidak Menular" }));
         cmbStatus.setLightWeightPopupEnabled(false);
@@ -578,12 +570,76 @@ public final class DlgPenyakit extends javax.swing.JDialog {
             }
         });
         FormInput.add(cmbStatus);
-        cmbStatus.setBounds(489, 89, 130, 23);
+        cmbStatus.setBounds(480, 90, 130, 23);
 
         jLabel12.setText("Status :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(436, 89, 50, 23);
+        jLabel12.setBounds(426, 90, 50, 23);
+
+        jLabel13.setText("IM :");
+        jLabel13.setName("jLabel13"); // NOI18N
+        FormInput.add(jLabel13);
+        jLabel13.setBounds(496, 150, 50, 23);
+
+        cmbIM.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1" }));
+        cmbIM.setLightWeightPopupEnabled(false);
+        cmbIM.setName("cmbIM"); // NOI18N
+        cmbIM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbIMKeyPressed(evt);
+            }
+        });
+        FormInput.add(cmbIM);
+        cmbIM.setBounds(550, 150, 60, 23);
+
+        jLabel14.setText("Valid Code :");
+        jLabel14.setName("jLabel14"); // NOI18N
+        FormInput.add(jLabel14);
+        jLabel14.setBounds(0, 150, 90, 23);
+
+        cmbValidCode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1" }));
+        cmbValidCode.setLightWeightPopupEnabled(false);
+        cmbValidCode.setName("cmbValidCode"); // NOI18N
+        cmbValidCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbValidCodeKeyPressed(evt);
+            }
+        });
+        FormInput.add(cmbValidCode);
+        cmbValidCode.setBounds(94, 150, 60, 23);
+
+        cmbACCPDX.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Y", "N" }));
+        cmbACCPDX.setLightWeightPopupEnabled(false);
+        cmbACCPDX.setName("cmbACCPDX"); // NOI18N
+        cmbACCPDX.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbACCPDXKeyPressed(evt);
+            }
+        });
+        FormInput.add(cmbACCPDX);
+        cmbACCPDX.setBounds(264, 150, 60, 23);
+
+        jLabel15.setText("ACC PDX :");
+        jLabel15.setName("jLabel15"); // NOI18N
+        FormInput.add(jLabel15);
+        jLabel15.setBounds(170, 150, 90, 23);
+
+        jLabel16.setText("Asterisk :");
+        jLabel16.setName("jLabel16"); // NOI18N
+        FormInput.add(jLabel16);
+        jLabel16.setBounds(338, 150, 80, 23);
+
+        cmbAsterisk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "1" }));
+        cmbAsterisk.setLightWeightPopupEnabled(false);
+        cmbAsterisk.setName("cmbAsterisk"); // NOI18N
+        cmbAsterisk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cmbAsteriskKeyPressed(evt);
+            }
+        });
+        FormInput.add(cmbAsterisk);
+        cmbAsterisk.setBounds(422, 150, 60, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -647,11 +703,14 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         }else if(TKtg.getText().trim().equals("")){
             Valid.textKosong(kd_ktg,"Kategori Penyakit");
         }else{            
-            Sequel.menyimpan("penyakit","?,?,?,?,?,?","Kode Penyakit",6,new String[]{
-                TKd.getText(),TNm.getText(),TCiri.getText(),TKeterangan.getText(),kd_ktg.getText(),cmbStatus.getSelectedItem().toString()
-            });
-            tampil();
-            emptTeks();
+            if(Sequel.menyimpantf("penyakit","?,?,?,?,?,?,?,?,?,?","Kode Penyakit",10,new String[]{
+                TKd.getText(),TNm.getText(),TCiri.getText(),TKeterangan.getText(),kd_ktg.getText(),cmbStatus.getSelectedItem().toString(),
+                cmbValidCode.getSelectedItem().toString(),cmbACCPDX.getSelectedItem().toString(),cmbAsterisk.getSelectedItem().toString(),
+                cmbIM.getSelectedItem().toString()
+            })==true){
+                tampil();
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
@@ -659,7 +718,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,kd_ktg,BtnBatal);
+            Valid.pindah(evt,cmbIM,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -705,11 +764,13 @@ public final class DlgPenyakit extends javax.swing.JDialog {
         }else if(TKtg.getText().trim().equals("")){
             Valid.textKosong(kd_ktg,"Kategori Penyakit");
         }else{
-            Valid.editTable(tabMode,"penyakit","kd_penyakit","?","nm_penyakit=?,ciri_ciri=?,keterangan=?,kd_ktg=?,kd_penyakit=?,status=?",7,new String[]{
-                TNm.getText(),TCiri.getText(),TKeterangan.getText(),kd_ktg.getText(),TKd.getText(),cmbStatus.getSelectedItem().toString(),tbPenyakit.getValueAt(tbPenyakit.getSelectedRow(),1).toString()
-            });
-            if(tabMode.getRowCount()!=0){tampil();}
-            emptTeks();
+            if(Valid.editTabletf(tabMode,"penyakit","kd_penyakit","?","nm_penyakit=?,ciri_ciri=?,keterangan=?,kd_ktg=?,kd_penyakit=?,status=?,validcode=?,accpdx=?,asterisk=?,im=?",11,new String[]{
+                TNm.getText(),TCiri.getText(),TKeterangan.getText(),kd_ktg.getText(),TKd.getText(),cmbStatus.getSelectedItem().toString(),cmbValidCode.getSelectedItem().toString(),cmbACCPDX.getSelectedItem().toString(),
+                cmbAsterisk.getSelectedItem().toString(),cmbIM.getSelectedItem().toString(),tbPenyakit.getValueAt(tbPenyakit.getSelectedRow(),1).toString()
+            })==true){
+                if(tabMode.getRowCount()!=0){tampil();}
+                emptTeks();
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
@@ -813,7 +874,7 @@ public final class DlgPenyakit extends javax.swing.JDialog {
 }//GEN-LAST:event_btnKtgActionPerformed
 
     private void btnKtgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKtgKeyPressed
-        Valid.pindah(evt,kd_ktg,BtnSimpan);
+        Valid.pindah(evt,kd_ktg,cmbValidCode);
 }//GEN-LAST:event_btnKtgKeyPressed
 
     private void tbPenyakitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPenyakitMouseClicked
@@ -901,7 +962,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
+        //tampil();
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbStatusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbStatusKeyPressed
@@ -912,6 +973,22 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         ktg.removeWindowListener(null);
         ktg.getTable().removeKeyListener(null);
     }//GEN-LAST:event_formWindowDeactivated
+
+    private void cmbIMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbIMKeyPressed
+        Valid.pindah(evt,cmbAsterisk,BtnSimpan);
+    }//GEN-LAST:event_cmbIMKeyPressed
+
+    private void cmbValidCodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbValidCodeKeyPressed
+        Valid.pindah(evt,btnKtg,cmbACCPDX);
+    }//GEN-LAST:event_cmbValidCodeKeyPressed
+
+    private void cmbACCPDXKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbACCPDXKeyPressed
+        Valid.pindah(evt,cmbValidCode,cmbAsterisk);
+    }//GEN-LAST:event_cmbACCPDXKeyPressed
+
+    private void cmbAsteriskKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmbAsteriskKeyPressed
+        Valid.pindah(evt,cmbACCPDX,cmbIM);
+    }//GEN-LAST:event_cmbAsteriskKeyPressed
 
     /**
     * @param args the command line arguments
@@ -951,12 +1028,20 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.TextBox TKtg;
     private widget.TextBox TNm;
     private widget.Button btnKtg;
+    private widget.ComboBox cmbACCPDX;
+    private widget.ComboBox cmbAsterisk;
     private widget.ComboBox cmbHlm;
+    private widget.ComboBox cmbIM;
     private widget.ComboBox cmbStatus;
+    private widget.ComboBox cmbValidCode;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
+    private widget.Label jLabel13;
+    private widget.Label jLabel14;
+    private widget.Label jLabel15;
+    private widget.Label jLabel16;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
@@ -973,51 +1058,90 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
-            awal="0";
-            if(cmbHlm.getItemCount()>0){
-                awal=hlm[Integer.parseInt(cmbHlm.getSelectedItem().toString())];
-            }
-            ps.setString(1,"%"+TCari.getText().trim()+"%");
-            ps.setString(2,"%"+TCari.getText().trim()+"%");
-            ps.setString(3,"%"+TCari.getText().trim()+"%");
-            ps.setString(4,"%"+TCari.getText().trim()+"%");
-            ps.setString(5,"%"+TCari.getText().trim()+"%");
-            ps.setString(6,"%"+TCari.getText().trim()+"%");
-            ps.setString(7,"%"+TCari.getText().trim()+"%");
-            ps.setInt(8,Integer.parseInt(awal));
-            rs=ps.executeQuery();
-            while(rs.next()){
-                tabMode.addRow(new Object[]{false,rs.getString(1),
-                               rs.getString(2),
-                               rs.getString(3),
-                               rs.getString(4),
-                               rs.getString(5),
-                               rs.getString(6),
-                               rs.getString(7)});
-            }
-            
-            cmbHlm.removeAllItems();
-            ps2.setString(1,"%"+TCari.getText().trim()+"%");
-            ps2.setString(2,"%"+TCari.getText().trim()+"%");
-            ps2.setString(3,"%"+TCari.getText().trim()+"%");
-            ps2.setString(4,"%"+TCari.getText().trim()+"%");
-            ps2.setString(5,"%"+TCari.getText().trim()+"%");
-            ps2.setString(6,"%"+TCari.getText().trim()+"%");
-            ps2.setString(7,"%"+TCari.getText().trim()+"%");
-            rs2=ps2.executeQuery();
-            jumlah=0;
-            if(rs2.next()){
-               jumlah=rs2.getDouble("jumlah");   
-            }
-            x=jumlah/499;
-            i=Math.ceil(x);
-            z=(int) i;
-            
-            hlm=new String[z+1];
-            for(j=1;j<=i;j++){
-                 mulai=((j-1)*499+j)-1;
-                 hlm[j]=Integer.toString(mulai);
-                 cmbHlm.addItem(j);
+            ps=koneksi.prepareStatement("select penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan,"+
+                    "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,penyakit.status,penyakit.validcode,penyakit.accpdx,"+
+                    "penyakit.asterisk,penyakit.im from kategori_penyakit inner join penyakit "+
+                    "on penyakit.kd_ktg=kategori_penyakit.kd_ktg where  "+
+                    " penyakit.kd_penyakit like ? or "+
+                    " penyakit.nm_penyakit like ? or "+
+                    " penyakit.ciri_ciri like ? or "+
+                    " penyakit.keterangan like ? or "+
+                    " kategori_penyakit.nm_kategori like ? or "+
+                    " penyakit.status like ? or "+
+                    " kategori_penyakit.ciri_umum like ? "+
+                    "order by penyakit.kd_penyakit  LIMIT ?,500");
+            ps2=koneksi.prepareStatement("select count(penyakit.kd_penyakit) as jumlah from kategori_penyakit inner join penyakit "+
+                    " on penyakit.kd_ktg=kategori_penyakit.kd_ktg where  "+
+                    " penyakit.kd_penyakit like ? or "+
+                    " penyakit.nm_penyakit like ? or "+
+                    " penyakit.ciri_ciri like ? or "+
+                    " penyakit.keterangan like ? or "+
+                    " kategori_penyakit.nm_kategori like ? or "+
+                    " penyakit.status like ? or "+
+                    " kategori_penyakit.ciri_umum like ? "+
+                    " order by penyakit.kd_penyakit");
+            try{
+                awal="0";
+                if(cmbHlm.getItemCount()>0){
+                    awal=hlm[Integer.parseInt(cmbHlm.getSelectedItem().toString())];
+                }
+                ps.setString(1,"%"+TCari.getText().trim()+"%");
+                ps.setString(2,"%"+TCari.getText().trim()+"%");
+                ps.setString(3,"%"+TCari.getText().trim()+"%");
+                ps.setString(4,"%"+TCari.getText().trim()+"%");
+                ps.setString(5,"%"+TCari.getText().trim()+"%");
+                ps.setString(6,"%"+TCari.getText().trim()+"%");
+                ps.setString(7,"%"+TCari.getText().trim()+"%");
+                ps.setInt(8,Integer.parseInt(awal));
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    tabMode.addRow(new Object[]{
+                        false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
+                        rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11)
+                    });
+                }
+
+                cmbHlm.removeAllItems();
+                ps2.setString(1,"%"+TCari.getText().trim()+"%");
+                ps2.setString(2,"%"+TCari.getText().trim()+"%");
+                ps2.setString(3,"%"+TCari.getText().trim()+"%");
+                ps2.setString(4,"%"+TCari.getText().trim()+"%");
+                ps2.setString(5,"%"+TCari.getText().trim()+"%");
+                ps2.setString(6,"%"+TCari.getText().trim()+"%");
+                ps2.setString(7,"%"+TCari.getText().trim()+"%");
+                rs2=ps2.executeQuery();
+                jumlah=0;
+                if(rs2.next()){
+                   jumlah=rs2.getDouble("jumlah");   
+                }
+                x=jumlah/499;
+                i=Math.ceil(x);
+                z=(int) i;
+
+                hlm=new String[z+1];
+                for(j=1;j<=i;j++){
+                     mulai=((j-1)*499+j)-1;
+                     hlm[j]=Integer.toString(mulai);
+                     cmbHlm.addItem(j);
+                }
+            }catch(Exception ex){
+                System.out.println(ex);
+            }finally{
+                if(rs != null){
+                    rs.close();
+                }
+                
+                if(ps != null){
+                    ps.close();
+                }
+                
+                if(rs2 != null){
+                    rs2.close();
+                }
+                
+                if(ps2 != null){
+                    ps2.close();
+                }
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
@@ -1043,8 +1167,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             TCiri.setText(tbPenyakit.getValueAt(row,3).toString());
             TKeterangan.setText(tbPenyakit.getValueAt(row,4).toString());
             TKtg.setText(tbPenyakit.getValueAt(row,5).toString());
-            Sequel.cariIsi("select kd_ktg from penyakit where kd_penyakit=?", kd_ktg,tbPenyakit.getValueAt(row,1).toString());
+            Sequel.cariIsi("select penyakit.kd_ktg from penyakit where penyakit.kd_penyakit=?", kd_ktg,tbPenyakit.getValueAt(row,1).toString());
             cmbStatus.setSelectedItem(tbPenyakit.getValueAt(row,6).toString());
+            cmbValidCode.setSelectedItem(tbPenyakit.getValueAt(row,7).toString());
+            cmbACCPDX.setSelectedItem(tbPenyakit.getValueAt(row,8).toString());
+            cmbAsterisk.setSelectedItem(tbPenyakit.getValueAt(row,9).toString());
+            cmbIM.setSelectedItem(tbPenyakit.getValueAt(row,10).toString());
         }
     }
 
@@ -1059,7 +1187,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,176));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,205));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
