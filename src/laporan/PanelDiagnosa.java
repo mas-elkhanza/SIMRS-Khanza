@@ -696,7 +696,7 @@ public class PanelDiagnosa extends widget.panelisi {
         for(int z=0;z<tbProsedur.getRowCount();z++){ 
             if(tbProsedur.getValueAt(z,0).toString().equals("true")){
                 tbProsedur.setValueAt(i,z,7);
-                if(tbProsedur.getValueAt(z,7).toString().equals("")){
+                if(tbProsedur.getValueAt(z,8).toString().equals("")){
                     tbProsedur.setValueAt("1",z,8);
                 }
                 if(tbProsedur.getValueAt(z,0).toString().equals("true")&&tbProsedur.getValueAt(z,4).toString().equals("0")&&tbProsedur.getValueAt(z,7).toString().equals("1")){
