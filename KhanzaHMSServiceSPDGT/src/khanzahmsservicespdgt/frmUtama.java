@@ -220,7 +220,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                            "&isolasi_kapasitas="+Sequel.cariIsi("select count(kamar.kd_kamar) from kamar inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal where bangsal.nm_bangsal like '%iso%' and kamar.statusdata='1'")+
                                                            "&isolasi_tersedia="+Sequel.cariIsi("select count(kamar.kd_kamar) from kamar inner join bangsal on bangsal.kd_bangsal=kamar.kd_bangsal where bangsal.nm_bangsal like '%iso%' and kamar.statusdata='1' and kamar.status='KOSONG'")+"&isolasi_keterangan="+
                                                            "&jumlah_tempat_tidur_kapasitas="+Sequel.cariIsi("select count(kamar.kd_kamar) from kamar where kamar.statusdata='1'")+
-                                                           "&jumlah_tempat_tidur_tersedia="+Sequel.cariIsi("select count(kamar.kd_kamar) from kamar where kamar.statusdata='1' and kamar.status='KOSONG'")+"&jumlah_tempat_tidur_keterangan=&ugd=&ugd_keterangan=&ventilator=&ventilator_keterangan=&dokter_jumlah=&dokter_spesialis_jumlah=&bidan_jumlah=&perawat_jumlah=&ambulans_jumlah=",headers);
+                                                           "&ugd=&ugd_keterangan=&ventilator=&ventilator_keterangan=&dokter_jumlah=&dokter_spesialis_jumlah=&bidan_jumlah=&perawat_jumlah=&ambulans_jumlah=",headers);
                             respon = api.getRest().exchange(URL+"/Api/update_kamar", HttpMethod.POST, requestEntity, String.class).getBody();
                             TeksArea.append("Respon Kirim Ketersediaan Kamar : "+respon+"\n");
                         }catch (Exception ex) {

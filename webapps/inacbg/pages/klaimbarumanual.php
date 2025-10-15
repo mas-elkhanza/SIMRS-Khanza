@@ -125,12 +125,12 @@
 
                                         $prosedur="";
                                         $a=1;
-                                        $hasilprosedur=bukaquery("select prosedur_pasien.kode from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
+                                        $hasilprosedur=bukaquery("select prosedur_pasien.kode,prosedur_pasien.jumlah from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
                                         while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                                             if($a==1){
-                                                $prosedur=$barisprosedur["kode"];
+                                                $prosedur=$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                                             }else{
-                                                $prosedur=$prosedur.", ".$barisprosedur["kode"];
+                                                $prosedur=$prosedur.", ".$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                                             }                
                                             $a++;
                                         } 
@@ -176,12 +176,12 @@
 
                                         $prosedur="";
                                         $a=1;
-                                        $hasilprosedur=bukaquery("select prosedur_pasien.kode from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
+                                        $hasilprosedur=bukaquery("select prosedur_pasien.kode,prosedur_pasien.jumlah from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
                                         while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                                             if($a==1){
-                                                $prosedur=$barisprosedur["kode"];
+                                                $prosedur=$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                                             }else{
-                                                $prosedur=$prosedur.", ".$barisprosedur["kode"];
+                                                $prosedur=$prosedur.", ".$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                                             }                
                                             $a++;
                                         } 
@@ -222,12 +222,12 @@
 
                 $prosedur="";
                 $a=1;
-                $hasilprosedur=bukaquery("select prosedur_pasien.kode from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
+                $hasilprosedur=bukaquery("select prosedur_pasien.kode,prosedur_pasien.jumlah from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
                 while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                     if($a==1){
-                        $prosedur=$barisprosedur["kode"];
+                        $prosedur=$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                     }else{
-                        $prosedur=$prosedur."#".$barisprosedur["kode"];
+                        $prosedur=$prosedur."#".$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                     }                
                     $a++;
                 }            
@@ -354,12 +354,12 @@
 
                 $prosedur="";
                 $a=1;
-                $hasilprosedur=bukaquery("select prosedur_pasien.kode from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
+                $hasilprosedur=bukaquery("select prosedur_pasien.kode,prosedur_pasien.jumlah from prosedur_pasien where prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
                 while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                     if($a==1){
-                        $prosedur=$barisprosedur["kode"];
+                        $prosedur=$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                     }else{
-                        $prosedur=$prosedur."#".$barisprosedur["kode"];
+                        $prosedur=$prosedur."#".$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                     }                
                     $a++;
                 }            

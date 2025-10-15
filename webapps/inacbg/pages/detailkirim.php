@@ -420,12 +420,12 @@
                         value="<?php  
                                     $prosedur="";
                                     $a=1;
-                                    $hasilprosedur=bukaquery("select prosedur_pasien.kode from prosedur_pasien where prosedur_pasien.no_rawat='".$norawat."' order by prosedur_pasien.prioritas asc");
+                                    $hasilprosedur=bukaquery("select prosedur_pasien.kode,prosedur_pasien.jumlah from prosedur_pasien where prosedur_pasien.no_rawat='".$norawat."' order by prosedur_pasien.prioritas asc");
                                     while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
                                         if($a==1){
-                                            $prosedur=$barisprosedur["kode"];
+                                            $prosedur=$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                                         }else{
-                                            $prosedur=$prosedur."#".$barisprosedur["kode"];
+                                            $prosedur=$prosedur."#".$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
                                         }                
                                         $a++;
                                     } 
@@ -859,7 +859,8 @@
                     $episodes                   = ($episodes1==0?"":"1;$episodes1#").($episodes2==0?"":"2;$episodes2#").($episodes3==0?"":"3;$episodes3#").($episodes4==0?"":"4;$episodes4#").($episodes5==0?"":"5;$episodes5#").($episodes6==0?"":"6;$episodes6#");  
                     $episodes                   = substr($episodes, 0, -1); 
                     
-                    if ((!empty($norawat))&&(!empty($nosep))&&(!empty($nokartu))&&(!empty($nomor_kartu_t))) {                        
+                    if ((!empty($norawat))&&(!empty($nosep))&&(!empty($nokartu))&&(!empty($nomor_kartu_t))) {        
+                        MenghapusKlaim($nosep,$codernik);
                         BuatKlaimBaru2($nokartu,$nosep,$no_rkm_medis,$nm_pasien,$tgl_lahir." 00:00:00", $gender,$norawat);
                         EditUlangKlaim($nosep);
                         UpdateDataKlaim3($nosep,$nokartu,$tgl_registrasi,$keluar,$jnsrawat,$kelas_rawat,$adl_sub_acute,
@@ -876,7 +877,7 @@
                         echo 'Semua field harus isi..!!!';
                     }
                 }else{
-                    if ((!empty($norawat))&&(!empty($nosep))&&(!empty($nokartu))) {                        
+                    if ((!empty($norawat))&&(!empty($nosep))&&(!empty($nokartu))) {    
                         BuatKlaimBaru2($nokartu,$nosep,$no_rkm_medis,$nm_pasien,$tgl_lahir." 00:00:00", $gender,$norawat);
                         EditUlangKlaim($nosep);
                         if(UpdateDataKlaim2(
