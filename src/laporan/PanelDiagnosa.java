@@ -37,7 +37,7 @@ public class PanelDiagnosa extends widget.panelisi {
     private PreparedStatement pspenyakit,psdiagnosapasien,psprosedur,pstindakanpasien;
     private ResultSet rs;
     private int jml=0,i=0,index=0;
-    private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek,validcode,accpdx,asterisk,im,urut;
+    private String[] kode,nama,ciripny,keterangan,kategori,cirium,kode2,panjang,pendek,validcode,accpdx,asterisk,im,urut,multy;
     private boolean[] pilih;
     public String norawat="",status="",norm="",tanggal1="",tanggal2="",keyword="";
     /**
@@ -147,16 +147,18 @@ public class PanelDiagnosa extends widget.panelisi {
         tbDiagnosa.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeProsedur=new DefaultTableModel(null,new Object[]{
-            "P","Kode","Deskripsi Panjang","Deskripsi Pendek"}){
+            "P","Kode","Deskripsi Panjang","Deskripsi Pendek","VC","AP","IM","Urut","Jml"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if (colIndex==0) {
+                if ((colIndex==0)||(colIndex==9)) {
                     a=true;
                 }
                 return a;
              }
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -168,16 +170,26 @@ public class PanelDiagnosa extends widget.panelisi {
         tbProsedur.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbProsedur.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < 9; i++) {
             TableColumn column = tbProsedur.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
                 column.setPreferredWidth(50);
             }else if(i==2){
-                column.setPreferredWidth(250);
+                column.setPreferredWidth(350);
             }else if(i==3){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(210);
+            }else if(i==4){
+                column.setPreferredWidth(25);
+            }else if(i==5){
+                column.setPreferredWidth(25);
+            }else if(i==6){
+                column.setPreferredWidth(25);
+            }else if(i==7){
+                column.setPreferredWidth(30);
+            }else if(i==8){
+                column.setPreferredWidth(25);
             }
         }
         tbProsedur.setDefaultRenderer(Object.class, new WarnaTable());
@@ -820,7 +832,11 @@ public class PanelDiagnosa extends widget.panelisi {
             kode2=new String[jml];
             panjang=new String[jml];
             pendek=new String[jml];
-
+            validcode=new String[jml];
+            accpdx=new String[jml];
+            im=new String[jml];
+            urut=new String[jml];
+            multy=new String[jml];
             index=0; 
             for(i=0;i<tbProsedur.getRowCount();i++){
                 if(tbProsedur.getValueAt(i,0).toString().equals("true")){
@@ -828,30 +844,44 @@ public class PanelDiagnosa extends widget.panelisi {
                     kode2[index]=tbProsedur.getValueAt(i,1).toString();
                     panjang[index]=tbProsedur.getValueAt(i,2).toString();
                     pendek[index]=tbProsedur.getValueAt(i,3).toString();
+                    validcode[index]=tbProsedur.getValueAt(i,4).toString();
+                    accpdx[index]=tbProsedur.getValueAt(i,5).toString();
+                    im[index]=tbProsedur.getValueAt(i,6).toString();
+                    urut[index]=tbProsedur.getValueAt(i,7).toString();
+                    multy[index]=tbProsedur.getValueAt(i,8).toString();
                     index++;
                 }
             }
 
             Valid.tabelKosong(tabModeProsedur);
             for(i=0;i<jml;i++){
-                tabModeProsedur.addRow(new Object[] {pilih[i],kode2[i],panjang[i],pendek[i]});
+                tabModeProsedur.addRow(new Object[] {pilih[i],kode2[i],panjang[i],pendek[i],validcode[i],accpdx[i],im[i],urut[i],multy[i]});
             }
             
             pilih=null;
             kode2=null;
             panjang=null;
             pendek=null;
+            validcode=null;
+            accpdx=null;
+            im=null;
+            urut=null;
+            multy=null;
             
-            psprosedur=koneksi.prepareStatement("select * from icd9 where kode like ? or "+
-                    " deskripsi_panjang like ? or  deskripsi_pendek like ? order by kode");
+            psprosedur=koneksi.prepareStatement(
+                    "select * from icd9 "+(Prosedur.getText().trim().equals("")?"":"where kode like ? or deskripsi_panjang like ? or  deskripsi_pendek like ?")+" order by kode");
             try{
-                psprosedur.setString(1,"%"+Prosedur.getText().trim()+"%");
-                psprosedur.setString(2,"%"+Prosedur.getText().trim()+"%");
-                psprosedur.setString(3,"%"+Prosedur.getText().trim()+"%");
+                if(!Prosedur.getText().trim().equals("")){
+                    psprosedur.setString(1,"%"+Prosedur.getText().trim()+"%");
+                    psprosedur.setString(2,"%"+Prosedur.getText().trim()+"%");
+                    psprosedur.setString(3,"%"+Prosedur.getText().trim()+"%");
+                }
+                    
                 rs=psprosedur.executeQuery();
                 while(rs.next()){
                     tabModeProsedur.addRow(new Object[]{
-                        false,rs.getString(1),rs.getString(2),rs.getString(3)});
+                        false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),"",""
+                    });
                 }
             }catch(Exception ex){
                 System.out.println(ex);
