@@ -97,7 +97,7 @@ public class PanelDiagnosa extends widget.panelisi {
             "P","Kode","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Kategori","Ciri-ciri Umum","VC","AP","Ast","IM","Urut"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==11)) {
+                if (colIndex==0) {
                     a=true;
                 }
                 return a;
@@ -123,15 +123,15 @@ public class PanelDiagnosa extends widget.panelisi {
             }else if(i==1){
                 column.setPreferredWidth(40);
             }else if(i==2){
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(215);
             }else if(i==3){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(130);
             }else if(i==4){
-                column.setPreferredWidth(75);
-            }else if(i==5){
-                column.setPreferredWidth(75);
-            }else if(i==6){
                 column.setPreferredWidth(80);
+            }else if(i==5){
+                column.setPreferredWidth(80);
+            }else if(i==6){
+                column.setPreferredWidth(85);
             }else if(i==7){
                 column.setPreferredWidth(25);
             }else if(i==8){
@@ -141,7 +141,7 @@ public class PanelDiagnosa extends widget.panelisi {
             }else if(i==10){
                 column.setPreferredWidth(25);
             }else if(i==11){
-                column.setPreferredWidth(35);
+                column.setPreferredWidth(30);
             }
         }
         tbDiagnosa.setDefaultRenderer(Object.class, new WarnaTable());
@@ -175,9 +175,9 @@ public class PanelDiagnosa extends widget.panelisi {
             }else if(i==1){
                 column.setPreferredWidth(50);
             }else if(i==2){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(250);
             }else if(i==3){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(200);
             }
         }
         tbProsedur.setDefaultRenderer(Object.class, new WarnaTable());
@@ -395,6 +395,22 @@ public class PanelDiagnosa extends widget.panelisi {
 
         Scroll1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)));
         Scroll1.setOpaque(true);
+
+        tbDiagnosa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbDiagnosaMouseClicked(evt);
+            }
+        });
+        tbDiagnosa.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbDiagnosaPropertyChange(evt);
+            }
+        });
+        tbDiagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbDiagnosaKeyPressed(evt);
+            }
+        });
         Scroll1.setViewportView(tbDiagnosa);
 
         FormData.add(Scroll1);
@@ -559,6 +575,53 @@ public class PanelDiagnosa extends widget.panelisi {
             tampil();
         }
     }//GEN-LAST:event_MnStatusLamaActionPerformed
+
+    private void tbDiagnosaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDiagnosaMouseClicked
+        if(tabModeDiagnosa.getRowCount()!=0){
+            try {
+                if(tbDiagnosa.getSelectedRow()!= -1){
+                    if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("0")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),11).toString().equals("1")){
+                        tbDiagnosa.setValueAt(false,tbDiagnosa.getSelectedRow(),0);
+                        JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi diagnosa utama..!! ");
+                    }
+                }
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbDiagnosaMouseClicked
+
+    private void tbDiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbDiagnosaKeyPressed
+        if(tabModeDiagnosa.getRowCount()!=0){
+            try {
+                if(tbDiagnosa.getSelectedRow()!= -1){
+                    if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("0")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),11).toString().equals("1")){
+                        tbDiagnosa.setValueAt(false,tbDiagnosa.getSelectedRow(),0);
+                        tbDiagnosa.setValueAt("",tbDiagnosa.getSelectedRow(),11);
+                        JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi diagnosa utama..!! ");
+                    }
+                }
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbDiagnosaKeyPressed
+
+    private void tbDiagnosaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbDiagnosaPropertyChange
+        i=1;
+        for(int z=0;z<tbDiagnosa.getRowCount();z++){ 
+            if(tbDiagnosa.getValueAt(z,0).toString().equals("true")){
+                tbDiagnosa.setValueAt(i,z,11);
+                if(tbDiagnosa.getValueAt(z,0).toString().equals("true")&&tbDiagnosa.getValueAt(z,7).toString().equals("0")&&tbDiagnosa.getValueAt(z,11).toString().equals("1")){
+                    tbDiagnosa.setValueAt(false,z,0);
+                    tbDiagnosa.setValueAt("",z,11);
+                    JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(z,1).toString()+" valid code 0. Tidak bisa menjadi diagnosa utama..!! ");
+                }else{
+                    i++;
+                }
+            }else{
+                tbDiagnosa.setValueAt("",z,11);
+            }
+        }
+    }//GEN-LAST:event_tbDiagnosaPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
