@@ -150,7 +150,7 @@ public class PanelDiagnosa extends widget.panelisi {
             "P","Kode","Deskripsi Panjang","Deskripsi Pendek","VC","AP","IM","Urut","Jml"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==0)||(colIndex==9)) {
+                if ((colIndex==0)||(colIndex==8)) {
                     a=true;
                 }
                 return a;
@@ -177,7 +177,7 @@ public class PanelDiagnosa extends widget.panelisi {
             }else if(i==1){
                 column.setPreferredWidth(50);
             }else if(i==2){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(372);
             }else if(i==3){
                 column.setPreferredWidth(210);
             }else if(i==4){
@@ -468,6 +468,21 @@ public class PanelDiagnosa extends widget.panelisi {
         Scroll2.setOpaque(true);
 
         tbProsedur.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbProsedur.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbProsedurMouseClicked(evt);
+            }
+        });
+        tbProsedur.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tbProsedurPropertyChange(evt);
+            }
+        });
+        tbProsedur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbProsedurKeyPressed(evt);
+            }
+        });
         Scroll2.setViewportView(tbProsedur);
 
         FormData.add(Scroll2);
@@ -594,6 +609,7 @@ public class PanelDiagnosa extends widget.panelisi {
                 if(tbDiagnosa.getSelectedRow()!= -1){
                     if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("0")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),11).toString().equals("1")){
                         tbDiagnosa.setValueAt(false,tbDiagnosa.getSelectedRow(),0);
+                        tbDiagnosa.setValueAt("",tbDiagnosa.getSelectedRow(),11);
                         JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi diagnosa utama..!! ");
                     }
                 }
@@ -634,6 +650,69 @@ public class PanelDiagnosa extends widget.panelisi {
             }
         }
     }//GEN-LAST:event_tbDiagnosaPropertyChange
+
+    private void tbProsedurMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProsedurMouseClicked
+        if(tabModeProsedur.getRowCount()!=0){
+            try {
+                if(tbProsedur.getSelectedRow()!= -1){
+                    if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),0).toString().equals("true")){
+                        if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),4).toString().equals("0")&&tbProsedur.getValueAt(tbProsedur.getSelectedRow(),7).toString().equals("1")){
+                            tbProsedur.setValueAt(false,tbProsedur.getSelectedRow(),0);
+                            tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),7);
+                            tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),8);
+                            JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(tbProsedur.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi prosedur utama..!! ");
+                        }else{
+                            tbProsedur.setValueAt("1",tbProsedur.getSelectedRow(),7);
+                        }
+                    }
+                }
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbProsedurMouseClicked
+
+    private void tbProsedurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbProsedurKeyPressed
+        if(tabModeProsedur.getRowCount()!=0){
+            try {
+                if(tbProsedur.getSelectedRow()!= -1){
+                    if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),0).toString().equals("true")){
+                        if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),4).toString().equals("0")&&tbProsedur.getValueAt(tbProsedur.getSelectedRow(),7).toString().equals("1")){
+                            tbProsedur.setValueAt(false,tbProsedur.getSelectedRow(),0);
+                            tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),7);
+                            tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),8);
+                            JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(tbProsedur.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi prosedur utama..!! ");
+                        }else{
+                            tbProsedur.setValueAt("1",tbProsedur.getSelectedRow(),7);
+                        }
+                    }
+                }
+            } catch (java.lang.NullPointerException e) {
+            }
+        }
+    }//GEN-LAST:event_tbProsedurKeyPressed
+
+    private void tbProsedurPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tbProsedurPropertyChange
+        i=1;
+        for(int z=0;z<tbProsedur.getRowCount();z++){ 
+            if(tbProsedur.getValueAt(z,0).toString().equals("true")){
+                tbProsedur.setValueAt(i,z,7);
+                if(tbProsedur.getValueAt(z,7).toString().equals("")){
+                    tbProsedur.setValueAt("1",z,8);
+                }
+                if(tbProsedur.getValueAt(z,0).toString().equals("true")&&tbProsedur.getValueAt(z,4).toString().equals("0")&&tbProsedur.getValueAt(z,7).toString().equals("1")){
+                    tbProsedur.setValueAt(false,z,0);
+                    tbProsedur.setValueAt("",z,7);
+                    tbProsedur.setValueAt("",z,8);
+                    JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(z,1).toString()+" valid code 0. Tidak bisa menjadi prosedur utama..!! ");
+                }else{
+                    i++;
+                }
+            }else{
+                tbProsedur.setValueAt("",z,7);
+                tbProsedur.setValueAt("",z,8);
+            }
+        }
+    }//GEN-LAST:event_tbProsedurPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
