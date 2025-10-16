@@ -7665,26 +7665,43 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                     if(akses.gettindakan_ralan()==true){
                         String noRawatInput = TNoRwCari.getText();
                         String alergiInputDariDB = Sequel.cariIsi(
-                            "select pemeriksaan_ralan.alergi from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=?", 
-                            noRawatInput
+                                "select pemeriksaan_ralan.alergi from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat=?",
+                                noRawatInput
                         );
-                        if (alergiInputDariDB != null && !alergiInputDariDB.trim().isEmpty()) {
-                            String[] daftarAlergi = alergiInputDariDB.split("\\s*,\\s*");
-                            StringBuilder htmlList = new StringBuilder("<ul>");
-                            for (String alergi : daftarAlergi) {
-                                htmlList.append("<li>").append(alergi).append("</li>");
+                        String resikoInputDariDB = Sequel.cariIsi(
+                                "select data_triase_igddetail_skala1.kode_skala1 from data_triase_igddetail_skala1 where data_triase_igddetail_skala1.no_rawat=?",
+                                noRawatInput
+                        );
+                        
+                        boolean adaAlergi = alergiInputDariDB != null && !alergiInputDariDB.trim().isEmpty();
+                        boolean adaResiko = resikoInputDariDB != null && !resikoInputDariDB.trim().isEmpty();
+
+                        if (adaAlergi || adaResiko) {
+                            StringBuilder pesanBuilder = new StringBuilder("<html>Pasien [" + TPasienCari.getText() + "]<br>"
+                                    + "No RM [" + TNoRMCari.getText() + "]<br><br>");
+                            if (adaAlergi) {
+                                pesanBuilder.append("<b>Memiliki Riwayat Alergi:<ul>");
+                                String[] daftarAlergi = alergiInputDariDB.split("\\s*,\\s*");
+                                for (String alergi : daftarAlergi) {
+                                    if (!alergi.trim().isEmpty()) {
+                                        pesanBuilder.append("<li>").append(alergi.trim()).append("</li>");
+                                    }
+                                }
+                                pesanBuilder.append("</ul>");
                             }
-                            htmlList.append("</ul>");
-                            String pesan = "<html>Pasien [" + TPasienCari.getText() + "]<br>"
-                                         + "No RM [" + TNoRMCari.getText() + "]<br><br>"
-                                         + "<b>Memiliki Riwayat Alergi:</b><br>" 
-                                         + htmlList.toString() + "</html>";
+                            
+                            if (adaResiko) {
+                                pesanBuilder.append("<b>Memiliki Resiko:</b><br>").append(resikoInputDariDB).append("<br>");
+                            }
+                            
+                            pesanBuilder.append("</html>");
+                            
                             int pilihan = JOptionPane.showConfirmDialog(
-                                null, 
-                                pesan, 
-                                "Peringatan Alergi Pasien", 
+                                null,
+                                pesanBuilder.toString(),
+                                "Peringatan Medis Pasien",
                                 JOptionPane.YES_NO_OPTION,
-                                JOptionPane.WARNING_MESSAGE 
+                                JOptionPane.WARNING_MESSAGE
                             );
                             if (pilihan == JOptionPane.YES_OPTION) {
                                 MnDataRalanActionPerformed(null);
