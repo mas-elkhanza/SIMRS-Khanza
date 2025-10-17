@@ -324,22 +324,27 @@
                                 $nm_dokter = getOne("select dokter.nm_dokter from reg_periksa inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where reg_periksa.no_rawat='".$baris["no_rawat"]."'");
                             }
                             
-                            $naikkelas=getOne("select bridging_sep_internal.klsnaik from bridging_sep_internal where bridging_sep_internal.no_rawat='".$baris["no_rawat"]."'");
-                            if(empty($naikkelas)){
-                                $naikkelas=getOne("select bridging_sep_internal_internal.klsnaik from bridging_sep_internal_internal where bridging_sep_internal_internal.no_rawat='".$baris["no_rawat"]."'");
+                            $naikkelas= $baris["klsnaik"];
+                            $asalrujukan= $baris["asal_rujukan"];
+                            if($asalrujukan=="1. Faskes 1"){
+                                $asalrujukan="gp";
+                            }else if($asalrujukan=="2. Faskes 2(RS)"){
+                                $asalrujukan="hosp-trans";
+                            }else{
+                                $asalrujukan="other";
                             }
 
                             $upgrade_class_ind="0";
                             if(!empty($naikkelas)){
                                 $upgrade_class_ind="1";
                                 if($naikkelas=="1"){
-                                    $naikkelas="Kelas VVIP";
+                                    $naikkelas="vvip";
                                 }else if($naikkelas=="2"){
-                                    $naikkelas="Kelas VIP";
+                                    $naikkelas="vip";
                                 }else if($naikkelas=="3"){
-                                    $naikkelas="Kelas 1";
+                                    $naikkelas="kelas_1";
                                 }else if($naikkelas=="4"){
-                                    $naikkelas="Kelas 2";
+                                    $naikkelas="kelas_2";
                                 }else{
                                     $naikkelas="";
                                 }   
@@ -369,7 +374,7 @@
 
                             BuatKlaimBaruInternal($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);
                             EditUlangKlaim($baris["no_sep"]);
-                            UpdateDataKlaimInternal($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole);
+                            UpdateDataKlaimInternal($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
                         }
                 echo "</table>";           
             }else{
