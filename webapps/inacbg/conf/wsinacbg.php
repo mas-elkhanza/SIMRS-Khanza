@@ -1275,7 +1275,7 @@
     }
     
     function Request($request){
-        //echo $request;
+        //echo "<br><br>".$request;
         $json = mc_encrypt ($request, getKey());  
         $header = array("Content-Type: application/x-www-form-urlencoded");        
         $ch = curl_init();
@@ -1290,7 +1290,7 @@
         $last = strrpos($response, "\n")-1;
         $hasilresponse = substr($response,$first,strlen($response) - $first - $last);
         $hasildecrypt = mc_decrypt($hasilresponse, getKey());
-        //echo $hasildecrypt;
+        //echo "<br><br>".$hasildecrypt;
         $msg = json_decode($hasildecrypt,true);
         return $msg;
     }
