@@ -55,7 +55,8 @@
                     bridging_sep.nmdiagnosaawal,bridging_sep.kdpolitujuan,bridging_sep.nmpolitujuan,bridging_sep.klsrawat,
                     if(bridging_sep.klsrawat='1','1. Kelas 1',if(bridging_sep.klsrawat='2','2. Kelas 2','3. Kelas 3')) as kelas,
                     if(bridging_sep.lakalantas='1','1. Kasus Kecelakaan','2. Bukan Kasus Kecelakaan') as lakalantas,bridging_sep.user, 
-                    bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu, if(bridging_sep.tglpulang='0000-00-00 00:00:00',now(),bridging_sep.tglpulang) as tglpulang  
+                    bridging_sep.tanggal_lahir,bridging_sep.peserta,bridging_sep.jkel,bridging_sep.no_kartu, 
+                    if(bridging_sep.tglpulang='0000-00-00 00:00:00',concat(bridging_sep.tglsep,' 23:00:00'),bridging_sep.tglpulang) as tglpulang  
                     from bridging_sep where bridging_sep.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' order by bridging_sep.tglsep";
             $hasil=bukaquery($_sql);
             
@@ -66,7 +67,8 @@
                     bridging_sep_internal.nmdiagnosaawal,bridging_sep_internal.kdpolitujuan,bridging_sep_internal.nmpolitujuan,bridging_sep_internal.klsrawat,
                     if(bridging_sep_internal.klsrawat='1','1. Kelas 1',if(bridging_sep_internal.klsrawat='2','2. Kelas 2','3. Kelas 3')) as kelas,
                     if(bridging_sep_internal.lakalantas='1','1. Kasus Kecelakaan','2. Bukan Kasus Kecelakaan') as lakalantas,bridging_sep_internal.user, 
-                    bridging_sep_internal.tanggal_lahir,bridging_sep_internal.peserta,bridging_sep_internal.jkel,bridging_sep_internal.no_kartu, if(bridging_sep_internal.tglpulang='0000-00-00 00:00:00',now(),bridging_sep_internal.tglpulang) as tglpulang  
+                    bridging_sep_internal.tanggal_lahir,bridging_sep_internal.peserta,bridging_sep_internal.jkel,bridging_sep_internal.no_kartu, 
+                    if(bridging_sep_internal.tglpulang='0000-00-00 00:00:00',concat(bridging_sep_internal.tglsep,' 23:00:00'),bridging_sep_internal.tglpulang) as tglpulang  
                     from bridging_sep_internal where bridging_sep_internal.tglsep between '".$tahunawal."-".$bulanawal."-".$tanggalawal." 00:00:00' and '".$tahunakhir."-".$bulanakhir."-".$tanggalakhir." 23:59:59' order by bridging_sep_internal.tglsep";
             $hasilinternal=bukaquery($_sqlinternal);
             
@@ -117,6 +119,30 @@
                                     $penyakit=$barispenyakit["kd_penyakit"];
                                 }else{
                                     $penyakit=$penyakit."#".$barispenyakit["kd_penyakit"];
+                                }                
+                                $a++;
+                            } 
+                            
+                            $procedureinacbg="";
+                            $a=1;
+                            $hasilprosedur=bukaquery("select prosedur_pasien.kode,prosedur_pasien.jumlah from prosedur_pasien inner join icd9 on prosedur_pasien.kode=icd9.kode where icd9.im='0' and prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
+                            while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
+                                if($a==1){
+                                    $procedureinacbg=$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
+                                }else{
+                                    $procedureinacbg=$procedureinacbg."#".$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
+                                }                
+                                $a++;
+                            }            
+
+                            $diagnosainacbg="";
+                            $a=1;
+                            $hasilpenyakit=bukaquery("select diagnosa_pasien.kd_penyakit from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where penyakit.im='0' and diagnosa_pasien.no_rawat='".$baris["no_rawat"]."' order by diagnosa_pasien.prioritas asc");
+                            while($barispenyakit = mysqli_fetch_array($hasilpenyakit)) {
+                                if($a==1){
+                                    $diagnosainacbg=$barispenyakit["kd_penyakit"];
+                                }else{
+                                    $diagnosainacbg=$diagnosainacbg."#".$barispenyakit["kd_penyakit"];
                                 }                
                                 $a++;
                             } 
@@ -228,7 +254,7 @@
 
                             BuatKlaimBaru($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);
                             EditUlangKlaim($baris["no_sep"]);
-                            UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
+                            UpdateDataKlaim($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select pasien_bayi.berat_badan from pasien_bayi where pasien_bayi.no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,$diagnosainacbg,$procedureinacbg, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
                         }
                         
                         while($baris = mysqli_fetch_array($hasilinternal)) {
@@ -263,6 +289,30 @@
                                     $penyakit=$barispenyakit["kd_penyakit"];
                                 }else{
                                     $penyakit=$penyakit."#".$barispenyakit["kd_penyakit"];
+                                }                
+                                $a++;
+                            } 
+                            
+                            $procedureinacbg="";
+                            $a=1;
+                            $hasilprosedur=bukaquery("select prosedur_pasien.kode,prosedur_pasien.jumlah from prosedur_pasien inner join icd9 on prosedur_pasien.kode=icd9.kode where icd9.im='0' and prosedur_pasien.no_rawat='".$baris["no_rawat"]."' order by prosedur_pasien.prioritas asc");
+                            while($barisprosedur = mysqli_fetch_array($hasilprosedur)) {
+                                if($a==1){
+                                    $procedureinacbg=$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
+                                }else{
+                                    $procedureinacbg=$procedureinacbg."#".$barisprosedur["kode"].str_replace("+1","","+".$barisprosedur["jumlah"]);
+                                }                
+                                $a++;
+                            }            
+
+                            $diagnosainacbg="";
+                            $a=1;
+                            $hasilpenyakit=bukaquery("select diagnosa_pasien.kd_penyakit from diagnosa_pasien inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where penyakit.im='0' and diagnosa_pasien.no_rawat='".$baris["no_rawat"]."' order by diagnosa_pasien.prioritas asc");
+                            while($barispenyakit = mysqli_fetch_array($hasilpenyakit)) {
+                                if($a==1){
+                                    $diagnosainacbg=$barispenyakit["kd_penyakit"];
+                                }else{
+                                    $diagnosainacbg=$diagnosainacbg."#".$barispenyakit["kd_penyakit"];
                                 }                
                                 $a++;
                             } 
@@ -374,7 +424,7 @@
 
                             BuatKlaimBaruInternal($baris["no_kartu"],$baris["no_sep"],$baris["nomr"],$baris["nama_pasien"],$baris["tanggal_lahir"]." 00:00:00", $gender);
                             EditUlangKlaim($baris["no_sep"]);
-                            UpdateDataKlaimInternal($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
+                            UpdateDataKlaimInternal($baris["no_sep"],$baris["no_kartu"],$baris["tglsep"]." ".getOne("select reg_periksa.jam_reg from reg_periksa where reg_periksa.no_rawat='".$baris["no_rawat"]."'"),$baris["tglpulang"],$baris["jnspelayanan"],$baris["klsrawat"],"","","","","",$upgrade_class_ind,$naikkelas,"","",getOne("select berat_badan from pasien_bayi where no_rkm_medis='".$baris["nomr"]."'"),$discharge_status,$penyakit,$prosedur,$diagnosainacbg,$procedureinacbg, getOne("select biaya_reg from reg_periksa where no_rawat='".$baris["no_rawat"]."'"), $nm_dokter,getKelasRS(),"","","#",$codernik,$baris["no_rawat"],$sistole,$diastole,$asalrujukan);
                         }
                 echo "</table>";           
             }else{
@@ -464,6 +514,6 @@
     </div>
 </div>
 <?php 
-   echo "<meta http-equiv='refresh' content='600;URL=?act=KlaimBaruOtomatis&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik&statuskirim=$statuskirim'>";
+   echo "<meta http-equiv='refresh' content='600;URL=?act=KlaimBaruOtomatis&tahunawal=$tahunawal&bulanawal=$bulanawal&tanggalawal=$tanggalawal&tahunakhir=$tahunakhir&bulanakhir=$bulanakhir&tanggalakhir=$tanggalakhir&codernik=$codernik'>";
 ?>
 
