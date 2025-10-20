@@ -32260,8 +32260,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                        "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0px' class='tbl_form'>").append(
                                           "<tr>").append(
                                               "<td width='20%' border='0'>Tanggal : ").append(rs2.getString("tanggal")).append("</td>").append(
-                                              "<td width='40%' border='0'>Dokter : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
-                                              "<td width='40%' border='0'>Asisten : ").append(rs2.getString("kd_dokter")).append(" ").append(rs2.getString("nm_dokter")).append("</td>").append(
+                                              "<td width='40%' border='0'>Dokter : ").append(rs2.getString("kd_dokter")).append(" ").append(rs2.getString("nm_dokter")).append("</td>").append(
+                                              "<td width='40%' border='0'>Asisten : ").append(rs2.getString("nip")).append(" ").append(rs2.getString("nama")).append("</td>").append(
                                           "</tr>").append(
                                        "</table>").append(
                                     "</td>").append(

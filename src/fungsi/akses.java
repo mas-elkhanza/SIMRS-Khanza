@@ -253,7 +253,7 @@ public final class akses {
             kriteria_masuk_picu=false,kriteria_keluar_picu=false,master_sampel_bakumutu=false,skrining_instrumen_amt=false,parameter_pengujian_lab_kesehatan_lingkungan=false,
             nilai_normal_baku_mutu_lab_kesehatan_lingkungan=false,skrining_pneumonia_severity_index=false,permintaan_pengujian_sampel_lab_kesehatan_lingkungan=false,
             penilaian_awal_medis_ralan_jantung=false,penilaian_awal_medis_ralan_urologi=false,hasil_pemeriksaan_treadmill=false,hasil_pemeriksaan_echo_pediatrik=false,
-            template_pelaksanaan_informasi_edukasi=false;
+            template_pelaksanaan_informasi_edukasi=false,skrining_instrumen_esat;
     
     public static void setData(String user, String pass) {
         try {        
@@ -1436,6 +1436,7 @@ public final class akses {
                         akses.hasil_pemeriksaan_treadmill=true;
                         akses.hasil_pemeriksaan_echo_pediatrik=true;
                         akses.template_pelaksanaan_informasi_edukasi=true;
+                        akses.skrining_instrumen_esat=true;
                     }else if(rs2.getRow()>=1){   
                         rs2.beforeFirst();
                         rs2.next();
@@ -2602,6 +2603,7 @@ public final class akses {
                         akses.hasil_pemeriksaan_treadmill=rs2.getBoolean("hasil_pemeriksaan_treadmill");
                         akses.hasil_pemeriksaan_echo_pediatrik=rs2.getBoolean("hasil_pemeriksaan_echo_pediatrik");
                         akses.template_pelaksanaan_informasi_edukasi=rs2.getBoolean("template_pelaksanaan_informasi_edukasi");
+                        akses.skrining_instrumen_esat=rs2.getBoolean("skrining_instrumen_esat");
                     }else if((rs.getRow()==0)&&(rs2.getRow()==0)){
                         setLogOut();
                     }
@@ -3791,6 +3793,7 @@ public final class akses {
         akses.hasil_pemeriksaan_treadmill=false;
         akses.hasil_pemeriksaan_echo_pediatrik=false;
         akses.template_pelaksanaan_informasi_edukasi=false;
+        akses.skrining_instrumen_esat=false;
     }
     
     public static int getjml1() {return akses.jml1;}    
@@ -4994,4 +4997,5 @@ public final class akses {
     public static boolean gethasil_pemeriksaan_treadmill(){return akses.hasil_pemeriksaan_treadmill;}
     public static boolean gethasil_pemeriksaan_echo_pediatrik(){return akses.hasil_pemeriksaan_echo_pediatrik;}
     public static boolean gettemplate_pelaksanaan_informasi_edukasi(){return akses.template_pelaksanaan_informasi_edukasi;}
+    public static boolean getskrining_instrumen_esat(){return akses.skrining_instrumen_esat;}
 }   
