@@ -1408,14 +1408,12 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(akses.getform().equals("DlgCariPeriksaRadiologi")){
-                    if(templateedukasi.getTable().getSelectedRow()!= -1){                   
-                        Materi.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),1).toString());
-                        Lama.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),2).toString());
-                        Metode.setSelectedItem(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),3).toString());
-                    } 
-                    Materi.requestFocus();
-                }
+                if(templateedukasi.getTable().getSelectedRow()!= -1){                   
+                    Materi.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),1).toString());
+                    Lama.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),2).toString());
+                    Metode.setSelectedItem(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),3).toString());
+                } 
+                Materi.requestFocus();
             }
             @Override
             public void windowIconified(WindowEvent e) {}

@@ -61,11 +61,11 @@ public final class MasterCariTemplateInformasiEdukasi extends javax.swing.JDialo
             if(i==0){
                 column.setPreferredWidth(45);
             }else if(i==1){
-                column.setPreferredWidth(530);
+                column.setPreferredWidth(730);
             }else if(i==2){
-                column.setPreferredWidth(76);
+                column.setPreferredWidth(74);
             }else if(i==3){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(68);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -124,6 +124,9 @@ public final class MasterCariTemplateInformasiEdukasi extends javax.swing.JDialo
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Master Template Informasi & Edukasi ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -136,6 +139,11 @@ public final class MasterCariTemplateInformasiEdukasi extends javax.swing.JDialo
 
         tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setName("tbKamar"); // NOI18N
+        tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tbKamarKeyPressed(evt);
+            }
+        });
         Scroll.setViewportView(tbKamar);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
@@ -278,12 +286,10 @@ public final class MasterCariTemplateInformasiEdukasi extends javax.swing.JDialo
 
     private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-        //jabatan.setModal(true);
-        MasterTemplateHasilRadiologi form=new MasterTemplateHasilRadiologi(null,false);
+        MasterTemplateInformasiEdukasi form=new MasterTemplateInformasiEdukasi(null,false);
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
         form.setAlwaysOnTop(false);
-        form.emptTeks();
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());   
         
@@ -292,6 +298,21 @@ public final class MasterCariTemplateInformasiEdukasi extends javax.swing.JDialo
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         emptTeks();
     }//GEN-LAST:event_formWindowActivated
+
+    private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
+        if(tabMode.getRowCount()!=0){
+            if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+                dispose();
+            }else if(evt.getKeyCode()==KeyEvent.VK_SHIFT){
+                TCari.setText("");
+                TCari.requestFocus();
+            }
+        }
+    }//GEN-LAST:event_tbKamarKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        tampil();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
