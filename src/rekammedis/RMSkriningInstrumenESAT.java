@@ -834,7 +834,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT1);
-        ESAT1.setBounds(710, 90, 80, 23);
+        ESAT1.setBounds(709, 90, 80, 23);
 
         ESAT2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         ESAT2.setName("ESAT2"); // NOI18N
@@ -849,7 +849,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT2);
-        ESAT2.setBounds(710, 120, 80, 23);
+        ESAT2.setBounds(709, 120, 80, 23);
 
         ESAT3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         ESAT3.setName("ESAT3"); // NOI18N
@@ -864,7 +864,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT3);
-        ESAT3.setBounds(710, 150, 80, 23);
+        ESAT3.setBounds(709, 150, 80, 23);
 
         ESAT4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         ESAT4.setName("ESAT4"); // NOI18N
@@ -879,7 +879,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT4);
-        ESAT4.setBounds(710, 180, 80, 23);
+        ESAT4.setBounds(709, 180, 80, 23);
 
         ESAT5.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         ESAT5.setName("ESAT5"); // NOI18N
@@ -894,7 +894,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT5);
-        ESAT5.setBounds(710, 210, 80, 23);
+        ESAT5.setBounds(709, 210, 80, 23);
 
         ESAT6.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         ESAT6.setName("ESAT6"); // NOI18N
@@ -909,7 +909,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT6);
-        ESAT6.setBounds(710, 240, 80, 23);
+        ESAT6.setBounds(709, 240, 80, 23);
 
         ESAT7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         ESAT7.setName("ESAT7"); // NOI18N
@@ -924,7 +924,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT7);
-        ESAT7.setBounds(710, 270, 80, 23);
+        ESAT7.setBounds(709, 270, 80, 23);
 
         ESAT8.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         ESAT8.setName("ESAT8"); // NOI18N
@@ -939,7 +939,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT8);
-        ESAT8.setBounds(710, 300, 80, 23);
+        ESAT8.setBounds(709, 300, 80, 23);
 
         ESAT9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         ESAT9.setName("ESAT9"); // NOI18N
@@ -954,7 +954,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT9);
-        ESAT9.setBounds(710, 330, 80, 23);
+        ESAT9.setBounds(709, 330, 80, 23);
 
         ESAT10.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tidak", "Ya" }));
         ESAT10.setName("ESAT10"); // NOI18N
@@ -969,7 +969,7 @@ public final class RMSkriningInstrumenESAT extends javax.swing.JDialog {
             }
         });
         FormInput.add(ESAT10);
-        ESAT10.setBounds(710, 360, 80, 23);
+        ESAT10.setBounds(709, 360, 80, 23);
 
         jLabel160.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel160.setText("Kesan/Kesimpulan");
