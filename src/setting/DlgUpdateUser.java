@@ -4937,8 +4937,8 @@ public class DlgUpdateUser extends javax.swing.JDialog {
             tabMode.addRow(new Object[]{false,"[M]Hasil Pemeriksaan ECHO Pediatrik",hasil_pemeriksaan_echo_pediatrik});
         }
         
-        if("[M]Template Informasi & Edukasi".toLowerCase().contains(TCari.getText().toLowerCase())){
-            tabMode.addRow(new Object[]{false,"[M]Template Informasi & Edukasi",template_pelaksanaan_informasi_edukasi});
+        if("[M]Master Template Informasi & Edukasi".toLowerCase().contains(TCari.getText().toLowerCase())){
+            tabMode.addRow(new Object[]{false,"[M]Master Template Informasi & Edukasi",template_pelaksanaan_informasi_edukasi});
         }
                 
         if("[N]Pengambilan BHP Medis".toLowerCase().contains(TCari.getText().toLowerCase())){
@@ -9588,7 +9588,7 @@ public class DlgUpdateUser extends javax.swing.JDialog {
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","hasil_pemeriksaan_echo_pediatrik='"+tbUser.getValueAt(i,2).toString()+"'");
             }
             
-            if("[M]Template Informasi & Edukasi".equals(tbUser.getValueAt(i,1).toString())){
+            if("[M]Master Template Informasi & Edukasi".equals(tbUser.getValueAt(i,1).toString())){
                 Sequel.mengedit("user","id_user=AES_ENCRYPT('"+TKd.getText()+"','nur')","template_pelaksanaan_informasi_edukasi='"+tbUser.getValueAt(i,2).toString()+"'");
             }
                     

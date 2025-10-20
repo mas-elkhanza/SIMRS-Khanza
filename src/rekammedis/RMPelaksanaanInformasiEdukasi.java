@@ -54,7 +54,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private ResultSet rs;
     private int i=0;    
     private DlgCariPegawai pegawai=new DlgCariPegawai(null,false);
-    private String dpjp="",lokasifile="";
+    private String dpjp="";
     private String TANGGALMUNDUR="yes";
     private StringBuilder htmlContent;
     
@@ -281,6 +281,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         jLabel23 = new widget.Label();
         jLabel25 = new widget.Label();
         Status = new widget.ComboBox();
+        BtnSeek = new widget.Button();
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
@@ -489,7 +490,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -503,7 +504,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -599,7 +600,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-03-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-10-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -843,6 +844,18 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         });
         FormInput.add(Status);
         Status.setBounds(709, 120, 80, 23);
+
+        BtnSeek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnSeek.setMnemonic('1');
+        BtnSeek.setToolTipText("Alt+1");
+        BtnSeek.setName("BtnSeek"); // NOI18N
+        BtnSeek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeekActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnSeek);
+        BtnSeek.setBounds(52, 89, 28, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1386,6 +1399,40 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
+    private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeekActionPerformed
+        MasterCariTemplateInformasiEdukasi templateedukasi=new MasterCariTemplateInformasiEdukasi(null,false);
+        templateedukasi.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgCariPeriksaRadiologi")){
+                    if(templateedukasi.getTable().getSelectedRow()!= -1){                   
+                        Materi.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),1).toString());
+                        Lama.setText(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),2).toString());
+                        Metode.setSelectedItem(templateedukasi.getTable().getValueAt(templateedukasi.getTable().getSelectedRow(),3).toString());
+                    } 
+                    Materi.requestFocus();
+                }
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        templateedukasi.emptTeks();
+        templateedukasi.isCek();
+        templateedukasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        templateedukasi.setLocationRelativeTo(internalFrame1);
+        templateedukasi.setVisible(true);
+    }//GEN-LAST:event_BtnSeekActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1411,6 +1458,7 @@ public final class RMPelaksanaanInformasiEdukasi extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnRefreshPhoto1;
+    private widget.Button BtnSeek;
     private widget.Button BtnSimpan;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;

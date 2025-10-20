@@ -880,6 +880,7 @@ import rekammedis.MasterRencanaKeperawatanMata;
 import rekammedis.MasterRencanaKeperawatanNeonatus;
 import rekammedis.MasterRencanaKeperawatanPsikiatri;
 import rekammedis.MasterTemplateHasilRadiologi;
+import rekammedis.MasterTemplateInformasiEdukasi;
 import rekammedis.MasterTemplateLaporanOperasi;
 import rekammedis.MasterTemplatePemeriksaanDokter;
 import rekammedis.RMTriaseIGD;
@@ -23075,6 +23076,18 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMasterTemplateInformasiEdukasiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        MasterTemplateInformasiEdukasi form=new MasterTemplateInformasiEdukasi(this,false);
+        form.isCek();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23785,7 +23798,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional,btnChecklistKriteriaMasukNICU,btnChecklistKriteriaKeluarNICU,btnPenilaianAwalMedisRanapPsikiatri,
             btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu,btnSkriningInstrumenAMT,btnLabKeslingParameterPengujian,
             btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung,btnPenilaianAwalMedisRalanUrologi,btnHasilPemeriksaanTreadmill,
-            btnHasilPemeriksaanECHOPediatrik;
+            btnHasilPemeriksaanECHOPediatrik,btnMasterTemplateInformasiEdukasi;
     
     public void isWall(){
         try{            
@@ -27519,6 +27532,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.gettemplate_pemeriksaan()==true){
                 Panelmenu.add(btnMasterTemplatePemeriksaanDokter);
+                jmlmenu++;
+            }
+            
+            if(akses.gettemplate_pelaksanaan_informasi_edukasi()==true){
+                Panelmenu.add(btnMasterTemplateInformasiEdukasi);
                 jmlmenu++;
             }
             
@@ -33253,6 +33271,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.gettemplate_pemeriksaan()==true){
             Panelmenu.add(btnMasterTemplatePemeriksaanDokter);
+            jmlmenu++;
+        }
+        
+        if(akses.gettemplate_pelaksanaan_informasi_edukasi()==true){
+            Panelmenu.add(btnMasterTemplateInformasiEdukasi);
             jmlmenu++;
         }
         
@@ -40417,6 +40440,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnMasterTemplatePemeriksaanDokter);
                 jmlmenu++;
             }                
+        }
+        
+        if(akses.gettemplate_pelaksanaan_informasi_edukasi()==true){
+            if(btnMasterTemplateInformasiEdukasi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMasterTemplateInformasiEdukasi);
+                jmlmenu++;
+            } 
         }
         
         if(akses.getmaster_masalah_keperawatan()==true){
@@ -48931,5 +48961,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnHasilPemeriksaanECHOPediatrik.setName("btnHasilPemeriksaanECHOPediatrik"); 
         btnHasilPemeriksaanECHOPediatrik.setPreferredSize(new java.awt.Dimension(200, 90));
         btnHasilPemeriksaanECHOPediatrik.addActionListener(this::btnHasilPemeriksaanECHOPediatrikActionPerformed);
+        
+        btnMasterTemplateInformasiEdukasi = new widget.ButtonBig();
+        btnMasterTemplateInformasiEdukasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7638103_idea bulb_learning_knowledge_education_book_icon.png")));
+        btnMasterTemplateInformasiEdukasi.setText("Master Template Informasi & Edukasi");
+        btnMasterTemplateInformasiEdukasi.setIconTextGap(0);
+        btnMasterTemplateInformasiEdukasi.setName("btnMasterTemplateInformasiEdukasi"); 
+        btnMasterTemplateInformasiEdukasi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMasterTemplateInformasiEdukasi.addActionListener(this::btnMasterTemplateInformasiEdukasiActionPerformed);
     }
 }
