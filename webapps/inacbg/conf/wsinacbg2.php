@@ -157,8 +157,8 @@
     
     function UpdateDataKlaim($nomor_sep,$nomor_kartu,$tgl_masuk,$tgl_pulang,$jenis_rawat,$kelas_rawat,$adl_sub_acute,
                             $adl_chronic,$icu_indikator,$icu_los,$ventilator_hour,$upgrade_class_ind,$upgrade_class_class,
-                            $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure,
-                            $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,$no_rawat,$asalrujukan){	
+                            $upgrade_class_los,$add_payment_pct,$birth_weight,$discharge_status,$diagnosa,$procedure,$diagnosainacbg,$procedureinacbg,
+                            $tarif_poli_eks,$nama_dokter,$kode_tarif,$payor_id,$payor_cd,$cob_cd,$coder_nik,$norawat,$sistole,$diastole,$asalrujukan){	
         
         $prosedur_non_bedah="1";
         $prosedur_bedah="1";
@@ -218,6 +218,8 @@
                                 "upgrade_class_los": "'.$upgrade_class_los.'",
                                 "add_payment_pct": "'.$add_payment_pct.'",
                                 "birth_weight": "'.$birth_weight.'",
+                                "sistole": '.$sistole.',
+                                "diastole": '.$diastole.',
                                 "discharge_status": "'.$discharge_status.'",
                                 "tarif_rs": {
                                     "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
@@ -282,6 +284,8 @@
                                 "upgrade_class_los": "'.$upgrade_class_los.'",
                                 "add_payment_pct": "'.$add_payment_pct.'",
                                 "birth_weight": "'.$birth_weight.'",
+                                "sistole": '.$sistole.',
+                                "diastole": '.$diastole.',
                                 "discharge_status": "'.$discharge_status.'",
                                 "tarif_rs": {
                                     "prosedur_non_bedah": "'.$prosedur_non_bedah.'",
@@ -319,7 +323,7 @@
             SetDiagnosaDRG($nomor_sep, $diagnosa);
             SetProsedurDRG($nomor_sep, $procedure);
             if(GroupingDRG($nomor_sep)=="Ok"){
-                InacBGToDRG($nomor_sep);
+                InacBGToDRG($nomor_sep,$diagnosainacbg,$procedureinacbg);
                 GroupingStage1($nomor_sep,$coder_nik);
             }
         }
@@ -562,7 +566,7 @@
         echo $msg['metadata']['message']."";
     }
     
-     function GroupingStage1($nomor_sep,$coder_nik,$penyakit){	
+     function GroupingStage1($nomor_sep,$coder_nik){	
         $request ='{
                         "metadata": {
                             "method":"grouper",
@@ -578,7 +582,6 @@
             Hapus2("perkiraan_biaya_ranap", "no_rawat='".$nomor_sep."'");
             $cbg = validangka($msg['response_inacbg']['tariff']);
             InsertData2("perkiraan_biaya_ranap","'$nomor_sep','$penyakit','$cbg'");
-            echo"<meta http-equiv='refresh' content='1;URL=?aksi=Tampil'>";
         }
     }
     
@@ -610,7 +613,7 @@
         return $pesan;
     }
     
-    function InacBGToDRG($nomor_sep){	
+    function InacBGToDRG($nomor_sep,$diagnosainacbg,$procedureinacbg){	
         $request ='{
                     "metadata": {
                         "method": "idrg_to_inacbg_import"
@@ -621,11 +624,7 @@
                 }';
         $msg= Request($request);
         if($msg['metadata']['message']=="Ok"){
-            $diagnosa="";
-            if(isset($msg['data']['diagnosa']['string'])){
-                $diagnosa=$msg['data']['diagnosa']['string'];
-            }
-            if($diagnosa!=""){
+            if($diagnosainacbg!=""){
                 $request ='{
                                 "metadata": {
                                     "method": "inacbg_diagnosa_set",
@@ -642,17 +641,13 @@
                                     "nomor_sep": "'.$nomor_sep.'"
                                 },
                                 "data": {
-                                    "diagnosa": "'.$diagnosa.'"
+                                    "diagnosa": "'.$diagnosainacbg.'"
                                 }
                            }';
                 $msg= Request($request);
             }
-                
-            $prosedur="";
-            if(isset($msg['data']['procedure']['string'])){
-                $prosedur=$msg['data']['procedure']['string'];
-            }
-            if($prosedur!=""){
+               
+            if($procedureinacbg!=""){
                 $request ='{
                                 "metadata": {
                                     "method": "inacbg_procedure_set",
@@ -669,7 +664,7 @@
                                     "nomor_sep": "'.$nomor_sep.'"
                                 },
                                 "data": {
-                                    "procedure": "'.$prosedur.'"
+                                    "procedure": "'.$procedureinacbg.'"
                                 }
                            }';
                 $msg= Request($request);
