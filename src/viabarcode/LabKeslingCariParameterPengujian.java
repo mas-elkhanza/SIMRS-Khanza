@@ -388,7 +388,7 @@ public final class LabKeslingCariParameterPengujian extends javax.swing.JDialog 
             try{           
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)});
+                    tabMode.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
                     iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"NamaParameter\":\"").append(rs.getString(2)).append("\",\"MetodePengujian\":\"").append(rs.getString(3)).append("\",\"Satuan\":\"").append(rs.getString(4)).append("\",\"Kategori\":\"").append(rs.getString(5)).append("\"},");
                 }
             }catch(Exception e){
