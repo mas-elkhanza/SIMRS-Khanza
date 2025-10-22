@@ -653,16 +653,23 @@
                     </div>
                     <div role="tabpanel" <?=($status=="Aktif"?"class='tab-pane fade in active'":"class='tab-pane fade'")?> id="riwayat">
                         <form id="form_validation" action="" method="POST">
-                            <label for="tgl_cari_mcu">Tanggal MCU</label>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_mcu" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarimcu."-".$blncarimcu."-".$thncarimcu;?>"/>
+                            <div class="row clearfix">
+                                <div class="col-md-6">
+                                    <label for="tgl_cari_mcu">Tanggal MCU</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_mcu" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarimcu."-".$blncarimcu."-".$thncarimcu;?>"/>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <label for="tgl_cari_mcu2">Sampai Dengan</label>
-                            <div class="form-group">
-                                <div class="form-line">
-                                    <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_mcu2" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarimcu2."-".$blncarimcu2."-".$thncarimcu2;?>"/>
+
+                                <div class="col-md-6">
+                                    <label for="tgl_cari_mcu2">Sampai Dengan</label>
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" data-provide="datepicker" data-date-format="dd-mm-yyyy" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title=" DD-MM-YYYY" placeholder="DD-MM-YYYY" name="tgl_cari_mcu2" class="datepicker form-control" required autocomplete="off" value="<?=$tglcarimcu2."-".$blncarimcu2."-".$thncarimcu2;?>"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Cari Data MCU</button></center>

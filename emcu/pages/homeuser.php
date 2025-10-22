@@ -92,6 +92,24 @@
                             <span>Booking MCU</span>
                         </a>
                     </li>
+                    <li <?=$halaman=="ResumeHasilMCU"?"class='active'":""?>>
+                        <a href="index.php?act=ResumeHasilMCU">
+                            <i class="material-icons">assignment_turned_in</i>
+                            <span>Resume Pemeriksaan MCU</span>
+                        </a>
+                    </li>
+                    <li <?=$halaman=="ResumePenyakit"?"class='active'":""?>>
+                        <a href="index.php?act=ResumePenyakit">
+                            <i class="material-icons">folder_shared</i>
+                            <span>Resume Penyakit</span>
+                        </a>
+                    </li>
+                    <li <?=$halaman=="GrafikPemeriksaan"?"class='active'":""?>>
+                        <a href="index.php?act=GrafikPemeriksaan">
+                            <i class="material-icons">assessment</i>
+                            <span>Grafik Pemeriksaan MCU</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -124,6 +142,7 @@
     <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
     <script src="plugins/flot-charts/jquery.flot.categories.js"></script>
     <script src="plugins/flot-charts/jquery.flot.time.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.tooltip.min.js"></script>
     <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
     <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
