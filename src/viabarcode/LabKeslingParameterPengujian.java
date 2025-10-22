@@ -839,7 +839,8 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
                     "laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,laborat_kesling_parameter_pengujian.jasa_petugas,"+
                     "laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,laborat_kesling_parameter_pengujian.total from laborat_kesling_parameter_pengujian "+
                     (TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like '%"+TCari.getText().trim()+"%' or laborat_kesling_parameter_pengujian.nama_parameter like '%"+TCari.getText().trim()+"%' "+
-                    "or laborat_kesling_parameter_pengujian.metode_pengujian like '%"+TCari.getText().trim()+"%' ")+"order by laborat_kesling_parameter_pengujian.kode_parameter",param);   
+                    "or laborat_kesling_parameter_pengujian.metode_pengujian like '%"+TCari.getText().trim()+"%' or laborat_kesling_parameter_pengujian.kategori like '%"+TCari.getText().trim()+"%' ")+
+                    "order by laborat_kesling_parameter_pengujian.kode_parameter",param);   
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -1061,12 +1062,13 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         "laborat_kesling_parameter_pengujian.kategori,laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,"+
                         "laborat_kesling_parameter_pengujian.jasa_petugas,laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,laborat_kesling_parameter_pengujian.total from laborat_kesling_parameter_pengujian "+
                         (TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like ? or laborat_kesling_parameter_pengujian.nama_parameter like ? "+
-                        "or laborat_kesling_parameter_pengujian.metode_pengujian like ? ")+"order by laborat_kesling_parameter_pengujian.kode_parameter");
+                        "or laborat_kesling_parameter_pengujian.metode_pengujian like ? or laborat_kesling_parameter_pengujian.kategori like ? ")+"order by laborat_kesling_parameter_pengujian.kode_parameter");
             try {    
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
