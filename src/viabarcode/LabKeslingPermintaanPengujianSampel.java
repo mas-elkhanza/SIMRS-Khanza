@@ -415,7 +415,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(TPasien);
         TPasien.setBounds(332, 12, 300, 23);
 
-        jLabel9.setText("Dokter Perujuk :");
+        jLabel9.setText("Penerima Sampel :");
         jLabel9.setName("jLabel9"); // NOI18N
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 42, 92, 23);
