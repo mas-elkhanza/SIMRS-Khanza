@@ -616,10 +616,16 @@ public class PanelDiagnosa extends widget.panelisi {
         if(tabModeDiagnosa.getRowCount()!=0){
             try {
                 if(tbDiagnosa.getSelectedRow()!= -1){
-                    if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("0")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),11).toString().equals("1")){
+                    if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("0")){
                         tbDiagnosa.setValueAt(false,tbDiagnosa.getSelectedRow(),0);
                         tbDiagnosa.setValueAt("",tbDiagnosa.getSelectedRow(),11);
-                        JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi diagnosa utama..!! ");
+                        JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" valid code 0. Hanya berfungsi sebagai header..!!");
+                    }else if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("1")){
+                        if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),8).toString().equals("N")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),11).toString().equals("1")){
+                            tbDiagnosa.setValueAt(false,tbDiagnosa.getSelectedRow(),0);
+                            tbDiagnosa.setValueAt("",tbDiagnosa.getSelectedRow(),11);
+                            JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" Accpdx N. Tidak bisa menjadi diagnosa utama..!!");
+                        }
                     }
                 }
             } catch (java.lang.NullPointerException e) {
@@ -631,10 +637,16 @@ public class PanelDiagnosa extends widget.panelisi {
         if(tabModeDiagnosa.getRowCount()!=0){
             try {
                 if(tbDiagnosa.getSelectedRow()!= -1){
-                    if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("0")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),11).toString().equals("1")){
+                    if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("0")){
                         tbDiagnosa.setValueAt(false,tbDiagnosa.getSelectedRow(),0);
                         tbDiagnosa.setValueAt("",tbDiagnosa.getSelectedRow(),11);
-                        JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi diagnosa utama..!! ");
+                        JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" valid code 0. Hanya berfungsi sebagai header..!!");
+                    }else if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString().equals("true")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),7).toString().equals("1")){
+                        if(tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),8).toString().equals("N")&&tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),11).toString().equals("1")){
+                            tbDiagnosa.setValueAt(false,tbDiagnosa.getSelectedRow(),0);
+                            tbDiagnosa.setValueAt("",tbDiagnosa.getSelectedRow(),11);
+                            JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),1).toString()+" Accpdx N. Tidak bisa menjadi diagnosa utama..!!");
+                        }
                     }
                 }
             } catch (java.lang.NullPointerException e) {
@@ -647,12 +659,18 @@ public class PanelDiagnosa extends widget.panelisi {
         for(int z=0;z<tbDiagnosa.getRowCount();z++){ 
             if(tbDiagnosa.getValueAt(z,0).toString().equals("true")){
                 tbDiagnosa.setValueAt(i,z,11);
-                if(tbDiagnosa.getValueAt(z,0).toString().equals("true")&&tbDiagnosa.getValueAt(z,7).toString().equals("0")&&tbDiagnosa.getValueAt(z,11).toString().equals("1")){
+                if(tbDiagnosa.getValueAt(z,0).toString().equals("true")&&tbDiagnosa.getValueAt(z,7).toString().equals("0")){
                     tbDiagnosa.setValueAt(false,z,0);
                     tbDiagnosa.setValueAt("",z,11);
-                    JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(z,1).toString()+" valid code 0. Tidak bisa menjadi diagnosa utama..!! ");
-                }else{
-                    i++;
+                    JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(z,1).toString()+" valid code 0. Hanya berfungsi sebagai header..!!");
+                }else if(tbDiagnosa.getValueAt(z,0).toString().equals("true")&&tbDiagnosa.getValueAt(z,7).toString().equals("1")){
+                    if(tbDiagnosa.getValueAt(z,8).toString().equals("N")&&tbDiagnosa.getValueAt(z,11).toString().equals("1")){
+                        tbDiagnosa.setValueAt(false,z,0);
+                        tbDiagnosa.setValueAt("",z,11);
+                        JOptionPane.showMessageDialog(null,"Maaf, kode diagnosa "+tbDiagnosa.getValueAt(z,1).toString()+" Accpdx N. Tidak bisa menjadi diagnosa utama..!!");
+                    }else{
+                        i++;
+                    }
                 }
             }else{
                 tbDiagnosa.setValueAt("",z,11);
@@ -665,11 +683,18 @@ public class PanelDiagnosa extends widget.panelisi {
             try {
                 if(tbProsedur.getSelectedRow()!= -1){
                     if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),0).toString().equals("true")){
-                        if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),4).toString().equals("0")&&tbProsedur.getValueAt(tbProsedur.getSelectedRow(),7).toString().equals("1")){
+                        if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),4).toString().equals("0")){
                             tbProsedur.setValueAt(false,tbProsedur.getSelectedRow(),0);
                             tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),7);
                             tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),8);
-                            JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(tbProsedur.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi prosedur utama..!! ");
+                            JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(tbProsedur.getSelectedRow(),1).toString()+" valid code 0. Hanya berfungsi sebagai header..!!");
+                        }else if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),4).toString().equals("1")){
+                            if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),5).toString().equals("N")&&tbProsedur.getValueAt(tbProsedur.getSelectedRow(),7).toString().equals("1")){
+                                tbProsedur.setValueAt(false,tbProsedur.getSelectedRow(),0);
+                                tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),7);
+                                tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),8);
+                                JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(tbProsedur.getSelectedRow(),1).toString()+" Accpdx N. Tidak bisa menjadi prosedur utama..!!");
+                            }
                         }
                     }
                 }
@@ -683,11 +708,18 @@ public class PanelDiagnosa extends widget.panelisi {
             try {
                 if(tbProsedur.getSelectedRow()!= -1){
                     if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),0).toString().equals("true")){
-                        if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),4).toString().equals("0")&&tbProsedur.getValueAt(tbProsedur.getSelectedRow(),7).toString().equals("1")){
+                        if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),4).toString().equals("0")){
                             tbProsedur.setValueAt(false,tbProsedur.getSelectedRow(),0);
                             tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),7);
                             tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),8);
-                            JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(tbProsedur.getSelectedRow(),1).toString()+" valid code 0. Tidak bisa menjadi prosedur utama..!! ");
+                            JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(tbProsedur.getSelectedRow(),1).toString()+" valid code 0. Hanya berfungsi sebagai header..!!");
+                        }else if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),4).toString().equals("1")){
+                            if(tbProsedur.getValueAt(tbProsedur.getSelectedRow(),5).toString().equals("N")&&tbProsedur.getValueAt(tbProsedur.getSelectedRow(),7).toString().equals("1")){
+                                tbProsedur.setValueAt(false,tbProsedur.getSelectedRow(),0);
+                                tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),7);
+                                tbProsedur.setValueAt("",tbProsedur.getSelectedRow(),8);
+                                JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(tbProsedur.getSelectedRow(),1).toString()+" Accpdx N. Tidak bisa menjadi prosedur utama..!!");
+                            }
                         }
                     }
                 }
@@ -704,13 +736,20 @@ public class PanelDiagnosa extends widget.panelisi {
                 if(tbProsedur.getValueAt(z,8).toString().equals("")){
                     tbProsedur.setValueAt("1",z,8);
                 }
-                if(tbProsedur.getValueAt(z,0).toString().equals("true")&&tbProsedur.getValueAt(z,4).toString().equals("0")&&tbProsedur.getValueAt(z,7).toString().equals("1")){
+                if(tbProsedur.getValueAt(z,0).toString().equals("true")&&tbProsedur.getValueAt(z,4).toString().equals("0")){
                     tbProsedur.setValueAt(false,z,0);
                     tbProsedur.setValueAt("",z,7);
                     tbProsedur.setValueAt("",z,8);
-                    JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(z,1).toString()+" valid code 0. Tidak bisa menjadi prosedur utama..!! ");
-                }else{
-                    i++;
+                    JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(z,1).toString()+" valid code 0. Hanya berfungsi sebagai header..!!");
+                }else if(tbProsedur.getValueAt(z,0).toString().equals("true")&&tbProsedur.getValueAt(z,4).toString().equals("1")){
+                    if(tbProsedur.getValueAt(z,5).toString().equals("N")&&tbProsedur.getValueAt(z,7).toString().equals("1")){
+                        tbProsedur.setValueAt(false,z,0);
+                        tbProsedur.setValueAt("",z,7);
+                        tbProsedur.setValueAt("",z,8);
+                        JOptionPane.showMessageDialog(null,"Maaf, kode prosedur "+tbProsedur.getValueAt(z,1).toString()+" Accpdx N. Tidak bisa menjadi prosedur utama..!!");
+                    }else{
+                        i++;
+                    }
                 }
             }else{
                 tbProsedur.setValueAt("",z,7);
