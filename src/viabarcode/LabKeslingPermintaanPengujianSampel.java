@@ -113,8 +113,8 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         KodePelanggan.setDocument(new batasInput((byte)17).getKata(KodePelanggan));
         KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));
         TNoPermintaan.setDocument(new batasInput((byte)15).getKata(TNoPermintaan));
-        InformasiTambahan.setDocument(new batasInput((int)60).getKata(InformasiTambahan));
-        DiagnosisKlinis.setDocument(new batasInput((int)80).getKata(DiagnosisKlinis));
+        LokasiSampling.setDocument(new batasInput((int)60).getKata(LokasiSampling));
+        DeskripsiSampling.setDocument(new batasInput((int)80).getKata(DeskripsiSampling));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCariPeriksa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
@@ -203,26 +203,26 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         jLabel15 = new widget.Label();
         jLabel4 = new widget.Label();
         TNoPermintaan = new widget.TextBox();
-        InformasiTambahan = new widget.TextBox();
+        LokasiSampling = new widget.TextBox();
         jLabel5 = new widget.Label();
-        DiagnosisKlinis = new widget.TextBox();
+        DeskripsiSampling = new widget.TextBox();
         jLabel6 = new widget.Label();
         btnPelanggan = new widget.Button();
         jLabel7 = new widget.Label();
         jLabel16 = new widget.Label();
         Tanggal1 = new widget.Tanggal();
         jLabel8 = new widget.Label();
-        DiagnosisKlinis1 = new widget.TextBox();
-        DiagnosisKlinis2 = new widget.TextBox();
+        JenisSampel = new widget.TextBox();
+        JmlSampel = new widget.TextBox();
         jLabel11 = new widget.Label();
         jLabel12 = new widget.Label();
-        DiagnosisKlinis3 = new widget.TextBox();
-        DiagnosisKlinis4 = new widget.TextBox();
+        VolumeSampel = new widget.TextBox();
+        WadahSampel = new widget.TextBox();
         jLabel13 = new widget.Label();
-        DiagnosisKlinis5 = new widget.TextBox();
+        KondisiWadah = new widget.TextBox();
         jLabel14 = new widget.Label();
         jLabel17 = new widget.Label();
-        DiagnosisKlinis6 = new widget.TextBox();
+        DisamplingOleh = new widget.TextBox();
         jLabel18 = new widget.Label();
         KodeSampel = new widget.TextBox();
         NamaSampel = new widget.TextBox();
@@ -494,30 +494,30 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(TNoPermintaan);
         TNoPermintaan.setBounds(550, 40, 130, 23);
 
-        InformasiTambahan.setHighlighter(null);
-        InformasiTambahan.setName("InformasiTambahan"); // NOI18N
-        InformasiTambahan.addKeyListener(new java.awt.event.KeyAdapter() {
+        LokasiSampling.setHighlighter(null);
+        LokasiSampling.setName("LokasiSampling"); // NOI18N
+        LokasiSampling.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                InformasiTambahanKeyPressed(evt);
+                LokasiSamplingKeyPressed(evt);
             }
         });
-        PanelInput.add(InformasiTambahan);
-        InformasiTambahan.setBounds(104, 100, 230, 23);
+        PanelInput.add(LokasiSampling);
+        LokasiSampling.setBounds(104, 100, 230, 23);
 
         jLabel5.setText("Lokasi Sampling :");
         jLabel5.setName("jLabel5"); // NOI18N
         PanelInput.add(jLabel5);
         jLabel5.setBounds(0, 100, 100, 23);
 
-        DiagnosisKlinis.setHighlighter(null);
-        DiagnosisKlinis.setName("DiagnosisKlinis"); // NOI18N
-        DiagnosisKlinis.addKeyListener(new java.awt.event.KeyAdapter() {
+        DeskripsiSampling.setHighlighter(null);
+        DeskripsiSampling.setName("DeskripsiSampling"); // NOI18N
+        DeskripsiSampling.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisKlinisKeyPressed(evt);
+                DeskripsiSamplingKeyPressed(evt);
             }
         });
-        PanelInput.add(DiagnosisKlinis);
-        DiagnosisKlinis.setBounds(450, 100, 230, 23);
+        PanelInput.add(DeskripsiSampling);
+        DeskripsiSampling.setBounds(450, 100, 230, 23);
 
         jLabel6.setText("Deskripsi Sampel :");
         jLabel6.setName("jLabel6"); // NOI18N
@@ -568,25 +568,25 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel8);
         jLabel8.setBounds(0, 130, 100, 23);
 
-        DiagnosisKlinis1.setHighlighter(null);
-        DiagnosisKlinis1.setName("DiagnosisKlinis1"); // NOI18N
-        DiagnosisKlinis1.addKeyListener(new java.awt.event.KeyAdapter() {
+        JenisSampel.setHighlighter(null);
+        JenisSampel.setName("JenisSampel"); // NOI18N
+        JenisSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisKlinis1KeyPressed(evt);
+                JenisSampelKeyPressed(evt);
             }
         });
-        PanelInput.add(DiagnosisKlinis1);
-        DiagnosisKlinis1.setBounds(104, 130, 140, 23);
+        PanelInput.add(JenisSampel);
+        JenisSampel.setBounds(104, 130, 140, 23);
 
-        DiagnosisKlinis2.setHighlighter(null);
-        DiagnosisKlinis2.setName("DiagnosisKlinis2"); // NOI18N
-        DiagnosisKlinis2.addKeyListener(new java.awt.event.KeyAdapter() {
+        JmlSampel.setHighlighter(null);
+        JmlSampel.setName("JmlSampel"); // NOI18N
+        JmlSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisKlinis2KeyPressed(evt);
+                JmlSampelKeyPressed(evt);
             }
         });
-        PanelInput.add(DiagnosisKlinis2);
-        DiagnosisKlinis2.setBounds(330, 130, 60, 23);
+        PanelInput.add(JmlSampel);
+        JmlSampel.setBounds(330, 130, 59, 23);
 
         jLabel11.setText("Jml Sampel :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -598,40 +598,40 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel12);
         jLabel12.setBounds(0, 160, 100, 23);
 
-        DiagnosisKlinis3.setHighlighter(null);
-        DiagnosisKlinis3.setName("DiagnosisKlinis3"); // NOI18N
-        DiagnosisKlinis3.addKeyListener(new java.awt.event.KeyAdapter() {
+        VolumeSampel.setHighlighter(null);
+        VolumeSampel.setName("VolumeSampel"); // NOI18N
+        VolumeSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisKlinis3KeyPressed(evt);
+                VolumeSampelKeyPressed(evt);
             }
         });
-        PanelInput.add(DiagnosisKlinis3);
-        DiagnosisKlinis3.setBounds(104, 160, 100, 23);
+        PanelInput.add(VolumeSampel);
+        VolumeSampel.setBounds(104, 160, 100, 23);
 
-        DiagnosisKlinis4.setHighlighter(null);
-        DiagnosisKlinis4.setName("DiagnosisKlinis4"); // NOI18N
-        DiagnosisKlinis4.addKeyListener(new java.awt.event.KeyAdapter() {
+        WadahSampel.setHighlighter(null);
+        WadahSampel.setName("WadahSampel"); // NOI18N
+        WadahSampel.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisKlinis4KeyPressed(evt);
+                WadahSampelKeyPressed(evt);
             }
         });
-        PanelInput.add(DiagnosisKlinis4);
-        DiagnosisKlinis4.setBounds(268, 160, 130, 23);
+        PanelInput.add(WadahSampel);
+        WadahSampel.setBounds(268, 160, 130, 23);
 
         jLabel13.setText("Wadah :");
         jLabel13.setName("jLabel13"); // NOI18N
         PanelInput.add(jLabel13);
         jLabel13.setBounds(204, 160, 60, 23);
 
-        DiagnosisKlinis5.setHighlighter(null);
-        DiagnosisKlinis5.setName("DiagnosisKlinis5"); // NOI18N
-        DiagnosisKlinis5.addKeyListener(new java.awt.event.KeyAdapter() {
+        KondisiWadah.setHighlighter(null);
+        KondisiWadah.setName("KondisiWadah"); // NOI18N
+        KondisiWadah.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisKlinis5KeyPressed(evt);
+                KondisiWadahKeyPressed(evt);
             }
         });
-        PanelInput.add(DiagnosisKlinis5);
-        DiagnosisKlinis5.setBounds(500, 160, 180, 23);
+        PanelInput.add(KondisiWadah);
+        KondisiWadah.setBounds(500, 160, 180, 23);
 
         jLabel14.setText("Kondisi Wadah :");
         jLabel14.setName("jLabel14"); // NOI18N
@@ -643,15 +643,15 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel17);
         jLabel17.setBounds(396, 130, 140, 23);
 
-        DiagnosisKlinis6.setHighlighter(null);
-        DiagnosisKlinis6.setName("DiagnosisKlinis6"); // NOI18N
-        DiagnosisKlinis6.addKeyListener(new java.awt.event.KeyAdapter() {
+        DisamplingOleh.setHighlighter(null);
+        DisamplingOleh.setName("DisamplingOleh"); // NOI18N
+        DisamplingOleh.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                DiagnosisKlinis6KeyPressed(evt);
+                DisamplingOlehKeyPressed(evt);
             }
         });
-        PanelInput.add(DiagnosisKlinis6);
-        DiagnosisKlinis6.setBounds(540, 130, 140, 23);
+        PanelInput.add(DisamplingOleh);
+        DisamplingOleh.setBounds(540, 130, 140, 23);
 
         jLabel18.setText("Kode Sampel :");
         jLabel18.setName("jLabel18"); // NOI18N
@@ -909,7 +909,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt, DiagnosisKlinis,BtnBatal);
+            Valid.pindah(evt, DeskripsiSampling,BtnBatal);
         }
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1056,16 +1056,16 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_TCariPeriksaActionPerformed
 
     private void TNoPermintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoPermintaanKeyPressed
-        Valid.pindah(evt,TCariPeriksa,InformasiTambahan);
+        Valid.pindah(evt,TCariPeriksa,LokasiSampling);
     }//GEN-LAST:event_TNoPermintaanKeyPressed
 
-    private void InformasiTambahanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InformasiTambahanKeyPressed
-        Valid.pindah(evt,TNoPermintaan,DiagnosisKlinis);
-    }//GEN-LAST:event_InformasiTambahanKeyPressed
+    private void LokasiSamplingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LokasiSamplingKeyPressed
+        Valid.pindah(evt,TNoPermintaan,DeskripsiSampling);
+    }//GEN-LAST:event_LokasiSamplingKeyPressed
 
-    private void DiagnosisKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKlinisKeyPressed
-        Valid.pindah(evt,InformasiTambahan,BtnSimpan);
-    }//GEN-LAST:event_DiagnosisKlinisKeyPressed
+    private void DeskripsiSamplingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DeskripsiSamplingKeyPressed
+        Valid.pindah(evt,LokasiSampling,BtnSimpan);
+    }//GEN-LAST:event_DeskripsiSamplingKeyPressed
 
     private void TanggalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalItemStateChanged
         try {
@@ -1126,29 +1126,29 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         // TODO add your handling code here:
     }//GEN-LAST:event_Tanggal1KeyPressed
 
-    private void DiagnosisKlinis1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKlinis1KeyPressed
+    private void JenisSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisSampelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DiagnosisKlinis1KeyPressed
+    }//GEN-LAST:event_JenisSampelKeyPressed
 
-    private void DiagnosisKlinis2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKlinis2KeyPressed
+    private void JmlSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JmlSampelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DiagnosisKlinis2KeyPressed
+    }//GEN-LAST:event_JmlSampelKeyPressed
 
-    private void DiagnosisKlinis3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKlinis3KeyPressed
+    private void VolumeSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VolumeSampelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DiagnosisKlinis3KeyPressed
+    }//GEN-LAST:event_VolumeSampelKeyPressed
 
-    private void DiagnosisKlinis4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKlinis4KeyPressed
+    private void WadahSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WadahSampelKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DiagnosisKlinis4KeyPressed
+    }//GEN-LAST:event_WadahSampelKeyPressed
 
-    private void DiagnosisKlinis5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKlinis5KeyPressed
+    private void KondisiWadahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KondisiWadahKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DiagnosisKlinis5KeyPressed
+    }//GEN-LAST:event_KondisiWadahKeyPressed
 
-    private void DiagnosisKlinis6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisKlinis6KeyPressed
+    private void DisamplingOlehKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DisamplingOlehKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DiagnosisKlinis6KeyPressed
+    }//GEN-LAST:event_DisamplingOlehKeyPressed
 
     private void BtnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSampelActionPerformed
         LabKeslingCariMasterSampelBakuMutu sampel=new LabKeslingCariMasterSampelBakuMutu(null,false);
@@ -1225,19 +1225,17 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.ComboBox CmbDetik;
     private widget.ComboBox CmbJam;
     private widget.ComboBox CmbMenit;
-    private widget.TextBox DiagnosisKlinis;
-    private widget.TextBox DiagnosisKlinis1;
-    private widget.TextBox DiagnosisKlinis2;
-    private widget.TextBox DiagnosisKlinis3;
-    private widget.TextBox DiagnosisKlinis4;
-    private widget.TextBox DiagnosisKlinis5;
-    private widget.TextBox DiagnosisKlinis6;
+    private widget.TextBox DeskripsiSampling;
+    private widget.TextBox DisamplingOleh;
     private javax.swing.JPanel FormInput;
-    private widget.TextBox InformasiTambahan;
+    private widget.TextBox JenisSampel;
+    private widget.TextBox JmlSampel;
     private widget.ComboBox Kategori;
     private widget.TextBox KdPetugas;
     private widget.TextBox KodePelanggan;
     private widget.TextBox KodeSampel;
+    private widget.TextBox KondisiWadah;
+    private widget.TextBox LokasiSampling;
     private widget.TextBox NamaPelanggan;
     private widget.TextBox NamaSampel;
     private widget.TextBox NmPetugas;
@@ -1247,6 +1245,8 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox TNoPermintaan;
     private widget.Tanggal Tanggal;
     private widget.Tanggal Tanggal1;
+    private widget.TextBox VolumeSampel;
+    private widget.TextBox WadahSampel;
     private widget.Button btnCariPeriksa;
     private widget.Button btnPelanggan;
     private widget.Button btnPetugas;
@@ -1444,8 +1444,22 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
     
     public void emptTeks() {
-        TCariPeriksa.setText("");
         TNoPermintaan.requestFocus();
+        KodePelanggan.setText("");
+        NamaPelanggan.setText("");
+        AlamatPelanggan.setText("");
+        LokasiSampling.setText("");
+        DeskripsiSampling.setText("");
+        JenisSampel.setText("");
+        JmlSampel.setText("");
+        DisamplingOleh.setText("");
+        VolumeSampel.setText("");
+        WadahSampel.setText("");
+        KondisiWadah.setText("");
+        KodeSampel.setText("");
+        NamaSampel.setText("");
+        BakuMutu.setText("");
+        isReset();
         autoNomor();
     }
     
@@ -1617,7 +1631,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         TNoPermintaan.getText(),KodePelanggan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                         CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
                         "0000-00-00","00:00:00","0000-00-00","00:00:00",KdPetugas.getText(),status.replaceAll("R","r"),
-                        InformasiTambahan.getText(),DiagnosisKlinis.getText()
+                        LokasiSampling.getText(),DeskripsiSampling.getText()
                     })==true){
                     for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                         if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -1634,7 +1648,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             TNoPermintaan.getText(),KodePelanggan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                             CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
                             "0000-00-00","00:00:00","0000-00-00","00:00:00",KdPetugas.getText(),status.replaceAll("R","r"),
-                            InformasiTambahan.getText(),DiagnosisKlinis.getText()
+                            LokasiSampling.getText(),DeskripsiSampling.getText()
                         })==true){
                         for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                             if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -1651,7 +1665,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 TNoPermintaan.getText(),KodePelanggan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                                 CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
                                 "0000-00-00","00:00:00","0000-00-00","00:00:00",KdPetugas.getText(),status.replaceAll("R","r"),
-                                InformasiTambahan.getText(),DiagnosisKlinis.getText()
+                                LokasiSampling.getText(),DeskripsiSampling.getText()
                             })==true){
                             for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -1668,7 +1682,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     TNoPermintaan.getText(),KodePelanggan.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),
                                     CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(), 
                                     "0000-00-00","00:00:00","0000-00-00","00:00:00",KdPetugas.getText(),status.replaceAll("R","r"),
-                                    InformasiTambahan.getText(),DiagnosisKlinis.getText()
+                                    LokasiSampling.getText(),DeskripsiSampling.getText()
                                 })==true){
                                 for(i=0;i<tbPemeriksaan.getRowCount();i++){ 
                                     if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
