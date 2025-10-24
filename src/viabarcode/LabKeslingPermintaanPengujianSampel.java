@@ -243,6 +243,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         TCariPeriksa = new widget.TextBox();
         btnCariPeriksa = new widget.Button();
         BtnAllPeriksa = new widget.Button();
+        BtnTambah = new widget.Button();
         Scroll2 = new widget.ScrollPane();
         tbPemeriksaan = new widget.Table();
 
@@ -743,7 +744,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
 
         TCariPeriksa.setToolTipText("Alt+C");
         TCariPeriksa.setName("TCariPeriksa"); // NOI18N
-        TCariPeriksa.setPreferredSize(new java.awt.Dimension(313, 23));
+        TCariPeriksa.setPreferredSize(new java.awt.Dimension(281, 23));
         TCariPeriksa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TCariPeriksaActionPerformed(evt);
@@ -789,6 +790,18 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
             }
         });
         panelisi5.add(BtnAllPeriksa);
+
+        BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
+        BtnTambah.setMnemonic('3');
+        BtnTambah.setToolTipText("Alt+3");
+        BtnTambah.setName("BtnTambah"); // NOI18N
+        BtnTambah.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTambahActionPerformed(evt);
+            }
+        });
+        panelisi5.add(BtnTambah);
 
         jPanel3.add(panelisi5, java.awt.BorderLayout.PAGE_END);
 
@@ -1234,6 +1247,19 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LabKeslingNilaiNormalBakuMutu form=new LabKeslingNilaiNormalBakuMutu(null,false);
+        form.emptTeks();
+        form.isCek();
+        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        form.setLocationRelativeTo(internalFrame1);
+        form.setAlwaysOnTop(false);
+        form.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+
+    }//GEN-LAST:event_BtnTambahActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1260,6 +1286,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button BtnPrint;
     private widget.Button BtnSampel;
     private widget.Button BtnSimpan;
+    private widget.Button BtnTambah;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkJln;
     private widget.ComboBox CmbDetik;
@@ -1541,6 +1568,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     public void isCek(){        
         BtnSimpan.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());
         BtnPrint.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());
+        BtnTambah.setEnabled(akses.getnilai_normal_baku_mutu_lab_kesehatan_lingkungan());
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             btnPetugas.setEnabled(false);
