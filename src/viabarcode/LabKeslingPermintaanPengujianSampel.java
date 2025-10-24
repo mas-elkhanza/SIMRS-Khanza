@@ -53,13 +53,11 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement psset_tarif,pspemeriksaan;
+    private PreparedStatement ps;
     private ResultSet rs,rsset_tarif;
     private boolean[] pilih; 
-    private String[] kode,nama;
+    private String[] Kode,NamaParameter,MetodePengujian,Satuan,Kategori;
     private int jml=0,i=0,index=0,jmlparsial=0;
-    private String kelas_radiologi="Yes",kelas="",cara_bayar_radiologi="Yes",kamar,namakamar,status="",
-            norawatibu="",aktifkanparsial="no",finger="";
     private File file;
     private FileWriter fileWriter;
     private ObjectMapper mapper = new ObjectMapper();
@@ -75,7 +73,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         super(parent, modal);
         initComponents();
         
-        Object[] row={"P","Kode Periksa","Nama Pemeriksaan"};
+        Object[] row={"P","Kode","Nama Parameter","Metode Pengujian","Satuan","Kategori"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -85,7 +83,8 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
                 return a;
              }
              Class[] types = new Class[] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -98,14 +97,20 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         tbPemeriksaan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbPemeriksaan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 3; i++) {
+        for(i = 0; i < 6; i++) {
             TableColumn column = tbPemeriksaan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(20);
             }else if(i==1){
-                column.setPreferredWidth(130);
+                column.setPreferredWidth(80);
             }else if(i==2){
-                column.setPreferredWidth(480);
+                column.setPreferredWidth(220);
+            }else if(i==3){
+                column.setPreferredWidth(190);
+            }else if(i==4){
+                column.setPreferredWidth(70);
+            }else if(i==5){
+                column.setPreferredWidth(70);
             }
         }
         tbPemeriksaan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -181,7 +186,8 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
         BtnPrint = new widget.Button();
-        jLabel10 = new widget.Label();
+        label11 = new widget.Label();
+        LCount = new widget.Label();
         BtnCari = new widget.Button();
         BtnKeluar = new widget.Button();
         FormInput = new javax.swing.JPanel();
@@ -232,7 +238,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         jPanel3 = new javax.swing.JPanel();
         panelisi5 = new widget.panelisi();
         jLabel19 = new widget.Label();
-        Kategori = new widget.ComboBox();
+        KategoriParameter = new widget.ComboBox();
         label10 = new widget.Label();
         TCariPeriksa = new widget.TextBox();
         btnCariPeriksa = new widget.Button();
@@ -243,6 +249,11 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Permintaan Pengujian Sampel Laboratorium Kesehatan Lingkungan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -306,9 +317,16 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         });
         panelGlass8.add(BtnPrint);
 
-        jLabel10.setName("jLabel10"); // NOI18N
-        jLabel10.setPreferredSize(new java.awt.Dimension(153, 30));
-        panelGlass8.add(jLabel10);
+        label11.setText("Record :");
+        label11.setName("label11"); // NOI18N
+        label11.setPreferredSize(new java.awt.Dimension(80, 23));
+        panelGlass8.add(label11);
+
+        LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LCount.setText("0");
+        LCount.setName("LCount"); // NOI18N
+        LCount.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelGlass8.add(LCount);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnCari.setMnemonic('C');
@@ -713,10 +731,10 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         jLabel19.setPreferredSize(new java.awt.Dimension(110, 23));
         panelisi5.add(jLabel19);
 
-        Kategori.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Fisika", "Kimia", "Mikrobiologi" }));
-        Kategori.setName("Kategori"); // NOI18N
-        Kategori.setPreferredSize(new java.awt.Dimension(110, 23));
-        panelisi5.add(Kategori);
+        KategoriParameter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Fisika", "Kimia", "Mikrobiologi" }));
+        KategoriParameter.setName("KategoriParameter"); // NOI18N
+        KategoriParameter.setPreferredSize(new java.awt.Dimension(110, 23));
+        panelisi5.add(KategoriParameter);
 
         label10.setText("Key Word :");
         label10.setName("label10"); // NOI18N
@@ -847,21 +865,33 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_TCariPeriksaKeyPressed
 
     private void btnCariPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPeriksaActionPerformed
-        tampil2();
+        if(KodeSampel.getText().trim().equals("")||NamaSampel.getText().trim().equals("")){
+            Valid.textKosong(BtnSampel,"Kode Sampel");
+        }else{
+            tampil2();
+        }
     }//GEN-LAST:event_btnCariPeriksaActionPerformed
 
     private void btnCariPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariPeriksaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil2();
+            if(KodeSampel.getText().trim().equals("")||NamaSampel.getText().trim().equals("")){
+                Valid.textKosong(BtnSampel,"Kode Sampel");
+            }else{
+                tampil2();
+            }
         }else{
             Valid.pindah(evt, TCariPeriksa, BtnAllPeriksa);
         }
     }//GEN-LAST:event_btnCariPeriksaKeyPressed
 
     private void BtnAllPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllPeriksaActionPerformed
-        TCariPeriksa.setText("");
-        tampil();
-        tampil2();
+        if(KodeSampel.getText().trim().equals("")||NamaSampel.getText().trim().equals("")){
+            Valid.textKosong(BtnSampel,"Kode Sampel");
+        }else{
+            TCariPeriksa.setText("");
+            tampil();
+            tampil2();
+        }
     }//GEN-LAST:event_BtnAllPeriksaActionPerformed
 
     private void BtnAllPeriksaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllPeriksaKeyPressed
@@ -1163,6 +1193,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     KodeSampel.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),0).toString());
                     NamaSampel.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),1).toString());
                     BakuMutu.setText(sampel.getTable().getValueAt(sampel.getTable().getSelectedRow(),2).toString());
+                    tampil2();
                 }  
                 BtnSampel.requestFocus();
             }
@@ -1193,6 +1224,15 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         sampel.setLocationRelativeTo(internalFrame1);
         sampel.setVisible(true);
     }//GEN-LAST:event_BtnSampelActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            if(Valid.daysOld("./cache/permintaanpengujiansampellabkesling.iyem")>30){
+                tampil();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
@@ -1230,11 +1270,12 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JPanel FormInput;
     private widget.TextBox JenisSampel;
     private widget.TextBox JmlSampel;
-    private widget.ComboBox Kategori;
+    private widget.ComboBox KategoriParameter;
     private widget.TextBox KdPetugas;
     private widget.TextBox KodePelanggan;
     private widget.TextBox KodeSampel;
     private widget.TextBox KondisiWadah;
+    private widget.Label LCount;
     private widget.TextBox LokasiSampling;
     private widget.TextBox NamaPelanggan;
     private widget.TextBox NamaSampel;
@@ -1251,7 +1292,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button btnPelanggan;
     private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
     private widget.Label jLabel13;
@@ -1270,6 +1310,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private widget.Label label10;
+    private widget.Label label11;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelisi5;
     private widget.ScrollPane scrollInput;
@@ -1277,46 +1318,50 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     // End of variables declaration//GEN-END:variables
     
     
-    private void tampil() {         
-        /*try{
-            file=new File("./cache/permintaanradiologi.iyem");
+    private void tampil() {
+        Valid.tabelKosong(tabMode);
+        try {
+            file=new File("./cache/permintaanpengujiansampellabkesling.iyem");
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
-        
-            pspemeriksaan=koneksi.prepareStatement(
-                    "select jns_perawatan_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,jns_perawatan_radiologi.kd_pj,jns_perawatan_radiologi.kelas from jns_perawatan_radiologi where jns_perawatan_radiologi.status='1' order by jns_perawatan_radiologi.kd_jenis_prw");
-            try {
-                rs=pspemeriksaan.executeQuery();
+            ps=koneksi.prepareStatement(
+                "select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,laborat_kesling_parameter_pengujian.kategori,laborat_kesling_nilai_normal_baku_mutu.kode_sampel "+
+                "from laborat_kesling_parameter_pengujian inner join laborat_kesling_nilai_normal_baku_mutu on laborat_kesling_nilai_normal_baku_mutu.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter order by laborat_kesling_nilai_normal_baku_mutu.kode_sampel"
+            );
+            try{           
+                rs=ps.executeQuery();
                 while(rs.next()){
-                    iyembuilder.append("{\"KodePeriksa\":\"").append(rs.getString(1)).append("\",\"NamaPemeriksaan\":\"").append(rs.getString(2).replaceAll("\"","")).append("\",\"KodePJ\":\"").append(rs.getString(3)).append("\",\"Kelas\":\"").append(rs.getString(4)).append("\"},");
+                    iyembuilder.append("{\"Kode\":\"").append(rs.getString(1)).append("\",\"NamaParameter\":\"").append(rs.getString(2)).append("\",\"MetodePengujian\":\"").append(rs.getString(3)).append("\",\"Satuan\":\"").append(rs.getString(4)).append("\",\"Kategori\":\"").append(rs.getString(5)).append("\",\"Sampel\":\"").append(rs.getString(6)).append("\"},");
                 }
-            } catch (Exception e) {
-                System.out.println("Notifikasi 1 : "+e);
-            } finally{
-                if(rs!=null){
+            }catch(Exception e){
+                System.out.println("Notifikasi : "+e);
+            }finally{
+                if(rs != null){
                     rs.close();
                 }
-                if(pspemeriksaan!=null){
-                    pspemeriksaan.close();
+                
+                if(ps != null){
+                    ps.close();
                 }
             }
-            
+
             if (iyembuilder.length() > 0) {
                 iyembuilder.setLength(iyembuilder.length() - 1);
-                fileWriter.write("{\"permintaanradiologi\":["+iyembuilder+"]}");
+                fileWriter.write("{\"permintaanpengujiansampellabkesling\":["+iyembuilder+"]}");
                 fileWriter.flush();
             }
             
             fileWriter.close();
             iyembuilder=null;
-        }catch(Exception e){
-            System.out.println("Notifikasi 2 : "+e);
-        }*/
+        } catch (Exception e) {
+            System.out.println("Notifikasi : "+e);
+        }
+        LCount.setText(""+tabMode.getRowCount());
     }
     
-    private void tampil2() {         
-       /* try{
+    private void tampil2() {   
+        try {
             jml=0;
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
@@ -1324,115 +1369,90 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }
             }
 
-            pilih=new boolean[jml];
-            kode=new String[jml];
-            nama=new String[jml];
+            pilih = new boolean[jml];
+            Kode = new String[jml];
+            NamaParameter = new String[jml];
+            MetodePengujian = new String[jml];
+            Satuan = new String[jml];
+            Kategori = new String[jml];
             
             index=0; 
             for(i=0;i<tbPemeriksaan.getRowCount();i++){
                 if(tbPemeriksaan.getValueAt(i,0).toString().equals("true")){
                     pilih[index]=true;
-                    kode[index]=tbPemeriksaan.getValueAt(i,1).toString();
-                    nama[index]=tbPemeriksaan.getValueAt(i,2).toString();
+                    Kode[index]=tbPemeriksaan.getValueAt(i,1).toString();
+                    NamaParameter[index]=tbPemeriksaan.getValueAt(i,2).toString();
+                    MetodePengujian[index]=tbPemeriksaan.getValueAt(i,3).toString();
+                    Satuan[index]=tbPemeriksaan.getValueAt(i,4).toString();
+                    Kategori[index]=tbPemeriksaan.getValueAt(i,5).toString();
                     index++;
                 }
             }
 
             Valid.tabelKosong(tabMode);
             for(i=0;i<jml;i++){                
-                tabMode.addRow(new Object[] {pilih[i],kode[i],nama[i]});
+                tabMode.addRow(new Object[] {pilih[i],Kode[i],NamaParameter[i],MetodePengujian[i],Satuan[i],Kategori[i]});
             }  
             
             pilih=null;
-            kode=null;
-            nama=null;
-        
-            myObj = new FileReader("./cache/permintaanradiologi.iyem");
+            Kode=null;
+            NamaParameter=null;
+            
+            myObj = new FileReader("./cache/permintaanpengujiansampellabkesling.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("permintaanradiologi");
-            if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("No")){
-                if(response.isArray()){
-                    if(TCariPeriksa.getText().trim().equals("")){
+            Valid.tabelKosong(tabMode);
+            response = root.path("permintaanpengujiansampellabkesling");
+            if(response.isArray()){
+                if(TCariPeriksa.getText().trim().equals("")){
+                    if(KategoriParameter.getSelectedItem().toString().equals("Semua")){
                         for(JsonNode list:response){
-                            if((list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))){
+                            if(list.path("Sampel").asText().equals(KodeSampel.getText())){
                                 tabMode.addRow(new Object[]{
-                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                    false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
                                 });
                             }
                         }
                     }else{
                         for(JsonNode list:response){
-                            if((list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                            if(list.path("Sampel").asText().equals(KodeSampel.getText())&&list.path("Kategori").asText().equals(KategoriParameter.getSelectedItem().toString())){
                                 tabMode.addRow(new Object[]{
-                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                    false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
                                 });
                             }
                         }
-                    }
-                }
-            }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("No")){
-                if(response.isArray()){
-                    if(TCariPeriksa.getText().trim().equals("")){
+                    }   
+                }else{
+                    if(KategoriParameter.getSelectedItem().toString().equals("Semua")){
                         for(JsonNode list:response){
-                            tabMode.addRow(new Object[]{
-                                false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
-                            });
-                        }
-                    }else{
-                        for(JsonNode list:response){
-                            if(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())){
+                            if(list.path("Sampel").asText().equals(KodeSampel.getText())&&(list.path("Kode").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaParameter").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("MetodePengujian").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
                                 tabMode.addRow(new Object[]{
-                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
-                                });
-                            }
-                        }
-                    }
-                }
-            }else if(cara_bayar_radiologi.equals("Yes")&&kelas_radiologi.equals("Yes")){
-                if(response.isArray()){
-                    if(TCariPeriksa.getText().trim().equals("")){
-                        for(JsonNode list:response){
-                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))){
-                                tabMode.addRow(new Object[]{
-                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
+                                    false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
                                 });
                             }
                         }
                     }else{
                         for(JsonNode list:response){
-                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePJ").asText().equals(Penjab.getText())||list.path("KodePJ").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
-                                tabMode.addRow(new Object[]{
-                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
-                                });
+                            if(list.path("Sampel").asText().equals(KodeSampel.getText())&&(list.path("Kode").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaParameter").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("MetodePengujian").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                                if(list.path("Kategori").asText().equals(KategoriParameter.getSelectedItem().toString())){
+                                    tabMode.addRow(new Object[]{
+                                        false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
+                                    });
+                                }
                             }
                         }
                     }
+                        
                 }
-            }else if(cara_bayar_radiologi.equals("No")&&kelas_radiologi.equals("Yes")){
-                if(response.isArray()){
-                    if(TCariPeriksa.getText().trim().equals("")){
-                        for(JsonNode list:response){
-                            if(list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-")){
-                                tabMode.addRow(new Object[]{
-                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
-                                });
-                            }
-                        }
-                    }else{
-                        for(JsonNode list:response){
-                            if((list.path("Kelas").asText().equals(kelas.trim())||list.path("Kelas").asText().equals("-"))&&(list.path("KodePeriksa").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaPemeriksaan").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
-                                tabMode.addRow(new Object[]{
-                                    false,list.path("KodePeriksa").asText(),list.path("NamaPemeriksaan").asText()
-                                });
-                            }
-                        }
-                    }
-                }
-            }   
-            myObj.close(); 
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
-        }*/
+            }
+            myObj.close();
+        } catch (Exception ex) {
+            if(ex.toString().contains("java.io.FileNotFoundException")){
+                tampil();
+            }else{
+                System.out.println("Notifikasi : "+ex);
+            }
+        }
+        LCount.setText(""+tabMode.getRowCount());
     }
     
     public void isReset(){
@@ -1461,68 +1481,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         BakuMutu.setText("");
         isReset();
         autoNomor();
-    }
-    
-    private void isRawat(){
-        if(status.equals("Ranap")){
-            norawatibu=Sequel.cariIsi("select ranap_gabung.no_rawat from ranap_gabung where ranap_gabung.no_rawat2=?",KodePelanggan.getText());
-            if(!norawatibu.equals("")){
-                kamar=Sequel.cariIsi("select ifnull(kamar_inap.kd_kamar,'') from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc limit 1",norawatibu);
-                kelas=Sequel.cariIsi(
-                    "select kamar.kelas from kamar inner join kamar_inap "+
-                    "on kamar.kd_kamar=kamar_inap.kd_kamar where kamar_inap.no_rawat=? "+
-                    "and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",norawatibu);
-            }else{
-                kamar=Sequel.cariIsi("select ifnull(kamar_inap.kd_kamar,'') from kamar_inap where kamar_inap.no_rawat=? order by kamar_inap.tgl_masuk desc limit 1",KodePelanggan.getText());
-                kelas=Sequel.cariIsi("select kamar.kelas from kamar inner join kamar_inap "+
-                    "on kamar.kd_kamar=kamar_inap.kd_kamar where kamar_inap.no_rawat=? "+
-                    "and kamar_inap.stts_pulang='-' order by STR_TO_DATE(concat(kamar_inap.tgl_masuk,' ',kamar_inap.jam_masuk),'%Y-%m-%d %H:%i:%s') desc limit 1",KodePelanggan.getText());
-            } 
-            namakamar=kamar+", "+Sequel.cariIsi("select bangsal.nm_bangsal from bangsal inner join kamar on bangsal.kd_bangsal=kamar.kd_bangsal "+
-                    " where kamar.kd_kamar=? ",kamar);            
-            kamar="Kamar";
-        }else if(status.equals("Ralan")){
-            kelas="Rawat Jalan";
-            kamar="Poli";
-            namakamar=Sequel.cariIsi("select poliklinik.nm_poli from poliklinik inner join reg_periksa on poliklinik.kd_poli=reg_periksa.kd_poli "+
-                    "where reg_periksa.no_rawat=?",KodePelanggan.getText());
-        }
-    }
-
-    private void isPsien(){
-        /*try {
-            pspemeriksaan=koneksi.prepareStatement(
-                "select reg_periksa.no_rkm_medis,reg_periksa.kd_pj,reg_periksa.kd_dokter,dokter.nm_dokter,pasien.nm_pasien,pasien.jk,pasien.umur,"+
-                "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat "+
-                "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel "+
-                "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab "+
-                "inner join dokter on reg_periksa.kd_dokter=dokter.kd_dokter where no_rawat=?");
-            try {
-                pspemeriksaan.setString(1,TNoRw.getText());
-                rs=pspemeriksaan.executeQuery();
-                while(rs.next()){
-                    TNoRM.setText(rs.getString("no_rkm_medis"));
-                    Penjab.setText(rs.getString("kd_pj"));
-                    KodePerujuk.setText(rs.getString("kd_dokter"));
-                    NmPerujuk.setText(rs.getString("nm_dokter"));
-                    TPasien.setText(rs.getString("nm_pasien"));
-                    Jk.setText(rs.getString("jk"));
-                    Umur.setText(rs.getString("umur"));
-                    Alamat.setText(rs.getString("alamat"));
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
-                    rs.close();
-                }
-                if(pspemeriksaan!=null){
-                    pspemeriksaan.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notif : "+e);
-        }*/
     }
     
     private void jam(){
@@ -1621,7 +1579,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }
 
     private void simpan() {
-        int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
+        /*int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
             ChkJln.setSelected(false);
             try {                    
@@ -1704,7 +1662,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 System.out.println(e);
             }    
             ChkJln.setSelected(true);            
-        }
+        }*/
     }
 
 }

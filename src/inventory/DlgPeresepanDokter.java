@@ -1272,6 +1272,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
     }//GEN-LAST:event_NoResepKeyPressed
 
     private void DTPBeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPBeriKeyPressed
+        try {
+            emptTeksobat();
+        } catch (Exception e) {
+        }
         Valid.pindah(evt,TNoRw,cmbJam);
     }//GEN-LAST:event_DTPBeriKeyPressed
 
@@ -1291,7 +1295,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
         if(ChkRM.isSelected()==true){
             NoResep.setEditable(false);
             NoResep.setBackground(new Color(245,250,240));
-            emptTeksobat();
+            try {
+                emptTeksobat();
+            } catch (Exception e) {
+            }
         }else if(ChkRM.isSelected()==false){
             NoResep.setEditable(true);
             NoResep.setBackground(new Color(250,255,245));

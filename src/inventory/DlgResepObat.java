@@ -1413,6 +1413,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }//GEN-LAST:event_cmbMntKeyPressed
 
     private void DTPBeriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPBeriKeyPressed
+        try {
+            if(getno==0){
+                autoresep();
+            }
+        } catch (Exception e) {
+        }
         Valid.pindah(evt,TNoRw,cmbJam);
     }//GEN-LAST:event_DTPBeriKeyPressed
 
@@ -1460,7 +1466,12 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if(ChkRM.isSelected()==true){
            NoResep.setEditable(false);
            NoResep.setBackground(new Color(245,250,240));
-           autoresep();
+           try {
+                if(getno==0){
+                    autoresep();
+                }
+           } catch (Exception e) {
+           }
         }else if(ChkRM.isSelected()==false){
            NoResep.setEditable(true);
            NoResep.setBackground(new Color(250,255,245));

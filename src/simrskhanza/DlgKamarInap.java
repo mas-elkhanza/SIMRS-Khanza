@@ -6534,15 +6534,16 @@ public class DlgKamarInap extends javax.swing.JDialog {
                                 if(rs2.next()){
                                       akses.setform("DlgKamarInap");
                                       bangsal=Sequel.cariIsi("select set_depo_ranap.kd_depo from set_depo_ranap where set_depo_ranap.kd_bangsal=?",Sequel.cariIsi("select kamar.kd_bangsal from kamar where kamar.kd_kamar=?",kdkamar.getText()));
-                                        if(bangsal.equals("")){
+                                      if(bangsal.equals("")){
                                             if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
                                                 akses.setkdbangsal(Sequel.cariIsi("select kamar.kd_bangsal from kamar where kamar.kd_kamar=?",kdkamar.getText()));
                                             }else{
                                                 akses.setkdbangsal(Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi"));
                                             }
-                                        }else{
+                                      }else{
                                             akses.setkdbangsal(bangsal);
-                                        }
+                                      }
+                                      billing.rawatinap.emptTeks();
                                       billing.rawatinap.isCek();
                                       billing.rawatinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                                       billing.rawatinap.setLocationRelativeTo(internalFrame1);  
@@ -6586,6 +6587,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                     }else{
                         akses.setkdbangsal(bangsal);
                     }
+                    billing.rawatinap.emptTeks();
                     billing.rawatinap.isCek();
                     billing.rawatinap.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     billing.rawatinap.setLocationRelativeTo(internalFrame1);  

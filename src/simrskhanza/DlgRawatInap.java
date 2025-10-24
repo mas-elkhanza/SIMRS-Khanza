@@ -4716,70 +4716,12 @@ public final class DlgRawatInap extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        ChkInput.setSelected(true);
-        ChkInput1.setSelected(true);
-        ChkInput2.setSelected(true);
-        isForm(); 
-        isForm2();
-        isForm3();
-        TSuhu.setText("");
-        TKdPrw.setText("");
-        TNmPrw.setText("");
-        TKdPrwPetugas.setText("");
-        TNmPrwPetugas.setText("");        
-        TKdPrwDokterPetugas.setText("");
-        TNmPrwDokterPetugas.setText("");
-        TTensi.setText("");
-        TKeluhan.setText("");
-        TPemeriksaan.setText("");
-        TPenilaian.setText("");
-        TindakLanjut.setText("");
-        TBerat.setText("");
-        TTinggi.setText("");
-        TNadi.setText("");
-        SpO2.setText("");
-        TEvaluasi.setText("");
-        TRespirasi.setText("");
-        TGCS.setText("");
-        TAlergi.setText("");
-        TTnd.setText("0");
-        BagianRS.setText("0");
-        Bhp.setText("0");
-        JmDokter.setText("0");
-        JmPerawat.setText("0");
-        TInstruksi.setText("");
-        DTPTgl.setDate(new Date());
-        TTinggi_uteri.setText("");
-        TLetak.setText("");
-        TDenyut.setText("");
-        TVulva.setText("");
-        TPortio.setText("");
-        TTebal.setText("");
-        TPembukaan.setText("");
-        TPenurunan.setText("");
-        TDenominator.setText("");
-        TKualitas_mnt.setText("");
-        TKualitas_dtk.setText("");
-        TInspeksi.setText("");
-        TInspeksiVulva.setText("");
-        TInspekuloGine.setText("");
-        TVulvaInspekulo.setText("");
-        TPortioInspekulo.setText("");
-        TSondage.setText("");
-        TPortioDalam.setText("");
-        TBentuk.setText("");
-        TCavumUteri.setText("");
-        TUkuran.setText("");
-        TAdnexaKanan.setText("");
-        TAdnexaKiri.setText("");
-        TCavumDouglas.setText("");
-        cmbKesadaran.setSelectedIndex(0);
-        TNoRw.requestFocus();
+        emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            BtnBatalActionPerformed(null);
+            emptTeks();
         }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
 }//GEN-LAST:event_BtnBatalKeyPressed
 
@@ -12001,5 +11943,67 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             }
             Sequel.AutoComitTrue();                                    
         }
+    }
+    
+    public void emptTeks(){
+        ChkInput.setSelected(true);
+        ChkInput1.setSelected(true);
+        ChkInput2.setSelected(true);
+        isForm(); 
+        isForm2();
+        isForm3();
+        TSuhu.setText("");
+        TKdPrw.setText("");
+        TNmPrw.setText("");
+        TKdPrwPetugas.setText("");
+        TNmPrwPetugas.setText("");        
+        TKdPrwDokterPetugas.setText("");
+        TNmPrwDokterPetugas.setText("");
+        TTensi.setText("");
+        TKeluhan.setText("");
+        TPemeriksaan.setText("");
+        TPenilaian.setText("");
+        TindakLanjut.setText("");
+        TBerat.setText("");
+        TTinggi.setText("");
+        TNadi.setText("");
+        SpO2.setText("");
+        TEvaluasi.setText("");
+        TRespirasi.setText("");
+        TGCS.setText("");
+        TAlergi.setText("");
+        TTnd.setText("0");
+        BagianRS.setText("0");
+        Bhp.setText("0");
+        JmDokter.setText("0");
+        JmPerawat.setText("0");
+        TInstruksi.setText("");
+        DTPTgl.setDate(new Date());
+        TTinggi_uteri.setText("");
+        TLetak.setText("");
+        TDenyut.setText("");
+        TVulva.setText("");
+        TPortio.setText("");
+        TTebal.setText("");
+        TPembukaan.setText("");
+        TPenurunan.setText("");
+        TDenominator.setText("");
+        TKualitas_mnt.setText("");
+        TKualitas_dtk.setText("");
+        TInspeksi.setText("");
+        TInspeksiVulva.setText("");
+        TInspekuloGine.setText("");
+        TVulvaInspekulo.setText("");
+        TPortioInspekulo.setText("");
+        TSondage.setText("");
+        TPortioDalam.setText("");
+        TBentuk.setText("");
+        TCavumUteri.setText("");
+        TUkuran.setText("");
+        TAdnexaKanan.setText("");
+        TAdnexaKiri.setText("");
+        TCavumDouglas.setText("");
+        cmbKesadaran.setSelectedIndex(0);
+        TNoRw.requestFocus();
     }
 }
