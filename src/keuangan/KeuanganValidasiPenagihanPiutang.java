@@ -27,7 +27,6 @@ import javax.swing.table.TableColumn;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
-import keuangan.KeuanganPiutangBelumLunas;
 import simrskhanza.DlgCariCaraBayar;
 
 /**
@@ -676,7 +675,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                      "inner join penjab on penagihan_piutang.kd_pj=penjab.kd_pj "+
                      "inner join akun_penagihan_piutang on akun_penagihan_piutang.kd_rek=penagihan_piutang.kd_rek "+
                      "inner join detail_penagihan_piutang on detail_penagihan_piutang.no_tagihan=penagihan_piutang.no_tagihan "+
-                     "where penagihan_piutang.status='Proses Penagihan' and penjab.nama_perusahaan like ? and "+
+                     "where penagihan_piutang.status<>'Sudah Dibayar' and penjab.nama_perusahaan like ? and "+
                      "(penagihan_piutang.no_tagihan like ? or bagianpenagihan.nama like ? or penjab.nama_perusahaan like ? or akun_penagihan_piutang.nama_bank like ?)"+
                      "group by penagihan_piutang.no_tagihan order by penagihan_piutang.tanggal");
             try {
@@ -727,7 +726,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private void panggilPhoto() {
         if(FormPhoto.isVisible()==true){
             try {
-                ps=koneksi.prepareStatement("select photo from bukti_penagihan_piutang where no_tagihan=?");
+                ps=koneksi.prepareStatement("select bukti_penagihan_piutang.photo from bukti_penagihan_piutang where bukti_penagihan_piutang.no_tagihan=?");
                 try {
                     ps.setString(1,tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();

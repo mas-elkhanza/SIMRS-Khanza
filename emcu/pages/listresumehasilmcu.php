@@ -90,9 +90,9 @@
                         <tbody>
                         <?php 
                             $querypasiencari = bukaquery(
-                               "select pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,pasien.no_ktp,pasien.tgl_lahir,pasien.nip,penilaian_mcu.tanggal,penilaian_mcu.td,penilaian_mcu.bb,penilaian_mcu.tb,penilaian_mcu.kesimpulan,".
-                               "penilaian_mcu.anjuran from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat where pasien.perusahaan_pasien='$perusahaan' ".
-                               "and penilaian_mcu.tanggal between '$thncarimcu-$blncarimcu-$tglcarimcu' and '$thncarimcu2-$blncarimcu2-$tglcarimcu2'"
+                               "select pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,reg_periksa.umurdaftar,pasien.no_ktp,pasien.tgl_lahir,pasien.nip,penilaian_mcu.tanggal,penilaian_mcu.td,penilaian_mcu.bb,penilaian_mcu.tb,penilaian_mcu.kesimpulan,penilaian_mcu.anjuran from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis ".
+                               "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat inner join booking_mcu_perusahaan_berhasil_registrasi on reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat inner join booking_mcu_perusahaan on booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu ".
+                               "where booking_mcu_perusahaan.kode_perusahaan='$perusahaan' and booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' and '$thncarimcu2-$blncarimcu2-$tglcarimcu2'"
                             );
                             while($rsquerypasiencari = mysqli_fetch_array($querypasiencari)) {
                                 echo "<tr>

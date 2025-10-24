@@ -621,10 +621,11 @@
                 <Component class="widget.ComboBox" name="Status">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
+                      <StringArray count="4">
                         <StringItem index="0" value="Semua"/>
                         <StringItem index="1" value="Proses Penagihan"/>
                         <StringItem index="2" value="Sudah Dibayar"/>
+                        <StringItem index="3" value="Belum Lunas"/>
                       </StringArray>
                     </Property>
                     <Property name="name" type="java.lang.String" value="Status" noResource="true"/>

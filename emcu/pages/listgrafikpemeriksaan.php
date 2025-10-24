@@ -64,7 +64,7 @@
                         <?php
                             $dataBMI = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.kasifikasi_bmi, COUNT(penilaian_mcu.kasifikasi_bmi) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.kasifikasi_bmi"
+                                "SELECT penilaian_mcu.kasifikasi_bmi, COUNT(penilaian_mcu.kasifikasi_bmi) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.kasifikasi_bmi"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -90,7 +90,7 @@
                         <?php
                             $dataPinggang = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.risiko_lingkar_pinggang, COUNT(penilaian_mcu.risiko_lingkar_pinggang) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.risiko_lingkar_pinggang"
+                                "SELECT penilaian_mcu.risiko_lingkar_pinggang, COUNT(penilaian_mcu.risiko_lingkar_pinggang) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.risiko_lingkar_pinggang"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -116,7 +116,7 @@
                         <?php
                             $dataSubmandibula = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.submandibula, COUNT(penilaian_mcu.submandibula) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.submandibula"
+                                "SELECT penilaian_mcu.submandibula, COUNT(penilaian_mcu.submandibula) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.submandibula"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -142,7 +142,7 @@
                         <?php
                             $dataAxilla = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.axilla, COUNT(penilaian_mcu.axilla) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.axilla"
+                                "SELECT penilaian_mcu.axilla, COUNT(penilaian_mcu.axilla) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.axilla"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -168,7 +168,7 @@
                         <?php
                             $dataSupraklavikula = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.supraklavikula, COUNT(penilaian_mcu.supraklavikula) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.supraklavikula"
+                                "SELECT penilaian_mcu.supraklavikula, COUNT(penilaian_mcu.supraklavikula) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.supraklavikula"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -194,7 +194,7 @@
                         <?php
                             $dataLeher = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.leher, COUNT(penilaian_mcu.leher) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.leher"
+                                "SELECT penilaian_mcu.leher, COUNT(penilaian_mcu.leher) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.leher"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -220,7 +220,7 @@
                         <?php
                             $dataInguinal = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.inguinal, COUNT(penilaian_mcu.inguinal) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.inguinal"
+                                "SELECT penilaian_mcu.inguinal, COUNT(penilaian_mcu.inguinal) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.inguinal"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -246,7 +246,7 @@
                         <?php
                             $dataOedema = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.oedema, COUNT(penilaian_mcu.oedema) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.oedema"
+                                "SELECT penilaian_mcu.oedema, COUNT(penilaian_mcu.oedema) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.oedema"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -272,7 +272,7 @@
                         <?php
                             $dataSinusFrontalis = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.sinus_frontalis, COUNT(penilaian_mcu.sinus_frontalis) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.sinus_frontalis"
+                                "SELECT penilaian_mcu.sinus_frontalis, COUNT(penilaian_mcu.sinus_frontalis) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.sinus_frontalis"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -298,7 +298,7 @@
                         <?php
                             $dataSinusMaxilaris = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.sinus_maxilaris, COUNT(penilaian_mcu.sinus_maxilaris) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.sinus_maxilaris"
+                                "SELECT penilaian_mcu.sinus_maxilaris, COUNT(penilaian_mcu.sinus_maxilaris) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.sinus_maxilaris"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -324,7 +324,7 @@
                         <?php
                             $dataPalpebra = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.palpebra, COUNT(penilaian_mcu.palpebra) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.palpebra"
+                                "SELECT penilaian_mcu.palpebra, COUNT(penilaian_mcu.palpebra) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.palpebra"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -350,7 +350,7 @@
                         <?php
                             $dataSklera = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.sklera, COUNT(penilaian_mcu.sklera) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.sklera"
+                                "SELECT penilaian_mcu.sklera, COUNT(penilaian_mcu.sklera) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.sklera"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -376,7 +376,7 @@
                         <?php
                             $dataCornea = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.cornea, COUNT(penilaian_mcu.cornea) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.cornea"
+                                "SELECT penilaian_mcu.cornea, COUNT(penilaian_mcu.cornea) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.cornea"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -402,7 +402,7 @@
                         <?php
                             $dataButaWarna = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.buta_warna, COUNT(penilaian_mcu.buta_warna) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.buta_warna"
+                                "SELECT penilaian_mcu.buta_warna, COUNT(penilaian_mcu.buta_warna) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.buta_warna"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -428,7 +428,7 @@
                         <?php
                             $dataKonjungtiva = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.konjungtiva, COUNT(penilaian_mcu.konjungtiva) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.konjungtiva"
+                                "SELECT penilaian_mcu.konjungtiva, COUNT(penilaian_mcu.konjungtiva) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.konjungtiva"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -454,7 +454,7 @@
                         <?php
                             $dataLensa = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.lensa, COUNT(penilaian_mcu.lensa) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.lensa"
+                                "SELECT penilaian_mcu.lensa, COUNT(penilaian_mcu.lensa) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.lensa"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -480,7 +480,7 @@
                         <?php
                             $dataPupil = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.pupil, COUNT(penilaian_mcu.pupil) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.pupil"
+                                "SELECT penilaian_mcu.pupil, COUNT(penilaian_mcu.pupil) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.pupil"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -506,7 +506,7 @@
                         <?php
                             $dataMenggunakanKacamata = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.menggunakan_kacamata, COUNT(penilaian_mcu.menggunakan_kacamata) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.menggunakan_kacamata"
+                                "SELECT penilaian_mcu.menggunakan_kacamata, COUNT(penilaian_mcu.menggunakan_kacamata) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.menggunakan_kacamata"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -532,7 +532,7 @@
                         <?php
                             $dataLuasLapangPandang = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.luas_lapang_pandang, COUNT(penilaian_mcu.luas_lapang_pandang) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.luas_lapang_pandang"
+                                "SELECT penilaian_mcu.luas_lapang_pandang, COUNT(penilaian_mcu.luas_lapang_pandang) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.luas_lapang_pandang"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -558,7 +558,7 @@
                         <?php
                             $dataLubangTelinga = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.lubang_telinga, COUNT(penilaian_mcu.lubang_telinga) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.lubang_telinga"
+                                "SELECT penilaian_mcu.lubang_telinga, COUNT(penilaian_mcu.lubang_telinga) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.lubang_telinga"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -584,7 +584,7 @@
                         <?php
                             $dataDaunTelinga = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.daun_telinga, COUNT(penilaian_mcu.daun_telinga) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.daun_telinga"
+                                "SELECT penilaian_mcu.daun_telinga, COUNT(penilaian_mcu.daun_telinga) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.daun_telinga"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -610,7 +610,7 @@
                         <?php
                             $dataSelaputPendengaran = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.selaput_pendengaran, COUNT(penilaian_mcu.selaput_pendengaran) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.selaput_pendengaran"
+                                "SELECT penilaian_mcu.selaput_pendengaran, COUNT(penilaian_mcu.selaput_pendengaran) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.selaput_pendengaran"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -636,7 +636,7 @@
                         <?php
                             $dataProcMastoideus = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.proc_mastoideus, COUNT(penilaian_mcu.proc_mastoideus) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.proc_mastoideus"
+                                "SELECT penilaian_mcu.proc_mastoideus, COUNT(penilaian_mcu.proc_mastoideus) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.proc_mastoideus"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -662,7 +662,7 @@
                         <?php
                             $dataSeptumNasi = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.septum_nasi, COUNT(penilaian_mcu.septum_nasi) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.septum_nasi"
+                                "SELECT penilaian_mcu.septum_nasi, COUNT(penilaian_mcu.septum_nasi) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.septum_nasi"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -688,7 +688,7 @@
                         <?php
                             $dataLubangHidung = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.lubang_hidung, COUNT(penilaian_mcu.lubang_hidung) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.lubang_hidung"
+                                "SELECT penilaian_mcu.lubang_hidung, COUNT(penilaian_mcu.lubang_hidung) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.lubang_hidung"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -714,7 +714,7 @@
                         <?php
                             $dataSinusHidung = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.sinus, COUNT(penilaian_mcu.sinus) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.sinus"
+                                "SELECT penilaian_mcu.sinus, COUNT(penilaian_mcu.sinus) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.sinus"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -740,7 +740,7 @@
                         <?php
                             $dataBibir = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.bibir, COUNT(penilaian_mcu.bibir) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.bibir"
+                                "SELECT penilaian_mcu.bibir, COUNT(penilaian_mcu.bibir) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.bibir"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -766,7 +766,7 @@
                         <?php
                             $dataGusi = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.gusi, COUNT(penilaian_mcu.gusi) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.gusi"
+                                "SELECT penilaian_mcu.gusi, COUNT(penilaian_mcu.gusi) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.gusi"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -792,7 +792,7 @@
                         <?php
                             $dataGigi = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.gigi, COUNT(penilaian_mcu.gigi) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.gigi"
+                                "SELECT penilaian_mcu.gigi, COUNT(penilaian_mcu.gigi) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.gigi"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -818,7 +818,7 @@
                         <?php
                             $dataCaries = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.caries, COUNT(penilaian_mcu.caries) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.caries"
+                                "SELECT penilaian_mcu.caries, COUNT(penilaian_mcu.caries) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.caries"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -844,7 +844,7 @@
                         <?php
                             $dataLidah = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.lidah, COUNT(penilaian_mcu.lidah) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.lidah"
+                                "SELECT penilaian_mcu.lidah, COUNT(penilaian_mcu.lidah) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.lidah"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -870,7 +870,7 @@
                         <?php
                             $dataFaring = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.faring, COUNT(penilaian_mcu.faring) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.faring"
+                                "SELECT penilaian_mcu.faring, COUNT(penilaian_mcu.faring) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.faring"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -896,7 +896,7 @@
                         <?php
                             $dataTonsil = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.tonsil, COUNT(penilaian_mcu.tonsil) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.tonsil"
+                                "SELECT penilaian_mcu.tonsil, COUNT(penilaian_mcu.tonsil) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.tonsil"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -922,7 +922,7 @@
                         <?php
                             $dataKelenjarLimfe = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.kelenjar_limfe, COUNT(penilaian_mcu.kelenjar_limfe) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.kelenjar_limfe"
+                                "SELECT penilaian_mcu.kelenjar_limfe, COUNT(penilaian_mcu.kelenjar_limfe) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.kelenjar_limfe"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -948,7 +948,7 @@
                         <?php
                             $dataKelenjarGondok = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.kelenjar_gondok, COUNT(penilaian_mcu.kelenjar_gondok) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.kelenjar_gondok"
+                                "SELECT penilaian_mcu.kelenjar_gondok, COUNT(penilaian_mcu.kelenjar_gondok) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.kelenjar_gondok"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -974,7 +974,7 @@
                         <?php
                             $dataGerakanDada = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.gerakan_dada, COUNT(penilaian_mcu.gerakan_dada) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.gerakan_dada"
+                                "SELECT penilaian_mcu.gerakan_dada, COUNT(penilaian_mcu.gerakan_dada) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.gerakan_dada"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1000,7 +1000,7 @@
                         <?php
                             $dataVocalFemitus = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.vocal_femitus, COUNT(penilaian_mcu.vocal_femitus) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.vocal_femitus"
+                                "SELECT penilaian_mcu.vocal_femitus, COUNT(penilaian_mcu.vocal_femitus) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.vocal_femitus"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1026,7 +1026,7 @@
                         <?php
                             $dataPerkusiDada = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.perkusi_dada, COUNT(penilaian_mcu.perkusi_dada) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.perkusi_dada"
+                                "SELECT penilaian_mcu.perkusi_dada, COUNT(penilaian_mcu.perkusi_dada) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.perkusi_dada"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1052,7 +1052,7 @@
                         <?php
                             $dataBunyiNapas = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.bunyi_napas, COUNT(penilaian_mcu.bunyi_napas) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.bunyi_napas"
+                                "SELECT penilaian_mcu.bunyi_napas, COUNT(penilaian_mcu.bunyi_napas) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.bunyi_napas"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1078,7 +1078,7 @@
                         <?php
                             $dataBunyiTambahan = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.bunyi_tambahan, COUNT(penilaian_mcu.bunyi_tambahan) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.bunyi_tambahan"
+                                "SELECT penilaian_mcu.bunyi_tambahan, COUNT(penilaian_mcu.bunyi_tambahan) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.bunyi_tambahan"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1104,7 +1104,7 @@
                         <?php
                             $dataIctusCordis = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.ictus_cordis, COUNT(penilaian_mcu.ictus_cordis) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.ictus_cordis"
+                                "SELECT penilaian_mcu.ictus_cordis, COUNT(penilaian_mcu.ictus_cordis) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.ictus_cordis"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1130,7 +1130,7 @@
                         <?php
                             $dataBunyiJantung = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.bunyi_jantung, COUNT(penilaian_mcu.bunyi_jantung) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.bunyi_jantung"
+                                "SELECT penilaian_mcu.bunyi_jantung, COUNT(penilaian_mcu.bunyi_jantung) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.bunyi_jantung"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1156,7 +1156,7 @@
                         <?php
                             $dataBatasJantung = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.batas, COUNT(penilaian_mcu.batas) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.batas"
+                                "SELECT penilaian_mcu.batas, COUNT(penilaian_mcu.batas) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.batas"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1182,7 +1182,7 @@
                         <?php
                             $dataMamae = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.mamae, COUNT(penilaian_mcu.mamae) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.mamae"
+                                "SELECT penilaian_mcu.mamae, COUNT(penilaian_mcu.mamae) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.mamae"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1208,7 +1208,7 @@
                         <?php
                             $dataInspeksi = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.inspeksi, COUNT(penilaian_mcu.inspeksi) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.inspeksi"
+                                "SELECT penilaian_mcu.inspeksi, COUNT(penilaian_mcu.inspeksi) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.inspeksi"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1234,7 +1234,7 @@
                         <?php
                             $dataPalpasi = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.palpasi, COUNT(penilaian_mcu.palpasi) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.palpasi"
+                                "SELECT penilaian_mcu.palpasi, COUNT(penilaian_mcu.palpasi) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.palpasi"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1260,7 +1260,7 @@
                         <?php
                             $dataHepar = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.hepar, COUNT(penilaian_mcu.hepar) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.hepar"
+                                "SELECT penilaian_mcu.hepar, COUNT(penilaian_mcu.hepar) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.hepar"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1286,7 +1286,7 @@
                         <?php
                             $dataPerkusiAbdomen = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.perkusi_abdomen, COUNT(penilaian_mcu.perkusi_abdomen) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.perkusi_abdomen"
+                                "SELECT penilaian_mcu.perkusi_abdomen, COUNT(penilaian_mcu.perkusi_abdomen) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.perkusi_abdomen"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1312,7 +1312,7 @@
                         <?php
                             $dataAuskultasi = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.auskultasi, COUNT(penilaian_mcu.auskultasi) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.auskultasi"
+                                "SELECT penilaian_mcu.auskultasi, COUNT(penilaian_mcu.auskultasi) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.auskultasi"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1338,7 +1338,7 @@
                         <?php
                             $dataLimpa = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.limpa, COUNT(penilaian_mcu.limpa) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.limpa"
+                                "SELECT penilaian_mcu.limpa, COUNT(penilaian_mcu.limpa) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.limpa"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1364,7 +1364,7 @@
                         <?php
                             $dataCostovertebral = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.costovertebral, COUNT(penilaian_mcu.costovertebral) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.costovertebral"
+                                "SELECT penilaian_mcu.costovertebral, COUNT(penilaian_mcu.costovertebral) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.costovertebral"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1390,7 +1390,7 @@
                         <?php
                             $dataScoliosis = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.scoliosis, COUNT(penilaian_mcu.scoliosis) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.scoliosis"
+                                "SELECT penilaian_mcu.scoliosis, COUNT(penilaian_mcu.scoliosis) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.scoliosis"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1416,7 +1416,7 @@
                         <?php
                             $dataKondisiKulit = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.kondisi_kulit, COUNT(penilaian_mcu.kondisi_kulit) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.kondisi_kulit"
+                                "SELECT penilaian_mcu.kondisi_kulit, COUNT(penilaian_mcu.kondisi_kulit) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.kondisi_kulit"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1442,7 +1442,7 @@
                         <?php
                             $dataEkstrimitasAtas = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.ekstrimitas_atas, COUNT(penilaian_mcu.ekstrimitas_atas) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.ekstrimitas_atas"
+                                "SELECT penilaian_mcu.ekstrimitas_atas, COUNT(penilaian_mcu.ekstrimitas_atas) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.ekstrimitas_atas"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1468,7 +1468,7 @@
                         <?php
                             $dataEkstrimitasBawah = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.ekstrimitas_bawah, COUNT(penilaian_mcu.ekstrimitas_bawah) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.ekstrimitas_bawah"
+                                "SELECT penilaian_mcu.ekstrimitas_bawah, COUNT(penilaian_mcu.ekstrimitas_bawah) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.ekstrimitas_bawah"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1494,7 +1494,7 @@
                         <?php
                             $dataAreaGenitalia = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.area_genitalia, COUNT(penilaian_mcu.area_genitalia) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.area_genitalia"
+                                "SELECT penilaian_mcu.area_genitalia, COUNT(penilaian_mcu.area_genitalia) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.area_genitalia"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {
@@ -1520,7 +1520,7 @@
                         <?php
                             $dataAnusPerianal = [];
                             $query = bukaquery(
-                                "SELECT penilaian_mcu.anus_perianal, COUNT(penilaian_mcu.anus_perianal) AS jumlah FROM pasien INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis INNER JOIN penilaian_mcu ON reg_periksa.no_rawat = penilaian_mcu.no_rawat WHERE pasien.perusahaan_pasien = '$perusahaan' AND penilaian_mcu.tanggal BETWEEN '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.anus_perianal"
+                                "SELECT penilaian_mcu.anus_perianal, COUNT(penilaian_mcu.anus_perianal) AS jumlah FROM reg_periksa INNER JOIN penilaian_mcu ON reg_periksa.no_rawat=penilaian_mcu.no_rawat INNER JOIN booking_mcu_perusahaan_berhasil_registrasi ON reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat INNER JOIN booking_mcu_perusahaan ON booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu WHERE booking_mcu_perusahaan.kode_perusahaan='$perusahaan' AND booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' AND '$thncarimcu2-$blncarimcu2-$tglcarimcu2' GROUP BY penilaian_mcu.anus_perianal"
                             );
 
                             while ($row = mysqli_fetch_array($query)) {

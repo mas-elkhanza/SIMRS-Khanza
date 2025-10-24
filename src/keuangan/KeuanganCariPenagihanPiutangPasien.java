@@ -604,7 +604,7 @@ public class KeuanganCariPenagihanPiutangPasien extends javax.swing.JDialog {
         FormInput.add(label14);
         label14.setBounds(0, 70, 92, 23);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Proses Penagihan", "Sudah Dibayar" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Proses Penagihan", "Sudah Dibayar", "Belum Lunas" }));
         Status.setName("Status"); // NOI18N
         Status.setPreferredSize(new java.awt.Dimension(40, 23));
         FormInput.add(Status);
@@ -720,7 +720,7 @@ public class KeuanganCariPenagihanPiutangPasien extends javax.swing.JDialog {
         PanelAccor.setPreferredSize(new java.awt.Dimension(445, 43));
         PanelAccor.setLayout(new java.awt.BorderLayout(1, 1));
 
-        ChkAccor.setBackground(new java.awt.Color(255,250,250));
+        ChkAccor.setBackground(new java.awt.Color(255, 250, 250));
         ChkAccor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/kiri.png"))); // NOI18N
         ChkAccor.setSelected(true);
         ChkAccor.setFocusable(false);

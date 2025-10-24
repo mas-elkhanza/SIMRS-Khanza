@@ -47,7 +47,7 @@ public final class KeuanganPiutangBelumLunas extends javax.swing.JDialog {
     private String koderekening="",notagihan="",nomorpemasukan="",carabayar="";
     private Jurnal jur=new Jurnal();
     private String status="",Diskon_Piutang="",Piutang_Tidak_Terbayar="",Lebih_Bayar_Piutang="";
-    private double total=0,lebihbayar=0;
+    private double total=0,lebihbayar=0,piutangdivalidasi=0;
     private boolean sukses=false,ceksukses=false;
     private File file;
     private FileWriter fileWriter;
@@ -1041,11 +1041,16 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             Sequel.AutoComitTrue();
             
             if(sukses==true){
-                tampilperakun();
                 if(!notagihan.equals("")){
-                    Sequel.queryu("update penagihan_piutang set status='Sudah Dibayar' where no_tagihan=?",notagihan);
+                    if(piutangdivalidasi==total){
+                        Sequel.queryu("update penagihan_piutang set status='Sudah Dibayar' where no_tagihan=?",notagihan);
+                    }else{
+                        Sequel.queryu("update penagihan_piutang set status='Belum Lunas' where no_tagihan=?",notagihan);
+                    }
+                    piutangdivalidasi=0;
                 }
                 notagihan="";
+                tampilperakun();
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1542,7 +1547,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                     ps.close();
                 }
             }
-            
+            piutangdivalidasi=sisapiutang;
             LCount.setText(Valid.SetAngka(sisapiutang));
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);

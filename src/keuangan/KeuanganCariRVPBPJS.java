@@ -27,7 +27,7 @@ import javax.swing.table.TableColumn;
  * @author perpustakaan
  */
 public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
+    private DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -78,23 +78,17 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
         setSize(885,674);
 
         tabMode=new DefaultTableModel(null,new Object[]{
-                "P","No.Rawat/No.tagihan","No.SEP VClaim","Tgl.Bayar","Pasien","Total Piutang","Iur/Ekses",
-                "Sudah Dibayar","Sisa Piutang","Tarif InaCBG","Dibayar BPJS","% Bayar","Kerugian","Lebih Bayar",
-                "Status","materialralan","bhpralan","tarif_tindakandrralan","tarif_tindakanprralan",
-                "ksoralan","menejemenralan","biaya_rawatralan","materialranap","bhpranap","tarif_tindakandrranap",
-                "tarif_tindakanprranap","ksoranap","menejemenranap","biaya_rawatranap","bagian_rslabralan","bhplabralan",
-                "tarif_perujuklabralan","tarif_tindakan_dokterlabralan","tarif_tindakan_petugaslabralan","ksolabralan",
-                "menejemenlabralan","biayalabralan","bagian_rslabranap","bhplabranap","tarif_perujuklabranap",
-                "tarif_tindakan_dokterlabranap","tarif_tindakan_petugaslabranap","ksolabranap","menejemenlabranap",
-                "biayalabranap","bagian_rsradiologiralan","bhpradiologiralan","tarif_perujukradiologiralan",
-                "tarif_tindakan_dokterradiologiralan","tarif_tindakan_petugasradiologiralan","ksoradiologiralan",
-                "menejemenradiologiralan","biayaradiologiralan","bagian_rsradiologiranap","bhpradiologiranap",
-                "tarif_perujukradiologiranap","tarif_tindakan_dokterradiologiranap","tarif_tindakan_petugasradiologiranap",
-                "ksoradiologiranap","menejemenradiologiranap","biayaradiologiranap","jmdokteroperasiralan","jmparamedisoperasiralan",
-                "bhpoperasiralan","pendapatanoperasiralan","jmdokteroperasiranap","jmparamedisoperasiranap","bhpoperasiranap",
-                "pendapatanoperasiranap","obatlangsung","obatralan","hppobatralan","obatranap","hppobatranap","returobat",
-                "tambahanbiaya","potonganbiaya","kamar","reseppulang","harianranap","registrasi","Petugas Validasi",
-                "Akun Rekening","Kontra Akun","Service Ranap","PPN Obat"
+                "P","No.Rawat/No.tagihan","No.SEP VClaim","Tgl.Bayar","Pasien","Total Piutang","Iur/Ekses","Sudah Dibayar",
+                "Sisa Piutang","Tarif InaCBG","Dibayar BPJS","% Bayar","Kerugian","Lebih Bayar","Status",
+                "JS Ralan","BHP Ralan","JM Dr Ralan","JM Pr Ralan","KSO Ralan","Men.Ralan","Ttl Biaya Ralan",
+                "JS Ranap","BHP Ranap","JM Dr Ranap","JM Pr Ranap","KSO Ranap","Men.Ranap","Ttl Biaya Ranap",
+                "JS Lab Ralan","BHP Lab Ralan","JM Prjk Lab Ralan","JM Dr Lab Ralan","JM Pr Lab Ralan","KSO Lab Ralan","Men.Lab Ralan","Ttl Biaya Lab Ralan",
+                "JS Lab Ranap","BHP Lab Ranap","JM Prjk Lab Ranap","JM Dr Lab Ranap","JM Pr Lab Ranap","KSO Lab Ranap","Men.Lab Ranap","Ttl Biaya Lab Ralan",
+                "JS Rad Ralan","BHP Rad Ralan","JM Prjk Rad Ralan","JM Dr Rad Ralan","JM Pr Rad Ralan","KSO Rad Ralan","Men.Rad Ralan","Ttl Biaya Rad Ralan",
+                "JS Rad Ranap","BHP Rad Ranap","JM Prjk Rad Ranap","JM Dr Rad Ranap","JM Pr Rad Ranap","KSO Rad Ranap","Men.Rad Ranap","Ttl Biaya Rad Ranap",
+                "JM Dr Op Ralan","JM Pr Op Ralan","BHP Op Ralan","Ttl Biaya Op Ralan","JM Dr Op Ranap","JM Pr Op Ranap","BHP Op Ranap","Ttl Biaya Op Ranap",
+                "Obat Langsung","Obat Ralan","HPP Obat Ralan","Obat Ranap","HPP Obat Ranap","Retur Obat","Tambahan Biaya","Potongan Biaya","Biaya Kamar",
+                "Resep Pulang","Harian Ranap","Registrasi","Petugas Validasi","Akun Rekening","Kontra Akun","Service","PPN Obat"
             }){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -428,6 +422,8 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppBersihkan = new javax.swing.JMenuItem();
         ppPilihSemua = new javax.swing.JMenuItem();
+        ppRincian = new javax.swing.JMenuItem();
+        ppHilangkanRincian = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbBangsal = new widget.Table();
@@ -488,14 +484,41 @@ public final class KeuanganCariRVPBPJS extends javax.swing.JDialog {
         });
         jPopupMenu1.add(ppPilihSemua);
 
+        ppRincian.setBackground(new java.awt.Color(255, 255, 254));
+        ppRincian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppRincian.setForeground(new java.awt.Color(50, 50, 50));
+        ppRincian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppRincian.setText("Tampilkan Rincian");
+        ppRincian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppRincian.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppRincian.setName("ppRincian"); // NOI18N
+        ppRincian.setPreferredSize(new java.awt.Dimension(160, 26));
+        ppRincian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppRincianActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppRincian);
+
+        ppHilangkanRincian.setBackground(new java.awt.Color(255, 255, 254));
+        ppHilangkanRincian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppHilangkanRincian.setForeground(new java.awt.Color(50, 50, 50));
+        ppHilangkanRincian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppHilangkanRincian.setText("Hilangkan Rincian");
+        ppHilangkanRincian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppHilangkanRincian.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppHilangkanRincian.setName("ppHilangkanRincian"); // NOI18N
+        ppHilangkanRincian.setPreferredSize(new java.awt.Dimension(160, 26));
+        ppHilangkanRincian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppHilangkanRincianActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(ppHilangkanRincian);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data RVP Piutang BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -821,10 +844,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
         tampil();
 }//GEN-LAST:event_BtnCariKeyPressed
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        tampil();
-    }//GEN-LAST:event_formWindowOpened
 
     private void tbBangsalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbBangsalMouseClicked
         if(tabMode.getRowCount()!=0){
@@ -2094,6 +2113,191 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_ppPilihSemuaActionPerformed
 
+    private void ppHilangkanRincianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHilangkanRincianActionPerformed
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "P","No.Rawat/No.tagihan","No.SEP VClaim","Tgl.Bayar","Pasien","Total Piutang","Iur/Ekses","Sudah Dibayar",
+                "Sisa Piutang","Tarif InaCBG","Dibayar BPJS","% Bayar","Kerugian","Lebih Bayar","Status",
+                "JS Ralan","BHP Ralan","JM Dr Ralan","JM Pr Ralan","KSO Ralan","Men.Ralan","Ttl Biaya Ralan",
+                "JS Ranap","BHP Ranap","JM Dr Ranap","JM Pr Ranap","KSO Ranap","Men.Ranap","Ttl Biaya Ranap",
+                "JS Lab Ralan","BHP Lab Ralan","JM Prjk Lab Ralan","JM Dr Lab Ralan","JM Pr Lab Ralan","KSO Lab Ralan","Men.Lab Ralan","Ttl Biaya Lab Ralan",
+                "JS Lab Ranap","BHP Lab Ranap","JM Prjk Lab Ranap","JM Dr Lab Ranap","JM Pr Lab Ranap","KSO Lab Ranap","Men.Lab Ranap","Ttl Biaya Lab Ralan",
+                "JS Rad Ralan","BHP Rad Ralan","JM Prjk Rad Ralan","JM Dr Rad Ralan","JM Pr Rad Ralan","KSO Rad Ralan","Men.Rad Ralan","Ttl Biaya Rad Ralan",
+                "JS Rad Ranap","BHP Rad Ranap","JM Prjk Rad Ranap","JM Dr Rad Ranap","JM Pr Rad Ranap","KSO Rad Ranap","Men.Rad Ranap","Ttl Biaya Rad Ranap",
+                "JM Dr Op Ralan","JM Pr Op Ralan","BHP Op Ralan","Ttl Biaya Op Ralan","JM Dr Op Ranap","JM Pr Op Ranap","BHP Op Ranap","Ttl Biaya Op Ranap",
+                "Obat Langsung","Obat Ralan","HPP Obat Ralan","Obat Ranap","HPP Obat Ranap","Retur Obat","Tambahan Biaya","Potongan Biaya","Biaya Kamar",
+                "Resep Pulang","Harian Ranap","Registrasi","Petugas Validasi","Akun Rekening","Kontra Akun","Service","PPN Obat"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if ((colIndex==10)||(colIndex==0)) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
+                java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbBangsal.setModel(tabMode);
+        //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
+        tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 86; i++) {
+            TableColumn column = tbBangsal.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(140);
+            }else if(i==3){
+                column.setPreferredWidth(65);
+            }else if(i==4){
+                column.setPreferredWidth(170);
+            }else if(i==5){
+                column.setPreferredWidth(80);
+            }else if(i==6){
+                column.setPreferredWidth(70);
+            }else if(i==7){
+                column.setPreferredWidth(80);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(80);
+            }else if(i==11){
+                column.setPreferredWidth(48);
+            }else if(i==12){
+                column.setPreferredWidth(75);
+            }else if(i==13){
+                column.setPreferredWidth(75);
+            }else if(i==14){
+                column.setPreferredWidth(40);
+            }else if(i==81){
+                column.setPreferredWidth(170);
+            }else{
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
+            }
+        }
+        tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
+    }//GEN-LAST:event_ppHilangkanRincianActionPerformed
+
+    private void ppRincianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppRincianActionPerformed
+        tabMode=new DefaultTableModel(null,new Object[]{
+                "P","No.Rawat/No.tagihan","No.SEP VClaim","Tgl.Bayar","Pasien","Total Piutang","Iur/Ekses","Sudah Dibayar",
+                "Sisa Piutang","Tarif InaCBG","Dibayar BPJS","% Bayar","Kerugian","Lebih Bayar","Status",
+                "JS Ralan","BHP Ralan","JM Dr Ralan","JM Pr Ralan","KSO Ralan","Men.Ralan","Ttl Biaya Ralan",
+                "JS Ranap","BHP Ranap","JM Dr Ranap","JM Pr Ranap","KSO Ranap","Men.Ranap","Ttl Biaya Ranap",
+                "JS Lab Ralan","BHP Lab Ralan","JM Prjk Lab Ralan","JM Dr Lab Ralan","JM Pr Lab Ralan","KSO Lab Ralan","Men.Lab Ralan","Ttl Biaya Lab Ralan",
+                "JS Lab Ranap","BHP Lab Ranap","JM Prjk Lab Ranap","JM Dr Lab Ranap","JM Pr Lab Ranap","KSO Lab Ranap","Men.Lab Ranap","Ttl Biaya Lab Ralan",
+                "JS Rad Ralan","BHP Rad Ralan","JM Prjk Rad Ralan","JM Dr Rad Ralan","JM Pr Rad Ralan","KSO Rad Ralan","Men.Rad Ralan","Ttl Biaya Rad Ralan",
+                "JS Rad Ranap","BHP Rad Ranap","JM Prjk Rad Ranap","JM Dr Rad Ranap","JM Pr Rad Ranap","KSO Rad Ranap","Men.Rad Ranap","Ttl Biaya Rad Ranap",
+                "JM Dr Op Ralan","JM Pr Op Ralan","BHP Op Ralan","Ttl Biaya Op Ralan","JM Dr Op Ranap","JM Pr Op Ranap","BHP Op Ranap","Ttl Biaya Op Ranap",
+                "Obat Langsung","Obat Ralan","HPP Obat Ralan","Obat Ranap","HPP Obat Ranap","Retur Obat","Tambahan Biaya","Potongan Biaya","Biaya Kamar",
+                "Resep Pulang","Harian Ranap","Registrasi","Petugas Validasi","Akun Rekening","Kontra Akun","Service","PPN Obat"
+            }){
+             @Override public boolean isCellEditable(int rowIndex, int colIndex){
+                boolean a = false;
+                if ((colIndex==10)||(colIndex==0)) {
+                    a=true;
+                }
+                return a;
+             }
+             Class[] types = new Class[] {
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class,
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, 
+                java.lang.Double.class
+             };
+             @Override
+             public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+             }
+        };
+        tbBangsal.setModel(tabMode);
+        //tbBangsal.setDefaultRenderer(Object.class, new WarnaTable(jPanel2.getBackground(),tbBangsal.getBackground()));
+        tbBangsal.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbBangsal.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+
+        for (i = 0; i < 86; i++) {
+            TableColumn column = tbBangsal.getColumnModel().getColumn(i);
+            if(i==0){
+                column.setPreferredWidth(20);
+            }else if(i==1){
+                column.setPreferredWidth(110);
+            }else if(i==2){
+                column.setPreferredWidth(140);
+            }else if(i==3){
+                column.setPreferredWidth(65);
+            }else if(i==4){
+                column.setPreferredWidth(170);
+            }else if(i==5){
+                column.setPreferredWidth(80);
+            }else if(i==6){
+                column.setPreferredWidth(70);
+            }else if(i==7){
+                column.setPreferredWidth(80);
+            }else if(i==8){
+                column.setPreferredWidth(80);
+            }else if(i==9){
+                column.setPreferredWidth(80);
+            }else if(i==10){
+                column.setPreferredWidth(80);
+            }else if(i==11){
+                column.setPreferredWidth(48);
+            }else if(i==12){
+                column.setPreferredWidth(75);
+            }else if(i==13){
+                column.setPreferredWidth(75);
+            }else if(i==14){
+                column.setPreferredWidth(40);
+            }else if(i==81){
+                column.setPreferredWidth(170);
+            }else{
+                column.setPreferredWidth(105);
+            }
+        }
+        tbBangsal.setDefaultRenderer(Object.class, new WarnaTable());
+    }//GEN-LAST:event_ppRincianActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2135,7 +2339,9 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppHilangkanRincian;
     private javax.swing.JMenuItem ppPilihSemua;
+    private javax.swing.JMenuItem ppRincian;
     private widget.Table tbBangsal;
     // End of variables declaration//GEN-END:variables
 
@@ -2212,7 +2418,7 @@ private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                         rs.getDouble("obatlangsung"),rs.getDouble("obatralan"),rs.getDouble("hppobatralan"),rs.getDouble("obatranap"),
                         rs.getDouble("hppobatranap"),rs.getDouble("returobat"),rs.getDouble("tambahanbiaya"),rs.getDouble("potonganbiaya"),
                         rs.getDouble("kamar"),rs.getDouble("reseppulang"),rs.getDouble("harianranap"),rs.getDouble("registrasi"),
-                        rs.getString("petugas"),rs.getString("kd_rek"),rs.getString("kd_rek_kontra"),rs.getDouble("service"),rs.getString("ppn_obat")
+                        rs.getString("petugas"),rs.getString("kd_rek"),rs.getString("kd_rek_kontra"),rs.getDouble("service"),rs.getDouble("ppn_obat")
                     });
                     sisapiutang=sisapiutang+rs.getDouble("sisapiutang");
                     total=total+rs.getDouble("dibayarbpjs");
