@@ -3469,7 +3469,6 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 cmbJam.setEnabled(false);
                 cmbMnt.setEnabled(false);
                 cmbDtk.setEnabled(false);
-                ChkNoResep.setEnabled(false);
             }
         }
     }

@@ -2039,6 +2039,7 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 cmbMnt.setEnabled(false);
                 cmbDtk.setEnabled(false);
                 ChkRM.setEnabled(false);
+                NoResep.setEnabled(false);
             }
         }
     }

@@ -2714,7 +2714,6 @@ private void ChkJlnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:
                 cmbJam.setEnabled(false);
                 cmbMnt.setEnabled(false);
                 cmbDtk.setEnabled(false);
-                ChkNoResep.setEnabled(false);
             }
         }
         
