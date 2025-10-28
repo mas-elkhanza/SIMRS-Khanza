@@ -11,7 +11,6 @@
 
 package viabarcode;
 
-import permintaan.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
@@ -49,7 +48,7 @@ import kepegawaian.DlgCariPetugas;
  * @author dosen
  */
 public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDialog {
-    private DefaultTableModel tabMode;
+    private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -585,16 +584,6 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         WaktuSampling.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         WaktuSampling.setName("WaktuSampling"); // NOI18N
         WaktuSampling.setOpaque(false);
-        WaktuSampling.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                WaktuSamplingItemStateChanged(evt);
-            }
-        });
-        WaktuSampling.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                WaktuSamplingKeyPressed(evt);
-            }
-        });
         PanelInput.add(WaktuSampling);
         WaktuSampling.setBounds(550, 10, 130, 23);
 
@@ -1266,14 +1255,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         pelanggan.setLocationRelativeTo(internalFrame1);
         pelanggan.setVisible(true);
     }//GEN-LAST:event_btnPelangganActionPerformed
-
-    private void WaktuSamplingItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_WaktuSamplingItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_WaktuSamplingItemStateChanged
-
-    private void WaktuSamplingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_WaktuSamplingKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_WaktuSamplingKeyPressed
 
     private void JenisSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisSampelKeyPressed
         Valid.pindah(evt,DeskripsiSampling,JmlSampel);
