@@ -66,8 +66,11 @@
                             </div>
                         </div>
                     </div>
-                    <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Cari Data Resume</button></center>
+                    <center><button class="btn btn-danger waves-effect" type="submit" name="BtnCari">Cari Data</button></center>
                 </form>
+                <div class="header bg-white">
+                    <div class="text-center">Data Penyakit Pasien Hasil Medical Checkup</div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable" width="1650px">
                         <thead>
@@ -113,6 +116,78 @@
                         </tbody>
                     </table>
                 </div>
+                
+                <div class="header bg-white">
+                    <div class="text-center">Analisa Penyakit Hasil Medical Checkup</div>
+                </div>
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th valign='middle'><center>ICD 10</center></th>
+                            <th valign='middle'><center>Nama Penyakit</center></th>
+                            <th valign='middle'><center>Jumlah</center></th>
+                            <th valign='middle'><center>Persentase</center></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php 
+                        $querypasiencari = bukaquery(
+                           "select penyakit.kd_penyakit,penyakit.nm_penyakit,count(diagnosa_pasien.no_rawat) as jumlah from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis ".
+                           "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat inner join booking_mcu_perusahaan_berhasil_registrasi on reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat ".
+                           "inner join booking_mcu_perusahaan on booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu inner join diagnosa_pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat ".
+                           "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where booking_mcu_perusahaan.kode_perusahaan='$perusahaan' and ".
+                           "booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' and '$thncarimcu2-$blncarimcu2-$tglcarimcu2' group by penyakit.kd_penyakit order by jumlah"
+                        );
+                        $data = [];
+                        $total = 0;
+
+                        while ($row = mysqli_fetch_array($querypasiencari)) {
+                            $data[] = $row;
+                            $total += $row['jumlah'];
+                        }
+
+                        // Cek jika data tidak kosong
+                        if ($total > 0) {
+                            foreach ($data as $rsquerypasiencari) {
+                                $persentase = ($rsquerypasiencari['jumlah'] / $total) * 100;
+
+                                echo "<tr>
+                                        <td align='center' valign='middle'>{$rsquerypasiencari['kd_penyakit']}</td>
+                                        <td align='left' valign='middle'>{$rsquerypasiencari['nm_penyakit']}</td>
+                                        <td align='center' valign='middle'>{$rsquerypasiencari['jumlah']}</td>
+                                        <td align='center' valign='middle'>".round($persentase, 2)."%</td>
+                                      </tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='4' align='center'>Tidak ada data ditemukan</td></tr>";
+                        }
+                    ?>
+                    </tbody>
+                </table>
+                
+                <?php
+                    $dataPenyakit = [];
+                    $query = bukaquery(
+                           "select penyakit.nm_penyakit,count(diagnosa_pasien.no_rawat) as jumlah from pasien inner join reg_periksa on reg_periksa.no_rkm_medis=pasien.no_rkm_medis ".
+                           "inner join penilaian_mcu on reg_periksa.no_rawat=penilaian_mcu.no_rawat inner join booking_mcu_perusahaan_berhasil_registrasi on reg_periksa.no_rawat=booking_mcu_perusahaan_berhasil_registrasi.no_rawat ".
+                           "inner join booking_mcu_perusahaan on booking_mcu_perusahaan_berhasil_registrasi.no_mcu=booking_mcu_perusahaan.no_mcu inner join diagnosa_pasien on reg_periksa.no_rawat=diagnosa_pasien.no_rawat ".
+                           "inner join penyakit on diagnosa_pasien.kd_penyakit=penyakit.kd_penyakit where booking_mcu_perusahaan.kode_perusahaan='$perusahaan' and ".
+                           "booking_mcu_perusahaan.tanggal_mcu between '$thncarimcu-$blncarimcu-$tglcarimcu' and '$thncarimcu2-$blncarimcu2-$tglcarimcu2' group by penyakit.kd_penyakit order by jumlah"
+                    );
+
+                    while ($row = mysqli_fetch_array($query)) {
+                        $dataPenyakit[] = [
+                            'label' => $row['nm_penyakit']." (".$row['jumlah'].")",
+                            'data'  => (int)$row['jumlah']
+                        ];
+                    }
+                ?>
+                <div class="header bg-white">
+                    <div class="text-center">Grafik Penyakit Hasil Medical Checkup</div>
+                </div>
+                <div class="body">
+                    <div id="pie_chart_penyakit" class="flot-chart" style="height: 400px;"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -120,3 +195,34 @@
 
 <script src="plugins/jquery/jquery.min.js" type="text/javascript"></script>
 <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<script src="plugins/flot-charts/jquery.flot.js"></script>
+<script src="plugins/flot-charts/jquery.flot.resize.js"></script>
+<script src="plugins/flot-charts/jquery.flot.pie.js"></script>
+
+<script>
+$(function() {
+    var dataPenyakit = <?= json_encode($dataPenyakit) ?>;
+    if (dataPenyakit.length > 0) {
+        $.plot("#pie_chart_penyakit", dataPenyakit, {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 1,
+                    label: {
+                        show: true,
+                        radius: 0.75,
+                        formatter: function(label, series) {
+                            return '<div style="font-size:12px;text-align:center;padding:2px;color:white;">'
+                                + label + '<br/>' + Math.round(series.percent) + '%</div>';
+                        },
+                        background: { opacity: 0.6 }
+                    }
+                }
+            },
+            legend: { show: true }
+        });
+    } else {
+        $("#pie_chart_bmi").html("<div class='text-center text-muted mt-5'>Kosong</div>");
+    }
+});
+</script>
