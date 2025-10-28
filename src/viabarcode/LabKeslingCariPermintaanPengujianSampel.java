@@ -41,8 +41,10 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Tanggal","No.Pengajuan","Status","Keterangan","Yang Mengajukan"};
-        tabMode=new DefaultTableModel(null,row){
+        tabMode=new DefaultTableModel(null,new Object[]{
+            "Tanggal Diterima","No.Permintaan","Pelanggan","Sampel Diterima Oleh","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel","Jml.Sampel",
+            "Sampling Dilakukan Oleh","Volume Sampel","Wadah Sampel","Kondisi Sampel","Kode Sampel","Nama Sampel","Status"
+            }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
         tbDokter.setModel(tabMode);
@@ -50,18 +52,12 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 15; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(70);
             }else if(i==1){
                 column.setPreferredWidth(350);
-            }else if(i==2){
-                column.setPreferredWidth(100);
-            }else if(i==3){
-                column.setPreferredWidth(140);
-            }else if(i==4){
-                column.setPreferredWidth(200);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
@@ -875,34 +871,22 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             if(NoPermintaan.getText().trim().equals("")&&Status.getSelectedItem().toString().equals("Semua")&&NamaPetugas.getText().trim().equals("")&&
                     KodeSampel.getText().trim().equals("")&&NamaPelanggan.getText().trim().equals("")&&TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                        "select pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan, "+
-                        "pengajuan_barang_medis.keterangan,pengajuan_barang_medis.nip,pegawai.nama,pengajuan_barang_medis.status "+
-                        "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
-                        "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                        " and databarang.kode_sat=kodesatuan.kode_sat "+
-                        " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
-                        " and pengajuan_barang_medis.nip=pegawai.nik "+
-                        " and databarang.kdjns=jenis.kdjns "+
-                        " where pengajuan_barang_medis.tanggal between ? and ? group by pengajuan_barang_medis.no_pengajuan order by pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan ");
+                        "select laborat_kesling_permintaan_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.nip,petugas.nama,"+
+                        "laborat_kesling_permintaan_pengujian_sampel.waktu_sampling,laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling,laborat_kesling_permintaan_pengujian_sampel.deskripsi_sampel,"+
+                        "laborat_kesling_permintaan_pengujian_sampel.jenis_sampel,laborat_kesling_permintaan_pengujian_sampel.jumlah_sampel,laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh,laborat_kesling_permintaan_pengujian_sampel.volume_sampel,"+
+                        "laborat_kesling_permintaan_pengujian_sampel.wadah_sampel,laborat_kesling_permintaan_pengujian_sampel.kondisi_wadah_sampel,laborat_kesling_permintaan_pengujian_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,"+
+                        "laborat_kesling_permintaan_pengujian_sampel.status from laborat_kesling_permintaan_pengujian_sampel inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
+                        "inner join petugas on laborat_kesling_permintaan_pengujian_sampel.nip=petugas.nip inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
+                        "where laborat_kesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
             }else{
                 ps=koneksi.prepareStatement(
-                        "select pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan, "+
-                        "pengajuan_barang_medis.keterangan,pengajuan_barang_medis.nip,pegawai.nama,pengajuan_barang_medis.status "+
-                        "from pengajuan_barang_medis inner join pegawai inner join kodesatuan inner join detail_pengajuan_barang_medis "+
-                        "inner join jenis inner join databarang on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                        " and databarang.kode_sat=kodesatuan.kode_sat "+
-                        " and pengajuan_barang_medis.no_pengajuan=detail_pengajuan_barang_medis.no_pengajuan "+
-                        " and pengajuan_barang_medis.nip=pegawai.nik "+
-                        " and databarang.kdjns=jenis.kdjns "+
-                        " where pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pengajuan_barang_medis.no_pengajuan like ? or "+
-                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pengajuan_barang_medis.nip like ? or "+
-                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and pegawai.nama like ? or "+
-                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and jenis.nama like ? or "+
-                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and detail_pengajuan_barang_medis.kode_brng like ? or "+
-                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and databarang.nama_brng like ? or "+
-                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and detail_pengajuan_barang_medis.kode_sat like ? or "+
-                        " pengajuan_barang_medis.tanggal between ? and ? and pengajuan_barang_medis.no_pengajuan like ? and pengajuan_barang_medis.status like ? and pegawai.nama like ?  and jenis.nama like ? and databarang.nama_brng like ? and kodesatuan.satuan like ? "+
-                        " group by pengajuan_barang_medis.no_pengajuan order by pengajuan_barang_medis.tanggal,pengajuan_barang_medis.no_pengajuan ");
+                        "select laborat_kesling_permintaan_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.nip,petugas.nama,"+
+                        "laborat_kesling_permintaan_pengujian_sampel.waktu_sampling,laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling,laborat_kesling_permintaan_pengujian_sampel.deskripsi_sampel,"+
+                        "laborat_kesling_permintaan_pengujian_sampel.jenis_sampel,laborat_kesling_permintaan_pengujian_sampel.jumlah_sampel,laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh,laborat_kesling_permintaan_pengujian_sampel.volume_sampel,"+
+                        "laborat_kesling_permintaan_pengujian_sampel.wadah_sampel,laborat_kesling_permintaan_pengujian_sampel.kondisi_wadah_sampel,laborat_kesling_permintaan_pengujian_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,"+
+                        "laborat_kesling_permintaan_pengujian_sampel.status from laborat_kesling_permintaan_pengujian_sampel inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
+                        "inner join petugas on laborat_kesling_permintaan_pengujian_sampel.nip=petugas.nip inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
+                        "where laborat_kesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? and order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
             }
                 
             try {
@@ -919,61 +903,12 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                     ps.setString(6,"%"+KodeSampel.getText()+"%");
                     ps.setString(7,"%"+NamaPelanggan.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(9,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(10,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                    ps.setString(11,"%"+NoPermintaan.getText()+"%");
-                    ps.setString(12,"%"+Status.getSelectedItem().toString()+"%");
-                    ps.setString(13,"%"+NamaPetugas.getText()+"%");
-                    ps.setString(14,"%"+KodeSampel.getText()+"%");
-                    ps.setString(15,"%"+NamaPelanggan.getText()+"%");
                     ps.setString(16,"%"+TCari.getText()+"%");
-                    ps.setString(17,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(18,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                    ps.setString(19,"%"+NoPermintaan.getText()+"%");
-                    ps.setString(20,"%"+Status.getSelectedItem().toString()+"%");
-                    ps.setString(21,"%"+NamaPetugas.getText()+"%");
-                    ps.setString(22,"%"+KodeSampel.getText()+"%");
-                    ps.setString(23,"%"+NamaPelanggan.getText()+"%");
                     ps.setString(24,"%"+TCari.getText()+"%");
-                    ps.setString(25,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(26,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                    ps.setString(27,"%"+NoPermintaan.getText()+"%");
-                    ps.setString(28,"%"+Status.getSelectedItem().toString()+"%");
-                    ps.setString(29,"%"+NamaPetugas.getText()+"%");
-                    ps.setString(30,"%"+KodeSampel.getText()+"%");
-                    ps.setString(31,"%"+NamaPelanggan.getText()+"%");
                     ps.setString(32,"%"+TCari.getText()+"%");
-                    ps.setString(33,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(34,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                    ps.setString(35,"%"+NoPermintaan.getText()+"%");
-                    ps.setString(36,"%"+Status.getSelectedItem().toString()+"%");
-                    ps.setString(37,"%"+NamaPetugas.getText()+"%");
-                    ps.setString(38,"%"+KodeSampel.getText()+"%");
-                    ps.setString(39,"%"+NamaPelanggan.getText()+"%");
                     ps.setString(40,"%"+TCari.getText()+"%");
-                    ps.setString(41,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(42,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                    ps.setString(43,"%"+NoPermintaan.getText()+"%");
-                    ps.setString(44,"%"+Status.getSelectedItem().toString()+"%");
-                    ps.setString(45,"%"+NamaPetugas.getText()+"%");
-                    ps.setString(46,"%"+KodeSampel.getText()+"%");
-                    ps.setString(47,"%"+NamaPelanggan.getText()+"%");
                     ps.setString(48,"%"+TCari.getText()+"%");
-                    ps.setString(49,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(50,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                    ps.setString(51,"%"+NoPermintaan.getText()+"%");
-                    ps.setString(52,"%"+Status.getSelectedItem().toString()+"%");
-                    ps.setString(53,"%"+NamaPetugas.getText()+"%");
-                    ps.setString(54,"%"+KodeSampel.getText()+"%");
-                    ps.setString(55,"%"+NamaPelanggan.getText()+"%");
                     ps.setString(56,"%"+TCari.getText()+"%");
-                    ps.setString(57,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(58,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                    ps.setString(59,"%"+NoPermintaan.getText()+"%");
-                    ps.setString(60,"%"+Status.getSelectedItem().toString()+"%");
-                    ps.setString(61,"%"+NamaPetugas.getText()+"%");
-                    ps.setString(62,"%"+KodeSampel.getText()+"%");
-                    ps.setString(63,"%"+NamaPelanggan.getText()+"%");
                     ps.setString(64,"%"+TCari.getText()+"%");
                 }
                 rs=ps.executeQuery();
