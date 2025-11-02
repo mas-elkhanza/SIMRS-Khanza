@@ -42,8 +42,8 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         initComponents();
 
         tabMode=new DefaultTableModel(null,new Object[]{
-            "Tanggal Diterima","No.Permintaan","Pelanggan","Sampel Diterima Oleh","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel","Jml.Sampel",
-            "Sampling Dilakukan Oleh","Volume Sampel","Wadah Sampel","Kondisi Sampel","Kode Sampel","Nama Sampel","Status"
+            "Waktu Diterima","No.Permintaan","Pelanggan","Sampel Diterima Oleh","Waktu Sampling","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel",
+            "Jml.Sampel","Sampling Dilakukan Oleh","Volume Sampel","Wadah Sampel","Kondisi Wadah Sampel","Status"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -52,19 +52,41 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         tbDokter.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDokter.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(115);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(100);
+            }else if(i==2){
+                column.setPreferredWidth(220);
+            }else if(i==3){
+                column.setPreferredWidth(200);
+            }else if(i==4){
+                column.setPreferredWidth(115);
+            }else if(i==5){
+                column.setPreferredWidth(160);
+            }else if(i==6){
+                column.setPreferredWidth(200);
+            }else if(i==7){
+                column.setPreferredWidth(100);
+            }else if(i==8){
+                column.setPreferredWidth(65);
+            }else if(i==9){
+                column.setPreferredWidth(150);
+            }else if(i==10){
+                column.setPreferredWidth(85);
+            }else if(i==11){
+                column.setPreferredWidth(110);
+            }else if(i==12){
+                column.setPreferredWidth(150);
+            }else if(i==13){
+                column.setPreferredWidth(87);
             }
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
         NoPermintaan.setDocument(new batasInput((byte)20).getKata(NoPermintaan));
-        KodePetugas.setDocument(new batasInput((byte)20).getKata(KodePetugas));
-        KodePelanggan.setDocument(new batasInput((byte)15).getKata(KodePelanggan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -120,24 +142,24 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
         panelisi4 = new widget.panelisi();
+        label11 = new widget.Label();
+        Tanggal1 = new widget.Tanggal();
+        label12 = new widget.Label();
+        Tanggal2 = new widget.Tanggal();
+        label14 = new widget.Label();
+        Status = new widget.ComboBox();
+        label15 = new widget.Label();
+        NoPermintaan = new widget.TextBox();
+        panelisi3 = new widget.panelisi();
+        label13 = new widget.Label();
+        NamaPetugas = new widget.TextBox();
+        btnPetugas = new widget.Button();
         label17 = new widget.Label();
         NamaPelanggan = new widget.TextBox();
         btnPelanggan = new widget.Button();
         label7 = new widget.Label();
         NamaSampel = new widget.TextBox();
         btnSampel = new widget.Button();
-        panelisi3 = new widget.panelisi();
-        label15 = new widget.Label();
-        NoPermintaan = new widget.TextBox();
-        label11 = new widget.Label();
-        Tanggal1 = new widget.Tanggal();
-        label13 = new widget.Label();
-        NamaPetugas = new widget.TextBox();
-        btnPetugas = new widget.Button();
-        label12 = new widget.Label();
-        Tanggal2 = new widget.Tanggal();
-        label14 = new widget.Label();
-        Status = new widget.ComboBox();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -263,7 +285,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(195, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(290, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -307,13 +329,13 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
 
         label9.setText("Record :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(60, 30));
+        label9.setPreferredSize(new java.awt.Dimension(70, 30));
         panelisi1.add(label9);
 
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
         LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(55, 30));
+        LTotal.setPreferredSize(new java.awt.Dimension(65, 30));
         panelisi1.add(LTotal);
 
         BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
@@ -358,101 +380,78 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         panelisi4.setPreferredSize(new java.awt.Dimension(100, 44));
         panelisi4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label17.setText("Pelanggan :");
-        label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelisi4.add(label17);
+        label11.setText("Waktu Diterima :");
+        label11.setName("label11"); // NOI18N
+        label11.setPreferredSize(new java.awt.Dimension(90, 23));
+        panelisi4.add(label11);
 
-        NamaPelanggan.setEditable(false);
-        NamaPelanggan.setName("NamaPelanggan"); // NOI18N
-        NamaPelanggan.setPreferredSize(new java.awt.Dimension(210, 23));
-        panelisi4.add(NamaPelanggan);
-
-        btnPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPelanggan.setMnemonic('4');
-        btnPelanggan.setToolTipText("Alt+4");
-        btnPelanggan.setName("btnPelanggan"); // NOI18N
-        btnPelanggan.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnPelanggan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPelangganActionPerformed(evt);
+        Tanggal1.setDisplayFormat("dd-MM-yyyy");
+        Tanggal1.setName("Tanggal1"); // NOI18N
+        Tanggal1.setPreferredSize(new java.awt.Dimension(90, 23));
+        Tanggal1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tanggal1KeyPressed(evt);
             }
         });
-        panelisi4.add(btnPelanggan);
+        panelisi4.add(Tanggal1);
 
-        label7.setText("Kode Sampel :");
-        label7.setName("label7"); // NOI18N
-        label7.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelisi4.add(label7);
+        label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label12.setText("s.d.");
+        label12.setName("label12"); // NOI18N
+        label12.setPreferredSize(new java.awt.Dimension(26, 23));
+        panelisi4.add(label12);
 
-        NamaSampel.setEditable(false);
-        NamaSampel.setName("NamaSampel"); // NOI18N
-        NamaSampel.setPreferredSize(new java.awt.Dimension(210, 23));
-        panelisi4.add(NamaSampel);
-
-        btnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnSampel.setMnemonic('1');
-        btnSampel.setToolTipText("Alt+1");
-        btnSampel.setName("btnSampel"); // NOI18N
-        btnSampel.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnSampel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSampelActionPerformed(evt);
+        Tanggal2.setDisplayFormat("dd-MM-yyyy");
+        Tanggal2.setName("Tanggal2"); // NOI18N
+        Tanggal2.setPreferredSize(new java.awt.Dimension(90, 23));
+        Tanggal2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Tanggal2KeyPressed(evt);
             }
         });
-        panelisi4.add(btnSampel);
+        panelisi4.add(Tanggal2);
+
+        label14.setText("Status :");
+        label14.setName("label14"); // NOI18N
+        label14.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelisi4.add(label14);
+
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Permintaan Baru", "Penugasan" }));
+        Status.setName("Status"); // NOI18N
+        Status.setPreferredSize(new java.awt.Dimension(140, 23));
+        panelisi4.add(Status);
+
+        label15.setText("Nomor :");
+        label15.setName("label15"); // NOI18N
+        label15.setPreferredSize(new java.awt.Dimension(60, 23));
+        panelisi4.add(label15);
+
+        NoPermintaan.setName("NoPermintaan"); // NOI18N
+        NoPermintaan.setPreferredSize(new java.awt.Dimension(180, 23));
+        NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoPermintaanKeyPressed(evt);
+            }
+        });
+        panelisi4.add(NoPermintaan);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 73));
-        panelisi3.setLayout(null);
+        panelisi3.setPreferredSize(new java.awt.Dimension(100, 44));
+        panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
-        label15.setText("Nomor :");
-        label15.setName("label15"); // NOI18N
-        label15.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelisi3.add(label15);
-        label15.setBounds(0, 10, 54, 23);
-
-        NoPermintaan.setName("NoPermintaan"); // NOI18N
-        NoPermintaan.setPreferredSize(new java.awt.Dimension(207, 23));
-        NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoPermintaanKeyPressed(evt);
-            }
-        });
-        panelisi3.add(NoPermintaan);
-        NoPermintaan.setBounds(58, 10, 150, 23);
-
-        label11.setText("Waktu Diterima Sampel :");
-        label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi3.add(label11);
-        label11.setBounds(286, 10, 140, 23);
-
-        Tanggal1.setDisplayFormat("dd-MM-yyyy");
-        Tanggal1.setName("Tanggal1"); // NOI18N
-        Tanggal1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tanggal1KeyPressed(evt);
-            }
-        });
-        panelisi3.add(Tanggal1);
-        Tanggal1.setBounds(430, 10, 95, 23);
-
-        label13.setText("Sampel Diterima Oleh :");
+        label13.setText("Diterima Oleh :");
         label13.setName("label13"); // NOI18N
-        label13.setPreferredSize(new java.awt.Dimension(70, 23));
+        label13.setPreferredSize(new java.awt.Dimension(84, 23));
         panelisi3.add(label13);
-        label13.setBounds(286, 40, 140, 23);
 
         NamaPetugas.setEditable(false);
         NamaPetugas.setName("NamaPetugas"); // NOI18N
-        NamaPetugas.setPreferredSize(new java.awt.Dimension(207, 23));
+        NamaPetugas.setPreferredSize(new java.awt.Dimension(150, 23));
         panelisi3.add(NamaPetugas);
-        NamaPetugas.setBounds(430, 40, 200, 23);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -465,36 +464,50 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
             }
         });
         panelisi3.add(btnPetugas);
-        btnPetugas.setBounds(634, 40, 28, 23);
 
-        label12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label12.setText("s.d.");
-        label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi3.add(label12);
-        label12.setBounds(530, 10, 27, 23);
+        label17.setText("Pelanggan :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi3.add(label17);
 
-        Tanggal2.setDisplayFormat("dd-MM-yyyy");
-        Tanggal2.setName("Tanggal2"); // NOI18N
-        Tanggal2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Tanggal2KeyPressed(evt);
+        NamaPelanggan.setEditable(false);
+        NamaPelanggan.setName("NamaPelanggan"); // NOI18N
+        NamaPelanggan.setPreferredSize(new java.awt.Dimension(150, 23));
+        panelisi3.add(NamaPelanggan);
+
+        btnPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPelanggan.setMnemonic('4');
+        btnPelanggan.setToolTipText("Alt+4");
+        btnPelanggan.setName("btnPelanggan"); // NOI18N
+        btnPelanggan.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnPelanggan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPelangganActionPerformed(evt);
             }
         });
-        panelisi3.add(Tanggal2);
-        Tanggal2.setBounds(562, 10, 95, 23);
+        panelisi3.add(btnPelanggan);
 
-        label14.setText("Status :");
-        label14.setName("label14"); // NOI18N
-        label14.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi3.add(label14);
-        label14.setBounds(0, 40, 54, 23);
+        label7.setText("Sampel :");
+        label7.setName("label7"); // NOI18N
+        label7.setPreferredSize(new java.awt.Dimension(55, 23));
+        panelisi3.add(label7);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Permintaan Baru", "Penugasan" }));
-        Status.setName("Status"); // NOI18N
-        Status.setPreferredSize(new java.awt.Dimension(40, 23));
-        panelisi3.add(Status);
-        Status.setBounds(58, 40, 150, 23);
+        NamaSampel.setEditable(false);
+        NamaSampel.setName("NamaSampel"); // NOI18N
+        NamaSampel.setPreferredSize(new java.awt.Dimension(140, 23));
+        panelisi3.add(NamaSampel);
+
+        btnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnSampel.setMnemonic('1');
+        btnSampel.setToolTipText("Alt+1");
+        btnSampel.setName("btnSampel"); // NOI18N
+        btnSampel.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnSampel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSampelActionPerformed(evt);
+            }
+        });
+        panelisi3.add(btnSampel);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -868,97 +881,62 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {
        Valid.tabelKosong(tabMode);
         try{  
-            if(NoPermintaan.getText().trim().equals("")&&Status.getSelectedItem().toString().equals("Semua")&&NamaPetugas.getText().trim().equals("")&&
-                    KodeSampel.getText().trim().equals("")&&NamaPelanggan.getText().trim().equals("")&&TCari.getText().trim().equals("")){
-                ps=koneksi.prepareStatement(
+            ps=koneksi.prepareStatement(
                         "select laborat_kesling_permintaan_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.nip,petugas.nama,"+
                         "laborat_kesling_permintaan_pengujian_sampel.waktu_sampling,laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling,laborat_kesling_permintaan_pengujian_sampel.deskripsi_sampel,"+
                         "laborat_kesling_permintaan_pengujian_sampel.jenis_sampel,laborat_kesling_permintaan_pengujian_sampel.jumlah_sampel,laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh,laborat_kesling_permintaan_pengujian_sampel.volume_sampel,"+
                         "laborat_kesling_permintaan_pengujian_sampel.wadah_sampel,laborat_kesling_permintaan_pengujian_sampel.kondisi_wadah_sampel,laborat_kesling_permintaan_pengujian_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,"+
                         "laborat_kesling_permintaan_pengujian_sampel.status from laborat_kesling_permintaan_pengujian_sampel inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
                         "inner join petugas on laborat_kesling_permintaan_pengujian_sampel.nip=petugas.nip inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
-                        "where laborat_kesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
-            }else{
-                ps=koneksi.prepareStatement(
-                        "select laborat_kesling_permintaan_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.nip,petugas.nama,"+
-                        "laborat_kesling_permintaan_pengujian_sampel.waktu_sampling,laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling,laborat_kesling_permintaan_pengujian_sampel.deskripsi_sampel,"+
-                        "laborat_kesling_permintaan_pengujian_sampel.jenis_sampel,laborat_kesling_permintaan_pengujian_sampel.jumlah_sampel,laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh,laborat_kesling_permintaan_pengujian_sampel.volume_sampel,"+
-                        "laborat_kesling_permintaan_pengujian_sampel.wadah_sampel,laborat_kesling_permintaan_pengujian_sampel.kondisi_wadah_sampel,laborat_kesling_permintaan_pengujian_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,"+
-                        "laborat_kesling_permintaan_pengujian_sampel.status from laborat_kesling_permintaan_pengujian_sampel inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
-                        "inner join petugas on laborat_kesling_permintaan_pengujian_sampel.nip=petugas.nip inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
-                        "where laborat_kesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? and order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
-            }
+                        "where laborat_kesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
+                        (Status.getSelectedItem().toString().equals("Semua")?"":" and laborat_kesling_permintaan_pengujian_sampel.status='"+Status.getSelectedItem().toString()+"' ")+
+                        (NamaPetugas.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.nip='"+KodePetugas.getText()+"' ")+
+                        (NamaPelanggan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan='"+KodePelanggan.getText()+"' ")+
+                        (NamaSampel.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
+                        (TCari.getText().trim().equals("")?"":" and (laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling like ? or laborat_kesling_permintaan_pengujian_sampel.deskripsi_sampel like ? or laborat_kesling_permintaan_pengujian_sampel.jenis_sampel like ? "+
+                        "or laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh like ? or laborat_kesling_permintaan_pengujian_sampel.wadah_sampel like ? or laborat_kesling_permintaan_pengujian_sampel.kondisi_wadah_sampel like ?) ")+
+                        "order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
                 
             try {
-                if(NoPermintaan.getText().trim().equals("")&&Status.getSelectedItem().toString().equals("Semua")&&NamaPetugas.getText().trim().equals("")&&
-                    KodeSampel.getText().trim().equals("")&&NamaPelanggan.getText().trim().equals("")&&TCari.getText().trim().equals("")){
-                    ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                }else{
-                    ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+""));
-                    ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+""));
-                    ps.setString(3,"%"+NoPermintaan.getText()+"%");
-                    ps.setString(4,"%"+Status.getSelectedItem().toString().replaceAll("Semua","")+"%");
-                    ps.setString(5,"%"+NamaPetugas.getText()+"%");
-                    ps.setString(6,"%"+KodeSampel.getText()+"%");
-                    ps.setString(7,"%"+NamaPelanggan.getText()+"%");
+                ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");
+                ps.setString(2,Valid.SetTgl(Tanggal2.getSelectedItem()+"")+" 23:59:59");
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText()+"%");
+                    ps.setString(4,"%"+TCari.getText()+"%");
+                    ps.setString(5,"%"+TCari.getText()+"%");
+                    ps.setString(6,"%"+TCari.getText()+"%");
+                    ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
-                    ps.setString(16,"%"+TCari.getText()+"%");
-                    ps.setString(24,"%"+TCari.getText()+"%");
-                    ps.setString(32,"%"+TCari.getText()+"%");
-                    ps.setString(40,"%"+TCari.getText()+"%");
-                    ps.setString(48,"%"+TCari.getText()+"%");
-                    ps.setString(56,"%"+TCari.getText()+"%");
-                    ps.setString(64,"%"+TCari.getText()+"%");
                 }
+                    
                 rs=ps.executeQuery();
                 total=0;
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
-                        rs.getString("tanggal"),rs.getString("no_pengajuan"),rs.getString("status"),
-                        rs.getString("keterangan"),rs.getString("nip")+" "+rs.getString("nama")
+                        rs.getString("waktu_diterima"),rs.getString("no_permintaan"),rs.getString("kode_pelanggan")+" "+rs.getString("nama_pelanggan"),
+                        rs.getString("nip")+" "+rs.getString("nama"),rs.getString("waktu_sampling"),rs.getString("lokasi_sampling"),rs.getString("deskripsi_sampel"),rs.getString("jenis_sampel"),
+                        rs.getString("jumlah_sampel"),rs.getString("sampling_dilakukan_oleh"),rs.getString("volume_sampel"),rs.getString("wadah_sampel"),
+                        rs.getString("kondisi_wadah_sampel"),rs.getString("status")
+                    }); 
+                    tabMode.addRow(new Object[]{
+                        "","","Nama Sampel","Kode Sampel","Kode Parameter","Nama Parameter","Metode Pengujian","Satuan","Kategori","Nilai Normal","","","",""
                     });  
                     ps2=koneksi.prepareStatement(
-                        "select detail_pengajuan_barang_medis.kode_brng,databarang.nama_brng, "+
-                        "detail_pengajuan_barang_medis.kode_sat,kodesatuan.satuan,detail_pengajuan_barang_medis.jumlah,"+
-                        "detail_pengajuan_barang_medis.h_pengajuan,detail_pengajuan_barang_medis.total "+
-                        "from detail_pengajuan_barang_medis inner join databarang inner join kodesatuan inner join jenis "+
-                        " on detail_pengajuan_barang_medis.kode_brng=databarang.kode_brng "+
-                        " and detail_pengajuan_barang_medis.kode_sat=kodesatuan.kode_sat "+
-                        " and databarang.kdjns=jenis.kdjns where "+
-                        " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and detail_pengajuan_barang_medis.kode_brng like ? or "+
-                        " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and databarang.nama_brng like ? or "+
-                        " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and detail_pengajuan_barang_medis.kode_sat like ? or "+
-                        " detail_pengajuan_barang_medis.no_pengajuan=? and databarang.nama_brng like ? and jenis.nama like ? and jenis.nama like ? order by detail_pengajuan_barang_medis.kode_brng  ");
+                        "select laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
+                        "laborat_kesling_parameter_pengujian.kategori,laborat_kesling_nilai_normal_baku_mutu.nilai_normal from laborat_kesling_detail_permintaan_pengujian_sampel inner join laborat_kesling_parameter_pengujian "+
+                        "on laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter inner join laborat_kesling_nilai_normal_baku_mutu "+
+                        "on laborat_kesling_nilai_normal_baku_mutu.kode_parameter=laborat_kesling_parameter_pengujian.kode_parameter where laborat_kesling_detail_permintaan_pengujian_sampel.no_permintaan=? "+
+                        "and laborat_kesling_nilai_normal_baku_mutu.kode_sampel=? order by laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter"
+                    );
                     try {
-                        ps2.setString(1,rs.getString(2));
-                        ps2.setString(2,"%"+NamaPelanggan.getText()+"%");
-                        ps2.setString(3,"%"+KodeSampel.getText()+"%");
-                        ps2.setString(4,"%"+TCari.getText()+"%");
-                        ps2.setString(5,rs.getString(2));
-                        ps2.setString(6,"%"+NamaPelanggan.getText()+"%");
-                        ps2.setString(7,"%"+KodeSampel.getText()+"%");
-                        ps2.setString(8,"%"+TCari.getText()+"%");
-                        ps2.setString(9,rs.getString(2));
-                        ps2.setString(10,"%"+NamaPelanggan.getText()+"%");
-                        ps2.setString(11,"%"+KodeSampel.getText()+"%");
-                        ps2.setString(12,"%"+TCari.getText()+"%");
-                        ps2.setString(13,rs.getString(2));
-                        ps2.setString(14,"%"+NamaPelanggan.getText()+"%");
-                        ps2.setString(15,"%"+KodeSampel.getText()+"%");
-                        ps2.setString(16,"%"+TCari.getText()+"%");
+                        ps2.setString(1,rs.getString("no_permintaan"));
+                        ps2.setString(2,rs.getString("kode_sampel"));
                         rs2=ps2.executeQuery();
-                        no=1;
-                        subtotal=0;
                         while(rs2.next()){
                             tabMode.addRow(new Object[]{
-                                "",no+". "+rs2.getString("kode_brng")+" "+rs2.getString("nama_brng")+" "+rs2.getString("satuan"),
-                                rs2.getString("jumlah"),Valid.SetAngka(rs2.getDouble("h_pengajuan")),Valid.SetAngka(rs2.getDouble("total"))
+                                "","",rs.getString("nama_sampel"),rs.getString("kode_sampel"),rs2.getString("kode_parameter"),rs2.getString("nama_parameter"),rs2.getString("metode_pengujian"),rs2.getString("satuan"),rs2.getString("kategori"),rs2.getString("nilai_normal"),"","","",""
                             });
-                            subtotal=subtotal+rs2.getDouble("total");
-                            no++;
                         } 
-                        tabMode.addRow(new Object[]{"","Subtotal :","","",Valid.SetAngka(subtotal)});
                     } catch (Exception e) {
                         System.out.println(e);
                     } finally{
@@ -969,9 +947,8 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             ps2.close();
                         }
                     } 
-                    total=total+subtotal;
-                }         
-                LTotal.setText(Valid.SetAngka(total));
+                }        
+                LTotal.setText(rs.getRow()+"");
             } catch (Exception e) {
                 System.out.println("Note : "+e);
             } finally{

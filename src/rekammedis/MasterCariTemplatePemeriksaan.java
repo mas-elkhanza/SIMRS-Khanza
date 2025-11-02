@@ -83,10 +83,10 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeDiagnosa=new DefaultTableModel(null,new Object[]{"Kode","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Ktg.Penyakit","Ciri-ciri Umum"}){
+        tabModeDiagnosa=new DefaultTableModel(null,new Object[]{"Kode","Nama Penyakit","Ciri-ciri Penyakit","Keterangan","Ktg.Penyakit","Ciri-ciri Umum","Urut"}){
             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              @Override
@@ -98,28 +98,30 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbDiagnosa.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbDiagnosa.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-        for (i= 0; i < 6; i++) {
+        for (i= 0; i < 7; i++) {
             TableColumn column = tbDiagnosa.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(40);
             }else if(i==1){
-                column.setPreferredWidth(280);
+                column.setPreferredWidth(232);
             }else if(i==2){
-                column.setPreferredWidth(285);
+                column.setPreferredWidth(140);
             }else if(i==3){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==4){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==5){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(85);
+            }else if(i==6){
+                column.setPreferredWidth(30);
             }
         }
         tbDiagnosa.setDefaultRenderer(Object.class, new WarnaTable());
         
-        tabModeProsedur=new DefaultTableModel(null,new Object[]{"Kode","Deskripsi Panjang","Deskripsi Pendek"}){
+        tabModeProsedur=new DefaultTableModel(null,new Object[]{"Kode","Deskripsi Panjang","Deskripsi Pendek","Urut","Jml"}){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -131,14 +133,18 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
         tbProsedur.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbProsedur.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 5; i++) {
             TableColumn column = tbProsedur.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(50);
             }else if(i==1){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(372);
             }else if(i==2){
-                column.setPreferredWidth(350);
+                column.setPreferredWidth(210);
+            }else if(i==3){
+                column.setPreferredWidth(30);
+            }else if(i==4){
+                column.setPreferredWidth(25);
             }
         }
         tbProsedur.setDefaultRenderer(Object.class, new WarnaTable());
@@ -1121,7 +1127,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                     Valid.tabelKosong(tabModeDiagnosa);
                     ps=koneksi.prepareStatement(
                             "select template_pemeriksaan_dokter_penyakit.kd_penyakit,penyakit.nm_penyakit,penyakit.ciri_ciri,penyakit.keterangan, "+
-                            "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum from template_pemeriksaan_dokter_penyakit "+
+                            "kategori_penyakit.nm_kategori,kategori_penyakit.ciri_umum,template_pemeriksaan_dokter_penyakit.urut from template_pemeriksaan_dokter_penyakit "+
                             "inner join penyakit on penyakit.kd_penyakit=template_pemeriksaan_dokter_penyakit.kd_penyakit "+
                             "inner join kategori_penyakit on penyakit.kd_ktg=kategori_penyakit.kd_ktg where "+
                             "template_pemeriksaan_dokter_penyakit.no_template=? order by template_pemeriksaan_dokter_penyakit.urut");
@@ -1130,7 +1136,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                         rs=ps.executeQuery();
                         while(rs.next()){
                             tabModeDiagnosa.addRow(new Object[]{
-                                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6)
+                                rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)
                             });
                         }
                     } catch (Exception e) {
@@ -1146,14 +1152,14 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                     
                     Valid.tabelKosong(tabModeProsedur);
                     ps=koneksi.prepareStatement(
-                            "select template_pemeriksaan_dokter_prosedur.kode,icd9.deskripsi_panjang,icd9.deskripsi_pendek from template_pemeriksaan_dokter_prosedur "+
-                            "inner join icd9 on template_pemeriksaan_dokter_prosedur.kode=icd9.kode where template_pemeriksaan_dokter_prosedur.no_template=? "+
+                            "select template_pemeriksaan_dokter_prosedur.kode,icd9.deskripsi_panjang,icd9.deskripsi_pendek,template_pemeriksaan_dokter_prosedur.urut,template_pemeriksaan_dokter_prosedur.jumlah "+
+                            "from template_pemeriksaan_dokter_prosedur inner join icd9 on template_pemeriksaan_dokter_prosedur.kode=icd9.kode where template_pemeriksaan_dokter_prosedur.no_template=? "+
                             "order by template_pemeriksaan_dokter_prosedur.urut");
                     try {
                         ps.setString(1,tabMode.getValueAt(tbDokter.getSelectedRow(),0).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
-                            tabModeProsedur.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3)});
+                            tabModeProsedur.addRow(new Object[]{rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)});
                         }
                     } catch (Exception e) {
                         System.out.println("Notif : "+e);
@@ -1453,13 +1459,13 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                                 "select count(diagnosa_pasien.kd_penyakit) from diagnosa_pasien inner join reg_periksa on diagnosa_pasien.no_rawat=reg_periksa.no_rawat inner join pasien "+
                                 "on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where pasien.no_rkm_medis='"+norm+"' and diagnosa_pasien.kd_penyakit='"+tbDiagnosa.getValueAt(i,1).toString()+"'")>0){
                             if(Sequel.menyimpantf2("diagnosa_pasien","?,?,?,?,?","Penyakit "+tbDiagnosa.getValueAt(i,1).toString(),5,new String[]{
-                                    noperawatan,tbDiagnosa.getValueAt(i,0).toString(),"Ralan",Sequel.cariIsi("select ifnull(MAX(diagnosa_pasien.prioritas)+1,1) from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='Ralan'",noperawatan),"Lama"
+                                    noperawatan,tbDiagnosa.getValueAt(i,0).toString(),"Ralan",tbDiagnosa.getValueAt(i,6).toString(),"Lama"
                                 })==false){
                                 sukses=false;
                             }
                         }else{
                             if(Sequel.menyimpantf2("diagnosa_pasien","?,?,?,?,?","Penyakit "+tbDiagnosa.getValueAt(i,1).toString(),5,new String[]{
-                                    noperawatan,tbDiagnosa.getValueAt(i,0).toString(),"Ralan",Sequel.cariIsi("select ifnull(MAX(diagnosa_pasien.prioritas)+1,1) from diagnosa_pasien where diagnosa_pasien.no_rawat=? and diagnosa_pasien.status='Ralan'",noperawatan),"Baru"
+                                    noperawatan,tbDiagnosa.getValueAt(i,0).toString(),"Ralan",tbDiagnosa.getValueAt(i,6).toString(),"Baru"
                                 })==false){
                                 sukses=false;
                             }
@@ -1467,8 +1473,8 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                     }
                     
                     for(i=0;i<tbProsedur.getRowCount();i++){ 
-                        if(Sequel.menyimpantf2("prosedur_pasien","?,?,?,?","Prosedur "+tbProsedur.getValueAt(i,1).toString(),4,new String[]{
-                                noperawatan,tbProsedur.getValueAt(i,0).toString(),"Ralan",Sequel.cariIsi("select ifnull(MAX(prosedur_pasien.prioritas)+1,1) from prosedur_pasien where prosedur_pasien.no_rawat=? and prosedur_pasien.status='Ralan'",noperawatan)
+                        if(Sequel.menyimpantf2("prosedur_pasien","?,?,?,?,?","Prosedur "+tbProsedur.getValueAt(i,1).toString(),5,new String[]{
+                                noperawatan,tbProsedur.getValueAt(i,0).toString(),"Ralan",tbProsedur.getValueAt(i,3).toString(),tbProsedur.getValueAt(i,4).toString()
                             })==false){
                             sukses=false;
                         }
@@ -1563,7 +1569,7 @@ public final class MasterCariTemplatePemeriksaan extends javax.swing.JDialog {
                     }
                     
                     if((tabModeObatUmum.getRowCount()>0)||(tabModeObatRacikan.getRowCount()>0)){
-                        nomor=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(resep_obat.no_resep,4),signed)),0) from resep_obat where resep_obat.tgl_peresepan='"+tanggaldilakukan+"' or resep_obat.tgl_perawatan='"+tanggaldilakukan+"' ",tanggaldilakukan.replaceAll("-",""),4);    
+                        nomor=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(resep_obat.no_resep,4),signed)),0) from resep_obat where resep_obat.tgl_peresepan='"+tanggaldilakukan+"'",tanggaldilakukan.replaceAll("-",""),4);    
                         if(Sequel.menyimpantf2("resep_obat","?,?,?,?,?,?,?,?,?,?","Nomer Resep",10,new String[]{
                                 nomor,"0000-00-00","00:00:00",noperawatan,kodedokter,tanggaldilakukan,jamdilakukan,"ralan","0000-00-00","00:00:00"
                             })==true){

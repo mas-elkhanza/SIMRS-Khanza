@@ -868,7 +868,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
     LabKeslingCariPermintaanPengujianSampel form=new LabKeslingCariPermintaanPengujianSampel(null,false);
     form.isCek();
-    form.setSize(this.getWidth(),this.getHeight());
+    form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     form.setLocationRelativeTo(this);
     form.setVisible(true);
     this.setCursor(Cursor.getDefaultCursor());
