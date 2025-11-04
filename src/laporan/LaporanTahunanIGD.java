@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.SwingWorker;
 import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
@@ -23,6 +24,7 @@ public class LaporanTahunanIGD extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private StringBuilder htmlContent;
+    private boolean ceksukses=false;
     private int i=0,jan=0,feb=0,mar=0,apr=0,mei=0,jun=0,jul=0,agu=0,sep=0,okt=0,nov=0,des=0,
                 ttljan=0,ttlfeb=0,ttlmar=0,ttlapr=0,ttlmei=0,ttljun=0,ttljul=0,ttlagu=0,ttlsep=0,ttlokt=0,ttlnov=0,ttldes=0;
     
@@ -435,17 +437,101 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
     private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
         if(TabRawat.getSelectedIndex()==0){
-            prosesCari();
+            if(ceksukses==false){
+                ceksukses=true;
+                new SwingWorker<Void, Void>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        prosesCari();
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        ceksukses = false;
+                    }
+                }.execute();
+            }
         }else if(TabRawat.getSelectedIndex()==1){
-            prosesCari2();
+            if(ceksukses==false){
+                ceksukses=true;
+                new SwingWorker<Void, Void>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        prosesCari2();
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        ceksukses = false;
+                    }
+                }.execute();
+            }
         }else if(TabRawat.getSelectedIndex()==2){
-            prosesCari3();
+            if(ceksukses==false){
+                ceksukses=true;
+                new SwingWorker<Void, Void>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        prosesCari3();
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        ceksukses = false;
+                    }
+                }.execute();
+            }
         }else if(TabRawat.getSelectedIndex()==3){
-            prosesCari4();
+            if(ceksukses==false){
+                ceksukses=true;
+                new SwingWorker<Void, Void>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        prosesCari4();
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        ceksukses = false;
+                    }
+                }.execute();
+            }
         }else if(TabRawat.getSelectedIndex()==4){
-            prosesCari5();
+            if(ceksukses==false){
+                ceksukses=true;
+                new SwingWorker<Void, Void>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        prosesCari5();
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        ceksukses = false;
+                    }
+                }.execute();
+            }
         }else if(TabRawat.getSelectedIndex()==5){
-            prosesCari6();
+            if(ceksukses==false){
+                ceksukses=true;
+                new SwingWorker<Void, Void>() {
+                    @Override
+                    protected Void doInBackground() throws Exception {
+                        prosesCari6();
+                        return null;
+                    }
+
+                    @Override
+                    protected void done() {
+                        ceksukses = false;
+                    }
+                }.execute();
+            }
         }
     }//GEN-LAST:event_TabRawatMouseClicked
 
