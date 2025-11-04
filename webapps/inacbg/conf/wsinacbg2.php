@@ -5,17 +5,17 @@
     require_once('../../conf/conf.php');
 
     function getKey() {
-       $keyRS = "a96e99e0082698e25e2477e220c89bbef484ebd4a6eecff293c64c200981f94f";   
+       $keyRS = "470f8c8340a95352c59aed8aa73644821488befe1fb40e3787462765373ed184";   
        return $keyRS;
     }
 
     function getUrlWS() {
-        $UrlWS = "http://103.182.228.86/E-Klaim/ws.php";
+        $UrlWS = "http://36.88.134.131:8204/E-Klaim/ws.php";
         return $UrlWS;
     }
     
     function getKelasRS() {
-        $kelasRS = "CP";
+        $kelasRS = "DS";
         return $kelasRS;
     }
 
@@ -185,7 +185,7 @@
                 covid19_status_cd,if(covid19_status_cd='ODP',1,if(covid19_status_cd='PDP',2,3)) as ytcovid19_status_cd, 
                 nomor_kartu_t, episodes1, episodes2,episodes3, episodes4, episodes5, episodes6, 
                 covid19_cc_ind,if(covid19_cc_ind='Ya',1,0) as ytcovid19_cc_ind 
-                from perawatan_corona where no_rawat='".$no_rawat."'");
+                from perawatan_corona where no_rawat='".$norawat."'");
         if($bariscorona = mysqli_fetch_array($hasilcorona)) {
             $episodes1 = $bariscorona["episodes1"];
             $episodes2 = $bariscorona["episodes2"];
@@ -401,7 +401,7 @@
         }
     }
     
-    function SetDiagnosaDRG($nomorsep,$diagnosa){	
+    function SetDiagnosaDRG($nomorsep,$diagnosa){
         if($diagnosa!=""){
             $request ='{
                             "metadata": {
@@ -422,6 +422,7 @@
                                 "diagnosa": "'.$diagnosa.'"
                             }
                        }';
+            echo $request;
             $msg= Request($request);
         }
     }

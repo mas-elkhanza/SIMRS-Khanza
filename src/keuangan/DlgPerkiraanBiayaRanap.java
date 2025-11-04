@@ -1060,6 +1060,7 @@ private void BtnCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
     private void MnJadikanPerkiraan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnJadikanPerkiraan2ActionPerformed
         if(tbBangsal.getSelectedRow()!= -1){
             if(tbDiagnosa.getSelectedRow()!= -1){
+                System.out.println("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"inacbg/pages/perkiraantarif.php?usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&norawat="+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"&penyakit="+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString());
                 loadURL("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/"+"inacbg/pages/perkiraantarif.php?usere="+koneksiDB.USERHYBRIDWEB()+"&passwordte="+koneksiDB.PASHYBRIDWEB()+"&norawat="+tbBangsal.getValueAt(tbBangsal.getSelectedRow(),0).toString()+"&penyakit="+tbDiagnosa.getValueAt(tbDiagnosa.getSelectedRow(),0).toString());
             }else{
                 JOptionPane.showMessageDialog(null,"Silahkan Anda pilih dulu diagnosa pasien yang mau dimasukkan perkiraannya ...!!");

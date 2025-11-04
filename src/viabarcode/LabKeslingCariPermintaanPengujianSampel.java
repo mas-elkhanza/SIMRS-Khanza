@@ -416,9 +416,9 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         label14.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi4.add(label14);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Permintaan Baru", "Penugasan" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Permintaan Baru", "Tidak Dapat Dilayani", "Penugasan" }));
         Status.setName("Status"); // NOI18N
-        Status.setPreferredSize(new java.awt.Dimension(140, 23));
+        Status.setPreferredSize(new java.awt.Dimension(150, 23));
         panelisi4.add(Status);
 
         label15.setText("Nomor :");
@@ -427,7 +427,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         panelisi4.add(label15);
 
         NoPermintaan.setName("NoPermintaan"); // NOI18N
-        NoPermintaan.setPreferredSize(new java.awt.Dimension(180, 23));
+        NoPermintaan.setPreferredSize(new java.awt.Dimension(170, 23));
         NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoPermintaanKeyPressed(evt);
