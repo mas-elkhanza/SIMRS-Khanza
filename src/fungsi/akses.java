@@ -253,7 +253,7 @@ public final class akses {
             kriteria_masuk_picu=false,kriteria_keluar_picu=false,master_sampel_bakumutu=false,skrining_instrumen_amt=false,parameter_pengujian_lab_kesehatan_lingkungan=false,
             nilai_normal_baku_mutu_lab_kesehatan_lingkungan=false,skrining_pneumonia_severity_index=false,permintaan_pengujian_sampel_lab_kesehatan_lingkungan=false,
             penilaian_awal_medis_ralan_jantung=false,penilaian_awal_medis_ralan_urologi=false,hasil_pemeriksaan_treadmill=false,hasil_pemeriksaan_echo_pediatrik=false,
-            template_pelaksanaan_informasi_edukasi=false,skrining_instrumen_esat=false,penilaian_awal_medis_ranap_jantung=false;
+            template_pelaksanaan_informasi_edukasi=false,skrining_instrumen_esat=false,penilaian_awal_medis_ranap_jantung=false,e_eksekutif=false;
     
     public static void setData(String user, String pass) {
         try {        
@@ -401,6 +401,7 @@ public final class akses {
                         akses.diagnosa_pasien=true;
                         akses.admin=true;
                         akses.user=true;
+                        akses.e_eksekutif=true;
                         akses.vakum=true;
                         akses.aplikasi=true;
                         akses.surveilans_ranap=true;
@@ -1570,6 +1571,7 @@ public final class akses {
                         akses.surveilans_ranap=rs2.getBoolean("surveilans_ranap");
                         akses.admin=false;
                         akses.user=false;
+                        akses.e_eksekutif=false;
                         akses.vakum=false;
                         akses.aplikasi=false;
                         akses.pny_takmenular_ranap=rs2.getBoolean("pny_takmenular_ranap");
@@ -2756,6 +2758,7 @@ public final class akses {
         akses.set_harga_obat_ranap=false;
         akses.admin= false;
         akses.user= false;
+        akses.e_eksekutif=false;
         akses.vakum= false;
         akses.aplikasi= false;
         akses.penyakit_pd3i=false;
@@ -3803,6 +3806,7 @@ public final class akses {
     public static int getjml2() {return akses.jml2;}    
     public static boolean getadmin(){return akses.admin;}        
     public static boolean getuser(){return akses.user;} 
+    public static boolean gete_eksekutif(){return akses.e_eksekutif;}
     public static boolean getvakum(){return akses.vakum;} 
     public static boolean getaplikasi(){return akses.aplikasi;} 
     public static boolean getpenyakit(){return akses.penyakit;} 

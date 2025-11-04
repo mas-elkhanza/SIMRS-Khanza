@@ -1067,6 +1067,7 @@ import rekammedis.RMSkriningTalasemia;
 import rekammedis.RMTimeOutSebelumInsisi;
 import rekammedis.RMTransferPasienAntarRuang;
 import rekammedis.RMUjiFungsiKFR;
+import setting.DlgEEksekutif;
 import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
 import setting.DlgRuangOperasi;
@@ -23131,6 +23132,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnEEksekutifActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgEEksekutif admin=new DlgEEksekutif(this,false);
+        admin.tampil();
+        admin.emptTeks();
+        admin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        admin.setLocationRelativeTo(PanelUtama);
+        admin.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }  
+    
     /**
     * @param args the command line arguments
     */
@@ -23841,7 +23855,8 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratPernyataanMemilihDPJP,btnSkriningInstrumenMentalEmosional,btnChecklistKriteriaMasukNICU,btnChecklistKriteriaKeluarNICU,btnPenilaianAwalMedisRanapPsikiatri,
             btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu,btnSkriningInstrumenAMT,btnLabKeslingParameterPengujian,
             btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung,btnPenilaianAwalMedisRalanUrologi,btnHasilPemeriksaanTreadmill,
-            btnHasilPemeriksaanECHOPediatrik,btnMasterTemplateInformasiEdukasi,btnSkriningInstrumenESAT,btnLabKeslingPermintaanPengujianSampel,btnPenilaianAwalMedisRanapJantung;
+            btnHasilPemeriksaanECHOPediatrik,btnMasterTemplateInformasiEdukasi,btnSkriningInstrumenESAT,btnLabKeslingPermintaanPengujianSampel,btnPenilaianAwalMedisRanapJantung,
+            btnEEksekutif;
     
     public void isWall(){
         try{            
@@ -29637,6 +29652,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnUser);
                 jmlmenu++;
             }
+            
+            if(akses.gete_eksekutif()==true){
+                Panelmenu.add(btnEEksekutif);
+                jmlmenu++;
+            }
 
             if(akses.gettracer_login()==true){
                 Panelmenu.add(btnTracker);
@@ -35377,6 +35397,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
 
         if(akses.getuser()==true){
             Panelmenu.add(btnUser);
+            jmlmenu++;
+        }
+        
+        if(akses.gete_eksekutif()==true){
+            Panelmenu.add(btnEEksekutif);
             jmlmenu++;
         }
 
@@ -43390,6 +43415,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.gete_eksekutif()==true){
+            if(btnEEksekutif.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnEEksekutif);
+                jmlmenu++;
+            }                
+        }
 
         if(akses.gettracer_login()==true){
             if(btnTracker.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
@@ -49087,5 +49119,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnPenilaianAwalMedisRanapJantung.setName("btnPenilaianAwalMedisRanapJantung");
         btnPenilaianAwalMedisRanapJantung.setPreferredSize(new java.awt.Dimension(200, 90));
         btnPenilaianAwalMedisRanapJantung.addActionListener(this::btnPenilaianAwalMedisRanapJantungActionPerformed);
+        
+        btnEEksekutif = new widget.ButtonBig();
+        btnEEksekutif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/2169607_bar_chart_financial_graph_graphic_icon.png"))); 
+        btnEEksekutif.setText("Set E-Eksekutif");
+        btnEEksekutif.setIconTextGap(0);
+        btnEEksekutif.setName("btnEEksekutif"); 
+        btnEEksekutif.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnEEksekutif.addActionListener(this::btnEEksekutifActionPerformed);
     }
 }
