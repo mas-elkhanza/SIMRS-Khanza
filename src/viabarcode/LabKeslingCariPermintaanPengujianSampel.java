@@ -129,8 +129,6 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         KodePelanggan = new widget.TextBox();
         KodePetugas = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
-        scrollPane1 = new widget.ScrollPane();
-        tbDokter = new widget.Table();
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
         label10 = new widget.Label();
@@ -160,6 +158,14 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         label7 = new widget.Label();
         NamaSampel = new widget.TextBox();
         btnSampel = new widget.Button();
+        TabRawat = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        scrollPane1 = new widget.ScrollPane();
+        tbDokter = new widget.Table();
+        scrollPane2 = new widget.ScrollPane();
+        tbDokter1 = new widget.Table();
+        scrollPane3 = new widget.ScrollPane();
+        tbDokter2 = new widget.Table();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -247,28 +253,6 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Permintaan Pengujian Sampel Laboratorium Kesehatan Lingkungan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
-
-        scrollPane1.setComponentPopupMenu(jPopupMenu1);
-        scrollPane1.setName("scrollPane1"); // NOI18N
-        scrollPane1.setOpaque(true);
-
-        tbDokter.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbDokter.setComponentPopupMenu(jPopupMenu1);
-        tbDokter.setName("tbDokter"); // NOI18N
-        scrollPane1.setViewportView(tbDokter);
-
-        internalFrame1.add(scrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setOpaque(false);
@@ -510,6 +494,92 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         panelisi3.add(btnSampel);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
+
+        TabRawat.setBackground(new java.awt.Color(255, 255, 253));
+        TabRawat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 246, 236)));
+        TabRawat.setForeground(new java.awt.Color(50, 50, 50));
+        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        TabRawat.setName("TabRawat"); // NOI18N
+        TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabRawatMouseClicked(evt);
+            }
+        });
+
+        jPanel2.setName("jPanel2"); // NOI18N
+        jPanel2.setOpaque(false);
+        jPanel2.setPreferredSize(new java.awt.Dimension(816, 100));
+        jPanel2.setLayout(new java.awt.BorderLayout(1, 1));
+
+        scrollPane1.setComponentPopupMenu(jPopupMenu1);
+        scrollPane1.setName("scrollPane1"); // NOI18N
+        scrollPane1.setOpaque(true);
+
+        tbDokter.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbDokter.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter.setComponentPopupMenu(jPopupMenu1);
+        tbDokter.setName("tbDokter"); // NOI18N
+        scrollPane1.setViewportView(tbDokter);
+
+        jPanel2.add(scrollPane1, java.awt.BorderLayout.CENTER);
+
+        TabRawat.addTab("Data Permintaan", jPanel2);
+
+        scrollPane2.setComponentPopupMenu(jPopupMenu1);
+        scrollPane2.setName("scrollPane2"); // NOI18N
+        scrollPane2.setOpaque(true);
+
+        tbDokter1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbDokter1.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter1.setComponentPopupMenu(jPopupMenu1);
+        tbDokter1.setName("tbDokter1"); // NOI18N
+        scrollPane2.setViewportView(tbDokter1);
+
+        TabRawat.addTab("Rekap Permintaan", scrollPane2);
+
+        scrollPane3.setComponentPopupMenu(jPopupMenu1);
+        scrollPane3.setName("scrollPane3"); // NOI18N
+        scrollPane3.setOpaque(true);
+
+        tbDokter2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbDokter2.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbDokter2.setComponentPopupMenu(jPopupMenu1);
+        tbDokter2.setName("tbDokter2"); // NOI18N
+        scrollPane3.setViewportView(tbDokter2);
+
+        TabRawat.addTab("Tidak Dapat Dilayani", scrollPane3);
+
+        internalFrame1.add(TabRawat, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -820,6 +890,14 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_ppPenugasanActionPerformed
 
+    private void TabRawatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabRawatMouseClicked
+        /*if(TabRawat.getSelectedIndex()==0){
+            tampil();
+        }else if(TabRawat.getSelectedIndex()==1){
+            tampil2();
+        }*/
+    }//GEN-LAST:event_TabRawatMouseClicked
+
     /**
     * @param args the command line arguments
     */
@@ -851,6 +929,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox NoPermintaan;
     private widget.ComboBox Status;
     private widget.TextBox TCari;
+    private javax.swing.JTabbedPane TabRawat;
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
     private widget.Button btnPelanggan;
@@ -858,6 +937,7 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Button btnSampel;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private widget.Label label10;
     private widget.Label label11;
@@ -875,7 +955,11 @@ private void ppHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private javax.swing.JMenuItem ppPenugasan;
     private javax.swing.JMenuItem ppPermintaanBaru;
     private widget.ScrollPane scrollPane1;
+    private widget.ScrollPane scrollPane2;
+    private widget.ScrollPane scrollPane3;
     private widget.Table tbDokter;
+    private widget.Table tbDokter1;
+    private widget.Table tbDokter2;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
