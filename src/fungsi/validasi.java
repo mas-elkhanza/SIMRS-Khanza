@@ -1294,6 +1294,16 @@ public final class validasi {
         return s;
     }
     
+    public String SetTgl5(String original){
+        original=original.replaceAll("'","");
+        s = "";
+        try {
+            s=original.substring(8,10)+"-"+original.substring(5,7)+"-"+original.substring(0,4)+" "+original.substring(11,19);
+        }catch (Exception e) {
+        }   
+        return s;
+    }
+    
     public String MaxTeks(String original,int max){
         if(original.length()>=max){
             s=original.substring(0,(max-1));
