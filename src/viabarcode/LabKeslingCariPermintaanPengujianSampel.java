@@ -964,7 +964,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
 
             }
         ));
-        tbRekapPermintaan.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRekapPermintaan.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
         tbRekapPermintaan.setName("tbRekapPermintaan"); // NOI18N
         scrollPane2.setViewportView(tbRekapPermintaan);
 
@@ -985,8 +985,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
 
             }
         ));
-        tbTidakDapatDilayani.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbTidakDapatDilayani.setComponentPopupMenu(jPopupMenu1);
+        tbTidakDapatDilayani.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
         tbTidakDapatDilayani.setName("tbTidakDapatDilayani"); // NOI18N
         scrollPane3.setViewportView(tbTidakDapatDilayani);
 
@@ -1845,7 +1844,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 if(tbPermintaan.getSelectedRow()!= -1){
                     if(tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),22).toString().trim().equals("Permintaan Baru")){
                         if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel where no_permintaan='"+tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),1).toString().trim()+"'")==true){
-                            tampil();
+                            tabModePermintaan.removeRow(tbPermintaan.getSelectedRow());
+                            LTotal.setText(tabModePermintaan.getRowCount()+"");
                         }
                     }else{
                         JOptionPane.showMessageDialog(null,"Bukan permintaan baru, tidak bisa dihapus...!");
@@ -1854,14 +1854,15 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Silahkan pilih data permintaan...!!!");
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"User login tidak punya akses untuk menghapus permintaan...!!!");
+                JOptionPane.showMessageDialog(null,"User login tidak punya akses untuk menghapus data...!!!");
             }
         }else if(TabData.getSelectedIndex()==1){
             if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
                 if(tbRekapPermintaan.getSelectedRow()!= -1){
                     if(tbRekapPermintaan.getValueAt(tbRekapPermintaan.getSelectedRow(),22).toString().trim().equals("Permintaan Baru")){
                         if(Sequel.queryutf("delete from laborat_kesling_detail_permintaan_pengujian_sampel where no_permintaan='"+tbRekapPermintaan.getValueAt(tbRekapPermintaan.getSelectedRow(),1).toString().trim()+"' and kode_parameter='"+tbRekapPermintaan.getValueAt(tbRekapPermintaan.getSelectedRow(),23).toString().trim()+"'")==true){
-                            tampil2();
+                            tabModeRekapPermintaan.removeRow(tbRekapPermintaan.getSelectedRow());
+                            LTotal.setText(tabModeRekapPermintaan.getRowCount()+"");
                         }
                     }else{
                         JOptionPane.showMessageDialog(null,"Bukan permintaan baru, tidak bisa dihapus...!");
@@ -1870,23 +1871,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     JOptionPane.showMessageDialog(null,"Silahkan pilih data rekap permintaan...!!!");
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"User login tidak punya akses untuk menghapus rekap permintaan...!!!");
+                JOptionPane.showMessageDialog(null,"User login tidak punya akses untuk menghapus data...!!!");
             }
         }else if(TabData.getSelectedIndex()==2){
-            if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
-                if(tbRekapPermintaan.getSelectedRow()!= -1){
-                    if(tbRekapPermintaan.getValueAt(tbRekapPermintaan.getSelectedRow(),22).toString().trim().equals("Permintaan Baru")){
-                        if(Sequel.queryutf("delete from laborat_kesling_detail_permintaan_pengujian_sampel where no_permintaan='"+tbRekapPermintaan.getValueAt(tbRekapPermintaan.getSelectedRow(),1).toString().trim()+"' and kode_parameter='"+tbRekapPermintaan.getValueAt(tbRekapPermintaan.getSelectedRow(),23).toString().trim()+"'")==true){
-                            tampil2();
-                        }
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Bukan permintaan baru, tidak bisa dihapus...!");
+            if(akses.getpenugasan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
+                if(tbTidakDapatDilayani.getSelectedRow()!= -1){
+                    if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel_tidak_dilayani where no_permintaan='"+tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString().trim()+"'")==true){
+                        Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString().trim()+"'");
+                        tabModeTidakDapatDilayani.removeRow(tbTidakDapatDilayani.getSelectedRow());
+                        LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
                     }
                 }else{
-                    JOptionPane.showMessageDialog(null,"Silahkan pilih data rekap permintaan...!!!");
+                    JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
                 }
             }else{
-                JOptionPane.showMessageDialog(null,"User login tidak punya akses untuk menghapus rekap permintaan...!!!");
+                JOptionPane.showMessageDialog(null,"User login tidak punya akses untuk menghapus data...!!!");
             }
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
@@ -2220,9 +2219,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public void isCek(){
         TCari.requestFocus();
         BtnPrint.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());
-        ppPenugasan.setEnabled(akses.getsurat_pemesanan_medis());
+        ppPenugasan.setEnabled(akses.getpenugasan_pengujian_sampel_lab_kesehatan_lingkungan());
         ppPermintaanBaru.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());
-        ppTidakDapatDilayani.setEnabled(akses.getsurat_pemesanan_medis());
+        ppTidakDapatDilayani.setEnabled(akses.getpenugasan_pengujian_sampel_lab_kesehatan_lingkungan());
         ppSuratPermintaan.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());
     }
 }
