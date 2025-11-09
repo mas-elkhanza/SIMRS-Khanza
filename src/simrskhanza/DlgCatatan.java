@@ -12,33 +12,17 @@
 
 package simrskhanza;
 
-import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.event.KeyEvent;
-import java.sql.Connection;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import inventory.DlgCariKonversi;
-import inventory.DlgCariObat;
-import inventory.DlgCariObat2;
-import inventory.DlgCariObat3;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 /**
  *
  * @author perpustakaan
  */
 public class DlgCatatan extends javax.swing.JDialog {
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
+    private final sekuel Sequel=new sekuel();
+    private final validasi Valid=new validasi();
 
     /** Creates new form DlgPemberianObat
      * @param parent
