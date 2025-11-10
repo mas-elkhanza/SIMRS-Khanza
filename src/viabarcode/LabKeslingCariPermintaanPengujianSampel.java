@@ -263,6 +263,8 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         
         WindowInput.setSize(735,245);
         WindowInput.setLocationRelativeTo(null); 
+        WindowInput2.setSize(735,245);
+        WindowInput2.setLocationRelativeTo(null); 
     }
 
     /** This method is called from within the constructor to
@@ -296,6 +298,20 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         AsalPermintaan = new widget.TextBox();
         label3 = new widget.Label();
         label4 = new widget.Label();
+        WindowInput2 = new javax.swing.JDialog();
+        internalFrame3 = new widget.InternalFrame();
+        BtnTutup2 = new widget.Button();
+        jLabel20 = new widget.Label();
+        BtnSimpan2 = new widget.Button();
+        BtnBatal2 = new widget.Button();
+        NoPermintaanVerifikasi2 = new widget.TextBox();
+        jLabel43 = new widget.Label();
+        scrollPane5 = new widget.ScrollPane();
+        Keterangan2 = new widget.TextArea();
+        label5 = new widget.Label();
+        AsalPermintaan2 = new widget.TextBox();
+        label6 = new widget.Label();
+        label8 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
@@ -489,7 +505,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         NoPermintaanVerifikasi.setBounds(99, 20, 150, 23);
 
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel42.setText("Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan :");
+        jLabel42.setText("Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya :");
         jLabel42.setName("jLabel42"); // NOI18N
         internalFrame2.add(jLabel42);
         jLabel42.setBounds(16, 50, 310, 23);
@@ -534,6 +550,126 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         label4.setBounds(0, 20, 95, 23);
 
         WindowInput.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
+
+        WindowInput2.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowInput2.setName("WindowInput2"); // NOI18N
+        WindowInput2.setUndecorated(true);
+        WindowInput2.setResizable(false);
+
+        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Verifikasi Dapat Dilayani ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
+        internalFrame3.setName("internalFrame3"); // NOI18N
+        internalFrame3.setLayout(null);
+
+        BtnTutup2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
+        BtnTutup2.setMnemonic('U');
+        BtnTutup2.setText("Tutup");
+        BtnTutup2.setToolTipText("Alt+U");
+        BtnTutup2.setName("BtnTutup2"); // NOI18N
+        BtnTutup2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnTutup2ActionPerformed(evt);
+            }
+        });
+        BtnTutup2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnTutup2KeyPressed(evt);
+            }
+        });
+        internalFrame3.add(BtnTutup2);
+        BtnTutup2.setBounds(620, 195, 100, 30);
+
+        jLabel20.setText("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        jLabel20.setName("jLabel20"); // NOI18N
+        internalFrame3.add(jLabel20);
+        jLabel20.setBounds(-10, 175, 850, 14);
+
+        BtnSimpan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
+        BtnSimpan2.setMnemonic('S');
+        BtnSimpan2.setText("Simpan");
+        BtnSimpan2.setToolTipText("Alt+S");
+        BtnSimpan2.setName("BtnSimpan2"); // NOI18N
+        BtnSimpan2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpan2ActionPerformed(evt);
+            }
+        });
+        BtnSimpan2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnSimpan2KeyPressed(evt);
+            }
+        });
+        internalFrame3.add(BtnSimpan2);
+        BtnSimpan2.setBounds(14, 195, 100, 30);
+
+        BtnBatal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
+        BtnBatal2.setMnemonic('B');
+        BtnBatal2.setText("Batal");
+        BtnBatal2.setToolTipText("Alt+B");
+        BtnBatal2.setName("BtnBatal2"); // NOI18N
+        BtnBatal2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBatal2ActionPerformed(evt);
+            }
+        });
+        BtnBatal2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnBatal2KeyPressed(evt);
+            }
+        });
+        internalFrame3.add(BtnBatal2);
+        BtnBatal2.setBounds(117, 195, 100, 30);
+
+        NoPermintaanVerifikasi2.setEditable(false);
+        NoPermintaanVerifikasi2.setName("NoPermintaanVerifikasi2"); // NOI18N
+        internalFrame3.add(NoPermintaanVerifikasi2);
+        NoPermintaanVerifikasi2.setBounds(99, 20, 150, 23);
+
+        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel43.setText("Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya :");
+        jLabel43.setName("jLabel43"); // NOI18N
+        internalFrame3.add(jLabel43);
+        jLabel43.setBounds(16, 50, 310, 23);
+
+        scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        scrollPane5.setName("scrollPane5"); // NOI18N
+
+        Keterangan2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        Keterangan2.setColumns(20);
+        Keterangan2.setRows(9);
+        Keterangan2.setTabSize(20);
+        Keterangan2.setName("Keterangan2"); // NOI18N
+        Keterangan2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                Keterangan2KeyPressed(evt);
+            }
+        });
+        scrollPane5.setViewportView(Keterangan2);
+
+        internalFrame3.add(scrollPane5);
+        scrollPane5.setBounds(99, 70, 621, 103);
+
+        label5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        label5.setText("No.Permintaan");
+        label5.setName("label5"); // NOI18N
+        internalFrame3.add(label5);
+        label5.setBounds(16, 20, 95, 23);
+
+        AsalPermintaan2.setEditable(false);
+        AsalPermintaan2.setName("AsalPermintaan2"); // NOI18N
+        internalFrame3.add(AsalPermintaan2);
+        AsalPermintaan2.setBounds(375, 20, 345, 23);
+
+        label6.setText("Asal Permintaan :");
+        label6.setName("label6"); // NOI18N
+        internalFrame3.add(label6);
+        label6.setBounds(261, 20, 110, 23);
+
+        label8.setText(":");
+        label8.setName("label8"); // NOI18N
+        internalFrame3.add(label8);
+        label8.setBounds(0, 20, 95, 23);
+
+        WindowInput2.getContentPane().add(internalFrame3, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -712,7 +848,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         label14.setPreferredSize(new java.awt.Dimension(60, 23));
         panelisi4.add(label14);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Permintaan Baru", "Tidak Dapat Dilayani", "Penugasan" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Permintaan Baru", "Tidak Dapat Dilayani", "Dapat Dilayani" }));
         Status.setName("Status"); // NOI18N
         Status.setPreferredSize(new java.awt.Dimension(150, 23));
         panelisi4.add(Status);
@@ -1606,24 +1742,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnSampelActionPerformed
 
     private void ppDapatDilayaniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDapatDilayaniActionPerformed
-        if(Sequel.cariInteger("select count(no_permintaan) from laborat_kesling_permintaan_pengujian_sampel where no_permintaan=?",tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),1).toString().trim())==0){
-            Valid.textKosong(TCari,"pilihan data");
-        }else{
-            if(tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),2).toString().equals("Disetujui")){
-                JOptionPane.showMessageDialog(null,"Data pengajuan sudah tervalidasi..!!");
-            }else{
-                Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Disetujui' where no_permintaan=?",tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),1).toString().trim());
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                InventorySuratPemesanan aplikasi=new InventorySuratPemesanan(null,false);
-                aplikasi.tampilkan=false;
-                aplikasi.isCek();
-                aplikasi.panggilgetData(tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),1).toString().trim());
-                aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                aplikasi.setLocationRelativeTo(internalFrame1);
-                aplikasi.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
-                tampil();
+        if(tbPermintaan.getSelectedRow()!= -1){
+            if(tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),22).toString().trim().equals("Permintaan Baru")){
+                NoPermintaanVerifikasi2.setText(tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),1).toString());
+                AsalPermintaan2.setText(tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),2).toString()+" "+tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),3).toString());
+                WindowInput2.setVisible(true);
+                Keterangan2.requestFocus();
+            }else {
+                JOptionPane.showMessageDialog(null,"Status permintaan sudah "+tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),22).toString()+"...!");
             }
+        }else{
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data permintaan...!!!");
         }
     }//GEN-LAST:event_ppDapatDilayaniActionPerformed
 
@@ -1818,8 +1947,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             Valid.textKosong(NoPermintaanVerifikasi,"No.Permintaan");
         }else if(AsalPermintaan.getText().trim().equals("")){
             Valid.textKosong(AsalPermintaan,"Asal Permintaan");
-        }else if(NoPermintaanVerifikasi.getText().trim().equals("")){
-            Valid.textKosong(NoPermintaanVerifikasi,"No.Permintaan dijawab");
         }else if(Keterangan.getText().trim().equals("")){
             Valid.textKosong(Keterangan,"Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan");
         }else{
@@ -1844,13 +1971,60 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            emptTeks();
+            Keterangan.setText("");
         }else{Valid.pindah(evt, BtnSimpan, BtnTutup);}
     }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
         Valid.pindah2(evt,BtnTutup,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
+
+    private void BtnTutup2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTutup2ActionPerformed
+        WindowInput.dispose();
+    }//GEN-LAST:event_BtnTutup2ActionPerformed
+
+    private void BtnTutup2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnTutup2KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            WindowInput2.dispose();
+        }else{Valid.pindah(evt, BtnBatal2, NoPermintaanVerifikasi2);}
+    }//GEN-LAST:event_BtnTutup2KeyPressed
+
+    private void BtnSimpan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan2ActionPerformed
+        if(NoPermintaanVerifikasi2.getText().trim().equals("")){
+            Valid.textKosong(NoPermintaanVerifikasi2,"No.Permintaan");
+        }else if(AsalPermintaan2.getText().trim().equals("")){
+            Valid.textKosong(AsalPermintaan2,"Asal Permintaan");
+        }else if(Keterangan2.getText().trim().equals("")){
+            Valid.textKosong(Keterangan2,"Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya");
+        }else{
+            if(Sequel.menyimpantf("laborat_kesling_permintaan_pengujian_sampel_dilayani","?,?","No.Permintaan",2,new String[]{
+                NoPermintaanVerifikasi2.getText(),Keterangan2.getText()
+            })==true){
+                Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Dapat Dilayani' where no_permintaan='"+tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),1).toString().trim()+"'");
+                tbPermintaan.setValueAt("Dapat Dilayani",tbPermintaan.getSelectedRow(),22);
+                Keterangan2.setText("");
+                WindowInput2.dispose();
+            }
+        }
+    }//GEN-LAST:event_BtnSimpan2ActionPerformed
+
+    private void BtnSimpan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpan2KeyPressed
+        Valid.pindah(evt,Keterangan2,BtnBatal2);
+    }//GEN-LAST:event_BtnSimpan2KeyPressed
+
+    private void BtnBatal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal2ActionPerformed
+        Keterangan2.setText("");
+    }//GEN-LAST:event_BtnBatal2ActionPerformed
+
+    private void BtnBatal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatal2KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            Keterangan2.setText("");
+        }else{Valid.pindah(evt, BtnSimpan2, BtnTutup2);}
+    }//GEN-LAST:event_BtnBatal2KeyPressed
+
+    private void Keterangan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Keterangan2KeyPressed
+        Valid.pindah2(evt,BtnTutup2,BtnSimpan2);
+    }//GEN-LAST:event_Keterangan2KeyPressed
 
     /**
     * @param args the command line arguments
@@ -1870,16 +2044,21 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox AsalPermintaan;
+    private widget.TextBox AsalPermintaan2;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
+    private widget.Button BtnBatal2;
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
+    private widget.Button BtnSimpan2;
     private widget.Button BtnTutup;
+    private widget.Button BtnTutup2;
     private widget.CekBox ChkAccor;
     private widget.TextArea Keterangan;
+    private widget.TextArea Keterangan2;
     private widget.TextBox KodePelanggan;
     private widget.TextBox KodePetugas;
     private widget.TextBox KodeSampel;
@@ -1890,6 +2069,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox NamaSampel;
     private widget.TextBox NoPermintaan;
     private widget.TextBox NoPermintaanVerifikasi;
+    private widget.TextBox NoPermintaanVerifikasi2;
     private widget.PanelBiasa PanelAccor;
     private widget.ComboBox Status;
     private widget.TextBox TCari;
@@ -1897,13 +2077,17 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
     private javax.swing.JDialog WindowInput;
+    private javax.swing.JDialog WindowInput2;
     private widget.Button btnPelanggan;
     private widget.Button btnPetugas;
     private widget.Button btnSampel;
     private widget.InternalFrame internalFrame1;
     private widget.InternalFrame internalFrame2;
+    private widget.InternalFrame internalFrame3;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
     private widget.Label jLabel42;
+    private widget.Label jLabel43;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -1917,7 +2101,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label2;
     private widget.Label label3;
     private widget.Label label4;
+    private widget.Label label5;
+    private widget.Label label6;
     private widget.Label label7;
+    private widget.Label label8;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
@@ -1928,6 +2115,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
     private widget.ScrollPane scrollPane4;
+    private widget.ScrollPane scrollPane5;
     private widget.ScrollPane scrollPaneDetail;
     private widget.Table tbDetailPermintaan;
     private widget.Table tbPermintaan;
