@@ -49183,7 +49183,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLabKeslingPengujianSampelTidakDapatDilayani.addActionListener(this::btnLabKeslingPengujianSampelTidakDapatDilayaniActionPerformed);
         
         btnLabKeslingPengujianSampelDapatDilayani = new widget.ButtonBig();
-        btnLabKeslingPengujianSampelDapatDilayani.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/8333866_shop_online_store_ecommerce_icon.png"))); 
+        btnLabKeslingPengujianSampelDapatDilayani.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4059950_and_architecture_book_buildings_business_icon.png"))); 
         btnLabKeslingPengujianSampelDapatDilayani.setText("Pengujian Sampel Lab Kesling Dapat Dilayani");
         btnLabKeslingPengujianSampelDapatDilayani.setIconTextGap(0);
         btnLabKeslingPengujianSampelDapatDilayani.setName("btnLabKeslingPengujianSampelDapatDilayani");
