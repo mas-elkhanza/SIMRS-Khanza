@@ -230,9 +230,9 @@
                                      }else{
                                          $keluarpasien = getOne("select concat(kamar_inap.tgl_keluar,' ',kamar_inap.jam_keluar) from kamar_inap where kamar_inap.no_rawat='".$norawat."' order by kamar_inap.tgl_keluar desc limit 1");
                                          if(empty($keluarpasien)){
-                                             $keluarpasien = $tgl_registrasi." ".$jam_reg;
+                                             $keluarpasien = $tgl_registrasi." 23:59:59";
                                          }else if($keluarpasien=="0000-00-00 00:00:00"){
-                                             $keluarpasien = $tgl_registrasi." ".$jam_reg;
+                                             $keluarpasien = $tgl_registrasi." 23:59:59";
                                          }
                                          echo $keluarpasien;
                                      }
@@ -843,10 +843,10 @@
                 $add_payment_pct   = validTeks(trim($_POST['add_payment_pct']));
                 $birth_weight      = validTeks(trim($_POST['birth_weight']));
                 $discharge_status  = validTeks(trim($_POST['discharge_status']));
-                $diagnosa          = validTeks2(trim($_POST['diagnosa']));
-                $procedure         = validTeks2(trim($_POST['procedure']));
-                $diagnosainacbg    = validTeks2(trim($_POST['diagnosainacbg']));
-                $procedureinacbg   = validTeks2(trim($_POST['procedureinacbg']));
+                $diagnosa          = validTeks9(trim($_POST['diagnosa']),30);
+                $procedure         = validTeks9(trim($_POST['procedure']),30);
+                $diagnosainacbg    = validTeks9(trim($_POST['diagnosainacbg']),30);
+                $procedureinacbg   = validTeks9(trim($_POST['procedureinacbg']),30);
                 $prosedur_non_bedah = validTeks(trim($_POST['prosedur_non_bedah']));
                 $prosedur_bedah    = validTeks(trim($_POST['prosedur_bedah']));
                 $konsultasi        = validTeks(trim($_POST['konsultasi']));

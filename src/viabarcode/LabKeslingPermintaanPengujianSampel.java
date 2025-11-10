@@ -451,7 +451,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 10, 100, 23);
 
-        WaktuDiterima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2025" }));
+        WaktuDiterima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2025" }));
         WaktuDiterima.setDisplayFormat("dd-MM-yyyy");
         WaktuDiterima.setName("WaktuDiterima"); // NOI18N
         WaktuDiterima.setOpaque(false);
@@ -490,7 +490,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         ChkJln.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ChkJln.setName("ChkJln"); // NOI18N
         PanelInput.add(ChkJln);
-        ChkJln.setBounds(400, 40, 23, 23);
+        ChkJln.setBounds(396, 40, 23, 23);
 
         KdPetugas.setEditable(false);
         KdPetugas.setName("KdPetugas"); // NOI18N
@@ -597,7 +597,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel16);
         jLabel16.setBounds(446, 10, 100, 23);
 
-        WaktuSampling.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-11-2025 09:59:48" }));
+        WaktuSampling.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2025 00:44:58" }));
         WaktuSampling.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         WaktuSampling.setName("WaktuSampling"); // NOI18N
         WaktuSampling.setOpaque(false);
