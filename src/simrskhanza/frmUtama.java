@@ -1230,6 +1230,7 @@ import tranfusidarah.UTDPenyerahanDarah;
 import tranfusidarah.UTDStokDarah;
 import viabarcode.DlgBarcodeRalan;
 import viabarcode.DlgBarcodeRanap;
+import viabarcode.LabKeslingCariPermintaanPengujianSampelTidakDapatDilayani;
 import viabarcode.LabKeslingMasterSampelBakuMutu;
 import viabarcode.LabKeslingNilaiNormalBakuMutu;
 import viabarcode.LabKeslingParameterPengujian;
@@ -23145,6 +23146,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }  
     
+    private void btnLabKeslingPengujianSampelTidakDapatDilayaniActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        isTutup();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        LabKeslingCariPermintaanPengujianSampelTidakDapatDilayani form=new LabKeslingCariPermintaanPengujianSampelTidakDapatDilayani(this,false);
+        form.isCek();
+        form.emptTeks();
+        form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
+        form.setLocationRelativeTo(PanelUtama);
+        form.setVisible(true);
+        DlgHome.dispose();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -23856,7 +23870,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnLabKeslingPelanggan,btnChecklistKriteriaMasukPICU,btnChecklistKriteriaKeluarPICU,btnLabKeslingSampelBakuMutu,btnSkriningInstrumenAMT,btnLabKeslingParameterPengujian,
             btnLabKeslingNilaiNormalBakuMutu,btnSkriningPneumoniaSeverityIndex,btnPenilaianAwalMedisRalanJantung,btnPenilaianAwalMedisRalanUrologi,btnHasilPemeriksaanTreadmill,
             btnHasilPemeriksaanECHOPediatrik,btnMasterTemplateInformasiEdukasi,btnSkriningInstrumenESAT,btnLabKeslingPermintaanPengujianSampel,btnPenilaianAwalMedisRanapJantung,
-            btnEEksekutif;
+            btnEEksekutif,btnLabKeslingPengujianSampelTidakDapatDilayani;
     
     public void isWall(){
         try{            
@@ -24169,6 +24183,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
                 Panelmenu.add(btnLabKeslingPermintaanPengujianSampel);
+                jmlmenu++;
+            }
+            
+            if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
+                Panelmenu.add(btnLabKeslingPengujianSampelTidakDapatDilayani);
                 jmlmenu++;
             }
         }else if(cmbMenu.getSelectedIndex()==2){ 
@@ -29964,6 +29983,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
             Panelmenu.add(btnLabKeslingPermintaanPengujianSampel);
+            jmlmenu++;
+        }
+        
+        if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
+            Panelmenu.add(btnLabKeslingPengujianSampelTidakDapatDilayani);
             jmlmenu++;
         }
 
@@ -35795,6 +35819,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
             if(btnLabKeslingPermintaanPengujianSampel.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnLabKeslingPermintaanPengujianSampel);
+                jmlmenu++;
+            }
+        }
+        
+        if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
+            if(btnLabKeslingPengujianSampelTidakDapatDilayani.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnLabKeslingPengujianSampelTidakDapatDilayani);
                 jmlmenu++;
             }
         }
@@ -49111,6 +49142,14 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLabKeslingPermintaanPengujianSampel.setName("btnLabKeslingPermintaanPengujianSampel");
         btnLabKeslingPermintaanPengujianSampel.setPreferredSize(new java.awt.Dimension(200, 90));
         btnLabKeslingPermintaanPengujianSampel.addActionListener(this::btnLabKeslingPermintaanPengujianSampelActionPerformed);
+        
+        btnLabKeslingPengujianSampelTidakDapatDilayani = new widget.ButtonBig();
+        btnLabKeslingPengujianSampelTidakDapatDilayani.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088713_banned_closed_shop_sign_icon.png"))); 
+        btnLabKeslingPengujianSampelTidakDapatDilayani.setText("Pengujian Sampel Lab Kesling Tidak Dapat Dilayani");
+        btnLabKeslingPengujianSampelTidakDapatDilayani.setIconTextGap(0);
+        btnLabKeslingPengujianSampelTidakDapatDilayani.setName("btnLabKeslingPengujianSampelTidakDapatDilayani");
+        btnLabKeslingPengujianSampelTidakDapatDilayani.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnLabKeslingPengujianSampelTidakDapatDilayani.addActionListener(this::btnLabKeslingPengujianSampelTidakDapatDilayaniActionPerformed);
         
         btnPenilaianAwalMedisRanapJantung = new widget.ButtonBig();
         btnPenilaianAwalMedisRanapJantung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6217204_anatomy_heart_human_medical_organ_icon.png"))); 
