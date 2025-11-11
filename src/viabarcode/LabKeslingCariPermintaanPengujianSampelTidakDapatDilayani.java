@@ -889,18 +889,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_btnSampelActionPerformed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan()==true){
-            if(tbTidakDapatDilayani.getSelectedRow()!= -1){
-                if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel_tidak_dilayani where no_permintaan='"+tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString().trim()+"'")==true){
-                    Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString().trim()+"'");
-                    tabModeTidakDapatDilayani.removeRow(tbTidakDapatDilayani.getSelectedRow());
-                    LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
-                }
-            }else{
-                JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
+        if(tbTidakDapatDilayani.getSelectedRow()!= -1){
+            if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel_tidak_dilayani where no_permintaan='"+tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString().trim()+"'")==true){
+                Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbTidakDapatDilayani.getValueAt(tbTidakDapatDilayani.getSelectedRow(),1).toString().trim()+"'");
+                tabModeTidakDapatDilayani.removeRow(tbTidakDapatDilayani.getSelectedRow());
+                LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
             }
         }else{
-            JOptionPane.showMessageDialog(null,"User login tidak punya akses untuk menghapus data...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
 

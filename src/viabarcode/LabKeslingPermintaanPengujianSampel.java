@@ -125,6 +125,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         VolumeSampel.setDocument(new batasInput((int)20).getKata(VolumeSampel));
         WadahSampel.setDocument(new batasInput((int)30).getKata(WadahSampel));
         KondisiWadah.setDocument(new batasInput((int)40).getKata(KondisiWadah));
+        TCariPeriksa.setDocument(new batasInput((int)100).getKata(TCariPeriksa));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCariPeriksa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -190,6 +191,9 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         KegiatanUsaha = new widget.TextBox();
         PersonalDihubungi = new widget.TextBox();
         KontakPelanggan = new widget.TextBox();
+        Popup = new javax.swing.JPopupMenu();
+        ppBersihkan = new javax.swing.JMenuItem();
+        ppSemua = new javax.swing.JMenuItem();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
@@ -267,6 +271,40 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         KontakPelanggan.setEditable(false);
         KontakPelanggan.setHighlighter(null);
         KontakPelanggan.setName("KontakPelanggan"); // NOI18N
+
+        Popup.setName("Popup"); // NOI18N
+
+        ppBersihkan.setBackground(new java.awt.Color(255, 255, 254));
+        ppBersihkan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppBersihkan.setForeground(new java.awt.Color(50, 50, 50));
+        ppBersihkan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppBersihkan.setText("Bersihkan Pilihan");
+        ppBersihkan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppBersihkan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppBersihkan.setName("ppBersihkan"); // NOI18N
+        ppBersihkan.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppBersihkan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppBersihkanActionPerformed(evt);
+            }
+        });
+        Popup.add(ppBersihkan);
+
+        ppSemua.setBackground(new java.awt.Color(255, 255, 254));
+        ppSemua.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppSemua.setForeground(new java.awt.Color(50, 50, 50));
+        ppSemua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppSemua.setText("Pilih Semua");
+        ppSemua.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppSemua.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppSemua.setName("ppSemua"); // NOI18N
+        ppSemua.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppSemua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppSemuaActionPerformed(evt);
+            }
+        });
+        Popup.add(ppSemua);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -451,7 +489,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 10, 100, 23);
 
-        WaktuDiterima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2025" }));
+        WaktuDiterima.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2025" }));
         WaktuDiterima.setDisplayFormat("dd-MM-yyyy");
         WaktuDiterima.setName("WaktuDiterima"); // NOI18N
         WaktuDiterima.setOpaque(false);
@@ -597,7 +635,7 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
         PanelInput.add(jLabel16);
         jLabel16.setBounds(446, 10, 100, 23);
 
-        WaktuSampling.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-11-2025 00:44:58" }));
+        WaktuSampling.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "10-11-2025 12:16:47" }));
         WaktuSampling.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         WaktuSampling.setName("WaktuSampling"); // NOI18N
         WaktuSampling.setOpaque(false);
@@ -837,9 +875,11 @@ public final class LabKeslingPermintaanPengujianSampel extends javax.swing.JDial
 
         jPanel3.add(panelisi5, java.awt.BorderLayout.PAGE_END);
 
+        Scroll2.setComponentPopupMenu(Popup);
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
+        tbPermintaan.setComponentPopupMenu(Popup);
         tbPermintaan.setName("tbPermintaan"); // NOI18N
         tbPermintaan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1411,6 +1451,18 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         Valid.pindah(evt,KondisiWadah,BtnSimpan);
     }//GEN-LAST:event_BtnSampelKeyPressed
 
+    private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
+        for(i=0;i<tbPermintaan.getRowCount();i++){
+            tbPermintaan.setValueAt(false,i,0);
+        }
+    }//GEN-LAST:event_ppBersihkanActionPerformed
+
+    private void ppSemuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppSemuaActionPerformed
+        for(i=0;i<tbPermintaan.getRowCount();i++){
+            tbPermintaan.setValueAt(true,i,0);
+        }
+    }//GEN-LAST:event_ppSemuaActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1462,6 +1514,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox NmPetugas;
     private widget.PanelBiasa PanelInput;
     private widget.TextBox PersonalDihubungi;
+    private javax.swing.JPopupMenu Popup;
     private widget.ScrollPane Scroll2;
     private widget.TextBox TCariPeriksa;
     private widget.TextBox TNoPermintaan;
@@ -1494,6 +1547,8 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label11;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelisi5;
+    private javax.swing.JMenuItem ppBersihkan;
+    private javax.swing.JMenuItem ppSemua;
     private widget.ScrollPane scrollInput;
     private widget.Table tbPermintaan;
     // End of variables declaration//GEN-END:variables
@@ -1760,7 +1815,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
   
     private void autoNomor() {
         if(!KodeSampel.getText().trim().equals("")){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_permintaan_pengujian_sampel.no_permintaan,5),signed)),0) from laborat_kesling_permintaan_pengujian_sampel where date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,'%Y')='"+WaktuDiterima.getSelectedItem().toString().substring(6,10)+"' and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+WaktuDiterima.getSelectedItem().toString().substring(6,10)+"/PPS"+"/",5,TNoPermintaan);   
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_permintaan_pengujian_sampel.no_permintaan,5),signed)),0) from laborat_kesling_permintaan_pengujian_sampel where date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,'%Y')='"+WaktuDiterima.getSelectedItem().toString().substring(6,10)+"' and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+WaktuDiterima.getSelectedItem().toString().substring(6,10)+"/PPS/",5,TNoPermintaan);   
         }        
     }
 
