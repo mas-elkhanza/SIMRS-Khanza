@@ -30,6 +30,7 @@
 	<parameter name="nomorpermintaan" class="java.lang.String"/>
 	<parameter name="jenisampel" class="java.lang.String"/>
 	<parameter name="kodesampel" class="java.lang.String"/>
+	<parameter name="catatan" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select no, temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9, temp10, temp11, temp12, temp13, temp14, temp15, temp16 from temporary order by no asc]]>
 	</queryString>
@@ -139,7 +140,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="201" splitType="Stretch">
+		<band height="213" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="14" width="520" height="25" forecolor="#000000" backcolor="#00FF00" uuid="d59d1e25-b000-4b76-990e-43d1f762778a"/>
@@ -176,7 +177,7 @@
 			<staticText>
 				<reportElement x="1" y="85" width="521" height="15" uuid="62d931b0-4d8a-4e4c-87e6-da3065f7b882"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="11" isBold="false"/>
+					<font fontName="Tahoma" size="11" isBold="false" isUnderline="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[SURAT TUGAS PENGUJIAN (STP)]]></text>
@@ -319,6 +320,30 @@
 				</textElement>
 				<text><![CDATA[Kode Sampel]]></text>
 			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="113" y="194" width="7" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="e767fd11-f4a5-4561-bfb7-c7fced9fb305"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="194" width="113" height="15" forecolor="#000000" backcolor="#F0F0DC" uuid="e1ea3195-b9ac-404b-be99-fb3a719c0fd9"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Catatan]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="120" y="194" width="402" height="15" uuid="2d423a64-1d14-4c48-81f5-e6f8024b7f3b"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="10"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{catatan}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>

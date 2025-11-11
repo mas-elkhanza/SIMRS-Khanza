@@ -188,7 +188,7 @@
 			<staticText>
 				<reportElement x="1" y="85" width="521" height="15" uuid="62d931b0-4d8a-4e4c-87e6-da3065f7b882"/>
 				<textElement textAlignment="Center">
-					<font fontName="Tahoma" size="11" isBold="false"/>
+					<font fontName="Tahoma" size="11" isBold="false" isUnderline="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[FORMULIR PERMINTAAN PENGUJIAN SAMPEL (FPPS)]]></text>
@@ -620,7 +620,7 @@
 				<textFieldExpression><![CDATA[$P{bakumutu}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="1" y="100" width="521" height="15" uuid="df07f5ac-a610-4be3-969f-ca284507c926"/>
+				<reportElement x="1" y="99" width="521" height="15" uuid="df07f5ac-a610-4be3-969f-ca284507c926"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>

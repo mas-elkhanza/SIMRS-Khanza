@@ -430,11 +430,6 @@ public final class LabKeslingPenugasanPengujianSampel extends javax.swing.JDialo
         KodePelanggan.setEditable(false);
         KodePelanggan.setHighlighter(null);
         KodePelanggan.setName("KodePelanggan"); // NOI18N
-        KodePelanggan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodePelangganKeyPressed(evt);
-            }
-        });
         PanelInput.add(KodePelanggan);
         KodePelanggan.setBounds(94, 70, 80, 23);
 
@@ -531,11 +526,6 @@ public final class LabKeslingPenugasanPengujianSampel extends javax.swing.JDialo
         TNoPermintaan.setEditable(false);
         TNoPermintaan.setHighlighter(null);
         TNoPermintaan.setName("TNoPermintaan"); // NOI18N
-        TNoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TNoPermintaanKeyPressed(evt);
-            }
-        });
         PanelInput.add(TNoPermintaan);
         TNoPermintaan.setBounds(540, 40, 140, 23);
 
@@ -552,11 +542,6 @@ public final class LabKeslingPenugasanPengujianSampel extends javax.swing.JDialo
         KodeSampel.setEditable(false);
         KodeSampel.setHighlighter(null);
         KodeSampel.setName("KodeSampel"); // NOI18N
-        KodeSampel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeSampelKeyPressed(evt);
-            }
-        });
         PanelInput.add(KodeSampel);
         KodeSampel.setBounds(444, 70, 55, 23);
 
@@ -667,11 +652,6 @@ public final class LabKeslingPenugasanPengujianSampel extends javax.swing.JDialo
         TCariPeriksa.setToolTipText("Alt+C");
         TCariPeriksa.setName("TCariPeriksa"); // NOI18N
         TCariPeriksa.setPreferredSize(new java.awt.Dimension(310, 23));
-        TCariPeriksa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TCariPeriksaActionPerformed(evt);
-            }
-        });
         TCariPeriksa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariPeriksaKeyPressed(evt);
@@ -862,7 +842,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt, KodeSampel,BtnBatal);
+            Valid.pindah(evt, TCariPeriksa,BtnBatal);
         }
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1058,6 +1038,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             param.put("nomorpermintaan",TNoPermintaan.getText());
             param.put("jenisampel",NamaSampel.getText());
             param.put("kodesampel",KodeSampel.getText());
+            param.put("catatan",Catatan.getText());
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
@@ -1080,14 +1061,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
-    private void TCariPeriksaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TCariPeriksaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TCariPeriksaActionPerformed
-
-    private void TNoPermintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoPermintaanKeyPressed
-        //Valid.pindah(evt,TCariPeriksa,btnPelanggan);
-    }//GEN-LAST:event_TNoPermintaanKeyPressed
-
     private void TanggalPenugasanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalPenugasanItemStateChanged
         try {
             autoNomor();
@@ -1102,29 +1075,9 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void KodePelangganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePelangganKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPelangganActionPerformed(null);
-        }else{            
-            Valid.pindah(evt,TNoPermintaan,LokasiSampling);
-        }*/
-    }//GEN-LAST:event_KodePelangganKeyPressed
-
-    private void KodeSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeSampelKeyPressed
-        /*if(evt.getKeyCode()==KeyEvent.VK_UP){
-            BtnSampelActionPerformed(null);
-        }else{            
-            Valid.pindah(evt,KondisiWadah,BtnSimpan);
-        }*/
-    }//GEN-LAST:event_KodeSampelKeyPressed
-
     private void TNoPenugasanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoPenugasanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TCariPeriksa,Catatan);
     }//GEN-LAST:event_TNoPenugasanKeyPressed
-
-    private void KdAnalisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdAnalisKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_KdAnalisKeyPressed
 
     private void btnAnalisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalisActionPerformed
         i=2;
@@ -1136,7 +1089,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_btnAnalisActionPerformed
 
     private void CatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TNoPenugasan,BtnSimpan);
     }//GEN-LAST:event_CatatanKeyPressed
 
     private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppBersihkanActionPerformed
@@ -1150,6 +1103,14 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             tbPermintaan.setValueAt(true,i,0);
         }
     }//GEN-LAST:event_ppSemuaActionPerformed
+
+    private void KdAnalisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KdAnalisKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
+            btnAnalisActionPerformed(null);
+        }else{            
+            Valid.pindah(evt,TNoPenugasan,Catatan);
+        }
+    }//GEN-LAST:event_KdAnalisKeyPressed
 
     /**
     * @param args the command line arguments
@@ -1332,6 +1293,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         KodeSampel.setText(kodesampel);
         NamaSampel.setText(namasampel);
         autoNomor();
+        Catatan.requestFocus();
     }
     
     private void jam(){
