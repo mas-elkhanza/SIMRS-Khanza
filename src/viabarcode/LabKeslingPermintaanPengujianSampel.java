@@ -1633,6 +1633,9 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             pilih=null;
             Kode=null;
             NamaParameter=null;
+            MetodePengujian=null;
+            Satuan=null;
+            Kategori=null;
             
             myObj = new FileReader("./cache/permintaanpengujiansampellabkesling.iyem");
             root = mapper.readTree(myObj);

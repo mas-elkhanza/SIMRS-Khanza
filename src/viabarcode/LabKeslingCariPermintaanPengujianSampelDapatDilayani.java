@@ -41,10 +41,6 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
     private int i=0;
     private File file;
     private FileWriter fileWriter;
-    private ObjectMapper mapper = new ObjectMapper();
-    private JsonNode root;
-    private JsonNode response;
-    private FileReader myObj;
 
     /** Creates new form DlgProgramStudi
      * @param parent
@@ -54,7 +50,7 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
         initComponents();
 
         tabModeTidakDapatDilayani=new DefaultTableModel(null,new Object[]{
-                "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya"
+                "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel","Status Penugasan","Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -63,7 +59,7 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
         tbDapatDilayani.setPreferredScrollableViewportSize(new Dimension(800,800));
         tbDapatDilayani.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 8; i++) {
             TableColumn column = tbDapatDilayani.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(118);
@@ -78,6 +74,8 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
             }else if(i==5){
                 column.setPreferredWidth(130);
             }else if(i==6){
+                column.setPreferredWidth(115);
+            }else if(i==7){
                 column.setPreferredWidth(700);
             }
         }
@@ -173,9 +171,10 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
+        label10 = new widget.Label();
+        TCari = new widget.TextBox();
+        BtnCari = new widget.Button();
         BtnAll = new widget.Button();
-        label9 = new widget.Label();
-        LTotal = new widget.Label();
         label14 = new widget.Label();
         BtnPenugasan = new widget.Button();
         BtnHapus = new widget.Button();
@@ -186,21 +185,20 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
         Tanggal1 = new widget.Tanggal();
         label12 = new widget.Label();
         Tanggal2 = new widget.Tanggal();
-        label15 = new widget.Label();
-        NoPermintaan = new widget.TextBox();
-        label10 = new widget.Label();
-        TCari = new widget.TextBox();
-        BtnCari = new widget.Button();
+        label17 = new widget.Label();
+        NamaPelanggan = new widget.TextBox();
+        btnPelanggan = new widget.Button();
+        label9 = new widget.Label();
+        LTotal = new widget.Label();
         panelisi3 = new widget.panelisi();
         label13 = new widget.Label();
         NamaPetugas = new widget.TextBox();
         btnPetugas = new widget.Button();
-        label17 = new widget.Label();
-        NamaPelanggan = new widget.TextBox();
-        btnPelanggan = new widget.Button();
         label7 = new widget.Label();
         NamaSampel = new widget.TextBox();
         btnSampel = new widget.Button();
+        label15 = new widget.Label();
+        NoPermintaan = new widget.TextBox();
         scrollPane3 = new widget.ScrollPane();
         tbDapatDilayani = new widget.Table();
         PanelAccor = new widget.PanelBiasa();
@@ -242,12 +240,42 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
         panelisi1.setPreferredSize(new java.awt.Dimension(100, 56));
         panelisi1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
+        label10.setText("Key Word :");
+        label10.setName("label10"); // NOI18N
+        label10.setPreferredSize(new java.awt.Dimension(62, 23));
+        panelisi1.add(label10);
+
+        TCari.setName("TCari"); // NOI18N
+        TCari.setPreferredSize(new java.awt.Dimension(185, 23));
+        TCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TCariKeyPressed(evt);
+            }
+        });
+        panelisi1.add(TCari);
+
+        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
+        BtnCari.setMnemonic('5');
+        BtnCari.setToolTipText("Alt+5");
+        BtnCari.setName("BtnCari"); // NOI18N
+        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCariActionPerformed(evt);
+            }
+        });
+        BtnCari.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnCariKeyPressed(evt);
+            }
+        });
+        panelisi1.add(BtnCari);
+
         BtnAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
         BtnAll.setMnemonic('M');
-        BtnAll.setText("Semua");
         BtnAll.setToolTipText("Alt+M");
         BtnAll.setName("BtnAll"); // NOI18N
-        BtnAll.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnAll.setPreferredSize(new java.awt.Dimension(28, 23));
         BtnAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAllActionPerformed(evt);
@@ -260,19 +288,8 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
         });
         panelisi1.add(BtnAll);
 
-        label9.setText("Record :");
-        label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelisi1.add(label9);
-
-        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LTotal.setText("0");
-        LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(117, 23));
-        panelisi1.add(LTotal);
-
         label14.setName("label14"); // NOI18N
-        label14.setPreferredSize(new java.awt.Dimension(11, 23));
+        label14.setPreferredSize(new java.awt.Dimension(10, 23));
         panelisi1.add(label14);
 
         BtnPenugasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/3079288_adobe file extensions_adobe fireworks_document_extension icon_file_icon.png"))); // NOI18N
@@ -384,50 +401,38 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
         });
         panelisi4.add(Tanggal2);
 
-        label15.setText("Nomor :");
-        label15.setName("label15"); // NOI18N
-        label15.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelisi4.add(label15);
+        label17.setText("Pelanggan :");
+        label17.setName("label17"); // NOI18N
+        label17.setPreferredSize(new java.awt.Dimension(70, 23));
+        panelisi4.add(label17);
 
-        NoPermintaan.setName("NoPermintaan"); // NOI18N
-        NoPermintaan.setPreferredSize(new java.awt.Dimension(150, 23));
-        NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoPermintaanKeyPressed(evt);
-            }
-        });
-        panelisi4.add(NoPermintaan);
+        NamaPelanggan.setEditable(false);
+        NamaPelanggan.setName("NamaPelanggan"); // NOI18N
+        NamaPelanggan.setPreferredSize(new java.awt.Dimension(210, 23));
+        panelisi4.add(NamaPelanggan);
 
-        label10.setText("Key Word :");
-        label10.setName("label10"); // NOI18N
-        label10.setPreferredSize(new java.awt.Dimension(65, 23));
-        panelisi4.add(label10);
-
-        TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(144, 23));
-        TCari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TCariKeyPressed(evt);
-            }
-        });
-        panelisi4.add(TCari);
-
-        BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCari.setMnemonic('5');
-        BtnCari.setToolTipText("Alt+5");
-        BtnCari.setName("BtnCari"); // NOI18N
-        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnCari.addActionListener(new java.awt.event.ActionListener() {
+        btnPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        btnPelanggan.setMnemonic('4');
+        btnPelanggan.setToolTipText("Alt+4");
+        btnPelanggan.setName("btnPelanggan"); // NOI18N
+        btnPelanggan.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnPelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCariActionPerformed(evt);
+                btnPelangganActionPerformed(evt);
             }
         });
-        BtnCari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCariKeyPressed(evt);
-            }
-        });
-        panelisi4.add(BtnCari);
+        panelisi4.add(btnPelanggan);
+
+        label9.setText("Record :");
+        label9.setName("label9"); // NOI18N
+        label9.setPreferredSize(new java.awt.Dimension(62, 23));
+        panelisi4.add(label9);
+
+        LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LTotal.setText("0");
+        LTotal.setName("LTotal"); // NOI18N
+        LTotal.setPreferredSize(new java.awt.Dimension(62, 23));
+        panelisi4.add(LTotal);
 
         jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
 
@@ -444,7 +449,7 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
 
         NamaPetugas.setEditable(false);
         NamaPetugas.setName("NamaPetugas"); // NOI18N
-        NamaPetugas.setPreferredSize(new java.awt.Dimension(150, 23));
+        NamaPetugas.setPreferredSize(new java.awt.Dimension(179, 23));
         panelisi3.add(NamaPetugas);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -459,28 +464,6 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
         });
         panelisi3.add(btnPetugas);
 
-        label17.setText("Pelanggan :");
-        label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(70, 23));
-        panelisi3.add(label17);
-
-        NamaPelanggan.setEditable(false);
-        NamaPelanggan.setName("NamaPelanggan"); // NOI18N
-        NamaPelanggan.setPreferredSize(new java.awt.Dimension(150, 23));
-        panelisi3.add(NamaPelanggan);
-
-        btnPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPelanggan.setMnemonic('4');
-        btnPelanggan.setToolTipText("Alt+4");
-        btnPelanggan.setName("btnPelanggan"); // NOI18N
-        btnPelanggan.setPreferredSize(new java.awt.Dimension(28, 23));
-        btnPelanggan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPelangganActionPerformed(evt);
-            }
-        });
-        panelisi3.add(btnPelanggan);
-
         label7.setText("Sampel :");
         label7.setName("label7"); // NOI18N
         label7.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -488,7 +471,7 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
 
         NamaSampel.setEditable(false);
         NamaSampel.setName("NamaSampel"); // NOI18N
-        NamaSampel.setPreferredSize(new java.awt.Dimension(140, 23));
+        NamaSampel.setPreferredSize(new java.awt.Dimension(164, 23));
         panelisi3.add(NamaSampel);
 
         btnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -502,6 +485,20 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
             }
         });
         panelisi3.add(btnSampel);
+
+        label15.setText("Nomor :");
+        label15.setName("label15"); // NOI18N
+        label15.setPreferredSize(new java.awt.Dimension(50, 23));
+        panelisi3.add(label15);
+
+        NoPermintaan.setName("NoPermintaan"); // NOI18N
+        NoPermintaan.setPreferredSize(new java.awt.Dimension(150, 23));
+        NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoPermintaanKeyPressed(evt);
+            }
+        });
+        panelisi3.add(NoPermintaan);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
@@ -689,6 +686,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Penugasan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya</b></td>").
                                         append("</tr>");
                             for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
@@ -700,6 +698,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbDapatDilayani.getValueAt(i,4).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbDapatDilayani.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbDapatDilayani.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbDapatDilayani.getValueAt(i,7).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -737,6 +736,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Penugasan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya</b></td>").
                                         append("</tr>");
                             for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
@@ -748,6 +748,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                 append("<td valign='top'>").append(tbDapatDilayani.getValueAt(i,4).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbDapatDilayani.getValueAt(i,5).toString()).append("</td>").
                                                 append("<td valign='top'>").append(tbDapatDilayani.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbDapatDilayani.getValueAt(i,7).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -779,10 +780,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya\"\n"
+                                "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Status Penugasan\";\"Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya\"\n"
                             ); 
                             for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
-                                htmlContent.append("\"").append(tbDapatDilayani.getValueAt(i,0).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,1).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,2).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,3).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,4).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,5).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,6).toString()).append("\"\n");
+                                htmlContent.append("\"").append(tbDapatDilayani.getValueAt(i,0).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,1).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,2).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,3).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,4).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,5).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,6).toString()).append("\";\"").append(tbDapatDilayani.getValueAt(i,7).toString()).append("\"\n");
                             }
                             f = new File("DataPermintaanPengujianSampelDilayani.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
@@ -1114,8 +1115,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         try{  
             ps=koneksi.prepareStatement(
                         "select laborat_kesling_permintaan_pengujian_sampel.no_permintaan,laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan,laborat_kesling_pelanggan.nama_pelanggan,laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,"+
-                        "laborat_kesling_permintaan_pengujian_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,laborat_kesling_permintaan_pengujian_sampel_dilayani.keterangan from laborat_kesling_permintaan_pengujian_sampel "+
-                        "inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
+                        "laborat_kesling_permintaan_pengujian_sampel.kode_sampel,laborat_kesling_master_sampel.nama_sampel,laborat_kesling_permintaan_pengujian_sampel_dilayani.keterangan,laborat_kesling_permintaan_pengujian_sampel_dilayani.status "+
+                        "from laborat_kesling_permintaan_pengujian_sampel inner join laborat_kesling_pelanggan on laborat_kesling_permintaan_pengujian_sampel.kode_pelanggan=laborat_kesling_pelanggan.kode_pelanggan "+
                         "inner join laborat_kesling_master_sampel on laborat_kesling_permintaan_pengujian_sampel.kode_sampel=laborat_kesling_master_sampel.kode_sampel "+
                         "inner join laborat_kesling_permintaan_pengujian_sampel_dilayani on laborat_kesling_permintaan_pengujian_sampel_dilayani.no_permintaan=laborat_kesling_permintaan_pengujian_sampel.no_permintaan "+
                         "where laborat_kesling_permintaan_pengujian_sampel.waktu_diterima between ? and ? "+(NoPermintaan.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.no_permintaan='"+NoPermintaan.getText()+"' ")+
@@ -1124,7 +1125,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         (NamaSampel.getText().trim().equals("")?"":" and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"' ")+
                         (TCari.getText().trim().equals("")?"":" and (laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling like ? or laborat_kesling_permintaan_pengujian_sampel.deskripsi_sampel like ? or laborat_kesling_permintaan_pengujian_sampel.jenis_sampel like ? "+
                         "or laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh like ? or laborat_kesling_permintaan_pengujian_sampel.wadah_sampel like ? or laborat_kesling_permintaan_pengujian_sampel.kondisi_wadah_sampel like ? "+
-                        "or laborat_kesling_permintaan_pengujian_sampel_dilayani.keterangan like ?) ")+"order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
+                        "or laborat_kesling_permintaan_pengujian_sampel_dilayani.keterangan like ? or laborat_kesling_permintaan_pengujian_sampel_dilayani.status like ?) ")+"order by laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,laborat_kesling_permintaan_pengujian_sampel.no_permintaan");
                 
             try {
                 ps.setString(1,Valid.SetTgl(Tanggal1.getSelectedItem()+"")+" 00:00:00");
@@ -1137,12 +1138,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
+                    ps.setString(10,"%"+TCari.getText()+"%");
                 }
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
                     tabModeTidakDapatDilayani.addRow(new Object[]{
-                        rs.getString("waktu_diterima"),rs.getString("no_permintaan"),rs.getString("kode_pelanggan"),rs.getString("nama_pelanggan"),rs.getString("kode_sampel"),rs.getString("nama_sampel"),rs.getString("keterangan")
+                        rs.getString("waktu_diterima"),rs.getString("no_permintaan"),rs.getString("kode_pelanggan"),rs.getString("nama_pelanggan"),rs.getString("kode_sampel"),rs.getString("nama_sampel"),rs.getString("status"),rs.getString("keterangan")
                     }); 
                 }        
                 LTotal.setText(rs.getRow()+"");

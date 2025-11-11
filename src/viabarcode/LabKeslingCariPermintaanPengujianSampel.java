@@ -1996,7 +1996,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else if(Keterangan2.getText().trim().equals("")){
             Valid.textKosong(Keterangan2,"Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya");
         }else{
-            if(Sequel.menyimpantf("laborat_kesling_permintaan_pengujian_sampel_dilayani","?,?","No.Permintaan",2,new String[]{
+            if(Sequel.menyimpantf("laborat_kesling_permintaan_pengujian_sampel_dilayani","?,?,'Belum Ada Penugasan'","No.Permintaan",2,new String[]{
                 NoPermintaanVerifikasi2.getText(),Keterangan2.getText()
             })==true){
                 Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Dapat Dilayani' where no_permintaan='"+tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),1).toString().trim()+"'");

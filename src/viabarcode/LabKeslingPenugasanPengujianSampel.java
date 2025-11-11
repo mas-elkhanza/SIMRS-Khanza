@@ -1275,23 +1275,27 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             pilih=null;
             Kode=null;
             NamaParameter=null;
+            MetodePengujian=null;
+            Satuan=null;
+            Kategori=null;
+            
+            System.out.println("Tes 1");
             
             myObj = new FileReader("./cache/penugasanpengujiansampellabkesling.iyem");
             root = mapper.readTree(myObj);
             response = root.path("penugasanpengujiansampellabkesling");
             if(response.isArray()){
+                System.out.println("Tes 2");
                 if(TCariPeriksa.getText().trim().equals("")){
                     if(KategoriParameter.getSelectedItem().toString().equals("Semua")){
                         for(JsonNode list:response){
-                            if(list.path("Sampel").asText().equals(KodeSampel.getText())){
-                                tabMode.addRow(new Object[]{
-                                    false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
-                                });
-                            }
+                            tabMode.addRow(new Object[]{
+                                false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
+                            });
                         }
                     }else{
                         for(JsonNode list:response){
-                            if(list.path("Sampel").asText().equals(KodeSampel.getText())&&list.path("Kategori").asText().equals(KategoriParameter.getSelectedItem().toString())){
+                            if(list.path("Kategori").asText().equals(KategoriParameter.getSelectedItem().toString())){
                                 tabMode.addRow(new Object[]{
                                     false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
                                 });
@@ -1301,7 +1305,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 }else{
                     if(KategoriParameter.getSelectedItem().toString().equals("Semua")){
                         for(JsonNode list:response){
-                            if(list.path("Sampel").asText().equals(KodeSampel.getText())&&(list.path("Kode").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaParameter").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("MetodePengujian").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                            if(list.path("Kode").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaParameter").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("MetodePengujian").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())){
                                 tabMode.addRow(new Object[]{
                                     false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
                                 });
@@ -1309,7 +1313,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         }
                     }else{
                         for(JsonNode list:response){
-                            if(list.path("Sampel").asText().equals(KodeSampel.getText())&&(list.path("Kode").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaParameter").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("MetodePengujian").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase()))){
+                            if(list.path("Kode").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("NamaParameter").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())||list.path("MetodePengujian").asText().toLowerCase().contains(TCariPeriksa.getText().toLowerCase())){
                                 if(list.path("Kategori").asText().equals(KategoriParameter.getSelectedItem().toString())){
                                     tabMode.addRow(new Object[]{
                                         false,list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("MetodePengujian").asText(),list.path("Satuan").asText(),list.path("Kategori").asText()
