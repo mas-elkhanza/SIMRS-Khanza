@@ -35,7 +35,7 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        Object[] row={"Kode Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kota","No.Telp","Kegiatan Usaha","Personal Yang Dihubungi"};
+        Object[] row={"No.Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kota","No.Telp","Kegiatan Usaha","Personal Yang Dihubungi"};
         tabMode=new DefaultTableModel(null,row){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -64,7 +64,7 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         }
         tbDokter.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Kode.setDocument(new batasInput((byte)5).getKata(Kode));
+        Kode.setDocument(new batasInput((byte)6).getKata(Kode));
         Nama.setDocument(new batasInput((byte)50).getKata(Nama));      
         Alamat.setDocument(new batasInput((byte)50).getKata(Alamat));  
         Kota.setDocument(new batasInput((byte)20).getKata(Kota));    
@@ -404,7 +404,7 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(660, 107));
         FormInput.setLayout(null);
 
-        label12.setText("Kode :");
+        label12.setText("Nomor :");
         label12.setName("label12"); // NOI18N
         label12.setPreferredSize(new java.awt.Dimension(75, 23));
         FormInput.add(label12);
@@ -600,7 +600,7 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
         if(Kode.getText().trim().equals("")){
-            Valid.textKosong(Kode,"Kode Pelanggan");
+            Valid.textKosong(Kode,"No.Pelanggan");
         }else if(Nama.getText().trim().equals("")){
             Valid.textKosong(Nama,"Nama Pelanggan");
         }else if(Alamat.getText().trim().equals("")){
@@ -692,7 +692,7 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
         if(Kode.getText().trim().equals("")){
-            Valid.textKosong(Kode,"Kode Pelanggan");
+            Valid.textKosong(Kode,"No.Pelanggan");
         }else if(Nama.getText().trim().equals("")){
             Valid.textKosong(Nama,"Nama Pelanggan");
         }else if(Alamat.getText().trim().equals("")){
@@ -706,7 +706,7 @@ public class LabKeslingPelanggan extends javax.swing.JDialog {
         }else if(PersonalDihubungi.getText().trim().equals("")){
             Valid.textKosong(PersonalDihubungi,"Nomer Rekening");
         }else{
-            if(Sequel.menyimpantf("laborat_kesling_pelanggan","?,?,?,?,?,?,?","Kode Pelanggan",7,new String[]{
+            if(Sequel.menyimpantf("laborat_kesling_pelanggan","?,?,?,?,?,?,?","No.Pelanggan",7,new String[]{
                 Kode.getText(),Nama.getText(),Alamat.getText(),Kota.getText(),Telp.getText(),KegiatanUsaha.getText(),PersonalDihubungi.getText()        
             })==true){
                 tampil();
@@ -897,9 +897,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Telp.setText("0");
         KegiatanUsaha.setText("");
         PersonalDihubungi.setText("");
-        
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_pelanggan.kode_pelanggan,6),signed)),0) from laborat_kesling_pelanggan","",6,Kode);  
         Kode.requestFocus();
-        Valid.autoNomer("laborat_kesling_pelanggan","P",4,Kode);
     }
 
     private void getData() {

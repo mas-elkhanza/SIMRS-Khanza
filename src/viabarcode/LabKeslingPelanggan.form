@@ -406,7 +406,7 @@
               <SubComponents>
                 <Component class="widget.Label" name="label12">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Kode :"/>
+                    <Property name="text" type="java.lang.String" value="Nomor :"/>
                     <Property name="name" type="java.lang.String" value="label12" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[75, 23]"/>

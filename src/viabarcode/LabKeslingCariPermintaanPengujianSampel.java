@@ -1,5 +1,4 @@
 package viabarcode;
-import inventory.*;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -48,7 +47,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         initComponents();
 
         tabModePermintaan=new DefaultTableModel(null,new Object[]{
-                "Waktu Diterima","No.Permintaan","Kode Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kegiatan Usaha","Personal Dihubungi","Kontak Pelanggan",
+                "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kegiatan Usaha","Personal Dihubungi","Kontak Pelanggan",
                 "NIP","Sampel Diterima Oleh","Waktu Sampling","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel","Jml.Sampel","Sampling Dilakukan Oleh",
                 "Volume Sampel","Wadah Sampel","Kondisi Wadah Sampel","Kode Sampel","Nama Sampel","Baku Mutu","Status"
             }){
@@ -64,7 +63,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
             if(i==0){
                 column.setPreferredWidth(118);
             }else if(i==1){
-                column.setPreferredWidth(96);
+                column.setPreferredWidth(120);
             }else if(i==2){
                 column.setPreferredWidth(87);
             }else if(i==3){
@@ -138,7 +137,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         tbDetailPermintaan.setDefaultRenderer(Object.class, new WarnaTable());
         
         tabModeRekapPermintaan=new DefaultTableModel(null,new Object[]{
-                "Waktu Diterima","No.Permintaan","Kode Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kegiatan Usaha","Personal Dihubungi","Kontak Pelanggan",
+                "Waktu Diterima","No.Permintaan","No.Pelanggan","Nama Pelanggan","Alamat Pelanggan","Kegiatan Usaha","Personal Dihubungi","Kontak Pelanggan",
                 "NIP","Sampel Diterima Oleh","Waktu Sampling","Lokasi Sampling","Deskripsi Sampel","Jenis Sampel","Jml.Sampel","Sampling Dilakukan Oleh",
                 "Volume Sampel","Wadah Sampel","Kondisi Wadah Sampel","Kode Sampel","Nama Sampel","Baku Mutu","Status","Kode Param","Nama Parameter",
                 "Metode Pengujian","Satuan","Kategori","Nilai Normal"
@@ -1264,7 +1263,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 htmlContent.append("<tr class='isi'>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
-                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Pelanggan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kegiatan Usaha</b></td>").
@@ -1344,7 +1343,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 htmlContent.append("<tr class='isi'>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
-                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Pelanggan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kegiatan Usaha</b></td>").
@@ -1422,7 +1421,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         case "Laporan 3 (CSV)":
                                 htmlContent = new StringBuilder();
                                 htmlContent.append(                             
-                                    "\"Waktu Diterima\";\"No.Permintaan\";\"Kode Pelanggan\";\"Nama Pelanggan\";\"Alamat Pelanggan\";\"Kegiatan Usaha\";\"Personal Dihubungi\";\"Kontak Pelanggan\";\"NIP\";\"Sampel Diterima Oleh\";\"Waktu Sampling\";\"Lokasi Sampling\";\"Deskripsi Sampel\";\"Jenis Sampel\";\"Jml.Sampel\";\"Sampling Dilakukan Oleh\";\"Volume Sampel\";\"Wadah Sampel\";\"Kondisi Wadah Sampel\";\"Kode Sampel\";\"Nama Sampel\";\"Baku Mutu\";\"Status\"\n"
+                                    "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Alamat Pelanggan\";\"Kegiatan Usaha\";\"Personal Dihubungi\";\"Kontak Pelanggan\";\"NIP\";\"Sampel Diterima Oleh\";\"Waktu Sampling\";\"Lokasi Sampling\";\"Deskripsi Sampel\";\"Jenis Sampel\";\"Jml.Sampel\";\"Sampling Dilakukan Oleh\";\"Volume Sampel\";\"Wadah Sampel\";\"Kondisi Wadah Sampel\";\"Kode Sampel\";\"Nama Sampel\";\"Baku Mutu\";\"Status\"\n"
                                 ); 
                                 for (int i = 0; i < tabModePermintaan.getRowCount(); i++) {
                                     htmlContent.append("\"").append(tbPermintaan.getValueAt(i,0).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,1).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,2).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,3).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,4).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,5).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,6).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,7).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,8).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,9).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,10).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,11).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,12).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,13).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,14).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,15).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,16).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,17).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,18).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,19).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,20).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,21).toString()).append("\";\"").append(tbPermintaan.getValueAt(i,22).toString()).append("\"\n");
@@ -1472,7 +1471,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 htmlContent.append("<tr class='isi'>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
-                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Pelanggan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kegiatan Usaha</b></td>").
@@ -1564,7 +1563,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 htmlContent.append("<tr class='isi'>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
-                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Pelanggan</b></td>").
+                                                append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Alamat Pelanggan</b></td>").
                                                 append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kegiatan Usaha</b></td>").
@@ -1654,7 +1653,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         case "Laporan 3 (CSV)":
                                 htmlContent = new StringBuilder();
                                 htmlContent.append(                             
-                                    "\"Waktu Diterima\";\"No.Permintaan\";\"Kode Pelanggan\";\"Nama Pelanggan\";\"Alamat Pelanggan\";\"Kegiatan Usaha\";\"Personal Dihubungi\";\"Kontak Pelanggan\";\"NIP\";\"Sampel Diterima Oleh\";\"Waktu Sampling\";\"Lokasi Sampling\";\"Deskripsi Sampel\";\"Jenis Sampel\";\"Jml.Sampel\";\"Sampling Dilakukan Oleh\";\"Volume Sampel\";\"Wadah Sampel\";\"Kondisi Wadah Sampel\";\"Kode Sampel\";\"Nama Sampel\";\"Baku Mutu\";\"Status\";\"Kode Param\";\"Nama Parameter\";\"Metode Pengujian\";\"Satuan\";\"Kategori\";\"Nilai Normal\"\n"
+                                    "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Alamat Pelanggan\";\"Kegiatan Usaha\";\"Personal Dihubungi\";\"Kontak Pelanggan\";\"NIP\";\"Sampel Diterima Oleh\";\"Waktu Sampling\";\"Lokasi Sampling\";\"Deskripsi Sampel\";\"Jenis Sampel\";\"Jml.Sampel\";\"Sampling Dilakukan Oleh\";\"Volume Sampel\";\"Wadah Sampel\";\"Kondisi Wadah Sampel\";\"Kode Sampel\";\"Nama Sampel\";\"Baku Mutu\";\"Status\";\"Kode Param\";\"Nama Parameter\";\"Metode Pengujian\";\"Satuan\";\"Kategori\";\"Nilai Normal\"\n"
                                 ); 
                                 for (int i = 0; i < tabModeRekapPermintaan.getRowCount(); i++) {
                                     htmlContent.append("\"").append(tbRekapPermintaan.getValueAt(i,0).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,1).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,2).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,3).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,4).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,5).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,6).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,7).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,8).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,9).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,10).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,11).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,12).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,13).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,14).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,15).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,16).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,17).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,18).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,19).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,20).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,21).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,22).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,23).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,24).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,25).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,26).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,27).toString()).append("\";\"").append(tbRekapPermintaan.getValueAt(i,28).toString()).append("\"\n");
