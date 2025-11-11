@@ -41,6 +41,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import kepegawaian.DlgCariPetugas;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -1006,6 +1008,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_KdPJKeyPressed
 
     private void btnPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPJActionPerformed
+        i=1;
         petugas.emptTeks();
         petugas.isCek();
         petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -1014,37 +1017,25 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_btnPJActionPerformed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        /*this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         jml=0;
         for(i=0;i<tbPermintaan.getRowCount();i++){
             if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
                 jml++;
             }
         }
-        if(KdPetugas.getText().equals("")||NmPetugas.getText().equals("")){
-            Valid.textKosong(btnPetugas,"Penerima Sampel");
+        if(KdPJ.getText().equals("")||NmPJ.getText().equals("")){
+            Valid.textKosong(btnPJ,"Penanggung Jawab Pengujian");
+        }else if(KdAnalis.getText().equals("")||NmAnalis.getText().equals("")){
+            Valid.textKosong(btnAnalis,"Petugas Pengujian/Analis");
         }else if(KodePelanggan.getText().equals("")||NamaPelanggan.getText().equals("")){
-            Valid.textKosong(btnPelanggan,"Pelanggan");
+            Valid.textKosong(TCariPeriksa,"Pelanggan");
         }else if(TNoPermintaan.getText().equals("")){
             Valid.textKosong(TNoPermintaan,"Nomor Permintaan");
-        }else if(LokasiSampling.getText().equals("")){
-            Valid.textKosong(LokasiSampling,"Lokasi Sampling");
-        }else if(DeskripsiSampling.getText().equals("")){
-            Valid.textKosong(DeskripsiSampling,"Deskripsi Sampling");
-        }else if(JenisSampel.getText().equals("")){
-            Valid.textKosong(JenisSampel,"Jenis Sampel");
-        }else if(JmlSampel.getText().equals("")){
-            Valid.textKosong(JmlSampel,"Jumlah Sampel");
-        }else if(DisamplingOleh.getText().equals("")){
-            Valid.textKosong(DisamplingOleh,"Sampling Dilakukan Oleh");
-        }else if(VolumeSampel.getText().equals("")){
-            Valid.textKosong(VolumeSampel,"Volume Sampel");
-        }else if(WadahSampel.getText().equals("")){
-            Valid.textKosong(WadahSampel,"Wadah Sampel");
-        }else if(KondisiWadah.getText().equals("")){
-            Valid.textKosong(KondisiWadah,"Kondisi Wadah");
+        }else if(TNoPenugasan.getText().equals("")){
+            Valid.textKosong(TNoPenugasan,"Nomor Penugasan");
         }else if(KodeSampel.getText().equals("")||NamaSampel.getText().equals("")){
-            Valid.textKosong(BtnSampel,"Sampel");
+            Valid.textKosong(TCariPeriksa,"Sampel");
         }else if(tabMode.getRowCount()==0){
             Valid.textKosong(TCariPeriksa,"Data Permintaan");
         }else if(jml==0){
@@ -1060,25 +1051,13 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }
             
             Map<String, Object> param = new HashMap<>();
-            param.put("namapelanggan",NamaPelanggan.getText());
-            param.put("alamatpelanggan",AlamatPelanggan.getText());
-            param.put("kegiatanusaha",KegiatanUsaha.getText());
-            param.put("personaldihubungi",PersonalDihubungi.getText());
-            param.put("kontakpelanggan",KontakPelanggan.getText());
-            param.put("lokasisampling",LokasiSampling.getText());
-            param.put("waktusampling",WaktuSampling.getSelectedItem());
-            param.put("jenissampel",JenisSampel.getText());
-            param.put("jumlahsampel",JmlSampel.getText());
-            param.put("volumesampel",VolumeSampel.getText());
-            param.put("wadahsampel",WadahSampel.getText());
-            param.put("kondisiwadah",KondisiWadah.getText());
-            param.put("kodesampel",KodeSampel.getText()+" "+NamaSampel.getText());
-            param.put("petugassampling",DisamplingOleh.getText());
-            param.put("waktupenerimaan",WaktuDiterima.getSelectedItem()+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem());
-            param.put("deskripsisampel",DeskripsiSampling.getText());
-            param.put("bakumutu",BakuMutu.getText());
-            param.put("petugaspelayanan",NmPetugas.getText());
+            param.put("pjlaborat",NmPJ.getText());
+            param.put("kodepjlaborat",KdPJ.getText());
+            param.put("analis",NmAnalis.getText()+" NIP : "+KdAnalis.getText());
+            param.put("nopenugasan",TNoPenugasan.getText());
             param.put("nomorpermintaan",TNoPermintaan.getText());
+            param.put("jenisampel",NamaSampel.getText());
+            param.put("kodesampel",KodeSampel.getText());
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
@@ -1086,11 +1065,11 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             param.put("kontakrs",akses.getkontakrs());
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdPetugas.getText());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NmPetugas.getText()+"\nID "+(finger.equals("")?KdPetugas.getText():finger)+"\n"+WaktuDiterima.getSelectedItem()); 
-            Valid.MyReport("rptPermintaanPengujianSampelLaboratKesling.jasper","report","::[ Permintaan Pengujian Sampel Laborat Kesehatan Lingkungan ]::",param);            
+            String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdPJ.getText());
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NmPJ.getText()+"\nID "+(finger.equals("")?KdPJ.getText():finger)+"\n"+TanggalPenugasan.getSelectedItem()); 
+            Valid.MyReport("rptPenugasanPengujianSampelLaboratKesling.jasper","report","::[ Penugasan Pengujian Sampel Laborat Kesehatan Lingkungan ]::",param);            
         }
-        this.setCursor(Cursor.getDefaultCursor());*/
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
@@ -1118,6 +1097,9 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
+        for(i=0;i<tbPermintaan.getRowCount();i++){
+            tbPermintaan.setValueAt(true,i,0);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void KodePelangganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePelangganKeyPressed
@@ -1145,7 +1127,12 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_KdAnalisKeyPressed
 
     private void btnAnalisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalisActionPerformed
-        // TODO add your handling code here:
+        i=2;
+        petugas.emptTeks();
+        petugas.isCek();
+        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        petugas.setLocationRelativeTo(internalFrame1);
+        petugas.setVisible(true);
     }//GEN-LAST:event_btnAnalisActionPerformed
 
     private void CatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKeyPressed
@@ -1335,7 +1322,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void emptTeks() {
         Catatan.setText("");
         autoNomor();
-        TCariPeriksa.requestFocus();
+        Catatan.requestFocus();
     }
     
     public void setData(String nopermintaan,String kodepelanggan,String namapelanggan,String kodesampel,String namasampel) {
@@ -1344,9 +1331,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         NamaPelanggan.setText(namapelanggan);
         KodeSampel.setText(kodesampel);
         NamaSampel.setText(namasampel);
-        for(i=0;i<tbPermintaan.getRowCount();i++){
-            tbPermintaan.setValueAt(true,i,0);
-        }
         autoNomor();
     }
     
@@ -1436,7 +1420,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
   
     private void autoNomor() {
         if(!KodeSampel.getText().trim().equals("")){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_penugasan_pengujian_sampel.no_penugasan,5),signed)),0) from laborat_kesling_penugasan_pengujian_sampel where date_format(laborat_kesling_penugasan_pengujian_sampel.tanggal,'%Y')='"+TanggalPenugasan.getSelectedItem().toString().substring(6,10)+"' and laborat_kesling_penugasan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalPenugasan.getSelectedItem().toString().substring(6,10)+"/STP/",5,TNoPenugasan);   
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_penugasan_pengujian_sampel.no_penugasan,5),signed)),0) from laborat_kesling_penugasan_pengujian_sampel inner join laborat_kesling_permintaan_pengujian_sampel on laborat_kesling_permintaan_pengujian_sampel.no_permintaan=laborat_kesling_penugasan_pengujian_sampel.no_permintaan where date_format(laborat_kesling_penugasan_pengujian_sampel.tanggal,'%Y')='"+TanggalPenugasan.getSelectedItem().toString().substring(6,10)+"' and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalPenugasan.getSelectedItem().toString().substring(6,10)+"/STP/",5,TNoPenugasan);   
         }        
     }
 }

@@ -1,6 +1,4 @@
 package viabarcode;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -16,7 +14,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -976,8 +973,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 LabKeslingPenugasanPengujianSampel form=new LabKeslingPenugasanPengujianSampel(null,false);
                 form.isCek();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setData(tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString().trim(),tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),2).toString().trim(),tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),3).toString().trim(),tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),4).toString().trim(),tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),5).toString().trim());
                 form.setLocationRelativeTo(this);
+                form.setData(tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString().trim(),tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),2).toString().trim(),tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),3).toString().trim(),tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),4).toString().trim(),tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),5).toString().trim());
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }else if(ChkAccor.isSelected()==false){
