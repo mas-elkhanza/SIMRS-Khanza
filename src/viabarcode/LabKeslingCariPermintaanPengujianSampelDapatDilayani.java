@@ -971,6 +971,26 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     System.out.println("Notifikasi : "+e);
                 }
                 LabKeslingPenugasanPengujianSampel form=new LabKeslingPenugasanPengujianSampel(null,false);
+                form.addWindowListener(new WindowListener() {
+                    @Override
+                    public void windowOpened(WindowEvent e) {}
+                    @Override
+                    public void windowClosing(WindowEvent e) {}
+                    @Override
+                    public void windowClosed(WindowEvent e) {
+                        if(form.berhasil==true){
+                            tbDapatDilayani.setValueAt("Sudah Ada Penugasan",tbDapatDilayani.getSelectedRow(),6);
+                        }
+                    }
+                    @Override
+                    public void windowIconified(WindowEvent e) {}
+                    @Override
+                    public void windowDeiconified(WindowEvent e) {}
+                    @Override
+                    public void windowActivated(WindowEvent e) {}
+                    @Override
+                    public void windowDeactivated(WindowEvent e) {}
+                });
                 form.isCek();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(this);

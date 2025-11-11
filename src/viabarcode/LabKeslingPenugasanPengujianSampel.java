@@ -53,18 +53,15 @@ public final class LabKeslingPenugasanPengujianSampel extends javax.swing.JDialo
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps;
-    private ResultSet rs;
     private boolean[] pilih; 
     private String[] Kode,NamaParameter,MetodePengujian,Satuan,Kategori;
     private int jml=0,i=0,index=0;
-    private File file;
-    private FileWriter fileWriter;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
     private FileReader myObj;
     private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    public boolean berhasil=false;
 
     /** Creates new form DlgPerawatan
      * @param parent
@@ -847,36 +844,24 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        /*jml=0;
+        jml=0;
         for(i=0;i<tbPermintaan.getRowCount();i++){
             if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
                 jml++;
             }
         }
-        if(KdPetugas.getText().equals("")||NmPetugas.getText().equals("")){
-            Valid.textKosong(btnPetugas,"Penerima Sampel");
+        if(KdPJ.getText().equals("")||NmPJ.getText().equals("")){
+            Valid.textKosong(btnPJ,"Penanggung Jawab Pengujian");
+        }else if(KdAnalis.getText().equals("")||NmAnalis.getText().equals("")){
+            Valid.textKosong(btnAnalis,"Petugas Pengujian/Analis");
         }else if(KodePelanggan.getText().equals("")||NamaPelanggan.getText().equals("")){
-            Valid.textKosong(btnPelanggan,"Pelanggan");
+            Valid.textKosong(TCariPeriksa,"Pelanggan");
         }else if(TNoPermintaan.getText().equals("")){
             Valid.textKosong(TNoPermintaan,"Nomor Permintaan");
-        }else if(LokasiSampling.getText().equals("")){
-            Valid.textKosong(LokasiSampling,"Lokasi Sampling");
-        }else if(DeskripsiSampling.getText().equals("")){
-            Valid.textKosong(DeskripsiSampling,"Deskripsi Sampling");
-        }else if(JenisSampel.getText().equals("")){
-            Valid.textKosong(JenisSampel,"Jenis Sampel");
-        }else if(JmlSampel.getText().equals("")){
-            Valid.textKosong(JmlSampel,"Jumlah Sampel");
-        }else if(DisamplingOleh.getText().equals("")){
-            Valid.textKosong(DisamplingOleh,"Sampling Dilakukan Oleh");
-        }else if(VolumeSampel.getText().equals("")){
-            Valid.textKosong(VolumeSampel,"Volume Sampel");
-        }else if(WadahSampel.getText().equals("")){
-            Valid.textKosong(WadahSampel,"Wadah Sampel");
-        }else if(KondisiWadah.getText().equals("")){
-            Valid.textKosong(KondisiWadah,"Kondisi Wadah");
+        }else if(TNoPenugasan.getText().equals("")){
+            Valid.textKosong(TNoPenugasan,"Nomor Penugasan");
         }else if(KodeSampel.getText().equals("")||NamaSampel.getText().equals("")){
-            Valid.textKosong(BtnSampel,"Sampel");
+            Valid.textKosong(TCariPeriksa,"Sampel");
         }else if(tabMode.getRowCount()==0){
             Valid.textKosong(TCariPeriksa,"Data Permintaan");
         }else if(jml==0){
@@ -884,71 +869,81 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 ChkJln.setSelected(false);
                 try {                    
+                    berhasil=false;
                     koneksi.setAutoCommit(false);
-                    if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Permintaan Baru'","No.Permintaan",14,new String[]{
-                            TNoPermintaan.getText(),KodePelanggan.getText(),KdPetugas.getText(),Valid.SetTgl(WaktuSampling.getSelectedItem()+"")+" "+WaktuSampling.getSelectedItem().toString().substring(11,19),
-                            Valid.SetTgl(WaktuDiterima.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),LokasiSampling.getText(),DeskripsiSampling.getText(),
-                            JenisSampel.getText(),JmlSampel.getText(),DisamplingOleh.getText(),VolumeSampel.getText(),WadahSampel.getText(),KondisiWadah.getText(),KodeSampel.getText()
+                    if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,'Belum Keluar Hasil'","No.Penugasan",6,new String[]{
+                            TNoPermintaan.getText(),TNoPenugasan.getText(),KdPJ.getText(),KdAnalis.getText(),Valid.SetTgl(TanggalPenugasan.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText()
                         })==true){
                         for(i=0;i<tbPermintaan.getRowCount();i++){ 
                             if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                                Sequel.menyimpan2("laborat_kesling_detail_permintaan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
-                                    TNoPermintaan.getText(),tbPermintaan.getValueAt(i,1).toString()
+                                Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
+                                    TNoPenugasan.getText(),tbPermintaan.getValueAt(i,1).toString()
                                 });
                             }                        
                         } 
-                        isReset();
                         emptTeks();
+                        for(i=0;i<tbPermintaan.getRowCount();i++){
+                            tbPermintaan.setValueAt(false,i,0);
+                        }
+                        berhasil=true;
+                        Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel_dilayani set status='Sudah Ada Penugasan' where no_permintaan='"+TNoPermintaan.getText()+"'");
                     }else{
                         autoNomor();
-                        if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Permintaan Baru'","No.Permintaan",14,new String[]{
-                                TNoPermintaan.getText(),KodePelanggan.getText(),KdPetugas.getText(),Valid.SetTgl(WaktuSampling.getSelectedItem()+"")+" "+WaktuSampling.getSelectedItem().toString().substring(11,19),
-                                Valid.SetTgl(WaktuDiterima.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),LokasiSampling.getText(),DeskripsiSampling.getText(),
-                                JenisSampel.getText(),JmlSampel.getText(),DisamplingOleh.getText(),VolumeSampel.getText(),WadahSampel.getText(),KondisiWadah.getText(),KodeSampel.getText()
-                            })==true){
+                        if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,'Belum Keluar Hasil'","No.Penugasan",6,new String[]{
+                            TNoPermintaan.getText(),TNoPenugasan.getText(),KdPJ.getText(),KdAnalis.getText(),Valid.SetTgl(TanggalPenugasan.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText()
+                        })==true){
                             for(i=0;i<tbPermintaan.getRowCount();i++){ 
                                 if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                                    Sequel.menyimpan2("laborat_kesling_detail_permintaan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
-                                        TNoPermintaan.getText(),tbPermintaan.getValueAt(i,1).toString()
+                                    Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
+                                        TNoPenugasan.getText(),tbPermintaan.getValueAt(i,1).toString()
                                     });
                                 }                        
                             } 
-                            isReset();
                             emptTeks();
+                            for(i=0;i<tbPermintaan.getRowCount();i++){
+                                tbPermintaan.setValueAt(false,i,0);
+                            }
+                            berhasil=true;
+                            Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel_dilayani set status='Sudah Ada Penugasan' where no_permintaan='"+TNoPermintaan.getText()+"'");
                         }else{
                             autoNomor();
-                            if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Permintaan Baru'","No.Permintaan",14,new String[]{
-                                    TNoPermintaan.getText(),KodePelanggan.getText(),KdPetugas.getText(),Valid.SetTgl(WaktuSampling.getSelectedItem()+"")+" "+WaktuSampling.getSelectedItem().toString().substring(11,19),
-                                    Valid.SetTgl(WaktuDiterima.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),LokasiSampling.getText(),DeskripsiSampling.getText(),
-                                    JenisSampel.getText(),JmlSampel.getText(),DisamplingOleh.getText(),VolumeSampel.getText(),WadahSampel.getText(),KondisiWadah.getText(),KodeSampel.getText()
+                            if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,'Belum Keluar Hasil'","No.Penugasan",6,new String[]{
+                                    TNoPermintaan.getText(),TNoPenugasan.getText(),KdPJ.getText(),KdAnalis.getText(),Valid.SetTgl(TanggalPenugasan.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText()
                                 })==true){
                                 for(i=0;i<tbPermintaan.getRowCount();i++){ 
                                     if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                                        Sequel.menyimpan2("laborat_kesling_detail_permintaan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
-                                            TNoPermintaan.getText(),tbPermintaan.getValueAt(i,1).toString()
+                                        Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
+                                            TNoPenugasan.getText(),tbPermintaan.getValueAt(i,1).toString()
                                         });
                                     }                        
                                 } 
-                                isReset();
                                 emptTeks();
+                                for(i=0;i<tbPermintaan.getRowCount();i++){
+                                    tbPermintaan.setValueAt(false,i,0);
+                                }
+                                berhasil=true;
+                                Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel_dilayani set status='Sudah Ada Penugasan' where no_permintaan='"+TNoPermintaan.getText()+"'");
                             }else{
                                 autoNomor();
-                                if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Permintaan Baru'","No.Permintaan",14,new String[]{
-                                        TNoPermintaan.getText(),KodePelanggan.getText(),KdPetugas.getText(),Valid.SetTgl(WaktuSampling.getSelectedItem()+"")+" "+WaktuSampling.getSelectedItem().toString().substring(11,19),
-                                        Valid.SetTgl(WaktuDiterima.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),LokasiSampling.getText(),DeskripsiSampling.getText(),
-                                        JenisSampel.getText(),JmlSampel.getText(),DisamplingOleh.getText(),VolumeSampel.getText(),WadahSampel.getText(),KondisiWadah.getText(),KodeSampel.getText()
+                                if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,'Belum Keluar Hasil'","No.Penugasan",6,new String[]{
+                                        TNoPermintaan.getText(),TNoPenugasan.getText(),KdPJ.getText(),KdAnalis.getText(),Valid.SetTgl(TanggalPenugasan.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText()
                                     })==true){
                                     for(i=0;i<tbPermintaan.getRowCount();i++){ 
                                         if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                                            Sequel.menyimpan2("laborat_kesling_detail_permintaan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
-                                                TNoPermintaan.getText(),tbPermintaan.getValueAt(i,1).toString()
+                                            Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
+                                                TNoPenugasan.getText(),tbPermintaan.getValueAt(i,1).toString()
                                             });
                                         }                        
                                     } 
-                                    isReset();
                                     emptTeks();
+                                    for(i=0;i<tbPermintaan.getRowCount();i++){
+                                        tbPermintaan.setValueAt(false,i,0);
+                                    }
+                                    berhasil=true;
+                                    Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel_dilayani set status='Sudah Ada Penugasan' where no_permintaan='"+TNoPermintaan.getText()+"'");
                                 }
                             } 
                         } 
@@ -958,9 +953,10 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 } catch (Exception e) {
                     System.out.println(e);
                 }    
-                ChkJln.setSelected(true);            
+                ChkJln.setSelected(true);    
+                this.setCursor(Cursor.getDefaultCursor());
             }  
-        }*/
+        }
     }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
@@ -1024,7 +1020,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Sequel.queryu("delete from temporary");
             for(i=0;i<tbPermintaan.getRowCount();i++){ 
                 if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                    Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+                    Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
                         "0",tbPermintaan.getValueAt(i,1).toString(),tbPermintaan.getValueAt(i,2).toString(),tbPermintaan.getValueAt(i,3).toString(),tbPermintaan.getValueAt(i,5).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                     });
                 }                
