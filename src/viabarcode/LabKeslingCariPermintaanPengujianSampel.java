@@ -748,7 +748,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
         LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(60, 23));
+        LTotal.setPreferredSize(new java.awt.Dimension(55, 23));
         panelisi1.add(LTotal);
 
         BtnHapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/stop_f2.png"))); // NOI18N

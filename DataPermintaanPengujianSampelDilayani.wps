@@ -1,0 +1,87 @@
+<html>
+  <head><link href="file2.css" rel="stylesheet" type="text/css" /><table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'><tr class='isi2'><td valign='top' align='center'><font size='4' face='Tahoma'>RS SIMRS KHANZA</font><br>GUWOSARI, Pajangan, Bantul<br>Hp: 08562675039, 085296559963, E-mail : khanzasoftmedia@gmail.com<br><br><font size='2' face='Tahoma'>DATA PERMINTAAN PENGUJIAN SAMPEL DAPAT DILAYANI<br><br></font></td></tr></table>
+    
+  </head>
+  <body>
+    <table width="100%" border="0" align="center" cellpadding="1px" cellspacing="0" class="tbl_form">
+      <tr class="isi">
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Waktu Diterima</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Permintaan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>No.Pelanggan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Pelanggan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kode Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Nama Sampel</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Status Penugasan</b>
+        </td>
+        <td valign="middle" bgcolor="#FFFAFA" align="center">
+          <b>Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya</b>
+        </td>
+      </tr>
+      <tr class="isi">
+        <td valign="top">
+          2025-11-10 15:04:00.0
+        </td>
+        <td valign="top">
+          AB/2025/PPS/00001
+        </td>
+        <td valign="top">
+          000001
+        </td>
+        <td valign="top">
+          PT MAJU MUNDUR
+        </td>
+        <td valign="top">
+          AB
+        </td>
+        <td valign="top">
+          Air Bersih
+        </td>
+        <td valign="top">
+          Belum Ada Penugasan
+        </td>
+        <td valign="top">
+          tes
+        </td>
+      </tr>
+      <tr class="isi">
+        <td valign="top">
+          2025-11-11 10:45:25.0
+        </td>
+        <td valign="top">
+          AB/2025/PPS/00002
+        </td>
+        <td valign="top">
+          000001
+        </td>
+        <td valign="top">
+          PT MAJU MUNDUR
+        </td>
+        <td valign="top">
+          AB
+        </td>
+        <td valign="top">
+          Air Bersih
+        </td>
+        <td valign="top">
+          Sudah Ada Penugasan
+        </td>
+        <td valign="top">
+          tes gas
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
