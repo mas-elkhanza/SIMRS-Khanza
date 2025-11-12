@@ -91,17 +91,17 @@ public final class LabKeslingHasilPengujianSampel extends javax.swing.JDialog {
             }else if(i==1){
                 column.setPreferredWidth(50);
             }else if(i==2){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(160);
             }else if(i==3){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(130);
             }else if(i==4){
                 column.setPreferredWidth(65);
             }else if(i==5){
-                column.setPreferredWidth(75);
+                column.setPreferredWidth(80);
             }else if(i==6){
                 column.setPreferredWidth(70);
             }else if(i==7){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(105);
             }
         }
         tbPermintaan.setDefaultRenderer(Object.class, new WarnaTable());
