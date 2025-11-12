@@ -594,7 +594,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="::[ Cari Permintaan Pengujian Sampel Laboratorium Kesehatan Lingkungan ]::">
+            <TitledBorder title="::[ Data Permintaan Pengujian Sampel Laboratorium Kesehatan Lingkungan ]::">
               <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder>
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>

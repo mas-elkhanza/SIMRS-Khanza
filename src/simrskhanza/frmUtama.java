@@ -49206,7 +49206,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnLabKeslingPengujianSampelTidakDapatDilayani = new widget.ButtonBig();
         btnLabKeslingPengujianSampelTidakDapatDilayani.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6088713_banned_closed_shop_sign_icon.png"))); 
-        btnLabKeslingPengujianSampelTidakDapatDilayani.setText("Pengujian Sampel Lab Kesling Tidak Dapat Dilayani");
+        btnLabKeslingPengujianSampelTidakDapatDilayani.setText("Sampel Pengujian Lab Kesling Tidak Dapat Dilayani");
         btnLabKeslingPengujianSampelTidakDapatDilayani.setIconTextGap(0);
         btnLabKeslingPengujianSampelTidakDapatDilayani.setName("btnLabKeslingPengujianSampelTidakDapatDilayani");
         btnLabKeslingPengujianSampelTidakDapatDilayani.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -49214,7 +49214,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnLabKeslingPengujianSampelDapatDilayani = new widget.ButtonBig();
         btnLabKeslingPengujianSampelDapatDilayani.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/4059950_and_architecture_book_buildings_business_icon.png"))); 
-        btnLabKeslingPengujianSampelDapatDilayani.setText("Pengujian Sampel Lab Kesling Dapat Dilayani");
+        btnLabKeslingPengujianSampelDapatDilayani.setText("Sampel Pengujian Lab Kesling Dapat Dilayani");
         btnLabKeslingPengujianSampelDapatDilayani.setIconTextGap(0);
         btnLabKeslingPengujianSampelDapatDilayani.setName("btnLabKeslingPengujianSampelDapatDilayani");
         btnLabKeslingPengujianSampelDapatDilayani.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -49222,7 +49222,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         btnLabKeslingPenugasanPengujianSampel = new widget.ButtonBig();
         btnLabKeslingPenugasanPengujianSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/7038097_marketing_file_business_clipboard_data_icon.png"))); 
-        btnLabKeslingPenugasanPengujianSampel.setText("Penugasan Pengujian Sampel Lab Kesling");
+        btnLabKeslingPenugasanPengujianSampel.setText("Data Penugasan Pengujian Sampel Lab Kesling");
         btnLabKeslingPenugasanPengujianSampel.setIconTextGap(0);
         btnLabKeslingPenugasanPengujianSampel.setName("btnLabKeslingPenugasanPengujianSampel");
         btnLabKeslingPenugasanPengujianSampel.setPreferredSize(new java.awt.Dimension(200, 90));

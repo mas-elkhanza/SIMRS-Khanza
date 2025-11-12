@@ -274,7 +274,7 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Check List Kriteria Keluar NICU","[M]Pengkajian Awal Medis Ranap Psikiatri","[M]Check List Kriteria Masuk PICU","[M]Check List Kriteria Keluar PICU","[B]Master Sampel Lab Kesling",
                 "[M]Skrining Instrumen AMT","[B]Parameter Pengujian Lab Kesling","[B]Nilai Normal Baku Mutu Lab Kesling","[M]Skrining Pneumonia Severity Index","[B]Permintaan Pengujian Sampel Lab Kesling",
                 "[M]Pengkajian Awal Medis Ralan Jantung","[M]Pengkajian Awal Medis Ralan Urologi","[M]Hasil Pemeriksaan Treadmill","[M]Hasil Pemeriksaan ECHO Pediatrik","[M]Master Template Informasi & Edukasi",
-                "[M]Skrining Instrumen ESAT","[M]Pengkajian Awal Medis Ranap Jantung","[B]Penugasan Pengujian Sampel Lab Kesling","[B]Hasil Pengujian Sampel Lab Kesling"
+                "[M]Skrining Instrumen ESAT","[M]Pengkajian Awal Medis Ranap Jantung","[B]Data Penugasan Pengujian Sampel Lab Kesling","[B]Hasil Pengujian Sampel Lab Kesling"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -3553,7 +3553,7 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(210);
                     break;
                 case 1165:
-                    column.setPreferredWidth(222);
+                    column.setPreferredWidth(248);
                     break;
                 case 1166:
                     column.setPreferredWidth(193);

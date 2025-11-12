@@ -620,7 +620,7 @@ public class LabKeslingCariPenugasanPengujianSampel extends javax.swing.JDialog 
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Cari Penugasan Pengujian Sampel Laboratorium Kesehatan Lingkungan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Penugasan Pengujian Sampel Laboratorium Kesehatan Lingkungan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -1604,55 +1604,111 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void ppHasilPengujianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHasilPengujianActionPerformed
         if(tbPenugasan.getSelectedRow()!= -1){
             if(ChkAccor.isSelected()==true){
-                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
-                try {
-                    file=new File("./cache/hasilpengujiansampellabkesling.iyem");
-                    file.createNewFile();
-                    fileWriter = new FileWriter(file);
-                    StringBuilder iyembuilder = new StringBuilder();
-                    
-                    for(i=0;i<tbDetailPenugasan.getRowCount();i++){
-                        iyembuilder.append("{\"Kode\":\"").append(tbDetailPenugasan.getValueAt(i,0).toString()).append("\",\"NamaParameter\":\"").append(tbDetailPenugasan.getValueAt(i,1).toString()).append("\",\"MetodePengujian\":\"").append(tbDetailPenugasan.getValueAt(i,2).toString()).append("\",\"Satuan\":\"").append(tbDetailPenugasan.getValueAt(i,3).toString()).append("\",\"Kategori\":\"").append(tbDetailPenugasan.getValueAt(i,4).toString()).append("\",\"Sampel\":\"").append(tbDetailPenugasan.getValueAt(i,5).toString()).append("\"},");
-                    }
+                if(akses.getkode().equals("Admin Utama")){
+                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
+                    try {
+                        file=new File("./cache/hasilpengujiansampellabkesling.iyem");
+                        file.createNewFile();
+                        fileWriter = new FileWriter(file);
+                        StringBuilder iyembuilder = new StringBuilder();
 
-                    if (iyembuilder.length() > 0) {
-                        iyembuilder.setLength(iyembuilder.length() - 1);
-                        fileWriter.write("{\"hasilpengujiansampellabkesling\":["+iyembuilder+"]}");
-                        fileWriter.flush();
-                    }
-
-                    fileWriter.close();
-                    iyembuilder=null;
-                } catch (Exception e) {
-                    System.out.println("Notifikasi : "+e);
-                }
-                LabKeslingHasilPengujianSampel form=new LabKeslingHasilPengujianSampel(null,false);
-                form.addWindowListener(new WindowListener() {
-                    @Override
-                    public void windowOpened(WindowEvent e) {}
-                    @Override
-                    public void windowClosing(WindowEvent e) {}
-                    @Override
-                    public void windowClosed(WindowEvent e) {
-                        if(form.berhasil==true){
-                            tbPenugasan.setValueAt("Sudah Keluar Hasil",tbPenugasan.getSelectedRow(),11);
+                        for(i=0;i<tbDetailPenugasan.getRowCount();i++){
+                            iyembuilder.append("{\"Kode\":\"").append(tbDetailPenugasan.getValueAt(i,0).toString()).append("\",\"NamaParameter\":\"").append(tbDetailPenugasan.getValueAt(i,1).toString()).append("\",\"MetodePengujian\":\"").append(tbDetailPenugasan.getValueAt(i,2).toString()).append("\",\"Satuan\":\"").append(tbDetailPenugasan.getValueAt(i,3).toString()).append("\",\"Kategori\":\"").append(tbDetailPenugasan.getValueAt(i,4).toString()).append("\",\"Normal\":\"").append(tbDetailPenugasan.getValueAt(i,5).toString()).append("\"},");
                         }
+
+                        if (iyembuilder.length() > 0) {
+                            iyembuilder.setLength(iyembuilder.length() - 1);
+                            fileWriter.write("{\"hasilpengujiansampellabkesling\":["+iyembuilder+"]}");
+                            fileWriter.flush();
+                        }
+
+                        fileWriter.close();
+                        iyembuilder=null;
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
                     }
-                    @Override
-                    public void windowIconified(WindowEvent e) {}
-                    @Override
-                    public void windowDeiconified(WindowEvent e) {}
-                    @Override
-                    public void windowActivated(WindowEvent e) {}
-                    @Override
-                    public void windowDeactivated(WindowEvent e) {}
-                });
-                form.isCek();
-                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-                form.setLocationRelativeTo(this);
-                form.setData(tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),1).toString().trim(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),2).toString().trim(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),3).toString().trim(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),4).toString().trim(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),5).toString().trim());
-                form.setVisible(true);
-                this.setCursor(Cursor.getDefaultCursor());
+                    LabKeslingHasilPengujianSampel form=new LabKeslingHasilPengujianSampel(null,false);
+                    form.addWindowListener(new WindowListener() {
+                        @Override
+                        public void windowOpened(WindowEvent e) {}
+                        @Override
+                        public void windowClosing(WindowEvent e) {}
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            if(form.berhasil==true){
+                                tbPenugasan.setValueAt("Sudah Keluar Hasil",tbPenugasan.getSelectedRow(),11);
+                            }
+                        }
+                        @Override
+                        public void windowIconified(WindowEvent e) {}
+                        @Override
+                        public void windowDeiconified(WindowEvent e) {}
+                        @Override
+                        public void windowActivated(WindowEvent e) {}
+                        @Override
+                        public void windowDeactivated(WindowEvent e) {}
+                    });
+                    form.isCek();
+                    form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                    form.setLocationRelativeTo(this);
+                    form.setData(tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),1).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),6).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),7).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),8).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),9).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),10).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),4).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),5).toString());
+                    form.setVisible(true);
+                    this.setCursor(Cursor.getDefaultCursor());
+                }else{
+                    if(akses.getkode().equals(tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),4).toString())){
+                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
+                        try {
+                            file=new File("./cache/hasilpengujiansampellabkesling.iyem");
+                            file.createNewFile();
+                            fileWriter = new FileWriter(file);
+                            StringBuilder iyembuilder = new StringBuilder();
+
+                            for(i=0;i<tbDetailPenugasan.getRowCount();i++){
+                                iyembuilder.append("{\"Kode\":\"").append(tbDetailPenugasan.getValueAt(i,0).toString()).append("\",\"NamaParameter\":\"").append(tbDetailPenugasan.getValueAt(i,1).toString()).append("\",\"MetodePengujian\":\"").append(tbDetailPenugasan.getValueAt(i,2).toString()).append("\",\"Satuan\":\"").append(tbDetailPenugasan.getValueAt(i,3).toString()).append("\",\"Kategori\":\"").append(tbDetailPenugasan.getValueAt(i,4).toString()).append("\",\"Sampel\":\"").append(tbDetailPenugasan.getValueAt(i,5).toString()).append("\"},");
+                            }
+
+                            if (iyembuilder.length() > 0) {
+                                iyembuilder.setLength(iyembuilder.length() - 1);
+                                fileWriter.write("{\"hasilpengujiansampellabkesling\":["+iyembuilder+"]}");
+                                fileWriter.flush();
+                            }
+
+                            fileWriter.close();
+                            iyembuilder=null;
+                        } catch (Exception e) {
+                            System.out.println("Notifikasi : "+e);
+                        }
+                        LabKeslingHasilPengujianSampel form=new LabKeslingHasilPengujianSampel(null,false);
+                        form.addWindowListener(new WindowListener() {
+                            @Override
+                            public void windowOpened(WindowEvent e) {}
+                            @Override
+                            public void windowClosing(WindowEvent e) {}
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                if(form.berhasil==true){
+                                    tbPenugasan.setValueAt("Sudah Keluar Hasil",tbPenugasan.getSelectedRow(),11);
+                                }
+                            }
+                            @Override
+                            public void windowIconified(WindowEvent e) {}
+                            @Override
+                            public void windowDeiconified(WindowEvent e) {}
+                            @Override
+                            public void windowActivated(WindowEvent e) {}
+                            @Override
+                            public void windowDeactivated(WindowEvent e) {}
+                        });
+                        form.isCek();
+                        form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        form.setLocationRelativeTo(this);
+                        form.setData(tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),1).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),6).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),7).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),8).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),9).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),10).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),4).toString(),tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),5).toString());
+                        form.setVisible(true);
+                        this.setCursor(Cursor.getDefaultCursor());
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Hasil hanya bisa dikeluarkan oleh analis yang ditugaskan..!!");
+                    }
+                }
             }else if(ChkAccor.isSelected()==false){
                 JOptionPane.showMessageDialog(null,"Silahkan tampilkan detail penugasan...!!!");
             }
@@ -1771,6 +1827,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(tbPenugasan.getSelectedRow()!= -1){
                 if(tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),11).toString().trim().equals("Belum Keluar Hasil")){
                     if(Sequel.queryutf("delete from laborat_kesling_penugasan_pengujian_sampel where no_penugasan='"+tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),1).toString().trim()+"'")==true){
+                        if(Sequel.cariInteger("select count(laborat_kesling_penugasan_pengujian_sampel.no_permintaan) from laborat_kesling_penugasan_pengujian_sampel where laborat_kesling_penugasan_pengujian_sampel.no_permintaan=?",tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),6).toString())==0){
+                            Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel_dilayani set status='Belum Ada Penugasan' where no_permintaan='"+tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),6).toString()+"'");
+                        }
                         tabModePenugasan.removeRow(tbPenugasan.getSelectedRow());
                         LTotal.setText(tabModePenugasan.getRowCount()+"");
                     }

@@ -3874,7 +3874,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
 
     private void BtnTambahMasalahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahMasalahActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        MasterMasalahKeperawatan form=new MasterMasalahKeperawatan(null,false);
+        MasterMasalahKeperawatanGeriatri form=new MasterMasalahKeperawatanGeriatri(null,false);
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);
@@ -4069,7 +4069,7 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
 
     private void BtnTambahRencanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahRencanaActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        MasterRencanaKeperawatan form=new MasterRencanaKeperawatan(null,false);
+        MasterRencanaKeperawatanGeriatri form=new MasterRencanaKeperawatanGeriatri(null,false);
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(internalFrame1);

@@ -956,7 +956,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     StringBuilder iyembuilder = new StringBuilder();
                     
                     for(i=0;i<tbDetailPermintaan.getRowCount();i++){
-                        iyembuilder.append("{\"Kode\":\"").append(tbDetailPermintaan.getValueAt(i,0).toString()).append("\",\"NamaParameter\":\"").append(tbDetailPermintaan.getValueAt(i,1).toString()).append("\",\"MetodePengujian\":\"").append(tbDetailPermintaan.getValueAt(i,2).toString()).append("\",\"Satuan\":\"").append(tbDetailPermintaan.getValueAt(i,3).toString()).append("\",\"Kategori\":\"").append(tbDetailPermintaan.getValueAt(i,4).toString()).append("\",\"Sampel\":\"").append(tbDetailPermintaan.getValueAt(i,5).toString()).append("\"},");
+                        iyembuilder.append("{\"Kode\":\"").append(tbDetailPermintaan.getValueAt(i,0).toString()).append("\",\"NamaParameter\":\"").append(tbDetailPermintaan.getValueAt(i,1).toString()).append("\",\"MetodePengujian\":\"").append(tbDetailPermintaan.getValueAt(i,2).toString()).append("\",\"Satuan\":\"").append(tbDetailPermintaan.getValueAt(i,3).toString()).append("\",\"Kategori\":\"").append(tbDetailPermintaan.getValueAt(i,4).toString()).append("\"},");
                     }
 
                     if (iyembuilder.length() > 0) {
