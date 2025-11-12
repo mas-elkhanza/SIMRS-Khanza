@@ -65,7 +65,7 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
             }else if(i==1){
                 column.setPreferredWidth(120);
             }else if(i==2){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(76);
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
@@ -2244,12 +2244,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
         }        
-    }
-    
-    public void emptTeks() {
-        KodePelanggan.setText("");
-        NamaPelanggan.setText("");
-        KodePelanggan.requestFocus();        
     }
     
     public void isCek(){

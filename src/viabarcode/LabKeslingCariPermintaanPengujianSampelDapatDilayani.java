@@ -63,7 +63,7 @@ public class LabKeslingCariPermintaanPengujianSampelDapatDilayani extends javax.
             }else if(i==1){
                 column.setPreferredWidth(120);
             }else if(i==2){
-                column.setPreferredWidth(87);
+                column.setPreferredWidth(76);
             }else if(i==3){
                 column.setPreferredWidth(150);
             }else if(i==4){
@@ -816,7 +816,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data dapat dilayani...!!!");
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -1001,7 +1001,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 JOptionPane.showMessageDialog(null,"Silahkan tampilkan detail permintaan...!!!");
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data tidak dapat dilayani...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data dapat dilayani...!!!");
         }
     }//GEN-LAST:event_BtnPenugasanActionPerformed
 

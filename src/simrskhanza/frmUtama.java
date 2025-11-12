@@ -23179,7 +23179,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         LabKeslingCariPenugasanPengujianSampel form=new LabKeslingCariPenugasanPengujianSampel(this,false);
         form.isCek();
-        form.emptTeks();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -49222,7 +49221,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnLabKeslingPengujianSampelDapatDilayani.addActionListener(this::btnLabKeslingPengujianSampelDapatDilayaniActionPerformed);
         
         btnLabKeslingPenugasanPengujianSampel = new widget.ButtonBig();
-        btnLabKeslingPenugasanPengujianSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/6783481_attachment_data_document_file_page_icon.png"))); 
+        btnLabKeslingPenugasanPengujianSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/85304_complete_file_icon.png"))); 
         btnLabKeslingPenugasanPengujianSampel.setText("Penugasan Pengujian Sampel Lab Kesling");
         btnLabKeslingPenugasanPengujianSampel.setIconTextGap(0);
         btnLabKeslingPenugasanPengujianSampel.setName("btnLabKeslingPenugasanPengujianSampel");
