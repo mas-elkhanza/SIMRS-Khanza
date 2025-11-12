@@ -233,7 +233,7 @@ public class LabKeslingCariPenugasanPengujianSampel extends javax.swing.JDialog 
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         ppSuratPenugasan = new javax.swing.JMenuItem();
-        ppHasilPemeriksaan = new javax.swing.JMenuItem();
+        ppHasilPengujian = new javax.swing.JMenuItem();
         KodeSampel = new widget.TextBox();
         KodePelanggan = new widget.TextBox();
         KodePetugas = new widget.TextBox();
@@ -326,21 +326,21 @@ public class LabKeslingCariPenugasanPengujianSampel extends javax.swing.JDialog 
         });
         jPopupMenu1.add(ppSuratPenugasan);
 
-        ppHasilPemeriksaan.setBackground(new java.awt.Color(255, 255, 254));
-        ppHasilPemeriksaan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        ppHasilPemeriksaan.setForeground(new java.awt.Color(50, 50, 50));
-        ppHasilPemeriksaan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        ppHasilPemeriksaan.setText("Hasil Pemeriksaan");
-        ppHasilPemeriksaan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ppHasilPemeriksaan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        ppHasilPemeriksaan.setName("ppHasilPemeriksaan"); // NOI18N
-        ppHasilPemeriksaan.setPreferredSize(new java.awt.Dimension(200, 25));
-        ppHasilPemeriksaan.addActionListener(new java.awt.event.ActionListener() {
+        ppHasilPengujian.setBackground(new java.awt.Color(255, 255, 254));
+        ppHasilPengujian.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppHasilPengujian.setForeground(new java.awt.Color(50, 50, 50));
+        ppHasilPengujian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppHasilPengujian.setText("Hasil Pengujian");
+        ppHasilPengujian.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppHasilPengujian.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppHasilPengujian.setName("ppHasilPengujian"); // NOI18N
+        ppHasilPengujian.setPreferredSize(new java.awt.Dimension(200, 25));
+        ppHasilPengujian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ppHasilPemeriksaanActionPerformed(evt);
+                ppHasilPengujianActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(ppHasilPemeriksaan);
+        jPopupMenu1.add(ppHasilPengujian);
 
         KodeSampel.setName("KodeSampel"); // NOI18N
         KodeSampel.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -1599,7 +1599,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         sampel.setVisible(true);
     }//GEN-LAST:event_btnSampelActionPerformed
 
-    private void ppHasilPemeriksaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHasilPemeriksaanActionPerformed
+    private void ppHasilPengujianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppHasilPengujianActionPerformed
         if(tbPenugasan.getSelectedRow()!= -1){
             if(tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),22).toString().trim().equals("Permintaan Baru")){
                 NoPermintaanVerifikasi2.setText(tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),1).toString());
@@ -1612,7 +1612,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih data permintaan...!!!");
         }
-    }//GEN-LAST:event_ppHasilPemeriksaanActionPerformed
+    }//GEN-LAST:event_ppHasilPengujianActionPerformed
 
     private void TabDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabDataMouseClicked
         if(TabData.getSelectedIndex()==0){
@@ -1934,7 +1934,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
     private widget.panelisi panelisi4;
-    private javax.swing.JMenuItem ppHasilPemeriksaan;
+    private javax.swing.JMenuItem ppHasilPengujian;
     private javax.swing.JMenuItem ppSuratPenugasan;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
@@ -2073,7 +2073,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     public void isCek(){
         TCari.requestFocus();
         BtnPrint.setEnabled(akses.getpenugasan_pengujian_sampel_lab_kesehatan_lingkungan());
-        ppHasilPemeriksaan.setEnabled(akses.getpenugasan_pengujian_sampel_lab_kesehatan_lingkungan());
+        ppHasilPengujian.setEnabled(akses.gethasil_pengujian_sampel_lab_kesehatan_lingkungan());
         ppSuratPenugasan.setEnabled(akses.getpenugasan_pengujian_sampel_lab_kesehatan_lingkungan());
         BtnHapus.setEnabled(akses.getpenugasan_pengujian_sampel_lab_kesehatan_lingkungan());
     }
