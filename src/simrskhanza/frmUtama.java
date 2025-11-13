@@ -23154,7 +23154,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         LabKeslingCariPermintaanPengujianSampelTidakDapatDilayani form=new LabKeslingCariPermintaanPengujianSampelTidakDapatDilayani(this,false);
         form.isCek();
-        form.emptTeks();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);
@@ -23167,7 +23166,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         LabKeslingCariPermintaanPengujianSampelDapatDilayani form=new LabKeslingCariPermintaanPengujianSampelDapatDilayani(this,false);
         form.isCek();
-        form.emptTeks();
         form.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         form.setLocationRelativeTo(PanelUtama);
         form.setVisible(true);

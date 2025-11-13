@@ -7466,7 +7466,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\" : \"Encounter/"+rs.getString("id_encounter")+"\","+
                                                 "\"display\" : \"Kunjungan "+rs.getString("nm_pasien")+" pada tanggal "+rs.getString("tgl_registrasi")+" dengan nomor kunjungan "+rs.getString("no_rawat")+"\""+
                                             "}," +
-                                            "\"created\" : \""+rs.getString("tgl_perawatan").replaceAll(" ","T")+"+07:00\"," +
+                                            "\"created\" : \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam_rawat")+"+07:00\"," +
                                             "\"author\" : {" +
                                                 "\"reference\" : \"Practitioner/"+iddokter+"\"," +
                                                 "\"display\" : \""+rs.getString("nama")+"\"" +
@@ -7557,7 +7557,7 @@ public class frmUtama extends javax.swing.JFrame {
                                                 "\"reference\" : \"Encounter/"+rs.getString("id_encounter")+"\","+
                                                 "\"display\" : \"Kunjungan "+rs.getString("nm_pasien")+" pada tanggal "+rs.getString("tgl_registrasi")+" dengan nomor kunjungan "+rs.getString("no_rawat")+"\""+
                                             "}," +
-                                            "\"created\" : \""+rs.getString("tgl_perawatan").replaceAll(" ","T")+"+07:00\"," +
+                                            "\"created\" : \""+rs.getString("tgl_perawatan")+"T"+rs.getString("jam_rawat")+"+07:00\"," +
                                             "\"author\" : {" +
                                                 "\"reference\" : \"Practitioner/"+iddokter+"\"," +
                                                 "\"display\" : \""+rs.getString("nama")+"\"" +

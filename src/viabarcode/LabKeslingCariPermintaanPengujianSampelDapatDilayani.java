@@ -1180,12 +1180,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }        
     }
     
-    public void emptTeks() {
-        KodePelanggan.setText("");
-        NamaPelanggan.setText("");
-        KodePelanggan.requestFocus();        
-    }
-    
     public void isCek(){
         TCari.requestFocus();
         BtnPrint.setEnabled(akses.getpermintaan_pengujian_sampel_lab_kesehatan_lingkungan());

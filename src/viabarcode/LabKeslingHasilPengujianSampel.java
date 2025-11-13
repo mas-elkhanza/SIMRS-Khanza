@@ -610,7 +610,7 @@ public final class LabKeslingHasilPengujianSampel extends javax.swing.JDialog {
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
-    LabKeslingCariPenugasanPengujianSampel form=new LabKeslingCariPenugasanPengujianSampel(null,false);
+    LabKeslingCariHasilPengujianSampel form=new LabKeslingCariHasilPengujianSampel(null,false);
     form.isCek();
     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     form.setLocationRelativeTo(this);
