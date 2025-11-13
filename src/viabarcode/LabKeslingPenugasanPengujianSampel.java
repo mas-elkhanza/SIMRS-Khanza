@@ -875,7 +875,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         })==true){
                         for(i=0;i<tbPermintaan.getRowCount();i++){ 
                             if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                                Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
+                                Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","Penugasan",2,new String[]{
                                     TNoPenugasan.getText(),tbPermintaan.getValueAt(i,1).toString()
                                 });
                             }                        
@@ -893,7 +893,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         })==true){
                             for(i=0;i<tbPermintaan.getRowCount();i++){ 
                                 if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                                    Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
+                                    Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","Penugasan",2,new String[]{
                                         TNoPenugasan.getText(),tbPermintaan.getValueAt(i,1).toString()
                                     });
                                 }                        
@@ -911,7 +911,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                 })==true){
                                 for(i=0;i<tbPermintaan.getRowCount();i++){ 
                                     if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                                        Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
+                                        Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","Penugasan",2,new String[]{
                                             TNoPenugasan.getText(),tbPermintaan.getValueAt(i,1).toString()
                                         });
                                     }                        
@@ -929,7 +929,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                                     })==true){
                                     for(i=0;i<tbPermintaan.getRowCount();i++){ 
                                         if(tbPermintaan.getValueAt(i,0).toString().equals("true")){
-                                            Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","pemeriksaan radiologi",2,new String[]{
+                                            Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","Penugasan",2,new String[]{
                                                 TNoPenugasan.getText(),tbPermintaan.getValueAt(i,1).toString()
                                             });
                                         }                        
