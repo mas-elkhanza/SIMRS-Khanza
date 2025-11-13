@@ -254,7 +254,7 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
         panelisi1.add(label10);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(200, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(120, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -298,13 +298,13 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
 
         label9.setText("Record :");
         label9.setName("label9"); // NOI18N
-        label9.setPreferredSize(new java.awt.Dimension(65, 23));
+        label9.setPreferredSize(new java.awt.Dimension(50, 23));
         panelisi1.add(label9);
 
         LTotal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LTotal.setText("0");
         LTotal.setName("LTotal"); // NOI18N
-        LTotal.setPreferredSize(new java.awt.Dimension(55, 23));
+        LTotal.setPreferredSize(new java.awt.Dimension(45, 23));
         panelisi1.add(LTotal);
 
         BtnVerifikasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Agenda-1-16x16.png"))); // NOI18N
@@ -312,7 +312,7 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
         BtnVerifikasi.setText("Verifikasi");
         BtnVerifikasi.setToolTipText("Alt+P");
         BtnVerifikasi.setName("BtnVerifikasi"); // NOI18N
-        BtnVerifikasi.setPreferredSize(new java.awt.Dimension(110, 30));
+        BtnVerifikasi.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnVerifikasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnVerifikasiActionPerformed(evt);
@@ -1183,7 +1183,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         rs.getString("nama_sampel")
                     }); 
                 }        
-                LTotal.setText(rs.getRow()+"");
+                LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
             } catch (Exception e) {
                 System.out.println("Note : "+e);
             } finally{
