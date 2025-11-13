@@ -29,7 +29,7 @@ import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariPetugas;
 
 public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
-    private final DefaultTableModel tabModeTidakDapatDilayani,tabModeDetailPermintaan;
+    private final DefaultTableModel tabModeHasilPengujian,tabModeDetailPermintaan;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
     private Connection koneksi=koneksiDB.condb();
@@ -46,18 +46,18 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        tabModeTidakDapatDilayani=new DefaultTableModel(null,new Object[]{
+        tabModeHasilPengujian=new DefaultTableModel(null,new Object[]{
                 "Tgl.Keluar Hasil","No.Permintaan","Kode","Nama Parameter","Hasil Pengujian","Status Verifikasi","NIP Analis","Nama Analis","No.Penugasan","No.Pelanggan","Nama Pelanggan","Kode Sampel","Nama Sampel"
             }){
                 @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
-        tbVerifikasi.setModel(tabModeTidakDapatDilayani);
+        tbHasilPengujian.setModel(tabModeHasilPengujian);
 
-        tbVerifikasi.setPreferredScrollableViewportSize(new Dimension(800,800));
-        tbVerifikasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbHasilPengujian.setPreferredScrollableViewportSize(new Dimension(800,800));
+        tbHasilPengujian.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 13; i++) {
-            TableColumn column = tbVerifikasi.getColumnModel().getColumn(i);
+            TableColumn column = tbHasilPengujian.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(118);
             }else if(i==1){
@@ -86,7 +86,7 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             }
         }
-        tbVerifikasi.setDefaultRenderer(Object.class, new WarnaTable());
+        tbHasilPengujian.setDefaultRenderer(Object.class, new WarnaTable());
 
         NoPermintaan.setDocument(new batasInput((byte)20).getKata(NoPermintaan));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));          
@@ -208,7 +208,7 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
         NamaSampel = new widget.TextBox();
         btnSampel = new widget.Button();
         scrollPane3 = new widget.ScrollPane();
-        tbVerifikasi = new widget.Table();
+        tbHasilPengujian = new widget.Table();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
         scrollPaneDetail = new widget.ScrollPane();
@@ -519,7 +519,7 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
         scrollPane3.setName("scrollPane3"); // NOI18N
         scrollPane3.setOpaque(true);
 
-        tbVerifikasi.setModel(new javax.swing.table.DefaultTableModel(
+        tbHasilPengujian.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -530,14 +530,14 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
 
             }
         ));
-        tbVerifikasi.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
-        tbVerifikasi.setName("tbVerifikasi"); // NOI18N
-        tbVerifikasi.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbHasilPengujian.setToolTipText("Silahkan klik untuk memilih data yang mau dihapus");
+        tbHasilPengujian.setName("tbHasilPengujian"); // NOI18N
+        tbHasilPengujian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbVerifikasiMouseClicked(evt);
+                tbHasilPengujianMouseClicked(evt);
             }
         });
-        scrollPane3.setViewportView(tbVerifikasi);
+        scrollPane3.setViewportView(tbHasilPengujian);
 
         internalFrame1.add(scrollPane3, java.awt.BorderLayout.CENTER);
 
@@ -661,10 +661,10 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabModeTidakDapatDilayani.getRowCount()==0){
+        if(tabModeHasilPengujian.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             TCari.requestFocus();
-        }else if(tabModeTidakDapatDilayani.getRowCount()!=0){
+        }else if(tabModeHasilPengujian.getRowCount()!=0){
             try{
                 File g = new File("file2.css");            
                 BufferedWriter bg = new BufferedWriter(new FileWriter(g));
@@ -690,25 +690,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 1 (HTML)":
                             htmlContent = new StringBuilder();
                             htmlContent.append("<tr class='isi'>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Keluar Hasil</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Parameter</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Penugasan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Penugasan</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya</b></td>").
                                         append("</tr>");
-                            for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
+                            for (int i = 0; i < tabModeHasilPengujian.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,0).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,1).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,2).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,3).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,4).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,5).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,6).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,12).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -719,7 +729,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 "</html>"
                             );
 
-                            f = new File("DataPermintaanPengujianSampelDilayani.html");            
+                            f = new File("DataHasilPengujianSampelDilayani.html");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -729,7 +739,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA PERMINTAAN PENGUJIAN SAMPEL DAPAT DILAYANI<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA HASIL PENGUJIAN SAMPEL<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -740,25 +750,35 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 2 (WPS)":
                             htmlContent = new StringBuilder();
                             htmlContent.append("<tr class='isi'>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Waktu Diterima</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Keluar Hasil</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Permintaan</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Parameter</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Hasil Pengujian</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Verifikasi</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Analis</b></td>").
+                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Penugasan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>No.Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Pelanggan</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kode Sampel</b></td>").
                                             append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nama Sampel</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Status Penugasan</b></td>").
-                                            append("<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya</b></td>").
                                         append("</tr>");
-                            for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
+                            for (int i = 0; i < tabModeHasilPengujian.getRowCount(); i++) {
                                 htmlContent.append("<tr class='isi'>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,0).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,1).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,2).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,3).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,4).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,5).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,6).toString()).append("</td>").
-                                                append("<td valign='top'>").append(tbVerifikasi.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,0).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,1).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,2).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,3).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,4).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,5).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,6).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,7).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,8).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,9).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,10).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,11).toString()).append("</td>").
+                                                append("<td valign='top'>").append(tbHasilPengujian.getValueAt(i,12).toString()).append("</td>").
                                             append("</tr>");
                             }
                             LoadHTML.setText(
@@ -769,7 +789,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                 "</html>"
                             );
 
-                            f = new File("DataPermintaanPengujianSampelDilayani.wps");            
+                            f = new File("DataHasilPengujianSampelDilayani.wps");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                                         "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
@@ -779,7 +799,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                                     "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                                     akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                                     akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                                    "<font size='2' face='Tahoma'>DATA PERMINTAAN PENGUJIAN SAMPEL DAPAT DILAYANI<br><br></font>"+        
+                                                    "<font size='2' face='Tahoma'>DATA HASIL PENGUJIAN SAMPEL<br><br></font>"+        
                                                 "</td>"+
                                            "</tr>"+
                                         "</table>")
@@ -790,12 +810,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     case "Laporan 3 (CSV)":
                             htmlContent = new StringBuilder();
                             htmlContent.append(                             
-                                "\"Waktu Diterima\";\"No.Permintaan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\";\"Status Penugasan\";\"Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya\"\n"
+                                "\"Tgl.Keluar Hasil\";\"No.Permintaan\";\"Kode\";\"Nama Parameter\";\"Hasil Pengujian\";\"Status Verifikasi\";\"NIP Analis\";\"Nama Analis\";\"No.Penugasan\";\"No.Pelanggan\";\"Nama Pelanggan\";\"Kode Sampel\";\"Nama Sampel\"\n"
                             ); 
-                            for (int i = 0; i < tabModeTidakDapatDilayani.getRowCount(); i++) {
-                                htmlContent.append("\"").append(tbVerifikasi.getValueAt(i,0).toString()).append("\";\"").append(tbVerifikasi.getValueAt(i,1).toString()).append("\";\"").append(tbVerifikasi.getValueAt(i,2).toString()).append("\";\"").append(tbVerifikasi.getValueAt(i,3).toString()).append("\";\"").append(tbVerifikasi.getValueAt(i,4).toString()).append("\";\"").append(tbVerifikasi.getValueAt(i,5).toString()).append("\";\"").append(tbVerifikasi.getValueAt(i,6).toString()).append("\";\"").append(tbVerifikasi.getValueAt(i,7).toString()).append("\"\n");
+                            for (int i = 0; i < tabModeHasilPengujian.getRowCount(); i++) {
+                                htmlContent.append("\"").append(tbHasilPengujian.getValueAt(i,0).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,1).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,2).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,3).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,4).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,5).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,6).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,7).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,8).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,9).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,10).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,11).toString()).append("\";\"").append(tbHasilPengujian.getValueAt(i,12).toString()).append("\"\n");
                             }
-                            f = new File("DataPermintaanPengujianSampelDilayani.csv");            
+                            f = new File("DataHasilPengujianSampelDilayani.csv");            
                             bw = new BufferedWriter(new FileWriter(f));            
                             bw.write(htmlContent.toString());
                             bw.close();                         
@@ -822,14 +842,20 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_formWindowOpened
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tbVerifikasi.getSelectedRow()!= -1){
-            if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel_dilayani where no_permintaan='"+tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),1).toString().trim()+"'")==true){
-                Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),1).toString().trim()+"'");
-                tabModeTidakDapatDilayani.removeRow(tbVerifikasi.getSelectedRow());
-                LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
-            }
+        if(tbHasilPengujian.getSelectedRow()!= -1){
+            if(tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),5).toString().equals("Belum Diverifikasi")){
+                if(Sequel.queryutf("delete from laborat_kesling_hasil_pengujian_sampel where no_penugasan='"+tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),8).toString()+"' and kode_parameter='"+tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),2).toString()+"'")==true){
+                    if(Sequel.cariInteger("select count(laborat_kesling_hasil_pengujian_sampel.no_penugasan) from laborat_kesling_hasil_pengujian_sampel where no_penugasan=?",tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),8).toString())==0){
+                        Sequel.queryu("update laborat_kesling_penugasan_pengujian_sampel set status='Belum Keluar Hasil' where no_penugasan='"+tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),8).toString()+"'");
+                    }
+                    tabModeHasilPengujian.removeRow(tbHasilPengujian.getSelectedRow());
+                    LTotal.setText(tabModeHasilPengujian.getRowCount()+"");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null,"Sudah dilakukan verifikasi, tidak bisa dihapus...!");
+            }   
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data dapat dilayani...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data hasil pengujian...!!!");
         }
     }//GEN-LAST:event_BtnHapusActionPerformed
 
@@ -842,7 +868,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnVerifikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerifikasiActionPerformed
-        if(tbVerifikasi.getSelectedRow()!= -1){
+        if(tbHasilPengujian.getSelectedRow()!= -1){
             if(ChkAccor.isSelected()==true){
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
                 try {
@@ -875,7 +901,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     @Override
                     public void windowClosed(WindowEvent e) {
                         if(form.berhasil==true){
-                            tbVerifikasi.setValueAt("Sudah Ada Penugasan",tbVerifikasi.getSelectedRow(),6);
+                            tbHasilPengujian.setValueAt("Sudah Ada Penugasan",tbHasilPengujian.getSelectedRow(),6);
                         }
                     }
                     @Override
@@ -890,14 +916,14 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 form.isCek();
                 form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 form.setLocationRelativeTo(this);
-                form.setData(tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),1).toString().trim(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),2).toString().trim(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),3).toString().trim(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),4).toString().trim(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),5).toString().trim());
+                form.setData(tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),1).toString(),tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),2).toString(),tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),3).toString(),tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),4).toString(),tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),5).toString());
                 form.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }else if(ChkAccor.isSelected()==false){
                 JOptionPane.showMessageDialog(null,"Silahkan tampilkan detail permintaan...!!!");
             }
         }else{
-            JOptionPane.showMessageDialog(null,"Silahkan pilih data dapat dilayani...!!!");
+            JOptionPane.showMessageDialog(null,"Silahkan pilih data hasil pengujian...!!!");
         }
     }//GEN-LAST:event_BtnVerifikasiActionPerformed
 
@@ -910,7 +936,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }//GEN-LAST:event_BtnVerifikasiKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
-        if(tbVerifikasi.getSelectedRow()!= -1){
+        if(tbHasilPengujian.getSelectedRow()!= -1){
             if(ChkAccor.isSelected()==true){
                 ChkAccor.setVisible(false);
                 PanelAccor.setPreferredSize(new Dimension(670,HEIGHT));
@@ -926,8 +952,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         "and laborat_kesling_nilai_normal_baku_mutu.kode_sampel=? order by laborat_kesling_detail_permintaan_pengujian_sampel.kode_parameter"
                     );
                     try {
-                        ps.setString(1,tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),1).toString().trim());
-                        ps.setString(2,tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),11).toString().trim());
+                        ps.setString(1,tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),1).toString());
+                        ps.setString(2,tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),11).toString());
                         rs=ps.executeQuery();
                         while(rs.next()){
                             tabModeDetailPermintaan.addRow(new Object[]{
@@ -959,9 +985,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
-    private void tbVerifikasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVerifikasiMouseClicked
+    private void tbHasilPengujianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHasilPengujianMouseClicked
         ChkAccorActionPerformed(null);
-    }//GEN-LAST:event_tbVerifikasiMouseClicked
+    }//GEN-LAST:event_tbHasilPengujianMouseClicked
 
     private void NoPermintaanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoPermintaanKeyPressed
         Valid.pindah(evt, BtnKeluar,Status);
@@ -1142,11 +1168,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.ScrollPane scrollPane3;
     private widget.ScrollPane scrollPaneDetail;
     private widget.Table tbDetailPermintaan;
-    private widget.Table tbVerifikasi;
+    private widget.Table tbHasilPengujian;
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
-        Valid.tabelKosong(tabModeTidakDapatDilayani);
+        Valid.tabelKosong(tabModeHasilPengujian);
         try{  
             ps=koneksi.prepareStatement(
                         "select laborat_kesling_hasil_pengujian_sampel.tanggal,laborat_kesling_penugasan_pengujian_sampel.no_permintaan,laborat_kesling_hasil_pengujian_sampel.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,"+
@@ -1177,13 +1203,13 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     
                 rs=ps.executeQuery();
                 while(rs.next()){
-                    tabModeTidakDapatDilayani.addRow(new Object[]{
+                    tabModeHasilPengujian.addRow(new Object[]{
                         rs.getString("tanggal"),rs.getString("no_permintaan"),rs.getString("kode_parameter"),rs.getString("nama_parameter"),rs.getString("hasil_pengujian"),rs.getString("status"),
                         rs.getString("nip_pelaksana"),rs.getString("nama"),rs.getString("no_penugasan"),rs.getString("kode_pelanggan"),rs.getString("nama_pelanggan"),rs.getString("kode_sampel"),
                         rs.getString("nama_sampel")
                     }); 
                 }        
-                LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
+                LTotal.setText(tabModeHasilPengujian.getRowCount()+"");
             } catch (Exception e) {
                 System.out.println("Note : "+e);
             } finally{
