@@ -1070,7 +1070,7 @@ public class DlgDokter extends javax.swing.JDialog {
             Valid.textKosong(KdSps,"spesialis");
         }else{
             try { 
-                koneksi.setAutoCommit(false);
+                Sequel.AutoComitFalse();
                 Sequel.mengedit(
                     "pegawai","nik='"+tbDokter.getValueAt(tbDokter.getSelectedRow(),0).toString()+"'","nik='"+TKd.getText()+"',nama='"+TNm.getText()+"',"+
                     "jk='"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',"+"tmp_lahir='"+TTmp.getText()+"',"+
@@ -1083,10 +1083,10 @@ public class DlgDokter extends javax.swing.JDialog {
                     "',almt_tgl='"+TAlmt.getText()+"',no_telp='"+TTlp.getText()+"',email='"+Email.getText()+"',stts_nikah='"+CmbStts.getSelectedItem()+"'"+
                     ",kd_sps='"+KdSps.getText()+"',alumni='"+TAlumni.getText()+"',no_ijn_praktek='"+TNoi.getText()+"'"
                 );
-                koneksi.setAutoCommit(true);
+                Sequel.AutoComitTrue();
                 if(tabMode.getRowCount()!=0){tampil();}
                 emptTeks();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 return;
             }            
         }

@@ -2885,7 +2885,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
         }else if(tabModeBilling.getRowCount()!=0){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             try{
-                koneksi.setAutoCommit(false);
+                Sequel.AutoComitFalse();
                 Sequel.queryu2("delete from temporary_bayar_ralan where temp9='"+akses.getkode()+"'"); 
                 z=tabModeBilling.getRowCount();
                 for(i=0;i<z;i++){
@@ -2960,7 +2960,7 @@ public class DlgBilingParsialRalan extends javax.swing.JDialog {
                     this.setCursor(Cursor.getDefaultCursor());
                 }
                 
-                koneksi.setAutoCommit(true);
+                Sequel.AutoComitTrue();
                 this.setCursor(Cursor.getDefaultCursor());
             }catch(Exception ex){
                 System.out.println(ex);

@@ -2497,7 +2497,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         if (reply == JOptionPane.YES_OPTION) {
             ChkJln.setSelected(false);
             try {                    
-                koneksi.setAutoCommit(false);
+                Sequel.AutoComitFalse();
                 sukses=true;
                 //autoNomor();
                 if(jml>0){
@@ -2762,8 +2762,7 @@ private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 }else{
                     JOptionPane.showMessageDialog(null,"Proses simpan gagal...!");
                 }
-                koneksi.setAutoCommit(true);                    
-                
+                Sequel.AutoComitTrue();
             } catch (Exception e) {
                 System.out.println(e);
             }  

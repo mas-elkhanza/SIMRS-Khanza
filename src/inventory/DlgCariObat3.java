@@ -469,7 +469,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 try {  
-                    koneksi.setAutoCommit(false); 
+                    Sequel.AutoComitFalse(); 
                     jml=tbObat.getRowCount();
                     for(i=0;i<jml;i++){   
                         harga=0;
@@ -802,7 +802,7 @@ private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
                             }
                         }                     
                     }    
-                    koneksi.setAutoCommit(true);
+                    Sequel.AutoComitTrue();
                     tampil(); 
                 }catch(Exception e){
                     System.out.println(e);

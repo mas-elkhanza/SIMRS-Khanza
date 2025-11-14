@@ -1061,7 +1061,7 @@ public final class DlgPetugas extends javax.swing.JDialog {
             Valid.textKosong(KdJbtn,"jabatan");
         }else{
             try {
-                koneksi.setAutoCommit(false);
+                Sequel.AutoComitFalse();
                 Sequel.mengedit(
                     "pegawai","nik='"+tbPetugas.getValueAt(tbPetugas.getSelectedRow(),0).toString()+"'","nik='"+TNip.getText()+"',nama='"+TNm.getText()+"',"+
                     "jk='"+CmbJk.getSelectedItem().toString().replaceAll("PEREMPUAN","Wanita").replaceAll("LAKI-LAKI","Pria")+"',tmp_lahir='"+TTmp.getText()+"',"+
@@ -1074,10 +1074,10 @@ public final class DlgPetugas extends javax.swing.JDialog {
                     "stts_nikah='"+CmbStts.getSelectedItem()+"',alamat='"+TAlmt.getText()+"',kd_jbtn='"+KdJbtn.getText()+"',no_telp='"+TTlp.getText()+"',"+
                     "email='"+Email.getText()+"'"
                 );
-                koneksi.setAutoCommit(true);
+                Sequel.AutoComitTrue();
                 if(tabMode.getRowCount()!=0){tampil();}
                 emptTeks();
-            } catch (SQLException ex) {
+            } catch (Exception ex) {
                 return;
             }            
         }

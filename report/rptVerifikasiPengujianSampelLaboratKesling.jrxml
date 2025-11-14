@@ -141,7 +141,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="213" splitType="Stretch">
+		<band height="220" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<textField isBlankWhenNull="true">
 				<reportElement x="2" y="14" width="520" height="25" forecolor="#000000" backcolor="#00FF00" uuid="d59d1e25-b000-4b76-990e-43d1f762778a"/>
@@ -266,7 +266,7 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement x="1" y="100" width="521" height="15" uuid="df07f5ac-a610-4be3-969f-ca284507c926"/>
+				<reportElement x="1" y="99" width="521" height="15" uuid="df07f5ac-a610-4be3-969f-ca284507c926"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="10" isBold="false"/>
 					<paragraph lineSpacing="Single"/>

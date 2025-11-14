@@ -1225,7 +1225,9 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             @Override
             public void windowClosed(WindowEvent e) {
                 if(form.berhasil==true){
-                    tbHasilPengujian.setValueAt("Sudah Diverifikasi",tbHasilPengujian.getSelectedRow(),6);
+                    for(i=0;i<tbHasilPengujian.getRowCount();i++){
+                        tbHasilPengujian.setValueAt("Sudah Diverifikasi",i,5);
+                    }
                 }
             }
             @Override
@@ -1240,7 +1242,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         form.isCek();
         form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         form.setLocationRelativeTo(this);
-        //"Tgl.Keluar Hasil"0,"No.Permintaan"1,"Kode"2,"Nama Parameter"3,"Hasil Pengujian"4,"Status Verifikasi"5,"NIP Analis"6,"Nama Analis"7,"No.Penugasan"8,"No.Pelanggan"9,"Nama Pelanggan"10,"Kode Sampel"11,"Nama Sampel"12
         form.setData(tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),1).toString(),tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),9).toString(),tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),10).toString(),tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),11).toString(),tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),12).toString());
         form.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());

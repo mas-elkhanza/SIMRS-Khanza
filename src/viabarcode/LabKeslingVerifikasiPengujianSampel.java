@@ -628,23 +628,35 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 ChkJln.setSelected(false);
                 try {                    
-                    /*berhasil=false;
-                    koneksi.setAutoCommit(false);
-                    if(Sequel.menyimpantf2("laborat_kesling_penugasan_pengujian_sampel","?,?,?,?,?,?,'Belum Keluar Hasil'","No.Penugasan",6,new String[]{
-                            TNoPermintaan.getText(),TNoVerifikasi.getText(),KdPJ.getText(),KdAnalis.getText(),Valid.SetTgl(TanggalPenugasan.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText()
+                    Sequel.AutoComitFalse();
+                    berhasil=true;
+                    if(Sequel.menyimpantf2("laborat_kesling_verifikasi_pengujian_sampel","?,?,?,?,?,?,?,'Belum Divalidasi'","No.Penugasan",7,new String[]{
+                            TNoPermintaan.getText(),TNoVerifikasi.getText(),KdPJ.getText(),Valid.SetTgl(TanggalVerifikasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText(),
+                            Valid.SetTgl(TglPengujian1.getSelectedItem()+"")+" "+TglPengujian1.getSelectedItem().toString().substring(11,19),Valid.SetTgl(TglPengujian2.getSelectedItem()+"")+" "+TglPengujian2.getSelectedItem().toString().substring(11,19)
                         })==true){
-                        for(i=0;i<tbVerifikasi.getRowCount();i++){ 
-                            if(tbVerifikasi.getValueAt(i,0).toString().equals("true")){
-                                Sequel.menyimpan2("laborat_kesling_detail_penugasan_pengujian_sampel","?,?","Penugasan",2,new String[]{
-                                    TNoVerifikasi.getText(),tbVerifikasi.getValueAt(i,1).toString()
-                                });
-                            }                        
+                        for(i=0;i<tbVerifikasi.getRowCount();i++){
+                            if(Sequel.menyimpantf2("laborat_kesling_detail_verifikasi_pengujian_sampel","?,?,?,?,?","Verifikasi",5,new String[]{
+                                TNoVerifikasi.getText(),tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,6).toString(),tbVerifikasi.getValueAt(i,4).toString(),tbVerifikasi.getValueAt(i,5).toString()
+                            })==true){
+                                Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Sudah Diverifikasi' where no_penugasan='"+tbVerifikasi.getValueAt(i,0).toString()+"' and kode_parameter='"+tbVerifikasi.getValueAt(i,1).toString()+"'");
+                            }else{
+                                berhasil=false;
+                            }                
                         } 
-                        Valid.tabelKosong(tabMode);
-                        berhasil=true;
+                    }else{
+                        berhasil=false;
                     }   
-                    koneksi.setAutoCommit(true);                    
-                    JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");*/
+                    
+                    if(berhasil==true){
+                        Sequel.Commit();
+                        JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
+                        Valid.tabelKosong(tabMode);
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Terjadi kesalahan saat pemrosesan data, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
+                        Sequel.RollBack();
+                    }
+                    
+                    Sequel.AutoComitTrue();                   
                 } catch (Exception e) {
                     System.out.println(e);
                 }    
