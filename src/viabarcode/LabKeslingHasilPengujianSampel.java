@@ -689,9 +689,9 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }else if(KodeSampel.getText().equals("")||NamaSampel.getText().equals("")){
             Valid.textKosong(TCariPeriksa,"Sampel");
         }else if(tabMode.getRowCount()==0){
-            Valid.textKosong(TCariPeriksa,"Data Permintaan");
+            Valid.textKosong(TCariPeriksa,"Data Hasil Peengujian");
         }else if(jml==0){
-            Valid.textKosong(TCariPeriksa,"Data Permintaan");
+            Valid.textKosong(TCariPeriksa,"Data Hasil Peengujian");
         }else{
             int reply = JOptionPane.showConfirmDialog(rootPane,"Eeiiiiiits, udah bener belum data yang mau disimpan..??","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
