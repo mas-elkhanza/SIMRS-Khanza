@@ -566,16 +566,6 @@ public final class LabKeslingHasilPengujianSampel extends javax.swing.JDialog {
 
         tbPengujian.setComponentPopupMenu(Popup);
         tbPengujian.setName("tbPengujian"); // NOI18N
-        tbPengujian.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbPengujianMouseClicked(evt);
-            }
-        });
-        tbPengujian.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbPengujianKeyPressed(evt);
-            }
-        });
         Scroll2.setViewportView(tbPengujian);
 
         jPanel3.add(Scroll2, java.awt.BorderLayout.CENTER);
@@ -672,39 +662,6 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.pindah(evt, btnCariPeriksa, BtnKeluar);
         }
     }//GEN-LAST:event_BtnAllPeriksaKeyPressed
-
-    private void tbPengujianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbPengujianMouseClicked
-        if(tabMode.getRowCount()!=0){
-            try {
-               // getData2();
-            } catch (java.lang.NullPointerException e) {
-            }
-        }
-    }//GEN-LAST:event_tbPengujianMouseClicked
-
-    private void tbPengujianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbPengujianKeyPressed
-        if(tbPengujian.getRowCount()!=0){
-            if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-                try {
-                    int row=tbPengujian.getSelectedColumn();
-                    if((row!=0)||(row!=20)){
-                        if(tbPengujian.getSelectedRow()>-1){
-                            tbPengujian.setValueAt(true,tbPengujian.getSelectedRow(),0);
-                        }
-                        TCariPeriksa.setText("");
-                        TCariPeriksa.requestFocus();
-                    }
-                    //getData2();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }else if((evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
-                try {
-                   // getData2();
-                } catch (java.lang.NullPointerException e) {
-                }
-            }
-        }
-    }//GEN-LAST:event_tbPengujianKeyPressed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
