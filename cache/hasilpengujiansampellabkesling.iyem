@@ -1,1 +1,1 @@
-{"hasilpengujiansampellabkesling":[{"Kode":"101","NamaParameter":"Kekeruhan","MetodePengujian":"Spektrofotometri","Satuan":"NTU","Kategori":"Fisika","Normal":"< 3"},{"Kode":"102","NamaParameter":"Warna","MetodePengujian":"Spektrofotometri","Satuan":"Pt/Co","Kategori":"Fisika","Normal":"1"}]}
+{"hasilpengujiansampellabkesling":[{"Kode":"103","NamaParameter":"TDS","MetodePengujian":"Elektrometri","Satuan":"mg/L","Kategori":"Fisika","Normal":"< 300"},{"Kode":"104","NamaParameter":"TS","MetodePengujian":"Elektrometri","Satuan":"mg/L","Kategori":"Fisika","Normal":"-"}]}

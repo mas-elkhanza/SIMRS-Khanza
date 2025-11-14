@@ -97,15 +97,15 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
             }else if(i==3){
                 column.setPreferredWidth(60);
             }else if(i==4){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(85);
             }else if(i==5){
                 column.setPreferredWidth(140);
             }else if(i==6){
                 column.setPreferredWidth(70);
             }else if(i==7){
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(130);
             }else if(i==8){
-                column.setPreferredWidth(70);
+                column.setPreferredWidth(80);
             }
         }
         tbPermintaan.setDefaultRenderer(Object.class, new WarnaTable());
@@ -202,7 +202,7 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
 
         FormInput.setName("FormInput"); // NOI18N
         FormInput.setOpaque(false);
-        FormInput.setPreferredSize(new java.awt.Dimension(560, 126));
+        FormInput.setPreferredSize(new java.awt.Dimension(560, 128));
         FormInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -463,7 +463,7 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
         LCount.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LCount.setText("0");
         LCount.setName("LCount"); // NOI18N
-        LCount.setPreferredSize(new java.awt.Dimension(70, 23));
+        LCount.setPreferredSize(new java.awt.Dimension(65, 23));
         panelGlass8.add(LCount);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Search-16x16.png"))); // NOI18N
@@ -868,7 +868,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            FormInput.setPreferredSize(new Dimension(WIDTH,156));
+            FormInput.setPreferredSize(new Dimension(WIDTH,126));
             scrollInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
