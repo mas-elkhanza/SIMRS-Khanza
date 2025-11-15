@@ -860,24 +860,28 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
     private void BtnVerifikasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVerifikasiActionPerformed
         if(tbHasilPengujian.getSelectedRow()!= -1){
-            if(ChkAccor.isSelected()==true){
-                NoPermintaan.setText(tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),1).toString());
-                for(i=0;i<tbHasilPengujian.getRowCount();i++){
-                    if(!tbHasilPengujian.getValueAt(i,1).toString().equals(NoPermintaan.getText())){
-                        tabModeHasilPengujian.removeRow(i);
-                        i--;
+            if(tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),5).toString().equals("Sudah Diverifikasi")){
+                JOptionPane.showMessageDialog(null,"Sudah dilakukan verifikasi...!!!");
+            }else{
+                if(ChkAccor.isSelected()==true){
+                    NoPermintaan.setText(tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),1).toString());
+                    for(i=0;i<tbHasilPengujian.getRowCount();i++){
+                        if(!tbHasilPengujian.getValueAt(i,1).toString().equals(NoPermintaan.getText())){
+                            tabModeHasilPengujian.removeRow(i);
+                            i--;
+                        }
                     }
-                }
-                if(tabModeHasilPengujian.getRowCount()!=tabModeDetailPermintaan.getRowCount()){
-                    int reply = JOptionPane.showConfirmDialog(rootPane,"Jumlah data permintaan dengan jumlah data pengujian tidak sama.\nApakah mau dilanjutkan...???","Konfirmasi",JOptionPane.YES_NO_OPTION);
-                    if (reply == JOptionPane.YES_OPTION) {
+                    if(tabModeHasilPengujian.getRowCount()!=tabModeDetailPermintaan.getRowCount()){
+                        int reply = JOptionPane.showConfirmDialog(rootPane,"Jumlah data permintaan dengan jumlah data pengujian tidak sama.\nApakah mau dilanjutkan...???","Konfirmasi",JOptionPane.YES_NO_OPTION);
+                        if (reply == JOptionPane.YES_OPTION) {
+                            verifikasi();
+                        }
+                    }else{
                         verifikasi();
                     }
-                }else{
-                    verifikasi();
+                }else if(ChkAccor.isSelected()==false){
+                    JOptionPane.showMessageDialog(null,"Silahkan tampilkan detail permintaan...!!!");
                 }
-            }else if(ChkAccor.isSelected()==false){
-                JOptionPane.showMessageDialog(null,"Silahkan tampilkan detail permintaan...!!!");
             }
         }else{
             JOptionPane.showMessageDialog(null,"Silahkan pilih data hasil pengujian...!!!");

@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
-import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
@@ -27,7 +26,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileReader;
-import java.sql.Connection;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -585,7 +583,7 @@ public final class LabKeslingVerifikasiPengujianSampel extends javax.swing.JDial
 
 private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));  
-    LabKeslingCariPenugasanPengujianSampel form=new LabKeslingCariPenugasanPengujianSampel(null,false);
+    LabKeslingCariVerifikasiPengujianSampel form=new LabKeslingCariVerifikasiPengujianSampel(null,false);
     form.isCek();
     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
     form.setLocationRelativeTo(this);
@@ -635,8 +633,8 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                             Valid.SetTgl(TglPengujian1.getSelectedItem()+"")+" "+TglPengujian1.getSelectedItem().toString().substring(11,19),Valid.SetTgl(TglPengujian2.getSelectedItem()+"")+" "+TglPengujian2.getSelectedItem().toString().substring(11,19)
                         })==true){
                         for(i=0;i<tbVerifikasi.getRowCount();i++){
-                            if(Sequel.menyimpantf2("laborat_kesling_detail_verifikasi_pengujian_sampel","?,?,?,?,?","Verifikasi",5,new String[]{
-                                TNoVerifikasi.getText(),tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,6).toString(),tbVerifikasi.getValueAt(i,4).toString(),tbVerifikasi.getValueAt(i,5).toString()
+                            if(Sequel.menyimpantf2("laborat_kesling_detail_verifikasi_pengujian_sampel","?,?,?,?,?,?","Verifikasi",6,new String[]{
+                                TNoVerifikasi.getText(),tbVerifikasi.getValueAt(i,0).toString(),tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,6).toString(),tbVerifikasi.getValueAt(i,4).toString(),tbVerifikasi.getValueAt(i,5).toString()
                             })==true){
                                 Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Sudah Diverifikasi' where no_penugasan='"+tbVerifikasi.getValueAt(i,0).toString()+"' and kode_parameter='"+tbVerifikasi.getValueAt(i,1).toString()+"'");
                             }else{

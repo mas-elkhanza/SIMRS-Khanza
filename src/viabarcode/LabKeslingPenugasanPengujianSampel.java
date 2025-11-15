@@ -27,7 +27,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileReader;
-import java.sql.Connection;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -48,7 +47,6 @@ public final class LabKeslingPenugasanPengujianSampel extends javax.swing.JDialo
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
     private boolean[] pilih; 
     private String[] Kode,NamaParameter,MetodePengujian,Satuan,Kategori;
     private int jml=0,i=0,index=0;
