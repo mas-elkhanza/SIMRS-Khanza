@@ -413,17 +413,17 @@ public class LabKeslingCariHasilPengujianSampel extends javax.swing.JDialog {
 
         label14.setText("Status :");
         label14.setName("label14"); // NOI18N
-        label14.setPreferredSize(new java.awt.Dimension(55, 23));
+        label14.setPreferredSize(new java.awt.Dimension(57, 23));
         panelisi4.add(label14);
 
         Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Diverifikasi", "Belum Diverifikasi" }));
         Status.setName("Status"); // NOI18N
-        Status.setPreferredSize(new java.awt.Dimension(145, 23));
+        Status.setPreferredSize(new java.awt.Dimension(140, 23));
         panelisi4.add(Status);
 
         label15.setText("No.Permintaan :");
         label15.setName("label15"); // NOI18N
-        label15.setPreferredSize(new java.awt.Dimension(97, 23));
+        label15.setPreferredSize(new java.awt.Dimension(100, 23));
         panelisi4.add(label15);
 
         NoPermintaan.setName("NoPermintaan"); // NOI18N

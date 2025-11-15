@@ -54,7 +54,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,83,0,0,3,26"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,83,0,0,3,36"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -129,7 +129,7 @@
                     <Property name="text" type="java.lang.String" value="Key Word :"/>
                     <Property name="name" type="java.lang.String" value="label10" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[62, 23]"/>
+                      <Dimension value="[60, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -137,7 +137,7 @@
                   <Properties>
                     <Property name="name" type="java.lang.String" value="TCari" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[185, 23]"/>
+                      <Dimension value="[120, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -178,25 +178,36 @@
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="BtnAllKeyPressed"/>
                   </Events>
                 </Component>
-                <Component class="widget.Label" name="label14">
+                <Component class="widget.Label" name="label9">
                   <Properties>
-                    <Property name="name" type="java.lang.String" value="label14" noResource="true"/>
+                    <Property name="text" type="java.lang.String" value="Record :"/>
+                    <Property name="name" type="java.lang.String" value="label9" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[10, 23]"/>
+                      <Dimension value="[50, 23]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="widget.Label" name="LTotal">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="0"/>
+                    <Property name="name" type="java.lang.String" value="LTotal" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[45, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="widget.Button" name="BtnPenugasan">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/3079288_adobe file extensions_adobe fireworks_document_extension icon_file_icon.png"/>
+                      <Image iconType="3" name="/picture/inventaris.png"/>
                     </Property>
                     <Property name="mnemonic" type="int" value="80"/>
                     <Property name="text" type="java.lang.String" value="Validasi"/>
                     <Property name="toolTipText" type="java.lang.String" value="Alt+P"/>
                     <Property name="name" type="java.lang.String" value="BtnPenugasan" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[120, 30]"/>
+                      <Dimension value="[100, 30]"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -283,7 +294,7 @@
                     <Property name="text" type="java.lang.String" value="Tgl.Verifikasi :"/>
                     <Property name="name" type="java.lang.String" value="label11" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[90, 23]"/>
+                      <Dimension value="[78, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -321,58 +332,49 @@
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Tanggal2KeyPressed"/>
                   </Events>
                 </Component>
-                <Component class="widget.Label" name="label17">
+                <Component class="widget.Label" name="label16">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Pelanggan :"/>
-                    <Property name="name" type="java.lang.String" value="label17" noResource="true"/>
+                    <Property name="text" type="java.lang.String" value="Status :"/>
+                    <Property name="name" type="java.lang.String" value="label16" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[70, 23]"/>
+                      <Dimension value="[61, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.TextBox" name="NamaPelanggan">
+                <Component class="widget.ComboBox" name="Status">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
-                    <Property name="name" type="java.lang.String" value="NamaPelanggan" noResource="true"/>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Semua"/>
+                        <StringItem index="1" value="Sudah Divalidasi"/>
+                        <StringItem index="2" value="Belum Divalidasi"/>
+                      </StringArray>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="Status" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[210, 23]"/>
+                      <Dimension value="[145, 23]"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="widget.Button" name="btnPelanggan">
+                <Component class="widget.Label" name="label15">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/picture/190.png"/>
-                    </Property>
-                    <Property name="mnemonic" type="int" value="52"/>
-                    <Property name="toolTipText" type="java.lang.String" value="Alt+4"/>
-                    <Property name="name" type="java.lang.String" value="btnPelanggan" noResource="true"/>
+                    <Property name="text" type="java.lang.String" value="No.Permintaan :"/>
+                    <Property name="name" type="java.lang.String" value="label15" noResource="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[28, 23]"/>
+                      <Dimension value="[101, 23]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="widget.TextBox" name="NoPermintaan">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="NoPermintaan" noResource="true"/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[147, 23]"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPelangganActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoPermintaanKeyPressed"/>
                   </Events>
-                </Component>
-                <Component class="widget.Label" name="label9">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Record :"/>
-                    <Property name="name" type="java.lang.String" value="label9" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[62, 23]"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="widget.Label" name="LTotal">
-                  <Properties>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="0"/>
-                    <Property name="name" type="java.lang.String" value="LTotal" noResource="true"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[62, 23]"/>
-                    </Property>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -398,10 +400,10 @@
           <SubComponents>
             <Component class="widget.Label" name="label13">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Verifikator :"/>
+                <Property name="text" type="java.lang.String" value="Analis :"/>
                 <Property name="name" type="java.lang.String" value="label13" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[84, 23]"/>
+                  <Dimension value="[44, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -410,7 +412,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="NamaPetugas" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[179, 23]"/>
+                  <Dimension value="[170, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -430,6 +432,40 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPetugasActionPerformed"/>
               </Events>
             </Component>
+            <Component class="widget.Label" name="label17">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pelanggan :"/>
+                <Property name="name" type="java.lang.String" value="label17" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[70, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.TextBox" name="NamaPelanggan">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="name" type="java.lang.String" value="NamaPelanggan" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[170, 23]"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="widget.Button" name="btnPelanggan">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/picture/190.png"/>
+                </Property>
+                <Property name="mnemonic" type="int" value="52"/>
+                <Property name="toolTipText" type="java.lang.String" value="Alt+4"/>
+                <Property name="name" type="java.lang.String" value="btnPelanggan" noResource="true"/>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[28, 23]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPelangganActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="widget.Label" name="label7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sampel :"/>
@@ -444,7 +480,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="name" type="java.lang.String" value="NamaSampel" noResource="true"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[164, 23]"/>
+                  <Dimension value="[140, 23]"/>
                 </Property>
               </Properties>
             </Component>
@@ -462,26 +498,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSampelActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="widget.Label" name="label15">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nomor :"/>
-                <Property name="name" type="java.lang.String" value="label15" noResource="true"/>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[50, 23]"/>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="widget.TextBox" name="NoPermintaan">
-              <Properties>
-                <Property name="name" type="java.lang.String" value="NoPermintaan" noResource="true"/>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[150, 23]"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoPermintaanKeyPressed"/>
               </Events>
             </Component>
           </SubComponents>
