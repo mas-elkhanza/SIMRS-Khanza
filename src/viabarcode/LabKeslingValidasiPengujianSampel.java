@@ -65,7 +65,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
-                if ((colIndex==4)||(colIndex==5)) {
+                if ((colIndex==3)||(colIndex==4)) {
                     a=true;
                 }
                 return a;
