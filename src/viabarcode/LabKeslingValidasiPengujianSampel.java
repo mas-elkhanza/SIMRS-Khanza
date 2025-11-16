@@ -61,7 +61,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-              "No.Penugasan","Kode","Nama Parameter","Satuan","Hasil Pemeriksaan","Keterangan","Nilai Normal","Metode Pengujian","Kategori"
+              "Kode","Nama Parameter","Satuan","Hasil Pemeriksaan","Keterangan","Nilai Normal","Metode Pengujian","Kategori","No.Penugasan","NIP Analis","Nama Analis","NIP P.J.","Nama PJ Pengujian"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -71,6 +71,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
                 return a;
              }
              Class[] types = new Class[] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class
@@ -86,26 +87,34 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         tbVerifikasi.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbVerifikasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 9; i++) {
+        for(i = 0; i < 13; i++) {
             TableColumn column = tbVerifikasi.getColumnModel().getColumn(i);
             if(i==0){
-                column.setPreferredWidth(120);
-            }else if(i==1){
                 column.setPreferredWidth(55);
-            }else if(i==2){
+            }else if(i==1){
                 column.setPreferredWidth(160);
-            }else if(i==3){
+            }else if(i==2){
                 column.setPreferredWidth(60);
-            }else if(i==4){
+            }else if(i==3){
                 column.setPreferredWidth(97);
-            }else if(i==5){
+            }else if(i==4){
                 column.setPreferredWidth(140);
-            }else if(i==6){
+            }else if(i==5){
                 column.setPreferredWidth(70);
-            }else if(i==7){
+            }else if(i==6){
                 column.setPreferredWidth(130);
-            }else if(i==8){
+            }else if(i==7){
                 column.setPreferredWidth(80);
+            }else if(i==8){
+                column.setPreferredWidth(120);
+            }else if(i==9){
+                column.setPreferredWidth(90);
+            }else if(i==10){
+                column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(90);
+            }else if(i==12){
+                column.setPreferredWidth(150);
             }
         }
         tbVerifikasi.setDefaultRenderer(Object.class, new WarnaTable());
@@ -806,15 +815,17 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private void tampil() {   
         try {
             Valid.tabelKosong(tabMode);
-            myObj = new FileReader("./cache/verifikasipengujiansampellabkesling.iyem");
+            myObj = new FileReader("./cache/validasipengujiansampellabkesling.iyem");
             root = mapper.readTree(myObj);
-            response = root.path("verifikasipengujiansampellabkesling");
+            response = root.path("validasipengujiansampellabkesling");
             if(response.isArray()){
                 for(JsonNode list:response){
                     tabMode.addRow(new Object[]{
-                        list.path("NoPenugasan").asText(),list.path("Kode").asText(),list.path("NamaParameter").asText(),
-                        list.path("Satuan").asText(),list.path("HasilPengujian").asText(),"",list.path("Normal").asText(),
-                        list.path("MetodePengujian").asText(),list.path("Kategori").asText()
+                        list.path("Kode").asText(),list.path("NamaParameter").asText(),list.path("Satuan").asText(),
+                        list.path("HasilPemeriksaan").asText(),list.path("Keterangan").asText(),list.path("NilaiNormal").asText(),
+                        list.path("MetodePengujian").asText(),list.path("Kategori").asText(),list.path("NoPenugasan").asText(),
+                        list.path("NIPAnalis").asText(),list.path("NamaAnalis").asText(),list.path("NIPPJPengujian").asText(),
+                        list.path("NamaPJPengujian").asText()
                     });
                 }
             }

@@ -1378,9 +1378,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     form.isCek();
                     form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                     form.setLocationRelativeTo(this);
-                    //"Tgl.Verifikasi"0,"No.Verifikasi"1,"NIP P.J."2,"Nama P.J. Verifikasi"3,"No.Permintaan"4,"No.Pelanggan"5,"Nama Pelanggan"6,"Kode Sampel"7,"Nama Sampel"8,"Status Validasi"9,"Catatan"10,"Mulai Pengujian"11,"Selesai Pengujian"12
-                    //setData(String nopermintaan,String kodepelanggan,String namapelanggan,String kodesampel,String namasampel,String kodeverifikator,String namaverifikator,String rentang)
-                    form.setData(tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),1).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),6).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),7).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),8).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),9).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),10).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),4).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),5).toString());
+                    form.setData(tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),4).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),5).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),6).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),7).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),8).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),2).toString(),tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),3).toString(),Valid.SetTgl5(tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),11).toString())+" s.d."+Valid.SetTgl5(tbVerifikasi.getValueAt(tbVerifikasi.getSelectedRow(),12).toString()));
                     form.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }else{
