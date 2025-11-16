@@ -217,11 +217,6 @@ public class LabKeslingCariPenugasanPengujianSampel extends javax.swing.JDialog 
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
-        
-        WindowInput.setSize(735,245);
-        WindowInput.setLocationRelativeTo(null); 
-        WindowInput2.setSize(735,245);
-        WindowInput2.setLocationRelativeTo(null); 
     }
 
     /** This method is called from within the constructor to
@@ -240,34 +235,6 @@ public class LabKeslingCariPenugasanPengujianSampel extends javax.swing.JDialog 
         KodePelanggan = new widget.TextBox();
         KodePetugas = new widget.TextBox();
         LoadHTML = new widget.editorpane();
-        WindowInput = new javax.swing.JDialog();
-        internalFrame2 = new widget.InternalFrame();
-        BtnTutup = new widget.Button();
-        jLabel19 = new widget.Label();
-        BtnSimpan = new widget.Button();
-        BtnBatal = new widget.Button();
-        NoPermintaanVerifikasi = new widget.TextBox();
-        jLabel42 = new widget.Label();
-        scrollPane4 = new widget.ScrollPane();
-        Keterangan = new widget.TextArea();
-        label2 = new widget.Label();
-        AsalPermintaan = new widget.TextBox();
-        label3 = new widget.Label();
-        label4 = new widget.Label();
-        WindowInput2 = new javax.swing.JDialog();
-        internalFrame3 = new widget.InternalFrame();
-        BtnTutup2 = new widget.Button();
-        jLabel20 = new widget.Label();
-        BtnSimpan2 = new widget.Button();
-        BtnBatal2 = new widget.Button();
-        NoPermintaanVerifikasi2 = new widget.TextBox();
-        jLabel43 = new widget.Label();
-        scrollPane5 = new widget.ScrollPane();
-        Keterangan2 = new widget.TextArea();
-        label5 = new widget.Label();
-        AsalPermintaan2 = new widget.TextBox();
-        label6 = new widget.Label();
-        label8 = new widget.Label();
         internalFrame1 = new widget.InternalFrame();
         jPanel1 = new javax.swing.JPanel();
         panelisi1 = new widget.panelisi();
@@ -346,270 +313,15 @@ public class LabKeslingCariPenugasanPengujianSampel extends javax.swing.JDialog 
 
         KodeSampel.setName("KodeSampel"); // NOI18N
         KodeSampel.setPreferredSize(new java.awt.Dimension(207, 23));
-        KodeSampel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeSampelKeyPressed(evt);
-            }
-        });
 
         KodePelanggan.setName("KodePelanggan"); // NOI18N
         KodePelanggan.setPreferredSize(new java.awt.Dimension(80, 23));
-        KodePelanggan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodePelangganKeyPressed(evt);
-            }
-        });
 
         KodePetugas.setName("KodePetugas"); // NOI18N
         KodePetugas.setPreferredSize(new java.awt.Dimension(80, 23));
-        KodePetugas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodePetugasKeyPressed(evt);
-            }
-        });
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
-
-        WindowInput.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        WindowInput.setName("WindowInput"); // NOI18N
-        WindowInput.setUndecorated(true);
-        WindowInput.setResizable(false);
-
-        internalFrame2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Verifikasi Tidak Dapat Dilayani ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
-        internalFrame2.setName("internalFrame2"); // NOI18N
-        internalFrame2.setLayout(null);
-
-        BtnTutup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnTutup.setMnemonic('U');
-        BtnTutup.setText("Tutup");
-        BtnTutup.setToolTipText("Alt+U");
-        BtnTutup.setName("BtnTutup"); // NOI18N
-        BtnTutup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTutupActionPerformed(evt);
-            }
-        });
-        BtnTutup.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnTutupKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnTutup);
-        BtnTutup.setBounds(620, 195, 100, 30);
-
-        jLabel19.setText("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        jLabel19.setName("jLabel19"); // NOI18N
-        internalFrame2.add(jLabel19);
-        jLabel19.setBounds(-10, 175, 850, 14);
-
-        BtnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan.setMnemonic('S');
-        BtnSimpan.setText("Simpan");
-        BtnSimpan.setToolTipText("Alt+S");
-        BtnSimpan.setName("BtnSimpan"); // NOI18N
-        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpanActionPerformed(evt);
-            }
-        });
-        BtnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpanKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnSimpan);
-        BtnSimpan.setBounds(14, 195, 100, 30);
-
-        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
-        BtnBatal.setMnemonic('B');
-        BtnBatal.setText("Batal");
-        BtnBatal.setToolTipText("Alt+B");
-        BtnBatal.setName("BtnBatal"); // NOI18N
-        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBatalActionPerformed(evt);
-            }
-        });
-        BtnBatal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnBatalKeyPressed(evt);
-            }
-        });
-        internalFrame2.add(BtnBatal);
-        BtnBatal.setBounds(117, 195, 100, 30);
-
-        NoPermintaanVerifikasi.setEditable(false);
-        NoPermintaanVerifikasi.setName("NoPermintaanVerifikasi"); // NOI18N
-        internalFrame2.add(NoPermintaanVerifikasi);
-        NoPermintaanVerifikasi.setBounds(99, 20, 150, 23);
-
-        jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel42.setText("Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan Lainnya :");
-        jLabel42.setName("jLabel42"); // NOI18N
-        internalFrame2.add(jLabel42);
-        jLabel42.setBounds(16, 50, 310, 23);
-
-        scrollPane4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane4.setName("scrollPane4"); // NOI18N
-
-        Keterangan.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Keterangan.setColumns(20);
-        Keterangan.setRows(9);
-        Keterangan.setTabSize(20);
-        Keterangan.setName("Keterangan"); // NOI18N
-        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganKeyPressed(evt);
-            }
-        });
-        scrollPane4.setViewportView(Keterangan);
-
-        internalFrame2.add(scrollPane4);
-        scrollPane4.setBounds(99, 70, 621, 103);
-
-        label2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label2.setText("No.Permintaan");
-        label2.setName("label2"); // NOI18N
-        internalFrame2.add(label2);
-        label2.setBounds(16, 20, 95, 23);
-
-        AsalPermintaan.setEditable(false);
-        AsalPermintaan.setName("AsalPermintaan"); // NOI18N
-        internalFrame2.add(AsalPermintaan);
-        AsalPermintaan.setBounds(375, 20, 345, 23);
-
-        label3.setText("Asal Permintaan :");
-        label3.setName("label3"); // NOI18N
-        internalFrame2.add(label3);
-        label3.setBounds(261, 20, 110, 23);
-
-        label4.setText(":");
-        label4.setName("label4"); // NOI18N
-        internalFrame2.add(label4);
-        label4.setBounds(0, 20, 95, 23);
-
-        WindowInput.getContentPane().add(internalFrame2, java.awt.BorderLayout.CENTER);
-
-        WindowInput2.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        WindowInput2.setName("WindowInput2"); // NOI18N
-        WindowInput2.setUndecorated(true);
-        WindowInput2.setResizable(false);
-
-        internalFrame3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(230, 235, 225)), "::[ Verifikasi Dapat Dilayani ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 70, 40))); // NOI18N
-        internalFrame3.setName("internalFrame3"); // NOI18N
-        internalFrame3.setLayout(null);
-
-        BtnTutup2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/cross.png"))); // NOI18N
-        BtnTutup2.setMnemonic('U');
-        BtnTutup2.setText("Tutup");
-        BtnTutup2.setToolTipText("Alt+U");
-        BtnTutup2.setName("BtnTutup2"); // NOI18N
-        BtnTutup2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTutup2ActionPerformed(evt);
-            }
-        });
-        BtnTutup2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnTutup2KeyPressed(evt);
-            }
-        });
-        internalFrame3.add(BtnTutup2);
-        BtnTutup2.setBounds(620, 195, 100, 30);
-
-        jLabel20.setText("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-        jLabel20.setName("jLabel20"); // NOI18N
-        internalFrame3.add(jLabel20);
-        jLabel20.setBounds(-10, 175, 850, 14);
-
-        BtnSimpan2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/save-16x16.png"))); // NOI18N
-        BtnSimpan2.setMnemonic('S');
-        BtnSimpan2.setText("Simpan");
-        BtnSimpan2.setToolTipText("Alt+S");
-        BtnSimpan2.setName("BtnSimpan2"); // NOI18N
-        BtnSimpan2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSimpan2ActionPerformed(evt);
-            }
-        });
-        BtnSimpan2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSimpan2KeyPressed(evt);
-            }
-        });
-        internalFrame3.add(BtnSimpan2);
-        BtnSimpan2.setBounds(14, 195, 100, 30);
-
-        BtnBatal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Cancel-2-16x16.png"))); // NOI18N
-        BtnBatal2.setMnemonic('B');
-        BtnBatal2.setText("Batal");
-        BtnBatal2.setToolTipText("Alt+B");
-        BtnBatal2.setName("BtnBatal2"); // NOI18N
-        BtnBatal2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBatal2ActionPerformed(evt);
-            }
-        });
-        BtnBatal2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnBatal2KeyPressed(evt);
-            }
-        });
-        internalFrame3.add(BtnBatal2);
-        BtnBatal2.setBounds(117, 195, 100, 30);
-
-        NoPermintaanVerifikasi2.setEditable(false);
-        NoPermintaanVerifikasi2.setName("NoPermintaanVerifikasi2"); // NOI18N
-        internalFrame3.add(NoPermintaanVerifikasi2);
-        NoPermintaanVerifikasi2.setBounds(99, 20, 150, 23);
-
-        jLabel43.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel43.setText("Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya :");
-        jLabel43.setName("jLabel43"); // NOI18N
-        internalFrame3.add(jLabel43);
-        jLabel43.setBounds(16, 50, 310, 23);
-
-        scrollPane5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        scrollPane5.setName("scrollPane5"); // NOI18N
-
-        Keterangan2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        Keterangan2.setColumns(20);
-        Keterangan2.setRows(9);
-        Keterangan2.setTabSize(20);
-        Keterangan2.setName("Keterangan2"); // NOI18N
-        Keterangan2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                Keterangan2KeyPressed(evt);
-            }
-        });
-        scrollPane5.setViewportView(Keterangan2);
-
-        internalFrame3.add(scrollPane5);
-        scrollPane5.setBounds(99, 70, 621, 103);
-
-        label5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        label5.setText("No.Permintaan");
-        label5.setName("label5"); // NOI18N
-        internalFrame3.add(label5);
-        label5.setBounds(16, 20, 95, 23);
-
-        AsalPermintaan2.setEditable(false);
-        AsalPermintaan2.setName("AsalPermintaan2"); // NOI18N
-        internalFrame3.add(AsalPermintaan2);
-        AsalPermintaan2.setBounds(375, 20, 345, 23);
-
-        label6.setText("Asal Permintaan :");
-        label6.setName("label6"); // NOI18N
-        internalFrame3.add(label6);
-        label6.setBounds(261, 20, 110, 23);
-
-        label8.setText(":");
-        label8.setName("label8"); // NOI18N
-        internalFrame3.add(label8);
-        label8.setBounds(0, 20, 95, 23);
-
-        WindowInput2.getContentPane().add(internalFrame3, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -1096,26 +808,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.pindah(evt, BtnKeluar,Status);
     }//GEN-LAST:event_NoPermintaanKeyPressed
 
-    private void KodePetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePetugasKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Status.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            KodePelanggan.requestFocus();       
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }
-    }//GEN-LAST:event_KodePetugasKeyPressed
-
-    private void KodePelangganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePelangganKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){  
-            KodeSampel.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){    
-            TCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPelangganActionPerformed(null);
-        }
-    }//GEN-LAST:event_KodePelangganKeyPressed
-
     private void Tanggal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Tanggal2KeyPressed
@@ -1537,18 +1229,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
-    private void KodeSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeSampelKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang where kd_jenis=?", NamaSampel,KodeSampel.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KodePelanggan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            TCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnSampelActionPerformed(null);
-        }
-    }//GEN-LAST:event_KodeSampelKeyPressed
-
     private void btnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSampelActionPerformed
         LabKeslingCariMasterSampelBakuMutu sampel=new LabKeslingCariMasterSampelBakuMutu(null,false);
         sampel.addWindowListener(new WindowListener() {
@@ -1854,100 +1534,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnHapusKeyPressed
 
-    private void BtnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTutupActionPerformed
-        WindowInput.dispose();
-    }//GEN-LAST:event_BtnTutupActionPerformed
-
-    private void BtnTutupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnTutupKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            WindowInput.dispose();
-        }else{Valid.pindah(evt, BtnBatal, NoPermintaanVerifikasi);}
-    }//GEN-LAST:event_BtnTutupKeyPressed
-
-    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(NoPermintaanVerifikasi.getText().trim().equals("")){
-            Valid.textKosong(NoPermintaanVerifikasi,"No.Permintaan");
-        }else if(AsalPermintaan.getText().trim().equals("")){
-            Valid.textKosong(AsalPermintaan,"Asal Permintaan");
-        }else if(Keterangan.getText().trim().equals("")){
-            Valid.textKosong(Keterangan,"Unsur Kaji Ulang/Abnornalitas Sampel/Keterangan");
-        }else{
-            if(Sequel.menyimpantf("laborat_kesling_penugasan_pengujian_sampel_tidak_dilayani","?,?","No.Permintaan",2,new String[]{
-                NoPermintaanVerifikasi.getText(),Keterangan.getText()
-            })==true){
-                Sequel.queryu("update laborat_kesling_penugasan_pengujian_sampel set status='Tidak Dapat Dilayani' where no_penugasan='"+tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),1).toString()+"'");
-                tbPenugasan.setValueAt("Tidak Dapat Dilayani",tbPenugasan.getSelectedRow(),22);
-                Keterangan.setText("");
-                WindowInput.dispose();
-            }
-        }
-    }//GEN-LAST:event_BtnSimpanActionPerformed
-
-    private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        Valid.pindah(evt,Keterangan,BtnBatal);
-    }//GEN-LAST:event_BtnSimpanKeyPressed
-
-    private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
-        Keterangan.setText("");
-    }//GEN-LAST:event_BtnBatalActionPerformed
-
-    private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            Keterangan.setText("");
-        }else{Valid.pindah(evt, BtnSimpan, BtnTutup);}
-    }//GEN-LAST:event_BtnBatalKeyPressed
-
-    private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        Valid.pindah2(evt,BtnTutup,BtnSimpan);
-    }//GEN-LAST:event_KeteranganKeyPressed
-
-    private void BtnTutup2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTutup2ActionPerformed
-        WindowInput.dispose();
-    }//GEN-LAST:event_BtnTutup2ActionPerformed
-
-    private void BtnTutup2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnTutup2KeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            WindowInput2.dispose();
-        }else{Valid.pindah(evt, BtnBatal2, NoPermintaanVerifikasi2);}
-    }//GEN-LAST:event_BtnTutup2KeyPressed
-
-    private void BtnSimpan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpan2ActionPerformed
-        if(NoPermintaanVerifikasi2.getText().trim().equals("")){
-            Valid.textKosong(NoPermintaanVerifikasi2,"No.Permintaan");
-        }else if(AsalPermintaan2.getText().trim().equals("")){
-            Valid.textKosong(AsalPermintaan2,"Asal Permintaan");
-        }else if(Keterangan2.getText().trim().equals("")){
-            Valid.textKosong(Keterangan2,"Kebutuhan Sub Kontrak Pengujian/Keterangan Lainnya");
-        }else{
-            if(Sequel.menyimpantf("laborat_kesling_penugasan_pengujian_sampel_dilayani","?,?,'Belum Ada Penugasan'","No.Permintaan",2,new String[]{
-                NoPermintaanVerifikasi2.getText(),Keterangan2.getText()
-            })==true){
-                Sequel.queryu("update laborat_kesling_penugasan_pengujian_sampel set status='Dapat Dilayani' where no_penugasan='"+tbPenugasan.getValueAt(tbPenugasan.getSelectedRow(),1).toString()+"'");
-                tbPenugasan.setValueAt("Dapat Dilayani",tbPenugasan.getSelectedRow(),22);
-                Keterangan2.setText("");
-                WindowInput2.dispose();
-            }
-        }
-    }//GEN-LAST:event_BtnSimpan2ActionPerformed
-
-    private void BtnSimpan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpan2KeyPressed
-        Valid.pindah(evt,Keterangan2,BtnBatal2);
-    }//GEN-LAST:event_BtnSimpan2KeyPressed
-
-    private void BtnBatal2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatal2ActionPerformed
-        Keterangan2.setText("");
-    }//GEN-LAST:event_BtnBatal2ActionPerformed
-
-    private void BtnBatal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatal2KeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            Keterangan2.setText("");
-        }else{Valid.pindah(evt, BtnSimpan2, BtnTutup2);}
-    }//GEN-LAST:event_BtnBatal2KeyPressed
-
-    private void Keterangan2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Keterangan2KeyPressed
-        Valid.pindah2(evt,BtnTutup2,BtnSimpan2);
-    }//GEN-LAST:event_Keterangan2KeyPressed
-
     /**
     * @param args the command line arguments
     */
@@ -1965,22 +1551,12 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox AsalPermintaan;
-    private widget.TextBox AsalPermintaan2;
     private widget.Button BtnAll;
-    private widget.Button BtnBatal;
-    private widget.Button BtnBatal2;
     private widget.Button BtnCari;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
-    private widget.Button BtnSimpan;
-    private widget.Button BtnSimpan2;
-    private widget.Button BtnTutup;
-    private widget.Button BtnTutup2;
     private widget.CekBox ChkAccor;
-    private widget.TextArea Keterangan;
-    private widget.TextArea Keterangan2;
     private widget.TextBox KodePelanggan;
     private widget.TextBox KodePetugas;
     private widget.TextBox KodeSampel;
@@ -1990,26 +1566,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.TextBox NamaPetugas;
     private widget.TextBox NamaSampel;
     private widget.TextBox NoPermintaan;
-    private widget.TextBox NoPermintaanVerifikasi;
-    private widget.TextBox NoPermintaanVerifikasi2;
     private widget.PanelBiasa PanelAccor;
     private widget.ComboBox Status;
     private widget.TextBox TCari;
     private javax.swing.JTabbedPane TabData;
     private widget.Tanggal Tanggal1;
     private widget.Tanggal Tanggal2;
-    private javax.swing.JDialog WindowInput;
-    private javax.swing.JDialog WindowInput2;
     private widget.Button btnPelanggan;
     private widget.Button btnPetugas;
     private widget.Button btnSampel;
     private widget.InternalFrame internalFrame1;
-    private widget.InternalFrame internalFrame2;
-    private widget.InternalFrame internalFrame3;
-    private widget.Label jLabel19;
-    private widget.Label jLabel20;
-    private widget.Label jLabel42;
-    private widget.Label jLabel43;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -2020,13 +1586,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private widget.Label label14;
     private widget.Label label15;
     private widget.Label label17;
-    private widget.Label label2;
-    private widget.Label label3;
-    private widget.Label label4;
-    private widget.Label label5;
-    private widget.Label label6;
     private widget.Label label7;
-    private widget.Label label8;
     private widget.Label label9;
     private widget.panelisi panelisi1;
     private widget.panelisi panelisi3;
@@ -2035,8 +1595,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private javax.swing.JMenuItem ppSuratPenugasan;
     private widget.ScrollPane scrollPane1;
     private widget.ScrollPane scrollPane2;
-    private widget.ScrollPane scrollPane4;
-    private widget.ScrollPane scrollPane5;
     private widget.ScrollPane scrollPaneDetail;
     private widget.Table tbDetailPenugasan;
     private widget.Table tbPenugasan;

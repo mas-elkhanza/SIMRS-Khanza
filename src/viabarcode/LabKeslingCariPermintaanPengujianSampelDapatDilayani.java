@@ -804,6 +804,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel_dilayani where no_permintaan='"+tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString()+"'")==true){
                 Sequel.queryu("update laborat_kesling_permintaan_pengujian_sampel set status='Permintaan Baru' where no_permintaan='"+tbDapatDilayani.getValueAt(tbDapatDilayani.getSelectedRow(),1).toString()+"'");
                 tabModeTidakDapatDilayani.removeRow(tbDapatDilayani.getSelectedRow());
+                Valid.tabelKosong(tabModeDetailPermintaan);
                 LTotal.setText(tabModeTidakDapatDilayani.getRowCount()+"");
             }
         }else{

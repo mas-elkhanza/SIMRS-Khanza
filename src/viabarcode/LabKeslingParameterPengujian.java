@@ -43,13 +43,14 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         this.setLocation(8,1);
         setSize(628,674);
 
-        Object[] row={"Kode","Nama Parameter","Metode Pengujian","Satuan","Kategori","Jasa Sarana","Paket BHP","Jasa P.J. Lab","Jasa Petugas","K.S.O.","Manajemen","Total Tarif"};
+        Object[] row={"Kode","Nama Parameter","Metode Pengujian","Satuan","Kategori","Jasa Sarana","Paket BHP","Jasa P.J.Lab","Jasa P.J.Pengujian","Jasa P.J.Verifikasi","Jasa Petugas","K.S.O.","Manajemen","Total Tarif"};
         tabMode=new DefaultTableModel(null,row){
              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
              Class[] types = new Class[] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
-                java.lang.Double.class,java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.Double.class,java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, 
+                java.lang.Double.class, java.lang.Double.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -62,7 +63,7 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 12; i++) {
+        for (i = 0; i < 14; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(50);
@@ -86,6 +87,8 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         JasaSarana.setDocument(new batasInput((int)15).getOnlyAngka(JasaSarana));
         PaketBHP.setDocument(new batasInput((int)15).getOnlyAngka(PaketBHP));
         JasaPJLab.setDocument(new batasInput((int)15).getOnlyAngka(JasaPJLab));
+        JasaPJPengujian.setDocument(new batasInput((int)15).getOnlyAngka(JasaPJPengujian));
+        JasaPJVerifikator.setDocument(new batasInput((int)15).getOnlyAngka(JasaPJVerifikator));
         JasaPetugas.setDocument(new batasInput((int)15).getOnlyAngka(JasaPetugas));
         KSO.setDocument(new batasInput((int)15).getOnlyAngka(KSO));
         Manajemen.setDocument(new batasInput((int)15).getOnlyAngka(Manajemen));
@@ -175,6 +178,10 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         jLabel18 = new widget.Label();
         Kategori = new widget.ComboBox();
         jLabel19 = new widget.Label();
+        jLabel20 = new widget.Label();
+        JasaPJPengujian = new widget.TextBox();
+        jLabel21 = new widget.Label();
+        JasaPJVerifikator = new widget.TextBox();
         ChkInput = new widget.CekBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -401,7 +408,7 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 155));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 185));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
@@ -474,7 +481,7 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         jLabel13.setText("Jasa Petugas : Rp.");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(241, 100, 100, 23);
+        jLabel13.setBounds(228, 130, 130, 23);
 
         JasaPetugas.setText("0");
         JasaPetugas.setHighlighter(null);
@@ -485,12 +492,12 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
             }
         });
         FormInput.add(JasaPetugas);
-        JasaPetugas.setBounds(342, 100, 120, 23);
+        JasaPetugas.setBounds(359, 130, 120, 23);
 
         jLabel10.setText("Jasa P.J. Lab : Rp.");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(241, 70, 100, 23);
+        jLabel10.setBounds(228, 40, 130, 23);
 
         JasaPJLab.setText("0");
         JasaPJLab.setHighlighter(null);
@@ -501,12 +508,12 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
             }
         });
         FormInput.add(JasaPJLab);
-        JasaPJLab.setBounds(342, 70, 120, 23);
+        JasaPJLab.setBounds(359, 40, 120, 23);
 
         jLabel14.setText("Paket BHP : Rp.");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(241, 40, 100, 23);
+        jLabel14.setBounds(0, 130, 100, 23);
 
         PaketBHP.setText("0");
         PaketBHP.setHighlighter(null);
@@ -517,7 +524,7 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
             }
         });
         FormInput.add(PaketBHP);
-        PaketBHP.setBounds(342, 40, 120, 23);
+        PaketBHP.setBounds(102, 130, 120, 23);
 
         KSO.setText("0");
         KSO.setHighlighter(null);
@@ -613,6 +620,38 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         FormInput.add(jLabel19);
         jLabel19.setBounds(15, 70, 54, 23);
 
+        jLabel20.setText("Jasa P.J. Pengujian : Rp.");
+        jLabel20.setName("jLabel20"); // NOI18N
+        FormInput.add(jLabel20);
+        jLabel20.setBounds(228, 70, 130, 23);
+
+        JasaPJPengujian.setText("0");
+        JasaPJPengujian.setHighlighter(null);
+        JasaPJPengujian.setName("JasaPJPengujian"); // NOI18N
+        JasaPJPengujian.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JasaPJPengujianKeyPressed(evt);
+            }
+        });
+        FormInput.add(JasaPJPengujian);
+        JasaPJPengujian.setBounds(359, 70, 120, 23);
+
+        jLabel21.setText("Jasa P.J.Verifikasi : Rp.");
+        jLabel21.setName("jLabel21"); // NOI18N
+        FormInput.add(jLabel21);
+        jLabel21.setBounds(228, 100, 130, 23);
+
+        JasaPJVerifikator.setText("0");
+        JasaPJVerifikator.setHighlighter(null);
+        JasaPJVerifikator.setName("JasaPJVerifikator"); // NOI18N
+        JasaPJVerifikator.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                JasaPJVerifikatorKeyPressed(evt);
+            }
+        });
+        FormInput.add(JasaPJVerifikator);
+        JasaPJVerifikator.setBounds(359, 100, 120, 23);
+
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -675,7 +714,7 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
             KSO.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
             isjml();
-            JasaPJLab.requestFocus();
+            JasaPJVerifikator.requestFocus();
         }
 }//GEN-LAST:event_JasaPetugasKeyPressed
 
@@ -692,6 +731,10 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
             Valid.textKosong(PaketBHP,"Paket BHP");
         }else if(JasaPJLab.getText().trim().equals("")){
             Valid.textKosong(JasaPJLab,"Jasa P.J. Lab");
+        }else if(JasaPJPengujian.getText().trim().equals("")){
+            Valid.textKosong(JasaPJPengujian,"Jasa P.J. Pengujian");
+        }else if(JasaPJVerifikator.getText().trim().equals("")){
+            Valid.textKosong(JasaPJVerifikator,"Jasa P.J. Verifikasi");
         }else if(JasaPetugas.getText().trim().equals("")){
             Valid.textKosong(JasaPetugas,"Jasa Petugas");
         }else if(KSO.getText().trim().equals("")){
@@ -701,14 +744,16 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         }else if(TotalTarif.getText().trim().equals("")){
             Valid.textKosong(TotalTarif,"Total Tarif");
         }else{
-            if(Sequel.menyimpantf("laborat_kesling_parameter_pengujian","?,?,?,?,?,?,?,?,?,?,?,?","Kode Periksa",12,new String[]{
+            if(Sequel.menyimpantf("laborat_kesling_parameter_pengujian","?,?,?,?,?,?,?,?,?,?,?,?,?,?","Kode Periksa",14,new String[]{
                 Kode.getText(),Parameter.getText(),MetodePengujian.getSelectedItem().toString(),Satuan.getText(),Kategori.getSelectedItem().toString(),
-                JasaSarana.getText(),PaketBHP.getText(),JasaPJLab.getText(),JasaPetugas.getText(),KSO.getText(),Manajemen.getText(),TotalTarif.getText()
+                JasaSarana.getText(),PaketBHP.getText(),JasaPJLab.getText(),JasaPJPengujian.getText(),JasaPJVerifikator.getText(),JasaPetugas.getText(),
+                KSO.getText(),Manajemen.getText(),TotalTarif.getText()
             })==true){
                 tabMode.addRow(new Object[]{
                     Kode.getText(),Parameter.getText(),MetodePengujian.getSelectedItem().toString(),Satuan.getText(),Kategori.getSelectedItem().toString(),
-                    Valid.SetAngka(JasaSarana.getText()),Valid.SetAngka(PaketBHP.getText()),Valid.SetAngka(JasaPJLab.getText()),Valid.SetAngka(JasaPetugas.getText()),
-                    Valid.SetAngka(KSO.getText()),Valid.SetAngka(Manajemen.getText()),Valid.SetAngka(TotalTarif.getText())
+                    Valid.SetAngka(JasaSarana.getText()),Valid.SetAngka(PaketBHP.getText()),Valid.SetAngka(JasaPJLab.getText()),Valid.SetAngka(JasaPJPengujian.getText()),
+                    Valid.SetAngka(JasaPJVerifikator.getText()),Valid.SetAngka(JasaPetugas.getText()),Valid.SetAngka(KSO.getText()),Valid.SetAngka(Manajemen.getText()),
+                    Valid.SetAngka(TotalTarif.getText())
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -767,6 +812,10 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
             Valid.textKosong(PaketBHP,"Paket BHP");
         }else if(JasaPJLab.getText().trim().equals("")){
             Valid.textKosong(JasaPJLab,"Jasa P.J. Lab");
+        }else if(JasaPJPengujian.getText().trim().equals("")){
+            Valid.textKosong(JasaPJPengujian,"Jasa P.J. Pengujian");
+        }else if(JasaPJVerifikator.getText().trim().equals("")){
+            Valid.textKosong(JasaPJVerifikator,"Jasa P.J. Verifikasi");
         }else if(JasaPetugas.getText().trim().equals("")){
             Valid.textKosong(JasaPetugas,"Jasa Petugas");
         }else if(KSO.getText().trim().equals("")){
@@ -776,11 +825,11 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
         }else if(TotalTarif.getText().trim().equals("")){
             Valid.textKosong(TotalTarif,"Total Tarif");
         }else{
-            if(Sequel.mengedittf("laborat_kesling_parameter_pengujian","kode_parameter=?","kode_parameter=?,nama_parameter=?,metode_pengujian=?,satuan=?,"+
-                "kategori=?,jasa_sarana=?,paket_bhp=?,jasa_pj_lab=?,jasa_petugas=?,kso=?,jasa_menejemen=?,total=?",13,new String[]{
+            if(Sequel.mengedittf("laborat_kesling_parameter_pengujian","kode_parameter=?","kode_parameter=?,nama_parameter=?,metode_pengujian=?,satuan=?,kategori=?,jasa_sarana=?,"+
+                "paket_bhp=?,jasa_pj_lab=?,jasa_pj_pengujian=?,jasa_verifikator=?,jasa_petugas=?,kso=?,jasa_menejemen=?,total=?",15,new String[]{   
                 Kode.getText(),Parameter.getText(),MetodePengujian.getSelectedItem().toString(),Satuan.getText(),Kategori.getSelectedItem().toString(),
-                JasaSarana.getText(),PaketBHP.getText(),JasaPJLab.getText(),JasaPetugas.getText(),KSO.getText(),Manajemen.getText(),TotalTarif.getText(),
-                tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
+                JasaSarana.getText(),PaketBHP.getText(),JasaPJLab.getText(),JasaPJPengujian.getText(),JasaPJVerifikator.getText(),JasaPetugas.getText(),
+                KSO.getText(),Manajemen.getText(),TotalTarif.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString()
             })==true){
                 tbJnsPerawatan.setValueAt(Kode.getText(),tbJnsPerawatan.getSelectedRow(),0);
                 tbJnsPerawatan.setValueAt(Parameter.getText(),tbJnsPerawatan.getSelectedRow(),1);
@@ -790,10 +839,12 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
                 tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaSarana.getText()),tbJnsPerawatan.getSelectedRow(),5);
                 tbJnsPerawatan.setValueAt(Valid.SetAngka(PaketBHP.getText()),tbJnsPerawatan.getSelectedRow(),6);
                 tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaPJLab.getText()),tbJnsPerawatan.getSelectedRow(),7);
-                tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaPetugas.getText()),tbJnsPerawatan.getSelectedRow(),8);
-                tbJnsPerawatan.setValueAt(Valid.SetAngka(KSO.getText()),tbJnsPerawatan.getSelectedRow(),9);
-                tbJnsPerawatan.setValueAt(Valid.SetAngka(Manajemen.getText()),tbJnsPerawatan.getSelectedRow(),10);
-                tbJnsPerawatan.setValueAt(Valid.SetAngka(TotalTarif.getText()),tbJnsPerawatan.getSelectedRow(),11);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaPJPengujian.getText()),tbJnsPerawatan.getSelectedRow(),8);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaPJVerifikator.getText()),tbJnsPerawatan.getSelectedRow(),9);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(JasaPetugas.getText()),tbJnsPerawatan.getSelectedRow(),10);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(KSO.getText()),tbJnsPerawatan.getSelectedRow(),11);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(Manajemen.getText()),tbJnsPerawatan.getSelectedRow(),12);
+                tbJnsPerawatan.setValueAt(Valid.SetAngka(TotalTarif.getText()),tbJnsPerawatan.getSelectedRow(),13);
                 emptTeks();
             }
         }
@@ -836,11 +887,11 @@ public final class LabKeslingParameterPengujian extends javax.swing.JDialog {
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                 Valid.MyReportqry("rptTarifLabKesLing.jasper","report","::[ Tarif & Parameter Pengujian Laboratorium Kesehatan Lingkungan ]::",
                     "select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
-                    "laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,laborat_kesling_parameter_pengujian.jasa_petugas,"+
-                    "laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,laborat_kesling_parameter_pengujian.total from laborat_kesling_parameter_pengujian "+
-                    (TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like '%"+TCari.getText().trim()+"%' or laborat_kesling_parameter_pengujian.nama_parameter like '%"+TCari.getText().trim()+"%' "+
-                    "or laborat_kesling_parameter_pengujian.metode_pengujian like '%"+TCari.getText().trim()+"%' or laborat_kesling_parameter_pengujian.kategori like '%"+TCari.getText().trim()+"%' ")+
-                    "order by laborat_kesling_parameter_pengujian.kode_parameter",param);   
+                    "laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,laborat_kesling_parameter_pengujian.jasa_pj_pengujian,"+
+                    "laborat_kesling_parameter_pengujian.jasa_verifikator,laborat_kesling_parameter_pengujian.jasa_petugas,laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,"+
+                    "laborat_kesling_parameter_pengujian.total from laborat_kesling_parameter_pengujian "+(TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like '%"+TCari.getText().trim()+"%' or "+
+                    "laborat_kesling_parameter_pengujian.nama_parameter like '%"+TCari.getText().trim()+"%' or laborat_kesling_parameter_pengujian.metode_pengujian like '%"+TCari.getText().trim()+"%' or "+
+                    "laborat_kesling_parameter_pengujian.kategori like '%"+TCari.getText().trim()+"%' ")+"order by laborat_kesling_parameter_pengujian.kode_parameter",param);   
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
@@ -921,7 +972,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             isjml();
         }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             isjml();
-            JasaPetugas.requestFocus();
+            JasaPJPengujian.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
             isjml();
             PaketBHP.requestFocus();
@@ -987,6 +1038,30 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         Valid.pindah(evt,Satuan,JasaSarana);
     }//GEN-LAST:event_KategoriKeyPressed
 
+    private void JasaPJPengujianKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JasaPJPengujianKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isjml();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isjml();
+            JasaPJVerifikator.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
+            isjml();
+            JasaPJLab.requestFocus();
+        }
+    }//GEN-LAST:event_JasaPJPengujianKeyPressed
+
+    private void JasaPJVerifikatorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JasaPJVerifikatorKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+            isjml();
+        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            isjml();
+            JasaPetugas.requestFocus();
+        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){          
+            isjml();
+            JasaPJPengujian.requestFocus();
+        }
+    }//GEN-LAST:event_JasaPJVerifikatorKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -1015,6 +1090,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.CekBox ChkInput;
     private widget.PanelBiasa FormInput;
     private widget.TextBox JasaPJLab;
+    private widget.TextBox JasaPJPengujian;
+    private widget.TextBox JasaPJVerifikator;
     private widget.TextBox JasaPetugas;
     private widget.TextBox JasaSarana;
     private widget.TextBox KSO;
@@ -1041,6 +1118,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel17;
     private widget.Label jLabel18;
     private widget.Label jLabel19;
+    private widget.Label jLabel20;
+    private widget.Label jLabel21;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
@@ -1059,9 +1138,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         try{
             ps=koneksi.prepareStatement(
                         "select laborat_kesling_parameter_pengujian.kode_parameter,laborat_kesling_parameter_pengujian.nama_parameter,laborat_kesling_parameter_pengujian.metode_pengujian,laborat_kesling_parameter_pengujian.satuan,"+
-                        "laborat_kesling_parameter_pengujian.kategori,laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,"+
-                        "laborat_kesling_parameter_pengujian.jasa_petugas,laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,laborat_kesling_parameter_pengujian.total from laborat_kesling_parameter_pengujian "+
-                        (TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like ? or laborat_kesling_parameter_pengujian.nama_parameter like ? "+
+                        "laborat_kesling_parameter_pengujian.kategori,laborat_kesling_parameter_pengujian.jasa_sarana,laborat_kesling_parameter_pengujian.paket_bhp,laborat_kesling_parameter_pengujian.jasa_pj_lab,laborat_kesling_parameter_pengujian.jasa_pj_pengujian,"+
+                        "laborat_kesling_parameter_pengujian.jasa_verifikator,laborat_kesling_parameter_pengujian.jasa_petugas,laborat_kesling_parameter_pengujian.kso,laborat_kesling_parameter_pengujian.jasa_menejemen,laborat_kesling_parameter_pengujian.total "+
+                        "from laborat_kesling_parameter_pengujian "+(TCari.getText().trim().equals("")?"":"where laborat_kesling_parameter_pengujian.kode_parameter like ? or laborat_kesling_parameter_pengujian.nama_parameter like ? "+
                         "or laborat_kesling_parameter_pengujian.metode_pengujian like ? or laborat_kesling_parameter_pengujian.kategori like ? ")+"order by laborat_kesling_parameter_pengujian.kode_parameter");
             try {    
                 if(!TCari.getText().trim().equals("")){
@@ -1074,7 +1153,8 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         rs.getString("kode_parameter"),rs.getString("nama_parameter"),rs.getString("metode_pengujian"),rs.getString("satuan"),rs.getString("kategori"),rs.getDouble("jasa_sarana"),
-                        rs.getDouble("paket_bhp"),rs.getDouble("jasa_pj_lab"),rs.getDouble("jasa_petugas"),rs.getDouble("kso"),rs.getDouble("jasa_menejemen"),rs.getDouble("total")
+                        rs.getDouble("paket_bhp"),rs.getDouble("jasa_pj_lab"),rs.getDouble("jasa_pj_pengujian"),rs.getDouble("jasa_verifikator"),rs.getDouble("jasa_petugas"),rs.getDouble("kso"),
+                        rs.getDouble("jasa_menejemen"),rs.getDouble("total")
                     });
                 }
             } catch (Exception e) {
@@ -1120,18 +1200,20 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             JasaSarana.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString())));
             PaketBHP.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),6).toString())));
             JasaPJLab.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),7).toString())));
-            JasaPetugas.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),8).toString())));
-            KSO.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),9).toString())));
-            Manajemen.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),10).toString())));
-            TotalTarif.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),11).toString())));
+            JasaPJPengujian.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),8).toString())));
+            JasaPJVerifikator.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),9).toString())));
+            JasaPetugas.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),10).toString())));
+            KSO.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),11).toString())));
+            Manajemen.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),12).toString())));
+            TotalTarif.setText(Valid.SetAngka2(Double.parseDouble(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),13).toString())));
         }
     }
 
     private void isjml(){
-        if((! JasaSarana.getText().equals(""))&&(! PaketBHP.getText().equals(""))&&(! JasaPJLab.getText().equals(""))&&(! JasaPetugas.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Manajemen.getText().equals(""))){
+        if((! JasaSarana.getText().equals(""))&&(! PaketBHP.getText().equals(""))&&(! JasaPJLab.getText().equals(""))&&(! JasaPJPengujian.getText().equals(""))&&(! JasaPJVerifikator.getText().equals(""))&&(! JasaPetugas.getText().equals(""))&&(! KSO.getText().equals(""))&&(! Manajemen.getText().equals(""))){
             TotalTarif.setText(
                 Valid.SetAngka2(
-                    Double.parseDouble(JasaSarana.getText().trim())+Double.parseDouble(PaketBHP.getText().trim())+Double.parseDouble(JasaPJLab.getText().trim())+Double.parseDouble(JasaPetugas.getText().trim())+Double.parseDouble(KSO.getText().trim())+Double.parseDouble(Manajemen.getText().trim())
+                    Double.parseDouble(JasaSarana.getText().trim())+Double.parseDouble(PaketBHP.getText().trim())+Double.parseDouble(JasaPJLab.getText().trim())+Double.parseDouble(JasaPJPengujian.getText().trim())+Double.parseDouble(JasaPJVerifikator.getText().trim())+Double.parseDouble(JasaPetugas.getText().trim())+Double.parseDouble(KSO.getText().trim())+Double.parseDouble(Manajemen.getText().trim())
                 )
             );
         }
@@ -1144,7 +1226,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,155));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,185));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           

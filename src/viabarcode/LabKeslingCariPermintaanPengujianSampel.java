@@ -405,27 +405,12 @@ public class LabKeslingCariPermintaanPengujianSampel extends javax.swing.JDialog
 
         KodeSampel.setName("KodeSampel"); // NOI18N
         KodeSampel.setPreferredSize(new java.awt.Dimension(207, 23));
-        KodeSampel.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodeSampelKeyPressed(evt);
-            }
-        });
 
         KodePelanggan.setName("KodePelanggan"); // NOI18N
         KodePelanggan.setPreferredSize(new java.awt.Dimension(80, 23));
-        KodePelanggan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodePelangganKeyPressed(evt);
-            }
-        });
 
         KodePetugas.setName("KodePetugas"); // NOI18N
         KodePetugas.setPreferredSize(new java.awt.Dimension(80, 23));
-        KodePetugas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KodePetugasKeyPressed(evt);
-            }
-        });
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -1155,26 +1140,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         Valid.pindah(evt, BtnKeluar,Status);
     }//GEN-LAST:event_NoPermintaanKeyPressed
 
-    private void KodePetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePetugasKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            Status.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            KodePelanggan.requestFocus();       
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPetugasActionPerformed(null);
-        }
-    }//GEN-LAST:event_KodePetugasKeyPressed
-
-    private void KodePelangganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodePelangganKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){  
-            KodeSampel.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){    
-            TCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnPelangganActionPerformed(null);
-        }
-    }//GEN-LAST:event_KodePelangganKeyPressed
-
     private void Tanggal2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Tanggal2KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_Tanggal2KeyPressed
@@ -1676,18 +1641,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
-    private void KodeSampelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KodeSampelKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
-            Sequel.cariIsi("select nm_jenis from ipsrsjenisbarang where kd_jenis=?", NamaSampel,KodeSampel.getText());
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
-            KodePelanggan.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-            TCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_UP){
-            btnSampelActionPerformed(null);
-        }
-    }//GEN-LAST:event_KodeSampelKeyPressed
-
     private void btnSampelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSampelActionPerformed
         LabKeslingCariMasterSampelBakuMutu sampel=new LabKeslingCariMasterSampelBakuMutu(null,false);
         sampel.addWindowListener(new WindowListener() {
@@ -1882,6 +1835,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                 if(tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),22).toString().equals("Permintaan Baru")){
                     if(Sequel.queryutf("delete from laborat_kesling_permintaan_pengujian_sampel where no_permintaan='"+tbPermintaan.getValueAt(tbPermintaan.getSelectedRow(),1).toString()+"'")==true){
                         tabModePermintaan.removeRow(tbPermintaan.getSelectedRow());
+                        Valid.tabelKosong(tabModeDetailPermintaan);
                         LTotal.setText(tabModePermintaan.getRowCount()+"");
                     }
                 }else{

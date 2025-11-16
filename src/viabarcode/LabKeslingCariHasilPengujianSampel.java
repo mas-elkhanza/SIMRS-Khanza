@@ -840,6 +840,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         Sequel.queryu("update laborat_kesling_penugasan_pengujian_sampel set status='Belum Keluar Hasil' where no_penugasan='"+tbHasilPengujian.getValueAt(tbHasilPengujian.getSelectedRow(),8).toString()+"'");
                     }
                     tabModeHasilPengujian.removeRow(tbHasilPengujian.getSelectedRow());
+                    Valid.tabelKosong(tabModeDetailPermintaan);
                     LTotal.setText(tabModeHasilPengujian.getRowCount()+"");
                 }
             }else{
