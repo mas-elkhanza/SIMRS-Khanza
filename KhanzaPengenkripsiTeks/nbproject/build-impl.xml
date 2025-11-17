@@ -46,8 +46,8 @@ is divided into following sections:
         <property file="${user.properties.file}"/>
         <!-- The two properties below are usually overridden -->
         <!-- by the active platform. Just a fallback. -->
-        <property name="default.javac.source" value="1.6"/>
-        <property name="default.javac.target" value="1.6"/>
+        <property name="default.javac.source" value="1.8"/>
+        <property name="default.javac.target" value="1.8"/>
     </target>
     <target depends="-pre-init,-init-private,-init-user" name="-init-project">
         <property file="nbproject/configs/${config}.properties"/>
@@ -153,18 +153,6 @@ is divided into following sections:
                 </not>
                 <istrue value="${not.archive.disabled}"/>
             </or>
-        </condition>
-        <condition property="do.mkdist">
-            <and>
-                <isset property="do.archive"/>
-                <isset property="libs.CopyLibs.classpath"/>
-                <not>
-                    <istrue value="${mkdist.disabled}"/>
-                </not>
-                <not>
-                    <istrue value="${modules.supported.internal}"/>
-                </not>
-            </and>
         </condition>
         <condition property="do.archive+manifest.available">
             <and>
@@ -1193,13 +1181,27 @@ is divided into following sections:
             <attribute name="SplashScreen-Image" value="META-INF/${splashscreen.basename}"/>
         </manifest>
     </target>
-    <target depends="init,-init-macrodef-copylibs,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen" if="do.mkdist" name="-do-jar-copylibs">
+    <target depends="init,compile" name="-check-do-mkdist">
+        <condition property="do.mkdist">
+            <and>
+                <isset property="do.archive"/>
+                <isset property="libs.CopyLibs.classpath"/>
+                <not>
+                    <istrue value="${mkdist.disabled}"/>
+                </not>
+                <not>
+                    <available file="${build.classes.dir}/module-info.class"/>
+                </not>
+            </and>
+        </condition>
+    </target>
+    <target depends="init,-init-macrodef-copylibs,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-check-do-mkdist" if="do.mkdist" name="-do-jar-copylibs">
         <j2seproject3:copylibs manifest="${tmp.manifest.file}"/>
         <echo level="info">To run this application from the command line without Ant, try:</echo>
         <property location="${dist.jar}" name="dist.jar.resolved"/>
         <echo level="info">java -jar "${dist.jar.resolved}"</echo>
     </target>
-    <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen" if="do.archive" name="-do-jar-jar" unless="do.mkdist">
+    <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-check-do-mkdist" if="do.archive" name="-do-jar-jar" unless="do.mkdist">
         <j2seproject1:jar manifest="${tmp.manifest.file}"/>
         <property location="${build.classes.dir}" name="build.classes.dir.resolved"/>
         <property location="${dist.jar}" name="dist.jar.resolved"/>
@@ -1684,6 +1686,7 @@ is divided into following sections:
     </target>
     <target depends="init,compile-test-single,-init-test-run-module-properties,-debug-start-debugger-test,-debug-start-debuggee-test" name="debug-test"/>
     <target depends="init,compile-test-single,-init-test-run-module-properties,-debug-start-debugger-test,-debug-start-debuggee-test-method" name="debug-test-method"/>
+    <target depends="debug-test-method" name="debug-single-method"/>
     <target depends="init,-pre-debug-fix,compile-test-single" if="netbeans.home" name="-do-debug-fix-test">
         <j2seproject1:nbjpdareload dir="${build.test.classes.dir}"/>
     </target>
