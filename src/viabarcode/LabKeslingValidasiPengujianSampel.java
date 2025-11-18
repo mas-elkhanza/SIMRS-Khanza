@@ -61,7 +61,8 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         initComponents();
         
         tabMode=new DefaultTableModel(null,new Object[]{
-              "Kode","Nama Parameter","Satuan","Hasil Pemeriksaan","Keterangan","Nilai Normal","Metode Pengujian","Kategori","No.Penugasan","NIP Analis","Nama Analis","NIP P.J.","Nama PJ Pengujian"
+              "Kode","Nama Parameter","Satuan","Hasil Pemeriksaan","Keterangan","Nilai Normal","Metode Pengujian","Kategori","No.Penugasan","NIP Analis","Nama Analis","NIP P.J.","Nama PJ Pengujian",
+              "Jasa Sarana","Paket BHP","Jasa PJ Lab","Jasa PJ Pengujian","Jasa Verifikator","Jasa Petugas","KSO","Jasa Menejemen","Total"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){
                 boolean a = false;
@@ -74,7 +75,9 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
-                java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, 
+                java.lang.Object.class, java.lang.Object.class
              };
              @Override
              public Class getColumnClass(int columnIndex) {
@@ -87,7 +90,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         tbVerifikasi.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbVerifikasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for(i = 0; i < 13; i++) {
+        for(i = 0; i < 22; i++) {
             TableColumn column = tbVerifikasi.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(55);
@@ -115,6 +118,9 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
                 column.setPreferredWidth(90);
             }else if(i==12){
                 column.setPreferredWidth(150);
+            }else {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbVerifikasi.setDefaultRenderer(Object.class, new WarnaTable());
@@ -825,7 +831,10 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                         list.path("HasilPemeriksaan").asText(),list.path("Keterangan").asText(),list.path("NilaiNormal").asText(),
                         list.path("MetodePengujian").asText(),list.path("Kategori").asText(),list.path("NoPenugasan").asText(),
                         list.path("NIPAnalis").asText(),list.path("NamaAnalis").asText(),list.path("NIPPJPengujian").asText(),
-                        list.path("NamaPJPengujian").asText()
+                        list.path("NamaPJPengujian").asText(),list.path("JasaSarana").asText(),list.path("PaketBHP").asText(),
+                        list.path("JasaPJLab").asText(),list.path("JasaPJPengujian").asText(),list.path("JasaVerifikator").asText(),
+                        list.path("JasaPetugas").asText(),list.path("KSO").asText(),list.path("JasaMenejemen").asText(),
+                        list.path("Total").asText()
                     });
                 }
             }
