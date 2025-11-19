@@ -578,8 +578,8 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         autoNomor();
         for(i=0;i<tbVerifikasi.getRowCount();i++){
+            tbVerifikasi.setValueAt("",i,3);
             tbVerifikasi.setValueAt("",i,4);
-            tbVerifikasi.setValueAt("",i,5);
         }
         Catatan.setText("");
         ChkInput.setSelected(true);
@@ -703,6 +703,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             
             Map<String, Object> param = new HashMap<>();
             param.put("nomorpermintaan",TNoPermintaan.getText());
+            param.put("novalidasi",TNoValidasi.getText());
             param.put("namapelanggan",NamaPelanggan.getText());
             param.put("alamatpelanggan",Sequel.cariIsi("select laborat_kesling_pelanggan.alamat from laborat_kesling_pelanggan where laborat_kesling_pelanggan.kode_pelanggan=?",KodePelanggan.getText()));
             param.put("jenisampel",NamaSampel.getText());
@@ -713,6 +714,10 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             param.put("waktuterimasampel",Sequel.cariIsi("select date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,'%d/%m/%Y %H:%i:%s') from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
             param.put("rentangwaktu",Rentang.getText());
             param.put("tanggalvalidasi",TanggalValidasi.getSelectedItem().toString());
+            param.put("pjlaborat",NmPJ.getText());
+            param.put("kodepjlaborat",KdPJ.getText());
+            param.put("namapjpengujian",NamaVerifikator.getText());
+            param.put("kodepjpengujian",KodeVerifikator.getText());
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
