@@ -2367,6 +2367,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             }
                         }
                     }else{
+                        tbBangsal.setValueAt(false,i,0);
                         sukses=false;
                     }
                 }

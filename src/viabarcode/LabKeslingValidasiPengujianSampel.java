@@ -84,14 +84,14 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
                 return types [columnIndex];
              }
         };
-        tbVerifikasi.setModel(tabMode);        
+        tbValidasi.setModel(tabMode);        
         
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
-        tbVerifikasi.setPreferredScrollableViewportSize(new Dimension(500,500));
-        tbVerifikasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbValidasi.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbValidasi.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for(i = 0; i < 22; i++) {
-            TableColumn column = tbVerifikasi.getColumnModel().getColumn(i);
+            TableColumn column = tbValidasi.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(55);
             }else if(i==1){
@@ -123,7 +123,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
                 column.setMaxWidth(0);
             }
         }
-        tbVerifikasi.setDefaultRenderer(Object.class, new WarnaTable());
+        tbValidasi.setDefaultRenderer(Object.class, new WarnaTable());
 
         TNoValidasi.setDocument(new batasInput((byte)20).getKata(TNoValidasi));
         Catatan.setDocument(new batasInput((int)100).getKata(Catatan));
@@ -165,6 +165,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
     private void initComponents() {
 
         Rentang = new widget.TextBox();
+        NoVerifikasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         FormInput = new javax.swing.JPanel();
         ChkInput = new widget.CekBox();
@@ -198,7 +199,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         Scroll2 = new widget.ScrollPane();
-        tbVerifikasi = new widget.Table();
+        tbValidasi = new widget.Table();
         panelGlass8 = new widget.panelisi();
         BtnSimpan = new widget.Button();
         BtnBatal = new widget.Button();
@@ -213,6 +214,14 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         Rentang.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 RentangKeyPressed(evt);
+            }
+        });
+
+        NoVerifikasi.setHighlighter(null);
+        NoVerifikasi.setName("NoVerifikasi"); // NOI18N
+        NoVerifikasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoVerifikasiKeyPressed(evt);
             }
         });
 
@@ -454,8 +463,8 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         Scroll2.setName("Scroll2"); // NOI18N
         Scroll2.setOpaque(true);
 
-        tbVerifikasi.setName("tbVerifikasi"); // NOI18N
-        Scroll2.setViewportView(tbVerifikasi);
+        tbValidasi.setName("tbValidasi"); // NOI18N
+        Scroll2.setViewportView(tbValidasi);
 
         jPanel3.add(Scroll2, java.awt.BorderLayout.CENTER);
 
@@ -577,9 +586,9 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         autoNomor();
-        for(i=0;i<tbVerifikasi.getRowCount();i++){
-            tbVerifikasi.setValueAt("",i,3);
-            tbVerifikasi.setValueAt("",i,4);
+        for(i=0;i<tbValidasi.getRowCount();i++){
+            tbValidasi.setValueAt("",i,3);
+            tbValidasi.setValueAt("",i,4);
         }
         Catatan.setText("");
         ChkInput.setSelected(true);
@@ -645,24 +654,24 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
                 try {                    
                     Sequel.AutoComitFalse();
                     berhasil=true;
-                    /*if(Sequel.menyimpantf2("laborat_kesling_verifikasi_pengujian_sampel","?,?,?,?,?,?,?,'Belum Divalidasi'","No.Penugasan",7,new String[]{
-                            TNoPermintaan.getText(),TNoVerifikasi.getText(),KdPJ.getText(),Valid.SetTgl(TanggalVerifikasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText(),
-                            Valid.SetTgl(TglPengujian1.getSelectedItem()+"")+" "+TglPengujian1.getSelectedItem().toString().substring(11,19),Valid.SetTgl(TglPengujian2.getSelectedItem()+"")+" "+TglPengujian2.getSelectedItem().toString().substring(11,19)
+                    if(Sequel.menyimpantf2("laborat_kesling_validasi_pengujian_sampel","?,?,?,?,?,?,'Belum Bayar'","No.Validasi",6,new String[]{
+                            TNoPermintaan.getText(),TNoValidasi.getText(),KdPJ.getText(),KodeVerifikator.getText(),Valid.SetTgl(TanggalValidasi.getSelectedItem()+"")+" "+CmbJam.getSelectedItem()+":"+CmbMenit.getSelectedItem()+":"+CmbDetik.getSelectedItem(),Catatan.getText()
                         })==true){
-                        for(i=0;i<tbVerifikasi.getRowCount();i++){
-                            if(Sequel.menyimpantf2("laborat_kesling_detail_verifikasi_pengujian_sampel","?,?,?,?,?,?","Verifikasi",6,new String[]{
-                                TNoVerifikasi.getText(),tbVerifikasi.getValueAt(i,0).toString(),tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,6).toString(),tbVerifikasi.getValueAt(i,4).toString(),tbVerifikasi.getValueAt(i,5).toString()
-                            })==true){
-                                Sequel.queryu("update laborat_kesling_hasil_pengujian_sampel set status='Sudah Diverifikasi' where no_penugasan='"+tbVerifikasi.getValueAt(i,0).toString()+"' and kode_parameter='"+tbVerifikasi.getValueAt(i,1).toString()+"'");
-                            }else{
+                        for(i=0;i<tbValidasi.getRowCount();i++){
+                            if(Sequel.menyimpantf2("laborat_kesling_detail_validasi_pengujian_sampel","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Verifikasi",16,new String[]{
+                                TNoValidasi.getText(),tbValidasi.getValueAt(i,11).toString(),tbValidasi.getValueAt(i,9).toString(),tbValidasi.getValueAt(i,0).toString(),tbValidasi.getValueAt(i,5).toString(),tbValidasi.getValueAt(i,3).toString(),
+                                tbValidasi.getValueAt(i,4).toString(),tbValidasi.getValueAt(i,13).toString(),tbValidasi.getValueAt(i,14).toString(),tbValidasi.getValueAt(i,15).toString(),tbValidasi.getValueAt(i,16).toString(),
+                                tbValidasi.getValueAt(i,17).toString(),tbValidasi.getValueAt(i,18).toString(),tbValidasi.getValueAt(i,19).toString(),tbValidasi.getValueAt(i,20).toString(),tbValidasi.getValueAt(i,21).toString()
+                            })==false){
                                 berhasil=false;
                             }                
                         } 
                     }else{
                         berhasil=false;
-                    }   */
+                    }   
                     
                     if(berhasil==true){
+                        Sequel.queryu("update laborat_kesling_verifikasi_pengujian_sampel set status='Sudah Divalidasi' where no_verifikasi='"+NoVerifikasi.getText()+"'");
                         Sequel.Commit();
                         JOptionPane.showMessageDialog(null,"Proses simpan selesai...!");
                         Valid.tabelKosong(tabMode);
@@ -729,9 +738,9 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Valid.textKosong(TNoValidasi,"Data Verifikasi");
         }else{
             Sequel.queryu("delete from temporary");
-            for(i=0;i<tbVerifikasi.getRowCount();i++){ 
+            for(i=0;i<tbValidasi.getRowCount();i++){ 
                 Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                    "0",tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,2).toString(),tbVerifikasi.getValueAt(i,3).toString(),tbVerifikasi.getValueAt(i,5).toString(),tbVerifikasi.getValueAt(i,6).toString(),tbVerifikasi.getValueAt(i,7).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                    "0",tbValidasi.getValueAt(i,1).toString(),tbValidasi.getValueAt(i,2).toString(),tbValidasi.getValueAt(i,3).toString(),tbValidasi.getValueAt(i,5).toString(),tbValidasi.getValueAt(i,6).toString(),tbValidasi.getValueAt(i,7).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                 });               
             }
             
@@ -799,6 +808,10 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         // TODO add your handling code here:
     }//GEN-LAST:event_RentangKeyPressed
 
+    private void NoVerifikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoVerifikasiKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NoVerifikasiKeyPressed
+
     /**
     * @param args the command line arguments
     */
@@ -837,6 +850,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.TextBox NamaSampel;
     private widget.TextBox NamaVerifikator;
     private widget.TextBox NmPJ;
+    private widget.TextBox NoVerifikasi;
     private widget.PanelBiasa PanelInput;
     private widget.TextBox Rentang;
     private widget.ScrollPane Scroll2;
@@ -858,7 +872,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.Label label11;
     private widget.panelisi panelGlass8;
     private widget.ScrollPane scrollInput;
-    private widget.Table tbVerifikasi;
+    private widget.Table tbValidasi;
     // End of variables declaration//GEN-END:variables
     
     
@@ -893,7 +907,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         LCount.setText(""+tabMode.getRowCount());
     }
     
-    public void setData(String nopermintaan,String kodepelanggan,String namapelanggan,String kodesampel,String namasampel,String kodeverifikator,String namaverifikator,String rentang) {
+    public void setData(String nopermintaan,String kodepelanggan,String namapelanggan,String kodesampel,String namasampel,String kodeverifikator,String namaverifikator,String rentang,String noverifikasi) {
         TNoPermintaan.setText(nopermintaan);
         KodePelanggan.setText(kodepelanggan);
         NamaPelanggan.setText(namapelanggan);
@@ -902,6 +916,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         KodeVerifikator.setText(kodeverifikator);
         NamaVerifikator.setText(namaverifikator);
         Rentang.setText(rentang);
+        NoVerifikasi.setText(noverifikasi);
         autoNomor();
     }
     
