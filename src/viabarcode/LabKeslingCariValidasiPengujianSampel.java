@@ -286,18 +286,18 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
         Tanggal2 = new widget.Tanggal();
         label14 = new widget.Label();
         Status = new widget.ComboBox();
-        label15 = new widget.Label();
-        NoPermintaan = new widget.TextBox();
-        panelisi3 = new widget.panelisi();
         label13 = new widget.Label();
         NamaPetugas = new widget.TextBox();
         btnPetugas = new widget.Button();
+        panelisi3 = new widget.panelisi();
         label17 = new widget.Label();
         NamaPelanggan = new widget.TextBox();
         btnPelanggan = new widget.Button();
         label7 = new widget.Label();
         NamaSampel = new widget.TextBox();
         btnSampel = new widget.Button();
+        label15 = new widget.Label();
+        NoPermintaan = new widget.TextBox();
         TabData = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         scrollPane1 = new widget.ScrollPane();
@@ -491,7 +491,7 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
 
         label11.setText("Tgl.Validasi :");
         label11.setName("label11"); // NOI18N
-        label11.setPreferredSize(new java.awt.Dimension(78, 23));
+        label11.setPreferredSize(new java.awt.Dimension(71, 23));
         panelisi4.add(label11);
 
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
@@ -522,45 +522,23 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
 
         label14.setText("Status :");
         label14.setName("label14"); // NOI18N
-        label14.setPreferredSize(new java.awt.Dimension(62, 23));
+        label14.setPreferredSize(new java.awt.Dimension(55, 23));
         panelisi4.add(label14);
 
-        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Divalidasi", "Belum Divalidasi" }));
+        Status.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Bayar", "Belum Bayar" }));
         Status.setName("Status"); // NOI18N
-        Status.setPreferredSize(new java.awt.Dimension(135, 23));
+        Status.setPreferredSize(new java.awt.Dimension(113, 23));
         panelisi4.add(Status);
-
-        label15.setText("No.Permintaan :");
-        label15.setName("label15"); // NOI18N
-        label15.setPreferredSize(new java.awt.Dimension(101, 23));
-        panelisi4.add(label15);
-
-        NoPermintaan.setName("NoPermintaan"); // NOI18N
-        NoPermintaan.setPreferredSize(new java.awt.Dimension(156, 23));
-        NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoPermintaanKeyPressed(evt);
-            }
-        });
-        panelisi4.add(NoPermintaan);
-
-        jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
-
-        internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
-
-        panelisi3.setName("panelisi3"); // NOI18N
-        panelisi3.setPreferredSize(new java.awt.Dimension(100, 44));
-        panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         label13.setText("Verifikator :");
         label13.setName("label13"); // NOI18N
-        label13.setPreferredSize(new java.awt.Dimension(66, 23));
-        panelisi3.add(label13);
+        label13.setPreferredSize(new java.awt.Dimension(75, 23));
+        panelisi4.add(label13);
 
         NamaPetugas.setEditable(false);
         NamaPetugas.setName("NamaPetugas"); // NOI18N
-        NamaPetugas.setPreferredSize(new java.awt.Dimension(160, 23));
-        panelisi3.add(NamaPetugas);
+        NamaPetugas.setPreferredSize(new java.awt.Dimension(184, 23));
+        panelisi4.add(NamaPetugas);
 
         btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnPetugas.setMnemonic('2');
@@ -572,16 +550,24 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
                 btnPetugasActionPerformed(evt);
             }
         });
-        panelisi3.add(btnPetugas);
+        panelisi4.add(btnPetugas);
+
+        jPanel1.add(panelisi4, java.awt.BorderLayout.CENTER);
+
+        internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        panelisi3.setName("panelisi3"); // NOI18N
+        panelisi3.setPreferredSize(new java.awt.Dimension(100, 44));
+        panelisi3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         label17.setText("Pelanggan :");
         label17.setName("label17"); // NOI18N
-        label17.setPreferredSize(new java.awt.Dimension(70, 23));
+        label17.setPreferredSize(new java.awt.Dimension(65, 23));
         panelisi3.add(label17);
 
         NamaPelanggan.setEditable(false);
         NamaPelanggan.setName("NamaPelanggan"); // NOI18N
-        NamaPelanggan.setPreferredSize(new java.awt.Dimension(164, 23));
+        NamaPelanggan.setPreferredSize(new java.awt.Dimension(184, 23));
         panelisi3.add(NamaPelanggan);
 
         btnPelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -603,7 +589,7 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
 
         NamaSampel.setEditable(false);
         NamaSampel.setName("NamaSampel"); // NOI18N
-        NamaSampel.setPreferredSize(new java.awt.Dimension(134, 23));
+        NamaSampel.setPreferredSize(new java.awt.Dimension(144, 23));
         panelisi3.add(NamaSampel);
 
         btnSampel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
@@ -617,6 +603,20 @@ public class LabKeslingCariValidasiPengujianSampel extends javax.swing.JDialog {
             }
         });
         panelisi3.add(btnSampel);
+
+        label15.setText("No.Permintaan :");
+        label15.setName("label15"); // NOI18N
+        label15.setPreferredSize(new java.awt.Dimension(91, 23));
+        panelisi3.add(label15);
+
+        NoPermintaan.setName("NoPermintaan"); // NOI18N
+        NoPermintaan.setPreferredSize(new java.awt.Dimension(142, 23));
+        NoPermintaan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoPermintaanKeyPressed(evt);
+            }
+        });
+        panelisi3.add(NoPermintaan);
 
         internalFrame1.add(panelisi3, java.awt.BorderLayout.PAGE_START);
 
