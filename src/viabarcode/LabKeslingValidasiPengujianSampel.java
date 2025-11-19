@@ -173,7 +173,7 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         KodePelanggan = new widget.TextBox();
         NamaPelanggan = new widget.TextBox();
         jLabel9 = new widget.Label();
-        TanggalVerifikasi = new widget.Tanggal();
+        TanggalValidasi = new widget.Tanggal();
         CmbJam = new widget.ComboBox();
         CmbMenit = new widget.ComboBox();
         CmbDetik = new widget.ComboBox();
@@ -281,22 +281,22 @@ public final class LabKeslingValidasiPengujianSampel extends javax.swing.JDialog
         PanelInput.add(jLabel9);
         jLabel9.setBounds(0, 10, 80, 23);
 
-        TanggalVerifikasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "16-11-2025" }));
-        TanggalVerifikasi.setDisplayFormat("dd-MM-yyyy");
-        TanggalVerifikasi.setName("TanggalVerifikasi"); // NOI18N
-        TanggalVerifikasi.setOpaque(false);
-        TanggalVerifikasi.addItemListener(new java.awt.event.ItemListener() {
+        TanggalValidasi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2025" }));
+        TanggalValidasi.setDisplayFormat("dd-MM-yyyy");
+        TanggalValidasi.setName("TanggalValidasi"); // NOI18N
+        TanggalValidasi.setOpaque(false);
+        TanggalValidasi.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TanggalVerifikasiItemStateChanged(evt);
+                TanggalValidasiItemStateChanged(evt);
             }
         });
-        TanggalVerifikasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        TanggalValidasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TanggalVerifikasiKeyPressed(evt);
+                TanggalValidasiKeyPressed(evt);
             }
         });
-        PanelInput.add(TanggalVerifikasi);
-        TanggalVerifikasi.setBounds(84, 40, 90, 23);
+        PanelInput.add(TanggalValidasi);
+        TanggalValidasi.setBounds(84, 40, 90, 23);
 
         CmbJam.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" }));
         CmbJam.setName("CmbJam"); // NOI18N
@@ -610,9 +610,9 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
-    private void TanggalVerifikasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalVerifikasiKeyPressed
+    private void TanggalValidasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalValidasiKeyPressed
         Valid.pindah(evt, KdPJ, TNoValidasi);
-    }//GEN-LAST:event_TanggalVerifikasiKeyPressed
+    }//GEN-LAST:event_TanggalValidasiKeyPressed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
@@ -667,7 +667,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         if(evt.getKeyCode()==KeyEvent.VK_UP){
             btnPJActionPerformed(null);
         }else{            
-            Valid.pindah(evt,TNoValidasi,TanggalVerifikasi);
+            Valid.pindah(evt,TNoValidasi,TanggalValidasi);
         }
     }//GEN-LAST:event_KdPJKeyPressed
 
@@ -697,19 +697,22 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             Sequel.queryu("delete from temporary");
             for(i=0;i<tbVerifikasi.getRowCount();i++){ 
                 Sequel.menyimpan("temporary","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                    "0",tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,2).toString(),tbVerifikasi.getValueAt(i,3).toString(),tbVerifikasi.getValueAt(i,7).toString(),tbVerifikasi.getValueAt(i,4).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
+                    "0",tbVerifikasi.getValueAt(i,1).toString(),tbVerifikasi.getValueAt(i,2).toString(),tbVerifikasi.getValueAt(i,3).toString(),tbVerifikasi.getValueAt(i,5).toString(),tbVerifikasi.getValueAt(i,6).toString(),tbVerifikasi.getValueAt(i,7).toString(),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
                 });               
             }
             
             Map<String, Object> param = new HashMap<>();
-            param.put("pjlaborat",NmPJ.getText());
-            param.put("kodepjlaborat",KdPJ.getText());
-            param.put("noverifikasi",TNoValidasi.getText());
             param.put("nomorpermintaan",TNoPermintaan.getText());
-            param.put("jenisampel",NamaSampel.getText());
-            param.put("kodesampel",KodeSampel.getText());
-            param.put("kodepelanggan",KodePelanggan.getText());
             param.put("namapelanggan",NamaPelanggan.getText());
+            param.put("alamatpelanggan",Sequel.cariIsi("select laborat_kesling_pelanggan.alamat from laborat_kesling_pelanggan where laborat_kesling_pelanggan.kode_pelanggan=?",KodePelanggan.getText()));
+            param.put("jenisampel",NamaSampel.getText());
+            param.put("bakumutu",Sequel.cariIsi("select laborat_kesling_master_sampel.baku_mutu from laborat_kesling_master_sampel where laborat_kesling_master_sampel.kode_sampel=?",KodeSampel.getText()));
+            param.put("titiksampling",Sequel.cariIsi("select laborat_kesling_permintaan_pengujian_sampel.lokasi_sampling from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
+            param.put("disamplingoleh",Sequel.cariIsi("select laborat_kesling_permintaan_pengujian_sampel.sampling_dilakukan_oleh from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
+            param.put("waktusampling",Sequel.cariIsi("select date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_sampling,'%d/%m/%Y %H:%i:%s') from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
+            param.put("waktuterimasampel",Sequel.cariIsi("select date_format(laborat_kesling_permintaan_pengujian_sampel.waktu_diterima,'%d/%m/%Y %H:%i:%s') from laborat_kesling_permintaan_pengujian_sampel where laborat_kesling_permintaan_pengujian_sampel.no_permintaan=?",TNoPermintaan.getText()));
+            param.put("rentangwaktu",Rentang.getText());
+            param.put("tanggalvalidasi",TanggalValidasi.getSelectedItem().toString());
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
             param.put("kotars",akses.getkabupatenrs());
@@ -718,8 +721,10 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             param.put("emailrs",akses.getemailrs());   
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             String finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KdPJ.getText());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NmPJ.getText()+"\nID "+(finger.equals("")?KdPJ.getText():finger)+"\n"+TanggalVerifikasi.getSelectedItem()); 
-            Valid.MyReport("rptVerifikasiPengujianSampelLaboratKesling.jasper","report","::[ Laporan Hasil Uji Sementara ]::",param);            
+            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NmPJ.getText()+"\nID "+(finger.equals("")?KdPJ.getText():finger)+"\n"+TanggalValidasi.getSelectedItem()); 
+            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",KodeVerifikator.getText());
+            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+NamaVerifikator.getText()+"\nID "+(finger.equals("")?KodeVerifikator.getText():finger)+"\n"+TanggalValidasi.getSelectedItem()); 
+            Valid.MyReport("rptValidasiPengujianSampelLaboratKesling.jasper","report","::[ Laporan Hasil Uji Laboratorium ]::",param);            
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnPrintActionPerformed
@@ -732,12 +737,12 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
         }
     }//GEN-LAST:event_BtnPrintKeyPressed
 
-    private void TanggalVerifikasiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalVerifikasiItemStateChanged
+    private void TanggalValidasiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TanggalValidasiItemStateChanged
         try {
             autoNomor();
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_TanggalVerifikasiItemStateChanged
+    }//GEN-LAST:event_TanggalValidasiItemStateChanged
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         tampil();
@@ -798,7 +803,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
     private widget.ScrollPane Scroll2;
     private widget.TextBox TNoPermintaan;
     private widget.TextBox TNoValidasi;
-    private widget.Tanggal TanggalVerifikasi;
+    private widget.Tanggal TanggalValidasi;
     private widget.Button btnPJ;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel15;
@@ -947,7 +952,7 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
   
     private void autoNomor() {
         if(!KodeSampel.getText().trim().equals("")){
-            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_validasi_pengujian_sampel.no_validasi,5),signed)),0) from laborat_kesling_validasi_pengujian_sampel inner join laborat_kesling_permintaan_pengujian_sampel on laborat_kesling_permintaan_pengujian_sampel.no_permintaan=laborat_kesling_validasi_pengujian_sampel.no_permintaan where date_format(laborat_kesling_validasi_pengujian_sampel.tanggal,'%Y')='"+TanggalVerifikasi.getSelectedItem().toString().substring(6,10)+"' and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalVerifikasi.getSelectedItem().toString().substring(6,10)+"/LHU/",5,TNoValidasi);   
+            Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(laborat_kesling_validasi_pengujian_sampel.no_validasi,5),signed)),0) from laborat_kesling_validasi_pengujian_sampel inner join laborat_kesling_permintaan_pengujian_sampel on laborat_kesling_permintaan_pengujian_sampel.no_permintaan=laborat_kesling_validasi_pengujian_sampel.no_permintaan where date_format(laborat_kesling_validasi_pengujian_sampel.tanggal,'%Y')='"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+"' and laborat_kesling_permintaan_pengujian_sampel.kode_sampel='"+KodeSampel.getText()+"'",KodeSampel.getText()+"/"+TanggalValidasi.getSelectedItem().toString().substring(6,10)+"/LHU/",5,TNoValidasi);   
         }        
     }
 }
